@@ -1,0 +1,27 @@
+<html>
+<head>
+    <title>If / Else Blocks</title>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <meta name="keywords" content="otter,execution-engine,operation-groups" />
+	<meta name="sequence" content="400"  />
+</head>
+<body>
+   <p>
+		If / Else blocks allow for greater flexibility when creating plans, and reusing plan blocks in multiple 
+        situations. 
+	</p>
+    <p>
+        For example, maybe a security certificate is only needed on production servers, so an If/Else block can be inserted so that 
+        if the server is in the Production environment, the security certificate will be installed via PowerShell. 
+    </p>
+    <tab-block>
+        <tab name="Visual Mode"><img class="screenshot" src="/resources/documentation/otter/if-else-block.png" alt="If Else Block" /></tab>
+        <tab name="Text Mode (OtterScript)"><img class="screenshot" src="/resources/documentation/otter/if-else-text.png" alt="If Else Text" /></tab>
+    </tab-block>
+    <p>
+        If this is run on any non-production server, it will simply log that a certificate isn't needed.
+    </p>
+    
+	
+</body>
+</html>
