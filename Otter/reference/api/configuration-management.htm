@@ -1,0 +1,355 @@
+    <!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Configuration Management API Endpoints</title>
+    <meta name="subtitle" content="Config Management API" />
+    <meta name="keywords" content="otter,api,servers,environments,roles" />
+    <style type="text/css">
+        th {
+            font-weight: normal;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+
+    <p>
+        The Server Configuration Management API offer a simple mechanism for querying the configuration status of
+        <a href="../../core-concepts/servers">servers</a>, <a href="../../modeling-infrastructure/environments">environments</a>, and
+        <a href="../../modeling-infrastructure/server-roles">server roles</a>, as well as remediating drift. 
+    </p>
+    <p class="announcement">
+        This API endpoint should be used instead of the <a href="../api#native">Native API Methods</a> when possible, as they are much easier to use and will likely not change.
+    </p>
+
+    <p>
+        For security and simplicity, these endpoints require that an <a href="../../administration/security#api-keys">API Key</a> is created first.
+    </p>
+
+    <h3 id="data-specification">Data Specification</h3>
+    <p>
+        This endpoint sends and receives entries as <a href="http://json.org/">JSON</a> objects.
+    </p>
+
+    <h4 id="configuration-status-object">Configuration Status Object</h4>
+    <p>This represents the current configuration status for a server, server role, or environment.</p>
+    <table>
+        <thead>
+            <tr>
+                <th>Property</th>
+                <th>Format</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>type</code></td>
+                <td>
+                    A <em>string</em> value of <code>server</code>, <code>role</code>, or <code>environment</code>
+                </td>
+            </tr>
+            <tr>
+                <td><code>name</code></td>
+                <td>
+                    A <em>string</em> value with the name of the server, role, or environment
+                </td>
+            </tr>
+
+            <tr>
+                <td><code>status</code></td>
+                <td>
+                    A <em>string</em> value of:
+                    <ul>
+                        <li><code>current</code></li>
+                        <li><code>drifted</code></li>
+                        <li><code>executing</code> - the server is currently involved in a collection or remediation execution</li>
+                        <li><code>pendingRemediation</code> - drifted, but with a remediation job scheduled</li>
+                        <li><code>unknown</code> - no configuration data collected</li>
+						<li><code>disabled</code> - the server is marked inactive in the UI</li>
+                        <li><code>error</code> - an error occurred during collection or remediation</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td><em><code>errorText</code></em></td>
+                <td>
+                    When <code>status</code> is <code>error</code>, this will contain information about the nature of the error (agent failure, execution failure, etc);
+                    this property will be missing if the <code>status</code> is not <code>error</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td><code>collectionDate</code></td>
+                <td>
+                    A <em>string</em> value with an ISO 8601 formatted date (yyyy-MM-ddThh:mm:ss) of the most recently collection date,
+                    or null if there has been no collection
+                </td>
+            </tr>
+            <tr>
+                <td><em><code>latestCollectionId</code></em></td>
+                <td>
+                    When <code>type</code> is <code>server</code>, an <em>integer</em> identifying either the execution used for the current (when <code>status</code> is <code>executing</code>) 
+                    or most recent collection run; this property will be null if no execution occurred, and will be missing if the <code>type</code> is not <code>server</code>
+                </td>
+            </tr>
+            <tr>
+                <td><em><code>remediationDate</code></em></td>
+                <td>
+                    When a remediation job is pending, a <em>string</em> value with an ISO 8601 formatted date (yyyy-MM-ddThh:mm:ss) of when the configuration drift will be remediated with a job;
+                    otherwise this property will be missing
+                </td>
+            </tr>
+            <tr>
+                <td><em><code>remediationId</code></em></td>
+                <td>
+                    An <em>integer</em> identifying the job used for remediating the configuration drift;
+                    otherwise this property will be missing
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+
+    <h4 id="server-configuration-item-object">Server Configuration Item Object</h4>
+    <p>This represents data about a single configuration item (such as a file or application) that was collected on a server.</p>
+    <table>
+        <thead>
+            <tr>
+                <th>Property</th>
+                <th>Format</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>type</code></td>
+                <td>
+                    A <em>string</em> containing the type returned by the configuration item (ex. File)
+                </td>
+            </tr>
+            <tr>
+                <td><code>key</code></td>
+                <td>
+                    A <em>string</em> uniquely identifying the configuration item among others of the same <code>type</code> (ex. C:\hdarfs.txt)
+                </td>
+            </tr>
+            <tr>
+                <td><code>status</code></td>
+                <td>
+                    A <em>string</em> value of <code>current</code>, <code>drifted</code>, or <code>unknown</code>
+                </td>
+            </tr>
+            <tr>
+                <td><code>collectionDate</code></td>
+                <td>
+                    A <em>string</em> value with an ISO 8601 formatted date (yyyy-MM-ddThh:mm:ss) of when this configuration was collected
+                </td>
+            </tr>
+            <tr>
+                <td><code>collectionId</code></td>
+                <td>
+                    An <em>integer</em> identifying the execution used for collecting the configuration
+                </td>
+            </tr>
+            <tr>
+                <td><code>collectionRole</code></td>
+                <td>
+                    An <em>string</em> value with the name of the role where the configuration is defined, or null if the configuration was defined on the server itself
+                </td>
+            </tr>
+
+            <tr>
+                <td><em><code>remediationDate</code></em></td>
+                <td>
+                    When a remediation job is pending, a <em>string</em> value with an ISO 8601 formatted date (yyyy-MM-ddThh:mm:ss) of when the configuration drift will be remediated with a job;
+                    otherwise this property will be missing
+                </td>
+            </tr>
+            <tr>
+                <td><em><code>remediationId</code></em></td>
+                <td>
+                    An <em>integer</em> identifying the job used for remediating the configuration drift;
+                    otherwise this property will be missing
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3 id="get-status">Get Configuration Status</h3>
+    <p class="info">
+        GET or POST <span style="opacity: 0.5">/api/configuration/</span><b>status</b>/?key=&laquo;api-key&raquo;&amp;&laquo;entity-type&raquo;=&laquo;entity-name&raquo;
+    </p>
+    <p>
+        Gets a <a href="#configuration-status-object">configuration status object</a> for the specified <code>entity-type</code> (either <code>server</code>, <code>role</code>, or <code>environment</code>),
+        or an array of all objects if no entity type is specified.
+        A status of 200 (on success),  400 (invalid entity type), 403 (invalid key), 404 (server not found) is also returned.
+    </p>
+    <inedo:tab-block>
+        <tab name="Server Status">
+            <p class="info">
+                <code>POST /api/configuration/status?key=secure123&amp;server=mywebsv1</code>
+            </p>
+            <pre>{
+    "type": "server",
+    "name": "mywebsv1",
+    "status": "current",
+    "collectionDate": "2016-04-13T03:28:11",
+    "latestCollectionId": 10238
+}</pre>
+        </tab>
+        <tab name="Role Status">
+            <p class="info">
+                <code>POST /api/configuration/status?key=secure123&amp;role=hdars</code>
+            </p>
+            <pre>{
+    "type": "role",
+    "name": "hdars",
+    "status": "pendingRemediation",
+    "collectionDate": "2016-04-13T03:28:11",
+    "remediationId": 233
+}</pre>
+        </tab>
+        <tab name="All Statuses">
+            <p class="info">
+                <code>POST /api/configuration/status?key=secure123</code>
+            </p>
+            <pre>[{
+    "type": "role",
+    "name": "hdars",
+    "status": "pendingRemediation",
+    "collectionDate": "2016-04-13T03:28:11",
+    "remediationId": 233
+},
+{
+    "type": "role",
+    "name": "sdmweb",
+    "status": "current",
+    "collectionDate": "2016-04-13T04:21:11"
+},
+{
+    "type": "environment",
+    "name": "production",
+    "status": "current",
+    "collectionDate": "2016-04-13T07:21:14"
+},
+{
+    "type": "server",
+    "name": "mywebsv1",
+    "status": "current",
+    "collectionDate": "2016-04-13T03:28:11",
+    "latestCollectionId": 10238
+}]</pre>
+        </tab>
+    </inedo:tab-block>
+
+    <h3 id="trigger-check">Trigger Configuration Check</h3>
+    <p class="info">
+        GET or POST <span style="opacity: 0.5">/api/configuration/</span><b>check</b>?key=&laquo;api-key&raquo;&amp;&laquo;entity-type&raquo;=&laquo;entity-name&raquo;
+    </p>
+    <p>
+        Triggers a <em>routine server configuration</em> check of a specific <code>entity-name</code> (<code>server</code> or <code>role</code>), or all servers/roles if not supplied; this will otherwise occur every sixty minutes (by default) or when a user clicks the [Check Configuration] button in the
+        UI. A status of 200 (on success) or 403 (invalid key) and an empty body is returned.
+    </p>
+    <p class="announcement">
+        <b>Future Enhancement?</b> - this endpoint could return one or more <em>collectionId</em> values that could be checked against
+        the collectionId <a href="#configuration-status-object">configuration status object</a>, to make sure it is the same. This would simplify the current
+        process of checking for recent configuration changes (get collectionId, trigger run, keep getting collectionId until it changes).
+        Please <a href="/contact">let us know</a> if you think we should add this.
+    </p>
+
+    <h3 id="trigger-remediation">Trigger Remediation Job</h3>
+    <p class="info">
+        GET or POST <span style="opacity: 0.5">/api/configuration/</span><b>remediate</b>/&laquo;entity-type&raquo;/&laquo;entity-value&raquo;?key=&laquo;api-key&raquo;&amp;job=&laquo;name&raquo;&amp;start=&laquo;date&raquo;&amp;simulate=&laquo;bool&raquo;
+    </p>
+    <p>
+        Creates a remediation job for the specified <code>entity-type</code> (either <code>server</code>, <code>role</code>, or <code>environment</code>), with an optional
+        job name, start date (ISO 8601 formatted, <code>yyyy-MM-ddThh:mm:ss</code>), and simulation mode, returning a status of 200 (on success), 400 (incorrect parameters), 404 (entity not found),
+        or 403 (invalid key), and a body containing only a <em>job token</em>. If the start date is not set, the job will be triggered to run.
+    </p>
+    <inedo:tab-block>
+        <tab name="Simple GET">
+            <p class="info">
+                <code>GET /api/configuration/remediate/server/mywebsv1?key=secure123</code>
+            </p>
+            <pre>Status: 200<br />Body: 471</pre>
+        </tab>
+        <tab name="POST with Parameters">
+            <p class="info">
+                <code>POST /api/configuration/remediate/role/hdars?key=secure123&amp;job=autoremediate&amp;start=2016-04-21T23:00:00&amp;simulate=false</code>
+            </p>
+            <pre>Status: 200<br />Body: 1871</pre>
+        </tab>
+    </inedo:tab-block>
+    <p>
+        The returned token is <em>currently</em> the integer-based identifier used for jobs; however, please treat this as a string of arbitrary length,
+        just in case the implementation detail changes to a GUID... or maybe even a <a href="https://www.nuget.org/packages/Rubbishsoft.LongGuid/">LongGuid</a>.
+    </p>
+
+    <h3 id="status">Remediation Job Status Endpoint</h3>
+    <p class="info">
+        GET or POST <span style="opacity: 0.5">/api/configuration/</span><b>remediate/status</b>?key=&laquo;api-key&raquo;&amp;token=&laquo;job-token&raquo;
+    </p>
+    <p>
+        Gets the status of a job that was created with the <a href="#trigger-remediation">trigger remediation</a> endpoint, using the job token returned by that method.
+        The API returns a status of 200 (on success), 400 (invalid parameters), or 403 (invalid key), and a body containing one of the following
+        strings:
+    </p>
+    <ul>
+        <li>
+            <code>pending</code> - indicates that the job dispatcher has not yet begun execution; this could mean the job is set to run in the future, or the Otter service is disabled
+        </li>
+        <li>
+            <code>completed</code> - indicates that the job is complete (and did not end in a faulted state)
+        </li>
+        <li>
+            <code>faulted</code> - indicates that the job is complete but ended in an Error state
+        </li>
+        <li>
+            <code>running</code> - indicates that the job has not yet completed
+        </li>
+		<li>
+            <code>disabled</code> - indicates that the job was disabled
+        </li>
+    </ul>
+
+
+    <h3 id="get-configuration">Get Server Configuration</h3>
+    <p class="info">
+        GET or POST <span style="opacity: 0.5">/api/configuration/</span><b>server</b>/&laquo;server-name&raquo;?key=&laquo;api-key&raquo;
+    </p>
+    <p>
+        Gets a JSON array of <a href="#server-configuration-item-object">server configuration objects</a> for the specified server as the body.
+        A status of 200 (on success), 403 (invalid key), 404 (server not found) is also returned.
+    </p>
+    <pre>[
+  {
+    "type": "File",
+    "key": "C:\\hdirs.txt,
+    "status": "current",
+    "collectionDate": "2016-04-13T03:28:11",
+    "collectionId": 1237,
+    "collectionRole": null
+  },
+  {
+    "type": "IIS App Pool",
+    "key": "HDarsApp,
+    "status": "drifted",
+    "collectionDate": "2016-04-13T03:28:11",
+    "collectionId": 1237,
+    "collectionRole": "hdars",
+    "remediationDate": "2016-04-14T04:00:00",
+    "remediationId": 382
+  },
+  {
+    "type": "IIS App Site",
+    "key": "HDarsSite,
+    "status": "drifted",
+    "collectionDate": "2016-04-13T03:28:11",
+    "collectionId": 1237,
+    "collectionRole": "hdars",
+    "remediationDate": "2016-04-14T04:00:00",
+    "remediationId": 382
+  }
+]</pre>
+
+
+</body>
+</html>
