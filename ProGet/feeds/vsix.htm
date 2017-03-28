@@ -1,0 +1,29 @@
+﻿<html>
+<head>
+    <title>Visual Studio Extension (.vsix)</title>
+    <meta name="subtitle" content="VSIX" />
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <meta name="keywords" content="proget,feeds,vsix" />
+    <meta name="sequence" content="150" />
+</head>
+<body>
+	<p>
+		A VSIX feed in ProGet stores Visual Studio extensions, which can then be
+		installed directly from Visual Studio.
+	</p>
+
+	<h2 id="vsix-specifics">VSIX Feed Specifics</h2>
+	<p>
+		Visual Studio does not allow disabling or removing the standard extension
+		gallery, and this gallery actually uses an internal API that is different
+		from the documented Atom VSIX feed ProGet exposes, so currently a connector
+		to the Visual Studio Gallery cannot be created in ProGet. However, connectors
+		to other Atom VSIX feeds are supported.
+	</p>
+	<p>
+		There is no official API defined by VSIX for adding packages. If you would like
+		to upload a .vsix extension from a tool or script, you can simply PUT or POST
+		the extension to the feed API endpoint URL.
+	</p>
+</body>
+</html>
