@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Infrastructure Management API Endpoints</title>
+    <meta name="subtitle" content="Infrastructure Management" />
+    <meta name="keywords" content="otter,api,servers,environments,roles" />
+    <style type="text/css">
+        th {
+            font-weight: normal;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <p>
+        The Infrastructure Management API Endpoints offer a simple mechanism for querying, creating, and updating 
+        <a href="../../core-concepts/servers">server</a>, <a href="../../modeling-infrastructure/environments">environment</a>, and
+        <a href="../../modeling-infrastructure/server-roles">server role</a> entries; they are intended to automate the set-up and 
+        management of an Otter instance.
+    </p>
+    <p class="announcement">
+        These API endpoints should be used instead of the <a href="../api#native">Native API Methods</a> when possible, as they are much easier to use and will likely not change.
+    </p>
+
+    <p>
+        For security and simplicity, these endpoints require that an <a href="../../administration/security#api-keys">API Key</a> is created first.
+    </p>
+
+    <h3 id="data-specification">Data Specification</h3>
+    <p>
+        This endpoint sends and receives entries as <a href="http://json.org/">JSON</a> objects.
+    </p>
+
+    <inedo:tab-block>
+
+        <tab name="Server">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Property</th>
+                        <th>Format</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>name</code></td>
+                        <td>
+                            A <em>string</em> of no more than fifty characters: numbers (0-9), upper- and lower-case letters (a-Z), dashes (-), and underscores (_);
+                            must start with a letter, and may not start or end with a dash or underscore. Required.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><code>roles</code></td>
+                        <td>
+                            An <em>array of strings</em>, each consisting of a server role name. Optional.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><code>environments</code></td>
+                        <td>
+                            An <em>array of strings</em>, each consisting of an environment name. Optional.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><code>drift</code></td>
+                        <td>
+                            A <em>string</em> value of <code>none</code>, <code>reportOnly</code>, or <code>automaticallyRedmediate</code>. Required.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><code>serverType</code></td>
+                        <td>
+                            A <em>string</em> value of <code>windows</code>, <code>ssh</code>, <code>local</code>, or <code>powershell</code>. Required.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><code>hostName</code></td>
+                        <td>
+                            A <em>string</em> of the hostname of the server. Required for <code>windows</code> and <code>ssh</code>.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><code>port</code></td>
+                        <td>
+                            An <em>integer</em> of the port to use of the server. Required for <code>windows</code> and <code>ssh</code>.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><code>encryptionType</code></td>
+                        <td>
+                            A <em>string</em> value of <code>aes</code>, <code>ssl</code>, or <code>none</code>. Required for <code>windows</code>.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><code>encryptionKey</code></td>
+                        <td>
+                            A <em>string</em> containing exactly 32 hexidecimal characters. Required when <code>encryptionType</code> is <code>aes</code>.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><code>requireSsl</code></td>
+                        <td>
+                            A <em>boolean</em> indicating whether to only connect using SSL. Required when <code>encryptionType</code> is <code>ssl</code>.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><code>credentialsType</code></td>
+                        <td>
+                            A <em>string</em> containing the type of resource credential to use. Required for <code>ssh</code>.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><code>credentialsName</code></td>
+                        <td>
+                            A <em>string</em> containing the name of a resource credential to use. Required for <code>ssh</code>. Optional for <code>powershell</code>.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><code>tempPath</code></td>
+                        <td>
+                            A <em>string</em> containing the name of the temporary path to use for files. Required for <code>ssh</code> and <code>powershell</code>.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><code>wsManUrl</code></td>
+                        <td>
+                            A <em>string</em> containing the WSMan endpoint. Optional for <code>powershell</code>.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><code>active</code></td>
+                        <td>
+                            A <em>boolean</em> indicating whether the server is active or disabled. Optional.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><code>variables</code></td>
+                        <td>
+                            An <em>object</em> with property/values representing variable names and values. Optional.
+                            <ul>
+                                <li>
+                                    a variable name is a <em>string</em> of no more than fifty characters:
+                                    numbers (0-9), upper- and lower-case letters (a-Z), dashes (-), spaces ( ), and underscores (_) and must start with a letter, and may not start or end with a dash, underscore, or space; a variable
+                                </li>
+                                <li>a variable value is a <em>string</em> of any number of characters</li>
+                            </ul>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </tab>
+        <tab name="Server Role">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Property</th>
+                        <th>Format</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>name</code></td>
+                        <td>
+                            <em>same format as <b>server.name</b></em>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><code>variables</code></td>
+                        <td>
+                            <em>same format as <b>server.variables</b></em>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </tab>
+        <tab name="Environment">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Property</th>
+                        <th>Format</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>name</code></td>
+                        <td>
+                            <em>same format as <b>server.name</b></em>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><code>parentName</code></td>
+                        <td>
+                            A <em>string</em> containing the name of the parent environment, or null if there is no parent environment. Optional.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><code>variables</code></td>
+                        <td>
+                            <em>same format as <b>server.variables</b></em>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </tab>
+    </inedo:tab-block>
+
+    <h3 id="endpoints">Endpoint Specifications</h3>
+    <p>
+        All of the infrastructure management endpoints follow the same convention:
+    </p>
+    <p class="info">
+        POST <span style="opacity: 0.5">/api/infrastructure/</span><b>&laquo;entry-type&raquo;</b>/<b>&laquo;action-type&raquo;</b>/<b>&laquo;entry-name&raquo;</b>?key=&laquo;api-key&raquo;
+    </p>
+    <ul>
+        <li>
+            <code>entry-type</code> is one of <code>servers</code>, <code>roles</code>, or <code>environments</code>
+        </li>
+        <li>
+            <code>action-type</code> is one of <code><a href="#list">list</a></code>, <code><a href="#create">create</a></code>, <code><a href="#update">update</a></code>, or <code><a href="#delete">delete</a></code>
+        </li>
+        <li>
+            <code>entry-name</code> is the name of the entry being created, updated, or deleted; it is not valid on a <code>list</code> action type
+        </li>
+    </ul>
+
+    <h4 id="list">List Entries</h4>
+    <p>
+        This returns a status of 200 (on success), or 403 (api key not authorized), and a body containing only an <em>array</em> of entry objects. 
+    </p>
+    <inedo:tab-block>
+        <tab name="List Servers">
+            <p class="info">
+                <code>POST /api/infrastructure/servers/list?key=secure123</code>
+            </p>
+            <pre>[
+  {
+    "name": "hdarsintsv1",
+    "roles": ["web","hdars"],
+    "environments": ["integration"],
+    ...
+    "variables": { 
+                   "disk-path": "/var/hdars/1000", 
+                   "app-name": "hdars" 
+                 },
+    "active": true
+  },
+  {
+    "name": "mdapxsv",
+    "roles": [],
+    "environments": ["test1","test2"],
+    ...
+    "variables": {}
+  },
+  { ... }
+]</pre>
+        </tab>
+        <tab name="List Server Roles">
+            <p class="info">
+                <code>POST /api/infrastructure/roles/list?key=secure123</code>
+            </p>
+            <pre>[
+  {
+    "name": "web",
+    "variables": { 
+                   "websites-root": "c:\webroots\"
+                 }
+  },
+  {
+    "name": "hdars",
+    "variables": {}
+  },    
+  { ... }
+]</pre>
+        </tab>
+        <tab name="List Environments">
+            <p class="info">
+                <code>POST /api/infrastructure/environments/list?key=secure123</code>
+            </p>
+            <pre>[
+  {
+    "name": "integration",
+    "parent": null,
+    "variables": { 
+                   "database-alias": "intagration"
+                 }
+  },
+  {
+    "name": "testing",
+    "parent": null,
+    "variables": { 
+                   "database-alias": "test"
+                 }
+  },
+  {
+    "name": "test1",
+    "parent": "testing",
+    "variables": {}
+  },
+  {
+    "name": "test2",
+    "parent": "testing",
+    "variables": {}
+  },
+  { ... }
+]</pre>
+        </tab>
+    </inedo:tab-block>
+    <p>
+        The above is an example, and truncates responses for readability with ellipses; the API key used requires the <code>Infrastructure_View</code> permission.
+	</p>
+
+    <h4 id="create">Create Entry</h4>
+    <p>
+        This returns a status of 201 (on success), 403 (api key not authorized), or 422 (invalid entry), and an body containing 
+        either the entry object, or a description of the 422 status.
+    </p>
+    <p class="announcement">
+        If the entity references another entity (e.g. in the <code>roles</code> property of a server, or the <code>parent</code> property of environment) and the
+        referenced entity does not exist, an invalid entry (422) will be returned.
+    </p>
+    <p>
+        We opted not to provide an example, as the request body is simply a JSON object formatted like the <a href="#list">list</a> examples. The API key used requires the <code>Infrastructure_Manage</code> permission.
+    </p>
+
+    <h4 id="update">Update Entry</h4>
+    <p>
+        This returns a status of 200 (on success), 403 (api key not authorized), 404 (entry not found), or 422 (invalid entry), and an body containing
+        either the entry object, or a description of the 422 status.
+    </p>
+    <p class="announcement">
+        If the entity references another entity (e.g. in the <code>roles</code> property of a server, or the <code>parent</code> property of environment) and the
+        referenced entity does not exist, an invalid entry (422) will be returned.
+    </p>
+    <p class="announcement">
+        If there are missing properties on the entity, only the specified properties will be updated.
+    </p>
+    <inedo:tab-block>
+        <tab name="Update Server">
+            <p class="info">
+                <code>POST /api/infrastructure/servers/update/hdarsintsv1?key=secure123</code>
+            </p>
+            <pre>{
+  "roles": ["web","hdars","code-server"], 
+  "encryption": "none"
+}</pre>
+            <p>Note that, in this case, the <code>encryptionKey</code> property would be removed on update because the encryption type changed.</p>
+        </tab>
+        <tab name="Rename Server Role">
+            <p class="info">
+                <code>POST /api/infrastructure/roles/update/hdars?key=secure123</code>
+            </p>
+            <pre>{ "name": "new-hdars"}</pre>
+        </tab>
+        <tab name="Remove Parent Environment">
+            <p class="info">
+                <code>POST /api/infrastructure/environments/update/test1?key=secure123</code>
+            </p>
+            <pre>{ "parent" : null }</pre>
+        </tab>
+
+    </inedo:tab-block>
+
+
+    <h4 id="delete">Delete Entry</h4>
+    <p>
+        This returns a status of 200 (on success), 403 (api key not authorized), or 404 (entry not found), and an empty body.
+    </p>
+   
+</body>
+</html>
