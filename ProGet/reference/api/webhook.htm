@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Webhook Management API Endpoints</title>
+  <meta name="subtitle" content="Webhook Management API" />
+  <meta name="keywords" content="proget,api,webhook" />
+  
+</head>
+<body>
+    <style type="text/css">
+        pre {
+            background-color: #f7f5f5;
+            padding: 12px 16px;
+        }
+    </style>
+
+
+    <p>
+        The Webhook API offers a simple mechanism for creating, modifying, and deleting webhooks in ProGet.
+    </p>
+    <p class="announcement">
+        This API endpoint should be used instead of the <a href="native">Native API Methods</a> when possible, as they are much easier to use and will likely not change.
+    </p>
+
+    <p>
+        For security and simplicity, these endpoints require that an <a href="/support/documentation/proget/administration/security/api-keys">API Key</a> is created and passed into each request.
+    </p>
+
+
+    <h3 id="data-specification">Webhook Object Data Specification</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Property</th>
+                <th>Format</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>name</code></td>
+                <td>
+                    A <em>string</em> of the user-defined name of the webhook.
+                </td>
+            </tr>
+            <tr>
+                <td><code>id</code></td>
+                <td>
+                    An <em>integer</em> of the system-assigned webhook Id
+                </td>
+            </tr>
+            <tr>
+                <td><code>feedId</code></td>
+                <td>
+                    An <em>integer</em> that the webhook is associated with, or null if the webhook applies to all feeds
+                </td>
+            </tr>
+            <tr>
+                <td><code>url</code></td>
+                <td>
+                    A <em>string</em> containing the URL that the webhook will interact with when the event occurs.
+                </td>
+            </tr>
+            <tr>
+                <td><code>event</code></td>
+                <td>
+                    A <em>string</em> of the event to listen to; one of: <code>added</code>, <code>promoted</code>,
+                    <code>deployed</code>, <code>deleted</code>, or <code>purged</code>
+                </td>
+            </tr>
+            <tr>
+                <td><code>condition</code></td>
+                <td>
+                    A <em>string</em> containing the predicate expression that will be evaluated prior to running, or
+                    null if the webhook should always fire
+                </td>
+            </tr>
+            <tr>
+                <td><code>payload</code></td>
+                <td>
+                    An <em>object</em> with the following properties:
+                    <ul>
+                        <li>
+                            <code>method</code> - a <em>string</em> of the type of HTTP request to be sent; one of
+                            <code>GET</code>, <code>DELETE</code>, <code>POST</code>, <code>PUT</code>, <code>HEAD</code>, <code>OPTIONS</code>, or <code>PATCH</code>
+                        </li>
+                        <li>
+                            <code>headers</code> - an <em>object</em> with properties representing key/value pairs of the headers to be sent with the request; the values of these properties
+                            must be <em>string</em>
+                        </li>
+                        <li>
+                            <code>content</code> - a <em>string</em> that will be sent as the body of the request
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3 id="list">List Webhooks Endpoint</h3>
+    <p class="info">GET <span style="opacity: 0.5;">/api/webhooks</span>/list?key=&laquo;api-key&raquo;[&amp;feedId=&laquo;feed-id&raquo;]</p>
+
+    <p>
+        Lists webhooks, optionally filtering by feed.
+        This endpoint returns a status of 200 (on success) or 403 (invalid key).
+    </p>
+    <p>
+        On success, an array of <i>Webhooks</i> objects will be returned, filtered by the specified feed id.
+    </p>
+
+    <h3 id="delete">Delete Webhook Endpoint</h3>
+    <p class="info">DELETE or POST <span style="opacity: 0.5;">/api/webhooks</span>/delete?key=&laquo;api-key&raquo;&amp;id=&laquo;webhook-id&raquo;</p>
+    <p>
+        Deletes the specified webhook.
+
+        This endpoint returns a status of 200 (success), 400 (invalid webhook id), 403 (invalid key).
+    </p>
+    <p>
+        On success, the webhook is deleted.
+    </p>
+
+    <h3 id="create">Create Webhook Endpoint</h3>
+    <p class="info">PUT or POST <span style="opacity: 0.5;">/api/webhooks</span>/create?key=&laquo;api-key&raquo;</p>
+
+    <p>
+        Creates a webhook based on the webhook JSON object specified in the body of the request.
+        Note that if you supply a <code>id</code> property in the webhook object, it will be ignored and a
+        new webhook will be created.
+        This endpoint returns a status of 201 (on success), 400 (invalid webhook object), or 403 (invalid key).
+    </p>
+    <p>
+        On success, the specified Webhook will be created, and the system-assigned webhook id will be written
+        to the body of the request.
+    </p>
+
+    <h3 id="edit">Edit Webhook Endpoint</h3>
+
+    <p class="info">PUT or PATCH or POST <span style="opacity: 0.5;">/api/webhooks</span>/edit?key=&laquo;api-key&raquo;[&amp;id=&laquo;webhook-id&raquo;]</p>
+
+    <p>
+        Updates properties of a webhook based on properties specified in a webhook JSON object sent as the body of the request. 
+        A webhook id must be specified, either in the query string or as an <code>id</code> property in the webhook object.
+        This endpoint returns a status of 200 (on success), 400 (invalid webhook object), 404 (id not found), or 403 (invalid key).
+    </p>
+    <p>
+        On success, the properties specified for the webhook will be updated.
+    </p>
+
+
+
+</body>
+</html>

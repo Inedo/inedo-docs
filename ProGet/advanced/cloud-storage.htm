@@ -1,0 +1,137 @@
+﻿<html>
+<head>
+    <title>Cloud Storage (Amazon S3 &amp; Azure Blob)</title>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <meta name="sequence" content="100" />
+    <meta name="subtitle" content="Cloud Package Stores" />
+    <meta name="keywords" content="proget, storage, cloud, amazon, azure" />
+</head>
+<body>
+    
+    <p class="info">
+        This feature is available in paid and trial ProGet editions.
+    </p>
+    <p>
+            ProGet defaults to storing package files on disk, but you can configure a feed to store packages on the cloud (Amazon S3 or Microsoft Azure Blob) instead. This offers two key benefits:
+    </p>
+    <p>
+        <b>Scale when you need</b> with cloud package stores; this takes the guess work out of your future storage needs. By storing packages on the cloud, you no longer have to worry about maintaining, installing, or provisioning additional storage capacity. 
+    </p>
+    <p>
+        <b>Disaster recovery</b> is made simple; both Amazon S3 and Azure Blob storage offer redundancy, meaning that you don't have to worry about complex, disaster recovery plans for large amounts of package files because your files are automatically saved to the cloud. 
+    </p>
+    <p>
+            Cloud storage is generally slower, as it's much faster to read/write files from local disk than it is over an internet connection. However, the speed difference may not be noticed in day-to-day use.
+    </p>
+    <h2 id="configure">
+        Configuring a Feed to Use Cloud Storage
+    </h2>
+    <p>
+            By default, ProGet stores packages on disk using a disk-based package store.
+    </p> 
+    <p>
+            You can change a feed's package store by going to the Manage Feed page, and clicking <em>change</em> next to the Package Store heading. This will open a dialog that allows you to select between Amazon S3 and Microsoft Azure.
+    </p>
+<p>
+        <div class="attention technical">
+            
+                <p>
+                        If you don't see Amazon S3 or Microsoft Azure as an option, then validate that those extensions are installed by going to Administration > Extensions
+                </p>
+            </div>
+</p>
+<p>
+        After selecting the package store type, you will be presented with a handful of required configuration options.
+</p>
+<h3>
+    Amazon S3 Options
+</h3>
+<table>
+        
+        <tbody>
+            <tr>
+                <td>Access Key &amp; Secret Access Key</td>
+                <td>This is the equivalent of a username and password for Amazon Web Services; you can create one with the Amazon IAM console</td>
+              
+            </tr>
+           
+            <tr>
+                <td>Bucket Name</td>
+                <td>The name of the storage bucket configured on S3 that will be used as a packages store</td>
+                
+            </tr>
+            <tr>
+                    <td>Target Path</td>
+                    <td>The path within the specified bucket; the default is "/"</td>
+                   
+                </tr>
+                <tr>
+                        <td>Reduce Redundancy</td>
+                        <td>When set, ProGet will request files to be written using a Reduced Redundancy storage class (instead of Standard), which this tends to have a lower storage fee; see S3 documentation to learn more about this</td>
+                        
+                    </tr>
+                    <tr>
+                            <td>Make Public</td>
+                            <td>When set, the files uploaded will be given public permission to view; this is generally not recommended</td>
+                           
+                        </tr>
+                        <tr>
+                                <td>Encrypted</td>
+                                <td>When set, ProGet will request server-side encryption is used for packages; this is generally not recommended</td>
+                             
+                            </tr>
+                            <tr>
+                                    <td>Region Endpoint</td>
+                                    <td>The region endpoint (such as us-east-1) where the bucket is located</td>
+                                                      
+                                
+                            </tr>
+        </tbody>
+    </table>
+    <h3>
+        Azure Blob Options
+    </h3>
+    <table>
+        <tbody>
+
+<tr>
+        <td>Connection string</td>
+        <td>A Microsoft Azure connection string, like <code>DefaultEndpointsProtocol=https;AccountName=account-name;AccountKey=account-key</code></td>
+       
+    </tr>
+    <tr>
+            <td>Container</td>
+            <td>The name of the Azure Blob Container that will receive the uploaded files.</td>
+         
+        </tr>
+        <tr>
+                <td>Target Path</td>
+                <td>The path in the specified Azure Blob  </td>
+                                  
+            
+        </tr>
+</tbody>
+</table>
+<h2>
+    Migrating an Existing Feed
+</h2>
+<p>
+        When you change a feed's package store, the package files will not be moved. To ensure the new package store has the same packages, you can perform the following steps   
+</p>
+<ol>
+    <li>Clear the cached packages</li>
+    <li>Stop the ProGet Service</li>
+<li>Note the disk path of the feed</li>
+<li>Change the package store and configure appropriately </li>
+<li>
+        Set the Drop Path to be the disk path from step 3  
+</li>
+<li>
+        Start the service     
+</li>
+<li>
+        Once imported, delete the empty disk path from step 3   
+</li>
+</ol>
+</body>
+</html>
