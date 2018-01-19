@@ -1,0 +1,214 @@
+    <!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Variables Management API</title>
+    
+    <meta name="keywords" content="otter,api,variables" />
+    <style type="text/css">
+        th {
+            font-weight: normal;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+
+    <p>
+        The Variables Management API offers a simple mechanism for viewing, creating, updating, and deleting <a href="/support/documentation/otter/global-components/configuration-variables">configuration variables</a>.
+    </p>
+    <p class="announcement">
+        This API endpoint should be used instead of the <a href="../api#native">Native API Methods</a> when possible, as they are much easier to use and will likely not change.
+    </p>
+
+    <p>
+        For security and simplicity, these endpoints require that an <a href="/support/documentation/otter/administration/security/api-keys">API Key</a> is created first.
+    </p>
+
+    <h2 id="data-specification">Data Specification</h2>
+    <p>
+        This endpoint sends and receives a as <a href="http://json.org/">JSON</a> objects.
+    </p>
+    
+    <h3 id="variable-value-strings">Variable Value Strings</h3>
+    <p id="variable-value-string" class="info">
+        If a variable value string starts with a <code>`</code>, <code>@(</code>, <code>%(</code>, then the value will evaluated as a <code>literal_expression</code>
+        (see <a href="/support/documentation/otter/reference/otter-script/formal-grammar">formal grammar</a>), which means you'll need
+        to treat the value as a proper <a href="/support/documentation/otter/reference/otter-script/strings-and-literals">string literal</a>, and escape <code>$</code> and other
+        characters if you don't want them expanded into variables at runtime... or cause an error when they can't expand.
+    </p>
+
+    <h3 id="variables-object">Variables Object</h3>
+    <p>
+        This represents a set of configuration variables associated with a single scope, such as global, a server, or an environment.
+        It is simply an object with variable names and values as properties. The value can be either a string, or an object with two properties:
+    </p>
+    <ul>
+        <li><code>value</code> - a <em>string</em> value of the variable's value itself</li>
+        <li><code>sensitive</code> - a <em>boolean</em> to indicate a sensitive variable that's obscured from casual viewing in the UI</li>
+    </ul>
+    
+    <inedo:tab-block>
+        <tab name="Basic Variables">
+            <pre>{
+    "installation-path": "/var/hdars/service",
+    "dameon-name": "hdars-service"
+}</pre>
+        </tab>
+        <tab name="Other Types">
+            <pre>{
+    "license-key": { "value": "5208153R-YXYUYK-S1CUAC-NA3SM2V3-A8QW", "sensitive": true },
+    "listen-ports": "@(8088,8089,8090)",
+    "license-key-file": "`license:$license-key`norganization:kramerica"
+}</pre>
+        </tab>
+        <tab name="Empty Variables">
+            <pre>{}</pre>
+        </tab>
+    </inedo:tab-block>
+
+    <h3 id="scoped-variable-object">Scoped Variable Object</h3>
+    <p>
+        This represents a single variable/value that is associated with zero or more scopes, such as both a global, a server, or a multi-scoped server+environment variable.
+    </p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Property</th>
+                <th>Format</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>name</code></td>
+                <td>
+                    A <em>string</em> value of the variable name
+                </td>
+            </tr>
+            <tr>
+                <td><code>value</code></td>
+                <td>
+                    A <em>string</em> value of the variable value
+                </td>
+            </tr>
+            <tr>
+                <td><code>sensitive</code></td>
+                <td>
+                    A <em>boolean</em> to indicate a sensitive variable that's obscured from casual viewing in the UI
+                </td>
+            </tr>
+            <tr>
+                <td><code>server</code></td>
+                <td>A <em>string</em> value of the name of the server the variable is associated with, or null if it's not associated</td>
+            </tr>
+            <tr>
+                <td><code>role</code></td>
+                <td>A <em>string</em> value of the name of the role the variable is associated with, or null if it's not associated</td>
+            </tr>
+            <tr>
+                <td><code>environment</code></td>
+                <td>A <em>string</em> value of the name of the environment the variable is associated with, or null if it's not associated</td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <h2 id="endpoint-specification">Endpoint Specification</h2>    
+
+
+    <h3 id="entity-configuration">Entity Configuration Variables</h3>
+    <p>These endpoints get and set one or all configuration variables for a specific entity, which is identified by an <code>entity-type</code> (either <code>server</code>, <code>role</code>, or <code>environment</code>) and name.</p>
+    
+    <h4>Get All Configuration Variables on Entity</h4>
+    <p class="info">GET <span style="opacity: 0.5">/api/variables/</span>&laquo;entity-type&raquo;/&laquo;entity-name&raquo;?key=&laquo;api-key&raquo;</p>
+    <p>Returns a status of 200 and a body with the <a href="#variables-object">variables object</a> for the specified entity.</p>
+    <p>This may also return a status of 400 (invalid entity type), 403 (invalid key), 404 (entity not found) as well as an error message as the body.</p>
+
+    <h4>Set All Configuration Variables on Entity</h4>
+    <p class="info">POST or PUT <span style="opacity: 0.5">/api/variables/</span>&laquo;entity-type&raquo;/&laquo;entity-name&raquo;?key=&laquo;api-key&raquo;</p>
+    <p>
+        Updates <em>all</em> configuration variables for the specified entity with the variables/values specified as a 
+        <a href="#variables-object">variables object</a> in the request body; note this will also delete variables not specified in the object.
+    </p>
+    <p>On success, a status of 200 and empty body is returned. Otherwise, a status of 400 (invalid entity type or variables object), 403 (invalid key), 404 (entity not found) is returned with an error message as the body.</p>
+
+    <h4>Get Single Configuration Variable on Entity</h4>
+    <p class="info">GET <span style="opacity: 0.5">/api/variables/</span>&laquo;entity-type&raquo;/&laquo;entity-name&raquo;/&laquo;variable-name&raquo;?key=&laquo;api-key&raquo;</p>
+    <p>Returns the value of the specified configuration variable on the specified entity in the body, as well as a status of 200.</p>
+    <p>This may also return a status of 400 (invalid entity type), 403 (invalid key), 404 (entity or variable not found) as well as an error message as the body.</p>
+
+    <h4>Set Single Configuration Variable on Entity</h4>
+    <p class="info">POST or PUT <span style="opacity: 0.5">/api/variables/</span>&laquo;entity-type&raquo;/&laquo;entity-name&raquo;/&laquo;variable-name&raquo;?key=&laquo;api-key&raquo;</p>
+    <p>
+        Sets the specified configuration variable, either by creating a new variable or updating an existing one, on the specified entity with the value specified in the request body; note you cannot set the sensitive indicator with this endpoint, only set a value.
+        When creating a configuration variable, it will not be considered sensitive; when updating, it will keep the same sensitive indicator.
+    </p>
+    <p>On success, a status of 200 and empty body is returned. Otherwise, a status of 400 (invalid entity type), 403 (invalid key), 404 (entity not found) is returned with an error message as the body.</p>
+
+    <h4>Delete Single Configuration Variable on Entity</h4>
+    <p class="info">DELETE <span style="opacity: 0.5">/api/variables/</span>&laquo;entity-type&raquo;/&laquo;entity-name&raquo;/&laquo;variable-name&raquo;?key=&laquo;api-key&raquo;</p>
+    <p>Deletes the specified configuration variable if it exists on the specified entity, returning a status of 200 and empty body. Otherwise, a status of 400 (invalid entity type) or 403 (invalid key) is returned with an error message as the body.</p>
+
+
+
+    <h3 id="global-configuration-variables">Global Configuration Variables</h3>
+    <p>These endpoints get and set one or all global (unscoped) configuration variables.</p>
+
+    <h4>Get All Global Configuration Variables</h4>
+    <p class="info">GET <span style="opacity: 0.5">/api/variables/</span><b>global</b>?key=&laquo;api-key&raquo;</p>
+    <p>Returns a status of 200 and a body with the <a href="#variables-object">variables object</a> for all global variables.</p>
+    <p>This may also return a status of 403 (invalid key) as well as an error message as the body.</p>
+
+    <h4>Set All Global Configuration Variables</h4>
+    <p class="info">POST or PUT <span style="opacity: 0.5">/api/variables/</span><b>global</b>?key=&laquo;api-key&raquo;</p>
+    <p>Updates <em>all</em> global configuration variables with the variables/values specified as a <a href="#variables-object">variables object</a> in the request body; note this will also delete variables not specified in the object.</p>
+    <p>On success, a status of 200 and empty body is returned. Otherwise, a status of 403 (invalid key) is returned with an error message as the body.</p>
+
+    <h4>Get Single Global Configuration Variable</h4>
+    <p class="info">GET <span style="opacity: 0.5">/api/variables/</span><b>global</b>/&laquo;variable-name&raquo;?key=&laquo;api-key&raquo;</p>
+    <p>Returns the value of the specified global configuration variable in the body, as well as a status of 200.</p>
+    <p>This may also return a status of 403 (invalid key) or 404 (variable not found)  as well as an error message as the body.</p>
+
+    <h4>Set Single Global Configuration Variable</h4>
+    <p class="info">POST or PUT <span style="opacity: 0.5">/api/variables/</span><b>global</b>/&laquo;variable-name&raquo;?key=&laquo;api-key&raquo;</p>
+    <p>
+        Sets the specified global configuration variable, either by creating a new variable or updating an existing one, with the value specified in the request body; note you cannot set the sensitive indicator with this endpoint, only set a value.
+        When creating a configuration variable, it will not be considered sensitive; when updating, it will keep the same sensitive indicator.
+    </p>
+    <p>On success, a status of 200 and empty body is returned. Otherwise, a status 403 (invalid key) is returned with an error message as the body.</p>
+
+    <h4>Delete Single Global Configuration Variable</h4>
+    <p class="info">DELETE <span style="opacity: 0.5">/api/variables/</span><b>global</b>/&laquo;variable-name&raquo;?key=&laquo;api-key&raquo;</p>
+    <p>Deletes the specified global configuration variable if it exists, returning a status of 200 and empty body. Otherwise, a status of 403 (invalid key) is returned with an error message as the body.</p>
+
+
+
+    <h3 id="all-configuration-variables">All Configuration Variables</h3>
+    <p>These endpoints get and set one or all configuration variables using <a href="#scoped-variable-object">scoped variables objects</a>, which is primarily useful in dealing with multi-scoped variables. Otherwise, it's
+    a bit more complicated to use than the other endpoints, and might lead towards accidentally deleting variables or creating unwanted multi-scoped variables.</p>
+
+    <h4>Get All Configuration Variables</h4>
+    <p class="info">GET <span style="opacity: 0.5">/api/variables/</span><b>scoped/all</b>?key=&laquo;api-key&raquo;</p>
+    <p>Returns a status of 200 and a body with an array of <a href="#scoped-variable-object">scoped variable objects</a> for all configuration variables in the system.</p>
+    <p>This may also return a status of 403 (invalid key) as well as an error message as the body.</p>
+
+    <h4>Set All Configuration Variables</h4>
+    <p class="info">POST or PUT <span style="opacity: 0.5">/api/variables/</span><b>scoped/all</b>?key=&laquo;api-key&raquo;</p>
+    <p>Sets <em>all</em> configuration variables in the system using the array of <a href="#scoped-variable-object">scoped variable objects</a> in the request body; note this will also delete variables not specified in the object.</p>
+    <p>On success, a status of 200 and empty body is returned. Otherwise, a status of 403 (invalid key) is returned with an error message as the body.</p>
+
+    <h4>Set Single Configuration Variable</h4>
+    <p class="info">POST or PUT <span style="opacity: 0.5">/api/variables/</span><b>scoped/single</b>?key=&laquo;api-key&raquo;</p>
+    <p>
+        Sets the configuration variable, either by creating a new variable or updating an existing one with the same name and scoping, using 
+        the scoped variable object in the body.
+    </p>
+    <p>On success, a status of 200 and empty body is returned. Otherwise, a status 400 (invalid object) or 403 (invalid key) is returned with an error message as the body.</p>
+
+    <h4>Delete Single Configuration Variable</h4>
+    <p class="info">DELETE <span style="opacity: 0.5">/api/variables/</span><b>scoped/single</b>?key=&laquo;api-key&raquo;</p>
+    <p>Deletes the configuration variable if it exists with a name and scope matching the scoped variable object in the body, returning a status of 200 and empty body. 
+    Otherwise, a status of 400 (invalid object) or 403 (invalid key) is returned with an error message as the body.</p>    
+    
+
+</body>
+</html>
