@@ -1,0 +1,36 @@
+﻿<html>
+  <head>
+    <title>Maven (Java)</title>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <meta name="sequence" content="200" />
+      <meta name="keywords" content="proget,feeds,maven" />
+      <meta name="subtitle" content="Maven Feeds in ProGet" />
+  </head>
+  <body>
+	<p>
+		Maven feeds contain a maven2-compatible Maven artifact repository. Maven works a little
+		differently than the other feed types.
+	</p>
+	<h2 id="maven-specifics">Maven Specifics</h2>
+	<p>
+		Maven artifacts are not self-contained archives; instead, an artifact is more of a
+		grouping of files with some associated metadata. Because of this distinction, Maven
+		feeds do not support drop path imports.
+	</p>
+	<p>
+		Connectors are also slightly different in Maven than in most other feed types. As there
+		is no universal standard for searching or listing from a remote Maven repository, ProGet
+		uses a rather dated API that provides an index of <em>all</em> artifacts. A task in
+		the ProGet service will periodically download that index and unpack it to a local Lucene
+		database, and use that for searching the remote repository. For the public apache Maven
+		repository, this can be a very resource-intensive operation, and if you do not need this
+		searching capability, we recommend disabling this task in ProGet. Artifacts accessed directly
+		by name do <em>not</em> need this index.
+	</p>
+	<p>
+		Maven feeds do not currently support alternate package stores (AWS, Azure). Support for both
+		is <a href="https://inedo.myjetbrains.com/youtrack/issue/PG-1256" target="_blank">planned</a>
+		for ProGet 5.1.0.
+	</p>
+  </body>
+</html>
