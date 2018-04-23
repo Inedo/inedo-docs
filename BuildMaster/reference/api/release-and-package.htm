@@ -1,0 +1,793 @@
+    <!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Release &amp; Package Deployment</title>
+    
+    <meta name="keywords" content="buildmaster,api,releases,packages" />
+    <meta name="show-headings-in-nav" content="true" />
+    <style type="text/css">
+        th {
+            font-weight: normal;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+   
+    <p>
+            The Release &amp; Package Deployment API offers a simple mechanism for creating releases, creating release packages, and deploying release packages.
+    </p>
+    <h2 id="API-key-usage" data-title="API Key Usage"> API Usage</h2>
+
+<p>
+        All of these endpoints require that an API Key with Release &amp; Package Deployment access is passed into each request. The examples use a query string for simplicity, but you could also use a header, form value, or JSON property. See  <em>Using API Keys</em> for more information.
+</p>
+
+ 
+
+<h2 id="data-specification" data-title="Data Specification">Data Specification</h2>
+    <p>
+        This endpoint receives data entirely as key/value parameters and sends data using the following <a href="http://json.org/">JSON</a> objects:
+    </p>
+
+    <inedo:tab-block>
+
+        <tab name="Release">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Property</th>
+                        <th>Format</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- id, num, name, seq, templat, status -->
+                    <tr>
+                        <td><code>id</code></td>
+                        <td>
+                            An <em>integer</em> representing the system-unique identifier of the release.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><code>number</code></td>
+                        <td>
+                            A <em>string</em> representing the application-unique identifier of the release.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><code>name</code></td>
+                        <td>
+                            A <em>string</em> representing the non-unique name or alias for the release.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><code>sequence</code></td>
+                        <td>
+                            An <em>integer</em> representing the sequence relative to other releases in the application.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><code>template</code></td>
+                        <td>
+                            A <em>string</em> of the template name used for this release, or <code>null</code> if no template is used.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><code>status</code></td>
+                        <td>
+                            A <em>string</em> consisting of <code>active</code>, <code>deployed</code>, or <code>canceled</code>.
+                        </td>
+                    </tr>
+
+                    <!-- created, canceled -->
+                    <tr>
+                        <td><code>createdBy</code></td>
+                        <td>
+                            A <em>string</em> representing the user who created the release, or <code>SYSTEM</code> if created non-interactively.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><code>createdOn</code></td>
+                        <td>
+                            A <em>string</em> representing the UTC date when the release was created, in ISO 8601 format (yyyy-MM-ddThh:mm:ss).
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><code>canceledBy</code></td>
+                        <td>
+                            A <em>string</em> representing the user who canceled the release, or <code>SYSTEM</code> if created non-interactively.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><code>canceledOn</code></td>
+                        <td>
+                            A <em>string</em> representing the UTC date when the release was created, in ISO 8601 format (yyyy-MM-ddThh:mm:ss).
+                        </td>
+                    </tr>
+                    
+                    <!-- tardate -->
+                    <tr>
+                        <td><code>targetDate</code></td>
+                        <td>
+                            A <em>string</em> representing the UTC date of the target release date in ISO 8601 format (yyyy-MM-ddThh:mm:ss).
+                        </td>
+                    </tr>
+
+                    <!-- app -->
+                    <tr>
+                        <td><code>applicationId</code></td>
+                        <td>
+                            An <em>integer</em> representing the system-unique identifier of the application for the release.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><code>applicationName</code></td>
+                        <td>
+                            A <em>string</em> representing the system-unique name of the application for the release.
+                        </td>
+                    </tr>
+
+                    <!-- pipeline, furthest package, latest package -->
+                    <tr>
+                        <td><code>pipelineId</code></td>
+                        <td>
+                            An <em>integer</em> representing the system-unique identifier of the pipeline used by the release.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><code>pipelineName</code></td>
+                        <td>
+                            A <em>string</em> representing the name of the pipeline used by the release.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><code>furthestPackageId</code></td>
+                        <td>
+                            An <em>integer</em> representing the system-unique identifier of the active or deployed package that has made it furthest in the pipeline for the release.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><code>furthestPackageNumber</code></td>
+                        <td>
+                            A <em>string</em> representing the application-unique number of the active or deployed package that has made it furthest in the pipeline for the release.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><code>latestPackageId</code></td>
+                        <td>
+                            An <em>integer</em> representing the system-unique identifier of the active or deployed package that was most recently created.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><code>latestPackageNumber</code></td>
+                        <td>
+                            A <em>string</em> representing the application-unique number of the active or deployed package that was most recently created.
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </tab>
+        
+        <tab name="Package">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Property</th>
+                        <th>Format</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- id, num, status -->
+                    <tr>
+                        <td><code>id</code></td>
+                        <td>
+                            An <em>integer</em> representing the system-unique identifier of the package.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><code>number</code></td>
+                        <td>
+                            A <em>string</em> representing the release-unique identifier of the package.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><code>status</code></td>
+                        <td>
+                            A <em>string</em> consisting of <code>active</code>, <code>deployed</code>, or <code>rejected</code>.
+                        </td>
+                    </tr>
+
+                    <!-- created,rejected -->
+                    <tr>
+                        <td><code>createdBy</code></td>
+                        <td>
+                            A <em>string</em> representing the user who created the package, or <code>SYSTEM</code> if created non-interactively.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><code>createdOn</code></td>
+                        <td>
+                            A <em>string</em> representing the UTC date when the package was created, in ISO 8601 format (yyyy-MM-ddThh:mm:ss).
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><code>rejectedBy</code></td>
+                        <td>
+                            A <em>string</em> representing the user who rejected the package, or <code>SYSTEM</code> if rejected non-interactively.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><code>rejectedOn</code></td>
+                        <td>
+                            A <em>string</em> representing the UTC date when the package was rejected, in ISO 8601 format (yyyy-MM-ddThh:mm:ss).
+                        </td>
+                    </tr>
+
+                    <!-- pipeline, furthest stage -->
+                    <tr>
+                        <td><code>pipelineId</code></td>
+                        <td>
+                            An <em>integer</em> representing the system-unique identifier of the pipeline used by the package.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><code>pipelineName</code></td>
+                        <td>
+                            A <em>string</em> representing the name of the pipeline used by the package.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><code>furthestStage</code></td>
+                        <td>
+                            A <em>string</em> representing the name the furthest stage the package has advanced to in the pipeline.
+                        </td>
+                    </tr>
+
+                    <!-- app, rel -->
+                    <tr>
+                        <td><code>applicationId</code></td>
+                        <td>
+                            An <em>integer</em> representing the system-unique identifier of the application for the package.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><code>applicationName</code></td>
+                        <td>
+                            A <em>string</em> representing the system-unique name of the application for the package.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><code>releaseId</code></td>
+                        <td>
+                            An <em>integer</em> representing the system-unique identifier of the release for the package.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><code>releaseNumber</code></td>
+                        <td>
+                            A <em>string</em> representing the application-unique number of the release for the package.
+                        </td>
+                    </tr>
+                    <tr>
+                      <td><code>releaseName</code></td>
+                      <td>
+                        A <em>string</em> representing the name of the release for the package.
+                      </td>
+                    </tr>
+                    
+                </tbody>
+            </table>
+        </tab>
+
+        <tab name="Deployment">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Property</th>
+                        <th>Format</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- id, plan, status -->
+                    <tr>
+                        <td><code>id</code></td>
+                        <td>
+                            An <em>integer</em> representing the system-unique identifier of the deployment.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><code>plan</code></td>
+                        <td>
+                            A <em>string</em> representing the name of the plan used for deployment.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><code>status</code></td>
+                        <td>
+                            A <em>string</em> consisting of 
+                            <code>pending</code>, 
+                            <code>executing</code>, 
+                            <code>succeeded</code>, 
+                            <code>warned</code>,  or
+                            <code>failed</code>
+                        </td>
+                    </tr>
+
+                    <!-- start,end-->
+                    <tr>
+                        <td><code>started</code></td>
+                        <td>
+                            A <em>string</em> representing the UTC date when the deployment actually started, in ISO 8601 format (yyyy-MM-ddThh:mm:ss), or null if the execution hasn't started.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><code>ended</code></td>
+                        <td>
+                            A <em>string</em> representing the UTC date when the deployment completed, in ISO 8601 format (yyyy-MM-ddThh:mm:ss), or null if the execution hasn't completed.
+                        </td>
+                    </tr>
+
+                    <!-- created,canceled -->
+                    <tr>
+                        <td><code>createdBy</code></td>
+                        <td>
+                            A <em>string</em> representing the user who initiated the deployment, or <code>SYSTEM</code> if initiated non-interactively.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><code>createdOn</code></td>
+                        <td>
+                            A <em>string</em> representing the UTC date when the deployment was initiated, in ISO 8601 format (yyyy-MM-ddThh:mm:ss).
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><code>canceledBy</code></td>
+                        <td>
+                            A <em>string</em> representing the user who canceled the deployment (<code>SYSTEM</code> if canceled non-interactively), or null if the deployment was not canceled.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><code>canceledOn</code></td>
+                        <td>
+                            A <em>string</em> representing the UTC date when the deployment was canceled, in ISO 8601 format (yyyy-MM-ddThh:mm:ss), or null if the deployment was not canceled.
+                        </td>
+                    </tr>
+
+                    <!-- pipeline -->
+                    <tr>
+                        <td><code>pipelineId</code></td>
+                        <td>
+                            An <em>integer</em> representing the system-unique identifier of the pipeline used by the deployment.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><code>pipelineName</code></td>
+                        <td>
+                            A <em>string</em> representing the name of the pipeline used by the deployment.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><code>pipelineStageName</code></td>
+                        <td>
+                            A <em>string</em> representing the name the stage in the pipeline used by the deployment.
+                        </td>
+                    </tr>
+
+                    <!-- env -->
+                    <tr>
+                        <td><code>environmentId</code></td>
+                        <td>
+                            An <em>integer</em> representing the system-unique identifier of the environment used by the deployment, or null if no environment is in context.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><code>environmentName</code></td>
+                        <td>
+                            A <em>string</em> representing the name of the environment used by the deployment, or null if no environment is in context.
+                        </td>
+                    </tr>
+
+                    <!-- app,rel,pkg -->
+                    <tr>
+                        <td><code>applicationId</code></td>
+                        <td>
+                            An <em>integer</em> representing the system-unique identifier of the application for the deployment.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><code>applicationName</code></td>
+                        <td>
+                            A <em>string</em> representing the system-unique name of the application for the deployment.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><code>releaseId</code></td>
+                        <td>
+                            An <em>integer</em> representing the system-unique identifier of the release for the deployment.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><code>releaseNumber</code></td>
+                        <td>
+                            A <em>string</em> representing the application-unique number of the release for the deployment.
+                        </td>
+                    </tr>
+                  <tr>
+                    <td><code>releaseName</code></td>
+                    <td>
+                      A <em>string</em> representing the name of the release for the deployment.
+                    </td>
+                  </tr>
+                    <tr>
+                        <td><code>packageId</code></td>
+                        <td>
+                            An <em>integer</em> representing the system-unique identifier of the package for the deployment.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><code>packageNumber</code></td>
+                        <td>
+                            A <em>string</em> representing the release-unique number of the package for the deployment.
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </tab>
+
+    </inedo:tab-block>
+
+    <h2 id="endpoints" data-title="Endpoint Specifications">Endpoint Specifications</h2>
+    <p>
+        This endpoint receives data entirely as key/value parameters, which may be specified in both the querystring <em>and</em> body (<code>application/x-www-form-urlencoded</code>); duplicate keys will result in an failed request (400 status).
+    </p>
+ 
+    <h3 id="get-releases" data-title="Get Releases">Get Releases</h3>
+    <p class="info">GET or POST <span style="opacity: 0.5">/api/releases</span></p>
+    <p>Returns a status of 200 and a body with an array of <a href="#data-specification">release objects</a> based on the specified optional filter parameters:</p>
+    <table>
+        <thead>
+            <tr>
+                <th>Filter</th>
+                <th>Parameter Specification</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Application</td>
+                <td>Either a key named <code>applicationId</code> with an integer value, or a key named <code>applicationName</code> with any value.</td>
+            </tr>
+            <tr>
+                <td>Release</td>
+                <td>Either a key named <code>releaseId</code> with an integer value, a key named <code>releaseNumber</code> with any value, or a key named <code>releaseName</code> with any value.</td>
+            </tr>
+            <tr>
+                <td>Pipeline</td>
+                <td>Either a key named <code>pipelineId</code> with an integer value, or a key named <code>pipelineName</code> with any value.</td>
+            </tr>
+            <tr>
+                <td>Status</td>
+                <td>A key named <code>status</code> with a value of <code>active</code>, <code>canceled</code>, or <code>deployed</code>.</td>
+            </tr>
+            
+
+        </tbody>
+    </table>
+    <p>This may also return a status of 400 (invalid parameters) or 403 (invalid key) as well as an error message as the body.</p>
+
+    <h3 id="create-release" data-title="Create Release ">Create Release</h3>
+    <p class="info">POST or PUT <span style="opacity: 0.5">/api/releases/create</span></p>
+    <p>Returns a status of 200 and a body with a <a href="#data-specification">release object</a> that was created with the following input parameters:</p>
+    <table>
+        <thead>
+            <tr>
+                <th>Input</th>
+                <th>Parameter Specification</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Application</td>
+                <td>Required. Either a key named <code>applicationId</code> with an integer value, or a key named <code>applicationName</code> with any value.</td>
+            </tr>
+            <tr>
+                <td>Release Number</td>
+                <td>Required. A key named <code>releaseNumber</code> with any value.</td>
+            </tr>
+            <tr>
+                <td>Pipeline</td>
+                <td>Required. Either a key named <code>pipelineId</code> with an integer value, or a key named <code>pipelineName</code> with any value.</td>
+            </tr>
+            <tr>
+                <td>Release Name</td>
+                <td>Optional. A key named <code>releaseName</code> with any value.</td>
+            </tr>
+            <tr>
+                <td>Variables</td>
+                <td>Optional. Any number of parameters with a key name consisting of a valid variable name prefixed with <code>$</code>, and with any value.</td>
+            </tr>
+        </tbody>
+    </table>
+    <p>This may also return a status of 400 (invalid parameters) or 403 (invalid key) as well as an error message as the body.</p>
+
+    <h3 id="create-release-from-template" data-title="Create Release from Template">Create Release from Template</h3>
+    <p class="info">POST or PUT <span style="opacity: 0.5">/api/releases/create-from-template</span></p>
+    <p>Returns a status of 200 and a body with a <a href="#data-specification">release object</a> that was created with the following input parameters:</p>
+    <table>
+        <thead>
+            <tr>
+                <th>Input</th>
+                <th>Parameter Specification</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Application</td>
+                <td>Required. Either a key named <code>applicationId</code> with an integer value, or a key named <code>applicationName</code> with any value.</td>
+            </tr>
+            <tr>
+                <td>Release Number</td>
+                <td>Required. A key named <code>releaseNumber</code> with any value.</td>
+            </tr>
+            <tr>
+                <td>Template</td>
+                <td>Required. A key named <code>template</code> with any value.</td>
+            </tr>
+            <tr>
+                <td>Release Name</td>
+                <td>Optional. A key named <code>releaseName</code> with any value.</td>
+            </tr>
+            <tr>
+                <td>Variables</td>
+                <td>Optional. Any number of parameters with a key name consisting of a valid variable name prefixed with <code>$</code>, and with any value.</td>
+            </tr>
+        </tbody>
+    </table>
+    <p>This may also return a status of 400 (invalid parameters) or 403 (invalid key) as well as an error message as the body.</p>
+
+    <h3 id="cancel-release" data-title="Cancel Release ">Cancel Release</h3>
+    <p class="info">POST or PUT <span style="opacity: 0.5">/api/releases/cancel</span></p>
+    <p>Returns a status of 200 if the release was canceled:</p>
+    <table>
+        <thead>
+            <tr>
+                <th>Input</th>
+                <th>Parameter Specification</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Release</td>
+                <td>Required. Either a key named <code>releaseId</code> with an integer value, or a key named <code>releaseNumber</code> with any value.</td>
+            </tr>
+            <tr>
+                <td>Application</td>
+                <td>Required if <code>releaseNumber</code> is specified, otherwise must not be set. Either a key named <code>applicationId</code> with an integer value, or a key named <code>applicationName</code> with any value.</td>
+            </tr>
+            <tr>
+                <td>Reason</td>
+                <td>Optional. A key named <code>reason</code> with any value.</td>
+            </tr>
+        </tbody>
+    </table>
+    <p>This may also return a status of 400 (invalid parameters) or 403 (invalid key) as well as an error message as the body.</p>
+
+    <h3 id="restore-release" data-title="Restore Release">Restore Release</h3>
+    <p class="info">POST or PUT <span style="opacity: 0.5">/api/releases/restore</span></p>
+    <p>Returns a status of 200 if the release was restored:</p>
+    <table>
+        <thead>
+            <tr>
+                <th>Input</th>
+                <th>Parameter Specification</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Release</td>
+                <td>Required. Either a key named <code>releaseId</code> with an integer value, or a key named <code>releaseNumber</code> with any value.</td>
+            </tr>
+            <tr>
+                <td>Application</td>
+                <td>Required if <code>releaseNumber</code> is specified, otherwise must not be set. Either a key named <code>applicationId</code> with an integer value, or a key named <code>applicationName</code> with any value.</td>
+            </tr>
+        </tbody>
+    </table>
+    <p>This may also return a status of 400 (invalid parameters) or 403 (invalid key) as well as an error message as the body.</p>
+
+    <h3 id="get-packages" data-title="Get Package">Get Packages</h3>
+    <p class="info">GET or POST <span style="opacity: 0.5">/api/releases/packages</span></p>
+    <p>Returns a status of 200 and a body with an array of <a href="#data-specification">package objects</a> based on the specified optional filter parameters:</p>
+    <table>
+        <thead>
+            <tr>
+                <th>Filter</th>
+                <th>Parameter Specification</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Application</td>
+                <td>Either a key named <code>applicationId</code> with an integer value, or a key named <code>applicationName</code> with any value.</td>
+            </tr>
+            <tr>
+                <td>Release</td>
+                <td>Either a key named <code>releaseId</code> with an integer value, a key named <code>releaseNumber</code> with any value, or a key named <code>releaseName</code> with any value.</td>
+            </tr>
+            <tr>
+                <td>Package</td>
+                <td>Either a key named <code>packageId</code> with an integer value, or a key named <code>packageNumber</code> with any value.</td>
+            </tr>
+            <tr>
+                <td>Pipeline</td>
+                <td>Either a key named <code>pipelineId</code> with an integer value, or a key named <code>pipelineName</code> with any value.</td>
+            </tr>
+            <tr>
+                <td>Stage</td>
+                <td>A key named <code>furthestStage</code> with any value.</td>
+            </tr>
+            <tr>
+                <td>Status</td>
+                <td>A key named <code>status</code> with a value of <code>active</code>, <code>rejected</code>, or <code>deployed</code>.</td>
+            </tr>
+
+
+        </tbody>
+    </table>
+    <p>This may also return a status of 400 (invalid parameters) or 403 (invalid key) as well as an error message as the body.</p>
+    
+    <h3 id="create-package" data-title="Create Release Package">Create Release Package</h3>
+    <p class="info">POST or PUT <span style="opacity: 0.5">/api/releases/packages/create</span></p>
+    <p>Returns a status of 200 and a body with a <a href="#data-specification">package object</a> that was created with the following input parameters:</p>
+    <table>
+        <thead>
+            <tr>
+                <th>Input</th>
+                <th>Parameter Specification</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Release</td>
+                <td>Required. Either a key named <code>releaseId</code> with an integer value, or a key named <code>releaseNumber</code> with any value.</td>
+            </tr>
+            <tr>
+                <td>Application</td>
+                <td>Required if <code>releaseNumber</code> is specified, otherwise must not be set. Either a key named <code>applicationId</code> with an integer value, or a key named <code>applicationName</code> with any value.</td>
+            </tr>
+            <tr>
+                <td>Package Number</td>
+                <td>Optional. A key named <code>packageNumber</code> with any value; if not specified, the package number will be automatically generated.</td>
+            </tr>
+            <tr>
+                <td>Variables</td>
+                <td>Optional. Any number of parameters with a key name consisting of a valid variable name prefixed with <code>$</code>, and with any value.</td>
+            </tr>
+        </tbody>
+    </table>
+    <p>This may also return a status of 400 (invalid parameters) or 403 (invalid key) as well as an error message as the body.</p>
+
+    <h3 id="get-deployments" data-title="Get Deployments">Get Deployments</h3>
+    <p class="info">GET or POST <span style="opacity: 0.5">/api/releases/packages/deployments</span></p>
+    <p>Returns a status of 200 and a body with an array of <a href="#data-specification">deployment objects</a> based on the specified optional filter parameters:</p>
+    <table>
+        <thead>
+            <tr>
+                <th>Filter</th>
+                <th>Parameter Specification</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Application</td>
+                <td>Either a key named <code>applicationId</code> with an integer value, or a key named <code>applicationName</code> with any value.</td>
+            </tr>
+            <tr>
+                <td>Release</td>
+                <td>Either a key named <code>releaseId</code> with an integer value, a key named <code>releaseNumber</code> with any value, or a key named <code>releaseName</code> with any value.</td>
+            </tr>
+            <tr>
+                <td>Package</td>
+                <td>Either a key named <code>packageId</code> with an integer value, or a key named <code>packageNumber</code> with any value.</td>
+            </tr>
+            <tr>
+                <td>Deployment</td>
+                <td>A key named <code>deploymentId</code> with an integer value.</td>
+            </tr>
+            <tr>
+                <td>Pipeline</td>
+                <td>Either a key named <code>pipelineId</code> with an integer value, or a key named <code>pipelineName</code> with any value.</td>
+            </tr>
+            <tr>
+                <td>Stage</td>
+                <td>A key named <code>pipelineStageName</code> with any value.</td>
+            </tr>
+            <tr>
+                <td>Environment</td>
+                <td>Either a key named <code>environmentId</code> with an integer value, or a key named <code>environmentName</code> with any value.</td>
+            </tr>
+            <tr>
+                <td>Status</td>
+                <td>A key named <code>status</code> with a value of <code>pending</code>, <code>executing</code>, <code>succeeded</code>, <code>warned</code>, or <code>failed</code>.</td>
+            </tr>
+
+
+        </tbody>
+    </table>
+    <p>This may also return a status of 400 (invalid parameters) or 403 (invalid key) as well as an error message as the body.</p>
+
+    <h3 id="deploy-package" data-title="Deploy Package">Deploy Package</h3>
+    <p class="info">POST or PUT <span style="opacity: 0.5">/api/releases/packages/deploy</span></p>
+    <p>Returns a status of 200 and a body with an array of <a href="#data-specification">deployment objects</a> that were created with the following input parameters:</p>
+    <table>
+        <thead>
+            <tr>
+                <th>Input</th>
+                <th>Parameter Specification</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Package</td>
+                <td>Required. Either a key named <code>packageId</code> with an integer value, or a key named <code>packageNumber</code> with any value.</td>
+            </tr>
+            <tr>
+                <td>Release</td>
+                <td>Required if <code>packageNumber</code> is specified, otherwise must not be set. Either a key named <code>releaseId</code> with an integer value, or a key named <code>releaseNumber</code> with any value.</td>
+            </tr>
+            <tr>
+                <td>Application</td>
+                <td>Required if <code>releaseNumber</code> is specified, otherwise must not be set. Either a key named <code>applicationId</code> with an integer value, or a key named <code>applicationName</code> with any value.</td>
+            </tr>
+            <tr>
+                <td>To Stage</td>
+                <td>Optional. A key named <code>toStage</code> with any value. If not supplied, the next stage in the pipeline will be used.</td>
+            </tr>
+            <tr>
+                <td>Force</td>
+                <td>Optional. A key named <code>force</code> with a value of <code>true</code> or <code>false</code>.</td>
+            </tr>
+            <tr>
+                <td>Start Time</td>
+                <td>
+                    Optional. A key named <code>startTime</code> with the timestamp when the deployment should start. If not supplied, the deployment will start immediately. If the timestamp does not contain a date, it defaults to today. If a date is specified without a time, it defaults to midnight. If there is no time zone specified, it defaults to the server's local time zone.
+                    <em>Available in BuildMaster 6.0.2+</em>
+                </td>
+            </tr>
+            <tr>
+                <td>Variables</td>
+                <td>Optional. Any number of parameters with a key name consisting of a valid variable name prefixed with <code>$</code>, and with any value.</td>
+            </tr>
+        </tbody>
+    </table>
+    <p>This may also return a status of 400 (invalid parameters) or 403 (invalid key) as well as an error message as the body.</p>
+
+    <h3 id="reject-package" data-title="Reject Release Package">Reject Release Package</h3>
+    <p class="info">POST or DELETE <span style="opacity: 0.5">/api/releases/packages/reject</span></p>
+    <p>Returns a status of 200 if the package was rejected:</p>
+    <table>
+        <thead>
+            <tr>
+                <th>Input</th>
+                <th>Parameter Specification</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Package</td>
+                <td>Required. Either a key named <code>packageId</code> with an integer value, or a key named <code>packageNumber</code> with any value.</td>
+            </tr>
+            <tr>
+                <td>Release</td>
+                <td>Required if <code>packageNumber</code> is specified, otherwise must not be set. Either a key named <code>releaseId</code> with an integer value, or a key named <code>releaseNumber</code> with any value.</td>
+            </tr>
+            <tr>
+                <td>Application</td>
+                <td>Required if <code>releaseNumber</code> is specified, otherwise must not be set. Either a key named <code>applicationId</code> with an integer value, or a key named <code>applicationName</code> with any value.</td>
+            </tr>
+        </tbody>
+    </table>
+    <p>This may also return a status of 400 (invalid parameters) or 403 (invalid key) as well as an error message as the body.</p>
+
+</body>
+</html>
