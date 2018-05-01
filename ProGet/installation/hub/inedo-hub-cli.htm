@@ -1,0 +1,128 @@
+﻿<html>
+  <head>
+    <title>Inedo Hub CLI</title>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <meta name="keywords" content="proget, installation" />
+    <meta name="sequence" content="2" />
+  </head>
+  <body>
+      <p class="info"><strong>Note:</strong> This software is currently in Beta; screenshots are coming soon.</p>
+    <h1>Inedo Hub CLI</h1>
+	<p>
+		A separate console program (hub.exe) is included with the standard GUI desktop hub.
+		This tool supports the following commands:
+	</p>
+	
+	<h2>Install</h2>
+	<code>Usage: hub.exe install &lt;product&gt;[:version] [--arg=value]...</code>
+	<p>
+		Installs/upgrades the specified product (ProGet, BuildMaster, Otter, or Hedgehog).
+		If [:version] is not specified, the latest stable version is used. The --arg=value items
+		are used to pass variables to Romp, and are the same variables defined for the package.
+	</p>
+	<p>
+		Installation arguments:
+	</p>
+	<table>
+		<tr>
+			<th>Name</th>
+			<th>Default Value</th>
+			<th>Description</th>
+		</tr>
+		<tr>
+			<td>TargetDirectory</td>
+			<td>$PathCombine($SpecialWindowsPath(ProgramFiles), ProGet)</td>
+			<td>The root install directory for ProGet.</td>
+		</tr>
+		<tr>
+			<td>ConnectionString</td>
+			<td><i>no default</i></td>
+			<td>Connection string used to create and initialize the database schema.</td>
+		</tr>
+		<tr>
+			<td>UseIntegratedWebServer</td>
+			<td>true</td>
+			<td>When true, installs a service to host the integrated web server.</td>
+		</tr>
+		<tr>
+			<td>UseIIS</td>
+			<td>false</td>
+			<td>When true, creates an app pool and site in IIS.</td>
+		</tr>
+		<tr>
+			<td>DbName</td>
+			<td>ProGet</td>
+			<td>Name of the SQL database to use or create. This overrides any Initial Catalog specified in the connection string.</td>
+		</tr>
+		<tr>
+			<td>WebServerPrefixes</td>
+			<td>http://*:8624/</td>
+			<td>Specifies the URL which is used by the integrated web server. Ignored if UseIntegratedWebServer is not true.</td>
+		</tr>
+		<tr>
+			<td>ExtensionsPath</td>
+			<td>$PathCombine($SpecialWindowsPath(CommonApplicationData), ProGet, Extensions)</td>
+			<td>Specifies the directory where user-installed product extensions will be stored.</td>
+		</tr>
+		<tr>
+			<td>ExtensionsTempPath</td>
+			<td>$PathCombine($SpecialWindowsPath(CommonApplicationData), ProGet, ExtensionsTemp)</td>
+			<td>Specifies the directory where extensions are unpacked and loaded from.</td>
+		</tr>
+		<tr>
+			<td>LicenseKey</td>
+			<td><i>no default</i></td>
+			<td>If specified, this license key will be written to the database instance on installation.</td>
+		</tr>
+		<tr>
+			<td>UserAccount</td>
+			<td>NetworkService</td>
+			<td>The name of the user account which will be used to run ProGet's services and/or IIS AppPool. It may be LocalSystem, NetworkService, or any domain/local account.</td>
+		</tr>
+		<tr>
+			<td>IsUpgrade</td>
+			<td>false</td>
+			<td>When true, services and IIS settings will not be created.</td>
+		</tr>
+		<tr>
+			<td>RemoveLegacyComponents</td>
+			<td>false</td>
+			<td>Removes legacy installations created before the Inedo Hub was available. (Versions of ProGet before 5.1.0).</td>
+		</tr>
+		<tr>
+			<td>EncryptionKey</td>
+			<td>$CryptoRandomBytes(16)</td>
+			<td>32-character hex string of encryption key for stored secrets. This value will be written to the product's configuration file on install only if there is not already an encryption key stored in the file.</td>
+		</tr>
+	</table>
+	<h3>Installation Examples</h3>
+	<pre>hub.exe install ProGet:5.1.0 --ConnectionString="Data Source=localhost; Integrated Security=True;"</pre>
+	
+	<h2>Uninstall</h2>
+	<code>Usage: hub.exe uninstall &lt;product&gt;</code>
+	<p>
+		Uninstalls the specified product.
+	</p>
+	
+	<h2>List</h2>
+	<code>Usage: hub.exe list</code>
+	<p>
+		Lists the versions of each package installed, as well as the latest available versions
+		of all products in the configured feed.
+	</p>
+	
+	<h2>Romp</h2>
+	<code>Usage: hub.exe romp &lt;arguments for romp&gt;</code>
+	<p>
+		Executes the Hub Romp instance and forwards any following arguments.
+		This is useful primarily for troubleshooting failed installs using the romp jobs logs command.
+	</p>
+	
+	<h2>Help</h2>
+	<code>Usage: hub.exe help [command]</code>
+	<p>
+		Displays help for this tool generally or any specific command.
+	</p>
+
+  </body>
+</html>
