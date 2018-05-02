@@ -1,0 +1,45 @@
+﻿<html>
+<head>
+    <title>Registry Types and Locations</title>
+    <meta name="subtitle" content="Registry Types and Locations" />
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <meta name="keywords" content="proget, romp, universal-packages" />
+    <meta name="sequence" content="30" />
+</head>
+<body>
+
+    <p>
+        There are three different types of registries (Machine, User, Custom). Each Machine can have any number of User and Custom registries:
+    </p>
+    <h2>Machine-level Registry</h2>
+    <p>
+        A registry with a well-known location that is queryable by anyone and, by default, requires administrative privileges to install/change.
+    </p>
+    <ul class="docs">
+        <li>
+            Windows: <code>%ProgramData%\upack</code>
+        </li>
+        <li>
+            Linux: /var/lib/upack
+        </li>
+    </ul>
+    <h2>User-level Registry</h2>
+    <p>
+        A registry with a well-known location based on the current username that can be changed by the current user and administrators.
+    </p>
+    <ul class="docs">
+        <li>
+            Windows: <code>%USER%\.upack</code>
+        </li>
+        <li>
+            Linux: ~/.upack
+        </li>
+    </ul>
+    <h2>Custom Registry</h2>
+    <p>
+        A registry with a different location and potentially different privileges.
+    </p>
+   
+</body>
+
+</html>
