@@ -1,0 +1,94 @@
+﻿<html>
+<head>
+    <title>Variables</title>
+    <meta name="subtitle" content="Variables" />
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <meta name="keywords" content="romp, variables" />
+    <meta name="sequence" content="30" />
+</head>
+<body>
+    <style>
+        .info.romp {
+            border-color: #98002E;
+            color: #98002E;
+        }
+        pre {
+            background-color: #f7f5f5;
+            padding: 12px 16px;
+        }
+    </style>
+    <p>Package variables typically contain configuration values that are required for installing a package in a specific environment, or to allow installation to be customized.</p>
+
+    <p>Variables are defined in a <code>packageVariables.json</code> file located in the package root with <code>upack.json</code>. It is simply an object with variable names and values as properties. The value can be either a string, null, or an object with the following optional properties:</p>
+
+    <table>
+        <tbody>
+            <tr>
+                <td><code>value</code></td>
+                <td>
+                    a <i>string</i> of the variable’s value itself
+                </td>
+            </tr>
+            <tr>
+                <td><code>description</code></td>
+                <td>
+                    a <i>string</i> to document the variable's intended usage
+                </td>
+            </tr>
+            <tr>
+                <td><code>required</code></td>
+                <td>
+                    a <i>boolean</i> to indicate that a value is required; when a required variable does not have value (i.e. not null or empty), the installation will not proceed; defaults to false if not specified
+                </td>
+            </tr>
+            <tr>
+                <td><code>sensitive</code></td>
+                <td>
+                    a <i>boolean</i> to indicate that the value should not be displayed in logs; default is false
+                    <br/><br/>
+                    <i>Note: an installation script may still Log the value of the variable to the console</i>
+                </td>
+            </tr>
+            <tr>
+                <td><code>type</code></td>
+                <td>
+                    a <i>string</i> of the variable's type; <code>text</code> (default), <code>boolean</code> (indicates only <code>true</code> or <code>false</code> string literals are allowed, <code>list</code>, or <code>map</code>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p>When an object is not specified for a variable value, a string indicates a required text variable, while a null represents a required text variable without a value. If you wish to allow an empty string, you will need to use the object syntax.</p>
+
+    <h3>Example: packageVariables.json file</h3>
+
+        <pre>
+{
+  "myStringValue": "Steve Dennis",
+  "myArray": [1, 2, 3, 4, 5],
+  "myMapValue": {
+    "p1": "hdars",
+    "p2": "test"
+  },
+  "requiredButNotSpecifiedValue": null
+}
+</pre>
+   
+    <p>The example above defines 3 variables with values. Each property on the JSON object corresponds to a runtime OtterScript variable of <code>scalar</code>, <code>vector</code>, and <code>map</code> types respectively. The final variable, <code>requiredButNotSpecifiedValue</code>, is required but not specified. This will cause Romp to prompt for this value when the package is installed.</p>
+
+    <p>Package variables specified as command line arguments are returned first, followed by variables in packageVariables.json, followed by raft variables, in the event of variables of the same name.</p>
+
+    <p class="announcement"><strong>You should not store sensitive passwords or other secrets in variables. They are not secure, at all. Instead, consider <a href="/support/documentation/romp/romp-packages/layout/credentials">resource credentials</a>.</strong></p>
+
+    <h2 id="prompting-required">Prompting for Required Variables</h2>
+
+    <p>If a variable is required for package installation, it may be passed in as an argument to Romp. If you don't pass in a required variable, then you will be prompted for it (when running interactively), or Romp will issue an error and not proceed with installation.</p>
+
+    <h2 id="best-practices">Best Practices: Variable Descriptions</h2>
+
+    <p>Think of variable descriptions like comments. If it's not obvious from the name how to use a variable, or how it might work, you should briefly describe that in the field. You can always include additional instructions on how to use the package in the package's description metadata field.</p>
+
+    <p>Variable descriptions are primarily used by <code>{cmd line}</code> to show a user how to install a package, and should be brief.</p>
+    
+</body>
+</html>

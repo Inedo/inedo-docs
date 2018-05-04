@@ -1,0 +1,53 @@
+﻿<html>
+<head>
+    <title>Uninstallation Script</title>
+    <meta name="subtitle" content="Uninstallation Script" />
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <meta name="keywords" content="romp, installation, configuration" />
+    <meta name="sequence" content="21" />
+</head>
+<body>
+    <style>
+        .info.romp {
+            border-color: #98002E;
+            color: #98002E;
+        }
+    </style>
+    <p>
+        A Romp package may contain an <code>uninstall.otter</code> file. If this file is not present,
+		then the package does not support uninstallation.
+    </p>
+    <p>The <code>uninstall.otter</code> file in the package root contains the OtterScript of the plan that will be executed when
+	the <a href="/support/documentation/romp/command-line/command-overview/installation#uninstall">uninstall command</a> is invoked.</p>
+
+    <h2>Basic Package File Uninstallation</h2>
+
+    <p>If your package contains only content files, then only a trivially simple <code>uninstall.otter</code> script is needed.</p>
+
+    <pre>Romp::Delete-Contents</pre>
+
+    <p>
+		This will invoke the Delete-Contents operation, which deletes all content files which were 
+		installed using the install command.
+	</p>
+
+    <h2>Built-In Variables</h2>
+	<p>
+		The following variables are available to the <code>uninstall.otter</code> script:
+	</p>
+	<ul>
+		<li>
+			<code>$TargetDirectory</code> - specifies the file system path where the package content was deployed, and the <code>$WorkingDirectory</code> variable will also be set to this path initially.
+		</li>
+		<li>
+			<code>$PackageGroup</code> - specifies the group name of the package being uninstalled.
+		</li>
+		<li>
+			<code>$PackageName</code> - specifies the name of the package being uninstalled.
+		</li>
+		<li>
+			<code>$PackageVersion</code> - specifies the version of the package being uninstalled.
+		</li>
+	</ul>
+</body>
+</html>

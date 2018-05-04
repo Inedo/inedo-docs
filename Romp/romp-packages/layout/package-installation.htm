@@ -1,0 +1,50 @@
+﻿<html>
+<head>
+    <title>Installation Script</title>
+    <meta name="subtitle" content="Installation Script" />
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <meta name="keywords" content="romp, installation, configuration" />
+    <meta name="sequence" content="20" />
+</head>
+<body>
+    <style>
+        .info.romp {
+            border-color: #98002E;
+            color: #98002E;
+        }
+    </style>
+    <p>
+        A romp package must contain an <code>install.otter</code> file.
+    </p>
+    <p>The <code>install.otter</code> file in the package root contains the OtterScript of the plan that will be executed when
+	the <a href="/support/documentation/romp/command-line/command-overview/installation#install">install command</a> is invoked.</p>
+
+    <h2>Basic Package File Installation</h2>
+
+    <p>If your package contains only content files, then only a trivially simple <code>install.otter</code> script is needed.</p>
+
+    <pre>Romp::Deploy-Contents</pre>
+
+    <p>This will invoke the Deploy-Content operation, which simply copies the contents of the package to <code>$TargetDirectory</code>. This is generally a commandline argument passed in to romp, but may also be specified with a deafult value in the <code>packageVariables.json</code> file.</p>
+
+    <h2>Built-In Variables</h2>
+	<p>
+		The following variables are available to the <code>install.otter</code> script:
+	</p>
+	<ul>
+		<li>
+			<code>$TargetDirectory</code> - specifies the file system path where the package content should be deployed. This directory is guaranteed to exist before <code>install.otter</code>
+			begins to execute, and the <code>$WorkingDirectory</code> variable will also be set to this path initially.
+		</li>
+		<li>
+			<code>$PackageGroup</code> - specifies the group name of the package being installed.
+		</li>
+		<li>
+			<code>$PackageName</code> - specifies the name of the package being installed.
+		</li>
+		<li>
+			<code>$PackageVersion</code> - specifies the version of the package being installed.
+		</li>
+	</ul>
+</body>
+</html>
