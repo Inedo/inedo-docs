@@ -1,0 +1,59 @@
+﻿<html>
+<head>
+    <title>Virtual Package Format</title>
+    <meta name="subtitle" content="Virtual Package Format" />
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <meta name="keywords" content="proget, universal-packages, virtual" />
+    <meta name="sequence" content="20" />
+</head>
+<body>
+
+    <p>
+        There's not much to virtual package; it's just a JSON-based text file with a <code>.vpack</code> file extension.
+    </p>
+    <p>
+        The file is formatted just like a <a href="/support/documentation/upack/universal-packages/metacontent-guidance/manifest-specification">universal package manifest file</a> (e.g. <code>upack.json</code>), and
+        follows the same specification, except that there are <b>two additional properties</b>:
+    </p>
+    <table>
+        <thead>
+            <tr>
+                <th>Property</th>
+                <th>Format</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <code>contents<sup>R</sup></code>
+                </td>
+                <td>
+                    An <em>array</em> of at least one item, containing any of the following:
+                    <ul class="docs">
+                        <li>
+                            <em>string</em> - <a href="/support/documentation/upack/universal-packages/package-identification">package identification string</a>
+                        </li>
+                        <li>
+                            <em>string</em> - an absolute url to an HTTP or HTTPS file resource
+                        </li>
+                        <li>
+                            <em>object</em> - <a href="/support/documentation/upack/virtual-packages/package-format/specifications#virtual-content-object">virtual content object</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td><code>metaContents</code></td>
+                <td>
+                    <em>same as contents property</em>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <p>
+        The <code>contents</code> property is required.
+    </p>
+
+    
+</body>
+</html>

@@ -1,0 +1,58 @@
+﻿<html>
+<head>
+    <title>Assembling Virtual Package Contents</title>
+    <meta name="subtitle" content="Assembling Virtual Package Contents" />
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <meta name="keywords" content="proget, universal-packages, virtual" />
+    <meta name="sequence" content="40" />
+</head>
+<body>
+  
+    <p>
+        Virtual packages are essentially pointers to other packages and resources, and before consuming a virtual package, 
+        it must be "assembled" into a regular package first.
+    </p>
+    <p>
+        Assembling a virtual package basically involves following the resource pointers and combining the contents of those resources. Once you do that, it's totally indistinguishable from a regular package, and thus it is no longer considered "virtual". Thus, it's a one-way operation.
+    </p>
+    <p>
+        To assemble a virtual package, the following logic must be used.
+    </p>
+    <ul class="docs">
+        <li>
+            The contents array is enumerated; each resources is assessed as follows:
+            <ul class="docs">
+                <li>
+                    <strong>If it's a file resource:</strong> the contents are downloaded, verified (if a <code>hash</code> is specified), and written to the target virtual path.
+                    A directory is created if it doesn't exist, and a file is overwritten if it already exists.
+                </li>
+                <li>
+                    <strong>If it's a package resource:</strong> the current package source is queried for the specified package (including <code>hash</code>). The contents are then
+                    extracted to the target virtual path, overwriting any existing files.
+                </li>
+            </ul>
+        </li>
+        <li>
+            The metaContents array is enumerated; each resources is assessed as follows:
+            <ul class="docs">
+                <li>
+                    <strong>If the virtualPath is upack.json or within the packages directory:</strong> the operation fails
+                </li>
+                <li>
+                    <strong>If it's a file resource:</strong> the contents are downloaded, verified (if a <code>hash</code> is specified), and written to the target virtual path.
+                    A directory is created if it doesn't exist, and a file is overwritten if it already exists.
+                </li>
+                <li>
+                    <strong>If it's a package resource:</strong> the current package source is queried for the specified package (including <code>hash</code>). The contents are then
+                    extracted to the target virtual path, overwriting any existing files.
+                </li>
+            </ul>
+        </li>
+        <li>
+            If any error occurs during assembly, then the entire operation fails.
+        </li>
+    </ul>
+
+
+</body>
+</html>
