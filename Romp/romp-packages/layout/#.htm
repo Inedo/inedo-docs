@@ -1,0 +1,48 @@
+﻿<html>
+<head>
+    <title>Package Layout</title>
+    <meta name="subtitle" content="Romp Package Layout" />
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <meta name="keywords" content="romp, layout" />
+    <meta name="sequence" content="30" />
+</head>
+<body>
+    <style>
+        .info.romp {
+            border-color: #98002E;
+            color: #98002E;
+        }
+    </style>
+    <p>
+        A Romp Package is a special <a href="/support/documentation/upack/universal-packages/package-format">Universal Package</a> that contains everything Romp will need to deploy an application and/or infrastructure configuration.
+    </p>
+    Romp Packages at a minimum must include a standard <a href="/support/documentation/romp/romp-packages/layout/package-installation">installation and configuration script</a> (<code>install.otter</code>), and a <a href="/support/documentation/romp/romp-packages/layout/metadata">metadata file</a> (<code>upack.json</code>).
+    <p>
+        Aside from the primary configuration script, and the required metadata file, packages can also contain <a href="/support/documentation/romp/romp-packages/layout/variables">variables</a>, <a href="/support/documentation/romp/romp-packages/layout/credentials">credentials</a>, <a href="/support/documentation/romp/romp-packages/layout/extensions">extensions</a>, <a href="/support/documentation/romp/romp-packages/layout/rafts">Otter rafts</a>, and <a href="/support/documentation/romp/romp-packages/layout/metadata#romp-metadata">additional metadata</a> (<code>rompPackage.json</code>).
+    </p>
+    <h4>
+        A Romp Package has the following layout:
+    </h4>
+<pre>
+    package/
+        rafts/
+            raft1/…
+            raft2/…
+        upack.json
+        rompVariables.json
+        rompCredentials.json
+        rompPackage.json
+        install.otter
+		uninsta.otter
+</pre>
+
+    <p>The <strong>rafts/</strong> directory contains <a href="/support/documentation/romp/romp-packages/layout/rafts">rafts</a> which are used by the install script. Each subdirectory in this directory is equivalent to a named filesystem raft.</p>
+
+    <p>The <strong>install.otter</strong> and <strong>uninstall.otter</strong> files are standard
+	<a href="/support/documentation/romp/romp-packages/layout/package-installation">OtterScript plans</a>
+	that will be run when the package is installed or uninstalled. They may use any of the resources
+	contained in the embedded rafts.
+	</p>
+
+</body>
+</html>
