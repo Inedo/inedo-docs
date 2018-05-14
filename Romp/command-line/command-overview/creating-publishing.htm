@@ -1,0 +1,108 @@
+﻿<html>
+<head>
+    <title>Creating and Publishing Packages</title>
+    <meta name="subtitle" content="Creating and Publishing Packages" />
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <meta name="keywords" content="romp, command line, packages," />
+    <meta name="show-headings-in-nav" content="true" />
+    <meta name="sequence" content="10" />
+</head>
+<body>
+    <style>
+        .info.romp {
+            border-color: #98002E;
+            color: #98002E;
+        }
+
+        pre {
+            background-color: #f7f5f5;
+            padding: 12px 16px;
+        }
+    </style>
+    <p>Romp is invoked as follows:</p>
+    <pre>romp «command»</pre>
+    <p>The <strong>«command»</strong> is one of the following:</p>
+    <p>
+        <ul>
+            <li><a href="#pack"><code>pack</code></a> - Creates a Romp package from the specified directory.</li>
+            <li><a href="#publish"><code>publish</code></a> - Publishes the specified package to a package source.</li>
+        </ul>
+    </p>
+    <h3 id="pack" data-title="pack">Pack</h3>
+    <pre>romp pack «directory-name» [«output-file-name»] [--overwrite]</pre>
+
+    <p>If the directory does not represent a valid Romp package, an error is raised and the package is not created. This behavior may be overridden with the <code>--force</code> flag.</p>
+
+    <p>The package will be written to the specified <code>fileName</code> or one constructed by the <code>packagename</code></p>
+
+
+    <h4>Arguments and Flags</h4>
+    <table>
+        <tbody>
+            <tr>
+                <td><code>directory-name<sup>R</sup></code></td>
+                <td>positional</td>
+                <td>
+                    An absolute or relative path of a directory to create. This can be the current working directory, which is specified with a single dot.
+
+                </td>
+            </tr>
+            <tr>
+                <td><code>output-file-name</code></td>
+                <td>positional</td>
+                <td>
+                    The name of the output file. This can be a relative or absolute path. If it does not end in <code>.upack</code>, an error will be raised unless <code>--force</code> is specified.
+                    <br /><br />
+                    When not specified, a file will be placed in the current working directory with a name created based on package name and version from the metadata.
+
+                </td>
+            </tr>
+            <tr>
+                <td><code>overwrite</code></td>
+                <td>flag</td>
+                <td>
+                    When specified, the output file name will be overwritten if it already exists. Otherwise, an error is raised.
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <p>An "<code>R</code>" denotes a required property. When an object is not specified for a variable, a string indicates a required text variable, while a null represents a required text variable without a value.</p>
+
+    <h3 id="publish" data-title="publish">Publish</h3>
+
+    <pre>
+romp publish «file-name» [--source=«feedurl»] [--authentication=«api-key-or-username-password»]
+</pre>
+    <h4>Arguments and Flags</h4>
+    <table>
+        <tbody>
+            <tr>
+                <td><code>file-name<sup>R</sup></code></td>
+                <td>positional</td>
+                <td>
+                    The relative or absolute path to a romp package file.
+
+                </td>
+            </tr>
+            <tr>
+                <td><code>source</code></td>
+                <td>value</td>
+                <td>
+                    See <a href="/support/documentation/romp/command-line/common-configuration">Common Package Source Arguments</a>..
+
+                </td>
+            </tr>
+            <tr>
+                <td><code>authentication</code></td>
+                <td>value</td>
+                <td>
+                    See <a href="/support/documentation/romp/command-line/common-configuration">Common Package Source Arguments</a>.
+
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <p>An "<code>R</code>" denotes a required property. When an object is not specified for a variable, a string indicates a required text variable, while a null represents a required text variable without a value.</p>
+</body>
+</html>

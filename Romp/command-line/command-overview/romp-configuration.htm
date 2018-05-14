@@ -1,0 +1,111 @@
+﻿<html>
+<head>
+    <title>Romp Configuration</title>
+    <meta name="subtitle" content="Romp Configuration" />
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <meta name="keywords" content="romp, command line, configuration" />
+    <meta name="show-headings-in-nav" content="true" />
+    <meta name="sequence" content="40" />
+</head>
+<body>
+    <style>
+        .info.romp {
+            border-color: #98002E;
+            color: #98002E;
+        }
+
+        pre {
+            background-color: #f7f5f5;
+            padding: 12px 16px;
+        }
+    </style>
+
+    <p>Romp is invoked as follows:</p>
+    <pre>romp «command»</pre>
+    <p>The <strong>«command»</strong> is one of the following:</p>
+    <p>
+        <ul>
+            <li><a href="#list"><code>config list</code></a> - Displays all configuration values after cascading all configuration files.</li>
+            <li><a href="#export"><code>config export</code></a> - Exports the current configuration to a configuration file.</li>
+            <li><a href="#set"><code>config set</code></a> - Sets a configuration value in the local configuration file to the specified value.</li>
+            <li><a href="#delete"><code>config delete</code></a> - Deletes a configuration value in the local configuration file.</li>
+        </ul>
+    </p>
+
+    <h3 id="list" data-title="config list">Config List</h3>
+    <pre>
+romp config list
+</pre>
+    <h4>Arguments and Flags</h4>
+
+    <p>This command has no additional arguments or flags.</p>
+
+    <h3 id="export" data-title="config export">Config Export</h3>
+    <pre>romp config export [«file-name»] [--overwrite]</pre>
+
+    <p>This will be a valid JSON file; see <a href="/support/documentation/romp/installation/configuration">configuration parameters</a> for the format.</p>
+
+    <h4>Arguments and Flags</h4>
+    <table>
+        <tbody>
+            <tr>
+                <td><code>file-name</code></td>
+                <td>positional</td>
+                <td>
+                    The relative or absolute path to a file to export. The default value is romp.json in the current working directory.
+                </td>
+            </tr>
+            <tr>
+                <td><code>overwrite</code></td>
+                <td>flag</td>
+                <td>
+                    When specified, the output file name will be overwritten if it already exists. Otherwise, an error is raised.
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3 id="set" data-title="config set">Config Set</h3>
+    <pre>romp config set «key» «value»</pre>
+    <p>See <a href="/support/documentation/romp/installation/configuration">configuration parameters</a> for a list of valid keys and values.</p>
+
+    <h4>Arguments and Flags</h4>
+    <table>
+        <tbody>
+            <tr>
+                <td><code>key</code></td>
+                <td>positional</td>
+                <td>
+                    The name of the key to set.
+                </td>
+            </tr>
+            <tr>
+                <td><code>value</code></td>
+                <td>positional</td>
+                <td>
+                    The value to set.
+                    <br /><br />
+                    When specifying a value other than a string, such as the rafts argument, it must be a valid JavaScript object (either JSON or Array)
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3 id="delete" data-title="config delete">Config Delete</h3>
+    <pre>romp config delete «key»</pre>
+    <p>See <a href="/support/documentation/romp/installation/configuration">configuration parameters</a> for a list of valid keys and values.</p>
+
+    <h4>Arguments and Flags</h4>
+    <table>
+        <tbody>
+            <tr>
+                <td><code>key</code></td>
+                <td>positional</td>
+                <td>
+                    The name of the key to set.
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

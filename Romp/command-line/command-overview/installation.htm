@@ -1,0 +1,219 @@
+﻿<html>
+<head>
+    <title>Installation, Inspection, and Verification</title>
+    <meta name="subtitle" content="Installation, Inspection, and Verification" />
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <meta name="keywords" content="romp, command line, installation, inspection, verification" />
+    <meta name="show-headings-in-nav" content="true" />
+    <meta name="sequence" content="20" />
+</head>
+<body>
+    <style>
+        .info.romp {
+            border-color: #98002E;
+            color: #98002E;
+        }
+
+        pre {
+            background-color: #f7f5f5;
+            padding: 12px 16px;
+        }
+    </style>
+
+    <p>Romp is invoked as follows:</p>
+    <pre>romp «command»</pre>
+    <p>The <strong>«command»</strong> is one of the following:</p>
+    <p>
+        <ul>
+            <li><a href="#install"><code>install</code></a> - Install the specified romp package, unless it's already installed.</li>
+            <li><a href="#validate"><code>validate</code></a> - Validates a package file on disk to ensure the layout and OtterScript are valid.</li>
+            <li><a href="#inspect"><code>inspect</code></a> - Validates the package and displays a report of the contents, required variables, and credentials.</li>
+            <li><a href="#uninstall"><code>uninstall</code></a> - Uninstall the specified romp package.</li>
+        </ul>
+    </p>
+
+    <h3 id="install" data-title="install">Install</h3>
+
+    <pre>
+romp install «package-file-or-name» [--version=«version-number»]
+    [--source=«feedurl»] 
+    [--authentication=«api-key-or-username-password»]
+
+    [--unregistered] [--force]
+    [--comment=«comment-text»]
+    [--V«variable-name»=«variable-value»]
+</pre>
+    <p>This command has two run modes: file, where a file on disk is used for installation, and package source, where a universal feed is queried for a package.</p>
+
+    <h4>Arguments and Flags</h4>
+    <table>
+        <tbody>
+            <tr>
+                <td><code>package<sup>R</sup></code></td>
+                <td>positional</td>
+                <td>
+                    This is either a file name or a package name
+                    <br /><br />
+                    If this argument ends with <code>.upack</code>, then the command runs in file mode; otherwise it will run in package source mode
+
+                </td>
+            </tr>
+            <tr>
+                <td><code>version</code></td>
+                <td>value</td>
+                <td>
+                    In package source mode, this references the specific version of a package to install. When not specified, the latest version is used.
+                    <br /><br />
+                    Specifying this argument in file mode will result in an error.
+                </td>
+            </tr>
+            <tr>
+                <td><code>source</code></td>
+                <td>value</td>
+                <td>
+                    See <a href="/support/documentation/romp/command-line/common-configuration">Common Package Source Arguments</a>.
+                    <br /><br />
+                    Specifying this argument in file mode will result in an error.
+
+                </td>
+            </tr>
+            <tr>
+                <td><code>authentication</code></td>
+                <td>value</td>
+                <td>
+                    See <a href="/support/documentation/romp/command-line/common-configuration">Common Package Source Arguments</a>.
+                </td>
+            </tr>
+            <tr>
+                <td><code>unregistered</code></td>
+                <td>flag</td>
+                <td>
+                    The package installation will not be registered; this does not impact storage of the installation logs.
+                </td>
+            </tr>
+            <tr>
+                <td><code>force</code></td>
+                <td>flag</td>
+                <td>
+                    If the package is already installed, it will be reinstalled.
+                </td>
+            </tr>
+            <tr>
+                <td><code>comment</code></td>
+                <td>value</td>
+                <td>
+                    Comment for the local package registry.
+                    <br /><br />
+                    Specifying this argument with the unregistered flag will result in an error.
+
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <p>An "<code>R</code>" denotes a required property. When an object is not specified for a variable, a string indicates a required text variable, while a null represents a required text variable without a value.</p>
+    <h4>Specifying Variables</h4>
+
+    <p>You can specify variables as additional arguments by prepending the argument name with a "V".</p>
+
+    <h4>Required Variables and Credentials</h4>
+
+    <p>If the package specifies required <a href="/support/documentation/romp/romp-packages/layout/variables">variables</a> or <a href="/support/documentation/romp/romp-packages/layout/credentials">credentials</a>, and you are running Romp interactively, you will be prompted for these values before the plan is executed.</p>
+
+    <p>Otherwise, Romp will exit with an error.</p>
+
+    <h3 id="validate" data-title="validate">Validate</h3>
+
+    <pre>romp validate «package-file»</pre>
+    <p>The following are verified: file format (zip), file layout, metadata validity, OtterScript validity.</p>
+
+    <h4>Arguments and Flags</h4>
+    <p>
+        This has only a single, required argument: the path to the package file on disk.
+    </p>
+
+    <h3 id="inspect" data-title="inspect">Inspect</h3>
+
+    <pre>
+romp inspect «package-file-or-name» [--version=«version-number»]
+    [--source=«feedurl»] 
+    [--authentication=«api-key-or-username-password»]
+</pre>
+    <p>
+        This command has two run modes: file, where a file on disk is used for installation, and package source, where a universal feed is queried for a package.
+    </p>
+    <h4>Arguments and Flags</h4>
+
+    <table>
+        <tbody>
+            <tr>
+                <td><code>package<sup>R</sup></code></td>
+                <td>positional</td>
+                <td>
+                    This is either a file name or a package name
+                    <br /><br />
+                    If this argument ends with <code>.upack</code>, then the command runs in file mode; otherwise it will run in package source mode
+
+                </td>
+            </tr>
+            <tr>
+                <td><code>version</code></td>
+                <td>value</td>
+                <td>
+                    In package source mode, this references the specific version of a package to install. When not specified, the latest version is used.
+                    <br /><br />
+                    Specifying this argument in file mode will result in an error.
+                </td>
+            </tr>
+            <tr>
+                <td><code>source</code></td>
+                <td>value</td>
+                <td>
+                    See <a href="/support/documentation/romp/command-line/common-configuration">Common Package Source Arguments</a>.
+                    <br /><br />
+                    Specifying this argument in file mode will result in an error.
+
+                </td>
+            </tr>
+            <tr>
+                <td><code>authentication</code></td>
+                <td>value</td>
+                <td>
+                    See <a href="/support/documentation/romp/command-line/common-configuration">Common Package Source Arguments</a>.
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <p>An "<code>R</code>" denotes a required property. When an object is not specified for a variable, a string indicates a required text variable, while a null represents a required text variable without a value.</p>
+
+    <h3 id="uninstall" data-title="uninstall">Uninstall</h3>
+
+    <pre>
+romp uninstall «package-name»
+    [--V«variable-name»=«variable-value»]
+</pre>
+    <p>This command uninstalls a previously installed Romp package. The package must have an uninstall.otter script file for this to be supported.</p>
+
+    <h4>Arguments and Flags</h4>
+    <table>
+        <tbody>
+            <tr>
+                <td><code>package-name<sup>R</sup></code></td>
+                <td>positional</td>
+                <td>
+                    This a package name of a package that is already installed.
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <p>An "<code>R</code>" denotes a required property. When an object is not specified for a variable, a string indicates a required text variable, while a null represents a required text variable without a value.</p>
+    <h4>Specifying Variables</h4>
+
+    <p>You can specify variables as additional arguments by prepending the argument name with a "V".</p>
+
+    <h4>Required Variables</h4>
+
+    <p>If the package specifies required <a href="/support/documentation/romp/romp-packages/layout/variables">variables</a>, and you are running Romp interactively, you will be prompted for these values before the plan is executed.</p>
+
+    <p>Otherwise, Romp will exit with an error.</p>
+</body>
+</html>

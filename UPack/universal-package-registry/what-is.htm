@@ -1,0 +1,77 @@
+﻿<html>
+<head>
+    <title>What is the Universal Package Registry?</title>
+    <meta name="subtitle" content="What is the Universal Package Registry?" />
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <meta name="keywords" content="proget, romp, universal-packages" />
+    <meta name="show-headings-in-nav" content="true" />
+    <meta name="sequence" content="10" />
+</head>
+<body>
+    <p>
+        <a href="/support/documentation/proget/core-concepts/packages#universal-package" target="_blank">Universal Feeds and Packages</a> are "lightweight" and, on their own, have very few built-in features. This design has allowed them to be utilized for all sorts of packaging problems such as application delivery, Inedo's product extensions, and even private Bower packages.
+    </p>
+    <p>
+        When developing a package-based solution, one question that often comes up is "what packages are installed or used in this particular context?" That's where the Universal Package Registry comes in; it's a local package registry designed specifically for Universal Packages.
+    </p>
+
+    <h2 id="background" data-title="Background">Background: Other Local Package Registries</h2>
+    <p>
+        All packages, <a href="/support/documentation/upack/universal-packages/package-format">universal format</a> or otherwise, are essentially zip files with content, (i.e. the actual files you want packaged) and a metadata file that describes the content. Once the contents of a package are extracted and <i>installed</i> to a directory, there’s no easy way to know which package those contents came from, or if they came from a package at all. This is where a local package registry comes in.
+    </p>
+    <p>
+        Different package managers use different mechanisms to represent a local registry. Some store the entire package, others store only metadata about the package, and each approach has advantages and disadvantages.
+    </p>
+    <p>
+        For example:
+        <ul class="docs">
+            <li>
+                The local registry for MSI (Microsoft Installer) is comprised of an installation cache directory (containing the MSI files installed) as well as various entries in the Windows registry.
+            </li>
+            <li>
+                The NuGet local registry is comprised of various package cache directories and a packages.config file stored in the root of a project file that describe which packages are used.
+            </li>
+            <li>
+                APT (Advanced Package Tool for Debian) maintains a directory of package-related files in /var/lib/dpkg/info, including MD5sums of each of various installed files and the executable scripts that would be run before and after installation.
+            </li>
+        </ul>
+    </p>
+    <p>
+        However, in all cases, the <i>packages registered</i> vs <i>packages installed</i> are not enforced by the package manager or operating system. You can consolidate the data in the local registry if needed, or delete files that were originally installed by the package manager.
+    </p>
+    <h2 id="design" data-title="Design Principles">Designing the Universal Package Registry</h2>
+    <p>
+        The Universal Package Registry was designed with the realities of other local package registries in mind.
+        <ul class="docs">
+            <li>
+                <strong>Well-defined specification</strong> - this allows a variety of tools (not just an API or CLI) to read or write data
+            </li>
+            <li>
+                <strong>Data only</strong> - there is no attempt to automatically reconcile <i>registered</i> vs <i>installed</i> packages
+            </li>
+            <li>
+                <strong>Compliance-driven metadata</strong> - provides a common mechanism to indicate what installed a package and why
+            </li>
+            <li>
+                <strong>Any additional metadata</strong> - for compliance or other reasons, you can add additional package metadata
+            </li>
+        </ul>
+    </p>
+    <p>
+        A Universal Package Registry may also contain a package cache. There are three common uses cases for this:
+        <ul class="docs">
+            <li>
+                <strong>Auditing</strong> - to verify or compare the original contents of the package registered versus the files installed on disk
+            </li>
+            <li>
+                <strong>Repairing installation</strong> - in the event an installed package was <i>corrupted</i> (a file in the install location was modified or deleted), the package could be reinstalled without needing to connect to a universal feed
+            </li>
+            <li>
+                <strong>Staging packages</strong> - packages files could be copied to the cache ahead of installation to allow for rapid deployment of newer versions
+            </li>
+        </ul>
+    </p>
+    
+</body>
+
+</html>

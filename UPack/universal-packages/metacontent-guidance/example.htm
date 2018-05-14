@@ -1,0 +1,60 @@
+﻿<html>
+<head>
+    <title>Example upack.json Files</title>
+    <meta name="subtitle" content="Example upack.json Files" />
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <meta name="keywords" content="proget, universal-packages" />
+    <meta name="show-headings-in-nav" content="true" />
+    <meta name="sequence" content="20" />
+</head>
+<body>
+   <h2 id="minimal" data-title="Minimal">Minimal</h2>
+    <pre>{
+ "name": "HDARS",
+ "version": "1.3.9"
+}</pre>
+    <h2 id="all" data-title="All Fields">All Fields</h2>
+    <pre>{
+ "group": "initrode/vendors/abl",
+ "name": "ABLast",
+ "version": "2.2.1",
+ "title": "ast distribution files for ABL",
+ "icon": "package://ablast.svg",
+ "description": "This contains [ast distro](http://initrode-net.local/ast) files specific to ABL",
+ "dependencies": [ "initrode/vendors-common:ast-common:2.0.0" ],
+ "createdDate": "2017-11-09T04:03:01Z",
+ "createdReason": "ABLast v2.2.1 #18 (ID8843) ",
+ "createdUsing": "BuildMaster/5.6.11",
+ "createdBy": "THoven",
+ "repackageHistory": [
+    "initrode/vendors/abl/ABlast:2.2.1-rc.3:2660bf74fc8147ca41bd53bdb1defc3aae35bc91",
+    "initrode/vendors/abl/ABlast:2.2.1-ci.22322:ec702530cf73dbec0fc8667f7235fd3f17e24205"
+  ]
+}</pre>
+    <h2 id="extended" data-title="Extended Fields">Extended Fields</h2>
+    <pre>{
+ "group": "virtudyne/simdesk",
+ "name": "var-index-service",
+ "version": "5.3.9",
+ "_sourceRoot": "$/global/vindex/branches/v5-hotfix"
+ "_deployTarget": "/var/vsimdesk/vindex"
+}</pre>
+
+<h2 id="inedo-extension" data-title="Inedo Extension">Inedo Extension (example)</h2>
+<pre>{
+  "group": "inedox",
+  "name": "Linux",
+  "version": "1.0.2",
+  "title": "Linux",
+  "description": "Contains operations to interact with Linux servers.",
+  "icon": "https://inedo.com/den/logos/Linux.png",
+  "_inedoSdkVersion": "1.0.0",
+  "_inedoProducts": [
+    "BuildMaster",
+    "Otter",
+    "Hedgehog"
+  ]
+}</pre>
+
+</body>
+</html>

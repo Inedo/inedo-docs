@@ -1,0 +1,70 @@
+﻿<html>
+<head>
+    <title>Package Sources</title>
+    <meta name="subtitle" content="Package Sources" />
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <meta name="keywords" content="romp, command line, packages" />
+    <meta name="show-headings-in-nav" content="true" />
+    <meta name="sequence" content="30" />
+</head>
+<body>
+    <style>
+        .info.romp {
+            border-color: #98002E;
+            color: #98002E;
+        }
+
+        pre {
+            background-color: #f7f5f5;
+            padding: 12px 16px;
+        }
+    </style>
+
+    <p>Romp is invoked as follows:</p>
+    <pre>romp «command»</pre>
+    <p>The <strong>«command»</strong> is one of the following:</p>
+    <p>
+        <ul>
+            <li><a href="#list"><code>sources list</code></a> - Displays all package sources.</li>
+            <li><a href="#display"><code>sources display</code></a> - Displays all properties of the package source name.</li>
+            <li><a href="#create"><code>sources create</code></a> - Store encrypted resource credentials in Romp's database that can be used from plans.</li>
+            <li><a href="#delete"><code>sources delete</code></a> - Deletes the specified source.</li>
+            <li><a href="#default"><code>sources default</code></a> - Sets the specified source as the default.</li>
+        </ul>
+    </p>
+
+    <h3 id="list" data-title="sources list">Sources List</h3>
+    <pre>romp sources list</pre>
+
+    <h3 id="display" data-title="sources display">Sources Display</h3>
+    <pre>romp sources display «name» [--show-hidden]</pre>
+    <h4>Arguments and Flags</h4>
+    <table>
+        <tbody>
+            <tr>
+                <td><code>show-hidden</code></td>
+                <td>flag</td>
+                <td>
+                    When <code>--show-hidden</code> is specified, the hidden values are displayed
+                    <br /><br />
+                    If <code>secureCredentials</code> is configured, using <code>--show-hidden</code> will result in an error
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3 id="create" data-title="sources create">Sources Create</h3>
+    <pre>romp sources create «name» «url»</pre>
+
+    <p> The <code>«qualifiedName»</code> argument is the same format used by Otter.</p>
+    <p>If <code>secureCredentials</code> is configured, and a password or api key is used, this command must be executed interactively.</p>
+
+    <h3 id="delete" data-title="sources delete">Sources Delete</h3>
+    <pre>romp sources delete «name»</pre>
+    <p>Deletes the specified package source.</p>
+
+    <h3 id="default" data-title="sources default">Sources Default</h3>
+    <pre>romp sources default «name»</pre>
+    <p>Sets the default package source by writing to the "default-source" value of the current configuration file.</p>
+</body>
+</html>

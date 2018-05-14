@@ -1,0 +1,52 @@
+﻿<html>
+<head>
+    <title>Auditing Local Machine History</title>
+    <meta name="subtitle" content="Auditing Local Machine History" />
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <meta name="keywords" content="romp, command line, auditing" />
+    <meta name="show-headings-in-nav" content="true" />
+    <meta name="sequence" content="60" />
+</head>
+<body>
+    <style>
+        .info.romp {
+            border-color: #98002E;
+            color: #98002E;
+        }
+
+        pre {
+            background-color: #f7f5f5;
+            padding: 12px 16px;
+        }
+    </style>
+
+    <p>Romp is invoked as follows:</p>
+    <pre>romp «command»</pre>
+    <p>The <strong>«command»</strong> is one of the following:</p>
+    <p>
+        <ul>
+            <li><a href="#packages-list"><code>packages list</code></a> - Displays a list of installed packages.</li>
+            <li><a href="#jobs-list"><code>jobs list</code></a> - Displays a list of recent romp job executions that have been recorded on the server, including their status.</li>
+            <li><a href="#jobs-logs"><code>jobs logs</code></a> - Displays the execution logs for a specified job.</li>
+            <li><a href="#jobs-purge"><code>jobs purge</code></a> - Purges jobs older than the specified number of days.</li>
+        </ul>
+    </p>
+
+    <h3 id="packages-list" data-title="packages list">Packages List</h3>
+    <pre>romp packages list</pre>
+    <p>Displays a list of installed packages.</p>
+
+    <h3 id="jobs-list" data-title="jobs list">Jobs List</h3>
+    <pre>romp jobs list</pre>
+    <p>Displays a list of recent romp job executions that have been recorded on the server, including their status.</p>
+
+    <h3 id="jobs-logs" data-title="jobs logs">Jobs Logs</h3>
+    <pre>romp jobs logs «jobId»</pre>
+    <p>Displays the execution logs for a specified job. If «jobId» is not specified, the logs for the most recent job are displayed.</p>
+
+    <h3 id="jobs-purge" data-title="jobs purge">Jobs Purge</h3>
+    <pre>romp jobs purge «days»</pre>
+    <p>Purges jobs older than the specified number of days.</p>
+
+</body>
+</html>

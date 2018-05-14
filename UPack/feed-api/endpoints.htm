@@ -1,0 +1,650 @@
+﻿<html>
+<head>
+    <title>Universal Feed API Endpoints</title>
+    <meta name="subtitle" content="Universal Feed API Endpoints" />
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <meta name="keywords" content="proget, universal-packages" />
+    <meta name="show-headings-in-nav" content="true" />
+    <meta name="sequence" content="80" />
+
+</head>
+<body>
+    <p>
+        Like the package format, this was designed with simplicity in mind.
+        Because <em>universal packages</em> are designed to be consumed by any language or platform,
+        the API offers several different ways to do the same thing, as some operations are much more
+        difficult in some languages than others.
+    </p>
+    <p>
+        The API consists of a few different URL endpoints, accessible over HTTP/S. If configured, they can be secured using
+        Integrated Windows Authentication or Basic Authentication using whatever granular feed- or system-level privileges needed.
+    </p>
+    <p>
+        In ProGet, all endpoints are prefixed with <code>/upack/&laquo;feed-name&raquo;</code>. 
+    </p>
+    <div class="attention best-practice">
+        <img src="/resources/images/icons/best-practices.png" />
+        <p>
+            Note that the endpoint prefix itself is not a valid API endpoint, and may return some sort of "<i>this is not the endpoint you are looking for</i>" Star Wars memepic, or simply redirect you to this page.
+        </p>
+    </div>
+    <p>
+        Currently, the API only returns results in JSON format with a standard, 200 (success) status code unless there's an error; future versions (if anyone requests it)
+        may add additional formats, such as XML, which would be specified using a <code>Content-Type</code> request headers and/or an alternate querystring parameter.
+    </p>
+    <p>
+        All searching and matching is case insensitive. This will most certainly never change, as it's either a mistake or a bad practice to have different packages named <code>SomeThing</code> and
+        <code>someThing</code>.
+    </p>
+
+    <h3 id="list-packages" data-title="List Packages">List Packages Endpoint</h3>
+    <p class="info">
+        GET <span style="opacity: 0.5">/upack/&laquo;feed-name&raquo;/</span><b>packages</b>?group=&laquo;group&raquo;&amp;name=&laquo;name&raquo;&amp;count=&laquo;count&raquo;
+    </p>
+    <p>
+        Returns either a JSON object (if <code>name</code> is specified) or a JSON array of objects of package metadata, mostly from the latest package version.
+    </p>
+    <table>
+        <thead>
+            <tr><th>Parameter</th><th>Description</th></tr>
+        </thead>
+        <tbody>
+            <tr><td>group</td><td>Optional. If specified without <code>name</code>, returns an array of packages with a matching group name or an empty array.</td></tr>
+            <tr><td>name</td><td>Optional. If specified, returns an object with a matching name and group or a 404 status with an error message in the body.</td></tr>
+            <tr><td>count</td><td>Optional. If specified, returns an array with at most as many entries as specified; otherwise, at most 1000 packages are returned. This is ignored if <code>name</code> is specified.</td></tr>
+        </tbody>
+    </table>
+    <p>Following are some example request/responses:</p>
+    <inedo:tab-block>
+        <tab name="Single Package">
+            <p class="info">
+                <code>GET /upack/dev-feed/packages?name=hdars</code>
+            </p>
+            <pre>{
+ "name": "HDARS",
+ "downloads": "1",
+ "versions": ["0.0.22", "1.3.9", "1.3.10"]
+}</pre>
+        </tab>
+        <tab name="All Packages">
+            <p class="info">
+                <code>GET /upack/dev-feed/packages?count=1000</code>
+            </p>
+            <pre>[
+  {
+   "name": "HDARS",
+   "latestVersion": "1.3.9",
+   "downloads": "1",
+   "versions": ["0.0.22", "1.3.7", "1.3.9"]
+  },
+  {
+   "group": "initrode/vendors/abl",
+   "name": "ABLast",
+   "latestVersion": "2.2.1",
+   "title": "ast distribution files for ABL",
+   "icon": "package://ablast.svg",
+   "description": "This contains [ast distro](http://initrode-net.local/ast) files specific to ABL",
+   "downloads":"55",
+   "versions": ["2.2.1"]
+  },
+  {
+   "group": "virtudyne/simdesk",
+   "name": "var-index-service",
+   "latestVersion": "5.3.10",
+   "_sourceRoot": "$/global/vindex/branches/v5-hotfix"
+   "_deployTarget": "/var/vsimdesk/vindex",
+   "downloads":"17",
+   "versions": ["5.0.0","5.2.1","5.3.10"]
+ }
+]</pre>
+        </tab>
+        <tab name="Packages in a Group">
+            <p class="info">
+                <code>GET /upack/dev-feed/packages?group=initrode/vendors/abl</code>
+            </p>
+            <pre>[
+  {
+   "group": "initrode/vendors/abl",
+   "name": "ABLast",
+   "latestVersion": "2.2.1",
+   "title": "ast distribution files for ABL",
+   "icon": "package://ablast.svg",
+   "description": "This contains [ast distro](http://initrode-net.local/ast) files specific to ABL",
+   "downloads":"55",
+   "versions": ["2.2.1"]
+  }
+]</pre>
+            <p>To return the packages in the <em>empty</em> group, specify the <code>group</code> parameter without a value (e.g. <code>/upack/dev-feed/packages?group=</code>)</p>
+        </tab>
+    </inedo:tab-block>
+    <p>
+        Note that specifying the <code>name</code> parameter will cause an object to be returned instead of an array; if you don't specify a <code>group</code>, then packages in the
+        <em>empty</em> group will be searched
+    </p>
+    <p>
+        Note that the <code>group</code> parameter must be a full match; future versions of this endpoint may allow for a sub-group searching (such as <code>groupName*</code> or something).
+    </p>
+
+    <h3 id="list-versions" data-title="List Package Versions">List Versions Endpoint</h3>
+    <p class="info">
+        GET <span style="opacity: 0.5">/upack/&laquo;feed-name&raquo;/</span><b>versions</b>?group=&laquo;group&raquo;&amp;name=&laquo;name&raquo;
+        &amp;version=&laquo;version&raquo;&amp;includeFileList=&laquo;includeFileList&raquo;&amp;count=&laquo;count&raquo;
+    </p>
+    <p>
+        Returns either a JSON object or a JSON array of objects containing metadata about specific package versions.
+    </p>
+    <table>
+        <thead>
+            <tr><th>Parameter</th><th>Description</th></tr>
+        </thead>
+        <tbody>
+            <tr><td>group</td><td>Optional. If specified without <code>version</code>, returns an array of packages with a matching group name or an empty array.</td></tr>
+            <tr><td>name</td><td>Optional. If specified without <code>version</code>,  returns an array of packages with a matching group name or an empty array.</td></tr>
+            <tr><td>version</td><td>Optional. If specified, returns an object with a matching group, name, and version, or a 404 status with an error message in the body.</td></tr>
+            <tr><td>includeFileList</td><td>Optional. If <code>true</code>, then inspects each package returned and includes a list of files in the body.</td></tr>
+            <tr><td>count</td><td>Optional. If specified, returns an array with at most as many entries as specified; otherwise, at most 1000 packages are returned. This is ignored if <code>name</code> is specified.</td></tr>
+        </tbody>
+    </table>
+    <p>Following are some example request/responses:</p>
+    <inedo:tab-block>
+        <tab name="Single Version">
+            <p class="info">
+                <code>GET /upack/dev-feed/versions?name=hdars&amp;version=1.3.9</code>
+            </p>
+            <pre>{
+ "name": "HDARS",
+ "version": "1.3.9",
+ "downloads": "1",
+ "published": "2016-01-07T06:51:51.403Z",
+ "isLocal": true,
+ "isCached": false,
+ "isVirtual": false
+}</pre>
+        </tab>
+        <tab name="All Versions">
+            <p class="info">
+                <code>GET /upack/dev-feed/versions?count=1000</code>
+            </p>
+            <pre>[
+  {
+   "name": "HDARS",
+   "version": "0.0.22",
+   "downloads": "133",
+   "published": "2016-01-01T06:51:51.403Z",
+   "isLocal": true,
+   "isCached": false,
+   "isVirtual": false
+  },
+  {
+   "name": "HDARS",
+   "version": "1.3.7",
+   "downloads": "21",
+   "published": "2016-01-05T06:51:51.403Z",
+   "isLocal": true,
+   "isCached": false,
+   "isVirtual": false
+  },
+  {
+   "name": "HDARS",
+   "version": "1.3.9",
+   "downloads": "1",
+   "published": "2016-01-07T06:51:51.403Z",
+   "isLocal": true,
+   "isCached": false,
+   "isVirtual": false
+  },
+  {
+   "group": "initrode/vendors/abl",
+   "name": "ABLast",
+   "version": "2.2.1",
+   "title": "ast distribution files for ABL",
+   "icon": "package://ablast.svg",
+   "description": "This contains [ast distro](http://initrode-net.local/ast) files specific to ABL",
+   "dependencies": [ "initrode/vendors-common:ast-common:2.0.0" ]
+   "downloads":"55",
+   "isLocal": false,
+   "isCached": true,
+   "isVirtual": false
+  },
+  {
+   "group": "virtudyne/simdesk",
+   "name": "var-index-service",
+   "version": "5.0.10",
+   "_sourceRoot": "$/global/vindex/root"
+   "_deployTarget": "/var/vsimdesk/vindex/newv5",
+   "downloads":"18",
+   "isLocal": true,
+   "isCached": false,
+   "isVirtual": false
+  },
+  {
+   "group": "virtudyne/simdesk",
+   "name": "var-index-service",
+   "version": "5.2.1",
+   "_sourceRoot": "$/global/vindex/branches/5.2"
+   "_deployTarget": "/var/vsimdesk/vindex/2tmp",
+   "downloads":"18",
+   "isLocal": true,
+   "isCached": false,
+   "isVirtual": false
+  },
+  {
+   "group": "virtudyne/simdesk",
+   "name": "var-index-service",
+   "version": "5.3.10",
+   "_sourceRoot": "$/global/vindex/branches/v5-hotfix"
+   "_deployTarget": "/var/vsimdesk/vindex",
+   "downloads":"17",
+   "isLocal": true,
+   "isCached": false,
+   "isVirtual": false
+  }
+]</pre>
+        </tab>
+        <tab name="Single Version with Files">
+            <p class="info">
+                <code>GET /upack/dev-feed/versions?name=hdars&amp;version=1.3.9&amp;includeFileList=true</code>
+            </p>
+            <pre>{
+ "name": "HDARS",
+ "version": "1.3.9",
+ "downloads": "1",
+ "published": "2016-01-07T06:51:51.403Z",
+ "isLocal": true,
+ "isCached": false,
+ "isVirtual": false
+ "fileList": [
+    { "name": "assets/muth.png", 
+      "date": "2015-01-01T01:52:51.403Z", 
+      "size": 68012 },
+    { "name": "assets/styles.css", 
+      "date": "2015-01-01T01:52:51.403Z", 
+      "size": 3021 },
+    { "name": "index.htm", 
+      "date": "2015-01-01T01:52:51.403Z", 
+      "size": 1028 }
+ ]
+}</pre>
+        </tab>
+    </inedo:tab-block>
+    <p>
+        Note that the <code>group</code> parameter must be a full match; future versions of this endpoint may allow for a sub-group searching (such as <code>groupName*</code> or something), if anyone requests.
+    </p>
+
+
+
+    <h3 id="download-package" data-title="Download Package">Download Package Endpoint</h3>
+    <h4>Specific Version</h4>
+    <p class="info">
+        GET <span style="opacity: 0.5">/upack/&laquo;feed-name&raquo;/</span><b>download</b>/&laquo;group-name&raquo;/&laquo;package-name&raquo;/&laquo;package-version&raquo;?contentOnly=&laquo;zip|tgz&raquo;
+    </p>
+    <h4>Latest Version</h4>
+    <p class="info">
+        GET <span style="opacity: 0.5">/upack/&laquo;feed-name&raquo;/</span><b>download</b>/&laquo;group-name&raquo;/&laquo;package-name&raquo;?contentOnly=&laquo;zip|tgz&raquo;&amp;latest
+    </p>
+    <p>
+        Returns either a package file, the contents of a package, or an error.
+    </p>
+    <table>
+        <thead>
+            <tr><th>Parameter</th><th>Description</th></tr>
+        </thead>
+        <tbody>
+            <tr><td>group-name</td><td>Optional. If not specified, the empty group will be searched.</td></tr>
+            <tr><td>package-name</td><td>Required.</td></tr>
+            <tr><td>package-version</td><td>Optional. If a specific version is not specified, "latest" must be supplied as a query string argument, or a 400 will be returned.</td></tr>
+            <tr><td>contentOnly</td><td>Optional. If specified, the contents of <code>/package</code> directory are returned as either a ZIP archive (default if no value is specified for the parameter) or TGZ archive.</td></tr>
+        </tbody>
+    </table>
+    <p>Following are some example request/responses:</p>
+    <inedo:tab-block>
+        <tab name="Specific Package">
+            <p class="info">
+                <code>GET /upack/dev-feed/download/hdars/1.3.9</code>
+            </p>
+            <p>Response:</p>
+            <ul class="docs">
+                <li>Header: <code>Content-Type: application/zip</code></li>
+                <li>Header: <code>Content-Disposition: attachment; filename=hdars.1.3.9.upack</code></li>
+                <li>Body: a <a href="/support/documentation/upack/universal-packages/package-format">universal package</a> file for HDARS 1.3.9</li>
+            </ul>
+        </tab>
+        <tab name="Latest Contents as TGZ">
+            <p class="info">
+                <code>GET /upack/dev-feed/download/initrode/vendors/abl/var-index-service?contentOnly=tgz&amp;latest</code>
+            </p>
+            <p>Response:</p>
+            <ul class="docs">
+                <li>Header: <code>Content-Type: application/x-compressed</code></li>
+                <li>Header: <code>Content-Disposition: attachment; filename=var-index-service.4.2.0.tgz</code></li>
+                <li>Body: a GZipped TAR containing the contents of the <code>/package</code> directory of the latest var-index-service package</li>
+            </ul>
+        </tab>
+    </inedo:tab-block>
+
+    <h3 id="upload-package" data-title="Upload Package">Upload Package Endpoint</h3>
+    <p class="info">
+        PUT or POST <span style="opacity: 0.5">/upack/&laquo;feed-name&raquo;/</span><b>upload</b>&laquo;...&raquo;
+    </p>
+    <p>
+        There are quite a few ways to access this endpoint, but the end result is the same: it adds or replaces a package in a feed.
+        Because there are so many permutations of how you can use this, it's easiest to specify the various options and behaviors instead.
+    </p>
+    <p>
+        First and foremost, consider that a complete package consists of <b>required metadata</b> and <b>content</b> (arbitrary files and directories). This endpoint is
+        designed to allow you to upload a complete, pre-built package, or upload a partial package with content and metadata you specified using path, query, form-encoded, and/or JSON parameters.
+    </p>
+
+    <div class="attention best-practice">
+        <img src="/resources/images/icons/best-practices.png" />
+        <p>
+            <b>No duplicate parameters.</b> That's the second thing to consider. For example, if you specify a different package <code>name</code> in both the query and path... you'll
+            get an error (400). <!-- Obviously, we could build some cascading precedence system, but that's unintuitive and it's just as easy to not send duplicate metadata. -->
+        </p>
+    </div>
+
+
+    <h4 id="content-type">Content Type</h4>
+    <p>
+        The <code>Content-Type</code> header can be any of the following:
+    </p>
+
+    <ul class="docs">
+        <li><code>application/json</code> - properties on the JSON object will be used for content and metadata parameters</li>
+        <li><code>application/x-www-form-urlencoded</code> - the key/value pairs will be used for content and metadata parameters</li>
+        <li><code>application/zip</code> - the request body will treated either as content or a partial package</li>
+    </ul>
+
+    <h4 id="using-content-type">Using <code>application/zip</code> Content-Type</h4>
+    <p>
+        You must send the raw bytes of a ZIP file as the body of your request. If the archive doesn't conform to the
+        <a href="/support/documentation/upack/universal-packages/package-format">universal package format</a>, ProGet will convert it for you, if you supply the required metadata via query string parameters.
+    </p>
+    <p>
+        If the archive is already in the .upack format, you can specify additional metadata paramters via the querystring.
+    </p>
+
+    <h4>Metadata Parameters</h4>
+    <p>
+        Any of the following parameters fields may be specified through querystring or content; the format must follow a valid <a href="/support/documentation/upack/universal-packages/metacontent-guidance/manifest-specification">metadata format</a> specification.
+    </p>
+    <table>
+        <thead>
+            <tr>
+                <th>Parameter</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>content-b64</code></td>
+                <td>
+                    A string representing the contents as a base64-encoded ZIP archive; this is not valid with <code>application/zip</code> Content-Type, and
+                    will be considered duplicative if <code>content-url</code> is specified
+                </td>
+            </tr>
+            <tr>
+                <td><code>content-url</code></td>
+                <td>
+                    A url where content can be downloaded from as a ZIP archive; this is not valid with <code>application/zip</code> Content-Type, and
+                    will be considered duplicative if <code>content-b64</code> is specified
+                </td>
+            </tr>
+            <tr>
+                <td><code>group</code></td>
+                <td>
+
+                    This may also be specified as the first path following the endpoint
+                </td>
+            </tr>
+            <tr>
+                <td><code>name</code><sup>R</sup></td>
+                <td>
+                    This may also be specified as either the last or second-to-last path
+                </td>
+            </tr>
+            <tr>
+                <td><code>version</code><sup>R</sup></td>
+                <td>
+                    This may also be specified as either the last path
+                </td>
+            </tr>
+            <tr>
+                <td><code>dependencies</code></td>
+                <td>
+                    When specified in JSON, it should be an array; otherwise (querystring or form format), it should be a comma-separated string of package identifiers
+                </td>
+            </tr>
+            <tr>
+                <td><em>anything else</em></td>
+                <td>
+                    If any other parameter is specified (including the well-defined <code>title</code>, <code>icon</code>, <code>description</code>),
+                    it will be added as a package metadata property.
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p>A 201 is returned for all valid requests; following are some example requests</p>
+    <inedo:tab-block>
+        <tab name="PUT">
+            <p class="info">PUT /upack/dev-feed/upload/initrode/vendors/abl/var-index-service?version=5.3.9</p>
+            <pre>
+Content-Type: application/json
+
+{
+ "content-url": "http://sdbuildsv1/latest-stable?project=vindex&amp;branch=v5-hotfix",
+ "_sourceRoot": "$/global/vindex/branches/v5-hotfix",
+ "_deployTarget": "/var/vsimdesk/vindex"
+}
+</pre>
+        </tab>
+        <tab name="cUrl">
+            <p class="info">
+                curl PUT http://proget.server/upack/dev-feed/upload --upload-file hdars.upack
+            </p>
+        </tab>
+        <tab name="OtterScript">
+            <pre>
+# This uses the regular Upload-Http operation
+Upload-Http content.zip
+(
+   Url: http://progetsv/upack/Extensions-Dev/upload?name=$UrlEncode($ExtensionName)&amp;group=${ProductName}&amp;version=$UrlEncode($ReleaseNumber)
+);
+
+# There is also an operation specifically for this that allows you to securely specify credentials
+ProGet::Push-Package content.upack
+(
+  Credentials: PGExtensionDev,
+  Version: $ReleaseNumber
+)
+</pre>
+        </tab>
+        <tab name="PowerShell">
+<pre>
+$bytes = [Text.Encoding]::UTF8.GetBytes('USERNAME:PASSWORD')
+$creds = 'Basic ' + [Convert]::ToBase64String($bytes)
+
+$query = (`
+  '?name = 'PACKAGE_NAME' + `
+  '&amp;version = $Version.ToString() + `
+  '&amp;title = 'PACKAGE_TITLE' + `
+  '&amp;description = [uri]::EscapeDataString('PACKAGE_DESCRIPTION') );
+
+
+Invoke-RestMethod -Method Put `
+   -Uri ('http://PROGET_HOST/upack/FEED_NAME/upload' + $query) `
+   -ContentType 'application/zip' `
+   -Body ([IO.File]::ReadAllBytes($pathToZipFile)) `
+   -Headers @{ Authorization = $creds }
+</pre>
+        </tab>
+    </inedo:tab-block>
+
+    <h3 id="delete-package" data-title="Delete Package">Delete Package Endpoint</h3>
+    <p class="info">
+        DELETE or POST <span style="opacity: 0.5">/upack/&laquo;feed-name&raquo;/</span><b>delete</b>/&laquo;group-name&raquo;/&laquo;package-name&raquo;/&laquo;package-version&raquo;
+    </p>
+    <p>
+        Deletes the specified package (if <code>group-name</code> is omitted, then the empty group is used), returning a 200 on success or 404 if not found.
+    </p>
+    <p>
+        We don't know what else to document here, because this seems quite straightforward of a request, but just <a href="/contact">let us know</a> if you think we should add
+        anything else.
+    </p>
+
+    <h3 id="download-package-file" data-title="Download Package File">Download Package File Endpoint</h3>
+    <p>
+        This API endpoint is designed to download a specific file within a package, so that you don't need to download the entire package.
+    </p>
+    <h4>Specific Version</h4>
+    <p class="info">
+        GET <span style="opacity: 0.5">/upack/&laquo;feed-name&raquo;/</span><b>download-file</b>/&laquo;group-name&raquo;/&laquo;package-name&raquo;/&laquo;package-version&raquo;&amp;path=&laquo;path&raquo;
+    </p>
+    <h4>Latest Version</h4>
+    <p class="info">
+        GET <span style="opacity: 0.5">/upack/&laquo;feed-name&raquo;/</span><b>download-file</b>/&laquo;group-name&raquo;/&laquo;package-name&raquo;?latest&amp;path=&laquo;path&raquo;
+    </p>
+
+
+    <p>
+        Returns either a package file or an error.
+    </p>
+    <table>
+        <thead>
+            <tr><th>Parameter</th><th>Description</th></tr>
+        </thead>
+        <tbody>
+            <tr><td>group-name</td><td>Optional. If not specified, the empty group will be searched.</td></tr>
+            <tr><td>package-name</td><td>Required. If not found, a 404 is returned.</td></tr>
+            <tr><td>package-version</td><td>Optional. If not specified, "latest" must be specified as a query string argument. If no version is specified and "latest" is not supplied, a 400 is returned. If no matching versions are found, a 404 is returned.</td></tr>
+            <tr>
+                <td>path</td>
+                <td>
+                    Required. Relative path to the file within the package. Note, package contents are contained within
+                    the "package" directory of the package, so most request paths should start with "package" unless files in the package
+                    root are desired, such as the upack.json file. If the file is not found within the package, a 404 is returned. If a directory name is specified, a 403 is returned.
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <p>Following are some example request/responses:</p>
+    <inedo:tab-block>
+        <tab name="Package File">
+            <p class="info">
+                <code>GET /upack/dev-feed/download-file/hdars/1.3.9?path=package/example.txt</code>
+            </p>
+            <p>Response:</p>
+            <ul class="docs">
+                <li>Header: <code>Content-Type: text/plain</code></li>
+                <li>Header: <code>Content-Disposition: attachment; filename=example.txt</code></li>
+                <li>Body: the contents of the example.txt file in the package contents</li>
+            </ul>
+        </tab>
+        <tab name="Latest upack.json File">
+            <p class="info">
+                <code>GET /upack/dev-feed/download-file/hdars?latest&amp;path=upack.json</code>
+            </p>
+            <p>Response:</p>
+            <ul class="docs">
+                <li>Header: <code>Content-Type: application/json</code></li>
+                <li>Header: <code>Content-Disposition: attachment; filename=upack.json</code></li>
+                <li>Body: the contents of the "hdars" package's upack.json file</li>
+            </ul>
+        </tab>
+    </inedo:tab-block>
+    <div class="upcoming">
+        <h3 id="download-vpack" data-title="Download Virtual Package">Download Virtual Package Endpoint</h3>
+        <p>
+            This endpoint is used to download the package.version.vpack file for a virtual package, or throw error if not a virtual package.
+        </p>
+        <h4>Specific Version</h4>
+        <p class="info">
+            GET <span style="opacity: 0.5">/upack/&laquo;feed-name&raquo;/</span><b>download-vpack</b>/&laquo;group-name&raquo;/&laquo;package-name&raquo;/&laquo;package-version&raquo;
+        </p>
+        <h4>Latest Version</h4>
+        <p class="info">
+            GET <span style="opacity: 0.5">/upack/&laquo;feed-name&raquo;/</span><b>download-vpack</b>/&laquo;group-name&raquo;/&laquo;package-name&raquo;?latest
+        </p>
+
+        <p>
+            Returns either a package file or an error.
+        </p>
+        <table>
+            <thead>
+                <tr><th>Parameter</th><th>Description</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>group-name</td><td>Optional. If not specified, the empty group will be searched.</td></tr>
+                <tr><td>package-name</td><td>Required. If not found, a 404 is returned.</td></tr>
+                <tr><td>package-version</td><td>Optional. If not specified, "latest" must be specified as a query string argument. If no version is specified and "latest" is not supplied, a 400 is returned. If no matching versions are found, a 404 is returned.</td></tr>
+            </tbody>
+        </table>
+
+
+        <h3 id="feed-metadata" data-title="Feed Metadata Endpoint">Feed Metadata Endpoint</h3>
+        <p class="info">
+            GET <span style="opacity: 0.5">/upack/&laquo;feed-name&raquo;/</span><b>meta</b>
+        </p>
+
+        <p>
+            Returns a JSON object that describes the feed using the following properties.
+        </p>
+        <table>
+            <thead>
+                <tr><th>Property</th><th>Format</th></tr>
+            </thead>
+            <tbody>
+                <tr><td><code>name</code></td><td>A <i>string</i> containing the name of the feed.</td></tr>
+                <tr><td><code>description</code></td><td>A <i>string</i> containing the description of the feed.</td></tr>
+                <tr><td><code>version</code></td><td>A <i>string</i> containing the Universal Feed API version of the feed.</td></tr>
+
+                <tr><td><code>packageCount</code></td><td>An <i>integer</i> containing the number of unique package names in the feed.</td></tr>
+                <tr><td><code>packageVersionCount</code></td><td>An <i>integer</i> containing the number of packages in the feed.</td></tr>
+
+                <tr>
+                    <td>
+                        <code>services</code>
+                    </td>
+                    <td>
+                        An <i>array of strings</i> containing any of the following values.
+                           <ul class="docs">
+                               <li><code>VirtualPackages</code> - supports virtual packages, and injects the <code>isVirtual</code> property in the list endpoints</li>
+                               <li><code>RemotePackages</code> - supports remote packages (e.g. connectors in ProGet), and injects the <code>isLocal</code> and <code>isCached</code> properties in the list endpoints</li>
+                               <li><code>UploadPackage</code> - supports simple uploading (a complete package file only)</li>
+                               <li><code>UploadContents</code> - supports partial uploading (contents, metadata, etc)</li>
+                               <li><code>Delete</code> - supports deleting packages</li>
+                               <li><code>DownloadContents</code> - supports downloading of individual files or "contentOnly" of a pcakge</li>
+                           </ul>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <p>
+            If a 404 is returned instead, the feed version is less than 1.2.0.
+        </p>
+    </div>
+
+
+    <h3 id="api-search">Search Packages Endpoint (Unsupported)</h3>
+
+    <div class="attention technical">
+        <p>
+            <b>Note</b>: this is not part of the Universal Feed Specification, and should not be used for anything other than querying ProGet servers in limited cases.
+        </p>
+    </div>
+    <p class="info">
+        GET <span style="opacity: 0.5">/upack/&laquo;feed-name&raquo;/</span><b>search</b>?query=&laquo;search-query&raquo;&amp;count=&laquo;max-items&raquo;
+    </p>
+    <p>
+        This is the what the ProGet Web Application uses to show results to users, and returns a list of packages similar to the <a href="#list-packages">list packages</a> endpoint.
+    </p>
+    <p>
+        You're welcome to use it, but it's unsupported because its behavior is not at all documented, and we really can't think of a use-case outside of the ProGet Web Application.
+        Don't hesitate to <a href="/contact">contact us</a> if this is an endpoint you would find helpful, and we can either document it better or make it more useful outside of the
+        ProGet UI.
+    </p>
+
+</body>
+</html>
