@@ -1,0 +1,41 @@
+﻿<html>
+  <head>
+    <title>Integrated Authentication</title>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <meta name="sequence" content="20" />
+      <meta name="keywords" content="ldap,active-directory" />
+  </head>
+  <body>
+      <p>
+          Integrated Authentication is an option that allows transparent user authentication, removing the web-based login prompt. When this option is enabled and working, whatever account you signed on to Windows with, will be used as your login.
+      </p>
+      <p class="info">
+          <strong>TROUBLESHOOTING</strong>: <a href="/support/documentation/various/ldap/troubleshooting#authentication-not-working">Receiving 401 (Not Authorized), always prompted for credentials.</a>
+      </p>
+      <h2 id="web-server-config">Web Server Configuration</h2>
+      <p>
+          The Integrated Web Server does not require additional configuration to support integrated authentication.
+      </p>
+      <p>
+          IIS installations require the following Authentication settings:
+          <ul class="docs">
+              <li>
+                  Anonymous Authentication = disabled
+              </li>
+              <li>
+                  Windows Authentication = enabled
+              </li>
+          </ul>
+      </p>
+      <p>
+          When this is configured, the web server and client will automatically negotiate and authenticate the user requesting the page.
+      </p>
+      <h2 id="user-config">User Configuration</h2>
+      <p>
+          To enable integrated authentication, click the <i>Integrated Authentication</i> link on the Administration page. 
+      </p>
+      <p>
+          When this is checked, your Inedo product will attempt to read the <code>LOGON_USER</code> server variable, treat that as the already-authenticated user, and not prompt for a name and password. If there is no such server variable, it will prompt as per normal.
+      </p>
+  </body>
+</html>

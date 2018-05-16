@@ -1,0 +1,44 @@
+﻿<html>
+<head>
+    <title>Using LDAP/AD Integration</title>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <meta name="sequence" content="10" />
+    <meta name="keywords" content="ldap,active-directory" />
+</head>
+<body>
+    <p>
+        In addition to its own built-in user module, Inedo's Active Directory Domain integration allows permissions to be granted to users and groups defined in a third-party LDAP directory, or Active Directory domain forest. For an active directory domain, the web server (whether the Integrated Web Server or IIS) may additionally be configured to support Windows Integrated Authentication, removing the need to enter a username and password to log in. Support for this type of authentication <strong>requires</strong> the InedoCore extension to be installed.
+    </p>
+
+    <h2 id="switching">Switching to LDAP/AD</h2>
+    <p>
+        The LDAP/AD integration can be enabled from the Administration page via the <i>Change User Directory</i> link under the <i>Security &amp; Authentication</i> heading. Selecting the <i>Active Directory (New)</i> option will present a page that requires entering credentials for an administrator.
+    </p>
+    <p class="info">
+        <strong>TROUBLESHOOTING</strong>: <a href="/support/documentation/various/ldap/troubleshooting#active-directory-new">Active Directory (New) is not in the list.</a>
+    </p>
+    <p>
+        In new installations, you will need to configure privileges first by clicking the <i>assign privileges</i> link (or from the Administration page, clicking <i>Manage Users &amp; Tasks</i>, selecting the <i>Tasks</i> tab, and ensuring the dropdown user directory is set to <i>Active Directory (New)</i>).
+    </p>
+    <p>
+        On the assign privileges page, select <i>Add Permission</i>, and in the <i>Principles</i> field, search for a username that will become an administrator. Select the <i>Administer</i> task, leave the other fields set to their default, and click <i>Save Privilege</i>. Return to the Administration page, select <i>Change User Directory (LDAP)</i> again, and now when you select <i>Active Directory (New)</i>, enter the credentials of the account previously granted the Administer task. The following username formats are supported:
+        <ul class="docs">
+            <li>
+                username@domain <i>(recommended)</i>
+            </li>
+            <li>
+                NETBIOSname\username
+            </li>
+            <li>
+                username <i>(if the server is on a domain and not a forest)</i>
+            </li>
+        </ul>
+    </p>
+    <p>
+        Once the switch button is clicked, the web server will restart, causing a brief outage in your Inedo product. Refreshing the page will eventually redirect to the login page. Here, enter the credentials of the administrator configured in the previous step, and you will be logged in as an administrator.
+    </p>
+    <p class="info">
+        <strong>TROUBLESHOOTING</strong>: <a href="/support/documentation/various/ldap/troubleshooting#locked-out">Log in fails, can't remember the password, etc.</a>
+    </p>
+</body>
+</html>
