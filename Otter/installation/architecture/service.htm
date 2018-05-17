@@ -1,0 +1,61 @@
+﻿<html>
+<head>
+    <title>Service Administration</title>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <meta name="keywords" content="otter,service" />
+</head>
+<body>
+    <p>
+        The Otter Service is key component of Otter's <a href="/support/documentation/otter/installation/architecture">architecture</a>, and is
+        what actually runs your <a href="../../core-concepts/plans">plans</a> using the
+        <a href="/support/documentation/otter/execution-engine/overview">execution engine</a>.  It's a standard
+        <a href="https://msdn.microsoft.com/en-us/library/windows/desktop/ms685141(v=vs.85).aspx">Windows Service Application</a>,
+        and may be managed and <a href="#configuration-options">configured</a> using the Windows Service Manager or <code>sc.exe</code> as you see fit.
+    </p>
+    <h3>Managing the Service from the Otter Web Application</h3>
+    <p>
+        In addition to stopping and starting the Otter Service, you can see the service's live logs; this may be helpful when
+        diagnosing problems or working with Inedo's support team to track down unexpected behavior or bugs.
+    </p>
+    <img class="screenshot" src="/resources/documentation/otter/otter-service.png" alt="Otter Administration Services" />
+    <p>
+        You can also manually trigger the task runners that the service would otherwise routinely execute. This should only
+        be needed in debugging purposes, as the Web Application will trigger them in response to certain actions (such as
+        editing a plan), and they are always executed on service start.
+    </p>
+    <ul class="docs">
+        <li>
+            <b>ServerCheckerTimedExecuter</b> - this runs every hour, performs a lightweight handshake on each remote
+            agent, and upgrades the agent as needed
+        </li>
+        <li>
+            <b>JobDispatcherTimedExecuter</b> - this runs every minute, checks for scheduled <a href="/support/documentation/otter/core-concepts/jobs">jobs</a>, and
+            executes those jobs as needed
+        </li>
+        <li>
+            <b>RoutineConfigurationTimedExecuter</b> - this runs every hour (you can change this with <code>RoutineConfigurationExecutionThrottle</code> in All Settings),
+            and executes configuration plans for all severs
+        </li>
+        <li>
+            <b>UpdateCheckerTimedExecuter</b> - this runs every six hours (you disable this with <code>Updates.PerformUpdateChecks</code> in All Settings),
+            and communicates with inedo.com for an updated version of the sofftware
+
+        </li>
+    </ul>
+    <h3 id="configuration-options">Otter Service Configuration</h3>
+    <p>
+        By default, the Otter Service is named <code>INEDOOTTERSVC</code>, runs under the
+        <a href="https://msdn.microsoft.com/en-us/library/windows/desktop/ms684272(v=vs.85).aspx">NetworkService</a> account,
+        and is granted Read, Write, ListDirectory privileges to the following paths:
+    </p>
+    <ul class="docs">
+        <li>ExecutionTempPath</li>
+        <li>ExtensionsPath</li>
+        <li>ExtensionsTempPath</li>
+    </ul>
+    <p>
+        If you choose to configure this as a <a href="/support/kb/1077">custom domain account</a>, it will be important to
+        grant these same privileges.
+    </p>
+</body>
+</html>

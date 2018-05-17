@@ -1,0 +1,53 @@
+﻿<html>
+<head>
+    <title>Configuration Export, Import, &amp; Sync</title>
+    <meta name="subtitle" content="Export, Import, &amp; Sync" />
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <meta name="keywords" content="" />
+    <meta name="show-headings-in-nav" content="true" />
+</head>
+<body>
+    <p>
+        Otter maintains your servers' configuration using an <em>infrastructure as code</em> approach, but also gives you the ability to
+        import and export Otter's very own <em>configuration as code</em>. This makes sharing and maintaining your infrastructure configuration that much easier.
+    </p>
+
+    <h2 id="export" data-title="Exporting Infrastructure">Exporting Infrastructure Configuration</h2>
+    <p>
+        You can export all of your instance's infrastructure configuration
+        (<a href="../core-concepts/servers">servers</a>,
+        <a href="../modeling-infrastructure/environments">environments</a>, and
+        <a href="../modeling-infrastructure/server-roles">server roles</a>)
+        as a JSON file. Once exported, you can simply edit the file (adding or removing any number of infrastructure items) and import,
+        share it with another instance of Otter or BuildMaster, or maintain it as a simple back-up.
+    </p>
+    <p><img class="screenshot" src="/resources/documentation/otter/export-config.png" alt="export configuration" /></p>
+
+    <h2 id="import" data-title="Importing Infrastructure">Importing Infrastructure Configuration</h2>
+    <p>
+        The <em>import</em> function allows you to quickly configure or make massive changes to Otter's infrastructure configuration
+        by importing the configuration file that was exported from another instance of Otter or BuildMaster.
+    </p>
+    <p>
+        By using the "dry run" option you can see the changes that <em>would be made</em> before actively making the changes.
+    </p>
+    <p><img class="screenshot" src="/resources/documentation/otter/import-config.png" alt="import configuration" /></p>
+
+    <h2 id="sync" data-title="Infrastructure Synchronization">Infrastructure Synchronization</h2>
+    <p>
+        It's quite common to use Otter for managing server configuration, and <a href="/buildmaster">BuildMaster</a> for application release automation; because they both use the same set of servers, you can synchronize the infrastructure between multiple instances.
+    </p>
+    <p>
+        When you enable infrastructure synchronization, your Otter instance connects to either a BuildMaster or Otter instance, pulls configuration from that instance,
+        and updates the infrastructure configuration as needed.
+    </p>
+    <p class="announcement">
+        When synchronization is enabled, the other instance should be treated as the <em>source of truth</em>. There will also be
+        limited options in the UI for editing configuration, as they would almost immediately be wiped-out when a synchronization occurs.
+    </p>
+    <p>
+        To have another instance of BuildMaster or Otter synchronize with your instance, simply create an API key with view infrastructure permissions.
+    </p>
+    <p><img class="screenshot" src="/resources/documentation/buildmaster/sync.png" alt="Synchronization Settings" /></p>
+</body>
+</html>

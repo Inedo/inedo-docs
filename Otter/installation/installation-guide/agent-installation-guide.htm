@@ -1,0 +1,55 @@
+﻿<html>
+<head>
+    <title>Agent Installation Reference</title>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <meta name="keywords" content="otter" />
+    <meta name="sequence" content="200" />
+</head>
+<body>
+    <style>
+        .documentation-content-wrapper .upcoming {
+            background-color: #fff;
+            position: relative;
+        }
+
+        .screenshot {
+            opacity: .4;
+        }
+
+        .info.otter {
+            border-color: #9163aa;
+            color: #9163aa;
+        }
+
+        .documentation-content-wrapper .upcoming.buildmaster::before {
+            content: ' -- Placeholder screenshot from BuildMaster -- ';
+            background-color: #f15a24;
+            z-index: 1;
+            width: 100%;
+            padding: 2px 4px;
+            color: white;
+            text-align: center;
+        }
+    </style>
+
+    <p>
+        To facilitate communication between Otter and the Windows servers you want to configure and orchestrate, Otter
+        uses a lightweight agent with a highly-optimized and resilient protocol. Installing agents is even easier than
+        installing Otter, and the <a href="/support/documentation/various/inedo-agent/installation">Agent Installation Guide</a> will provide step-by-step instructions, as well as provide some detail as to what's
+        happening behind the scenes.
+    </p>
+
+    <div class="info otter">
+        <div>
+            <b>Shared Documentation Note</b> - we've kept the <a href="/support/documentation/various/inedo-agent/installation">Agent Installation details</a> in the Various Documentation, see <i>Adding the Server to Otter</i> below:
+        </div>
+    </div>
+
+    <h2 id="adding-server">Adding the Server to Otter</h2>
+    <p>
+        Once the agent has been installed, the server must be added to Otter.
+        Click the <strong>Create Server</strong> button on the <strong>Servers</strong> page, and enter the
+        host name of the server, the port you installed the agent on, and the encryption key if you chose one.
+    </p>
+</body>
+</html>

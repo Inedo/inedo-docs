@@ -1,0 +1,142 @@
+﻿<html>
+<head>
+    <title>Creating and Customizing Tasks</title>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <meta name="sequence" content="200" />
+    <meta name="keywords" content="proget,packages," />
+</head>
+<body>
+    <p>
+        The built-in tasks are a good starting point, but as you expand Otter within your organization, you may want to customize tasks to help model governance and compliance policies.
+    </p>
+    <p>
+        A task has a name and description, and is comprised of a set of more granular security attributes that define what principals may or may not do when granted the task. Some attributes may be scoped to an Environment, whereas others can only be applied to the system scope. For example, orchestration jobs are managed at the system level (and can target any environment), so the "Manage Jobs" attribute cannot be scoped to a single environment.
+    </p>
+
+    <h2 id="proxy" data-title="Proxy Attributes">Proxy Security Attributes</h2>
+    <p>
+        Any system that allows for granular security attributes has the concept of "granting by proxy", or proxy attributes. For example, even if you only grant permission to create and delete files on a file system, you are still granting edit permission by proxy; a user can simply delete and then create a file as a workaround for not being able to edit it. Likewise, users with only edit permissions can delete by proxy, because they can simply edit the file to have no content.
+    </p>
+    <p>
+        There is no sensible way for any software to prevent proxy operations, which is why it's important to understand what proxy attributes you may be unintentionally allowing.
+    </p>
+    <h2 id="invalid" data-title="Invalid Attributes">Invalid Security Attributes</h2>
+    <p>
+        Granular security attributes can also lead towards creating "nonsensical" policies. For example, giving manage but not view permissions is nonsensical because you can't manage something you can't view. In this case, the behavior is undefined; generally, you'll be able to view the thing, but there are some places where it might not be visible.
+    </p>
+    <p>
+        While you wouldn't intentionally create such a policy, it might occur if you create multiple overlapping restrictions and permissions across multiple overlapping groups. The best way to mitigate this risk is to carefully plan your use of restrictions.
+    </p>
+    <h2 id="transitive" data-title="Transitive Access">Transitive Access</h2>
+    <p>
+        Even with well-planned security restrictions in one part of a system, users can bypass those restrictions from another part of the system that didn't consider the same security restrictions. For example, simply denying view privileges on sensitive files on a network drive is not enough to protect sensitive data; anyone with access to the backups will have transitive access to all those files.  Of course, you can encrypt the backups, but then anyone with the decryption key will have transitive access to all the backups.
+    </p>
+    <p>
+        With Otter, it's especially important to consider transitive access. If Otter can access a production server, and you give users administrative access to Otter, then they can also deploy to that server. There's just no way around that.
+    </p>
+
+    <h2 id="reference" data-title="Reference">Security Attribute Reference</h2>
+    <p>
+        Some of the attributes are denoted with a superscript E, which indicates that they are scopable by environment.
+    </p>
+    <img class="screenshot" src="/resources/documentation/otter/2/tasks-permissions.png" alt="all permissions" />
+
+    <h3>Admin (Configure Otter)</h3>
+    <p>
+        It is a sort of "administrative catch all" that is used to secure pages in the administration section not covered by other attributes, including security, extensions, and all settings.
+    </p>
+    <div class="attention best-practice">
+        This attribute is a proxy for all other attributes, and should be only granted to people you intend to be system administrators.
+    </div>
+
+    <h3>Environments (Manage)</h3>
+    <p>
+        This allows users to create, edit, and delete environments.
+    </p>
+    <div class="attention best-practice">
+        This attribute may provide transitive access to all environment-scoped restrictions. For example, a user restricted from performing certain tasks in <em>Production</em> can simply delete that environment.
+    </div>
+
+    <h3>Roles (Manage)</h3>
+    <p>
+        This allows users to create, edit, and delete roles, as well as assign roles to servers, which in turn may cause those servers to be targeted in jobs or configured in a particular manner.
+    </p>
+
+    <h3>Assets (Manage<sup>E</sup>, View<sup>E</sup>)</h3>
+    <p>
+        View allows users to open assets (scripts, modules, templates) and view the contents of assets stored within a raft associated with a specific environment.
+    </p>
+    <div class="attention best-practice">
+        You shouldn't put sensitive information (like passwords) in your assets, so there's no good reason to restrict view.
+    </div>
+    <p>
+        Manage will allow users to create, edit, and delete assets.
+    </p>
+    <div class="attention best-practice">
+        Because plans can already run arbitrary commands, and editing assets used by plans can enable any behavior, there's little security value in allowing managing assets, but not plans. However, you may wish to limit by responsibility, and may find this a convenient way to do it.
+    </div>
+
+    <h3>Executions (View<sup>E</sup>, View Debug Logs<sup>E</sup>)</h3>
+    <p>
+        This allows users to view the details of executions, such as configuration or orchestration jobs. These are primarily designed to restrict sensitive data that is inconsequently logged. The "Debug" logs will hide only the debug-level logs (which is where most tools will log sensitive data).
+    </p>
+
+    <h3>Servers (View<sup>E</sup>, Manage)</h3>
+    <p>
+        View allows users to view a server’s details and configuration, although viewing the variables and configuration plans require separate attributes. There are very rare circumstances where you wouldn’t grant viewing of all.
+    </p>
+    <div class="attention technical">
+        This can provide transitive access to all connected servers and should be granted with extreme care.
+
+    </div>
+    <p>
+        You can grant managing variables on servers without granting management of servers themselves.
+    </p>
+
+    <h3>Configuration Plans (View<sup>E</sup>, Manage<sup>E</sup>)</h3>
+    <p>
+        View allows users to open configuration plans on servers, and manage allows them to edit and delete them.
+    </p>
+
+    <h3>Jobs  (View History<sup>E</sup>, Manage<sup>E</sup>)</h3>
+    <p>
+        View allows users to see which jobs have been run, and the details of that job. Note that it does not allow viewing of execution logs.
+    </p>
+    <p>
+        Manage allows creating, editing, and deleting jobs. Note that this allows users to run orchestration jobs against arbitrary servers, and should be granted with caution.
+    </p>
+
+    <h3>Variables (View<sup>E</sup>, Manage<sup>E</sup>)</h3>
+    <p>
+        View allows users to see the values (unless obscured) of variables, whereas manage allows users to create, edit, and delete, as well as perform bulk edits. Note that creating or editing multi-scope variables requires system-level permissions.
+    </p>
+
+    <h3>Credentials (Manage<sup>E</sup> and View Passwords<sup>E</sup>)</h3>
+    <p>
+        View Passwords will allow users to view sensitive (encrypted) fields on resource credentials.
+    </p>
+    <div class="attention best-practice">
+
+        <p>
+            This attribute primarily exists to allow some users to view credentials only associated with certain environments.
+        </p>
+    </div>
+    <p>
+        Manage will allow users to create, edit, and delete credentials, as well as view all sensitive (encrypted) fields.
+    </p>
+    <div class="attention technical">
+
+        <p>
+            This could provide transitive access to connected systems, so be very careful when granting this.
+        </p>
+    </div>
+
+    <h3>Orchestration Plans (View<sup>E</sup>, Manage<sup>E</sup>)</h3>
+    <p>
+        View allows users to open orchestration plans.
+    </p>
+    <p>
+        Manage allows creating, editing, and deleting of Orchestration Plans.
+    </p>
+</body>
+</html>

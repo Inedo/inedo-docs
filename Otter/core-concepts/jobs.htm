@@ -1,0 +1,77 @@
+﻿<html>
+<head>
+    <title>Jobs</title>
+    <meta name="subtitle" content="Jobs &amp; Scheduling Changes" />
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <meta name="keywords" content="otter,jobs,executions" />
+    <meta name="sequence" content="300" />
+    <meta name="show-headings-in-nav" content="true" />
+</head>
+<body>
+    <p>
+        Jobs allow you to <a href="plans">remediate configuration drift</a> and <a href="plans">run orchestration plans</a>, either on-demand, at a scheduled time, or on a recurring basis. They can help to minimize downtime and can be set to run when convenient or most appropriate for your enterprise. Jobs give you the control of when, where, and how your infrastructure changes.
+    </p>
+    <p>
+        Jobs ultimately target <a href="servers">Servers</a>, and can do so either directly (by specifying a list of servers), or indirectly
+        (by specifying <a href="../modeling-infrastructure/server-roles">Server Roles</a> and/or
+        <a href="../modeling-infrastructure/environments">Environments</a>). Just as there are two types of plans, there are effectively the same two types of jobs:
+    </p>
+    <ul class="docs">
+        <li>
+            <b><a href="#configuration">Configuration Job</a></b> -
+            remediates configuration drift by bringing the targeted servers to their desired configuration
+        </li>
+        <li>
+            <b><a href="#orchestration">Orchestration Job</a></b> -
+            runs a specified orchestration plan against the targeted servers
+        </li>
+    </ul>
+
+    <p>
+        Either type of job can be run immediately (for example, test servers in unexpected drift), at scheduled times in the future
+        (planned changes to a production server), or on a recurring basis (adding more servers at known peak times).
+    </p>
+
+    <h2 id="configuration" data-title="Configuration Jobs">Configuration Jobs</h2>
+    <p>
+        When there is <a href="servers#drift">configuration drift</a> on a server or role (and you have permission to create a configuration job),
+        you can simply click the <i>Remediate Drift</i> button to schedule a configuration job.
+    </p>
+    <p>
+        <img class="screenshot" src="/resources/documentation/otter/jobs-remediate.png" alt="Remediation Job in Otter" />
+    </p>
+    <p>
+        You can also create a configuration job by clicking on <i>Jobs</i> &gt; <i>Create Job</i>, or create a recurring configuration job (such as updating production
+        servers once a week) by <i>Jobs</i> &gt; <i>Recurring</i> &gt; <i>Create Recurring Job</i>.
+    </p>
+    <h2 id="orchestration" data-title="Orchestration Jobs">Orchestration Jobs</h2>
+    <p>
+        Orchestration jobs are created on the jobs page, and require the selection of an orchestration plan and servers to run against.
+    </p>
+
+    <p>
+        <img class="screenshot" src="/resources/documentation/otter/jobs-orchestration.png" alt="Orchestration Job in Otter" />
+    </p>
+
+    <h3 id="job-templates" data-title="Job Templates">Job Templates</h3>
+    <p>
+        You can also define a job template under <i>Admin</i> &gt; <i>Job Templates</i>; these can be used to pre-populate fields in an orchestration job, and
+        also allow for jobs to be triggered using the <a href="../reference/api/jobs">Job Orchestration API</a>.
+    </p>
+    <p>
+        <img class="screenshot" src="/resources/documentation/otter/job-template.png" alt="Job Templates in Otter" />
+    </p>
+
+    <h2 id="simulation" data-title="Simulations">Simulation Job Runs</h2>
+    <p>
+        You can run a job in a simulation mode, which will run all the steps in a plan without making any changes to the targeted servers. When a simulation is run, Otter will still follow the logic you defined in your plan, and log all the things it's doing, and the changes that <em>would</em> have been made if the job was running normally. This can be helpful when running jobs against unknown servers, remediating unexpected drift, or performing changes on high value servers.
+    </p>
+    <p>
+        <img class="screenshot" src="/resources/documentation/otter/jobs-simulate.png" alt="Simulation Job in Otter" />
+    </p>
+    <p>
+        Simulating a job can help ensure future accuracy by finding any errors that might have occurred in a plan, without affecting current configurations.
+    </p>
+
+</body>
+</html>
