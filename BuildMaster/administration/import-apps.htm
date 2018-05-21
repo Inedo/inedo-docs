@@ -1,0 +1,219 @@
+﻿<html>
+<head>
+    <title>Importing and Exporting Applications</title>
+    <meta name="subtitle" content="Importing &amp; Exporting Applications" />
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <meta name="show-headings-in-nav" content="true" />
+    <meta name="keywords" content="" />
+
+</head>
+<body>
+    <p>
+            BuildMaster can export an application's configuration and history into a <a href="/upack">universal package</a>, and then publish that package to a feed in <a href="/proget">ProGet</a> or a file on a disk. You import applications in the same manner.
+    </p>
+    <h2 id="exporting" data-title="Exporting Applications"> Exporting Applications</h2>
+
+    <p>You can open the application export page from the application settings, or from Admin &gt; Export Applications. When exporting applications, you have the following options:</p>
+    <ul class="docs">
+    <li><strong>Applications</strong> - list of applications to export; this option will only appear when the page is accessed from the administration section</li>
+    <li><strong>Package name </strong>- optional; the name of the universal package to create; this defaults to the application name, and is ignored if multiple applications are selected</li>
+    <li><strong>Package version</strong> - optional, the version of the universal package to create; this defaults to 0.0.0</li>
+    <li><strong>Include history - </strong>when selected, the release history and deployment logs will be included in the package. Note that this does not include artifacts</li>
+    </ul>
+    <p>You will also select how to publish the package, from one of two options:</p>
+    <ul class="docs">
+    <li><strong>Publish to Universal Feed</strong> - a feed on a ProGet instance</li>
+    <li><strong>Save to Disk Path</strong> - a local or network path that the BuildMaster service can write to</li>
+    </ul>
+    <p>Before publishing to a feed, you will need to setup an Inedo Product <a href="/support/documentation/buildmaster/global-components/resource-credentials">resource credential</a> with the URL and optionally an API key to your ProGet server.</p>
+
+    <h2 id="Importing" data-title="Importing Applications"> Importing Applications</h2>
+
+    <p>You can open the application import dialog form the create new application page, or from Admin &gt; Import Application.&nbsp; When importing, you must first select a source package:</p>
+    <ul class="docs">
+    <li><strong>Import from Universal Feed</strong> - import a specific package and version from a ProGet feed</li>
+    <li><strong>Load from Disk Path</strong> -a local or network path that the BuildMaster service can read from</li>
+    </ul>
+    <p>You will also be presented with the following options:</p>
+    <ul class="docs">
+    <li><strong>Application name</strong> - optional; the name of the application to create, this will default to the package name</li>
+    <li><strong>Import history</strong> - when set, any of the release and deployment history that is included in the package will also be imported</li>
+    </ul>
+    <p>Before importing from a feed, you will need to setup an Inedo Product resource credential with the URL and optionally an API key to your ProGet server.</p>
+
+    <h2 id="package-file-format" data-title="Package File Format">Package File Format</h2>
+
+    <p>Applications will be exported as a standard <a href="/support/documentation/proget/core-concepts/packages">universal package</a> which is essentially a zip file containing application configuration and history, along with a JSON-based manifest file (<code>upack.json</code>) that describes the contents of the package.</p>
+
+    <p>In addition to the standard name and version properties, BuildMaster will include <code>a _exportDate</code> and <code>_bmVersion</code> property in <code>upack.json</code>. The package contents will be a collection of JSON-formatted files:</p>
+
+    <p>&nbsp;</p>
+    <table>
+    <tbody>
+    <tr>
+    <td width="195">
+    <p><strong>Filename</strong></p>
+    </td>
+    <td width="312">
+    <p><strong>Description</strong></p>
+    </td>
+    </tr>
+    <tr>
+    <td width="195">
+    <p><strong>deployables.json</strong></p>
+    </td>
+    <td width="312">
+    <p>Deployables and deployable variables</p>
+    </td>
+    </tr>
+    <tr>
+    <td width="195">
+    <p><strong>privileges.json</strong></p>
+    </td>
+    <td width="312">
+    <p>Application-scoped privileges</p>
+    </td>
+    </tr>
+    <tr>
+    <td width="195">
+    <p><strong>pipelines.json</strong></p>
+    </td>
+    <td width="312">
+    <p>Pipelines</p>
+    </td>
+    </tr>
+    <tr>
+    <td width="195">
+    <p><strong>global/pipelines.json</strong></p>
+    </td>
+    <td width="312">
+    <p>Global pipelines that the application uses</p>
+    </td>
+    </tr>
+    <tr>
+    <td width="195">
+    <p><strong>release-templates.json</strong></p>
+    </td>
+    <td width="312">
+    <p>Release templates</p>
+    </td>
+    </tr>
+    <tr>
+    <td width="195">
+    <p><strong>scripts.json</strong></p>
+    </td>
+    <td width="312">
+    <p>Script assets</p>
+    </td>
+    </tr>
+    <tr>
+    <td width="195">
+    <p><strong>text-templates.json</strong></p>
+    </td>
+    <td width="312">
+    <p>Text template assets</p>
+    </td>
+    </tr>
+    <tr>
+    <td width="195">
+    <p><strong>database-change-scripts.json</strong></p>
+    </td>
+    <td width="312">
+    <p>Database change scripts</p>
+    </td>
+    </tr>
+    <tr>
+    <td width="195">
+    <p><strong>config-files.json</strong></p>
+    </td>
+    <td width="312">
+    <p>Configuration file assets</p>
+    </td>
+    </tr>
+    <tr>
+    <td width="195">
+    <p><strong>issue-sources.json</strong></p>
+    </td>
+    <td width="312">
+    <p>Issue sources configured for the application</p>
+    </td>
+    </tr>
+    <tr>
+    <td width="195">
+    <p><strong>issues.json</strong></p>
+    </td>
+    <td width="312">
+    <p>Already synchronized issues and their status</p>
+    </td>
+    </tr>
+    <tr>
+    <td width="195">
+    <p><strong>plans.json</strong></p>
+    </td>
+    <td width="312">
+    <p>Deployment plans</p>
+    </td>
+    </tr>
+    <tr>
+    <td width="195">
+    <p><strong>counts.json</strong></p>
+    </td>
+    <td width="312">
+    <p>Index/counts of all of the items in the import package</p>
+    </td>
+    </tr>
+    <tr>
+    <td width="195">
+    <p><strong>releases.json</strong></p>
+    </td>
+    <td width="312">
+    <p>Historic; releases</p>
+    </td>
+    </tr>
+    <tr>
+    <td width="195">
+    <p><strong>builds.json</strong></p>
+    </td>
+    <td width="312">
+    <p>Historic; release packages</p>
+    </td>
+    </tr>
+    <tr>
+    <td width="195">
+    <p><strong>promotions.json</strong></p>
+    </td>
+    <td width="312">
+    <p>Historic; release package deployments to stages</p>
+    </td>
+    </tr>
+    <tr>
+    <td width="195">
+    <p><strong>executions.json</strong></p>
+    </td>
+    <td width="312">
+    <p>Historic; execution records</p>
+    </td>
+    </tr>
+    <tr>
+    <td width="195">
+    <p><strong>log-scopes.json</strong></p>
+    </td>
+    <td width="312">
+    <p>Historic; log &ldquo;scopes&rdquo; (headings) in log files</p>
+    </td>
+    </tr>
+    <tr>
+    <td width="195">
+    <p><strong>log-entries.json</strong></p>
+    </td>
+    <td width="312">
+    <p>Historic; log text entries within a scope</p>
+    </td>
+    </tr>
+    </tbody>
+    </table>
+    <p>&nbsp;</p>
+    <p>Because these files are intended to only be used by BuildMaster, the precise format of these files is documented only in the source code (but you can <a href="/contact">request source code access</a>).</p>
+</body>
+
+</html>
