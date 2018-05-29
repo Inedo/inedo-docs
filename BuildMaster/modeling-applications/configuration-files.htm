@@ -1,0 +1,215 @@
+﻿<html>
+<head>
+    <title>Configuration Files</title>
+    <meta name="subtitle" content="Configuration Files" />
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <meta name="keywords" content="buildmaster, Configuration" />
+    <meta name="sequence" content="200" />
+    <meta name="show-headings-in-nav" content="true" />
+</head>
+<body>
+    <p>
+        Many applications rely on configuration values that are stored in files that are stored alongside application executable files, such as web.config in .NET or <code>.properties</code> files in Java.
+    </p>
+    <p>
+        These configuration files often need to be managed independently from other files in a release package because their contents will change from environment to environment, and even contain sensitive data such as database connection strings, third-party service URLs, API keys, etc.
+    </p>
+    <p>
+        BuildMaster provides two strategies for managing configuration files: text-templating and configuration file assets.
+    </p>
+    <h2 id="text-templating" data-title="Text-Templating"> Text-templating</h2>
+
+    <p>
+        Text-templating is the preferred method, and relies on the <a href="/support/documentation/various/execution-engine/text-templates/application-configuration-files">text templating in the Inedo Execution Engine</a>, along with configuration variables and conditionals for environment-specific settings.
+    </p>
+    <p>
+        There are several advantages to using this method over configuration file assets:
+    </p>
+    <ul class="docs">
+        <li>
+            Allows for the use of if/else conditionals, loops blocks, and access to all variable functions (i.e. <code>$ArtifactPath(...)</code>)
+        </li>
+        <li>
+            More familiar to developers, and is how nearly all other build and deployment tools manage configuration file deployment
+        </li>
+        <li>
+            You can store the majority of your template in source control, alongside the code, and store only variables in BuildMaster
+        </li>
+    </ul>
+    <h2 id="config-file-assets" data-title="Configuration File Assets"> Configuration Files Assets</h2>
+    <p>
+        Configuration file assets stores multi-instance configuration files, and provides a multi-tabled editor to edit and compare these instances.
+    </p>
+
+    <ul class="docs">
+        <li>
+            File contents are compared before deployment and will not deploy the file if the contents have not changed
+        </li>
+        <li>
+            Deployments are separately logged
+        </li>
+        <li>
+            Version history is maintained and allows for arbitrary comparison between instances and versions
+        </li>
+        <li>
+            You can "manually deploy" outside the scope of a deployment
+        </li>
+        <li>
+            Restrict certain instances from being viewed or edited using <a href="/support/documentation/buildmaster/administration/security">access controls</a>
+        </li>
+    </ul>
+
+    <h2 id="naming" data-title="Naming">Naming</h2>
+    <p>Configuration files should be named after the file they represent, e.g. web.config. These names are unique per application. In cases where there may be multiple files with the same name within an application, aliases may be used to uniquely identify them in the UI. When deploying a non-unique configuration file, make sure to specify the name of the output file directly.</p>
+
+    <h2 id="instances-and-versions" data-title="Instances and Versions">Instances and Versions</h2>
+    <p>Each configuration file contains at least one instance, and instances may be associated with an environment. A configuration file is versioned as a whole – meaning any changes made to any instances increments the version number. Instances should generally be named after the environment the file will be deployed to.</p>
+
+    <h2 id="security-and-permissions" data-title="Security and Permissions">Security and Permissions</h2>
+    <p>Permissions may be assigned to users by associating an environment to a configuration file instance and granting or restricting any of the following tasks:</p>
+    <ul class="docs">
+        <li>Deploy</li>
+        <li>Edit Instance</li>
+        <li>View Instance</li>
+    </ul>
+
+    <h2 id="templating" data-title="Templating">Templating</h2>
+    <p>Configuration file templates are designed to simplify deployment of configuration file instances that contain virtually identical content except for minor, environment-specific differences. The item that contains the placeholders for substitution is referred to as the template, and the item that contains the substitution values is referred to as the template instance. BuildMaster supports three types of transform syntaxes:</p>
+    <h3 id="key-value" data-title="Key-Value Pair">Key-Value Pair</h3>
+    <p>Template instances are specified as newline-separated key-value pairs, and each key-value pair is separated by an equals sign. Additional equals signs on the same line are permitted and included in the replacement value. If the value requires a newline, the <code>$NewLine</code> variable function may be used.</p>
+    <inedo:tab-block>
+
+        <tab name="Template">
+
+<pre>
+&lt;?xml version="1.0" encoding="utf-8" ?&gt;
+&lt;appSettings&gt;
+    &lt;add key="Core.DbConnectionString" value="$ConnectionString" /&gt;
+    &lt;add key="IntegratedWebServer.Enabled" value="True" /&gt;
+&lt;/appSettings&gt;
+</pre>
+        </tab>
+        <tab name="Template Instance">
+            <pre>ConnectionString=Data Source=localhost;Initial Catalog=BuildMaster;Integrated Security=SSPI;</pre>
+        </tab>
+        <tab name="Result">
+<pre>
+&lt;?xml version="1.0" encoding="utf-8" ?&gt;
+&lt;appSettings&gt;
+    &lt;add key="Core.DbConnectionString" value="Data Source=localhost;Initial Catalog=BuildMaster;Integrated Security=SSPI;" /&gt;
+    &lt;add key="IntegratedWebServer.Enabled" value="True" /&gt;
+&lt;/appSettings&gt;
+</pre>
+        </tab>
+    </inedo:tab-block>
+
+    <h3 id="xslt" data-title="XSLT">XSLT</h3>
+    <p>Templates or their instances may be used as XSLT stylesheets and XML data that will be automatically transformed before deployment. In most cases, "XSL Stylesheet as Template" is the desired transform option because the XML data would be stored in the template instances.</p>
+
+    <inedo:tab-block>
+        <tab name="Data">
+            <pre>
+&lt;?xml version="1.0" ?&gt;
+&lt;config&gt;
+    &lt;connection&gt;
+        &lt;value&gt;https://example.org/v1/service1&lt;/value&gt;
+    &lt;/connection&gt;
+    &lt;connection&gt;
+        &lt;value&gt;https://example.org/v1/service2&lt;/value&gt;
+    &lt;/connection&gt;
+    &lt;connection&gt;
+        &lt;value&gt;https://example.org/v1/service3&lt;/value&gt;
+    &lt;/connection&gt;
+&lt;/config&gt;
+    </pre>
+        </tab>
+        <tab name="Stylesheet">
+            <pre>
+&lt;?xml version="1.0" encoding="UTF-8" ?&gt;
+&lt;xsl:stylesheet version="1.0"
+                xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+                xmlns="http://www.w3.org/1999/xhtml"&gt;
+
+    &lt;xsl:output method="xml" indent="yes" encoding="UTF-8" /&gt;
+
+    &lt;xsl:template match="/config"&gt;
+        &lt;html&gt;
+        &lt;head&gt;
+            &lt;title&gt;Testing XML Example&lt;/title&gt;
+        &lt;/head&gt;
+        &lt;body&gt;
+            &lt;h1&gt;Connections&lt;/h1&gt;
+            &lt;ul&gt;
+                &lt;xsl:apply-templates select="connection"&gt;&lt;/xsl:apply-templates&gt;
+            &lt;/ul&gt;
+        &lt;/body&gt;
+    &lt;/html&gt;
+&lt;/xsl:template&gt;
+
+&lt;xsl:template match="connection"&gt;
+    &lt;li&gt;
+        &lt;xsl:value-of select="value" /&gt;
+    &lt;/li&gt;
+&lt;/xsl:template&gt;
+
+&lt;/xsl:stylesheet&gt;
+      </pre>
+        </tab>
+        <tab name="Result">
+            <pre>
+&lt;html xmlns="http://www.w3.org/1999/xhtml"&gt;
+&lt;head&gt;
+    &lt;title&gt;Testing XML Example&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Connections&lt;/h1&gt;
+    &lt;ul&gt;
+        &lt;li&gt;https://example.org/v1/service1&lt;/li&gt;
+        &lt;li&gt;https://example.org/v1/service2&lt;/li&gt;
+        &lt;li&gt;https://example.org/v1/service3&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+      </pre>
+        </tab>
+    </inedo:tab-block>
+
+    <h2 id="variable-replacement" data-title="Variable Replacement">Variable Replacement</h2>
+    <p>All configuration variables, runtime variables, and parameterless variable functions in context are considered when variable replacement occurs before deployment and follows the same resolution rules as <a href="/support/documentation/buildmaster/global-components/configuration-variables">configuration variable replacement</a>. </p>
+    <p>Template file variables are treated as runtime variables when replacement occurs, and therefore override any configuration variables. In practice, it is not recommended to have template instance variables override existing configuration variables or variable functions. It is also not recommended to rely on runtime variables created during a deployment.</p>
+
+    <h3 id="empty-missing-variables" data-title="Empty or Missing">Empty/Missing Variables</h3>
+    <p>Variables or functions that exist but do not have any value (e.g. <code>$DeployableName</code> when no deployable is in context) will be replaced with an empty string, and variables that do not exist will remain as literal strings. It is not recommended to have a configuration file that falls into either of these cases.</p>
+
+    <h3 id="escaping-variables" data-title="Escaping">Escaping Variables</h3>
+    <p>There are many cases where a configuration file needs to contain literal text that appears to be a variable name. In this case, escape any $ signs with another $, e.g. <code>$$DoNotProcess</code>.</p>
+
+    <h2 id="deployment" data-title="Deployment">Deployment</h2>
+
+    <h3 id="automated-deployment" data-title="Automated">Automated Plan-Based Deployment</h3>
+    <p>The most common method of deployment is the Deploy Configuration File operation (<code>Deploy-ConfigFile</code> in OtterScript). When this operation is executed during a deployment, the version of the configuration file instance associated with the release currently in context will be deployed to the target path. If there is an existing file at the target path, it will only be overwritten if its text contents are different than the configuration file text in BuildMaster, otherwise the operation effectively becomes a no-op.</p>
+    <h3 id="manual-deployment" data-title="Manual">Manual One-Off Deployment</h3>
+    <p>Configuration files may also be deployed outside the context of a deployment. It is not generally recommended to deploy configuration files in this manner because much of the context associated with the plan-based deployment is lost (e.g. release number, package number). One-off deployments should be reserved for "emergency" cases that require a configuration change immediately without the overhead of the traditional release cycle.</p>
+
+    <h2 id="history" data-title="History">History</h2>
+    <p>Deployment history for configuration file instances is stored for configuration files deployed from BuildMaster. The instance, version number, user, and date of deployment is visible, as well as the ability to compare arbitrary versions to highlight what changes were made to an instance.</p>
+
+    <h2 id="association-with-releases" data-title="Association with Releases">Association with Releases</h2>
+    <p>A release may be associated with a specific version of a configuration, or if unspecified, associated with the latest version. By default, a release is associated with the latest configuration file version. When a release is deployed to the final stage in a pipeline, the current latest configuration file version will become associated with that release to preserve the contents at that point in time, facilitating future rollbacks if necessary.</p>
+
+    <h2 id="differences">Differences Between Configuration File Strategies</h2>
+    <p>
+        While using text templates is a powerful yet simple replacement for <a href="/support/documentation/buildmaster/modeling-applications/configuration-files">Configuration File Assets</a>,
+        there are some important differences:
+    </p>
+    <ul class="docs">
+        <li>Configuration file assets will compare file contents before deployment and will not deploy the file if the contents have not changed</li>
+        <li>Configuration file assets maintain version history and allow arbitrary comparison between instances and versions</li>
+        <li>Configuration file assets allow "manual deployment" outside the scope of a deployment</li>
+        <li>In contrast to configuration file assets, text templates allow the use of if/else conditionals, loops blocks, and access to all variable functions (i.e. <code>$ArtifactPath(...)</code>)</li>
+        <li>Text templates only support OtterScript-style variable syntax (i.e. the <a href="/support/kb/1144/buildmaster-legacy-features#variable-syntax" target="_blank">legacy %-syntax and $-syntax</a> are not supported)</li>
+    </ul>
+
+
+</body>
+</html>

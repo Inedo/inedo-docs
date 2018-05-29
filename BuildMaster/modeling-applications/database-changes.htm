@@ -1,0 +1,119 @@
+﻿<html>
+  <head>
+    <title>Database Changes</title>
+      <meta name="subtitle" content="Database Changes" />
+      <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+      <meta name="keywords" content="buildmaster, database" />
+      <meta name="show-headings-in-nav" content="true" />
+      <meta name="sequence" content="100" />
+  </head>
+  <body>
+    
+      <p>
+            Database changes are not only more complicated to deploy than files, but they tend to be riskier. BuildMaster has several features to help you manage and automate database changes for your releases, and supports all four of the major relational databases:
+         
+      </p>
+      <ul class="docs">
+          <li>
+              SQL Server
+          </li>
+          <li>
+              MYSql
+          </li>
+          <li>
+              Oracle
+          </li>
+          <li>
+              Postgres
+          </li>
+      </ul>
+      <p>
+            Database support is implemented through an <a href="/support/documentation/buildmaster/administration/extensions">extensible feature</a>, and additional databases may be supported by creating custom extensions.    
+      </p>
+      <h2 id="database-connections" data-title="Database Connections">Database Connections</h2>
+      <p>
+            Database connections are essentially named database connection strings for a specific type of database (SQL Server, MySQL, Oracle, Postgres, etc.) that are associated with an <a href="/support/documentation/buildmaster/infrastructure/environments">environment</a>.
+      </p>
+      <p>
+            The <a href="/support/documentation/buildmaster/reference/operations">database operations</a> rely on these connection names, whereas the environment is used for security purposes:     
+      </p>
+      <ul class="docs">
+<li>
+Database connections can be restricted to deployment plans targeting a particular environment. This means users who have permission to create and execute deployment plans in testing environments may not use database connections meant for production environments. 
+</li>
+<li>
+Users may be prevented from viewing these database connection strings by defining an <a href="/support/documentation/buildmaster/administration/security">access control</a> 
+</li>
+      </ul>
+      <p>
+            Database connections are also associated with a server. This server is only for manual database change script deployments. When selected, the deployment will run from the selected server, as if a "for server" statement was used in OtterScript.
+      </p>
+
+
+      <h2 id="Database-operations" data-title="Database Operations"> Database Operations</h2>
+   <p>
+        BuildMaster has several built-in database operations that you can use in your <a href="/support/documentation/buildmaster/core-concepts/deployment-plans">deployment plans</a>. They all require a database connection to use.
+   </p>
+   <p>
+        <a href="/support/documentation/buildmaster/reference/operations/databases/execute-database-statement">Execute Database Statement</a> will run the specified SQL Statement against the specified connection.  
+   </p>
+   <p>
+        <a href="/support/documentation/buildmaster/reference/operations/databases/execute-database-scripts-on-disk">Execute Database Scripts on Disk</a> will read the contents of the specified files, and execute them as statements against the specified connection.     
+   </p>
+   <p>
+        <a href="/support/documentation/buildmaster/reference/operations/databases/backup-database">Backup Database</a> and <a href="/support/documentation/buildmaster/reference/operations/databases/restore-database">Restore Database</a> will perform a backup or restore of a specific database to/from a file on disk. This run a simple SQL command specific to the database connection type (SQL Server, MySQL, Oracle, etc.), and does not offer many options. For a full-feature backup or restore, use the Execute Database Statement operation.    
+   </p>
+   <p>
+        <a href="/support/documentation/buildmaster/reference/operations/databases/execute-database-change-scripts">Execute Database Change Scripts</a> and <a href="/support/documentation/buildmaster/reference/operations/databases/build-database-updater-executable">Build Database Updater Executable</a> are described in more detail below.     
+   </p>
+   <h2 id="Object-deployment" data-title="Object Deployment"> Object Deployment</h2>
+   <p>
+        In order to deploy database objects (stored procedures, views, etc.) with BuildMaster, you should first put these objects in source control. This is accomplished by generating SQL Script files that drop and create the object, as prescribed in Database Changes Done Right.
+   </p>
+   <p>
+        Next, you can use the source control operations to get files on disk, and then use the <a href="/support/documentation/buildmaster/reference/operations/databases/execute-database-scripts-on-disk">Execute Database Scripts on Disk</a> to execute those scripts. 
+   </p>
+   <h2 id="change-scripts" data-title="Change Scripts(DDL/DML)"> Change Scripts (DDL/DML)</h2>
+<p>
+        Some scripts that you run against a database can make irrevocable changes to your database. For example, a data-definition (DDL) script can drop a column from a table and a data-manipulation (DML) script may delete hundreds of rows.    
+</p>
+<p>
+        Because these types of scripts can be run once (and only once), and cannot be undone without running another script or restoring a database backup, they can be particularly challenging to incorporate into your release process. BuildMaster can help manage this process with database change script assets.    
+</p>
+
+<p>
+        You can add a database change script asset by going to the application’s Assets > SQL Scripts, and adding a script.  These scripts may then be manually executed from the user interface, or deployed within a deployment plan using the <a href="/support/documentation/buildmaster/reference/operations/databases/execute-database-change-scripts">Execute Database Change Scripts</a>> operation.
+</p>
+<h3 id="release-number-ordering" data-title="Release Number Ordering">Release Number Ordering</h3>
+<p>
+        When adding a change script, you will select a release to associate the script with. This release is used by the Execute Database Change Scripts operation to determine whether or not the script should be executed during a deployment.    
+</p>
+<p>
+        For example, if you select "1.2.0" as the release, and deploy a release package for release "1.1.0", then the script will not be executed because it’s for a later release. However, if you deploy a release package for "2.0.0", then all database change scripts associated with earlier releases (1.2.0, 1.1.0, etc.) will be executed. 
+</p>
+<p>
+        This logic allows you to restore an older database and bring it up to the target version.  
+</p>
+<h3 id="metadata-table" data-title="Metadata Table">Metadata Table</h3>
+<p>
+        Database change script executions are tracked using a lightweight table that is automatically added to the target database when change scripts are first run against it. If you set the Initialize Database property to false on the Execute Database Change Scripts operation, and this table does not already exist, an error will occur. This can guard against mistaken connection strings.   
+</p>
+<h3 id="metadata-execution" data-title="Metadata Execution">Metadata Execution</h3>
+<p>
+        To manually deploy a database change script, you can click the deploy button on the change script listing page, and select the target connection. This will cause an execution to be dispatched that runs the change script against the specified connection.    
+</p>
+<h2 id="database-deployment-tool" data-title="Database Deployment Tool">Database Deployment Tool</h2>
+<p>
+        In addition to running change scripts from within BuildMaster, sometimes it is necessary to deploy change scripts to a system not associated with the installation. BuildMaster is able to generate a simple command-line executable that has no dependencies (other than .NET 4.5) and may be used to execute change scripts against any arbitrary database, just as if this were done from within BuildMaster.     
+</p>
+<p>
+        You can use the <a href="/support/documentation/buildmaster/reference/operations/databases/build-database-updater-executable">Build Database Updater Executable</a> operation within a deployment plan to generate this executable, or do it from the database change scripts page in the user interface.    
+</p>
+<h3 id="change-script-package" data-title="Change Script Package">Using the Change Script Package</h3>
+<p>
+        The executable generated for running change scripts is not designed to be user-friendly. It is a simple command-line utility meant to be used by developers or wrapped by some type of installer. The tool may be run interactively, or arguments may be specified using the command-line. 
+</p>
+
+
+  </body>
+</html>

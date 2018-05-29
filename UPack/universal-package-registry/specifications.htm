@@ -1,0 +1,159 @@
+﻿<html>
+<head>
+    <title>Universal Package Registry Specifications</title>
+    <meta name="subtitle" content="Universal Package Registry Specifications" />
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <meta name="keywords" content="proget, romp, universal-packages" />
+    <meta name="show-headings-in-nav" content="true" />
+    <meta name="sequence" content="20" />
+</head>
+<body>
+   
+    <p>
+        A Universal Package Registry has two components: a registry file and ephemeral lock file. A package cache can also be added but it's optional. Its layout on disk is as follows:
+    </p>
+
+    <p>
+        <code>
+            &lsaquo;registry-root&rsaquo;\
+                .lock
+                installedPackages.json
+                packageCache\
+                    &lsaquo;group$packageName&rsaquo;\
+                        &lsaquo;packageName.version&rsaquo;.upack
+        </code>
+    </p>
+    <p>
+        Like <a href="/support/documentation/upack/universal-packages/package-format">with universal packages</a>, you can add any number of files or directories outside of these minimal requirements. However, we strongly recommend that you prefix these files and folders with an underscore (_) as not to clash with files or folders that are added in a future version of the specification.
+    </p>
+    <h2 id="interacting" data-title="Locking Behavior">Interacting with a Universal Package Registry and the Lock File</h2>
+    <p>
+        The lack of a registry root directory or installedPackages.json file is not an error condition, but implies that no packages are registered (i.e. have been installed). An invalid <code>installedPackages.json</code> file (i.e. not readable as JSON or invalid data) is an error condition and should not be automatically remediated.
+    </p>
+    <p>
+        The .lock file is used to indicate that another process is currently interacting with the registry. It should only be used when atomic reading/writing of the metadata file; modifying the package cache should not cause the repository to be locked.
+    </p>
+    <p>
+        When a .lock file exists, its modification date should be checked against the current system time. If the difference is greater than ten seconds, the other process is assumed to have crashed and the lock file should be deleted. Otherwise, the file should be rechecked in this manner until the lock is freed.
+    </p>
+    <p>
+        When no .lock file exists, a process should create a lock file with two lines (\r or \r\n): a human-readable description of the lock (generally the process name), and a lock token (generally a GUID). If, at the completion of the operation, the lock token matches, then file should be deleted.
+    </p>
+    <p>
+        No operation should take more than a second (let alone ten), and the user should be notified of all exceptions (locked registry, mismatched token).
+    </p>
+    <h2 id="file-specification" data-title="Installed Packages JSON Format">Universal Package Registry Files</h2>
+    <p>
+        The registry file (installedPackages.json) is a JSON-based array of objects with the following properties.
+    </p>
+    <table>
+        <thead>
+            <tr>
+                <th>Property</th>
+                <th>Format</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>group</code></td>
+                <td>
+                    <i>see <a href="/support/documentation/upack/feed-api">package metadata specs</a></i>
+                </td>
+            </tr>
+            <tr>
+                <td><code>name</code><sup>R</sup></td>
+                <td>
+                    <i>see <a href="/support/documentation/upack/feed-api">package metadata specs</a></i>
+                </td>
+            </tr>
+            <tr>
+                <td><code>version</code><sup>R</sup></td>
+                <td>
+                    <i>see <a href="/support/documentation/upack/feed-api">package metadata specs</a></i>
+                </td>
+            </tr>
+            <tr>
+                <td><code>path</code></td>
+                <td>
+                    A <i>string</i> of the absolute path on disk where the package was installed to
+                </td>
+            </tr>
+            <tr>
+                <td><code>feedUrl</code></td>
+                <td>
+                    A <i>string</i> of an absolute url of the universal feed where the package was installed from
+                </td>
+            </tr>
+            <tr>
+                <td><code>installationDate</code></td>
+                <td>
+                    A <i>string</i> representing the UTC date when the package was installed, in ISO 8601 format (yyyy-MM-ddThh:mm:ss)
+                </td>
+            </tr>
+            <tr>
+                <td><code>installationReason</code></td>
+                <td>
+                    A <i>string</i> describing the reason or purpose of the installation
+                    <br /><br />
+                    <i>For example, <a href="/buildmaster">BuildMaster</a> uses</i> <code>{Application Name}</code> <code>v{Release Number}</code> <code>#{Package Number}</code> <code>(ID{Execution-Number})</code>
+                </td>
+            </tr>
+            <tr>
+                <td><code>installationUsing</code></td>
+                <td>
+                    A <i>string</i> describing the mechanism the package was installed with; there are no format restrictions, but we recommend treating it like a User Agent string and including the tool name and version
+                    <br /><br />
+                    <i>For example, BuildMaster uses</i> <code>BuildMaster/5.6.11</code>
+                </td>
+            </tr>
+            <tr>
+                <td><code>installationBy</code></td>
+                <td>
+                    A <i>string</i> describing the person or service that performed the installation
+                    <br /><br />
+                    <i>For example, BuildMaster uses the user who triggered the deployment or SYSTEM if it was a triggered/scheduled deployment</i>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <p>
+        An <code>R</code> denotes a required property, and the object may contain additional properties as needed.
+    </p>
+    
+    <div class="attention best-practice">
+        <img src="/resources/images/icons/best-practices.png" />
+        <p>
+            We <strong>strongly recommended</strong> that you prefix these properties with an underscore (_) as to not clash with property names that may be added to the specification later.
+        </p>
+    </div>
+    <h2 id="uniqueness" data-title="Package Uniqueness">Package Uniqueness and Data Constraints </h2>
+    <p>
+        Only one version of a package may be registered at a time. Uniqueness is determined by a combination of the group (or lack of a group) and package name. A future version of this specification may allow for multiple versions of a package, but that will be an “opt-in” setting likely defined in a (to be specified) registry configuration file.
+    </p>
+    <h2 id="package-cache" data-title="Package Cache">Package Cache</h2>
+    <p>
+        The package cache is simply a directory containing package files that may currently be installed. It must be named <code>packageCache</code>, and contain package files (<code>packageName.version.upack</code>) stored in subdirectories comprised of the group name (with $ replacing the /), a $, and the package name. For example:
+    </p>
+    <p>
+        <code>
+            &lsaquo;registry-root&rsaquo;\
+                packageCache\
+                    $hdars\
+                         hdars.1.2.3.upack
+                         hdars.1.2.4.upack
+                         hdars.2.0.0.upack
+                    accounting$apps$accounts\
+                         accounts.1.0.2-beta.upack
+        </code>
+    </p>
+
+   
+    <div class="attention best-practice">
+        <img src="/resources/images/icons/best-practices.png" />
+        <p>
+            We <strong>strongly recommend</strong> that cache usage be explicitly opt-in (both when downloading and installing packages). Default package caching generally causes more problems than it helps, and can occupy a lot of disk space if not monitored.
+        </p>
+    </div>
+</body>
+
+</html>

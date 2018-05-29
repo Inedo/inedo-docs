@@ -1,0 +1,222 @@
+﻿<html>
+<head>
+    <title>Silent Installation</title>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <meta name="keywords" content="otter,installation" />
+</head>
+<body>
+    <p>
+        <a href="/otter">Otter</a> helps you automate configuration and installation of <em>other</em> software on your servers,
+        and to help you automate and configure Otter, the fully-automated silent installer can perform initial <a href="#silent-installation-options">installation</a>
+        and <a href="#silent-upgrade-options">upgrades</a>. You could even use <em>another</em> instance of Otter to upgrade 
+        Otter... and another instance to upgrade that one, until you've reached Inception.
+    </p>
+
+    <p>See the <a href="#silent-agent-install">Otter Agent Silent Install Options</a> for how to silently install agents as well; note that you will not need to upgrade agents, as they are automatically upgraded when you upgrade Otter.</p>
+
+    <h3 id="silent-installation-options">Silent Install Options</h3>
+    <table>
+        <tr>
+            <td>/S</td>
+            <td><b>Required for a silent install.</b> If this is not specified, the UI will be displayed.</td>
+        </tr>
+        <tr id="edition-arg">
+            <td>/Edition=&lt;value&gt;</td>
+            <td><b>Required for a silent install.</b> The desired Otter edition: May be <i>Free</i>, <i>Trial</i>, or <i>LicenseKey</i>.</td>
+        </tr>
+        <tr>
+            <td>/EmailAddress=&lt;value&gt;</td>
+            <td>The email address used for requesting a license key. Required if <a href="#edition-arg">Edition</a> is <i>Express</i> or <i>Trial</i>.</td>
+        </tr>
+        <tr>
+            <td>/FullName=&lt;value&gt;</td>
+            <td>The user's full name used for requesting a license key. Required if <a href="#edition-arg">Edition</a> is <i>Express</i> or <i>Trial</i>.</td>
+        </tr>
+        <tr>
+            <td>/LicenseKey=&lt;value&gt;</td>
+            <td>License key to use. Only used if <a href="#edition-arg">Edition</a> is <i>LicenseKey</i>.</td>
+        </tr>
+        <tr id="targetpath-arg">
+            <td>/TargetPath=&lt;value&gt;</td>
+            <td>Root path where Otter will be installed. The default is <i>%ProgramFiles%</i>\Otter.</td>
+        </tr>
+        <tr>
+            <td>/ASPNETTempPath=&lt;value&gt;</td>
+            <td>Path where ASP.NET will store temporary files for the Otter web application. The default is <i>%ProgramData%</i>\Otter\Temporary ASP.NET Files.</td>
+        </tr>
+        <tr>
+            <td>/WebAppPath=&lt;value&gt;</td>
+            <td>Path where the Otter web application is installed. The default is [<a href="#targetpath-arg">TargetPath</a>]\WebApp.</td>
+        </tr>
+        <tr>
+            <td>/ServicePath=&lt;value&gt;</td>
+            <td>Path where the Otter service is installed. The default is [<a href="#targetpath-arg">TargetPath</a>]\Service.</td>
+        </tr>
+        <tr>
+            <td>/ExtensionsPath=&lt;value&gt;</td>
+            <td>Path where the extension library is located. The default is <i>%ProgramData%</i>\Extensions.</td>
+        </tr>
+        <tr>
+            <td>/ExtensionsTempPath=&lt;value&gt;</td>
+            <td>Path where extensions are extracted and loaded from. The default is <i>%ProgramData%</i>\ExtensionsTemp.</td>
+        </tr>
+        <tr>
+            <td>/ExecutionTempPath=&lt;value&gt;</td>
+            <td>Path for the default working directory for executions using the local agent. The default is <i>%ProgramData%</i>\Otter\Executions.</td>
+        </tr>
+        <tr>
+            <td>/ConnectionString=&lt;value&gt;</td>
+            <td>SQL Server connection string Otter will use to connect to the database. The default is <i>Data Source=localhost; Initial Catalog=Otter; Integrated Security=True;</i>.</td>
+        </tr>
+        <tr id="port-arg">
+            <td>/Port=&lt;value&gt;</td>
+            <td>Port number the Otter web application will listen to. The default is <i>81</i>.</td>
+        </tr>
+        <tr id="useintegratedwebserver-arg">
+            <td>/UseIntegratedWebServer=&lt;value&gt;</td>
+            <td>When <i>true</i>, the integrated web server is used to host Otter; when <i>false</i>, IIS is used. The default is <i>true</i>.</td>
+        </tr>
+        <tr>
+            <td>/WebServerPrefixes=&lt;value&gt;</td>
+            <td>Prefixes used by the integrated web server. The default is http://*:[<a href="#port-arg">Port</a>]/.</td>
+        </tr>
+        <tr>
+            <td>/InstallSqlExpress</td>
+            <td>Installs a SQL Express instance named INEDO. The default is <i>false</i>.</td>
+        </tr>
+        <tr id="useraccount-arg">
+            <td>/UserAccount=&lt;value&gt;</td>
+            <td>User account of the Otter service and web application. The default is <i>NetworkService</i>.</td>
+        </tr>
+        <tr id="password-arg">
+            <td>/Password=&lt;value&gt;</td>
+            <td>Password of the user account of the Otter service and web application. Only used when <a href="#useraccount-arg">UserAccount</a> is not one of the standard service accounts.</td>
+        </tr>
+        <tr>
+            <td>/WebAppUserAccount=&lt;value&gt;</td>
+            <td>User account of the Otter web application. The default is [<a href="#useraccount-arg">UserAccount</a>].</td>
+        </tr>
+        <tr>
+            <td>/WebAppUserAccountPassword=&lt;value&gt;</td>
+            <td>Password of the user account of the Otter web application. The default is [<a href="#password-arg">Password</a>].</td>
+        </tr>
+        <tr>
+            <td>/ServiceUserAccount=&lt;value&gt;</td>
+            <td>User account of the Otter service. The default is [<a href="#useraccount-arg">UserAccount</a>].</td>
+        </tr>
+        <tr>
+            <td>/ServiceUserAccountPassword=&lt;value&gt;</td>
+            <td>Password of the user account of the Otter service. The default is [<a href="#password-arg">Password</a>].</td>
+        </tr>
+        <tr>
+            <td>/ConfigureIIS</td>
+            <td>Creates an IIS website and application pool to host the Otter web application. The default is <i>false</i>.</td>
+        </tr>
+        <tr>
+            <td>/LogFile=&lt;value&gt;</td>
+            <td>If specified, writes out a detailed log file of the installation process to the specified path value.</td>
+        </tr>
+
+    </table>
+    <h4>Example</h4>
+    <p style="margin-bottom:5px;">Install Otter using the defalt settings with license key XXXXX:</p>
+    <div style="font-family: Consolas, 'Courier New'; background: black; color:#ccc; width: 400px; border: solid #aaa; border-radius: 5px; padding: 5px;">
+        OtterSetup.exe /S /LicenseKeys=XXXXX
+    </div>
+    <h3 id="silent-upgrade-options" style="margin-top: 20px;">Silent Upgrade Options</h3>
+    <table>
+        <tr>
+            <td>/S</td>
+            <td>Required for a silent upgrade. If this is not specified, the UI will be displayed.</td>
+        </tr>
+        <tr>
+            <td>/Upgrade</td>
+            <td>Required to perform an upgrade. If this is not specified, the upgrade is not performed.</td>
+        </tr>
+        <tr>
+            <td>/BackupDatabase</td>
+            <td>Backs up the Otter database before the upgrade begins. The default is <i>true</i>.</td>
+        </tr>
+        <tr>
+            <td>/DatabaseBackupPath=&lt;value&gt;</td>
+            <td>The path to save the backup of the Otter database. The default is <i>[SysDrive]:\OtterBackups</i>.</td>
+        </tr>
+        <tr>
+            <td>/ConnectionString=&lt;value&gt;</td>
+            <td>SQL connection string used for upgrading Otter's database schema. The default is whatever connection string the Otter service is currently using.</td>
+        </tr>
+        <tr>
+            <td>/LogFile=&lt;value&gt;</td>
+            <td>If specified, writes out a detailed log file of the installation process to the specified path value.</td>
+        </tr>
+    </table>
+    <h4>Example</h4>
+    <p style="margin-bottom:5px;">Upgrade Otter using the default settings:</p>
+    <div style="font-family: Consolas, 'Courier New'; background: black; color:#ccc; width: 400px; border: solid #aaa; border-radius: 5px; padding: 5px;">
+        OtterSetup.exe /S /Upgrade
+    </div>
+
+    <h3 id="silent-agent-install">Agent Silent Install Options</h3>
+    <table>
+        <tr>
+            <td>/S</td>
+            <td>Required for a silent install. If this is not specified, the UI will be displayed.</td>
+        </tr>
+        <tr id="targetpath-arg">
+            <td>/TargetPath=&lt;value&gt;</td>
+            <td>Root path where the agent will be installed. The default is <i>%ProgramFiles%</i>\InedoAgent.</td>
+        </tr>
+        <tr id="port-arg">
+            <td>/Port=&lt;value&gt;</td>
+            <td>Port number the agent will listen to. The default is <i>46336</i>.</td>
+        </tr>
+        <tr id="temppath-arg">
+            <td>/TempPath=&lt;value&gt;</td>
+            <td>Root path of the directory used by the agent for temporary files. The default is <i>%ProgramData%</i>\InedoAgent.</td>
+        </tr>
+        <tr>
+            <td>/OtterRootPath=&lt;value&gt;</td>
+            <td>Path where the Otter-specific Agent binaries will be stored. The default is [<a href="#temppath-arg">TempPath</a>]\Otter.</td>
+        </tr>
+
+        <tr id="useraccount-arg">
+            <td>/UserAccount=&lt;value&gt;</td>
+            <td>User account of the agent. The default is <i>LocalSystem</i>.</td>
+        </tr>
+        <tr id="password-arg">
+            <td>/Password=&lt;value&gt;</td>
+            <td>Password of the user account of the agent. Only used when <a href="#useraccount-arg">UserAccount</a> is not one of the standard service accounts.</td>
+        </tr>
+        <tr>
+            <td>/Clients=&lt;value&gt;</td>
+            <td>Semicolon-separated list of client IP addresses which are allowed to connect to the agent. Any client may connect if this is not specified.</td>
+        </tr>
+        <tr>
+            <td>/ServiceName=&lt;value&gt;</td>
+            <td>The name of the Windows Service that will be installed. The default is <i>INEDOAGENTSVC</i>.</td>
+        </tr>
+
+        <tr>
+            <td>/Security=&lt;value&gt;</td>
+            <td>Either AES, SSL, or None. When SSL is specified, a valid <a href="#certname-arg">CertificateName</a> must be specified. The default is AES.</td>
+        </tr>
+        <tr>
+            <td>/CertificateName=&lt;value&gt;</td>
+            <td>The friendly name of a certificate stored in the LocalMachine store.</td>
+        </tr>
+        <tr>
+            <td>/EncryptionKey=&lt;value&gt;</td>
+            <td>A 32-character hex string used for AES encryption.</td>
+        </tr>
+        <tr>
+            <td>/LogFile=&lt;value&gt;</td>
+            <td>If specified, writes out a detailed log file of the installation process to the specified path value.</td>
+        </tr>        
+    </table>
+    <h4>Example</h4>
+    <p style="margin-bottom:5px;">Install an agent with no encryption (bad idea, by the way) that listens on port 1000 (also not a great idea, because 46336 is the registered Inedo port):</p>
+    <div style="font-family: Consolas, 'Courier New'; background: black; color:#ccc; width: 400px; border: solid #aaa; border-radius: 5px; padding: 5px;">
+        OtterAgentSetup.exe /S /EncryptionType=None /Port=1000
+    </div>
+</body>
+</html>

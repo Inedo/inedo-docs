@@ -1,0 +1,128 @@
+﻿<html>
+<head>
+   <title>Applications</title>
+    <meta name="subtitle" content="Applications" />
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <meta name="keywords" content="buildmaster, pipelines" />
+    <meta name="show-headings-in-nav" content="true" />
+    <meta name="sequence" content="700" />
+</head>
+<body>
+   <p>
+        Applications represent the components and services that you release in BuildMaster, and contain the pipelines, templates, variables, and plans used to perform releases. You can also use applications for security access control by granting and denying tasks to different users across applications. 
+   </p> 
+   <h2 id="creating-new-applications" data-title="Creating a New Application"> Creating a New Application</h2> 
+   <p>
+        You can open the Create New Application page from the application selector drop down or the applications overview page.    
+   </p>
+   <h2 id="cloning-template-applications" data-title="Cloning and Template Applications">Cloning and Template Applications</h2> 
+<p>
+        There are times you may want to copy or "clone" an application, for example:      
+</p>  
+<ul class="docs">
+      <li><b>Templating</b> – using an application with a common set of variables and other configuration that can serve as a template for creating new applications
+        
+      </li>   
+      <li><b>Refactoring</b> – instead of doing a major refactor on an existing application, you can clone it to a new application and modify the new application instead
+    </li>  
+</ul>
+<p>
+        You can use the <a href="/support/documentation/buildmaster/administration/import-apps">application import and export</a> feature for this. When performing a one-time application clone (such as of a refactor), there is little value in publishing the exported package to a ProGet feed. However, for template applications, maintaining these in a ProGet feed is considered a best practice.
+</p>
+<h3 id="legacy-clone" data-title="Legacy Clone Feature">Legacy Application Clone Feature</h3>
+<p>
+        Prior to BuildMaster v6, the only way to clone applications was through the feature now called legacy application cloning. Importing applications is strongly preferred, but if you need to copy <em>legacy features</em> or configuration such as <em>legacy deployment plans</em>, you can use this feature from Admin > Legacy Features.   
+</p>
+<h2 id="deactivating-puring-apps" data-title="Deactivating and Purging Applications">Deactivating and Purging Applications</h2> 
+<p>
+        You can deactivate or purge applications from Admin > Deactivate and Purge Applications.
+</p>
+<p>
+        Deactivating an application will cancel all of its releases, deactivate automatic builds, and remove it from navigation and other menus throughout BuildMaster, while keeping historical data for the application. You can still access a deactivated application by URL directly.    
+</p>
+<p>
+        If you do not wish to keep any data or history for these applications, you may purge them from the system completely.   
+</p>
+<h2 id="apps-groups" data-title="Application Groups">Application Groups</h2> 
+<p>
+        Applications may be placed in an application group, which serves a few purposes:
+</p>
+<ul class="docs">
+      <li>  Visually grouping related applications in the user interface</li>
+        <li>Common set of variables across applications</li>
+        <li>Permissions that are shared across all applications in the group</li>
+        
+
+</ul>
+<p>
+        Application groups are created from the application settings page, by typing in the name of a group that doesn’t exist. Empty application groups are automatically deleted.
+</p>
+<p>
+        Once an application group has been created in this manner, you can use that group name when scoping variables (Admin > Variables) or access controls (Admin > Tasks).
+</p>
+
+<h2 id="package-triggers" data-title="Release Package Triggers">Release Package Triggers</h2> 
+<p>
+        You can use a release package trigger to periodically create and deploy a new release package for active releases of your application. This is most commonly used for scenarios such as a nightly deployment of build artifacts from a CI/build server like Jenkins or TeamCity. 
+</p>
+<h2 id="deployables" data-title="Deployables">Deployables</h2> 
+<div class="attention technical">
+        <p>
+                Deployables are an advanced feature, and with the introduction of OtterScript and the Inedo Execution Engine in BuildMaster v5, they offer significantly less benefits than in previous versions. 
+        </p>
+    </div>
+<p>
+        A deployable is intended to represent a "deployable component" of an application. For example, if you had a multi-tier application called HDARS, it might have an HDARS-Web, HDARS-Service, and HDARS-API deployable to represent each of the corresponding tiers.   
+</p>
+<p>
+        You can add deployables to your application from the application settings tab, and once you create a deployable for your application, you will be able to select it for use in some contexts, including:
+</p>
+<ul class="docs">
+   <li> In the Visual Plan Editor, you will be given the option to specify a deployable name</li>    
+      <li> When creating a release, you will select which deployables are to be included</li>    
+       <li> You can specify a deployable for database connections and change scripts</li>    
+        <li>You can filter and search for releases based on the deployables they include</li>    
+        
+
+</ul>
+<p>
+        If you add an "imported deployable" from another application, you will select a specific release of the other application when creating a release.
+</p>
+<h3 id="deployables-and-otterscript" data-title="Deployables and OtterScript">Deployables and OtterScript</h3>
+<p>
+        In deployment plans, a deployable is used in a general block as follows:
+</p>
+<pre>
+for deployable HDARS-Web
+{
+    ... operations ...
+}      
+</pre>
+<p>
+        This will set the "current deployable in context" to HDARS-Web, which means that if HDARS-Web is not included in the release, then the block is skipped.
+</p>
+<p>
+        You can also add variable key/value pairs to a deployable. When a deployable in context (as the case above), that variable will be evaluated.
+</p>
+<p>
+        If HDARS-Web was an "imported deployable", then $ReleaseNumber would resolve to that application's number instead of the current release number.    
+</p>
+
+<div class="attention best-practice">
+        <img src="/resources/images/icons/best-practices.png" />
+       
+       
+        <p>
+               <b>Best Practices:</b> While we don’t consider them a legacy feature, they are mostly a "vestigial" feature that allowed previous versions of BuildMaster to perform "partial deployments" and cross-application orchestration (dependencies, artifacts, etc.).
+        </p>
+        <p>
+                However, you can also accomplish those goals through the use of configuration variables, release templates, and the "source" tab of the artifact operations. This may be more- or less-intuitive, depending on your familiarity with BuildMaster.    
+        </p>
+        <p>
+                For monolithic applications, deployables are still quite useful, in that they are easier to visualize and work with than variables. 
+        </p>
+        
+    </div>
+
+</body>
+</html>
