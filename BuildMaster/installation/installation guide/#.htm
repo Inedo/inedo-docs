@@ -1,0 +1,153 @@
+﻿<html>
+<head>
+    <title>BuildMaster Installation Guide</title>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <meta name="keywords" content="buildmaster,installation" />
+    <meta name="sequence" content="20" />
+</head>
+<body>
+    <p>
+        Getting BuildMaster up-and-running takes just a few minutes: just <a href="/buildmaster/download">download</a> and
+        run the installer. This guide will provide step-by-step instructions, as well provide some detail as to what's
+        happening behind the scenes.
+    </p>
+
+    <h2 id="pre-install" data-title="Pre-Installation">1. Pre-Installation Check List</h2>
+    <p>
+        BuildMaster doesn't have any intense server requirements, and supports all modern version of Windows that Microsoft supports (see <a href="https://support.microsoft.com/en-us/help/13853/windows-lifecycle-fact-sheet">Windows lifecycle fact sheet</a>). The recommended requirements are:
+        <ul class="docs">
+            <li>
+                <strong>Minimum</strong> – 2 Core CPU, 2 GB RAM, 1 GB for storage
+            </li>
+            <li>
+                <strong>Recommended Average/Typical</strong> – 2 Core CPU, 4 GB RAM, 10 GB storage
+            </li>
+            <li>
+                <strong>Recommended Large </strong> –  4 Core CPU, 8 GB RAM, 16 GB Storage
+            </li>
+
+        </ul>
+    </p>
+    <p>
+        Before installing, consider the following:
+    </p>
+    <ul class="docs">
+        <li>
+            <strong>.NET Framework 4.5.2+</strong> – BuildMaster requires .NET 4.5.2, and Windows will prompt about this if you don't already have it
+        </li>
+        <li>
+            <strong>Web Server</strong> – BuildMaster has its own web server, but can also be hosted in Microsoft IIS as well;
+            if you want to use IIS, make sure it <em>and</em> ASP.NET 4.5 are installed first (see <a href="https://support.microsoft.com/en-us/kb/2736284">KB2736284</a> for instructions)
+        </li>
+        <li>
+            <strong>Database Server </strong>– BuildMaster does require Microsoft SQL Server, but the BuildMaster installer can install
+            SQL Express for you
+        </li>
+        <li>
+            <strong>Firewall (Inbound)</strong> – BuildMaster is a web application and can be installed on the port of your choosing
+        </li>
+    </ul>
+
+    <h2 id="download-buildmaster" data-title="Download BuildMaster">2. Download BuildMaster</h2>
+    <p>
+        You can <a href="/buildmaster/download">download the installer</a> from inedo.com. 
+    </p>
+    <h2 id="verify" data-title="Verify Installer">3. Verify the Installer </h2>
+    <p>
+        We always sign our installer packages. This signature can be seen when you run the installer and get a security warning, or right-click on the file
+        for Properties and then look at Digital Signatures.
+    </p>
+    <img alt="" src="/resources/knowledgebase/ProGet-Installation-Guide_E6DE_image_2.png" />
+    <p>
+        We've never had any issues with compromised installers (it's hosted on <a href="https://aws.amazon.com/s3/">Amazon S3</a>, which is quite reliable),
+        but it doesn't hurt to make sure the signature is there.
+		See <a href="/support/kb/1113">KB#1113: Anti-malware False Positives, Code Signing, and Safety of Inedo Products</a> for more information. 
+    </p>
+    <h2 id="run-installer" data-title="Run Installer">4. Run the Installer</h2>
+    <p>
+        The installer requires administrative privileges to run and will attempt to escalate.
+        It will then unpack the temporary files and begin installation verification.
+    </p>
+
+    <h2 id="license-agreement" data-title="License Agreement">5. License Agreement</h2>
+    <p>
+        Take a quick read of our <a href="/buildmaster/license-agreement">BuildMaster license agreement</a>. Really, it's quick!
+    </p>
+    <img class="screenshot" alt="BuildMaster License agreement" src="/resources/documentation/buildmaster-installation/license-agreement.png" />
+    
+    <h2 id="license-key" data-title="Choose an Edition">6. Edition / License Key</h2>
+    <p>
+        After accepting the license agreement, select the edition of BuildMaster you'd like to use (free, trial, or enter a key).
+    </p>
+    <img class="screenshot" alt="BuildMaster Edition Key" src="/resources/documentation/buildmaster-installation/edition.png" />
+    
+    <h2 id="license-registration" data-title="License Registration">7. License Registration</h2>
+    <p>
+        After selecting the edition, just enter your name and email. The installer will try to get this from the currently
+        logged in user.
+    </p>
+    <img class="screenshot" alt="BuildMaster Registration" src="/resources/documentation/buildmaster-installation/registration.png" />
+    <h2 id="target-directory" data-title="Target Directory">8. Target Directory</h2>
+    <p>
+        Deploy to your favorite location, or just stick with the default of Program Files.
+    </p>
+    <img class="screenshot" alt="BuildMaster Directory" src="/resources/documentation/buildmaster-installation/target-path.png" />
+    <h2 id="database-configuration" data-title="Database Configuration">9. Database Configuration</h2>
+    <p>
+        If you ran the installer with the embedded SQL Express, then you'll be able to select the option to install SQL Express.
+    </p>
+    <img class="screenshot" alt="BuildMaster Database Configuration" src="/resources/documentation/buildmaster-installation/database-configuration.png" />
+    <p>
+        Otherwise, you'll need to point to an existing server using a standard SQL Connection string.
+        Note that if no database is specified in the connection string (which is the default), a database named BuildMaster will be created.
+    </p>
+    <h2 id="web-server-config" data-title="Web Server Configuration">10. Web Server Configuration</h2>
+    <p>
+        By default, the installer will configure BuildMaster to use its own web server. 
+        This is the easiest to start with, and you can always <a href="/support/kb/1013">switch to IIS</a> hosting later.
+    </p>
+    <img class="screenshot" alt="BuildMaster Server Configuration" src="/resources/documentation/buildmaster-installation/hosting.png" />
+    <p>
+        If IIS is installed on the server, you will have the option of installing BuildMaster in IIS.
+        This will create an application pool and website in the local IIS configuration.
+    </p>
+    <h2 id="user-account" data-title="User Account">11. User Account</h2>
+    <p>
+        By default, the installer will use the <a href="https://msdn.microsoft.com/en-us/library/windows/desktop/ms684272(v=vs.85).aspx">NetworkService</a> account
+        to run the <a href="/support/documentation/buildmaster/administration/service">BuildMaster Service</a> and Web Application.
+        We recommend sticking with this, and <a href="/support/kb/1077">changing the account</a> later if you need to.
+    </p>
+    <img class="screenshot" alt="BuildMaster User account" src="/resources/documentation/buildmaster-installation/user-account.png" />
+    <h2 id="summary" data-title="Summary">12. Summary</h2>
+    <p>
+        Make sure everything here looks OK, and then click Install.
+    </p>
+    <img class="screenshot" alt="Installation summary" src="/resources/documentation/buildmaster-installation/summary.png" />
+    <p>If any of the items indicate an error, you can click on it to go back to that page and fix it.</p> 
+    <h2 id="patiently-wait" data-title="Patiently Wait">13. Patiently Wait</h2>
+    <p>
+        If you chose to have SQL Server Express installed, then the actual installation process will take a little while.
+        On embarrassingly low-end servers (e.g. Intel Celeron processor and 256MB of RAM), we've seen this take as long as fifteen minutes.
+    </p>
+    <img class="screenshot" alt="Patiently wait" src="/resources/documentation/buildmaster-installation/patiently-wait.png" />
+    <p>
+        While you wait, you can always peruse <a target="_blank" title="it's exactly what you think" href="https://www.google.com/search?tbm=isch&amp;q=benedict+cumberbatch+otter">Otters Who Look Like Benedict Cumberbatch</a>.
+    </p>
+    <p class="announcement">
+        Clicking cancel (especially during the SQL Express installation) is not advised, as you may have to manually remove some bits of SQL Server
+        using Add/Remove programs. Once everything's done, you'll be ready to start using BuildMaster.
+    </p>
+    <h2 id="all-done" data-title="All Done">14. All Done</h2>
+    <p>
+        Click the absurdly large <b>Launch BuildMaster</b> button, and your web
+        browser will start up with <code>http://localhost:&laquo;port-you-chose&raquo;/</code>.
+    </p>
+    <img class="screenshot" alt="Launch BuildMaster" src="/resources/documentation/buildmaster-installation/launch-buildmaster.png" />
+    <p>
+        Note that on slower systems, the services take a little bit to spin up, so
+        if you see a blank page, just refresh the page until it loads.
+    </p>
+
+    <p>Once BuildMaster loads, we suggest going through the <a href="/buildmaster/tutorial">Getting Started with BuildMaster</a> tutorial.</p>
+</body>
+</html>
