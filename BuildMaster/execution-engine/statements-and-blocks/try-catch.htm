@@ -1,0 +1,46 @@
+<html>
+<head>
+    <title>Try / Catch Blocks</title>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <meta name="keywords" content="buildmaster,execution-engine,operation-groups" />
+	<meta name="sequence" content="300"  />
+</head>
+<body>
+	<p>
+		Try/Catch Blocks are helpful when you need to change the default handling of errors, perhaps to run an error handler, or to change the status 
+        shown to viewers of the execution. 
+	</p>
+	<p>
+		By default, when an errors occur during the execution of a plan:
+	</p>
+    <ol>
+        <li>the execution status is changed to failing</li>
+        <li>the execution halts</li>
+    </ol>
+    <p>
+        With a Try/Catch block, if an error occurs in the main ("try") body, then the error handler ("catch") statements are run instead. 
+    </p>
+    <h2 id="warn" data-title="Example: Warn of Error">Example: Warn of Error</h2>
+	<p>
+		For example, a single failing statement in a testing environment will, by default, fail the job run. But because of the environment scope 
+        (testing) a warning might be more appropriate. This can be achieved by inserting a Try/Catch block to change the failing status to a warning and 
+        the job run will then continue.
+	</p>    
+    <tab-block>
+        <tab name="Visual Mode"><img class="screenshot" src="/resources/documentation/otter/try-catch-if-status-pic.png" alt="Try Catch and change status" /></tab>
+        <tab name="Text Mode (OtterScript)"><img class="screenshot" src="/resources/documentation/otter/try-catch-if-status-text.png" alt="Try Catch and change status in Otter" /></tab>
+    </tab-block>
+    
+    <h2 id="correct" data-title="Example: Corrective Action">Example: Corrective Action</h2>
+	<p>
+		Below a Try/Catch block has been created to start a Windows Service for <code>Accounts</code>. Because the plan assumes the service already exists, 
+        however if the service doesn't exist the Try/Catch block will then run an <a href="/support/documentation/buildmaster/reference/operations/services/ensure-service"> ensure <code>Accounts</code> operation</a> to create the service and start the 
+        service it created. If both the start service AND the ensure service operations fail, the plan will fail as expected.
+	</p>
+    <tab-block>
+        <tab name="Visual Mode"><img class="screenshot" src="/resources/documentation/otter/try-catch-block.png" alt="Try Catch Block" /></tab>
+        <tab name="Text Mode (OtterScript)"><img class="screenshot" src="/resources/documentation/otter/try-catch-text.png" alt="Try Catch Text" /></tab>
+    </tab-block>
+    
+</body>
+</html>

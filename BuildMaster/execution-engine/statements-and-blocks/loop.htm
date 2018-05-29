@@ -1,0 +1,38 @@
+<html>
+<head>
+    <title>Loop Blocks</title>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <meta name="keywords" content="buildmaster,execution-engine,operation-groups" />
+    <meta name="sequence" content="200" />
+</head>
+<body>
+
+    <p>
+        Looping over the same series of statements can useful for both visualization and to removing repetitive statements in a plan.
+        That's where the Loop Block comes in.
+    </p>
+    <p>
+        Loop Blocks run the set of statements in the block while enumerating over a list.
+        The List can be a variable, a function, or a literal expression. 
+    </p>
+    <p>
+        For example, we can create a directory exists for each service in a variable called <code>@ServiceNames</code>. This
+        variable could be defined elsewhere in our plan, or externally as a configuration variable.
+    </p>
+
+    <tab-block>
+        <tab name="Visual Mode"><img class="screenshot" src="/resources/documentation/otter/loop-block.png" alt="Loop Block in BuildMaster" /></tab>
+        <tab name="Text Mode (OtterScript)"><img class="screenshot" src="/resources/documentation/otter/loop-text.png" alt="loop Text in BuildMaster" /></tab>
+    </tab-block>
+
+    <h3 id="loop-numbers" data-title="Looping and Numbers">Looping and Numbers</h3>
+    <p>
+        With the built-in <code>@Range</code> function, you can loop over numbers just as easily as you might with a c-style "for" loop.
+    </p>
+    <tab-block>
+        <tab name="Visual Mode"><img class="screenshot" src="/resources/documentation/otter/loop-range-block.png" alt="Loop Block in BuildMaster" /></tab>
+        <tab name="Text Mode (OtterScript)"><img class="screenshot" src="/resources/documentation/otter/loop-range-text.png" alt="Loop Block in BuildMaster" /></tab>
+    </tab-block>
+
+</body>
+</html>

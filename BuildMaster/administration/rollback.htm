@@ -1,0 +1,57 @@
+﻿<!DOCTYPE html []>
+<html>
+  <head>
+    <title>Deployment Rollback</title>
+    <meta name="keywords" content="buildmaster, databases, backup" />
+  </head>
+  <body>
+      <p>
+            We don't have a special "rollback plan" that's used only in emergencies. Since such a plan would only get tested in rare cases (i.e. when something went wrong), chances are it will be out of date and likely make things even worse.
+        </p>
+        <p>
+            But what we can do is perform a <strong>"Re-Deploy",</strong> which can effectively be used to rollback changes. Assuming you have your deployment plan configured correctly. Let's consider the state of a given application.
+        </p>
+       <h2 id="performing-rollback" data-title="Performing a Rollback"> Performing a Rollback</h2>
+      
+     
+         <p>
+        You'll note below that Release 1.0.3 (Build 1) was deployed to Production.
+    </p>
+   <p>
+         <img class="screenshot" src="/resources/tutorials/roll-back/latest-deployment.png" />
+   </p>
+      <h3 id="step-one" data-title="1. Navigate to Promotion Details">Step 1: Navigate to Promotion Details</h3>
+    <p>
+        To go back to Release 1.0.2, navigate to the promotion details of the production-promoted build for that release.</p>
+   <p>
+      <img class="screenshot" src="/resources/tutorials/roll-back/previous-version.png" />
+   </p>
+      <h3 id="step-two" data-title="2. Re-Deploy to Production">Step 2: Re-Deploy to Production</h3>
+    <p>
+        You'll notice there's a big button called "Re-Deploy to Production". Clicking on that will run the production deployment plan using 1.0.2 Build 3's context.
+    </p>
+   
+      <h3 id="step-three" data-title="3. Deploy the Artifact">Step 3: Deploy the Artifact</h3>
+    <p>
+        You'll have the option to deploy the artifact immediately, which is common for most rollbacks as they are generally considered emergencies, or at a specific time in the future.
+    </p>
+    
+      <img class="screenshot" src="/resources/tutorials/roll-back/deploy-now.png" />
+      <p>
+        The actions in a <a href="/support/documentation/buildmaster/core-concepts/deployment-plans">deployment plan</a> are designed to look at the <em>execution context</em> to determine what to do. In this case the plan will deploy the artifact associated with Release 1.0.2 Build 3. This will ensure that whatever files were deployed with Release 1.0.2 Build 3 will <i><b>always</b></i> be deployed with Release 1.0.2 Build 3.</p>
+    <p>
+        Once the Release 1.0.2 Build 3 has been re-deployed, that information is reflected in BuildMaster.</p>
+     <p>
+        <img class="screenshot" src="/resources/tutorials/roll-back/rolled-back.png" />
+     </p>
+    <p>
+        And like that, your changes are rolled back. Of course, this isn't a time machine
+        and nothing (not even a time machine) can reliably and perfectly rollback all changes
+        while keeping existing data. 
+        </p>
+        <p><strong>
+    So, be careful using re-executions / rollbacks.
+</strong>
+    </p>
+  </body>
+</html>

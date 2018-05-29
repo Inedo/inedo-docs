@@ -1,0 +1,64 @@
+﻿<html>
+<head>
+    <title>Statements and Blocks</title>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <meta name="keywords" content="buildmaster,execution-engine,statements,blocks" />
+	<meta name="sequence" content="200" />
+</head>
+<body>
+    <p>
+        The execution engine interprets a <a href="../core-concepts/deployment-plans">deployment plan</a> as a series of statements and blocks, in
+        a top-down manner. 
+    </p>
+    <ul class="docs">
+        <li>
+            <b>Statements</b> - 
+            most of the statements in your plans will be <a href="overview#operations">operations</a>, but there are a few 
+            <a href="statement-and-blocks/other-statements">other statements</a> that can help build extremely advanced plans</li>
+        <li>
+            <b>Blocks</b> - 
+            blocks contain statements and other blocks, and help with organization and flow error control; there are 
+            four block types
+            <ul class="docs">
+                <li><a href="statements-and-blocks/general-blocks">General Blocks</a></li>
+				<li><a href="statements-and-blocks/loop">Loop Blocks</a></li>
+				<li><a href="statements-and-blocks/try-catch">Try /Catch Blocks</a></li>
+                <li><a href="statements-and-blocks/if-else">If/Else Blocks</a></li>             
+            </ul>
+        </li>
+    </ul>
+    <p>
+        If you're comfortable with programming or scripting, you'll may be already familiar with how these blocks work. There is a 
+        <a href="/support/documentation/otter/reference/otter-script/formal-specification">Formal Specification</a> available if you want to know <em>precisely</em> how 
+        the execution engine and plans/OtterScript work.
+    </p>
+    <h2 id="blocks" data-title="Blocks">Blocks</h2>
+    <p>
+        Blocks provide an easy way to organize your plans, and the sub-tasks those plans are made of. They can be nested as many levels deep 
+        as you need, and all blocks provide variable scoping (i.e. if you set a variable in that block, it will only 
+        be available within that block) as well as log scoping.
+    </p>
+    <h2 id="logs" data-title="Log Scoping">Log Scoping</h2>
+	<p>
+		BuildMaster's logs were designed to be as easy to navigate and understand as the plans. this is where collapsible log scopes come in: 
+	</p>
+    <tab-block>
+        <tab name="Plan"><img class="screenshot" src="/resources/documentation/otter/log-scoping-block.png" alt="IIS block" /></tab>
+        <tab name="Execution Log"><img class="screenshot" src="/resources/documentation/otter/log-scoping-log.png" alt="IIS block log" /></tab>
+    </tab-block>
+    <p>
+        If you give a block a <b>short description</b>, then the plan's execution log will have a scope of the same name. This way, as you 
+        nest statements and blocks in your plans, they will have the parity in the log. 
+    </p>
+    <p>
+        Because logs may contain sensitive data, such as the arguments to a command line, you can restrict users from viewing debug-level logs.
+        This offers an ideal mix between security/compliance and visibility. 
+    </p>
+    <h2 id="assets" data-title="Assets in Plans">Assets in Plans</h2>
+    <p>
+        When an asset (template plan or script) is used in a plan, it is run as an operation, and can be 
+        treated in the same way (moved within a plan and have custom configurations). It is logged as an operation as well.
+    </p>
+
+</body>
+</html>
