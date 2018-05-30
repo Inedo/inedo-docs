@@ -1,0 +1,65 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Servers</title>
+    <meta name="subtitle" content="Server " />
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <meta name="keywords" content="buildmaster, environments, servers, infrastructure" />
+    <meta name="show-headings-in-nav" content="true" />
+    <meta name="sequence" content="10" />
+</head>
+<body>
+    <p>
+        BuildMaster deploys your application releases to the servers that you configure.
+    </p>
+    <div class="attention analogy">
+        <p>
+            A server can be physical (bare metal), virtual, or even nonexistent (i.e. one that you will provision later using <a href="/otter">Otter</a>).
+        </p>
+    </div>
+
+    <h3 id="adding" data-title="Adding Servers">Adding Servers to BuildMaster</h3>
+    <p>
+        You can add a server using the web-based user interface (Servers > Add Server), or programmatically with the <a href="/support/documentation/buildmaster/reference/api/infrastructure">infrastructure API</a>.
+    </p>
+
+    <p>
+        BuildMaster communicates with servers using the <a href="/support/documentation/various/inedo-agent/the-agent">Inedo Agent</a> (for Windows) or <a href="https://www.ssh.com/ssh/sftp/">SSH/SFTP</a> (for Windows and Linux).
+    </p>
+    <h2 id="deploying-servers" data-title="Deploying to Servers"> Deploying to Servers</h2>
+    <p>
+        In addition to using <a href="/support/documentation/buildmaster/infrastructure/server-roles">Server Roles</a>, there are two ways to deploy to a server:
+    </p>
+    <h3 id="pipeline-stage-target" data-title="Pipeline Stage Target">Pipeline Stage Target</h3>
+    <p>
+        You can specify a list of servers as a stage target in a <a href="/support/documentation/buildmaster/core-concepts/pipelines#Pipeline-stages">pipeline stage</a>. When the release package is deployed to that stage, the stage target's deployment plan will be run against all those servers.
+    </p>
+    <h3 id="servers-otterscript" data-title="Servers and OtterScript"> Servers and OtterScript</h3>
+    <p>
+        You can deploy to a server using a <a href="/support/documentation/buildmaster/execution-engine/statements-and-blocks/general-blocks">general block</a>
+    </p>
+    <pre>for server prod-hdars-sv1
+{
+    Deploy-Artifact hdars-api-service
+    (
+        To: C:\HDars\App\api-service
+    );
+}</pre>
+    <h3 id="servers-vs-roles" data-title="Servers vs Server Roles"> Server vs Server Roles</h3>
+    <p>
+        Deploying to server roles can be helpful when you don't want to explicitly specify server names. For example, in a multi-tier application that's designed to run across multiple servers.
+    </p>
+    <p>
+        However, if your application has always been deployed to a specific server, and will be deployed to that specific server for the foreseeable future, there's not much value in creating a specific role for it. In fact, it may create confusion, as other users may be unfamiliar with the concept of roles.
+    </p>
+
+    <h2 id="resource-pools" data-title="Resource Pools">Resource Pools</h2>
+    <p>
+        A resource pool is a set of servers that are used as a single, load-balanced resource. You may acquire an unused server from a resource pool, 
+        and then release it back into the pool once the needed tasks have been performed.
+    </p>
+    <p>
+        Visit the <a href="/support/documentation/various/execution-engine/resource-pools">Resource Pools documentation of the Inedo Execution Engine</a> for more information on how to configure a resource pool.
+    </p>
+</body>
+</html>

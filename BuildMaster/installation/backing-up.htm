@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Backing Up BuildMaster</title>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <meta name="keywords" content="buildmaster, databases, backup" />
+    <meta name="show-headings-in-nav" content="true" />
+    <meta name="sequence" content="50" />
+</head>
+<body>
+    <p>
+        BuildMaster should be backed up frequently, and as a .NET- and SQL Server-based this is relatively easy to do. There are three things to back up on the BuildMaster server:
+    </p>
+    <ul class="docs">
+        <li><strong>BuildMaster Database</strong> - a SQL Server database that contains all of BuildMaster's configuration data</li>
+        <li><strong>Encryption key</strong> - the value stored in both the web.config and BuildMaster.Service.config that's used to encrypt/decrypt sensitive data, most notably <a href="https://inedo.com/support/documentation/buildmaster/global-components/resource-credentials">resource credentials</a></li>
+        <li class="upcoming">(coming in v6.1) <strong>Shared Configuration</strong> - the file <code>%PROGRAMDATA%\Inedo\SharedConfig\BuildMaster.config</code> contains the encryption key that's used to encrypt/decrypt sensitive data, most notably <a href="/support/documentation/buildmaster/global-components/resource-credentials">resource credentials</a></li>
+        <li><strong>Artifact Library Files</strong> - a path on disk (defined in Artifacts.BasePath setting) that contains all the files for artifacts you created within BuildMaster</li>
+    </ul>
+    <p>
+	You may also back up your <a href="/support/documentation/buildmaster/administration/extensions">extensions</a> folder, which is stored in the path defined in the Extensions.ExtensionsPath advanced configuration setting. This will make restoring to a new server as easy as possible, in that you&rsquo;ll just need to copy the backup files to the same location on the new server.</p>
+    <h2 id="database-backup" data-title="Database Backup">Database Backup</h2>
+    <p>If you've never worked with Microsoft SQL Server before, not to worry - you won't even know you're working with it. But if you're already familiar with Microsoft SQL Server and know how to back up and restore databases, you can skip this section. We're not doing anything special, so you are free to use whichever strategy works in your organization. So long as that strategy involves backing up the database.</p>
+    <p>If you installed BuildMaster with the built-in database, then the installer also installed Microsoft SQL Server Express 2016 Edition with an instance named <code>INEDO</code>. One of the tools installed with SQL Express is the command-line execution <code>osql.exe</code>; it's located in the SQL Server tools directory: <code>C:\Program Files (x86)\Microsoft SQL Server\130\Tools\Binn</code>.</p>
+    <p>You can use a single command to back up the database, which you may need to run as an administrator if you have UAC enabled in Windows.</p>
+    <pre>osql -S .\INEDO -E -Q "BACKUP DATABASE [BuildMaster] TO DISK=N'C:\Backups\BuildMaster.bak' WITH FORMAT"</pre>
+    <p>You can obviously customize the path on disk as needed. To run this command on a regular basis, just set up a scheduled task using the <a href="http://windows.microsoft.com/en-US/windows-vista/Schedule-a-task">Task Scheduler</a>. Note that you can back up BuildMaster at any time without having to stop any of the services.</p>
+    <p class="attention best-practice">Note: BuildMaster v5 and earlier install SQL Server 2005 Express, and the SQL Express was named <b>BUILDMASTER</b></p>
+    <h2 id="restoring" data-title="Database Restore">Restoring a BuildMaster Installation</h2>
+    <p>There are generally three reasons why you might want to restore a BuildMaster installation from back-up.</p>
+    <ul class="docs">
+        <li><strong>Rolling back to an earlier version of BuildMaster</strong> - if there were issues with or during the installation of a new version of BuildMaster.</li>
+        <li><strong>Moving BuildMaster to a new server</strong></li>
+        <li><strong>Undoing a Serious Error</strong></li>
+    </ul>
+    <h3>The Easy Way (Restore from same version)</h3>
+    <p>The easiest way to restore a BuildMaster installation is to first ensure that you have a working BuildMaster installation that has the same version number of your back-up. That means you'd want to restore a 2.6.1 back-up to a working 2.6.1 installation, for example. If you're not sure what version your back-up is (perhaps your server blew up and you only have the .bak file), then you'll have to use the advanced way described after this section.</p>
+    <p>If you backed up your database using the command above, then you can use the following command to restore:</p>
+    <pre>osql -S .\INEDO -E -Q "RESTORE DATABASE [BuildMaster] FROM  DISK = N'C:\Backups\BuildMaster.bak' WITH  FILE = 1,  NOUNLOAD,  STATS = 10"</pre>
+    <p>
+        Just make sure the BuildMaster Windows Service(s) are stopped, otherwise SQL Server will complain with a "database in use" error.
+    </p>
+    <p>
+        After you get the database up, just make sure your artifact files are where they are expected to be, and start the service(s).
+    </p>
+    <h3 id="advanced">The Advanced Way (Restore from any version)</h3>
+    <p>This isn't really that much harder, but it does involve some knowledge of Microsoft SQL Server or the willingness to contact us for assistance. Firstly, you won't be able to restore a newer back-up to an older version (i.e. a 3.0.0 back-up to 2.6.1). But since you should never need to do that anyway, there's nothing to worry about.</p>
+    <p>If you're using your own SQL Server, then all you need to do is make sure the BuildMaster Database has been restored <em>before</em> running the installer of the version you want. The installer will make sure the restored database is up-to-date as part of the installation.</p>
+    <p>If you want to use the built-in database, then start by running the installer. It will install the files and create a new BuildMaster database for you. From here, restore your database back-up (you can use the command above) and then run the Database Tool (available from inedo.com) for the version you are installing. That will ensure the database is up to date.</p>
+</body>
+</html>
