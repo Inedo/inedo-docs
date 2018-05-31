@@ -1,0 +1,253 @@
+﻿<html>
+<head>
+    <title>The Pipeline JSON Model</title>
+    <meta name="subtitle" content="The Pipeline JSON Model" />
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <meta name="keywords" content="buildmaster, pipelines" />
+    <meta name="show-headings-in-nav" content="true" />
+    <meta name="sequence" content="400" />
+</head>
+<body>
+    <div class="attention analogy">
+        <img src="/resources/images/icons/analogy.png" />
+        <p>
+            Pipelines are stored as JSON-formatted files. You can edit pipelines in the web interface using the visual or text mode.
+        </p>
+    </div>
+    <h3 id="pipeline" data-title="Pipeline">Pipeline</h3>
+    <p>
+        A pipeline consists of a sequence of stages, variables, and several other properties and options.
+        The following are the contents of a pipeline's JSON file.
+    </p>
+    <table>
+        <tbody>
+            <tr>
+                <td><code>Color</code></td>
+                <td>
+                    a <i>string</i> in the format <code>#RRGGBB</code> used to represent the color used in the UI
+                </td>
+            </tr>
+            <tr>
+                <td><code>Description</code></td>
+                <td>
+                    a <i>string</i> to document the pipelines intended usage
+                </td>
+            </tr>
+            <tr>
+                <td><code>EnforceStageSequence</code></td>
+                <td>
+                    a <i>boolean</i> to indicate whether the stage sequence should be enforced (requiring a Force to override), or if any stage can be deployed to at any time
+                </td>
+            </tr>
+            <tr>
+                <td><code>PostDeploymentOptions</code></td>
+                <td>
+                    an <i>object</i> with the following property/value pairs. Each value is a <i>boolean</i>.
+                    <ul>
+                        <li>
+                            <code>CancelReleases</code>: cancel earlier (lower-sequenced) releases that are still active and have not yet been deployed.
+                        </li>
+                        <li>
+                            <code>CreateRelease</code>: creates a new release by incrementing the final part after a release has been deployed.
+                        </li>
+                        <li>
+                            <code>DeployRelease</code>: mark the release and package as deployed once it reaches the final stage.
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td><code>Variables</code></td>
+                <td>
+                    an <i>object</i> with property/values representing variable names and values
+                    <ul>
+                        <li>
+                            a variable name is a string of no more than fifty characters: numbers (0-9), upper- and lower-case letters (a-Z), dashes (-), spaces ( ), and underscores (_) and must start with a letter, and may not start or end with a dash, underscore, or space; a variable
+                        </li>
+                        <li>
+                            a variable value is a string of any number of characters
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td><code>Stages</code></td>
+                <td>
+                    an <i>array</i> of <a href="#stage">Stage</a> objects
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <h3 id="stage" data-title="Stage">Stage</h3>
+    <p>
+        A stage consists of a gate, variables, pre-deployment steps, targets, post-deployment steps, and several properties and options.
+    </p>
+    <p>
+        This object is used to describe the Stage property of a Pipeline object.
+    </p>
+    <table>
+        <tbody>
+            <tr>
+                <td><code>Name</code></td>
+                <td>
+                    a <i>string</i> representing the name of the stage
+                </td>
+            </tr>
+            <tr>
+                <td><code>Description</code></td>
+                <td>
+                    a <i>string</i> to document the stage's intended usage
+                </td>
+            </tr>
+            <tr>
+                <td><code>AutoPromote</code></td>
+                <td>
+                    a <i>boolean</i> indicating whether a deployment to the next stage will automatically occur if the target is next stage's gate is met<!--- and ... -->
+                </td>
+            </tr>
+            <tr>
+                <td><code>TargetExecutionMode</code></td>
+                <td>
+                    a <i>string</i> with either <code>Parallel</code> or <code>Sequential</code>
+                </td>
+            </tr>
+            <tr>
+                <td><code>Gate</code></td>
+                <td>
+                    a <a href="#gate">Gate</a> <i>object</i>
+                </td>
+            </tr>
+            <tr>
+                <td><code>Variables</code></td>
+                <td>
+                    an <i>object</i> with property/values representing variable names and values
+                    <ul>
+                        <li>
+                            a variable name is a <i>string</i> of no more than fifty characters: numbers (0-9), upper- and lower-case letters (a-Z), dashes (-), spaces ( ), and underscores (_) and must start with a letter, and may not start or end with a dash, underscore, or space; a variable
+                        </li>
+                        <li>
+                            a variable value is a <i>string</i> of any number of characters
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td><code>Targets</code></td>
+                <td>
+                    an <i>array</i> of <a href="#target">Target</a> objects
+                </td>
+            </tr>
+            <tr>
+                <td><code>PostDeploymentSteps</code></td>
+                <td>
+                    <div class="upcoming">Coming soon; in the meantime you may examine the format of a post-deployment step after adding it through the UI</div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <h3 id="gate" data-title="Gate">Gate</h3>
+    <p>
+        A gate is a mix of manual and automated approval requirements that a deployment set must have before being deployed to a stage, and are used to ensure the quality and acceptability of a deployment set as it passes through the pipeline.
+    </p>
+    <p>
+        This object is used to describe the Gate property of a Stage object.
+    </p>
+    <table>
+        <tbody>
+            <tr>
+                <td><code>UserApprovals</code></td>
+                <td>
+                    an <i>array</i> of objects representing people that must approve deployment into the stage; each object has two properties:
+                    <ul>
+                        <li>
+                            <code>Name</code>: a <i>string</i> of the username of the approver
+                        </li>
+                        <li>
+                            <code>Description</code>: a <i>string</i> of what will be displayed on the approvals required and received
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td><code>GroupApprovals</code></td>
+                <td>
+                    an <i>array</i> of objects representing people in groups that must approve deployment into the stage; each object has two properties:
+                    <ul>
+                        <li>
+                            <code>Name</code>: a <i>string</i> of the group name that an approver belongs to
+                        </li>
+                        <li>
+                            <code>Description</code>: a <i>string</i> of what will be displayed on the approvals required and received
+                        </li>
+                        <li>
+                            <code>Count</code>: an <i>integer</i> of how many approvers in that group must approve the deployment set before it's met
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td><code>AutomaticApprovals</code></td>
+                <td>
+                    <div class="upcoming">Coming soon; in the meantime you may examine the format of an automatic approval after adding it through the UI</div>
+                </td>
+            </tr>
+            <tr>
+                <td><code>DeploymentWindows</code></td>
+                <td>
+                    an <i>array</i> of objects representing times in which a deployment may occur
+                    <ul>
+                        <li>
+                            Days: an array of <i>strings</i> representing the names of the days of the week (in the current culture) that a deployment StartTime occurs [Proposed Behavior]
+                        </li>
+                        <li>
+                            Days: an array of <i>integers</i> representing the day of week numbers (with 0 being Sunday) that a deployment StartTime occurs [Proposed Behavior]
+                        </li>
+                        <li>
+                            <code>StartTime</code>: a <i>string</i> in a ISO 8601 24-hour time format with an optional time zone offset: hh:mm[:ss.sss±hh:mm]
+                        </li>
+                        <li>
+                            <code>EndTime</code>: a <i>string</i> in a ISO 8601 24-hour time format with an optional time zone offset: hh:mm[:ss.sss±hh:mm]
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <h3 id="target" data-title="Target">Target</h3>
+    <p>
+        A target is comprised of a deployment plan, an environment name and a list of servers or roles to be deployed.
+    </p>
+    <p>
+        This object is expected in the Targets array property on the Stage object.
+    </p>
+    <table>
+        <tbody>
+            <tr>
+                <td><code>UserApprovals</code></td>
+                <td>
+                    a <i>string</i> of the plan name that will be executed at the target, or null to use the plan embedded in the packages
+                </td>
+            </tr>
+            <tr>
+                <td><code>EnvironmentName</code></td>
+                <td>
+                    a <i>string</i> of the name of the environment that is targeted
+                </td>
+            </tr>
+            <tr>
+                <td><code>RoleNames</code></td>
+                <td>
+                    an <i>array</i> of <i>strings</i> representing the roles that are targeted
+                </td>
+            </tr>
+            <tr>
+                <td><code>ServerNames</code></td>
+                <td>
+                    an <i>array</i> of <i>strings</i> representing the names of the servers targeted
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
