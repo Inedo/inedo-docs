@@ -1,0 +1,511 @@
+﻿<html>
+<head>
+    <title>Formal Specification</title>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <meta name="keywords" content="otterscript,execution-engine,otter,hedgehog,buildmaster" />
+    <meta name="show-headings-in-nav" content="true" />
+    <meta name="sequence" content="10" />
+</head>
+<body>
+    <style>
+        h4 {
+            margin-bottom: 0;
+        }
+
+            h2 + p, h3 + p, h4 + p {
+                margin-top: 0;
+            }
+
+        .info.buildmaster {
+            border-color: #f15a24;
+            color: #f15a24;
+        }
+
+        .upcoming.proposed::before {
+            content: 'proposed:';
+        }
+
+        .info.buildmaster {
+            border-color: #f15a24;
+            color: #f15a24;
+        }
+
+        .buildmaster-only {
+            display: inline-block;
+            padding: 2px 2px 8px 2px;
+            color: #f15a24;
+            background-color: #FFD9A3;
+            min-width: 40px;
+        }
+
+            .buildmaster-only::before {
+                background-color: #eaeaea;
+                font-style: italic;
+                opacity: 0.9;
+                content: 'BuildMaster only';
+                position: absolute;
+                margin: 16px 0 0 4px;
+                font-size: 10px;
+                padding: 0px 1px;
+            }
+
+        .otter-only {
+            display: inline-block;
+            padding: 2px 2px 8px 2px;
+            color: #9163aa;
+            background-color: #ded0e5;
+            min-width: 40px;
+        }
+
+            .otter-only::before {
+                background-color: #eaeaea;
+                font-style: italic;
+                opacity: 0.9;
+                content: 'Otter only';
+                position: absolute;
+                margin: 16px 0 0 4px;
+                font-size: 10px;
+                padding: 0px 1px;
+            }
+    </style>
+    <p>
+        This document describes the specific behavior of the Inedo execution engine (used by Otter, Hedgehog, and BuildMaster), and is primarily intended as a reference.
+        It will probably not be helpful in learning how to create plans,
+        although it may explain why particular "block" behaves in a certain way, and why a plan's "Text Mode" (i.e. OtterScript) looks a bit different
+        than the visual version.
+    </p>
+
+    <h2>General Notes</h2>
+    <h3 id="editor-abstraction">Plan Editor &amp; Abstraction</h3>
+    <p>
+        To help make Infrastructure as Code as accessible as possible, the Plan Editor and the corresponding documentation
+        abstract some of the implementation details.
+    </p>
+    <ul class="docs">
+        <li><b>General Block</b> - this is a combination of Anonymous Block Statements, Set Context Statements, and Execution Directive Statements</li>
+        <li><b>Loop Block</b> - this is either a Context Iteration Statement or a Iteration Block Statement</li>
+    </ul>
+
+    <h3 id="plan-otterscript">Terminology: Plan vs OtterScript</h3>
+    <p>
+        These terms are mostly interchangeable. <i>OtterScript</i> refers to the textual representation of a plan, and a plan is an abstract syntax tree of an <i>OtterScript</i>.
+        This document describes the elements of a plan, whereas the <a href="/support/documentation/executionengine/reference/formal-grammar">Formal Grammar</a> describes the grammar of a valid OtterScript.
+    </p>
+
+    <h2 id="execution-engine" data-title="Execution Engine">Execution Engine</h2>
+    <p>
+        The execution engine evaluates statements in a plan, in the order they appear.
+        Whenever an error is raised, the execution status will change to failing and the execution will halt; this will cause
+        the execution to terminate, unless the error occurred within a Try Statement
+    </p>
+
+    <h3 id="execution-properties">Execution Properties</h3>
+    <p>An execution has the following properties.</p>
+    <ul class="docs">
+        <li>Run State - indicates current running state of the execution: Pending, Executing, Completed</li>
+        <li>Status - status to report to the user: Normal, Warning, Error</li>
+        <li>Execution Mode - Collect Only, Collect And Execute,Execute Only</li>
+        <li>Simulation - true or false</li>
+    </ul>
+
+    <h4 id="execution-modes">Execution Modes</h4>
+    <p>
+        The execution engine can run a plan in three different modes:
+    </p>
+    <ul class="docs">
+        <li>
+            <b>Collect Only</b>- only
+            <a href="/support/sdk-reference/inedosdk/Inedo.Extensibility.Operations/ICollectingOperation">ICollectingOperation</a> operations will run; if the
+            operation is a <a href="/support/sdk-reference/inedosdk/Inedo.Extensibility.Operations/IComparingOperation">IComparingOperation</a>, then drift
+            may be indicated. All ensure operations implement both interfaces.
+        </li>
+        <li>
+            <b>Collect then Execute</b> - a collection pass is performed as described above; if any drift is indicated, an execution pass is performed that runs:
+            <ul class="docs">
+                <li>operations that indicated drift</li>
+                <li>
+                    <a href="/support/sdk-reference/inedosdk/Inedo.Extensibility.Operations/IExecutingOperation">IExecutingOperation</a> operations in the same scope as a drift-indicating operation that
+                    do not implement <a href="/support/sdk-reference/inedosdk/Inedo.Extensibility.Operations/IComparingOperation">IComparingOperation</a>; this is all execution actions
+                </li>
+                <li>
+                    operations with an execution policy of AlwaysExecute; this can only be set on a Context Setting Statement
+                </li>
+            </ul>
+        </li>
+        <li>
+            <b>Execute Only</b>- only
+            <a href="/support/sdk-reference/inedosdk/Inedo.Extensibility.Operations/IExecutingOperation">IExecutingOperation</a> operations will run; all
+            ensure and execute operations implement this interface
+        </li>
+    </ul>
+    <p class="info buildmaster">
+        BuildMaster plans execute in a <em>Execute Only</em> mode
+    </p>
+
+    <h4>Simulated Executions</h4>
+    <p>
+        In Otter, an execution may be run in <em>simulation mode</em>; when this is done, operations are responsible for respecting this flag.
+        The agent will automatically return a <a href="/support/sdk-reference/inedosdk/Inedo.Agents/IFileOperationsExecuter">IFileOperationsExecuter</a>
+        that runs in simulation mode.
+    </p>
+
+    <h2 id="configuration-and-orchestration-plans" data-title="Configuration and Orchestration Plans">Configuration and Orchestration Plans</h2>
+    <p>
+        The service will create executions from three sources. In each case, the service
+        wraps the user's plan(s) in different statements.
+    </p>
+    <table>
+        <tr>
+            <th>Type</th>
+            <th>TaskRunner</th>
+            <th>Mode</th>
+        </tr>
+        <tr>
+            <td>Orchestration Job</td>
+            <td>JobDispatcher</td>
+            <td>ExecuteOnly</td>
+        </tr>
+        <tr>
+            <td class="otter-only">Routine Configuration Check</td>
+            <td>RoutineConfiguration</td>
+            <td>CollectOnly or CollectAndExecute</td>
+        </tr>
+        <tr>
+            <td class="otter-only">Configuration Job</td>
+            <td>JobDispatcher</td>
+            <td>CollectAndExecute</td>
+        </tr>
+    </table>
+
+    <p>
+        An Orchestration Job may target servers, or not. If there are servers targeted, then the above logic is performed. If no servers are specified, the plan is
+        executed directly.
+    </p>
+    <p>
+        In Otter, a routine configuration check will create a distinct execution per server. Each of these executions will be of a plan comprised of single
+        <a href="#set-context-statement">Set Context Statement</a> (with a ContextType of server, and ContextValue of the server name); the Body of that statement will be comprised of
+        each of the role's configuration plans (wrapped in a Set Context Statement for "role" and the role name), followed by the server's configuration plan
+        (wrapped in an Anonymous Block Statement).
+    </p>
+    <p>
+        In Otter, a configuration job targets servers directly or indirectly (role and/environment). A list of servers will be gathered, and a plan comprising of
+        a single <a href="#context-iteration-statement">Context Iteration Statement</a> will be created with the Source set to a literal expression of the
+        server names (e.g. <code>@(Server1, Server2, Server3)</code>). The Body contain an <a href="#execution-directive-statement">Execution Directive Statement</a>
+        with an Asynchronous flag, and the Body of that will contain the actual plan.
+    </p>
+
+    <h2 id="elements" data-title="Plan Elements">Plan Elements</h2>
+    <p>
+        A plan is essentially a Scoped Statement Block with Additional Headers.
+    </p>
+    <h3 id="additional-header">Additional Headers</h3>
+    <p>
+        A set of strings that may metadata for the plan. These are effectively special comments that are not currently used by the execution engine, but are
+        used by the plan editor to determine whether to display in visual or text mode, etc.
+    </p>
+    <h3 id="scope-statement-block">Scoped Statement Block</h3>
+    <p>
+        This is a grouping of statements and named template methods; it is not a statement itself, but an element of several "block" statements. Both runtime variables and templates declared in a scoped statement block are accessible to all nested scopes, and a plan is simply a scoped statement block.
+    </p>
+
+    <h3 id="named-templates">Named Templates</h3>
+    <p>A Named Template is like a method or subroutine, and are generally stored external to a plan. They may be declared within a Scoped Statement Block, in which case they are only accessible to are accessible only within the block and nested blocks.</p>
+    <p>A Named Template is comprised of:</p>
+    <ul class="docs">
+        <li>Name &ndash; a valid name</li>
+        <li>Body &ndash; a scoped statement block</li>
+        <li>Parameters &ndash; a string-keyed dictionary of Template Arguments</li>
+    </ul>
+    <p>A Template Argument is comprised of a Name, Output Indicator, and Default Value.</p>
+
+    <h2 id="statements" data-title="Plan Statements">Plan Statements</h2>
+    <p>There are several different statement types; the only common element between statements is a description (see <a href="/support/documentation/executionengine/otterscript/comments-and-descriptions">comments and descriptions</a>).</p>
+
+    <h4 id="action-statement">Action Statement</h4>
+    <p>This invokes an <a href="/support/documentation/executionengine/components/operations-functions">operation</a>, and is comprised of:</p>
+    <ul class="docs">
+        <li>Action Name &ndash; a qualified name of the operation's namespace and script alias</li>
+        <li>Arguments &ndash; a string-keyed dictionary of string values</li>
+        <li>Positional Arguments &ndash; a list of strings; operations currently support only a single positional argument (a property with a <a href="https://msdn.microsoft.com/en-us/library/system.componentmodel.defaultpropertyattribute(v=vs.110).aspx" target="_blank">DefaultPropertyAttribute</a>)</li>
+        <li>Output Arguments &ndash; a string-keyed dictionary of runtime variable names</li>
+    </ul>
+    <p>When this statement is encountered, the runtime does the following:</p>
+    <ol>
+        <li>
+            Attempt to load the Operation with from the <a href="/support/sdk-reference/inedosdk/Inedo.Extensibility/ScriptAliasAttribute">ScriptAlias</a>
+            and <a href="/support/sdk-reference/inedosdk/Inedo.Extensibility/ScriptNamespaceAttribute">ScriptNamespace</a>; an error is raised if cannot be found
+        </li>
+        <li>A log scope is created using the Operation's description</li>
+        <li>
+            The Arguments and Positional Arguments are mapped to either the Operation's template's properties (for
+            <a href="/support/sdk-reference/inedosdk/Inedo.Extensibility.Operations/EnsureOperation(TConfig)">EnsureOperation&lt;TConfig&gt;</a> operations)
+            or the Operation's properties using the property's ScriptAlias.
+        </li>
+        <li>
+            Unless the property has a <a href="/support/sdk-reference/inedosdk/Inedo.Extensibility/DisableVariableExpansionAttribute">DisableVariableExpansionAttribute</a>,
+            the values are evaluated
+        </li>
+        <li>
+            The values are assigned to the mapped property.
+        </li>
+        <li class="otter-only">
+            During a collection run, if the Operation type is:
+            <ol>
+                <li>Collecting: the Collect method is invoked</li>
+                <li>Ensure: the Collect, Store, then Compare methods are invoked</li>
+                <li>Intrinsic: the Execute method is invoked</li>
+            </ol>
+        </li>
+        <li class="otter-only">
+            During an execution run, if the Operation type is:
+            <ol>
+                <li>Executing or Intrinsic: the Execute method is invoked</li>
+                <li>Ensure, and the execution type is Execute Only: then the Execute method is invoked</li>
+                <li>Ensure, and the execution type is Collect and Execute: if the Compare method reported differences, then the Execute method is invoked</li>
+            </ol>
+        </li>
+        <li>
+            In Hedgehog and BuildMaster, every plan is effectively an orchestration job, so all operations are invoked.
+        </li>
+        <li>If an exception occurred within one of the above methods or a log message was written with an error level, then the execution state will change to Failing and an error will be Raised</li>
+        <li>If a log message was written with a warning level, then the execution state will change to Warning unless it's already in a Failing state</li>
+        <li>The Output Arguments are mapped from the Operation or Configuration using the Script Alias, and the specified runtime variables are created or assigned</li>
+        <li>The log scope is closed</li>
+    </ol>
+
+    <h4 id="anonymous-block-statement">Anonymous Block Statement</h4>
+    <p>This is comprised of a single, Scoped Statement Block. When this statement is encountered, the execution engine does the following.</p>
+    <ol>
+        <li>If the statement has a description, creates a log scope with the first line of that description</li>
+        <li>Executes the Scoped Statement Block</li>
+        <li>Closes the log scope if it was created</li>
+    </ol>
+
+    <h4 id="assign-variable-statement">Assign Variable Statement</h4>
+    <p>This is comprised of a Variable Name and a Variable Value. When this statement is encountered, the execution engine does the following.</p>
+    <ol>
+        <li>Looks for a runtime variable created in the current or parent scopes</li>
+        <li>If a runtime variable was not found, a new runtime variable is created for the current (and nested) scope</li>
+        <li>The Variable Value is evaluated; if the expression type does not match the variable type (Scalar, Vector, Map), an error is raised; otherwise, the value is assigned to the found or created runtime variable</li>
+    </ol>
+    <p class="info">Note that if a configuration variable already exists (such as a Server or Environment variable), this statement will still create a runtime variable, which will override the configuration variable in current and nested scopes.</p>
+    <p class="info">
+        Note that, unless a variable is in the global scope (i.e. declared with a <a href="#declare-global-variable-statement">Declare Global Variable Statement</a>), asynchronously-running blocks create a copy of the parent scope's runtime variables,
+        so assigning an runtime variable in an asynchronous block will <em>not</em> update the parent, non-asynchronous scope.
+    </p>
+
+    <h4 id="await-statement">Await Statement</h4>
+    <p>This is comprised of an optional Token name. When this statement is encountered, the execution engine does the following.</p>
+    <ol>
+        <li>Looks for all child execution engines created from an Execution Directive Statement</li>
+        <li>If a token is specified, engines without the matching token are ignored</li>
+        <li>If no matches were found, a warning message is logged</li>
+        <li>Execution pauses until the child engines complete</li>
+        <li>If the execution state of the child execution engine is error/warning, the parent execution engine inherits this state. If the state is &quot;failing,&quot; and the await statement is inside a TryStatement, its catch handler will be executed.</li>
+    </ol>
+
+    <h4 id="call-module-statement">Call Module Statement</h4>
+    <p>This invokes an OtterScript Module, and is comprised of:</p>
+    <ul class="docs">
+        <li>Module Name &ndash; a qualified name of the module's raft container and declared name</li>
+        <li>Arguments &ndash;&nbsp; a string-keyed dictionary of value strings</li>
+    </ul>
+    <p>When this statement is encountered, the execution engine does the following.</p>
+    <ol>
+        <li>If no raft name is specified, searches for a module in the current scope, and then each parent scopes</li>
+        <li>If no module was found, searches for a module file in the specified raft container, or the current raft</li>
+        <li>If no module was found, an error is raised</li>
+        <li>
+            The found module's arguments are then enumerated
+            <ol>
+                <li>If no matching argument was in the statement, and the module argument does not have a default value, then an error is raised</li>
+                <li>If no matching argument was in the statement, but the module argument has a default value, then the argument is created as a runtime variable in the current scope</li>
+                <li>If a matching argument was found, then the value is evaluated and created as a runtime variable in the current scope</li>
+            </ol>
+        </li>
+        <li>If the statement has a description, creates a log scope with the first line of that description</li>
+        <li>Executes the body of the module</li>
+        <li>Closes the log scope if it was created</li>
+    </ol>
+    <p class="info buildmaster">
+        BuildMaster does not have rafts; instead, the modules are qualified as either <code>global</code> or <code>&laquo;application-name&raquo;</code>.
+    </p>
+
+    <h4 id="context-iteration-statement">Context Iteration Statement</h4>
+    <p>This enumerates a vector expression, changes the context each time, and executing the contained statements. It's comprised of</p>
+    <ul class="docs">
+        <li>Context Type &ndash; either directory, role, or server</li>
+        <li>Source &ndash; a valid vector expression</li>
+        <li>Body &ndash;&nbsp; a scoped statement block</li>
+    </ul>
+    <p class="info buildmaster">
+        BuildMaster also supports a <code>deployable</code> Context Type.
+    </p>
+    <p>When this statement is encountered, the execution engine does the following:</p>
+    <ol>
+        <li>If the statement has a description, creates a log scope with the first line of that description</li>
+        <li>Evaluates the Source; if the expression is not a vector, then an error is raised</li>
+        <li>Reads the current item in Source; the same logic is performed as Set Context Statement, as if it were the Context Value</li>
+        <li>If the statement has a description, creates a log scope with current item</li>
+        <li>Executes the Body</li>
+        <li>Closes the log scope if created</li>
+        <li>Moves next on the Source; if there is a current item, Step 2 is performed</li>
+        <li>Closes the outer log scope if created</li>
+    </ol>
+
+    <h4 id="declare-global-variable-statement">Declare Global Variable Statement</h4>
+    <p>
+        This is comprised of a Variable Name and an optional Variable Value. When this statement is encountered, the execution engine does the following.
+    </p>
+    <ol>
+        <li>If a statement other than a <em>Declare Global Variable</em> statement has been executed, raises a fatal (uncatchable) error</li>
+        <li>Initializes a new runtime variable in the global scope</li>
+        <li>If there is a Variable Value, it is evaluated; if the expression type does not match the variable type (Scalar, Vector, Map), an error is raised; otherwise, the value is assigned to the runtime variable</li>
+        <li>If there is not a Variable Value, an empty string, vector, or map is assigned to the variable</li>
+    </ol>
+    <p>Variables declared in the global scope are assignable by asynchronously-running blocks.</p>
+
+
+    <h4 id="error-statement">Error Statement</h4>
+    <p>This has no elements; when this statement is encountered, the execution engine changes the execution status to Failing.</p>
+
+    <h4 id="execution-directive-statement">Execution Directive Statement</h4>
+    <p>This instructs the executer to change the execution behavior of the contained statements. It's comprised of</p>
+    <ul class="docs">
+        <li>Retry Count &ndash; an integer that specifies the times to retry the body; the default is 0</li>
+        <li>Asynchronous &ndash; a flag that indicates the body should run asynchronously</li>
+        <li>AsyncToken &ndash; a token name that can be awaited on</li>
+        <li>LockToken &ndash; a token name (or empty string) that may be prefixed with <code>!</code> to indicate a global lock</li>
+        <li>Timeout &ndash; the number of seconds to attempt the block for</li>
+        <li>Execution Policy &ndash; either always or onChange</li>
+        <li>Additional Flags &ndash; currently unused</li>
+        <li>Body &ndash; a scoped statement block</li>
+    </ul>
+
+    <p>When this statement is encountered, the execution engine does the following:</p>
+    <ol>
+        <li>If the statement has a description, creates a log scope with the first line of that description</li>
+        <li>If Execution Policy is set, all Ensure Operations will execute in the execution phase of a Collect and Execute phase, regardless of whether changes were detected</li>
+        <li>If a Retry value is specified, and a non-fatal error is encountered during any of the following steps (and the retry count hasn't been exceeded), then the execution status is reverted to whatever status it was upon entering the block, and execution begins again from the following step</li>
+        <li>If a Timeout value is specified, a <a href="https://msdn.microsoft.com/en-us/library/system.threading.cancellationtokensource(v=vs.110).aspx" target="_blank">CancellationTokenSource </a>is created with the specified value; if the timeout has elapsed before the remainder of the statement is executed, a CancellationToken will be created that signals the current task to safely abort</li>
+        <li>
+            If a Lock Token is specified, then
+            <ol>
+                <li>If the current statement is within a block that specifies a Locked flag, a fatal error is raised</li>
+                <li>
+                    If there are any other statements that are currently executing in a statement that shares a LockTocken,
+                    either in the current execution (or in all executions when the token is prefixed with a <code>!</code>), wait until the other statements finish
+                </li>
+            </ol>
+        </li>
+        <li>
+            If Asynchronous is specified, then
+            <ol>
+                <li>A new child execution engine is created with the specified token</li>
+                <li>All current runtime variables from the current execution are copied to the child</li>
+                <li>The child execution engine then executes the Body</li>
+                <li>If an error is encountered during the child execution, the error will be raised in the parent execution engine, where the with block began</li>
+            </ol>
+        </li>
+        <li>Otherwise (no async), the Body is executed</li>
+        <li>Closes the outer log scope if created</li>
+    </ol>
+    <p class="info">Note that timeout (or cancellation in general) is not guaranteed, and requires that the task (generally, an operation) properly check for a cancellation token. For example, an operation that simply did a Thread.Sleep for 1000 seconds could not be timed out after 10 seconds.</p>
+
+    <h4 id="fail-statement">Fail Statement</h4>
+    <p>This Statement has no elements; when this statement is encountered, the execution engine changes the execution status to Failing and immediately terminates the execution; recovery is not possible, even if within a Try/Catch statement.</p>
+
+    <h4 id="force-normal-statement">Force Normal Statement</h4>
+    <p>This Statement has no elements; when this statement is encountered, the execution engine changes the execution status to Normal.</p>
+
+    <h4 id="iteration-block-statement">Iteration Block Statement</h4>
+    <p>This enumerates a vector expression, changes the context each time, and executing the contained statements. It's comprised of</p>
+    <ul class="docs">
+        <li>Iteration Variable Name &ndash; a valid scalar variable expression</li>
+        <li>Source &ndash; a valid vector expression</li>
+        <li>Body &ndash;&nbsp; a scoped statement block</li>
+    </ul>
+    <p>When this statement is encountered, the execution engine does the following:</p>
+    <ol>
+        <li>If the statement has a description, creates a log scope with the first line of that description</li>
+        <li>Evaluates the Source; if the expression is not a vector, then an error is raised</li>
+        <li>Reads the current item in Source; creates a runtime variable with the specified name in the current scope</li>
+        <li>If the statement has a description, creates a log scope with current item</li>
+        <li>Executes the Body</li>
+        <li>Closes the log scope if created</li>
+        <li>Moves next on the Source; if there is a current item, Step 2 is performed</li>
+        <li>Closes the outer log scope if created</li>
+    </ol>
+    <p class="info">Note that a runtime variable is always created, never assigned. This means that if a runtime variable was already created in a higher scope, that value would not be overwritten.</p>
+
+    <h4 id="log-statement">Log Statement</h4>
+    <p>This statement has two elements:</p>
+    <ul class="docs">
+        <li>Log Message &ndash; an expression</li>
+        <li>Log Level &ndash; an integer enum with valid values of (0=Debug, 10=Information, 20=Warning, 30=Error)</li>
+    </ul>
+    <p>When this statement is encountered, the execution engine writes the specified message to the specified level. If Warning or Error is specified, the execution status will change appropriately (Error causes Failing, Warning causes Warning unless already Failing), but an error will not be raised.</p>
+
+    <h4 id="predicate-statement">Predicate Statement</h4>
+    <p>This enumerates changes the current execution context. It's comprised of</p>
+    <ul class="docs">
+        <li>Predicate &ndash; one of the six types of predicates</li>
+        <li>True Statements &ndash; a scoped statement block</li>
+        <li>False Statements &ndash; a scoped statement block</li>
+    </ul>
+    <p>There are six types of Predicates; each can evaluate as true or false.</p>
+    <ul class="docs">
+        <li>And Predicate &ndash; contains a set of Predicates; evaluates as true if all contained predicates evaluate as true, otherwise false</li>
+        <li>Or Predicate &ndash; contains a set of Predicates; evaluates as true if any of the contained predicates evaluate as true, otherwise false</li>
+        <li>Not Predicate &ndash; contains a single Predicate; evaluates as true if the contained predicate evaluates as false; otherwise true</li>
+        <li>Equality Predicate &ndash; contains two expressions; evaluates as true if both evaluated expressions are (case sensitively) identical</li>
+        <li>Inequality &ndash; contains two expressions; evaluates as true if both evaluated expressions are (case sensitively) not identical</li>
+        <li>True &ndash; contains a single expression; evaluates as true if the expression is (case insensitively) identical to &ldquo;true&rdquo;</li>
+    </ul>
+    <p>When this statement is encountered, the execution engine does the following:</p>
+    <ol>
+        <li>If the statement has a description, creates a log scope with the first line of that description</li>
+        <li>Tests the Predicate, and evaluates either True Statements or the False Statements</li>
+        <li>Closes the outer log scope if created</li>
+    </ol>
+
+    <h4 id="set-context-statement">Set Context Statement</h4>
+    <p>This changes the current execution context. It's comprised of</p>
+    <ul class="docs">
+        <li>Context Type &ndash; either directory, role, or server</li>
+        <li>Context Value &ndash; an expression</li>
+        <li>Body &ndash;&nbsp; a scoped statement block</li>
+    </ul>
+    <p>When this statement is encountered, the execution engine does the following:</p>
+    <ol>
+        <li>If the statement has a description, creates a log scope with the first line of that description</li>
+        <li>
+            Evaluates the Context Value; if the Context Type is
+            <ol>
+                <li>directory &ndash; creates a new context based on current context, but with the current item as the working directory</li>
+                <li>role &ndash; if the server in context does not have the specified role, then the entire block is skipped; otherwise, creates a new context based on the current context with the current item as the specified role</li>
+                <li>server - if the execution allows it, creates a new context based on the current context with the current item as the specified server; otherwise, raises an error</li>
+                <li>
+                    <span class="buildmaster-only">deployable</span> - if the release in context does not have the specified deployable, then the entire block is skipped; otherwise, creates a new context based on the current context with the current deployable as the specified deployable
+                </li>
+            </ol>
+        </li>
+        <li>Closes the outer scope if created</li>
+    </ol>
+
+    <h4 id="throw-statement">Throw Statement</h4>
+    <p>This has no elements; when this statement is encountered, the execution engine changes the execution status to Failing and raises an error. This error may be caught if within a Try/Catch statement.</p>
+
+    <h4 id="try-statement">Try Statement</h4>
+    <p>This has two scoped statements blocks: a Body, and an Error Handler. When this statement is encountered by the execution engine:</p>
+    <ol>
+        <li>If the statement has a description, creates a log scope with the first line of that description</li>
+        <li>If an error occurs during the following step, the Error Handler is executed instead of the normal behavior of raising an error and changing the execution status</li>
+        <li>The Body is executed</li>
+        <li>Closes the log scope if it was created</li>
+    </ol>
+
+    <h4 id="warn-statement">Warn Statement</h4>
+    <p>This Statement has a single, optional element: Force flag. When this statement is encountered, the execution engine changes the execution status to Warning, unless the Force flag is not specified and the current execution status is Failing.</p>
+</body>
+</html>

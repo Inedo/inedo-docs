@@ -1,0 +1,89 @@
+﻿<html>
+<head>
+    <title>Operations &amp; Functions</title>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <meta name="keywords" content="otterscript,otter,hedgehog,buildmaster,operations" />
+    <meta name="show-headings-in-nav" content="true" />
+    <meta name="sequence" content="10" />
+</head>
+<body>
+    <h2 id="operations" data-title="Operations">Operations</h2>
+    <p>
+        Operations are the tasks that the execution engine will run on a server. The Inedo Core
+        extension includes many built-in operations, and you can add more using the Inedo SDK.
+        To see a list of all of our extensions, visit the <a href="/den">Inedo Den</a>.  Some operations are
+        <a href="/support/documentation/otter/reference/operations/general/sleep" target="_blank">simple</a>,
+        and some are <a href="/support/documentation/otter/reference/operations/files/transfer-files" target="_blank">complex</a>.
+        Through a combination of operations, scripts, variables, and blocks, you will be able to model any plan to deploy an application
+        to an environment.
+    </p>
+
+    <h3 id="usage">Using an Operation in a Plan</h3>
+    <p>
+        An operation has the follow parts:
+    </p>
+    <pre>Namespace::Name [PositionalArgument]
+(
+    NamedArgument1: value,
+    NamedArgument2: value,
+    ...
+    OutputArgument1 => $variable
+)</pre>
+    <p>
+        The <b>Namespace</b> component is optional, and is often the same name as the extension which defines the operation.
+        It may be specified if there is any ambiguity due to multiple operations with the same name, or just to increase
+        clarity in a plan.
+    </p>
+    <p>
+        An operation's <b>positional argument</b> usually aliases one of the named arguments to provide a
+        shorthand way to perform a common task. For example, the following two usages of the <i>Sleep</i>
+        operation are equivalent:
+    </p>
+    <pre>Sleep(Seconds: 10);
+Sleep 10;</pre>
+    <p>
+        Operations use <b>output arguments</b> to store information to runtime variables in the calling plan.
+    </p>
+    <h2 id="functions" data-title="Functions">Functions</h2>
+
+    <p>
+        Functions are used just like variables in OtterScript, except they cannot be assigned
+        to, and may accept arguments. Parameterless functions may also be referred to as global
+        or system variables.
+    </p>
+    <p>
+        Like Operations, many functions are included in the Inedo Core extension, and custom functions can be created using the Inedo SDK.
+    </p>
+
+    <h3 id="usage">Function Usage &emsp; </h3>
+    <p>
+        Functions may be used anywhere an OtterScript variable may be used. Just like a variable,
+        a function will be evaluated and replaced when it is used in a string literal. A function
+        is invoked as follows:
+    </p>
+    <pre>$TextReturningFunction(arg1, arg2, ...)
+@ListReturningFunction(arg1, arg2, ...)
+%MapReturningFunction(arg1, arg2, ...)</pre>
+    <p>
+        Functions can take zero or more arguments. Unlike operations, function arguments are
+        always positional; argument names are only included for documentation purposes.
+    </p>
+
+    <h3>Variable Aliasing</h3>
+    <p>
+        When a function accepts zero arguments, it may be used either with or without
+        parentheses (like a variable). For example, <b>$Func()</b> is equivalent to <b>$Func</b>.
+        For this reason, parameterless functions are sometimes referred to as global or system
+        variables in documentation.
+    </p>
+    <p>
+        If, however, there is a user-defined configuration variable or runtime variable of the
+        same name as a parameterless function, then this variable will take precendence. To
+        unambiguoulsy specify the function instead, the <b>$Func()</b> syntax may be used instead.
+        "Shadowing" a function like this is not recommended, and is only intended
+        to prevent new functions from changing the behavior of existing plan, should any variables
+        happen to have the same name.
+    </p>
+
+</body>
+</html>

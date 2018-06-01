@@ -1,0 +1,92 @@
+<html>
+<head>
+    <title>General Blocks</title>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <meta name="keywords" content="buildmaster,execution-engine,operation-groups" />
+	<meta name="sequence" content="100"  />
+</head>
+<body>
+   
+   
+    <p>
+        General Blocks also allow you to define properties that operations will use, and that will control how contained statements and blocks
+        actually run.
+    </p>
+   
+	<tab-block>
+        <tab name="Visual Mode"><img class="screenshot" src="/resources/tutorials/otter-getting-started/block-2-complete.png" alt="General Blocks in Otter"/></tab>
+        <tab name="Text Mode (OtterScript)"><img class="screenshot" src="/resources/documentation/otter/general-block-text.png" alt="General Blocks in OtterScript"/></tab>
+    </tab-block>
+ 
+    <h3 id="gen-group-prop" data-title="General Group Properties">General Group Properties</h3>
+    <ul class="docs">
+        <li>
+            <b>Current Server</b>
+            sets the server used for execution of operations
+        </li>
+        <li>
+            <b>Deployable</b>
+            determines whether the current release in context has that deployable included, and skips the block if it does not
+        </li>
+        <li>
+            <b>Working directory</b>
+            sets the current working directory that file-based Operations will use
+        </li>
+        
+        <li>
+            <b>Asynchronous</b>
+            when specified (along with an optional token), the entire block will run asynchronously (see below).
+        </li>
+        
+        <li>
+            <b>Timeout</b>
+            the number of seconds to wait for the contained items to run; if they don't run in this time, an error will be raised
+        </li>
+        <li>
+            <b>Retry count</b>
+            if any of the contained items raise an error, then the entire block (and all nested blocks) will be run as many times 
+            specified; if a retry succeeds, then the execution status will not change
+        </li>
+        
+    </ul>
+
+	<h3 id="async" data-title="Asynchronous Blocks">Asynchronous Blocks</h3>
+	<p>
+		An <i>asynchronous</i> block works just like a general block, except that execution will continue
+		with the statement/block immediately following the asynchronous block while the asynchronous block
+		runs in the background. In this way, multiple long-running blocks can execute in parallel.
+	</p>
+	<p>
+		An <i>await asynchronous operation</i> statement will suspend the current execution until all asynchronous blocks have
+		been completed. The execution engine adds an implicit <i>await</i> to the end of any plan
+		if there are background blocks running, but you can always await sooner if part of your plan
+		depends on the asynchronous blocks completing.
+	</p>
+	<p>
+		If an asynchronous block is given a token, then this token must be supplied to an await
+		statement to act as a filter; that is, only asynchronous blocks with that specific
+		token will be awaited.
+	</p>
+	<p class="info">
+		When an <i>await asynchronous operation</i> statement is executed, the execution status is inherited from the
+		background block if it is in an error or warn state. An <i>await</i> statement can
+		be enclosed inside a <a href="/support/documentation/executionengine/otterscript/statements-and-blocks/try-catch">Try/Catch block </a> to handle any recoverable errors that happened
+		in the background.
+	</p>
+	<pre>foreach server in @ServersInGroup(database-nodes)
+{
+  # these will take an eternity to run, so run in background
+  with async
+  {
+    PSExec &gt;&gt; some really long-running script &gt;&gt;;
+  }
+}
+
+
+# Hopefully database servers are caught up by now, but wait just in case
+await;
+
+  log-debug all async blocks finished!;
+	</pre>
+</body>
+</html>

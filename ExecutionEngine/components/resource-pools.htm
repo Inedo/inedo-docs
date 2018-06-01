@@ -1,0 +1,117 @@
+<html>
+<head>
+    <title>Resource Pools</title>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <meta name="keywords" content="execution-engine, otter, buildmaster, hedgehog, server-roles" />
+    <meta name="sequence" content="30" />
+    <meta name="show-headings-in-nav" content="true" />
+    <style type="text/css">
+        .server-role {
+            background-color: #f16633;
+        }
+    </style>
+</head>
+<body>
+    <p>
+        Through the use of server roles, it's fairly easy to ensure that any number of servers have an identical set of applications and configuration. This is quite useful for building applications at scale: you can simply define an "app-node" role to represent a web frontend, and then target all servers in that role to configure and deploy changes to.
+    </p>
+    <p>
+        While this role targeting is typically done at the job (Otter) or pipeline (BuildMaster/Hedgehog) level, it can just as easily be done in OtterScript:
+    </p>
+    <p>
+        <pre><code>foreach server in @ServersInRole(app-node)
+{
+    IIS::Stop-AppPool AccountsAppPool;
+
+    ProGet::Get-Package
+    (
+        Credentials: ProGetLocal,
+        Feed: Initech-Apps,
+        Name: Accounts,
+        Version: $ReleaseNumber,
+        Directory: c:\Websites\Accounts
+    );
+
+    IIS::Start-AppPool AccountsAppPool;
+}</code></pre>
+    </p>
+    <p>
+        Upon completion of that block, all servers with the app-node role will have had their AccountsAppPool stopped and started, as well as received a version of the Accounts package.
+    </p>
+    <p>
+        There are times when you want to perform something on only a single server in a role. For example, if you have a long-running task like automated UI testing, you'd only want one of your available web-ui-testing servers to perform that task. This is where Resource Pools come in.
+    </p>
+    <h2 id="define-pool" data-title="Defining a Pool">Defining a Resource Pool</h2>
+    <p>
+        A resource pool is a set of servers that are used as a single, load-balanced resource. You may acquire an unused server from a resource pool, and then release it back into the pool once the needed tasks have been performed.
+    </p>
+    <p>
+        Roles are used to define resource pools. So, to create a resource pool for a task, simply define a role, and place the desired servers in it.
+    </p>
+    <h2 id="aquiring-server" data-title="Server Acquisition">Acquiring a Server from a Resource Pool</h2>
+    <p>
+        The <code>Acquire-Server</code> operation is used to request a server from a resource pool.
+    </p>
+    <p>
+        <pre><code>Acquire-Server
+(
+    Role: net45-buildserver,
+    AcquiredServer => $AcquiredServer
+);</code></pre>
+    </p>
+    <p>
+        When run, the operation will find a server that has not yet been "acquired" for the specified scope. In the above example, let's say the net45-buildserver Resource Pool has three servers: 1, 3, and 5. If server 1 has already been "acquired" by another orchestration plan, the operation will then check if server 3 is available and will "acquire" it for our task.
+    </p>
+    <p>
+        The scope defaults to global, but can be set to role on the advanced tab. A role-scoped acquisition means that the same server can be acquired for different roles at the same time, whereas global scopes require exclusivity.
+    </p>
+    <p>
+        The following occurs when a server is found: the server is marked as "acquired" for the scope, the <code>$AcquiredServer</code> output variable is assigned, and the operation quits, continuing the execution.
+    </p>
+    <p>
+        If all servers in the role have already been acquired, the acquisition request is enqueued, and will be attempted when a server is released. The execution will pause until that happens.
+    </p>
+    <h2 id="releasing-server" data-title="Releasing a Server">Releasing a Server back into a Resource Pool</h2>
+    <p>
+        Once the acquired server has finished performing the needed tasks, the server may be released back into the pool via the <code>Release-Server</code> operation.
+    </p>
+    <p>
+<pre><code>Release-Server
+(
+    Role: net45-buildserver,
+    Server: $AcquiredServer
+);</code></pre>
+    </p>
+    <p>
+        When run, the operation will iterate over all acquired servers to find one that matches the specified role and server name. If no such server is found, a warning will be written to the logs. Otherwise, the specified server is removed from the acquired list, and all activation requests are run.
+    </p>
+    <p>
+        Additionally, when an execution completes, all servers that have been acquired during the execution are automatically released back to the Resource Pool.
+    </p>
+
+    <h2 id="identifying-servers" data-title="Identifying Servers">Identifying Acquired Servers</h2>
+    <p>
+        The <code>@AcquiredServers</code> variable function is used to list all acquired servers for a specified role.
+    </p>
+    <p>
+<pre><code>foreach $Server in @AcquiredServers(net45-buildserver)
+{
+    Log-Information $Server is currently being used.;
+}</code></pre>
+    </p>
+    <p>
+        You should generally only use this for informational purposes.
+    </p>
+
+    <h2 id="usage-notes" data-title="Usage Notes">Usage Notes</h2>
+    <p>
+        These operations do not marshal actual server usage, which means you have the freedom to bypass a resource pool you create. Aside from common sense, this is to prevent you from simply doing a <code>foreach server in @ServersInRole(net45-buildserver)</code> loop to perform tasks on servers that have already been acquired. Obviously, you should not do this.
+    </p>
+    <p>
+        You should, however, release servers after use. While they are freed at the end of each execution, it's possible an unrelated operation will cause an execution to run longer than needed.
+    </p>
+    <p>
+        You should generally avoid role-scoped acquisitions unless you need to use them for a very specific purpose.
+    </p>
+</body>
+</html>
