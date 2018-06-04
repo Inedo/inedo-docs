@@ -1,0 +1,32 @@
+﻿<html>
+<head>
+    <title>Server Flow</title>
+    <meta name="subtitle" content="Server Flow" />
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <meta name="keywords" content="inedo, inedo agent, server architecture" />
+    <meta name="sequence" content="30" />
+</head>
+<body>
+
+    <p>This is the series of events which occurs when a client (product) connects to an Inedo Agent:</p>
+
+    <ol style="margin-left: 30px;">
+        <li>The client (BuildMaster, Hedgehog, or Otter) opens a TCP socket to the server (InedoAgent.exe) and sends a 24-byte Handshake message</li>
+        <li>The server sends a <a href="/support/documentation/inedoagent/server-architecture/network-protocol">Handshake</a> acknowledgement to the client</li>
+        <li>The server is now ready to receive a message from the client</li>
+    </ol>
+
+    <p>The server will then wait for commands from the connected client. These connections are relatively short-lived, and kept open for the duration of deployment, configuration, or orchestration executions.</p>
+
+    <p>The following events occur when an InedoAgent.exe receives a message that targets a product host process:</p>
+
+    <ol style="margin-left: 30px;">
+        <li>InedoAgent.exe forwards message the product host process using the shared-memory buffer</li>
+        <li>The product host process reads the message and processes it</li>
+        <li>If the messages requires a response, the product host process sends a message to InedoAgent.exe using the shared-memory buffer</li>
+        <li>InedoAgent.exe forwards messages to connected clients</li>
+    </ol>
+
+    <p>Also note that, while servers can have multiple connected clients, a client will generally share a single session across multiple executions.</p>
+</body>
+</html>

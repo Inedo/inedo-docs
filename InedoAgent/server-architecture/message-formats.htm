@@ -1,0 +1,56 @@
+﻿<html>
+<head>
+    <title>Message Formats</title>
+    <meta name="subtitle" content="Message Formats" />
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <meta name="keywords" content="inedo, inedo agent, message formats" />
+    <meta name="sequence" content="20" />
+</head>
+<body>
+    <p>
+        Meta-agent messages are backward and forward compatible, meaning that any changes to their formats must work
+        in all past and future versions of the InedoAgent without error. In the event a breaking change is needed, the agent's
+        protocol version number in the <a href="/support/documentation/inedoagent/server-architecture/network-protocol">handshake</a>
+        will be incremented. Product-specific agent messages are allowed to change completely at any time, since agent host processes
+        run in a totally isolated environment, and are always brought up to date with the connecting client version.
+    </p>
+
+    <h3 id="data">Data Conventions</h3>
+    <p>
+        All messages are binary encoded. For clarity, high-level data types such as string, int32, etc are used to describe message formats.
+        This section describes how those data types are serialized to binary.
+    </p>
+    <ul class="docs">
+        <li>int32 - 32-bit integer. Encoded as 4 bytes, little-endian (least significant bits first).</li>
+        <li>int64 - 64-bit integer. Encoded as 8 bytes, little-endian (least significant bits first).</li>
+        <li>string - variable-length UTF8 string. The length of the string (in bytes) is prefixed as a variable-length unsigned 32-bit integer, written 7 bits at a time, with the high (8th) bit of each byte set to indicate another byte follows. For example, any length less than 128 is written as a single byte. This is the standard format used by the BinaryWriter class in .NET.</li>
+        <li>array&lt;type&gt; - variable-length array of serialized item. The array is prefixed with an int32 specifying how many items follow.</li>
+        <li>datetime - int64 value that stores a .NET UTC DateTime.Ticks value.</li>
+    </ul>
+
+    <h3 id="meta">Meta Messages</h3>
+
+    <h4>Update Agent (message code = 2)</h4>
+    <p>Raw format for the message:</p>
+    <pre>byte: Agent type to update (0=meta, 1=otter, 2=buildmaster, 3=hedgehog)
+array&lt;UpdateFile&gt;: agent assembly files (binaries)
+array&lt;UpdateFile&gt;: agent extension files (.upack files, only valid for agent type=otter/buildmaster/hedgehog)
+</pre>
+
+    <p>Response for the message:</p>
+    <pre><em>None</em></pre>
+
+    <h4>UpdateFile structure format</h4>
+    <p>This is the format used to describe updated files in the Update Agent message:</p>
+    <pre>string: file name
+datetime: file modification timestamp
+array&lt;byte&gt;: file contents</pre>
+
+    <h4>Get Agent Root Path (message code = 3)</h4>
+    <p>Raw format for the message:</p>
+    <pre>byte: Agent type (1=otter,2=buildmaster,3=hedgehog)</pre>
+
+    <p>Response for the message:</p>
+    <pre>string: Root temp path for the agent</pre>
+</body>
+</html>

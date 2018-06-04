@@ -1,0 +1,41 @@
+﻿<html>
+<head>
+    <title>OtterScript Overview</title>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <meta name="keywords" content="otter,otterscript,configuration-plans" />
+    <meta name="sequence" content="10" />
+</head>
+<body>
+    <p><img width="250" src="/resources/images/logos/otterscript.svg" /></p>
+    <p>
+        <em>OtterScript</em> is a Domain-Specific Language that was designed in tandem with the 
+        execution engine to represent  <a href="/support/documentation/otter/core-concepts/plans#configuration">configuration plans</a> and 
+        <a href="/support/documentation/otter/core-concepts/plans#orchestration">orchestration plans</a> in Otter, and
+        <a href="/support/documentation/buildmaster/core-concepts/deployment-plans">deployment plans</a> in BuildMaster. Because a DSL is inherently limited in functionality, a key feature of
+        is the ability to "drop down" to a <a href="/support/documentation/executionengine/components/powershell-and-shell">lower-level scripting language</a>
+        as needed.
+    </p>
+    <p>
+        While OtterScript is neither a general-purpose programming language (like Ruby), nor a general-purpose mark-up language (like YAML), it was inspired
+        by both, and allows you to build declarative and imperative plans.  
+
+    </p>
+    <h2 id="design-goals">Language Design Goals</h2>
+    <p>
+        In addition to meeting implementing the <em>actual</em> requirements of an advanced execution engine capable of executing
+        across thousands of servers, we built OtterScript with these factors in mind:
+    </p>
+    <ul class="docs">
+        <li>easy to learn for those with little to no programming experience</li>
+        <li>familiar and intuitive to those with intermediate programming experience</li>
+        <li>extensible and powerful for those with programming and domain expertise</li>
+    </ul>
+    <p>
+        In fact, using the Visual Mode in the plan editor, many users may not even realize they're building plans using <em>OtterScript</em>.
+    </p>
+    <p><img class="screenshot" src="/otter/otter-text.gif" alt="Plan Editor" /></p>
+    <p>
+        As you become more familiar with the execution engine, this reference section will help you accomplish even more things.
+    </p>
+</body>
+</html>

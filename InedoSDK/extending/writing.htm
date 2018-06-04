@@ -1,0 +1,167 @@
+﻿<html>
+<head>
+    <title>Writing a Simple Create File Operation</title>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <meta name="keywords" content="inedo, inedo sdk" />
+    <meta name="sequence" content="30" />
+</head>
+<body>
+   <p>
+       You can easily add new operations to BuildMaster, Hedgehog, and Otter using any .NET language.
+   </p>
+    <p>
+        Follow this guide to create a simplified version of the Create File operation that is already included in the Inedo Core extension. First, make sure to create a project as outlined in <a href="/support/documentation/inedosdk/extending/creating">Creating an Extension using the Inedo SDK</a>.
+    </p>
+
+    <p>
+        Next, create a new public class called <code>CreateFileOperation</code>, and have it inherit
+        the <a href="/support/sdk-reference/inedosdk/Inedo.Extensibility.Operations/ExecutingOperation"><code>ExecuteOperation</code></a> class:
+    </p>
+<pre>
+<span class="code-keyword">public class</span> CreateFileOperation : ExecuteOperation
+{
+}
+</pre>
+
+    <p>
+        Since this operation is supposed to create a file, it would be nice if we could access
+        the file name and what to put in the file as inputs. To do this, just add a couple of properties and attributes:
+    </p>
+<pre>
+[Required]
+[ScriptAlias("Name")]
+[DisplayName("File name")]
+public string FileName { get; set; }
+
+[ScriptAlias("Text")]
+[DisplayName("Contents")]
+[Description("The contents of the file. If this value is missing or empty, a 0-byte file will be created.")]
+public string FileText { get; set; }
+</pre>
+
+    <p>
+        Here's what everything means:
+    </p>
+    <ul class="docs">
+        <li>
+            <b><a href="/support/sdk-reference/inedosdk/Inedo.Documentation/RequiredAttribute">Required</a></b> - the user must supply a value for this property for the plan to validate
+        </li>
+        <li>
+            <b><a href="/support/sdk-reference/inedosdk/Inedo.Extensibility/ScriptAliasAttribute">ScriptAlias(name)</a></b> - this is what the name of the property will look like to OtterScript;
+            this value is required and must be unique to the type of operation
+        </li>
+        <li>
+            <b>[DisplayName(name)]</b> - this is displayed in the graphical plan editor to provide a friendlier
+            name than the script alias; this is optional
+        </li>
+        <li>
+            <b>[Description(text)]</b> - another optional attribute that provides some additional help
+            text in the graphical editor
+        </li>
+    </ul>
+
+    <p>
+        Now that the inputs are configured, write the code that will actually create the file:
+    </p>
+<pre>
+public override async Task ExecuteAsync(IOperationExecutionContext context)
+{
+	var path = PathEx.Combine(context.WorkingDirectory, this.FileName);
+	var fileOps = context.Agent.GetService&lt;IFileOperationsExecuter&gt;();
+	this.LogDebug($"Creating {path}...");
+
+	await fileOps.CreateDirectoryAsync(PathEx.GetDirectoryName(path));
+	await fileOps.WriteAllTextAsync(path, this.Text ?? "");
+
+	this.LogInformation(this.FileName + " file created.");
+}
+</pre>
+
+    <p>
+        Although the <a href="/support/sdk-reference/inedosdk/Inedo.Extensibility.Operations/ExecuteOperation/ExecuteAsync(IOperationExecutionContext)">ExecuteAsync</a> method isn't doing too much, we'll break everything down right here:
+    </p>
+    <ul class="docs">
+        <li>
+            <b>async</b><br />
+            The <b>async</b> keyword in the method declaration instructs
+            the compiler to allow the <b>await</b> keyword in the method body. Otter
+            operations can execute asynchronously; if you don't know what this means, consider
+            reading <a href="https://msdn.microsoft.com/en-us/library/hh191443.aspx" target="_blank">this MSDN article</a>.
+            If you would prefer to implement <b>ExecuteAsync</b> synchronously, you can just omit
+            the <b>async</b> keyword and return the static <b>Complete</b> property when the method
+            is complete.
+        </li>
+
+        <li>
+            <b>var path = PathEx.Combine(context.WorkingDirectory, this.FileName);</b><br />
+            This allows a relative path to be used for the <b>FileName</b> property.
+            Without it, the operation would only work correctly when a user supplies
+            an absolute path. Note that absolute paths will still work; if the
+            second argument of <b>PathEx.Combine</b> is absolute, the first argument
+            is ignored.
+        </li>
+
+        <li>
+            <b>var fileOps = context.Agent.GetService&lt;IFileOperationsExecuter&gt;();</b><br />
+            This requests a <b><a href="/support/sdk-reference/inedosdk/Inedo.Agents/IFileOperationsExecuter">IFileOperationsExecuter</a></b> service from the
+            Otter agent in the current context. This interface is an abstraction
+            that allows a common set of file system operations on either hosted
+            or SSH agents.
+        </li>
+
+        <li>
+            <b>await fileOps.CreateDirectoryAsync(PathEx.GetDirectoryName(path));</b><br />
+            This is a simple way to ensure that the directory exists where
+            we are trying to write the file.
+        </li>
+
+        <li>
+            <b>	await fileOps.WriteAllTextAsync(path, this.Text ?? "");</b><br />
+            This actually writes the desired text to the file.
+        </li>
+    </ul>
+    <p class="info">
+        For brevity, we've left out the logging messages; but those are pretty self-explanatory.
+        Anything logged will be associated with the current operation.
+    </p>
+
+    <p>
+        Now apply a few attributes to the operation itself to make it discoverable to Otter:
+    </p>
+<pre class="tutorial-code">
+[DisplayName("Create File (Example)")]
+[Description("Creates a file on a server.")]
+[ScriptAlias("Create-File-Example")]
+[ScriptNamespace("HDARS")]
+[Tag("files")]
+[DefaultProperty(nameof(FileName))]
+<span class="code-keyword">public class</span> CreateFileOperation : ExecuteOperation
+{
+}
+</pre>
+
+    <p>
+        The meaning of <b>DisplayName</b>, <b>Description</b>, and <b>ScriptAlias</b>
+        is the same as for properties. As for the other attributes:
+    </p>
+    <ul class="docs">
+        <li>
+            <b><a href="/support/sdk-reference/inedosdk/Inedo.Extensibility/ScriptNamespaceAttribute">ScriptNamespace</a></b> - specifies a prefix that is used to qualify the
+            name specified in <b>ScriptAlias(name)</b> - For convenience, this attribute
+            can also be applied to the assembly rather than on each operation individually.
+        </li>
+        <li>
+            <b><a href="/support/sdk-reference/inedosdk/Inedo.Documentation/TagAttribute">Tag</a></b> - specifies a tag which acts as a kind of category for the operation.
+            This attribute can be applied multiple times and can help with discoverability.
+        </li>
+        <li>
+            <b>DefaultProperty</b> - specifies the name of a property on the operation
+            that receives the default argument value. When in script form, the default argument
+            is the value this is passed to the operation positionally, rather than by name.
+            A default is not necessary, but can help increase the readability of a plan
+            when it is viewed or edited as OtterScript.
+        </li>
+    </ul>
+
+</body>
+</html>

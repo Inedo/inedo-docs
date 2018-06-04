@@ -1,0 +1,69 @@
+﻿<html>
+<head>
+    <title>Hosting a Private Extensions Feed</title>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <meta name="keywords" content="inedo, inedo sdk" />
+    <meta name="sequence" content="30" />
+    <meta name="show-headings-in-nav" content="true" />
+</head>
+<body>
+    
+    <p>
+        Typical usage of an Inedo product does not require additional configuration to connect with the Inedo Den that serves extensions for our products. What you may not realize is that extensions are served using a <a href="/support/documentation/upack/feed-api/endpoints">Universal Feed</a>. 
+    </p>
+    <p>
+        Because of this, Inedo product administrators can host their own "extension gallery" simply by creating a Universal Feed within ProGet, optionally adding a connector to the Inedo Den (https://inedo.com/den/feed), and updating the Extensions.UpdateFeedUrl setting in the Inedo product as desired.
+    </p>
+    <h2 id="why-host" data-title="Why Host a Private Extensions Feed?">Why Host a Private Extensions Feed?</h2>
+    <p>
+        There are a few benefits to hosting your own extension gallery:
+    </p>
+    <ul class="docs">
+        <li>
+            People in your own organization could <a href="/support/documentation/inedosdk/extending/creating">create</a> and upload extensions to it
+        </li>
+        <li>
+            Extensions in target products could still be updated even without an internet connection
+        </li>
+        <li>
+            Inedo extensions could be curated by allowing only "approved" packages 
+        </li>
+        <li>
+            Multiple extension feeds could be combined in a single one with multiple connectors
+        </li>
+    </ul>
+    <h2 id="creating-feed" data-title="Creating the Private Feed">Creating the Private Feed</h2>
+    <p>
+        To create a private extensions feed in ProGet, select <i>Feeds</i> > <i>Create New Feed</i>, enter whatever feed name you would like, we used <strong>CustomExtensions</strong>, and click <i>Create:</i>
+    </p>
+    <img class="screenshot" style="border: 1px solid #808080;" src="/resources/documentation/various/creating-custom-feed.png" alt="Creating Private Feed" />
+    <h2 id="adding-connector" data-title="Adding a Connector to the Inedo Den">Adding a Connector to the Inedo Den</h2>
+    <p>
+        Once the feed is created, we will add a connector. From the Manage Feed page, select <i>Feed Connectors</i> > <i>Add Connector</i> >  <i>Create Connector</i> to establish a connection to the Inedo Den:
+    </p>
+    <img class="screenshot" style="border: 1px solid #808080;" src="/resources/documentation/various/den-connector.png" alt="Add Connector to Den" />
+    <p>
+        Click <i>Save</i> on the following screen to associate the newly created connector to inedo.com with the <strong>CustomExtensions</strong> feed.
+    </p>
+    <p>
+        At this point, we can see the extension packages on the feed page:
+    </p>
+    <img class="screenshot" style="border: 1px solid #808080;" src="/resources/documentation/various/extension-feed.png" alt="CustomExtensions Feed" />
+    <h2 id="configuring" data-title="Configuring a Product to use the Private Feed">Configuring an Inedo Product to use the Private Feed</h2>
+    <p>
+        To point to the custom extension feed, we must set the <strong>Extensions.UpdateFeedUrl</strong> advanced configuration value to the endpoint URL of the feed:
+    </p>
+    <img class="screenshot" style="border: 1px solid #808080;" src="/resources/documentation/various/endpoint-url.png" alt="Endpoint URL" />
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
