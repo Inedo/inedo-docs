@@ -1,0 +1,116 @@
+﻿<html>
+<head>
+    <title>Deployment Sets</title>
+    <meta name="subtitle" content="Deployment Sets" />
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <meta name="keywords" content="hedgehog, packages, deployment sets" />
+    <meta name="sequence" content="200" />
+</head>
+<body>
+
+            <p>
+                Deployment sets are used to bundle a set of related packages - such as a PHP-based web frontend and a NodeJS-based API middle-tier- so that they can be delivered and deployed together.
+            </p>
+    <div class="attention analogy">
+        <img src="/resources/images/icons/analogy.png" />
+        <p>
+          Think of a deployment set like an empty shipping pallet, with a manifest form attached that's filled out in pencil.
+        </p>
+    </div>
+    <p>
+       Not all of the packages in a set need to be deployed to the same targets at the same time. For example, your web frontend package might go to a different group of testing servers than your API middle-tier package. But the entire package is logically "delivered" to the same "testing stage".
+    </p>
+    <p>
+        Deployment sets can be simple, referencing just a single package from a package source. Or they can contain various packages from different package sources. 
+    </p>
+    <p>
+        A deployment set contains its own metadata and variables, which can be used when deploying packages. 
+    </p>
+    <h2 id="working-with">Working with Deployment Sets</h2>
+    <div class="attention analogy">
+        <img src="/resources/images/icons/analogy.png" />
+        <p>
+            When shipping goods on pallets, it's generally best to add packages to your pallet, wrap it up, and then send it along its way. Of course, you can add or remove packages to the pallet en route, or change the manifest form at any time, but that makes things more complicated.
+        </p>
+    </div>
+    <p>
+        Deployment sets are similar. Generally speaking, you should set-up your deployment set early on in the process, but you have the flexibility to modify the deployment set as needed, either by editing metadata, or adding/removing packages, or variables as needed
+    </p>
+    <p>
+        You can use a <a href="/support/documentation/hedgehog/bundling/deployment-sets/templates">deployment set template</a> to greatly simplify the process of complex deployment set creation.
+    </p>
+    <h3 id="status">Status and Lifecycle</h3>
+    <p>
+        A deployment set can be in one of three statuses that signify where the deployment set is in its lifecycle:
+    </p>
+    <p>
+        <ul class="docs">
+            <li><strong>Active:</strong> progressing through its pipeline with the possibility of being deployed to the final stage</li>
+            <li><strong>Deployed:</strong> successfully deployed to the final stage of its pipeline</li>
+            <li><strong>Rejected:</strong> not deployed to its final stage, and instead determined to be inadequate or otherwise inappropriate for the final stage</li>
+        </ul>
+    </p>
+    <p>
+        When a deployment set is successfully deployed to the final stage of its pipeline, the status is automatically changed to Deployed. Users may reject deployment sets and, depending on pipeline configuration, deployment sets may automatically be rejected if another deployment set enters the same stage.
+    </p>
+    <p>
+        Administrators may also change the status of a deployment set at any time. This should only be done in exceptional situations, such as to append additional metadata to deployed packages, to "unreject" a deployment set, or correct other mistakes.
+    </p>
+    <h3 id="variables">Variables</h3>
+    <p>
+            Deployment sets have a set of <a href="/support/documentation/hedgehog/deliver-deploy/configuration-variables">configuration variables</a> associated with them that can be used by deployment plans at runtime. 
+    </p>
+    <h3 id="metadata">Properties and Metadata</h3>
+    <p>
+        Deployment sets have the following metadata properties; they may be accessed from within a deployment plan by using variable functions, and can be changed from the UI or API.
+    </p>
+    <table style="margin-top: 12px;">
+            <thead>
+              
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Id:</td>
+                    <td>
+                            this is an immutable system-assigned identifier, and is used both internally and by the API to reference a specific deployment set; it cannot be changed and is unique across all deployment sets in an instance of Hedgehog
+                    </td>
+                </tr>
+                <tr>
+                    <td>Name:</td>
+                    <td>
+                            this is a human-friendly name used within the UI to help differentiate one deployment set from another; it is not unique across deployment sets
+                    </td>
+                </tr>
+                <tr>
+                    <td>Template:</td>
+                    <td>
+                            the name of the template used to create the deployment set; this is also used to determine deployment-time variables
+                    </td>
+                </tr>
+                <tr>
+                    <td>Pipeline:</td>
+                    <td>this references the pipeline that is used to deploy the deployment set through a sequence of stages</td>
+                </tr>
+                <tr>
+                    <td>Project or Release:</td>
+                    <td>a deployment set must be associated with either a <a href="/support/documentation/hedgehog/bundling/projects">project</a> or <a href="/support/documentation/hedgehog/bundling/releases">release</a>; you can change this on active deployment sets</td>
+                </tr>
+            </tbody>
+        </table>
+   
+    <p>
+        You can use <em>
+            
+        
+        raft item syntax</em> for Template and Pipeline names. 
+    </p>
+    <div class="attention technical">
+        <p>
+            <strong>Warning:</strong> changing a deployment set's pipeline after that package has been deployed to stages within another pipeline may yield unpredictable behavior and inaccurate metadata.
+        </p>
+    </div>
+   
+
+
+</body>
+</html>

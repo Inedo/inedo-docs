@@ -1,0 +1,73 @@
+﻿<html>
+<head>
+    <title>Releases</title>
+    <meta name="subtitle" content="Releases in Hedgehog" />
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <meta name="keywords" content="hedgehog, packages, releases" />
+    <meta name="sequence" content="200" />
+</head>
+<body>
+
+    <p>
+            A release is an event where a planned set of changes are tested and delivered to production (or another final stage) using a set of packages. They help you organize and visualizing related deployment sets with a set of <a href="/support/documentation/hedgehog/deliver-deploy/configuration-variables">configuration variables</a> that all deployment sets can access, target dates that can assist with release planning, and notes that can facilitate communication.
+    </p>
+ <p>
+        Release and deployment sets are conceptually similar, but it’s at a higher abstraction level. Just as a deployment set "contains" packages, a release will "contain" deployment sets.
+ </p>
+ <img class="screenshot" alt="abstraction level" src="/resources/documentation/hedgehog/abstraction-level.png"/>
+   
+   
+    <h2 id="working">Working with Releases</h2>
+    <div class="attention analogy">
+        <img src="/resources/images/icons/analogy.png" />
+        <p>
+            Think of release like a rough plan that guides your team, in delivering a required set of changes through testing, and on to its final destination.
+        </p>
+    </div>
+    <p>
+            You'll probably have a desired production delivery date, as well as other key dates like when internal and client testers will schedule time to review the changes. You may also know, in advance, which pipeline and deployment sets template the release should use.
+    </p>
+    <p>
+        While releases primarily serve as a visualization, they can also help define and facilitate better self-service processes. For example, a team lead may create multiple releases at once – one planned for next week, another for next month, and an emergency hotfix – and different engineers will be able to deliver different changes of the same application to different testers, all without stepping on each other's toes.
+    </p>
+    
+    <h3 id="status">Status and Lifecycle</h3>
+    <p>
+        A release can be in one of three statuses that reflect the state of development:
+    </p>
+    <p>
+        <ul class="docs">
+            <li><strong>Active:</strong> deployment sets are being created and deployed through pipelines</li>
+            <li><strong>Deployed:</strong> a deployment set was deployed to the final stage of its pipeline</li>
+            <li><strong>Canceled:</strong> no deployment set was deployed to the final stage, and deployment sets are no longer being created or deployed; all deployment sets are also rejected</li>
+        </ul>
+    </p>
+    <p>
+        When a deployment set is successfully deployed to the final stage of its pipeline, the release status is automatically changed to Deployed. This is controlled by the pipeline, and can be configured to behave differently.
+    </p>
+    <p>
+        Administrators may also change the status of a release at any time. This should only be done in exceptional situations, such as to append additional metadata to a release, to "unreject" a deployment set, or correct other mistakes.
+    </p>
+    <h3 id="variables">Variables</h3>
+    <p>
+            Releases have a set of <a href="/support/documentation/hedgehog/deliver-deploy/configuration-variables">configuration variables</a> associated with them that can be used by deployment plans at runtime. 
+    </p>
+    <h3 id="metadata">Properties and Metadata</h3>
+    <p>
+        Releases have the following metadata properties; they may be accessed from within a deployment plan by using <a href="/support/documentation/executionengine/components/runtime-variables#variable-functions">variable functions</a>, and can be changed from the UI or API.
+    </p>
+    <p>
+        <ul class="docs">
+            <li><strong>Id:</strong> this is an immutable system-assigned identifier, and is used both internally and by the API to reference a release; it cannot be changed and is unique across all releases in an instance of Hedgehog</li>
+            <li><strong>Number:</strong> this is a human-friendly name in a "SemVer2" format; it is unique across releases in a project</li>
+            <li><strong>Name:</strong> this is a human-friendly name used within the UI to help differentiate one release from another; it is not unique across releases </li>
+            <li><strong>Template:</strong> the name of the <a href="/support/documentation/hedgehog/bundling/deployment-sets/templates">deployment set template</a> used to create deployment sets; this is also used to determine deployment-time variables</li>
+            <li><strong>Project:</strong> a release must be associated with a <a href="/support/documentation/hedgehog/bundling/projects">project</a>; you can change this on active releases</li>
+        </ul>
+    </p>
+    <p>
+        You can use <a href="/support/sdk-reference/inedosdk/Inedo.Extensibility.RaftRepositories/RaftItem">raft item syntax</a> for Template names. 
+    </p>
+    
+</body>
+</html>

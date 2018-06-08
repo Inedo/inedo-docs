@@ -1,0 +1,183 @@
+﻿    <html>
+  <head>
+    <title>Security and Access Controls</title>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <meta name="sequence" content="400" />
+      <meta name="keywords" content="Hedgehog,permissions" />
+  </head>
+  <body>
+
+      <p>
+          Security and access control policies are defined by giving principals (users or groups) permission to perform certain tasks in a certain scope (either environment-specific, project-specific, or globally). 
+      </p>
+      <div class= "attention analogy">
+      <p>
+            For example, you can say 
+            "The 'HDARS Developers' group may 'Deploy to Environment' to the 'Development environment.'" 
+      </p>
+
+      </div>
+      <p>
+            Principals are defined in a user directory, which is either internal (i.e. built-in to Hedgehog) or external (such as Active Directory and LDAP). This allows you to create a single sign-on experience while letting other members of the organization manage user accounts and group memberships.   
+      </p>
+      <p>
+            You can also restrict principals from performing tasks, such as "The 'Developers' group may not 'Deploy to Environment' for the 'Production' environment." These overlapping rules, as well as externally-defined user directories, can be used to model granular access control policies.   
+      </p>
+      
+        <h2>
+                Tasks 
+        </h2>
+        <p>
+                Hedgehog ships with five built-in tasks. 
+        </p>
+        <table>
+                
+                <tbody>
+                    <tr>
+                        <td>Administer</td>
+                        <td>Allows unrestricted access to all functionality within Hedgehog.</td>
+                      
+                    </tr>
+                   
+                    <tr>
+                        <td>Coordinate Releases </td>
+                        <td>Allows release planning (but not deployment) functionality for a project. </td>
+                        
+                    </tr>
+                    <tr>
+                            <td>Deploy to Environment</td>
+                            <td>	Allows environment-specific deployment functionality within the context of a project.</td>
+                           
+                        </tr>
+                        <tr>
+                                <td>Manage Project</td>
+                                <td>	Allows full managerial and deployment access within the context of a project.</td>
+                                
+                            </tr>
+                            <tr>
+                                <td>View Project</td>
+                                <td>Allows view access within the context of a project.</td>
+                            </tr>
+                            
+                               
+                </tbody>
+            </table>
+            <h2>
+                Adding Permissions and Restrictions
+            </h2>
+            <p>
+                Tasks are assigned to principals by adding or deleting grants (permissions and restrictions) from the <em>Admin > Security > Tasks</em> page. Grants are comprised of the following:
+            
+            </p>
+            <ul class="docs">
+                <li>Principal - either a user or a group</li>
+                <li>Scope - a specific environment, all environments, a specific project, or all projects</li>
+                <li>Task - what the principal may (or may not) perform</li>
+            </ul>
+            <h3 id="resolution">Task Resolution</h3>
+            <p>
+                Because you can define both permissions and restrictions at multiple scoping levels, determining whether a user can perform a particular action can be quite complex. Generally speaking, Hedgehog uses the following guidelines to resolve tasks:
+            </p>
+            <p>
+                <ol>
+                    <li>
+                        More-specific grants override less-specific
+                    </li>
+                    <li>
+                        Restrictions override Permissions
+                    </li>
+                </ol>
+            </p>
+            <div class="attention analogy">
+                <img src="/resources/images/icons/analogy.png" />
+                <h4>
+                    For example, consider the following set of rules:
+                </h4>
+                <p>
+                    <ol style="margin-left: 30px;">
+                        <li>
+                            The 'Developers' group may 'Deploy Packages'
+                        </li>
+                        <li>
+                            The 'Developers' group may <i>not</i> Deploy Packages in a 'Production' environment
+                        </li>
+                        <li>
+                            The 'Developers' group may Deploy Packages in the 'HDARS' project in a 'Production' environment
+                        </li>
+                    </ol>
+                </p>
+                <p>
+                    A more natural way to describe this in English might be:
+                </p>
+                <p style="margin-left: 50px;">
+                    Developers are allowed to deploy packages to any environment except Production. Unless it's the HDARS project, in which case they can deploy it to production.
+                </p>
+            </div>
+           
+            <p>
+                In this case, the restriction (rule 2) only applies to the Production scope, and in that case, it will override the first grant (rule 1). However, the second grant (rule 3) is more specific than the restriction (rule 2), and thus is overridden.
+            </p>
+            <h3 id="algorithm">Specific Algorithm</h3>
+            <p>
+                All of the grants that would apply to the attribute demand (e.g. view project, deploy package, etc) for the specified scope (i.e. project, environment) are gathered into a list, and then sorted by comparing each rule's scope using the following priority.
+            </p>
+            <p>
+                <ul class="docs">
+                    <li>User</li>
+                    <li>Project + Environment</li>
+                    <li>Project</li>
+                    <li>Environment</li>
+                    <li>Environment Ancestor</li>
+                    <li>Project</li>
+                    <li>Project Ancestor</li>
+                    <li>Restriction</li>
+                </ul>
+            </p>
+            <div class="attention analogy">
+                <img src="/resources/images/icons/analogy.png" />
+                <p>
+                    For example, a User-specific rule will be sorted above a Project Ancestor rule. The first rule is then used; if it is a grant, then the user will be permitted to perform the requested action.
+                </p>
+            </div>
+        
+      <h1>Users and Groups</h1>
+     
+     
+      <p>
+          A <i>user directory</i> is a collection of users and groups that Hedgehog can query.
+         They are extensible (which means you can write your own), and Hedgehog ships with two directories:
+      </p>
+      <ul class="docs">
+          <li>
+             Built-In - The default basic user account system used by new installs of Hedgehog.
+          </li>
+          <li>
+             LDAP/Single Domain - Users and groups from an LDAP
+              directory (Active Directory) are used; this can come from multiple domains in an Active Directory forest.
+          </li>
+         
+      </ul>
+      <div class="attention analogy">
+            <img src="/resources/images/icons/analogy.png" />
+            <p>
+                Task permissions and restrictions are associated with a user directory, which means that "bob-smith" from the Built-in directory will not necessarily have the same permissions as "bob-smith" from the Active Directory.
+            </p>
+        </div>
+      <p>
+          Directories are exclusive; meaning you can only use one at a time. For this reason, it’s important to make sure you will have sufficient administer permissions in Hedgehog for the user directory you are switching to. 
+          If you do accidentally lock yourself out, don’t worry; you can easily run the Hedgehog.Service.exe program, and select the reset to Built-In option. 
+      </p>
+      <h3>
+          Built-In Directory
+      </h3>
+      <p>
+          Hedgehog's built-in user directory is used by default and initially contains a user with the username "Admin". You can add additional users and groups to this directory from the <em>Admin > Security > Users</em> page. 
+      </p>
+      <h3>
+          Active Directory LDAP
+      </h3>
+      <p>
+          This is common to all our products; check out the <a href="/support/documentation/various/ldap/ldap-active-directory">shared documentation</a>.
+      </p>
+  </body>
+</html>

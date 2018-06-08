@@ -1,0 +1,34 @@
+<html>
+<head>
+    <title>Viewing Execution Status and Logs</title>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <meta name="keywords" content="hedgehog, executions" />
+	<meta name="sequence" content="200"  />
+</head>
+<body>
+
+   
+    <p>
+        Aside from using the <em>Executions API</em>, there are two pages you can use to see the status of executions. 
+    </p>
+  <h2 id="in-progress">Execution in Progress Page</h2>
+    <p>
+        This is a "live" view of the execution, and displays a <i>very rough approximation</i> of the progress (it's about as accurate as any installer's progress bar that you've seen), as well as the currently executing steps.
+    </p>
+    <p>
+        The logs are displayed "as they come", which can get a bit confusing when multiple things are happening in parallel.
+    </p>
+    <h3 id="pending">Changing Pending Executions</h3>
+    <p>
+        If you have the appropriate permission, and the execution is in a Pending state, you can change the Start Date, set the Start Date when it's null, or delete the execution.
+    </p>
+    <h2 id="details-page">Execution Details Page</h2>
+    <p>
+        This is a static view of the execution and displays the logs in a scoped view. For completed executions, this is by far the most useful view, and you will often be redirected to this page from the Execution in Progress page once the execution completes. 
+    </p>
+    <h3 id="status">Changing Execution Status</h3>
+    <p>
+        If you have the appropriate permission, you can change the Execution Status of an execution in a Completed state. There is usually no good reason to do this, aside from having a part of the UI be green instead of red.
+    </p>
+</body>
+</html>

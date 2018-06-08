@@ -1,0 +1,56 @@
+﻿<html>
+<head>
+    <title>Execution Engine</title>
+    <meta name="subtitle" content="Execution Engine" />
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <meta name="keywords" content="hedgehog,excecution-engine" />
+    <meta name="sequence" content="400" />
+</head>
+<body>
+
+    <p>
+        To deploy your applications and releases, Hedgehog uses an advanced execution engine
+        that's capable of running thousands of different operations and scripts on thousands of different servers.
+
+    </p>
+    <p>
+        While Hedgehog's execution engine is an integral part of Hedgehog itself, the core engine was designed to be shared across products,
+        and is also used in <a href="/otter">Otter</a> (our Infrastructure as Code tool) and <a href="/romp">Romp</a> (a stand-alone, command-line tool).
+    </p>
+
+    <!--<h2 id="operations">Operations</h2>
+    <p>
+        Operations are the tasks that the execution engine will run on a server. Hedgehog ships with dozens of <a href="../reference/operations">built-in operations</a> and
+        there are a number of extensions available that add even more. You can add more through <a href="../administration/extensions">Hedgehog Extensions</a>, to see a list of all of our extensions head over to the <a href="/den">Inedo Den</a>.
+    </p>
+    <p>
+        Some operations are quite simple (Sleep), while others are quite complex (Synchronize Files across Servers). Through a combination of Operations, Scripts, Variables, and Blocks, you will
+        be able to model any plan to deploy an application to an environment.
+    </p>-->
+
+    <h2 id="otter-script">OtterScript in Hedgehog</h2>
+    <p>
+        <a href="/support/documentation/executionengine/otterscript/overview">OtterScript</a> is a Domain-Specific Language that was designed in tandem with the execution engine to represent
+        <a href="/support/documentation/otter/core-concepts/plans#configuration">configuration plans</a> and
+        <a href="/support/documentation/otter/core-concepts/plans#orchestration">orchestration plans</a> in Otter,
+        and <a href="/support/documentation/hedgehog/deliver-deploy/deployment-plans">deployment plans</a> in Hedgehog.
+    </p>
+    <p>
+        You really don't need to learn OtterScript; it's simply the textual representation of a plan, and plans are already fully editable in the   drag-and-drop plan editor.
+        If you switch back-and-forth between visual and code modes, you'll probably learn it on your own, but it's also pretty well documented.
+
+    </p>
+    <ul class="docs">
+        <li>
+            <a href="/support/documentation/executionengine/otterscript/overview">OtterScript Overview</a>
+            <ul class="docs">
+                <li><a href="/support/documentation/executionengine/otterscript/comments-and-descriptions">Comments &amp; Descriptions</a></li>
+                <li><a href="/support/documentation/executionengine/reference/formal-grammar">Formal Grammar</a></li>
+                <li><a href="/support/documentation/executionengine/reference/formal-specification">Formal Specification</a></li>
+                <li><a href="/support/documentation/executionengine/otterscript/strings-and-literals">Strings &amp; Values</a></li>
+            </ul>
+        </li>
+    </ul>
+
+</body>
+</html>

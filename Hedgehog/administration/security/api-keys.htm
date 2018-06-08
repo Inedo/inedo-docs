@@ -1,0 +1,64 @@
+ <html>
+ <head>
+	<title>API Access and API Keys</title>
+	<meta name="subtitle" content="API Access and API keys" />
+	<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+	<meta name="sequence" content="120" />
+	<meta name="keywords" content="Hedgehog,packages" />
+  </head>
+  <body>
+
+  <p>
+    An API Key is used to grant programmatic access to Hedgehog, and allows scripts, tools, and other integrations to automate and interact with the system.
+  </p>
+ <h4
+   id="creating-keys"> Creating and Managing API Keys 
+ </h4>
+<p>
+  To create or manage API Keys, go to Administration > API Keys and Access Logs. You will be presented with a list of API Keys in the system, as well as the ability to edit, delete, and create new ones.
+</p>
+<p>
+  The most important property of an API Key is the <b>Key</b>. This is an arbitrary string that acts like a password, so make sure to treat it like one. You can set the key value to anything you'd like, or let Hedgehog auto-generate a value for you.
+</p>
+
+  <p>
+    The <b>Description</b> field is used for a human-friendly name, and can be used to describe what the key is used for. 
+  </p>
+  <h4 id="permissions">API Key permissions</h4>
+  <p>
+    A key can only be used for the API endpoints that you specify:
+  </p>
+  <ul class="docs">
+    <li>Native API</li>
+    <li>Job orchestration (Viewing and/or Triggering)</li>
+    <li>Infrastructure management (Viewing and/or Updating</li>
+    <li>Variables Management API</li>
+    <li>Configuration Management API</li>
+  </ul>
+  <div class="attention analogy">
+    
+          <p>
+           Granting access to the Native API will effectively allow for full control of the instance.
+          </p>
+  </div>
+  
+    <h4>
+      Logging Options 
+    </h4>
+  <p>
+      You can configure an API key to log both the request and the response body of each request. While this is important for debugging purposes, if you have a lot of large requests, there will be a nontrivial overhead and amount of diskspace required.
+  </p>
+  <h3>
+    Using API Keys 
+  </h3>
+  <p>
+      An API key may be passed to any endpoint (except Feed API endpoints - see below) in one of four ways, depending on the content type of the expected request:    
+  </p>
+  <ul class="docs">
+    <li>Request header (x-Apikey) - all content types</li>
+    <li>Querystring value (key) - all content types</li>
+    <li>Form value (key) - only applications/x-www-form-urlencoded content type</li>
+    <li>JSON property (API_Key) on root object - only application/json content type</li>
+  </ul>
+</body>
+</html>

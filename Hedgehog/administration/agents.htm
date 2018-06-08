@@ -1,0 +1,64 @@
+﻿<html>
+<head>
+    <title>Managing Agents and Servers</title>
+    <meta name="subtitle" content="Agents and Servers" />
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <meta name="keywords" content="otter,servers,agents" />
+</head>
+<body>
+
+    <p>
+            To deploy packages to servers and the cloud, Hedgehog needs to be able to communicate with those servers over a fast and secure channel. There are a few options for doing this. 
+    </p>
+    <h2 id="windows">Windows Servers</h2>
+    <p>
+        The <a href="/support/documentation/inedoagent/overview">Inedo Agent</a> is generally the best way to communicate with a Windows server. It's light-weight, and uses a highly-optimized and resilient protocol built solely for this purpose, and is
+        <a href="/support/documentation/inedoagent/installation/installation-guide">quite easy to install</a>.
+    </p>
+
+    <h3 id="agentless-windows-servers">Agentless Windows Servers</h3>
+    <p>
+        Alternatively, Hedgehog can use PowerShell Remoting to communicate with Windows servers; however, this is generally slower and 
+        less resilient than the Inedo Agent protocol. You can connect using integrated authentication (i.e. whatever account the service is running under), or 
+        with a username &amp; password <a href="/support/documentation/hedgehog/global-components/resource-credentials">resource credential</a>. See <a href="https://technet.microsoft.com/en-us/library/hh849694.aspx" target="_blank">Enable-PSRemoting</a>
+        to configure a server to receive remote commands.
+
+
+    </p>
+    
+    <h2 id="linux">Linux Servers</h2>
+    <p>
+        To communicate with Linux servers, Hedgehog uses the lightweight, highly-optimized, and resilient protocol already 
+        enabled on nearly every Linux box: SSH and SFTP. You can connect with a private key or username &amp; password 
+        <a href="/support/documentation/hedgehog/global-components/resource-credentials">resource credential</a>.
+    </p>
+
+
+    <h2 id="local">Local Agents</h2>
+    <p>
+        If you're using Hedgehog to interact with the server it's installed on, you can just set it up using a local agent. 
+        This uses the same process/identity that the service is hosted as, and doesn't have very many privileges
+        by default.
+    </p>
+<h2 id="automatic">Automatic Inedo Agent Updates</h2>
+<p>
+        Although the Inedo Agent is both backwards- and forwards-compatible, you may wish to update it on the servers to fix bugs and improve performance. This can be done manually (by running a newer installer on a remote server), or by using the agent update process built-in to Hedgehog.
+</p>
+<p>
+        When Hedgehog performs a routine check on the connected agents, the installed Inedo Agent version is captured, and can be viewed on the server overview page. When you visit the server list page, if any servers have a version of the Inedo Agent that can be updated, you will be prompted to upgrade agents.
+</p>
+<p>
+        Clicking on the <em>Update Agents</em> button will open a dialog that gives you the option to select which servers to update, as well as where to download the new Inedo Agent files from.
+</p>
+<div class="attention technical">
+    <img src="/resources/images/icons/technical.png" />
+    <p>
+            Self-updating software always has a risk of failing mid-update. If this happens with the Inedo Agent, you will need to log-on to the server to reinstall the agent. Therefore, only update agent versions when you are prepared to also do a manual update if absolutely necessary.
+    </p>
+
+</div>
+<p>
+    Clicking <em>Update Agent</em> will initiate an execution that downloads the installer and updates the specified servers with a new agent.
+</p>
+</body>
+</html>
