@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Package Promotion API Endpoints</title>
+  <meta name="subtitle" content="Package Promotion API" />
+  <meta name="keywords" content="proget,api,packages" />
+  <style type="text/css">
+      th { font-weight: normal; font-style: italic; }
+  </style>
+</head>
+<body>
+  <p>
+    The Package Promotion API offer a simple mechanism for querying the status of promoted packages and promoting packages
+    between feeds.
+  </p>
+  <p class="announcement">
+    This API endpoint should be used instead of the <a href="native">Native API Methods</a> when possible, as they are much easier to use and will likely not change.
+  </p>
+
+  <p>
+    For security and simplicity, these endpoints require that an <a href="../../administration/security#api-keys">API Key</a> is created and passed into each request. 
+  </p>
+
+  <h3 id="data-specification">Data Specification</h3>
+  <inedo:tab-block>
+    <tab name="Package">
+      <table>
+        <thead>
+          <tr>
+            <th>Property</th>
+            <th>Format</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>packageName</code></td>
+            <td>
+              A <em>string</em> representing the name or ID of the package.
+            </td>
+          </tr>
+          <tr>
+            <td><code>groupName</code></td>
+            <td>
+              A <em>string</em> representing the group of the package for Universal and Maven feeds and the scope of the package for npm
+              feeds. This property is omitted for all other feed types.
+            </td>
+          </tr>
+          <tr>
+            <td><code>packageType</code></td>
+            <td>
+              A <em>string</em> representing the feed type of the package, one of: <code>upack</code>, <code>powershell</code>,
+              <code>nuget</code>, <code>chocolatey</code>, <code>maven</code>,  <code>npm</code>, <code>bower</code>, or <code>docker</code>
+            </td>
+          </tr>
+          <tr>
+            <td><code>version</code></td>
+            <td>
+              A <em>string</em> representing the version of the package.  In ProGet 5.0.9 and later, you can specify <code>latest</code> or <code>latest-stable</code> for the <code>version</code> property. This will then promote the latest or latest non-prerelease version of the package.
+            </td>
+          </tr>
+          <tr>
+            <td><code>promotions</code></td>
+            <td>
+              An <em>array</em> of <em>Promotion</em> objects representing a package promotion.
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </tab>
+    <tab name="Promotion">
+      <table>
+        <thead>
+          <tr>
+            <th>Property</th>
+            <th>Format</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>fromFeed</code></td>
+            <td>
+              A <em>string</em> representing the name of the feed the promotion originated from.
+            </td>
+          </tr>
+          <tr>
+            <td><code>toFeed</code></td>
+            <td>
+              A <em>string</em> representing the name of the feed the package was promoted to.
+            </td>
+          </tr>
+          <tr>
+            <td><code>date</code></td>
+            <td>
+              A <em>string</em> representing the UTC date of the promotion in ISO 8601 format (yyyy-MM-ddThh:mm:ss).
+            </td>
+          </tr>
+          <tr>
+            <td><code>user</code></td>
+            <td>
+              A <em>string</em> representing the user who promoted the package. Packages promoted via this API will
+              by noted with SYSTEM as the user.
+            </td>
+          </tr>
+          <tr>
+            <td><code>comments</code></td>
+            <td>
+              A <em>string</em> containing comments submitted when the promotion occurred.
+            </td>
+          </tr>
+          <tr>
+            <td><code>id</code></td>
+            <td>
+              An <em>integer</em> representing a unique identifier of the promotion.
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </tab>
+  </inedo:tab-block>
+
+  <h3 id="list">List Promotions Endpoint</h3>
+  <p class="info">GET <span style="opacity: 0.5;">/api/promotions</span>/list?key=&laquo;api-key&raquo;&amp;fromFeed=&laquo;feed-name&raquo;&amp;toFeed=&laquo;feed-name&raquo;&amp;groupName=&laquo;group-name&raquo;&amp;packageName=&laquo;package-name&raquo;&amp;version=&laquo;version&raquo;</p>
+
+  <p>
+    Lists package promotions based on supplied parameters.
+    This endpoint returns a status of 200 (on success), 400 (missing or incorrect parameters), 403 (invalid key).
+  </p>
+  <p>
+    On success, an array of <i>Package</i> objects will be returned, filtered by the specified parameters.
+  </p>
+
+  <h3 id="list">Promote Packages Endpoint</h3>
+  <p class="info">POST <span style="opacity: 0.5;">/api/promotions</span>/promote</p>
+  <p>
+    Promotes a package to a specified feed. Of the fields listed in the request body, all fields are required except for <code>groupName</code> and <code>comments</code>.
+  </p>
+
+  <inedo:tab-block>
+    <tab name="JSON Request">
+      <p class="info">
+        <code>POST /api/promotions
+Content-Type: application/json
+</code>
+      </p>
+      <h5>Request Body:</h5>
+      <pre>
+{
+  packageName: "hdars-package",
+  groupName: "",
+  version: "1000.0.0",
+  fromFeed: "hdars-integration-feed",
+  toFeed: "hdars-production-feed",
+  comments: "This package was promoted by BuildMaster HDARS Application"
+}
+  </pre>
+    </tab>
+    <tab name="URL-Encoded Request">
+      <p class="info">
+        <code>POST /api/promotions
+Content-Type: application/x-www-form-urlencoded</code>
+      </p>
+      <h5>Request Body:</h5>
+      <pre>
+packageName="hdars-package"&amp;version=1000.0.0&amp;fromFeed=hdars-integration-feed&amp;toFeed=hdars-production-feed&amp;comments=This+package+was+promoted+by+BuildMaster+HDARS+Application
+  </pre>
+    </tab>
+  </inedo:tab-block>
+
+</body>
+</html>
