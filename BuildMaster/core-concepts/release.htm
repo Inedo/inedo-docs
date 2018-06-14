@@ -1,0 +1,169 @@
+﻿<html>
+<head>
+   <title>Releases</title>
+    <meta name="subtitle" content="Releases in BuildMaster" />
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <meta name="keywords" content="buildmaster, pipelines" />
+    <meta name="sequence" content="100" />
+</head>
+<body>
+   <p>
+       A release is an event where a planned set of changes are tested and delivered to production (or another final stage) using a <a href="#release-packages">release package</a>. Releases can be anything from a major product launch to a single-line change, that's rushed to production in an emergency. 
+       
+   </p>
+   <p>
+       Release packages use artifacts to store and deploy your application components. You can add artifacts to a release package with a variety of different methods:
+   </p>
+   <ul class="docs">
+       <li>
+           Upload a zip file to the web interface
+       </li>
+       <li>
+           Capture from a drop path on a network share
+       </li>
+       <li>
+           Compile from source code within BuildMaster
+       </li>
+       <li>
+           Import from a CI server like Jenkins or TeamCity
+       </li>
+   </ul>
+    
+   <p>
+       In addition to the application code you want to deploy, releases have several components that you can use to automate and coordinate your software release process:
+   </p>
+   <ul class="docs">
+       <li>
+           Dates and milestones
+       </li>
+       <li>
+           Issues and changes
+       </li>
+       <li>
+           Configuration file changes
+       </li>
+       <li>
+           Database change scripts
+       </li>
+       <li>
+           Manual change controls
+       </li>
+       <li>
+           Release notes
+       </li>
+   </ul>
+   <p>
+       You don't need to use any of these features at first, but you many find them helpful as you build a more robust release management platform.
+   </p>
+  
+    <h2 id="creating-package" data-title="Creating and Deploying Releases">Creating and Deploying Releases</h2>
+    <p>
+        After creating an <a href="/support/documentation/buildmaster/modeling-applications/applications">application</a> and a <a href="/support/documentation/buildmaster/core-concepts/pipelines">pipeline</a>, you can create a new release of an application. A release has the following initial properties:
+    </p>
+   <ul class="docs">
+       <li><b>Release number</b> is a one-to-three part number (e.g. 88, 2.4, or 4.1.8) that uniquely identifies a release within an application</li>
+       <li>
+<b>Release name</b> is  an optional alias you can use to create a friendlier release identifier; it is not unique within an application
+       </li>
+       <li>
+         <b>Pipeline</b>  is the sequence of stages and approvals that release package are promoted through
+       </li>
+   </ul>
+   <p>
+       Once a release is created, you can add <a href="/support/documentation/buildmaster/global-components/configuration-variables">configuration variables</a> that can be used by deployment plans at runtime, target dates that will be show on a <a href="/support/documentation/buildmaster/modeling-applications/calendars">calendar</a>, and so on. 
+   </p>
+
+<h2 id="release-packages" data-title="Release Packages">Release Packages</h2>
+<p>
+    Once a release has been created, you can create a release package for that release. There are two initial options:
+</p>
+<ul class="docs">
+    <li><b>Package number;</b> this is an integer that uniquely identifies a release package with in a release, and generally is sequential </li>
+    <li><b>Automatically deploy;</b> when checked, the release package will be automatically deployed to its first stage of the release pipeline; this is a typical workflow in BuildMaster, as the first stage typically adds artifacts to the release package</li>
+</ul>
+<p>
+    You can also add configuration variables to release packages that will be used by deployment plans at runtime. 
+</p>
+
+    <h2 id="deploying-packages" data-title="Deploying Packages">Deploying Packages</h2>
+    <p>
+        The release's pipeline determines where the package will be deployed, as well as what approvals are required before deploying to each stage.
+    </p>
+    <p> <img class="screenshot" src="/resources/documentation/buildmaster/6/deploy-packages.png" alt="Deploying packages" /> </p>
+  <p>
+      Clicking on a particular stage for a release package's pipeline status will open up one of the following dialogs:
+    
+  </p>
+  <ul class="docs">
+      <li>
+          <b>Deploy Package;</b> if a package was successfully deployed to the previous stage and meets all approval requirements, you can deploy the package to that stage 
+      </li>
+      <li><b>Force Package;</b> if a package was not successfully deployed to the previous stage, or if it doesn't have the requisite approvals, you can force the package to that stage</li>
+      <li><b>Re-deploy Package;</b> if a package has already been successfully deployed to that stage, you can redeploy it at anytime; this is how you perform a rollback of a release package</li>
+  </ul>
+    <p>
+        You can use <a href="/support/documentation/buildmaster/administration/security">Security and Access Controls</a> to determine which users can perform these actions for which environments.
+    </p>
+    <h2 id="scheduling-deployments" data-title="Scheduling Deployments">Scheduling Deployments</h2>
+    <p>
+        There are two options for scheduling a the deployment of a release package:
+    </p>
+    <ul class="docs">
+        <li>
+            <b>Scheduled Promotion;</b> the package will automatically be deployed at the give time, provided all approvals are met at that time 
+        </li>
+        <li> 
+            <b>Scheduled Deployment;</b> the package has already been approved, and will be deployed at the specified time 
+        </li>
+    </ul>
+    <p>
+        The option to perform a scheduled promotion will only be present if the package would otherwise have to be forced into the next environment. 
+    </p>
+   
+    <h2 id="status-lifecycles" data-title="Status and Lifecycles">Status and Lifecycles</h2>
+    <p>
+        A release can be in one of three statuses that reflect the state of development:     
+    </p>
+    <ul class="docs">
+        <li>
+            <b>Active:</b> release packages are being created and deployed through pipelines 
+        </li>
+        <li>
+            <b>Deployed:</b> a release package was deployed to the final stage of its pipeline
+        </li>
+        <li>
+            <b>Canceled:</b> no release package was deployed to the final stage, and release packages are no longer being created or deployed; all release packages are also rejected
+        </li>
+       
+    </ul>
+    <p>
+       A release package also has three similar possible statuses:  
+    </p>
+    <ul class="docs">
+        <li>
+            <b>
+                Active:
+            </b> progressing through its pipeline with the possibility of being deployed to the final stage
+        </li>
+        <li>
+            <b>
+                Deployed:
+            </b> successfully deployed to the final stage of its pipeline
+        </li>
+            <li>
+            <b>
+                Rejected:
+            </b> not deployed to its final stage, and instead determined to be inadequate or otherwise inappropriate for the final stage
+        </li>
+    </ul>
+    <p>
+        When a release package is successfully deployed to the final stage of its pipeline, both the release and release package status is automatically changed to Deployed. This is controlled by the pipeline, and can be configured to behave differently. 
+    </p>
+    <p>
+        Users may reject release packages and, depending on pipeline configuration, release packages may automatically be rejected if another package enters the same stage. 
+    </p>
+    <p>
+        Administrators may also change the status at any time. This should only be done in exceptional situations, such as to "unreject" a deployment set, or correct other mistakes. 
+    </p>
+</body>
+</html>

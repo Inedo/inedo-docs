@@ -1,0 +1,332 @@
+﻿<html>
+<head>
+    <title>Pipelines</title>
+    <meta name="subtitle" content="Pipelines in BuildMaster" />
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <meta name="keywords" content="buildmaster, pipelines" />
+    <meta name="show-headings-in-nav" content="true" />
+    <meta name="sequence" content="200" />
+
+</head>
+<body>
+    <p>
+        Pipelines let you build a repeatable release process by defining the servers and environments that your release packages will be deployed to, as well as the manual and automatic approvals required at each stage of the process.
+    </p>
+    <p>
+        A basic web application might use a pipeline with only two stages (testing and production), and simply deploy to a different folder on the same server. Another application may require a dozen stages, each with multiple targets that go to different environments, and all sorts of automatic and human approvals to meet compliance requirements.
+    </p>
+
+    <h2 id="creating-pipelines" data-title="Creating Pipelines">Creating Pipelines</h2>
+    <p>
+        You can create a pipeline at the application- or global-level. Global pipelines behave in the same manner, with the exception that global pipelines may only reference global deployment plans.
+    </p>
+    <p>
+        A pipeline has three properties that help distinguish it: name, description, and a color. While the description is primarily used to guide users on which pipeline to use, the name and color are used to visualize the releases that are utilizing that pipeline.
+    </p>
+    <p>
+        Once a pipeline is created, you can select it when creating or editing a release. Packages created for that release will then follow the process you defined in the pipeline.
+    </p>
+    <h2 id="pipeline-stages" data-title="Pipeline Stages"> Pipeline Stages</h2>
+
+    <p>
+        Pipelines contain a sequence of stages that release packages will pass through on their way to production. Each stage defines the requirements for stage entry, where and how release package will be deployed, and what to do after they are deployed.
+    </p>
+
+    <h3 id="deployment-windows" data-title="Deployment Windows"> Deployment Windows</h3>
+    <p>
+        Deployment windows allow you to restrict the days and times that release packages may be deployed. They can be used in conjunction with manual deployments to enforce existing policies, or as part of a continuous delivery pipeline to ensure deployments occur within known times. Like <a href="/support/documentation/buildmaster/core-concepts/pipelines#Manual-Automatic-Approvals">approvals</a>, a release package may be forced into a stage even if it's not within the specified window. However, this requires a special action and a specific permission.
+    </p>
+    <h4 id="deployment-windows">Configuring Deployment Windows</h4>
+    <p>
+        A deployment window consists of  day of the week, as well as a start and end time.
+    </p>
+    <p> <img class="screenshot" src="/resources/documentation/buildmaster/6/deploy-window.png" alt="Config Deploying Windows" /> </p>
+    <p>
+        When the end time is earlier than the start time, then the window will "crossover" into the following day. For example, specifying "Sundays after 11:00pm and before 2:00am" will create a three-hour window from Sunday at 11:00pm until Monday at 2:00am.
+    </p>
+    <p>
+        You can specify deployment windows on the edit pipeline page.
+    </p>
+    <p>
+        <img class="screenshot" src="/resources/documentation/buildmaster/6/deploy-window-set.png" alt="Deploying Windows set" />
+    </p>
+    <p>
+        When there are multiple deployment windows specified, they are treated like an "or" condition; that is, as long as one of the deployment windows is valid, then a deployment may proceed.
+    </p>
+    <h3 id="manual-automatic-approvals" data-title="Manual and Automatic Approvals"> Manual and Automatic Approvals </h3>
+
+    <p>
+        As a release package progresses through a pipeline, both people and automatic processes can add an "approval" to indicate that a package is eligible to be deployed to a particular stage. The approvals required for that stage are defined in the pipeline, and the <em>actual</em> approvals received becomes part of the release package's history and metadata.
+    </p>
+    <p>
+        Like deployment windows, a release package may be forced into a stage even if its approvals were not met. However, this requires a special action and a specific permission.
+    </p>
+    <h4 id="manual-approvals">Manual Approvals</h4>
+    <p>
+        There are two types of manual approvals: user and group. A user-based approval can only be entered by the specified user, whereas a group-based approval can be entered by any members of the specified group. You can also specify that more than one member of a particular group must approve a release package before deploying to a stage.
+    </p>
+    <p>
+        In either case, when a user approves a release package, the following is recorded:
+    </p>
+    <ul>
+        <li>User's Name</li>
+        <li>Group name (if group-based)</li>
+        <li>Stage name</li>
+        <li>Approval Description</li>
+        <li>User Comments</li>
+        <li>Date/Time</li>
+    </ul>
+    <p>
+        Users may revoke a manual approval they've given, provided that the release package wasn't already deployed to the target stage.
+    </p>
+    <h4 id="automatic-approvals">Automatic Approvals</h4>
+    <p>
+        You can also define automatic checks that must be met before a release package may be deployed to a stage. These are an <a href="/support/documentation/buildmaster/administration/extensions">extensible feature</a>, and there are several built in to BuildMaster.
+
+    </p>
+    <table style="margin-top: 12px;">
+        <thead>
+
+        </thead>
+        <tbody>
+            <tr>
+                <td>Command Line</td>
+                <td>Executes a program via command line on the BuildMaster server.</td>
+            </tr>
+            <tr>
+                <td>File In Artifact</td>
+                <td>
+                    Verifies that a file exists in an Artifact before a promotion to the pipeline stage.
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Issues Closed
+                </td>
+                <td>Verifies that all issues are closed before a promotion to the pipeline stage.</td>
+            </tr>
+
+            <tr>
+                <td>
+                    Issues in Status
+                </td>
+                <td>Verifies that issues are in a certain status before a promotion to the pipeline stage.</td>
+            </tr>
+            <tr>
+                <td>Pipeline Stage Complete</td>
+                <td>
+                    Ensures a pipeline stage of another application has been completed.
+                </td>
+            </tr>
+            <tr>
+                <td>Change Controls Performed</td>
+                <td>
+                    Verifies that change controls have been performed.
+                </td>
+            </tr>
+            <tr>
+                <td>Change Scripts Run</td>
+                <td>Verifies that all required change scripts have been run successfully.</td>
+            </tr>
+            <tr>
+                <td>United Tests Passed </td>
+                <td>
+                    Verifies that unit tests have passed in the last execution.
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Variable
+                </td>
+                <td>
+                    Ensures a specified variable value before promotion to the pipeline stage.
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Drift Status
+                </td>
+                <td>
+                    Verifies that a specified Otter server or role is in a specified drift status.
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <p>
+        These automatic approvals are verified periodically, as they can change over time.
+    </p>
+
+    <div class="attention analogy">
+        <img src="/resources/images/icons/analogy.png" />
+        <p>
+            For example, if you've configured a Issues Closed automatic approval to verify that issues in a particular JIRA project are closed prior to promoting to a stage,
+            BuildMaster won't be notified of a status change. 
+        </p>
+    </div>
+
+    <p>
+        When an automatic approval is verified, the following information is recorded:
+    </p>
+    <ul>
+        <li>
+            <b>State (Met, Not Met, Not Required)</b>- for example, if there are no issues associated with the release, then the requirement would be Not Met, whereas the requirement would be Met only if all issues associated with the release were Resolved
+        </li>
+        <li>
+            <b>Description</b> - a text description of the approval conditions; for example, "3/8 issues are resolved"
+        </li>
+        <li>
+            <b>
+                Date/Time
+            </b>- a timestamp of when the approval was run
+        </li>
+    </ul>
+    <h3 id="deployment-targets" data-title="Deployment Targets"> Deployment Targets </h3>
+    <p>
+        A target defines where and how a release package will be deployed. It's comprised of a deployment plan, an environment name, and a list of servers or roles.
+    </p>
+    <h4 id="deployment-plan">Deployment Plan</h4>
+    <p>
+        This is the actual OtterScript that will be run in order to deploy the release package. It can reference an application-level plan or a global plan. Global plans names are prefixed with <code>GLOBAL::</code>.
+    </p>
+    <div class="attention best-practice">
+        <p>
+            <b>Note:</b> depending on how server targeting is configured, the deployment plan may be run multiple times across different servers.
+        </p>
+    </div>
+    <h4 id="environment-targeting">Environment Targeting</h4>
+    <p>
+        Deployments can be targeted to an environment, which affect it in a few ways:
+    </p>
+    <ul>
+        <li>
+            <b>Permissions:</b> users must have permission to deploy to that environment in order to deploy to that stage
+        </li>
+        <li>
+            <b>Role Selection Filtering:</b> if you also target by role, then the server must be in that environment to be included
+        </li>
+        <li>
+            <b>Runtime Server Protection:</b> a server must be in the target environment, or a runtime error will occur
+        </li>
+        <li>
+            <b>Visualization:</b> this help you see which release packages have been deployed to which environments
+        </li>
+    </ul>
+    <h4 id="server-targeting">Server Targeting</h4>
+    <p>
+        You Can Target servers in four different manners:
+    </p>
+    <ul>
+        <li>
+            <b>No default server context</b>; this means you will need to explicitly specify which servers to deploy to in the deployment plan itself
+        </li>
+        <li>
+            <b>All servers in target environment </b>;this will run the deployment plan against all servers in the targeted environment
+        </li>
+        <li>
+            <b>Specific servers</b>; the plan will be run against the list of servers specified
+        </li>
+        <li>
+            <b>Specific server roles</b>; the plan will be run against servers with the specified roles and that are associated with the targeted environment
+        </li>
+    </ul>
+
+    <div class="attention best-practice">
+
+        <p>
+            Multiple Role Targeting Note: When you target multiple role names, the same deployment plan will be executed once for each role selected, against all servers with that role and in the target environment. This means that, if you target two roles – and one server happens to have both of those roles – the deployment plan will be executed against that server <b>at least twice</b>.
+        </p>
+    </div>
+
+    <h3 id="post-deployment-events" data-title="Post-Deployment Events"> Post-Deployment Events  </h3>
+    <p>
+        Once all deployments to all targets have completed (whether successfully, or unsuccessfully), you can execute one or more event listeners. These are an <a href="/support/documentation/buildmaster/administration/extensions">extensible feature</a>, and there are several built-in to BuildMaster:
+    </p>
+    <ul>
+        <li>Email Notification: Deployment Execution Completed </li>
+        <li>Execute Command Line</li>
+        <li>Publish Event Details (HTTP)</li>
+    </ul>
+    <h2 id="auto-deploying-pipelines" data-title="Auto-Deploying Pipelines"> Auto-Deploying Pipelines</h2>
+    <p>
+        You can configure a stage to automatically deploy into the next stage by checking the "Auto deploy" checkbox in the stage properties. When checked, release packages will automatically be deployed to the next stage upon a successful deployment, as soon as all requirements for following stage are met.
+    </p>
+    <p>
+        This feature can be particularly useful to build an automated deployment pipeline.
+    </p>
+    <h3 id="pipeline-variables" data-title="Pipeline Variables">Pipeline Variables</h3>
+    <p>
+        You can define key/value pairs on pipelines and stages. These behave just like <a href="/support/documentation/buildmaster/global-components/configuration-variables">configuration variables</a>, in that you can use these variables within deployment plans that are executed through the plan.
+    </p>
+    <p>
+        However, pipeline variables are not actually configuration variables: you can't create multi-scoped variables, or modify them through the <a href="/support/documentation/buildmaster/reference/api/variables">variables API</a>.
+    </p>
+    <h3 id="advanced-features-and-properties" data-title="Advanced Features and Properties">Advanced Features and Properties</h3>
+    <p>
+        Pipelines also have the following options:
+    </p>
+    <ul>
+        <li>
+            Enforce stage sequence; when set, a release package must follow the defined stage sequence (requiring a Force to override); otherwise, a release package may be deployed to any stage at any time
+        </li>
+        <li>
+            Cancel Release; cancel earlier (lower-sequenced) releases that are still active and have not yet been deployed.
+        </li>
+        <li>
+            Create Release: creates a new release after a release has been deployed by incrementing the final part of the deployed release number (e.g. 3.4.3 to 3.4.4) .
+        </li>
+        <li>
+            Deploy Release: mark the release and package as deployed once it reaches the final stage.
+        </li>
+    </ul>
+
+    <h3 id="best-practices" data-title="Best Practices">Best Practices</h3>
+    <div class="attention best-practice">
+        <img src="/resources/images/icons/best-practices.png" />
+        <h4><i>Start Simple</i></h4>
+        <p>
+            This level of flexibility can make it feel overwhelming to design the "right" pipeline. You can always "add more" to it later, and adopt your deployment process as you learn how to improve it.
+        </p>
+    </div>
+    <div class="attention best-practice">
+        <img src="/resources/images/icons/best-practices.png" />
+        <h4><i>Keep Pipelines Reusable</i></h4>
+        <p>
+            Pipelines are designed to be used for all the deployment sets in a project, and they represent a repeatable process. Don't treat them like a "release checklist" for a single release, and then start again on the next release.
+        </p>
+    </div>
+    <div class="attention best-practice">
+        <img src="/resources/images/icons/best-practices.png" />
+        <h4><i>Stages vs Targets vs Plans</i></h4>
+        <p>
+            You could, in theory, have a single deployment plan that deploys a package from one server to another, all the way through production. On the other hand, you could have a pipeline with a thousand stages, each running a micro-step in deploying to a particular environment… not to mention targets.
+        </p>
+        <p>
+            To find the best middle ground, consider the design intent of each of the elements:
+        </p>
+        <p>
+            <ul>
+                <li>
+                    Stages are designed to visualize deployment sets as they make their way to production. Too many stages, and it becomes cluttered and almost useless. Come up with a sequence of stages that shows how others may visualize this progress over the course of days and weeks.
+                </li>
+                <li>
+                    Targets are used to help keep your deployment plans reusable, and let you define servers and roles outside of the deployment plan; they are also visualized as a separate execution which may make identifying which parts of the deployment were successful, warned, or failed.
+                </li>
+                <li>
+                    Plans have a lot of flexibility, but they should generally be reusable and not server- or role-specific; but sometimes they are, and that's ok too.
+                </li>
+            </ul>
+        </p>
+    </div>
+    <div class="attention best-practice">
+        <img src="/resources/images/icons/best-practices.png" />
+        <h4><i>Don't Use and Abuse Post-Deployment Steps</i></h4>
+        <p>
+            Although you can certainly do "anything" in a post-deployment step, in general these steps should be reserved for:
+        </p>
+        <ul>
+            <li>Auditing purposes</li>
+            <li>Sending notifications</li>
+        </ul>
+    </div>
+</body>
+</html>
