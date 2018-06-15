@@ -1,0 +1,116 @@
+﻿<html>
+<head>
+    <title>Versions &amp; Release Notes</title>
+    <meta name="subtitle" content="Versions &amp; Release Notes" />
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <meta name="keywords" content="inedo, inedo agent, upgrading" />
+    <meta name="sequence" content="30" />
+
+</head>
+<body>
+    <p>
+        Because the agent protocol requires that all Inedo Agent clients and servers be fully backward- and forward-compatible,
+        having a semantic versioning scheme doesn&rsquo;t make a lot of sense. Instead, we have a single integer that we use to
+        differentiate released versions.
+    </p>
+
+    <h2>Published Versions</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Version</th>
+                <th>Date</th>
+                <th>Shipped in Product</th>
+                <th>Notes</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><a href="http://cdn.inedo.com/downloads/inedo-agent/InedoAgentSetup.40.exe">40</a></td>
+                <td>2018/01/18</td>
+                <td>
+                    Otter 2.0.2
+                </td>
+                <td><a href="https://inedo.myjetbrains.com/youtrack/issue/IAGT-2">IAGT2</a> - FIX: Operations hang if agent process exits before they complete</td>
+            </tr>
+            <tr>
+                <td><a href="http://cdn.inedo.com/downloads/inedo-agent/InedoAgentSetup.39.exe">39</a></td>
+                <td>2017/11/08</td>
+                <td>
+                    BuildMaster 5.8.2
+                </td>
+                <td><a href="https://inedo.myjetbrains.com/youtrack/issue/IAGT-1">IAGT1</a> - FIX: Possible leaked memory mapped file pointer when resources are released via finalizer</td>
+            </tr>
+            <tr>
+                <td><a href="http://cdn.inedo.com/downloads/inedo-agent/InedoAgentSetup.38.exe">38</a></td>
+                <td>2017/08/14</td>
+                <td>
+                    Otter 1.7.2
+                    <br />
+                    BuildMaster 5.8.0
+                </td>
+                <td>Fix v37 regression (may crash after idle timeout period)</td>
+            </tr>
+            <tr>
+                <td>37</td>
+                <td>2017/08/14</td>
+                <td>Otter 1.7.1</td>
+                <td>Potential fix for memory leaks</td>
+            </tr>
+            <tr>
+                <td>36</td>
+                <td>2017/07/06</td>
+                <td>
+                    BuildMaster 5.7.3
+                    <br />
+                    Otter 1.6.3
+                </td>
+                <td>Agent installer change to better report errors</td>
+            </tr>
+            <tr>
+                <td>35</td>
+                <td>2016/09/16</td>
+                <td>
+                    BuildMaster 5.4.0
+                    <br />
+                    Otter 1.4.1
+                </td>
+                <td>Add SessionID to error log</td>
+            </tr>
+            <tr>
+                <td>34</td>
+                <td>2017/08/14</td>
+                <td>
+                    BuildMaster 5.1.4
+                    <br />
+                    Otter 1.2.0
+                </td>
+                <td>Major changes; BuildMaster support and various improvements including Healthcheck</td>
+            </tr>
+            <tr>
+                <td>20*</td>
+                <td>2016/05/24</td>
+                <td>Otter 1.1.2</td>
+                <td>Minor installer bugfix for silent installation</td>
+            </tr>
+            <tr>
+                <td>17*</td>
+                <td>2015/12/23</td>
+                <td>Otter 1.0.0</td>
+                <td>First public version</td>
+            </tr>
+
+        </tbody>
+    </table>
+
+    <p>
+        The gap between versions is intentional. Most of our <i>released</i> versions are not publicly available, and are built and released
+        for one or two users, to attempt to address/isolate some strange edge case.
+    </p>
+
+    <p class="info">Note that BuildMaster did not use the Inedo agents until v5.1.4.</p>
+
+    <p class="info">*Note that versions 17 and 20 will still work, but only with Otter.</p>
+
+</body>
+</html>
