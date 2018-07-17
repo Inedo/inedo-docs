@@ -1,0 +1,2102 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Native API Reference</title>
+    <meta name="subtitle" content="Native API Reference" />
+    <meta name="keywords" content="proget,api" />
+    <style type="text/css">
+        th {
+            font-weight: normal;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <p class="announcement">
+        The <a href="/support/documentation/proget/reference/api/package-promotion">Package Promotion API endpoints</a> should be used instead of the Native API Methods when possible, as they are much easier to use and will likely not change.
+    </p>
+    <p>
+        These methods are callable through JSON, SOAP, or SQL. Note that the
+        Native API must be explicitly enabled by setting an API key under Administration &gt; All Settings.
+        Because this is a low-level API, specific user or task authorization is not performed and, if needed, may
+        be done through the various Security_ methods.
+    </p>
+
+    <p>
+        For security and simplicity, these endpoints require that an <a href="../../administration/security#api-keys">API Key</a> is created and passed into each request. 
+    </p>
+
+    <h3>Method Listing</h3>
+    <p class="info">
+        This listing was generated from ProGet 5.1, and may be different in earlier releases. To see the
+        api methods for your specific version, visit <code>/reference/api</code> in your ProGet installation.
+    </p>
+
+    <table class="styled-table">
+        <thead>
+            <tr>
+                <th>
+                </th>
+                <th>Input</th>
+                <th>Output</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td colspan="3">
+                    <a name="AssessmentTypes_CreateOrUpdateAssessmentType"></a>
+                    <b>AssessmentTypes_CreateOrUpdateAssessmentType</b>
+                    <br />Creates a new vulnerability assessment type or updates an existing one.</td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>AssessmentType_Name (String)
+                    <br />BlockDownload_Indicator (YNIndicator)
+                    <br />Expiration_Days (Int32)
+                    <br />Severity_Code (String)
+                    <br />Custom_Color (Int32)
+                    <br />AssessmentType_Id (Int32)</td>
+                <td>
+                    <em>none</em>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="AssessmentTypes_DeleteAssessmentType"></a>
+                    <b>AssessmentTypes_DeleteAssessmentType</b>
+                    <br />Deletes a vulnerability assessment type.</td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>AssessmentType_Id (Int32)</td>
+                <td>
+                    <em>none</em>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="AssessmentTypes_GetAssessmentTypes"></a>
+                    <b>AssessmentTypes_GetAssessmentTypes</b>
+                    <br />Gets all of the assessment types.</td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>
+                    <em>none</em>
+                </td>
+                <td>DataTable (AssessmentTypes)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="BowerPackages_CreateOrUpdatePackage"></a>
+                    <b>BowerPackages_CreateOrUpdatePackage</b>
+                    <br />Creates a new Bower package in the system, or updates an existing one.</td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Feed_Id (Int32)
+                    <br />Package_Name (String)
+                    <br />Repository_Url (String)</td>
+                <td>
+                    <em>none</em>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="BowerPackages_DeletePackage"></a>
+                    <b>BowerPackages_DeletePackage</b>
+                    <br />Deletes a Bower package.</td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Feed_Id (Int32)
+                    <br />Package_Name (String)</td>
+                <td>
+                    <em>none</em>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="BowerPackages_GetPackage"></a>
+                    <b>BowerPackages_GetPackage</b>
+                    <br />Gets the specified package in a Bower feed.</td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Feed_Id (Int32)
+                    <br />Package_Name (String)</td>
+                <td>DataRow (BowerPackages)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="BowerPackages_GetPackages"></a>
+                    <b>BowerPackages_GetPackages</b>
+                    <br />Gets the packages in a Bower feed.</td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Feed_Id (Int32)</td>
+                <td>DataTable (BowerPackages)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Configuration_GetConfiguration"></a>
+                    <b>Configuration_GetConfiguration</b>
+                    <br />Gets the a complete list of ProGet configuration settings.</td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>
+                    <em>none</em>
+                </td>
+                <td>DataTable (Configuration)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Configuration_GetValue"></a>
+                    <b>Configuration_GetValue</b>
+                    <br />Gets the specified ProGet configuration value.</td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Key_Name (String)</td>
+                <td>DataRow (Configuration)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Configuration_SetValue"></a>
+                    <b>Configuration_SetValue</b>
+                    <br />Sets a ProGet configuration value.</td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Key_Name (String)
+                    <br />Value_Text (String)</td>
+                <td>
+                    <em>none</em>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Connectors_CreateOrUpdateConnector"></a>
+                    <b>Connectors_CreateOrUpdateConnector</b>
+                    <br />Creates a new connector in the system, or updates an existing one.</td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>FeedType_Name (String)
+                    <br />Connector_Name (String)
+                    <br />Connector_Url (String)
+                    <br />Filter_Csv (String)
+                    <br />User_Name (String)
+                    <br />Password_Bytes (Byte[])
+                    <br />Timeout_Period (Int32)
+                    <br />MetadataCache_Enabled_Indicator (YNIndicator)
+                    <br />MetadataCache_Minutes (Int32)
+                    <br />MetadataCache_Count (Int32)
+                    <br />Connector_Id (Int32)</td>
+                <td>Connector_Id</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Connectors_DeleteConnector"></a>
+                    <b>Connectors_DeleteConnector</b>
+                    <br />Deletes a connector.</td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Connector_Id (Int32)</td>
+                <td>
+                    <em>none</em>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Connectors_GetConnector"></a>
+                    <b>Connectors_GetConnector</b>
+                    <br />Gets the specified connector.</td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Connector_Id (Int32)</td>
+                <td>DataRow (Connectors)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Connectors_GetConnectors"></a>
+                    <b>Connectors_GetConnectors</b>
+                    <br />Gets all of the connectors.</td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Feed_Id (Int32)</td>
+                <td>DataTable (Connectors)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Credentials_CreateOrUpdateCredential"></a>
+                    <b>Credentials_CreateOrUpdateCredential</b>
+                    <br />Creates a new credential or updates an existing one.</td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Credential_Name (String)
+                    <br />CredentialType_Name (String)
+                    <br />Configuration_Xml (String)
+                    <br />AllowFunctionAccess_Indicator (YNIndicator)
+                    <br />Credential_Id (Int32)</td>
+                <td>Credential_Id</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Credentials_DeleteCredential"></a>
+                    <b>Credentials_DeleteCredential</b>
+                    <br />Gets the specified credential.</td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Credential_Id (Int32)</td>
+                <td>DataRow (Credentials)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Credentials_GetCredential"></a>
+                    <b>Credentials_GetCredential</b>
+                    <br />Gets the specified credential.</td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Credential_Id (Int32)</td>
+                <td>DataRow (Credentials)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Credentials_GetCredentialByName"></a>
+                    <b>Credentials_GetCredentialByName</b>
+                    <br />Gets the specified credential by its qualified name.</td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>CredentialType_Name (String)
+                    <br />Credential_Name (String)</td>
+                <td>DataRow (Credentials)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Credentials_GetCredentials"></a>
+                    <b>Credentials_GetCredentials</b>
+                    <br />Gets all credentials in the system.</td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>
+                    <em>none</em>
+                </td>
+                <td>DataTable (Credentials)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Dashboards_GetDashboardInfo"></a>
+                    <b>Dashboards_GetDashboardInfo</b>
+                    <br />Gets data relevant to the ProGet homepage.</td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Packages_Count (Int32)
+                    <br />IncludeInactive_Indicator (YNIndicator)</td>
+                <td>DataSet (DashboardPackages_Latest, DashboardFeeds)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Dashboards_GetFeedVulnerabilityAssessments"></a>
+                    <b>Dashboards_GetFeedVulnerabilityAssessments</b>
+                    <br />Gets information about the vulnerability assessments in a feed.</td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Feed_Id (Int32)</td>
+                <td>DataTable (DashboardFeeds_VulnerabilityAssessments)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Dashboards_GetLargestPackages"></a>
+                    <b>Dashboards_GetLargestPackages</b>
+                    <br />Gets information about the largest packages in a feed.</td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Feed_Id (Int32)</td>
+                <td>DataTable (DashboardPackages_Largest)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="DockerBlobs_GetBlobs"></a>
+                    <b>DockerBlobs_GetBlobs</b>
+                    <br />Gets all of the blobs in a feed.</td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Feed_Id (Int32)</td>
+                <td>DataTable (DockerBlobs)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="DockerImages_GetImage"></a>
+                    <b>DockerImages_GetImage</b>
+                    <br />Gets the Docker image with the specified tag or digest.</td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Feed_Id (Int32)
+                    <br />Repository_Name (String)
+                    <br />TagOrDigest_Name (String)</td>
+                <td>DataRow (DockerImages)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="DockerImages_GetImages"></a>
+                    <b>DockerImages_GetImages</b>
+                    <br />Gets the Docker images that match the specified criteria.</td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Feed_Id (Int32)
+                    <br />Repository_Name (String)</td>
+                <td>DataTable (DockerImages)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="DockerImages_GetRepositories"></a>
+                    <b>DockerImages_GetRepositories</b>
+                    <br />Gets the Docker repositories that match the specified criteria.</td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Feed_Id (Int32)
+                    <br />SearchTerm_Text (String)</td>
+                <td>DataTable (DockerRepositories)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="DockerImages_GetTags"></a>
+                    <b>DockerImages_GetTags</b>
+                    <br />Gets the Docker image tags for the specified repository.</td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Feed_Id (Int32)
+                    <br />Repository_Name (String)</td>
+                <td>DataTable (DockerImageTags)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="DockerImages_UpdateDescription"></a>
+                    <b>DockerImages_UpdateDescription</b>
+                    <br />Updates the short or full description of a Docker repository.</td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Feed_Id (Int32)
+                    <br />Repository_Name (String)
+                    <br />ShortDescription_Text (String)
+                    <br />FullDescription_Text (String)</td>
+                <td>
+                    <em>none</em>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="EventOccurrences_GetOccurrence"></a>
+                    <b>EventOccurrences_GetOccurrence</b>
+                    <br />Gets details about a specific event occurrence.</td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>EventOccurrence_Id (Int32)</td>
+                <td>DataRow (EventOccurrences)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="EventOccurrences_GetOccurrences"></a>
+                    <b>EventOccurrences_GetOccurrences</b>
+                    <br />Gets all event occurrences, optionally filtered by feed.</td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Feed_Id (Int32)
+                    <br />User_Name (String)
+                    <br />Count (Int32)</td>
+                <td>DataTable (EventOccurrences)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="EventOccurrences_GetUsers"></a>
+                    <b>EventOccurrences_GetUsers</b>
+                    <br />Gets all of the users which have initiated events.</td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>
+                    <em>none</em>
+                </td>
+                <td>DataTable (EventOccurrences_Users)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="EventTypes_GetEventTypes"></a>
+                    <b>EventTypes_GetEventTypes</b>
+                    <br />Gets all of the event types.</td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>
+                    <em>none</em>
+                </td>
+                <td>DataTable (EventTypes)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Executions_DeleteExecution"></a>
+                    <b>Executions_DeleteExecution</b>
+                    <br />Deletes an execution and all of its logs.</td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Execution_Id (Int32)</td>
+                <td>
+                    <em>none</em>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Executions_SetStatus"></a>
+                    <b>Executions_SetStatus</b>
+                    <br />Updates the status of an execution.</td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Execution_Id (Int32)
+                    <br />ExecutionStatus_Code (String)</td>
+                <td>
+                    <em>none</em>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="FeedAdapters_CreateOrUpdateFeedAdapter"></a>
+                    <b>FeedAdapters_CreateOrUpdateFeedAdapter</b>
+                    <br />Creates a new feed adapter or updates an existing one.</td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Feed_Id (Int32)
+                    <br />FeedAdapter_Sequence (Int32)
+                    <br />FeedAdapter_Name (String)
+                    <br />FeedAdapterType_Code (String)
+                    <br />FeedAdapter_Configuration (String)</td>
+                <td>
+                    <em>none</em>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="FeedAdapters_DeleteFeedAdapter"></a>
+                    <b>FeedAdapters_DeleteFeedAdapter</b>
+                    <br />Deletes a feed adapter.</td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Feed_Id (Int32)
+                    <br />FeedAdapter_Sequence (Int32)</td>
+                <td>
+                    <em>none</em>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="FeedAdapters_GetFeedAdapters"></a>
+                    <b>FeedAdapters_GetFeedAdapters</b>
+                    <br />Gets all of adapters associated with the specified feed</td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Feed_Id (Int32)</td>
+                <td>DataTable (FeedAdapters)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="FeedPackageAccessRules_CreateOrUpdateRule"></a>
+                    <b>FeedPackageAccessRules_CreateOrUpdateRule</b>
+                    <br />Creates a new feed access rule or updates an existing one.</td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Feed_Id (Int32)
+                    <br />PackageAccessRule_Name (String)
+                    <br />PackageAccessRule_Configuration (String)
+                    <br />Sequence_Number (Int32)</td>
+                <td>
+                    <em>none</em>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="FeedPackageAccessRules_DeleteRule"></a>
+                    <b>FeedPackageAccessRules_DeleteRule</b>
+                    <br />Deletes a feed access rule.</td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Feed_Id (Int32)
+                    <br />Sequence_Number (Int32)</td>
+                <td>
+                    <em>none</em>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="FeedPackageFilters_CreateOrUpdatePackageFilter"></a>
+                    <b>FeedPackageFilters_CreateOrUpdatePackageFilter</b>
+                    <br />Creates a new feed package filter or updates an existing one.</td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Feed_Id (Int32)
+                    <br />PackageFilter_Name (String)
+                    <br />PackageFilter_Configuration (String)
+                    <br />Sequence_Number (Int32)</td>
+                <td>Sequence_Number</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="FeedPackageFilters_DeletePackageFilter"></a>
+                    <b>FeedPackageFilters_DeletePackageFilter</b>
+                    <br />Deletes a feed package filter.</td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Feed_Id (Int32)
+                    <br />Sequence_Number (Int32)</td>
+                <td>
+                    <em>none</em>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="FeedPackageFilters_GetPackageFilters"></a>
+                    <b>FeedPackageFilters_GetPackageFilters</b>
+                    <br />Returns all of the package filters for a feed.</td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Feed_Id (Int32)</td>
+                <td>DataTable (FeedPackageFilters)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="FeedRetentionRules_CreateOrUpdateRule"></a>
+                    <b>FeedRetentionRules_CreateOrUpdateRule</b>
+                    <br />Creates a new feed retention rule or updates an existing one.</td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Feed_Id (Int32)
+                    <br />DeletePrereleaseVersions_Indicator (YNIndicator)
+                    <br />DeleteCached_Indicator (YNIndicator)
+                    <br />KeepVersions_Count (Int32)
+                    <br />KeepUsedWithin_Days (Int32)
+                    <br />DeletePackageIds_Csv (String)
+                    <br />KeepPackageIds_Csv (String)
+                    <br />SizeTrigger_KBytes (Int64)
+                    <br />SizeExclusive_Indicator (YNIndicator)
+                    <br />TriggerDownload_Count (Int32)
+                    <br />Sequence_Number (Int32)</td>
+                <td>Sequence_Number</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="FeedRetentionRules_DeleteRule"></a>
+                    <b>FeedRetentionRules_DeleteRule</b>
+                    <br />Deletes a feed retention rule.</td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Feed_Id (Int32)
+                    <br />Sequence_Number (Int32)</td>
+                <td>
+                    <em>none</em>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="FeedRetentionRules_GetRules"></a>
+                    <b>FeedRetentionRules_GetRules</b>
+                    <br />Gets the retention rules for a feed.</td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Feed_Id (Int32)</td>
+                <td>DataTable (FeedRetentionRules_Extended)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="FeedRetentionRules_ResequenceRule"></a>
+                    <b>FeedRetentionRules_ResequenceRule</b>
+                    <br />Resequences a feed retention rule.</td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Feed_Id (Int32)
+                    <br />Sequence_Number (Int32)
+                    <br />New_Sequence_Number (Int32)</td>
+                <td>
+                    <em>none</em>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Feeds_AddFeedConnector"></a>
+                    <b>Feeds_AddFeedConnector</b>
+                    <br />Associates a connector with a feed.</td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Feed_Id (Int32)
+                    <br />Connector_Id (Int32)</td>
+                <td>
+                    <em>none</em>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Feeds_AddVulnerabilitySource"></a>
+                    <b>Feeds_AddVulnerabilitySource</b>
+                    <br />Associates a vulnerability source with a feed.</td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Feed_Id (Int32)
+                    <br />VulnerabilitySource_Id (Int32)</td>
+                <td>
+                    <em>none</em>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Feeds_CreateFeed"></a>
+                    <b>Feeds_CreateFeed</b>
+                    <br />Creates a new feed of the specified type.</td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Feed_Name (String)
+                    <br />FeedType_Name (String)
+                    <br />FeedConfiguration_Xml (String)
+                    <br />Feed_Id (Int32)</td>
+                <td>Feed_Id</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Feeds_DeleteFeed"></a>
+                    <b>Feeds_DeleteFeed</b>
+                    <br />Deletes the specified feed.</td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Feed_Id (Int32)</td>
+                <td>
+                    <em>none</em>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Feeds_DeleteFeedConnector"></a>
+                    <b>Feeds_DeleteFeedConnector</b>
+                    <br />Dissociates a connector with a feed.</td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Feed_Id (Int32)
+                    <br />Connector_Id (Int32)</td>
+                <td>
+                    <em>none</em>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Feeds_DeleteSyncSettings"></a>
+                    <b>Feeds_DeleteSyncSettings</b>
+                    <br />Deletes any sync settings for a feed.</td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Feed_Id (Int32)</td>
+                <td>
+                    <em>none</em>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Feeds_DeleteVulnerabilitySource"></a>
+                    <b>Feeds_DeleteVulnerabilitySource</b>
+                    <br />Dissociates a feed from a vulnerability source.</td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Feed_Id (Int32)
+                    <br />VulnerabilitySource_Id (Int32)</td>
+                <td>
+                    <em>none</em>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Feeds_GetFeed"></a>
+                    <b>Feeds_GetFeed</b>
+                    <br />Gets the details of a feed by either name or ID.</td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Feed_Id (Int32)
+                    <br />Feed_Name (String)</td>
+                <td>DataRow (Feeds)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Feeds_GetFeedConnectors"></a>
+                    <b>Feeds_GetFeedConnectors</b>
+                    <br />Gets the connectors for a feed.</td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Feed_Id (Int32)
+                    <br />Feed_Name (String)</td>
+                <td>DataTable (FeedConnectors_Extended)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Feeds_GetFeeds"></a>
+                    <b>Feeds_GetFeeds</b>
+                    <br />Gets all of the feeds.</td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>IncludeInactive_Indicator (YNIndicator)</td>
+                <td>DataTable (Feeds)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Feeds_GetSyncFeeds"></a>
+                    <b>Feeds_GetSyncFeeds</b>
+                    <br />Gets all of the sync feeds.</td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>
+                    <em>none</em>
+                </td>
+                <td>DataSet (NuGetSyncFeeds, Feeds)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Feeds_GetSyncSettings"></a>
+                    <b>Feeds_GetSyncSettings</b>
+                    <br />Gets the settings for a sync feed.</td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Feed_Id (Int32)</td>
+                <td>DataRow (NuGetSyncFeeds)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Feeds_GetVulnerabilitySources"></a>
+                    <b>Feeds_GetVulnerabilitySources</b>
+                    <br />Gets the vulnerability sources for a feed.</td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Feed_Id (Int32)</td>
+                <td>DataTable (VulnerabilitySources)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Feeds_SetFeedProperty"></a>
+                    <b>Feeds_SetFeedProperty</b>
+                    <br />Sets one or more properties on a feed of any type.</td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Feed_Id (Int32)
+                    <br />Feed_Name (String)
+                    <br />Feed_Description (String)
+                    <br />Active_Indicator (YNIndicator)
+                    <br />Cache_Connectors_Indicator (YNIndicator)
+                    <br />FeedType_Name (String)
+                    <br />DropPath_Text (String)
+                    <br />FeedPathOverride_Text (String)
+                    <br />PackageStoreConfiguration_Xml (String)
+                    <br />SyncToken_Bytes (Byte[])
+                    <br />SyncTarget_Url (String)
+                    <br />AllowUnknownLicenses_Indicator2 (String)
+                    <br />FeedConfiguration_Xml (String)</td>
+                <td>
+                    <em>none</em>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Feeds_UpdateSyncSettings"></a>
+                    <b>Feeds_UpdateSyncSettings</b>
+                    <br />Updates sync settings for a feed.</td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Feed_Id (Int32)
+                    <br />Sync_Url (String)
+                    <br />RemoteFeed_Name (String)
+                    <br />RemoteFeed_APIKey_Bytes (Byte[])
+                    <br />Sync_Frequency_Minutes (Int32)
+                    <br />Active_Indicator (YNIndicator)</td>
+                <td>
+                    <em>none</em>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="IndexingServers_DeleteServer"></a>
+                    <b>IndexingServers_DeleteServer</b>
+                    <br />Deletes an indexing server.</td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Server_Name (String)</td>
+                <td>
+                    <em>none</em>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="IndexingServers_GetServers"></a>
+                    <b>IndexingServers_GetServers</b>
+                    <br />Gets the indexing servers registered with ProGet.</td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>
+                    <em>none</em>
+                </td>
+                <td>DataTable (IndexingServers)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="LicenseRules_CreateOrUpdateLicenseRule"></a>
+                    <b>LicenseRules_CreateOrUpdateLicenseRule</b>
+                    <br />Creates or edits a license rule.</td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Feed_Id (Int32)
+                    <br />License_Id (Int32)
+                    <br />Allow_Indicator (YNIndicator)
+                    <br />LicenseRule_Id (Int32)</td>
+                <td>LicenseRule_Id</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="LicenseRules_DeleteLicenseRule"></a>
+                    <b>LicenseRules_DeleteLicenseRule</b>
+                    <br />Deletes a license rule.</td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>LicenseRule_Id (Int32)</td>
+                <td>
+                    <em>none</em>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="LicenseRules_GetLicenseRules"></a>
+                    <b>LicenseRules_GetLicenseRules</b>
+                    <br />Gets all of the license rules, optionally filtered by feed.</td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Feed_Id (Int32)
+                    <br />GlobalOnly_Indicator (YNIndicator)</td>
+                <td>DataTable (LicenseRules_Extended)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="LicenseRules_GetMatchingRule"></a>
+                    <b>LicenseRules_GetMatchingRule</b>
+                    <br />Gets the best match for a license rule.</td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Feed_Id (Int32)
+                    <br />Match_Term (String)</td>
+                <td>DataSet (LicenseRules_Extended, Licenses)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Licenses_DeleteLicense"></a>
+                    <b>Licenses_DeleteLicense</b>
+                    <br />Deletes a license and any associated rules.</td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>License_Id (Int32)</td>
+                <td>
+                    <em>none</em>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Licenses_GetLicenses"></a>
+                    <b>Licenses_GetLicenses</b>
+                    <br />Gets all of the licenses known by ProGet.</td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>
+                    <em>none</em>
+                </td>
+                <td>DataSet (Licenses, LicenseUrls)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Licenses_ImportLicense"></a>
+                    <b>Licenses_ImportLicense</b>
+                    <br />Imports license information into ProGet but never overwrites any information.</td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>External_Id (String)
+                    <br />Title_Text (String)
+                    <br />LicenseUrls_Csv (String)</td>
+                <td>
+                    <em>none</em>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Licenses_UpdateLicense"></a>
+                    <b>Licenses_UpdateLicense</b>
+                    <br />Overwrites license title and URLs.</td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>External_Id (String)
+                    <br />Title_Text (String)
+                    <br />LicenseUrls_Csv (String)</td>
+                <td>
+                    <em>none</em>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="LogMessages_DeleteMessages"></a>
+                    <b>LogMessages_DeleteMessages</b>
+                    <br />Deletes one or all messages from the error log.</td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>LogMessage_Id (Int32)
+                    <br />Category_Name (String)</td>
+                <td>
+                    <em>none</em>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="LogMessages_GetMessage"></a>
+                    <b>LogMessages_GetMessage</b>
+                    <br />Gets a specified message from the error log.</td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>LogMessage_Id (Int32)</td>
+                <td>DataRow (LogMessages_Extended)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="LogMessages_GetMessages"></a>
+                    <b>LogMessages_GetMessages</b>
+                    <br />Gets the messages from the error log that match the specified criteria.</td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Row_Count (Int32)
+                    <br />IncludeReadMessages_Indicator (YNIndicator)
+                    <br />Category_Name (String)
+                    <br />Message_Level (Int32)
+                    <br />Feed_Id (Int32)
+                    <br />Connector_Id (Int32)</td>
+                <td>DataTable (LogMessages_Extended)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="MavenArtifacts_GetArtifactFiles"></a>
+                    <b>MavenArtifacts_GetArtifactFiles</b>
+                    <br />Gets the files associated with a Maven artifact.</td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Feed_Id (Int32)
+                    <br />GroupId_Text (String)
+                    <br />ArtifactId_Text (String)
+                    <br />Version_Text (String)
+                    <br />File_Type (String)
+                    <br />FileName_Text (String)</td>
+                <td>DataTable (MavenArtifactFiles_Extended)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="MavenArtifacts_GetArtifacts"></a>
+                    <b>MavenArtifacts_GetArtifacts</b>
+                    <br />Gets the Maven artifacts in a feed.</td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Feed_Id (Int32)
+                    <br />GroupId_Text (String)
+                    <br />ArtifactId_Text (String)</td>
+                <td>DataTable (MavenArtifacts_Extended)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="MavenArtifacts_GetArtifactVersions"></a>
+                    <b>MavenArtifacts_GetArtifactVersions</b>
+                    <br />Gets all of the versions of a Maven artifact.</td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Feed_Id (Int32)
+                    <br />GroupId_Text (String)
+                    <br />ArtifactId_Text (String)</td>
+                <td>DataTable (MavenArtifacts_Versions)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="NpmConnectors_GetPackageCount"></a>
+                    <b>NpmConnectors_GetPackageCount</b>
+                    <br />Gets the number of indexed packages in an npm connector.</td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Connector_Id (Int32)
+                    <br />Packages_Count (Int32)</td>
+                <td>Packages_Count</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="NpmConnectors_GetPackages"></a>
+                    <b>NpmConnectors_GetPackages</b>
+                    <br />Gets the npm connector packages which match the specified criteria.</td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Connector_Id (Int32)
+                    <br />IncludeName_Csv (String)
+                    <br />ExcludeName_Csv (String)
+                    <br />ModifiedAfter_Date (DateTime)
+                    <br />MaxResults_Count (Int32)</td>
+                <td>DataTable (NpmConnectorPackages)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="NpmFeeds_GetAllPackageVersions"></a>
+                    <b>NpmFeeds_GetAllPackageVersions</b>
+                    <br />Gets all versions of all of the packages in an npm feed.</td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Feed_Id (Int32)</td>
+                <td>DataTable (NpmPackages_AllVersions)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="NpmFeeds_GetConnectorPackage"></a>
+                    <b>NpmFeeds_GetConnectorPackage</b>
+                    <br />Gets a package from a feed's connector with the specified name and version.</td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Feed_Id (Int32)
+                    <br />Package_Name (String)
+                    <br />Package_Version (String)</td>
+                <td>DataRow (NpmConnectorPackages)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="NpmFeeds_GetLatestPackageVersions"></a>
+                    <b>NpmFeeds_GetLatestPackageVersions</b>
+                    <br />Gets the latest versions of packages in a feed.</td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Feed_Id (Int32)
+                    <br />Since_Date (DateTime)</td>
+                <td>DataTable (NpmPackages_Latest)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="NpmFeeds_SetTagVersion"></a>
+                    <b>NpmFeeds_SetTagVersion</b>
+                    <br />Sets the version which a package tag points to.</td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Feed_Id (Int32)
+                    <br />Package_Name (String)
+                    <br />Scope_Name (String)
+                    <br />Tag_Name (String)
+                    <br />Tag_Version (String)</td>
+                <td>
+                    <em>none</em>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="NpmPackages_CreateOrUpdatePackage"></a>
+                    <b>NpmPackages_CreateOrUpdatePackage</b>
+                    <br />Creates a new npm package or updates an existing one.</td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Feed_Id (Int32)
+                    <br />Package_Name (String)
+                    <br />Scope_Name (String)
+                    <br />Version_Text (String)
+                    <br />PackageJson_Bytes (Byte[])
+                    <br />Published_Date (DateTime)
+                    <br />Tag_Name (String)
+                    <br />PackageHash_Bytes (Byte[])
+                    <br />Cached_Indicator (YNIndicator)
+                    <br />Package_Size (Int64)</td>
+                <td>
+                    <em>none</em>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="NpmPackages_DeletePackage"></a>
+                    <b>NpmPackages_DeletePackage</b>
+                    <br />Deletes a package in an npm feed.</td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Feed_Id (Int32)
+                    <br />Package_Name (String)
+                    <br />Scope_Name (String)
+                    <br />Version_Text (String)</td>
+                <td>
+                    <em>none</em>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="NpmPackages_GetPackage"></a>
+                    <b>NpmPackages_GetPackage</b>
+                    <br />Gets a package and its versions and tags.</td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Feed_Id (Int32)
+                    <br />Package_Name (String)
+                    <br />Scope_Name (String)</td>
+                <td>DataSet (NpmPackages, NpmPackageVersions, NpmPackageTags)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="NuGetPackages_GetLatest"></a>
+                    <b>NuGetPackages_GetLatest</b>
+                    <br />Gets all of the latest packages in a feed.</td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Feed_Id (Int32)
+                    <br />PackageIds_Psv (String)</td>
+                <td>DataTable (NuGetPackages_Latest)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="NuGetPackages_GetLatestStable"></a>
+                    <b>NuGetPackages_GetLatestStable</b>
+                    <br />Gets all of the latest stable packages in a feed.</td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Feed_Id (Int32)
+                    <br />PackageIds_Psv (String)</td>
+                <td>DataTable (NuGetPackages_LatestStable)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="NuGetPackages_GetPackage"></a>
+                    <b>NuGetPackages_GetPackage</b>
+                    <br />Gets information about a package in a feed.</td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Feed_Id (Int32)
+                    <br />Package_Id (String)
+                    <br />Version_Text (String)</td>
+                <td>DataSet (NuGetPackages_Extended, NuGetPackageSymbols)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="NuGetPackages_GetPackageCount"></a>
+                    <b>NuGetPackages_GetPackageCount</b>
+                    <br />Gets the number of packages in the system that meet the specified criteria.</td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Feed_Id (Int32)
+                    <br />Package_Id (String)
+                    <br />Package_Count (Int32)</td>
+                <td>Package_Count</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="NuGetPackages_GetPackages"></a>
+                    <b>NuGetPackages_GetPackages</b>
+                    <br />Gets all of the packages in a feed.</td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Feed_Id (Int32)
+                    <br />PackageIds_Psv (String)</td>
+                <td>DataTable (NuGetPackages_Extended)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="NuGetPackages_SetListed"></a>
+                    <b>NuGetPackages_SetListed</b>
+                    <br />Lists or unlists a NuGet package.</td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Feed_Id (Int32)
+                    <br />Package_Id (String)
+                    <br />Version_Text (String)
+                    <br />Listed_Indicator (YNIndicator)</td>
+                <td>
+                    <em>none</em>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="NuGetPackagesV2_GetLatest"></a>
+                    <b>NuGetPackagesV2_GetLatest</b>
+                    <br />Gets all of the latest packages in a feed.</td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Feed_Id (Int32)
+                    <br />PackageIds_Psv (String)</td>
+                <td>DataTable (NuGetPackagesV2_Latest)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="NuGetPackagesV2_GetLatestStable"></a>
+                    <b>NuGetPackagesV2_GetLatestStable</b>
+                    <br />Gets all of the latest stable packages in a feed.</td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Feed_Id (Int32)
+                    <br />PackageIds_Psv (String)</td>
+                <td>DataTable (NuGetPackagesV2_LatestStable)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="NuGetPackagesV2_GetPackage"></a>
+                    <b>NuGetPackagesV2_GetPackage</b>
+                    <br />Gets information about a package in a feed.</td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Feed_Id (Int32)
+                    <br />Package_Id (String)
+                    <br />Version_Text (String)</td>
+                <td>DataTable (NuGetPackageVersionsV2_Extended)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="NuGetPackagesV2_GetPackages"></a>
+                    <b>NuGetPackagesV2_GetPackages</b>
+                    <br />Gets all of the packages in a feed.</td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Feed_Id (Int32)
+                    <br />PackageIds_Psv (String)</td>
+                <td>DataTable (NuGetPackageVersionsV2_Extended)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="NuGetPackageSymbols_GetSymbols"></a>
+                    <b>NuGetPackageSymbols_GetSymbols</b>
+                    <br />Gets the best symbol matches.</td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Feed_Id (Int32)
+                    <br />Symbol_Id (Byte[])
+                    <br />SymbolFileName_Text (String)
+                    <br />Symbol_Age (Int32)</td>
+                <td>DataTable (NuGetPackageSymbols)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="NuGetPackageSymbolsV2_GetSymbols"></a>
+                    <b>NuGetPackageSymbolsV2_GetSymbols</b>
+                    <br />Gets the best symbol matches.</td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Feed_Id (Int32)
+                    <br />Symbol_Id (Byte[])
+                    <br />SymbolFileName_Text (String)
+                    <br />Symbol_Age (Int32)</td>
+                <td>DataTable (NuGetPackageSymbolsV2_Extended)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Packages_GetPackageDeployments"></a>
+                    <b>Packages_GetPackageDeployments</b>
+                    <br />Gets a list of package deployments for the specified package or package version.</td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Feed_Id (Int32)
+                    <br />Package_Name (String)
+                    <br />Group_Name (String)
+                    <br />Version_Text (String)</td>
+                <td>DataTable (PackageDeployments)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Packages_GetPackagePromotions"></a>
+                    <b>Packages_GetPackagePromotions</b>
+                    <br />Gets a list of package promotions for the specified package or package version.</td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Package_Name (String)
+                    <br />Group_Name (String)
+                    <br />From_Feed_Name (String)
+                    <br />To_Feed_Name (String)
+                    <br />Version_Text (String)</td>
+                <td>DataTable (PackagePromotions_Extended)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Packages_GetPackages"></a>
+                    <b>Packages_GetPackages</b>
+                    <br />Gets a list of combined packages filtering by the specified criteria.</td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Packages_Count (Int32)
+                    <br />Feed_Id (Int32)
+                    <br />PublishedBefore_Date (DateTime)</td>
+                <td>DataTable (Packages_Combined)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Packages_RecordPackageDeployment"></a>
+                    <b>Packages_RecordPackageDeployment</b>
+                    <br />Records a package deployment by an external program.</td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Feed_Id (Int32)
+                    <br />Package_Name (String)
+                    <br />Group_Name (String)
+                    <br />Version_Text (String)
+                    <br />Application_Name (String)
+                    <br />Url_Text (String)
+                    <br />DeploymentTarget_Name (String)
+                    <br />Deployment_Date (DateTime)
+                    <br />DeployedBy_User_Name (String)
+                    <br />Description_Text (String)
+                    <br />PackageDeployment_Id (Int32)</td>
+                <td>PackageDeployment_Id</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Packages_RecordPackagePromotion"></a>
+                    <b>Packages_RecordPackagePromotion</b>
+                    <br />Records a package promotion to a different feed.</td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Package_Name (String)
+                    <br />Version_Text (String)
+                    <br />Group_Name (String)
+                    <br />From_Feed_Name (String)
+                    <br />To_Feed_Name (String)
+                    <br />PromotedBy_User_Name (String)
+                    <br />Comments_Text (String)
+                    <br />PackagePromotion_Id (Int32)</td>
+                <td>PackagePromotion_Id</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="ProGetPackages_GetPackageCount"></a>
+                    <b>ProGetPackages_GetPackageCount</b>
+                    <br />Gets the number of packages in a ProGet feed.</td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Feed_Id (Int32)
+                    <br />IncludeVersions_Indicator (YNIndicator)
+                    <br />Package_Count (Int32)</td>
+                <td>Package_Count</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="ProGetPackages_GetPackages"></a>
+                    <b>ProGetPackages_GetPackages</b>
+                    <br />Gets the packages in a ProGet feed.</td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Feed_Id (Int32)
+                    <br />Group_Name (String)
+                    <br />Package_Name (String)</td>
+                <td>DataTable (ProGetPackages)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="ProGetPackages_GetPackageVersions"></a>
+                    <b>ProGetPackages_GetPackageVersions</b>
+                    <br />Gets the package versions in a ProGet feed.</td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Feed_Id (Int32)
+                    <br />Group_Name (String)
+                    <br />Package_Name (String)
+                    <br />Version_Text (String)</td>
+                <td>DataTable (ProGetPackageVersions_Extended)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="ProGetPackages_GetPopularPackages"></a>
+                    <b>ProGetPackages_GetPopularPackages</b>
+                    <br />Gets the packages in a ProGet feed that have been downloaded the most.</td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Feed_Id (Int32)
+                    <br />Max_Count (Int32)</td>
+                <td>DataTable (ProGetPackages)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="ProGetPackages_SearchPackages"></a>
+                    <b>ProGetPackages_SearchPackages</b>
+                    <br />Searhes the packages in a ProGet feed.</td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Feed_Id (Int32)
+                    <br />Search_Term (String)</td>
+                <td>DataTable (ProGetPackages)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="RubyGems_GetGem"></a>
+                    <b>RubyGems_GetGem</b>
+                    <br />Gets all of the information for a Gem and its versions.</td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Feed_Id (Int32)
+                    <br />Gem_Name (String)</td>
+                <td>DataSet (RubyGems_Extended, RubyGemVersions_Extended)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="RubyGems_GetGemVersions"></a>
+                    <b>RubyGems_GetGemVersions</b>
+                    <br />Gets the Gem versions in a Ruby Gems feed.</td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Feed_Id (Int32)
+                    <br />Gem_Name (String)
+                    <br />Version_Text (String)</td>
+                <td>DataTable (RubyGemVersions_Extended)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="RubyGems_GetPopularGems"></a>
+                    <b>RubyGems_GetPopularGems</b>
+                    <br />Gets the gems in a Ruby Gems feed that have been downloaded the most.</td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Feed_Id (Int32)
+                    <br />Max_Count (Int32)</td>
+                <td>DataTable (RubyGems_Extended)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="RubyGems_SearchGems"></a>
+                    <b>RubyGems_SearchGems</b>
+                    <br />Returns the Gems in the Ruby feed that have the search term in the name or summary fields.</td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Feed_Id (Int32)
+                    <br />SearchTerm_Text (String)
+                    <br />Max_Count (Int32)</td>
+                <td>DataTable (RubyGems_Extended)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="RubyGems_UpdateExtendedData"></a>
+                    <b>RubyGems_UpdateExtendedData</b>
+                    <br />Updates extended properties of a Ruby Gem.</td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Feed_Id (Int32)
+                    <br />Gem_Name (String)
+                    <br />Project_Url (String)
+                    <br />Homepage_Url (String)
+                    <br />Wiki_Url (String)
+                    <br />Documentation_Url (String)
+                    <br />MailingList_Url (String)
+                    <br />SourceCode_Url (String)
+                    <br />BugTracker_Url (String)
+                    <br />Overwrite_Indicator (YNIndicator)</td>
+                <td>
+                    <em>none</em>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="ScheduledTasks_GetScheduledTasks"></a>
+                    <b>ScheduledTasks_GetScheduledTasks</b>
+                    <br />Gets all of the scheduled tasks, optionally filtered by feed.</td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Feed_Id (Int32)</td>
+                <td>DataTable (ScheduledTasks_Extended)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="ScheduledTasks_UpdateScheduledTask"></a>
+                    <b>ScheduledTasks_UpdateScheduledTask</b>
+                    <br />Updates the configuration of a scheduled task.</td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>ScheduledTask_Id (Int32)
+                    <br />CronExpression_Text (String)
+                    <br />Active_Indicator (YNIndicator)</td>
+                <td>
+                    <em>none</em>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Security_AddPrivilege"></a>
+                    <b>Security_AddPrivilege</b>
+                    <br />Grants or denies the specified principal the ability to perform a certain role.</td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Privilege_Id (Int32)
+                    <br />UserDirectory_Id (Int32)
+                    <br />Principal_Name (String)
+                    <br />PrincipalType_Code (String)
+                    <br />Role_Id (Int32)
+                    <br />Feed_Id (Int32)
+                    <br />PrivilegeType_Code (String)</td>
+                <td>Privilege_Id</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Security_CreateOrUpdateRole"></a>
+                    <b>Security_CreateOrUpdateRole</b>
+                    <br />Creates or updates a role.</td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Role_Id (Int32)
+                    <br />Role_Name (String)
+                    <br />Role_Description (String)
+                    <br />Tasks_Csv (String)</td>
+                <td>Role_Id</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Security_DeleteRole"></a>
+                    <b>Security_DeleteRole</b>
+                    <br />Deletes the specified role.</td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Role_Id (Int32)</td>
+                <td>
+                    <em>none</em>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Security_GetPrivileges"></a>
+                    <b>Security_GetPrivileges</b>
+                    <br />Gets a list of privileges assigned in the system.</td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>UserDirectory_Id (Int32)
+                    <br />PrincipalType_Code (String)</td>
+                <td>DataTable (Privileges_Extended)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Security_GetRole"></a>
+                    <b>Security_GetRole</b>
+                    <br />Gets the specified role in the database, along with all the tasks that comprise the role</td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Role_Id (Int32)</td>
+                <td>DataSet (Roles, RoleTasks_Extended)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Security_GetRoles"></a>
+                    <b>Security_GetRoles</b>
+                    <br />Gets all the roles in the system, along with all the tasks comprising each role</td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>
+                    <em>none</em>
+                </td>
+                <td>DataSet (Roles, RoleTasks_Extended)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Security_GetTasks"></a>
+                    <b>Security_GetTasks</b>
+                    <br />Gets all of the tasks in the system.</td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>
+                    <em>none</em>
+                </td>
+                <td>DataTable (Tasks)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Security_GetUserPrivileges"></a>
+                    <b>Security_GetUserPrivileges</b>
+                    <br />Gets the list of privileges specifically assigned to a user or any specified groups.</td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>UserDirectory_Id (Int32)
+                    <br />User_Name (String)
+                    <br />GroupNames_Csv (String)</td>
+                <td>DataTable (Privileges_Extended)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Security_RemovePrivilege"></a>
+                    <b>Security_RemovePrivilege</b>
+                    <br />Deletes a privilege.</td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Privilege_Id (Int32)</td>
+                <td>
+                    <em>none</em>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Users_CreateGroup"></a>
+                    <b>Users_CreateGroup</b>
+                    <br />Creates a new user group.</td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Group_Name (String)</td>
+                <td>
+                    <em>none</em>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Users_CreateOrUpdateUser"></a>
+                    <b>Users_CreateOrUpdateUser</b>
+                    <br />Creates or modifies a user.</td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>User_Name (String)
+                    <br />Display_Name (String)
+                    <br />Email_Address (String)
+                    <br />Groups_Xml (String)</td>
+                <td>
+                    <em>none</em>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Users_DeleteGroup"></a>
+                    <b>Users_DeleteGroup</b>
+                    <br />Deletes a user group from the system, but does not delete the users who belong to the group.</td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Group_Name (String)</td>
+                <td>
+                    <em>none</em>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Users_DeleteUser"></a>
+                    <b>Users_DeleteUser</b>
+                    <br />Deletes a user.</td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>User_Name (String)</td>
+                <td>
+                    <em>none</em>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Users_GetGroups"></a>
+                    <b>Users_GetGroups</b>
+                    <br />Gets a list of user groups in the system</td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>
+                    <em>none</em>
+                </td>
+                <td>DataTable (Groups)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Users_GetUser"></a>
+                    <b>Users_GetUser</b>
+                    <br />Gets the details of the specified user, and a list of all the groups the user belongs to</td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>User_Name (String)</td>
+                <td>DataSet (Users, UserGroups)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Users_GetUsers"></a>
+                    <b>Users_GetUsers</b>
+                    <br />Gets all the users in the system, along with all the groups in the system</td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>
+                    <em>none</em>
+                </td>
+                <td>DataSet (Users, UserGroups)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Users_GetUsersInGroup"></a>
+                    <b>Users_GetUsersInGroup</b>
+                    <br />Gets a list of users in the specified group</td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Group_Name (String)</td>
+                <td>DataTable (Users)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Variables_CreateOrUpdateVariable"></a>
+                    <b>Variables_CreateOrUpdateVariable</b>
+                    <br />Creates a new variable, or updates an existing variable with the specified ID or matching scope.</td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Variable_Name (String)
+                    <br />ValueType_Code (String)
+                    <br />Variable_Value (Byte[])
+                    <br />Feed_Id (Int32)
+                    <br />Sensitive_Indicator (YNIndicator)
+                    <br />EvaluateVariables_Indicator (YNIndicator)
+                    <br />Variable_Id (Int32)</td>
+                <td>Variable_Id</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Variables_DeleteVariable"></a>
+                    <b>Variables_DeleteVariable</b>
+                    <br />Deletes a variable.</td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Variable_Id (Int32)</td>
+                <td>
+                    <em>none</em>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Variables_GetVariable"></a>
+                    <b>Variables_GetVariable</b>
+                    <br />Gets a variable from a specified ID.</td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Variable_Id (Int32)</td>
+                <td>DataRow (Variables)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Variables_GetVariables"></a>
+                    <b>Variables_GetVariables</b>
+                    <br />Gets all variables.</td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>
+                    <em>none</em>
+                </td>
+                <td>DataTable (Variables)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Variables_GetVariablesAccessibleFromScope"></a>
+                    <b>Variables_GetVariablesAccessibleFromScope</b>
+                    <br />Gets the variables that are defined in any of the specified scopes.</td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Feed_Id (Int32)
+                    <br />Variable_Name (String)
+                    <br />IncludeSystemVariables_Indicator (YNIndicator)</td>
+                <td>DataTable (Variables)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Variables_GetVariablesForScope"></a>
+                    <b>Variables_GetVariablesForScope</b>
+                    <br />Gets the variables that are defined only in the specified scope.</td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Feed_Id (Int32)</td>
+                <td>DataTable (Variables)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="VsixPackages_GetLatest"></a>
+                    <b>VsixPackages_GetLatest</b>
+                    <br />Gets all of the latest packages in a feed.</td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Feed_Id (Int32)</td>
+                <td>DataTable (VsixPackages_Latest)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="VsixPackages_GetPackages"></a>
+                    <b>VsixPackages_GetPackages</b>
+                    <br />Gets all the packages in a feed, optionally filtered by ID and version.</td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Feed_Id (Int32)
+                    <br />Package_Id (String)
+                    <br />Major_Number (Int32)
+                    <br />Minor_Number (Int32)
+                    <br />Build_Number (Int32)
+                    <br />Revision_Number (Int32)</td>
+                <td>DataTable (VsixPackages)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="VsixPackages_SearchPackages"></a>
+                    <b>VsixPackages_SearchPackages</b>
+                    <br />Gets all of the latest packages in a feed that match the specified criteria.</td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Feed_Id (Int32)
+                    <br />Search_Term (String)</td>
+                <td>DataTable (VsixPackages_Latest)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Vulnerabilities_CreateAssessment"></a>
+                    <b>Vulnerabilities_CreateAssessment</b>
+                    <br />Creates a new assessment for a vulnerability.</td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Vulnerability_Id (Int32)
+                    <br />AssessmentType_Id (Int32)
+                    <br />Assessment_Date (DateTime)
+                    <br />AssessedBy_User_Name (String)</td>
+                <td>
+                    <em>none</em>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Vulnerabilities_CreateOrUpdateComment"></a>
+                    <b>Vulnerabilities_CreateOrUpdateComment</b>
+                    <br />Creates a new vulnerability comment or edits an existing one.</td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Vulnerability_Id (Int32)
+                    <br />Comment_Text (String)
+                    <br />CommentedBy_User_Name (String)
+                    <br />CommentedOn_Date (DateTime)
+                    <br />VulnerabilityComment_Id (Int32)</td>
+                <td>VulnerabilityComment_Id</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Vulnerabilities_CreateOrUpdateVulnerability"></a>
+                    <b>Vulnerabilities_CreateOrUpdateVulnerability</b>
+                    <br />Creates a new known vulnerability or updates an existing one.</td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>FeedType_Name (String)
+                    <br />External_Id (String)
+                    <br />Package_Name (String)
+                    <br />Package_Versions (String)
+                    <br />Title_Text (String)
+                    <br />Description_Text (String)
+                    <br />VulnerabilitySource_Id (Int32)
+                    <br />Vulnerability_Id (Int32)</td>
+                <td>Vulnerability_Id</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Vulnerabilities_DeleteComment"></a>
+                    <b>Vulnerabilities_DeleteComment</b>
+                    <br />Deletes a vulnerability comment.</td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>VulnerabilityComment_Id (Int32)</td>
+                <td>
+                    <em>none</em>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Vulnerabilities_DeleteVulnerability"></a>
+                    <b>Vulnerabilities_DeleteVulnerability</b>
+                    <br />Deletes a known vulnerability.</td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Vulnerability_Id (Int32)</td>
+                <td>
+                    <em>none</em>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Vulnerabilities_GetVulnerabilities"></a>
+                    <b>Vulnerabilities_GetVulnerabilities</b>
+                    <br />Gets a list of known vulnerabilities.</td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>FeedType_Name (String)
+                    <br />Package_Name (String)
+                    <br />Max_Count (Int32)</td>
+                <td>DataTable (Vulnerabilities_Extended)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Vulnerabilities_GetVulnerabilitiesForPackage"></a>
+                    <b>Vulnerabilities_GetVulnerabilitiesForPackage</b>
+                    <br />Gets the vulnerabilties for a package.</td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Feed_Id (Int32)
+                    <br />Package_Name (String)</td>
+                <td>DataTable (Vulnerabilities_Extended)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Vulnerabilities_GetVulnerability"></a>
+                    <b>Vulnerabilities_GetVulnerability</b>
+                    <br />Gets information about a known vulnerability.</td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Vulnerability_Id (Int32)</td>
+                <td>DataSet (Vulnerabilities_Extended, VulnerabilityComments)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="VulnerabilitySources_CreateOrUpdateVulnerabilitySource"></a>
+                    <b>VulnerabilitySources_CreateOrUpdateVulnerabilitySource</b>
+                    <br />Creates a new vulnerability source or edits an existing one.</td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>VulnerabilitySource_Name (String)
+                    <br />Configuration_Xml (String)
+                    <br />VulnerabilitySource_Id (Int32)</td>
+                <td>VulnerabilitySource_Id</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="VulnerabilitySources_DeleteVulnerabilitySource"></a>
+                    <b>VulnerabilitySources_DeleteVulnerabilitySource</b>
+                    <br />Deletes a vulnerability source.</td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>VulnerabilitySource_Id (Int32)</td>
+                <td>
+                    <em>none</em>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="VulnerabilitySources_GetVulnerabilitySources"></a>
+                    <b>VulnerabilitySources_GetVulnerabilitySources</b>
+                    <br />Gets a list of all vulnerability sources.</td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>
+                    <em>none</em>
+                </td>
+                <td>DataTable (VulnerabilitySources)</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
