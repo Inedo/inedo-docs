@@ -1,0 +1,39 @@
+﻿<html>
+<head>
+    <title>Chocolatey (Windows/Machine)</title>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <meta name="sequence" content="500" />
+    <meta name="keywords" content="proget,feeds,chocolatey" />
+    <meta name="subtitle" content="Chocolatey Feeds in ProGet" />
+    <meta name="show-headings-in-nav" content="true" />
+</head>
+<body>
+    <p>
+        <a href="https://chocolatey.org/" target="_blank">Chocolatey</a> is a package manager for Windows.
+        Similar to Linux tools like apt or yum, but designed specifically for Windows, Chocolatey
+        was designed to be a decentralized framework for quickly installing applications and tools that you need.
+    </p>
+
+    <h2 id="differences" data-title="Differences from NuGet">Differences from NuGet Feeds</h2>
+    <p>
+        Since Chocolatey is built on the NuGet infrastructure, a  Chocolatey feed in ProGet is actually a type
+        of <a href="nuget">NuGet</a> feed. Functionally, it behaves exactly the same as a NuGet feed, but the
+        user interface is optimized for Chocolatey packages:
+    </p>
+    <ul class="docs">
+        <li>
+            Packages in Chocolatey feeds have a different icon to indicate that they
+            are intended for use by Chocolatey
+        </li>
+        <li>
+            Package install instructions also provide an example
+            for installing the package using <code>choco</code> instead of NuGet
+        </li>
+    </ul>
+    <p>
+        In the video below, Chocolatey founder Rob Reynolds presents a demo of ProGet and Chocolatey,
+        reviewing how both come together to provide a complete Windows package management solution.
+    </p>
+    <iframe width="600" height="337" src="https://www.youtube.com/embed/BcTYGf7sQ8Q" frameborder="0" allowfullscreen="true"></iframe>
+</body>
+</html>

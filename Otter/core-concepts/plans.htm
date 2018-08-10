@@ -1,0 +1,124 @@
+﻿<html>
+<head>
+    <title>Plans</title>
+    <meta name="subtitle" content="Plans in Otter" />
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <meta name="keywords" content="otter,plans,operations" />
+    <meta name="sequence" content="200" />
+    <meta name="show-headings-in-nav" content="true" />
+</head>
+<body>
+    <p>
+        Plans are the instructions that tell Otter exactly how to provision and configure your servers.
+    </p>
+    <p>
+        There are three types of plans:
+    </p>
+    <ul class="docs">
+        <li>
+            <b><a href="#configuration">Configuration Plans</a></b> -
+            <em>describe</em> the configuration of <a href="servers">Servers</a> and <a href="../modeling-infrastructure/server-roles">Server Roles</a>,
+            and are continuously run to monitor and (optionally) remediate <a href="/support/documentation/otter/core-concepts/servers#drift">Configuration Drift</a>
+        </li>
+        <li><b><a href="#orchestration">Orchestration Plans</a></b> - run on a scheduled or recurring basis, these have a much broader use and can deploy changes to servers, interact with cloud services, provision virtual machines, etc. </li>
+        <li><b><a href="#modules">Modules</a></b>- are parameterized sets of instructions that can be used by configuration plans, orchestration plans, or other modules</li>
+    </ul>
+    <p>
+        All types of plans are represented as <a href="/support/documentation/otter/reference/otter-script">OtterScript</a> text files, and run by the <a href="/support/documentation/otter/execution-engine/overview">Inedo Execution Engine</a>.
+    </p>
+
+    <h2>
+        Using the Visual Plan Editor
+    </h2>
+    <p>
+        With the drag-and-drop editor, you really don't need to learn OtterScript before you start building a plan. You can switch back-and-forth between visual and text modes to get a feel for the syntax and structure of the language pretty quickly.
+    </p>
+    <p>
+        For example, here's a basic plan with several statements that declare the desired state of configuration for an "Accounts" application.
+    </p>
+    <inedo:tab-block>
+        <tab name="Visual Mode">
+            <img class="screenshot" src="/resources/documentation/otter/plan-blocks.png" alt="An IIS Plan Block (Visual Mode)" />
+        </tab>
+        <tab name="Text Mode (OtterScript)">
+            <img class="screenshot" src="/resources/documentation/otter/plan-block-text.png" alt="An IIS Plan Block (Text Mode)" />
+        </tab>
+    </inedo:tab-block>
+    <p>
+        This plan could be created as a configuration plan (either on a server or role), or as an orchestration plan.
+    </p>
+    <h2>
+        Plan Types
+    </h2>
+    <p>
+        The main difference between these types of plans is the context in which they are used.
+    </p>
+    <h3 id="configuration" data-title="Configuration Plans">Configuration Plans</h3>
+    <p>
+        Configuration plans collect the <em>actual</em> configuration of a server as it relates to your plan. For example, if the above block
+        were placed in a configuration plan for a server (or on one of the server's server roles),
+        then that server's configuration would look like this:
+    </p>
+    <p>
+        <img class="screenshot" src="/resources/documentation/otter/plan-iis-config.png" alt="An IIS Plan Collected Configuration" />
+    </p>
+    <p>
+        Configuration plans are run routinely, and Otter would run the above plan in the following manner:
+    </p>
+    <ol>
+        <li>Read the <code>HOSTS</code> file and collect the value of the <code>accounts.local</code> entry</li>
+        <li>
+            Resolve the <code>$WebsitesRoot</code> variable, which could be a <a href="../execution-engine/runtime-variables">Runtime</a>
+            or <a href="../global-components/configuration-variables">Configuration variable</a>
+            whether set on the role, server, <a href="/support/documentation/otter/modeling-infrastructure/environments">Environment</a>, etc
+        </li>
+        <li>Read the <code>web.config</code> file, and collect the value of the <code>ConnectionString</code> entry</li>
+        <li>Read the <code>Runtime</code> and <code>Pipeline</code> values of the <code>AccountsAppPool</code></li>
+        <li>Read the <code>AppPool</code>, <code>Path</code>, <code>Protocol</code>, and <code>Biding</code> values of the <code>Accounts</code> site</li>
+        <li>Store the collected configuration in the database</li>
+        <li>Compare the collected configuration against the declared configuration</li>
+        <li>
+            If there is configuration drift, and the server is configured to <em>automatically remediate drift</em>:
+            <ul class="docs">
+                <li>Create or update the actual configuration based on the plan</li>
+                <li>Store the new configuration in the database</li>
+            </ul>
+        </li>
+    </ol>
+
+    <h3>Real-world Configuration</h3>
+    <p>
+        Of course, the idea of automatic change is not exactly palatable to many organizations, which is why servers do not automatically
+        remediate configuration drift unless you have explicitly configured them to do so. By default, you will instead remediate drift through a scheduled or on-demand <a href="jobs">Job</a>.
+        You can even <a href="jobs#simulation">Simulate</a> the execution, just to see exactly what would happen.
+    </p>
+    <p>
+        Also, the real world rarely works declaratively, and configuration plans often need a mix of declarative statements
+        (like ensure a file is in a specific location) and imperative or procedural operations (like starting or stopping a service).
+    </p>
+
+    <h3 id="orchestration" data-title="Orchestration Plans">Orchestration Plans</h3>
+    <p>
+        Orchestration plans are quite a bit simpler: they just use the same, advanced execution engine to
+        execute operations and scripts on servers.
+
+        Unlike configuration plans, orchestration plans don't run continuously. Instead, you scheduled them to run (either in the future, or on a
+        recurring basis) using an <a href="jobs#orchestration">Orchestration Job</a>.
+    </p>
+
+    <p>This simplicity also makes them hard to describe in detail, because they can be used to do just about anything:</p>
+
+    <ul class="docs">
+        <li>Installing patches or other changes to 1000's of servers</li>
+        <li>Spinning up and configuring multiple virtual servers</li>
+        <li>Execute existing scripts in a controlled and visible manner</li>
+        <li>Provisioning bare-metal hardware</li>
+        <li>Deploying <a href="/proget">ProGet</a> packages</li>
+    </ul>
+
+    <h3 id="modules" data-title="Modules">Modules</h3>
+    <p>
+        Modules are parameterized sets of instructions that can be used by configuration plans, orchestration plans, or other modules.
+    </p>
+</body>
+</html>

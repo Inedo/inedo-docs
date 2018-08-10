@@ -1,0 +1,95 @@
+﻿<html>
+	<head>
+		<title>Load Balancing &amp; Automatic Failover</title>
+		<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+		<meta name="keywords" content="proget,installation" />
+        <meta name="subtitle" content="Configuring High Availability" />
+        <meta name="sequence" content="400" />
+	</head>
+	<body>
+		<p>
+			<a href="../core-concepts/high-availability#architecture">ProGet's distributed architecture</a>
+            allows you to use any number of servers for
+            both load-balancing and automatic failover purposes, such that one server node
+			can take over in the event of any other server failure or outage.
+		</p>
+        <p>
+            There are five key components to a High Availability configuration.
+        </p>
+
+        <h3 id="load-balancer">Load Balancer</h3>
+        <p>
+            The load balancer will direct traffic bound for the ProGet web application, evenly distributing traffic during heavy load times.
+        </p>
+        <p>
+            ProGet was built to be compatible with any load-balancing platform, whether software-based
+            (such as HAProxy, NLP, or nginx) or appliance-based (such as F5, A10, Citrix).
+        </p>
+        <ul class="docs">
+            <li>
+                <b>Not Required: Session Affinity (sticky sessions)</b> - while you can enable this, it's not required
+                and may simplify your traffic and load balancer configuration.
+
+            </li>
+            <li>
+                <b>Common Machine Key</b> - you will need to use a common machine key amongst web nodes, see
+                <a href="https://msdn.microsoft.com/library/w8h3skw9(v=vs.100).aspx">Microsoft's documentation</a> for
+                how to configure this in your web.config or machine.config files
+            </li>
+        </ul>
+
+        <p>
+            If you are new to load balancing, Microsoft's <a href="https://technet.microsoft.com/en-us/library/cc771008.aspx">Network Load Balancing Cluster</a>
+            is relatively easy to configure.
+        </p>
+
+        <h3 id="web-node-configuration">Web Node Configuration</h3>
+        <p>
+            Any number of servers may be configured as web nodes; to ensure high-availability, at least three nodes are required. More may be added
+            to distribute load and ensure rapid responses.
+        </p>
+        <p>
+            To configure a web node, see the <a href="/support/documentation/proget/installation/manual">manual installation instructions</a> and
+            follow only the web application instructions.
+        </p>
+        <p>
+            Once complete, from any web server, click on the <b>Configure Load Balancing</b> link on the ProGet administration page,
+            then click on the <b>Enable Load Balancing</b> button.
+        </p>
+
+		<h3 id="shared-storage">Shared Storage</h3>
+		<p>
+			ProGet is compatible with any type of common storage that web and indexing nodes can access, whether
+            software-based (SAMBA share, Windows Server Storage Spaces, etc) or appliance-based (dedicated NAS).
+            The only requirement is that the storage is readable and writeable by all nodes.
+		</p>
+
+        <h3 id="database-cluster">Database Cluster</h3>
+        <p>
+            ProGet can work with any SQL Server Cluster configuration, regardless of the failure detection mechanism and failover policy.
+            SQL Server's Database Mirroring may also be used, although note that Microsoft has depricated the feature in favor of AlwaysOn Availability Groups.
+        </p>
+
+
+		<h3 id="indexing-nodes">Indexing Nodes</h3>
+        <p>
+            Any number of indexing nodes may be configured; to ensure high-availability, at least two nodes are required.
+        </p>
+        <p>
+            To configure an indexing node, see the <a href="/support/documentation/proget/installation/manual">manual installation instructions</a> and
+            follow only the service instructions.
+        </p>
+		<p>
+            Once complete, from any web server, click on the <b>Configure High Availability Mode</b> link on the ProGet administration page,
+            then click on the <b>Enable High Availability Mode</b> button.
+		</p>
+        <p>
+            Once enabled, the <i>Indexing Cluster Health</i> box on the administration page will replace
+            the <i>Service Status</i> box. Clicking on the <i>More Info</i> link will display the
+            Indexing Cluster Status page. On this page, you can see the status of every server in your
+            cluster, as well as which server is currently the primary server. If a server is no longer
+            in your cluster, you may delete it by clicking the appropriate red X button.
+
+        </p>
+	</body>
+</html>

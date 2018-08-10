@@ -1,0 +1,361 @@
+﻿<html>
+<head>
+    <title>Webhooks</title>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <meta name="sequence" content="500" />
+    <meta name="subtitle" content="Webhooks" />
+    <meta name="keywords" content="proget, webhooks" />
+</head>
+<body>
+    <style>
+        pre {
+            background-color: #f7f5f5;
+            padding: 12px 16px;
+        }
+    </style>
+
+<p>
+        Webhooks let you connect ProGet with other services to notify users, trigger automated workflows, or audit certain events. For example, you could
+</p>
+<ul class="docs">
+    <li>Send an instant message when a package is added to a feed</li>
+    <li>
+            Deploy a package with <a href="/hedgehog">Hedgehog</a> once it's promoted to a different feed
+    </li>
+    <li>
+            Log a message in a third-party auditing tool when a package is deleted
+    </li>
+</ul>
+    <p>
+            This is done by creating webhooks that will send HTTP-based notifications (payloads) when certain events like package publishing, deployment, and deletion occur. These payloads can be adapted to fit into nearly any other tool's API, including workflow automation services such as Zappier, Microsoft Flow, etc.
+    </p>
+    <p class="info">
+            This feature is available in paid and trial ProGet editions.
+        </p>
+    <h2 id="configuring">Configuring Webhooks</h2>
+    <p>
+        Webhooks are configured via the Administration > Webhooks page, and can be configured for all feeds or individual feeds. Multiple webhooks can be specified, but the order of invocation is not guaranteed.
+    </p>
+    <div class="attention analogy">
+            <img src="/resources/images/icons/analogy.png" />
+        Usage Note: Webhooks are intended for basic notification and triggering purposes only. Do not attempt to "chain" multiple webhooks to orchestrate a series of sequential events; it may just happen to work in testing, but the order of webhook invocation is not predictable and may occur in parallel.
+    </div>
+    <p>
+        A webhook may be associated with a feed, and has the following properties:
+    </p>
+    <p>
+        <ul class="docs">
+            <li>
+                <strong>Id</strong> – a system-generated unique identifier
+            </li>
+            <li>
+                <strong>Name</strong> – a non-unique identifier used to distinguish webhooks in the UI and logs
+            </li>
+            <li>
+                <strong>Event type</strong> – one of the <a href="#event-types">event types</a>
+            </li>
+            <li>
+                <strong>URL</strong> – the URL to send the request to
+            </li>
+            <li>
+                <strong>Conditional</strong> – an expression that is evaluated to see whether the webhook should run
+            </li>
+            <li>
+                <strong>Custom payload</strong> – customize the request that is sent instead of the <a href="#default-payload">default payload</a>
+                <ul class="docs">
+                    <li>
+                        <strong>Method</strong> – one of GET, DELETE, POST, PUT, HEAD, OPTIONS, PATCH
+                    </li>
+                    <li>
+                        <strong>Headers</strong> – a new-line separate list of HTTP headers
+                    </li>
+                    <li>
+                        <strong>Body</strong> – the body of the request that will be sent
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </p>
+    <h3 id="event-types">Event Types</h3>
+    <p>
+        Webhooks can be configured for the following events:
+    </p>
+    <p>
+        <ul class="docs">
+            <li>
+                <strong>added</strong> – a package is added to a feed using the API, web interface, or a drop-path
+            </li>
+            <li>
+                <strong>promoted</strong> – a package is promoted using the API or web interface
+            </li>
+            <li>
+                <strong>deployed</strong> – a deployment record is added; note that this occurs when certain HTTP headers are submitted during an API-based package download
+            </li>
+            <li>
+                <strong>deleted</strong> – a package is deleted from a feed using the API or web interface
+            </li>
+            <li>
+                <strong>purged</strong> – a package was deleted because of a retention policy
+            </li>
+        </ul>
+    </p>
+    <h3 id="conditional">Conditional</h3>
+    <p>
+        The conditional is an optional expression that is evaluated prior to a webhook being invoked. This takes the same format as an <a href="/support/documentation/various/execution-engine/otterscript/formal-specification#predicate-statement">OtterScript predicate expression</a>, which has a standard unary operator (<code>!</code>),equality operators (<code>==</code> and <code>!=</code>), boolean comparison (<code>&amp;&amp;</code> and <code>||</code>), and parenthesis.
+    </p>
+    <p>
+        Following are some example expressions and their results.
+    </p>
+    <table>
+        <tbody>
+            <tr>
+                <td><code>$FeedType == NuGet</code></td>
+                <td>
+                    If the feed type is NuGet, the webhook will execute; note that "<code>nuget</code>" will always evaluate to false; because it's a case sensitive comparison
+                </td>
+            </tr>
+            <tr>
+                <td><code>true</code></td>
+                <td>
+                    The webhook will always execute
+                </td>
+            </tr>
+            <tr>
+                <td><code>!true</code></td>
+                <td>
+                    The webhook will never execute
+                </td>
+            </tr>
+            <tr>
+                <td><code>true &amp;&amp; false</code></td>
+                <td>
+                    The webhook will never execute
+                </td>
+            </tr>
+            <tr>
+                <td><code>$CustomVar == true</code></td>
+                <td>
+                    If <code>$CustomVar</code> is a defined variable, and it's "true", then the webhook will execute; otherwise, an error will occur if variable is not defined
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <h3 id="default-payload">Default Payload</h3>
+    <p>
+        By default, ProGet will POST a simple JSON-based object, with key/values containing package information and event type. Note that these use <a href="#variables">variables</a> to send package-specific data.
+    </p>
+    <h4>Headers:</h4>
+    <pre>
+    Content-Type=application/json
+</pre>
+    <h4>Content</h4>
+    <pre>
+    $ToJson(%(
+        feed: $FeedName,
+        package: $PackageId,
+        version: $PackageVersion,
+        hash: $PackageHash,
+        packageType: $FeedType,
+        event: $WebhookEvent,
+        user: $UserName
+    ))
+</pre>
+    <h3 id="workflow-auto-serv">
+        Workflow Automation Services
+    </h3>
+    <p>
+        When a basic HTTP request isn't enough to perform a particular task, you can use third-party workflow automation services to act as a sort of bridge between ProGet and the tools you want to automate.
+    </p>
+    <p>
+        There are lots of hosted and on-prem workflow automation services on the market – Zapier, IFTT, Microsoft Flow, elastic.io, and so on – and while they all function in a slightly different way, they'll all integrate with ProGet in just about the same way: ProGet will send an HTTP request to the automation service, and the automation service will trigger some workflow that may dispatch additional requests to other APIs.
+    </p>
+    <h4>Example: Zapier</h4>
+    <p>
+        In Zapier, automation workflows are called Zaps. When you create a new Zap with a webhook-enabled trigger, you'll receive a new URL that looks something like this:
+    </p>
+    <pre>
+    https://zapier.com/hooks/catch/n/Lx2RH/
+</pre>
+    <p>
+        Zappier prides itself on making things "just work" when it comes to webhooks, and since ProGet's <a href="#default-payload">default payload</a> is a simple JSON-based key/value pair, you can use that to get started.
+    </p>
+    <p>
+        After entering the Zap URL on a webhook for a feed, ProGet will start sending data to Zapier when the selected event occurs. Zappier will parse the fields (feed, group, name, version, etc.) automatically.
+    </p>
+    <p>
+        From there, you can use those values for outbound integrations. See <a href="https://zapier.com/help/webhooks/">Zapier's Webhook Documentation</a> for more details and troubleshooting.
+    </p>
+    <h3 id="authentication">Authentication to Other Services</h3>
+    <p>
+        While all APIs manage authentication a bit differently, you're usually provided with at least one of two options: using an API key, or basic access authentication. Both of these authentication methods can be done within a Webhook, though you might need to use a custom payload.
+    </p>
+    <p>
+        API keys are often sent on the query string, message body, or in an HTTP header. You can add these wherever appropriate in a webhook.
+    </p>
+    <p>
+        <a href="https://en.wikipedia.org/wiki/Basic_access_authentication">Basic access authentication</a> is actually just an HTTP header. You can include it in the headers section of the webhook, as a line like this:
+    </p>
+    <pre>
+    Authorization: Basic $EncodeBasicAuth(username,password)
+</pre>
+    <p>
+        In both cases, it's a good practice to use <a href="#variables">variables</a> to store keys, names, and passwords. Although this doesn't secure them (they are always sent as plain text over HTTP/S), it will often obscure them from causal viewing and make it easier to reuse in different webhooks.
+    </p>
+    <h3 id="variables">Variables</h3>
+    <p>
+        You can use variables to combine static configuration information (such as API keys), context-specific data (like user name), and package metadata (such as version numbers) to create all sorts of custom payloads.
+    </p>
+    <h4>Configuration Variables</h4>
+    <p>
+        Configuration variables are static, key/value pairs that can be defined either globally, or on a feed. If you define a feed-level variable with the same name as a global variable, then the feed-level variable will be used when events occur in the context of that feed.
+    </p>
+    <p>
+        Variable names must be no more than fifty characters: numbers (<code>0-9</code>), upper- and lower-case letters (<code>a-Z</code>), dashes (<code>-</code>), and underscores (<code>_</code>); must start with a letter, and may not start or end with a dash or underscore.
+    </p>
+    <h4>Variable Functions</h4>
+    <p>
+        You may have seen expressions like <code>$JSEncode($PackageGroup)</code> in the <a href="#default-payload">default payload</a>; these are variable functions, which take in a number of parameters and return a value. All of the "built-in variables" like <code>$FeedName</code>, <code>$PackageVersion</code>, and <code>$Date</code> are implemented as variable functions.
+    </p>
+    <p>
+        You can create configuration variables with the same name of a variable function, but we don't recommend it because it can get quite confusing when things like <code>$FeedName</code> don't return the actual feed name. If there is a configuration variable of the same name, that value will be used instead, unless you explicitly reference the parameter list (such as <code>$FeedName()</code>).
+    </p>
+    <p>
+        Variable functions are extensible, so you can write your own with an <a href="/support/tutorials/proget/compile-and-deploy-a-custom-proget-extension">Inedo Extension</a>.
+    </p>
+    <h4>Reading Package Metadata</h4>
+    <p>
+        Variable functions are used to extract metadata from packages. There are several built-in functions that allow you to access common metadata across all packages: <code>$PackageName</code>, <code>$PackageVersion</code>, etc. You can also use the <code>$PackageProperty()</code> function.
+    </p>
+    <p>
+        For example, when <code>$PackageProperty(_sourceTarget)</code> is used on a universal package, the <code>_sourceTarget</code> property is returned. If there is no such property, then an error will be logged and the webhook execution will not occur.
+    </p>
+    <p>
+        However, if you specify the second argument <code>(defaultText)</code> to the <code>PackageProperty</code> function, then it will succeed. That is, <code>$PackageProperty(_sourceTarget, unspecified)</code> will return the value of <i>_sourceTarget</i> or <i>unspecified</i>.
+    </p>
+    <h4>Escaping <code>$</code> and Unresolvable Variables</h4>
+    <p>
+        Anything that "looks" like a variable – i.e. text that starts with a <code>$</code>, then a character – will be parsed as a variable expression, and evaluated. If a configuration variable or variable function cannot be found, then an error will be logged and the request will not complete. This is usually what you'd want, and will help you track down a typo like <code>$PackagName</code>.
+    </p>
+    <p>
+        However, if you actually want a <code>$</code>-character somewhere in your payload, you'll need to escape it using a grave apostrophe (<code>`</code>) like this: <code>`$</code>. If you want to use a grave apostrophe, then you'll also need to escape it like this: <code>``</code>. Whitespace character expansion is also available with <code>`r</code>, <code>`n</code>, and <code>`t</code>.
+    </p>
+    <h3 id="built-in-variables">Built-in Variables</h3>
+    <table>
+        <tbody>
+            <tr>
+                <td><code>$WebhookName</code></td>
+                <td>
+                    returns the name of the currently running webhook
+                </td>
+            </tr>
+            <tr>
+                <td><code>$WebhookId</code></td>
+                <td>
+                    returns the id of the currently running webhook
+                </td>
+            </tr>
+            <tr>
+                <td><code>$WebhookEvent</code></td>
+                <td>
+                    returns the name of the event
+                </td>
+            </tr>
+            <tr>
+                <td><code>$FeedId</code></td>
+                <td>
+                    returns the id of the feed in context
+                </td>
+            </tr>
+            <tr>
+                <td><code>$FeedName</code></td>
+                <td>
+                    returns the name of the feed in context
+                </td>
+            </tr>
+            <tr>
+                <td><code>$FeedType</code></td>
+                <td>
+                    returns the type of the feed in context; NuGet, Chocolatey, PowerShell, {…}
+                </td>
+            </tr>
+            <tr>
+                <td><code>$Date(format)</code></td>
+                <td>
+                    same description
+                </td>
+            </tr>
+            <tr>
+                <td><code>$PackageGroup</code></td>
+                <td>
+                    returns the package's group name, or empty
+                </td>
+            </tr>
+            <tr>
+                <td><code>$PackageName</code></td>
+                <td>
+                    returns the package's name or empty if it only has an Id
+                </td>
+            </tr>
+            <tr>
+                <td><code>$PackageId</code></td>
+                <td>
+                    returns the package's Id
+                </td>
+            </tr>
+            <tr>
+                <td><code>$PackageVersion</code></td>
+                <td>
+                    returns the package version
+                </td>
+            </tr>
+            <tr>
+                <td><code>$PackageHash</code></td>
+                <td>
+                    returns the package hash, if it had one computed already
+                </td>
+            </tr>
+            <tr>
+                <td><code>$PackageProperty(name, default)</code></td>
+                <td>
+                    returns an arbitrary property from the metadata; when default is specified, that text is returned in place of an error occurring when a property doesn't exist
+                </td>
+            </tr>
+            <tr>
+                <td><code>$Username</code></td>
+                <td>
+                    returns the name of the user who initiated the event; this will be SYSTEM if it was triggered by the service (a drop path, for example) or Anonymous
+                </td>
+            </tr>
+            <tr>
+                <td><code>$EncodeBasicAuth(username,password)</code></td>
+                <td>
+                    returns the base64 string used in basic auth requests
+                </td>
+            </tr>
+            <tr>
+                <td><code>$JSEncode(s)</code></td>
+                <td>
+                    returns a value that has been encoded for use in a javascript/JSON string
+                </td>
+            </tr>
+            <tr>
+                <td><code>$Coalesce(s, …)</code></td>
+                <td>
+                    returns the first non-whitespace value from the arguments
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <h3 id="error-debugging">Error Handling and Debugging</h3>
+    <p>
+        ProGet will not wait for a response from the external server to continue. When an error does occur (either from bad HTTP status codes or network-level issues), it will be saved to ProGet's event log.
+    </p>
+    <p>
+        Note that, some errors -- such as variables being unable to be replaced, or an invalid URL -- will cause a HTTP request to not be made.
+    </p>
+    <p>
+        Webhook requests may be made from either the web or service, depending where the event occurred. For example, a package promote request will always come from the web node that actually received the request, whereas a package add request may come from the web node (web ui or API) or the service (drop path).
+    </p>
+
+</body>
+</html>

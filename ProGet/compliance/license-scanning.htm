@@ -1,0 +1,80 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <title>License Scanning and Blocking</title>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <meta name="sequence" content="200" />
+    <meta name="subtitle" content="License Scanning and Blocking" />
+    <meta name="keywords" content="proget, License, Filter" />
+</head>
+<body>
+    <p>
+            By using third-party, open-source packages in your application, you agree to whatever licensing terms the packages' authors specify. In many cases, these licensing terms are benign and permissive. But in some cases, they are restrictive and can open your organization to unexpected legal liabilities.
+    </p>
+<p>
+        For example, if you were to use a GNU3-licensed package in your application, you would be required to open source your application, and then license it under GNU3. If your organization failed to do that, it could face a lawsuit from the package authors.
+</p>
+<p>
+        ProGet offers two workflows for managing licensing agreements of third-party, open-source packages.
+</p>
+ <ul class="docs">
+     <li><b>License filtering feature</b> - the built-in feature allows you to permit or restrict packages from being used based on their license</li>
+     <li><b>WhiteSource integration</b> - with a WhiteSource subscription, you can configure license rules within your WhiteSource instance, integrate into ProGet, and then packages that don't meet those conditions are blocked from use</li>
+ </ul>
+ <h2>
+        License Filtering Feature
+ </h2>
+ <p>
+        ProGet ships with an editable list of open-source license types (MIT, GPL3, etc) called known licenses. You then define global and feed-specific rules to block or allow downloads based on a package's license, as well as global or feed-specific rules about whether to block downloads for unknown licenses.
+ </p>
+ <p>
+        Packages are allowed or blocked based on the following logic:
+ </p>
+ <img class="screenshot" alt="Logic Flow Chart" src="/resources/documentation/proget/fliter-logic.png" />
+<h3>
+    Known License Types
+</h3>
+<p>
+        ProGet's list of known licenses comes from <a href="https://spdx.org/licenses">SPDX</a>, and is periodically updated. You can edit this list by going to Compliance > Licensing > Manage Known Licenses.
+</p>
+<p>
+    A license type consists of the following elements:
+</p>
+<ul class="docs">
+<li><b>SPDX Identifier</b>; a code such as MIT or GPL3 that some package formats use to identify the license used</li>
+<li>
+    <b>Title</b>; a description of the license, such as MIT License or General Public License 3.0
+</li>
+<li><b>URLs</b>; a list of URLs that are associated with this license agreement </li>
+</ul>
+<p>
+
+</p>
+<img class="screenshot" alt="Known License List" src="/resources/documentation/proget/license-list.png" />
+<h3>
+    Licensing Rules
+</h3>
+<p>
+        A licensing rule consists of a known license type, and an allow or block flag.
+</p>
+<img class="screenshot" alt="Known License List" src="/resources/documentation/proget/license-rule.png" />
+<p>
+        They can be defined at both the global and feed-level:
+</p>
+<ul class="docs">
+<li><b>Global license rules:</b> Compliance > Licenses</li>
+<li><b>Feed-specific license rules:</b> Feed > Manage Feed > License Filters</li>
+</ul>
+<p>
+        If a feed-level rule is defined for a license type, the global rule will be ignored.
+</p>
+<p>
+        You can also configure how unknown licenses are handled:
+</p>
+<ul class="docs">
+    <li><b>Global unknown rule:</b> Advanced Settings > Feeds.AllowUnknownLicenseDownloads</li>
+    <li><b>Feed-specific unknown rule:</b> Manage Feed> Unknown Licenses</li>
+</ul>
+</body>
+</html>
