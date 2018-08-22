@@ -59,7 +59,7 @@
         </li>
     </ul>
 
-    <h2 id="naming" data-title="Naming">Naming</h2>
+    <h2 id="naming">Naming</h2>
     <p>Configuration files should be named after the file they represent, e.g. web.config. These names are unique per application. In cases where there may be multiple files with the same name within an application, aliases may be used to uniquely identify them in the UI. When deploying a non-unique configuration file, make sure to specify the name of the output file directly.</p>
 
     <h2 id="instances-and-versions" data-title="Instances and Versions">Instances and Versions</h2>
@@ -73,9 +73,9 @@
         <li>View Instance</li>
     </ul>
 
-    <h2 id="templating" data-title="Templating">Templating</h2>
+    <h2 id="templating" data-title="Template Instances">Template Instances</h2>
     <p>Configuration file templates are designed to simplify deployment of configuration file instances that contain virtually identical content except for minor, environment-specific differences. The item that contains the placeholders for substitution is referred to as the template, and the item that contains the substitution values is referred to as the template instance. BuildMaster supports three types of transform syntaxes:</p>
-    <h3 id="key-value" data-title="Key-Value Pair">Key-Value Pair</h3>
+    <h3 id="key-value">Key-Value Pair</h3>
     <p>Template instances are specified as newline-separated key-value pairs, and each key-value pair is separated by an equals sign. Additional equals signs on the same line are permitted and included in the replacement value. If the value requires a newline, the <code>$NewLine</code> variable function may be used.</p>
     <inedo:tab-block>
 
@@ -103,7 +103,7 @@
         </tab>
     </inedo:tab-block>
 
-    <h3 id="xslt" data-title="XSLT">XSLT</h3>
+    <h3 id="xslt">XSLT</h3>
     <p>Templates or their instances may be used as XSLT stylesheets and XML data that will be automatically transformed before deployment. In most cases, "XSL Stylesheet as Template" is the desired transform option because the XML data would be stored in the template instances.</p>
 
     <inedo:tab-block>
@@ -178,20 +178,20 @@
     <p>All configuration variables, runtime variables, and parameterless variable functions in context are considered when variable replacement occurs before deployment and follows the same resolution rules as <a href="/support/documentation/buildmaster/global-components/configuration-variables">configuration variable replacement</a>. </p>
     <p>Template file variables are treated as runtime variables when replacement occurs, and therefore override any configuration variables. In practice, it is not recommended to have template instance variables override existing configuration variables or variable functions. It is also not recommended to rely on runtime variables created during a deployment.</p>
 
-    <h3 id="empty-missing-variables" data-title="Empty or Missing">Empty/Missing Variables</h3>
+    <h3 id="empty-missing-variables">Empty/Missing Variables</h3>
     <p>Variables or functions that exist but do not have any value (e.g. <code>$DeployableName</code> when no deployable is in context) will be replaced with an empty string, and variables that do not exist will remain as literal strings. It is not recommended to have a configuration file that falls into either of these cases.</p>
 
-    <h3 id="escaping-variables" data-title="Escaping">Escaping Variables</h3>
+    <h3 id="escaping-variables">Escaping Variables</h3>
     <p>There are many cases where a configuration file needs to contain literal text that appears to be a variable name. In this case, escape any $ signs with another $, e.g. <code>$$DoNotProcess</code>.</p>
 
     <h2 id="deployment" data-title="Deployment">Deployment</h2>
 
-    <h3 id="automated-deployment" data-title="Automated">Automated Plan-Based Deployment</h3>
+    <h3 id="automated-deployment">Automated Plan-Based Deployment</h3>
     <p>The most common method of deployment is the Deploy Configuration File operation (<code>Deploy-ConfigFile</code> in OtterScript). When this operation is executed during a deployment, the version of the configuration file instance associated with the release currently in context will be deployed to the target path. If there is an existing file at the target path, it will only be overwritten if its text contents are different than the configuration file text in BuildMaster, otherwise the operation effectively becomes a no-op.</p>
-    <h3 id="manual-deployment" data-title="Manual">Manual One-Off Deployment</h3>
+    <h3 id="manual-deployment">Manual One-Off Deployment</h3>
     <p>Configuration files may also be deployed outside the context of a deployment. It is not generally recommended to deploy configuration files in this manner because much of the context associated with the plan-based deployment is lost (e.g. release number, package number). One-off deployments should be reserved for "emergency" cases that require a configuration change immediately without the overhead of the traditional release cycle.</p>
 
-    <h2 id="history" data-title="History">History</h2>
+    <h3 id="history">History</h3>
     <p>Deployment history for configuration file instances is stored for configuration files deployed from BuildMaster. The instance, version number, user, and date of deployment is visible, as well as the ability to compare arbitrary versions to highlight what changes were made to an instance.</p>
 
     <h2 id="association-with-releases" data-title="Association with Releases">Association with Releases</h2>
