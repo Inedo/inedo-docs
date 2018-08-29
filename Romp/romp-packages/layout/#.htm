@@ -24,16 +24,21 @@
         A Romp Package has the following layout:
     </h4>
 <pre>
-    package/
-        rafts/
-            raft1/…
-            raft2/…
-        upack.json
-        rompVariables.json
-        rompCredentials.json
-        rompPackage.json
-        install.otter
-		uninsta.otter
+    
+    /package/
+       ...
+    /rafts/
+      /raft1/
+        ...
+      /raft2/
+        ...
+      
+    /upack.json
+    /rompVariables.json
+    /rompCredentials.json
+    /rompPackage.json
+    /install.otter
+    /uninstall.otter
 </pre>
 
     <p>The <strong>rafts/</strong> directory contains <a href="/support/documentation/romp/romp-packages/layout/rafts">rafts</a> which are used by the install script. Each subdirectory in this directory is equivalent to a named filesystem raft.</p>
