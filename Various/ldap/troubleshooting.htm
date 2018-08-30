@@ -39,7 +39,10 @@
     <p>
         An instance of the user directory should be visible on the <i>Manage User Directories</i> page (Administration &rsaquo; Change User Directory &rsaquo; Advanced). If there isn't one (e.g. after a reset), click the <i>Add User Directory</i> button and select <i>Active Directory (New)</i>. Configure the user directory as detailed in the <a href="/support/documentation/various/ldap/advanced">Advanced Configuration</a> section, and then click Save. This will restore the user directory on the <i>Change User Directory</i> page.
     </p>
-    <h2 id="privileges-not-working" data-title="Privileges Not Working">Privileges assigned to the Domain Users group not working</h2>
+    <h2 id="privileges-not-working" data-title="Group-based Privileges Not Working">Privileges assigned to the Domain Users group not working</h2>
+    <p>
+        The <i>Active Directory (New)</i> directory only considers a user's <i>direct</i> group membership, not indirect membership (i.e. a group's groups). This is done for performance reasons, as such queries are recursive in nature and may have severe performance issues (particularly with multiple domains).
+    </p>
     <p>
         We have had many support inquiries related to the assignment of privileges to the <i>Domain Users</i> group, and privileges not cascading to every user. We do not recommend using this group as a <i>catch all</i> to grant or restrict any privileges.
     </p>
