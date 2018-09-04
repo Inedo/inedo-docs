@@ -91,7 +91,8 @@
                 <td>
                     An <em>array of strings</em>, each consisting of a package identification string; this string is formatted as follows:
                     <ul class="docs">
-                        <li>&laquo;group&raquo;:&laquo;package-name&raquo;</li>
+                        <li class="deprecated">&laquo;group&raquo;:&laquo;package-name&raquo;</li>
+                        <li>&laquo;group&raquo;/&laquo;package-name&raquo;</li>
                         <li>&laquo;group&raquo;/&laquo;package-name&raquo;:&laquo;version&raquo;</li>
                         <li>&laquo;group&raquo;/&laquo;package-name&raquo;:&laquo;version&raquo;:&laquo;sha-hash&raquo;</li>
                     </ul>
@@ -118,7 +119,7 @@
                 </td>
             </tr>
             <tr>
-                <td><code>creatednReason</code></td>
+                <td><code>createdReason</code></td>
                 <td>
                     A <i>string</i> describing the reason or purpose of the creation
                     <br /><br />
