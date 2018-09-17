@@ -65,6 +65,20 @@
             you've already given specific permissions
         </li>
     </ul>
+    
+    <h3>
+        Legacy NuGet API Key
+    </h3>
+    <p>
+        NuGet feeds also support an API key definition directly on the Manage Feed page. This is a deprecated legacy feature,
+        so it is recommended to migrate to a ProGet API Key at your earliest convenience.
+    </p>
+    <p>
+        Legacy NuGet API Keys behave slightly differently than ProGet API Keys: If a legacy key is defined for the feed,
+        it will be checked <em>in addition to</em> the authenticated user. In the event the same key is defined both as a
+        legacy key and as a ProGet key, the ProGet key will take precedence.
+    </p>
+
     <h2>
         Symbols and Source Packages
     </h2>
@@ -136,12 +150,6 @@ http://proget-server/api/v2/package/{feedName}/{packageName}/{optional-version}
     </ul>
     <p>
         This migration is entirely a database operation and does not need to manipulate your packages at all. By default the migration is performed as a single database transaction so that it may be rolled back in the unlikely event of a failure. If you have a very large number of packages in your feed (>10,000), we strongly recommend performing a backup of the ProGet SQL database before executing the migration and disabling this single-transaction mode by unchecking the appropriate box on the "migrate feed" dialog.
-    </p>
-    <h3>
-        NuGet API Key
-    </h3>
-    <p>
-        These legacy feeds also support a "NuGet API Key". If set, nuget.exe and other NuGet clients must send whatever key is specified when pushing packages to the feed. This API is sent in addition to authentication (i.e. a name/password). With the introduction of ProGet API Keys, this feature was deprecated.
     </p>
 
 </body>
