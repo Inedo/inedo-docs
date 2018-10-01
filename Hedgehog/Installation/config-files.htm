@@ -1,25 +1,20 @@
 ﻿<html>
 <head>
-    <title>Configuration Files</title>
+    <title>Hedgehog's Configuration Files</title>
     <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
-    <meta name="keywords" content="proget,installation" />
+    <meta name="keywords" content="hedgehog,installation" />
     <meta name="subtitle" content="Configuration Files" />
 </head>
 <body>
-    <p>
-        Starting with release 5.1.0, ProGet uses a common configuration file path for its web and service components.
-        Previously, the information stored in this file was duplicated in the Web.config and the ProGet.Service.exe.config files.
-    </p>
-
     <h2>Configuration File Location</h2>
     <p>
-        ProGet looks for its configuration file at: <code>%PROGRAMDATA%\Inedo\SharedConfig\ProGet.config</code>.
-        On most systems, this will resolve to <code>C:\ProgramData\Inedo\SharedConfig\ProGet.config</code>.
+        Hedgehog looks for its configuration file at: <code>%PROGRAMDATA%\Inedo\SharedConfig\Hedgehog.config</code>.
+        On most systems, this will resolve to <code>C:\ProgramData\Inedo\SharedConfig\Hedgehog.config</code>.
     </p>
 
     <h2>Configuration File Format</h2>
     <p>
-        The ProGet configuration file is a simple XML format:
+        The Hedgehog configuration file is a simple XML format:
     </p>
     <pre>
 &lt;InedoAppConfig&gt;
@@ -29,7 +24,7 @@
 &lt;/InedoAppConfig&gt;
 </pre>
     <p>
-        The <b>ConnectionString</b> element contains the SQL connection string used by ProGet.
+        The <b>ConnectionString</b> element contains the SQL connection string used by Hedgehog.
     </p>
     <p>
         The <b>EncryptionKey</b> element is optional and if specified, will be used to encrypt
@@ -39,13 +34,13 @@
         The <b>WebServer</b> element controls the integrated web server. If you are using IIS,
         the <b>Enabled</b> attribute should be set to <b>false</b>. If <b>Enabled</b> is set to
         <b>true</b>, then the <b>Urls</b> attribute should contain URLs to listen to (for
-        example http://my.local.proget:80/;http://localhost:1000/).
+        example http://my.local.hedgehog:80/;http://localhost:1000/).
     </p>
 
     <h2>Legacy Configuration</h2>
     <p>
-        Previous versions of ProGet stored the connection string and encryption key in Web.config
-        and ProGet.Service.exe.config. These values can still be defined in these files for
+        Previous versions of Hedgehog stored the connection string and encryption key in Web.config
+        and Hedgehog.Service.exe.config. These values can still be defined in these files for
         compatibility purposes, and if present will override what is specified in the "shared"
         config file.
     </p>
