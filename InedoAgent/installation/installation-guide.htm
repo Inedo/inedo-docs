@@ -1,4 +1,4 @@
-﻿<html>
+<html>
 <head>
     <title>Installation Guide</title>
     <meta name="subtitle" content="Installation Guide" />
@@ -13,15 +13,15 @@
             position: relative;
         }
 
-            .documentation-content-wrapper .upcoming.buildmaster::before {
-                content: ' -- Placeholder screenshot from BuildMaster -- ';
-                background-color: #f15a24;
-                z-index: 1;
-                width: 100%;
-                padding: 2px 4px;
-                color: white;
-                text-align: center;
-            }
+        .documentation-content-wrapper .upcoming.buildmaster::before {
+            content: ' -- Placeholder screenshot from BuildMaster -- ';
+            background-color: #f15a24;
+            z-index: 1;
+            width: 100%;
+            padding: 2px 4px;
+            color: white;
+            text-align: center;
+        }
     </style>
 
     <h2>Using the Installer</h2>
@@ -49,8 +49,6 @@
         page or the <a href="/buildmaster/versions">all BuildMaster downloads</a> page. Make sure to select the version that corresponds with your version of Otter or BuildMaster, which can be found in the bottom-right
         corner in your web browser.
     </p>
-
-
 
     <h3 id="directory">3. Target Directory</h3>
     <p>
@@ -109,7 +107,6 @@
         of systems.
     </p>
 
-
     <p>Once the installation is complete, just close the installer or click the Exit button.</p>
 
     <h2 id="multiple">Installing Multiple Agents on Same Machine</h2>
@@ -117,6 +114,80 @@
     <p>Sometimes, it may be desired to install multiple instances of the Inedo Agent on the same machine. The most common reason for this is privileges; one agent may run in a higher privilege mode than the other.</p>
 
     <p>The automated and manual agent installer do not currently support this, but <a href="/support/kb/1146">KB#1146</a> will provide guidance on how to do this.</p>
+
+    <h2 id="silent">Silent Install</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Default Value</th>
+                <th>Notes</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>TargetPath</td>
+                <td>%ProgramFiles%\InedoAgent</td>
+                <td>The directory that will contain the service's executable and supporting files.</td>
+            </tr>
+            <tr>
+                <td>Port</td>
+                <td>46336</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>TempPath</td>
+                <td>%ProgramData%\InedoAgent</td>
+                <td>The base directory for any <em>Product</em>RootPath option not explicitly specified.</td>
+            </tr>
+            <tr>
+                <td>OtterRootPath</td>
+                <td><em>TempPath</em>\Otter</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>BuildMasterRootPath</td>
+                <td><em>TempPath</em>\BuildMaster</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>HedgehogRootPath</td>
+                <td><em>TempPath</em>\Hedgehog</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>UserAccount</td>
+                <td>LocalSystem</td>
+                <td>The user account to run the service under.</td>
+            </tr>
+            <tr>
+                <td>Password</td>
+                <td></td>
+                <td>The password for UserAccount.</td>
+            </tr>
+            <tr>
+                <td>ServiceName</td>
+                <td>INEDOAGENTSVC</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Security</td>
+                <td>AES</td>
+                <td>Also accepts SSL or None. It is recommended that this is left as AES as the other options do not have any way of validating the identity of the client.</td>
+            </tr>
+            <tr>
+                <td>CertificateName</td>
+                <td></td>
+                <td>Used if Security is set to SSL.</td>
+            </tr>
+            <tr>
+                <td>EncryptionKey</td>
+                <td></td>
+                <td>Used if Security is set to AES. Must be a 32-character hex string. If EncryptionKey is not specified, one will be randomly generated.</td>
+            </tr>
+        </tbody>
+    </table>
 
 </body>
 </html>
