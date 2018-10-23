@@ -47,7 +47,17 @@
             if any of the contained items raise an error, then the entire block (and all nested blocks) will be run as many times 
             specified; if a retry succeeds, then the execution status will not change
         </li>
-        
+        <li>
+            <b>Exclusive</b>
+            when specified (with an optional token), if there are any other blocks that are are marked exclusive, either in the
+            current execution (or in all executions, when Global is specified), the block will wait until the other blocks finish; 
+            if you specify a token, then this will only apply to other blocks that share this token 
+        </li>
+        <li>
+            <b>Disabled</b>
+            when set, none of the statements in the entire block will execute; this is actually implemented in OtterScript as a 
+            simple If/Else block with a predicate that's never true (i.e. <code>if (false) {...}</code>) 
+        </li>
     </ul>
 
 	<h3 id="async" data-title="Asynchronous Blocks">Asynchronous Blocks</h3>
