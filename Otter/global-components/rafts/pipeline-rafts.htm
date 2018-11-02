@@ -1,0 +1,37 @@
+﻿<html>
+<head>
+    <title>Pipeline Rafts</title>
+    <meta name="subtitle" content="Pipeline Rafts" />
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <meta name="keywords" content="otter,rafts" />
+    <meta name="sequence" content="200" />
+</head>
+<body>
+    <p>
+        <b>Pipeline Rafts</b> are a special type of raft added in Otter 2.1. Unlike other raft types, they don't store any data on their own,
+        but refer instead to other rafts based on the current environment.
+    </p>
+
+    <h2>Creating and Configuring a Pipeline Raft</h2>
+    <p>
+        Click the Create Pipeline Raft button on the Admin > Rafts page to open the Create Pipeline Raft dialog.
+    </p>
+    <p>
+        Enter environment-raft mappings one per line in the format "Environment=Raft" in the Environment Rafts field.
+        When the pipeline raft is used in a plan, the environment in context will be used to select the raft from this list.
+        If no matches are found, an error will be raised when the plan is executed.
+    </p>
+    <p>
+        Example of environment-raft mappings:
+    </p>
+    <pre>Integration=Int-Raft
+Production=Prod-Raft</pre>
+
+    <h2>Pipeline-only Rafts</h2>
+    <p>
+        A non-pipeline raft may be designated as a <i>pipeline-only</i> raft. This means that the pipeline-only raft
+        may <b>only</b> be used indirectly by a pipeline raft. Pipeline-only rafts are displayed in a separate list
+        on the Admin > Rafts page. To designate a raft as pipeline-only, check the corresponding checkbox in its configuration.
+    </p>
+</body>
+</html>
