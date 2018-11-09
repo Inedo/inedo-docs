@@ -53,6 +53,23 @@
         <img class="screenshot" src="/resources/documentation/otter/jobs-orchestration.png" alt="Orchestration Job in Otter" />
     </p>
 
+    <h4 id="orchestration-job-context" data-title="Orchestration Job Context">Orchestration Job Context</h4>
+    <p>Orchestration jobs may be created to target one of the following:</p>
+    <ul>
+        <li>Servers directly</li>
+        <li>Roles and/or environments</li>
+        <li>No servers/roles/environments <i>(i.e. the plan is unmodified and executed as-is)</i></li>
+    </ul>
+    <p>
+        When targeting servers directly, each server is enumerated and the plan is executed for each server in parallel.
+        Targeting roles and/or environments has the following behavior:
+    </p>
+    <ul>
+        <li><b>Server role(s) only</b> - behavior is equivalent to targeting servers directly for all servers associated with any role in the list</li>
+        <li><b>Environment(s) only</b> - behavior is equivalent to targeting servers directly for all servers associated with any environment in the list</li>
+        <li><b>Server role(s) and environment(s)</b> - will enumerate all servers in a role that are also in any listed environments, if multiple roles are supplied and a server belongs to more than 1, execution may occur on that server multiple times, use the for role context statement to ensure certain parts of a plan only execute when a specific role is in context</li>
+    </ul>
+
     <h3 id="job-templates" data-title="Job Templates">Job Templates</h3>
     <p>
         You can also define a job template under <i>Admin</i> &gt; <i>Job Templates</i>; these can be used to pre-populate fields in an orchestration job, and
