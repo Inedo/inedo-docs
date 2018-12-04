@@ -8,11 +8,11 @@
 </head>
 <body>
    <p>
-       A release is an event where a planned set of changes are tested and delivered to production (or another final stage) using a <a href="#release-packages">release package</a>. Releases can be anything from a major product launch to a single-line change, that's rushed to production in an emergency. 
+       A release is an event where a planned set of changes are tested and delivered to production (or another final stage) using a <a href="#builds">build</a>. Releases can be anything from a major product launch to a single-line change, that's rushed to production in an emergency. 
        
    </p>
    <p>
-       Release packages use artifacts to store and deploy your application components. You can add artifacts to a release package with a variety of different methods:
+       Builds use artifacts to store and deploy your application components. You can add artifacts to a build with a variety of different methods:
    </p>
    <ul class="docs">
        <li>
@@ -56,7 +56,7 @@
        You don't need to use any of these features at first, but you many find them helpful as you build a more robust release management platform.
    </p>
   
-    <h2 id="creating-package" data-title="Creating and Deploying Releases">Creating and Deploying Releases</h2>
+    <h2 id="creating-release" data-title="Creating and Deploying Releases">Creating and Deploying Releases</h2>
     <p>
         After creating an <a href="/support/documentation/buildmaster/modeling-applications/applications">application</a> and a <a href="/support/documentation/buildmaster/core-concepts/pipelines">pipeline</a>, you can create a new release of an application. A release has the following initial properties:
     </p>
@@ -66,58 +66,58 @@
 <b>Release name</b> is  an optional alias you can use to create a friendlier release identifier; it is not unique within an application
        </li>
        <li>
-         <b>Pipeline</b>  is the sequence of stages and approvals that release package are promoted through
+         <b>Pipeline</b>  is the sequence of stages and approvals that build are promoted through
        </li>
    </ul>
    <p>
        Once a release is created, you can add <a href="/support/documentation/buildmaster/global-components/configuration-variables">configuration variables</a> that can be used by deployment plans at runtime, target dates that will be show on a <a href="/support/documentation/buildmaster/modeling-applications/calendars">calendar</a>, and so on. 
    </p>
 
-<h2 id="release-packages" data-title="Release Packages">Release Packages</h2>
+<h2 id="builds" data-title="Builds">Builds</h2>
 <p>
-    Once a release has been created, you can create a release package for that release. There are two initial options:
+    Once a release has been created, you can create a build for that release. There are two initial options:
 </p>
 <ul class="docs">
-    <li><b>Package number;</b> this is an integer that uniquely identifies a release package with in a release, and generally is sequential </li>
-    <li><b>Automatically deploy;</b> when checked, the release package will be automatically deployed to its first stage of the release pipeline; this is a typical workflow in BuildMaster, as the first stage typically adds artifacts to the release package</li>
+    <li><b>Build number;</b> this is an integer that uniquely identifies a build within a release, and generally is sequential </li>
+    <li><b>Automatically deploy;</b> when checked, the build will be automatically deployed to its first stage of the release pipeline; this is a typical workflow in BuildMaster, as the first stage typically adds artifacts to the build</li>
 </ul>
 <p>
-    You can also add configuration variables to release packages that will be used by deployment plans at runtime. 
+    You can also add configuration variables to builds that will be used by deployment plans at runtime. 
 </p>
 
-    <h2 id="deploying-packages" data-title="Deploying Packages">Deploying Packages</h2>
+    <h2 id="deploying-builds" data-title="Deploying Builds">Deploying Builds</h2>
     <p>
-        The release's pipeline determines where the package will be deployed, as well as what approvals are required before deploying to each stage.
+        The release's pipeline determines where the build will be deployed, as well as what approvals are required before deploying to each stage.
     </p>
-    <p> <img class="screenshot" src="/resources/documentation/buildmaster/6/deploy-packages.png" alt="Deploying packages" /> </p>
+    <p> <img class="screenshot" src="/resources/documentation/buildmaster/6/deploy-packages.png" alt="Deploying builds" /> </p>
   <p>
-      Clicking on a particular stage for a release package's pipeline status will open up one of the following dialogs:
+      Clicking on a particular stage for a build's pipeline status will open up one of the following dialogs:
     
   </p>
   <ul class="docs">
       <li>
-          <b>Deploy Package;</b> if a package was successfully deployed to the previous stage and meets all approval requirements, you can deploy the package to that stage 
+          <b>Deploy Build;</b> if a build was successfully deployed to the previous stage and meets all approval requirements, you can deploy the build to that stage 
       </li>
-      <li><b>Force Package;</b> if a package was not successfully deployed to the previous stage, or if it doesn't have the requisite approvals, you can force the package to that stage</li>
-      <li><b>Re-deploy Package;</b> if a package has already been successfully deployed to that stage, you can redeploy it at anytime; this is how you perform a rollback of a release package</li>
+      <li><b>Force Build;</b> if a build was not successfully deployed to the previous stage, or if it doesn't have the requisite approvals, you can force the build to that stage</li>
+      <li><b>Re-deploy Build;</b> if a build has already been successfully deployed to that stage, you can redeploy it at anytime; this is how you perform a rollback of a build</li>
   </ul>
     <p>
         You can use <a href="/support/documentation/buildmaster/administration/security">Security and Access Controls</a> to determine which users can perform these actions for which environments.
     </p>
     <h2 id="scheduling-deployments" data-title="Scheduling Deployments">Scheduling Deployments</h2>
     <p>
-        There are two options for scheduling a the deployment of a release package:
+        There are two options for scheduling a the deployment of a build:
     </p>
     <ul class="docs">
         <li>
-            <b>Scheduled Promotion;</b> the package will automatically be deployed at the give time, provided all approvals are met at that time 
+            <b>Scheduled Promotion;</b> the build will automatically be deployed at the give time, provided all approvals are met at that time 
         </li>
         <li> 
-            <b>Scheduled Deployment;</b> the package has already been approved, and will be deployed at the specified time 
+            <b>Scheduled Deployment;</b> the build has already been approved, and will be deployed at the specified time 
         </li>
     </ul>
     <p>
-        The option to perform a scheduled promotion will only be present if the package would otherwise have to be forced into the next environment. 
+        The option to perform a scheduled promotion will only be present if the build would otherwise have to be forced into the next environment. 
     </p>
    
     <h2 id="status-lifecycles" data-title="Status and Lifecycles">Status and Lifecycles</h2>
@@ -126,18 +126,18 @@
     </p>
     <ul class="docs">
         <li>
-            <b>Active:</b> release packages are being created and deployed through pipelines 
+            <b>Active:</b> builds are being created and deployed through pipelines 
         </li>
         <li>
-            <b>Deployed:</b> a release package was deployed to the final stage of its pipeline
+            <b>Deployed:</b> a build was deployed to the final stage of its pipeline
         </li>
         <li>
-            <b>Canceled:</b> no release package was deployed to the final stage, and release packages are no longer being created or deployed; all release packages are also rejected
+            <b>Canceled:</b> no build was deployed to the final stage, and builds are no longer being created or deployed; all builds are also rejected
         </li>
        
     </ul>
     <p>
-       A release package also has three similar possible statuses:  
+       A build also has three similar possible statuses:  
     </p>
     <ul class="docs">
         <li>
@@ -157,10 +157,10 @@
         </li>
     </ul>
     <p>
-        When a release package is successfully deployed to the final stage of its pipeline, both the release and release package status is automatically changed to Deployed. This is controlled by the pipeline, and can be configured to behave differently. 
+        When a build is successfully deployed to the final stage of its pipeline, both the release and build status is automatically changed to Deployed. This is controlled by the pipeline, and can be configured to behave differently. 
     </p>
     <p>
-        Users may reject release packages and, depending on pipeline configuration, release packages may automatically be rejected if another package enters the same stage. 
+        Users may reject builds and, depending on pipeline configuration, builds may automatically be rejected if another build enters the same stage. 
     </p>
     <p>
         Administrators may also change the status at any time. This should only be done in exceptional situations, such as to "unreject" a deployment set, or correct other mistakes. 

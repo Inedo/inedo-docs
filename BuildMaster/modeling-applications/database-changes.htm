@@ -89,7 +89,7 @@ Users may be prevented from viewing these database connection strings by definin
         When adding a change script, you will select a release to associate the script with. This release is used by the Execute Database Change Scripts operation to determine whether or not the script should be executed during a deployment.    
 </p>
 <p>
-        For example, if you select "1.2.0" as the release, and deploy a release package for release "1.1.0", then the script will not be executed because it’s for a later release. However, if you deploy a release package for "2.0.0", then all database change scripts associated with earlier releases (1.2.0, 1.1.0, etc.) will be executed. 
+        For example, if you select "1.2.0" as the release, and deploy a build for release "1.1.0", then the script will not be executed because it’s for a later release. However, if you deploy a build for "2.0.0", then all database change scripts associated with earlier releases (1.2.0, 1.1.0, etc.) will be executed. 
 </p>
 <p>
         This logic allows you to restore an older database and bring it up to the target version.  

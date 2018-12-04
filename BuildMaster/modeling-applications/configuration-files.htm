@@ -12,7 +12,7 @@
         Many applications rely on configuration values that are stored in files that are stored alongside application executable files, such as web.config in .NET or <code>.properties</code> files in Java.
     </p>
     <p>
-        These configuration files often need to be managed independently from other files in a release package because their contents will change from environment to environment, and even contain sensitive data such as database connection strings, third-party service URLs, API keys, etc.
+        These configuration files often need to be managed independently from other files in a build because their contents will change from environment to environment, and even contain sensitive data such as database connection strings, third-party service URLs, API keys, etc.
     </p>
     <p>
         BuildMaster provides two strategies for managing configuration files: text-templating and configuration file assets.
@@ -189,7 +189,7 @@
     <h3 id="automated-deployment">Automated Plan-Based Deployment</h3>
     <p>The most common method of deployment is the Deploy Configuration File operation (<code>Deploy-ConfigFile</code> in OtterScript). When this operation is executed during a deployment, the version of the configuration file instance associated with the release currently in context will be deployed to the target path. If there is an existing file at the target path, it will only be overwritten if its text contents are different than the configuration file text in BuildMaster, otherwise the operation effectively becomes a no-op.</p>
     <h3 id="manual-deployment">Manual One-Off Deployment</h3>
-    <p>Configuration files may also be deployed outside the context of a deployment. It is not generally recommended to deploy configuration files in this manner because much of the context associated with the plan-based deployment is lost (e.g. release number, package number). One-off deployments should be reserved for "emergency" cases that require a configuration change immediately without the overhead of the traditional release cycle.</p>
+    <p>Configuration files may also be deployed outside the context of a deployment. It is not generally recommended to deploy configuration files in this manner because much of the context associated with the plan-based deployment is lost (e.g. release number, build number). One-off deployments should be reserved for "emergency" cases that require a configuration change immediately without the overhead of the traditional release cycle.</p>
 
     <h3 id="history">History</h3>
     <p>Deployment history for configuration file instances is stored for configuration files deployed from BuildMaster. The instance, version number, user, and date of deployment is visible, as well as the ability to compare arbitrary versions to highlight what changes were made to an instance.</p>

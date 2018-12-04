@@ -157,15 +157,15 @@
     <p class="info">DELETE <span style="opacity: 0.5">/api/variables/</span>&laquo;entity-type&raquo;/&laquo;entity-name&raquo;/&laquo;variable-name&raquo;?key=&laquo;api-key&raquo;</p>
     <p>Deletes the specified configuration variable if it exists on the specified entity, returning a status of 200 and empty body. Otherwise, a status of 400 (invalid entity type) or 403 (invalid key) is returned with an error message as the body.</p>
 
-    <h3 id="release-package-config-variables" data-title="Release and Package Configuration Variables">Release and Package Configuration Variables</h3>
+    <h3 id="build-config-variables" data-title="Release and Build Configuration Variables">Release and Build Configuration Variables</h3>
     <p>
-        These endpoints get and set one or all configuration variables for a specific release or release package. The operation and behavior
+        These endpoints get and set one or all configuration variables for a specific release or build. The operation and behavior
          are identical to the above <em>Entity Configuration Variables</em> endpoints, except instead of <code>&laquo;entity-type&raquo;/&laquo;entity-name&raquo;</code> in the URL, 
-        the following are used for releases and packages, respectively:
+        the following are used for releases and builds, respectively:
     </p>
     <ul>
         <li><code>releases/&laquo;application-name&raquo;/&laquo;release-number&raquo;</code></li>
-        <li><code>packages/&laquo;application-name&raquo;/&laquo;release-number&raquo;/&laquo;package-number&raquo;</code></li>
+        <li><code>builds/&laquo;application-name&raquo;/&laquo;release-number&raquo;/&laquo;build-number&raquo;</code></li>
     </ul>
     <p>For example, to <em>Delete a Single Configuration Variable</em> on a release, the following pattern is used.</p>
     <p class="info">DELETE <span style="opacity: 0.5">/api/variables/</span>releases/&laquo;application-name&raquo;/&laquo;release-number&raquo;/&laquo;variable-name&raquo;?key=&laquo;api-key&raquo;</p>

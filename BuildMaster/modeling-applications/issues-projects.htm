@@ -130,7 +130,7 @@ foreach $IssueId in @YouTrackIssueIDs
     </table>
 
     <p>
-            You can view all issues associated with an application by going to the "Issues" tab on the application navigation bar. Issues related to a particular release or release package are displayed on those pages.
+            You can view all issues associated with an application by going to the "Issues" tab on the application navigation bar. Issues related to a particular release or build are displayed on those pages.
     </p>
     <h2 id="issues-sources" data-title="Issues Sources"> Issues Sources</h2>
 
@@ -164,17 +164,17 @@ foreach $IssueId in @YouTrackIssueIDs
 </p>
 <h2 id="automatically-blocking-deployments" data-title="Automatically Blocking Deployments">Automatically Blocking Deployments</h2>
 
-<p>There are two <a href="/support/documentation/buildmaster/core-concepts/pipelines#Manual-Automatic-Approvals">automatic approvals</a> you can configure to on a pipeline that will prevent release packages from being deployed to a particular stage unless all issues are closed, or have a certain status such as "Resolved". Prior to deployment, these approvals will evaluate each issues associated with the release, and block the deployment if the approval is not met.</p>
+<p>There are two <a href="/support/documentation/buildmaster/core-concepts/pipelines#Manual-Automatic-Approvals">automatic approvals</a> you can configure to on a pipeline that will prevent builds from being deployed to a particular stage unless all issues are closed, or have a certain status such as "Resolved". Prior to deployment, these approvals will evaluate each issues associated with the release, and block the deployment if the approval is not met.</p>
 <ul class="docs">
 <li><strong>Issues in Status</strong>; if you specified a specific status texts (such as Resolved and Complete), any issue that doesn't have one of those statuses will cause the approval to be not met</li>
 <li><strong>Require Issues Closed</strong>; any non-closed issue will cause this approval to be not met </li>
 </ul>
-<p>Like all automatic approvals, a release package may be forced into a stage even if issues aren't closed or in the appropriate status. However, this requires a special action and a specific permission.</p>
+<p>Like all automatic approvals, a build may be forced into a stage even if issues aren't closed or in the appropriate status. However, this requires a special action and a specific permission.</p>
 
 <h2 id="issue-sync" data-title="Issue Synchronization">Issue Synchronization</h2>
 
 <p>
-        An issue synchronization will automatically occur when you visit the release or release package overview page. This is mostly transparent: a "please wait" status image is displayed while the execution engine runs the synchronization with the issue source. Once complete, the freshly synchronized issues that are stored within internal issue storage are displayed.
+        An issue synchronization will automatically occur when you visit the release or build overview page. This is mostly transparent: a "please wait" status image is displayed while the execution engine runs the synchronization with the issue source. Once complete, the freshly synchronized issues that are stored within internal issue storage are displayed.
 </p>
 <h3 id="manual-sync" data-title="Manual Synchronization">Manual Synchronization</h3>
 <p>
@@ -194,27 +194,27 @@ foreach $IssueId in @YouTrackIssueIDs
 </p>
 <h2 id="internal-issue" data-title="Internal Issue Tracker">Internal Issue Tracker</h2>
 <p>
-        You can use BuildMaster's issue store as a lightweight issue tracker, allowing you to add issues and associate them with specific release and release packages. While this certainly isn't as advanced as a proper issue tracking tool, it may be perfectly adequate for small applications and components with few changes.   
+        You can use BuildMaster's issue store as a lightweight issue tracker, allowing you to add issues and associate them with specific release and builds. While this certainly isn't as advanced as a proper issue tracking tool, it may be perfectly adequate for small applications and components with few changes.   
 </p>
 <p>
-        You can add and edit issues from the Issues tab, the release overview, and the release package overview pages. The internal issue tracker can be enabled or disabled under Application > Settings > Advanced.    
+        You can add and edit issues from the Issues tab, the release overview, and the build overview pages. The internal issue tracker can be enabled or disabled under Application > Settings > Advanced.    
 </p>
-<h2 id="release-packages" data-title="Release Packages">Issues in Release Packages</h2>
+<h2 id="builds" data-title="Builds">Issues in Builds</h2>
 <p>
-        Issues are always associated with release, but they may also be associated with up to two release packages:   
+        Issues are always associated with release, but they may also be associated with up to two builds:   
 </p>
 
 <ul class="docs">
 <li>
-       Opened: Release Package that the issue was opened for, or discovered in
+       Opened: Build that the issue was opened for, or discovered in
 </li>
 <li>
-       Closed: Release Package that successfully resolved, or closed the issue
+       Closed: Build that successfully resolved, or closed the issue
 </li>
 </ul>
 
 <p>
-        These associations may be useful when there are multiple release packages that are being tested at the same time. 
+        These associations may be useful when there are multiple builds that are being tested at the same time. 
 </p>
 
   </body>
