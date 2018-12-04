@@ -1,0 +1,316 @@
+﻿<html>
+<head>
+    <title>Builds &amp; Continuous Integration</title>
+    <meta name="subtitle" content="Builds &amp; Continuous Integration" />
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <meta name="keywords" content="buildmaster, releases, builds" />
+    <meta name="show-headings-in-nav" content="true" />
+    <meta name="sequence" content="200" />
+
+</head>
+<body>
+
+    <div class="attention best-practice">
+        <p>
+            Note: between BuildMaster v5.0 and v6.1, a build was known
+            as a "release package"
+        </p>
+    </div>
+    <p>
+        A build in BuildMaster is the fundamental unit of deployment
+        under the context of a <a href="release">release</a> that advances through a sequence of pipeline
+        stages in order to effectively deploy a release. Its components may consist of any
+        or all of the following:
+    </p>
+
+    <ul class="docs">
+        <li><a href="builds-and-ci/artifacts">Artifacts</a></li>
+        <li><a href="builds-and-ci/unit-tests">Unit Tests</a></li>
+        <li><a href="builds-and-ci/reports">Reports</a></li>
+        <li><a href="/support/documentation/buildmaster/global-components/configuration-variables">Variables</a></li>
+        <li><a href="/support/documentation/buildmaster/modeling-applications/release-notes">Notes</a></li>
+    </ul>
+
+    <h2>Creating a Build</h2>
+    <p>
+        Builds may be created via the following methods:
+    </p>
+    <ul class="docs">
+        <li>"Create Build" button in the UI</li>
+        <li>Release &amp; Build API</li>
+        <li>
+            <a href="#continuous-integration">Automatically via Continuous Integration</a>
+        </li>
+    </ul>
+    <p>
+        In order a create a build, at least one release must exist
+        for an application. When creating a build from UI, there are at minimum three initial
+        options:
+    </p>
+    <ul class="docs">
+        <li>
+            <b>Release</b> – the release that the build is associated with;
+            this will inherit the pipeline and prompt for the appropriate
+            <a href="/support/documentation/buildmaster/core-concepts/release/templates#var-config">release template variables</a> upon creation
+        </li>
+        <li>
+            <b>Build number</b> - this is an integer that uniquely identifies
+            a build within a release, the default value will sequentially follow the current
+            latest build’s number
+        </li>
+        <li>
+            <b>Automatically advance to first stage</b> - when checked, the
+            build will be automatically deployed to its first stage of the release
+            pipeline; this is a common workflow in BuildMaster, as the first stage
+            typically adds artifacts to the build. However, if there are deployment
+            variables required, approvals, or deployment windows for the first stage, advancement
+            must occur after the build is created
+        </li>
+    </ul>
+
+    <h2>Deploying Builds</h2>
+
+    <p>
+        The release's <a href="pipelines">pipeline</a> determines where
+        the build will be deployed, as well as what approvals are required before
+        deploying to each stage.
+    </p>
+    <p>
+        <img class="screenshot" src="/resources/documentation/buildmaster/6/deploy-builds.png" />
+    </p>
+    <p>
+        Clicking on one of the stages in the build's pipeline status
+        will present one of the following dialogs:
+    </p>
+
+    <ul class="docs">
+        <li>
+            <b>Deploy Build </b>- if a build was successfully deployed to the
+            previous stage and meets all approval requirements, you can deploy the build to
+            that stage
+        </li>
+        <li>
+            <b>Force Build </b>- if a build was not successfully deployed to
+            the previous stage, or if it doesn't have the requisite approvals, you can
+            force the build to that stage
+        </li>
+        <li>
+            <b>Re-deploy Build</b> - if a build has already been successfully
+            deployed to that stage, you can redeploy it at any time; this is how you
+            perform a rollback of a build
+        </li>
+    </ul>
+
+    <p>
+        You can use <a href="/support/documentation/buildmaster/administration/security">Security and Access Controls</a>
+        to determine which users can perform these actions for which environments.
+    </p>
+
+    <h2>Status and Lifecycles</h2>
+    <p>
+        A build has three possible statuses:
+    </p>
+
+    <ul class="docs">
+        <li>
+            <b>Active</b> - progressing through its pipeline with the
+            possibility of being deployed to the final stage
+        </li>
+        <li>
+            <b>Deployed</b> - successfully deployed to the final stage of its
+            pipeline
+        </li>
+        <li>
+            <b>Rejected</b> - not deployed to its final stage, and instead
+            determined to be inadequate or otherwise inappropriate for the final stage
+        </li>
+    </ul>
+
+    <p>
+        When a build is successfully deployed to the final stage of
+        its pipeline, both the release and build status is automatically changed to <b>Deployed</b>.
+        This is controlled by the pipeline, and can be configured to behave
+        differently.
+    </p>
+
+    <p>
+        Users may manually reject builds and, depending on pipeline
+        configuration, builds may automatically be rejected if another build enters the
+        same stage. Administrators may also change build status at any time, however, this
+        should only be done in exceptional situations such as to "unreject" an
+        accidentally-rejected build or correct other mistakes.
+    </p>
+
+    <h2 id="continuous-integration" data-title="Continuous Integration">Configuring Continuous Integration</h2>
+
+    <p>
+        Continuous Integration (CI) is the concept of automatically creating
+        a build immediately following a commit to a source control system. BuildMaster
+        supports 3 methods to achieve a fully-automated CI workflow:
+    </p>
+
+    <ul class="docs">
+        <li>
+            <a href="#repository-monitors"><b>Repository monitors</b></a> – supports
+            polling a generic repository for changes
+        </li>
+        <li>
+            <a href="#repository-hooks"><b>Repository hooks</b></a> - supports
+            immediate build creation from GitHub or GitLab, but may require support for
+            incoming push notification requests from the internet
+        </li>
+        <li>
+            <a href="#api"><b>Release &amp; Build API</b></a> - the most general
+            method to create builds from a third-party system, whether TeamCity, Jenkins, TFS,
+            or others
+        </li>
+    </ul>
+
+    <h3 id="repository-monitors" data-title="Repository Monitors">Repository Monitors</h3>
+    <p>
+        Repository monitors are an extensible component that can be
+        configured to poll a source control repository at a custom interval, capturing
+        and comparing the latest commit to determine whether a new build should be
+        created, or a custom OtterScript plan should run.
+    </p>
+
+    <div class="attention analogy">
+        <img src="/resources/images/icons/analogy.png" />
+        <p>
+            BuildMaster supports a repository
+            monitor for Git repositories. Install the Git extension (v1.1 or later) to use
+            it. Visit the <a href="https://github.com/Inedo/inedox-git/wiki">Git extension Wiki</a>
+            for more information.
+        </p>
+    </div>
+
+    <h4>Configuring a Repository Monitor</h4>
+    <p>
+        A repository monitor may be created from the Administration
+        &gt; Repository Hooks &amp; Monitors page, or from the Builds submenu in the
+        context of an application. The following fields apply to all monitors:
+    </p>
+
+    <ul class="docs">
+        <li><b>Name</b> – a friendly name to identify the monitor in the UI</li>
+        <li>
+            <b>Run for application/group</b> – the application filter of the
+            monitor
+        </li>
+        <li>
+            <b>Plan</b> – the deployment plan to run when a new commit is
+            detected. When no plan is assigned to the monitor, a new build is created for the
+            latest release. See <a href="#custom-plans">Custom Plans</a> below for more information.
+        </li>
+        <li><b>Active</b> – determines whether the monitor is enabled</li>
+        <li>
+            <b>Schedule</b> <b>- </b>This cron expression determines the
+            frequency that the repository will be checked for changes. See the
+            <a href="https://www.quartz-scheduler.net/documentation/quartz-3.x/tutorial/crontrigger.html">Quartz Documentation</a>
+            for information about this format as well as examples. The default configuration
+            of '<code>0 0/4 * * * ?</code>' performs a check every 4 minutes.
+        </li>
+        <li>
+            <b>Run on server</b> - When specified, the repository monitor
+            will use this server to connect to the remote repository, otherwise the polling
+            is performed from the BuildMaster server.
+        </li>
+    </ul>
+
+    <p>The following fields apply specifically to the Git monitor:</p>
+
+    <ul class="docs">
+        <li>
+            <b>Branch</b> – specifies the branch to be monitored, using <a href="https://docs.microsoft.com/en-us/dotnet/standard/base-types/regular-expression-language-quick-reference">regular expression syntax</a>
+            to match the branch name.
+        </li>
+        <li>
+            <b>Credentials</b> – the Resource Credentials used to connect to
+            the Git repository
+        </li>
+        <li>
+            <b>Repository URL</b> – the URL of the Git repository. By default
+            this uses the repository defined in the credentials, or anonymous if not
+            supplied in the credentials either
+        </li>
+        <li>
+            <b>Git executable path</b> – By default, BuildMaster uses the
+            LibGitSharp library for Git connections, but a path to Git client may be used
+            instead for custom configurations (e.g. SSH connections, older versions of Git)
+        </li>
+    </ul>
+
+    <p>
+        Text fields for a monitor support variable expansion, allowing
+        for simpler configuration. For example, a single Git repository monitor with a Repository
+        URL of <code>https://github.com/inedo/inedo-$ToLower($ApplicationName)</code>
+        for the "Extensions" application group would allow all descendant applications named
+        after the extensions to automatically have builds created for them on commit.
+    </p>
+
+    <h4 id="custom-plans">Custom Plans</h4>
+    <p>
+        When a custom plan is assigned to a repository monitor, then
+        instead of automatic creation of a new build, that plan will be executed in the
+        context of all applications matching the specified application filter. During
+        execution, any additional context from the commit will be available (e.g. <code>$GitCommit</code> and <code>$Branch</code>). This
+        allows for more advanced use-cases, including:
+    </p>
+
+    <ul class="docs">
+        <li>
+            Automatically creating a release &amp; build when a new branch is
+            created by combining the <code>Ensure-Release</code> and <code>Create-Build</code> operations
+        </li>
+        <li>
+            Sending an email notification when a change is detected using the
+            <code>Send-Email</code> operation
+        </li>
+        <li>Create builds for multiple releases or spanning multiple applications</li>
+    </ul>
+
+    <h3 id="repository-hooks" data-title="Repository Hooks">Repository Hooks</h3>
+    <p>
+        BuildMaster supports custom webhook events fired by GitHub
+        and GitLab. Visit the <a href="https://github.com/Inedo/inedox-git/wiki">Git extension Wiki</a>
+        for more information on the configuration required for each specific system.
+    </p>
+
+    <h3 id="api">Release &amp; Build Deployment API</h3>
+    <p>
+        In addition to hooks and monitors, BuildMaster supports
+        creating releases and builds from third-party systems via the
+        <a href="/support/documentation/buildmaster/reference/api/release-and-build">Release &amp; Build API</a>.
+    </p>
+
+    <h2 id="ci-integrations" data-title="Additional Integrations">Additional CI Integrations</h2>
+
+    <h3 id="badge-api">Badge API</h3>
+
+    <p>
+        BuildMaster allows external tools to query status
+        information regarding builds in order to generate a "CI Badge", such as:
+    </p>
+
+    <p>
+        <img class="screenshot" src="/resources/documentation/buildmaster/6/badge.svg" />
+    </p>
+
+    <p>
+        For more information on how to configure and query a badge, visit
+        the <a href="/support/documentation/buildmaster/reference/api/ci-badge">CI Badge API documentation</a> for more information.
+    </p>
+
+    <h3 id="variable-value-renderers">Variable Value Renderers</h3>
+
+    <p>
+        Variable value renderers are useful in terms of CI mainly
+        because they can transform captured important variable values into an image or link
+        to a third-party system. For example, a <code>$GitCommit</code>
+        variable can be transformed to a GitHub link, or a captured <code>$SemanticVersion</code> could be transformed to a link to the
+        corresponding ProGet package. Visit the
+        <a href="/support/documentation/buildmaster/global-components/configuration-variables#value-renderers">Variable Value Renderers documentation</a>
+        for more information.
+    </p>
+</body>
+</html>
