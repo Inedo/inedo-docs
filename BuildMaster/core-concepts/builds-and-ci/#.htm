@@ -280,35 +280,76 @@
     <p>
         In addition to hooks and monitors, BuildMaster supports
         creating releases and builds from third-party systems via the
-        <a href="/support/documentation/buildmaster/reference/api/release-and-build">Release &amp; Build API</a>.
+        <a href="/support/documentation/buildmaster/reference/api/release-and-build">Release &amp; Build API documentation</a>.
     </p>
 
-    <h2 id="ci-integrations" data-title="Additional Integrations">Additional CI Integrations</h2>
+    <h3 id="other-ci-integrations">Other CI Integrations</h3>
 
-    <h3 id="badge-api">Badge API</h3>
+    <h4 id="badge-api" data-title="CI Badges">Badge API</h4>
 
     <p>
-        BuildMaster allows external tools to query status
-        information regarding builds in order to generate a "CI Badge", such as:
+        BuildMaster allows external tools to query build status in order to generate a "CI Badge", such as:
     </p>
 
     <p>
         <img class="screenshot" src="/resources/documentation/buildmaster/6/badge.svg" />
     </p>
-
     <p>
+        To access the CI Badge API, an API key must be added with access to the API. Then, the following URLs can be
+        used to generate either the badge image or a link to the corresponding build/execution:
+    </p>
+    <h5>Image:</h5>
+    <p>
+        <pre>{buildmaster-host}/api/ci-badges/image?API_Key={yourApiKey}&amp;$ApplicationName={appName}</pre>
+    </p>
+    <h5>Link:</h5>
+    <p>
+        <pre>{buildmaster-host}/api/ci-badges/link?API_Key={yourApiKey}&amp;$ApplicationName={appName}</pre>
+    </p>
+    <p>
+        The badge specifiers are not limited to applications and may be further filtered based on commit IDs, branches, and more.
         For more information on how to configure and query a badge, visit
-        the <a href="/support/documentation/buildmaster/reference/api/ci-badge">CI Badge API documentation</a> for more information.
+        the <a href="/support/documentation/buildmaster/reference/api/ci-badge">CI Badge API documentation</a>.
     </p>
 
-    <h3 id="variable-value-renderers">Variable Value Renderers</h3>
+    <h4 id="variable-value-renderers">Variable Value Renderers</h4>
 
     <p>
         Variable value renderers are useful in terms of CI mainly
         because they can transform captured important variable values into an image or link
-        to a third-party system. For example, a <code>$GitCommit</code>
-        variable can be transformed to a GitHub link, or a captured <code>$SemanticVersion</code> could be transformed to a link to the
-        corresponding ProGet package. Visit the
+        to a third-party system.
+    </p>
+
+    <h5>Examples:</h5>
+
+    <inedo:tab-block>
+        <tab name="ProGet Package">
+            <div>
+                <code><pre>&lt;a class="ci-icon proget" 
+   href="{pg-host}/feeds/{feedName}/$ApplicationName/$UrlEncode($Value)"&gt;
+$Value
+&lt;/a&gt;</pre></code>
+            </div>
+        </tab>
+        <tab name="GitHub Commit">
+            <div>
+                <code><pre>&lt;a class="ci-icon github" 
+   href="https://github.com/{orgName}/$ApplicationName)/commit/$Value"&gt;
+$Substring($Value, 0, 7)
+&lt;/a&gt;</pre></code>
+            </div>
+        </tab>
+        <tab name="GitLab Branch">
+            <div>
+                <code><pre>&lt;a class="ci-icon gitlab" 
+   href="https://gitlab.com/{orgName}/$ApplicationName/tree/$Value"&gt;
+$Substring($Value, 0, 8)
+&lt;/a&gt;</pre></code>
+            </div>
+        </tab>
+    </inedo:tab-block>
+    <p>
+        Visit the
         <a href="/support/documentation/buildmaster/global-components/configuration-variables#value-renderers">Variable Value Renderers documentation</a>
         for more information.
     </p>
