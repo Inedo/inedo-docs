@@ -1,4 +1,4 @@
-﻿<html>
+<html>
 <head>
     <title>Release Templates</title>
     <meta name="subtitle" content="Release Templates" />
@@ -131,8 +131,8 @@
                     Name*
                 </td>
                 <td>
-                    a <i>string</i> representing the name of the variable, this value is unique per each <strong>ReleaseVariables</strong>, <strong>BuildVariables</strong> properties, and unique in <strong>DeploymentVariables</strong> section if all names are associated with a <strong>PipelineStageName</strong> property
-                </td>
+					a <i>string</i> representing the name of the variable, this value is unique per each <strong>ReleaseVariables</strong>, <strong>BuildVariables</strong> properties, and unique in <strong>DeploymentVariables</strong> section if all names are associated with a <strong>PipelineStageName</strong> property
+				</td>
             </tr>
             <tr>
                 <td>
@@ -177,10 +177,10 @@
             </tr>
             <tr>
                 <td>
-                    PipelineStageName
+                    PipelineStageNames
                 </td>
                 <td>
-                    a <i>string</i> representing the name of the pipeline stage the variable applies to, null/empty representing all stages. This value is ignored if not under the release template's <strong>DeploymentVariables</strong> property
+                    an <i>array</i> of strings representing the names of the pipeline stages the variable applies to, null/empty representing all stages. This value is ignored if not under the release template's <strong>DeploymentVariables</strong> property
                 </td>
             </tr>
             <tr>
