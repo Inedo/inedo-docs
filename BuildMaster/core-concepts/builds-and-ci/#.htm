@@ -6,10 +6,13 @@
     <meta name="keywords" content="buildmaster, releases, builds" />
     <meta name="show-headings-in-nav" content="true" />
     <meta name="sequence" content="200" />
-
 </head>
 <body>
-
+    <style type="text/css">
+        .badge {
+            max-width: 150px;
+        }
+    </style>
     <div class="attention best-practice">
         <p>
             Note: between BuildMaster v5.0 and v6.1, a build was known
@@ -31,7 +34,7 @@
         <li><a href="/support/documentation/buildmaster/modeling-applications/release-notes">Notes</a></li>
     </ul>
 
-    <h2>Creating a Build</h2>
+    <h2 id="creating-a-build" data-title="Creating a Build">Creating a Build</h2>
     <p>
         Builds may be created via the following methods:
     </p>
@@ -68,7 +71,7 @@
         </li>
     </ul>
 
-    <h2>Deploying Builds</h2>
+    <h2 id="deploying-a-build" data-title="Deploying a Build">Deploying a Build</h2>
 
     <p>
         The release's <a href="pipelines">pipeline</a> determines where
@@ -292,7 +295,7 @@
     </p>
 
     <p>
-        <img class="screenshot" src="/resources/documentation/buildmaster/6/badge.svg" />
+        <img class="badge" src="/resources/documentation/buildmaster/6/ci/success.svg" />
     </p>
     <p>
         To access the CI Badge API, an API key must be added with access to the API. Then, the following URLs can be
@@ -325,26 +328,32 @@
     <inedo:tab-block>
         <tab name="ProGet Package">
             <div>
-                <code><pre>&lt;a class="ci-icon proget" 
+                <code>
+                    <pre>&lt;a class="ci-icon proget" 
    href="{pg-host}/feeds/{feedName}/$ApplicationName/$UrlEncode($Value)"&gt;
 $Value
-&lt;/a&gt;</pre></code>
+&lt;/a&gt;</pre>
+                </code>
             </div>
         </tab>
         <tab name="GitHub Commit">
             <div>
-                <code><pre>&lt;a class="ci-icon github" 
+                <code>
+                    <pre>&lt;a class="ci-icon github" 
    href="https://github.com/{orgName}/$ApplicationName/commit/$Value"&gt;
 $Substring($Value, 0, 7)
-&lt;/a&gt;</pre></code>
+&lt;/a&gt;</pre>
+                </code>
             </div>
         </tab>
         <tab name="GitLab Branch">
             <div>
-                <code><pre>&lt;a class="ci-icon gitlab" 
+                <code>
+                    <pre>&lt;a class="ci-icon gitlab" 
    href="https://gitlab.com/{orgName}/$CustomAppVariable/tree/$Value"&gt;
 $Substring($Value, 0, 8)
-&lt;/a&gt;</pre></code>
+&lt;/a&gt;</pre>
+                </code>
             </div>
         </tab>
     </inedo:tab-block>

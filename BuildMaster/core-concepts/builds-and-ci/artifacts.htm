@@ -9,7 +9,56 @@
 
 </head>
 <body>
-    
+
+    <p>
+        Artifacts are the mechanism designed to capture build output into a file, typically
+        with the intention of being deployed in the future. Artifacts are associated with a <a href="../builds-and-ci">build</a>
+        and may be created or deleted at any point during the lifecycle of an active build. Artifact
+        files themselves are not limited to build output, they commonly also contain:
+    </p>
+    <ul>
+        <li>Documentation files  </li>
+        <li>Release notes        </li>
+        <li>Archived source code </li>
+        <li>"Frozen" dependencies</li>
+    </ul>
+    <p>
+        The usage of artifacts forms a more stable and reliable deployment process by ensuring each
+        stage of deployment receives equivalent output.
+    </p>
+    <h3>Creating Artifacts</h3>
+    <p>
+        Artifacts can be added to a build in a variety of different methods:
+    </p>
+    <ul>
+        <li>Uploaded a zip file to the web interface on the Build Overview page</li>
+        <li>Captured from a drop path on a network share                       </li>
+        <li>Compiled from source code within BuildMaster                       </li>
+        <li>Imported from a third-party CI server such as Jenkins or TeamCity  </li>
+    </ul>
+    <p>
+        The most common method to capture an artifact is to add the <code>Create-Artifact</code> operation to a
+        <a href="/support/documentation/buildmaster/core-concepts/deployment-plans">deployment plan</a>, generally immediately after some form of 'build' operation such as <code>MSBuild::Build-Project</code>.
+        See the <a href="https://inedo.com/support/documentation/buildmaster/reference/operations/artifacts/create-artifact">operation's documentation</a> for more information.
+    </p>
+    <h4>Third-Party Artifacts</h4>
+    <p>
+        Other methods of associating an existing artifact with a build are specific to the third-party
+        system that associates them, and instructions are generally available either on the details page
+        for a specific extension in the <a href="/den">Inedo Den</a>, the extension's GitHub Wiki page, or the <a href="/support/tutorials">tutorials</a> page.
+        Currently, examples for the following CI systems are documented:
+    </p>
+    <ul>
+        <li>TFS / VSO / VSTS / Azure Devops</li>
+        <li>Jenkins                        </li>
+        <li>TeamCity                       </li>
+    </ul>
+    <h3>Deploying Artifacts</h3>
+    <p>
+        Artifacts are deployed using the <code>Deploy-Artifact</code> operation in a <a href="/support/documentation/buildmaster/core-concepts/deployment-plans">deployment plan</a>.
+        This operation by default is optimized to only transfer files that have been modified to
+        decrease deployment times of large artifacts. See the <a href="https://inedo.com/support/documentation/buildmaster/reference/operations/artifacts/deploy-artifact">operation's documentation</a> for more information.
+    </p>
 
 
 </body>
