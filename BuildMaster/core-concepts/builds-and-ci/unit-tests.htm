@@ -25,7 +25,7 @@
     <h3 id="running-tests" data-title="Running Unit Tests">Running Unit Tests</h3>
     <p>
         Unit tests are run and recorded using specific operations depending on the unit test framework. The following test
-        frameworks are supported by BuildMaster:
+        frameworks are supported by BuildMaster through the following extensions and operations:
     </p>
     
     <table>
@@ -33,24 +33,28 @@
             <tr>
                 <th>Framework</th>
                 <th>Extension</th>
-                <th>Operation/Documentation</th>
+                <th>Operation</th>
+                <th>GitHub</th>
             </tr>
         </thead>
         <tbody>
             <tr>
-                <td>VsTest (Visual Studio Test)</td>
-                <td>Windows SDK</td>
-                <td>Execute-VSTest</td>
+                <td>Visual Studio Test</td>
+                <td><a href="/den/inedox/windowssdk">Windows SDK</a> <i>(formerly MSTest)</i></td>
+                <td><code>Execute-VSTest</code></td>
+                <td><a href="https://github.com/inedo/inedox-windowssdk">source</a> | <a href="https://github.com/inedo/inedox-windowssdk/wiki">docs</a></td>
             </tr>
             <tr>
                 <td>NUnit</td>
-                <td>NUnit</td>
-                <td>Execute-NUnit</td>
+                <td><a href="/den/inedox/nunit">NUnit</a></td>
+                <td><code>Execute-NUnit</code></td>
+                <td><a href="https://github.com/inedo/inedox-nunit">source</a> | <a href="https://github.com/inedo/inedox-nunit/wiki">docs</a></td>
             </tr>
             <tr>
                 <td>JUnit</td>
-                <td>Java</td>
-                <td>Execute-JUnit</td>
+                <td><a href="/den/inedox/java">Java</a></td>
+                <td><code>Execute-JUnit</code></td>
+                <td><a href="https://github.com/inedo/inedox-java">source</a> | <a href="https://github.com/inedo/inedox-java/wiki">docs</a></td>
             </tr>
         </tbody>
     </table>
@@ -62,7 +66,7 @@
     <h3 id="pipeline-stage-approval" data-title="Pipeline Stage Approval">Pipeline Stage Approval</h3>
     <p>
         To prevent a build with any failing unit tests from being deployed to a pipeline stage, add a "Unit Test"
-        approval to the target stage. This approval will validate that tests recorded in the latest execution to the
+        automated approval to the target stage. This approval will validate that tests recorded in the latest execution to the
         previous pipeline stage either all passed or none failed, where inconclusive tests are dependent upon the
         approval's configuration.
     </p>
