@@ -172,9 +172,9 @@
     <div class="attention technical">
         <img src="/resources/images/icons/technical.png" />
         <p>
-            Because value renderers are HTML, BuildMaster administrators (i.e. you) are responsible for ensuring
-            that values are either fully-trusted (i.e. only trusted parties create the value), or that they are properly
-            sanitized to prevent Cross Site Scripting attacks, generating malformed HTML, and more. A number of
+            Because values are rendered as HTML, BuildMaster administrators (i.e. you) are responsible for ensuring
+            that values are either fully-trusted (i.e. only trusted parties create safe values), or that they are properly
+            sanitized to prevent Cross Site Scripting attacks, malformed HTML, and more. A number of
             helpful functions are included in the InedoCore extension to mitigate these risks such as <code>$HtmlEncode()</code>,
             <code>$UrlEncode()</code>, and <code>$JsEncode()</code>.
         </p>
@@ -190,7 +190,7 @@
                 <b>Initial value:</b> <code>This value is too long to fit on the page</code>
             </p>
             <p>
-                <b>Renderered as:</b> <code>This value...</code>
+                <b>Rendered as:</b> <code>This value...</code>
             </p>
         </tab>
         <tab name="3-property Map">
@@ -201,7 +201,7 @@
                 <b>Initial value:</b> <code>%(Text: Some link text..., Href: https://example.org, Data: "some string")</code>
             </p>
             <p>
-                <b>Renderered as:</b> <code><a href="https://example.org?queryData=some+string">Some link text...</a></code>
+                <b>Rendered as:</b> <code><a href="https://example.org?queryData=some+string">Some link text...</a></code>
             </p>
         </tab>
         <tab name="Custom Image">
@@ -212,7 +212,7 @@
                 <b>Initial value:</b> <code>Some text that appears on hover</code>
             </p>
             <p>
-                <b>Renderered as:</b> <code><img style="max-width: 150px;" src="/resources/images/logos/proget-logo.png" alt="ProGet Logo" title="Some text that appears on hover" /></code>
+                <b>Rendered as:</b> <code><img style="max-width: 150px;" src="/resources/images/logos/proget-logo.png" alt="ProGet Logo" title="Some text that appears on hover" /></code>
             </p>
         </tab>
     </inedo:tab-block>
