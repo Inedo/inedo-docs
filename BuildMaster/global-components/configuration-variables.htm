@@ -8,18 +8,18 @@
 </head>
 <body>
     <p>
-       <a href="/support/documentation/executionengine/components/runtime-variables"> Variables</a> allow for extreme flexibility when modeling your deployment plans, and
+        <a href="/support/documentation/executionengine/components/runtime-variables"> Variables</a> allow for extreme flexibility when modeling your deployment plans, and
         configuration variables allow you to have the same plan run differently across different servers and <a href="/support/documentation/buildmaster/core-concepts/environments">environments</a>.
     </p>
 
     <p>
         You can define configuration variables at different scopes (release, server, environment, global, etc), and then reference those variables in your plan when using
-        Operations, <a href="/support/documentation/executionengine/otterscript/statements-and-blocks/if-else">If/Else Blocks</a>, 
+        Operations, <a href="/support/documentation/executionengine/otterscript/statements-and-blocks/if-else">If/Else Blocks</a>,
         <a href="/support/documentation/executionengine/otterscript/statements-and-blocks/loop">Loop Blocks</a>, etc.
         You can also create a <a href="/support/documentation/executionengine/components/runtime-variables">runtime variable</a> in a plan itself.
-	</p>
+    </p>
 
-	<h2 id="cascading" data-title="Cascading Variables">Cascading Variables</h2>
+    <h2 id="cascading" data-title="Cascading Variables">Cascading Variables</h2>
     <p>
         Configuration Variables cascade, which means that you can define a variable of the same name in multiple places,
         and the correct value will be resolved at runtime. For example, if you define a variable named <code>$HDarsPath</code>
@@ -29,11 +29,11 @@
     <p>
         If you also defined <code>$HDarsPath</code> on a single server in the <code>Testing</code> environment, then <em>that</em>
         value would be used instead.
-	</p>
+    </p>
     <p>
-        This allows for reusing Plans and Templates without having to change local variables. There are times when it 
-        may be appropriate for variables to have different values when they are used different places, and BuildMaster allows for 
-        this. 
+        This allows for reusing Plans and Templates without having to change local variables. There are times when it
+        may be appropriate for variables to have different values when they are used different places, and BuildMaster allows for
+        this.
     </p>
     <h3 id="resolution-rules" data-title="Resolution Rules">Resolution Rules</h3>
     <p>The variable definition that's the "closest" match to the current context is used. This is determined as follows:</p>
@@ -78,7 +78,7 @@
         A variable value is parsed as if it were an OtterScript string, where the same parsing rules apply, primarily that runtime variables are evaluated.
     </p>
     <p>
-        Because of this, a value can be escaped with the backtick character (i.e. <code>`</code>) if the value is meant to be a literal string but happens to conform to the format of 
+        Because of this, a value can be escaped with the backtick character (i.e. <code>`</code>) if the value is meant to be a literal string but happens to conform to the format of
         one of the other types, for example: <code>`@(some attribute)</code> will resolve to a literal string <code>@(some attribute)</code> instead of a list containing a single element
         <code>some attribute</code> .
     </p>
@@ -98,11 +98,11 @@
     <h2 id="sensitive" data-title="Sensitive Variables">Sensitive Variables</h2>
     <p>
         Configuration variables may be marked "sensitive" which means that their values are only generally visible with manage permissions. This is <b>not</b> to be used for security purposes, only
-        to replace the value on view-only pages with <i>(hidden)</i>. However, anyone that is able to edit a deployment plan could simply call <code>Log-Information $SensitiveVariable;</code> to 
+        to replace the value on view-only pages with <i>(hidden)</i>. However, anyone that is able to edit a deployment plan could simply call <code>Log-Information $SensitiveVariable;</code> to
         view the value.
     </p>
     <p>
-        The secure option for storing passwords, connection strings, or other values intended to be encrypted is 
+        The secure option for storing passwords, connection strings, or other values intended to be encrypted is
         <a href="/support/documentation/buildmaster/global-components/resource-credentials">Resource Credentials</a>, as they require special permissions to manage,
         and (as per Inedo Extensibility guidelines) should <i>never</i> be written to any logs.
     </p>
@@ -110,8 +110,8 @@
     <h2 id="json-format" data-title="JSON Format &amp; Bulk Editing">JSON Format &amp; Bulk Editing</h2>
     <p>
         Variables at specific scopes can be edited in bulk as a JSON document at any of the scopes as defined in the <a href="#resolution-rules">resolution rules</a>
-        except for Execution and Promotion. The bulk JSON files are defined as a single root object with property/value pairs in one of two formats, either strings for both name and value, or 
-        a string name and <i>variable object</i> value. String values in both cases follow the <a href="#variable-types">variable types</a> 
+        except for Execution and Promotion. The bulk JSON files are defined as a single root object with property/value pairs in one of two formats, either strings for both name and value, or
+        a string name and <i>variable object</i> value. String values in both cases follow the <a href="#variable-types">variable types</a>
         format above and are not JSON arrays/maps.
     </p>
 
@@ -126,15 +126,106 @@
     "myString": "This is a simple string"
 }</pre></code>
 
-
     <h2 id="api" data-title="Variables API">Variables API</h2>
     <p>
         Variables are configurable using the <a href="/support/documentation/buildmaster/reference/api/variables">Variables Management API</a>.
     </p>
-    
+
+    <h2 id="value-renderers" data-title="Custom Value Renderers">Custom Value Renderers</h2>
+    <p>
+        Variable value renderers are used to control or modify how a specific variable's value is rendered on
+        an overview page. This can be used to support use-cases such as:
+    </p>
+    <ul>
+        <li>Linking to another page within BuildMaster</li>
+        <li>Linking to an external tool</li>
+        <li>Displaying a subset of properties of a map</li>
+        <li>Adding customized styles or images to a value</li>
+        <li>Cleanup of names that are too long or unreadable</li>
+    </ul>
+    <p>
+        A value renderer may be specified at the system, application group, or application level, and
+        applies to variables displayed on the following pages:
+    </p>
+    <ul>
+        <li>Build overview</li>
+        <li>Release overview</li>
+        <li>Application settings</li>
+        <li>Pipeline details</li>
+    </ul>
+    <h3>Adding a Custom Renderer</h3>
+    <p>
+        To add a custom renderer, visit the Administration &gt; Variables &gt; Value Renderers tab, and enter the
+        name and scope of the variable that will use the custom renderer.
+    </p>
+    <p>
+        Only <a href="#legacy">non-legacy variables</a> are considered when applying a value renderer. Additionally, variables denoted as
+        <a href="#sensitive">sensitive</a> in the UI will be rendered as <i>(hidden)</i> regardless if a value renderer matches or not.
+    </p>
+
+    <h3>Value Renderer Format</h3>
+    <p>
+        A value renderer is specified as HTML. The rendered HTML also considers variable functions
+        in context, including for example: <code>$BuildNumber</code>, <code>$Substring(...)</code>, and <code>$ApplicationName</code>.
+        To access the variable's value within the renderer itself, use <code>$Value</code> (or <code>@Value</code>/<code>%Value</code> depending on type).
+    </p>
+    <div class="attention technical">
+        <img src="/resources/images/icons/technical.png" />
+        <p>
+            Because value renderers are HTML, BuildMaster administrators (i.e. you) are responsible for ensuring
+            that values are either fully-trusted (i.e. only trusted parties create the value), or that they are properly
+            sanitized to prevent Cross Site Scripting attacks, generating malformed HTML, and more. A number of
+            helpful functions are included in the InedoCore extension to mitigate these risks such as <code>$HtmlEncode()</code>,
+            <code>$UrlEncode()</code>, and <code>$JsEncode()</code>.
+        </p>
+    </div>
+
+    <h4>Examples</h4>
+    <inedo:tab-block>
+        <tab name="Simple Substring">
+            <div>
+                <code><pre>$Substring($Value, 0, 10)...</pre></code>
+            </div>
+            <p>
+                <b>Initial value:</b> <code>This value is too long to fit on the page</code>
+            </p>
+            <p>
+                <b>Renderered as:</b> <code>This value...</code>
+            </p>
+        </tab>
+        <tab name="3-property Map">
+            <div>
+                <code><pre>&lt;a href="%Value.Href?queryData=$UrlEncode(%Value.Data)"&gt;$HtmlEncode(%Value.Text)&lt;/a&gt;</pre></code>
+            </div>
+            <p>
+                <b>Initial value:</b> <code>%(Text: Some link text..., Href: https://example.org, Data: "some string")</code>
+            </p>
+            <p>
+                <b>Renderered as:</b> <code><a href="https://example.org?queryData=some+string">Some link text...</a></code>
+            </p>
+        </tab>
+        <tab name="Custom Image">
+            <div>
+                <code><pre>&lt;img style="max-width: 150px;" src="/resources/images/logos/proget-logo.png" alt="ProGet Logo" title="$HtmlEncode($Value)" /&gt;</pre></code>
+            </div>
+            <p>
+                <b>Initial value:</b> <code>Some text that appears on hover</code>
+            </p>
+            <p>
+                <b>Renderered as:</b> <code><img style="max-width: 150px;" src="/resources/images/logos/proget-logo.png" alt="ProGet Logo" title="Some text that appears on hover" /></code>
+            </p>
+        </tab>
+    </inedo:tab-block>
+
+    <p>
+        For other examples, see the examples section in the
+        <a href="/support/documentation/buildmaster/core-concepts/builds-and-ci#variable-value-renderers">Builds &amp; Continuous Integration</a>
+        documentation.
+    </p>
+
     <h2 id="legacy" data-title="Legacy Variables">Legacy Configuration and Release Variables</h2>
     <p>
-        If you used configuration variables prior to BuildMaster 5.2 and earlier, see 
+        If you used configuration variables prior to BuildMaster 5.2 and earlier, see
         <a href="/support/kb/1128">KB#1128: Legacy Configuration and Release Variables</a>
         for more information on how legacy and non-legacy variables interact.
     </p>
