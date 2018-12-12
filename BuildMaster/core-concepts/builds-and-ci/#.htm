@@ -256,8 +256,8 @@
         When a custom plan is assigned to a repository monitor, then
         instead of automatic creation of a new build, that plan will be executed in the
         context of all applications matching the specified application filter. During
-        execution, any additional context from the commit will be available (e.g. <code>$GitCommit</code> and <code>$Branch</code>). This
-        allows for more advanced use-cases, including:
+        execution, any additional context from the commit will be <a href="#ci-plans">available via deployment variables</a> 
+        to support more complex use-cases:
     </p>
 
     <ul class="docs">
@@ -277,6 +277,21 @@
         BuildMaster supports custom webhook events fired by GitHub
         and GitLab. Visit the <a href="https://github.com/Inedo/inedox-git/wiki">Git extension Wiki</a>
         for more information on the configuration required for each specific system.
+    </p>
+
+    <h3 id="ci-plans" data-title="Hook &amp; Monitor Plans">Hook &amp; Monitor Plans</h3>
+    <p>
+        Both Repository Monitors and Repository Hooks support common variables that can be used within the plan. The default variables include:
+    </p>
+    <ul>
+        <li><code>$Branch</code> - the ref that a commit was pushed to without <code>refs/heads/</code> at the beginning, e.g. <code>master</code></li>
+        <li><code>$Repository</code> - the name of the repository without the organization name, e.g. <code>inedox-git</code></li>
+        <li><code>$CommitId</code> - the ID, SHA, or hash associated with the commit, e.g. <code></code></li>
+        <li><code>$CommitUser</code> - the name of the user who authored the commit</li>
+    </ul>
+    <p>
+        Additional context may be available depending on the repository host. Visit the <a href="https://github.com/Inedo/inedox-git/wiki">Git extension Wiki</a>
+        for more information.
     </p>
 
     <h3 id="api">Release &amp; Build Deployment API</h3>
