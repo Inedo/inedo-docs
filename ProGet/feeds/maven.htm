@@ -28,9 +28,16 @@
 		by name do <em>not</em> need this index.
 	</p>
 	<p>
-		Maven feeds do not currently support alternate package stores (AWS, Azure). Support for both
-		is <a href="https://inedo.myjetbrains.com/youtrack/issue/PG-1256" target="_blank">planned</a>
-		for ProGet 5.1.0.
+		As of ProGet 5.1.0, Maven feeds support alternate package stores (AWS, Azure). 
 	</p>
+	  
+	<h3>Authenticating to Maven Feeds</h3>
+	<p>
+		Authentication settings for the maven client is configured in your 
+		<a target="_blank" href="https://maven.apache.org/settings.html">settings.xml</a> file.
+		You can use the standard &lt;username&gt; and &lt;password&gt; elements to store a username/password
+		for ProGet, or you can specify <code>api</code> as the username, and an 
+		<a href="/support/documentation/proget/administration/security/api-keys">API Key</a> as a password.
+	  </p>
   </body>
 </html>
