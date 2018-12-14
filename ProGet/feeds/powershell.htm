@@ -34,7 +34,7 @@
     </p>
     <pre>Import-Module PowerShellGet
 
-Register-PSRepository -Name MyProGetFeed -SourceLocation &lt;ProGetUrl&gt;/nuget/&lt;FeedName&gt;/api/v2 -PublishLocation &lt;ProGetUrl&gt;/nuget/&lt;FeedName&gt;/api/v2/package
+Register-PSRepository -Name MyProGetFeed -SourceLocation &lt;ProGetUrl&gt;/nuget/&lt;FeedName&gt;/ -PublishLocation &lt;ProGetUrl&gt;/nuget/&lt;FeedName&gt;/
 Publish-Module -Path &lt;ModuleFile&gt; -NuGetApiKey &lt;UserName&gt;:&lt;Password&gt; -Repository MyProGetFeed
 </pre>
     <p>
