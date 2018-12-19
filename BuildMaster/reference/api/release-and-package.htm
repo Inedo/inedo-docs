@@ -1,9 +1,9 @@
     <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title>Release &amp; Package Deployment</title>
+    <title>Release &amp; Build Deployment</title>
     
-    <meta name="keywords" content="buildmaster,api,releases,packages" />
+    <meta name="keywords" content="buildmaster,api,releases,builds" />
     <meta name="show-headings-in-nav" content="true" />
     <style type="text/css">
         th {
@@ -15,12 +15,12 @@
 <body>
    
     <p>
-            The Release &amp; Package Deployment API offers a simple mechanism for creating releases, creating release packages, and deploying release packages.
+            The Release &amp; Build Deployment API offers a simple mechanism for creating releases, creating builds, and deploying builds.
     </p>
     <h2 id="API-key-usage" data-title="API Key Usage"> API Usage</h2>
 
 <p>
-        All of these endpoints require that an API Key with Release &amp; Package Deployment access is passed into each request. The examples use a query string for simplicity, but you could also use a header, form value, or JSON property. See  <em>Using API Keys</em> for more information.
+        All of these endpoints require that an API Key with Release &amp; Build Deployment access is passed into each request. The examples use a query string for simplicity, but you could also use a header, form value, or JSON property. See  <em>Using API Keys</em> for more information.
 </p>
 
  
@@ -127,7 +127,7 @@
                         </td>
                     </tr>
 
-                    <!-- pipeline, furthest package, latest package -->
+                    <!-- pipeline, furthest build, latest build -->
                     <tr>
                         <td><code>pipelineId</code></td>
                         <td>
@@ -141,34 +141,34 @@
                         </td>
                     </tr>
                     <tr>
-                        <td><code>furthestPackageId</code></td>
+                        <td><code>furthestBuildId</code></td>
                         <td>
-                            An <em>integer</em> representing the system-unique identifier of the active or deployed package that has made it furthest in the pipeline for the release.
+                            An <em>integer</em> representing the system-unique identifier of the active or deployed build that has made it furthest in the pipeline for the release.
                         </td>
                     </tr>
                     <tr>
-                        <td><code>furthestPackageNumber</code></td>
+                        <td><code>furthestBuildNumber</code></td>
                         <td>
-                            A <em>string</em> representing the application-unique number of the active or deployed package that has made it furthest in the pipeline for the release.
+                            A <em>string</em> representing the application-unique number of the active or deployed build that has made it furthest in the pipeline for the release.
                         </td>
                     </tr>
                     <tr>
-                        <td><code>latestPackageId</code></td>
+                        <td><code>latestBuildId</code></td>
                         <td>
-                            An <em>integer</em> representing the system-unique identifier of the active or deployed package that was most recently created.
+                            An <em>integer</em> representing the system-unique identifier of the active or deployed build that was most recently created.
                         </td>
                     </tr>
                     <tr>
-                        <td><code>latestPackageNumber</code></td>
+                        <td><code>latestBuildNumber</code></td>
                         <td>
-                            A <em>string</em> representing the application-unique number of the active or deployed package that was most recently created.
+                            A <em>string</em> representing the application-unique number of the active or deployed build that was most recently created.
                         </td>
                     </tr>
                 </tbody>
             </table>
         </tab>
         
-        <tab name="Package">
+        <tab name="Build">
             <table>
                 <thead>
                     <tr>
@@ -181,13 +181,13 @@
                     <tr>
                         <td><code>id</code></td>
                         <td>
-                            An <em>integer</em> representing the system-unique identifier of the package.
+                            An <em>integer</em> representing the system-unique identifier of the build.
                         </td>
                     </tr>
                     <tr>
                         <td><code>number</code></td>
                         <td>
-                            A <em>string</em> representing the release-unique identifier of the package.
+                            A <em>string</em> representing the release-unique identifier of the build.
                         </td>
                     </tr>
                     <tr>
@@ -201,25 +201,25 @@
                     <tr>
                         <td><code>createdBy</code></td>
                         <td>
-                            A <em>string</em> representing the user who created the package, or <code>SYSTEM</code> if created non-interactively.
+                            A <em>string</em> representing the user who created the build, or <code>SYSTEM</code> if created non-interactively.
                         </td>
                     </tr>
                     <tr>
                         <td><code>createdOn</code></td>
                         <td>
-                            A <em>string</em> representing the UTC date when the package was created, in ISO 8601 format (yyyy-MM-ddThh:mm:ss).
+                            A <em>string</em> representing the UTC date when the build was created, in ISO 8601 format (yyyy-MM-ddThh:mm:ss).
                         </td>
                     </tr>
                     <tr>
                         <td><code>rejectedBy</code></td>
                         <td>
-                            A <em>string</em> representing the user who rejected the package, or <code>SYSTEM</code> if rejected non-interactively.
+                            A <em>string</em> representing the user who rejected the build, or <code>SYSTEM</code> if rejected non-interactively.
                         </td>
                     </tr>
                     <tr>
                         <td><code>rejectedOn</code></td>
                         <td>
-                            A <em>string</em> representing the UTC date when the package was rejected, in ISO 8601 format (yyyy-MM-ddThh:mm:ss).
+                            A <em>string</em> representing the UTC date when the build was rejected, in ISO 8601 format (yyyy-MM-ddThh:mm:ss).
                         </td>
                     </tr>
 
@@ -227,19 +227,19 @@
                     <tr>
                         <td><code>pipelineId</code></td>
                         <td>
-                            An <em>integer</em> representing the system-unique identifier of the pipeline used by the package.
+                            An <em>integer</em> representing the system-unique identifier of the pipeline used by the build.
                         </td>
                     </tr>
                     <tr>
                         <td><code>pipelineName</code></td>
                         <td>
-                            A <em>string</em> representing the name of the pipeline used by the package.
+                            A <em>string</em> representing the name of the pipeline used by the build.
                         </td>
                     </tr>
                     <tr>
                         <td><code>furthestStage</code></td>
                         <td>
-                            A <em>string</em> representing the name the furthest stage the package has advanced to in the pipeline.
+                            A <em>string</em> representing the name the furthest stage the build has advanced to in the pipeline.
                         </td>
                     </tr>
 
@@ -247,31 +247,31 @@
                     <tr>
                         <td><code>applicationId</code></td>
                         <td>
-                            An <em>integer</em> representing the system-unique identifier of the application for the package.
+                            An <em>integer</em> representing the system-unique identifier of the application for the build.
                         </td>
                     </tr>
                     <tr>
                         <td><code>applicationName</code></td>
                         <td>
-                            A <em>string</em> representing the system-unique name of the application for the package.
+                            A <em>string</em> representing the system-unique name of the application for the build.
                         </td>
                     </tr>
                     <tr>
                         <td><code>releaseId</code></td>
                         <td>
-                            An <em>integer</em> representing the system-unique identifier of the release for the package.
+                            An <em>integer</em> representing the system-unique identifier of the release for the build.
                         </td>
                     </tr>
                     <tr>
                         <td><code>releaseNumber</code></td>
                         <td>
-                            A <em>string</em> representing the application-unique number of the release for the package.
+                            A <em>string</em> representing the application-unique number of the release for the build.
                         </td>
                     </tr>
                     <tr>
                       <td><code>releaseName</code></td>
                       <td>
-                        A <em>string</em> representing the name of the release for the package.
+                        A <em>string</em> representing the name of the release for the build.
                       </td>
                     </tr>
                     
@@ -419,15 +419,15 @@
                     </td>
                   </tr>
                     <tr>
-                        <td><code>packageId</code></td>
+                        <td><code>buildId</code></td>
                         <td>
-                            An <em>integer</em> representing the system-unique identifier of the package for the deployment.
+                            An <em>integer</em> representing the system-unique identifier of the build for the deployment.
                         </td>
                     </tr>
                     <tr>
-                        <td><code>packageNumber</code></td>
+                        <td><code>buildNumber</code></td>
                         <td>
-                            A <em>string</em> representing the release-unique number of the package for the deployment.
+                            A <em>string</em> representing the release-unique number of the build for the deployment.
                         </td>
                     </tr>
 
@@ -595,9 +595,9 @@
     </table>
     <p>This may also return a status of 400 (invalid parameters) or 403 (invalid key) as well as an error message as the body.</p>
 
-    <h3 id="get-packages" data-title="Get Package">Get Packages</h3>
-    <p class="info">GET or POST <span style="opacity: 0.5">/api/releases/packages</span></p>
-    <p>Returns a status of 200 and a body with an array of <a href="#data-specification">package objects</a> based on the specified optional filter parameters:</p>
+    <h3 id="get-builds" data-title="Get Build">Get Builds</h3>
+    <p class="info">GET or POST <span style="opacity: 0.5">/api/releases/builds</span></p>
+    <p>Returns a status of 200 and a body with an array of <a href="#data-specification">build objects</a> based on the specified optional filter parameters:</p>
     <table>
         <thead>
             <tr>
@@ -615,8 +615,8 @@
                 <td>Either a key named <code>releaseId</code> with an integer value, a key named <code>releaseNumber</code> with any value, or a key named <code>releaseName</code> with any value.</td>
             </tr>
             <tr>
-                <td>Package</td>
-                <td>Either a key named <code>packageId</code> with an integer value, or a key named <code>packageNumber</code> with any value.</td>
+                <td>Build</td>
+                <td>Either a key named <code>buildId</code> with an integer value, or a key named <code>buildNumber</code> with any value.</td>
             </tr>
             <tr>
                 <td>Pipeline</td>
@@ -636,9 +636,9 @@
     </table>
     <p>This may also return a status of 400 (invalid parameters) or 403 (invalid key) as well as an error message as the body.</p>
     
-    <h3 id="create-package" data-title="Create Release Package">Create Release Package</h3>
-    <p class="info">POST or PUT <span style="opacity: 0.5">/api/releases/packages/create</span></p>
-    <p>Returns a status of 200 and a body with a <a href="#data-specification">package object</a> that was created with the following input parameters:</p>
+    <h3 id="create-build" data-title="Create Build">Create Build</h3>
+    <p class="info">POST or PUT <span style="opacity: 0.5">/api/releases/builds/create</span></p>
+    <p>Returns a status of 200 and a body with a <a href="#data-specification">build object</a> that was created with the following input parameters:</p>
     <table>
         <thead>
             <tr>
@@ -656,8 +656,8 @@
                 <td>Required if <code>releaseNumber</code> is specified, otherwise must not be set. Either a key named <code>applicationId</code> with an integer value, or a key named <code>applicationName</code> with any value.</td>
             </tr>
             <tr>
-                <td>Package Number</td>
-                <td>Optional. A key named <code>packageNumber</code> with any value; if not specified, the package number will be automatically generated.</td>
+                <td>Build Number</td>
+                <td>Optional. A key named <code>buildNumber</code> with any value; if not specified, the build number will be automatically generated.</td>
             </tr>
             <tr>
                 <td>Variables</td>
@@ -668,7 +668,7 @@
     <p>This may also return a status of 400 (invalid parameters) or 403 (invalid key) as well as an error message as the body.</p>
 
     <h3 id="get-deployments" data-title="Get Deployments">Get Deployments</h3>
-    <p class="info">GET or POST <span style="opacity: 0.5">/api/releases/packages/deployments</span></p>
+    <p class="info">GET or POST <span style="opacity: 0.5">/api/releases/builds/deployments</span></p>
     <p>Returns a status of 200 and a body with an array of <a href="#data-specification">deployment objects</a> based on the specified optional filter parameters:</p>
     <table>
         <thead>
@@ -687,8 +687,8 @@
                 <td>Either a key named <code>releaseId</code> with an integer value, a key named <code>releaseNumber</code> with any value, or a key named <code>releaseName</code> with any value.</td>
             </tr>
             <tr>
-                <td>Package</td>
-                <td>Either a key named <code>packageId</code> with an integer value, or a key named <code>packageNumber</code> with any value.</td>
+                <td>Build</td>
+                <td>Either a key named <code>buildId</code> with an integer value, or a key named <code>buildNumber</code> with any value.</td>
             </tr>
             <tr>
                 <td>Deployment</td>
@@ -716,8 +716,8 @@
     </table>
     <p>This may also return a status of 400 (invalid parameters) or 403 (invalid key) as well as an error message as the body.</p>
 
-    <h3 id="deploy-package" data-title="Deploy Package">Deploy Package</h3>
-    <p class="info">POST or PUT <span style="opacity: 0.5">/api/releases/packages/deploy</span></p>
+    <h3 id="deploy-build" data-title="Deploy Build">Deploy Build</h3>
+    <p class="info">POST or PUT <span style="opacity: 0.5">/api/releases/builds/deploy</span></p>
     <p>Returns a status of 200 and a body with an array of <a href="#data-specification">deployment objects</a> that were created with the following input parameters:</p>
     <table>
         <thead>
@@ -728,12 +728,12 @@
         </thead>
         <tbody>
             <tr>
-                <td>Package</td>
-                <td>Required. Either a key named <code>packageId</code> with an integer value, or a key named <code>packageNumber</code> with any value.</td>
+                <td>Build</td>
+                <td>Required. Either a key named <code>buildId</code> with an integer value, or a key named <code>buildNumber</code> with any value.</td>
             </tr>
             <tr>
                 <td>Release</td>
-                <td>Required if <code>packageNumber</code> is specified, otherwise must not be set. Either a key named <code>releaseId</code> with an integer value, or a key named <code>releaseNumber</code> with any value.</td>
+                <td>Required if <code>buildNumber</code> is specified, otherwise must not be set. Either a key named <code>releaseId</code> with an integer value, or a key named <code>releaseNumber</code> with any value.</td>
             </tr>
             <tr>
                 <td>Application</td>
@@ -762,9 +762,9 @@
     </table>
     <p>This may also return a status of 400 (invalid parameters) or 403 (invalid key) as well as an error message as the body.</p>
 
-    <h3 id="reject-package" data-title="Reject Release Package">Reject Release Package</h3>
-    <p class="info">POST or DELETE <span style="opacity: 0.5">/api/releases/packages/reject</span></p>
-    <p>Returns a status of 200 if the package was rejected:</p>
+    <h3 id="reject-build" data-title="Reject Build">Reject Build</h3>
+    <p class="info">POST or DELETE <span style="opacity: 0.5">/api/releases/builds/reject</span></p>
+    <p>Returns a status of 200 if the build was rejected:</p>
     <table>
         <thead>
             <tr>
@@ -774,12 +774,12 @@
         </thead>
         <tbody>
             <tr>
-                <td>Package</td>
-                <td>Required. Either a key named <code>packageId</code> with an integer value, or a key named <code>packageNumber</code> with any value.</td>
+                <td>Build</td>
+                <td>Required. Either a key named <code>buildId</code> with an integer value, or a key named <code>buildNumber</code> with any value.</td>
             </tr>
             <tr>
                 <td>Release</td>
-                <td>Required if <code>packageNumber</code> is specified, otherwise must not be set. Either a key named <code>releaseId</code> with an integer value, or a key named <code>releaseNumber</code> with any value.</td>
+                <td>Required if <code>buildNumber</code> is specified, otherwise must not be set. Either a key named <code>releaseId</code> with an integer value, or a key named <code>releaseNumber</code> with any value.</td>
             </tr>
             <tr>
                 <td>Application</td>

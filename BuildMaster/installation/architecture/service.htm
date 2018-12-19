@@ -19,7 +19,7 @@
         diagnosing problems or working with Inedo's support team to track down unexpected behavior or bugs. 
     </p>
     <h2 id="task-runners" data-title="Task Runners">Task Runners</h2>
-    <p>Task runners run well-defined background jobs, on either a periodic and/or manual basis. Many will create sub-tasks that allow you to better visualize what the service is doing. Some task runners can be manually triggered. This should only be needed in debugging purposes, as the Web Application will trigger them in response to certain actions (such as deploying a release package), and they are always executed on service start.</p>
+    <p>Task runners run well-defined background jobs, on either a periodic and/or manual basis. Many will create sub-tasks that allow you to better visualize what the service is doing. Some task runners can be manually triggered. This should only be needed in debugging purposes, as the Web Application will trigger them in response to certain actions (such as deploying a build), and they are always executed on service start.</p>
     <table width="631">
     <tbody>
     <tr>
@@ -43,7 +43,7 @@
     <p>Scheduled Promotion Dispatcher</p>
     </td>
     <td width="407">
-    <p>promotes release packages that are &ldquo;scheduled as soon as requirements are met&rdquo;</p>
+    <p>promotes builds that are &ldquo;scheduled as soon as requirements are met&rdquo;</p>
     </td>
     </tr>
     <tr>
@@ -91,7 +91,7 @@
     <p>Scheduled Build Dispatcher</p>
     </td>
     <td width="407">
-    <p>Dispatches executions for release package triggers that will create a package on a schedule</p>
+    <p>Dispatches executions for build triggers that will create a build on a schedule</p>
     </td>
     </tr>
     <tr>
@@ -99,7 +99,7 @@
     <p>SCM Trigger Dispatcher</p>
     </td>
     <td width="407">
-    <p>Monitors legacy Source Control Providers and creates new release packages when a change is detected</p>
+    <p>Monitors legacy Source Control Providers and creates new builds when a change is detected</p>
     </td>
     </tr>
     <tr>
@@ -108,6 +108,14 @@
     </td>
     <td width="407">
     <p>performs synchronization of issues using legacy issue tracking providers.</p>
+    </td>
+    </tr>
+	<tr>
+    <td width="224">
+    <p>Repository Monitor</p>
+    </td>
+    <td width="407">
+    <p>executes plans or creates new builds when new commits are detected in a repository.</p>
     </td>
     </tr>
     </tbody>

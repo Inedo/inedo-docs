@@ -51,7 +51,7 @@
                             <code>CreateRelease</code>: creates a new release by incrementing the final part after a release has been deployed.
                         </li>
                         <li>
-                            <code>DeployRelease</code>: mark the release and package as deployed once it reaches the final stage.
+                            <code>DeployRelease</code>: mark the release and build as deployed once it reaches the final stage.
                         </li>
                     </ul>
                 </td>
@@ -224,9 +224,9 @@
     <table>
         <tbody>
             <tr>
-                <td><code>UserApprovals</code></td>
+                <td><code>PlanName</code></td>
                 <td>
-                    a <i>string</i> of the plan name that will be executed at the target, or null to use the plan embedded in the packages
+                    a <i>string</i> of the plan name that will be executed at the target
                 </td>
             </tr>
             <tr>
