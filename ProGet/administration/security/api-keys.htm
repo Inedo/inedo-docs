@@ -61,5 +61,19 @@
     <li>Form value (key) - only applications/x-www-form-urlencoded content type</li>
     <li>JSON property (API_Key) on root object - only application/json content type</li>
   </ul>
+  <h4>
+  API Keys for Feeds
+  </h4>
+  <p>
+  Although different third-party package formats (NuGet, npm, etc.) have different APIs, many of the clients support using an API key to authenticate some operations like publishing packages.
+  You can simply supply the ProGet API Key, and ProGet will use that to authenticate the request.
+    </p>
+  <p>
+  However, most clients will not send the API key for operations like listing or pulling packages. In this case, ProGet will issue an authentication challenge, and the client will respond by prompting for a username and password.
+  In this case, you can supply <code>api</code> for the username, and your API Key for the password. 
+  </p>
+  <p>
+  Note that, if you've configured <a href="/support/documentation/various/ldap/integrated-authentication">Windows Integrated Authentication</a>, the client will first need to authenticate with an Active Directory account, which may make API-key based authentication redundant.
+   </p>	  
 </body>
 </html>
