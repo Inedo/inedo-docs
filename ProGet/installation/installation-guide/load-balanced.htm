@@ -1,0 +1,199 @@
+﻿<html>
+<head>
+    <title>ProGet Load-balanced Installation</title>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <meta name="keywords" content="proget, installation, load-balanced" />
+    <meta name="sequence" content="400" />
+</head>
+<body>
+
+    <div class="attention best-practice">
+<p>These step-by-step instructions were developed by Scott Cusson (Senior Release Engineer, Symbotic), primarily as a guide for internal use. We're sharing it as a reference guide that may help you set-up your load-balanced or high-availability installation. See <a href="/support/documentation/proget/installation/load-balancing-and-automatic-failover">load balancing and automatic failover</a> for more information.</p>
+    </div>
+
+
+
+<h2>Guideline to setting up ProGet to support Load Balancing</h2>
+<p>Below is a guideline for setting up a cluster and its various web servers in a Network Load Balancing (NLB) environment to support the Load Balancing feature in ProGet. This uses Microsoft Window's NLB feature as a load balancer, and all machines in this cluster are VMs.</p>
+<h4>These steps were used to update a single existing ProGet instance.</h4>
+<h2 id="pre-req" data-title="Prerequisites">Prerequisites:</h2>
+<ul class="docs">
+    <li>ProGet Enterprise license</li>
+    <li>System user account with Administrator rights to all machines in the cluster</li>
+    <li>Admin access to ProGet</li>
+</ul>
+<h2 id="needed-it" data-title="Needed by IT">Needed by IT:</h2>
+<ul class="docs">
+    <li>
+        Windows Server 2012 R2 (minimum) machines with 2 NICs (one dedicated for NLB cluster) each with static IPs to host the ProGet website. Example machine names in italics.
+        <ul class="docs">
+            <li>
+                One machine per web node
+                <ul class="docs">
+                    <li><em>ProGet_Webnode1</em></li>
+                    <li><em>ProGet_Webnode2</em></li>
+                    <li><em>ProGet_Webnode3</em></li>
+                </ul>
+            </li>
+            <li>
+                Machine to set up the NLB cluster
+                <ul class="docs">
+                    <li><em>ProGet_NLB</em></li>
+                </ul>
+            </li>
+            <li>
+                Database (DB) server with SQL Server 2012 (minimum) for the ProGet DB and associated package data.
+                <ul class="docs">
+                    <li>
+                        <em>ProGet_DB</em>
+                        <ul class="docs">
+                            <li>SQL installed with the System user. This user needs also to be the DB owner and sysadmin.</li>
+                            <li>Package Data location: C:\ProgramData\ProGet\Packages</li>
+                            <li>Share the Packages folder. The web nodes will be configured to access: <br />\\&lt;<em>ProGet_DB</em>&gt;\Packages</li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+    <li>Cluster IP with Subnet mask (see <a href="#setting-up-cluster">Setting up the Cluster</a> below) mapped to the Internet name and company domain (ex. http://nuget.srv.companyname.corp/).</li>
+    <li>Address Resolution Protocol (ARP) entry using the cluster IP to the switch that routes into the NLB VLAN</li>
+</ul>
+<p><strong>Install on each web node via the Server Manager > Add Roles and Features as the System user:</strong></p>
+    <ul class="docs">
+        <li>IIS (Web Server) under Server Roles using default selections</li>
+        <li>Network Load Balancing under Features</li>
+        <li>.Net 4.5 under Features (for IIS machine key gen). Install all options</li>
+    </ul>
+<h2 id="setting-up-cluster" data-title="Setting up the Cluster">Setting up the Cluster:</h2>
+    <ul class="docs">
+        <li>RDP as the System user into <em>ProGet_NLB</em></li>
+        <li>Open the NLB manager (Control Panel\All Control Panel Items\Administrative Tools\Network Load Balancing Manager)
+            <ul class="docs">
+                <li>Create a new cluster</li>
+                <li>Use the following as a guide to setup NLB: Microsoft's <a href="https://technet.microsoft.com/en-us/library/cc771008.aspx" target="blank">Network Load Balancing Cluster</a>.
+                <ul class="docs">
+                    <li>(Session Affinity (sticky sessions) is not required.)</li>
+                </ul>
+            </li>
+            </ul>
+        </li>
+    </ul>
+<h3 id="cluster-properties" data-title="Cluster Properties">Cluster properties:</h3>
+    <ol>
+        <li><strong>IP</strong> &ndash; provided by IT. 10.0.0.100</li>
+        <li><strong>Subnet mask</strong> &ndash; provided by IT. 255.255.250.0</li>
+        <li><strong>Internet name</strong> &ndash; provided by IT. NUGET.SRV</li>
+        <li><strong>Operation mode</strong> = Multicast</li>
+        <li><strong>Port range</strong> = 80 to 80</li>
+        <li><strong>Protocols</strong> = TCP</li>
+        <li><strong>Filtering mode</strong> = Multiple host\Single</li>
+    </ol>
+<h2 id="web-nodes" data-title="Setting up the ProGet web nodes">Setting up the ProGet web nodes:</h2>
+<p>Download the latest ProGet manual installer (<a href="http://inedo.com/proget/versions">http://inedo.com/proget/versions</a>) and on each web node:</p>
+    <ul class="docs">
+        <li>Extract the installer zip
+            <ul>
+                <li>Copy the contents of Proget-WebApp.zip to C:\ProGet\WebApp</li>
+                <li>On <em>ProGet_Webnode1</em> only, copy the contents of Proget-Service.zip to C:\ProGet\Service</li>
+            </ul>
+        </li>
+        <li>Open the IIS manager
+            <ul class="docs">
+                <li>Create the ProGet website following the "Web Application Installation: For IIS hosted applications, there are 2 additional steps" section on <a href="http://inedo.com/support/documentation/proget/installation/manual">http://inedo.com/support/documentation/proget/installation/manual</a></li>
+                <li>Websites and App Pools must be running as the System user.</li>
+            </ul>
+        </li>
+        <li>Update the Bindings with
+            <ul class="docs">
+                <li>Cluster IP - provided by IT (ex. 10.0.0.100)</li>
+                <li>Port 80</li>
+                <li>Host name &ndash; provided by IT (ex. nuget.srv.companyname.corp)</li>
+            </ul>
+        </li>
+    </ul>
+<p>Configure C:\ProGet\WebApp\web.config on <em>ProGet_Webnode1 </em>only. We will use this config on the other nodes.</p>
+    <ul class="docs">
+        <li>In the IIS manager
+            <ul class="docs">
+                <li>Select the ProGet website</li>
+                <li>Double click Machine Key
+                    <ul class="docs">
+                        <li>Use validation method SHA1 and Auto Encryption method.</li>
+                        <li>Deselect any check boxes and click Generate Keys and Apply on the right pane.
+                            <ul class="docs">
+                                <li>This will update the web.config with a machine key.</li>
+                            </ul>
+                        </li>
+                    <li>Modify C:\ProGet\WebApp\Web.config with notepad and in the appSettings section, add:
+                        <ul class="docs">
+                            <li>&lt;add key="InedoLib.DbConnectionString" value="Data Source=&lt;<em>ProGet_DB</em>&gt;;Initial Catalog=ProGet;Integrated Security=True;Max Pool Size=200" /&gt;</li>
+                            <li>&lt;add key="ProGetConfig.Storage.PackagesRootPath" value="\\&lt;<em>ProGet_DB</em>&gt;\Packages" /&gt; to point ProGet to the nuget package location.</li>
+                        </ul>
+                    </li>
+                    <li>Overwrite the web.config on the other web nodes and restart the ProGet websites</li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+    </ul>
+<h2 id="enable-load-balancing" data-title="Update ProGet to enable Load Balancing">Update ProGet to enable Load Balancing:</h2>
+    <ul class="docs">
+        <li>Login to ProGet administration</li>
+        <li>Click on Configure Load Balancing
+            <ul class="docs">
+                <li>Enable</li>
+            </ul>
+        </li>
+        <li>Click on Advanced Settings
+            <ul class="docs">
+                <li>Update PackagesRootPath from C:\ProgramData\ProGet\Packages to \\&lt;<em>ProGet_DB</em>&gt;\Packages if needed</li>
+                <li>Update remaining Storage. Value entry paths from C:\ProgramData\ProGet\Packages\ to \\&lt;<em>ProGet_DB</em>&gt;\Packages\</li>
+                <li>Any Extension. Value entries need to remain at C:\ProgramData\ProGet. Unknown why, but this means that any extensions (InedoCore, AWS, Azure, etc.) need to be in these locations on all web nodes and manually updated.</li>
+                <li>Save Changes</li>
+            </ul>
+        </li>
+    </ul>
+<h2 id="install-proget-service" data-title="Install the ProGet Service to perfom indexing and other background tasks">Install the ProGet Service to perform indexing and other background tasks:</h2>
+    <p>
+        On <em>ProGet_Webnode1 </em>only, create file <b>%PROGRAMDATA%\Inedo\SharedConfig\ProGet.config</b> with the content:
+    </p>
+    <pre>
+&lt;InedoAppConfig&gt;
+    &lt;ConnectionString&gt;Data Source=&lt;<em>ProGet_DB</em>&gt;;Initial Catalog=ProGet;Integrated Security=True;Max Pool Size=200&lt;/ConnectionString&gt;
+    WebServer Enabled="false" Urls="http:&lt;<em>Cluster_IP</em>&gt;:80:&lt;<em>Host_name</em>&gt;;http://localhost:80" /&gt;
+&lt;/InedoAppConfig&gt;
+</pre>
+    <p>
+        In an Administrator command window, change directory to C:\ProGet\Service and run "Service.exe install" to install the service.
+    </p>
+    <p>
+        Open the Services (Control Panel\All Control Panel Items\Administrative Tools &gt; Services) and change the log in of the ProGet Service to the System user (right click on the ProGet Service &gt; Properties &gt; Log On tab).
+    </p>
+    <p>
+        Start the ProGet service.
+    </p>
+
+
+<h2 id="upgrading" data-title="Upgrading a Load Balanced ProGet Installation">Upgrading a Load Balanced ProGet Installation</h2>
+<p>Download the latest ProGet manual installer (<a href="/proget/versions" target="_blank">http://inedo.com/proget/versions</a>) and on each web node:</p>
+<ul class="docs">
+<li>Stop the ProGet IIS AppPool</li>
+<li>Make a copy of the appSettings section from Web.config</li>
+<li>Copy the contents of Proget-WebApp.zip to C:\ProGet\WebApp, overwriting the old files</li>
+<li>Ensure the appSettings section is correct (Web.config may have been overwritten in the upgrade, so restore settings copied in previous step)</li>
+</ul>
+<p>On <em>ProGet_Webnode1, </em>only:</p>
+<ul class="docs">
+<li>Stop the INEDOPROGETSVC Windows Service</li>
+<li>Copy the contents of Proget-Service.zip to C:\ProGet\Service</li>
+</ul>
+<p>With all AppPools and services stopped, run the ProGet SqlScripts as described in the <a href="/support/documentation/proget/installation/installation-guide/manual" target="_blank">manual install guide</a></p>
+<p>After the database is updated:</p>
+<ul class="docs">
+<li>Start the ProGet IIS AppPool on each web node</li>
+<li>Start the INEDOPROGETSVC Windows Service on <em>ProGet_Webnode1</em></li>
+</ul>
+    
+</body>
+</html>
