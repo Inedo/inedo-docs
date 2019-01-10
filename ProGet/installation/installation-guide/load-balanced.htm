@@ -87,7 +87,13 @@
         <li><strong>Operation mode</strong> = Multicast</li>
         <li><strong>Port range</strong> = 80 to 80</li>
         <li><strong>Protocols</strong> = TCP</li>
-        <li><strong>Filtering mode</strong> = Multiple host\Single</li>
+        <li><strong>Filtering mode</strong> = Multiple host\Single | None (None option preferred)
+            <ul>
+                <li>None (preferred); indicates that any host in the cluster which matches to the port rule can handle the client request</li>
+                <li>Multiple host\Single; indicates that one host in the NLB cluster can process traffic from the same client. The requests are basically transmitted
+ to the same host every time NLB reads the IP address.</li> 
+            </ul>
+        </li>
     </ol>
 <h2 id="web-nodes" data-title="Setting up the ProGet web nodes">Setting up the ProGet web nodes:</h2>
 <p>Download the latest ProGet manual installer (<a href="http://inedo.com/proget/versions">http://inedo.com/proget/versions</a>) and on each web node:</p>
