@@ -30,7 +30,7 @@ Orchestration jobs are created on the jobs page, and require the selection of an
 
 ![Orchestration Job in Otter](/resources/documentation/otter/jobs-orchestration.png){.screenshot}
 
-### Orchestration Job Context {#orchestration-job-context data-title="Orchestration Job Context"}
+#### Orchestration Job Context {#orchestration-job-context data-title="Orchestration Job Context"}
 
 Orchestration jobs may be created to target one of the following:
 
@@ -44,7 +44,7 @@ When targeting servers directly, each server is enumerated and the plan is execu
 - **Environment(s) only** - behavior is equivalent to targeting servers directly for all servers associated with any environment in the list
 - **Server role(s) and environment(s)** - will enumerate all servers in a role that are also in any listed environments, if multiple roles are supplied and a server belongs to more than 1, execution may occur on that server multiple times, use the for role context statement to ensure certain parts of a plan only execute when a specific role is in context
 
-## Job Templates {#job-templates data-title="Job Templates"}
+### Job Templates {#job-templates data-title="Job Templates"}
 
 You can also define a job template under *Admin* > *Job Templates*; these can be used to pre-populate fields in an orchestration job, and also allow for jobs to be triggered using the [Job Orchestration API].
 

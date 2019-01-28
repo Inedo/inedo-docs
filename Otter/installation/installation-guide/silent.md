@@ -3,6 +3,18 @@ title: Silent Installation
 keywords: otter,installation
 ---
 
+<style>
+    pre {
+        font-family: Consolas, 'Courier New', monospace;
+        background: black;
+        color: #ccc;
+        width: 400px;
+        border: solid #aaa;
+        border-radius: 5px;
+        padding: 5px;
+    }
+</style>
+
 [Otter](/otter) helps you automate configuration and installation of *other* software on your servers, and to help you automate and configure Otter, the fully-automated silent installer can perform initial [installation](#silent-installation-options) and [upgrades](#silent-upgrade-options). You could even use *another* instance of Otter to upgrade Otter... and another instance to upgrade that one, until you've reached Inception.
 
 See the [Otter Agent Silent Install Options](#silent-agent-install) for how to silently install agents as well; note that you will not need to upgrade agents, as they are automatically upgraded when you upgrade Otter.
@@ -66,19 +78,21 @@ OtterSetup.exe /S /Upgrade
 
 ### Agent Silent Install Options {#silent-agent-install}
 
-/S | Required for a silent install. If this is not specified, the UI will be displayed.
-/TargetPath=&lt;value&gt; | Root path where the agent will be installed. The default is *%ProgramFiles%*\\InedoAgent. {#targetpath-arg}
-/Port=&lt;value&gt; | Port number the agent will listen to. The default is *46336*. {#port-arg}
-/TempPath=&lt;value&gt; | Root path of the directory used by the agent for temporary files. The default is *%ProgramData%*\\InedoAgent. {#temppath-arg}
-/OtterRootPath=&lt;value&gt; | Path where the Otter-specific Agent binaries will be stored. The default is [[TempPath](#temppath-arg)]\\Otter.
-/UserAccount=&lt;value&gt; | User account of the agent. The default is *LocalSystem*. {#useraccount-arg}
-/Password=&lt;value&gt; | Password of the user account of the agent. Only used when [UserAccount](#useraccount-arg) is not one of the standard service accounts. {#password-arg}
-/Clients=&lt;value&gt; | Semicolon-separated list of client IP addresses which are allowed to connect to the agent. Any client may connect if this is not specified.
-/ServiceName=&lt;value&gt; | The name of the Windows Service that will be installed. The default is *INEDOAGENTSVC*.
-/Security=&lt;value&gt; | Either AES, SSL, or None. When SSL is specified, a valid [CertificateName](#certname-arg) must be specified. The default is AES.
-/CertificateName=&lt;value&gt; | The friendly name of a certificate stored in the LocalMachine store.
-/EncryptionKey=&lt;value&gt; | A 32-character hex string used for AES encryption.
-/LogFile=&lt;value&gt; | If specified, writes out a detailed log file of the installation process to the specified path value.
+Option                            | Description
+----------------------------------|----------
+/S                                | Required for a silent install. If this is not specified, the UI will be displayed.
+/TargetPath=&lt;value&gt;         | Root path where the agent will be installed. The default is *%ProgramFiles%*\\InedoAgent. {#targetpath-arg}
+/Port=&lt;value&gt;               | Port number the agent will listen to. The default is *46336*. {#port-arg}
+/TempPath=&lt;value&gt;           | Root path of the directory used by the agent for temporary files. The default is *%ProgramData%*\\InedoAgent. {#temppath-arg}
+/OtterRootPath=&lt;value&gt;      | Path where the Otter-specific Agent binaries will be stored. The default is [[TempPath](#temppath-arg)]\\Otter.
+/UserAccount=&lt;value&gt;        | User account of the agent. The default is *LocalSystem*. {#useraccount-arg}
+/Password=&lt;value&gt;           | Password of the user account of the agent. Only used when [UserAccount](#useraccount-arg) is not one of the standard service accounts. {#password-arg}
+/Clients=&lt;value&gt;            | Semicolon-separated list of client IP addresses which are allowed to connect to the agent. Any client may connect if this is not specified.
+/ServiceName=&lt;value&gt;        | The name of the Windows Service that will be installed. The default is *INEDOAGENTSVC*.
+/Security=&lt;value&gt;           | Either AES, SSL, or None. When SSL is specified, a valid [CertificateName](#certname-arg) must be specified. The default is AES.
+/CertificateName=&lt;value&gt;    | The friendly name of a certificate stored in the LocalMachine store.
+/EncryptionKey=&lt;value&gt;      | A 32-character hex string used for AES encryption.
+/LogFile=&lt;value&gt;            | If specified, writes out a detailed log file of the installation process to the specified path value.
 
 #### Example
 
