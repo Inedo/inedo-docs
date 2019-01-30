@@ -1,8 +1,8 @@
----
-title: Inedo SDK Versions and Release Notes
+﻿---
+title: Inedo SDK Versions and Release notes
 subtitle: Jobs and Scheduling Changes
-keywords: inedo,inedo sdk,versions,release notes
 sequence: 40
+keywords: inedo, inedo sdk, versions, release notes
 show-headings-in-nav: true
 ---
 
@@ -44,4 +44,4 @@ Version Compatibility Ranges are "hard coded" in each product which means that, 
 
 For example, let's say you have an extension with various components that are shared across your ProGet, Otter, and Hedgehog installations. If a new version of ProGet were to come out that introduces a new feature you wanted to extend, you would need to target a newer version of the Inedo SDK to access that new component. This would then mean you would have to upgrade Otter and Hedgehog (both which, presumably would be compatible with the new Inedo SDK), just so that extension can load.
 
-To work around this, you can override the version number used for compatibility verification with the [ProductVersionCompatibilityAttribute](/support/sdk-reference/inedosdk/Inedo.Extensibility/ProductVersionCompatibilityAttribute).    
+To work around this, you can override the version number used for compatibility verification with the [ProductVersionCompatibilityAttribute](/support/sdk-reference/inedosdk/Inedo.Extensibility/ProductVersionCompatibilityAttribute).   
