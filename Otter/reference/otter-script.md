@@ -19,6 +19,7 @@ While OtterScript is neither a general-purpose programming language (like Ruby),
 :::info {.otter}
 **Shared Documentation Note** - instead of copy/pasting the documentation (or creating a whole new set of documentation for OtterScript), we've kept the OtterScript detail pages in the Various Documentation, and the very few things that are Otter-specific are noted on these pages:
 
+{.docs}
 - [Comments & Descriptions](/support/documentation/various/execution-engine/otterscript/comments-and-descriptions)
 - [Formal Grammar](/support/documentation/various/execution-engine/otterscript/formal-grammar)
 - [Formal Specification](/support/documentation/various/execution-engine/otterscript/formal-specification)

@@ -6,7 +6,6 @@ keywords: ldap,active-directory
 
 Integrated Authentication is an option that allows transparent user authentication, removing the web-based login prompt. When this option is enabled and working, whatever account you signed on to Windows with, will be used as your login.
 
-<p class="info">
 **TROUBLESHOOTING**: [Receiving 401 (Not Authorized), always prompted for credentials.](/support/documentation/various/ldap/troubleshooting#authentication-not-working) {.info}
 
 ## Web Server Configuration {#web-server-config}
@@ -23,6 +22,6 @@ When this is configured, the web server and client will automatically negotiate 
 
 ## User Configuration {#user-config}
 
-To enable integrated authentication, click the *Integrated Authentication* link on the Administration page. 
+To enable integrated authentication, click the *Integrated Authentication* link on the Administration page.
 
 When this is checked, your Inedo product will attempt to read the `LOGON_USER` server variable, treat that as the already-authenticated user, and not prompt for a name and password. If there is no such server variable, it will prompt as per normal.

@@ -7,6 +7,7 @@ sequence: 800
 
 Inedo has partnered with [Gibraltar Software](https://gibraltarsoftware.com) in order to integrate [Loupe](https://onloupe.com){target="_blank"} with our products as part of our customer success initiative. This program is known as the *Customer Experience Improvement Program (CEIP)*, and this opt-in program offers the following benefits:
 
+{.docs}
 - Improved logging and performance metrics
 - Detailed error reporting
 - Centralized, aggregate feature usage analysis
@@ -14,6 +15,7 @@ Inedo has partnered with [Gibraltar Software](https://gibraltarsoftware.com) in 
 
 These features allow both Inedo and our customers to: {#data-usage}
 
+{.docs}
 - Provide superior support through improved logging and reduced customer effort
 - Determine and prioritize improvements for popular features
 - Analyze performance data to reduce page load and deployment times
@@ -22,6 +24,7 @@ These features allow both Inedo and our customers to: {#data-usage}
 
 CEIP functionality will be available in the following product versions going forward:
 
+{.docs}
 - BuildMaster 6.1
 - ProGet 5.2
 - Otter 2.2
@@ -38,6 +41,7 @@ Once enabled, captured CEIP telemetry is constantly buffered to memory, then flu
 
 When CEIP is enabled, some personally-identifiable information may be collected, including (but not limited to):
 
+{.docs}
 - Any system name, including application, user, pipeline, plan, operation, feed, server, and environment names
 - Error log and exception messages, including stack traces
 - Time durations and metric counts for whole executions and individual operations
@@ -47,6 +51,7 @@ When CEIP is enabled, some personally-identifiable information may be collected,
 
 Any data that could be deemed secure is not collected, including:
 
+{.docs}
 - API keys
 - Secret values of resource credentials including passwords, tokens, etc.
 - Server or agent configuration AES tokens, passwords, etc.

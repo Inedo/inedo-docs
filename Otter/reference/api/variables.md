@@ -28,6 +28,7 @@ If a variable value string starts with a `` ` ``, `@(`, `%(`, then the value wil
 
 This represents a set of configuration variables associated with a single scope, such as global, a server, or an environment. It is simply an object with variable names and values as properties. The value can be either a string, or an object with two properties:
 
+{.docs}
 - `value` - a *string* value of the variable's value itself
 - `sensitive` - a *boolean* to indicate a sensitive variable that's obscured from casual viewing in the UI
 

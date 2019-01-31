@@ -29,7 +29,7 @@ Any key/value pairs that are passed in the POST body or as additional query stri
 <tab-block>
 <tab name="Simple GET">
 
-{.info}
+
 ```
 GET /api/jobs/trigger?template=hdars&key=secure123
 ```
@@ -42,7 +42,7 @@ Body: 471
 </tab>
 <tab name="POST with Variables">
 
-{.info}
+
 ```
 POST /api/jobs/trigger?template=ablast
 

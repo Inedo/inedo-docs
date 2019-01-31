@@ -69,18 +69,19 @@ All of the infrastructure management endpoints follow the same convention:
 
 POST ::/api/infrastructure/::{style="opacity: 0.5"}<b>&laquo;entry-type&raquo;</b>/<b>&laquo;action-type&raquo;</b>/<b>&laquo;entry-name&raquo;</b>?key=&laquo;api-key&raquo; {.info}
 
+{.docs}
 - `entry-type` is one of `servers`, `roles`, or `environments`
 - `action-type` is one of `[list](#list)`, `[create](#create)`, `[update](#update)`, or `[delete](#delete)`
 - `entry-name` is the name of the entry being created, updated, or deleted; it is not valid on a `list` action type
 
 #### List Entries {#list}
 
-This returns a status of 200 (on success), or 403 (api key not authorized), and a body containing only an *array* of entry objects. 
+This returns a status of 200 (on success), or 403 (api key not authorized), and a body containing only an *array* of entry objects.
 
 <tab-block>
 <tab name="List Servers">
 
-{.info}
+
 ```
 POST /api/infrastructure/servers/list?key=secure123
 ```
@@ -92,9 +93,9 @@ POST /api/infrastructure/servers/list?key=secure123
     "roles": ["web","hdars"],
     "environments": ["integration"],
     ...
-    "variables": { 
-                   "disk-path": "/var/hdars/1000", 
-                   "app-name": "hdars" 
+    "variables": {
+                   "disk-path": "/var/hdars/1000",
+                   "app-name": "hdars"
                  },
     "active": true
   },
@@ -112,7 +113,7 @@ POST /api/infrastructure/servers/list?key=secure123
 </tab>
 <tab name="List Server Roles">
 
-{.info}
+
 ```
 POST /api/infrastructure/roles/list?key=secure123
 ```
@@ -121,7 +122,7 @@ POST /api/infrastructure/roles/list?key=secure123
 [
   {
     "name": "web",
-    "variables": { 
+    "variables": {
                    "websites-root": "c:\webroots\"
                  }
   },
@@ -136,7 +137,7 @@ POST /api/infrastructure/roles/list?key=secure123
 </tab>
 <tab name="List Environments">
 
-{.info}
+
 ```
 POST /api/infrastructure/environments/list?key=secure123
 ```
@@ -146,14 +147,14 @@ POST /api/infrastructure/environments/list?key=secure123
   {
     "name": "integration",
     "parent": null,
-    "variables": { 
+    "variables": {
                    "database-alias": "intagration"
                  }
   },
   {
     "name": "testing",
     "parent": null,
-    "variables": { 
+    "variables": {
                    "database-alias": "test"
                  }
   },
@@ -195,12 +196,12 @@ If there are missing properties on the entity, only the specified properties wil
 <tab-block>
 <tab name="Update Server">
 
-{.info}
+
 ```
 POST /api/infrastructure/servers/update/hdarsintsv1?key=secure123
 
 {
-  "roles": ["web","hdars","code-server"], 
+  "roles": ["web","hdars","code-server"],
   "encryption": "none"
 }
 ```
@@ -210,7 +211,7 @@ Note that, in this case, the `encryptionKey` property would be removed on update
 </tab>
 <tab name="Rename Server Role">
 
-{.info}
+
 ```
 POST /api/infrastructure/roles/update/hdars?key=secure123
 
@@ -220,7 +221,7 @@ POST /api/infrastructure/roles/update/hdars?key=secure123
 </tab>
 <tab name="Remove Parent Environment">
 
-{.info}
+
 ```
 POST /api/infrastructure/environments/update/test1?key=secure123
 

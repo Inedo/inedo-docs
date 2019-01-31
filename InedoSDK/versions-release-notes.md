@@ -1,6 +1,6 @@
 ﻿---
-title: Inedo SDK Versions and Release notes
-subtitle: Jobs and Scheduling Changes
+title: Inedo SDK Versions & Release notes
+subtitle: Inedo SDK Versions & Release notes
 sequence: 40
 keywords: inedo, inedo sdk, versions, release notes
 show-headings-in-nav: true

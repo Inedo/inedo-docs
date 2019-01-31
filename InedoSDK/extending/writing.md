@@ -55,7 +55,7 @@ public override async Task ExecuteAsync(IOperationExecutionContext context)
 }
 ```
 
-Although the [ExecuteAsync](/support/sdk-reference/inedosdk/Inedo.Extensibility.Operations/ExecuteOperation/ExecuteAsync(IOperationExecutionContext) method isn't doing too much, we'll break everything down right here:
+Although the [ExecuteAsync](/support/sdk-reference/inedosdk/Inedo.Extensibility.Operations/ExecuteOperation/ExecuteAsync(IOperationExecutionContext)) method isn't doing too much, we'll break everything down right here:
 
 {.docs}
 - **async**
@@ -74,9 +74,7 @@ Although the [ExecuteAsync](/support/sdk-reference/inedosdk/Inedo.Extensibility.
 
    This actually writes the desired text to the file.
 
-{.info}
-For brevity, we've left out the logging messages; but those are pretty self-explanatory.
-Anything logged will be associated with the current operation.
+For brevity, we've left out the logging messages; but those are pretty self-explanatory. Anything logged will be associated with the current operation.{.info}
 
 Now apply a few attributes to the operation itself to make it discoverable to Otter:
 

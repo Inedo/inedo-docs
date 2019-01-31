@@ -19,7 +19,8 @@ This documentation will assume you're using Visual Studio and NuGet to create an
 
 First, create a new class library project in Visual Studio, and target .NET 4.5.2. Use NuGet to add a reference to the **Inedo.SDK** package.
 
-:::attention {.best-practice}
+
+:::attention{.best-practice}
 ![](/resources/images/icons/best-practices.png)
 
 Make sure that the SDK assemblies added by the NuGet package have the Copy Local property set to False. SDK assemblies should not be included in the extension.
