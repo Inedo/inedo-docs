@@ -34,12 +34,14 @@ Orchestration jobs are created on the jobs page, and require the selection of an
 
 Orchestration jobs may be created to target one of the following:
 
+{.docs}
 - Servers directly
 - Roles and/or environments
 - No servers/roles/environments *(i.e. the plan is unmodified and executed as-is)*
 
 When targeting servers directly, each server is enumerated and the plan is executed for each server in parallel. Targeting roles and/or environments has the following behavior:
 
+{.docs}
 - **Server role(s) only** - behavior is equivalent to targeting servers directly for all servers associated with any role in the list
 - **Environment(s) only** - behavior is equivalent to targeting servers directly for all servers associated with any environment in the list
 - **Server role(s) and environment(s)** - will enumerate all servers in a role that are also in any listed environments, if multiple roles are supplied and a server belongs to more than 1, execution may occur on that server multiple times, use the for role context statement to ensure certain parts of a plan only execute when a specific role is in context

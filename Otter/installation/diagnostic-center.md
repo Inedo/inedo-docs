@@ -10,6 +10,7 @@ The diagnostic center is intended to diagnose known issues in Otter and contains
 
 By default, only messages with warning or error level are logged. If more verbosity is required, the level can be changed from the Diagnostic Center page, or by setting the value of the `Diagnostics.MinimumLogLevel` value to one of the following values:
 
+{.docs}
 - 0 - <code style="color: #bbb;">debug</code>
 - 10 - <code>information</code>
 - 20 - <code style="color: #ee9d66;">warning</code>
