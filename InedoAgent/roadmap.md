@@ -5,6 +5,7 @@ sequence: 60
 keywords: inedo, inedo agent, roadmap
 show-headings-in-nav: true
 ---
+
   We have several improvement ideas for the Inedo Agent, and are using this page to document them.
 
   Note that this used to be a page on our internal wiki, but as part of our [open initiative](/company/open-initiative), we're sharing them here. It's probably not very useful, and you probably won't get much out of reading them.
