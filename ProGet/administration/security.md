@@ -71,7 +71,7 @@ A user directory is a collection of users and groups that ProGet can query. They
 
 {.docs}
 - **Built-In** - The default basic user account system used by new installs of ProGet
-- **LDAP/Single** Domain - Users and groups from an LDAP directory (Active Directory) are used; this can come from multiple domains in an Active Directory forest
+- **LDAP/Single Domain** - Users and groups from an LDAP directory (Active Directory) are used; this can come from multiple domains in an Active Directory forest
 
 Task permissions and restrictions are associated with a user directory, which means that "bob-smith" from the Built-in directory will not necessarily have the same permissions as "bob-smith" from the Active Directory.
 
