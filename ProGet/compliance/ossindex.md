@@ -6,7 +6,7 @@ keywords: proget, vulnerabilities
 
 ---
 
-The [OSS Index extension](/den/inedox/vorsecurity) provides a Vulnerability Source that will automatically import vulnerability reports from various public databases using [Sonatype's OSS Index](https://ossindex.sonatype.org
+The [OSS Index extension](/den/inedox/vorsecurity) provides a Vulnerability Source that will automatically import vulnerability reports from various public databases using [Sonatype's OSS Index](https://ossindex.sonatype.org)
 
 ## Connecting to OSS Index {#connect data-title="Connecting to OSS Index"}
 If you're not an OSS Index user, you'll need to make an account and request a trial license or purchase a professional license. This can be done by visiting https://ossindex.sonatype.org/ > selecting the user icon in the top right corner > Register for an account.
@@ -24,7 +24,7 @@ After retrieving the API token from OSS Index, set it as your Vulnerability Sour
 To create a new Assessment type go *Administration* > *Manage Assessment Types* > *Create Assessment Type*.
 
 :::attention {.analogy}
-![](/resources/images/icons/analogy.png)   When a vulnerability is detected, it is automatically assigned to the unassessed type, and will require user assessment before being usable.
+![](/resources/images/icons/analogy.png) When a vulnerability is detected, it is automatically assigned to the unassessed type, and will require user assessment before being usable.
 :::
 
 ## Feed Level Configuration {#feed-level data-title="Feed Level Configuration"}
