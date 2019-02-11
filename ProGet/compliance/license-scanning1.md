@@ -19,7 +19,7 @@ ProGet offers two workflows for managing licensing agreements of third-party, op
 This feature is available in paid and trial ProGet editions.
 :::
 
-##   License Filtering Feature ##
+##   License Filtering Feature
 
 ProGet ships with an editable list of open-source license types (MIT, GPL3, etc) called known licenses. You then define global and feed-specific rules to block or allow downloads based on a package's license, as well as global or feed-specific rules about whether to block downloads for unknown licenses.
 
@@ -27,7 +27,7 @@ Packages are allowed or blocked based on the following logic:
 
 ![](/resources/documentation/proget/fliter-logic.png)
 
-### Known License Types ###
+### Known License Types
 
 ProGet's list of known licenses comes from [SPDX](https://spdx.org/licenses), and is periodically updated. You can edit this list by going to Compliance > Licensing > Manage Known Licenses.
 
@@ -40,7 +40,7 @@ A license type consists of the following elements:
 
 ![](/resources/documentation/proget/license-rule.png)
 
-### Licensing Rules ###
+### Licensing Rules
 
 A licensing rule consists of a known license type, and an allow or block flag.
 
