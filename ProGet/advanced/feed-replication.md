@@ -21,8 +21,8 @@ A more complex example would be this: say you have multiple ProGet servers sprea
 
  ![](/resources/documentation/proget/administration/complex-feed-rep.png)
 
- ## Configuration {}#configuration data-title="Configuration"}
+ ## Configuration {#configuration data-title="Configuration"}
 
  Replication is configured on a feed by feed basis. When replication is enabled, feeds must be configured with the specified feed URL, and for replication from external, the authentication token must be entered. Since this feature is implemented at the feed level, you can decide which specific feed or feeds will be mirrored across instances, providing flexibility for specific organizational needs. If so your organization decides, you may mirror an entire instance of ProGet, including all of your external and in-house feeds, and in turn have access to all of the same packages on a virtually identical instance.
 
-  <div> <img class="screenshot" alt="Package" src="/proget/5.0/replicate-from.png" /> </div>
+![](/proget/5.0/replicate-from.png){.screenshot}
