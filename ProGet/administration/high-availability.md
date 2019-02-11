@@ -13,11 +13,10 @@ ProGet's distributed architecture allows you to use any number of servers for bo
 
 The load balancer will direct traffic bound for the ProGet web application, evenly distributing traffic during heavy load times.
 
-ProGet was built to be compatible with any load-balancing platform, whether software-based such as HAProxy, NLP, or nginx) or appliance-based (such as F5, A10, Citrix).
+ProGet was built to be compatible with any load-balancing platform, whether software-based (such as HAProxy, NLP, or nginx) or appliance-based (such as F5, A10, Citrix).
 
 {.docs}
-- **Not Required: Session Affinity (sticky sessions)** - while you can enable this, it's not required
-and may simplify your traffic and load balancer configuration.
+- **Not Required: Session Affinity (sticky sessions)** - while you can enable this, it's not required and may simplify your traffic and load balancer configuration.
 - **Common Machine Key** - you will need to use a common machine key amongst web nodes, see [Microsoft's documentation](https://msdn.microsoft.com/library/w8h3skw9) for how to configure this in your web.config or machine.config files
 
 If you are new to load balancing, Microsoft's [Network Load Balancing Cluster](https://technet.microsoft.com/en-us/library/cc771008.aspx) is relatively easy to configure.
