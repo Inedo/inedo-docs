@@ -72,6 +72,10 @@ Generally, you offer Add and Pull to package authors, but restrict Overwrite and
 
 Note: Delete with Add privileges are proxy attributes for Overwrite.
 
+### Feeds (Accept Package Promotions<sup>F</sup>) {#feeds data-title="Feeds (Accept Package Promotions)"}
+
+This attribute permits promoting a package from another feed (the "source" feed) into the feed this permission applies to. You should also grant View and Download Package permissions on the source feed.
+
 ### Feeds (Manage<sup>F</sup>) {#feeds data-title="Feeds (Manage)"}
 
 This allows for full control over the feed, including changing package stores. It is effectively administrative access for the feed, and is a proxy attribute for all other attributes.

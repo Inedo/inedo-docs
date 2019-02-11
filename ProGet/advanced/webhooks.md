@@ -151,7 +151,7 @@ However, if you specify the second argument `(defaultText)` to the `PackagePrope
 
 Anything that "looks" like a variable – i.e. text that starts with a `$`, then a character – will be parsed as a variable expression, and evaluated. If a configuration variable or variable function cannot be found, then an error will be logged and the request will not complete. This is usually what you'd want, and will help you track down a typo like `$PackagName`.
 
-However, if you actually want a `$`-character somewhere in your payload, you'll need to escape it using a grave apostrophe (\`) like this: (\`). If you want to use a grave apostrophe, then you'll also need to escape it like this: ` `` `. Whitespace character expansion is also available with `` `r `` , `` `n ``, and `` `t ``.
+However, if you actually want a `$`-character somewhere in your payload, you'll need to escape it using a grave apostrophe (\`) like this: `` `$ ``. If you want to use a grave apostrophe, then you'll also need to escape it like this: ` `` `. Whitespace character expansion is also available with `` `r `` , `` `n ``, and `` `t ``.
 
 ### Built-in Variables {#built-in data-title="Built-in Variables"}
 
