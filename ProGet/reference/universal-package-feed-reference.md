@@ -20,6 +20,8 @@ Universal Package Feeds were designed to provide immediate, out-of-the-box funct
 *upack.exe* is a standalone command-line tool to aide in the creation of universal packages, and is
 typically used on build servers or in other automation scenarios.
 
+<iframe width="600" height="337" src="https://www.youtube.com/embed/blGLta0cvPA" frameborder="0" allowfullscreen="true"></iframe>
+
 #### Universal Package Registry {#registry data-title="Universal Package Registry"}
 
 [Universal Feeds and Packages](/support/documentation/proget/feed-types/universal) are "lightweight" and, on their own, have very few built-in features. This design has allowed them to be utilized for all sorts of packaging problems such as application delivery, Inedo's product extensions, and even private Bower packages.
