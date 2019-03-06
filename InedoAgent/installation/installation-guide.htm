@@ -42,12 +42,9 @@
         </li>
     </ul>
 
-    <h3 id="download">2. Download Otter Windows Agent</h3>
+    <h3 id="download">2. Download Inedo Agent</h3>
     <p>
-        When you click the "Create Server" button on the Servers page in your Otter or BuildMaster installation, you'll be given a direct link
-        to the file with the correct version. You can also find it on the <a href="/otter/versions">all Otter downloads</a>
-        page or the <a href="/buildmaster/versions">all BuildMaster downloads</a> page. Make sure to select the version that corresponds with your version of Otter or BuildMaster, which can be found in the bottom-right
-        corner in your web browser.
+        Download the latest Inedo Agent from the <a href="/support/documentation/inedoagent/versions" target="_blank">Agent Versions &amp; Release Notes</a> page.
     </p>
 
     <h3 id="directory">3. Target Directory</h3>
@@ -113,10 +110,35 @@
 
     <p>Sometimes, it may be desired to install multiple instances of the Inedo Agent on the same machine. The most common reason for this is privileges; one agent may run in a higher privilege mode than the other.</p>
 
-    <p>The automated and manual agent installer do not currently support this, but <a href="/support/kb/1146">KB#1146</a> will provide guidance on how to do this.</p>
+	<div class="attention technical">
+    <p>
+        The agent installer (including silent installation) does not currently support installation or management of multiple instances. See <a href="/support/kb/1146">KB#1146</a> for guidance on how to 
+        install more than one agent on the same server manually.
+    </p>
+	</div>
 
-    <h2 id="silent">Silent Install</h2>
+    <h2 id="silent">Silent Installation</h2>
+    <p>
+        The Inedo Agent installer may also be run without displaying a window, ideal for Infrastructure as Code or script-based installations.
+        To perform a silent install, simply run the executable from the command line or PowerShell with the <code>/S</code> argument.
+    </p>
 
+    <h4>Argument Format:</h4>
+    <p>
+        Silent installation arguments follow the format:
+    </p>
+    <p>
+        <pre>InedoAgentSetup.{version}.exe /{argument-name}="{argument-value}"</pre>
+    </p>
+    <p>
+        <i>Note: quotes are required if the <code>argument-value</code> contains whitespace.</i>
+    </p>
+
+    <h4>Example:</h4>
+	<p>
+	<pre><code>.\InedoAgentSetup.42.exe /S /TargetPath="C:\Program Files\InedoAgent" /Port=46336 /TempPath="C:\ProgramData\InedoAgent" /ServiceName="INEDOAGENTSVC" /Security=AES /EncryptionKey="0123456789abcdef0123456789abcdef"</code></pre>
+	</p>
+	<h4>Available Arguments</h4>
     <table>
         <thead>
             <tr>
@@ -126,10 +148,15 @@
             </tr>
         </thead>
         <tbody>
+			<tr>
+                <td>S</td>
+                <td><i>(not applicable)</i></td>
+                <td>This argument instructs the installer not to display a window, and does not have an <code>argument-value</code></td>
+            </tr>
             <tr>
                 <td>TargetPath</td>
                 <td>%ProgramFiles%\InedoAgent</td>
-                <td>The directory that will contain the service's executable and supporting files.</td>
+                <td>The directory that will contain the service's executable and supporting files. If specified, <code>argument-value</code> must be an absolute path (i.e. %PROGRAMFILES will not expand)</td>
             </tr>
             <tr>
                 <td>Port</td>
@@ -139,7 +166,7 @@
             <tr>
                 <td>TempPath</td>
                 <td>%ProgramData%\InedoAgent</td>
-                <td>The base directory for any <em>Product</em>RootPath option not explicitly specified.</td>
+                <td>The base directory for any <em>Product</em>RootPath option not explicitly specified. If specified, <code>argument-value</code> must be an absolute path (i.e. %PROGRAMDATA will not expand)</td>
             </tr>
             <tr>
                 <td>OtterRootPath</td>
@@ -159,12 +186,12 @@
             <tr>
                 <td>UserAccount</td>
                 <td>LocalSystem</td>
-                <td>The user account to run the service under.</td>
+                <td>The user account to run the service under. For built-in accounts, use <code>NetworkService</code> or <code>LocalSystem</code></td>
             </tr>
             <tr>
                 <td>Password</td>
                 <td></td>
-                <td>The password for UserAccount.</td>
+                <td>The password for UserAccount. Omit this field for built-in accounts.</td>
             </tr>
             <tr>
                 <td>ServiceName</td>
@@ -179,12 +206,12 @@
             <tr>
                 <td>CertificateName</td>
                 <td></td>
-                <td>Used if Security is set to SSL.</td>
+                <td>Used if Security is set to SSL. Represents the case-sensitive friendly name of a certificate in the Local Machine store.</td>
             </tr>
             <tr>
                 <td>EncryptionKey</td>
                 <td></td>
-                <td>Used if Security is set to AES. Must be a 32-character hex string. If EncryptionKey is not specified, one will be randomly generated.</td>
+                <td>Used if Security is set to AES. Must be a 32-character hex string. If EncryptionKey is not specified, one will be randomly generated (which could overwrite an existing key on upgrade).</td>
             </tr>
         </tbody>
     </table>
