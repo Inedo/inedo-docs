@@ -16,16 +16,17 @@
     <p>
         upack.exe is a command-line tool used to create and install universal packages; you can also see which packages are installed on a machine.
     </p>
+    <iframe width="600" height="337" src="https://www.youtube.com/embed/blGLta0cvPA" frameborder="0" allowfullscreen="true"></iframe>
 
     <h3 id="installation">Download, Installation, &amp; Source Code</h3>
     <p>
-        upack.exe is a stand-alone program and does not require installation. Visit the <a href="https://github.com/Inedo/upack/releases" target="_blank">GitHub Releases</a> 
+        upack.exe is a stand-alone program and does not require installation. Visit the <a href="https://github.com/Inedo/upack/releases" target="_blank">GitHub Releases</a>
         section to download the latest version.
     </p>
     <p>
         The source code for upack.exe is hosted on <a href="https://github.com/Inedo/upack" target="_blank">GitHub</a>.
     </p>
-    
+
     <h2 id="creating-publishing">Creating and Publishing a Universal Package with upack.exe</h2>
     <h4>
         <i>Prerequisites:</i>
@@ -44,7 +45,7 @@
             Basic PowerShell or Windows Command Prompt knowledge
         </li>
     </ul>
-   
+
     <h3 id="overview">Overview</h3>
     <p>
         In this tutorial, we will take an existing website and package it into a Universal Package using the upack.exe tool. The files in Accounts.zip are just the build output of a basic .NET web application. For those unfamiliar with .NET, it could just as easily be a Java WAR file, a collection of PHP files, or even static HTML.
@@ -71,15 +72,15 @@ PS C:\tmp\accounts> upack pack . --name=Accounts --version=1.0.0 --title="Accoun
     </p>
     <h3 id="pushing">Pushing a package to a Universal feed in ProGet</h3>
     <p>
-        Once a package is created, we are now able to publish it to a Universal feed. 
+        Once a package is created, we are now able to publish it to a Universal feed.
     </p>
     <p class="info">
-        <strong>Note:</strong> In a typical usage scenario, the "push" step would also be executed by a Continuous Integration server sometime after package creation. 
+        <strong>Note:</strong> In a typical usage scenario, the "push" step would also be executed by a Continuous Integration server sometime after package creation.
     </p>
     <p>
         Before we can push the package, we must determine the endpoint of the ProGet feed to use it as the push source. After logging into ProGet and browsing to the feed, take note of the endpoint URL:
     </p>
-    
+
     <img style="border: 1px solid #808080;" class="screenshot" src="/resources/documentation/upack/upack-cli/api-endpoint-url.png" alt="API Endpoint URL" />
     <p>
         Using this value, we can now push our newly generated package to the feed using the following PowerShell command:
@@ -100,7 +101,7 @@ PS C:\tmp\accounts> upack push Accounts-1.0.0.upack http://progetint/upack/Unive
     </p>
     <pre>PS C:\tmp\accounts> upack install Accounts --source=http://progetint/upack/Universe/ --target=.\install</pre>
     <p>
-        This will extract the package contents of the "Universe" feed in ProGet into <code>C:\tmp\accounts\install</code>. 
+        This will extract the package contents of the "Universe" feed in ProGet into <code>C:\tmp\accounts\install</code>.
     </p>
     <h3 id="listing-packages">Listing installed packages on a server</h3>
     <p>
@@ -125,7 +126,7 @@ Installed by thoven using upack/2.2.0.1
     </p>
     <pre>PS C:\tmp\accounts> upack verify Accounts-1.0.0.upack http://progetint/upack/Universe/ </pre>
     <p>
-        The result of this command will either indicate that the hashes match, or issue an error to standard error if they are different. 
+        The result of this command will either indicate that the hashes match, or issue an error to standard error if they are different.
     </p>
     <p>
         If you only need to view the hash, you can use the <code>hash</code> command:
