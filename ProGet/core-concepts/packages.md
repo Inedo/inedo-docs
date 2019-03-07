@@ -16,6 +16,8 @@ Think of a package like a uniform-sized shipping box with uniform, machine- and 
 
 Packages have become a unifying concept across a DevOps toolchain because they are built once and deployed consistently across environments. This means everyone can be certain that what goes to production, is exactly what was built and tested.
 
+<iframe width="600" height="337" src="https://www.youtube.com/embed/Znflf98ahzQ" frameborder="0" allowfullscreen="true"></iframe>
+
 ## Package Formats: Universal and Third-party {#package-formats data-title="Package Formats: Universal and Third-party"}
 
 There's not a whole lot to a package: it's just a zip file containing the files you actually want to distribute, as well as a manifest file that describes the package itself. The specific layout of the zip file and manifest is referred to as a package format. ProGet supports the [universal package format](/support/documentation/upack/universal-packages/package-format), as well as a variety of third-party formats.
@@ -52,6 +54,8 @@ There are a lot of options for creating and publishing universal packages to Pro
 
 To learn how to create and package using a third-party package format, refer to the appropriate third-party feed documentation.
 
+<iframe width="600" height="337" src="https://www.youtube.com/embed/ylb0AGnr6AA" frameborder="0" allowfullscreen="true"></iframe>
+
 ## Package Identification and Verification {#package-id data-title="Package Identification and Verification"}
 
 One of the most important aspects of a package is that it is uniquely identifiable using a name and version. This simple, human-readable identification is what makes packages so easy to distribute and consume.
@@ -59,3 +63,5 @@ One of the most important aspects of a package is that it is uniquely identifiab
 For example, “HDars-API 1.0.4” is version 1.0.4 of HDars-API, which is newer than “HDars-API 1.0.2”, older than “HDars-API 1.3.0”, and different than “HDars-Web 1.0.4”. “HDars-API” by itself is fairly meaningless, because it could refer to any version of HDars-API.
 
 Universal packages (as well as some third-party packages) use the [SemVer specification](http://www.semver.org) to describe the version number.
+
+<iframe width="600" height="337" src="https://www.youtube.com/embed/Si3eWq1yHXs" frameborder="0" allowfullscreen="true"></iframe>
