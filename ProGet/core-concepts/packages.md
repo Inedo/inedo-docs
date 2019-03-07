@@ -48,6 +48,7 @@ There are a lot of options for creating and publishing universal packages to Pro
 - [Inedo ProGet Jenkins Plugin](/den/proget/jenkinsplugin)
 - [Push to ProGet Visual Sutdio Extension](/den/proget/visualstudio)
 - Upload hand-crafted package files from the UI
+- Simple HTTP Post with your own tool/scripts using the [Universal Feed API](/support/documentation/upack/feed-api/endpoints)
 
 To learn how to create and package using a third-party package format, refer to the appropriate third-party feed documentation.
 

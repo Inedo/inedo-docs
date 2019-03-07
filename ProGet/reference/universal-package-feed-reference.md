@@ -7,7 +7,7 @@ keywords: proget, installation
 
 Universal Package Feeds were designed to provide immediate, out-of-the-box functionality for most packaging needs, and also to serve as a platform that you can easily extend or interact with.
 
-:::attention {.info}
+:::attention
 **Shared Documentation Note** - instead of creating a whole new set of documentation for Universal Packages and Feeds we've kept the detail pages in the Various Documentation, and the ProGet specific things are noted on these pages:
 {.docs}
   - [Universal Feed API & Package Reference](/support/documentation/various/universal-packages/universal-feed-api)
@@ -17,8 +17,7 @@ Universal Package Feeds were designed to provide immediate, out-of-the-box funct
 
 #### UPack Command-line Tool {#command data-title= "UPack Command-line Tool"}
 
-*upack.exe* is a standalone command-line tool to aide in the creation of universal packages, and is
-typically used on build servers or in other automation scenarios.
+*upack.exe* is a standalone command-line tool to aide in the creation of universal packages, and is typically used on build servers or in other automation scenarios.
 
 #### Universal Package Registry {#registry data-title="Universal Package Registry"}
 

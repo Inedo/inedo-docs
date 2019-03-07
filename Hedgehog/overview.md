@@ -6,7 +6,6 @@ keywords: hedgehog
 
 ---
 ::: attention {.technical}
-![](/resources/images/icons/technical.png){.screenshot} 
 While Hedgehog's software itself is production-ready, it's a v1 product meant for early adopters. Like all v1 products, Hedgehog's future is uncertain. While we designed it to eventually take BuildMaster's place that day may never come.
 :::
 

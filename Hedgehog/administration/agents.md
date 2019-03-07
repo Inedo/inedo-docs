@@ -31,7 +31,6 @@ When Hedgehog performs a routine check on the connected agents, the installed In
 Clicking on the *Update Agents* button will open a dialog that gives you the option to select which servers to update, as well as where to download the new Inedo Agent files from.
 
 ::: attention{.technical}
-![](/resources/images/icons/technical.png){.screemshot}
 Self-updating software always has a risk of failing mid-update. If this happens with the Inedo Agent, you will need to log-on to the server to reinstall the agent. Therefore, only update agent versions when you are prepared to also do a manual update if absolutely necessary.
 :::
 
