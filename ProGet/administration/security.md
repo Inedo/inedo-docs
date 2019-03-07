@@ -18,7 +18,7 @@ ProGet ships with five tasks:
 
 |Task | Description |
 | :------------- | :------------- |
-Administrators	     | Full control over the ProGet instance     |
+Administer	     | Full control over the ProGet instance     |
 |Manage Feed       |Allows access to manage feed settings, delete packages, and overwrite packages.   |
 |Promote Packages	 |Allows access to promote packages to a specified feed of the same feed type. Users granted this task should also be granted at least the View & Download Packages task for the source feed.|
 |Publish Packages  |Allows access to publish, upload, push, and pull packages from a feed.|
