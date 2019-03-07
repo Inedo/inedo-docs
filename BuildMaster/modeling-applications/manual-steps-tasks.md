@@ -21,7 +21,7 @@ You can add the Manual Operation to your plan just like you would any other oper
 <tab-block>
 <tab name="Visual Mode">
 
-![](/resources/documentation/buildmaster/6/manual-operation.png)
+![](/resources/documentation/buildmaster/6/manual-operation.png){.screenshot}
 
 </tab>
 <tab name="Text Mode (OtterScript)">
@@ -49,4 +49,4 @@ Manual tasks can also help you debug a deployment plan.
 
 {.docs}
 - **Inspect working directory;** If an operation is failing, indicating that files are missing from the current working directory, or are otherwise different than expected, you can simply put a manual operation immediately before the failing operation to investigate the state of the working directory
-- **Manual error handling;** you can place a manual operation in the error handler of a Try/Catch statement to allow for manual intervention 
+- **Manual error handling;** you can place a manual operation in the error handler of a Try/Catch statement to allow for manual intervention

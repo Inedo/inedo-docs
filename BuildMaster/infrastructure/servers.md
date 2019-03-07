@@ -32,10 +32,11 @@ You can deploy to a server using a [general block](/support/documentation/buildm
 ```
 for server prod-hdars-sv1
 {
-Deploy-Artifact hdars-api-service
-(
-    To: C:\HDars\App\api-service
-);
+    Deploy-Artifact hdars-api-service
+    (
+        To: C:\HDars\App\api-service
+    );
+}
 ```
 
 ### Server vs Server Roles {#server-server-roles data-title="Server vs Server Roles"}

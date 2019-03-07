@@ -26,7 +26,7 @@ show-headings-in-nav: true
 
 You can create a deployment plan at the application- or global-level. Global plans behave in exactly the same manner, except you may only reference global modules.
 
-You may associate a deployment plan with an environment after you create it, which will allow you to restrict certain users from viewing its contents by defining an environment-scoped [access control](/support/documentation/buildmaster/administration/security). There’s no good reason to do this, as you shouldn’t be putting sensitive information in your deployment plans… but sometimes it can’t be helped.
+You may associate a deployment plan with an environment after you create it, which will allow you to restrict certain users from viewing its contents by defining an environment-scoped [access control](/support/documentation/buildmaster/administration/security). There's no good reason to do this, as you shouldn't be putting sensitive information in your deployment plans… but sometimes it can't be helped.
 
 ### OtterScript Basics {#otterscript-basics data-title="OtterScript Basics"}
 
@@ -44,9 +44,9 @@ OtterScript is a Domain-Specific Language that was designed for high-level orche
 - [Try/Catch block](/support/documentation/buildmaster/execution-engine/statements-and-blocks/try-catch); introduce error-handling logic or change the execution success/failure status
 - [If/Else block](/support/documentation/buildmaster/execution-engine/statements-and-blocks/if-else); conditionally execute statements based on an expression you specify   
 
-If you’re comfortable with programming or scripting, you may already be familiar with how these blocks work. To learn more, check out the [OtterScript Guide](/support/documentation/various/execution-engine/otterscript) in the Inedo Execution Engine documentation.
+If you're comfortable with programming or scripting, you may already be familiar with how these blocks work. To learn more, check out the [OtterScript Guide](/support/documentation/various/execution-engine/otterscript) in the Inedo Execution Engine documentation.
 
-### Power and Shell Scripting {#power-and-shell data-title="Power and Shell Scripting"}
+### PowerShell and Shell Scripting {#power-and-shell data-title="PowerShell and Shell Scripting"}
 
 OtterScript was designed to seamlessly integrate with PowerShell and Bash/Sh, and can run inline script blocks, evaluate scripting expressions into variable values, and call externally -stored script files called assets.
 
@@ -63,7 +63,7 @@ To create or edit modules, go to the Modules tab on the plans listing page. Modu
 Similar to operations, modules can have input- and output parameters. You can edit these by clicking on the Module Properties button in the Visual Plan Editor (when in visual mode), or by editing the OtterScript directly. These parameters are then accessible as variables within the module.   
 
 :::attention {.best-practice}
-Modules are run within the scope of whatever block calls it, which means it will inherit all of that block’s variables. As a result, you should generally avoid relying on externally-defined variables in modules.
+Modules are run within the scope of whatever block calls it, which means it will inherit all of that block's variables. As a result, you should generally avoid relying on externally-defined variables in modules.
 :::
 
 **Note:** *modules* are called *templates* in BuildMaster v5.

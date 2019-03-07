@@ -31,7 +31,7 @@ You can obviously customize the path on disk as needed. To run this command on a
 Note: BuildMaster v5 and earlier install SQL Server 2005 Express, and the SQL Express was named **BUILDMASTER**
 :::
 
-## Restoring a BuildMaster Installation {#restore data-title="Restoring a BuildMaster Installation"}
+## Restoring a BuildMaster Installation {#restore data-title="Database Restore"}
 
 There are generally three reasons why you might want to restore a BuildMaster installation from back-up.
 
@@ -40,7 +40,7 @@ There are generally three reasons why you might want to restore a BuildMaster in
 - **Moving BuildMaster to a new server**
 - **Undoing a Serious Error**
 
-### The Easy Way (Restore from same version) {#restore-sameversion data-title="The Easy Way (Restore from same version)"}
+### The Easy Way (Restore from same version)
 
 The easiest way to restore a BuildMaster installation is to first ensure that you have a working BuildMaster installation that has the same version number of your back-up. That means you'd want to restore a 2.6.1 back-up to a working 2.6.1 installation, for example. If you're not sure what version your back-up is (perhaps your server blew up and you only have the .bak file), then you'll have to use the advanced way described after this section.
 
@@ -51,7 +51,7 @@ Just make sure the BuildMaster Windows Service(s) are stopped, otherwise SQL Ser
 
 After you get the database up, just make sure your artifact files are where they are expected to be, and start the service(s).
 
-### The Advanced Way (Restore from any version) {#restore-anyversion data-title="The Advanced Way (Restore from any version)"}
+### The Advanced Way (Restore from any version)
 
 This isn't really that much harder, but it does involve some knowledge of Microsoft SQL Server or the willingness to contact us for assistance. Firstly, you won't be able to restore a newer back-up to an older version (i.e. a 3.0.0 back-up to 2.6.1). But since you should never need to do that anyway, there's nothing to worry about.
 
