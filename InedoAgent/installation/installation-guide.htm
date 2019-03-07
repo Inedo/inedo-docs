@@ -1,0 +1,220 @@
+<html>
+<head>
+    <title>Installation Guide</title>
+    <meta name="subtitle" content="Installation Guide" />
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <meta name="keywords" content="inedo, inedo agent, installation" />
+    <meta name="sequence" content="10" />
+</head>
+<body>
+    <style>
+        .documentation-content-wrapper .upcoming {
+            background-color: #fff;
+            position: relative;
+        }
+
+        .documentation-content-wrapper .upcoming.buildmaster::before {
+            content: ' -- Placeholder screenshot from BuildMaster -- ';
+            background-color: #f15a24;
+            z-index: 1;
+            width: 100%;
+            padding: 2px 4px;
+            color: white;
+            text-align: center;
+        }
+    </style>
+
+    <h2>Using the Installer</h2>
+
+    <h3 id="pre-install">1. Pre-Installation Check List</h3>
+    <p>
+        There are no intense server requirements, and support all modern version of Windows (7+/2008+).
+        Before installing, consider the following:
+    </p>
+    <ul class="docs">
+        <li>
+            <strong>.NET Framework 4.5.2</strong> – Requires .NET 4.5.2 or later; this is already installed on
+            Windows Server 2012, and you can <a href="https://www.microsoft.com/en-us/download/details.aspx?id=30653" target="_blank">download it from Microsoft</a> on
+            earlier servers
+        </li>
+        <li>
+            <strong>Firewall (Inbound)</strong> – the agent will listen on the port of your choosing
+        </li>
+    </ul>
+
+    <h3 id="download">2. Download Inedo Agent</h3>
+    <p>
+        Download the latest Inedo Agent from the <a href="/support/documentation/inedoagent/versions" target="_blank">Agent Versions &amp; Release Notes</a> page.
+    </p>
+
+    <h3 id="directory">3. Target Directory</h3>
+    <p>
+        Although you may install wherever you like, it is recommended to
+        keep the temporary directory short to avoid potential issues with tools that
+        have problems with long paths.
+    </p>
+
+    <h3 id="user-account">4. User Account</h3>
+    <p>
+        By default, the agent service will run as <a href="https://msdn.microsoft.com/en-us/library/windows/desktop/ms677973(v=vs.85).aspx" target="_blank">LocalSystem</a>, which is an administrative service account.
+        While not required, administrator-level privileges are strongly recommended as it will eliminate any
+        difficulty or confusion with moving files and running different operations.
+
+    </p>
+
+    <h3 id="network">5. Network</h3>
+    <p>
+        We recommend using the default port (46336), as that's Inedo's
+        <a target="_blank" href="http://iana.org/assignments/port-numbers">officially designated port</a>.
+        Make sure that the selected port is not blocked by a firewall.
+    </p>
+
+    <p>
+        You can change this later by editing the configuration file in the installation directory, and restarting the
+        service.
+    </p>
+
+    <h3 id="encryption">6. Encryption</h3>
+    <p>
+        Inedo's agents use a FIPS-compliant symmetric AES encryption scheme by default, and the installer will
+        automatically generate a secure, 32-digit key for you. You can use that key, or another one of your choosing.
+    </p>
+    <p>
+        If you select SSL instead of built-in AES, then you will need to have a valid certificate installed on the server
+        (see <a href="/support/kb/1040">KB#1040</a>).
+    </p>
+    <p class="announcement">
+        <b>No Encryption</b> is also an option, but we don't recommend using it. The primary reason we have this is so
+        that you can use a tool like <a href="https://www.wireshark.org/" target="_blank">Wireshark</a> to inspect
+        the individual messages, either as directed by our support engineers or because you really like studying
+        binary TCP protocols.
+    </p>
+    <p>
+        You can change this later by editing the configuration file in the installation directory, and restarting the
+        service.
+    </p>
+
+    <h3 id="summary">7. Summary</h3>
+    <p>Verify that the information here is correct and then click Install.</p>
+
+
+    <h3 id="installation">8. Installation</h3>
+    <p>
+        The actual installation is near instantaneous, and should take no more than a minute or two, even on the slowest
+        of systems.
+    </p>
+
+    <p>Once the installation is complete, just close the installer or click the Exit button.</p>
+
+    <h2 id="multiple">Installing Multiple Agents on Same Machine</h2>
+
+    <p>Sometimes, it may be desired to install multiple instances of the Inedo Agent on the same machine. The most common reason for this is privileges; one agent may run in a higher privilege mode than the other.</p>
+
+	<div class="attention technical">
+    <p>
+        The agent installer (including silent installation) does not currently support installation or management of multiple instances. See <a href="/support/kb/1146">KB#1146</a> for guidance on how to 
+        install more than one agent on the same server manually.
+    </p>
+	</div>
+
+    <h2 id="silent">Silent Installation</h2>
+    <p>
+        The Inedo Agent installer may also be run without displaying a window, ideal for Infrastructure as Code or script-based installations.
+        To perform a silent install, simply run the executable from the command line or PowerShell with the <code>/S</code> argument.
+    </p>
+
+    <h4>Argument Format:</h4>
+    <p>
+        Silent installation arguments follow the format:
+    </p>
+    <p>
+        <pre>InedoAgentSetup.{version}.exe /{argument-name}="{argument-value}"</pre>
+    </p>
+    <p>
+        <i>Note: quotes are required if the <code>argument-value</code> contains whitespace.</i>
+    </p>
+
+    <h4>Example:</h4>
+	<p>
+	<pre><code>.\InedoAgentSetup.42.exe /S /TargetPath="C:\Program Files\InedoAgent" /Port=46336 /TempPath="C:\ProgramData\InedoAgent" /ServiceName="INEDOAGENTSVC" /Security=AES /EncryptionKey="0123456789abcdef0123456789abcdef"</code></pre>
+	</p>
+	<h4>Available Arguments</h4>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Default Value</th>
+                <th>Notes</th>
+            </tr>
+        </thead>
+        <tbody>
+			<tr>
+                <td>S</td>
+                <td><i>(not applicable)</i></td>
+                <td>This argument instructs the installer not to display a window, and does not have an <code>argument-value</code></td>
+            </tr>
+            <tr>
+                <td>TargetPath</td>
+                <td>%ProgramFiles%\InedoAgent</td>
+                <td>The directory that will contain the service's executable and supporting files. If specified, <code>argument-value</code> must be an absolute path (i.e. %PROGRAMFILES will not expand)</td>
+            </tr>
+            <tr>
+                <td>Port</td>
+                <td>46336</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>TempPath</td>
+                <td>%ProgramData%\InedoAgent</td>
+                <td>The base directory for any <em>Product</em>RootPath option not explicitly specified. If specified, <code>argument-value</code> must be an absolute path (i.e. %PROGRAMDATA will not expand)</td>
+            </tr>
+            <tr>
+                <td>OtterRootPath</td>
+                <td><em>TempPath</em>\Otter</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>BuildMasterRootPath</td>
+                <td><em>TempPath</em>\BuildMaster</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>HedgehogRootPath</td>
+                <td><em>TempPath</em>\Hedgehog</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>UserAccount</td>
+                <td>LocalSystem</td>
+                <td>The user account to run the service under. For built-in accounts, use <code>NetworkService</code> or <code>LocalSystem</code></td>
+            </tr>
+            <tr>
+                <td>Password</td>
+                <td></td>
+                <td>The password for UserAccount. Omit this field for built-in accounts.</td>
+            </tr>
+            <tr>
+                <td>ServiceName</td>
+                <td>INEDOAGENTSVC</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Security</td>
+                <td>AES</td>
+                <td>Also accepts SSL or None. It is recommended that this is left as AES as the other options do not have any way of validating the identity of the client.</td>
+            </tr>
+            <tr>
+                <td>CertificateName</td>
+                <td></td>
+                <td>Used if Security is set to SSL. Represents the case-sensitive friendly name of a certificate in the Local Machine store.</td>
+            </tr>
+            <tr>
+                <td>EncryptionKey</td>
+                <td></td>
+                <td>Used if Security is set to AES. Must be a 32-character hex string. If EncryptionKey is not specified, one will be randomly generated (which could overwrite an existing key on upgrade).</td>
+            </tr>
+        </tbody>
+    </table>
+
+</body>
+</html>
