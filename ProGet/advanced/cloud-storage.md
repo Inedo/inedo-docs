@@ -15,7 +15,7 @@ ProGet defaults to storing package files on disk, but you can configure a feed t
 
 Cloud storage is generally slower, as it's much faster to read/write files from local disk than it is over an internet connection. However, the speed difference may not be noticed in day-to-day use.
 
-## Configuring a Feed to Use Cloud Storage {#configure}
+## Configuring a Feed to Use Cloud Storage  {#configure data-title="Configuring a Feed to Use Cloud Storage"}
 
 By default, ProGet stores packages on disk using a disk-based package store.
 
@@ -27,7 +27,7 @@ If you don't see Amazon S3 or Microsoft Azure as an option, then validate that t
 
 After selecting the package store type, you will be presented with a handful of required configuration options.
 
-### Amazon S3 Options
+### Amazon S3 Options  {#amazon-s3 data-title="Amazon S3 Options"}
 
 |  Option     | Description |
 | :------------- | :------------- |
@@ -39,7 +39,7 @@ After selecting the package store type, you will be presented with a handful of 
 |Encrypted	| When set, ProGet will request server-side encryption is used for packages; this is generally not recommended |
 |Region Endpoint |	The region endpoint (such as us-east-1) where the bucket is located|
 
-### Azure Blob Options
+### Azure Blob Options  {#azure data-title="Azure Blob Options"}
 
 |  Option | Decription      |
 | :------------- | :------------- |
@@ -47,7 +47,7 @@ After selecting the package store type, you will be presented with a handful of 
 |Container	| The name of the Azure Blob Container that will receive the uploaded files. |
 |Target Path |	The path in the specified Azure Blob |
 
-## Migrating an Existing Feed
+## Migrating an Existing Feed  {#migrate data-title="Migrating an Existing Feed"}
 
 When you change a feed's package store, the package files will not be moved. To ensure the new package store has the same packages, you can perform the following steps
 
@@ -58,8 +58,3 @@ When you change a feed's package store, the package files will not be moved. To 
 5. Set the Drop Path to be the disk path from step 3
 6. Start the service
 7. Once imported, delete the empty disk path from step 3
-
-
-
-
-### Client to Server Message {#client-server data-title="Client to Server Message"}
