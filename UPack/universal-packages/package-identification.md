@@ -6,6 +6,8 @@ keywords: proget, universal-packages
 ---
 A universal package can be uniquely identified it's group, name, and version. These are different properties in the [manifest file](/support/documentation/upack/universal-packages/metacontent-guidance/manifest-specification).
 
+<iframe width="600" height="337" src="https://www.youtube.com/embed/kHYgicz5Bec" frameborder="0" allowfullscreen="true"></iframe>
+
 In some cases, you will need to refer to a package with a single string. In this case, the group and name are combined into a single string, separated by a forward-slash, and the version is followed (separated by a colon). If a package is not in a group, then it's considered in the *empty* group, and that slash is not used. For example:
 
 {.docs}

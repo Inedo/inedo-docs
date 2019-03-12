@@ -12,4 +12,6 @@ Packages work at their best when they are read-only and cryptographically verifi
 
 This is where repackaging comes in: it's an operation that involves changing a small part of package metadata (such as the version number)  without altering the contents, while retaining a "pointer" to the original package inside the newly created package. Of course, this operation can only be performed by a trusted person or service to ensure that the repackaging is securely performed.
 
+<iframe width="600" height="337" src="https://www.youtube.com/embed/BYfWcm7tppM" frameborder="0" allowfullscreen="true"></iframe>
+
 The universal packaging [manifest file](/support/documentation/upack/universal-packages/metacontent-guidance/manifest-specification) allows for storing a chain of repackaging events that allow you to verify each preceding package.
