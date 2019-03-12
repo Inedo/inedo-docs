@@ -3,6 +3,7 @@ title: Feeds
 subtitle: Feeds in ProGet
 sequence: 200
 keywords: proget,feeds
+show-headings-in-nav: true
 ---
 
 :::attention {.analogy}
@@ -15,9 +16,9 @@ By setting up multiple feeds, you can not only separate packages by package form
 
 ## Creating and Managing Feeds {#creating data-title="Creating and Managing Feeds"}
 
-To create a new feed, go to Feeds > Create Feed. You can also manage feeds from the Feeds page, or by going to the specific feed page and clicking the Manage button
+To create a new feed, go to `Feeds > Create Feed`. You can also manage feeds from the Feeds page, or by going to the specific feed page and clicking the `Manage Feed` button.
 
-### Feed types {#feed data-title="Feed types"}
+### Feed Types {#feed data-title="Feed Types"}
 
 The type of feed defines the format of package that it will contain. A NuGet feed, for example, will only ever store NuGet packages, and a npm feed will only ever store npm packages.
 
@@ -33,13 +34,13 @@ To use cloud storage, you need to configure a different package store; see [Amaz
 
 Accessing the package files directly for any reason other than backing up files is not supported. Future versions of ProGet may change the way package files are stored on disk.
 
-#### Default Directory {#default data-title="Default Directory"}
+#### Default Directory
 
 A feed's default directory is built by combining the following path elements:
 
 {.docs}
-- **Root Storage Path**. This path is configured in the `Storage.PackagesRootPath` setting (Admin> Advanced Settings), and defaults to `%ProGramData%\ProGet\PackagesRoot`
-- **Package Type Path** Each feed type uses a different setting and a different default. For example, NuGet feeds use `Storage.NuGetPackagesLibrary`, which default to `.nuget`
+- **Root Storage Path** - this path is configured in the `Storage.PackagesRootPath` setting (`Admin > Advanced Settings`), and defaults to `%ProGramData%\ProGet\PackagesRoot`. Its value may be assigned in Advanced Settings or, for load-balanced installations, may be set in the installation's .config file (web.config or ProGet.Service.config) with a key name of `ProGetConfig.Storage.PackagesRootPath`. To use the .config file value, the value specified here must be saved with an empty value. When configured in the .config file, that value will be displayed here.
+- **Package Type Path** - each feed type uses a different setting and a different default. For example, npm feeds use `Storage.NpmPackagesLibrary`, which default to `.npm`. *Note: all SemVer2 NuGet feed types (including Chocolatey and PowerShell) are currently fixed in `.nugetv2` *
 - **FeedId.** The immutable, integer-based identifier for a feed
 
 If the package type path is an absolute path, then the root storage path will be ignored. For example, assuming the default settings weren't changed, a NuGet feed with an ID of 1 would store packages in the following path:
@@ -52,9 +53,11 @@ If the package type path is an absolute path, then the root storage path will be
 
 When you change a feed's disk directory, either directly (by going to the feed setting page) or indirectly (by editing the path defaults), the package files will not be moved.
 
-Note that the ProGet web application and service must have full control permissions on a feed's disk directory.
+##### Access & Permissions {#permissions}
 
-When using network storage, you should use the UNC path (e.g. \\\filesv1\packages) as opposed to mapped drive (P:\packages). This is because of the way mapped drives work in Windows; they can be a bit tricky to configure and keep working for service accounts.
+Both the ProGet web application (either the logon user for the `INEDOPROGETWEBSVC` service for the Integrated Web Server, or the ProGet IIS site's associated application pool identity) and `INEDOPROGETSVC` service logon user must have full control permissions on a feed's disk directory.
+
+When using network storage, you should use the UNC path (e.g. `\\\filesv1\packages`) as opposed to mapped drive (`P:\packages`). This is because of the way mapped drives work in Windows; they can be a bit tricky to configure and keep working for service accounts.
 
 ### Drop Path and Bulk Package Importing {#drop data-title="Drop Path and Bulk Package Importing"}
 
@@ -62,25 +65,25 @@ In some cases, it may be easier for users or programs to simply copy package fil
 
 You can configure a feed to use a "drop path", which is a local- or network path that ProGet will periodically scan for files. If that directory contains a package with a valid format for that feed type, it will be imported into ProGet.
 
-By default, existing packages will not be overwritten, but you can change this by going to Admin > Advanced Settings, and changing `Feeds.AllowDropPathImportOverwrite` to true.
+By default, existing packages will not be overwritten, but you can change this by going to `Admin > Advanced Settings`, and changing `Feeds.AllowDropPathImportOverwrite` to true.
 
-### Connectors {#connectors data-title="Connectors"}
+### Connectors
 
 Connectors allow ProGet feeds to include packages from an external source, whether it is another ProGet feed, a public feed, or any other implementer of the package API for the feed type. See the [connectors documentation](/support/documentation/proget/core-concepts/feeds/connectors) for more information about connectors.
 
-### Vulnerability Sources	{#vulnerability data-title="Vulnerability Sources	"}
+### Vulnerability Sources
 
 ProGet has integrations with two leading vulnerability scanning companies to automatically scan third-party packages against vulnerability databases. See [Vulnerability Scanning and Blocking](/support/documentation/proget/compliance/vulnerabilities) for more information.
 
-### License Filters {#license data-title="License Filters"}
+### License Filters 
 
 ProGet offers two workflows for managing licensing agreements of third-party, open-source packages. See [License Scanning and Blocking](/support/documentation/proget/compliance/license-scanning) for more information.
 
-### Retention Rules {#retention data-title="Retention Rules"}
+### Retention Rules 
 
 Retention rules help you reclaim disk space by automatically deleting old or unused packages that meet a set of criteria that you define. See [Retention Rules](/support/documentation/proget/administration/retention-rules) for more information.
 
-### Variables {#variables data-title="Variables"}
+### Variables 
 
 Webhooks let you connect ProGet with other services to notify users. See [Webhooks](/support/documentation/proget/advanced/webhooks) for more information.
 
@@ -94,4 +97,4 @@ A feed can either be deactivated or deleted. Deactivating a feed will make it in
 
 Deleting a feed will remove it entirely from the software. All package data indexed in the database will be deleted, as well as metadata not stored in the package itself, such as publish dates and download counts for each package.
 
-Packages themselves are not deleted when deleting a feed. If you would like to delete them, make note of the feed disk path, and delete them manually after deleting the feed.
+{.attention .technical} Packages themselves are not deleted when deleting a feed. If you would like to delete them, make note of the feed disk path, and delete them manually after deleting the feed.
