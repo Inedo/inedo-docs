@@ -18,15 +18,17 @@ Then [configure Visual Studio](/support/tutorials/proget/using-the-nuget-visual-
 
 You can use also ProGet as a proxy to NuGet.org, both to block [improper licenses](/support/documentation/proget/compliance/license-scanning) and [security vulnerabilities](/support/documentation/proget/compliance/vulnerabilities), and to cache packages in the event of an internet or NuGet.org outage. To do this, create a connector (Feeds > Connectors > Create New Connector > NuGet), then associate it with a feed (Manage Feed > Connectors).
 
-## Creating and Publishing NuGet Packages {#creating data-title="Creating and Publishing NuGet Packages"}
+## Creating and Publishing NuGet Packages {#creating data-title="Creating and Publishing"}
+
+The [NuGet package format](https://docs.microsoft.com/en-us/nuget/schema/nuspec) is well-documented, and you can create packages in a number of ways, including [directly from Visual Studio](https://docs.microsoft.com/en-us/nuget/guides/create-net-standard-packages-vs2017) or using [nuget.exe](https://docs.microsoft.com/en-us/nuget/create-packages/creating-a-package). Once you've created a package, there are four ways you can publish it to ProGet:
 
 {.docs}
-- Upload from Disk; Upload a pre-packaged NuGet package (.nupkg) from disk.
-- Push via NuGet Command Line Utility; Uses the nuget.exe command line to add a package to the local feed.
-- Pull from another Feed; Pulls a package from another NuGet feed (such as nuget.org).
-- Bulk Package Import/File Copy; Import multiple existing packages at once.
+- Upload from Disk - upload a pre-packaged NuGet package (.nupkg) from disk
+- Push via NuGet Command Line Utility - uses the nuget.exe command line to add a package to the local feed
+- Pull from another Feed - pulls a package from another NuGet feed (such as nuget.org). Note: this feed URL must be a NuGet v2 URL at this time, e.g. `https://nuget.org/api/v2`
+- Bulk Package Import/File Copy - import multiple existing packages at once
 
-For more specific instructions on how to add a package to a feed, click the "Add Package" button on your NuGet feed.
+For more specific instructions on how to add a package to a feed, click the `Add Package` button on your NuGet feed.
 
 ## NuGet API Key {#nuget data-title="NuGet API Key"}
 
@@ -38,13 +40,13 @@ With ProGet, a principal (user or group) either has privileges to publish a pack
 - **username:password as API Key** - ProGet will allow users to authenticate in this mode using an API Key in the format: `username:password`. For example, you can push a package to a Feed with the default Admin account in ProGet using the `-ApiKey Admin:Admin` option with nuget.exe
 -   **[Create ProGet API Key](/support/documentation/proget/administration/security/api-keys)** - you can create an API Key in ProGet (Admin &; API Key &; Access Logs) with Feed Access; you can further restrict this key by associating it to a user you've already given specific permissions
 
-### Legacy NuGet API Key {#legacy data-title="Legacy NuGet API Key"}
+### Legacy NuGet API Key {#legacy}
 
 NuGet feeds also support an API key definition directly on the Manage Feed page. This is a deprecated legacy feature, so it is recommended to migrate to a ProGet API Key at your earliest convenience.
 
 Legacy NuGet API Keys behave slightly differently than ProGet API Keys: If a legacy key is defined for the feed, it will be checked *in addition to* the authenticated user. In the event the same key is defined both as a legacy key and as a ProGet key, the ProGet key will take precedence.
 
-## Symbols and Source Packages {#symbols data-title="Symbols and Source Packages"}
+## Symbols and Source Packages {#symbols}
 
 A NuGet feed in ProGet may be configured as a Symbol/Source server compatible with debuggers such as Visual Studio and WinDbg. See [Symbols and Source Code in ProGet](/support/documentation/proget/feeds/nuget/symbol-and-source-server) for more information.
 
@@ -76,7 +78,7 @@ http://proget-server/api/v2/package/{feedName}/{packageName}/{optional-version}
 http://proget-server/nuget/{feedName}/Packages?$filter=Id%20eq%20'jQuery'
 ```
 
-### NuGet "v3" API {#nuget data-title="NuGet "v3" API"}
+### NuGet V3 API {#nuget-v3 data-title="NuGet V3 API"}
 
 Both NuGet.org and the NuGet client tools support two different API protocols: ODATA (v2) and JSON-LD (v3). Microsoft plans to maintain and support both APIs indefinitely, to support older versions of the NuGet clients and the dozens of third-party tools (like ProGet) that use the ODATA protocol.
 
@@ -86,7 +88,7 @@ However, it is on our 2019 roadmap to implement this API, possibly as a new feed
 
 ## Legacy (Quirks) NuGet Feeds {#legacy data-title="Legacy (Quirks) NuGet Feeds"}
 
-NuGet feeds created prior to ProGet 5.0 are considered Legacy (Quirks) NuGet feeds. The quirks feed type uses the loose semantic versioning rules that NuGet.org preferred in the past. In ProGet 5.0, new NuGet feeds now use a more sophisticated versioning scheme that accommodates semantic versioning 2.0 rules for pre-release version strings.
+NuGet feeds created prior to ProGet 5.0 are considered Legacy (Quirks) NuGet feeds. The quirks feed type uses the loose semantic versioning rules that NuGet.org preferred in the past. In ProGet 5.0, new NuGet feeds now use a more sophisticated versioning scheme that accommodates semantic versioning 2.0 rules for pre-release version strings. However, versions that violate the SemVer2 specification will still appear in SemVer2 feeds.
 
 To migrate a legacy (quirks) NuGet feed, click the "migrate" link on the manage feed page. ProGet will pop up a confirmation dialog with a couple migration options. When executing a migration, ProGet will do the following:
 
