@@ -18,4 +18,4 @@ Since Chocolatey is built on the NuGet infrastructure, a Chocolatey feed in ProG
 
 In the video below, Chocolatey founder Rob Reynolds presents a demo of ProGet and Chocolatey, reviewing how both come together to provide a complete Windows package management solution.
 
-[![](http://img.youtube.com/vi/BcTYGf7sQ8Q/0.jpg)](http://www.youtube.com/watch?v=BcTYGf7sQ8Q "")
+<iframe width="600" height="337" src="https://www.youtube.com/embed/BcTYGf7sQ8Q" frameborder="0" allowfullscreen="true"></iframe>

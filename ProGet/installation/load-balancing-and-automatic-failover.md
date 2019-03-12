@@ -2,7 +2,8 @@
 title: Load Balancing & Automatic Failover
 subtitle: Configuring High Availability
 sequence: 400
-keywords: proget,installation
+keywords: proget, installation
+show-headings-in-nav: true
 ---
 
 [ProGet's distributed architecture](../core-concepts/high-availability#architecture) allows you to use any number of servers for both load-balancing and automatic failover purposes, such that one server node can take over in the event of any other server failure or outage.
@@ -11,19 +12,20 @@ This feature is available in paid and trial ProGet editions. {.info}
 
 There are five key components to a High Availability configuration.
 
-### Load Balancer {#load data-title="Load Balancer"}
+### Load Balancer {#load-balancer data-title="Load Balancer"}
 
 The load balancer will direct traffic bound for the ProGet web application, evenly distributing traffic during heavy load times.
 
 ProGet was built to be compatible with any load-balancing platform, whether software-based (such as HAProxy, NLP, or nginx) or appliance-based (such as F5, A10, Citrix).
 
 {.docs}
-- **Not Required: Session Affinity (sticky sessions)** - while you can enable this, it's not required and may simplify your traffic and load balancer configuration.
-- <b>Common Machine Key</b> - you will need to use a common machine key amongst web nodes, see [Microsoft's documentation](https://msdn.microsoft.com/library/w8h3skw9(v=vs.100).aspx) for how to configure this in your web.config or machine.config files
+- **Not Required: Session Affinity (sticky sessions)** - while you can enable this, it's not required
+  and may simplify your traffic and load balancer configuration.
+-  **Common Machine Key** - you will need to use a common machine key amongst web nodes, see [Microsoft's documentation](https://msdn.microsoft.com/library/w8h3skw9(v=vs.100).aspx) for how to configure this in your web.config or machine.config files
 
-If you are new to load balancing, Microsoft's [https://technet.microsoft.com/en-us/library/cc771008.aspx](Network Load Balancing Cluster) is relatively easy to configure.
+If you are new to load balancing, Microsoft's [Network Load Balancing Cluster](https://technet.microsoft.com/en-us/library/cc771008.aspx) is relatively easy to configure.
 
-### Web Node Configuration {#web data-title="Web Node Configuration"}
+### Web Node Configuration {#web-node data-title="Web Node Configuration"}
 
 Any number of servers may be configured as web nodes; to ensure high-availability, at least three nodes are required. More may be added to distribute load and ensure rapid responses.
 
@@ -31,15 +33,15 @@ To configure a web node, see the [manual installation instructions](/support/doc
 
 Once complete, from any web server, click on the **Configure Load Balancing** link on the ProGet administration page, then click on the **Enable Load Balancing** button.
 
-### Shared Storage {#shared data-title="Shared Storage"}
+### Shared Storage {#shared-storage data-title="Shared Storage"}
 
 ProGet is compatible with any type of common storage that web and indexing nodes can access, whether software-based (SAMBA share, Windows Server Storage Spaces, etc) or appliance-based (dedicated NAS). The only requirement is that the storage is readable and writeable by all nodes.
 
-### Database Cluster {#database data-title="Database Cluster"}
+### Database Cluster {#database-cluster data-title="Database Cluster"}
 
 ProGet can work with any SQL Server Cluster configuration, regardless of the failure detection mechanism and failover policy. SQL Server's Database Mirroring may also be used, although note that Microsoft has depricated the feature in favor of AlwaysOn Availability Groups.
 
-### Indexing Nodes {#indexing data-title="Indexing Nodes"}
+### Indexing Nodes {#indexing-nodes data-title="Indexing Nodes"}
 
 Any number of indexing nodes may be configured; to ensure high-availability, at least two nodes are required.
 
