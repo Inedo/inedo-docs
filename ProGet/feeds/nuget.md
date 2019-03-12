@@ -99,3 +99,14 @@ To migrate a legacy (quirks) NuGet feed, click the "migrate" link on the manage 
 - Reactivate the feed
 
 This migration is entirely a database operation and does not need to manipulate your packages at all. By default the migration is performed as a single database transaction so that it may be rolled back in the unlikely event of a failure. If you have a very large number of packages in your feed (>10,000), we strongly recommend performing a backup of the ProGet SQL database before executing the migration and disabling this single-transaction mode by unchecking the appropriate box on the "migrate feed" dialog.
+
+## NuGet Feed Re-Indexing {#re-index data-title="NuGet Feed Re-Indexing"}
+
+NuGet feed re-indexing in ProGet was originally designed to re-index the [symbol and source server](/support/documentation/proget/feeds/nuget/symbol-and-source-server) in SemVer2 (i.e. non-legacy) feeds. As of ProGet v5.0, it has been extended to perform the following additional actions:
+
+{.docs}
+ - fix inconsistencies related to pre-release versioning and build metadata
+ - remove local or cached packages from the database that are no longer in a package store
+ - fix database-indexed .nuspec data from a package
+
+To perform a NuGet feed re-index, visit the "Manage Feed" page of the NuGet, Chocolatey, or PowerShell feed, and select `re-index` under the Symbol Server feed property section.
