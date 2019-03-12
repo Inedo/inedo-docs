@@ -1,20 +1,29 @@
----
+﻿---
 title: Symbol and Source Server
 sequence: 30
 keywords: proget, feeds, packages, symbols, source, nuget, visual-studio-online
 ---
 
+<style type="text/css">
+    .red { color: #990000; }
+    .green { color: #009900; }
+    .checkbox { margin-left: 75px; }
+    .documentation-content img { max-width: 635px; }
+</style>
 
 ## Symbol and Source Server
 A NuGet feed in ProGet may be configured as a Symbol/Source server compatible with debuggers such as Visual Studio and WinDbg. The following is supported by the ProGet symbol server:
 
-{.docs}
+{.checkbox .green} ☑ **Microsoft PDB format (C/C++, .NET)**
 
-- Microsoft PDB format (C/C++, .NET)
-- Source server
-- Portable PDB format (.NET)
-- PDBs in connector packages
-- Source server for [ProGet](/support/documentation/proget/installation/installation-guide/linux-docker)
+{.checkbox .green} ☑ **Source server**
+
+{.checkbox .green} ☑ **Portable PDB format (.NET)**
+
+{.checkbox .red} ☒ **PDBs in connector packages**
+
+{.checkbox .red} ☒ **Source server for [ProGet on Linux](/support/documentation/proget/installation/installation-guide/linux-docker)**
+
 
 ### Accessing Symbols
 
@@ -22,7 +31,7 @@ When the Symbol Server is enabled, any symbols files stored in local Feed packag
 
 :::attention {.best-practice}
 ```
-{http://&laquo;proget-server&raquo;/symbols/&laquo;Feed&raquo}
+http://«proget-server»/symbols/«Feed»
 ```
 :::
 
@@ -34,12 +43,9 @@ Because ProGet integrates symbols in all of its NuGet feeds, having two packages
 
 To summarize, **push only the symbol package to your ProGet feed if you intend to use the symbol server.** To prevent symbols from being downloaded with the NuGet package, see the *Strip symbol files from packages downloaded from this feed* option on the Manage Feed page under *Symbol Server* settings.
 
-## Debug Into Internal NuGet
+## Debug Into Internal NuGet Packages
 
-To take full advantage of ProGet's symbol/source server, the published NuGet package must include symbol (pdb)
-files for every debuggable assembly, and the source files must be included in the /src/ folder of the
-package. See the <a href="http://docs.nuget.org/docs/creating-packages/creating-and-publishing-a-symbol-package">NuGet documentation</a>
-on building a symbol package for detailed information.
+To take full advantage of ProGet's symbol/source server, the published NuGet package must include symbol (pdb) files for every debuggable assembly, and the source files must be included in the /src/ folder of the package. See the <a href="http://docs.nuget.org/docs/creating-packages/creating-and-publishing-a-symbol-package">NuGet documentation</a> on building a symbol package for detailed information.
 
 :::attention {.technical}
 ProGet will index and return portable PDB files as well as the traditional Microsoft PDB files, but portable PDB files are <em>not</em> transparently rewritten to enable them to work with source code in the embedded NuGet package. If you would like to debug into the source code associated with a portable PDB file, consider using a build tool such as [SourceLink](https://github.com/ctaggart/SourceLink) to embed source file URLs (or the files themselves) during compilation.
@@ -55,31 +61,35 @@ In order for ProGet to serve symbols for a particular NuGet feed, it must be con
 #### Verifying Indexed Symbols
 
 Once a package with symbols is uploaded to the feed, browsing to the Package Details page will indicate whether symbols have been indexed and whether the package contains sources:
-![](/resources/documentation/proget/symbols/package-details.png)
+
+{.upcoming .v4} ![](/resources/documentation/proget/symbols/package-details.png)
 
 You can download the package and inspect it yourself to verify this using the <em>Download Package with Symbols</em> link (which appears if the feed is configured to strip symbols).
 
 #### Configuring Visual Studio
+
 ##### Enable Symbol Server Support
-In order to debug into NuGet package libraries, Visual Studio must be configured to use ProGet as a symbol server. Select **Debug < Options...** from the menu bar, then browse to **Debugging > Symbols** in the tree menu. Add the symbol server URL found on the Manage Feed page earlier, and specify a Symbol Cache Directory. By default Visual Studio will use ```%LOCALAPPDATA%\Temp\SymbolCache```, but you may specify any path.
+In order to debug into NuGet package libraries, Visual Studio must be configured to use ProGet as a symbol server. Select **Debug > Options...** from the menu bar, then browse to **Debugging > Symbols** in the tree menu. Add the symbol server URL found on the Manage Feed page earlier, and specify a Symbol Cache Directory. By default Visual Studio will use `%LOCALAPPDATA%\Temp\SymbolCache`, but you may specify any path.
 
 ![](/resources/documentation/proget/symbols/enable-symbol-server.png)
 
-#### Enable Source Server Support
+##### Enable Source Server Support
 
 To configure source server support, browse to **Debugging > General** in the debugging options tree menu, and make sure the following settings are checked/unchecked as follows:
 
-{.docs}
-- **Enable Just My Code**
-- **Enable source server support**
+{.checkbox} ☐ **Enable Just My Code**
+
+{.checkbox} ☑ **Enable source server support**
+
 Additionally, you may have to uncheck:
-- **Enable .NET Framework Source Stepping**
+
+{.checkbox} ☐ **Enable .NET Framework Source Stepping**
 
 
 in some cases. The settings should look like the following:
 ![](/resources/documentation/proget/symbols/debug-settings.png)
 
-### Testing the Configuration
+#### Testing the Configuration
 
 A simple way to test out the configuration is to create a console application that consumes the NuGet package with symbols, write some throwaway code that you know will throw an exception, then click the Start button in Visual Studio to begin debugging:
 ![](/resources/documentation/proget/symbols/code1.png)
@@ -104,12 +114,12 @@ The hex string in the file path should also start with the GUID listed in ProGet
 
 ![](/resources/documentation/proget/symbols/guid.png)
 
-#### Common Errors
+##### Common Errors
 
 The most common errors (based on previous support inquiries) include:
-{.docs}
 
-- Using the wrong URL, e.g. (http://&laquo;proget-server&raquo;/) **nuget**<</feed-name/>> instead of the correct (http://&laquo;proget-server&raquo;)<strong>symbols</strong>feed-name
+{.docs}
+- Using the wrong URL, e.g. <span class="red">http://«proget-server»/**nuget**/«feed-name»</span> instead of the correct <span class="green">http://«proget-server»/**symbols**/«feed-name»</span>
 - Pushing both NuGet packages (with and without symbols)
 - Trying to consume symbols for connector packages (which is not supported, workaround is to pull packages locally or use a separate feed for symbols)
-- Not including source files under the /src/ directory at the root of the .nupkg file
+- Not including source files under the `/src/` directory at the root of the .nupkg file
