@@ -1,4 +1,4 @@
-﻿---
+---
 title: Feed Management API
 subtitle: Feed Management API
 sequence: 200
@@ -15,21 +15,23 @@ The Feed Management API Endpoints offer a simple mechanism for querying, creatin
 
 These API endpoints should be used instead of the [Native API Methods] when possible, as they are much easier to use and will likely not change. {.announcement}
 
-For security and simplicity, these endpoints require that an [API Key] is created first.
+For security and simplicity, these endpoints require that a `[Feed Management API Key]` is created first. This key is passed into the API call within the body or the header of your request.
+`{
+   "API_key": "APIKEY"
+ }`
 
+### Feed Data Specification {#feed-data-specification}
 
-### Data Specification {#data-specification}
 
 This endpoint sends and receives entries as [JSON](http://json.org/) objects.
-
 
 <tab-block>
 <tab name="Feed">
 
 Property               | Format
 -----------------------|----------
-`name`                 | A *string* of no more than fifty characters: numbers (0-9), upper- and lower-case letters (a-Z), dashes (-), and underscores (_); must start with a letter, and may not start or end with a dash or underscore. Required.
-`feedType`             | A *string* value of `nuget`, `npm`, `universal`, ..., or `xxx`. Required.
+`name`                 | A *string* of no more than fifty characters: numbers (0-9), upper- and lower-case letters (a-Z), dashes (-), and underscores (_); must start with a letter, and may not start or end with a dash or underscore. **required**.
+`feedType`             | A *string* value of `nuget`, `npm`, `universal`, ..., or `xxx`. **required**.
 `packageType`          | A *string* value of `chocolatey` or `powershell` (for `nuget` feeds) or `romp` (for `universal` feed types). See [Feed and Package Types](#feed-and-package-types). Optional.
 `description`          | A *string* that is displayed in the ProGet UI under the feed namme.  Optional (default `null`).
 `active`               | A *boolean* indicating whether the feed is active or disabled. Optional (default `true`).
@@ -38,8 +40,8 @@ Property               | Format
 `packagesPath`         | A *string* containing an absolute or relative (to RootFeedPath?) path that will override where packages are stored. Optional (default `null`). 
 `packageStore`         | A *string* containing serialized XML configuration for a custom package store like Amazon S3 or Azure Blob. See [Persisted XML](#persisted-xml). Optional (default `null`). 
 `replicationMode`      | A *string* value of `none`, `listen`, `initiate`, or `listenAndInitiate`. Optional (default `none`).
-`syncToken`            | A *string* containing the replication token used when replicating. Required when `replicationMode` is not `none`.
-`syncUrl`              | A *string* containing URL of a replication endpoint to contact. Required when `replicationMode` is `listenAndInitiate` or `initiate`.
+`syncToken`            | A *string* containing the replication token used when replicating. **required** when `replicationMode` is not `none`.
+`syncUrl`              | A *string* containing URL of a replication endpoint to contact. **required** when `replicationMode` is `listenAndInitiate` or `initiate`.
 `syncDate`             | A *string* containing an ISOxxx formatted date that indicates the last time a replication occurred. You should only set this to force a new replication. Optional.
 `allowUnknownLicenses` | A *boolean* indicating whether unknown licenses should be allowed or the global setting should be followed.Optional (default `null`).
 `allowedLicenses`      | An *array of strings*, each consisting of an existing license ID, such as MIT or BSD. Optional.
@@ -55,52 +57,64 @@ Property               | Format
 `variables`            | An *object* with property/values representing variable names and values. Optional. <ul><li>a variable name is a *string* of no more than fifty characters: numbers (0-9), upper- and lower-case letters (a-Z), dashes (-), spaces ( ), and underscores (_) and must start with a letter, and may not start or end with a dash, underscore, or space; a variable</li><li>a variable value is a *string* of any number of characters</li></ul>
 
 </tab>
+
+### Connector Data Specification {#connector-data-specification}
+
 <tab name="Connector">
-TODO: convert this to a table of sorts...
-
- * name (100 chars). string. See [Names and IDs](#names-and-ids). Required.
- * url. string. Required.
- * feedType. *Same format as Feed.feedType*. Required.
- * userName. string. Optional.
- * password. string. Optional.
- * timeout. Int. Seconds? Required. 
- * filter. String array. Optional.
- * metadataCached. Bool. REquired (default ?)
- * metadataCacheMinutes. int. required (default ?).
- * metadataCacheCount. int. required (default ?).
-
+ 
+ Property              | Format
+-----------------------|----------
+ `name` | a *string*, (100 chars max). See [Names and IDs](#names-and-ids). **required**.
+ `url`  | a *string*, referencing the url to the connector, **required**.
+ `feedType` | a *string*, type of feed `npm`, `NuGet`, `Chocolatey`, etc. **required**.
+ `userName`  | a *string*, optional.
+ `password` | a *string*, optional.
+ `timeout`  | an *integer*, optional. Number of seconds **required**. 
+ `filter`   | an *array of strings*, optional.
+ `metadataCached`  | a *boolean*, **required**.
+ `metadataCacheMinutes`  | an *integer*, **required**.
+ `metadataCacheCount`   | an *integer*, **required**.
+ 
 </tab>
+
+### Retention Rule Data Specification {#retention-rule-data-specification}
+
 <tab name="Retention Rule (on Feed)">
 Note that this is only used within a feed entity's retentionRules property, and cannot be defined outside of a feed.
 
-TODO: convert this to a table of sorts...
- * deletePrereleaseVersions. boolean. Required.
- * deleteCached. boolean. Required.
- * keepVersionCount. Int. Optional (default null)
- * keepVersions string array. Optional. [[new in 5.2 with PG-1450]]
- * deleteVersions  string array. Optional. [[new in 5.2 with PG-1450]]
- * keepUsedWithinDays. Int. Optional (default null).
- * deletePackageIds. string array. Optional.
- * keepPackageIds. string array. Optional.
- * sizeTrigger. int. in KBytes. Optional.
- * sizeExclusive. bool. Required.
- * triggerDownloadCount. int. Optional.
+ Property              | Format
+-----------------------|----------
+`feed_Id`   | an *integer* that identifies the feed, optional
+`FeedType_Name`  | a *string*, type of feed `npm`, `NuGet`, `Chocolatey`, etc. **required**.
+`DeletePrereleaseVersions_Indicator` | a *boolean*, **required**.
+`DeleteCached_Indicator` | a *boolean*, **required**.
+`KeepVersions_Count` | an *integer*, optional
+`keepVersions` |  an *array of strings*, optional. [[new in 5.2 with PG-1450]]
+`deleteVersions` |  an *array of strings*, optional. [[new in 5.2 with PG-1450]]
+`KeepUsedWithin_Days` | an *integer*, optional.
+`DeletePackageIds_Csv` |  an *array of strings*, optional.
+`KeepPackageIds_Csv` |  an *array of strings*,  optional.
+`sizeTrigger_KBytes`  | an *integer* in KBytes. optional.
+`sizeExclusive_Indicator`  | a *boolean*, **required**.
+`triggerDownloadCount` | an *integer*, optional.
  
 </tab>
+
+### License Data Specification {#license-data-specification}
 
 <tab name="License">
 
-TODO: convert this to a table of sorts...
- * licenseId. SPDX identifier string of 50 chars. required.
- * title. string. required
- * urls. array of string. required.
- * allowed. bool. optional.
- * alllowedFeeds. string array. optional.
- * blockedFeeds. string array. optional.
+ Property              | Format
+-----------------------|----------
+`licenseId` | a *string* SPDX identifier of 50 chars, **required**.
+`title` |  a *string*, **required**
+`urls`  | an *array of strings*, **required**.
+`allowed`   | a *boolean* that will determine if license is allowed or blocked, optional.
+`alllowedFeeds` | an *array of strings* that shows which feeds are allowed, optional.
+`blockedFeeds` | an *array of strings* that shows which feeds are blocked, optional.
  
 </tab>
 </tab-block>
-
 
 ### Feed and Package Types  {#feed-and-package-types}
 In the ProGet UI, Chocolatey and PowerShell are represented as separate feed types, even though they just contain NuGet packages and use the same NuGet API. This is why, in the ProGet UI, you can change a feed's type between NuGet, Chocolatey, and PowerShell at any time, but not between other feed types.
@@ -117,7 +131,13 @@ The easiest way to see what an object's persisted XML will look like is to creat
 
 <tab-block>
 <tab name="Amazon S3 Package Store">
-TODO: Paste in XML
+
+```
+<Inedo.ProGet.Feeds.NuGet.NuGetFeedConfig Assembly="ProGetCoreEx">
+  <Properties SymbolServerEnabled="False" StripSymbolFiles="False" StripSourceCodeInvert="False" UseLegacyVersioning="False" />
+</Inedo.ProGet.Feeds.NuGet.NuGetFeedConfig>
+```
+ 
 </tab>
 <tab name="Azure Blob Package Store">
 </tab>
@@ -133,7 +153,7 @@ Because one of the primary use cases of the Feed Management API is maintaining f
 ### Endpoint Specifications {#endpoints}
 All of the feed management endpoints follow the same convention:
 
-POST ::/api/management/::{style="opacity: 0.5"}<b>&laquo;entity-type&raquo;</b>/<b>&laquo;action-type&raquo;</b>/<b>&laquo;entity-name&raquo;</b>?key=&laquo;api-key&raquo; {.info}
+POST ::/api/management/::<b>&laquo;entity-type&raquo;</b>/<b>&laquo;action-type&raquo;</b>/<b>&laquo;entity-name&raquo;</b>?key=&laquo;api-key&raquo; {.info}
 
 - `entity-type` is one of `feeds`, `connectors`, or `licenses`
 - `action-type` is one of `[list](#list)`, `[get](#get)`, `[create](#create)`, `[update](#update)`, or `[delete](#delete)`
@@ -148,37 +168,80 @@ This returns a status of 200 (on success), or 403 (api key not authorized), and 
 
 {.info}
 ```
-POST /api/management/feeds/list?key=secure123
+GET /api/management/feeds/list?key=secure123
 ```
 
 ```
 [
-  {
-    "name": "FilteredNuGet",
-    "feedType": "nuget",
-    "description": "License Filtered NuGet packages",         
+ {
+    "name": "chocoTest2",
+    "feedType": "npm",
+    "description": "testing the update.....4",
     "active": true,
-    "cacheConnectors": true,
-    "replicationMode": "none",     
+    "cacheConnectors": false,
+    "dropPath": "newPath22",
+    "packagesPath": "newPathOverride",
+    "syncToken": "aGdoZ2Y=",
+    "syncTargetUrl": "https://google.com",
     "allowUnknownLicenses": false,
-    "allowedLicenses": ["MIT","BSD"],
-    "blockedLicenses": ["GPL3"],
-    "symbolServerEnabled": true, 
-    "stripSymbols": true,
-    "stripSource": true,
-    "connectors": ["PublicNuGet"],
-    ...,
-    "variables": 
-    {
-       "feedOwner": "atripp@initech.corp"
-    }  
-  },
-  {
-    "name": "ApprovedChoco",
-    "feedType": "nuget",
-    "packageType": "chocolatey",         
-    ...
-  },
+    "allowedLicenses": [
+        "0BSD"
+    ],
+    "blockedLicenses": [
+        "AAL"
+    ],
+    "symbolServersEnabled": false,
+    "stripSymbols": false,
+    "stripSource": false,
+    "connectors": [
+        "testing"
+    ],
+    "vulnerabilitySources": [],
+    "retentionRules": [
+        {
+            "Feed_Id": 21,
+            "Feed_Name": "chocoTest2",
+            "FeedType_Name": "npm",
+            "Sequence_Number": 1,
+            "DeletePrereleaseVersions_Indicator": "N",
+            "KeepVersions_Count": 22,
+            "KeepUsedWithin_Days": null,
+            "DeletePackageIds_Csv": null,
+            "KeepPackageIds_Csv": null,
+            "DeleteCached_Indicator": "Y",
+            "SizeTrigger_KBytes": 102400,
+            "SizeExclusive_Indicator": "N",
+            "TriggerDownload_Count": null
+        }
+    ],
+    "packageFilters": [
+        {
+            "Feed_Id": 21,
+            "Sequence_Number": 1,
+            "PackageFilter_Name": "testPackageFilter2",
+            "PackageFilter_Configuration": ""
+        },
+        {
+            "Feed_Id": 21,
+            "Sequence_Number": 2,
+            "PackageFilter_Name": "testPackageFilter3",
+            "PackageFilter_Configuration": ""
+        }
+    ],
+    "packageAccessRules": [
+        {
+            "Feed_Id": 21,
+            "Sequence_Number": 1,
+            "PackageAccessRule_Name": "rule#1.2",
+            "PackageAccessRule_Configuration": ""
+        }
+    ],
+    "variables": {
+        "test22": "test22",
+        "test2": "ttttt4444444"
+    }
+}
+ ,
   { ... }
 ]
 ```
@@ -188,14 +251,14 @@ POST /api/management/feeds/list?key=secure123
 
 {.info}
 ```
-POST /api/management/connectors/list?key=secure123
+GET /api/management/connectors/list?key=secure123
 ```
 
 ```
 [
   {
     "name": "PublicNuGet",
-    "url": "https://nuget", <-- fix this!
+    "url": "https://www.nuget.org/api/v2",
     "feedType": "nuget",
     "timeout": 30,
     "metadataCached": true,
@@ -230,17 +293,23 @@ GET /api/management/licenses/list?key=secure123
 ```
 [
   {
-    "licenseId": "MIT", <--- make sure these are correct
-    "title": "MIT License v1",
-    "urls":  ["",""],
+    "licenseId": "Abstyles",
+    "title": "Abstyles License",
+    "urls": [
+        "fedoraproject.org/wiki/Licensing/Abstyles",
+        "spdx.org/licenses/Abstyles.html"
+    ],
     "allowed": true,
     "allowedFeeds": [],
     "blockedFeeds": "InternalPackages"
   },
   {
-    "licenseId": "GPL3",
-    "title": "General Public License v3",
-    "urls":  ["",""],
+   "licenseId": "OLDAP-2.2.2",
+    "title": "Open LDAP Public License 2.2.2",
+    "urls": [
+        "spdx.org/licenses/OLDAP-2.2.2.html",
+        "www.openldap.org/devel/gitweb.cgi?p=openldap.git;a=blob;f=LICENSE;hb=df2cc1e21eb7c160695f5b7cffd6296c151ba188"
+    ],
     "allowed": false,
     "allowedFeeds": "TestPackages",
     "blockedFeeds": []
