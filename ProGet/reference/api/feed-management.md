@@ -61,6 +61,7 @@ Property               | Format
 ### Connector Data Specification {#connector-data-specification}
 
 <tab name="Connector">
+
  
  Property              | Format
 -----------------------|----------
@@ -153,7 +154,7 @@ Because one of the primary use cases of the Feed Management API is maintaining f
 ### Endpoint Specifications {#endpoints}
 All of the feed management endpoints follow the same convention:
 
-POST ::/api/management/::<b>&laquo;entity-type&raquo;</b>/<b>&laquo;action-type&raquo;</b>/<b>&laquo;entity-name&raquo;</b>?key=&laquo;api-key&raquo; {.info}
+_GET/POST_ ::/api/management/::<b>&laquo;entity-type&raquo;</b>/<b>&laquo;action-type&raquo;</b>/<b>&laquo;entity-name&raquo;</b>?key=&laquo;api-key&raquo; {.info}
 
 - `entity-type` is one of `feeds`, `connectors`, or `licenses`
 - `action-type` is one of `[list](#list)`, `[get](#get)`, `[create](#create)`, `[update](#update)`, or `[delete](#delete)`
@@ -355,8 +356,9 @@ If there are missing properties on the entity, only the specified properties wil
 
 {.info}
 ```
-POST /api/management/feeds/update/MyNuGets?key=secure123
-
+POST /api/management/feeds/update/{FeedName}?key=secure123
+```
+```
 {
   "name": "InternalNuGet" 
 }
@@ -367,18 +369,29 @@ POST /api/management/feeds/update/MyNuGets?key=secure123
 
 {.info}
 ```
-POST /api/management/feeds/update/ExternalNuGet?key=secure123
-
+POST /api/management/feeds/update/{FeedName}?key=secure123
+```
+```
 {
   "connectors": ["PublicNuGet","PrivateInfragistics"]
 }
 ```
 
+
 Note that, in order to add a connector to a feed, will need to specify all connectors that the feed should use, in the order they should be used. This may require a list query, first.
 
 </tab>
-</tab-block>
 
 #### Delete entity {#delete}
 
 This returns a status of 200 (on success), 403 (api key not authorized), or 404 (entity not found), and an empty body.
+
+<tab name="Delete Feed">
+
+{.info}
+```
+POST /api/management/feeds/delete/{FeedName}?key=secure123
+```
+
+</tab>
+</tab-block>
