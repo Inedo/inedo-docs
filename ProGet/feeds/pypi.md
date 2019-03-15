@@ -2,7 +2,7 @@
 title: PyPI (Python)
 subtitle: PyPI Feeds in ProGet
 sequence: 500
-keywords: proget,feeds,chocolatey
+keywords: proget,feeds,pypi,python
 show-headings-in-nav: true
 ---
 
