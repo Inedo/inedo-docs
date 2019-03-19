@@ -26,8 +26,10 @@ To install a chart hosted by ProGet, run the following the commands:
 
 ```
 helm repo update
-helm install {chart-name} --repo proget
+helm install proget/{chart-name}
 ```
+
+{.attention .technical} Note: The helm cli references `--repo` as the argument to install from a custom repository, but that will fail, likely with the following error message: "`Error: Could not find protocol handler for:`"
 
 ### Creating Helm Charts
 
