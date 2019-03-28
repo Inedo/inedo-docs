@@ -18,6 +18,15 @@ Then [configure Visual Studio](/support/tutorials/proget/using-the-nuget-visual-
 
 You can use also ProGet as a proxy to NuGet.org, both to block [improper licenses](/support/documentation/proget/compliance/license-scanning) and [security vulnerabilities](/support/documentation/proget/compliance/vulnerabilities), and to cache packages in the event of an internet or NuGet.org outage. To do this, create a connector (Feeds > Connectors > Create New Connector > NuGet), then associate it with a feed (Manage Feed > Connectors).
 
+### Installing Packages
+
+NuGet packages are installed using [NuGet CLI](https://docs.microsoft.com/en-us/nuget/quickstart/install-and-use-a-package-using-the-dotnet-cli). To install a package from a ProGet feed, use the following command:
+
+```
+nuget install {package-name} -Version {package-version} -Source http://{proget-server}/nuget/{feed-name}/
+```
+
+
 ## Creating and Publishing NuGet Packages {#creating data-title="Creating and Publishing"}
 
 The [NuGet package format](https://docs.microsoft.com/en-us/nuget/schema/nuspec) is well-documented, and you can create packages in a number of ways, including [directly from Visual Studio](https://docs.microsoft.com/en-us/nuget/guides/create-net-standard-packages-vs2017) or using [nuget.exe](https://docs.microsoft.com/en-us/nuget/create-packages/creating-a-package). Once you've created a package, there are four ways you can publish it to ProGet:

@@ -5,6 +5,22 @@ keywords: proget,feeds,powershell
 ---
 A PowerShell feed is a specialized type of [NuGet](nuget) feed intended to store PowerShell modules. It is accessible directly from [PowerShellGet](https://docs.microsoft.com/en-us/powershell/module/powershellget).
 
+### Installing Modules
+
+PowerShell packages are installed using [PowerShell](https://docs.microsoft.com/en-us/powershell/module/PowerShellGet/Install-Module). To install a package from a ProGet feed, use the following commands:
+
+##### 1. Register Module
+```
+PS> Register-PSRepository -Name "{feed-name}" -SourceLocation "http://{proget-server}/nuget/{feed-name}/"
+```
+
+##### 2. Install Module
+
+```
+PS> Install-Module -Name "{package-name}" -RequiredVersion "{package-version}" -Repository "{feed-name}"
+```
+
+
 ## Differences from NuGet Feeds
 
 Since PowerShell module packages are actually NuGet packages, PowerShell feeds are functionally the same as NuGet feeds, except for some user-interface tweaks:
