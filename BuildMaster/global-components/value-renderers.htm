@@ -1,15 +1,12 @@
 ﻿<html>
 <head>
-    <title>Configuration Variables </title>
+    <title>Custom Value Renderers </title>
     <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
-    <meta name="keywords" content="buildmaster,variables,executions" />
+    <meta name="keywords" content="buildmaster, variables, executions" />
     <meta name="show-headings-in-nav" content="true" />
     <meta name="sequence" content="20" />
 </head>
 <body>
-
-
-    <h2 id="value-renderers" data-title="Custom Value Renderers">Custom Value Renderers</h2>
     <p>
         Variable value renderers are used to control or modify how a specific variable's value is rendered on
         an overview page. This can be used to support use-cases such as:
@@ -31,7 +28,16 @@
         <li>Application settings</li>
         <li>Pipeline details</li>
     </ul>
-    <h3>Adding a Custom Renderer</h3>
+
+    <h5>A Variable Value Before Rendering</h5>
+    <hr/>
+    <img src="/resources/documentation/buildmaster/before_rendering.png" />
+
+    <h5>A Variable Value After Rendering</h5>
+    <hr />
+    <img src="/resources/documentation/buildmaster/after_rendering.png" />
+
+    <h3 id="adding-renderer" data-title="Adding a Custom Renderer">Adding a Custom Renderer</h3>
     <p>
         To add a custom renderer, visit the Administration &gt; Variables &gt; Value Renderers tab, and enter the
         name and scope of the variable that will use the custom renderer.
@@ -41,7 +47,7 @@
         <a href="#sensitive">sensitive</a> in the UI will be rendered as <i>(hidden)</i> regardless if a value renderer matches or not.
     </p>
 
-    <h3>Value Renderer Format</h3>
+    <h3 id="renderer-format" data-title="Value Renderer Format">Value Renderer Format</h3>
     <p>
         A value renderer is specified as HTML. The rendered HTML also considers variable functions
         in context, including for example: <code>$BuildNumber</code>, <code>$Substring(...)</code>, and <code>$ApplicationName</code>.
@@ -94,6 +100,94 @@
             </p>
         </tab>
     </inedo:tab-block>
+
+    <h3 id="renderer-icons" data-title="Value Renderer Icons">Value Renderer Icons</h3>
+    <style>
+
+        .ci-icon {
+            padding-left: 20px;
+            background-size: 16px;
+            background-position-x: left;
+            background-position-y: center;
+            background-size: 16px;
+            background-repeat: no-repeat;
+        }
+
+        .git {
+            background-image: url('/resources/images/icons/git-brands.svg');
+        }
+
+        .bitbucket {
+            background-image: url('/resources/images/icons/bitbucket-brands.svg');
+        }
+
+        .gitlab {
+            background-image: url('/resources/images/icons/gitlab-logo.svg');
+        }
+
+        .github {
+            background-image: url('/resources/images/icons/github-logo.png');
+        }
+
+        .proget {
+            background-image: url('/resources/images/icons/proget-logo.svg');
+        }
+
+        .otter {
+            background-image: url('/resources/images/icons/otter-logo.svg');
+        }
+
+        .buildmaster {
+            background-image: url('/resources/images/icons/buildmaster-logo.svg');
+        }
+
+        .jenkins {
+            background-image: url('/resources/images/icons/jenkins-brands.svg');
+        }
+
+        .bamboo {
+            background-image: url('/resources/images/icons/bamboo-logo.svg');
+        }
+
+        .travis {
+            background-image: url('/resources/images/icons/travis-ci-logo.png');
+        }
+
+        .circle-ci {
+            background-image: url('/resources/images/icons/circle-logo-badge-black.png');
+        }
+
+        .appveyor {
+            background-image: url('/resources/images/icons/appveyor_logo.png');
+        }
+
+        .bamboo {
+            background-image: url('/resources/images/icons/bamboo-blue.svg');
+        }
+
+        img.ci-icon {
+            width: 16px;
+            height: 16px;
+            vertical-align: middle;
+        }
+    </style>
+    <p>
+        We have several CI/CD icon classes that can be used to quickly distinguish and identify links to your branches, builds, or pipelines. When creating your variable value renderer just use any of the following in your renderer html:
+        <br />
+    </p>
+    
+    <p><i class="ci-icon git"></i><code> git<pre>class="ci-icon git"</pre></code></p>    
+    <p><i class="ci-icon gitlab"></i><code> gitlab<pre>class="ci-icon gitlab"</pre></code></p>
+    <p><i class="ci-icon github"></i><code> github<pre>class="ci-icon github"</pre></code></p>
+    <p><i class="ci-icon bitbucket"></i><code> bitbucket<pre>class="ci-icon bitbucket"</pre></code></p>
+    <p><i class="ci-icon proget"></i><code> proget<pre>class="ci-icon proget"</pre></code></p>
+    <p><i class="ci-icon otter"></i><code> otter<pre>class="ci-icon otter"</pre></code></p>
+    <p><i class="ci-icon jenkins"></i><code> jenkins<pre>class="ci-icon jenkins"</pre></code></p>
+    <p><i class="ci-icon travis"></i><code> travis ci<pre>class="ci-icon travis"</pre></code></p>
+    <p><i class="ci-icon circle-ci"></i><code> circle ci<pre>class="ci-icon circle-ci"</pre></code></p>
+    <p><i class="ci-icon appveyor"></i><code> appveyor<pre>class="ci-icon appveyor"</pre></code></p>
+    <p><i class="ci-icon bamboo"></i><code> bamboo<pre>class="ci-icon bamboo"</pre></code></p>
+    
 
     <p>
         For other examples, see the examples section in the
