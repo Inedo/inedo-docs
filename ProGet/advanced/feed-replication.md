@@ -50,7 +50,7 @@ The following table describes the possible configurations *(client configuration
 |  | Disabled | Pull-only | Push-only | Mirror |
 |-|-|-|-|-|
 | **Disabled**   | - | <span class="info-block error">Invalid</span> | <span class="info-block error">Invalid</span> | <span class="info-block error">Invalid</span> |
-| **Read-only**  | - | <span class="info-block success">Valid</span> | <span class="info-block error">Invalid</span> | <span class="info-block error">Invalid</span> |
+| **Read-only**  | - | <span class="info-block success">Valid</span> | <span class="info-block error">Invalid</span> | <span class="info-block warning">Warning</span> |
 | **Read/Write** | - | <span class="info-block success">Valid</span> | <span class="info-block success">Valid</span> | <span class="info-block success">Valid</span> |
 
 Invalid configurations will be logged by the client in the corresponding execution logs, and by the server in the Diagnostic Center.
