@@ -5,6 +5,22 @@ keywords: proget,feeds,powershell
 ---
 A PowerShell feed is a specialized type of [NuGet](nuget) feed intended to store PowerShell modules. It is accessible directly from [PowerShellGet](https://docs.microsoft.com/en-us/powershell/module/powershellget).
 
+### Installing Modules
+
+PowerShell packages are installed using [PowerShell](https://docs.microsoft.com/en-us/powershell/module/PowerShellGet/Install-Module). To install a package from a ProGet feed, use the following commands:
+
+##### 1. Register Module
+```
+PS> Register-PSRepository -Name "{feed-name}" -SourceLocation "http://{proget-server}/nuget/{feed-name}/"
+```
+
+##### 2. Install Module
+
+```
+PS> Install-Module -Name "{package-name}" -RequiredVersion "{package-version}" -Repository "{feed-name}"
+```
+
+
 ## Differences from NuGet Feeds
 
 Since PowerShell module packages are actually NuGet packages, PowerShell feeds are functionally the same as NuGet feeds, except for some user-interface tweaks:
@@ -13,6 +29,16 @@ Since PowerShell module packages are actually NuGet packages, PowerShell feeds a
 - PowerShell feed packages have their own icon to indicate that they are PowerShell modules
 - Install instructions for a package display instructions for PsGet instead of NuGet
 - Tags are not shown on the Browse Feed page because PowerShell packages use them differently, and tend to have large numbers of tags making them impractical to show in an overview
+
+### PowerShell Module Package Version Quirks
+
+Due to a validation bug in the Microsoft-run PowerShell Gallery, several packages have two different version numbers: one in the .nuspec file, and one in the .psd1 of the module. 
+
+This causes a lot of problems, the most common is that when a package is installed from a ProGet repository onto a Windows machine, it ends up in the "wrong" location. For example, SqlServerDsc will install to `C:\Program Files\WindowsPowerShell\Modules\SqlServerDsc\12.2.0` while the .psd1 actually says 12.2.0.0. As a result, PowerShell refuses to load the module because it believes the manifest is incorrect.
+
+One workaround is to turned off caching for the PSGallery connector, and then go through and remove the incorrectly versioned packages  (pull them to proget first, then delete them). After that, ProGet can now delivering packages directly from the connector with the correct version number.
+
+As of 2019-Apr-08, this is being tracked in [PowerShellGallery Issue #55](https://github.com/PowerShell/PowerShellGallery/issues/55) and [work-arounds discussed on our Q&A site](https://inedo.com/support/questions/9738).
 
 ## Publishing to a PowerShell Feed
 

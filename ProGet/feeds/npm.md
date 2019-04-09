@@ -40,6 +40,14 @@ First, you will need to tell npm where to look for its registry; by default it w
 [~]$ npm config set registry http://proget/npm/private-npm
 ```
 
+### Installing Packages
+
+npm packages are installed using [npm](https://docs.npmjs.com/cli/install). To install a package from a ProGet feed, first you will need to set up npm using the above command, then use the following command :
+
+```
+npm install {package-name}@{package-version}
+```
+
 ## npm Token Authentication {#token}
 
 In order to interact with your private registry without using the `npm adduser` command you will need to follow these steps:
@@ -62,3 +70,5 @@ You can also publish packages to ProGet using npm. First, use the `adduser` comm
 [~]$ npm adduser
 [~]$ npm publish package.tgz
 ```
+
+
