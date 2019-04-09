@@ -40,7 +40,7 @@ First, you will need to tell npm where to look for its registry; by default it w
 [~]$ npm config set registry http://proget/npm/private-npm
 ```
 
-## npm Token Authentication
+## npm Token Authentication {#token}
 
 In order to interact with your private registry without using the `npm adduser` command you will need to follow these steps:
 
