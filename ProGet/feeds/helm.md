@@ -76,4 +76,4 @@ If the chart version you would like to install is available in an external Helm 
 
 ### Technical Limitations
 
- - Signed (i.e. provenance) charts are not supported yet; they should be available in the final v5.2 release
+ - Signed (i.e. provenance) charts are not supported at this time, but may become available in a future v5.2 maintenance release
