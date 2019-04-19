@@ -5,8 +5,9 @@ show-headings-in-nav: true
 sequence: 800
 ---
 
-Inedo has partnered with [Gibraltar Software](https://gibraltarsoftware.com) in order to integrate [Loupe](https://onloupe.com){target="_blank"} with our products as part of our customer success initiative. This program is known as the *Customer Experience Improvement Program (CEIP)*, and this opt-in program offers the following benefits:
+Our software products are driven by our users. We rely on your feedback to not only improve quality, reliability, and performance, but to understand the features you are actually using (and how you're using them) so we can build better software for you.
 
+The easiest way to have your voice heard is by opting-in to our Customer Experience Improvement Program (CEIP). We partnered with the CEIP experts at [Gibraltar Software](https://gibraltarsoftware.com), and use their [Loupe](https://onloupe.com){target="_blank"} products to offer you the the following benefits:
 {.docs}
 - Improved logging and performance metrics
 - Detailed error reporting
