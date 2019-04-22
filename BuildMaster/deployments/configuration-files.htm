@@ -55,7 +55,7 @@
             You can "manually deploy" outside the scope of a deployment
         </li>
         <li>
-            Restrict certain instances from being viewed or edited using <a href="/support/documentation/buildmaster/administration/security">access controls</a>
+            Restrict certain instances from being viewed or edited using <a href="/support/documentation/buildmaster/administration/users-and-security">access controls</a>
         </li>
     </ul>
 
@@ -175,7 +175,7 @@
     </inedo:tab-block>
 
     <h2 id="variable-replacement" data-title="Variable Replacement">Variable Replacement</h2>
-    <p>All configuration variables, runtime variables, and parameterless variable functions in context are considered when variable replacement occurs before deployment and follows the same resolution rules as <a href="/support/documentation/buildmaster/global-components/configuration-variables">configuration variable replacement</a>. </p>
+    <p>All configuration variables, runtime variables, and parameterless variable functions in context are considered when variable replacement occurs before deployment and follows the same resolution rules as <a href="/support/documentation/buildmaster/administration/configuration-variables">configuration variable replacement</a>. </p>
     <p>Template file variables are treated as runtime variables when replacement occurs, and therefore override any configuration variables. In practice, it is not recommended to have template instance variables override existing configuration variables or variable functions. It is also not recommended to rely on runtime variables created during a deployment.</p>
 
     <h3 id="empty-missing-variables">Empty/Missing Variables</h3>
@@ -199,7 +199,7 @@
 
     <h2 id="differences">Differences Between Configuration File Strategies</h2>
     <p>
-        While using text templates is a powerful yet simple replacement for <a href="/support/documentation/buildmaster/modeling-applications/configuration-files">Configuration File Assets</a>,
+        While using text templates is a powerful yet simple replacement for Configuration File Assets,
         there are some important differences:
     </p>
     <ul class="docs">

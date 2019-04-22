@@ -91,7 +91,7 @@
 
     <h3 id="post-deployment-events" data-title="Post-Deployment Events"> Post-Deployment Events  </h3>
     <p>
-        Once all deployments to all targets have completed (whether successfully, or unsuccessfully), you can execute one or more event listeners. These are an <a href="/support/documentation/buildmaster/administration/extensions">extensible feature</a>, and there are several built-in to BuildMaster:
+        Once all deployments to all targets have completed (whether successfully, or unsuccessfully), you can execute one or more event listeners. These are an <a href="/support/documentation/buildmaster/reference/extensions">extensible feature</a>, and there are several built-in to BuildMaster:
     </p>
     <ul>
         <li>Email Notification: Deployment Execution Completed </li>
@@ -107,7 +107,7 @@
     </p>
     <h3 id="pipeline-variables" data-title="Pipeline Variables">Pipeline Variables</h3>
     <p>
-        You can define key/value pairs on pipelines and stages. These behave just like <a href="/support/documentation/buildmaster/global-components/configuration-variables">configuration variables</a>, in that you can use these variables within deployment plans that are executed through the plan.
+        You can define key/value pairs on pipelines and stages. These behave just like <a href="/support/documentation/buildmaster/administration/configuration-variables">configuration variables</a>, in that you can use these variables within deployment plans that are executed through the plan.
     </p>
     <p>
         However, pipeline variables are not actually configuration variables: you can't create multi-scoped variables, or modify them through the <a href="/support/documentation/buildmaster/reference/api/variables">variables API</a>.
@@ -116,7 +116,7 @@
     <p>
         Pipelines also have the following options:
     </p>
-    <ul>
+    <ul class="docs">
         <li>
             Enforce stage sequence; when set, a build must follow the defined stage sequence (requiring a Force to override); otherwise, a build may be deployed to any stage at any time
         </li>

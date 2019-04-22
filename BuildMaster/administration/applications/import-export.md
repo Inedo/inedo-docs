@@ -24,7 +24,7 @@ You will also select how to publish the package, from one of two options:
 - **Publish to Universal Feed** - a feed on a ProGet instance
 - **Save to Disk Path** - a local or network path that the BuildMaster service can write to
 
-Before publishing to a feed, you will need to setup an Inedo Product [resource credential](/support/documentation/buildmaster/global-components/resource-credentials) with the URL and optionally an API key to your ProGet server.
+Before publishing to a feed, you will need to setup an Inedo Product [resource credential](/support/documentation/buildmaster/administration/resource-credentials) with the URL and optionally an API key to your ProGet server.
 
 ## Importing Applications {#importing data-title="Importing Applications"}
 

@@ -29,5 +29,5 @@ The Inedo Agent is generally the best way to communicate with a *Windows server*
 To communicate with Linux servers, BuildMaster uses *SSH* and *SFTP*, and if you're using BuildMaster to interact with the server it is installed on, you can just set it up using a *local agent*.
 
 :::circle-button-set
-[Learn More About Agents & Servers](/support/documentation/buildmaster/administration/agents){.doc-button}
+[Learn More About Agents & Servers](/support/documentation/buildmaster/administration/agents-and-infrastructure){.doc-button}
 :::

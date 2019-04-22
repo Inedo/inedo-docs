@@ -1,19 +1,19 @@
 ﻿---
 title: Backing Up BuildMaster
-sequence: 50
 keywords: buildmaster, databases, backup
 show-headings-in-nav: true
+sequence: 200
 ---
 
 BuildMaster should be backed up frequently, and as a .NET- and SQL Server-based this is relatively easy to do. There are three things to back up on the BuildMaster server:
 
 {.docs}
 - **BuildMaster Database** - a SQL Server database that contains all of BuildMaster's configuration data
-- **Encryption key** - the value stored in both the web.config and BuildMaster.Service.config that's used to encrypt/decrypt sensitive data, most notably [resource credentials](https://inedo.com/support/documentation/buildmaster/global-components/resource-credentials)
-- **Shared Configuration** (as of v6.0.7) - the file `%PROGRAMDATA%\Inedo\SharedConfig\BuildMaster.config` contains the encryption key that's used to encrypt/decrypt sensitive data, most notably [resource credentials](/support/documentation/buildmaster/global-components/resource-credentials)
+- **Encryption key** - the value stored in both the web.config and BuildMaster.Service.config that's used to encrypt/decrypt sensitive data, most notably [resource credentials](/support/documentation/buildmaster/administration/resource-credentials)
+- **Shared Configuration** (as of v6.0.7) - the file `%PROGRAMDATA%\Inedo\SharedConfig\BuildMaster.config` contains the encryption key that's used to encrypt/decrypt sensitive data, most notably [resource credentials](/support/documentation/buildmaster/administration/resource-credentials)
 - **Artifact Library Files** - a path on disk (defined in Artifacts.BasePath setting) that contains all the files for artifacts you created within BuildMaster
 
-You may also back up your [extensions](/support/documentation/buildmaster/administration/extensions) folder, which is stored in the path defined in the Extensions.ExtensionsPath advanced configuration setting. This will make restoring to a new server as easy as possible, in that you'll just need to copy the backup files to the same location on the new server.
+You may also back up your [extensions](/support/documentation/buildmaster/reference/extensions) folder, which is stored in the path defined in the Extensions.ExtensionsPath advanced configuration setting. This will make restoring to a new server as easy as possible, in that you'll just need to copy the backup files to the same location on the new server.
 
 ## Database Backup {#database-backup data-title="Database Backup"}
 

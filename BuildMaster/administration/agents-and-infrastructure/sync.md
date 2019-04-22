@@ -9,7 +9,7 @@ BuildMaster allows you to visualize the infrastructure your release pipelines ta
 
 ## Exporting Infrastructure Configuration {#export data-title="Exporting Infrastructure Configuration"}
 
-You can export all of your instance's infrastructure configuration ([servers](../core-concepts/servers), [environments](../core-concepts/environments), and [server roles](../modeling-infrastructure/server-roles)) as a JSON file. Once exported, you can simply edit the file (adding or removing any number of infrastructure items) and import, share it with another instance of Otter or BuildMaster, or maintain it as a simple back-up.
+You can export all of your instance's infrastructure configuration ([servers](servers), [environments](environments), and [server roles](server-roles)) as a JSON file. Once exported, you can simply edit the file (adding or removing any number of infrastructure items) and import, share it with another instance of Otter or BuildMaster, or maintain it as a simple back-up.
 
 ![export configuration](/resources/documentation/otter/export-config.png){.screenshot}
 

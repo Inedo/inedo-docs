@@ -10,19 +10,19 @@ To deploy releases to your servers, BuildMaster needs to be able to communicate 
 
 ## Windows Servers {#windows data-title="Windows Servers"}
 
-The [Inedo Agent](/support/documentation/various/inedo-agent/the-agent) is generally the best way to communicate with a Windows server. It's light-weight, and uses a highly-optimized and resilient protocol built solely for this purpose, and is [quite easy to install](../installation/agent-installation-guide).
+The [Inedo Agent](/support/documentation/inedoagent/overview) is generally the best way to communicate with a Windows server. It's light-weight, and uses a highly-optimized and resilient protocol built solely for this purpose, and is [quite easy to install](/support/documentation/buildmaster/installation-and-maintenance/installation-guide/agent-installation-guide).
 
 ## Agentless Windows Servers {#agentless data-title="Agentless Windows Servers"}
 
-Alternatively, BuildMaster can use PowerShell Remoting to communicate with Windows servers; however, this is generally slower and less resilient than the Inedo Agent protocol. You can connect using integrated authentication (i.e. whatever account the service is running under), or with a username & password [resource credential](../global-components/resource-credentials). See [Enable-PSRemoting](https://technet.microsoft.com/en-us/library/hh849694.aspx) to configures a server to receive remote commands.
+Alternatively, BuildMaster can use PowerShell Remoting to communicate with Windows servers; however, this is generally slower and less resilient than the Inedo Agent protocol. You can connect using integrated authentication (i.e. whatever account the service is running under), or with a username & password [resource credential](/support/documentation/buildmaster/administration/resource-credentials). See [Enable-PSRemoting](https://technet.microsoft.com/en-us/library/hh849694.aspx) to configures a server to receive remote commands.
 
 ## Linus Servers {#linux data-title="Linux Servers"}
 
-To communicate with Linux servers, BuildMaster uses the lightweight, highly-optimized, and resilient protocol already enabled on nearly every Linux box: SSH and SFTP. You can connect with a private key or username & password [resource credential](../global-components/resource-credentials).
+To communicate with Linux servers, BuildMaster uses the lightweight, highly-optimized, and resilient protocol already enabled on nearly every Linux box: SSH and SFTP. You can connect with a private key or username & password [resource credential](/support/documentation/buildmaster/administration/resource-credentials).
 
 ## Local Agents {#local data-title="Local Agents"}
 
-If you're using BuildMaster to interact with the server it's installed on, you can just set it up using a local agent. This uses the same process/identity that the [service](../installation/architecture/service) is hosted as, and doesn't have very many privileges by default.
+If you're using BuildMaster to interact with the server it's installed on, you can just set it up using a local agent. This uses the same process/identity that the [service](/support/documentation/buildmaster/installation-and-maintenance/architecture/service) is hosted as, and doesn't have very many privileges by default.
 
 ## Automatic Inedo Agent Updates {#automatic-updates data-title="Automatic Inedo Agent Updates"}
 

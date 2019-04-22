@@ -17,18 +17,16 @@ Some operations are quite simple (Sleep), while others are quite complex (Synchr
 
 ## OtterScript in BuildMaster {#otterscript data-title="OtterScript in BuildMaster"}
 
-[OtterScript](/support/documentation/otter/reference/otter-script) is a Domain-Specific Language that was designed in tandem with the execution engine to represent [configuration plans](/support/documentation/otter/core-concepts/plans#configuration) and [orchestration plans](/support/documentation/otter/core-concepts/plans#orchestration) in Otter, and [deployment plans](../core-concepts/deployment-plans) in BuildMaster.
+OtterScript is a Domain-Specific Language that was designed in tandem with the execution engine to represent [configuration plans](/support/documentation/otter/core-concepts/plans#configuration) and [orchestration plans](/support/documentation/otter/core-concepts/plans#orchestration) in Otter, and [deployment plans](../deployments/plans) in BuildMaster.
 
 You really don't need to learn OtterScript; it's simply the textual representation of a plan, and plans are already fully editable in the drag-and-drop plan editor. If you switch back-and-forth between visual and code modes, you'll probably learn it on your own, but it's also pretty well documented.
 
 {.docs}
-
-- [OtterScript Overview](/support/documentation/otter/reference/otter-script)
-{.docs}
-    - [Comments & Descriptions](/support/documentation/otter/reference/otter-script/comments-and-descriptions)
-    - [Formal Grammar](/support/documentation/otter/reference/otter-script/formal-grammar)
-    - [Formal Specification](/support/documentation/otter/reference/otter-script/formal-specification)
-    - [Strings & Values](/support/documentation/otter/reference/otter-script/strings-and-literals)
+ - [OtterScript Overview](/support/documentation/executionengine/otterscript/overview)
+ - [Comments & Descriptions](/support/documentation/executionengine/otterscript/comments-and-descriptions)
+ - [Formal Grammar](/support/documentation/executionengine/reference/formal-grammar)
+ - [Formal Specification](/support/documentation/executionengine/reference/formal-specification)
+ - [Strings & Values](/support/documentation/executionengine/otterscript/strings-and-literals)
 
 ## Legacy Execution Engine {#legacy data-title="Legacy Execution Engine"}
 

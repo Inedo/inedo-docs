@@ -2,8 +2,9 @@
 title: BuildMaster's Configuration Files
 subtitle: Configuration Files
 keywords: buildmaster, installation
-
+sequence: 200
 ---
+
 Starting with release 6.0.7, BuildMaster uses a common configuration file path for its web and service components. Previously, the information stored in this file was duplicated in the Web_appSettings.config and the App_appSettings.config files.
 
 ## Configuration File Location {#config-file data-title="Configuration File Location"}

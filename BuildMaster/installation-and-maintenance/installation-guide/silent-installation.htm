@@ -7,6 +7,13 @@
   </head>
   <body>
 
+      <style>
+          .info.buildmaster {
+              border-color: #F15A24;
+              color: #F15A24;
+          }
+      </style>
+
       <p>
           To help you automate and configure BuildMaster, the fully-automated silent installer can perform initial <a href="#silent-installation-options">installation</a>
           and <a href="#silent-upgrade-options">upgrades</a>. You could even use an instance of <a href="/otter">Otter</a> to upgrade BuildMaster!
@@ -157,62 +164,12 @@
       </div>
 
       <h3 id="silent-agent-install">Agent Silent Install Options</h3>
-      <table>
-          <tr>
-              <td>/S</td>
-              <td>Required for a silent install. If this is not specified, the UI will be displayed.</td>
-          </tr>
-          <tr id="targetpath-arg">
-              <td>/TargetPath=&lt;value&gt;</td>
-              <td>Root path where the agent will be installed. The default is <i>%ProgramFiles%</i>\InedoAgent.</td>
-          </tr>
-          <tr id="port-arg">
-              <td>/Port=&lt;value&gt;</td>
-              <td>Port number the agent will listen to. The default is <i>46336</i>.</td>
-          </tr>
-          <tr id="temppath-arg">
-              <td>/TempPath=&lt;value&gt;</td>
-              <td>Root path of the directory used by the agent for temporary files. The default is <i>%ProgramData%</i>\InedoAgent.</td>
-          </tr>
 
-          <tr id="useraccount-arg">
-              <td>/UserAccount=&lt;value&gt;</td>
-              <td>User account of the agent. The default is <i>LocalSystem</i>.</td>
-          </tr>
-          <tr id="password-arg">
-              <td>/Password=&lt;value&gt;</td>
-              <td>Password of the user account of the agent. Only used when <a href="#useraccount-arg">UserAccount</a> is not one of the standard service accounts.</td>
-          </tr>
-          <tr>
-              <td>/Clients=&lt;value&gt;</td>
-              <td>Semicolon-separated list of client IP addresses which are allowed to connect to the agent. Any client may connect if this is not specified.</td>
-          </tr>
-          <tr>
-              <td>/ServiceName=&lt;value&gt;</td>
-              <td>The name of the Windows Service that will be installed. The default is <i>INEDOAGENTSVC</i>.</td>
-          </tr>
-
-          <tr>
-              <td>/Security=&lt;value&gt;</td>
-              <td>Either AES, SSL, or None. When SSL is specified, a valid <a href="#certname-arg">CertificateName</a> must be specified. The default is AES.</td>
-          </tr>
-          <tr>
-              <td>/CertificateName=&lt;value&gt;</td>
-              <td>The friendly name of a certificate stored in the LocalMachine store.</td>
-          </tr>
-          <tr>
-              <td>/EncryptionKey=&lt;value&gt;</td>
-              <td>A 32-character hex string used for AES encryption.</td>
-          </tr>
-          <tr>
-              <td>/LogFile=&lt;value&gt;</td>
-              <td>If specified, writes out a detailed log file of the installation process to the specified path value.</td>
-          </tr>
-      </table>
-      <h4>Example</h4>
-      <p style="margin-bottom:5px;">Install an agent with no encryption (bad idea, by the way) that listens on port 1000 (also not a great idea, because 46336 is the registered Inedo port):</p>
-      <div style="font-family: Consolas, 'Courier New'; background: black; color:#ccc; width: 400px; border: solid #aaa; border-radius: 5px; padding: 5px;">
-          BuildMasterAgentSetup.exe /S /Security=None /Port=1000
+      <div class="info buildmaster">
+          <div>
+              <b>Shared Documentation Note</b> - the silent installation arguments for the Inedo Agent can be found in the
+              <a href="/support/documentation/inedoagent/installation/installation-guide#silent-installation">Agent Installation</a> documentation.
+          </div>
       </div>
 
   </body>
