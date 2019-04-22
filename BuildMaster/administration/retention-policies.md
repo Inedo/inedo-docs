@@ -1,8 +1,8 @@
 ﻿---
-title: Automatic Purging & Retention
+title: Retention Policies
 subtitle: Retention Policies
 keywords: buildmaster, retention-policy, cleanup
-sequence: 80
+sequence: 900
 ---
 
 BuildMaster retains a *lot* of logs; this is great when you need to debug what went wrong, audit deployments, and so on -- but it's not so great when you start running out of disk space. This is where *retention policies* come in.

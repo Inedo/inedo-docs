@@ -5,7 +5,7 @@
     <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
     <meta name="keywords" content="buildmaster, pipelines" />
     <meta name="show-headings-in-nav" content="true" />
-    <meta name="sequence" content="200" />
+    <meta name="sequence" content="100" />
 
 </head>
 <body>
@@ -30,156 +30,8 @@
 
     <p>
         Pipelines contain a sequence of stages that builds will pass through on their way to production. Each stage defines the requirements for stage entry, where and how build will be deployed, and what to do after they are deployed.
-    </p>
-
-    <h3 id="deployment-windows" data-title="Deployment Windows"> Deployment Windows</h3>
-    <p>
-        Deployment windows allow you to restrict the days and times that builds may be deployed. They can be used in conjunction with manual deployments to enforce existing policies, or as part of a continuous delivery pipeline to ensure deployments occur within known times. Like <a href="/support/documentation/buildmaster/core-concepts/pipelines#Manual-Automatic-Approvals">approvals</a>, a build may be forced into a stage even if it's not within the specified window. However, this requires a special action and a specific permission.
-    </p>
-    <h4 id="deployment-windows">Configuring Deployment Windows</h4>
-    <p>
-        A deployment window consists of  day of the week, as well as a start and end time.
-    </p>
-    <p> <img class="screenshot" src="/resources/documentation/buildmaster/6/deploy-window.png" alt="Config Deploying Windows" /> </p>
-    <p>
-        When the end time is earlier than the start time, then the window will "crossover" into the following day. For example, specifying "Sundays after 11:00pm and before 2:00am" will create a three-hour window from Sunday at 11:00pm until Monday at 2:00am.
-    </p>
-    <p>
-        You can specify deployment windows on the edit pipeline page.
-    </p>
-    <p>
-        <img class="screenshot" src="/resources/documentation/buildmaster/6/deploy-window-set.png" alt="Deploying Windows set" />
-    </p>
-    <p>
-        When there are multiple deployment windows specified, they are treated like an "or" condition; that is, as long as one of the deployment windows is valid, then a deployment may proceed.
-    </p>
-    <h3 id="manual-automatic-approvals" data-title="Manual and Automatic Approvals"> Manual and Automatic Approvals </h3>
-
-    <p>
-        As a build progresses through a pipeline, both people and automatic processes can add an "approval" to indicate that a build is eligible to be deployed to a particular stage. The approvals required for that stage are defined in the pipeline, and the <em>actual</em> approvals received becomes part of the build's history and metadata.
-    </p>
-    <p>
-        Like deployment windows, a build may be forced into a stage even if its approvals were not met. However, this requires a special action and a specific permission.
-    </p>
-    <h4 id="manual-approvals">Manual Approvals</h4>
-    <p>
-        There are two types of manual approvals: user and group. A user-based approval can only be entered by the specified user, whereas a group-based approval can be entered by any members of the specified group. You can also specify that more than one member of a particular group must approve a build before deploying to a stage.
-    </p>
-    <p>
-        In either case, when a user approves a build, the following is recorded:
-    </p>
-    <ul>
-        <li>User's Name</li>
-        <li>Group name (if group-based)</li>
-        <li>Stage name</li>
-        <li>Approval Description</li>
-        <li>User Comments</li>
-        <li>Date/Time</li>
-    </ul>
-    <p>
-        Users may revoke a manual approval they've given, provided that the build wasn't already deployed to the target stage.
-    </p>
-    <h4 id="automatic-approvals">Automatic Approvals</h4>
-    <p>
-        You can also define automatic checks that must be met before a build may be deployed to a stage. These are an <a href="/support/documentation/buildmaster/administration/extensions">extensible feature</a>, and there are several built in to BuildMaster.
-
-    </p>
-    <table style="margin-top: 12px;">
-        <thead>
-
-        </thead>
-        <tbody>
-            <tr>
-                <td>Command Line</td>
-                <td>Executes a program via command line on the BuildMaster server.</td>
-            </tr>
-            <tr>
-                <td>File In Artifact</td>
-                <td>
-                    Verifies that a file exists in an Artifact before a promotion to the pipeline stage.
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Issues Closed
-                </td>
-                <td>Verifies that all issues are closed before a promotion to the pipeline stage.</td>
-            </tr>
-
-            <tr>
-                <td>
-                    Issues in Status
-                </td>
-                <td>Verifies that issues are in a certain status before a promotion to the pipeline stage.</td>
-            </tr>
-            <tr>
-                <td>Pipeline Stage Complete</td>
-                <td>
-                    Ensures a pipeline stage of another application has been completed.
-                </td>
-            </tr>
-            <tr>
-                <td>Change Controls Performed</td>
-                <td>
-                    Verifies that change controls have been performed.
-                </td>
-            </tr>
-            <tr>
-                <td>Change Scripts Run</td>
-                <td>Verifies that all required change scripts have been run successfully.</td>
-            </tr>
-            <tr>
-                <td>United Tests Passed </td>
-                <td>
-                    Verifies that unit tests have passed in the last execution.
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Variable
-                </td>
-                <td>
-                    Ensures a specified variable value before promotion to the pipeline stage.
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Drift Status
-                </td>
-                <td>
-                    Verifies that a specified Otter server or role is in a specified drift status.
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <p>
-        These automatic approvals are verified periodically, as they can change over time.
-    </p>
-
-    <div class="attention analogy">
-        <img src="/resources/images/icons/analogy.png" />
-        <p>
-            For example, if you've configured a Issues Closed automatic approval to verify that issues in a particular JIRA project are closed prior to promoting to a stage,
-            BuildMaster won't be notified of a status change. 
-        </p>
-    </div>
-
-    <p>
-        When an automatic approval is verified, the following information is recorded:
-    </p>
-    <ul>
-        <li>
-            <b>State (Met, Not Met, Not Required)</b>- for example, if there are no issues associated with the release, then the requirement would be Not Met, whereas the requirement would be Met only if all issues associated with the release were Resolved
-        </li>
-        <li>
-            <b>Description</b> - a text description of the approval conditions; for example, "3/8 issues are resolved"
-        </li>
-        <li>
-            <b>
-                Date/Time
-            </b>- a timestamp of when the approval was run
-        </li>
-    </ul>
+    </p>    
+	
     <h3 id="deployment-targets" data-title="Deployment Targets"> Deployment Targets </h3>
     <p>
         A target defines where and how a build will be deployed. It's comprised of a deployment plan, an environment name, and a list of servers or roles.

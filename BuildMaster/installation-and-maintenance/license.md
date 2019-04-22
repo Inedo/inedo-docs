@@ -1,11 +1,9 @@
 ﻿---
 title: License Restrictions
 keywords: buildmaster, license
-sequence: 10
+sequence: 800
 show-headings-in-nav: true
 ---
-
-BuildMaster is licensed by number of users on an annual or perpetual basis.
 
 BuildMaster is licensed by number of users on an annual or perpetual basis.
 

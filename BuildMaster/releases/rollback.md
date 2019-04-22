@@ -1,10 +1,10 @@
 ﻿---
-title: Deployment Rollback
-keywords: buildmaster, databases, backup
-sequence: 90
+title: Rollbacks
+keywords: buildmaster, releases, rollbacks
+sequence: 500
 ---
 
-We don't have a special "rollback plan" that's used only in emergencies. Since such a plan would only get tested in rare cases (i.e. when something went wrong), chances are it will be out of date and likely make things even worse.
+BuildMaster does not have a special "rollback plan" that's used only in emergencies. Since such a plan would only get tested in rare cases (i.e. when something went wrong), chances are it will be out of date and likely make things even worse.
 
 But what we can do is perform a **"Re-Deploy"**, which can effectively be used to rollback changes. Assuming you have your deployment plan configured correctly. Let's consider the state of a given application.
 
@@ -30,7 +30,7 @@ You'll have the option to deploy the artifact immediately, which is common for m
 
 ![](/resources/tutorials/roll-back/deploy-now.png){.screenshot}
 
-The actions in a [deployment plan](/support/documentation/buildmaster/core-concepts/deployment-plans) are designed to look at the *execution context* to determine what to do. In this case the plan will deploy the artifact associated with Release 1.0.2 Build 3\. This will ensure that whatever files were deployed with Release 1.0.2 Build 3 will _**always**_ be deployed with Release 1.0.2 Build 3.
+The actions in a [deployment plan](/support/documentation/buildmaster/deployments/plans) are designed to look at the *execution context* to determine what to do. In this case the plan will deploy the artifact associated with Release 1.0.2 Build 3\. This will ensure that whatever files were deployed with Release 1.0.2 Build 3 will _**always**_ be deployed with Release 1.0.2 Build 3.
 
 Once the Release 1.0.2 Build 3 has been re-deployed, that information is reflected in BuildMaster.
 

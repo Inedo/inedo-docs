@@ -1,7 +1,7 @@
 ﻿---
 title: LDAP and Active Directory
 keywords: buildmaster, ldap
-sequence: 70
+sequence: 100
 ---
 
 In addition to its own built-in user module, BuildMaster's Active Directory Domain integration allows permissions to be granted to users and groups defined in a third-party LDAP directory, or Active Directory domain forest. For an active directory domain, the BuildMaster web server (whether the Integrated Web Server or IIS) may additionally be configured to support Windows Integrated Authentication, removing the need to enter a username and password to log in.
