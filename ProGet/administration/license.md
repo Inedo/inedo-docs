@@ -7,7 +7,7 @@ show-headings-in-nav: true
 
 ProGet is licensed *per installation* on an annual or perpetual basis and has additional restrictions based on the edition as highlighted below:
 
-## Features by Edition
+## Features by Edition {#features-by-edition data-title="Features by Edition"}
 
 {#feature-matrix}
 | Features | Free | Basic | Load Balanced - Only | Enterprise (High Availability) |
@@ -50,7 +50,7 @@ ProGet is licensed *per installation* on an annual or perpetual basis and has ad
 
 For more information on License Key Management and Activation, visit the shared documentation [here](/support/documentation/various/licensing/management).
 
-## ProGet Free Edition Limitations
+## ProGet Free Edition Limitations {#free-edition-limitations data-title="Free Edition Limitations"}
 
 *The following limitations are additional to the ones listed in the table above.*
 
@@ -75,7 +75,7 @@ Paid edition instances of ProGet may be granted a special license key that allow
 
 If you are hosting a public version of ProGet Basic/Enterprise and would like to allow consumers of your exposed feeds to connect using free edition connectors, see [Requesting an Exemption](#request-exemption) below.
 
-### License Violations
+### License Violations{#license-violations data-title="License Violations"}
 
 If a connector limitation violation is detected, a warning banner will be displayed in the UI of the target ProGet instance listing the instances in violation of the license. To remedy this, any connectors to free editions in the target ProGet instance (free or paid) must be removed, and/or the administrator of an offending free instance must be notified in order to remove the connector to the target instance. Once all connectors to the free edition are removed from the target instance and/or all connectors to the target instance are removed from the offending instance(s), the [violations may be cleared](#clearing-violations) to remove the warning banner.
 

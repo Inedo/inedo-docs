@@ -1,7 +1,7 @@
 ﻿---
 title: Connectors
 subtitle: Connectors in ProGet
-sequence: 200
+sequence: 300
 keywords: connectors, filters, licensing
 show-headings-in-nav: true
 ---
@@ -21,13 +21,13 @@ ProGet will periodically check the [health](#health) of each connector and repor
 
 {.attention .analogy} **Note:** Packages accessed through connectors will appear as if they are ordinary packages contained on the ProGet server to most third-party tools. Within the ProGet web interface, connector packages are displayed with a small overlay icon to indicate that they are external. A connector package can be *pulled* to ProGet, which will cause the package to be downloaded and stored on the ProGet server.
 
-## Feed Association {#feed data-title="Feed Association"}
+## Feed Association {#feed-association data-title="Feed Association"}
 
 After a connector is created, it must be associated with one or more feeds before packages can be retrieved from the connector. To do this, click **add connector** on the **Manage Feed** page and select the connector. Packages from the connector will immediately become available in the feed.
 
 ![](/resources/documentation/proget/core-concepts-connectors/feed-connectors.png)
 
-## Connector Caching {#connector data-title="Connector Caching"}
+## Connector Caching {#connector-caching data-title="Connector Caching"}
 
 ProGet provides two types of connector caching: package and metadata.
 
@@ -35,7 +35,7 @@ ProGet provides two types of connector caching: package and metadata.
 
 **Metadata Caching** is configured at the connector level, and stores responses of recently-used queries to the connector's source. For example, a tool may query a ProGet feed for the latest version of a package, so ProGet must then query each of the feed's connectors for the latest versions. With metadata caching enabled, this can significantly increase performance, at the cost of potentially stale queries. Metadata caching requires ProGet Basic or Enterprise.
 
-## Connector Filters {#connector data-title="Connector Filters"}
+## Connector Filters {#connector-filters data-title="Connector Filters"}
 
 This feature is available in paid and trial ProGet editions. {.attention .best-practice}
 

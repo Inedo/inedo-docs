@@ -11,6 +11,10 @@ The [WhiteSource extension](/den/proget/whitesource) provides a Package Access R
 
 Using the WhiteSource extension will allow you to combine vulnerability scanning and license filtering with your package management. The guide below will take you through using the integration. It's important to note that the guide was designed for ProGet users who are new to WhiteSource. If you are an existing WhiteSource user, and wish to apply your existing organization wide policies to your ProGet instance, skip to [The WhiteSource Extension in ProGet](#whitesource-in-proget), and apply your organization's API Key.
 
+:::attention {.best-practice}
+This feature is available in paid and trial ProGet editions.
+:::
+
 ### Configuring WhiteSource {#configuring data-title="Configuring WhiteSource"}
 
 In order to utilize this integration you must first request a trial key from WhiteSource. You can do this [here](https://www.whitesourcesoftware.com/trial3/).
