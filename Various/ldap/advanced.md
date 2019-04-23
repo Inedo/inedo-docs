@@ -25,6 +25,11 @@ For advanced configuration, select the *Change User Directory* link on the Admin
 
 NETBIOS name mapping – by default, the global catalog for the domain will be queried to determine any mappings. A list of key/value pairs that map NETBIOS names to domain names may also be specified (one per line); e.g. `KRAMUS=us.kramerica.local` and if any value is specified, the automatic query is not performed, so all NETBIOS names must be specified.
 
+## Multiple Instances {#multiple-instances}
+In some cases your organization might need to have a second instance of ProGet running with different authentication types. For this you will need to add a second website in IIS that points to the same physical path as your original ProGet instance and adjust your authentication settings as needed. 
+
+The most typical reason for implementing this would be for companies using Windows Authentication along with Forms authentication at the same time. 
+
 ## Testing the Configuration {#testing-config}
 
 #### *Test searching*
