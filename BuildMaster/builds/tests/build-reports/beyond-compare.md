@@ -1,5 +1,6 @@
 ---
-title: Generating a Diff Report with Beyond Compare
+title: Beyond Compare
+subtitle: Generating a Diff Report with Beyond Compare
 sequence: 200
 keywords: buildmaster, build-reports, beyond-compare
 ---

@@ -1,5 +1,6 @@
 ---
-title: Running and Capturing FxCop Output
+title: FxCop
+subtitle: Running and Capturing FxCop Output
 sequence: 100
 keywords: buildmaster, build-reports, fxcop
 ---
