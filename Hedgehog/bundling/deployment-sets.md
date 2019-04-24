@@ -1,7 +1,7 @@
 ﻿---
 title: License Restrictions
 sequence: 5
-keywords: Hedgehog, License
+keywords: otter, sdk
 show-headings-in-nav: true
 
 ---
