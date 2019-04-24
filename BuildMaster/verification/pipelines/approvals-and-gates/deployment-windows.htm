@@ -1,0 +1,39 @@
+﻿<html>
+<head>
+    <title>Deployment Windows</title>
+    <meta name="subtitle" content="Deployment Windows" />
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <meta name="keywords" content="buildmaster, pipelines" />
+    <meta name="sequence" content="200" />
+
+</head>
+<body>
+
+    <p>
+        Deployment windows allow you to restrict the days and times that builds may be deployed. They can be used in 
+        conjunction with manual deployments to enforce existing policies, or as part of a continuous delivery pipeline 
+        to ensure deployments occur within known times. Like 
+        <a href="user-approvals">user approvals</a>, 
+        a build may be forced into a stage even if it's not within the specified window. However, this requires a special 
+        action and a specific permission.
+    </p>
+    <h4 id="deployment-windows">Configuring Deployment Windows</h4>
+    <p>
+        A deployment window consists of  day of the week, as well as a start and end time.
+    </p>
+    <p> <img class="screenshot" src="/resources/documentation/buildmaster/6/deploy-window.png" alt="Config Deploying Windows" /> </p>
+    <p>
+        When the end time is earlier than the start time, then the window will "crossover" into the following day. For example, specifying "Sundays after 11:00pm and before 2:00am" will create a three-hour window from Sunday at 11:00pm until Monday at 2:00am.
+    </p>
+    <p>
+        You can specify deployment windows on the edit pipeline page.
+    </p>
+    <p>
+        <img class="screenshot" src="/resources/documentation/buildmaster/6/deploy-window-set.png" alt="Deploying Windows set" />
+    </p>
+    <p>
+        When there are multiple deployment windows specified, they are treated like an "or" condition; that is, as long as one of the deployment windows is valid, then a deployment may proceed.
+    </p>
+    
+</body>
+</html>

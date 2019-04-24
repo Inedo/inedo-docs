@@ -1,0 +1,32 @@
+﻿<html>
+<head>
+    <title>User Approvals</title>
+    <meta name="subtitle" content="User Approvals" />
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <meta name="keywords" content="buildmaster, pipelines, approvals" />
+    <meta name="show-headings-in-nav" content="true" />
+    <meta name="sequence" content="100" />
+
+</head>
+<body>
+
+    <p>
+        There are two types of manual approvals: user and group. A user-based approval can only be entered by the specified user, whereas a group-based approval can be entered by any members of the specified group. You can also specify that more than one member of a particular group must approve a build before deploying to a stage.
+    </p>
+    <p>
+        In either case, when a user approves a build, the following is recorded:
+    </p>
+    <ul class="docs">
+        <li>User's Name</li>
+        <li>Group name (if group-based)</li>
+        <li>Stage name</li>
+        <li>Approval Description</li>
+        <li>User Comments</li>
+        <li>Date/Time</li>
+    </ul>
+    <p>
+        Users may revoke a manual approval they've given, provided that the build wasn't already deployed to the target stage.
+    </p>
+    
+</body>
+</html>

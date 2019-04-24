@@ -1,0 +1,232 @@
+﻿<html>
+  <head>
+    <title>Issues and Project Tracking</title>
+      <meta name="subtitle" content="Issues and Project Tracking" />
+      <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+      <meta name="keywords" content="buildmaster, issues, notes" />
+      <meta name="show-headings-in-nav" content="true" />
+      <meta name="sequence" content="200" />
+  </head>
+  <body>
+   <p>
+        Many projects rely on issue tracking tools to manage changes in applications, and integrating these tools into BuildMaster offers several advantages:
+   </p>
+   <ul class="docs">
+     <li>   Prevent deployment unless all related issues are resolved/closed </li>
+     <li>   Automatically change the status of related issues </li>
+      <li>  Add comments to issues indicating when they were deployed </li>
+      <li>  Create new issues to indicate that testing is required </li>
+    <li>    See all relevant issues on the release dashboard in BuildMaster </li>
+         
+   </ul>
+    <p>
+      BuildMaster supports the following issue tracking systems:
+    </p>
+    <ul class="docs">
+      <li>JIRA</li>
+    <li>Azure DevOps / TFS</li>
+    <li>YouTrack</li>
+    <li>Trac</li>
+    <li>Loupe</li>
+      </ul>
+   
+   <p>
+        The Issue tracking integration is implemented through an <a href="/support/documentation/buildmaster/reference/extensions">extensible feature</a>, and additional tools may be supported by building extensions.
+   </p>
+
+   <h2 id="Issue-Tracker-Automation" data-title="Issue Tracker Automation"> Issue Tracker Automation</h2>
+<p>
+        Most  issue tracking tool extensions have operations that can be use in a <a href="/support/documentation/buildmaster/deployments/plans">deployment plan</a> to create, query, and modify issues. Each issue tracking tool is different, but there are generally four operations available in each extension:
+</p>
+
+<ul class="docs">
+     <li>  Create New Issue </li> 
+     <li>  Change Status/State</li> 
+     <li>   Append Comment/Note</li> 
+       <li> Query/Find Issues</li> 
+        
+</ul>
+<p>
+        The create, change, and append operations each will target a single issue by ID, which is why the query operation is important: it returns a list of issues that you can use to update multiple issues.
+</p>
+
+<div class="attention analogy">
+        <img src="/resources/images/icons/analogy.png" />
+        <p>
+                For example, you can use the following OtterScript to query for all Tested issues in the current release, and then change their status to Deployed while adding a comment. 
+        </p>
+    </div>
+
+    <inedo:tab-block>
+            <tab name="Visual Mode">
+                <img class="screenshot" src="/resources/documentation/buildmaster/6/youtrack-issue.png" alt="An Issue operation Plan Block (Visual Mode)" />
+            </tab>
+            <tab name="Text Mode (OtterScript)">
+<pre>
+YouTrack::Find-Issues
+(
+    Credentials: CorpYouTrack,
+    Project: HDARS,
+    Filter: Fix version: $ReleaseNumber State: Tested,
+    Output => @YouTrackIssueIDs
+);
+        
+foreach $IssueId in @YouTrackIssueIDs
+{
+    YouTrack::Change-Issue-State
+    (
+        Credentials: CorpYouTrack,
+        IssueId: $IssueId,
+        State: Deployed
+    );
+        
+    YouTrack::Add-Comment
+    (
+        Credentials: CorpYouTrack,
+        IssueId: $IssueId,
+        Comment: Automatically updated by BuidMaster
+    );
+}                                                   
+</pre>
+            </tab>
+        </inedo:tab-block>
+<p>
+    This same approach can be used with other extensions as well. 
+</p>
+<h2 id="issues-buildmaster" data-title="Issues in BuildMaster"> Issues in BuildMaster</h2>
+
+<p>
+        BuildMaster has an internal issue store that is periodically synchronized with external issue tracking tools that you've configured. This issue store tracks the following information about each issue:  
+</p>
+<table style="margin-top: 12px;">
+        <thead>
+          
+        </thead>
+        <tbody>
+            <tr>
+                <td>Issue Id:</td>
+                <td>
+                      the human-readable identifier, such has HDARS-1281
+                </td>
+            </tr>
+            <tr>
+                <td>Type:</td>
+                <td>
+                        text representing the category of issue, such as Bug or Feature
+                </td>
+            </tr>
+            <tr>
+                <td>Status:</td>
+                <td>
+                        text representing the issue's status, such as Open or Resolved
+                </td>
+            </tr>
+            <tr>
+                <td>Closed:</td>
+                <td>A boolean indicating whether the issue is considered closed; several statuses may indicate this state</td>
+            </tr>
+            <tr>
+                <td>Title:</td>
+                <td>a brief description of the issue, such as "FIX: Account Status may be incorrect"</td>
+            </tr>
+            <tr>
+                    <td>Description:</td>
+                    <td>a longer description of the issue, containing details</td>
+                </tr>
+                <tr>
+                        <td>URL:</td>
+                        <td>URL directly linking to the issue in the tool, so that it can be clicked on from the BuildMaster user interface</td>
+                    </tr>
+        </tbody>
+    </table>
+
+    <p>
+            You can view all issues associated with an application by going to the "Issues" tab on the application navigation bar. Issues related to a particular release or build are displayed on those pages.
+    </p>
+    <h2 id="issues-sources" data-title="Issues Sources"> Issues Sources</h2>
+
+    <p>
+            The <a href="/support/documentation/various/execution-engine/otterscript">Inedo Execution Engine</a> uses issue sources to perform background synchronizations with external issue tracking tools. Issue sources act as a filter that lists issues that are relevant for a particular release. Depending on the type of issue tracking tool, each issue source will have different fields that are specific to the tool.
+    </p>
+<!--
+    <p>
+        <b>
+            SCREEN SHOT COMING SOON
+        </b>
+    </p>
+-->
+    <p>
+            A synchronization is always performed within the context of an active release. For example, if you configured an issue source for the HDARS application group, then BuildMaster would perform a synchronization for each active release in each application.
+    </p>
+   <h3 id="creating-issue-sources" data-title="Creating Issue Sources">Creating Issue Sources</h3>
+<p>
+        Issue sources can be configured at the application level on the "Issues" tab by clicking the "configure issue source" link, or under Administration > Issue Sources. Issue sources created outside of an application can target an application group instead of just a single application.
+</p>
+<p>
+        Issue sources require that you create a <a href="/support/documentation/buildmaster/administration/resource-credentials">resource credential</a> that provides connection information to the issue tracking tool, such as a URL, API key, username, etc.  These credentials are generally shared across issue sources of the same type.
+</p>
+
+<h3 id="variables-and-issue-source-context" data-title="Variables and Issue Source Context">Variables and Issue Source Context</h3>
+<p>
+        Because synchronization occurs within the context of a release, this means you can use any of the <a href="/support/documentation/buildmaster/reference/functions">variable functions</a> that rely on a release to be in context: <a href="/support/documentation/buildmaster/reference/functions/applications/applicationname">$ApplicationName</a>, <a href="/support/documentation/buildmaster/reference/functions/releases/releasenumber">$ReleaseNumber</a>, <a href="/support/documentation/buildmaster/reference/functions/releases/releasename">$ReleaseName</a>, <a href="/support/documentation/buildmaster/reference/functions/releases/releasenumberpart">$ReleaseNumberPart()</a>, etc.
+</p>
+<p>
+        You can also use any <a href="/support/documentation/buildmaster/administration/configuration-variables">configuration variables</a> that are accessible from a release context: release, application, application-group, or system.
+</p>
+<h2 id="automatically-blocking-deployments" data-title="Automatically Blocking Deployments">Automatically Blocking Deployments</h2>
+
+<p>There are two <a href="/support/documentation/buildmaster/verification/pipelines/approvals-and-gates/automated-checks">automated checks</a> you can configure to on a pipeline that will prevent builds from being deployed to a particular stage unless all issues are closed, or have a certain status such as "Resolved". Prior to deployment, these approvals will evaluate each issues associated with the release, and block the deployment if the approval is not met.</p>
+<ul class="docs">
+<li><strong>Issues in Status</strong>; if you specified a specific status texts (such as Resolved and Complete), any issue that doesn't have one of those statuses will cause the approval to be not met</li>
+<li><strong>Require Issues Closed</strong>; any non-closed issue will cause this approval to be not met </li>
+</ul>
+<p>Like all automatic approvals, a build may be forced into a stage even if issues aren't closed or in the appropriate status. However, this requires a special action and a specific permission.</p>
+
+<h2 id="issue-sync" data-title="Issue Synchronization">Issue Synchronization</h2>
+
+<p>
+        An issue synchronization will automatically occur when you visit the release or build overview page. This is mostly transparent: a "please wait" status image is displayed while the execution engine runs the synchronization with the issue source. Once complete, the freshly synchronized issues that are stored within internal issue storage are displayed.
+</p>
+<h3 id="manual-sync" data-title="Manual Synchronization">Manual Synchronization</h3>
+<p>
+        When automatic issue synchronization behaves unexpectedly, (either due to an error or misconfiguration) you can perform a manual refresh. This will provide detailed logging to help troubleshoot the behavior.
+</p>
+<p>
+        To perform a manual refresh, open the "edit issue source" dialog (either from the Issues tab under the application, or under Administration > Issue Sources) and then click "Manually Refresh…". This will navigate to a page that allows you to specify:
+</p>
+<ul class="docs">
+      <li> Issue Source: either a specific issue source, or all issue sources</li> 
+     <li>  Application: either a specific application, or all applications</li> 
+       <li> Release: either a specific active release within the specified application, or all applications</li> 
+        
+</ul>
+<p>
+        Clicking the "Refresh Issues" button will initiate an execution and provide scoped logs.
+</p>
+<h2 id="internal-issue" data-title="Internal Issue Tracker">Internal Issue Tracker</h2>
+<p>
+        You can use BuildMaster's issue store as a lightweight issue tracker, allowing you to add issues and associate them with specific release and builds. While this certainly isn't as advanced as a proper issue tracking tool, it may be perfectly adequate for small applications and components with few changes.   
+</p>
+<p>
+        You can add and edit issues from the Issues tab, the release overview, and the build overview pages. The internal issue tracker can be enabled or disabled under Application > Settings > Advanced.    
+</p>
+<h2 id="builds" data-title="Builds">Issues in Builds</h2>
+<p>
+        Issues are always associated with release, but they may also be associated with up to two builds:   
+</p>
+
+<ul class="docs">
+<li>
+       Opened: Build that the issue was opened for, or discovered in
+</li>
+<li>
+       Closed: Build that successfully resolved, or closed the issue
+</li>
+</ul>
+
+<p>
+        These associations may be useful when there are multiple builds that are being tested at the same time. 
+</p>
+
+  </body>
+</html>

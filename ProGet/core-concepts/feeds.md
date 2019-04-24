@@ -85,7 +85,7 @@ Retention rules help you reclaim disk space by automatically deleting old or unu
 
 ### Variables 
 
-Webhooks let you connect ProGet with other services to notify users. See [Webhooks](/support/documentation/proget/advanced/webhooks) for more information.
+Variables are key/value pairs that can be used in [Webhooks](/support/documentation/proget/advanced/webhooks) to allow you to integrate ProGet with other tools and  notify users, trigger automated workflows, or audit events like package creation and deletion.
 
 ## Feed API Endpoints {#api-endpoints data-title="Feed API Endpoints"}
 
