@@ -22,8 +22,7 @@ For security and simplicity, these endpoints require that a `[Feed Management AP
 
 ### Feed Data Specification {#feed-data-specification data-title="Data Specification"}
 
-
-This endpoint sends and receives entries as [JSON](http://json.org/) objects.
+All of these endpoints send and receive entries as [JSON](http://json.org/) objects.
 
 
 Property               | Format
@@ -133,23 +132,29 @@ Because one of the primary use cases of the Feed Management API is maintaining f
 **Default Feed Disk Path.** When you don't specify a disk path for a feed to use, ProGet will use a path that's based on the feed's system-generated ID. This means that, just like in the UI, if were to delete a feed and then recreate it with the same name, the disk path will be different.
 
 ### Endpoint Specifications {#endpoints data-title="Endpoint Specifications"}
-All of the feed management endpoints follow the same convention:
-
-GET/POST ::/api/management/::<b>&laquo;entity-type&raquo;</b>/<b>&laquo;action-type&raquo;</b>/<b>&laquo;entity-name&raquo;</b>?key=&laquo;api-key&raquo; 
+All of the feed management endpoints follow the same convention
+GET/POST ::/api/management/::<b>&laquo;entity-type&raquo;</b>/<b>&laquo;action-type&raquo;</b>/<b>&laquo;entity-name&raquo;</b> 
 
 - `entity-type` is one of `feeds`, `connectors`, or `licenses`
 - `action-type` is one of `[list](#list)`, `[get](#get)`, `[create](#create)`, `[update](#update)`, or `[delete](#delete)`
-- `entity-name` is the name of the entity being created, updated, or deleted; it is not valid on a `list` action type
+- `entity-name` is the name identifier of the entity being updated, or deleted; it is not valid on a `list or create` action type
+- Json is required for any data sent in addition to the fields above. (i.e. the Api Key)
 
 #### List Entries {#list}
 
 This returns a status of 200 (on success), or 403 (api key not authorized), and a body containing only an *array* of entity objects. 
 
 
+##### Feed List
 ```
-GET /api/management/feeds/list?key=secure123
+GET /api/management/feeds/list
+{
+    "API_key": "secure123"
+}
+
 ```
 
+Sample Output: 
 ```
 [
  {
@@ -224,11 +229,14 @@ GET /api/management/feeds/list?key=secure123
   { ... }
 ]
 ```
-
+##### Connector List
 ```
-GET /api/management/connectors/list?key=secure123
+GET /api/management/connectors/list
+{
+    "API_key": "secure123"
+}
 ```
-
+Sample Output:
 ```
 [
   {
@@ -255,14 +263,17 @@ GET /api/management/connectors/list?key=secure123
 ]
 ```
 
-
-This endpoint requires License_Manage if POST or PUT is specified.
+##### License List
+This endpoint requires License_Manage if POST or PUT is specified.{.information}
 
 
 ```
-GET /api/management/licenses/list?key=secure123
+GET /api/management/licenses/list
+{
+    "API_key": "secure123"
+}
 ```
-
+Sample Output:
 ```
 [
   {
@@ -321,26 +332,23 @@ If the entity references another entity (e.g. in the `connectors` property of a 
 
 If there are missing properties on the entity, only the specified properties will be updated. Setting a null or empty array value will cause the corresponding values to be removed, if allowed. {.announcement}
 
-
+##### Update a Feed
 ```
-POST /api/management/feeds/update/{FeedName}?key=secure123
-```
-```
+POST /api/management/feeds/update/{FeedName}
 {
-  "name": "InternalNuGet" 
+    "API_key": "secure123"
+    "name": "InternalNuGet" 
 }
 ```
 
-
+##### Update a Feed with an array of strings
 ```
-POST /api/management/feeds/update/{FeedName}?key=secure123
-```
-```
+POST /api/management/feeds/update/{FeedName}
 {
-  "connectors": ["PublicNuGet","PrivateInfragistics"]
+    "API_key": "secure123"
+    "connectors": ["PublicNuGet","PrivateInfragistics"]
 }
 ```
-
 
 Note that, in order to add a connector to a feed, will need to specify all connectors that the feed should use, in the order they should be used. This may require a list query, first.
 
@@ -349,7 +357,11 @@ Note that, in order to add a connector to a feed, will need to specify all conne
 
 This returns a status of 200 (on success), 403 (api key not authorized), or 404 (entity not found), and an empty body.
 
+
 ```
-POST /api/management/feeds/delete/{FeedName}?key=secure123
+POST /api/management/feeds/delete/{FeedName}
+{
+    "API_key": "secure123"
+}
 ```
 
