@@ -133,12 +133,13 @@ Because one of the primary use cases of the Feed Management API is maintaining f
 
 ### Endpoint Specifications {#endpoints data-title="Endpoint Specifications"}
 All of the feed management endpoints follow the same convention
-GET/POST ::/api/management/::<b>&laquo;entity-type&raquo;</b>/<b>&laquo;action-type&raquo;</b>/<b>&laquo;entity-name&raquo;</b> 
+GET/POST ::/api/management/::<b>&laquo;entity-type&raquo;</b>/<b>&laquo;action-type&raquo;</b>/<b>&laquo;entity-name&raquo;</b><b>&laquo;?key=secure123&raquo;</b> 
 
 - `entity-type` is one of `feeds`, `connectors`, or `licenses`
-- `action-type` is one of `[list](#list)`, `[get](#get)`, `[create](#create)`, `[update](#update)`, or `[delete](#delete)`
-- `entity-name` is the name identifier of the entity being updated, or deleted; it is not valid on a `list or create` action type
-- Json is required for any data sent in addition to the fields above. (i.e. the Api Key)
+- `action-type` is one of [list](#list), [get](#get), [create](#create), [update](#update), or [delete](#delete)
+- `entity-name` is the name identifier of the entity being updated, or deleted; it is not valid on a `list` or `create` action type
+- `key` all endpoints require an api key with _Feed Management_ permissions. This can be passed to the endpoint in the header or the body of your request.
+- `Json` is required for any data sent in the _body_ of your request. (i.e. the Api Key)
 
 #### List Entries {#list}
 
@@ -152,6 +153,10 @@ GET /api/management/feeds/list
     "API_key": "secure123"
 }
 
+```
+or
+```
+GET /api/management/feeds/list?key=secure123
 ```
 
 Sample Output: 
@@ -236,6 +241,10 @@ GET /api/management/connectors/list
     "API_key": "secure123"
 }
 ```
+or
+```
+GET /api/management/connectors/list?key=secure123
+```
 Sample Output:
 ```
 [
@@ -272,6 +281,11 @@ GET /api/management/licenses/list
 {
     "API_key": "secure123"
 }
+
+```
+or
+```
+GET /api/management/licenses/list?key=secure123
 ```
 Sample Output:
 ```
@@ -340,6 +354,13 @@ POST /api/management/feeds/update/{FeedName}
     "name": "InternalNuGet" 
 }
 ```
+or
+```
+POST /api/management/feeds/update/{FeedName}?key=secure123
+{
+    "name": "InternalNuGet" 
+}
+```
 
 ##### Update a Feed with an array of strings
 ```
@@ -364,4 +385,7 @@ POST /api/management/feeds/delete/{FeedName}
     "API_key": "secure123"
 }
 ```
-
+or
+```
+POST /api/management/feeds/delete/{FeedName}?key=secure123
+```
