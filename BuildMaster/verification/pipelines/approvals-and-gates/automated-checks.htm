@@ -1,0 +1,115 @@
+﻿<html>
+<head>
+    <title>Automated Checks</title>
+    <meta name="subtitle" content="Automated Checks" />
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <meta name="keywords" content="buildmaster, pipelines, approvals" />
+    <meta name="show-headings-in-nav" content="true" />
+    <meta name="sequence" content="300" />
+
+</head>
+<body>
+
+    <p>
+        You can also define automatic checks that must be met before a build may be deployed to a stage. These are an <a href="/support/documentation/buildmaster/reference/extensions">extensible feature</a>, and there are several built in to BuildMaster.
+
+    </p>
+    <table style="margin-top: 12px;">
+        <thead>
+
+        </thead>
+        <tbody>
+            <tr>
+                <td>Command Line</td>
+                <td>Executes a program via command line on the BuildMaster server.</td>
+            </tr>
+            <tr>
+                <td>File In Artifact</td>
+                <td>
+                    Verifies that a file exists in an Artifact before a promotion to the pipeline stage.
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Issues Closed
+                </td>
+                <td>Verifies that all issues are closed before a promotion to the pipeline stage.</td>
+            </tr>
+
+            <tr>
+                <td>
+                    Issues in Status
+                </td>
+                <td>Verifies that issues are in a certain status before a promotion to the pipeline stage.</td>
+            </tr>
+            <tr>
+                <td>Pipeline Stage Complete</td>
+                <td>
+                    Ensures a pipeline stage of another application has been completed.
+                </td>
+            </tr>
+            <tr>
+                <td>Change Controls Performed</td>
+                <td>
+                    Verifies that change controls have been performed.
+                </td>
+            </tr>
+            <tr>
+                <td>Change Scripts Run</td>
+                <td>Verifies that all required change scripts have been run successfully.</td>
+            </tr>
+            <tr>
+                <td>United Tests Passed </td>
+                <td>
+                    Verifies that unit tests have passed in the last execution.
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Variable
+                </td>
+                <td>
+                    Ensures a specified variable value before promotion to the pipeline stage.
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Drift Status
+                </td>
+                <td>
+                    Verifies that a specified Otter server or role is in a specified drift status.
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <p>
+        These automatic approvals are verified periodically, as they can change over time.
+    </p>
+
+    <div class="attention analogy">
+        <img src="/resources/images/icons/analogy.png" />
+        <p>
+            For example, if you've configured a Issues Closed automatic approval to verify that issues in a particular JIRA project are closed prior to promoting to a stage,
+            BuildMaster won't be notified of a status change. 
+        </p>
+    </div>
+
+    <p>
+        When an automatic approval is verified, the following information is recorded:
+    </p>
+    <ul>
+        <li>
+            <b>State (Met, Not Met, Not Required)</b>- for example, if there are no issues associated with the release, then the requirement would be Not Met, whereas the requirement would be Met only if all issues associated with the release were Resolved
+        </li>
+        <li>
+            <b>Description</b> - a text description of the approval conditions; for example, "3/8 issues are resolved"
+        </li>
+        <li>
+            <b>
+                Date/Time
+            </b>- a timestamp of when the approval was run
+        </li>
+    </ul>
+    
+</body>
+</html>

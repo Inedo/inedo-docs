@@ -1,0 +1,45 @@
+﻿<html>
+<head>
+    <title>Badges</title>
+    <meta name="subtitle" content="Badges" />
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <meta name="keywords" content="buildmaster, releases, builds" />
+    <meta name="sequence" content="300" />
+</head>
+<body>
+    <style type="text/css">
+        .badge {
+            max-width: 150px;
+        }
+    </style>
+
+    <h4 id="badge-api" data-title="CI Badges">Badge API</h4>
+
+    <p>
+        BuildMaster allows external tools to query build status in order to generate a "CI Badge", such as:
+    </p>
+
+    <p>
+        <img class="badge" src="/resources/documentation/buildmaster/6/ci/success.svg" />
+    </p>
+    <p>
+        To access the CI Badge API, an API key must be added with access to the API. Then, the following URLs can be
+        used to generate either the badge image or a link to the corresponding build/execution:
+    </p>
+    <h5>Image:</h5>
+    <p>
+        <pre>{buildmaster-host}/api/ci-badges/image?API_Key={yourApiKey}&amp;$ApplicationName={appName}</pre>
+    </p>
+    <h5>Link:</h5>
+    <p>
+        <pre>{buildmaster-host}/api/ci-badges/link?API_Key={yourApiKey}&amp;$ApplicationName={appName}</pre>
+    </p>
+    <p>
+        The badge specifiers are not limited to applications and may be further filtered based on commit IDs, branches, and more.
+        For more information on how to configure and query a badge, visit
+        the <a href="/support/documentation/buildmaster/reference/api/ci-badge">CI Badge API documentation</a>.
+    </p>
+
+    
+</body>
+</html>
