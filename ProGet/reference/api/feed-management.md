@@ -16,91 +16,94 @@ The Feed Management API Endpoints offer a simple mechanism for querying, creatin
 These API endpoints should be used instead of the [Native API Methods] when possible, as they are much easier to use and will likely not change. {.announcement}
 
 For security and simplicity, these endpoints require that a `[Feed Management API Key]` is created first. This key is passed into the API call within the body or the header of your request.
-`{
-   "API_key": "APIKEY"
- }`
+```
+{
+   "API_key": "secure123"
+ }
+```
 
 ### Feed Data Specification {#feed-data-specification data-title="Data Specification"}
 
 All of these endpoints send and receive entries as [JSON](http://json.org/) objects.
 
 
-Property               | Format
+Property               | Format | Information 
 -----------------------|----------
-`name`                 | A *string* of no more than fifty characters: numbers (0-9), upper- and lower-case letters (a-Z), dashes (-), and underscores (_); must start with a letter, and may not start or end with a dash or underscore. **required**.
-`feedType`             | A *string* value of `nuget`, `npm`, `universal`, ..., or `xxx`. **required**.
-`packageType`          | A *string* value of `chocolatey` or `powershell` (for `nuget` feeds) or `romp` (for `universal` feed types). See [Feed and Package Types](#feed-and-package-types). Optional.
-`description`          | A *string* that is displayed in the ProGet UI under the feed namme.  Optional (default `null`).
-`active`               | A *boolean* indicating whether the feed is active or disabled. Optional (default `true`).
-`cacheConnectors`      | A *boolean* indicating whether metadata from packages should be cached (???). Optional (default `???`).
-`dropPath`             | A *string* containing a disk path accessible to ProGet's service where packages may added to the feed. Optional (default `null`).
-`packagesPath`         | A *string* containing an absolute or relative (to RootFeedPath?) path that will override where packages are stored. Optional (default `null`). 
-`packageStore`         | A *string* containing serialized XML configuration for a custom package store like Amazon S3 or Azure Blob. See [Persisted XML](#persisted-xml). Optional (default `null`). 
-`replicationMode`      | A *string* value of `none`, `listen`, `initiate`, or `listenAndInitiate`. Optional (default `none`).
-`syncToken`            | A *string* containing the replication token used when replicating. **required** when `replicationMode` is not `none`.
-`syncUrl`              | A *string* containing URL of a replication endpoint to contact. **required** when `replicationMode` is `listenAndInitiate` or `initiate`.
-`syncDate`             | A *string* containing an ISOxxx formatted date that indicates the last time a replication occurred. You should only set this to force a new replication. Optional.
-`allowUnknownLicenses` | A *boolean* indicating whether unknown licenses should be allowed or the global setting should be followed.Optional (default `null`).
-`allowedLicenses`      | An *array of strings*, each consisting of an existing license ID, such as MIT or BSD. Optional.
-`blockedLicenses`      | An *array of strings*, each consisting of an existing license ID, such as MIT or BSD. Optional.
-`symbolServerEnabled`  | A *boolean* indicating whether symbol server is enabled.  This must be `null` unless the `feedType` is `nuget` and `packageType` is `null`. Optional (default `false` ??)
-`stripSymbols`         | A *boolean* indicating whether symbols should be stripped from NuGet packages.  This must be `null` unless the `feedType` is `nuget` and `packageType` is `null`. Optional (default `false` ??).
-`stripSource`          | A *boolean* indicating whether source should be stripped from NuGet packages.  This must be `null` unless the `feedType` is `nuget` and `packageType` is `null`. Optional (default `false` ??).
-`connectors`           | An *array of strings*, each consisting of an existing and feedType-compatible connector name. Optional.
-`vulnerabilitySources` | An *array of strings, each consisting of an existing vulnerability source name. Optional.
-`retentionRules`       | An *array of objects*, each consisting of a valid retention rule object. Optional.
-`packageFilters`       | An *array of strings*, each consisting of serialized XML configuration for a custom package filter. See [Persisted XML](#persisted-xml). Optional.
-`packageAccessRules`   | An *array of strings*, each consisting of serialized XML configuration for a custom package access rule, like Whitesource. See [Persisted XML](#persisted-xml). Optional.
-`variables`            | An *object* with property/values representing variable names and values. Optional. <ul><li>a variable name is a *string* of no more than fifty characters: numbers (0-9), upper- and lower-case letters (a-Z), dashes (-), spaces ( ), and underscores (_) and must start with a letter, and may not start or end with a dash, underscore, or space; a variable</li><li>a variable value is a *string* of any number of characters</li></ul>
+`name`                 | A *string* of no more than fifty characters: numbers (0-9), upper- and lower-case letters (a-Z), dashes (-), and underscores (_); must start with a letter, and may not start or end with a dash or underscore. |**Required**
+`feedType`             | A *string* value of `nuget`, `npm`, `universal`, ..., or `xxx`. |**Required**
+`description`          | A *string* that is displayed in the ProGet UI under the feed namme.  |Optional (default `null`)
+`active`               | A *boolean* indicating whether the feed is active or disabled. Optional |(default `true`).
+`cacheConnectors`      | A *boolean* indicating whether metadata from packages should be cached (???). |Optional (default empty[]).
+`dropPath`             | A *string* containing a disk path accessible to ProGet's service where packages may added to the feed. | Optional (default `null`)
+`packagesPath`         | A *string* containing an absolute or relative (to RootFeedPath?) path that will override where packages are stored. |Optional (default `null`)
+`packageStore`         | A *string* containing serialized XML configuration for a custom package store like Amazon S3 or Azure Blob. See [Persisted XML](#persisted-xml). |Optional (default `null`)
+`syncUrl`              | A *string* containing URL of a replication endpoint to contact. |**Required** when `replicationMode` is `listenAndInitiate` or `initiate`.
+`syncDate`             | A *string* containing an ISOxxx formatted date that indicates the last time a replication occurred. You should only set this to force a new replication. |Optional
+`allowUnknownLicenses` | A *boolean* indicating whether unknown licenses should be allowed or the global setting should be followed. |Optional (default `null`)
+`allowedLicenses`      | An *array of strings*, each consisting of an existing license ID, such as MIT or BSD. |Optional
+`blockedLicenses`      | An *array of strings*, each consisting of an existing license ID, such as MIT or BSD. |Optional
+`symbolServerEnabled`  | A *boolean* indicating whether symbol server is enabled.  This must be `null` unless the `feedType` is `nuget` and `packageType` is `null`. |Optional (default `false` ??)
+`stripSymbols`         | A *boolean* indicating whether symbols should be stripped from NuGet packages.  This must be `null` unless the `feedType` is `nuget` and `packageType` is `null`. |Optional (default `false`)
+`stripSource`          | A *boolean* indicating whether source should be stripped from NuGet packages.  This must be `null` unless the `feedType` is `nuget` and `packageType` is `null`. |Optional (default `false`)
+`connectors`           | An *array of strings*, each consisting of an existing and feedType-compatible connector name. |Optional
+`vulnerabilitySources` | An *array of strings, each consisting of an existing vulnerability source name. |Optional
+`retentionRules`       | An *array of objects*, each consisting of a valid retention rule object. |Optional
+`packageFilters`       | An *array of strings*, each consisting of serialized XML configuration for a custom package filter. See [Persisted XML](#persisted-xml). |Optional
+`packageAccessRules`   | An *array of strings*, each consisting of serialized XML configuration for a custom package access rule, like Whitesource. See [Persisted XML](#persisted-xml). |Optional
+`variables`            | An *object* with property/values representing variable names and values. <ul><li>a variable name is a *string* of no more than fifty characters: numbers (0-9), upper- and lower-case letters (a-Z), dashes (-), spaces ( ), and underscores (_) and must start with a letter, and may not start or end with a dash, underscore, or space; a variable</li><li>a variable value is a *string* of any number of characters</li></ul> |Optional
+`replication_xml`       | An *array of strings*, each consisting of serialized XML configuration for a custom package filter. See [Persisted XML](#persisted-xml). |Optional
+`feedconfiguration_xml`    | An *array of strings*, each consisting of serialized XML configuration for a custom package filter. See [Persisted XML](#persisted-xml). |Optional
+~~`replicationMode`~~      | ~~A *string* value of `none`, `listen`, `initiate`, or `listenAndInitiate`.~~|No longer in use.
+~~`syncToken`~~            | ~~A *string* containing the replication token used when replicating.~~ |No longer in use.
 
 
 
 ### Connector Data Specification {#connector-data-specification data-title="Connector Data Specification"}
  
- Property              | Format
+ Property              | Format | Information
 -----------------------|----------
- `name` | a *string*, (100 chars max). See [Names and IDs](#names-and-ids). **required**.
- `url`  | a *string*, referencing the url to the connector, **required**.
- `feedType` | a *string*, type of feed `npm`, `NuGet`, `Chocolatey`, etc. **required**.
- `userName`  | a *string*, optional.
- `password` | a *string*, optional.
- `timeout`  | an *integer*, optional. Number of seconds **required**. 
- `filter`   | an *array of strings*, optional.
- `metadataCached`  | a *boolean*, **required**.
- `metadataCacheMinutes`  | an *integer*, **required**.
- `metadataCacheCount`   | an *integer*, **required**.
+ `name` | a *string*, (100 chars max). See [Names and IDs](#names-and-ids). |**Required**
+ `url`  | a *string*, referencing the url to the connector, |**Required**
+ `feedType` | a *string*, type of feed `npm`, `NuGet`, `Chocolatey`, etc. |**Required**
+ `userName`  | a *string*, | Optional
+ `password` | a *string*, |Optional
+ `timeout`  | an *integer*, |Optional. Number of seconds **required**
+ `filter`   | an *array of strings*, |Optional
+ `metadataCached`  | a *boolean*, |**Required**
+ `metadataCacheMinutes`  | an *integer*, |**Required**
+ `metadataCacheCount`   | an *integer*, |**Required**
 
 
 ### Retention Rule Data Specification {#retention-rule-data-specification data-title="Retention Rule Data Specification"}
 Note that this is only used within a feed entity's retentionRules property, and cannot be defined outside of a feed.
 
- Property              | Format
+ Property              | Format | Information
 -----------------------|----------
-`feed_Id`   | an *integer* that identifies the feed, optional
-`FeedType_Name`  | a *string*, type of feed `npm`, `NuGet`, `Chocolatey`, etc. **required**.
-`DeletePrereleaseVersions_Indicator` | a *boolean*, **required**.
-`DeleteCached_Indicator` | a *boolean*, **required**.
-`KeepVersions_Count` | an *integer*, optional
-`keepVersions` |  an *array of strings*, optional. [[new in 5.2 with PG-1450]]
-`deleteVersions` |  an *array of strings*, optional. [[new in 5.2 with PG-1450]]
-`KeepUsedWithin_Days` | an *integer*, optional.
-`DeletePackageIds_Csv` |  an *array of strings*, optional.
-`KeepPackageIds_Csv` |  an *array of strings*,  optional.
-`sizeTrigger_KBytes`  | an *integer* in KBytes. optional.
-`sizeExclusive_Indicator`  | a *boolean*, **required**.
-`triggerDownloadCount` | an *integer*, optional.
+`feed_Id`   | an *integer* that identifies the feed, |Optional
+`FeedType_Name`  | a *string*, type of feed `npm`, `NuGet`, `Chocolatey`, etc. |**Required**
+`DeletePrereleaseVersions_Indicator` | a *boolean*, |**Required**
+`DeleteCached_Indicator` | a *boolean*, |**Required**
+`KeepVersions_Count` | an *integer*, |Optional
+`keepVersions` |  an *array of strings*,  [[new in 5.2 with PG-1450]] |Optional
+`deleteVersions` |  an *array of strings*,  [[new in 5.2 with PG-1450]]|Optional
+`KeepUsedWithin_Days` | an *integer*, |Optional
+`DeletePackageIds_Csv` |  an *array of strings*, |Optional
+`KeepPackageIds_Csv` |  an *array of strings*,  |Optional
+`sizeTrigger_KBytes`  | an *integer* in KBytes. |Optional
+`sizeExclusive_Indicator`  | a *boolean*, |**Required**
+`triggerDownloadCount` | an *integer*, |Optional
  
 
 ### License Data Specification {#license-data-specification data-title="License Data Specification"}
 
- Property              | Format
+ Property              | Format | Information
 -----------------------|----------
-`licenseId` | a *string* SPDX identifier of 50 chars, **required**.
-`title` |  a *string*, **required**
-`urls`  | an *array of strings*, **required**.
-`allowed`   | a *boolean* that will determine if license is allowed or blocked, optional.
-`alllowedFeeds` | an *array of strings* that shows which feeds are allowed, optional.
-`blockedFeeds` | an *array of strings* that shows which feeds are blocked, optional.
+`licenseId` | a *string* SPDX identifier of 50 chars, |**Required**
+`title` |  a *string*, |**Required**
+`urls`  | an *array of strings*, |**Required**
+`allowed`   | a *boolean* that will determine if license is allowed or blocked. |Optional
+`alllowedFeeds` | an *array of strings* that shows which feeds are allowed. |Optional
+`blockedFeeds` | an *array of strings* that shows which feeds are blocked. |Optional
  
 
 ### Feed & Package Types {#feed-and-package-types data-title="Feed & Package Types"}
@@ -118,13 +121,11 @@ Because package stores, package filters, and package access rules are implemente
 
 The easiest way to see what an object's persisted XML will look like is to create it in the UI, then look at the XML in either the database or the API. As a reference, we've provided the persisted XML for three components that we maintain:
 
-
 ```
-<Inedo.ProGet.Feeds.NuGet.NuGetFeedConfig Assembly="ProGetCoreEx">
-  <Properties SymbolServerEnabled="False" StripSymbolFiles="False" StripSourceCodeInvert="False" UseLegacyVersioning="False" />
+<Inedo.ProGet.Feeds.NuGet.NuGetFeedConfig Assembly=\"ProGetCoreEx\">
+  <Properties SymbolServerEnabled=\"False\" StripSymbolFiles=\"False\" StripSourceCodeInvert=\"False\" UseLegacyVersioning=\"False\" />
 </Inedo.ProGet.Feeds.NuGet.NuGetFeedConfig>
 ```
-
 
 ### Names & IDs {#names-and-ids data-title="Names & IDs"}
 Because one of the primary use cases of the Feed Management API is maintaining feed configuration across instances of ProGet, using or exposing the read-only, system-generated identifiers for entitites is not practical. As such, these IDs are not used by the API.
@@ -138,7 +139,7 @@ GET/POST ::/api/management/::<b>&laquo;entity-type&raquo;</b>/<b>&laquo;action-t
 - `entity-type` is one of `feeds`, `connectors`, or `licenses`
 - `action-type` is one of [list](#list), [get](#get), [create](#create), [update](#update), or [delete](#delete)
 - `entity-name` is the name identifier of the entity being updated, or deleted; it is not valid on a `list` or `create` action type
-- `key` all endpoints require an api key with _Feed Management_ permissions. This can be passed to the endpoint in the header or the body of your request.
+- `key` all endpoints require an api key with _Feed Management_ permissions. This can be passed to the endpoint in the header or the body of your request. For requests that include an entity-name you will need to add the api-key in the body.
 - `Json` is required for any data sent in the _body_ of your request. (i.e. the Api Key)
 
 #### List Entries {#list}
@@ -281,7 +282,6 @@ GET /api/management/licenses/list
 {
     "API_key": "secure123"
 }
-
 ```
 or
 ```
@@ -354,13 +354,7 @@ POST /api/management/feeds/update/{FeedName}
     "name": "InternalNuGet" 
 }
 ```
-or
-```
-POST /api/management/feeds/update/{FeedName}?key=secure123
-{
-    "name": "InternalNuGet" 
-}
-```
+
 
 ##### Update a Feed with an array of strings
 ```
@@ -385,7 +379,4 @@ POST /api/management/feeds/delete/{FeedName}
     "API_key": "secure123"
 }
 ```
-or
-```
-POST /api/management/feeds/delete/{FeedName}?key=secure123
-```
+
