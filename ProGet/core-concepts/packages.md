@@ -3,7 +3,7 @@ title: Packages
 subtitle: Packages in ProGet
 sequence: 100
 keywords: proget, packages
-
+show-headings-in-nav: true
 ---
 Packages help you uniformly distribute your applications and components.
 

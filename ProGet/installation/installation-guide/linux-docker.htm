@@ -27,6 +27,7 @@
       </p>
 
       <h2>Prerequisites</h2>
+      <h3>Docker</h3>
       <p>
           Docker must be installed and the docker daemon running on your server. If you
           don't already have Docker installed, you can get install instructions for
@@ -41,6 +42,37 @@
           sudo/su depending on your configuration.
       </p>
 
+      <h3>SQL Server Database</h3>
+      <p>
+          ProGet requires a SQL Server database. You can either host this database externally or
+          simply <a href="https://docs.microsoft.com/en-us/sql/linux/sql-server-linux-configure-docker">use a SQL Server Docker image</a>;
+          it doesn't matter how it's hosted, as long as your ProGet instance can access it. For example, to start up a SQL Server
+          container that you only intend to use with ProGet, use the command:
+      </p>
+      <pre>
+docker run --name proget-sql \
+      -e 'ACCEPT_EULA=Y' -e 'MSSQL_SA_PASSWORD=&lt;YourStrong!Passw0rd&gt;' \
+      -e 'MSSQL_PID=Express' --net=proget --restart=unless-stopped \
+      -d store/microsoft/mssql-server-linux:2017-latest
+</pre>
+      <p>
+          <b>Note:</b> This example specifies the free SQL Express edition. This is adequate for most ProGet installations, but
+          you can use any other edition as well if you have the license for it.
+      </p>
+      <p>
+          Once you have a SQL Server instance up and running, you'll need to create an empty database. For example, to create
+          a database called <b>ProGet</b> on the SQL Server instance running in the <b>proget-sql</b> container:
+      </p>
+      <pre>
+docker exec -it proget-sql /opt/mssql-tools/bin/sqlcmd \
+   -S localhost -U SA -P '&lt;YourStrong!Passw0rd&gt;' \
+   -Q 'CREATE DATABASE [ProGet] COLLATE SQL_Latin1_General_CP1_CI_AS'
+</pre>
+      <p>
+          <b>Note:</b> You can create the database however you want, but to avoid issues make sure you specify its collation
+          as <b>SQL_Latin1_General_CP1_CI_AS</b>.
+      </p>
+
       <h2>Licensing</h2>
       <p>
           You'll need to have a valid license key once you get ProGet up and running.
@@ -50,15 +82,16 @@
 
       <h2>Starting the ProGet Docker Image</h2>
       <p>
-          We are currently distributing this as a single, self-contained image. To get the image and
+          The ProGet Docker image contains a web server and a background service. To get this image and
           start it, use the <b>docker run</b> command. If you'd like to just get started right away with our
           defaults, you can just use the command below as-is, or continue reading for an explanation
           on the arguments and how to provide additional configuration values.
       </p>
       <pre>
-docker network create proget<br />
-docker run -d -v /etc/localtime:/etc/localtime:ro -v /var/proget/db:/var/lib/postgresql/data --net=proget --name=proget-postgres --restart=unless-stopped postgres:9.5<br />
-docker run -d -v /etc/localtime:/etc/localtime:ro -v /var/proget/packages:/var/proget/packages -v /var/proget/extensions:/var/proget/extensions -p 80:80 --net=proget --name=proget --restart=unless-stopped inedo/proget:latest
+docker run -d -v proget-packages:/var/proget/packages -p 80:80 --net=proget \
+    --name=proget --restart=unless-stopped -e PROGET_DB_TYPE=SqlServer \
+    -e PROGET_DATABASE='Data Source=proget-sql; Initial Catalog=ProGet; User ID=sa; Password=&lt;YourStrong!Passw0rd&gt;'
+inedo/proget:latest
       </pre>
 
       <table style="margin-top: 10px; margin-bottom: 10px;">
@@ -72,36 +105,10 @@ docker run -d -v /etc/localtime:/etc/localtime:ro -v /var/proget/packages:/var/p
                   </td>
               </tr>
               <tr>
-                  <td style="width: 400px;"><code>-v /etc/localtime:/etc/localtime:ro</code></td>
-                  <td>
-                      Allows the Docker container to inherit the time zone of the host
-                      server.
-                  </td>
-              </tr>
-              <tr>
-                  <td style="width: 400px;"><code>-v /var/proget/db:/var/lib/postgresql/data</code></td>
-                  <td>
-                      Mounts <code>/var/proget/db</code> as the location of PostgreSQL's
-                      storage on the host server. You can omit this option if you want
-                      Docker to create the volume in <code>/var/lib/docker/volumes</code>
-                      with a random name.
-                  </td>
-              </tr>
-              <tr>
                   <td style="width: 400px;"><code>--net=proget</code></td>
                   <td>
                       Putting the containers into a Docker network lets them see each
                       other and prevents other Docker containers from accessing them.
-                  </td>
-              </tr>
-              <tr>
-                  <td style="width: 400px;"><code>--name=proget-postgres</code></td>
-                  <td>
-                      Names the container <code>proget-postgres</code>, which is the default
-                      hostname that ProGet connects to on Linux. If you choose a
-                      different name or decide to host your database server outside of
-                      Docker, you will need to specify a connection string using
-                      <code>-e PROGET_DATABASE=</code><code>"Server=host.name;</code> <code>Database=databasename;</code> <code>User Id=username;</code> <code>Password=password;"</code>
                   </td>
               </tr>
               <tr>
@@ -113,21 +120,24 @@ docker run -d -v /etc/localtime:/etc/localtime:ro -v /var/proget/packages:/var/p
                   </td>
               </tr>
               <tr>
-                  <td style="width: 400px;"><code>-v /var/proget/packages:/var/proget/packages</code></td>
+                  <td style="width: 400px;"><code>-e PROGET_DB_TYPE=SqlServer</code></td>
                   <td>
-                      Mounts <code>/var/proget/packages</code> as the location to store ProGet's
-                      repository packages. Like the database path, you can change this, but
-                      if it is not persisted explicitly, Docker will choose a location
-                      that is hard to get to.
+                      Indicates that ProGet is connecting to SQL Server. Without this, ProGet will
+                      assume it is connecting to a PostgreSQL instance instead.
                   </td>
               </tr>
               <tr>
-                  <td style="width: 400px;"><code>-v /var/proget/extensions:/var/proget/extensions</code></td>
+                  <td style="width: 400px;"><code>-e PROGET_DATABASE=...</code></td>
                   <td>
-                      Mounts <code>/var/proget/extensions</code> as the location to store ProGet's
-                      extensions. Like the database path, you can change this, but
-                      if it is not persisted explicitly, you will not be able to install and use
-                      any extensions. See the <a href="#limitations">limitations</a> section below.
+                      The connection string for SQL Server. The value specified in the example here
+                      assumes you are using the <code>proget-sql</code> container. To connect to a
+                      different instance, just change this connection string to the appropriate value.
+                  </td>
+              </tr>
+              <tr>
+                  <td style="width: 400px;"><code>-v proget-packages:/var/proget/packages</code></td>
+                  <td>
+                      Persists ProGet's packages in the <code>proget-packages</code> Docker volume.
                   </td>
               </tr>
               <tr>
@@ -202,10 +212,10 @@ docker rm proget-old
 
       <h2>Stopping the Container</h2>
       <p>
-          If you need to stop the ProGet container, the <code>docker stop proget proget-postgres</code>
+          If you need to stop the ProGet container, the <code>docker stop proget</code>
           command should do it. You can determine if it is running with the <code>docker ps</code>
           command. To start the container after it has been created, use the
-          <code>docker start proget proget-postgres</code> command.
+          <code>docker start proget</code> command.
       </p>
 
       <h2 id="limitations">Limitations and Known Issues</h2>
@@ -224,10 +234,5 @@ docker rm proget-old
               not run on Linux short of some kind of emulation layer like Wine.
           </li>
       </ul>
-      <p>
-          You may also encounter random bugs as the entire database layer has been ported from
-          SQL Server to PostgreSQL. We're pretty sure we've discovered and fixed most of these issues,
-          but if you encounter any please be sure to <a href="/contact">let us know</a>.
-      </p>
   </body>
 </html>

@@ -18,7 +18,7 @@ By setting up multiple feeds, you can not only separate packages by package form
 
 To create a new feed, go to `Feeds > Create Feed`. You can also manage feeds from the Feeds page, or by going to the specific feed page and clicking the `Manage Feed` button.
 
-### Feed Types {#feed data-title="Feed Types"}
+### Feed Types {#feed-types data-title="Feed Types"}
 
 The type of feed defines the format of package that it will contain. A NuGet feed, for example, will only ever store NuGet packages, and a npm feed will only ever store npm packages.
 
@@ -87,7 +87,7 @@ Retention rules help you reclaim disk space by automatically deleting old or unu
 
 Variables are key/value pairs that can be used in [Webhooks](/support/documentation/proget/advanced/webhooks) to allow you to integrate ProGet with other tools and  notify users, trigger automated workflows, or audit events like package creation and deletion.
 
-## Feed API Endpoints {#feed data-title="Feed API Endpoints"}
+## Feed API Endpoints {#api-endpoints data-title="Feed API Endpoints"}
 
 All feeds have an "API Endpoint" URL that is used for API (programmatic) access. You can find this URL in the top-right corner of the Feed's browse page. The specific API that a feed uses depends entirely on its type; for example, a Universal feed will only use the [Universal Feed API](/support/documentation/upack/feed-api), and a NuGet feed will only ever use the NuGet API.
 

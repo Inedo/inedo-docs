@@ -48,7 +48,7 @@ npm packages are installed using [npm](https://docs.npmjs.com/cli/install). To i
 npm install {package-name}@{package-version}
 ```
 
-## npm Token Authentication
+## npm Token Authentication {#token}
 
 In order to interact with your private registry without using the `npm adduser` command you will need to follow these steps:
 
