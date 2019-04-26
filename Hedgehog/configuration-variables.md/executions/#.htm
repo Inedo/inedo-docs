@@ -1,0 +1,36 @@
+﻿<html>
+<head>
+    <title>Executions</title>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <meta name="keywords" content="hedgehog,executions" />
+	<meta name="sequence" content="400" />
+</head>
+<body>
+
+    <div class="attention technical">
+        <img src="/resources/images/icons/technical.png" />
+        <p>
+            <strong>ADVANCED TOPIC WARNING:</strong> this documentation is technical, perhaps too technical for casual reading; it was primarily written to provide a very detailed specification for how it works behind the scenes. 
+        </p>
+    </div>
+    <p>
+        An execution represents a deployment, orchestration, routine task, synchronization, or any other type of job that is run by the service using the <a href="/support/documentation/executionengine/overview">Inedo Execution Engine</a>.
+    </p>
+    <p>
+        All execution records are stored in the database, have scoped logs, and the following properties:
+    </p>
+    <p>
+        <ul class="docs">
+            <li>Execution ID</li>
+            <li>Start / End Dates</li>
+            <li>Run State: Pending, Executing, Completed</li>
+            <li>Execution Status: Normal, Warn, Error</li>
+            <li>Execution Type</li>
+        </ul>
+    </p>
+    <p>
+        Different types of executions will have additional properties as well.
+    </p>
+
+</body>
+</html>
