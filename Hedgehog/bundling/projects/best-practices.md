@@ -6,7 +6,7 @@ keywords: hedgehog, packages, projects
 show-headings-in-nav: true
 
 ---
-:::attention{.best-practice}
+:::attention {.best-practice}
 ![](/resources/images/icons/best-practices.png) Like folders, projects require a unique name within their containing project. Aside from that, there are no restrictions as to what kinds of contents a project can contain.
 :::
 
