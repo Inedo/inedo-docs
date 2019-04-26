@@ -1,7 +1,9 @@
 ---
-title: Getting Source Code From TFS or Azure DevOps
+title: TFS or Azure DevOps
+subtitle: Getting Latest Source Code From TFS or Azure DevOps
 Docs URL: /builds/continuous-integration/azure-devops-tfs
-Pre-requisites: Git extension, TFS extension
+sequence: 100 
+keywords: buildmaster, git, tfs, azure-devops, source-control
 ---
 
 BuildMaster can build any type of project, whether greenfield, legacy applications, microservices, etc. It doesn’t matter where your project’s source code is hosted.

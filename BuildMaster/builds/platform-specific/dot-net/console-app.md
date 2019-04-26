@@ -1,7 +1,9 @@
 ---
-title: Building a .NET console application 
-Docs URL: /builds/platform-specific/dot-net/console-app
-Pre-requisites: Buildmaster, Microsoft SDK
+title: .NET Console Apps
+subtitle: Building a .NET console application in BuildMaster
+Docs URL: /builds/continuous-integration/azure-devops-tfs
+sequence: 100 
+keywords: buildmaster, dot-net, console-app, msbuild
 ---
 
 You can use BuildMaster to build an app written in any language. That includes .NET Console apps. BuildMaster allows you to build, test and deploy applications of any type using our intuitive interface or our integrated scripting language. 

@@ -1,8 +1,9 @@
 ---
-title: Performing an Entity Framework migration
+title: Entity Framework Migration
+subtitle: Performing An Entity Framework Migration
 Docs URL: /deployments/targets/databases/entity-framework-migration
-
-Pre-requisites: Buildmaster, Microsoft SDK
+sequence: 100 
+keywords: buildmaster, entity-framework, sql-server, dot-net
 ---
 Deploy and track database change scripts to the most popular database engines including SQL Server, My SQL, PostgreSQL, DB2, and Sybase
 
