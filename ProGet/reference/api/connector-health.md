@@ -8,6 +8,8 @@ show-headings-in-nav: true
 
 The Connector Health API Endpoint offer a simple mechanism for querying the health status of the connectors accross and instance of ProGet.
 
+This API is available starting in ProGet 5.2.{.info}
+
 For security and simplicity, these endpoints require that a `[Feed Management API Key]` is created first. This key is passed into the API call within the body or the header of your request.
 
 ```
