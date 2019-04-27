@@ -8,6 +8,8 @@ show-headings-in-nav: true
 
 [Helm](https://helm.sh/) is the package manager for [Kubernetes](https://kubernetes.io/) applications. A ProGet package for a Helm feed is known as a [chart](https://helm.sh/docs/developing_charts/#charts), which can be used to describe even the most complex application, and provide a repeatable, versioned approach to Kubernetes deployments.
 
+This feed type is available starting in ProGet 5.2.{.info}
+
 ## Pre-requisite Configuration
 
 In order to install packages from a ProGet feed, it must be added to the local list of repositories by running this command:
