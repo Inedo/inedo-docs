@@ -13,7 +13,8 @@ The Feed Management API Endpoints offer a simple mechanism for querying, creatin
  - copy feed configuration across multiple ProGet instances
  - assist in receiving support by submitting configuration to engineers or the community
 
-These API endpoints should be used instead of the [Native API Methods] when possible, as they are much easier to use and will likely not change. {.announcement}
+
+This API is available starting in ProGet 5.2.{.info}
 
 For security and simplicity, these endpoints require that a `[Feed Management API Key]` is created first. This key is passed into the API call within the body or the header of your request.
 ```
