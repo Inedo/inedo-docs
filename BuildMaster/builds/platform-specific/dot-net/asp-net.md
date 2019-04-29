@@ -8,7 +8,7 @@ keywords: buildmaster, builds, dot-net, asp-net
 ### Pre-requisites: 
 
 {.docs}
- - Visual Studio Build Tools installed
+ - [Visual Studio Build Tools](https://visualstudio.microsoft.com/downloads) installed
  - Ensure that ".NET desktop build tools" and "Web development build tools" options are chosen during installation/modification
  
 You can use BuildMaster to build any web application, including ASP.NET MVC, its predecessor ASP.NET WebForms, and even ASP.NET Core.

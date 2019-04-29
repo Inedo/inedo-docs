@@ -6,6 +6,11 @@ sequence: 100
 keywords: buildmaster, dot-net, console-app, msbuild
 ---
 
+### Pre-requisites: 
+
+{.docs}
+ - [Visual Studio Build Tools](https://visualstudio.microsoft.com/downloads) installed
+
 You can use BuildMaster to build an app written in any language. That includes .NET Console apps. BuildMaster allows you to build, test and deploy applications of any type using our intuitive interface or our integrated scripting language. 
 
 By adding the _Build MSBuild Project_ operation to your plan you can build your .NET console application for any configuration (degug, release, etc) or platform (x86, x64, Win32, etc). 
