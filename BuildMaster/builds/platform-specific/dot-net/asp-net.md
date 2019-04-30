@@ -5,17 +5,22 @@ sequence: 200
 keywords: buildmaster, builds, dot-net, asp-net
 ---
 
-### Pre-requisites: 
+You can use BuildMaster to build any web application, including ASP.NET MVC, its predecessor ASP.NET WebForms, and even ASP.NET Core.
 
+Behind the scenes, BuildMaster uses the `MSBuild::Build-Project` operation to do this. When you add it to your plan, you can build any kind of ASP.NET application, targeting any platform or build configuration.
+
+## MSBuild Overview & Pre-requisites
+
+[MSBuild (Microsoft Build Engine)](https://docs.microsoft.com/en-us/visualstudio/msbuild/msbuild) is a platform for building applications, and it's used internally by Visual Studio to to build your project and solutions. 
+
+MSBuild doesn't require Visual Studio to be installed, but you will need to install and configure the following:
 {.docs}
  - [Visual Studio Build Tools](https://visualstudio.microsoft.com/downloads) installed
  - Ensure that ".NET desktop build tools" and "Web development build tools" options are chosen during installation/modification
- 
-You can use BuildMaster to build any web application, including ASP.NET MVC, its predecessor ASP.NET WebForms, and even ASP.NET Core.
 
-With the `MSBuild::Build-Project` operation to a plan, you can build any kind of ASP.NET application, targeting any platform or build configuration.
+## How to use the MSBuild::Build-Project Operation
 
-##### Operation example:
+After getting your code from source control, you can use the MSBuild in your plan is as follows.
 
 ```
 Build-Project <pathToProject>\<projectName>.csproj
@@ -24,19 +29,23 @@ Build-Project <pathToProject>\<projectName>.csproj
 );
 ```
 
-This plan effectively runs the following MSBuild command:
+Behind the scenes, BuildMaster will effectively run the following MSBuild command:
 
 ```
-msbuild <pathToProject>\<projectName>.csproj "/p:Configuration=Release" "/p:OutDir=C:\...<buildmaster-temp>...\Output\\"
+msbuild.exe <pathToProject>\<projectName>.csproj "/p:Configuration=Release" "/p:OutDir=C:\...<buildmaster-temp>...\Output\\"
 ```
 
-The contents of the `~\Output` folder after running this command will be the build output from MSBuild which for web applications without additional MSBuild properties passed in, follows the format:
+### MSBuild Output & _PublishedWebsites 
+
+One important argument is `To`, which indicates where the build output would go. In the above example, the contents of the `~\Output` folder will be the build output from MSBuild.
+
+However, web applications are often poublished to a directory within the output folder, in the following format:
 
 ```
 ~\Output\_PublishedWebsites\<projectName>\
 ```
 
-This directory can be used to capture the website that will eventually be deployed into an artifact:
+This directory is where you can capture the website that you will eventually deploy as an artifact.
 
 ```
 Create-Artifact Web
@@ -45,7 +54,7 @@ Create-Artifact Web
 );
 ```
 
-#### Sample plan:
+## Example: Building from Branches with Optional Tests
 
 The following example shows how to build an ASP.NET website at the solution level, using two optional [release template variable prompts](/support/documentation/buildmaster/releases/templates#components):
 
@@ -102,4 +111,4 @@ if $ExecuteTests
 }
 ```
 
-{.attention .analogy} To see an example of this plan, visit our public instance of BuildMaster: https://buildmaster.inedo.com/applications/35/plans
+{.attention .analogy} To see an example of these plan, visit the [ProfitCalc-AspNet](https://buildmaster.inedo.com/applications/35/) application in our public instance of BuildMaster, and navigate to Plans.
