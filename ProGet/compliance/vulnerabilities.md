@@ -50,6 +50,10 @@ A feed must be explicitly configured to use vulnerability scanning and blocking.
 
 You can configure both on the Manage Feed page. If you don't see OSS Index as a vulnerability source, or WhiteSource as a package access rule, check Admin > Extensions to make sure those extensions are installed.
 
+:::attention {.best-practice}
+Vulnerabilities are downloaded with a scheduled job. 
+:::
+
 ## Vulnerability Reports and Assessments in ProGet{#reports-and-assessments data-title="Reports and Assessments in ProGet"}
 
 Both the manual and OSS Index workflows use vulnerability reports, which essentially identify that a particular package, or versioned range of packages, has a known vulnerability. This record is either manually entered, or is imported from OSS Index, based on packages in a particular feed.
