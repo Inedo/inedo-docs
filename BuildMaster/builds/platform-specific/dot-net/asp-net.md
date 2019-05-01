@@ -18,7 +18,7 @@ MSBuild doesn't require Visual Studio to be installed, but you will need to inst
  - [Visual Studio Build Tools](https://visualstudio.microsoft.com/downloads) installed
  - Ensure that ".NET desktop build tools" and "Web development build tools" options are chosen during installation/modification
 
-## How to use the MSBuild::Build-Project Operation
+## How to use the `MSBuild::Build-Project` Operation
 
 After getting your code from source control, you can use the MSBuild in your plan is as follows.
 
@@ -63,7 +63,6 @@ The following example shows how to build an ASP.NET website at the solution leve
  - `$ExecuteTests` - a checkbox variable allowing the option to build without running unit tests
 
 ```
-
 # Get Source
 # Fetch code changes from your source control system in order to build and run tests against them
 {
@@ -111,4 +110,4 @@ if $ExecuteTests
 }
 ```
 
-{.attention .analogy} To see an example of these plan, visit the [ProfitCalc-AspNet](https://buildmaster.inedo.com/applications/35/) application in our public instance of BuildMaster, and navigate to Plans.
+{.attention .analogy} To see an example of these plans, visit the [ProfitCalc-AspNet](https://buildmaster.inedo.com/applications/35/) application in our public instance of BuildMaster, and navigate to Plans.
