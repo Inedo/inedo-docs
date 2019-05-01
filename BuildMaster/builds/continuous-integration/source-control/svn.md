@@ -11,14 +11,16 @@ Regardless of what kind of repository your project's source code is hosted in, B
 |---|---|
 | Checkout  | Checks out a working copy from a repository |
 | Update    | Bring changes from a repository into a working copy |
+| Export    | Gets the unversioned contents of a repository to a specified directory |
 | Copy      | Creates a copy of a source path to facilitate branching and tagging |
 | Delete    | Deletes a file in a repository  |
 
-## How to integrate BuildMaster with Subversion
+## How to Integrate BuildMaster with Subversion
 
 To start using Subversion in your build plans, simply:
+
  1. Install the [Subversion extension](https://inedo.com/den/inedox/subversion) from `Administration` > `Extensions` or manually
- 2. (Optional) Create a Subversion resource credential (secret) to your repository to simplify authentication (see [Authenticating to a Subversion Repository]( #authentication)
+ 2. *(Optional)* Create a Subversion resource credential (secret) to your repository to simplify authentication (see [Authenticating to a Subversion Repository]( #authentication)
 
 ## Using Subversion within BuildMaster
 
@@ -42,31 +44,61 @@ This operation effectively runs the equivalent SVN command behind the scenes:
 
 *Note: the `.git` extension works in this case because GitHub also supports Subversion clients.*
 
-### Checking out branches in Subversion
+### Checking-out Branches in Subversion
 
-{.upcoming} Talk about how "In Subversion, branches are separate paths in source code." and give an example of checking from a release branch. Note how you can use a variable and release template to select at build time.
+In Subversion, branches are simply separate paths in the source tree. Many organizations use branches to determine the specific code that will be built for a given release. 
+
+In BuildMaster, checkout out a branch is as easy as updating the `SourcePath` in the get latest example above:
+
+```
+Svn-Checkout(
+    RepositoryUrl: https://github.com/inedo/inedox-subversion.git,
+    SourcePath: branches/v1.2.5,
+    To: ~\Sources
+);
+```
+
+A more general approach can be taken by using BuildMaster functions (e.g. `SourcePath: branches/$ReleaseNumber`), configuration variables, or even [release template variable prompts](/support/documentation/buildmaster/releases/templates#components) that enable the branch to be selected at build time.
 
 ### Branching and Tagging in Subversion
 
-{.upcoming} refine this to talk about branching and tagging (/branches vs /tags), the former being a working location and the later being readonly typically. Clarify that it's "just a path", but provide examples for both; note that BuildMaster you will typically Tag, but you can also Branch as well
+As noted earlier, branches are simply separate paths in source code. Branches could be created automatically at any stage during a pipeline, for example, to create a "release" branch for the next release in your application cycle.
 
-In Subversion, branches are separate paths in source code. Branches could be created automatically at any stage during a pipeline, for example, to create a "release" branch for the next release in your application cycle.
-
-To create a branch, use the `Svn-Copy` operation:
+To create a branch in Subversion, use the `Svn-Copy` operation:
 
 ```
 Svn-Copy(
     RepositoryUrl: https://github.com/inedo/inedox-subversion.git,
     From: trunk,
-    To: branches/$ReleaseNumber
+    To: branches/v$ReleaseNumber
 );
 ```
 
 This operation executes the equivalent SVN command when run under the context of release 1.2.5:
 
-`svn.exe copy trunk branches/v1.2.5`
+```
+svn.exe copy trunk branches/v1.2.5
+```
 
-Because this operation requires write access, it will likely require [authentication](#authentication) with the repository.
+Similarly, tagging in Subversion follows the same process of copying source paths. Tags can be thought of as "readonly snapshots" of code in a repository at a particular moment in time where the tag is a descriptive identifier (e.g. `Release-1.2.5`).
+
+To create a tag in Subversion, use the `Svn-Copy` operation:
+
+```
+Svn-Copy(
+    RepositoryUrl: https://github.com/inedo/inedox-subversion.git,
+    From: trunk,
+    To: tags/Release-$ReleaseNumber
+);
+```
+
+This operation runs the equivalent SVN command:
+
+```
+svn.exe copy trunk tags/Release-1.2.5
+```
+
+{.attention .analogy} Because the branching/tagging operations require write access, they will likely require [authentication](#authentication) with the repository.
 
 ### Automatic Builds & Continuous Integration with Subversion
 
@@ -74,7 +106,7 @@ BuildMaster supports automatically monitoring a Subversion repository for change
 
 To automatically create builds when developers commit to a Subversion repository, simply configure a [Repository Monitor](/support/documentation/buildmaster/builds/continuous-integration/repository-monitors).
 
-*Note: a Subversion repository monitor requires BuildMaster v6.1 or later in conjunction with v1.0.3 of the Subversion extension.*
+{.attention .technical} Note: a Subversion repository monitor requires BuildMaster v6.1 or later in combination with v1.0.3 or later of the Subversion extension.
 
 ## Authenticating to a Subversion Repository {#authentication}
 
