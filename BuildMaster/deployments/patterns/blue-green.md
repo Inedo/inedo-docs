@@ -12,11 +12,11 @@ Blue-green deployments are a Continuous Delivery pattern designed to effectively
 
 From an end-user's perspective, there really is no Blue or Green environment: just a single Production environment. The blue-green deployment model looks something like this:
 
-{.upcoming} ![Blue-green deployments](/support/documentation/_resources/2019/blue-green/deployments.png)
+![Blue-green deployments](/support/documentation/_resources/2019/blue-green/deployments.png)
 
 From IT's perspective, there are indeed two environments (Production-Blue and Production-Green), and different releases will be deployed to these environments:
 
-{.upcoming} ![Blue-green deployments by release](/support/documentation/_resources/2019/blue-green/deployments-by-release.png)
+![Blue-green deployments by release](/support/documentation/_resources/2019/blue-green/deployments-by-release.png)
 
 ## Benefits of Blue-green Deployments
 
@@ -32,7 +32,7 @@ The primary benefit to using Blue-green deployments is zero downtime, but there 
 
 We created a blue-green sample application ([HDars-BlueGreen](https://buildmaster.inedo.com/applications/34/)) that you are free to navigate. It's also avaiable as an [Importable Application](https://proget.inedo.com/feeds/BuildMasterSamples) for your own instance. This application lets you visualize which release are Blue and Green (or undecided) as well as shows you what's in Blue and Green:
 
-{.upcoming} (screenshots of Release Overview and Application Overview)
+![Blue-green application overview](/support/documentation/_resources/2019/blue-green/application-overview.png)
 
 These steps will be based off of this application, but BuildMaster is very flexible, so you can customize this approach to however your environments require.
 
