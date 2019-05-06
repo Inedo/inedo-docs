@@ -135,16 +135,15 @@ Certain fields noted above support wildcard and negation syntax. For example, th
 
 In the ProGet UI, Chocolatey and PowerShell are represented as separate feed types, even though they just contain NuGet packages and use the same NuGet API. This is why, in the ProGet UI, you can change a feed's type between NuGet, Chocolatey, and PowerShell at any time, but not between other feed types.
 
-In the Feed Management API, this is modeled with distinct feed and package types:
+The API allows feed types to be changed only within the following feed type groups (anything else generates a `400` error):
 
 {.docs}
- - Chocolatey and PowerShell are not feed types, but instead special package types within a NuGet feed
- - Once a feed is created, the feed type cannot be changed, and specifying a different feed type on update will result in an error
- - Package types are optional, and supported ony on NuGet and Universal feed types
+ - `universal` and `romp`
+ - `nuget`, `chocolatey`, and `powershell`
 
 ### Persisted XML Configuration {#persisted-xml data-title="Persisted XML Configuration"}
 
-Because package stores, package filters, and package access rules are implemented by extensible runtime components (i.e. you can create your own using the [Inedo SDK](/support/documentation/inedosdk)), ProGet stores configuration for these components in "Persisted XML", which is a lightweight object serialization format that Inedo products use. Persisted XML is pretty simple format (as as far object serialization goes), but documenting it is beyond the scope of this API.
+Because package stores, package filters, and package access rules are implemented by extensible runtime components (i.e. you can create your own using the [Inedo SDK](/support/documentation/inedosdk)), ProGet stores configuration for these components in "Persisted XML", which is a lightweight object serialization format that Inedo products use.
 
 The easiest way to see what an object's persisted XML will look like is to create it in the UI, then look at the XML in either the database or the API [list](#list) or [get](#get) request. As a reference, we've provided the persisted XML for both supported package stores and a general example:
 
