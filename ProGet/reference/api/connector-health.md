@@ -1,87 +1,120 @@
 ---
 title: Connector Health API
 subtitle: Connector Health API
-sequence: 200
-keywords: proget,feeds,api,connector,health
+sequence: 300
+keywords: proget, feeds, api, connectors
 show-headings-in-nav: true
 ---
 
-The Connector Health API Endpoint offer a simple mechanism for querying the health status of the connectors accross and instance of ProGet.
+The Connector Health API Endpoints offer a simple mechanism for querying the health status of the connectors in ProGet.
 
-This API is available starting in ProGet 5.2.{.info}
+:::{.attention .best-practice} 
+This API is available starting in ProGet 5.2.
+:::
 
-For security and simplicity, these endpoints require that a `[Feed Management API Key]` is created first. This key is passed into the API call within the body or the header of your request.
+#### Authentication
 
-```
-{
-   "API_key": "APIKEY"
-}
-```
+For security and simplicity, these endpoints require that a Connector Health [API Key](/support/documentation/proget/administration/security/api-keys) is created first. This key can be supplied to the API using any of the methods documented in the [API Key Usage](/support/documentation/proget/administration/security/api-keys#usage) section.
 
-### Feed Data Specification {#feed-data-specification data-title="Feed Data Specification"}
+## Object Models {#object-models}
 
-This endpoint sends and receives entries as [JSON](http://json.org/) objects.
+Each endpoint responds with entities as [JSON](http://json.org/) objects:
 
+### Connector Health Data Model {#connector-health-model data-title="Connector Health Data Model"}
 
-Property               | Format
------------------------|----------
-`Id`                 | An *integer* that represents the unique identifier of the connector **optional**.
-`Name`             | A *string* value of the connector name.
-`Url`          | A *string* value of the Url of the connector.
-`State`          | A *string* that displays the health status returned by the connector Url.
-`LastChecked`               | A *datetime* representing the last time the connector health was checked.
+| Property | Details |
+|---|---|
+| `name`        | *`string`* - the unique name of the connector |
+| `url`         | *`string`* - the URL of the connector  |
+| `state`       | *`string`* - the health state of the connector, one of: `healthy`, `error`, or `unknown` |
+| `errorMessage` | *`string`* - a specific error message if `state` is `error`; otherwise `null`  |
+| `lastChecked` | *`datetime`* - an ISO 8601 UTC date when the connector health was last checked, or `null` if `state` is `unknown`  |
 
+## Endpoint Specifications {#endpoints data-title="Endpoint Specifications"}
 
-### Endpoint Specifications {#endpoints data-title="Endpoint Specifications"}
+There are two endpoints available for querying connector health:
 
-You will have two options for accessing the connector health endpoints.
+### All Connectors {#all}
 
+##### URL Format:
 
-### All Connectors
+{.info} GET/HEAD /api/connector-health
 
-```
-GET ::/api/connector-health/?key=secure123 
-or
-POST ::/api/connector-health/?key=secure123 
-```
-### A Single Connector
+##### Response Codes:
 
-```
-GET ::/api/connector-health/{Id}/?key=secure123 
-or
-POST ::/api/connector-health/{Id}/?key=secure123 
-```
+|Code|Description|
+|---|---|
+| `200` | Success; response body contains an array of connector health objects | 
+| `403` | Invalid/unauthorized API key, or impersonated user not granted `Feeds_Manage` privilege |
 
-- `Id` can be added optionally to access the status of a specific connector.
-
-
-These endpoints return a status of 200 (on success), or 403 (api key not authorized), and a body containing only an *array* of entity objects. 
-
+##### Example Response:
 
 ```
 [
     {
-        "Id": 1,
-        "Name": "npmConnector",
-        "Url": "https://registry.npmjs.org",
-        "State": "Healthy",
-        "LastChecked": "2019-03-29T17:41:59.907+00:00"
+        "id": 1,
+        "name": "npmjs.org",
+        "url": "https://registry.npmjs.org",
+        "state": "healthy",
+        "lastChecked": "2019-03-29T17:41:59.907+00:00"
     },
     {
-        "Id": 2,
-        "Name": "ChocolateyConnector",
-        "Url": "https://www.chocolatey.org/api/v2",
-        "State": "Healthy",
-        "LastChecked": "2019-03-29T17:41:59.903+00:00"
+        "id": 2,
+        "name": "chocolatey.org",
+        "url": "https://www.chocolatey.org/api/v2",
+        "state": "healthy",
+        "lastChecked": "2019-03-29T17:41:59.903+00:00"
     },
     {
-        "Id": 3,
-        "Name": "nugetConnector",
-        "Url": "https://www.nuget.org/api/v2",
-        "State": "Healthy",
-        "LastChecked": "2019-03-29T17:41:55.05+00:00"
+        "id": 3,
+        "name": "nuget.org",
+        "url": "https://www.nuget.org/api/v2",
+        "state": "unhealthy",
+        "erroMessage": "Connection timed out."
+        "lastChecked": "2019-03-29T17:41:55.05+00:00"
     },
     {....}
 
 ]
+```
+
+##### PowerShell Example:
+
+```
+Invoke-RestMethod `
+  -Uri http://{proget-server}/api/connector-health `
+  -Headers @{"X-ApiKey" = "secure123"}
+```
+
+### Single Connector {#single}
+
+{.info} GET/HEAD /api/connector-health/**&laquo;connector-id&raquo;**
+
+##### Response Codes:
+
+|Code|Description|
+|---|---|
+| `200` | Success; response body contains a connector health object | 
+| `403` | Invalid/unauthorized API key, or impersonated user not granted `Feeds_Manage` privilege | 
+| `404` | Specified `connector-id` was not found | 
+
+##### Example Response:
+
+```
+{
+    "id": 3,
+    "name": "nuget.org",
+    "url": "https://www.nuget.org/api/v2",
+    "state": "unhealthy",
+    "erroMessage": "Connection timed out."
+    "lastChecked": "2019-03-29T17:41:55.05+00:00"
+}
+```
+
+##### PowerShell Example:
+
+```
+Invoke-RestMethod `
+  -Uri http://{proget-server}/api/connector-health/3 `
+  -Headers @{"X-ApiKey" = "secure123"}
 ```
