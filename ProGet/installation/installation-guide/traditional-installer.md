@@ -1,12 +1,12 @@
 ---
-title: ProGet Installation Guide
-sequence: 1
+title: Traditional Installer Guide
+sequence: 500
 keywords: proget, installation
 ---
 
-**Note:** Screenshots below are for ProGet v4, ProGet v5 screenshots are coming soon. {.info}
-
-# ProGet Installation Guide {#proget-installation data-title="ProGet Installation Guide"}
+::: {.attention .best-practice} 
+For new installations on Windows, we recommend installation using the Inedo Hub. See the [Inedo Hub Installation Guide](/support/documentation/proget/installation/installation-guide) for more information.
+:::
 
 This is a step-by-step guide to installing ProGet on Windows and provides some detail as to what's happening behind the scenes.
 
@@ -31,7 +31,7 @@ Before installing, consider the following:
 
 ## 2. Download ProGet {#download data-title="Download ProGet"}
 
-There is just one installer for all editions of ProGet, which you can download from [download](/proget/download) on inedo.com.
+To download the Traditional Installer, visit the [ProGet All Versions](/proget/versions) page, and download using the **Traditional Installer** link for the desired version.
 
 ## 3. Verify the Installer {#verify data-title="3. Verify the Installer"}
 

@@ -6,7 +6,7 @@ keywords: proget, installation
 show-headings-in-nav: true
 ---
 
-[ProGet's distributed architecture](../core-concepts/high-availability#architecture) allows you to use any number of servers for both load-balancing and automatic failover purposes, such that one server node can take over in the event of any other server failure or outage.
+ProGet's distributed architecture allows you to use any number of servers for both load-balancing and automatic failover purposes, such that one server node can take over in the event of any other server failure or outage.
 
 This feature is available in paid and trial ProGet editions. {.info}
 
