@@ -106,7 +106,14 @@ BuildMaster supports automatically monitoring a Subversion repository for change
 
 To automatically create builds when developers commit to a Subversion repository, simply configure a [Repository Monitor](/support/documentation/buildmaster/builds/continuous-integration/repository-monitors).
 
-{.attention .technical} Note: a Subversion repository monitor requires BuildMaster v6.1 or later in combination with v1.0.3 or later of the Subversion extension.
+{.attention .technical} Note: a Subversion repository monitor requires BuildMaster v6.1 or later in combination with v1.1.0 or later of the Subversion extension.
+
+#### Available Variables
+
+When using a [repository monitor plan](), the following variables are available:
+
+ - `$Branch` - the full path of the branch, e.g. `branches/develop-1.2.3`
+ - `$RevisionNumber` - the highest integer revision number of any file within the specified path
 
 ## Authenticating to a Subversion Repository {#authentication}
 
