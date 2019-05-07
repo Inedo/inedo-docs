@@ -3,10 +3,13 @@ title: Sonatype OSS Index Integration
 subtitle: Integrating ProGet with OSS Index
 sequence: 400
 keywords: proget, vulnerabilities
-
 ---
 
 The [OSS Index extension](/den/inedox/vorsecurity) provides a Vulnerability Source that will automatically import vulnerability reports from various public databases using [Sonatype's OSS Index](https://ossindex.sonatype.org)
+
+:::attention {.best-practice}
+This feature is available in paid and trial ProGet editions.
+:::
 
 ## Connecting to OSS Index {#connect data-title="Connecting to OSS Index"}
 If you're not an OSS Index user, you'll need to make an account and request a trial license or purchase a professional license. This can be done by visiting https://ossindex.sonatype.org/ > selecting the user icon in the top right corner > Register for an account.

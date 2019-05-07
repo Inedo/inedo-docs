@@ -1,5 +1,5 @@
 ﻿---
-title: Backing Up ProGet
+title: Backing Up & Restoring
 sequence: 200
 keywords: proget, databases, backup
 show-headings-in-nav: true

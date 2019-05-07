@@ -19,7 +19,7 @@ ProGet offers two workflows for managing licensing agreements of third-party, op
 This feature is available in paid and trial ProGet editions.
 :::
 
-##   License Filtering Feature
+##   License Filtering In ProGet
 
 ProGet ships with an editable list of open-source license types (MIT, GPL3, etc) called known licenses. You then define global and feed-specific rules to block or allow downloads based on a package's license, as well as global or feed-specific rules about whether to block downloads for unknown licenses.
 

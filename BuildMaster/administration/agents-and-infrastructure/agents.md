@@ -16,7 +16,7 @@ The [Inedo Agent](/support/documentation/inedoagent/overview) is generally the b
 
 Alternatively, BuildMaster can use PowerShell Remoting to communicate with Windows servers; however, this is generally slower and less resilient than the Inedo Agent protocol. You can connect using integrated authentication (i.e. whatever account the service is running under), or with a username & password [resource credential](/support/documentation/buildmaster/administration/resource-credentials). See [Enable-PSRemoting](https://technet.microsoft.com/en-us/library/hh849694.aspx) to configures a server to receive remote commands.
 
-## Linus Servers {#linux data-title="Linux Servers"}
+## Linux Servers {#linux data-title="Linux Servers"}
 
 To communicate with Linux servers, BuildMaster uses the lightweight, highly-optimized, and resilient protocol already enabled on nearly every Linux box: SSH and SFTP. You can connect with a private key or username & password [resource credential](/support/documentation/buildmaster/administration/resource-credentials).
 

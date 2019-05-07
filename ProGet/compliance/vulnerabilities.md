@@ -4,6 +4,7 @@ subtitle: Vulnerability Scanning and Blocking
 sequence: 100
 keywords: proget, vulnerabilities
 display-child-topics: false
+show-headings-in-nav: true
 ---
 
 When you incorporate third-party, open-source packages into your applications, you also incorporate those packages' security vulnerabilities.
@@ -14,11 +15,12 @@ Unfortunately, managing vulnerabilities as a consumer is challenging, especially
 
 This is where ProGet's vulnerability scanning and blocking comes in.
 
+:::attention {.best-practice}
 This feature is available in paid and trial ProGet editions.
-
+:::
 We partner with two leading vulnerability scanning companies – Sonatype (OSS Index) and WhiteSource – to automatically scan third-party packages against vulnerability databases. You can also manually manage your vulnerabilities.
 
-## Vulnerability Scanning and Blocking Workflows
+## Vulnerability Scanning and Blocking Workflows {#scanning-and-blocking data-title="Scanning and Blocking Workflows"}
 
 ProGet supports three different workflows for managing vulnerabilities:
 
@@ -38,7 +40,8 @@ ProGet supports three different workflows for managing vulnerabilities:
 
 See [Integrating ProGet with OSS Index](/support/documentation/proget/compliance/vulnerabilities/vor) and [Integrating ProGet with WhiteSource](/support/documentation/proget/compliance/whitesource) documentation for more details on those workflows.
 
-## Feeds and Vulnerability Configuration
+
+## Feeds and Vulnerability Configuration {#feed-and-vulnerability data-title="Feeds and Vulnerability Configuration"}
 
 A feed must be explicitly configured to use vulnerability scanning and blocking. While the end result is the same, the workflows use different features within ProGet:
 
@@ -47,7 +50,11 @@ A feed must be explicitly configured to use vulnerability scanning and blocking.
 
 You can configure both on the Manage Feed page. If you don't see OSS Index as a vulnerability source, or WhiteSource as a package access rule, check Admin > Extensions to make sure those extensions are installed.
 
-## Vulnerability Reports and Assessments in ProGet
+:::attention {.best-practice}
+Vulnerabilities are downloaded with a scheduled job. 
+:::
+
+## Vulnerability Reports and Assessments in ProGet{#reports-and-assessments data-title="Reports and Assessments in ProGet"}
 
 Both the manual and OSS Index workflows use vulnerability reports, which essentially identify that a particular package, or versioned range of packages, has a known vulnerability. This record is either manually entered, or is imported from OSS Index, based on packages in a particular feed.
 
