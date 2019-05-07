@@ -585,6 +585,52 @@ Invoke-RestMethod -Method POST `
 ```
 
 </tab>
+<tab name="Configure Retention">
+
+{.info} POST/PATCH <span class="lighten">/api/management/</span>feeds/update/InedoExtensions
+
+| Header | Value |
+|---|---|
+| `X-ApiKey` | `secure123` |
+| `Content-Type` | `application/json` |
+
+**Body:**
+
+```
+{
+  "retentionRules": [
+      {
+        "keepUsedWithinDays": 30,
+        "deleteCached": true
+      },
+      {
+        "keepVersionsCount": 10,
+        "keepUsedWithinDays": 90,
+        "deletePackageIds": [
+          "InedoLib",
+          "InedoIcons",
+          "Inedo.LicenseCreator"
+        ],
+        "sizeExclusive": true,
+        "triggerDownloadCount": 1
+      },
+      {
+        "deletePrereleaseVersions": true,
+        "keepVersionsCount": 5,
+        "keepUsedWithinDays": 30
+      }
+    ]
+}
+```
+
+This example configures the "InedoExtensions" feed with the following retention rules:
+
+{.docs}
+ - delete cached connector packages that haven't been downloaded in the last month
+ - delete all but the latest 10 InedoLib, InedoIcons, and Inedo.LicenseCreator package versions that haven't been downloaded or used within the past 3 months
+ - delete all but the latest 5 prerelease packages that haven't been downloaded in the last month
+
+</tab>
 </tab-block>
 
 
