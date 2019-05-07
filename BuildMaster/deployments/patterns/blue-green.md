@@ -4,6 +4,10 @@ sequence: 100
 keywords: buildmaster, deployments, patterns, blue-green
 ---
 
+<style type="text/css">
+.documentation-content img {max-width: 600px;}
+</style>
+
 Blue-green deployments are a Continuous Delivery pattern designed to effectively eliminate deployment downtime and make rollbacks nearly instantaneous. This is done by having two nearly identical production environments: *Blue* and *Green*.
 
 [Martin Fowler](http://martinfowler.com/bliki/BlueGreenDeployment.html) explains this in more detail:

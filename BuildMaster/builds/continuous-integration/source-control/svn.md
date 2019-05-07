@@ -110,7 +110,7 @@ To automatically create builds when developers commit to a Subversion repository
 
 #### Available Variables
 
-When using a [repository monitor plan](), the following variables are available:
+When using a [repository monitor plan](/support/documentation/buildmaster/builds/continuous-integration/repository-monitors#ci-plans), the following variables are available:
 
  - `$Branch` - the full path of the branch, e.g. `branches/develop-1.2.3`
  - `$RevisionNumber` - the highest integer revision number of any file within the specified path

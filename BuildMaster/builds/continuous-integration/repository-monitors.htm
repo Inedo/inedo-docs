@@ -137,16 +137,33 @@
     <p>
         To replicate the <i>default</i> no-plan behavior with these variables in context, you may reference a system-level plan defined simply as:
     </p>
+    <inedo:tab-block>
+        <tab name="Git">
     <pre><code>Create-Build
 (
     Application: $ApplicationName,
     Variables: %(Branch: $Branch, CommitHash: $CommitHash)
 );
 </code></pre>
+</tab>
+          <tab name="SVN">
+    <pre><code>Create-Build
+(
+    Application: $ApplicationName,
+    Variables: %(Branch: $Branch, RevisionNumber: $RevisionNumber)
+);
+</code></pre>
+</tab>
+</inedo:tab-block>
     <p>
-        Additional context may be available depending on the repository host. Visit the <a href="https://github.com/Inedo/inedox-git/wiki">Git extension Wiki</a>
-        for more information.
+        Additional context may be available depending on the repository host. Visit one of the following 
+        for more information:
     </p>
+    <ul class="docs">
+        <li><a href="https://github.com/Inedo/inedox-git/wiki">Git extension Wiki</a></li>
+        <li><a href="https://github.com/Inedo/inedox-subversion/wiki">Subversion extension Wiki</a></li>
+        <li class="upcoming"><a href="https://github.com/Inedo/inedox-mercurial/wiki">Mercurial extension Wiki</a></li>
+    </ul>
 
     
 </body>
