@@ -49,12 +49,25 @@ After selecting the package store type, you will be presented with a handful of 
 
 ## Migrating an Existing Feed  {#migrate data-title="Migrating an Existing Feed"}
 
-When you change a feed's package store, the package files will not be moved. To ensure the new package store has the same packages, you can perform the following steps
+When you change a feed's package store, the package files will not be moved.  To ensure the new package store has the same packages, you can perform the following steps
 
 1. Clear the cached packages
 2. Stop the ProGet Service
-3. Note the disk path of the feed
-4. Change the package store and configure appropriately
-5. Set the Drop Path to be the disk path from step 3
-6. Start the service
-7. Once imported, delete the empty disk path from step 3
+3. Note the disk path of the feed (&laquo;old-disk-path&raquo;)
+4. Navigate to &laquo;old-disk-path&raquo; and "flatten" the directory (see below for example)
+5. Change the package store and configure appropriately
+6. Set the Drop Path to be &laquo;old-disk-path&raquo; from step 3
+7. Start the service
+8. Once imported, delete the empty &laquo;old-disk-path&raquo; from step 3
+
+Note that this will only work on feed types that support drop paths. 
+
+### Example PowerShell Script to Flatten a Directory
+
+You can a simple PowerShell command to flatten a directory.
+
+1. In Windows Explorer, navigate to the directory to flatten (i.e. &laquo;old-disk-path&raquo;)
+2. File → Open Windows PowerShell
+3. Enter the following: `Get-ChildItem -Recurse -File | ForEach-Object {Move-Item $_.FullName .}`
+
+This command will move all files within subfolders to directory the command is run in. Make absolute certain that you run this command in the appopriate directory, because it could do damage somewhere else.
