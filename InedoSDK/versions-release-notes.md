@@ -17,24 +17,24 @@ To keep track of which version of the SDK is compatible with which version of ea
 
 This [version compatibility range](#compatibility-ranges) effectively establishes a *minimum product version* that each version of the SDK will work with.
 
-:::attention {.best-practice}
-![](/resources/images/icons/best-practices.png)
-
-Best practice: When building extensions, target the lowest version possible. This will ensure widest compatibility of your extension.
-:::
-
 ## Version Compatibility Ranges {#compatibility-ranges data-title="Version Compatibility Ranges"}
+
+As of v1.2.0, the Inedo SDK is semantically versioned, meaning feature/nonbreaking API changes happen in minor versions,
+while maintenance versions only make bugfix changes that do not affect the visible API. Breaking changes may occur in
+major versions.
 
 The below table shows which version of the Inedo SDK is compatible with which version of each product.
 
-SDK Version           | Minimum Product Version
-----------------------|----------------------------
-**1.0.4**             | BuildMaster 6.0+<br/>ProGet 5.0+<br/>Hedgehog 1.0+<br/>Otter 2.0+
-**1.0.7**             | Otter 2.1+
+SDK Version           | Minimum Product Version                                               | Maximum Product Version
+----------------------|--------------------------------------------------------------------------------------------
+**1.0.4**             | BuildMaster 6.0.0<br/>ProGet 5.0.0<br/>Hedgehog 1.0.0<br/>Otter 2.0.0 | BuildMaster 6.*<br/>ProGet 5.*<br/>Hedgehog 1.*<br/>Otter 2.*
+**1.0.7**             | Otter 2.1.0                                                           | BuildMaster 6.*<br/>ProGet 5.*<br/>Hedgehog 1.*<br/>Otter 2.*
+**1.1.**              | BuildMaster 6.1.0<br/>ProGet 5.1.0<br/>Otter 2.1.0<br/>               | BuildMaster 6.*<br/>ProGet 5.*<br/>Hedgehog 1.*<br/>Otter 2.*
+
 
 The table will be expanded as new SDK versions are released.
 
-Note that new maintenance versions (such as 1.0.2) will displace versions in the same minor line (such as 1.0.0 and 1.0.1), These displaced versions will be unlisted from NuGet.org, and should not be targeted.
+Generally, you should target the latest version of the SDK, unless you need your extension to be loaded in a specific earlier product version.
 
 ### Understanding Version Compatibility Ranges {#understanding data-title="Understanding Version Compatibility Ranges"}
 
