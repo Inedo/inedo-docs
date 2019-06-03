@@ -1,7 +1,7 @@
 ﻿---
 title: Retention Rules
 sequence: 100
-keywords: proget,packages
+keywords: proget, retention, packages
 ---
 
 This feature is available in paid and trial ProGet editions. {.info}
@@ -22,9 +22,23 @@ A rule is comprised of the following options:
 | Delete prerelease versions | Packages with a "prerelease" versions (such as 4.1.0-beta) will be deleted |
 | Delete old versions | All except the latest N versions of a package will be deleted |
 | Delete unused versions | All packages except those that have been downloaded in the last N days and with less than Y downloads will be deleted |
-| Delete/keep by name | Packages with the specified names will either be deleted or not deleted |
+| Delete/keep by name | Packages with the specified names will either be deleted or not deleted; this field supports [wildcards](#wildcards) |
+| Delete/keep by version | Packages with the specified versions will either be deleted or not deleted; this field supports [wildcards](#wildcards) |
 
-When multiple options are specified, then only packages that meet all of the selected criteria are considered. See matching examples for more information.
+When multiple options are specified, then only packages that meet all of the selected criteria are considered. See [matching examples](#matching) for more information.
+
+### Wildcards {#wildcards}
+
+Certain fields noted above support wildcard syntax. An asterisk (`*`) may be used when specifying names or versions, and it will match 0 or more characters.
+
+For example, if "keep packages with matching IDs" is configured as: 
+
+```
+Microsoft.*
+Castle.*
+```
+
+the retention rule will keep all packages whose IDs start with `Microsoft.` or `Castle.`.
 
 ## Quotas {#Quotas data-title="Quotas"}
 
@@ -61,13 +75,13 @@ Testing and dry run mode are **not** intended to be a substitute for a proper ba
 
 ProGet's retention rules are powerful enough to handle many use cases. Following is a list of some common scenarios and how to configure them.
 
-### Delete Cached Packages not Downloaded in 30 Days
+### Delete Cached Packages Not Downloaded in 30 Days
 
 This will delete all packages cached from connectors that nobody has requested within 30 days of the time the rule is evaluated.
 
 {.docs}
-- Check **Delete cached connector packages**
-- Check **Delete unused versions** and supply **30** days
+- ☑ **Delete cached connector packages**
+- ☑ **Delete unused versions** and supply **30** days
 
 ### Delete Previous Prerelease Versions
 
@@ -75,13 +89,34 @@ This will delete all prerelease versions of all packages,
 *except* for the *most recent* prerelease version.
 
 {.docs}
-- Check **Delete prerelease versions**
-- Check **Delete old versions** and supply latest **1** version
+- ☑ **Delete prerelease versions**
+- ☑ **Delete old versions** and supply latest **1** version
 
 ### Delete Old Versions of Specific Packages
 
 This will delete all except the latest 5 versions of any packages matching the wildcard filter **my.package**.\*
 
 {.docs}
-- Check **Delete old versions** and supply latest **5** version
-- Check **ilter by package name** and supply **my.package**.\* as the **delete packages with matching IDs** value.
+- ☑ **Delete old versions** and supply latest **5** version
+- ☑ **Delete/keep by package name** and supply **my.package**.\* as the **delete packages with matching IDs** value
+
+### Delete Unused CI Package Versions
+
+This will delete all package versions that have "CI" in its prerelease version component that haven't been downloaded for 2 days:
+
+{.docs}
+- ☑ **Delete prerelease versions**
+- ☑ **Delete unused versions** and supply **2** days
+- ☑ **Delete/keep by package version** and supply `*-CI.*` as the **delete packages with matching versions** value
+
+*Note: while checking the option to "delete prerelease versions" and supplying a wildcard pattern that only matches prerelease versions is redundant, it is a best practice to be as explicit as possible in the policy.*
+
+## Limitations of Retention Policies
+
+{.docs}
+ - Docker containers do not support matching by version because tags are typically used for this purpose
+ - Asset directories will ignore version-related fields, and only apply to matching files (i.e. whole directories are not considered)
+
+## API
+
+Retention rules may be configured via the [Feed Management API](/support/documentation/proget/reference/api/feed-management). See the [Retention Rule data model specification](/support/documentation/proget/reference/api/feed-management#retention-rule-model) for more information.
