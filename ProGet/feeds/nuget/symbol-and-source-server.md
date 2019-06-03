@@ -123,3 +123,4 @@ The most common errors (based on previous support inquiries) include:
 - Pushing both NuGet packages (with and without symbols)
 - Trying to consume symbols for connector packages (which is not supported, workaround is to pull packages locally or use a separate feed for symbols)
 - Not including source files under the `/src/` directory at the root of the .nupkg file
+- Configuring a Symbol Server will cause the package to be re-created when pulled into ProGet. This may cause [NuGet Error NU3008](https://docs.microsoft.com/en-us/nuget/reference/errors-and-warnings/nu3008) in your applications.
