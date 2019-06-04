@@ -78,7 +78,7 @@ You can, however, use the `AdditionalVariables` or `Arguments` to pass in variab
 
 ### Programmatically invoking single operations
 
-You can also use the [Invoke-Operation] to execute a single operation:
+You can also use [Invoke-Operation](/support/documentation/buildmaster/reference/operations/buildmaster/invoke-operation) to execute a single operation:
 
     Invoke-Operation [Operation_Name]
     (
