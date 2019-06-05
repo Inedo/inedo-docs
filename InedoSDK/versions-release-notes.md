@@ -30,6 +30,7 @@ SDK Version           | Minimum Product Version                   
 **1.0.4**             | BuildMaster 6.0.0<br/>ProGet 5.0.0<br/>Hedgehog 1.0.0<br/>Otter 2.0.0 | BuildMaster 6.*<br/>ProGet 5.*<br/>Hedgehog 1.*<br/>Otter 2.*
 **1.0.7**             | Otter 2.1.0                                                           | BuildMaster 6.*<br/>ProGet 5.*<br/>Hedgehog 1.*<br/>Otter 2.*
 **1.1.**              | BuildMaster 6.1.0<br/>ProGet 5.1.0<br/>Otter 2.1.0<br/>               | BuildMaster 6.*<br/>ProGet 5.*<br/>Hedgehog 1.*<br/>Otter 2.*
+**1.2.**              | BuildMaster 6.1.7<br/>ProGet 5.2.4<br/>Otter 2.2.2<br/>               | BuildMaster 6.*<br/>ProGet 5.*<br/>Hedgehog 1.*<br/>Otter 2.*
 
 
 The table will be expanded as new SDK versions are released.
