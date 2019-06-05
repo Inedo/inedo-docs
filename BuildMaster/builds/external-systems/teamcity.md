@@ -43,4 +43,4 @@ With [release templates](/support/documentation/buildmaster/releases/templates),
 
 #### Capturing TeamCity Build Numbers
 
-Once you have queued a build and imported the artifact from TeamCity you can use the `$TeamCityBuildNumber` variable to link directly back to jenkins with a [custom value renderer](/support/documentation/buildmaster/administration/value-renderers). This is a convenient way you to quickly link back to the TeamCity server to get an overview of the build that was imported. 
+Once you have queued a build and imported the artifact from TeamCity you can use the `$TeamCityBuildNumber` variable in conjunction with a [custom value renderer](/support/documentation/buildmaster/administration/value-renderers). This is a convenient way you to quickly link back to the TeamCity server to get an overview of the build that was imported. 
