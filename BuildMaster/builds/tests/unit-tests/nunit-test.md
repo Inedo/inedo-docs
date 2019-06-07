@@ -1,5 +1,5 @@
 ---
-title: NUnit Runner
+title: NUnit
 subtitle: Running unit tests with NUnit Runner
 keywords: NUnit, unit test, unit testing, buildmaster
 sequence: 100

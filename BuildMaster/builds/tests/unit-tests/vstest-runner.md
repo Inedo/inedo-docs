@@ -1,5 +1,5 @@
 ---
-title: VSTest Runner 
+title: VSTest (Visual Studio)
 subtitle: Running NUnit, xUnit, MSTest, and more with VSTest Runner
 keywords: unit test, buildmaster, vstest
 sequence: 100
