@@ -29,7 +29,7 @@ Given these rules, it seems nearly impossible to create a logical pipeline that 
 This is where repackaging comes in. It's a process where you create a new package from an existing package using exactly the same content. This will also need to follow a secure work flow to prevent content tampering, while generating an audit trail that proves it.
 
 ## Repackaging a Package
-ProGet allows users to do this at the click of a button or with a [simple API call](https://inedo.com/support/documentation/proget/reference/api). 
+ProGet allows users to do this at the click of a button or with a [simple API call](https://inedo.com/support/documentation/proget/reference/api/repackaging). 
 
 To use the ProGet web interface:
 1. Browse to any universal package in ProGet. 
@@ -45,5 +45,5 @@ Once you've done that, you'll be redirected to the the new package's page.
 - These historic audit trails are embedded in the package itself, which allows you to easily replicate or promote this package to other feeds and the history will be preserved.
 
 ## Other Repackaging Options
-- **Via API**: you can use the [api](https://inedo.com/support/documentation/proget/reference/api) to repackage a package.
+- **Via API**: you can use the [api](https://inedo.com/support/documentation/proget/reference/api/repackaging) to repackage a package.
 - **Via Command Line**: you can use [upack.exe](https://inedo.com/support/documentation/upack/tools-and-libraries/upack-cli) to repackage a package. 
