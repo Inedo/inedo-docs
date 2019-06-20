@@ -48,4 +48,4 @@ Because a hybrid directory is not permitted to contain any principals of its own
 
 #### Cannot Reference Another Hybrid Directory
 
-Hybrid directories are not permitted to contain other hybrid directories as part of its user directories configuration. This is primarily to prevent infinite loop and stack overflow conditions.
+Hybrid directories are not permitted to contain other hybrid directories as part of its user directories configuration.
