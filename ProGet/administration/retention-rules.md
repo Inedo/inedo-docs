@@ -14,18 +14,37 @@ A ProGet Basic license is currently required to use feed retention. Although rul
 
   Retention rules are configured on a feed-by-feed basis by going to the Manage Feed page, and describing the packages you want to delete.
 
-A rule is comprised of the following options:
+A rule is comprised of the following options, based on the feed type. When multiple options are specified, then only packages that meet all of the selected criteria are considered. See [matching examples](#matching) for more information.
+
+### Package rules
 
 | Action | Result |
 | ------ | ------ |
-| Delete Cached connector Packages | Packages that have been cached from a connector will be considered for deletion |
+| Delete cached connector packages | Packages that have been cached from a connector will be considered for deletion |
 | Delete prerelease versions | Packages with a "prerelease" versions (such as 4.1.0-beta) will be deleted |
 | Delete old versions | All except the latest N versions of a package will be deleted |
 | Delete unused versions | All packages except those that have been downloaded in the last N days and with less than Y downloads will be deleted |
-| Delete/keep by name | Packages with the specified names will either be deleted or not deleted; this field supports [wildcards](#wildcards) |
-| Delete/keep by version | Packages with the specified versions will either be deleted or not deleted; this field supports [wildcards](#wildcards) |
+| Delete/keep by package name | Packages with the specified names will either be deleted or not deleted; this field supports [wildcards](#wildcards) |
+| Delete/keep by package version | Packages with the specified versions will either be deleted or not deleted; this field supports [wildcards](#wildcards) |
 
-When multiple options are specified, then only packages that meet all of the selected criteria are considered. See [matching examples](#matching) for more information.
+### Container rules
+
+| Action | Result |
+| ------ | ------ |
+| Delete cached connector packages | Images that have been cached from a connector will be considered for deletion |
+| Delete untagged manifests | Manifests that do not have an associated tag will be considered for deletion |
+| Delete unused versions | All images except those that have been downloaded in the last N days and with less than Y downloads will be deleted |
+| Delete/keep by repository name | Images with the specified names will either be deleted or not deleted; this field supports [wildcards](#wildcards) |
+| Delete/keep by image tag | Images with the specified tags will either be deleted or not deleted; this field supports [wildcards](#wildcards) |
+
+*Untagged and tagged images cannot be deleted by the same retention rule.*
+
+### Asset rules
+
+| Action | Result |
+| ------ | ------ |
+| Delete unused files | All files except those that have been downloaded in the last N days and with less than Y downloads will be deleted |
+| Delete/keep by file name | Files with the specified names will either be deleted or not deleted; this field supports [wildcards](#wildcards) |
 
 ### Wildcards {#wildcards}
 
@@ -110,12 +129,6 @@ This will delete all package versions that have "CI" in its prerelease version c
 - ☑ **Delete/keep by package version** and supply `*-CI.*` as the **delete packages with matching versions** value
 
 *Note: while checking the option to "delete prerelease versions" and supplying a wildcard pattern that only matches prerelease versions is redundant, it is a best practice to be as explicit as possible in the policy.*
-
-## Limitations of Retention Policies
-
-{.docs}
- - Docker containers do not support matching by version because tags are typically used for this purpose
- - Asset directories will ignore version-related fields, and only apply to matching files (i.e. whole directories are not considered)
 
 ## API
 

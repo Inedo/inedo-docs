@@ -82,3 +82,11 @@ ProGet's built-in user directory is used by default and initially contains a sin
 ### Active Directory LDAP {#ad-ldap data-title="Active Directory LDAP"}
 
 This is common to all of our products; check out the [shared documentation](/support/documentation/various/ldap/ldap-active-directory).
+
+## Virtual Privilege Assignments
+
+As of ProGet v5.2.5, privileges may be granted or restricted to the following "catch-all" principals in any user directory:
+
+ - **Everyone** - all users with network access to the system, regardless if they are authenticated or not
+ - **Authenticated** - all users who have supplied valid login credentials
+ - **Anonymous** - all unauthenticated users with network access to the sytem (i.e. have not logged in)
