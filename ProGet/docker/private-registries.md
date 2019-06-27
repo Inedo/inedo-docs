@@ -27,7 +27,7 @@ Docker requires an SSL connection, so you will need to configure ProGet to use I
 
 </div>
 
-To create a Docker registry in ProGet, go to Containers > Create New Docker Registry, then enter a container name.
+To create a Docker registry in ProGet, go to Containers > Create New Docker Registry, then enter a registry name.
 
 ## Setting up Docker Client
 
