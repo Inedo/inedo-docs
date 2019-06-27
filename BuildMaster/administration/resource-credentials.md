@@ -70,7 +70,25 @@ Send-Email
 (
     To: hacker45@agam.ru,
     Subject: Username is $HdarsUser and password is $HdarsPassword
-); >>;
+);
 ```
 
 Instead, you should write a custom operation that can securely handle the credentials.
+
+## Cascading Credentials {#cascading data-title="Cascading Credentials"}
+
+As of BuildMaster v6.1.10, resource credentials may be specified at the application or application group scope in addition to environment. Certain implementations may also specify a resource credential to inherit from, overriding specific properties at the application or group level. 
+
+For example, an individual application's resource credentials could specify a system-level parent that has username/password information stored for a full system, and then override just the "repository URL". This way, you can specify the secret value in one location (with elevated privileges required to access it), and connect to different repositories consistently throughout all applications.
+
+The following rules are enforced by BuildMaster when creating or resolving cascading credentials:
+
+{.docs}
+ - for security reasons, the environment of the parent credential must match the inheritor's exactly, or the parent environment must not be specified (indicating that it applies to all environments)
+ - when resolving a resource credential at execution time, candidates by name are selected in order of matching properties:
+    - application + environment
+    - application
+    - application group
+    - ancestor application-group
+    - environment
+    - system
