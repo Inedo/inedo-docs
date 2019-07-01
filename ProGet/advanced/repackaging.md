@@ -12,29 +12,29 @@ Through prerelease versioning, it's clear to everyone which packages are release
 - `ProfitCalc 3.2.4-beta.2` may signify a second beta version that customers may test.
 - `ProfitCalc 3.2.4-rc.1` may signify a package is ready for final release, pending some last-minute testing.
 - `ProfitCalc 3.2.41` is the production, release-quality package.
-    
+
 This versioning methodology is something that both the business and development can understand. Of course, there's just one small technical problem: How do you know when to create CI, beta, release candidate, and stable packages?  It's impossible to know. This is where **Repackaging** comes in.
 
 ## From Prerelease to Stable
-There are some basic rules regarding packaging and software development that our industry tends to follow closely. 
+There are some basic rules regarding packaging and software development that our industry tends to follow closely.
 1. Packages are immutable. Once published, a package file should never be modified. This means you can't "edit" a version number of a package because the version number is part of the metadata embedded in the file.
-2. Software should never be deployed to a production environment without being tested thoroughly. 
-3. Rebuilding source code can produce different software. We talked about _dependency hell_ in chapter three, but it�s also possible that a different version of the compiler will treat source code differently.
-4. A prerelease package should never be released. 
+2. Software should never be deployed to a production environment without being tested thoroughly.
+3. Rebuilding source code can produce different software. We talked about _dependency hell_ in chapter three, but it's also possible that a different version of the compiler will treat source code differently.
+4. A prerelease package should never be released.
 
-These are discussed at length in our book _Continuously Scale and Continuously Deliver with a Universal Package Manager_
+These are discussed at length in our book [Continuously Scale and Continuously Deliver with a Universal Package Manager](https://inedo.com/support/resources/ebooks/continuously-scale-deliver-upm).
 
 Given these rules, it seems nearly impossible to create a logical pipeline that both the business and development can understand and follow.
 
-This is where repackaging comes in. Repackaging is process where that creates a new package from an existing package using exactly the same content while maintaining the integrity of the original package. This also needs to adhere to a very secure work flow to prevent content tampering, while also generating an audit trail that proves it was done according to the guidelines. 
+This is where repackaging comes in. Repackaging is process where that creates a new package from an existing package using exactly the same content while maintaining the integrity of the original package. This also needs to adhere to a very secure work flow to prevent content tampering, while also generating an audit trail that proves it was done according to the guidelines.
 
-ProGet eliminates the complex and tedious manual steps involved in repackaging and has built this into to our software. 
+ProGet eliminates the complex and tedious manual steps involved in repackaging and has built this into to our software.
 
 ## How To Repackage a Package
 Repackaging is a Built-in feature for all Universal and NuGet Packages in ProGet and can done with a click of a button or with a [simple API call](https://inedo.com/support/documentation/proget/reference/api).
 
 To use the ProGet web interface:
-1. Browse to any universal package in ProGet. 
+1. Browse to any universal package in ProGet.
 2. Click on the the "Repackage" button found under _Local Operations_.
 3. Enter a new version number, and you may also optionally add a reason (for auditing purposes)
 4. Click "Repackage"
@@ -42,7 +42,7 @@ To use the ProGet web interface:
 Once you've done that, you'll be redirected to the the new package's page.
 
 ## Viewing and Auditing Repackage History
-ProGet allows users to see the repackaging audit trail on the "History" tab of the package. The history will show key values regarding each repackaging event such as the date, time, version, user name, notes, etc. Also, if the orginal package resides in ProGet you can access it from this page. 
+ProGet allows users to see the repackaging audit trail on the "History" tab of the package. The history will show key values regarding each repackaging event such as the date, time, version, user name, notes, etc. Also, if the orginal package resides in ProGet you can access it from this page.
 
 These historic audit trails are embedded within the package itself and allows you to easily replicate or promote this package to other feeds while preserving the repackaging history.
 
