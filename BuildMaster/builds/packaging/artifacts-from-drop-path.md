@@ -36,8 +36,13 @@ Create-Artifact HdarsVendorFiles
 );
 ```
 
-### Additional Options for Create-Artifact
 
+{.attention .analogy} Here are a couple sample applications we have created in our public BuildMaster site that deal with some common use cases from our customers.  
+- [Sample application #1](https://buildmaster.inedo.com/applications/41/) utilizes a drop path named for a release number (D:\HDarsDrops\1.0.0, D:\HDarsDrops\1.0.1) compiled source code is copied and an artifact is created with its contents.
+- [Sample application #2](https://buildmaster.inedo.com/applications/42/) Another drop path is used to place compiled source code, create an artifact from its contents and then delete the files at the end of the process. 
+ 
+
+### Additional Options for Create-Artifact
 You can further customize this operation by specifying values for these additional options:
 
 - Deployable name:  Associates the created artifact with a deployable in the application; this defaults the current deployable in context.
@@ -65,5 +70,8 @@ Create-Artifact MyArtifact
     IncludeHiddenFiles: true
 );
 ```
+
+
+
 
 For more information and sample usage visit our [documentation](https://inedo.com/support/documentation/buildmaster/reference/operations/artifacts/create-artifact)

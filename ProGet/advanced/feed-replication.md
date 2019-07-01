@@ -133,3 +133,13 @@ Note that by default, only replication server errors are logged. To enable logs 
 ### Client & Server Options Missing {#legacy}
 
 The replication client/server distinction was added in ProGet v5.2, and previous versions only allowed one or the other to be configured, and not both. The options "replicate from external feed" and "allow other feeds to replicate with this one" are equivalent to client and server respectively.
+
+## Docker
+
+Docker feed replication is supported starting in ProGet 5.2.5, and has the following limitations:
+
+{.docs}
+- Publish date and download count are not synchronized.
+- All blobs and manifests are synchronized, so retention rules need to be set up on both ends of synchronization.
+- Deletion records ("tombstones") are not recorded in Docker feeds, so images can only be added by feed replication, never removed; a retention rule must be configured to delete untagged images.
+
