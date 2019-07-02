@@ -1,5 +1,5 @@
 ---
-title: Using Maven with BuildMaster
+title: maven
 subtitle: Executing Maven Goals with BuildMaster
 keywords: maven, buildmaster, goals
 sequence: 100
@@ -42,7 +42,7 @@ The above command, will start from the `validate` phase and continue until all t
 
 `mvn clean install plugin:goal`
 
-## How to execute a Maven Goals in BuildMaster
+## How to Execute a Maven Goal in BuildMaster
 
 There are two ways to excute a maven goal in BuildMaster. Either with the `Execute-Maven` operation or the `InedoCore::Exec`.  
 

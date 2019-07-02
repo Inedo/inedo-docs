@@ -1,6 +1,6 @@
 ---
-title: JUnit Test In BuildMaster
-subtitle: JUnit Test In BuildMaster
+title: JUnit
+subtitle: JUnit Tests in BuildMaster
 keywords: unit test, buildmaster, junit, junit test, java
 sequence: 100
 ---
