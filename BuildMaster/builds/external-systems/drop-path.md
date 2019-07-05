@@ -1,10 +1,11 @@
 ---
-title: Importing an Artifact from a Drop Path
+title: Importing from a Drop Path
+subtitle: Importing an Artifact from a Drop Path
 keywords: builds, artifacts, drop-path
 sequence: 500
 ---
 
-BuildMaster gives you a lot of flexibility when it comes to creating and deploying artifacts. In some cases you might want to create an artifact for deployment that includes files placed in a drop-path.
+BuildMaster gives you a lot of flexibility when it comes to creating and deploying artifacts. In some cases you might want to create an artifact for deployment that includes files that were placed in a drop path.
 
 The Create-Artifact operation allows you to collect all of the files in a directory, compresses them in a zip file, and save it to the artifact library with the intention of deploying it later.
 
