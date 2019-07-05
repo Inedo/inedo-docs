@@ -61,7 +61,7 @@ docker network create proget
 docker run --name proget-sql \
       -e 'ACCEPT_EULA=Y' -e 'MSSQL_SA_PASSWORD=&lt;YourStrong!Passw0rd&gt;' \
       -e 'MSSQL_PID=Express' --net=proget --restart=unless-stopped \
-      -d store/microsoft/mssql-server-linux:2017-latest
+      -d mcr.microsoft.com/mssql/server:2017-latest
 </pre>
       <p>
           <b>Note:</b> This example specifies the free SQL Express edition. This is adequate for most ProGet installations, but
