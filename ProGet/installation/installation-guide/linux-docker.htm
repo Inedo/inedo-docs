@@ -42,6 +42,14 @@
           sudo/su depending on your configuration.
       </p>
 
+      <h3>Network</h3>
+      <p>
+          First, you'll need to create a network for the SQL Server and ProGet containers
+      </p>
+      <pre>
+docker network create proget
+</pre>
+
       <h3>SQL Server Database</h3>
       <p>
           ProGet requires a SQL Server database. You can either host this database externally or
