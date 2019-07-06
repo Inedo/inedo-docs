@@ -8,6 +8,7 @@ sequence: 600
 Package Promotion is the process of promoting packages between feeds to ensure that only approved and verified packages are used in the right environments, such as production. 
 
 In ProGet, packages can be promoted from one feed to another and tracked throughout the process. This is useful for maintaining feeds with separate levels of quality (such as Development, Production, etc), and also to easily curate selected packages from an external source to an approved repository.
+
  
 ## Package Promotion Security 
 Promote Packages is a [built-in task](/support/documentation/proget/administration/security) in ProGet. This task Allows access to promote packages to a specified feed of the same feed type. Users granted this task should also be granted at least the View & Download Packages task for the source feed. 
@@ -27,7 +28,10 @@ There are two ways to promote a package, using the Promote Package button in the
 
 Check out this [short video](https://www.youtube.com/watch?v=0uVDUt0wMjM) explaing the steps in ProGet.
 
+Any packages that are promoted to a target feed are __not__ deleted from the source feed. {.info}
+
 To promote a package via the **API** you will first need to generate an API key that   grants access to Package Promotion. Then visit [Package Promotion Endpoint](/support/documentation/proget/reference/api/package-promotion) guide in our [ProGet API Reference](/support/documentation/proget/reference/api) section to familiarize yourself on how to work with the ProGet APIs and the Promote Packages endpoint. 
+
 
 
 ## Track Your Package Promotions

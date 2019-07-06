@@ -24,3 +24,13 @@ On the assign privileges page, select *Add Permission*, and in the *Principles* 
 Once the switch button is clicked, the web server will restart, causing a brief outage in your Inedo product. Refreshing the page will eventually redirect to the login page. Here, enter the credentials of the administrator configured in the previous step, and you will be logged in as an administrator.
 
 **TROUBLESHOOTING**: [Log in fails, can't remember the password, etc.](/support/documentation/various/ldap/troubleshooting#locked-out) {.info}
+
+## Virtual Privilege Assignment {#virtual-privilege-assignment}
+
+As of BuildMaster v6.1.8, ProGet v5.2.5, and Otter v2.2.3, the following principals may be used to assign *catch-all* privileges:
+
+ - **Everyone** - all users with network access to the system, regardless if they are authenticated or not
+ - **Authenticated** - all users who have supplied valid login credentials
+ - **Anonymous** - all unauthenticated users with network access to the sytem (i.e. have not logged in)
+
+{.attention .best-practice} **Note**: when [Integrated Authentication](integrated-authentication) is enabled, the *Everyone* and *Authenticated* principals function identically because all users are authenticated before an Inedo product can even process the request. Likewise, *Anonymous* would never match any user.

@@ -61,7 +61,7 @@ An instance of the user directory should be visible on the *Manage User Director
 
 The *Active Directory (New)* directory only considers a user's *direct* group membership, not indirect membership (i.e. a group's groups). This is done for performance reasons, as such queries are recursive in nature and may have severe performance issues (particularly with multiple domains).
 
-We have had many support inquiries related to the assignment of privileges to the *Domain Users* group, and privileges not cascading to every user. We do not recommend using this group as a *catch all* to grant or restrict any privileges.
+We have had many support inquiries related to the assignment of privileges to the *Domain Users* group, and privileges not cascading to every user. We do not recommend using this group as a *catch-all* to grant or restrict any privileges. Refer to [Virtual Privilege Assignment](ldap-active-directory#virtual-privilege-assignment) to configure *catch-all* privileges.
 
 ## Integrated Authentication Not Working {#authentication-not-working data-title="Integrated Authentication Not Working"}
 
