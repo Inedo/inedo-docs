@@ -5,7 +5,7 @@ keywords: packaging, repackaging, upack, nuget, universal-packages, proget
 sequence: 10
 ---
 
-This feature is available in paid and trial ProGet editions. {.info}
+This feature is available in paid and trial ProGet editions, starting in v5.2.5 {.info}
 
 Through prerelease versioning, it's clear to everyone which packages are release-quality and what is not ready for release. Like all software, it is important to create several prerelease packages that are tested and validated prior to creating the final, stable package. You can use different prerelease versions for this purpose; for example
 - `ProfitCalc 3.2.4-ci.54` may signify a package created on ci server (build # 54).
