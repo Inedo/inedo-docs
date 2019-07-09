@@ -96,4 +96,10 @@ As of ProGet v5.1, docker feeds support [connectors](/support/documentation/prog
 
 ## Private Registry Limitations
 
-Docker is designed to tightly integrate with the publicly-hosted hub.docker.com. Private registries are supported to some extent, but the Docker client and related tooling always assume you will be using their public registry, or at the very least, the official private [Docker Registry](https://docs.docker.com/registry) that they built and support.
+### Windows Integrated Authentication
+
+The Docker client does not support Windows Integrated Authentication, which means that you won't be able to setup "Anonymous" access to a ProGet instance that has this enabled. To workaround this, you can set-up a second site in IIS without Windows Integrated Authentication enabled that points to the same path on disk.
+
+### Other Limitations
+
+Docker is designed to tightly integrate with the publicly-hosted hub.docker.com. Private registries are supported to some extent, but the Docker client and related tooling always assume you will be using their public registry, or at the very least, the official private [Docker Registry](https://docs.docker.com/registry) that they built and support. This can make working with private registries a bit awkward at times, but Docker client support is gradually improving.
