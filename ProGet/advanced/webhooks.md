@@ -9,7 +9,7 @@ Webhooks let you connect ProGet with other services to notify users, trigger aut
 
 {.docs}
 - Send an instant message when a package is added to a feed
-- Deploy a package with [Hedgehog](/hedgehog) once it's promoted to a different feed
+- Deploy a package with [BuildMaster](/buildmaster) once it's promoted to a different feed
 - Log a message in a third-party auditing tool when a package is deleted
 
 This is done by creating webhooks that will send HTTP-based notifications (payloads) when certain events like package publishing, deployment, and deletion occur. These payloads can be adapted to fit into nearly any other tool's API, including workflow automation services such as Zappier, Microsoft Flow, etc.

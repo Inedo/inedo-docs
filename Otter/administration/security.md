@@ -98,3 +98,9 @@ As of Otter v2.2.3, privileges may be granted or restricted to the following "ca
  - **Everyone** - all users with network access to the system, regardless if they are authenticated or not
  - **Authenticated** - all users who have supplied valid login credentials
  - **Anonymous** - all unauthenticated users with network access to the sytem (i.e. have not logged in)
+
+## Hybrid User Directories
+
+As of Otter v2.2.3, a hybrid user directory may be used to combine multiple user directories together, resolving principals from one or more existing user directories. This allows Otter administrators to configure the system such that, for example, user accounts can be defined in Otter with a fallback to Active Directory.
+
+Visit the [Hybrid User Directories](/support/documentation/various/ldap/combining-with-built-in) documentation for more information.

@@ -119,3 +119,9 @@ NuGet feed re-indexing in ProGet was originally designed to re-index the [symbol
  - fix database-indexed .nuspec data from a package
 
 To perform a NuGet feed re-index, visit the "Manage Feed" page of the NuGet, Chocolatey, or PowerShell feed, and select `re-index` under the Symbol Server feed property section.
+
+## Repackaging {#repackaging data-title="Repackaging"}
+
+[Repackaging](/support/documentation/proget/advanced/repackaging) is a process of changing a package's version without changing its contents, enabling use-cases such as converting a pre-release package to a stable version, and more.
+
+ProGet supports NuGet repackaging natively. To view an example of how it can be accomplished using the [Repackaging API](/support/documentation/proget/reference/api/repackaging) in a CI/CD system, you can view an [example application](https://buildmaster.inedo.com/applications/44/) in our public BuildMaster instance.
