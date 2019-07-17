@@ -55,7 +55,7 @@ Note that manage is a proxy attribute for all application-related attributes (pi
 
 ### Infrastructure (Manage)
 
-This allows users to create, edit, and delete [infrastructure](/support/documentation/buildmaster/administration/agents-and-infrastructure) (servers, roles, and environments).
+This allows users to create, edit, and delete [infrastructure](/docs/buildmaster/administration/agents-and-infrastructure) (servers, roles, and environments).
 
 ::: {.attention .best-practice}
 This can provide transitive access to all connected servers and should be granted with extreme care.
@@ -63,11 +63,11 @@ This can provide transitive access to all connected servers and should be grante
 
 ### Pipelines (Manage<sup>A</sup>)
 
-This allows users to create, edit, and delete [pipelines](/support/documentation/buildmaster/verification/pipelines). This provides transitive access to deploy to force packages to environments, as a user can simply edit a pipeline to remove any gates or deployment windows.
+This allows users to create, edit, and delete [pipelines](/docs/buildmaster/verification/pipelines). This provides transitive access to deploy to force packages to environments, as a user can simply edit a pipeline to remove any gates or deployment windows.
 
 ### Plans (View Contents<sup>A</sup> & Manage<sup>A</sup>)
 
-View allows users to open [deployment plans](/support/documentation/buildmaster/deployments/plans) and view the contents.
+View allows users to open [deployment plans](/docs/buildmaster/deployments/plans) and view the contents.
 
 ::: {.attention .best-practice}
 You shouldn't put sensitive information (like passwords) in your plans, so there's no good reason to restrict this.
@@ -77,7 +77,7 @@ Manage will allow users to create, edit, and delete deployment plans. Note that 
 
 ### Builds (Create<sup>A</sup>, Deploy<sup>AE</sup>, Force<sup>AE</sup>, Manage<sup>A</sup>, View Deployment Logs/Debug<sup>AE</sup>)
 
-Create allows users to only create new [builds](/support/documentation/buildmaster/builds/overview).
+Create allows users to only create new [builds](/docs/buildmaster/builds/overview).
 
 Deploy allows users to promote a build to a stage that it is eligible to deploy to (i.e. passed gates, deployment windows, etc).
 
@@ -89,19 +89,19 @@ View Deployment Logs and View Deployment Debug Logs are primarily designed to re
 
 ### Releases (Manage<sup>A</sup>)
 
-This allows users to create [releases](/support/documentation/buildmaster/releases/overview), change variables, and change release status.
+This allows users to create [releases](/docs/buildmaster/releases/overview), change variables, and change release status.
 
 ### Notes (Manage<sup>A</sup>)
 
-This allows users to create, edit, or delete [release/build notes](/support/documentation/buildmaster/releases/notes).
+This allows users to create, edit, or delete [release/build notes](/docs/buildmaster/releases/notes).
 
 ### Issues (Manage<sup>A</sup>)
 
-This allows users to create, edit, or delete [built-in BuildMaster issues](/support/documentation/buildmaster/verification/issue-tracking), and configure external issue sources for an application.
+This allows users to create, edit, or delete [built-in BuildMaster issues](/docs/buildmaster/verification/issue-tracking), and configure external issue sources for an application.
 
 ### Script Assets (Manage<sup>A</sup>, View Contents<sup>A</sup>)
 
-View allows users to open [script assets](/support/documentation/executionengine/components/powershell-and-shell) and view the contents.
+View allows users to open [script assets](/docs/executionengine/components/powershell-and-shell) and view the contents.
 
 ::: {.attention .best-practice}
 You shouldn't put sensitive information (like passwords) in your scripts, so there's no _good_ reason to restrict this.
@@ -115,7 +115,7 @@ Because deployment plans can already run arbitrary commands, and editing script 
 
 ### Credentials (Manage and View Passwords<sup>E</sup>)
 
-View Passwords will allow users to view sensitive (encrypted) fields on [resource credentials](/support/documentation/buildmaster/administration/resource-credentials).
+View Passwords will allow users to view sensitive (encrypted) fields on [resource credentials](/docs/buildmaster/administration/resource-credentials).
 
 ::: {.attention .best-practice}
 This attribute primarily exists to allow some users to view credentials only associated with certain environments.
@@ -129,11 +129,11 @@ This could provide transitive access to connected systems, so be very careful wh
 
 ### Calendars (Manage<sup>A</sup>)
 
-This allows users to create, edit, and delete system [calendars](/support/documentation/buildmaster/releases/calendars).
+This allows users to create, edit, and delete system [calendars](/docs/buildmaster/releases/calendars).
 
 ### Configuration Files (View<sup>AE</sup>, Edit<sup>AE</sup>, Deploy<sup>AE</sup>)
 
-View allows users to open [configuration files](/support/documentation/buildmaster/deployments/configuration-files) and view the contents for a specific environment.
+View allows users to open [configuration files](/docs/buildmaster/deployments/configuration-files) and view the contents for a specific environment.
 
 Edit will allow users to create, edit, and delete configuration file instances in a specific environment.
 
@@ -141,7 +141,7 @@ Deploy will allow users to deploy configuration file instances to a specific env
 
 ### SQL Scripts (View<sup>A</sup>, Manage<sup>A</sup>, Deploy<sup>AE</sup>)
 
-View allows users to view [SQL change scripts](/support/documentation/buildmaster/deployments/targets/databases) for an application.
+View allows users to view [SQL change scripts](/docs/buildmaster/deployments/targets/databases) for an application.
 
 Manage allows users to edit, delete, and change releases for SQL change scripts in an application, but also manage database connections.
 

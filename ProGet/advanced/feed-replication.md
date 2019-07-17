@@ -104,10 +104,10 @@ The above configuration exhibits the following behavior:
 Based on usage and support tickets we have encountered in the past, we recommend the following guidelines:
 
  - <span class="info-block success">DO</span>: ensure all ProGet installations involved in replication are running the exact same version of ProGet, or at the very least, the same minor version (e.g. 5.2.x)
- - <span class="info-block success">DO</span>: prefer using [connectors](/support/documentation/proget/core-concepts/feeds/connectors) to an external feed instead of read-only replication when possible
+ - <span class="info-block success">DO</span>: prefer using [connectors](/docs/proget/core-concepts/feeds/connectors) to an external feed instead of read-only replication when possible
  - <span class="info-block error">DO NOT</span>: configure replication to another feed in the same instance of ProGet
  - <span class="info-block error">DO NOT</span>: configure two instances to both be replication clients and servers pointing to each other
-- <span class="info-block error">DO NOT</span>: use replication for availability purposes if you are already using a package store that provides its *own* replication, for example if you are using the [AWS package store](/support/documentation/proget/advanced/cloud-storage#configure) with [cross-region replication](https://docs.aws.amazon.com/AmazonS3/latest/dev/crr.html)
+- <span class="info-block error">DO NOT</span>: use replication for availability purposes if you are already using a package store that provides its *own* replication, for example if you are using the [AWS package store](/docs/proget/advanced/cloud-storage#configure) with [cross-region replication](https://docs.aws.amazon.com/AmazonS3/latest/dev/crr.html)
  - <span class="info-block error">DO NOT</span>: configure a replication server to "allow this feed to be changed by local feeds" and distribute the sync token to untrusted parties as that will effectively grant full access to the contents of the feed, which could include poisoned packages, malware, etc.
 
 ## Troubleshooting {#troubleshooting data-title="Troubleshooting" }

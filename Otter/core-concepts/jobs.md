@@ -60,9 +60,9 @@ You can run a job in a simulation mode, which will run all the steps in a plan w
 
 Simulating a job can help ensure future accuracy by finding any errors that might have occurred in a plan, without affecting current configurations.
 
-[Plans]: /support/documentation/otter/core-concepts/plans
-[Servers]: /support/documentation/otter/core-concepts/servers
-[configuration drift]: /support/documentation/otter/core-concepts/servers#drift
-[Server Roles]: /support/documentation/otter/modeling-infrastructure/server-roles
-[Environments]: /support/documentation/otter/modeling-infrastructure/environments
-[Job Orchestration API]: /support/documentation/otter/reference/api/jobs
+[Plans]: /docs/otter/core-concepts/plans
+[Servers]: /docs/otter/core-concepts/servers
+[configuration drift]: /docs/otter/core-concepts/servers#drift
+[Server Roles]: /docs/otter/modeling-infrastructure/server-roles
+[Environments]: /docs/otter/modeling-infrastructure/environments
+[Job Orchestration API]: /docs/otter/reference/api/jobs

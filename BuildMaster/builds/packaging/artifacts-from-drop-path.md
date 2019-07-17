@@ -74,4 +74,4 @@ Create-Artifact MyArtifact
 
 
 
-For more information and sample usage visit our [documentation](https://inedo.com/support/documentation/buildmaster/reference/operations/artifacts/create-artifact)
+For more information and sample usage visit our [documentation](https://inedo.com/docs/buildmaster/reference/operations/artifacts/create-artifact)

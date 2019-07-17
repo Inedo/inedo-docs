@@ -10,7 +10,7 @@ There are three components to back up on the Otter server:
 
 {.docs}
 - **Otter Database** - a SQL Server database that contains all of Otter's configuration data; this is absolutely vital to back-up
-- **Shared Configuration** - the file `%PROGRAMDATA%\Inedo\SharedConfig\Otter.config` contains the encryption key that's used to encrypt/decrypt sensitive data, most notably [resource credentials](/support/documentation/buildmaster/global-components/resource-credentials)
+- **Shared Configuration** - the file `%PROGRAMDATA%\Inedo\SharedConfig\Otter.config` contains the encryption key that's used to encrypt/decrypt sensitive data, most notably [resource credentials](/docs/buildmaster/global-components/resource-credentials)
 - **Non-database Rafts** - any [rafts](../global-components/rafts) you created that aren't otherwise backed-up
 
 ## Backing-up the Otter Database {#backing-up-database data-title="Database Backup"}

@@ -52,7 +52,7 @@ Finally, restart the product services (and application pool if hosting in IIS).
 
 ### Extension Gallery Deployment (Universal Package) {#uni-package data-title="Extension Gallery Deployment"}
 
-You can also package extensions in a [universal package](/support/documentation/proget/core-concepts/packages#universal-package), deploy them to a ProGet feed, and configure your Inedo product to use your private feed instead. Such a package has three metadata requirements:
+You can also package extensions in a [universal package](/docs/proget/core-concepts/packages#universal-package), deploy them to a ProGet feed, and configure your Inedo product to use your private feed instead. Such a package has three metadata requirements:
 
 {.docs}
 - `group` - must be "inedox"
@@ -63,7 +63,7 @@ You can also specify property named `_inedoProducts` that is an array comprised 
 
 {.docs}
 - *string* values; `BuildMaster`, `Otter`, `Hedgehog`, or `ProGet`
-- *object* values;  a key/value pair with the product name and a string semantic version, representing the [SDK version compatibility](/support/documentation/inedosdk/versions-release-notes#compatibility-ranges)
+- *object* values;  a key/value pair with the product name and a string semantic version, representing the [SDK version compatibility](/docs/inedosdk/versions-release-notes#compatibility-ranges)
 
 For example, the metadata for an assembly named `MyExample.dll` might look like this:
 

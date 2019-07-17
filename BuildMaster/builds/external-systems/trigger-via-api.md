@@ -8,7 +8,7 @@ sequence: 700
 
 BuildMaster manages the CI/CD process for applications of all types and is designed to integrate with any existing process. Sometimes, this process includes initiating a build through a deployment pipeline from an existing CI tool (e.g. TeamCity, Jenkins) or package manager such as [ProGet](/proget).
 
-Builds may be created in BuildMaster by sending an HTTP request to the [Release & Build Deployment API](/support/documentation/buildmaster/reference/api/release-and-build-deployment). Common use-cases for this include:
+Builds may be created in BuildMaster by sending an HTTP request to the [Release & Build Deployment API](/docs/buildmaster/reference/api/release-and-build-deployment). Common use-cases for this include:
 
 {.docs}
  - automatically triggering a BuildMaster build or deployment from an external tool
@@ -27,7 +27,7 @@ In order to create a build via the API, it must be enabled. To do so, visit the 
 
 ### 2. Call the API: 
 
-Because the API is called via HTTP, it can be accessed in a variety of ways. For this example, we will use a [ProGet "package-added" webhook](/support/documentation/proget/advanced/webhooks) to initiate a build in BuildMaster. In ProGet, the webhook is configured as follows:
+Because the API is called via HTTP, it can be accessed in a variety of ways. For this example, we will use a [ProGet "package-added" webhook](/docs/proget/advanced/webhooks) to initiate a build in BuildMaster. In ProGet, the webhook is configured as follows:
 
 | Setting | Value |
 |---|---|

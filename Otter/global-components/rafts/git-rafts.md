@@ -5,7 +5,7 @@ keywords: otter,rafts
 sequence: 100
 ---
 
-[Plans](/support/documentation/otter/core-concepts/plans) and [assets](/support/documentation/otter/core-concepts/assets) are essentially files, and Otter uses a [raft](/support/documentation/otter/global-components/rafts) to store them. Although rafts are an advanced feature, they are an integral part of how Otter works. The good news is, even if you don't need to use multiple rafts, you can simply replace the built-in raft ("*Default*") with a Git-based raft, and all your configuration plans, orchestration plans, and assets will be versioned.
+[Plans](/docs/otter/core-concepts/plans) and [assets](/docs/otter/core-concepts/assets) are essentially files, and Otter uses a [raft](/docs/otter/global-components/rafts) to store them. Although rafts are an advanced feature, they are an integral part of how Otter works. The good news is, even if you don't need to use multiple rafts, you can simply replace the built-in raft ("*Default*") with a Git-based raft, and all your configuration plans, orchestration plans, and assets will be versioned.
 
 Note: If you use GitHub, you will need to use a name/password if you want to push; otherwise, if you don't intend to save changes within Otter, use a read-only. {.info}
 

@@ -50,7 +50,7 @@ Webhooks can be configured for the following events:
 
 ### Conditional {#conditional data-title="Conditional"}
 
-The conditional is an optional expression that is evaluated prior to a webhook being invoked. This takes the same format as an [OtterScript predicate expression](/support/documentation/various/execution-engine/otterscript/formal-specification#predicate-statement), which has a standard unary operator (<code>!</code>),equality operators (<code>==</code> and <code>!=</code>), boolean comparison (<code>&amp;&amp;</code> and <code>||</code>), and parenthesis.
+The conditional is an optional expression that is evaluated prior to a webhook being invoked. This takes the same format as an [OtterScript predicate expression](/docs/various/execution-engine/otterscript/formal-specification#predicate-statement), which has a standard unary operator (<code>!</code>),equality operators (<code>==</code> and <code>!=</code>), boolean comparison (<code>&amp;&amp;</code> and <code>||</code>), and parenthesis.
 
 Following are some example expressions and their results.
 

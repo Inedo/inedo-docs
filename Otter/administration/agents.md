@@ -9,7 +9,7 @@ To provision and configure your servers, Otter needs to be able to communicate w
 
 ## Windows Servers {#windows data-title="Windows Servers"}
 
-The [Inedo Agent] is generally the best way to communicate with a Windows server. It's light-weight, and uses a highly-optimized and resilient protocol built solely for this purpose, and is [quite easy to install](/support/documentation/various/inedo-agent/installation).
+The [Inedo Agent] is generally the best way to communicate with a Windows server. It's light-weight, and uses a highly-optimized and resilient protocol built solely for this purpose, and is [quite easy to install](/docs/various/inedo-agent/installation).
 
 ### Agentless Windows Servers
 
@@ -37,6 +37,6 @@ Self-updating software always has a risk of failing mid-update. If this happens 
 
 Clicking *Update Agent* will initiate an execution that downloads the installer and updates the specified servers with a new agent.
 
-[Inedo Agent]: /support/documentation/various/inedo-agent/the-agent
-[resource credential]: /support/documentation/otter/global-components/resource-credentials
-[service]: /support/documentation/otter/installation/architecture/service
+[Inedo Agent]: /docs/various/inedo-agent/the-agent
+[resource credential]: /docs/otter/global-components/resource-credentials
+[service]: /docs/otter/installation/architecture/service

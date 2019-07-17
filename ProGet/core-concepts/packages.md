@@ -20,7 +20,7 @@ Packages have become a unifying concept across a DevOps toolchain because they a
 
 ## Package Formats: Universal and Third-party {#package-formats data-title="Package Formats: Universal and Third-party"}
 
-There's not a whole lot to a package: it's just a zip file containing the files you actually want to distribute, as well as a manifest file that describes the package itself. The specific layout of the zip file and manifest is referred to as a package format. ProGet supports the [universal package format](/support/documentation/upack/universal-packages/package-format), as well as a variety of third-party formats.
+There's not a whole lot to a package: it's just a zip file containing the files you actually want to distribute, as well as a manifest file that describes the package itself. The specific layout of the zip file and manifest is referred to as a package format. ProGet supports the [universal package format](/docs/upack/universal-packages/package-format), as well as a variety of third-party formats.
 
 ### Universal Package Format {#universal-package data-title="Universal Package Format"}
 
@@ -44,13 +44,13 @@ While you could certainly package .NET libraries in a universal package, they wo
 There are a lot of options for creating and publishing universal packages to ProGet, either from a developer's workstation, a build server, or anywhere else:
 
 {.docs}
-- [Universal Package Explorer](/support/documentation/upack/upe)
-- [Command-line Interface](/support/documentation/upack/upack-cli)   
-- [UPackLib.NET library](/support/documentation/upack/upacklib-net)
+- [Universal Package Explorer](/docs/upack/upe)
+- [Command-line Interface](/docs/upack/upack-cli)   
+- [UPackLib.NET library](/docs/upack/upacklib-net)
 - [Inedo ProGet Jenkins Plugin](/den/proget/jenkinsplugin)
 - [Push to ProGet Visual Sutdio Extension](/den/proget/visualstudio)
 - Upload hand-crafted package files from the UI
-- Simple HTTP Post with your own tool/scripts using the [Universal Feed API](/support/documentation/upack/feed-api/endpoints)
+- Simple HTTP Post with your own tool/scripts using the [Universal Feed API](/docs/upack/feed-api/endpoints)
 
 To learn how to create and package using a third-party package format, refer to the appropriate third-party feed documentation.
 

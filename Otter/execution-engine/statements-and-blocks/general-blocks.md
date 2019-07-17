@@ -33,7 +33,7 @@ An *Await Asynchronous Operation* statement will suspend the current execution u
 
 If an asynchronous block is given a token, then this token must be supplied to an await statement to act as a filter; that is, only asynchronous blocks with that specific token will be awaited.
 
-When an *await* statement is executed, the execution status is inherited from the background block if it is in an error or warn state. An *await* statement can be enclosed inside a [Try/Catch](/support/documentation/otter/execution-engine/statements-and-blocks/try-catch) block to handle any recoverable errors that happened in the background. {.info}
+When an *await* statement is executed, the execution status is inherited from the background block if it is in an error or warn state. An *await* statement can be enclosed inside a [Try/Catch](/docs/otter/execution-engine/statements-and-blocks/try-catch) block to handle any recoverable errors that happened in the background. {.info}
 
 ```
 foreach server in @ServersInRole(database-nodes)

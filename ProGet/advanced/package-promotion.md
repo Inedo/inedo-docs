@@ -11,13 +11,13 @@ In ProGet, packages can be promoted from one feed to another and tracked through
 
  
 ## Package Promotion Security 
-Promote Packages is a [built-in task](/support/documentation/proget/administration/security) in ProGet. This task Allows access to promote packages to a specified feed of the same feed type. Users granted this task should also be granted at least the View & Download Packages task for the source feed. 
+Promote Packages is a [built-in task](/docs/proget/administration/security) in ProGet. This task Allows access to promote packages to a specified feed of the same feed type. Users granted this task should also be granted at least the View & Download Packages task for the source feed. 
 
-You can also create a [Custom Task](/support/documentation/proget/administration/security/creating-tasks) page by going to `Administration > Users & Tasks > Customize Tasks`. To give or deny users/groups permissions to this task go to the Users & Tasks page.
+You can also create a [Custom Task](/docs/proget/administration/security/creating-tasks) page by going to `Administration > Users & Tasks > Customize Tasks`. To give or deny users/groups permissions to this task go to the Users & Tasks page.
 
 ## What Packages Can Be Promoted?
 
-- You will need two feeds of the same type, either [universal package format](/support/documentation/various/universal-packages/universal-feeds-package-ref/package-format) or a third party format (such as NuGet, npm, Ruby Gems, and more)
+- You will need two feeds of the same type, either [universal package format](/docs/various/universal-packages/universal-feeds-package-ref/package-format) or a third party format (such as NuGet, npm, Ruby Gems, and more)
 
 - Generally speaking, all packages can be promoted with only a few exceptions. 
     - Maven packages do not support promotion, and;
@@ -30,7 +30,7 @@ Check out this [short video](https://www.youtube.com/watch?v=0uVDUt0wMjM) explai
 
 Any packages that are promoted to a target feed are __not__ deleted from the source feed. {.info}
 
-To promote a package via the **API** you will first need to generate an API key that   grants access to Package Promotion. Then visit [Package Promotion Endpoint](/support/documentation/proget/reference/api/package-promotion) guide in our [ProGet API Reference](/support/documentation/proget/reference/api) section to familiarize yourself on how to work with the ProGet APIs and the Promote Packages endpoint. 
+To promote a package via the **API** you will first need to generate an API key that   grants access to Package Promotion. Then visit [Package Promotion Endpoint](/docs/proget/reference/api/package-promotion) guide in our [ProGet API Reference](/docs/proget/reference/api) section to familiarize yourself on how to work with the ProGet APIs and the Promote Packages endpoint. 
 
 
 
@@ -58,4 +58,4 @@ You can organize package feeds in a variety of ways. For instance, you may want 
 
 Another way to organize feeds is by Quality (Untested, Production-ready, etc). Packages move across development and testing pipelines much like any other software. ProGet is a great way to create different feeds for different stages of your pipeline. 
 
-Configurations like security and storage can also be a determining factor on how to organize your various feeds. ProGet allows you to place [Security and Accees Controls](/support/documentation/proget/administration/security) to feeds and give teams different access to different feeds. For example, perhaps you’ll only want Lead Engineers to be able to publish packages to the Production Feed.
+Configurations like security and storage can also be a determining factor on how to organize your various feeds. ProGet allows you to place [Security and Accees Controls](/docs/proget/administration/security) to feeds and give teams different access to different feeds. For example, perhaps you’ll only want Lead Engineers to be able to publish packages to the Production Feed.

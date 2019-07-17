@@ -4,7 +4,7 @@ subtitle: Package Identification
 sequence: 20
 keywords: proget, universal-packages
 ---
-A universal package can be uniquely identified it's group, name, and version. These are different properties in the [manifest file](/support/documentation/upack/universal-packages/metacontent-guidance/manifest-specification).
+A universal package can be uniquely identified it's group, name, and version. These are different properties in the [manifest file](/docs/upack/universal-packages/metacontent-guidance/manifest-specification).
 
 <iframe width="600" height="337" src="https://www.youtube.com/embed/kHYgicz5Bec" frameborder="0" allowfullscreen="true"></iframe>
 

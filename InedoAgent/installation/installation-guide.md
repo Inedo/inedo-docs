@@ -17,7 +17,7 @@ keywords: inedo, inedo agent, installation
 
 ### 2. Download Inedo Agent {#download data-title="Download Otter Windows Agent"}
 
-Download the latest Inedo Agent from the [Agent Versions & Release Notes](/support/documentation/inedoagent/versions) page.
+Download the latest Inedo Agent from the [Agent Versions & Release Notes](/docs/inedoagent/versions) page.
 
 ### 3. Target Directory {#target-directory data-title="Target Directory"}
 
