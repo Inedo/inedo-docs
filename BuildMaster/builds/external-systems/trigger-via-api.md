@@ -14,6 +14,7 @@ Builds may be created in BuildMaster by sending an HTTP request to the [Release 
  - automatically triggering a BuildMaster build or deployment from an external tool
  - wiring up a custom webhook defined in Slack, Teams, etc.
  - personal preference using a command line or PowerShell interface instead of the web UI
+ - notifying BuildMaster that a build may be created from a [drop path](drop-path)
  
 ## Example: Deploying a Universal Package from ProGet
 
