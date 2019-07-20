@@ -15,7 +15,5 @@ We recommend using a domain account for the agent user context. This will make i
 
 **Local System Note:** An agent with local system privileges has full access to any installed server. While this is often crucial for infrastructure orchestration (and is the default on new installations of an Inedo agent), it is discouraged for any environment where more limited access is appropriate, such as: live production environment, build servers, etc. {.announcement}
 
-:::upcoming
 ## Impersonation
-In a future version of the Inedo Agent, we will allow a request to "escalate" to a different user by sending a username/password credential. While the client implementation is yet to be fully specified, this would most likely apply to a handful of operations such as Execute Process, Execute PowerShell, etc., and an interface would be provided to allow for such escalation for other operations via the SDK.
-:::
+As of Inedo Agent [v43](../versions), Inedo Agents can impersonate other user accounts if credentials are provided in BuildMaster/Otter.

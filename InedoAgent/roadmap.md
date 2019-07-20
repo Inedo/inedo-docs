@@ -14,11 +14,6 @@ show-headings-in-nav: true
 
   InedoAgent.exe can periodically query all host processes to make sure each is still handling messages properly. If a response isn't received in a reasonable amount of time, the process can be forcibly terminated. This will cause all sessions connected to it to fail, but at least it won't stay stuck.
 
-  ## Improved Logging {#improved data-title="Improved Logging"}
-
-  A diagnostic log file can already be configured for the InedoAgent, but it would be a lot more useful for troubleshooting
-  if the meta-agent had a command to retrieve these so they are viewable from BuildMaster, Hedgehog, or Otter.
-
   ## Sentinels/Checksums {#sentinels data-title="Sentinels/Checksums"}
 
   Messages are just length-prefixed blocks with a simple sanity check on size. While the underlying TCP protocol guarantees correctness, these would be nice to add as an extra layer of protection in case of bugs in the agent protocol itself.
@@ -26,10 +21,6 @@ show-headings-in-nav: true
   ## More Encryption Options {#more data-title="More Encryption Options"}
 
   What we have is pretty good, but it certainly could be rounded out a little.
-
-  ### AES {#aes data-title="AES"}
-
-  Application-level symmetric AES encryption is the default mechanism for securing agent communications and verifying identity. Currently, this only allows a 128-bit key. We should use a larger key by default (probably 256-bit, for FIPS compliance).
 
   ### SSL {#ssl data-title="SSL"}
 
