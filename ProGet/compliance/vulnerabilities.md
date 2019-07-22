@@ -27,7 +27,7 @@ ProGet supports three different workflows for managing vulnerabilities:
 |  | [Manual](#manual) | OSS Index | WhiteSource |
 |---|---|---|---|
 | Cost                                      | - | - | $ |
-| Thoroughness                              | * | ***  | *****  |
+| Thoroughness                              | ★☆☆ | ★★☆ | ★★★ |
 | Block vulnerable packages                 | ✔ | ✔ | ✔ |
 | Manually enter vulnerability reports      | ✔ | -  |   |
 | Assess vulnerability report within ProGet | ✔ | ✔ | - |
@@ -60,7 +60,7 @@ Both the manual and OSS Index workflows use vulnerability reports, which essenti
 
 All newly entered or imported vulnerability reports are considered unassessed, which means that packages matching the vulnerability will be blocked until the report is assessed. An assessment involves an authorized user reviewing the report, choosing an assessment type (Ignore, Caution, Block), and leaving an optional comment.
 
-![Assessment workflow](/resources/documentation/proget/assess-workflow.png)
+![Assessment workflow](/resources/documentation/proget/assess-workflow.svg)
 
 ### Assessment Expiry
 
