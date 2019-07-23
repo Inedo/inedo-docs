@@ -378,6 +378,8 @@
         <li>LockToken &ndash; a token name (or empty string) that may be prefixed with <code>!</code> to indicate a global lock</li>
         <li>Timeout &ndash; the number of seconds to attempt the block for</li>
         <li>Execution Policy &ndash; either always or onChange</li>
+        <li>Isolation &ndash; indicates that all remote operations inside the block will be performed in a new process that will be terminated when control flow leaves the block</li>
+        <li>Credentials &ndash; name of UserName/Password credentials used to launch a new process to perform the remote operations inside the block</li>
         <li>Additional Flags &ndash; currently unused</li>
         <li>Body &ndash; a scoped statement block</li>
     </ul>
