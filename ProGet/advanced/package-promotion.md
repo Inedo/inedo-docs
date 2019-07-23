@@ -17,11 +17,9 @@ You can also create a [Custom Task](/support/documentation/proget/administration
 
 ## What Packages Can Be Promoted?
 
-- You will need two feeds of the same type, either [universal package format](/support/documentation/various/universal-packages/universal-feeds-package-ref/package-format) or a third party format (such as NuGet, npm, Ruby Gems, and more)
+You will need two feeds of the same type, either [universal package format](/support/documentation/various/universal-packages/universal-feeds-package-ref/package-format) or a third party format (such as NuGet, npm, Ruby Gems, and more). When promoting a remote package, it will first be cached, and then copied to the new feed.
 
-- Generally speaking, all packages can be promoted with only a few exceptions. 
-    - Maven packages do not support promotion, and;
-    - Connector packages can’t inherently be promoted, they will need to first be pulled into a feed before they can be elligible for promotion.
+Note that Docker containers cannot currently be promoted. 
 
 ## How to Promote a Package
 There are two ways to promote a package, using the Promote Package button in the Package Versions page in ProGet, or an API call.
@@ -58,4 +56,4 @@ You can organize package feeds in a variety of ways. For instance, you may want 
 
 Another way to organize feeds is by Quality (Untested, Production-ready, etc). Packages move across development and testing pipelines much like any other software. ProGet is a great way to create different feeds for different stages of your pipeline. 
 
-Configurations like security and storage can also be a determining factor on how to organize your various feeds. ProGet allows you to place [Security and Accees Controls](/support/documentation/proget/administration/security) to feeds and give teams different access to different feeds. For example, perhaps you’ll only want Lead Engineers to be able to publish packages to the Production Feed.
+Configurations like security and storage can also be a determining factor on how to organize your various feeds. ProGet allows you to place [Security and Accees Controls](/support/documentation/proget/administration/security) to feeds and give teams different access to different feeds. For example, perhaps youâ€™ll only want Lead Engineers to be able to publish packages to the Production Feed.
