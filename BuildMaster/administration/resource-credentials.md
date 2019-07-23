@@ -32,7 +32,7 @@ When editing credentials, the encrypted fields will be displayed as empty passwo
 
 ## Limiting Credential Access {#limiting-access data-title="Limiting Credential Access"}
 
-You may want to permit or restrict certain users from accessing certain credentials, such as allowing Developers to manage credentials in the Integration and Testing environments. This is done by associating credentials with an environment, and then creating the appropriate [access controls](/support/documentation/buildmaster/administration/users-and-security) scoped to that environment.
+You may want to permit or restrict certain users from accessing certain credentials, such as allowing Developers to manage credentials in the Integration and Testing environments. This is done by associating credentials with an environment, and then creating the appropriate [access controls](/docs/buildmaster/administration/users-and-security) scoped to that environment.
 
 There are two task attributes you can use to control this access:
 
@@ -45,7 +45,7 @@ On the manage credentials page, users will only see the credentials they have pe
 
 Any operation that uses passwords, API keys, or sensitive information will give you the option to use a resource credential instead of needing to put those values directly in your OtterScript.
 
-For example, consider the [`Ensure-AppPool`](/support/documentation/buildmaster/reference/operations/iis/ensure-app-pool) operation:
+For example, consider the [`Ensure-AppPool`](/docs/buildmaster/reference/operations/iis/ensure-app-pool) operation:
 
 ![Ensure apppool operation](/resources/documentation/buildmaster/6/ensure-app-pool.png)
 
@@ -59,7 +59,7 @@ If the credential has "restricted to environment use" configured, then this will
 
 By default, there is no way to access the value of an encrypted/sensitive field on a credential from within OtterScript. However, at times it may be necessary, such as if you want to pass a username/password to a script or command-line utility.
 
-You can enable variable usage on a credential-by-credential basis. When configured, you can use the [$CredentialProperty](/support/documentation/buildmaster/reference/functions/credentials/credentialproperty) variable function to extract any property value. For example:
+You can enable variable usage on a credential-by-credential basis. When configured, you can use the [$CredentialProperty](/docs/buildmaster/reference/functions/credentials/credentialproperty) variable function to extract any property value. For example:
 
 ```
 set $HDarsUser = $CredentialProperty(UsernamePassword::HDarsUser, UserName);
