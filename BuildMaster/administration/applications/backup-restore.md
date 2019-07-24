@@ -2,7 +2,7 @@
 title: Backup & Restore
 subtitle:  Backup & Restore Applications
 keywords: buildmaster
-sequence: 60
+sequence: 600
 show-headings-in-nav: true
 ---
 
