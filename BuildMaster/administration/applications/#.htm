@@ -1,64 +1,79 @@
 ﻿<html>
-<head>
-   <title>Applications</title>
-    <meta name="subtitle" content="Applications" />
-    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
-    <meta name="keywords" content="buildmaster, applications" />    
-    <meta name="sequence" content="400" />
-</head>
-<body>
-   <p>
-        Applications represent the components and services that you release in BuildMaster, and contain the pipelines, templates, variables, and plans used to perform releases. You can also use applications for security access control by granting and denying tasks to different users across applications. 
-   </p> 
-   <h2 id="creating-new-applications" data-title="Creating a New Application"> Creating a New Application</h2> 
-   <p>
-        You can open the Create New Application page from the application selector drop down or the applications overview page.    
-   </p>
-   <h2 id="cloning-template-applications" data-title="Cloning and Template Applications">Cloning and Template Applications</h2> 
-<p>
-        There are times you may want to copy or "clone" an application, for example:      
-</p>  
-<ul class="docs">
-      <li><b>Templating</b> – using an application with a common set of variables and other configuration that can serve as a template for creating new applications
-        
-      </li>   
-      <li><b>Refactoring</b> – instead of doing a major refactor on an existing application, you can clone it to a new application and modify the new application instead
-    </li>  
-</ul>
-<p>
-        You can use the <a href="applications/import-export">application import and export</a> feature for this. When performing a one-time application clone (such as of a refactor), there is little value in publishing the exported package to a ProGet feed. However, for template applications, maintaining these in a ProGet feed is considered a best practice.
-</p>
-<h3 id="legacy-clone" data-title="Legacy Clone Feature">Legacy Application Clone Feature</h3>
-<p>
-        Prior to BuildMaster v6, the only way to clone applications was through the feature now called legacy application cloning. Importing applications is strongly preferred, but if you need to copy <em>legacy features</em> or configuration such as <em>legacy deployment plans</em>, you can use this feature from Admin > Legacy Features.   
-</p>
-<h2 id="deactivating-puring-apps" data-title="Deactivating and Purging Applications">Deactivating and Purging Applications</h2> 
-<p>
-        You can deactivate or purge applications from Admin > Deactivate and Purge Applications.
-</p>
-<p>
-        Deactivating an application will cancel all of its releases, deactivate automatic builds, and remove it from navigation and other menus throughout BuildMaster, while keeping historical data for the application. You can still access a deactivated application by URL directly.    
-</p>
-<p>
-        If you do not wish to keep any data or history for these applications, you may purge them from the system completely.   
-</p>
-<h2 id="apps-groups" data-title="Application Groups">Application Groups</h2> 
-<p>
-        Applications may be placed in an application group, which serves a few purposes:
-</p>
-<ul class="docs">
-      <li>  Visually grouping related applications in the user interface</li>
-        <li>Common set of variables across applications</li>
-        <li>Permissions that are shared across all applications in the group</li>
-        
+    <head>
+       <title>Applications</title>
+        <meta name="subtitle" content="Applications" />
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+        <meta name="keywords" content="buildmaster, applications" />    
+        <meta name="sequence" content="400" />
+    </head>
+    <body>
+        <p>
+            Applications represent the components and services that you release in BuildMaster, and contain the pipelines, templates, variables, and plans used to perform releases. You can also use applications for security access control by granting and denying tasks to different users across applications. 
+        </p> 
+        <h2 id="creating-new-applications" data-title="Creating a New Application"> Creating a New Application</h2> 
+        <p>
+            After clicking "New Application" you will be presented with a listing of application templates that are separated into 3 sections.
+            <ul class="docs">
+                <li>
+                    <b>Standard Templates</b> - This listing has only 3 choices: Standard, Empty, or Copy Existing. The Standard template will contain a basic pipeline structure (Build, Testing, Production) along with a Build and Deploy plans. The Empty application will not have any pipeline or plans within it. Copy Existing will use an application from within your BuildMaster instance as your starting application. 
+                </li>
+                <li>
+                    <b>Featured Templates</b> - This is a listing of the most commonly used templates and will be maintained by Inedo. This listing is driven by use-cases from our customers and will be updated as often as possible. 
+                </li>
+                <li>
+                    <b>User Templates</b> - This is a listing of templates created within your organization by exporting applications to a template. This listing will be maintained by your organization and will require a ProGet feed as a package source. See <a href="applications/import-export">application import and export</a> for more information.
+                </li>
+                <li>
+                    <b>All Templates</b> - This will be a full listing of all application templates. 
+                </li>
+            </ul>
+            Selecting any of these templates will import the templates into your application and will require additional customizations to be completed by your company.
+        </p>
 
-</ul>
-<p>
-        Application groups are created from the application settings page, by typing in the name of a group that doesn’t exist. Empty application groups are automatically deleted.
-</p>
-<p>
-        Once an application group has been created in this manner, you can use that group name when scoping variables (Admin > Variables) or access controls (Admin > Tasks).
-</p>
+        <h2 id="cloning-template-applications" data-title="Cloning and Template Applications">Cloning and Template Applications</h2> 
+        <p>
+            There are times you may want to copy or "clone" an application, for example:      
+        </p>  
+        <ul class="docs">
+            <li>
+                <b>Templating</b> – using an application with a common set of variables and other configuration that can serve as a template for creating new applications        
+            </li>   
+            <li>
+                <b>Refactoring</b> – instead of doing a major refactor on an existing application, you can clone it to a new application and modify the new application instead
+            </li>  
+        </ul>
+        <p>
+            You can use the <a href="applications/import-export">application import and export</a> feature for this.  
+        </p>
 
-</body>
+        <h3 id="legacy-clone" data-title="Legacy Clone Feature">Legacy Application Clone Feature</h3>
+        <p>
+            Prior to BuildMaster v6, the only way to clone applications was through the feature now called legacy application cloning. Importing applications is strongly preferred, but if you need to copy <em>legacy features</em> or configuration such as <em>legacy deployment plans</em>, you can use this feature from Admin > Legacy Features.   
+        </p>
+        <h2 id="deactivating-puring-apps" data-title="Deactivating and Purging Applications">Deactivating and Purging Applications</h2> 
+        <p>
+            You can deactivate or purge applications from Admin > Deactivate and Purge Applications.
+        </p>
+        <p>
+            Deactivating an application will cancel all of its releases, deactivate automatic builds, and remove it from navigation and other menus throughout BuildMaster, while keeping historical data for the application. You can still access a deactivated application by URL directly.    
+        </p>
+        <p>
+            If you do not wish to keep any data or history for these applications, you may purge them from the system completely.   
+        </p>
+        <h2 id="apps-groups" data-title="Application Groups">Application Groups</h2> 
+        <p>
+            Applications may be placed in an application group, which serves a few purposes:
+        </p>
+        <ul class="docs">
+            <li>Visually grouping related applications in the user interface</li>
+            <li>Common set of variables across applications</li>
+            <li>Permissions that are shared across all applications in the group</li>       
+        </ul>
+        <p>
+            Application groups are created from the application settings page, by typing in the name of a group that doesn’t exist. Empty application groups are automatically deleted.
+        </p>
+        <p>
+            Once an application group has been created in this manner, you can use that group name when scoping variables (Admin > Variables) or access controls (Admin > Tasks).
+        </p>
+    </body>
 </html>
