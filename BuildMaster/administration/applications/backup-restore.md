@@ -1,6 +1,6 @@
 ﻿---
-title: Importing and Exporting Applications
-subtitle: Importing & Exporting Applications
+title: Backup & Restore
+subtitle:  Backup & Restore Applications
 keywords: buildmaster
 sequence: 60
 show-headings-in-nav: true
