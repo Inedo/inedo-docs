@@ -7,13 +7,17 @@ sequence: 200
 
 An Automatic Build Trigger in BuildMaster allows users to trigger an action like a new build or running of a custom plan based on a repository monitor or a webhook. You can even schedule this action to any custom internal that suits your needs. This automation can be used as part of your continuous integration process and developers can introduce thier new code to a project and build and test it while ensuring that other environments remain unchanged until further verification and validation steps can occur in the pipeline.  
 
+_As of version 6.1.11 __Webhooks__ and __Repository Monitors__ will be referred to as Triggers and will technically function the same way but with additional configuration options_
+
 There are three types of build triggers:
  * __Repository Monitors__: These will monitor a git repository for new commits and will create a new build on active releases.
  * __Webhook monitors__: These will create a new build on active releases whenever a configured webhook is triggered. 
  * __Schedule monitors__: These monitors can be configured to run any custom plan or create new builds on active releases at a scheduled interval. 
 
 ## How to Configure an Automatic Build Trigger
-Users can create or modify Build Triggers from either the Administration page under "Build Triggers & Scheduled Jobs" or from within an Application under Builds > Triggers. 
+As of version 6.1.11 Users can create or modify Build Triggers from either the Administration page under "Build Triggers & Scheduled Jobs" or from within an Application under Builds > Triggers. 
+
+_In versions prior to version 6.1.11 webhooks and triggers are set up separately in thier own tabs within applications (under builds) or in the Administration section (under Repository Hooks & Monitors)._
 
 These pages will each show you a listing of any existing Build Triggers or Scheduled Jobs. At the bottom of the list click the button called "Create New Build Trigger".
 
@@ -57,6 +61,8 @@ For __Webhook Monitors__ there are fewer options.
 
 
 #### Scheduled Jobs
+Scheduled Jobs is a feature that was first implemented in version 6.1.11. 
+ 
 A common use for Scheduled Jobs is for implementing continuous integration using a repository that would only be checked once per day or week to ensure all code changes have been submitted. 
 
 Another possible scenario for a Scheduled Job would be to monitor an output folder for new files at a scheduled time. i.e. If your company has a folder that developers use for their build output. BuildMaster can automatically check that path every few minutes for new files and create a new build once the files are in the folder. Here is an [example](https://buildmaster.inedo.com/applications/42/) of how this works.
