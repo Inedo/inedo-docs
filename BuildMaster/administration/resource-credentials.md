@@ -17,7 +17,7 @@ There are a few types that are built in to BuildMaster:
 
 **\*** *indicates an encrypted/sensitive field*
 
-Resource credentials are implemented through an [extensible feature](/support/documentation/buildmaster/administration/extensions), and several extensions ([JIRA](/den/buildmaster/jira),[VSTS](/den/inedox/tfs), [GitHub](/den/inedox/github), etc.) will add types that are necessary for the extension's components.
+Resource credentials are implemented through an [extensible feature](/docs/buildmaster/administration/extensions), and several extensions ([JIRA](/den/buildmaster/jira),[VSTS](/den/inedox/tfs), [GitHub](/den/inedox/github), etc.) will add types that are necessary for the extension's components.
 
 ## Creating and Editing Credentials {#creating-editing-credentials data-title="Creating and Editing Credentials"}
 
