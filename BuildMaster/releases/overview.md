@@ -5,7 +5,7 @@ sequence: 100
 keywords: buildmaster, releases, pipelines
 show-headings-in-nav: true
 ---
-A release is an event where a planned set of changes are tested and delivered to production, or more specifically, a final pipeline stage. Releases can vary in conceptual size, from a major product launch, to a single-line change rushed to production in an emergency. The deployment unit that is promoted through a pipeline in order to effectively deploy a release is referred to as a [build](/support/documentation/buildmaster/builds/overview).
+A release is an event where a planned set of changes are tested and delivered to production, or more specifically, a final pipeline stage. Releases can vary in conceptual size, from a major product launch, to a single-line change rushed to production in an emergency. The deployment unit that is promoted through a pipeline in order to effectively deploy a release is referred to as a [build](/docs/buildmaster/builds/overview).
 
 In addition to the application code you want to deploy, releases have several associated features available to automate and coordinate the software release process:
 
@@ -18,7 +18,7 @@ In addition to the application code you want to deploy, releases have several as
 
 ## Creating Releases {#creating-releases data-title="Creating Releases"}
 
-After creating an [application](/support/documentation/buildmaster/modeling-applications/applications) and a [pipeline](/support/documentation/buildmaster/core-concepts/pipelines), a release may be created for an application. A release has the following initial properties:
+After creating an [application](/docs/buildmaster/modeling-applications/applications) and a [pipeline](/docs/buildmaster/core-concepts/pipelines), a release may be created for an application. A release has the following initial properties:
 
 {.docs}
 - **Release template** - if one exists, a [release template](templates) may be selected to determine variable prompts, default pipeline, and more
@@ -26,7 +26,7 @@ After creating an [application](/support/documentation/buildmaster/modeling-appl
 - **Release name** - is  an optional alias you can use to create a friendlier release identifier; it is not unique within an application
 - **Pipeline** - is the sequence of stages and approvals that builds are promoted through
 
-Once a release is created, you can add [configuration variables](/support/documentation/buildmaster/administration/configuration-variables) that can be used by deployment plans at runtime, target dates that will be show on a [calendar](calendars), and so on.
+Once a release is created, you can add [configuration variables](/docs/buildmaster/administration/configuration-variables) that can be used by deployment plans at runtime, target dates that will be show on a [calendar](calendars), and so on.
 
 ## Status and Lifecycles {#status-lifestyles data-title="Status and Lifecycles"}
 

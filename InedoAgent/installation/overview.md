@@ -5,7 +5,7 @@ sequence: 10
 keywords: inedo, inedo sdk
 ---
 
-A lot of Inedo's product functionality is delivered through extensions, a type of pluggable component library that provides both core capabilities as well as integrations with third-party tools. With the Inedo SDK, you can add or modify functionality and capabilities to the product by [creating an extension](/support/documentation/inedosdk/extending/creating).
+A lot of Inedo's product functionality is delivered through extensions, a type of pluggable component library that provides both core capabilities as well as integrations with third-party tools. With the Inedo SDK, you can add or modify functionality and capabilities to the product by [creating an extension](/docs/inedosdk/extending/creating).
 
 Many of the same components can be used different products, which means you can write a component once and introduce the same functionality across all of our products. Here's what you can extend:
 

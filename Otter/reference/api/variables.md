@@ -10,11 +10,11 @@ keywords: otter,api,variables
     }
 </style>
 
-The Variables Management API offers a simple mechanism for viewing, creating, updating, and deleting [configuration variables](/support/documentation/otter/global-components/configuration-variables).
+The Variables Management API offers a simple mechanism for viewing, creating, updating, and deleting [configuration variables](/docs/otter/global-components/configuration-variables).
 
 This API endpoint should be used instead of the [Native API Methods](../api#native) when possible, as they are much easier to use and will likely not change. {.announcement}
 
-For security and simplicity, these endpoints require that an [API Key](/support/documentation/otter/administration/security/api-keys) is created first.
+For security and simplicity, these endpoints require that an [API Key](/docs/otter/administration/security/api-keys) is created first.
 
 ## Data Specification {#data-specification}
 
@@ -22,7 +22,7 @@ This endpoint sends and receives a as [JSON](http://json.org/) objects.
 
 ### Variable Value Strings
 
-If a variable value string starts with a `` ` ``, `@(`, `%(`, then the value will evaluated as a `literal_expression` (see [formal grammar](/support/documentation/otter/reference/otter-script/formal-grammar)), which means you'll need to treat the value as a proper [string literal](/support/documentation/otter/reference/otter-script/strings-and-literals), and escape `$` and other characters if you don't want them expanded into variables at runtime... or cause an error when they can't expand. {#variable-value-string .info}
+If a variable value string starts with a `` ` ``, `@(`, `%(`, then the value will evaluated as a `literal_expression` (see [formal grammar](/docs/otter/reference/otter-script/formal-grammar)), which means you'll need to treat the value as a proper [string literal](/docs/otter/reference/otter-script/strings-and-literals), and escape `$` and other characters if you don't want them expanded into variables at runtime... or cause an error when they can't expand. {#variable-value-string .info}
 
 ### Variables Object
 

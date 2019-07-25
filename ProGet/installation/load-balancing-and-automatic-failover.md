@@ -29,7 +29,7 @@ If you are new to load balancing, Microsoft's [Network Load Balancing Cluster](h
 
 Any number of servers may be configured as web nodes; to ensure high-availability, at least three nodes are required. More may be added to distribute load and ensure rapid responses.
 
-To configure a web node, see the [manual installation instructions](/support/documentation/proget/installation/manual) and follow only the web application instructions.
+To configure a web node, see the [manual installation instructions](/docs/proget/installation/manual) and follow only the web application instructions.
 
 Once complete, from any web server, click on the **Configure Load Balancing** link on the ProGet administration page, then click on the **Enable Load Balancing** button.
 
@@ -45,7 +45,7 @@ ProGet can work with any SQL Server Cluster configuration, regardless of the fai
 
 Any number of indexing nodes may be configured; to ensure high-availability, at least two nodes are required.
 
-To configure an indexing node, see the [manual installation instructions](/support/documentation/proget/installation/manual) and follow only the service instructions.
+To configure an indexing node, see the [manual installation instructions](/docs/proget/installation/manual) and follow only the service instructions.
 
 Once complete, from any web server, click on the **Configure High Availability Mode** link on the ProGet administration page, then click on the **Enable High Availability Mode** button.
 

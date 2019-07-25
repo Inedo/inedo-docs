@@ -19,7 +19,7 @@ Regardless of where the operation comes from, there are two fundamental types:
 - **Ensure** – an operation that defines a desired state of configuration, gathers configuration information from a server, and if the actual and desired configuration differ, then configures or  changes something on that server so that it matches the desired state
 - **Execute** – an operation that does, or changes something on a server
 
-You can use either of these operations in any type of plan, though in an ideal world, you would only use ensure operations in [configuration plans](/support/documentation/otter/core-concepts/plans#configuration), and execute operations in [orchestration plans](/support/documentation/otter/core-concepts/plans#orchestration). 
+You can use either of these operations in any type of plan, though in an ideal world, you would only use ensure operations in [configuration plans](/docs/otter/core-concepts/plans#configuration), and execute operations in [orchestration plans](/docs/otter/core-concepts/plans#orchestration). 
 
 ### Declarative vs. Imperative {#declarative-vs-imperative}
 

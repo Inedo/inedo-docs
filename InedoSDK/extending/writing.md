@@ -6,7 +6,7 @@ keywords: inedo, inedo sdk
 
 You can easily add new operations to BuildMaster, Hedgehog, and Otter using any .NET language.
 
-Follow this guide to create a simplified version of the Create File operation that is already included in the Inedo Core extension. First, make sure to create a project as outlined in [Creating an Extension using the Inedo SDK](/support/documentation/inedosdk/extending/creating).
+Follow this guide to create a simplified version of the Create File operation that is already included in the Inedo Core extension. First, make sure to create a project as outlined in [Creating an Extension using the Inedo SDK](/docs/inedosdk/extending/creating).
 
 Next, create a new public class called `CreateFileOperation`, and have it inherit
 the [`ExecuteOperation`](/support/sdk-reference/inedosdk/Inedo.Extensibility.Operations/ExecutingOperation) class:

@@ -56,7 +56,7 @@ Create-Artifact Web
 
 ## Example: Building from Branches with Optional Tests
 
-The following example shows how to build an ASP.NET website at the solution level, using two optional [release template variable prompts](/support/documentation/buildmaster/releases/templates#components):
+The following example shows how to build an ASP.NET website at the solution level, using two optional [release template variable prompts](/docs/buildmaster/releases/templates#components):
 
 {.docs}
  - `$Branch` - the specified branch to pull from

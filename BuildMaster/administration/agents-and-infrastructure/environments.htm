@@ -14,7 +14,7 @@
     
     </p>
     <p>
-        Environments are also used in <a href="/support/documentation/buildmaster/administration/users-and-security">security and access controls</a> to permit and restrict users from performing various tasks. For example, you could permit “QA Users” to deploy applications to the Testing environment, while restricting them from deploying to the Production environment.
+        Environments are also used in <a href="/docs/buildmaster/administration/users-and-security">security and access controls</a> to permit and restrict users from performing various tasks. For example, you could permit “QA Users” to deploy applications to the Testing environment, while restricting them from deploying to the Production environment.
     </p>
     <p>
         BuildMaster comes with three, built-in environments that represent a very simple deployment pipeline: Integration, Testing, and Production. You can create, rename, and delete environments as needed.    
@@ -27,7 +27,7 @@
         This not only helps with visualization, but it can simplify the access controls you define. For example, if you restricted access to Production, then Prod-Main and Prod-Backup would also be restricted unless you define a more granular access control on one of the child environments.    
     </p>
     <p>
-        <a href="/support/documentation/buildmaster/administration/configuration-variables">Configuration variables</a> will also cascade from a parent to a child environment, which means that deployments to a child environment will have access to the parent environment’s variables if they are not defined on the child environment.
+        <a href="/docs/buildmaster/administration/configuration-variables">Configuration variables</a> will also cascade from a parent to a child environment, which means that deployments to a child environment will have access to the parent environment’s variables if they are not defined on the child environment.
     </p>
      <h2 id="multiple-per-server" data-title="Multiple Environments per server">Multiple Environments per server</h2>
      <p>

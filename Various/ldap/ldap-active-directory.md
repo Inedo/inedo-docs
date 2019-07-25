@@ -10,7 +10,7 @@ In addition to its own built-in user module, Inedo's Active Directory Domain int
 
 The LDAP/AD integration can be enabled from the Administration page via the *Change User Directory* link under the *Security & Authentication* heading. Selecting the *Active Directory (New)* option will present a page that requires entering credentials for an administrator.
 
-**TROUBLESHOOTING**: [Active Directory (New) is not in the list.](/support/documentation/various/ldap/troubleshooting#active-directory-new) {.info}
+**TROUBLESHOOTING**: [Active Directory (New) is not in the list.](/docs/various/ldap/troubleshooting#active-directory-new) {.info}
 
 In new installations, you will need to configure privileges first by clicking the *assign privileges* link (or from the Administration page, clicking *Manage Users & Tasks*, selecting the *Tasks* tab, and ensuring the dropdown user directory is set to *Active Directory (New)*).
 
@@ -23,7 +23,7 @@ On the assign privileges page, select *Add Permission*, and in the *Principles* 
 
 Once the switch button is clicked, the web server will restart, causing a brief outage in your Inedo product. Refreshing the page will eventually redirect to the login page. Here, enter the credentials of the administrator configured in the previous step, and you will be logged in as an administrator.
 
-**TROUBLESHOOTING**: [Log in fails, can't remember the password, etc.](/support/documentation/various/ldap/troubleshooting#locked-out) {.info}
+**TROUBLESHOOTING**: [Log in fails, can't remember the password, etc.](/docs/various/ldap/troubleshooting#locked-out) {.info}
 
 ## Virtual Privilege Assignment {#virtual-privilege-assignment}
 

@@ -28,6 +28,6 @@ Given these rules, it seems nearly impossible to create a logical pipeline that 
 
 This is where repackaging comes in. Repackaging is process where that creates a new package from an existing package using exactly the same content while maintaining the integrity of the original package. This also needs to adhere to a very secure work flow to prevent content tampering, while also generating an audit trail that proves it was done according to the guidelines.
 
-The universal packaging [manifest file](/support/documentation/upack/universal-packages/metacontent-guidance/manifest-specification) allows for storing a chain of repackaging events that allow you to verify each preceding package. [ProGet](/support/documentation/proget/advanced/repackaging) also supports this as a feature, and eliminates the complex and tedious manual steps involved in repackaging, and ensures security.
+The universal packaging [manifest file](/docs/upack/universal-packages/metacontent-guidance/manifest-specification) allows for storing a chain of repackaging events that allow you to verify each preceding package. [ProGet](/docs/proget/advanced/repackaging) also supports this as a feature, and eliminates the complex and tedious manual steps involved in repackaging, and ensures security.
 
 

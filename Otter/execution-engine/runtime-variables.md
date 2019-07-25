@@ -3,7 +3,7 @@ title: Runtime Variables
 keywords: otter,otterscript,variables
 ---
 
-Variables allow for extreme flexibility when modeling your infrastructure, and creating [Plans](/support/documentation/otter/core-concepts/plans). There are a lot of uses for variables, some of the most common are:
+Variables allow for extreme flexibility when modeling your infrastructure, and creating [Plans](/docs/otter/core-concepts/plans). There are a lot of uses for variables, some of the most common are:
 
 {.docs}
 - Arguments/properties of [Operations](overview#operations)
@@ -11,7 +11,7 @@ Variables allow for extreme flexibility when modeling your infrastructure, and c
 - Iteration/enumeration using a [Loop Block](statements-and-blocks/loop)
 
 
-Like [Configuration Variables](../global-components/configuration-variables), which are essentially values that you can assign to a [Server](/support/documentation/otter/core-concepts/servers), [Server Role](/support/documentation/otter/modeling-infrastructure/server-roles), [Environment](/support/documentation/otter/modeling-infrastructure/environments), etc., runtime variables are used by the [Execution Engine](/support/documentation/otter/execution-engine/overview) while running a plan.
+Like [Configuration Variables](../global-components/configuration-variables), which are essentially values that you can assign to a [Server](/docs/otter/core-concepts/servers), [Server Role](/docs/otter/modeling-infrastructure/server-roles), [Environment](/docs/otter/modeling-infrastructure/environments), etc., runtime variables are used by the [Execution Engine](/docs/otter/execution-engine/overview) while running a plan.
 
 ## Runtime Variable Types {#types}
 
@@ -43,7 +43,7 @@ Map variables are pretty rare, and are only used in operations needing an arbitr
 
 ## Runtime Variable Scoping {#scoping}
 
-When you create a runtime variable with the [Set Variable Value](/support/documentation/otter/execution-engine/statements-and-blocks/other-statements#set-variable) statement, that variable will be accessible in the current and nested blocks. For example:
+When you create a runtime variable with the [Set Variable Value](/docs/otter/execution-engine/statements-and-blocks/other-statements#set-variable) statement, that variable will be accessible in the current and nested blocks. For example:
 
 <tab-block>
     <tab name="Visual Mode">
@@ -57,7 +57,7 @@ When you create a runtime variable with the [Set Variable Value](/support/docume
     </tab>
 </tab-block>
 
-While setting both runtime and [Configuration Variables](/support/documentation/otter/global-components/configuration-variables) may lead to confusion if over used, Otter does allow for greater re-use of plans and templates by allowing the same plan or template to be used at different development environments where things like certificates, keys, and data might *need* to be different for testing.
+While setting both runtime and [Configuration Variables](/docs/otter/global-components/configuration-variables) may lead to confusion if over used, Otter does allow for greater re-use of plans and templates by allowing the same plan or template to be used at different development environments where things like certificates, keys, and data might *need* to be different for testing.
 
 ## Relation to Configuration Variables {#relation}
 

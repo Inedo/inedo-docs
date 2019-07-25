@@ -8,7 +8,7 @@
 <body>
     <p>
         Hedgehog is comprised of several different components, which may be installed on different
-        servers. See the <a href="/support/documentation/hedgehog/installation/installation-guide">Installation guide</a> for more details.
+        servers. See the <a href="/docs/hedgehog/installation/installation-guide">Installation guide</a> for more details.
     </p>
 
     <img src="/resources/documentation/hedgehog/a-c-diagram.png" alt="Diagram" />  
@@ -31,8 +31,8 @@
     </div>
     <h2 id="service">Service</h2>
     <p>
-        This runs in the background and actually runs your <a href="/support/documentation/hedgehog/deliver-deploy/deployment-plans">deployment plans</a> using the
-        <a href="/support/documentation/hedgehog/deliver-deploy/execution-engine">execution engine</a>.   It's a standard
+        This runs in the background and actually runs your <a href="/docs/hedgehog/deliver-deploy/deployment-plans">deployment plans</a> using the
+        <a href="/docs/hedgehog/deliver-deploy/execution-engine">execution engine</a>.   It's a standard
         <a href="https://msdn.microsoft.com/en-us/library/windows/desktop/ms685141(v=vs.85).aspx" target="_blank">Windows Service Application</a>,
         and may be managed and configured using the Windows Service Manager or <code>sc.exe</code> as you see fit.
     </p>
@@ -59,14 +59,14 @@
     </p>
     <h3>Encryption</h3>
     <p>
-        Sensitive data, most notably <a href="/support/documentation/hedgehog/global-components/resource-credentials">resource credentials</a>, are encrypted before being stored.
+        Sensitive data, most notably <a href="/docs/hedgehog/global-components/resource-credentials">resource credentials</a>, are encrypted before being stored.
         Obviously, the encryption key is <em>not</em> stored in the database, but in both the <code>web.config</code> file
         (used by the <em>web application</em>) and the <code>Hedgehog.Service.config</code> file (used by the service).
     </p>
     <h3>Reporting</h3>
     <p>
         Experienced users are welcome to query data from the various tables, and sensitive information 
-        <a href="/support/documentation/hedgehog/global-components/resource-credentials">resource credentials</a> are stored encrypted, and
+        <a href="/docs/hedgehog/global-components/resource-credentials">resource credentials</a> are stored encrypted, and
         can only be decrypted by the service account.
         The tables/columns should be fairly 
         obvious once you're familiar with the software, and <a href="/support/ticket">we can answer</a> any questions

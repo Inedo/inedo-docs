@@ -38,7 +38,7 @@ ProGet supports three different workflows for managing vulnerabilities:
 
 <sup>R</sup>While OSS Index doesn't require a paid subscription, users will need to create a [registered account](https://ossindex.sonatype.org/ ).
 
-See [Integrating ProGet with OSS Index](/support/documentation/proget/compliance/vulnerabilities/vor) and [Integrating ProGet with WhiteSource](/support/documentation/proget/compliance/whitesource) documentation for more details on those workflows.
+See [Integrating ProGet with OSS Index](/docs/proget/compliance/vulnerabilities/vor) and [Integrating ProGet with WhiteSource](/docs/proget/compliance/whitesource) documentation for more details on those workflows.
 
 
 ## Feeds and Vulnerability Configuration {#feed-and-vulnerability data-title="Feeds and Vulnerability Configuration"}

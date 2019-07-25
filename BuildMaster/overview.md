@@ -18,7 +18,7 @@ In this tutorial, you will learn how to deploy a simple ASP.NET web application 
 
 *View the full step-by-step tutorial [here](/support/tutorials/buildmaster/deployments/deploying-a-simple-web-app-to-iis).*
 
-BuildMaster will install on any supported version of Windows; simply [download](/buildmaster/download), and click through the installer to get BuildMaster up and running in minutes. Through the installer, you select the edition you wish to install; a trial, the free edition, or enter a license key. Review the [step-by-step Installation Guide](/support/documentation/buildmaster/installation/windows-guide) for details as to what's happening behind the scenes.
+BuildMaster will install on any supported version of Windows; simply [download](/buildmaster/download), and click through the installer to get BuildMaster up and running in minutes. Through the installer, you select the edition you wish to install; a trial, the free edition, or enter a license key. Review the [step-by-step Installation Guide](/docs/buildmaster/installation/windows-guide) for details as to what's happening behind the scenes.
 
 ### Agents and Servers in BuildMaster
 
@@ -29,5 +29,5 @@ The Inedo Agent is generally the best way to communicate with a *Windows server*
 To communicate with Linux servers, BuildMaster uses *SSH* and *SFTP*, and if you're using BuildMaster to interact with the server it is installed on, you can just set it up using a *local agent*.
 
 :::circle-button-set
-[Learn More About Agents & Servers](/support/documentation/buildmaster/administration/agents-and-infrastructure){.doc-button}
+[Learn More About Agents & Servers](/docs/buildmaster/administration/agents-and-infrastructure){.doc-button}
 :::

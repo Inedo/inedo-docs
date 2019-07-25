@@ -74,7 +74,7 @@ If files you would like to include into the package are in the same project and 
 ```
 
 #### Next Steps {#next-steps}
-After the Web Deploy Package is created, you can notify any BuildMaster user or group that the package is created and needs to be deployed. When you use the [Manual Operation] (/support/documentation/buildmaster/reference/operations/buildmaster/manual-operation) in your plan, the execution will be halted until an individual completes the specified task. 
+After the Web Deploy Package is created, you can notify any BuildMaster user or group that the package is created and needs to be deployed. When you use the [Manual Operation] (/docs/buildmaster/reference/operations/buildmaster/manual-operation) in your plan, the execution will be halted until an individual completes the specified task. 
 
 ```
 Perform-ManualOperation

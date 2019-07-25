@@ -81,7 +81,7 @@ ProGet's built-in user directory is used by default and initially contains a sin
 
 ### Active Directory LDAP {#ad-ldap data-title="Active Directory LDAP"}
 
-This is common to all of our products; check out the [shared documentation](/support/documentation/various/ldap/ldap-active-directory).
+This is common to all of our products; check out the [shared documentation](/docs/various/ldap/ldap-active-directory).
 
 ## Virtual Privilege Assignments
 
@@ -95,4 +95,4 @@ As of ProGet v5.2.5, privileges may be granted or restricted to the following "c
 
 As of ProGet v5.2.6, a hybrid user directory may be used to combine multiple user directories together, resolving principals from one or more existing user directories. This allows ProGet administrators to configure the system such that, for example, user accounts can be defined in ProGet with a fallback to Active Directory.
 
-Visit the [Hybrid User Directories](/support/documentation/various/ldap/combining-with-built-in) documentation for more information.
+Visit the [Hybrid User Directories](/docs/various/ldap/combining-with-built-in) documentation for more information.

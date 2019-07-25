@@ -3,7 +3,7 @@ title: Service Administration
 keywords: otter,service
 ---
 
-The Otter Service is key component of Otter's [architecture](/support/documentation/otter/installation/architecture), and is what actually runs your [plans](../../core-concepts/plans) using the [execution engine](/support/documentation/otter/execution-engine/overview). It's a standard [Windows Service Application](https://msdn.microsoft.com/en-us/library/windows/desktop/ms685141(v=vs.85).aspx), and may be managed and [configured](#configuration-options) using the Windows Service Manager or `sc.exe` as you see fit.
+The Otter Service is key component of Otter's [architecture](/docs/otter/installation/architecture), and is what actually runs your [plans](../../core-concepts/plans) using the [execution engine](/docs/otter/execution-engine/overview). It's a standard [Windows Service Application](https://msdn.microsoft.com/en-us/library/windows/desktop/ms685141(v=vs.85).aspx), and may be managed and [configured](#configuration-options) using the Windows Service Manager or `sc.exe` as you see fit.
 
 ### Managing the Service from the Otter Web Application
 
@@ -15,7 +15,7 @@ You can also manually trigger the task runners that the service would otherwise 
 
 {.docs}
 - **ServerCheckerTimedExecuter** - this runs every hour, performs a lightweight handshake on each remote agent, and upgrades the agent as needed
-- **JobDispatcherTimedExecuter** - this runs every minute, checks for scheduled [jobs](/support/documentation/otter/core-concepts/jobs), and executes those jobs as needed
+- **JobDispatcherTimedExecuter** - this runs every minute, checks for scheduled [jobs](/docs/otter/core-concepts/jobs), and executes those jobs as needed
 - **RoutineConfigurationTimedExecuter** - this runs every hour (you can change this with `RoutineConfigurationExecutionThrottle` in All Settings), and executes configuration plans for all severs
 - **UpdateCheckerTimedExecuter** - this runs every six hours (you disable this with `Updates.PerformUpdateChecks` in All Settings), and communicates with inedo.com for an updated version of the sofftware
 

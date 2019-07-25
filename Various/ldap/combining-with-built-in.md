@@ -20,13 +20,13 @@ BuildMaster supports the following types of user directories, any of which can b
 {.docs}
  - **Built-in** - define users and groups in BuildMaster
  - **LDAP / Active Directory** - define permissions against existing users or groups in an existing Windows AD forest or generic LDAP directory
- - **Custom** - because user groups are extensible, a custom user directory built against the [Inedo SDK](/support/documentation/inedosdk/overview) is eligible to be referenced in a hybrid user directory
+ - **Custom** - because user groups are extensible, a custom user directory built against the [Inedo SDK](/docs/inedosdk/overview) is eligible to be referenced in a hybrid user directory
 
 ## Configuring a Hybrid User Directory {#configuring}
 
 To edit or add a hybrid user directory you will need to go to administration section under Security & Authentication then click on Change User Directory (LDAP) and click the **Advanced** button. To edit an existing hybrid user directory, select its name in the user directory table. To add a new hybrid directory click the **Add Hybrid Directory** button, and then choose any combination of existing non-hybrid user directories to be included in the hybrid configuration.
 
-Once the directory has been created, [privileges must be assigned to it](/support/documentation/buildmaster/administration/security#adding-permissions-and-restrictions) because privileges for the contained user directories are not considered when resolving permissions.
+Once the directory has been created, [privileges must be assigned to it](/docs/buildmaster/administration/security#adding-permissions-and-restrictions) because privileges for the contained user directories are not considered when resolving permissions.
 
 ## Switching to a Hybrid User Directory {#switching}
 

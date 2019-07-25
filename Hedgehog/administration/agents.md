@@ -8,15 +8,15 @@ To deploy packages to servers and the cloud, Hedgehog needs to be able to commun
 
 ## Windows Servers {#windows-servers data-title="Windows Servers"}
 
-The [Inedo Agent](/support/documentation/inedoagent/overview) is generally the best way to communicate with a Windows server. It's light-weight, and uses a highly-optimized and resilient protocol built solely for this purpose, and is [quite easy to install](/support/documentation/inedoagent/installation/installation-guide).
+The [Inedo Agent](/docs/inedoagent/overview) is generally the best way to communicate with a Windows server. It's light-weight, and uses a highly-optimized and resilient protocol built solely for this purpose, and is [quite easy to install](/docs/inedoagent/installation/installation-guide).
 
 ### Agentless Windows Servers {#agentless-servers data-title="Agentless Windows Servers"}
 
-Alternatively, Hedgehog can use PowerShell Remoting to communicate with Windows servers; however, this is generally slower and less resilient than the Inedo Agent protocol. You can connect using integrated authentication (i.e. whatever account the service is running under), or with a username & password [resource credential](/support/documentation/hedgehog/global-components/resource-credentials). See [Enable PSRemoting](https://technet.microsoft.com/en-us/library/hh849694.aspx) to configure a server to receive remote commands.
+Alternatively, Hedgehog can use PowerShell Remoting to communicate with Windows servers; however, this is generally slower and less resilient than the Inedo Agent protocol. You can connect using integrated authentication (i.e. whatever account the service is running under), or with a username & password [resource credential](/docs/hedgehog/global-components/resource-credentials). See [Enable PSRemoting](https://technet.microsoft.com/en-us/library/hh849694.aspx) to configure a server to receive remote commands.
 
 ## Linux Servers {#linux-servers data-title="Linux Servers"}
 
-To communicate with Linux servers, Hedgehog uses the lightweight, highly-optimized, and resilient protocol already enabled on nearly every Linux box: SSH and SFTP. You can connect with a private key or username & password [resource credential](/support/documentation/hedgehog/global-components/resource-credentials).
+To communicate with Linux servers, Hedgehog uses the lightweight, highly-optimized, and resilient protocol already enabled on nearly every Linux box: SSH and SFTP. You can connect with a private key or username & password [resource credential](/docs/hedgehog/global-components/resource-credentials).
 
 ## Local Agents {#local data-title="Local Agents"}
 

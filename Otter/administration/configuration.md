@@ -33,7 +33,7 @@ To have another instance of BuildMaster or Otter synchronize with your instance,
 
 ![Synchronization Settings](/resources/documentation/buildmaster/sync.png){.screenshot}
 
-[servers]: /support/documentation/otter/core-concepts/servers
-[environments]: /support/documentation/otter/modeling-infrastructure/environments
-[server roles]: /support/documentation/otter/modeling-infrastructure/server-roles
+[servers]: /docs/otter/core-concepts/servers
+[environments]: /docs/otter/modeling-infrastructure/environments
+[server roles]: /docs/otter/modeling-infrastructure/server-roles
 [BuildMaster]: /buildmaster

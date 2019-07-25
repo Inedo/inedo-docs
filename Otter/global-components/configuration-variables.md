@@ -25,12 +25,12 @@ You can define variables by going to the desired context (such as the specific s
     </tab>
 </tab-block>
 
-OtterScript supports [three types of variables](/support/documentation/various/execution-engine/otterscript/strings-and-literals), and if your variable's value starts with `@(` or `%(`, then it will be treated as a list or map type, respectively.  For example, `@(item1, item2, item3)` will be considered a list variable, `%(key1: value1, key2: @(list1, list2)` a map variable, and `@((` an invalid expression.
+OtterScript supports [three types of variables](/docs/various/execution-engine/otterscript/strings-and-literals), and if your variable's value starts with `@(` or `%(`, then it will be treated as a list or map type, respectively.  For example, `@(item1, item2, item3)` will be considered a list variable, `%(key1: value1, key2: @(list1, list2)` a map variable, and `@((` an invalid expression.
 
 As such, you do not need to specify prefix (&#36;,&#64;, or &#37;) for your variables.
 
 :::attention {.technical}
-**Do not** store sensitive information in variables; use [credentials instead](/support/documentation/otter/global-components/resource-credentials). While there is an option to "obscure the value of this variable from casual viewing", this does exactly as the name implies, and is not intended to be used as a security feature.
+**Do not** store sensitive information in variables; use [credentials instead](/docs/otter/global-components/resource-credentials). While there is an option to "obscure the value of this variable from casual viewing", this does exactly as the name implies, and is not intended to be used as a security feature.
 :::
 
 ## Cascading Behavior {#cascading data-title="Cascading Behavior"}
@@ -54,6 +54,6 @@ The variable definition that's the "closest" match to the current context is use
 
 ### Multiple Scopes {#scopes data-title="Multiple Scopes"}
 
-You can also assign multiple scopes to a configuration variable; for example, you could define a variable that's associated with *both* the `Testing` environment and the `hdars-web` role. A multi-scope variable simply adds precedence to the highest-scope ([Job](/support/documentation/otter/core-concepts/jobs) is still "closer" than a server or server role).
+You can also assign multiple scopes to a configuration variable; for example, you could define a variable that's associated with *both* the `Testing` environment and the `hdars-web` role. A multi-scope variable simply adds precedence to the highest-scope ([Job](/docs/otter/core-concepts/jobs) is still "closer" than a server or server role).
 
 However, this can become confusing as the resolution rules are not intuitive. We generally discourage this use. You can only create multi-scoped variables from the administration section, and they are visible (but not editable) on the servers, server roles, etc., they are associated with.
