@@ -3,7 +3,7 @@ title: Other Statements
 keywords: otter,execution-engine,operation-groups
 ---
 
-In addition to running [operations](/support/documentation/otter/reference/operations) and other plans as templates, the following statements are available:
+In addition to running [operations](/docs/otter/reference/operations) and other plans as templates, the following statements are available:
 
 ### Set Variable Statement {#set-variable}
 
@@ -19,7 +19,7 @@ If you log at the Fail level, then the execution status will be set to Fail, but
 
 ### Set Status {#set-status}
 
-The execution status is generally set by the success or failure of operations in a plan, but you can also change the status to `Fail` or `Warn` as needed. This is commonly used inside of the Catch (On Error) portion of a [Try/Catch](/support/documentation/otter/execution-engine/statements-and-blocks/try-catch) block to set the status to the desired level.
+The execution status is generally set by the success or failure of operations in a plan, but you can also change the status to `Fail` or `Warn` as needed. This is commonly used inside of the Catch (On Error) portion of a [Try/Catch](/docs/otter/execution-engine/statements-and-blocks/try-catch) block to set the status to the desired level.
 
 ### Raise Error {#raise-error}
 

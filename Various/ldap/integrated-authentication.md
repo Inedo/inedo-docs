@@ -6,7 +6,7 @@ keywords: ldap,active-directory
 
 Integrated Authentication is an option that allows transparent user authentication, removing the web-based login prompt. When this option is enabled and working, whatever account you signed on to Windows with, will be used as your login.
 
-**TROUBLESHOOTING**: [Receiving 401 (Not Authorized), always prompted for credentials.](/support/documentation/various/ldap/troubleshooting#authentication-not-working) {.info}
+**TROUBLESHOOTING**: [Receiving 401 (Not Authorized), always prompted for credentials.](/docs/various/ldap/troubleshooting#authentication-not-working) {.info}
 
 ## Web Server Configuration {#web-server-config}
 

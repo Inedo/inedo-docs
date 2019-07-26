@@ -20,7 +20,7 @@ On the Manage Feed page, you can identify if any packages are consuming a dispro
 
 ![](/resources/documentation/proget/package-usage.png){.screenshot}
 
-This can help you when you define [retention rules](/support/documentation/proget/administration/retention-rules) to cut back on disk space usage if needed.
+This can help you when you define [retention rules](/docs/proget/administration/retention-rules) to cut back on disk space usage if needed.
 
 
 ## Package Statistics  {#package-statistics data-title="Package Statistics"}

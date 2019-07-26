@@ -22,7 +22,7 @@ A connection to inedo.com is recommended, but not required. If your BuildMaster 
 
 ## Creating your Own Extensions {#creating-extension data-title="Creating your Own Extensions"}
 
-You can extend BuildMaster's functionality by [creating an extension](/support/documentation/various/inedo-sdk/creating) that's built against the [Inedo SDK](/support/documentation/various/inedo-sdk/the-sdk). This extension can also be used in Inedo's other tools. Here's what you can extend in BuildMaster:
+You can extend BuildMaster's functionality by [creating an extension](/docs/various/inedo-sdk/creating) that's built against the [Inedo SDK](/docs/various/inedo-sdk/the-sdk). This extension can also be used in Inedo's other tools. Here's what you can extend in BuildMaster:
 
 | Name | Description |
 | ---- | ----------- |

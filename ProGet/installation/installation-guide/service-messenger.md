@@ -16,7 +16,7 @@ The service messenger has two modes of operation: local named pipe or TCP. If yo
 
 ## Configuring for Load-balancing
 
-First, make sure to follow the [instructions](/support/documentation/proget/installation/installation-guide/load-balanced) for configuring load-balancing.
+First, make sure to follow the [instructions](/docs/proget/installation/installation-guide/load-balanced) for configuring load-balancing.
 
 Some additional configuration is required to enable the service messenger to work in a load balanced environment. Since the service and web apps are not on the same machine with this configuration, you will need to configure ProGet to use TCP instead of a named pipe:
 

@@ -26,8 +26,8 @@ ProGet will automatically connect to the [inedo.com/den](/den), and notify you o
 With the Inedo SDK, you can create your own ProGet extension. Check out the following documents to get started:
 
 {.docs}
-- [Inedo SDK Overview](/support/documentation/various/inedo-sdk/the-sdk)
-- [Creating an Extension using the SDK](/support/documentation/various/inedo-sdk/creating)
+- [Inedo SDK Overview](/docs/various/inedo-sdk/the-sdk)
+- [Creating an Extension using the SDK](/docs/various/inedo-sdk/creating)
 
 ## Extensions in ProGet v4
 

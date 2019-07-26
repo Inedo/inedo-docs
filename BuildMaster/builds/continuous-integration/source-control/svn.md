@@ -58,7 +58,7 @@ Svn-Checkout(
 );
 ```
 
-A more general approach can be taken by using BuildMaster functions (e.g. `SourcePath: branches/$ReleaseNumber`), configuration variables, or even [release template variable prompts](/support/documentation/buildmaster/releases/templates#components) that enable the branch to be selected at build time.
+A more general approach can be taken by using BuildMaster functions (e.g. `SourcePath: branches/$ReleaseNumber`), configuration variables, or even [release template variable prompts](/docs/buildmaster/releases/templates#components) that enable the branch to be selected at build time.
 
 ### Branching and Tagging in Subversion
 
@@ -104,13 +104,13 @@ svn.exe copy trunk tags/Release-1.2.5
 
 BuildMaster supports automatically monitoring a Subversion repository for changes, no matter where it is hosted. 
 
-To automatically create builds when developers commit to a Subversion repository, simply configure a [Repository Monitor](/support/documentation/buildmaster/builds/continuous-integration/repository-monitors).
+To automatically create builds when developers commit to a Subversion repository, simply configure a [Repository Monitor](/docs/buildmaster/builds/continuous-integration/repository-monitors).
 
 {.attention .technical} Note: a Subversion repository monitor requires BuildMaster v6.1 or later in combination with v1.1.0 or later of the Subversion extension.
 
 #### Available Variables
 
-When using a [repository monitor plan](/support/documentation/buildmaster/builds/continuous-integration/repository-monitors#ci-plans), the following variables are available:
+When using a [repository monitor plan](/docs/buildmaster/builds/continuous-integration/repository-monitors#ci-plans), the following variables are available:
 
  - `$Branch` - the full path of the branch, e.g. `branches/develop-1.2.3`
  - `$RevisionNumber` - the highest integer revision number of any file within the specified path
@@ -119,4 +119,4 @@ When using a [repository monitor plan](/support/documentation/buildmaster/builds
 
 BuildMaster's Subversion integration supports username/password authentication over HTTPS. This is the simplest and recommended method to authenticate with a Subversion repository.
 
-While each SVN operation supports supplying a repository URL, username, and password, it is recommended to create a [Resource Credential](/support/documentation/buildmaster/administration/resource-credentials) for Subversion that includes the repository name, username, and password. This is not only more secure, but more convenient as the credentials are stored in one location.
+While each SVN operation supports supplying a repository URL, username, and password, it is recommended to create a [Resource Credential](/docs/buildmaster/administration/resource-credentials) for Subversion that includes the repository name, username, and password. This is not only more secure, but more convenient as the credentials are stored in one location.

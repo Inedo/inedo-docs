@@ -72,14 +72,14 @@ Connector health is checked once per hour, and used to determine whether a conne
 
 ### Connector Health API
 
-Connector health may be queries as part of the ProGet API. Visit the [Connector Health API](/support/documentation/proget/reference/api/connector-health-api) documentation for more information.
+Connector health may be queries as part of the ProGet API. Visit the [Connector Health API](/docs/proget/reference/api/connector-health-api) documentation for more information.
 
 ### Local Indexes {#local-index}
 
 Most connectors allow transparent forwarding to the connector URL to query metadata. The following feeds however use local indexes:
 
  - **npm _(pre-v4.7.8 of ProGet)_:** connectors required a local index as they were created before the search API existed. The (now deprecated) `FullNpmConnectorIndex` and `IncrementalNpmConnectorIndex` scheduled jobs still exist in ProGet, but only for backwards compatibility with third-party repositories that still do not support the `v1/search` API
- - **maven:** uses a local Lucene database ([more info](/support/documentation/proget/feeds/maven)) - this indexing is performed on a schedule, to trigger the index task manually visit the `Admin` > `Scheduled Jobs` page and select `FullMavenConnectorIndex`. If this connector index is not available, visit the `Admin` > `Service` page and trigger the `Scheduled Job Dispatcher` which will re-configure any missing connector index scheduled jobs
+ - **maven:** uses a local Lucene database ([more info](/docs/proget/feeds/maven)) - this indexing is performed on a schedule, to trigger the index task manually visit the `Admin` > `Scheduled Jobs` page and select `FullMavenConnectorIndex`. If this connector index is not available, visit the `Admin` > `Service` page and trigger the `Scheduled Job Dispatcher` which will re-configure any missing connector index scheduled jobs
 
 ## Self-Connectors {#self-connectors data-title="Self Connectors"}
 
@@ -93,4 +93,4 @@ Self-connectors are defined as connectors that refer to the same instance of Pro
 
 ## ProGet Free Edition Limitations {#free-edition-limitations data-title="Free Edition Limitations"}
 
-ProGet Free may only connect to public repositories (e.g. nuget.org, registry.npmjs.org), and connecting to another ProGet instance is not permitted and could result in license violation notifications being displayed on both instances. See [ProGet Free Edition Limitations](/support/documentation/proget/administration/license#proget-free-edition-limitations) for more information about the specific restrictions that apply to connectors.
+ProGet Free may only connect to public repositories (e.g. nuget.org, registry.npmjs.org), and connecting to another ProGet instance is not permitted and could result in license violation notifications being displayed on both instances. See [ProGet Free Edition Limitations](/docs/proget/administration/license#proget-free-edition-limitations) for more information about the specific restrictions that apply to connectors.

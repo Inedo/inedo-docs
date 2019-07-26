@@ -76,7 +76,7 @@ First, makes sure to familiarize yourself with the following Docker terminology 
 | Manifest      | a JSON-based description of an _image_ and the _layers_ it contains; this is referenced by its _digest_ and stored as a _blob_|
 | Dockerfile    | a file written in a procedural language that is used by the Docker client to construct an _image_; essentially, this is used to generate a _manifest_ |
 
-Conceptually, a registry is like a feed, a repository is like a package name, and an image is like a specific package version. However, the differences are a bit more nuanced, so make sure to also read [Packages vs Containers](/support/documentation/proget/docker/packages-vs-containers).
+Conceptually, a registry is like a feed, a repository is like a package name, and an image is like a specific package version. However, the differences are a bit more nuanced, so make sure to also read [Packages vs Containers](/docs/proget/docker/packages-vs-containers).
 
 ### Chunked and Monolithic Uploading
 
@@ -92,7 +92,7 @@ This is where garbage collection comes in; it's the process of removing blobs fr
 
 ### Connectors
 
-As of ProGet v5.1, docker feeds support [connectors](/support/documentation/proget/core-concepts/feeds/connectors) to other docker registries.
+As of ProGet v5.1, docker feeds support [connectors](/docs/proget/core-concepts/feeds/connectors) to other docker registries.
 
 ## Private Registry Limitations
 

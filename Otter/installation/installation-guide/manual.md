@@ -8,7 +8,7 @@ keywords: otter
 is not fully supported. Please visit the [Download](/otter/download) page to download the installer. {.announcement}
 
 
-These instructions will describe how to manually install each of [Otter's deployable components](/support/documentation/otter/installation/architecture). The manual installation packages for these components can be found on the [All Versions](/otter/versions) page.
+These instructions will describe how to manually install each of [Otter's deployable components](/docs/otter/installation/architecture). The manual installation packages for these components can be found on the [All Versions](/otter/versions) page.
 
 Prior to installation of Otter or an Otter Agent, an Otter "home" directory needs to be created. We recommend `C:\Otter` when installing manually, because `Program Files` tend to have special permissions, and because a number of 3rd-party tools that you may integrate with might have issues with very long path names. Replace any instances of `{Otter.RootDir}` in the following documentation with the actual path you have selected. {.info}
 
@@ -18,7 +18,7 @@ Otter may be configured to use its own domain account, or may run as [NetworkSer
 
 ## Otter's Encryption Key {#encryption-key}
 
-In order to store sensitive data, such as [resource credentials](/support/documentation/otter/global-components/resource-credentials), a 32-character hex string is used for AES encryption. You can generate this however you'd like, including by copying the pseudorandom string below, which is regenerated every time you refresh this page:
+In order to store sensitive data, such as [resource credentials](/docs/otter/global-components/resource-credentials), a 32-character hex string is used for AES encryption. You can generate this however you'd like, including by copying the pseudorandom string below, which is regenerated every time you refresh this page:
 
 <pre id="random-aes-key"></pre>
 <script>

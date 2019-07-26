@@ -12,7 +12,7 @@ Think of a feed like a private 'app store', but for your own applications and co
 
 You can control who can access which feeds, and assign granular permissions for performing specific tasks on a feed. For example, you could allow everyone to view and download packages on all feeds, but only allow ".NET Developers" to publish packages to the "NuGet-Dev" feed.
 
-By setting up multiple feeds, you can not only separate packages by package format and development group, but also use [package promotion](/support/documentation/proget/advanced/package-promotion) to identify quality and compliant packages.
+By setting up multiple feeds, you can not only separate packages by package format and development group, but also use [package promotion](/docs/proget/advanced/package-promotion) to identify quality and compliant packages.
 
 ## Creating and Managing Feeds {#creating data-title="Creating and Managing Feeds"}
 
@@ -22,14 +22,14 @@ To create a new feed, go to `Feeds > Create Feed`. You can also manage feeds fro
 
 The type of feed defines the format of package that it will contain. A NuGet feed, for example, will only ever store NuGet packages, and a npm feed will only ever store npm packages.
 
-The type also determines the API that is used to programmatically access packages within that feed. For example, a Universal feed will only use the [Universal Feed API](/support/documentation/upack/feed-api), and a NuGet feed will only ever use the NuGet API.
+The type also determines the API that is used to programmatically access packages within that feed. For example, a Universal feed will only use the [Universal Feed API](/docs/upack/feed-api), and a NuGet feed will only ever use the NuGet API.
 
 ### Package File Storage {#package data-title="Package File Storage"}
 
 By default, a feed's package files are stored on disk, in a directory managed by ProGet. You can change this directory by either editing the default directory, or by setting the Disk Path property on a feed.
 
 :::attention {.analogy}
-To use cloud storage, you need to configure a different package store; see [Amazon S3 and Azure Blob Package Storage](/support/documentation/proget/advanced/cloud-storage) for more information.
+To use cloud storage, you need to configure a different package store; see [Amazon S3 and Azure Blob Package Storage](/docs/proget/advanced/cloud-storage) for more information.
 :::
 
 Accessing the package files directly for any reason other than backing up files is not supported. Future versions of ProGet may change the way package files are stored on disk.
@@ -69,27 +69,27 @@ By default, existing packages will not be overwritten, but you can change this b
 
 ### Connectors
 
-Connectors allow ProGet feeds to include packages from an external source, whether it is another ProGet feed, a public feed, or any other implementer of the package API for the feed type. See the [connectors documentation](/support/documentation/proget/core-concepts/feeds/connectors) for more information about connectors.
+Connectors allow ProGet feeds to include packages from an external source, whether it is another ProGet feed, a public feed, or any other implementer of the package API for the feed type. See the [connectors documentation](/docs/proget/core-concepts/feeds/connectors) for more information about connectors.
 
 ### Vulnerability Sources
 
-ProGet has integrations with two leading vulnerability scanning companies to automatically scan third-party packages against vulnerability databases. See [Vulnerability Scanning and Blocking](/support/documentation/proget/compliance/vulnerabilities) for more information.
+ProGet has integrations with two leading vulnerability scanning companies to automatically scan third-party packages against vulnerability databases. See [Vulnerability Scanning and Blocking](/docs/proget/compliance/vulnerabilities) for more information.
 
 ### License Filters 
 
-ProGet offers two workflows for managing licensing agreements of third-party, open-source packages. See [License Scanning and Blocking](/support/documentation/proget/compliance/license-scanning) for more information.
+ProGet offers two workflows for managing licensing agreements of third-party, open-source packages. See [License Scanning and Blocking](/docs/proget/compliance/license-scanning) for more information.
 
 ### Retention Rules 
 
-Retention rules help you reclaim disk space by automatically deleting old or unused packages that meet a set of criteria that you define. See [Retention Rules](/support/documentation/proget/administration/retention-rules) for more information.
+Retention rules help you reclaim disk space by automatically deleting old or unused packages that meet a set of criteria that you define. See [Retention Rules](/docs/proget/administration/retention-rules) for more information.
 
 ### Variables 
 
-Variables are key/value pairs that can be used in [Webhooks](/support/documentation/proget/advanced/webhooks) to allow you to integrate ProGet with other tools and  notify users, trigger automated workflows, or audit events like package creation and deletion.
+Variables are key/value pairs that can be used in [Webhooks](/docs/proget/advanced/webhooks) to allow you to integrate ProGet with other tools and  notify users, trigger automated workflows, or audit events like package creation and deletion.
 
 ## Feed API Endpoints {#api-endpoints data-title="Feed API Endpoints"}
 
-All feeds have an "API Endpoint" URL that is used for API (programmatic) access. You can find this URL in the top-right corner of the Feed's browse page. The specific API that a feed uses depends entirely on its type; for example, a Universal feed will only use the [Universal Feed API](/support/documentation/upack/feed-api), and a NuGet feed will only ever use the NuGet API.
+All feeds have an "API Endpoint" URL that is used for API (programmatic) access. You can find this URL in the top-right corner of the Feed's browse page. The specific API that a feed uses depends entirely on its type; for example, a Universal feed will only use the [Universal Feed API](/docs/upack/feed-api), and a NuGet feed will only ever use the NuGet API.
 
 ## Deleting a Feed {#deleting data-title="Deleting a Feed"}
 

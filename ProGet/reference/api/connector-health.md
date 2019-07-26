@@ -14,7 +14,7 @@ This API is available starting in ProGet 5.2.
 
 #### Authentication
 
-For security and simplicity, these endpoints require that a Connector Health [API Key](/support/documentation/proget/administration/security/api-keys) is created first. This key can be supplied to the API using any of the methods documented in the [API Key Usage](/support/documentation/proget/administration/security/api-keys#usage) section.
+For security and simplicity, these endpoints require that a Connector Health [API Key](/docs/proget/administration/security/api-keys) is created first. This key can be supplied to the API using any of the methods documented in the [API Key Usage](/docs/proget/administration/security/api-keys#usage) section.
 
 ## Object Models {#object-models}
 

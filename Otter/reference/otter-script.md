@@ -12,7 +12,7 @@ keywords: otter,otterscript,configuration-plans
 
 ![](/resources/images/logos/otterscript.svg){width="250"}
 
-*OtterScript* is a Domain-Specific Language that was designed in tandem with the [execution engine](/support/documentation/otter/execution-engine/overview) to represent [configuration plans](../core-concepts/plans#configuration) and [orchestration plans](../core-concepts/plans#orchestration) in Otter, and deployment plans in BuildMaster. Because a DSL is inherently limited in functionality, a key feature of is the ability to "drop down" to a [lower-level scripting language](../modeling-infrastructure/powershell) as needed.
+*OtterScript* is a Domain-Specific Language that was designed in tandem with the [execution engine](/docs/otter/execution-engine/overview) to represent [configuration plans](../core-concepts/plans#configuration) and [orchestration plans](../core-concepts/plans#orchestration) in Otter, and deployment plans in BuildMaster. Because a DSL is inherently limited in functionality, a key feature of is the ability to "drop down" to a [lower-level scripting language](../modeling-infrastructure/powershell) as needed.
 
 While OtterScript is neither a general-purpose programming language (like Ruby), nor a general-purpose mark-up language (like YAML), it was inspired by both, and allows you to build declarative and imperative plans.
 
@@ -20,10 +20,10 @@ While OtterScript is neither a general-purpose programming language (like Ruby),
 **Shared Documentation Note** - instead of copy/pasting the documentation (or creating a whole new set of documentation for OtterScript), we've kept the OtterScript detail pages in the Various Documentation, and the very few things that are Otter-specific are noted on these pages:
 
 {.docs}
-- [Comments & Descriptions](/support/documentation/various/execution-engine/otterscript/comments-and-descriptions)
-- [Formal Grammar](/support/documentation/various/execution-engine/otterscript/formal-grammar)
-- [Formal Specification](/support/documentation/various/execution-engine/otterscript/formal-specification)
-- [Strings & Values](/support/documentation/various/execution-engine/otterscript/strings-and-literals)
+- [Comments & Descriptions](/docs/various/execution-engine/otterscript/comments-and-descriptions)
+- [Formal Grammar](/docs/various/execution-engine/otterscript/formal-grammar)
+- [Formal Specification](/docs/various/execution-engine/otterscript/formal-specification)
+- [Strings & Values](/docs/various/execution-engine/otterscript/strings-and-literals)
 :::
 
 

@@ -32,7 +32,7 @@ To create a new Assessment type go *Administration* > *Manage Assessment Types* 
 
 ## Feed Level Configuration {#feed-level data-title="Feed Level Configuration"}
 
-Vulnerability sources are scoped at the feed level and can be added on a feed-by-feed basis. Since [Security and Access Controls](/support/documentation/proget/administration/security) are also scoped at the feed level, you are able to permit and restrict access to who is allowed to assess vulnerabilities.
+Vulnerability sources are scoped at the feed level and can be added on a feed-by-feed basis. Since [Security and Access Controls](/docs/proget/administration/security) are also scoped at the feed level, you are able to permit and restrict access to who is allowed to assess vulnerabilities.
 
 Go to the *feeds* tab and select a feed to add the vulnerability source to. Then select *Manage Feed* > *add source*.
 

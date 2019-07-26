@@ -104,7 +104,7 @@ If IIS is installed on the server, you will have the option of installing Otter 
 
 ## 11. User Account {#user-account}
 
-By default, the installer will use the [NetworkService](https://msdn.microsoft.com/en-us/library/windows/desktop/ms684272(v=vs.85).aspx) account to run the [Otter Service](/support/documentation/otter/administration/service) and Web Application. We recommend sticking with this, and [changing the account](/support/kb/1077) later if you need to.
+By default, the installer will use the [NetworkService](https://msdn.microsoft.com/en-us/library/windows/desktop/ms684272(v=vs.85).aspx) account to run the [Otter Service](/docs/otter/administration/service) and Web Application. We recommend sticking with this, and [changing the account](/support/kb/1077) later if you need to.
 
 ![Otter User Account](/resources/documentation/otter-installation/user-account-otter.png)
 

@@ -84,11 +84,11 @@ This simplicity also makes them hard to describe in detail, because they can be 
 
 Modules are parameterized sets of instructions that can be used by configuration plans, orchestration plans, or other modules.
 
-[Servers]: /support/documentation/otter/core-concepts/servers
-[Server Roles]: /support/documentation/otter/modeling-infrastructure/server-roles
-[Configuration Drift]: /support/documentation/otter/core-concepts/servers#drift
-[OtterScript]: /support/documentation/otter/reference/otter-script
-[Inedo Execution Engine]: /support/documentation/otter/execution-engine/overview
-[Runtime Variables]: /support/documentation/otter/execution-engine/runtime-variables
-[Configuration Variables]: /support/documentation/otter/global-components/configuration-variables
-[Environments]: /support/documentation/otter/modeling-infrastructure/environments
+[Servers]: /docs/otter/core-concepts/servers
+[Server Roles]: /docs/otter/modeling-infrastructure/server-roles
+[Configuration Drift]: /docs/otter/core-concepts/servers#drift
+[OtterScript]: /docs/otter/reference/otter-script
+[Inedo Execution Engine]: /docs/otter/execution-engine/overview
+[Runtime Variables]: /docs/otter/execution-engine/runtime-variables
+[Configuration Variables]: /docs/otter/global-components/configuration-variables
+[Environments]: /docs/otter/modeling-infrastructure/environments

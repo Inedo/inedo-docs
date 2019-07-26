@@ -8,15 +8,15 @@
 </head>
 <body>
     <p>
-        <a href="/support/documentation/executionengine/components/runtime-variables"> Variables</a> allow for extreme flexibility when modeling your deployment plans, and
-        configuration variables allow you to have the same plan run differently across different servers and <a href="/support/documentation/buildmaster/administration/agents-and-infrastructure/environments">environments</a>.
+        <a href="/docs/executionengine/components/runtime-variables"> Variables</a> allow for extreme flexibility when modeling your deployment plans, and
+        configuration variables allow you to have the same plan run differently across different servers and <a href="/docs/buildmaster/administration/agents-and-infrastructure/environments">environments</a>.
     </p>
 
     <p>
         You can define configuration variables at different scopes (release, server, environment, global, etc), and then reference those variables in your plan when using
-        Operations, <a href="/support/documentation/executionengine/otterscript/statements-and-blocks/if-else">If/Else Blocks</a>,
-        <a href="/support/documentation/executionengine/otterscript/statements-and-blocks/loop">Loop Blocks</a>, etc.
-        You can also create a <a href="/support/documentation/executionengine/components/runtime-variables">runtime variable</a> in a plan itself.
+        Operations, <a href="/docs/executionengine/otterscript/statements-and-blocks/if-else">If/Else Blocks</a>,
+        <a href="/docs/executionengine/otterscript/statements-and-blocks/loop">Loop Blocks</a>, etc.
+        You can also create a <a href="/docs/executionengine/components/runtime-variables">runtime variable</a> in a plan itself.
     </p>
 
     <h2 id="cascading" data-title="Cascading Variables">Cascading Variables</h2>
@@ -38,7 +38,7 @@
     <h3 id="resolution-rules" data-title="Resolution Rules">Resolution Rules</h3>
     <p>The variable definition that's the "closest" match to the current context is used. This is determined as follows:</p>
     <ul class="docs">
-        <li>Runtime Variables (<i><a href="/support/documentation/executionengine/components/runtime-variables">more info</a></i>)</li>
+        <li>Runtime Variables (<i><a href="/docs/executionengine/components/runtime-variables">more info</a></i>)</li>
         <li>Deployment</li>
         <li>Build</li>
         <li>Release</li>
@@ -103,7 +103,7 @@
     </p>
     <p>
         The secure option for storing passwords, connection strings, or other values intended to be encrypted is
-        <a href="/support/documentation/buildmaster/administration/resource-credentials">Resource Credentials</a>, as they require special permissions to manage,
+        <a href="/docs/buildmaster/administration/resource-credentials">Resource Credentials</a>, as they require special permissions to manage,
         and (as per Inedo Extensibility guidelines) should <i>never</i> be written to any logs.
     </p>
 
@@ -128,7 +128,7 @@
 
     <h2 id="api" data-title="Variables API">Variables API</h2>
     <p>
-        Variables are configurable using the <a href="/support/documentation/buildmaster/reference/api/variables">Variables Management API</a>.
+        Variables are configurable using the <a href="/docs/buildmaster/reference/api/variables">Variables Management API</a>.
     </p>
 
     <h2 id="value-renderers" data-title="Custom Value Renderers">Custom Value Renderers</h2>

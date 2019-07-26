@@ -47,4 +47,4 @@ The two use-cases for this pattern are demonstrated on our public BuildMaster in
 
 ## Configuring Automatic Build Triggering {#build-triggering}
 
-Starting in <span class="upcoming">BuildMaster v6.1.10</span>, you can configure a scheduled [Repository Monitor](/support/documentation/buildmaster/builds/continuous-integration/repository-monitors), which will routinely poll an existing drop path to check if there is any new content within it that BuildMaster needs to capture. 
+Starting in <span class="upcoming">BuildMaster v6.1.10</span>, you can configure a scheduled [Repository Monitor](/docs/buildmaster/builds/continuous-integration/repository-monitors), which will routinely poll an existing drop path to check if there is any new content within it that BuildMaster needs to capture. 
