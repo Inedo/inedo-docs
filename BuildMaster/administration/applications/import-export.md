@@ -2,15 +2,15 @@
 title: Importing and Exporting Applications
 subtitle: Importing & Exporting Applications
 keywords: buildmaster
-sequence: 300
+sequence: 60
 show-headings-in-nav: true
 ---
 
-BuildMaster can export an application's configuration and history into a [universal package](/upack), and then publish that package to a feed in [ProGet](/proget) or a file on a disk. You import applications in the same manner.
+Importing and Exporting Applications can be a great way to minimize a lot of the work needed to create new applications. If you have a pipeline strategy that you want to repeat with only small differences you can export it to a package source and import it under a new name where the changes can be made. Another potential use case would be if you have another instance of BuildMaster and want to use the same Application you can quickly import any version of the application and start using it.
 
 ## Exporting Applications {#exporting data-title="Exporting Applications"}
 
-You can open the application export page from the application settings, or from Admin > Export Applications. When exporting applications, you have the following options:
+You can open the application export page from the your applications advanced settings page, or from Admin > Export Applications. When exporting applications, you have the following options:
 
 {.docs}
 - **Applications** - list of applications to export; this option will only appear when the page is accessed from the administration section
@@ -18,21 +18,16 @@ You can open the application export page from the application settings, or from 
 - **Package version** - optional, the version of the universal package to create; this defaults to 0.0.0
 - **Include history** - when selected, the release history and deployment logs will be included in the package. Note that this does not include artifacts
 
-You will also select how to publish the package, from one of two options:
+You will also select where to publish the package from a list of Package Sources.
 
 {.docs}
-- **Publish to Universal Feed** - a feed on a ProGet instance
-- **Save to Disk Path** - a local or network path that the BuildMaster service can write to
+- **Package sources** are configured as a feed on a ProGet instance with a feed url will become a repository for packages that you export, import, backup, restore, or templatize. A package source is simply configured as a url and credentials to a ProGet feed for univeral packages. 
 
-Before publishing to a feed, you will need to setup an Inedo Product [resource credential](/support/documentation/buildmaster/administration/resource-credentials) with the URL and optionally an API key to your ProGet server.
 
 ## Importing Applications {#importing data-title="Importing Applications"}
+You can import an application or template that has been exported to a pre-configured package source. This will save time by minimizing the time needed to setup an application that would have similar plans and pipelines.
 
-You can open the application import dialog form the create new application page, or from Admin > Import Application. When importing, you must first select a source package:
-
-{.docs}
-- **Import from Universal Feed** - import a specific package and version from a ProGet feed
-- **Load from Disk Path** -a local or network path that the BuildMaster service can read from
+To import an application go to Admin > Import Application. When importing, you must first select a source package:
 
 You will also be presented with the following options:
 
@@ -71,3 +66,25 @@ In addition to the standard name and version properties, BuildMaster will includ
 | **log-entries.json** | Historic; log text entries within a scope |
 
 Because these files are intended to only be used by BuildMaster, the precise format of these files is documented only in the source code (but you can [request source code access](/contact)).
+
+## Export as a Template
+You may also want to start with a very lightweight version of an application where you already have set up the critical elements of the application but understand that more configuration is needed. This is where templates will be useful. A template is similar to an exported application except it will not contain any history. 
+
+## Backup/Restore Applications
+Backing up applications is in much ways the same as exporting with the main exception being that it is created to capture a point to which it can be restored. Backups are very important when testing new processes and can prove to be very valuable when a change breaks part of your work flow. If you've backed up your application you'll easily be able to restore it to the exact working version from before the change. 
+
+## How To Backup/Restore an Application
+To backup an application you will need to go into your applications advanced settings and click "Backup Application" from there you will need to choose your package source. 
+
+## Routine Backup Of Applications
+Adding backups as part of your regularly scheduled maintenance will ensure that all of your applications will be easily restorable should something happen to break your workflow. In order to set this up you will need to create a [scheduled job](#) that runs a custom plan with simple OtterScript that called `System::Backup-Application`
+
+Here is an example: 
+```
+System::Backup-Application
+(
+    Application: testBackup,
+    PackageSource: BuildMasterApplications
+);
+```
+
