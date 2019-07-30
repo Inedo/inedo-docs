@@ -12,7 +12,7 @@ Otter is licensed by number of servers configured in the software on an annual o
 
 ## License Keys {#keys data-title="License Keys"}
 
-For more information on License Key Management and Activation, visit the docs [here](/support/documentation/various/licensing/management){target="_blank"}.
+For more information on License Key Management and Activation, visit the docs [here](/docs/various/licensing/management){target="_blank"}.
 
 ## Specific Guest Account Tasks {#guest-tasks data-title="Specific Guest Account Tasks"}
 

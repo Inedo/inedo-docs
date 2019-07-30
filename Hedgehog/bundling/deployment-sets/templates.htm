@@ -9,7 +9,7 @@
 <body>
 
     <p>Deployment set templates are designed to add a layer of consistency to the deployment set creation process by assigning default properties (e.g. pipeline selection, initially-included deployables), prompting for variables at various points during the deployment lifecycle.</p>
-    <p>Deployment set templates are stored in rafts and can be consumed by any project and are accessible by the standard <a href="/support/documentation/hedgehog/bundling/projects/content-name">project content name resolution</a>.</p>
+    <p>Deployment set templates are stored in rafts and can be consumed by any project and are accessible by the standard <a href="/docs/hedgehog/bundling/projects/content-name">project content name resolution</a>.</p>
     <h2 id="components">Components</h2>
     <p>Deployment set templates consist of 3 primary components:</p>
     <ol>
@@ -21,8 +21,8 @@
     <h4 id="hierarchy">Hierarchy</h4>
     <p>Deployment set template variables are configurable at two levels:</p>
     <ol>
-        <li><strong>Deployment set creation</strong> - when creating a deployment set, inputs will appear for the specified variables and once the set is created, corresponding <a href="/support/documentation/hedgehog/bundling/deployment-sets#variables">Deployment Set Variables</a> will be created. These variable values may be edited later on the Deployment Set Details page.</li>
-        <li><strong>Deployment to a pipeline stage</strong> - when deploying a set with a template assigned, inputs will appear on the "Deploy to Stage" page and once deployment begins, corresponding <a href="/support/documentation/executionengine/components/runtime-variables">Runtime Variables</a> will be injected into the deployment and are not editable (though they may be overridden within a deployment plan using the <a href="/support/documentation/executionengine/otterscript/statements-and-blocks/other-statements">Set Variable statement</a>.</li>
+        <li><strong>Deployment set creation</strong> - when creating a deployment set, inputs will appear for the specified variables and once the set is created, corresponding <a href="/docs/hedgehog/bundling/deployment-sets#variables">Deployment Set Variables</a> will be created. These variable values may be edited later on the Deployment Set Details page.</li>
+        <li><strong>Deployment to a pipeline stage</strong> - when deploying a set with a template assigned, inputs will appear on the "Deploy to Stage" page and once deployment begins, corresponding <a href="/docs/executionengine/components/runtime-variables">Runtime Variables</a> will be injected into the deployment and are not editable (though they may be overridden within a deployment plan using the <a href="/docs/executionengine/otterscript/statements-and-blocks/other-statements">Set Variable statement</a>.</li>
     </ol>
     <h4 id="types">Types</h4>
     <p>There are 4 types of Template Variables:</p>
@@ -37,7 +37,7 @@
     <ul class="docs">
         <li><strong>Initial value</strong> - the pre-populated value that will appear in a rendered variable prompt</li>
         <li><strong>Required</strong> - indicates that a value must be present to continue creating the deployment set or to deploy</li>
-        <li><strong>Obscure the value of this variable from casual viewing</strong> - indicates that when a corresponding deployment set variable is created, that it is hidden from the UI and will require additional edit permissions to view it. Note that this is not a means to "secure" a variable value which is handled through <a href="/support/documentation/hedgehog/global-components/resource-credentials">Resource Credentials</a>.</li>
+        <li><strong>Obscure the value of this variable from casual viewing</strong> - indicates that when a corresponding deployment set variable is created, that it is hidden from the UI and will require additional edit permissions to view it. Note that this is not a means to "secure" a variable value which is handled through <a href="/docs/hedgehog/global-components/resource-credentials">Resource Credentials</a>.</li>
     </ul>
 
     <h2 id="creating">Creating a Deployment Set Template</h2>

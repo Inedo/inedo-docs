@@ -77,6 +77,7 @@
 
     </ul>
 
+
     <h3 id="async" data-title="Asynchronous Blocks">Asynchronous Blocks</h3>
     <p>
         An <i>asynchronous</i> block works just like a general block, except that execution will continue
@@ -101,6 +102,7 @@
         in the background.
     </p>
     <pre>foreach server in @ServersInGroup(database-nodes)
+
 {
   # these will take an eternity to run, so run in background
   with async

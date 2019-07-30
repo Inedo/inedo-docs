@@ -4,14 +4,30 @@ subtitle: Repackaging & Auditing
 sequence: 10
 keywords: proget, universal-packages
 ---
-Packages work at their best when they are read-only and cryptographically verified, but this means that you can't change any of the package metadata (including the version number) without "tampering" with the package.
 
-:::attention {.best-practice}
-![](/resources/images/icons/best-practices.png) For example, if you have a pre-release package (HDars.Web:1.4.5-rc.2), but just want to "change" the version, then you will have created a new package. If you change a different piece of metadata (such as the author name), then you've created a very confusing situation where two different files are apparently the same package.
-:::
+Through prerelease versioning, it's clear to everyone which packages are release-quality and what is not ready for release. Like all software, it is important to create several prerelease packages that are tested and validated prior to creating the final, stable package. You can use different prerelease versions for this purpose; for example
+- `ProfitCalc 3.2.4-ci.54` may signify a package created on ci server (build # 54).
+- `ProfitCalc 3.2.4-beta.2` may signify a second beta version that customers may test.
+- `ProfitCalc 3.2.4-rc.1` may signify a package is ready for final release, pending some last-minute testing.
+- `ProfitCalc 3.2.41` is the production, release-quality package.
 
-This is where repackaging comes in: it's an operation that involves changing a small part of package metadata (such as the version number)  without altering the contents, while retaining a "pointer" to the original package inside the newly created package. Of course, this operation can only be performed by a trusted person or service to ensure that the repackaging is securely performed.
+This versioning methodology is something that both the business and development can understand. Of course, there's just one small technical problem: How do you know when to create CI, beta, release candidate, and stable packages?  It's impossible to know. This is where **Repackaging** comes in.
 
 <iframe width="600" height="337" src="https://www.youtube.com/embed/BYfWcm7tppM" frameborder="0" allowfullscreen="true"></iframe>
 
-The universal packaging [manifest file](/support/documentation/upack/universal-packages/metacontent-guidance/manifest-specification) allows for storing a chain of repackaging events that allow you to verify each preceding package.
+## From Prerelease to Stable
+There are some basic rules regarding packaging and software development that our industry tends to follow closely.
+1. Packages are immutable. Once published, a package file should never be modified. This means you can't "edit" a version number of a package because the version number is part of the metadata embedded in the file.
+2. Software should never be deployed to a production environment without being tested thoroughly.
+3. Rebuilding source code can produce different software. We talked about _dependency hell_ in chapter three, but it's also possible that a different version of the compiler will treat source code differently.
+4. A prerelease package should never be released.
+
+These are discussed at length in our book [Continuously Scale and Continuously Deliver with a Universal Package Manager](/support/resources/ebooks/continuously-scale-deliver-upm).
+
+Given these rules, it seems nearly impossible to create a logical pipeline that both the business and development can understand and follow.
+
+This is where repackaging comes in. Repackaging is process where that creates a new package from an existing package using exactly the same content while maintaining the integrity of the original package. This also needs to adhere to a very secure work flow to prevent content tampering, while also generating an audit trail that proves it was done according to the guidelines.
+
+The universal packaging [manifest file](/docs/upack/universal-packages/metacontent-guidance/manifest-specification) allows for storing a chain of repackaging events that allow you to verify each preceding package. [ProGet](/docs/proget/advanced/repackaging) also supports this as a feature, and eliminates the complex and tedious manual steps involved in repackaging, and ensures security.
+
+

@@ -13,6 +13,24 @@
             color: #f15a24;
         }
 
+        .proposed-textonly {
+            display: inline-block;
+            padding: 2px 2px 8px 2px;
+            color: #333;
+            background-color:#dedede;
+            min-width: 40px;
+        }
+            .proposed-textonly::before{
+              background-color: #eaeaea;
+              font-style:italic;
+              opacity:0.9;
+              content: 'proposed';
+              position: absolute;
+              margin: 16px 0 0 4px;
+              font-size: 10px;
+              padding: 0px 1px;
+            }
+
         .buildmaster-only {
             display: inline-block;
             padding: 2px 2px 8px 2px;
@@ -269,8 +287,9 @@
   timeout=<integer> |
   executionPolicy=(always|onChange) |
   async[=/async_token/] |
-  lock[=[!]/lock_token/]
-
+  lock[=[!]/lock_token/] |
+  isolation |
+  credentials=<userNamePasswordCredentials>
 
 <fail_statement> ::=
   fail;
@@ -334,7 +353,10 @@
                 </td>
                 <td>
                     No more than fifty characters: numbers (0-9), upper- and lower-case letters (a-Z);
-                    must start with a letter.
+                    must start with a letter. 
+		    We are considering changing this to allow variable expansion; see <a href="https://inedo.myjetbrains.com/youtrack/issue/IEE-21"  class="proposed-textonly">IEE-21</a>, and let us know if this would be helpful.
+		    </span>
+		    
                 </td>
             </tr>
             <tr>

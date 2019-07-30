@@ -8,7 +8,7 @@ keywords: inedo, inedo agent, server architecture
 This is the series of events which occurs when a client (product) connects to an Inedo Agent:
 
 1. The client (BuildMaster, Hedgehog, or Otter) opens a TCP socket to the server (InedoAgent.exe) and sends a 24-byte Handshake message
-2. The server sends a [Handshake](/support/documentation/inedoagent/server-architecture/network-protocol) acknowledgement to the client
+2. The server sends a [Handshake](/docs/inedoagent/server-architecture/network-protocol) acknowledgement to the client
 3. The server is now ready to receive a message from the client
 
 The server will then wait for commands from the connected client. These connections are relatively short-lived, and kept open for the duration of deployment, configuration, or orchestration executions.

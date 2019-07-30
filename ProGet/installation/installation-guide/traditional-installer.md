@@ -5,7 +5,7 @@ keywords: proget, installation
 ---
 
 ::: {.attention .best-practice} 
-For new installations on Windows, we recommend installation using the Inedo Hub. See the [Inedo Hub Installation Guide](/support/documentation/proget/installation/installation-guide) for more information.
+For new installations on Windows, we recommend installation using the Inedo Hub. See the [Inedo Hub Installation Guide](/docs/proget/installation/installation-guide) for more information.
 :::
 
 This is a step-by-step guide to installing ProGet on Windows and provides some detail as to what's happening behind the scenes.

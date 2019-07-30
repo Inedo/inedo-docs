@@ -25,7 +25,7 @@ A connection to inedo.com is recommended, but not required. If your Hedgehog ins
 
 Although you can already do *anything* in Hedgehog with Script Assets and the other tightly-integrated PowerShell features, you can also build an *Hedgehog Extension* to add additional components and functionality into your Hedgehog installation.
 
-A lot of Hedgehog's functionality is delivered through built-in extensions, and you can add several types of components by simply [creating an extension](/support/documentation/inedosdk/extending/creating) that's built against the [Inedo SDK](/support/documentation/inedosdk/overview). Here's what you can extend:
+A lot of Hedgehog's functionality is delivered through built-in extensions, and you can add several types of components by simply [creating an extension](/docs/inedosdk/extending/creating) that's built against the [Inedo SDK](/docs/inedosdk/overview). Here's what you can extend:
 
 {.docs}
 - **Operations** - executed during a deployment plan

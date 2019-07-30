@@ -45,4 +45,4 @@ An API key may be passed to any endpoint (except Feed API endpoints - see below)
 - Form value (key) - only applications/x-www-form-urlencoded content type
 - JSON property (API_Key) on root object - only application/json content type
 
-[Native API]: /support/documentation/otter/reference/api
+[Native API]: /docs/otter/reference/api

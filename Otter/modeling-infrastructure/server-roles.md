@@ -11,7 +11,7 @@ For example, you may have an `iis-server` role that ensures IIS is configured in
 
 ## Defining Server Roles {#defining data-title="Defining Roles"}
 
-You can define server roles using the web-based interface (Roles > Create Roles), or programmatically with the [Infrastructure API](/support/documentation/otter/reference/api/infrastructure).
+You can define server roles using the web-based interface (Roles > Create Roles), or programmatically with the [Infrastructure API](/docs/otter/reference/api/infrastructure).
 
 
 ![Creating Roles in Otter](/resources/documentation/otter/2/create-roles.png){.screenshot}
@@ -20,7 +20,7 @@ You can define server roles using the web-based interface (Roles > Create Roles)
 
 Just as an individual server can become [Drifted](../core-concepts/servers#drift), so can server roles. If any of the servers in the role have configuration that differ from the desired configurations, then the entire server role is considered drifted.
 
-Server role drift is remediated in the same manner as configuration drift: either automatically, or by creating a [Configuration job](../core-concepts/jobs#configuration) that targets the role and, optionally, an [Environment](/support/documentation/otter/modeling-infrastructure/environments).
+Server role drift is remediated in the same manner as configuration drift: either automatically, or by creating a [Configuration job](../core-concepts/jobs#configuration) that targets the role and, optionally, an [Environment](/docs/otter/modeling-infrastructure/environments).
 
 When remediating server role drift, only that server role's configuration plan is executed.
 
@@ -69,4 +69,4 @@ Otherwise, the configuration jobs will run as if all roles were added to the ser
 
 A resource pool is a set of servers (defined by a role) that are used as a single, load-balanced resource. You may acquire an unused server from a resource pool, and then release it back into the pool once the needed tasks have been performed.
 
-Visit the [Resource Pools documentation of the Inedo Execution Engine](/support/documentation/various/execution-engine/resource-pools) for more information on how to configure a resource pool.
+Visit the [Resource Pools documentation of the Inedo Execution Engine](/docs/various/execution-engine/resource-pools) for more information on how to configure a resource pool.

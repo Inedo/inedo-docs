@@ -9,7 +9,7 @@ Webhooks let you connect ProGet with other services to notify users, trigger aut
 
 {.docs}
 - Send an instant message when a package is added to a feed
-- Deploy a package with [Hedgehog](/hedgehog) once it's promoted to a different feed
+- Deploy a package with [BuildMaster](/buildmaster) once it's promoted to a different feed
 - Log a message in a third-party auditing tool when a package is deleted
 
 This is done by creating webhooks that will send HTTP-based notifications (payloads) when certain events like package publishing, deployment, and deletion occur. These payloads can be adapted to fit into nearly any other tool's API, including workflow automation services such as Zappier, Microsoft Flow, etc.
@@ -50,7 +50,7 @@ Webhooks can be configured for the following events:
 
 ### Conditional {#conditional data-title="Conditional"}
 
-The conditional is an optional expression that is evaluated prior to a webhook being invoked. This takes the same format as an [OtterScript predicate expression](/support/documentation/various/execution-engine/otterscript/formal-specification#predicate-statement), which has a standard unary operator (<code>!</code>),equality operators (<code>==</code> and <code>!=</code>), boolean comparison (<code>&amp;&amp;</code> and <code>||</code>), and parenthesis.
+The conditional is an optional expression that is evaluated prior to a webhook being invoked. This takes the same format as an [OtterScript predicate expression](/docs/various/execution-engine/otterscript/formal-specification#predicate-statement), which has a standard unary operator (<code>!</code>),equality operators (<code>==</code> and <code>!=</code>), boolean comparison (<code>&amp;&amp;</code> and <code>||</code>), and parenthesis.
 
 Following are some example expressions and their results.
 

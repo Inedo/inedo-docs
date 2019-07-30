@@ -57,7 +57,7 @@
     </p>
     <h2 id="automatic">Automatic Approval Gate Execution</h2>
     <p>
-        TBD. This may or may not be needed, because the task runner probably won't fail; it would be dispatched from the web front for diagnostic purposes, similar to how <a href="/support/documentation/buildmaster/modeling-applications/issues-projects">issue import works in buildmaster</a>.
+        TBD. This may or may not be needed, because the task runner probably won't fail; it would be dispatched from the web front for diagnostic purposes, similar to how <a href="/docs/buildmaster/modeling-applications/issues-projects">issue import works in buildmaster</a>.
     </p>
     <h2 id="deployment">Deployment Execution Types</h2>
     <p>
@@ -71,14 +71,14 @@
         This is a Deployment Execution that is initiated through the Quick Deploy workflow. A Server Target is always specified, and the deployment plan is either stored within Hedgehog or the package (<code>install.otter</code>).
     </p>
     <p>
-        Once loaded and compiled, the actual plan is wrapped in a <a href="/support/documentation/executionengine/reference/formal-specification#set-context-statement">Set Context Statement</a> (with a ContextType of package, and ContextValue of the package name). The plan is then wrapped using the Server Targeting described below.
+        Once loaded and compiled, the actual plan is wrapped in a <a href="/docs/executionengine/reference/formal-specification#set-context-statement">Set Context Statement</a> (with a ContextType of package, and ContextValue of the package name). The plan is then wrapped using the Server Targeting described below.
     </p>
     <h3 id="pipeline-targeted">Pipeline Targeted Execution</h3>
     <p>
         A Pipeline Targeted Execution is dispatched by a Pipeline Stage Execution, and allows for deploying multiple packages in a package set.
     </p>
     <p>
-        Each package in the set is wrapped in a <a href="/support/documentation/executionengine/reference/formal-specification#set-context-statement">Set Context Statement</a> (with a ContextType of package, and ContextValue of the package name), and that plan is then wrapped using the Server Targeting described below.
+        Each package in the set is wrapped in a <a href="/docs/executionengine/reference/formal-specification#set-context-statement">Set Context Statement</a> (with a ContextType of package, and ContextValue of the package name), and that plan is then wrapped using the Server Targeting described below.
     </p>
     <h4 id="server-targeting">Server Targeting</h4>
     <p>
@@ -86,18 +86,18 @@
     </p>
     <h4 id="direct-targeting">Direct Targeting</h4>
     <p>
-        A single <a href="/support/documentation/executionengine/reference/formal-specification#set-context-statement">Context Iteration Statement</a> will be created with the Source set to a literal expression of the server names (e.g. @(<code>Server1</code>, <code>Server2</code>, <code>Server3</code>). The Body contain an <a href="/support/documentation/executionengine/reference/formal-specification#execution-directive-statement">Execution Directive Statement</a> with an Asynchronous flag, and the Body of that will contain the actual plan.
+        A single <a href="/docs/executionengine/reference/formal-specification#set-context-statement">Context Iteration Statement</a> will be created with the Source set to a literal expression of the server names (e.g. @(<code>Server1</code>, <code>Server2</code>, <code>Server3</code>). The Body contain an <a href="/docs/executionengine/reference/formal-specification#execution-directive-statement">Execution Directive Statement</a> with an Asynchronous flag, and the Body of that will contain the actual plan.
     </p>
     <h4 id="roles-environments">Roles + Environment Targeting</h4>
     <p>
-        For every role targeted, a <a href="/support/documentation/executionengine/reference/formal-specification#set-context-statement">Set Context Statement</a> (with a ContextType of <code>role</code>, and ContextValue of the role name) will be created. The Body of those statements will be comprised of a single <a href="/support/documentation/executionengine/reference/formal-specification#context-iteration-statement">Context Iteration Statement</a> with the Source set to a literal expression of the servers in that role and environment. The Body contains an <a href="/support/documentation/executionengine/reference/formal-specification#execution-directive-statement">Execution Directive Statement</a> with an Asynchronous flag, and the Body of that will contain the actual plan.
+        For every role targeted, a <a href="/docs/executionengine/reference/formal-specification#set-context-statement">Set Context Statement</a> (with a ContextType of <code>role</code>, and ContextValue of the role name) will be created. The Body of those statements will be comprised of a single <a href="/docs/executionengine/reference/formal-specification#context-iteration-statement">Context Iteration Statement</a> with the Source set to a literal expression of the servers in that role and environment. The Body contains an <a href="/docs/executionengine/reference/formal-specification#execution-directive-statement">Execution Directive Statement</a> with an Asynchronous flag, and the Body of that will contain the actual plan.
     </p>
     <p>
         If no servers were in any of the role iterations, then a Log-Warning statement will be appended to the wrapped plan, as the actual plan will not execute.
     </p>
     <h4 id="failure">Pre-execution Failure</h4>
     <p>
-        This execution invokes the <a href="/support/documentation/executionengine/components/runtime-variables">OtterScript runtime</a> to execute either the specified plan directly, or a wrapped version of the plan.
+        This execution invokes the <a href="/docs/executionengine/components/runtime-variables">OtterScript runtime</a> to execute either the specified plan directly, or a wrapped version of the plan.
     </p>
     <p>
         If an error condition occurs before the runtime is invoked, such as a complication error or a pipeline resolution error, the error message will be written to logs, the Execution Status will be set to Error, and the Run State will be set to Completed.

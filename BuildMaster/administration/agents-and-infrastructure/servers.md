@@ -13,9 +13,9 @@ A server can be physical (bare metal), virtual, or even nonexistent (i.e. one th
 
 ### Adding Servers to BuildMaster {#adding-servers data-title="Adding Servers to BuildMaster"}
 
-You can add a server using the web-based user interface (`Servers` > `Add Server`), or programmatically with the [infrastructure API](/support/documentation/buildmaster/reference/api/infrastructure).
+You can add a server using the web-based user interface (`Servers` > `Add Server`), or programmatically with the [infrastructure API](/docs/buildmaster/reference/api/infrastructure).
 
-BuildMaster communicates with servers using the [Inedo Agent](/support/documentation/inedoagent/overview) (for Windows) or [SSH/SFTP](https://www.ssh.com/ssh/sftp) (for Windows and Linux).
+BuildMaster communicates with servers using the [Inedo Agent](/docs/inedoagent/overview) (for Windows) or [SSH/SFTP](https://www.ssh.com/ssh/sftp) (for Windows and Linux).
 
 ## Deploying to Servers {#deploying-to-servers data-title="Deploying to Servers"}
 
@@ -23,11 +23,11 @@ In addition to using [Server Roles](server-roles), there are two ways to deploy 
 
 ### Pipeline Stage Target {#pipeline-target data-title="Pipeline Stage Target"}
 
-You can specify a list of servers as a stage target in a [pipeline stage](/support/documentation/buildmaster/verification/pipelines#pipeline-stages). When the build is deployed to that stage, the stage target's deployment plan will be run against all those servers.
+You can specify a list of servers as a stage target in a [pipeline stage](/docs/buildmaster/verification/pipelines#pipeline-stages). When the build is deployed to that stage, the stage target's deployment plan will be run against all those servers.
 
 ### Servers and OtterScript {#servers-otter data-title="Servers and OtterScript"}
 
-You can deploy to a server using a [general block](/support/documentation/executionengine/otterscript/statements-and-blocks/general-blocks)
+You can deploy to a server using a [general block](/docs/executionengine/otterscript/statements-and-blocks/general-blocks)
 
 ```
 for server prod-hdars-sv1
@@ -49,4 +49,4 @@ However, if your application has always been deployed to a specific server, and 
 
 A resource pool is a set of servers that are used as a single, load-balanced resource. You may acquire an unused server from a resource pool, and then release it back into the pool once the needed tasks have been performed.
 
-Visit the [Resource Pools](/support/documentation/executionengine/components/resource-pools) documentation of the Inedo Execution Engine for more information on how to configure a resource pool.
+Visit the [Resource Pools](/docs/executionengine/components/resource-pools) documentation of the Inedo Execution Engine for more information on how to configure a resource pool.

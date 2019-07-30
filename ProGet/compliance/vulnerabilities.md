@@ -27,7 +27,7 @@ ProGet supports three different workflows for managing vulnerabilities:
 |  | [Manual](#manual) | OSS Index | WhiteSource |
 |---|---|---|---|
 | Cost                                      | - | - | $ |
-| Thoroughness                              | * | ***  | *****  |
+| Thoroughness                              | ★☆☆ | ★★☆ | ★★★ |
 | Block vulnerable packages                 | ✔ | ✔ | ✔ |
 | Manually enter vulnerability reports      | ✔ | -  |   |
 | Assess vulnerability report within ProGet | ✔ | ✔ | - |
@@ -38,7 +38,7 @@ ProGet supports three different workflows for managing vulnerabilities:
 
 <sup>R</sup>While OSS Index doesn't require a paid subscription, users will need to create a [registered account](https://ossindex.sonatype.org/ ).
 
-See [Integrating ProGet with OSS Index](/support/documentation/proget/compliance/vulnerabilities/vor) and [Integrating ProGet with WhiteSource](/support/documentation/proget/compliance/whitesource) documentation for more details on those workflows.
+See [Integrating ProGet with OSS Index](/docs/proget/compliance/vulnerabilities/vor) and [Integrating ProGet with WhiteSource](/docs/proget/compliance/whitesource) documentation for more details on those workflows.
 
 
 ## Feeds and Vulnerability Configuration {#feed-and-vulnerability data-title="Feeds and Vulnerability Configuration"}
@@ -60,7 +60,7 @@ Both the manual and OSS Index workflows use vulnerability reports, which essenti
 
 All newly entered or imported vulnerability reports are considered unassessed, which means that packages matching the vulnerability will be blocked until the report is assessed. An assessment involves an authorized user reviewing the report, choosing an assessment type (Ignore, Caution, Block), and leaving an optional comment.
 
-![Assessment workflow](/resources/documentation/proget/assess-workflow.png)
+![Assessment workflow](/resources/documentation/proget/assess-workflow.svg)
 
 ### Assessment Expiry
 

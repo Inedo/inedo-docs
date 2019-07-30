@@ -31,7 +31,7 @@ This is where repackaging comes in. Repackaging is process where that creates a 
 ProGet eliminates the complex and tedious manual steps involved in repackaging and has built this into to our software.
 
 ## How To Repackage a Package
-Repackaging is a Built-in feature for all Universal and NuGet Packages in ProGet and can done with a click of a button or with a [simple API call](/support/documentation/proget/reference/api/repackaging).
+Repackaging is a Built-in feature for all Universal and NuGet Packages in ProGet and can done with a click of a button or with a [simple API call](/docs/proget/reference/api/repackaging).
 
 To use the ProGet web interface:
 1. Browse to any universal package in ProGet.
@@ -49,10 +49,10 @@ These historic audit trails are embedded within the package itself and allows yo
 In Universal packages, the history is embedded in `upack.json`. In NuGet packages, the history is embedded (in the same JSON format) in `.progetRepackagingHistory.json` in the nupkg file.
 
 ## Other Repackaging Options
-Aside from using the ProGet UI we offer two other options for repackaging a package. You can either make simple [API calls](/support/documentation/proget/reference/api/repackaging) or use the [Universal Package CLI](/support/documentation/upack/tools-and-libraries/upack-cli) (for Universal packages). These options give you a lot of flexibility when it comes to automating your repackaging process.
+Aside from using the ProGet UI we offer two other options for repackaging a package. You can either make simple [API calls](/docs/proget/reference/api/repackaging) or use the [Universal Package CLI](/docs/upack/tools-and-libraries/upack-cli) (for Universal packages). These options give you a lot of flexibility when it comes to automating your repackaging process.
 
 ### Repackaging in a CI/CD Pipeline
 
-We have built an example application on our [public BuildMaster instance](https://buildmaster.inedo.com) that uses the [repackaging API](/support/documentation/proget/reference/api/repackaging) to demonstrate the patterns that can be used to add repackaging as part of a CI/CD pipeline. The application contains deployment plans, pipelines, and source control repository monitor configuration such that commits pushed to any source control repository branch will automatically create a package and deploy it to a CI repository. Deploying the build through future pipeline stages causes it to be repackaged and then redeploys it to a [public repository](https://proget.inedo.com/feeds/ExternalBuild) used to build Inedo projects that require NuGet packages.
+We have built an example application on our [public BuildMaster instance](https://buildmaster.inedo.com) that uses the [repackaging API](/docs/proget/reference/api/repackaging) to demonstrate the patterns that can be used to add repackaging as part of a CI/CD pipeline. The application contains deployment plans, pipelines, and source control repository monitor configuration such that commits pushed to any source control repository branch will automatically create a package and deploy it to a CI repository. Deploying the build through future pipeline stages causes it to be repackaged and then redeploys it to a [public repository](https://proget.inedo.com/feeds/ExternalBuild) used to build Inedo projects that require NuGet packages.
 
 You can view the example application here: [Inedo.Core Library](https://buildmaster.inedo.com/applications/44/)

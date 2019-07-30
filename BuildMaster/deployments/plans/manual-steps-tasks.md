@@ -12,7 +12,7 @@ While OtterScript and PowerShell will allow you to automate just about anything,
 - Enabling a VPN to a customer site for a short time during a deployment
 - Running an ancient GUI-based deployment for part of an application
 
-This is where the [Manual Operations](/support/documentation/buildmaster/reference/operations/buildmaster/manual-operation) comes in: when executed in a deployment plan, the execution will halt until an assigned person indicates that a specified task has been completed.
+This is where the [Manual Operations](/docs/buildmaster/reference/operations/buildmaster/manual-operation) comes in: when executed in a deployment plan, the execution will halt until an assigned person indicates that a specified task has been completed.
 
 ## Using in a Deployment Plan {#using-plan data-title="Using in a Deployment Plan"}
 

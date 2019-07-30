@@ -12,7 +12,7 @@ BuildMaster is licensed by number of users on an annual or perpetual basis.
 BuildMaster Free has no user limit and includes all the features of BuildMaster Enterprise with two important differences:
 
 1.  Every authenticated user in the system is authorized to perform any function, effectively making every authenticated user a System Administrator
-2.  "View-only" access for all unauthenticated users (see [Specific Guest Account Tasks](/support/documentation/buildmaster/administration/security/free-edition#guest-tasks) for complete list of granted task attributes)
+2.  "View-only" access for all unauthenticated users (see [Specific Guest Account Tasks](/docs/buildmaster/administration/security/free-edition#guest-tasks) for complete list of granted task attributes)
 
 BuildMaster Enterprise is restricted only by the number of licensed users.
 
@@ -22,7 +22,7 @@ Named users are listed on the "Licensing & Activation" page within the software,
 
 ## License Keys {#keys data-title="License Keys"}
 
-For more information on License Key Management and Activation, visit the docs [here](/support/documentation/various/licensing/management).
+For more information on License Key Management and Activation, visit the docs [here](/docs/various/licensing/management).
 
 ## Previous and Unsupported Versions {#pre-unsupported data-title="Previous and Unsupported Versions"}
 

@@ -41,6 +41,6 @@ You can further customize this operation by specifying values for these addition
 
 Now you're ready to further configure your plan to run tests, create artifacts, or even deploy to any on-premises or cloud server. 
 
-- [Running Tests](https://inedo.com/support/documentation/buildmaster/core-concepts/builds-and-ci/unit-tests)
-- [Create Artifacts](https://inedo.com/support/documentation/buildmaster/builds/create-artifact)
-- [OtterScript Overview](https://inedo.com/support/documentation/buildmaster/execution-engine/overview)
+- [Running Tests](https://inedo.com/docs/buildmaster/core-concepts/builds-and-ci/unit-tests)
+- [Create Artifacts](https://inedo.com/docs/buildmaster/builds/create-artifact)
+- [OtterScript Overview](https://inedo.com/docs/buildmaster/execution-engine/overview)

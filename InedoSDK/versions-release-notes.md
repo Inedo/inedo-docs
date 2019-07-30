@@ -19,19 +19,17 @@ This [version compatibility range](#compatibility-ranges) effectively establishe
 
 ## Version Compatibility Ranges {#compatibility-ranges data-title="Version Compatibility Ranges"}
 
-As of v1.2.0, the Inedo SDK is semantically versioned, meaning feature/nonbreaking API changes happen in minor versions,
-while maintenance versions only make bugfix changes that do not affect the visible API. Breaking changes may occur in
-major versions.
+As of v1.2.0, the Inedo SDK is semantically versioned, meaning feature/nonbreaking API changes happen in minor versions, while maintenance versions only make bugfix changes that do not affect the visible API. Breaking changes may occur in major versions.
 
 The below table shows which version of the Inedo SDK is compatible with which version of each product.
 
 SDK Version           | Minimum Product Version                                               | Maximum Product Version
-----------------------|--------------------------------------------------------------------------------------------
-**1.0.4**             | BuildMaster 6.0.0<br/>ProGet 5.0.0<br/>Hedgehog 1.0.0<br/>Otter 2.0.0 | BuildMaster 6.*<br/>ProGet 5.*<br/>Hedgehog 1.*<br/>Otter 2.*
-**1.0.7**             | Otter 2.1.0                                                           | BuildMaster 6.*<br/>ProGet 5.*<br/>Hedgehog 1.*<br/>Otter 2.*
-**1.1.**              | BuildMaster 6.1.0<br/>ProGet 5.1.0<br/>Otter 2.1.0<br/>               | BuildMaster 6.*<br/>ProGet 5.*<br/>Hedgehog 1.*<br/>Otter 2.*
-**1.2.**              | BuildMaster 6.1.7<br/>ProGet 5.2.4<br/>Otter 2.2.2<br/>               | BuildMaster 6.*<br/>ProGet 5.*<br/>Hedgehog 1.*<br/>Otter 2.*
-**1.3.**              | BuildMaster 6.1.10<br/>Otter 2.2.4<br/>               | BuildMaster 6.*<br/>ProGet 5.*<br/>Hedgehog 1.*<br/>Otter 2.*
+----------------------|----------------------------------------------------------------------------------------------------------------------
+**1.0.4**             | BuildMaster 6.0.0<br/>ProGet 5.0.0<br/>Hedgehog 1.0.0<br/>Otter 2.0.0 | BuildMaster 6.✱<br/>ProGet 5.✱<br/>Otter 2.✱
+**1.0.7**             | Otter 2.1.0                                                           | BuildMaster 6.✱<br/>ProGet 5.✱<br/>Otter 2.✱
+**1.1.✱**             | BuildMaster 6.1.0<br/>ProGet 5.1.0<br/>Otter 2.1.0<br/>               | BuildMaster 6.✱<br/>ProGet 5.✱<br/>Otter 2.✱
+**1.2.✱**             | BuildMaster 6.1.7<br/>ProGet 5.2.4<br/>Otter 2.2.2<br/>               | BuildMaster 6.✱<br/>ProGet 5.✱<br/>Otter 2.✱
+**1.3.✱**             | BuildMaster 6.1.10<br/>Otter 2.2.4<br/>                               | BuildMaster 6.✱<br/>ProGet 5.✱<br/>Otter 2.✱
 
 
 The table will be expanded as new SDK versions are released.

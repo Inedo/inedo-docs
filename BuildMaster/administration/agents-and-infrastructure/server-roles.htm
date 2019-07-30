@@ -20,7 +20,7 @@
     </p>
     <h2 id="creating-assigning-roles" data-title="Creating and Assigning Server Roles"> Creating and Assigning Server Roles</h2>
    <p>
-        You can create, edit, and delete server roles using the web-based interface (Admin > Infrastructure > Roles), or programmatically with the <a href="/support/documentation/buildmaster/reference/api/infrastructure">Infrastructure API.</a> 
+        You can create, edit, and delete server roles using the web-based interface (Admin > Infrastructure > Roles), or programmatically with the <a href="/docs/buildmaster/reference/api/infrastructure">Infrastructure API.</a> 
     </p> 
 
    <p>
@@ -32,11 +32,11 @@
    </p>
    <h3 id="pipeline-stage-target" data-title="Pipeline Stage Target">Pipeline Stage Target</h3>
    <p>
-        You can specify a role name instead of a list of servers as a stage target in a <a href="/support/documentation/buildmaster/core-concepts/pipelines#Pipeline-stages">pipeline stage</a>. When the build is deployed to that stage, the stage target's deployment plan will be run against all servers with that role and in that environment.   
+        You can specify a role name instead of a list of servers as a stage target in a <a href="/docs/buildmaster/core-concepts/pipelines#Pipeline-stages">pipeline stage</a>. When the build is deployed to that stage, the stage target's deployment plan will be run against all servers with that role and in that environment.   
    </p>
    <h3 id="server-roles-otterscript" data-title="Server Roles and OtterScript">Server Roles and OtterScript</h3>
    <p>
-        You can deploy to servers in a role using the <code>@ServersInRole</code> function within a <a href="/support/documentation/buildmaster/execution-engine/statements-and-blocks/loop">loop block</a>. 
+        You can deploy to servers in a role using the <code>@ServersInRole</code> function within a <a href="/docs/buildmaster/execution-engine/statements-and-blocks/loop">loop block</a>. 
    </p>
    <pre>
         foreach server in @ServersInRole(hdars-api-host)
@@ -52,7 +52,7 @@
         Role dependencies are used by <a href="/otter">Otter</a> to model complex server and application configuration through hierarchical sets of simple roles with dependencies. This makes it much easier to share common configuration and define smaller (but related) roles. 
 </p>
 <p>
-        While you can define a role's dependencies (i.e. the other roles which are required) on the role overview page, BuildMaster won't behave any differently if a role has dependencies. They are included only so that you can <a href="/support/documentation/buildmaster/administration/configuration">synchronize your infrastructure</a> across products.
+        While you can define a role's dependencies (i.e. the other roles which are required) on the role overview page, BuildMaster won't behave any differently if a role has dependencies. They are included only so that you can <a href="/docs/buildmaster/administration/configuration">synchronize your infrastructure</a> across products.
 </p>
 <h2 id="multiple-server-roles" data-title="Multiple Server Roles"> Example: Multiple Server Roles</h2>
 <p>

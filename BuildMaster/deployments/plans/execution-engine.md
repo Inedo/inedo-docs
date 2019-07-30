@@ -7,7 +7,7 @@ keywords: buildmaster,excecution-engine
 
 To deploy your applications and releases, BuildMaster uses an advanced execution engine that's capable of running thousands of different operations and scripts on thousands of different servers.
 
-While BuildMaster's execution engine is an integral part of BuildMaster itself, the core engine was designed to be shared across products, and is also used in [Otter](/otter) (our Infrastructure as Code tool) and [Romp](/support/documentation/otter/reference/romp) (a stand-alone, command-line tool).
+While BuildMaster's execution engine is an integral part of BuildMaster itself, the core engine was designed to be shared across products, and is also used in [Otter](/otter) (our Infrastructure as Code tool) and [Romp](/docs/otter/reference/romp) (a stand-alone, command-line tool).
 
 ## Operations {#operations data-title="Operations"}
 
@@ -17,16 +17,16 @@ Some operations are quite simple (Sleep), while others are quite complex (Synchr
 
 ## OtterScript in BuildMaster {#otterscript data-title="OtterScript in BuildMaster"}
 
-OtterScript is a Domain-Specific Language that was designed in tandem with the execution engine to represent [configuration plans](/support/documentation/otter/core-concepts/plans#configuration) and [orchestration plans](/support/documentation/otter/core-concepts/plans#orchestration) in Otter, and [deployment plans](../deployments/plans) in BuildMaster.
+OtterScript is a Domain-Specific Language that was designed in tandem with the execution engine to represent [configuration plans](/docs/otter/core-concepts/plans#configuration) and [orchestration plans](/docs/otter/core-concepts/plans#orchestration) in Otter, and [deployment plans](../deployments/plans) in BuildMaster.
 
 You really don't need to learn OtterScript; it's simply the textual representation of a plan, and plans are already fully editable in the drag-and-drop plan editor. If you switch back-and-forth between visual and code modes, you'll probably learn it on your own, but it's also pretty well documented.
 
 {.docs}
- - [OtterScript Overview](/support/documentation/executionengine/otterscript/overview)
- - [Comments & Descriptions](/support/documentation/executionengine/otterscript/comments-and-descriptions)
- - [Formal Grammar](/support/documentation/executionengine/reference/formal-grammar)
- - [Formal Specification](/support/documentation/executionengine/reference/formal-specification)
- - [Strings & Values](/support/documentation/executionengine/otterscript/strings-and-literals)
+ - [OtterScript Overview](/docs/executionengine/otterscript/overview)
+ - [Comments & Descriptions](/docs/executionengine/otterscript/comments-and-descriptions)
+ - [Formal Grammar](/docs/executionengine/reference/formal-grammar)
+ - [Formal Specification](/docs/executionengine/reference/formal-specification)
+ - [Strings & Values](/docs/executionengine/otterscript/strings-and-literals)
 
 ## Legacy Execution Engine {#legacy data-title="Legacy Execution Engine"}
 

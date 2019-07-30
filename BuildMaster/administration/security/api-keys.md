@@ -20,13 +20,13 @@ The **Description** field is used for a human-friendly name, and can be used to 
 A key can only be used for the API endpoints that you specify:
 
 {.docs}
-- [Release & Build Deployment API](/support/documentation/buildmaster/reference/api/release-and-build)
-- [Infrastructure Management API](/support/documentation/buildmaster/reference/api/infrastructure)
-- [Variables Management API](/support/documentation/buildmaster/reference/api/variables)
-- [CI Badge API](/support/documentation/buildmaster/reference/api/ci-badge)
+- [Release & Build Deployment API](/docs/buildmaster/reference/api/release-and-build)
+- [Infrastructure Management API](/docs/buildmaster/reference/api/infrastructure)
+- [Variables Management API](/docs/buildmaster/reference/api/variables)
+- [CI Badge API](/docs/buildmaster/reference/api/ci-badge)
 
 :::attention {.analogy}
-Granting access to the [Native API](/support/documentation/buildmaster/reference/api#native) will effectively allow for full control of the instance.
+Granting access to the [Native API](/docs/buildmaster/reference/api#native) will effectively allow for full control of the instance.
 :::
 
 ### Logging Options
@@ -52,4 +52,4 @@ When a user name is omitted, the user is treated as an administrator (also known
 
 #### Windows Integrated Authentication and API Keys {#integrated-windows-auth}
 
-If you've configured [Windows Integrated Authentication](/support/documentation/various/ldap/integrated-authentication), the client will first need to authenticate with an Active Directory account, which may make API-key based authentication redundant.
+If you've configured [Windows Integrated Authentication](/docs/various/ldap/integrated-authentication), the client will first need to authenticate with an Active Directory account, which may make API-key based authentication redundant.

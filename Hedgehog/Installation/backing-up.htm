@@ -13,11 +13,11 @@
     </p>
     <ul class="docs">
         <li><strong>Hedgehog Database</strong> - a SQL Server database that contains all of Hedgehog's configuration data</li>
-        <li><strong>Shared Configuration</strong> - the file <code>%PROGRAMDATA%\Inedo\SharedConfig\Hedgehog.config</code> contains the encryption key that's used to encrypt/decrypt sensitive data, most notably <a href="/support/documentation/hedgehog/global-components/resource-credentials">resource credentials</a></li>
+        <li><strong>Shared Configuration</strong> - the file <code>%PROGRAMDATA%\Inedo\SharedConfig\Hedgehog.config</code> contains the encryption key that's used to encrypt/decrypt sensitive data, most notably <a href="/docs/hedgehog/global-components/resource-credentials">resource credentials</a></li>
         <li><strong>Attachment Files</strong> - a path on disk (defined in <code>Packages.BasePath</code> setting) that contains all the files for attachments added to deployment sets</li>
     </ul>
     <p>
-        You may also back up your <a href="/support/documentation/hedgehog/administration/extensions">extensions</a> folder, which is stored in the path defined in the <code>Extensions.ExtensionsPath</code> advanced configuration setting. This will make restoring to a new server as easy as possible, in that you&rsquo;ll just need to copy the backup files to the same location on the new server.
+        You may also back up your <a href="/docs/hedgehog/administration/extensions">extensions</a> folder, which is stored in the path defined in the <code>Extensions.ExtensionsPath</code> advanced configuration setting. This will make restoring to a new server as easy as possible, in that you&rsquo;ll just need to copy the backup files to the same location on the new server.
     </p>
     <h2 id="database-backup" data-title="Database Backup">Database Backup</h2>
     <p>If you've never worked with Microsoft SQL Server before, not to worry - you won't even know you're working with it. But if you're already familiar with Microsoft SQL Server and know how to back up and restore databases, you can skip this section. We're not doing anything special, so you are free to use whichever strategy works in your organization. So long as that strategy involves backing up the database.</p>

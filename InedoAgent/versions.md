@@ -8,9 +8,9 @@ Because the agent protocol requires that all Inedo Agent clients and servers be 
 
 Published versions:
 
-
 | Version | Date | Shipped in Product | Notes |
 | ------- |------| ------------------ |-------|
+| [43](http://cdn.inedo.com/downloads/inedo-agent/InedoAgentSetup.43.exe) - major update | July 19, 2019 | none yet | [IAGT-3](https://inedo.myjetbrains.com/youtrack/issue/IAGT-3) - FIX: Agent version in registry is not updated during automatic agent upgrades<br/>[IAGT-4](https://inedo.myjetbrains.com/youtrack/issue/IAGT-4) - Allow larger encryption keys for AES encryption mode<br/>[IAGT-9](https://inedo.myjetbrains.com/youtrack/issue/IAGT-9) - FIX: Installer should not change encryption key if the configuration already exists<br/>[IAGT-10](https://inedo.myjetbrains.com/youtrack/issue/IAGT-10) - Update Logo to use Inedo glyph instead of Otter glyph<br/>[IAGT-14](https://inedo.myjetbrains.com/youtrack/issue/IAGT-14) - Implement agent protocol v2<br/>[IAGT-15](https://inedo.myjetbrains.com/youtrack/issue/IAGT-15) - Add multi-instance support<br/>[IAGT-16](https://inedo.myjetbrains.com/youtrack/issue/IAGT-16) - Add isolation/impersonation support<br/>[IAGT-17](https://inedo.myjetbrains.com/youtrack/issue/IAGT-17) - FIX: Validate current agent name in .current file after it is read |
 | [42](http://cdn.inedo.com/downloads/inedo-agent/InedoAgentSetup.42.exe) | March 4, 2019 | *BuildMaster 6.1.1* | [IAGT-12](https://inedo.myjetbrains.com/youtrack/issue/IAGT-12) - FIX: Unhandled exceptions during command deserialization can cause agent to crash |
 | [41](http://cdn.inedo.com/downloads/inedo-agent/InedoAgentSetup.41.exe) | September 27, 2018 | *Otter 2.1.0* | [IAGT-5](https://inedo.myjetbrains.com/youtrack/issue/IAGT-5) - Target .NET 4.5.2<br/>[IAGT-6](https://inedo.myjetbrains.com/youtrack/issue/IAGT-6) - FIX: Handshake connection timeouts may not expire properly<br/>[IAGT-7](https://inedo.myjetbrains.com/youtrack/issue/IAGT-7) - Allow more than one client to handshake with the server at one time<br/>[IAGT-8](https://inedo.myjetbrains.com/youtrack/issue/IAGT-8) - Add HandshakeTimeout configuration value  |
 | [40](http://cdn.inedo.com/downloads/inedo-agent/InedoAgentSetup.40.exe) | January 18, 2018 | Otter 2.0.2 | [IAGT-2](https://inedo.myjetbrains.com/youtrack/issue/IAGT-2) - FIX: Operations hang if agent process exits before they complete |
@@ -28,3 +28,4 @@ The gap between versions is intentional. Most of our *released* versions are not
 Note that BuildMaster did not use the Inedo agents until v5.1.4. {.info}
 
 *Note that versions 17 and 20 will still work, but only with Otter. {.info}
+
