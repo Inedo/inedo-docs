@@ -140,5 +140,39 @@ for server localhost
     }
 }
     </pre>
+
+
+    <h3 id="async" data-title="Running as Different Users">Running as Different Users</h3>
+    <p>
+        You can run sections of your plan as a different user.  This is particularly useful when you are accessing different server or multiple repositories.
+    </p>
+    <pre>
+    for server remote-server
+    {
+    with credentials=remote-server-credentials
+    {
+    // all remote commands executed here will be performed in a process
+    // running under the specified credentials
+    }
+    }
+    </pre>
+
+    <h3 id="async" data-title="Executing in a New Process">Executing in a New Process</h3>
+    <p>
+        Using the Isolation execution directive ensures that all remote operations inside the block will be performed in a new process that will be terminated when control flow leaves the block.
+    </p>
+
+    <pre>
+    for server remote-server
+    {
+    with isolation
+    {
+    // all remote commands executed here will be performed in a process
+    // that will be terminated when the control leaves the block
+    }
+    }
+    </pre>
+
+
 </body>
 </html>
