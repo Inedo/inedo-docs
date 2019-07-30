@@ -5,15 +5,14 @@ sequence: 100
 ---
 
 General Blocks allow you to define properties that operations will use, and that will control how contained statements and blocks run.
-
-<tab-block>
-    <tab name="Visual Mode">
-        <img class="screenshot" src="/resources/documentation/otter/otter-getting-started/block-2-complete.png" alt="General Blocks in Otter"/>
-    </tab>
-    <tab name="Text Mode (OtterScript)">
-        <img class="screenshot" src="/resources/documentation/otter/general-block-text.png" alt="General Blocks in OtterScript"/>
-    </tab>
-</tab-block>
+    <tab-block>
+        <tab name="Visual Mode">
+            <img class="screenshot" src="/resources/documentation/otter/block-2-complete.png" alt="General Blocks in Otter" />
+        </tab>
+        <tab name="Text Mode (OtterScript)">
+            <img class="screenshot" src="/resources/documentation/otter/general-block-text.png" alt="General Blocks in OtterScript" />
+        </tab>
+    </tab-block>
 
 ### General Group Properties {#general}
 
