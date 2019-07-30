@@ -3,7 +3,7 @@
     <title>General Blocks</title>
     <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
     <meta name="keywords" content="buildmaster,execution-engine,operation-groups,otterscript" />
-	<meta name="sequence" content="100"  />
+    <meta name="sequence" content="100" />
 </head>
 <body>
     <p>
@@ -12,26 +12,70 @@
 
     <img class="screenshot" src="/resources/documentation/otter/general-block-text.png" alt="General Blocks in OtterScript" />
 
-    <tab-block>
-        <tab name="Visual Mode"><img class="screenshot" src="/resources/documentation/otter/block-2-complete.png" alt="General Blocks in Otter" /></tab>
-        <tab name="Text Mode (OtterScript)"><img class="screenshot" src="/resources/documentation/otter/general-block-text.png" alt="General Blocks in OtterScript" /></tab>
-    </tab-block>
-    
     <h3 id="gen-group-prop" data-title="General Group Properties">General Group Properties</h3>
-    *   **Short Description** sets the description or name of the current block.
-*   **Run on Server** sets the server used for execution of operations within the block
-*   **Run if server has role** restricts operation based on server role
-*   **Run for deployable** determines whether the current release in context has that deployable included, and skips the block if it does not
-*   **Set working directory** sets the current working directory that file-based Operations will use
-*   **Execution options**
-    *   **Execute asynchronously (in parallel)** when checked (along with an optional token), the entire block will run asynchronously (see below).
-    *   **Execute exclusively (locked)** when checked The exclusive or lock option will prevent other general blocks with that token from executing at the same time. (see below).
-    *   **Specify execution timeout** when checked this block will timeout if not complete within specified number of seconds.
-    *   **Retry on Error** when checked block will try to run a specified number of times whenever it encounters an error.
-    *   **Disable this block** when checked this block will be ignored
-    *   **Isolation** indicates that all remote operations inside the block will be performed in a new process that will be terminated when control flow leaves the block.
-*   **Timeout** the number of seconds to wait for the contained items to run; if they don't run in this time, an error will be raised
-*   **Retry count** if any of the contained items raise an error, then the entire block (and all nested blocks) will be run as many times specified; if a retry succeeds, then the execution status will not change
+    <ul class="docs">
+        <li>
+            <b>Short Description</b>
+            sets the description or name of the current block.
+        </li>
+        <li>
+            <b>Run on Server</b>
+            sets the server used for execution of operations within the block
+        </li>
+        <li>
+            <b>Run if server has role</b>
+            restricts operation based on server role
+        </li>
+        <li>
+            <b>Run for deployable</b>
+            determines whether the current release in context has that deployable included, and skips the block if it does not
+        </li>
+        <li>
+            <b>Set working directory</b>
+            sets the current working directory that file-based Operations will use
+        </li>
+
+        <li>
+            <b>Execution options</b>
+            <ul class="docs">
+                <li>
+                    <b>Execute asynchronously (in parallel)</b>
+                    when checked (along with an optional token), the entire block will run asynchronously (see below).
+                </li>
+                <li>
+                    <b>Execute exclusively (locked)</b>
+                    when checked The exclusive or lock option will prevent other general blocks with that token from executing at the same time. (see below).
+                </li>
+                <li>
+                    <b>Specify execution timeout</b>
+                    when checked this block will timeout if not complete within specified number of seconds.
+                </li>
+                <li>
+                    <b>Retry on Error</b>
+                    when checked block will try to run a specified number of times whenever it encounters an error.
+                </li>
+                <li>
+                    <b>Disable this block</b>
+                    when checked this block will be ignored
+                </li>
+                <li>
+                    <b>Isolation</b>
+                    indicates that all remote operations inside the block will be performed in a new process that will be terminated when control flow leaves the block.
+                </li>
+            </ul>
+        </li>
+
+        <li>
+            <b>Timeout</b>
+            the number of seconds to wait for the contained items to run; if they don't run in this time, an error will be raised
+        </li>
+        <li>
+            <b>Retry count</b>
+            if any of the contained items raise an error, then the entire block (and all nested blocks) will be run as many times
+            specified; if a retry succeeds, then the execution status will not change
+        </li>
+
+    </ul>
 
 
     <h3 id="async" data-title="Asynchronous Blocks">Asynchronous Blocks</h3>
