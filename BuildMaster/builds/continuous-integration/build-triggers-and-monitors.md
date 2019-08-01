@@ -36,10 +36,10 @@ Next you will be prompted to select the trigger source which is either a Reposit
 - __Create Variables__: Checking this box will assign values to Branch and CommitHash directly from the repository.    
 - __Name__: The name of this Build Trigger. This will need to be unique to the scope they are in (system, application, group)
 
-##### Connection/Identity
+#### Connection/Identity
 If you haven't already created your resource credentials for the repository, this can be done here.
 
-##### Advanced
+#### Advanced
 The advanced tab  is where you can set up a scheduled time to monitor your repository for changes. The default is every 4 minutes but can be set for any interval.
 
 ### Webhook Monitor
