@@ -42,6 +42,8 @@
     </ul>
     <h2 id="creating" data-title="Creating a Release Template">Creating a Release Template</h2>
     <p>To create a release template, in the context of an application, select the Releases tab under the Releases project sub-navigation menu. While the UI editor is the recommended method to create release templates, it is also possible to create them from a <a href="#json">JSON object</a>.</p>
+    <h2 id="default" data-title="Default Release Template">Default Release Template</h2>
+    <p>Starting in BuildMaster 6.1.11, if you have a release template named "Default", it will be automatically used on releases that don't have a template selected. It also behaves a bit specially from a UI perspective: it is not displayed as the associated template on the release overview page, and the release template selector will be hidden if there is only a single template named "Default".</p>
     <h2 id="usage" data-title="Using a Release Template">Using a Release Template</h2>
     <p>Once a release template is created, it can be used in one of two places: either creating a new release from the UI, or the <a href="/docs/buildmaster/reference/api/release-and-build#create-release-from-template">Create Release from Template</a> API endpoint.</p>
     <p>If there is only a single release template for an application, that release template selected by default when creating a new release. Once a release is assigned a release template, any of the 3 variables properties that contain template variable configurations will then prompt for values as per the <a href="#hierarchy">Hierarchy</a> section above.</p>
