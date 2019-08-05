@@ -13,7 +13,9 @@ Every operation within a BuildMaster plan is executed by the user account config
 
 #### How to run a task using Different Credentials
 
-You can run sections of your plan as a different user very easily with the `with credentials` operation .
+BuildMaster 6.1.11 and later along with InedoAgent v4.3 and later offer this functionality. In order to run sections of your plan as a different user you simply need to add a `with credentials` operation call around the block of script you want to use different credentials for.
+
+In the sample below we are using the [resource credentials](/docs/buildmaster/administration/resource-credentials) named `remote-server-credentials`. You will need to set up a username and password type of resource credential prior to creating your OtterScript. These credentials will be used to gain permission to whatever task you will be running.
 
 ```
 for server remote-server
