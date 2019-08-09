@@ -39,7 +39,7 @@ Before importing from a feed, you will need to setup an Inedo Product resource c
 
 ## Package File Format {#package-file-formate data-title="Package File Format"}
 
-Applications will be exported as a standard [universal package](/support/documentation/proget/core-concepts/packages) which is essentially a zip file containing application configuration and history, along with a JSON-based manifest file (`upack.json`) that describes the contents of the package.
+Applications will be exported as a standard [universal package](/docs/proget/core-concepts/packages) which is essentially a zip file containing application configuration and history, along with a JSON-based manifest file (`upack.json`) that describes the contents of the package.
 
 In addition to the standard name and version properties, BuildMaster will include `a _exportDate` and `_bmVersion` property in `upack.json`. The package contents will be a collection of JSON-formatted files:
 
@@ -77,7 +77,7 @@ This feature is available in version 6.1.11 and later and is in much ways the sa
 To backup an application you will need to go into your applications advanced settings and click "Backup Application" from there you will need to select a package source.
 
 ## Routine Backup Of Applications
-Adding backups as part of your regularly scheduled maintenance will ensure that all of your applications will be easily restorable should something happen to break your workflow. In order to set this up you will need to create a [scheduled job](#) that runs a custom plan with simple OtterScript that called `System::Backup-Application`
+Adding backups as part of your regularly scheduled maintenance will ensure that all of your applications will be easily restorable should something happen to break your workflow. In order to set this up you will need to create a [scheduled job](/docs/buildmaster/builds/continuous-integration/build-triggers-and-monitors) that runs a custom plan with simple OtterScript that called `System::Backup-Application`
 
 Here is an example: 
 ```
