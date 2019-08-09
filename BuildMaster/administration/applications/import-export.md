@@ -71,10 +71,10 @@ Because these files are intended to only be used by BuildMaster, the precise for
 You may also want to start with a very lightweight version of an application where you already have set up the critical elements of the application but understand that more configuration is needed. This is where templates will be useful. A template is similar to an exported application except it will not contain any history. 
 
 ## Backup/Restore Applications
-Backing up applications is in much ways the same as exporting with the main exception being that it is created to capture a point to which it can be restored. Backups are very important when testing new processes and can prove to be very valuable when a change breaks part of your work flow. If you've backed up your application you'll easily be able to restore it to the exact working version from before the change. 
+This feature is available in version 6.1.11 and later and is in much ways the same as exporting an application with the main exception being that it is created to capture a point to which it can be restored. Backups are very important when testing new processes and can prove to be very valuable when a change breaks part of your work flow. If you've backed up your application you'll easily be able to restore it to the exact working version from before the change. 
 
 ## How To Backup/Restore an Application
-To backup an application you will need to go into your applications advanced settings and click "Backup Application" from there you will need to choose your package source. 
+To backup an application you will need to go into your applications advanced settings and click "Backup Application" from there you will need to select a package source.
 
 ## Routine Backup Of Applications
 Adding backups as part of your regularly scheduled maintenance will ensure that all of your applications will be easily restorable should something happen to break your workflow. In order to set this up you will need to create a [scheduled job](#) that runs a custom plan with simple OtterScript that called `System::Backup-Application`
