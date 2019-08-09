@@ -9,7 +9,7 @@
 <body>
 
     <p>
-            A release is an event where a planned set of changes are tested and delivered to production (or another final stage) using a set of packages. They help you organize and visualizing related deployment sets with a set of <a href="/support/documentation/hedgehog/deliver-deploy/configuration-variables">configuration variables</a> that all deployment sets can access, target dates that can assist with release planning, and notes that can facilitate communication.
+            A release is an event where a planned set of changes are tested and delivered to production (or another final stage) using a set of packages. They help you organize and visualizing related deployment sets with a set of <a href="/docs/hedgehog/deliver-deploy/configuration-variables">configuration variables</a> that all deployment sets can access, target dates that can assist with release planning, and notes that can facilitate communication.
     </p>
  <p>
         Release and deployment sets are conceptually similar, but it’s at a higher abstraction level. Just as a deployment set "contains" packages, a release will "contain" deployment sets.
@@ -50,19 +50,19 @@
     </p>
     <h3 id="variables">Variables</h3>
     <p>
-            Releases have a set of <a href="/support/documentation/hedgehog/deliver-deploy/configuration-variables">configuration variables</a> associated with them that can be used by deployment plans at runtime. 
+            Releases have a set of <a href="/docs/hedgehog/deliver-deploy/configuration-variables">configuration variables</a> associated with them that can be used by deployment plans at runtime. 
     </p>
     <h3 id="metadata">Properties and Metadata</h3>
     <p>
-        Releases have the following metadata properties; they may be accessed from within a deployment plan by using <a href="/support/documentation/executionengine/components/runtime-variables#variable-functions">variable functions</a>, and can be changed from the UI or API.
+        Releases have the following metadata properties; they may be accessed from within a deployment plan by using <a href="/docs/executionengine/components/runtime-variables#variable-functions">variable functions</a>, and can be changed from the UI or API.
     </p>
     <p>
         <ul class="docs">
             <li><strong>Id:</strong> this is an immutable system-assigned identifier, and is used both internally and by the API to reference a release; it cannot be changed and is unique across all releases in an instance of Hedgehog</li>
             <li><strong>Number:</strong> this is a human-friendly name in a "SemVer2" format; it is unique across releases in a project</li>
             <li><strong>Name:</strong> this is a human-friendly name used within the UI to help differentiate one release from another; it is not unique across releases </li>
-            <li><strong>Template:</strong> the name of the <a href="/support/documentation/hedgehog/bundling/deployment-sets/templates">deployment set template</a> used to create deployment sets; this is also used to determine deployment-time variables</li>
-            <li><strong>Project:</strong> a release must be associated with a <a href="/support/documentation/hedgehog/bundling/projects">project</a>; you can change this on active releases</li>
+            <li><strong>Template:</strong> the name of the <a href="/docs/hedgehog/bundling/deployment-sets/templates">deployment set template</a> used to create deployment sets; this is also used to determine deployment-time variables</li>
+            <li><strong>Project:</strong> a release must be associated with a <a href="/docs/hedgehog/bundling/projects">project</a>; you can change this on active releases</li>
         </ul>
     </p>
     <p>

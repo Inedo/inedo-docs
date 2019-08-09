@@ -13,42 +13,42 @@ ProGet is licensed *per installation* on an annual or perpetual basis and has ad
 | Features | Free | Basic | Load Balanced - Only | Enterprise (High Availability) |
 |-----------------------------------------------------------------------------------------------------------------------------------|----|----|----|----|
 | Unlimited Users                                                                                                                   | ✔ | ✔ | ✔ | ✔ |
-| [NuGet Feed](/support/documentation/proget/feeds/nuget)                                                                           | ✔ | ✔ | ✔ | ✔ |
-| [NuGet Package Symbol Server](/support/documentation/proget/feeds/nuget/symbol-and-source-server)                                 | ✔ | ✔ | ✔ | ✔ |
-| [PowerShell Feed](/support/documentation/proget/feeds/powershell)                                                                 | ✔ | ✔ | ✔ | ✔ |
-| [Docker Feed](/support/documentation/proget/feeds/docker)                                                                         | ✔ | ✔ | ✔ | ✔ |
-| [Ruby Gems Feed](/support/documentation/proget/feeds/rubygem)                                                                     | ✔ | ✔ | ✔ | ✔ |
-| [VSIX Feed](/support/documentation/proget/feeds/vsix)                                                                             | ✔ | ✔ | ✔ | ✔ |
-| [Chocolatey Feed](/support/documentation/proget/feeds/chocolatey)                                                                 | ✔ | ✔ | ✔ | ✔ |
-| [npm Feed](/support/documentation/proget/feeds/npm)                                                                               | ✔ | ✔ | ✔ | ✔ |
-| [Bower Feed](/support/documentation/proget/feeds/bower)                                                                           | ✔ | ✔ | ✔ | ✔ |
-| [Maven Feed](/support/documentation/proget/feeds/maven)                                                                           | ✔ | ✔ | ✔ | ✔ |
-| [PyPI Feed](/support/documentation/proget/feeds/pypi)                                                                             | ✔ | ✔ | ✔ | ✔ |
-| [Debian Feed](/support/documentation/proget/feeds/debian)                                                                         | ✔ | ✔ | ✔ | ✔ |
-| [Helm Feed](/support/documentation/proget/feeds/helm)                                                                             | ✔ | ✔ | ✔ | ✔ |
-| [Deployment Records](/support/documentation/proget/advanced/package-promotion#deployment-records)                                 | ✔ | ✔ | ✔ | ✔ |
+| [NuGet Feed](/docs/proget/feeds/nuget)                                                                           | ✔ | ✔ | ✔ | ✔ |
+| [NuGet Package Symbol Server](/docs/proget/feeds/nuget/symbol-and-source-server)                                 | ✔ | ✔ | ✔ | ✔ |
+| [PowerShell Feed](/docs/proget/feeds/powershell)                                                                 | ✔ | ✔ | ✔ | ✔ |
+| [Docker Feed](/docs/proget/feeds/docker)                                                                         | ✔ | ✔ | ✔ | ✔ |
+| [Ruby Gems Feed](/docs/proget/feeds/rubygem)                                                                     | ✔ | ✔ | ✔ | ✔ |
+| [VSIX Feed](/docs/proget/feeds/vsix)                                                                             | ✔ | ✔ | ✔ | ✔ |
+| [Chocolatey Feed](/docs/proget/feeds/chocolatey)                                                                 | ✔ | ✔ | ✔ | ✔ |
+| [npm Feed](/docs/proget/feeds/npm)                                                                               | ✔ | ✔ | ✔ | ✔ |
+| [Bower Feed](/docs/proget/feeds/bower)                                                                           | ✔ | ✔ | ✔ | ✔ |
+| [Maven Feed](/docs/proget/feeds/maven)                                                                           | ✔ | ✔ | ✔ | ✔ |
+| [PyPI Feed](/docs/proget/feeds/pypi)                                                                             | ✔ | ✔ | ✔ | ✔ |
+| [Debian Feed](/docs/proget/feeds/debian)                                                                         | ✔ | ✔ | ✔ | ✔ |
+| [Helm Feed](/docs/proget/feeds/helm)                                                                             | ✔ | ✔ | ✔ | ✔ |
+| [Deployment Records](/docs/proget/advanced/package-promotion#deployment-records)                                 | ✔ | ✔ | ✔ | ✔ |
 | [Connectors to Third-Party Feeds](#connector-limitations)                                                                         | ✔ | ✔ | ✔ | ✔ |
 | [Connectors to Other ProGet Instances](#connector-limitations)                                                                    |    | ✔ | ✔ | ✔ |
-| [License Scanning and Blocking](/support/documentation/proget/compliance/license-scanning)                                        |    | ✔ | ✔ | ✔ |
-| [Connector Filtering](/support/documentation/proget/core-concepts/feeds/connectors#connector-filters)                             |    | ✔ | ✔ | ✔ |
-| [Security and Access Controls](/support/documentation/proget/administration/security)                                             |    | ✔ | ✔ | ✔ |
-| [Active Directory Integration](/support/documentation/various/ldap/ldap-active-directory)                                         |    | ✔ | ✔ | ✔ |
-| [Retention Rules](/support/documentation/proget/administration/retention-rules)                                                   |    | ✔ | ✔ | ✔ |
-| [Package Statistics/Metrics](/support/documentation/proget/administration/package-statistics)                                     |    | ✔ | ✔ | ✔ |
-| [Cloud Storage](/support/documentation/proget/storage/cloud-storage)                                                              |    | ✔ | ✔ | ✔ |
-| [Package Promotion](/support/documentation/proget/advanced/package-promotion)                                                     |    | ✔ | ✔ | ✔ |
-| [Vulnerability Scanning](/support/documentation/proget/administration/vulnerability-source)                                       |    | ✔ | ✔ | ✔ |
-| [Webhooks](/support/documentation/proget/advanced/webhooks)                                                                       |    | ✔ | ✔ | ✔ |
-| [Load Balancing Support](/support/documentation/proget/installation/load-balancing-and-automatic-failover)                        |    |    | ✔ | ✔ |
-| [Multiple Web Nodes](/support/documentation/proget/installation/load-balancing-and-automatic-failover#web-node-configuration)     |    |    | ✔ | ✔ |
-| [Multiple Index Nodes](/support/documentation/proget/installation/load-balancing-and-automatic-failover#indexing-nodes)           |    |    |    | ✔ |
-| [Automatic Failover](/support/documentation/proget/installation/load-balancing-and-automatic-failover)                            |    |    |    | ✔ |
-| [Multi-Site Replication](/support/documentation/proget/administration/feed-replication)                                           |    |    |    | ✔ |
+| [License Scanning and Blocking](/docs/proget/compliance/license-scanning)                                        |    | ✔ | ✔ | ✔ |
+| [Connector Filtering](/docs/proget/core-concepts/feeds/connectors#connector-filters)                             |    | ✔ | ✔ | ✔ |
+| [Security and Access Controls](/docs/proget/administration/security)                                             |    | ✔ | ✔ | ✔ |
+| [Active Directory Integration](/docs/various/ldap/ldap-active-directory)                                         |    | ✔ | ✔ | ✔ |
+| [Retention Rules](/docs/proget/administration/retention-rules)                                                   |    | ✔ | ✔ | ✔ |
+| [Package Statistics/Metrics](/docs/proget/administration/package-statistics)                                     |    | ✔ | ✔ | ✔ |
+| [Cloud Storage](/docs/proget/storage/cloud-storage)                                                              |    | ✔ | ✔ | ✔ |
+| [Package Promotion](/docs/proget/advanced/package-promotion)                                                     |    | ✔ | ✔ | ✔ |
+| [Vulnerability Scanning](/docs/proget/administration/vulnerability-source)                                       |    | ✔ | ✔ | ✔ |
+| [Webhooks](/docs/proget/advanced/webhooks)                                                                       |    | ✔ | ✔ | ✔ |
+| [Load Balancing Support](/docs/proget/installation/load-balancing-and-automatic-failover)                        |    |    | ✔ | ✔ |
+| [Multiple Web Nodes](/docs/proget/installation/load-balancing-and-automatic-failover#web-node-configuration)     |    |    | ✔ | ✔ |
+| [Multiple Index Nodes](/docs/proget/installation/load-balancing-and-automatic-failover#indexing-nodes)           |    |    |    | ✔ |
+| [Automatic Failover](/docs/proget/installation/load-balancing-and-automatic-failover)                            |    |    |    | ✔ |
+| [Multi-Site Replication](/docs/proget/administration/feed-replication)                                           |    |    |    | ✔ |
 
 
 ## License Keys
 
-For more information on License Key Management and Activation, visit the shared documentation [here](/support/documentation/various/licensing/management).
+For more information on License Key Management and Activation, visit the shared documentation [here](/docs/various/licensing/management).
 
 ## ProGet Free Edition Limitations {#free-edition-limitations data-title="Free Edition Limitations"}
 
@@ -56,7 +56,7 @@ For more information on License Key Management and Activation, visit the shared 
 
 ### Client-side Feed Aggegation
 
-Client-side feed aggregation in this context is defined as adding multiple package sources *of the same feed type* configured in a client tool, IDE, or by a build server. While ProGet users are unlimited by default license terms, developers **must not** aggregate feeds from more than one ProGet instance if *any* of them are free edition and used in a production environment. Developers **may** aggreggate feeds from more than one instance even if one of the instances is a free edition for **local** testing purposes, such as: testing/creating packages, developing against the Inedo SDK, or experimenting with any of the [ProGet APIs](/support/documentation/proget/reference/api). However, using a free edition instance in a testing or staging environment is not permitted and each environment would require its own separate license.
+Client-side feed aggregation in this context is defined as adding multiple package sources *of the same feed type* configured in a client tool, IDE, or by a build server. While ProGet users are unlimited by default license terms, developers **must not** aggregate feeds from more than one ProGet instance if *any* of them are free edition and used in a production environment. Developers **may** aggreggate feeds from more than one instance even if one of the instances is a free edition for **local** testing purposes, such as: testing/creating packages, developing against the Inedo SDK, or experimenting with any of the [ProGet APIs](/docs/proget/reference/api). However, using a free edition instance in a testing or staging environment is not permitted and each environment would require its own separate license.
 
 ### Connector Limitations
 

@@ -29,7 +29,7 @@
     <div class="attention analogy">
         <img src="/resources/images/icons/analogy.png" />
         <p>
-            Note: Build reports are not persisted by <a href="/support/documentation/buildmaster/administration/import-apps">application import/export</a>. To maintain important
+            Note: Build reports are not persisted by <a href="/docs/buildmaster/administration/import-apps">application import/export</a>. To maintain important
             information across this boundary, use build artifacts instead.
         </p>
     </div>
@@ -39,7 +39,7 @@
         Build reports are captured using one of the following operations:
     </p>
 
-    <h4><a href="/support/documentation/buildmaster/reference/operations/reports/capture-html-report-from-directory"><code>Capture-HtmlDirectoryReport</code></a></h4>
+    <h4><a href="/docs/buildmaster/reference/operations/reports/capture-html-report-from-directory"><code>Capture-HtmlDirectoryReport</code></a></h4>
 
     <p>
         An HTML directory report requires a specific format to be displayed correctly within BuildMaster.
@@ -48,7 +48,7 @@
     </p>
     <p>This operation also allows an optional preview file to be displayed on the build overview page.</p>
 
-    <h4><a href="/support/documentation/buildmaster/reference/operations/reports/capture-report-from-file"><code>Capture-FileReport</code></a></h4>
+    <h4><a href="/docs/buildmaster/reference/operations/reports/capture-report-from-file"><code>Capture-FileReport</code></a></h4>
 
     <p>
         A file report is displayed as either plain text or HTML, depending on the format specified in the operation.
@@ -61,7 +61,7 @@
         tool and capturing the output.
     </p>
 
-    <h4><a href="/support/documentation/buildmaster/reference/operations/reports/directory-comparison-report"><code>Compare-Directories</code></a></h4>
+    <h4><a href="/docs/buildmaster/reference/operations/reports/directory-comparison-report"><code>Compare-Directories</code></a></h4>
     <p>This operation compares two directories on the same server and highlights the following information:</p>
     <ul>
         <li>Added files or directories</li>
@@ -69,7 +69,7 @@
         <li>Modified file contents</li>
     </ul>
 
-    <h4><a href="/support/documentation/buildmaster/reference/operations/reports/artifact-comparison-report"><code>Compare-Artifacts</code></a></h4>
+    <h4><a href="/docs/buildmaster/reference/operations/reports/artifact-comparison-report"><code>Compare-Artifacts</code></a></h4>
     <p>This operation works in the same manner as the Compare-Directories operation, with the following caveats:</p>
     <ul>
         <li>Artifacts are extracted and compared on the BuildMaster server</li>
@@ -78,7 +78,7 @@
     </ul>
 
     <h3>Custom Build Reports</h3>
-    <p>To capture and associate a custom build report, simple run a third-party tool with the <code><a href="/support/documentation/buildmaster/reference/operations/general/execute-process">Exec</a></code> operation then capture its output with one of the two built-in <a href="#capturing-reports">capturing operations</a>.</p>
+    <p>To capture and associate a custom build report, simple run a third-party tool with the <code><a href="/docs/buildmaster/reference/operations/general/execute-process">Exec</a></code> operation then capture its output with one of the two built-in <a href="#capturing-reports">capturing operations</a>.</p>
 
     <h4>Examples</h4>
 

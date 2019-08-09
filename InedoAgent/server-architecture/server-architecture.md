@@ -14,7 +14,7 @@ This process is only responsible for listening for requests from agent clients (
 The Inedo Agent listens for and receives individual messages from the network stack (protocol described separately); there two types of messages:
 
 {.docs}
-- [Meta](/support/documentation/inedoagent/server-architecture/message-formats#meta) - the message should be processed by the InedoAgent.exe process directly
+- [Meta](/docs/inedoagent/server-architecture/message-formats#meta) - the message should be processed by the InedoAgent.exe process directly
 - Product - the message is passed along to the appropriate product host process
 
 ### Product Host Processes {#product data-title="Product Host Processes"}
@@ -51,7 +51,7 @@ Client messages do not need to specify a target, as the target will already be p
 
 #### Message Types {message data-title="Message Types"}
 
-While all messages specify a message code that identifies the type of message (i.e. how it should be processed), each target can only process its own message types. As such, [Meta](/support/documentation/inedoagent/server-architecture/message-formats#meta)-targeted messages are part of the Inedo Agent specification, but product-targeted messages are not.
+While all messages specify a message code that identifies the type of message (i.e. how it should be processed), each target can only process its own message types. As such, [Meta](/docs/inedoagent/server-architecture/message-formats#meta)-targeted messages are part of the Inedo Agent specification, but product-targeted messages are not.
 
 Any references to BuildMaster, Hedgehog, or Otter messages types are for example purposes only; they are not part of the agent specification, and are subject to change in any version of the product.
 

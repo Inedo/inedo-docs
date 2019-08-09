@@ -20,7 +20,7 @@ Packages have become a unifying concept across a DevOps toolchain because they a
 
 ## Package Formats: Universal and Third-party {#package-formats data-title="Package Formats: Universal and Third-party"}
 
-There's not a whole lot to a package: it's just a zip file containing the files you actually want to distribute, as well as a manifest file that describes the package itself. The specific layout of the zip file and manifest is referred to as a package format. ProGet supports the [universal package format](/support/documentation/upack/universal-packages/package-format), as well as a variety of third-party formats.
+There's not a whole lot to a package: it's just a zip file containing the files you actually want to distribute, as well as a manifest file that describes the package itself. The specific layout of the zip file and manifest is referred to as a package format. ProGet supports the [universal package format](/docs/upack/universal-packages/package-format), as well as a variety of third-party formats.
 
 ### Universal Package Format {#universal-package data-title="Universal Package Format"}
 
@@ -44,13 +44,13 @@ While you could certainly package .NET libraries in a universal package, they wo
 There are a lot of options for creating and publishing universal packages to ProGet, either from a developer's workstation, a build server, or anywhere else:
 
 {.docs}
-- [Universal Package Explorer](/support/documentation/upack/upe)
-- [Command-line Interface](/support/documentation/upack/upack-cli)   
-- [UPackLib.NET library](/support/documentation/upack/upacklib-net)
+- [Universal Package Explorer](/docs/upack/upe)
+- [Command-line Interface](/docs/upack/upack-cli)   
+- [UPackLib.NET library](/docs/upack/upacklib-net)
 - [Inedo ProGet Jenkins Plugin](/den/proget/jenkinsplugin)
 - [Push to ProGet Visual Sutdio Extension](/den/proget/visualstudio)
 - Upload hand-crafted package files from the UI
-- Simple HTTP Post with your own tool/scripts using the [Universal Feed API](/support/documentation/upack/feed-api/endpoints)
+- Simple HTTP Post with your own tool/scripts using the [Universal Feed API](/docs/upack/feed-api/endpoints)
 
 To learn how to create and package using a third-party package format, refer to the appropriate third-party feed documentation.
 
@@ -65,3 +65,10 @@ For example, “HDars-API 1.0.4” is version 1.0.4 of HDars-API, which is newer
 Universal packages (as well as some third-party packages) use the [SemVer specification](http://www.semver.org) to describe the version number.
 
 <iframe width="600" height="337" src="https://www.youtube.com/embed/Si3eWq1yHXs" frameborder="0" allowfullscreen="true"></iframe>
+
+
+## Unlist a Package {#unlist data-title="Unlist a package"}
+In order to remove or deprecate a package or a specific version of a package you can use the Unlist feature by browsing to the _local_ package and clicking Unlist. This will give you the option to Unlist the version of the package you are viewing or all versions of the package.  
+
+## List a Package {#list data-title="List a package"}
+If you have unlisted a package or version of a package from a feed for any reason and wish to include it again you can simply click the List button on any package that has been unlisted.

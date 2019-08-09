@@ -47,7 +47,7 @@ These steps will be based off of this application, but BuildMaster is very flexi
  - Create `Production-Green` and `Production-Blue` as child environments of Production
  - Create a `SwapBlueGreen` plan that uses a variable called `$SwapTo` to determine whether to swap Blue to Green, or Green to Blue
      * this plan will issue instructions to your router or load-balancer using PowerShell or another mechanism
- - Create two [pipelines](/support/documentation/buildmaster/verification/pipelines):
+ - Create two [pipelines](/docs/buildmaster/verification/pipelines):
      * Both will start with your standard pre-production stages (Build, Integration, Test, etc.)
      * Blue will deploy to a "Blue" stage, then a "Swap" stage
      * Green will deploy to a "Green" stage, then a "Swap" stage
@@ -73,7 +73,7 @@ Once a build reaches the "Staging" stage, you can simply swap the releases pipel
 You can even simplify this process and give the user a choice when they deploy to the "Staging" stage. To do this:
 
 {.docs}
- - creating a [release template](/support/documentation/buildmaster/releases/templates) called "Choose Blue or Green"
+ - creating a [release template](/docs/buildmaster/releases/templates) called "Choose Blue or Green"
  - configure a Deployment Variable Template for the "Staging" stage (List: Blue, Green)
  - create a plan that changes the release's pipline to the selected variable
 

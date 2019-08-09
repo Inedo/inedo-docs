@@ -14,18 +14,18 @@ A server can be physical (bare metal), virtual, or even nonexistent (i.e. one th
 
 ## Adding Servers to Otter {#adding-servers data-title="Adding Servers"}
 
-You can add a server using the web-based user interface (Servers > Add Server), or programmatically with the [infrastructure API](/support/documentation/otter/reference/api/infrastructure).
+You can add a server using the web-based user interface (Servers > Add Server), or programmatically with the [infrastructure API](/docs/otter/reference/api/infrastructure).
 
 ![Create Servers](/resources/documentation/otter/2/servers.png){.screenshot}
 
 
-Otter communicates with servers using the [Inedo Agent](/support/documentation/various/inedo-agent/the-agent) (for Windows) or [SSH/SFTP](https://www.ssh.com/ssh/sftp/) (for Windows and Linux).
+Otter communicates with servers using the [Inedo Agent](/docs/various/inedo-agent/the-agent) (for Windows) or [SSH/SFTP](https://www.ssh.com/ssh/sftp/) (for Windows and Linux).
 
 ## Provisioning and Configuring Servers {#provision-server data-title="Provisioning and Configuring Servers"}
 
-Once a server has been added, you can begin provisioning and configuring the server by describing the packages, settings, files, and anything else that your server requires. This is accomplished by creating a [configuration plan](/support/documentation/otter/core-concepts/plans#configuration) that describes the desired state of configuration and the specific steps needed to ensure that state.
+Once a server has been added, you can begin provisioning and configuring the server by describing the packages, settings, files, and anything else that your server requires. This is accomplished by creating a [configuration plan](/docs/otter/core-concepts/plans#configuration) that describes the desired state of configuration and the specific steps needed to ensure that state.
 
-For example, you would use [Ensure-AppPool](/support/documentation/otter/reference/operations/iis/ensure-app-pool) to describe and provision an Application Pool in IIS, along with any number of the three dozen settings application pools can have.
+For example, you would use [Ensure-AppPool](/docs/otter/reference/operations/iis/ensure-app-pool) to describe and provision an Application Pool in IIS, along with any number of the three dozen settings application pools can have.
 
 <tab-block>
     <tab name="Visual Mode">
@@ -54,7 +54,7 @@ Each server can be configured to manage configuration drift differently, through
 
 {.docs}
 - Do not collect: the server's *actual* configuration is not collected
-- Report Only: when configuration drift is detected, the server will be changed into a drifted state, and you can schedule a [configuration job](/support/documentation/otter/core-concepts/jobs#configuration) (either real or simulated) to remediate the drift
+- Report Only: when configuration drift is detected, the server will be changed into a drifted state, and you can schedule a [configuration job](/docs/otter/core-concepts/jobs#configuration) (either real or simulated) to remediate the drift
 - Automatically Remediate: when drift is detected, the server will automatically be configured with the desired configuration state
 
 ### Server Packages {#packages data-title="Server Packages"}

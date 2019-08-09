@@ -30,7 +30,7 @@ the **Connectors** tab at the top of the page. This way you can have access to t
 rich library of packages in addition to your private ones. Connectors also
 allow filtering, if you would like to include only a subset of external
 packages; however, no filtering is performed by default. For more information
-about connectors, see the [documentation](/support/documentation/proget/core-concepts/connectors).
+about connectors, see the [documentation](/docs/proget/core-concepts/connectors).
 
 ## Setting up npm {#setting data-title="Setting up npm"}
 
@@ -52,7 +52,7 @@ npm install {package-name}@{package-version}
 
 In order to interact with your private registry without using the `npm adduser` command you will need to follow these steps:
 
-- **[Create an API Key](/support/documentation/proget/administration/security/api-keys)** - you can create an API Key in ProGet (Admin > API Key & Access Logs) with Feed Access. you can further restrict this key by associating it to a user you've already given specific permissions
+- **[Create an API Key](/docs/proget/administration/security/api-keys)** - you can create an API Key in ProGet (Admin > API Key & Access Logs) with Feed Access. you can further restrict this key by associating it to a user you've already given specific permissions
 - **Encode The API Key** - Once the key has been generated you will need to encrypt the key along with the username `api`. This needs to be encoded in base64 format. Your string prior to encoding should be: `api:{APIKEY}` 
 
 Once you have this token you will need set your _auth value with it using npm. It is also recommended that you set always-auth to true.

@@ -21,9 +21,9 @@
     <h4 id="hierarchy">Hierarchy</h4>
     <p>Release template variables are configurable at any of 3 levels:</p>
     <ol>
-        <li><strong>Release creation</strong> - when creating a new release, inputs will appear for the specified variables and once the release is created, corresponding <a href="/support/documentation/buildmaster/reference/functions/releases/releasevariable">Release Variables</a> will be created. These variable values may be edited later on the Release Details page.</li>
+        <li><strong>Release creation</strong> - when creating a new release, inputs will appear for the specified variables and once the release is created, corresponding <a href="/docs/buildmaster/reference/functions/releases/releasevariable">Release Variables</a> will be created. These variable values may be edited later on the Release Details page.</li>
         <li><strong>Build creation</strong> - when creating a new build of a release with a template assigned, inputs will appear for the specified variables and once the build is created, corresponding <i>Build Variables</i> will be created. These variable values may be edited later on the Build Details page.</li>
-        <li><strong>Deployment to a pipeline stage</strong> - when deploying a build of a release with a template assigned, inputs will appear on the "Deploy to Stage" page and once deployment begins, corresponding <i>Execution Variables</i> will be injected into the deployment and are not editable (though they may be overridden within a deployment plan using the <a href="/support/documentation/executionengine/otterscript/statements-and-blocks/other-statements">Set Variable statement</a>).</li>
+        <li><strong>Deployment to a pipeline stage</strong> - when deploying a build of a release with a template assigned, inputs will appear on the "Deploy to Stage" page and once deployment begins, corresponding <i>Execution Variables</i> will be injected into the deployment and are not editable (though they may be overridden within a deployment plan using the <a href="/docs/executionengine/otterscript/statements-and-blocks/other-statements">Set Variable statement</a>).</li>
     </ol>
     <h4 id="types">Types</h4>
     <p>There are 4 types of Template Variables:</p>
@@ -38,12 +38,12 @@
     <ul class="docs">
         <li><strong>Initial value</strong> - the pre-populated value that will appear in a rendered variable prompt</li>
         <li><strong>Required</strong> - indicates that a value must be present to continue creating the release/build or to deploy</li>
-        <li><strong>Obscure the value of this variable from casual viewing</strong> - indicates that when a corresponding release or build variable is created, that it is hidden from the UI and will require additional edit permissions to view it. Note that this is not a means to "secure" a variable value which is handled through <a href="/support/documentation/buildmaster/administration/resource-credentials">Resource Credentials</a>.</li>
+        <li><strong>Obscure the value of this variable from casual viewing</strong> - indicates that when a corresponding release or build variable is created, that it is hidden from the UI and will require additional edit permissions to view it. Note that this is not a means to "secure" a variable value which is handled through <a href="/docs/buildmaster/administration/resource-credentials">Resource Credentials</a>.</li>
     </ul>
     <h2 id="creating" data-title="Creating a Release Template">Creating a Release Template</h2>
     <p>To create a release template, in the context of an application, select the Releases tab under the Releases project sub-navigation menu. While the UI editor is the recommended method to create release templates, it is also possible to create them from a <a href="#json">JSON object</a>.</p>
     <h2 id="usage" data-title="Using a Release Template">Using a Release Template</h2>
-    <p>Once a release template is created, it can be used in one of two places: either creating a new release from the UI, or the <a href="/support/documentation/buildmaster/reference/api/release-and-build#create-release-from-template">Create Release from Template</a> API endpoint.</p>
+    <p>Once a release template is created, it can be used in one of two places: either creating a new release from the UI, or the <a href="/docs/buildmaster/reference/api/release-and-build#create-release-from-template">Create Release from Template</a> API endpoint.</p>
     <p>If there is only a single release template for an application, that release template selected by default when creating a new release. Once a release is assigned a release template, any of the 3 variables properties that contain template variable configurations will then prompt for values as per the <a href="#hierarchy">Hierarchy</a> section above.</p>
     <p>A release may be assigned a different release template at any time while the release is active, however note that this can change the variable prompts whose values may be expected by a deployment plan.</p>
     <h2 id="json" data-title="JSON Format">JSON Format</h2>

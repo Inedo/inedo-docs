@@ -4,7 +4,7 @@ keywords: otter,environments
 show-headings-in-nav: true
 ---
 
-An environment is a logical grouping of [Servers](../core-concepts/servers), and generally describes one stage of the development process (development, testing, Q/A, production, staging, etc). But they can also describe other things like a physical location (NYC-DC1, Tokyo-DC1) or even a customer site. You can also [Permit or restrict access](/support/documentation/otter/administration/security) to servers and [Configurations](/support/documentation/otter/core-concepts/plans) within particular environments to ensure enterprise security and compliance needs.
+An environment is a logical grouping of [Servers](../core-concepts/servers), and generally describes one stage of the development process (development, testing, Q/A, production, staging, etc). But they can also describe other things like a physical location (NYC-DC1, Tokyo-DC1) or even a customer site. You can also [Permit or restrict access](/docs/otter/administration/security) to servers and [Configurations](/docs/otter/core-concepts/plans) within particular environments to ensure enterprise security and compliance needs.
 
 ![Environments in Otter](/resources/documentation/otter/environments.png){.screenshot}
 
@@ -12,7 +12,7 @@ Otter comes with three, built-in environments that represent a very simple deplo
 
 ## Environments and Drift {#environments-drift data-title="Environments and Drift"}
 
-Although you can't define a [Configuration plan](../core-concepts/server#configuration) for an environment, an environment can still be *drifted* if any of the servers within it are in a [Drifted state](/support/documentation/otter/core-concepts/servers#drift).
+Although you can't define a [Configuration plan](../core-concepts/server#configuration) for an environment, an environment can still be *drifted* if any of the servers within it are in a [Drifted state](/docs/otter/core-concepts/servers#drift).
 
 ## Nested Environments {#nested-environments data-title="Nested Environments"}
 

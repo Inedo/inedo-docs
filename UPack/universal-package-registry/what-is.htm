@@ -9,7 +9,7 @@
 </head>
 <body>
     <p>
-        <a href="/support/documentation/proget/core-concepts/packages#universal-package" target="_blank">Universal Feeds and Packages</a> are "lightweight" and, on their own, have very few built-in features. This design has allowed them to be utilized for all sorts of packaging problems such as application delivery, Inedo's product extensions, and even private Bower packages.
+        <a href="/docs/proget/core-concepts/packages#universal-package" target="_blank">Universal Feeds and Packages</a> are "lightweight" and, on their own, have very few built-in features. This design has allowed them to be utilized for all sorts of packaging problems such as application delivery, Inedo's product extensions, and even private Bower packages.
     </p>
     <p>
         When developing a package-based solution, one question that often comes up is "what packages are installed or used in this particular context?" That's where the Universal Package Registry comes in; it's a local package registry designed specifically for Universal Packages.
@@ -17,7 +17,7 @@
 
     <h2 id="background" data-title="Background">Background: Other Local Package Registries</h2>
     <p>
-        All packages, <a href="/support/documentation/upack/universal-packages/package-format">universal format</a> or otherwise, are essentially zip files with content, (i.e. the actual files you want packaged) and a metadata file that describes the content. Once the contents of a package are extracted and <i>installed</i> to a directory, there’s no easy way to know which package those contents came from, or if they came from a package at all. This is where a local package registry comes in.
+        All packages, <a href="/docs/upack/universal-packages/package-format">universal format</a> or otherwise, are essentially zip files with content, (i.e. the actual files you want packaged) and a metadata file that describes the content. Once the contents of a package are extracted and <i>installed</i> to a directory, there’s no easy way to know which package those contents came from, or if they came from a package at all. This is where a local package registry comes in.
     </p>
     <p>
         Different package managers use different mechanisms to represent a local registry. Some store the entire package, others store only metadata about the package, and each approach has advantages and disadvantages.

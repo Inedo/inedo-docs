@@ -22,7 +22,7 @@ A NuGet feed in ProGet may be configured as a Symbol/Source server compatible wi
 
 {.checkbox .red} ☒ **PDBs in connector packages**
 
-{.checkbox .red} ☒ **Source server for [ProGet on Linux](/support/documentation/proget/installation/installation-guide/linux-docker)**
+{.checkbox .red} ☒ **Source server for [ProGet on Linux](/docs/proget/installation/installation-guide/linux-docker)**
 
 
 ### Accessing Symbols
