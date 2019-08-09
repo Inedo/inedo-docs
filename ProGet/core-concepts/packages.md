@@ -65,3 +65,10 @@ For example, “HDars-API 1.0.4” is version 1.0.4 of HDars-API, which is newer
 Universal packages (as well as some third-party packages) use the [SemVer specification](http://www.semver.org) to describe the version number.
 
 <iframe width="600" height="337" src="https://www.youtube.com/embed/Si3eWq1yHXs" frameborder="0" allowfullscreen="true"></iframe>
+
+
+## Unlist a Package {#unlist data-title="Unlist a package"}
+In order to remove or deprecate a package or a specific version of a package you can use the Unlist feature by browsing to the _local_ package and clicking Unlist. This will give you the option to Unlist the version of the package you are viewing or all versions of the package.  
+
+## List a Package {#list data-title="List a package"}
+If you have unlisted a package or version of a package from a feed for any reason and wish to include it again you can simply click the List button on any package that has been unlisted.
