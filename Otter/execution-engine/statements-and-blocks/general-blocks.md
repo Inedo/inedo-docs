@@ -56,3 +56,30 @@ await;
 
 log-debug all async blocks finished!;
 ```
+
+### Running as Different Users
+You can run sections of your plan as a different user.  This is particularly useful when you accessing a different server or multiple repositories. 
+```
+for server remote-server
+{
+    with credentials=remote-server-credentials
+    {
+        // all remote commands executed here will be performed in a process
+        // running under the specified credentials
+    }        
+}
+```
+
+### Executing in a New Process
+Using the Isolation directive ensures all remote operations inside the block will be performed in a new process that will be terminated when control flow leaves the block.
+
+```
+for server remote-server
+{
+    with isolation
+    {
+        // all remote commands executed here will be performed in a process
+        // that will be terminated when the control leaves the block
+    }        
+}
+```
