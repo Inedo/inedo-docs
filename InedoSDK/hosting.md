@@ -5,7 +5,7 @@ keywords: inedo, inedo sdk
 show-headings-in-nav: true
 ---
 
-Typical usage of an Inedo product does not require additional configuration to connect with the Inedo Den that serves extensions for our products. What you may not realize is that extensions are served using a [Universal Feed](/support/documentation/upack/feed-api/endpoints).
+Typical usage of an Inedo product does not require additional configuration to connect with the Inedo Den that serves extensions for our products. What you may not realize is that extensions are served using a [Universal Feed](/docs/upack/feed-api/endpoints).
 
 Because of this, Inedo product administrators can host their own "extension gallery" simply by creating a Universal Feed within ProGet, optionally adding a connector to the Inedo Den https://inedo.com/den/feed, and updating the Extensions.UpdateFeedUrl setting in the Inedo product as desired.
 
@@ -14,7 +14,7 @@ Because of this, Inedo product administrators can host their own "extension gall
 There are a few benefits to hosting your own extension gallery:
 
 {.docs}
-- People in your own organization could [create](/support/documentation/inedosdk/extending/creating) and upload extensions to it
+- People in your own organization could [create](/docs/inedosdk/extending/creating) and upload extensions to it
 - Extensions in target products could still be updated even without an internet connection
 - Inedo extensions could be curated by allowing only "approved" packages
 - Multiple extension feeds could be combined in a single one with multiple connectors

@@ -18,4 +18,4 @@ As of ProGet 5.1.0, Maven feeds support alternate package stores (AWS, Azure).
 
 ### Authenticating to Maven Feeds {#authenticating data-title="Authenticating to Maven Feeds"}
 
-Authentication settings for the maven client is configured in your [settings.xlm](https://maven.apache.org/settings.html) file. You can use the standard &lt;username> and &lt;password> elements to store a username/password for ProGet, or you can specify `api` as the username, and an [API Keys](/support/documentation/proget/administration/security/api-keys) as a password.
+Authentication settings for the maven client is configured in your [settings.xlm](https://maven.apache.org/settings.html) file. You can use the standard &lt;username> and &lt;password> elements to store a username/password for ProGet, or you can specify `api` as the username, and an [API Keys](/docs/proget/administration/security/api-keys) as a password.

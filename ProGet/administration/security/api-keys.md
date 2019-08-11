@@ -20,14 +20,14 @@ The **Description** field is used for a human-friendly name, and can be used to 
 A key can only be used for the API endpoints that you specify:
 
 {.docs}
-- [Package Promotion API](/support/documentation/proget/reference/api/package-promotion)
-- [Webhook Management API](/support/documentation/proget/reference/api/webhook)
-- [Asset Directory API](/support/documentation/proget/reference/api/asset-directories-api)
-- [Feed Management API](/support/documentation/proget/reference/api/feed-management)
-- [Connector Health API](/support/documentation/proget/reference/api/connector-health)
+- [Package Promotion API](/docs/proget/reference/api/package-promotion)
+- [Webhook Management API](/docs/proget/reference/api/webhook)
+- [Asset Directory API](/docs/proget/reference/api/asset-directories-api)
+- [Feed Management API](/docs/proget/reference/api/feed-management)
+- [Connector Health API](/docs/proget/reference/api/connector-health)
 
 :::attention {.analogy}
-Granting access to the [Native API](/support/documentation/proget/reference/api#native) will effectively allow for full control of the instance.
+Granting access to the [Native API](/docs/proget/reference/api#native) will effectively allow for full control of the instance.
 :::
 
 You can also specify a "Feed API Username". When configured, the Feed API key will effectively authenticate as the specified user and be restricted to whatever privileges that user has. If no Feed API user is specified, the Feed API key will have permission to perform any feed-scoped privilege.
@@ -53,8 +53,8 @@ Although different third-party package formats (NuGet, npm, etc.) have different
 
 | Feed Type | How It Is Supplied | Details |
 |---|---|---|
-| NuGet | NuGet API key / `X-NUGET-APIKEY` header | this also applies to all NuGet-like feed types; [more info](/support/documentation/proget/feeds/nuget#nuget) |
-| npm | Token Authentication | [more info](/support/documentation/proget/feeds/npm#token) |
+| NuGet | NuGet API key / `X-NUGET-APIKEY` header | this also applies to all NuGet-like feed types; [more info](/docs/proget/feeds/nuget#nuget) |
+| npm | Token Authentication | [more info](/docs/proget/feeds/npm#token) |
 | Ruby Gems | Token Authentication |  |
 
 However, most clients will not send the API key for operations like listing or pulling packages. In this case, ProGet will issue an authentication challenge, and the client will respond by prompting for a username and password. In this case, you can supply `api` for the username, and your API key for the password.
@@ -67,4 +67,4 @@ When a user name is omitted, the user is treated as an administrator (also known
 
 #### Windows Integrated Authentication and API Keys {#integrated-windows-auth}
 
-If you've configured [Windows Integrated Authentication](/support/documentation/various/ldap/integrated-authentication), the client will first need to authenticate with an Active Directory account, which may make API-key based authentication redundant.
+If you've configured [Windows Integrated Authentication](/docs/various/ldap/integrated-authentication), the client will first need to authenticate with an Active Directory account, which may make API-key based authentication redundant.

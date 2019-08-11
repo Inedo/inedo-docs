@@ -5,7 +5,7 @@ sequence: 20
 keywords: inedo, inedo agent, message formats
 ---
 
-Meta-agent messages are backward and forward compatible, meaning that any changes to their formats must work in all past and future versions of the InedoAgent without error. In the event a breaking change is needed, the agent's protocol version number in the [handshake](/support/documentation/inedoagent/server-architecture/network-protocol) will be incremented. Product-specific agent messages are allowed to change completely at any time, since agent host processes run in a totally isolated environment, and are always brought up to date with the connecting client version.
+Meta-agent messages are backward and forward compatible, meaning that any changes to their formats must work in all past and future versions of the InedoAgent without error. In the event a breaking change is needed, the agent's protocol version number in the [handshake](/docs/inedoagent/server-architecture/network-protocol) will be incremented. Product-specific agent messages are allowed to change completely at any time, since agent host processes run in a totally isolated environment, and are always brought up to date with the connecting client version.
 
 ### Data Conventions
 All messages are binary encoded. For clarity, high-level data types such as string, int32, etc are used to describe message formats. This section describes how those data types are serialized to binary.

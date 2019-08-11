@@ -27,7 +27,7 @@ Docker requires an SSL connection, so you will need to configure ProGet to use I
 
 </div>
 
-To create a Docker registry in ProGet, go to Containers > Create New Docker Registry, then enter a container name.
+To create a Docker registry in ProGet, go to Containers > Create New Docker Registry, then enter a registry name.
 
 ## Setting up Docker Client
 
@@ -76,7 +76,7 @@ First, makes sure to familiarize yourself with the following Docker terminology 
 | Manifest      | a JSON-based description of an _image_ and the _layers_ it contains; this is referenced by its _digest_ and stored as a _blob_|
 | Dockerfile    | a file written in a procedural language that is used by the Docker client to construct an _image_; essentially, this is used to generate a _manifest_ |
 
-Conceptually, a registry is like a feed, a repository is like a package name, and an image is like a specific package version. However, the differences are a bit more nuanced, so make sure to also read [Packages vs Containers](/support/documentation/proget/docker/packages-vs-containers).
+Conceptually, a registry is like a feed, a repository is like a package name, and an image is like a specific package version. However, the differences are a bit more nuanced, so make sure to also read [Packages vs Containers](/docs/proget/docker/packages-vs-containers).
 
 ### Chunked and Monolithic Uploading
 
@@ -92,8 +92,14 @@ This is where garbage collection comes in; it's the process of removing blobs fr
 
 ### Connectors
 
-As of ProGet v5.1, docker feeds support [connectors](/support/documentation/proget/core-concepts/feeds/connectors) to other docker registries.
+As of ProGet v5.1, docker feeds support [connectors](/docs/proget/core-concepts/feeds/connectors) to other docker registries.
 
 ## Private Registry Limitations
 
-Docker is designed to tightly integrate with the publicly-hosted hub.docker.com. Private registries are supported to some extent, but the Docker client and related tooling always assume you will be using their public registry, or at the very least, the official private [Docker Registry](https://docs.docker.com/registry) that they built and support.
+### Windows Integrated Authentication
+
+The Docker client does not support Windows Integrated Authentication, which means that you won't be able to setup "Anonymous" access to a ProGet instance that has this enabled. To workaround this, you can set-up a second site in IIS without Windows Integrated Authentication enabled that points to the same path on disk.
+
+### Other Limitations
+
+Docker is designed to tightly integrate with the publicly-hosted hub.docker.com. Private registries are supported to some extent, but the Docker client and related tooling always assume you will be using their public registry, or at the very least, the official private [Docker Registry](https://docs.docker.com/registry) that they built and support. This can make working with private registries a bit awkward at times, but Docker client support is gradually improving.

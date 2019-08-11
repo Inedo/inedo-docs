@@ -25,12 +25,12 @@ Otter can store any file type that a server might need for configuration, such a
 
 These files can be deployed or ensured using the Get Asset and Ensure Asset operations.
 
-[Plans]: /support/documentation/otter/core-concepts/plans
-[Rafts]: /support/documentation/otter/global-components/rafts
-[Environments]: /support/documentation/otter/modeling-infrastructure/environments
-[PowerShell]: /support/documentation/otter/modeling-infrastructure/powershell
-[Operations]: /support/documentation/otter/reference/operations
-[OtterScript]: /support/documentation/otter/reference/otter-script
-[Blocks]: /support/documentation/otter/execution-engine/statements-and-blocks
-[Servers]: /support/documentation/otter/core-concepts/servers
-[Server Roles]: /support/documentation/otter/modeling-infrastructure/server-roles
+[Plans]: /docs/otter/core-concepts/plans
+[Rafts]: /docs/otter/global-components/rafts
+[Environments]: /docs/otter/modeling-infrastructure/environments
+[PowerShell]: /docs/otter/modeling-infrastructure/powershell
+[Operations]: /docs/otter/reference/operations
+[OtterScript]: /docs/otter/reference/otter-script
+[Blocks]: /docs/otter/execution-engine/statements-and-blocks
+[Servers]: /docs/otter/core-concepts/servers
+[Server Roles]: /docs/otter/modeling-infrastructure/server-roles

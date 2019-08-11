@@ -16,7 +16,7 @@ With ProGet, you can use NuGet packages to distribute private proprietary librar
 
 Then [configure Visual Studio](/support/tutorials/proget/using-the-nuget-visual-studio-extension) to use your feed as a new package source.
 
-You can use also ProGet as a proxy to NuGet.org, both to block [improper licenses](/support/documentation/proget/compliance/license-scanning) and [security vulnerabilities](/support/documentation/proget/compliance/vulnerabilities), and to cache packages in the event of an internet or NuGet.org outage. To do this, create a connector (Feeds > Connectors > Create New Connector > NuGet), then associate it with a feed (Manage Feed > Connectors).
+You can use also ProGet as a proxy to NuGet.org, both to block [improper licenses](/docs/proget/compliance/license-scanning) and [security vulnerabilities](/docs/proget/compliance/vulnerabilities), and to cache packages in the event of an internet or NuGet.org outage. To do this, create a connector (Feeds > Connectors > Create New Connector > NuGet), then associate it with a feed (Manage Feed > Connectors).
 
 ### Installing Packages
 
@@ -47,7 +47,7 @@ With ProGet, a principal (user or group) either has privileges to publish a pack
 
 {.docs}
 - **username:password as API Key** - ProGet will allow users to authenticate in this mode using an API Key in the format: `username:password`. For example, you can push a package to a Feed with the default Admin account in ProGet using the `-ApiKey Admin:Admin` option with nuget.exe
--   **[Create ProGet API Key](/support/documentation/proget/administration/security/api-keys)** - you can create an API Key in ProGet (Admin &; API Key &; Access Logs) with Feed Access; you can further restrict this key by associating it to a user you've already given specific permissions
+-   **[Create ProGet API Key](/docs/proget/administration/security/api-keys)** - you can create an API Key in ProGet (Admin &; API Key &; Access Logs) with Feed Access; you can further restrict this key by associating it to a user you've already given specific permissions
 
 ### Legacy NuGet API Key {#legacy}
 
@@ -57,7 +57,7 @@ Legacy NuGet API Keys behave slightly differently than ProGet API Keys: If a leg
 
 ## Symbols and Source Packages {#symbols}
 
-A NuGet feed in ProGet may be configured as a Symbol/Source server compatible with debuggers such as Visual Studio and WinDbg. See [Symbols and Source Code in ProGet](/support/documentation/proget/feeds/nuget/symbol-and-source-server) for more information.
+A NuGet feed in ProGet may be configured as a Symbol/Source server compatible with debuggers such as Visual Studio and WinDbg. See [Symbols and Source Code in ProGet](/docs/proget/feeds/nuget/symbol-and-source-server) for more information.
 
 ## Using the NuGet API {#using data-title="Using the NuGet API"}
 
@@ -111,7 +111,7 @@ This migration is entirely a database operation and does not need to manipulate 
 
 ## NuGet Feed Re-Indexing {#re-index data-title="NuGet Feed Re-Indexing"}
 
-NuGet feed re-indexing in ProGet was originally designed to re-index the [symbol and source server](/support/documentation/proget/feeds/nuget/symbol-and-source-server) in SemVer2 (i.e. non-legacy) feeds. As of ProGet v5.0, it has been extended to perform the following additional actions:
+NuGet feed re-indexing in ProGet was originally designed to re-index the [symbol and source server](/docs/proget/feeds/nuget/symbol-and-source-server) in SemVer2 (i.e. non-legacy) feeds. As of ProGet v5.0, it has been extended to perform the following additional actions:
 
 {.docs}
  - fix inconsistencies related to pre-release versioning and build metadata
@@ -119,3 +119,9 @@ NuGet feed re-indexing in ProGet was originally designed to re-index the [symbol
  - fix database-indexed .nuspec data from a package
 
 To perform a NuGet feed re-index, visit the "Manage Feed" page of the NuGet, Chocolatey, or PowerShell feed, and select `re-index` under the Symbol Server feed property section.
+
+## Repackaging {#repackaging data-title="Repackaging"}
+
+[Repackaging](/docs/proget/advanced/repackaging) is a process of changing a package's version without changing its contents, enabling use-cases such as converting a pre-release package to a stable version, and more.
+
+ProGet supports NuGet repackaging natively. To view an example of how it can be accomplished using the [Repackaging API](/docs/proget/reference/api/repackaging) in a CI/CD system, you can view an [example application](https://buildmaster.inedo.com/applications/44/) in our public BuildMaster instance.

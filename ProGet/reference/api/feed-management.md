@@ -10,7 +10,7 @@ show-headings-in-nav: true
 .lighten { opacity: 0.5; }
 </style>
 
-The Feed Management API Endpoints offer a simple mechanism for querying, creating, and updating [feeds](/support/documentation/proget/core-concepts/feeds), [connectors](/support/documentation/proget/core-concepts/connectors), [vulnerability sources](/support/documentation/proget/compliance/vulnerabilities), [licenses & rules](/support/documentation/proget/compliance/license-scanning), and related data. The primary use cases for these endpoints are:
+The Feed Management API Endpoints offer a simple mechanism for querying, creating, and updating [feeds](/docs/proget/core-concepts/feeds), [connectors](/docs/proget/core-concepts/connectors), [vulnerability sources](/docs/proget/compliance/vulnerabilities), [licenses & rules](/docs/proget/compliance/license-scanning), and related data. The primary use cases for these endpoints are:
 
 {.docs}
   - provision and configure feeds with infrastructure automation tools such as Otter
@@ -25,7 +25,7 @@ This API is available starting in ProGet 5.2.
 
 #### Authentication
 
-For security and simplicity, these endpoints require that a Feed Management [API Key](/support/documentation/proget/administration/security/api-keys) is created first. This key can be supplied to the API using any of the methods documented in the [API Key Usage](/support/documentation/proget/administration/security/api-keys#usage) section.
+For security and simplicity, these endpoints require that a Feed Management [API Key](/docs/proget/administration/security/api-keys) is created first. This key can be supplied to the API using any of the methods documented in the [API Key Usage](/docs/proget/administration/security/api-keys#usage) section.
 
 ## Object Models {#object-models}
 
@@ -106,10 +106,10 @@ Each endpoint sends and receives entities as [JSON](http://json.org/) objects. T
 
 | Property | Details | 
 |---|---|
-| `clientMode`    | *`string`* - the client replication mode configuration, one of `disabled`, `pullonly`, `pushonly`, `mirror`; [more info](/support/documentation/proget/advanced/feed-replication#replication-client) |
-| `serverMode`     | *`string`* - the server replication mode configuration, one of `disabled`, `readonly`, `writeonly`, `readwrite`; [more info](/support/documentation/proget/advanced/feed-replication#replication-server) |
-| `clientToken`   | *`string`* - the [token](/support/documentation/proget/advanced/feed-replication#sync-tokens) used to authenticate with a replication server; this field is not returned by list or get endpoints; this field is required when `clientMode` is set to anything other than `disabled`  |
-| `serverToken`    | *`string`* - the [token](/support/documentation/proget/advanced/feed-replication#sync-tokens) that must be specified by a replication client in order to connect; this field is not returned by list or get endpoints; this field is required when `serverMode` is set to anything other than `disabled`  |
+| `clientMode`    | *`string`* - the client replication mode configuration, one of `disabled`, `pullonly`, `pushonly`, `mirror`; [more info](/docs/proget/advanced/feed-replication#replication-client) |
+| `serverMode`     | *`string`* - the server replication mode configuration, one of `disabled`, `readonly`, `writeonly`, `readwrite`; [more info](/docs/proget/advanced/feed-replication#replication-server) |
+| `clientToken`   | *`string`* - the [token](/docs/proget/advanced/feed-replication#sync-tokens) used to authenticate with a replication server; this field is not returned by list or get endpoints; this field is required when `clientMode` is set to anything other than `disabled`  |
+| `serverToken`    | *`string`* - the [token](/docs/proget/advanced/feed-replication#sync-tokens) that must be specified by a replication client in order to connect; this field is not returned by list or get endpoints; this field is required when `serverMode` is set to anything other than `disabled`  |
 | `sourceUrl`       | *`string`* - the URL of the replication server; this field is required when `clientMode` is set to anything other than `disabled` |
 
 ### License Data Model {#license-model data-title="License Data Model"}
@@ -143,7 +143,7 @@ The API allows feed types to be changed only within the following feed type grou
 
 ### Persisted XML Configuration {#persisted-xml data-title="Persisted XML Configuration"}
 
-Because package stores, package filters, and package access rules are implemented by extensible runtime components (i.e. you can create your own using the [Inedo SDK](/support/documentation/inedosdk)), ProGet stores configuration for these components in "Persisted XML", which is a lightweight object serialization format that Inedo products use.
+Because package stores, package filters, and package access rules are implemented by extensible runtime components (i.e. you can create your own using the [Inedo SDK](/docs/inedosdk)), ProGet stores configuration for these components in "Persisted XML", which is a lightweight object serialization format that Inedo products use.
 
 The easiest way to see what an object's persisted XML will look like is to create it in the UI, then look at the XML in either the database or the API [list](#list) or [get](#get) request. As a reference, we've provided the persisted XML for both supported package stores and a general example:
 
@@ -194,7 +194,7 @@ All of the management endpoints follow the same convention:
 - `entity-type` is one of `feeds`, `connectors`, or `licenses`
 - `action-type` is one of [list](#list), [get](#get), [create](#create), [update](#update), or [delete](#delete)
 - `entity-name` is the name identifier of the entity being updated, or deleted; it is not valid on a `list` or `create` action type
-- all endpoints require an API key with _Feed Management_ permissions (and additionally _Manage Licenses_ permissions for `/licenses` endpoints). This key can be supplied to the endpoint via any of the documented [API Key Usage](/support/documentation/proget/administration/security/api-keys#usage) methods
+- all endpoints require an API key with _Feed Management_ permissions (and additionally _Manage Licenses_ permissions for `/licenses` endpoints). This key can be supplied to the endpoint via any of the documented [API Key Usage](/docs/proget/administration/security/api-keys#usage) methods
 - `indent` may suppllied in the query string for [get](#get) or [list](#list) endpoints to improve readability
 - `application/json` content type is required for any data sent via `POST`/`PUT`/`PATCH`
 

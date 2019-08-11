@@ -8,7 +8,7 @@
 <body>
 
     <div class="attention best-practice">
-<p>These step-by-step instructions were developed by Scott Cusson (Senior Release Engineer, Symbotic), primarily as a guide for internal use. We're sharing it as a reference guide that may help you set-up your load-balanced or high-availability installation. See <a href="/support/documentation/proget/installation/load-balancing-and-automatic-failover">load balancing and automatic failover</a> for more information.</p>
+<p>These step-by-step instructions were developed by Scott Cusson (Senior Release Engineer, Symbotic), primarily as a guide for internal use. We're sharing it as a reference guide that may help you set-up your load-balanced or high-availability installation. See <a href="/docs/proget/installation/load-balancing-and-automatic-failover">load balancing and automatic failover</a> for more information.</p>
     </div>
 
 
@@ -96,7 +96,7 @@
         </li>
     </ol>
 <h2 id="web-nodes" data-title="Setting up the ProGet web nodes">Setting up the ProGet web nodes:</h2>
-<p>Download the latest ProGet manual installer (<a href="http://inedo.com/proget/versions">http://inedo.com/proget/versions</a>) and on each web node:</p>
+<p>Download the latest ProGet manual installer (<a href="/proget/versions">https://inedo.com/proget/versions</a>) and on each web node:</p>
     <ul class="docs">
         <li>Extract the installer zip
             <ul>
@@ -106,7 +106,7 @@
         </li>
         <li>Open the IIS manager
             <ul class="docs">
-                <li>Create the ProGet website following the "Web Application Installation: For IIS hosted applications, there are 2 additional steps" section on <a href="http://inedo.com/support/documentation/proget/installation/manual">http://inedo.com/support/documentation/proget/installation/manual</a></li>
+                <li>Create the ProGet website following the "Web Application Installation: For IIS hosted applications, there are 2 additional steps" section on <a href="/docs/proget/installation/installation-guide/manual">https://inedo.com/docs/proget/installation/installation-guide/manual</a></li>
                 <li>Websites and App Pools must be running as the System user.</li>
             </ul>
         </li>
@@ -180,9 +180,16 @@
         Start the ProGet service.
     </p>
 
+    <h2>Configure the Inedo Service Messenger</h2>
+    <p>
+        The service messenenger is a component of ProGet that enables simple communications between web and service nodes. By default it uses a named
+        pipe, but in a load-balanced configuration it needs to be configured to use TCP instead. The messenger is optional, but certain parts of ProGet's
+        web interface may be slightly degraded without it. See the documentation on the <a href="/docs/proget/installation/installation-guide/service-messenger">Service Messenger</a>
+        for more information.
+    </p>
 
 <h2 id="upgrading" data-title="Upgrading a Load Balanced ProGet Installation">Upgrading a Load Balanced ProGet Installation</h2>
-<p>Download the latest ProGet manual installer (<a href="/proget/versions" target="_blank">http://inedo.com/proget/versions</a>) and on each web node:</p>
+<p>Download the latest ProGet manual installer (<a href="/proget/versions" target="_blank">https://inedo.com/proget/versions</a>) and on each web node:</p>
 <ul class="docs">
 <li>Stop the ProGet IIS AppPool</li>
 <li>Make a copy of the appSettings section from Web.config</li>
@@ -194,7 +201,7 @@
 <li>Stop the INEDOPROGETSVC Windows Service</li>
 <li>Copy the contents of Proget-Service.zip to C:\ProGet\Service</li>
 </ul>
-<p>With all AppPools and services stopped, run the ProGet SqlScripts as described in the <a href="/support/documentation/proget/installation/installation-guide/manual" target="_blank">manual install guide</a></p>
+<p>With all AppPools and services stopped, run the ProGet SqlScripts as described in the <a href="/docs/proget/installation/installation-guide/manual" target="_blank">manual install guide</a></p>
 <p>After the database is updated:</p>
 <ul class="docs">
 <li>Start the ProGet IIS AppPool on each web node</li>

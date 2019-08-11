@@ -28,7 +28,7 @@ For example, a single failing statement in a testing environment will, by defaul
 
 ## Example: Corrective Action {#corrective-action}
 
-Below, a Try/Catch block has been created to start a Windows Service for `Accounts`. The plan assumes the service already exists, however if the service doesn't exist, the Try/Catch Block will then run an [ensure `Accounts` operation](/support/documentation/otter/reference/operations/services/ensure-service) to create the service and start the service it created. If both the start service AND the ensure service operations fail, the plan will fail as expected.
+Below, a Try/Catch block has been created to start a Windows Service for `Accounts`. The plan assumes the service already exists, however if the service doesn't exist, the Try/Catch Block will then run an [ensure `Accounts` operation](/docs/otter/reference/operations/services/ensure-service) to create the service and start the service it created. If both the start service AND the ensure service operations fail, the plan will fail as expected.
 
 <tab-block>
     <tab name="Visual Mode">
@@ -39,4 +39,4 @@ Below, a Try/Catch block has been created to start a Windows Service for `Accoun
     </tab>
 </tab-block>
 
-You probably wouldn't want to do this in production - a [Configuration Plan](/support/documentation/otter/core-concepts/plans#configuration) is a more appropriate way to ensure the service configuration in the first place - but this just shows you the flexibility of what you can do when you need to.
+You probably wouldn't want to do this in production - a [Configuration Plan](/docs/otter/core-concepts/plans#configuration) is a more appropriate way to ensure the service configuration in the first place - but this just shows you the flexibility of what you can do when you need to.

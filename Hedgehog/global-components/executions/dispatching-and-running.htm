@@ -9,10 +9,10 @@
    
 
     <p>
-        The service uses the <code>ExecutionDispatcher</code> <a href="/support/documentation/hedgehog/installation/architecture/service-admin#task-runners">Task Runner</a> to query the database for executions with a <i>Run State</i> of "Pending" to a <i>Start Date</i> that is before or equal to the current DateTime. For each suitable execution found, a new background task is used to run the execution. 
+        The service uses the <code>ExecutionDispatcher</code> <a href="/docs/hedgehog/installation/architecture/service-admin#task-runners">Task Runner</a> to query the database for executions with a <i>Run State</i> of "Pending" to a <i>Start Date</i> that is before or equal to the current DateTime. For each suitable execution found, a new background task is used to run the execution. 
     </p>
    <p>
-       The Service administration page will display the currently running background tasks that were created by the ExecutionDispatcher, and provide links to the appropriate <a href="/support/documentation/hedgehog/global-components/executions/viewing">Execution in Progress</a> page.
+       The Service administration page will display the currently running background tasks that were created by the ExecutionDispatcher, and provide links to the appropriate <a href="/docs/hedgehog/global-components/executions/viewing">Execution in Progress</a> page.
    </p>
 	<p>
         When the execution is complete, the background task will terminate; you can view all executions (regardless of state) using the Executions administration page, although it will probably be easier to find the specific execution record using a more specific context (such as package deployment history).

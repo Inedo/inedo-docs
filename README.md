@@ -1,6 +1,6 @@
 # Inedo Documentation
 
-Contains the product and shared documentation on: [inedo.com/support/documentation](https://inedo.com/support/documentation)
+Contains the product and shared documentation on: [inedo.com/docs](https://inedo.com/docs)
 
 ## Contributing
 

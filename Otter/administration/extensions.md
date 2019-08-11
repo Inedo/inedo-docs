@@ -60,10 +60,10 @@ To deploy the extension to Otter v1, add the compiled extension .dll to a zip fi
 
 You can verify that your extension has loaded correctly by viewing the Extensions Overview page from within the Otter v1 Administration section. From there, you will see all the extensions that are loaded in Otter v1, and the services they provide.
 
-[Script Assets]: /support/documentation/otter/core-concepts/assets
-[Powershell features]: /support/documentation/otter/modeling-infrastructure/powershell
-[creating an extension]: /support/documentation/various/inedo-sdk/creating
-[Inedo SDK]: /support/documentation/various/inedo-sdk/the-sdk
+[Script Assets]: /docs/otter/core-concepts/assets
+[Powershell features]: /docs/otter/modeling-infrastructure/powershell
+[creating an extension]: /docs/various/inedo-sdk/creating
+[Inedo SDK]: /docs/various/inedo-sdk/the-sdk
 [Inedo.Agents]: /support/sdk-reference/inedosdk/Inedo.Agents
 [Inedo.Documentation]: /support/sdk-reference/inedosdk/Inedo.Documentation
 [Otter v1 SDK Reference]: /support/sdk-reference/otter

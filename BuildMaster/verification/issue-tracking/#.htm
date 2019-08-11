@@ -31,12 +31,12 @@
       </ul>
    
    <p>
-        The Issue tracking integration is implemented through an <a href="/support/documentation/buildmaster/reference/extensions">extensible feature</a>, and additional tools may be supported by building extensions.
+        The Issue tracking integration is implemented through an <a href="/docs/buildmaster/reference/extensions">extensible feature</a>, and additional tools may be supported by building extensions.
    </p>
 
    <h2 id="Issue-Tracker-Automation" data-title="Issue Tracker Automation"> Issue Tracker Automation</h2>
 <p>
-        Most  issue tracking tool extensions have operations that can be use in a <a href="/support/documentation/buildmaster/deployments/plans">deployment plan</a> to create, query, and modify issues. Each issue tracking tool is different, but there are generally four operations available in each extension:
+        Most  issue tracking tool extensions have operations that can be use in a <a href="/docs/buildmaster/deployments/plans">deployment plan</a> to create, query, and modify issues. Each issue tracking tool is different, but there are generally four operations available in each extension:
 </p>
 
 <ul class="docs">
@@ -146,7 +146,7 @@ foreach $IssueId in @YouTrackIssueIDs
     <h2 id="issues-sources" data-title="Issues Sources"> Issues Sources</h2>
 
     <p>
-            The <a href="/support/documentation/various/execution-engine/otterscript">Inedo Execution Engine</a> uses issue sources to perform background synchronizations with external issue tracking tools. Issue sources act as a filter that lists issues that are relevant for a particular release. Depending on the type of issue tracking tool, each issue source will have different fields that are specific to the tool.
+            The <a href="/docs/various/execution-engine/otterscript">Inedo Execution Engine</a> uses issue sources to perform background synchronizations with external issue tracking tools. Issue sources act as a filter that lists issues that are relevant for a particular release. Depending on the type of issue tracking tool, each issue source will have different fields that are specific to the tool.
     </p>
 <!--
     <p>
@@ -163,19 +163,19 @@ foreach $IssueId in @YouTrackIssueIDs
         Issue sources can be configured at the application level on the "Issues" tab by clicking the "configure issue source" link, or under Administration > Issue Sources. Issue sources created outside of an application can target an application group instead of just a single application.
 </p>
 <p>
-        Issue sources require that you create a <a href="/support/documentation/buildmaster/administration/resource-credentials">resource credential</a> that provides connection information to the issue tracking tool, such as a URL, API key, username, etc.  These credentials are generally shared across issue sources of the same type.
+        Issue sources require that you create a <a href="/docs/buildmaster/administration/resource-credentials">resource credential</a> that provides connection information to the issue tracking tool, such as a URL, API key, username, etc.  These credentials are generally shared across issue sources of the same type.
 </p>
 
 <h3 id="variables-and-issue-source-context" data-title="Variables and Issue Source Context">Variables and Issue Source Context</h3>
 <p>
-        Because synchronization occurs within the context of a release, this means you can use any of the <a href="/support/documentation/buildmaster/reference/functions">variable functions</a> that rely on a release to be in context: <a href="/support/documentation/buildmaster/reference/functions/applications/applicationname">$ApplicationName</a>, <a href="/support/documentation/buildmaster/reference/functions/releases/releasenumber">$ReleaseNumber</a>, <a href="/support/documentation/buildmaster/reference/functions/releases/releasename">$ReleaseName</a>, <a href="/support/documentation/buildmaster/reference/functions/releases/releasenumberpart">$ReleaseNumberPart()</a>, etc.
+        Because synchronization occurs within the context of a release, this means you can use any of the <a href="/docs/buildmaster/reference/functions">variable functions</a> that rely on a release to be in context: <a href="/docs/buildmaster/reference/functions/applications/applicationname">$ApplicationName</a>, <a href="/docs/buildmaster/reference/functions/releases/releasenumber">$ReleaseNumber</a>, <a href="/docs/buildmaster/reference/functions/releases/releasename">$ReleaseName</a>, <a href="/docs/buildmaster/reference/functions/releases/releasenumberpart">$ReleaseNumberPart()</a>, etc.
 </p>
 <p>
-        You can also use any <a href="/support/documentation/buildmaster/administration/configuration-variables">configuration variables</a> that are accessible from a release context: release, application, application-group, or system.
+        You can also use any <a href="/docs/buildmaster/administration/configuration-variables">configuration variables</a> that are accessible from a release context: release, application, application-group, or system.
 </p>
 <h2 id="automatically-blocking-deployments" data-title="Automatically Blocking Deployments">Automatically Blocking Deployments</h2>
 
-<p>There are two <a href="/support/documentation/buildmaster/verification/pipelines/approvals-and-gates/automated-checks">automated checks</a> you can configure to on a pipeline that will prevent builds from being deployed to a particular stage unless all issues are closed, or have a certain status such as "Resolved". Prior to deployment, these approvals will evaluate each issues associated with the release, and block the deployment if the approval is not met.</p>
+<p>There are two <a href="/docs/buildmaster/verification/pipelines/approvals-and-gates/automated-checks">automated checks</a> you can configure to on a pipeline that will prevent builds from being deployed to a particular stage unless all issues are closed, or have a certain status such as "Resolved". Prior to deployment, these approvals will evaluate each issues associated with the release, and block the deployment if the approval is not met.</p>
 <ul class="docs">
 <li><strong>Issues in Status</strong>; if you specified a specific status texts (such as Resolved and Complete), any issue that doesn't have one of those statuses will cause the approval to be not met</li>
 <li><strong>Require Issues Closed</strong>; any non-closed issue will cause this approval to be not met </li>

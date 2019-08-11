@@ -55,7 +55,7 @@ The next time you visit after running these commands, there may be stale authent
 
 The *Active Directory (New)* user directory is loaded from the InedoCore extension. Visit the extensions page (Administration &rsaquo; Extensions) to verify that the InedoCore extension is loaded on that page.
 
-An instance of the user directory should be visible on the *Manage User Directories* page (Administration &rsaquo; Change User Directory &rsaquo; Advanced). If there isn't one (e.g. after a reset), click the *Add User Directory* button and select *Active Directory (New)*. Configure the user directory as detailed in the [Advanced Configuration](/support/documentation/various/ldap/advanced) section, and then click Save. This will restore the user directory on the *Change User Directory* page.
+An instance of the user directory should be visible on the *Manage User Directories* page (Administration &rsaquo; Change User Directory &rsaquo; Advanced). If there isn't one (e.g. after a reset), click the *Add User Directory* button and select *Active Directory (New)*. Configure the user directory as detailed in the [Advanced Configuration](/docs/various/ldap/advanced) section, and then click Save. This will restore the user directory on the *Change User Directory* page.
 
 ## Privileges assigned to the Domain Users group not working {#privileges-not-working data-title="Group-based Privileges Not Working"}
 

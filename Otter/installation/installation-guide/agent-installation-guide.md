@@ -27,10 +27,10 @@ sequence: 200
     }
 </style>
 
-To facilitate communication between Otter and the Windows servers you want to configure and orchestrate, Otter uses a lightweight agent with a highly-optimized and resilient protocol. Installing agents is even easier than installing Otter, and the [Agent Installation Guide](/support/documentation/various/inedo-agent/installation) will provide step-by-step instructions, as well as provide some detail as to what's happening behind the scenes.
+To facilitate communication between Otter and the Windows servers you want to configure and orchestrate, Otter uses a lightweight agent with a highly-optimized and resilient protocol. Installing agents is even easier than installing Otter, and the [Agent Installation Guide](/docs/various/inedo-agent/installation) will provide step-by-step instructions, as well as provide some detail as to what's happening behind the scenes.
 
 :::info {.otter}
-**Shared Documentation Note** - we've kept the [Agent Installation details](/support/documentation/various/inedo-agent/installation) in the Various Documentation, see *Adding the Server to Otter* below:
+**Shared Documentation Note** - we've kept the [Agent Installation details](/docs/various/inedo-agent/installation) in the Various Documentation, see *Adding the Server to Otter* below:
 :::
 
 ## Adding the Server to Otter {#adding-server}
