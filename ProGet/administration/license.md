@@ -9,41 +9,31 @@ ProGet is licensed *per installation* on an annual or perpetual basis and has ad
 
 ## Features by Edition {#features-by-edition data-title="Features by Edition"}
 
-{#feature-matrix}
-| Features | Free | Basic | Load Balanced - Only | Enterprise (High Availability) |
-|-----------------------------------------------------------------------------------------------------------------------------------|----|----|----|----|
-| Unlimited Users                                                                                                                   | ✔ | ✔ | ✔ | ✔ |
-| [NuGet Feed](/docs/proget/feeds/nuget)                                                                           | ✔ | ✔ | ✔ | ✔ |
-| [NuGet Package Symbol Server](/docs/proget/feeds/nuget/symbol-and-source-server)                                 | ✔ | ✔ | ✔ | ✔ |
-| [PowerShell Feed](/docs/proget/feeds/powershell)                                                                 | ✔ | ✔ | ✔ | ✔ |
-| [Docker Feed](/docs/proget/feeds/docker)                                                                         | ✔ | ✔ | ✔ | ✔ |
-| [Ruby Gems Feed](/docs/proget/feeds/rubygem)                                                                     | ✔ | ✔ | ✔ | ✔ |
-| [VSIX Feed](/docs/proget/feeds/vsix)                                                                             | ✔ | ✔ | ✔ | ✔ |
-| [Chocolatey Feed](/docs/proget/feeds/chocolatey)                                                                 | ✔ | ✔ | ✔ | ✔ |
-| [npm Feed](/docs/proget/feeds/npm)                                                                               | ✔ | ✔ | ✔ | ✔ |
-| [Bower Feed](/docs/proget/feeds/bower)                                                                           | ✔ | ✔ | ✔ | ✔ |
-| [Maven Feed](/docs/proget/feeds/maven)                                                                           | ✔ | ✔ | ✔ | ✔ |
-| [PyPI Feed](/docs/proget/feeds/pypi)                                                                             | ✔ | ✔ | ✔ | ✔ |
-| [Debian Feed](/docs/proget/feeds/debian)                                                                         | ✔ | ✔ | ✔ | ✔ |
-| [Helm Feed](/docs/proget/feeds/helm)                                                                             | ✔ | ✔ | ✔ | ✔ |
-| [Deployment Records](/docs/proget/advanced/package-promotion#deployment-records)                                 | ✔ | ✔ | ✔ | ✔ |
-| [Connectors to Third-Party Feeds](#connector-limitations)                                                                         | ✔ | ✔ | ✔ | ✔ |
-| [Connectors to Other ProGet Instances](#connector-limitations)                                                                    |    | ✔ | ✔ | ✔ |
-| [License Scanning and Blocking](/docs/proget/compliance/license-scanning)                                        |    | ✔ | ✔ | ✔ |
-| [Connector Filtering](/docs/proget/core-concepts/feeds/connectors#connector-filters)                             |    | ✔ | ✔ | ✔ |
-| [Security and Access Controls](/docs/proget/administration/security)                                             |    | ✔ | ✔ | ✔ |
-| [Active Directory Integration](/docs/various/ldap/ldap-active-directory)                                         |    | ✔ | ✔ | ✔ |
-| [Retention Rules](/docs/proget/administration/retention-rules)                                                   |    | ✔ | ✔ | ✔ |
-| [Package Statistics/Metrics](/docs/proget/administration/package-statistics)                                     |    | ✔ | ✔ | ✔ |
-| [Cloud Storage](/docs/proget/storage/cloud-storage)                                                              |    | ✔ | ✔ | ✔ |
-| [Package Promotion](/docs/proget/advanced/package-promotion)                                                     |    | ✔ | ✔ | ✔ |
-| [Vulnerability Scanning](/docs/proget/administration/vulnerability-source)                                       |    | ✔ | ✔ | ✔ |
-| [Webhooks](/docs/proget/advanced/webhooks)                                                                       |    | ✔ | ✔ | ✔ |
-| [Load Balancing Support](/docs/proget/installation/load-balancing-and-automatic-failover)                        |    |    | ✔ | ✔ |
-| [Multiple Web Nodes](/docs/proget/installation/load-balancing-and-automatic-failover#web-node-configuration)     |    |    | ✔ | ✔ |
-| [Multiple Index Nodes](/docs/proget/installation/load-balancing-and-automatic-failover#indexing-nodes)           |    |    |    | ✔ |
-| [Automatic Failover](/docs/proget/installation/load-balancing-and-automatic-failover)                            |    |    |    | ✔ |
-| [Multi-Site Replication](/docs/proget/administration/feed-replication)                                           |    |    |    | ✔ |
+
+| Feature | Free | ProGet Basic $1995/Annual | ProGet Enterprise $9995/annual |
+|----|----|----|
+| Unlimited Users but Load-Balancing is only for ProGet Enterprise                                                                                                                  | ✔ | ✔ | ✔ |
+| Multiple Feeds including: NuGet, PowerShell, Docker, Ruby Gems, VSIX, Chocolaty, npm, Bower, Maven, PyPI, Debian, and Helm                          | ✔ | ✔ | ✔ |
+| NuGet Package Symbol Server                                                                    | ✔ | ✔ | ✔ |
+| [Deployment Records](/docs/proget/advanced/package-promotion#deployment-records)                                 | ✔ | ✔ | ✔ |
+| [Connectors to Third-Party Feeds](#connector-limitations)                                                                         | ✔ | ✔ | ✔ |
+| [Connectors to Other ProGet Instances](#connector-limitations)                                                                  |   | ✔ | ✔ |
+| [License Scanning and Blocking](/docs/proget/compliance/license-scanning)                                        |    | ✔ | ✔ |
+| [Connector Filtering](/docs/proget/core-concepts/feeds/connectors#connector-filters)                             |    | ✔ | ✔ |
+| [Security and Access Controls](/docs/proget/administration/security)                                             |    | ✔ | ✔ |
+| [Active Directory Integration](/docs/various/ldap/ldap-active-directory)                                         |    | ✔ | ✔ |
+| [Retention Rules](/docs/proget/administration/retention-rules)                                                   |    | ✔ | ✔ |
+| [Package Statistics/Metrics](/docs/proget/administration/package-statistics)                                     |    | ✔ | ✔ |
+| [Cloud Storage](/docs/proget/storage/cloud-storage)                                                              |    | ✔ | ✔ |
+| [Package Promotion](/docs/proget/advanced/package-promotion)                                                     |    | ✔ | ✔ |
+| [Vulnerability Scanning](/docs/proget/administration/vulnerability-source)                                       |    | ✔ | ✔ |
+| [Webhooks](/docs/proget/advanced/webhooks)                                                                       |    | ✔ | ✔ |
+|**High Performance Features:**|   |   |   |
+| [Load Balancing Support](/docs/proget/installation/load-balancing-and-automatic-failover)                        |    |    | ✔ |
+| [Multiple Web Nodes](/docs/proget/installation/load-balancing-and-automatic-failover#web-node-configuration)     |    |    | ✔ |
+| [Multiple Index Nodes](/docs/proget/installation/load-balancing-and-automatic-failover#indexing-nodes)           |    |   | ✔ |
+| [Automatic Failover](/docs/proget/installation/load-balancing-and-automatic-failover)                            |    |    | ✔ |
+| [Multi-Site Replication](/docs/proget/administration/feed-replication)                                           |    |    | ✔ |
 
 
 ## License Keys
