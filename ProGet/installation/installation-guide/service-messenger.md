@@ -22,8 +22,9 @@ Some additional configuration is required to enable the service messenger to wor
 
   1. Determine a TCP port to use for messenger traffic to/from service nodes
   2. Open this port in your firewall
-  3. Set the Service.MessengerEndpoint configuration value to `tcp://<ServiceNodeHostName>:<Port>`
-  4. Restart the service and all web nodes
+  3. Create and configure an inbound rule for Windows Defender if applicable.
+  4. Set the Service.MessengerEndpoint configuration value to `tcp://<ServiceNodeHostName>:<Port>`
+  5. Restart the service and all web nodes
 
 ## Configuring for High-availability
 
