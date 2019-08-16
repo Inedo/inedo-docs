@@ -238,12 +238,12 @@
 
                                                                                                                                                                                                                                                                        
 <scoped_statement_block> ::=
-  [<named_template>] [..n]
+  [<named_module>] [..n]
   [<statement>] [..n]
 
 <statement> ::=
   <action_statement> | <anonymous_block_statement> | <assign_variable_statement> | 
-  <await_statement> | <call_template_statement> | <context_iteration_statement> | 
+  <await_statement> | <call_module_statement> | <context_iteration_statement> | 
   <error_statement> | <execution_directive_statement> | <fail_statement> | 
   <iteration_block_statement> | <log_statement> | <predicate_statement> | 
   <set_context_statement> | <throw_statement> | <try_statement> | <warn_statement> |
@@ -265,8 +265,8 @@
 <await_statement> ::=
   await [/async_token/];
 
-<call_template_statement> ::=
-  call [/raft_name/::]/template_name/ ["("
+<call_module_statement> ::=
+  call [/raft_name/::]/module_name/ ["("
      ( (/param_name/: /literal_expression/) |
        (/param_name/=> /variable_expression/) )
      [,...n]
@@ -320,10 +320,10 @@
 <warn_statement> ::=
   [force] warn;
 
-<named_template> ::=
-  template /template_name/ 
+<named_module> ::=
+  module /module_name/ 
   ["<" 
-     ([out] /template_param_name/[=/param_default/])
+     ([out] /module_param_name/[=/param_default/])
      [,...n] 
   ">"] { <statements> }
 
@@ -339,7 +339,7 @@
                     <code>namespace</code><br />
                     <code>operation_name</code><br />
                     <code>param_name</code><br />
-                    <code>template_name</code>
+                    <code>module_name</code>
                 </td>
                 <td>
                     No more than fifty characters: numbers (0-9), upper- and lower-case letters (a-Z), dashes (-), and underscores (_);
@@ -358,7 +358,7 @@
                 </td>
             </tr>
             <tr>
-                <td><code>template_param_name</code></td>
+                <td><code>module_param_name</code></td>
                 <td>A variable type identifier ($, @, or %) immediately followed by <code>any_name</code></td>
             </tr>
             <tr>
