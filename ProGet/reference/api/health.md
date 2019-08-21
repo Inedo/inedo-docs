@@ -22,6 +22,12 @@ Sample output from the /health endpoint:
   "serviceStatus": "OK",
   "serviceStatusDetail": null,
   "licenseStatus": "OK",
-  "licenseStatusDetail": null
+  "licenseStatusDetail": null,
+  {
+  	  "serverStatus": "OK",
+	  "serverError": null,
+	  "clientStatus": "OK",
+	  "clientError": null
+  }
 }
 ```
