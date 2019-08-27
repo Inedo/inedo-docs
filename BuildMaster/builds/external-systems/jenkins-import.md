@@ -41,10 +41,10 @@ Jenkins::Import-Artifact
 - Set build number to variable:  You can set any variable to the build number value returned by Jenkins. Default it `$JenkinsBuildNumber`
 
 #### Further Integration
-Another recommended usage for the Jenkins extension is to incorporate Jenkins with our [release templates](https://inedo.com/docs/buildmaster/releases/templates). You can set up a template variable as a _dynamic list_ by using your Jenkins connection as the source. Then you'll be able to select the exact build directly from Jenkins in real-time. This saves time and gives you more control over what is being imported. [See the full documentation](https://inedo.com/support/tutorials/buildmaster/jenkins/choosing-specific-artifact-from-jenkins). 
+Another recommended usage for the Jenkins extension is to incorporate Jenkins with our [release templates](/docs/buildmaster/releases/templates). You can set up a template variable as a _dynamic list_ by using your Jenkins connection as the source. Then you'll be able to select the exact build directly from Jenkins in real-time. This saves time and gives you more control over what is being imported. [See the full documentation](https://inedo.com/support/tutorials/buildmaster/jenkins/choosing-specific-artifact-from-jenkins). 
 
 #### Next Steps
-After you have imported your artifact from Jenkins, BuildMaster can now [deploy](https://inedo.com/docs/buildmaster/reference/operations/artifacts/deploy-artifact) it to any number of servers or targets. 
+After you have imported your artifact from Jenkins, BuildMaster can now [deploy](/docs/buildmaster/reference/operations/artifacts/deploy-artifact) it to any number of servers or targets. 
 
 #### Reference back to Jenkins
-Once you have queued a build and imported the artifact from Jenkins you can use the `$JenkinsBuildNumber` variable to link directly back to jenkins with a [custom value renderer](https://inedo.com/docs/buildmaster/administration/value-renderers). This is a convenient way you to quickly browse to Jenkins to review the build that was imported. 
+Once you have queued a build and imported the artifact from Jenkins you can use the `$JenkinsBuildNumber` variable to link directly back to jenkins with a [custom value renderer](/docs/buildmaster/administration/value-renderers). This is a convenient way you to quickly browse to Jenkins to review the build that was imported. 

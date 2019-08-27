@@ -1,8 +1,6 @@
 ﻿---
-title: Overview
-subtitle: Releases
+title: Releases in BuildMaster
 sequence: 100
-keywords: buildmaster, releases, pipelines
 show-headings-in-nav: true
 ---
 A release is an event where a planned set of changes are tested and delivered to production, or more specifically, a final pipeline stage. Releases can vary in conceptual size, from a major product launch, to a single-line change rushed to production in an emergency. The deployment unit that is promoted through a pipeline in order to effectively deploy a release is referred to as a [build](/docs/buildmaster/builds/overview).

@@ -16,7 +16,7 @@ To deploy azure resources within buildmaster you will first need to
 
 #### Implementation
 
-As mentioned before, in order to execute azure command line functions you will need to login to azure to associate the action you are performing to an azure subscription. We recommend that you combine the azure login **and** the azure command into one [OtterScript](https://inedo.com/docs/otter/reference/otter-script) module such as this one. 
+As mentioned before, in order to execute azure command line functions you will need to login to azure to associate the action you are performing to an azure subscription. We recommend that you combine the azure login **and** the azure command into one [OtterScript](/docs/otter/reference/otter-script) module such as this one. 
 
 
 ##### Azure-Execute module:

@@ -1,9 +1,7 @@
 ﻿<html>
 <head>
-    <title>Artifacts</title>
-    <meta name="subtitle" content="Artifacts" />
+    <title>BuildMaster-hosted Artifacts</title>
     <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
-    <meta name="keywords" content="buildmaster, releases, builds, artifacts" />
     <meta name="show-headings-in-nav" content="true" />
     <meta name="sequence" content="100" />
 
@@ -39,7 +37,7 @@
     <p>
         The most common method to capture an artifact is to add the <code>Create-Artifact</code> operation to a
         <a href="/docs/buildmaster/core-concepts/deployment-plans">deployment plan</a>, generally immediately after some form of 'build' operation such as <code>MSBuild::Build-Project</code>.
-        See the <a href="https://inedo.com/docs/buildmaster/reference/operations/artifacts/create-artifact">operation's documentation</a> for more information.
+        See the <a href="/docs/buildmaster/reference/operations/artifacts/create-artifact">operation's documentation</a> for more information.
     </p>
     <h4>Third-Party Artifacts</h4>
     <p>
@@ -57,7 +55,7 @@
     <p>
         Artifacts are deployed using the <code>Deploy-Artifact</code> operation in a <a href="/docs/buildmaster/core-concepts/deployment-plans">deployment plan</a>.
         This operation by default is optimized to only transfer files that have been modified to
-        decrease deployment times of large artifacts. See the <a href="https://inedo.com/docs/buildmaster/reference/operations/artifacts/deploy-artifact">operation's documentation</a> for more information.
+        decrease deployment times of large artifacts. See the <a href="/docs/buildmaster/reference/operations/artifacts/deploy-artifact">operation's documentation</a> for more information.
     </p>
 
 
