@@ -1,16 +1,16 @@
 ﻿---
-title: Importing and Exporting Applications
-subtitle: Importing & Exporting Applications
-keywords: buildmaster
+title: Advanced Import & Export
 sequence: 60
 show-headings-in-nav: true
 ---
 
-BuildMaster can export an application's configuration and history into a [universal package](/upack), and then publish that package to a feed in [ProGet](/proget) or a file on a disk. You import applications in the same manner.
+Behind the scenes, the [Application Template](application-templates) and [Backup & Restore](backup-restore) features use the application import and export feature.
 
 ## Exporting Applications {#exporting data-title="Exporting Applications"}
 
-You can open the application export page from the application settings, or from Admin > Export Applications. When exporting applications, you have the following options:
+You can open the application export page from the your applications advanced settings page (Backup... > Advanced), or from Admin > Export Applications. 
+
+When exporting applications, you have the following options:
 
 {.docs}
 - **Applications** - list of applications to export; this option will only appear when the page is accessed from the administration section
@@ -18,21 +18,16 @@ You can open the application export page from the application settings, or from 
 - **Package version** - optional, the version of the universal package to create; this defaults to 0.0.0
 - **Include history** - when selected, the release history and deployment logs will be included in the package. Note that this does not include artifacts
 
-You will also select how to publish the package, from one of two options:
+You will also select where to publish the package from a list of Package Sources.
 
 {.docs}
-- **Publish to Universal Feed** - a feed on a ProGet instance
-- **Save to Disk Path** - a local or network path that the BuildMaster service can write to
+- **Package sources** are configured as a feed on a ProGet instance with a feed url will become a repository for packages that you export, import, backup, restore, or templatize. A package source is simply configured as a url and credentials to a ProGet feed for univeral packages. 
 
-Before publishing to a feed, you will need to setup an Inedo Product [resource credential](/docs/buildmaster/administration/resource-credentials) with the URL and optionally an API key to your ProGet server.
 
 ## Importing Applications {#importing data-title="Importing Applications"}
+You can import an application or template that has been exported to a pre-configured package source. This will save time by minimizing the time needed to setup an application that would have similar plans and pipelines.
 
-You can open the application import dialog form the create new application page, or from Admin > Import Application. When importing, you must first select a source package:
-
-{.docs}
-- **Import from Universal Feed** - import a specific package and version from a ProGet feed
-- **Load from Disk Path** -a local or network path that the BuildMaster service can read from
+To import an application go to Admin > Import Application. When importing, you must first select a source package:
 
 You will also be presented with the following options:
 
@@ -46,10 +41,11 @@ Before importing from a feed, you will need to setup an Inedo Product resource c
 
 Applications will be exported as a standard [universal package](/docs/proget/core-concepts/packages) which is essentially a zip file containing application configuration and history, along with a JSON-based manifest file (`upack.json`) that describes the contents of the package.
 
-In addition to the standard name and version properties, BuildMaster will include `a _exportDate` and `_bmVersion` property in `upack.json`. The package contents will be a collection of JSON-formatted files:
+In addition to the standard name and version properties, BuildMaster will include `a _exportDate` and `_bmVersion` property in `upack.json`. The package contents will be a collection of JSON-formatted files including:
 
 | Filename | Description |
 | -------- | ----------- |
+| **app.json** | Information about the application |
 | **deployables.json** | Deployables and deployable variables |
 | **privileges.json** | Application-scoped privileges |
 | **pipelines.json** | Pipelines |
@@ -70,4 +66,4 @@ In addition to the standard name and version properties, BuildMaster will includ
 | **log-scopes.json** | Historic; log "scopes" (headings) in log files |
 | **log-entries.json** | Historic; log text entries within a scope |
 
-Because these files are intended to only be used by BuildMaster, the precise format of these files is documented only in the source code (but you can [request source code access](/contact)).
+This is not an exhaustive list of files, and because these files are intended to only be used by BuildMaster, the precise format of these files is documented only in the source code (but you can [request source code access](/contact)).
