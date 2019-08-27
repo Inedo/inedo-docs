@@ -56,6 +56,22 @@ Once tagged, the image can now be pushed to ProGet:
 You can then pull the image in the same fashion:
 
     [~]$ sudo docker pull progetsv1:443/dmc/ubuntu:trusty
+    
+
+## Deleting Images
+
+To delete images, you can use Docker's [Delete Image API](https://docs.docker.com/registry/spec/api/#deleting-an-image), using a HTTP DELETE request as follows:
+
+    DELETE /v2/<repository-name>/manifests/<reference>
+
+Note that the `reference` must be a manifest, which can be a bit tricky to find.
+
+* To get a list of repositories, request `https://server1/v2/_catalog`
+* For each repository, you can get a list of tags via `https://server1/v2/main/library/node/tags/list`
+* From there, the *tagged* manifests can be accessed via `https://server1/v2/main/library/node/manifests/latest`
+* The hash is in the `Docker-Content-Digest` header for the response
+
+You can also get the digest of an image you have locally via `docker inspect -f '{{.Id}}' server1:443/main/library/node:latest` 
 
 ## Implementation Details: Registries, Repositories, and More
 
