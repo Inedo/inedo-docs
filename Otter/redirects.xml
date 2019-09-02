@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<redirects baseUrl="/docs/otter">
+  
+  <temporary from="administration" to=""/>
+  <temporary from="administration/architecture" to="installation/architecture"/>
+  <temporary from="administration/backing-up" to="installation/backing-up"/>
+  <temporary from="administration/service" to="installation/architecture/service"/>
+  
+  <temporary from="core-concepts" to=""/>
+  
+  <temporary from="execution-engine" to=""/>
+  <temporary from="execution-engine/otter-script" to="reference/otter-script" />
+  
+  <temporary from="global-components" to=""/>
+  <temporary from="global-components/configuration-variable" to="global-components/configuration-variables" />
+  
+  <temporary from="installation" to=""/>
+  <temporary from="installation/agent-installation-guide" to="installation/installation-guide/agent-installation-guide"/>
+  <temporary from="installation/configuration-options" to="installation/config-files" />
+  <temporary from="installation/manual" to="installation/installation-guide/manual"/>
+  <temporary from="installation/silent" to="installation/installation-guide/silent"/>
+  <temporary from="installation/windows-guide" to="installation/installation-guide"/>
+
+  <temporary from="modeling-infrastructure" to=""/>
+  <temporary from="modeling-infrastructure/powershell/powershell-plans" to="modeling-infrastructure/powershell"/>
+  <temporary from="modeling-infrastructure/server-role" to="modeling-infrastructure/server-roles" />
+  <temporary from="modeling-infrastructure/server-roles/role-dependencies" to="modeling-infrastructure/server-roles#role-dependencies"/>
+  
+  <temporary from="reference" to=""/>
+  <temporary from="reference/operations/powershell/pseval" to="reference/operations" />
+  <temporary from="reference/otter-script/comments-and-descriptions" to="various/execution-engine/otterscript/comments-and-descriptions"/>
+  <temporary from="reference/otter-script/formal-grammar" to="various/execution-engine/otterscript/formal-grammar"/>
+  <temporary from="reference/otter-script/formal-specification" to="various/execution-engine/otterscript/formal-specification"/>
+  <temporary from="reference/otter-script/strings-and-literals" to="various/execution-engine/otterscript/strings-and-literals"/>
+  <temporary from="reference/sdk" to="administration/extensions"/>
+</redirects>

@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<redirects baseUrl="/docs/proget/">
+   
+  <temporary from="administration/backing-up" to="installation/backing-up"/>
+  <temporary from="administration/feed-cleanup" to="advanced/package-statistics"/>
+  <temporary from="administration/feed-replication" to="storage/feed-replication" />
+  <temporary from="administration/high-availability" to="installation/load-balancing-and-automatic-failover" />
+  <temporary from="administration/ldap" to="/docs/various/ldap/ldap-active-directory"/>
+  <temporary from="administration/ldap/advanced" to="/docs/various/ldap/advanced" />
+  <temporary from="administration/ldap/integrated-authentication" to="/docs/various/ldap/integrated-authentication" />
+  <temporary from="administration/ldap/troubleshooting" to="/docs/various/ldap/troubleshooting" />
+  <temporary from="administration/license-filters" to="core-concepts/compliance/license-filters" />
+  <temporary from="administration/package-statistics" to="advanced/package-statistics"/>
+  <temporary from="administration/retention-policies" to="administration/rentention-rules"/>
+  <temporary from="administration/security#api-keys" to="administration/security/api-keys"/>
+  <temporary from="administration/vulnerability-source" to="compliance/vulnerabilities" />
+  <temporary from="administration/vulnerability-source/vor-security" to="compliance/vulnerabilities/vor" />
+  <temporary from="administration/vulnerability-source/whitesource" to="compliance/whitesource" />
+  
+  <temporary from="compliance" to="compliance/vulnerabilities" />
+  <temporary from="compliance/vulnerabilities/vor" to="compliance/ossindex"/>
+  
+  <temporary from="connectors" to="core-concepts/connectors" />
+  <temporary from="connectors/connector-filters" to="core-concepts/connectors" />
+  
+  <temporary from="core-concepts/asset-directories" to="advanced/assets"/>
+  <temporary from="core-concepts/compliance" to="compliance"/>
+  <temporary from="core-concepts/compliance/license-filters" to="compliance/license-scanning"/>
+  <temporary from="core-concepts/compliance/vulnerability" to="compliance/vulnerabilities"/>
+  <temporary from="core-concepts/compliance/vulnerability/vor-security" to="compliance/vulnerabilities/vor"/>
+  <temporary from="core-concepts/compliance/vulnerability/whitesource" to="compliance/vulnerabilities/whitesource"/>
+  <temporary from="core-concepts/containers" to="docker/private-registries"/>
+  <temporary from="core-concepts/feeds/connectors" to="core-concepts/connectors" />
+  <temporary from="core-concepts/high-availability" to="storage/high-availability" />
+  <temporary from="core-concepts/packages#deployment-records" to="/advanced/package-promotion#deployment-records"/>
+  <temporary from="core-concepts/packages#package-promotion" to="/advanced/package-promotion"/>
+  
+  <temporary from="deploy" to="feeds/nuget" />
+  
+  <temporary from="feeds/advanced-feed-settings" to="feed-types/universal" />
+  <temporary from="feeds/api-keys" to="reference/api-keys-nuget" />
+  <temporary from="feeds/bower/bower-feed-configuration" to="/docs/proget" />
+  <temporary from="feeds/cleanup" to="administration/feed-cleanup" />
+  <temporary from="feeds/connectors" to="core-concepts/connectors>" />
+  <temporary from="feeds/connectors/connector-filters" to="core-concepts/connectors" />
+  <temporary from="feeds/connectors/indexing-connectors" to="core-concepts/connectors" />
+  <temporary from="feeds/docker" to="docker/private-registries" />
+  <temporary from="feeds/feed-basics" to="feed-types/universal" />
+  <temporary from="feeds/maven/maven-feed-configuration" to="/docs/proget" />
+  <temporary from="feeds/multiple-feeds" to="/docs/proget" />
+  <temporary from="feeds/npm/npm-feed-configuration" to="feeds/nuget/legacy-feeds" />
+  <temporary from="feeds/nuget/feed-sync" to="/docs/proget" />
+  <temporary from="feeds/nuget/legacy-feeds" to="/docs/proget" />
+  <temporary from="feeds/nuget/nuget-feed-configuration" to="/docs/proget" />
+  <temporary from="feeds/retention" to="administration/retention-policies" />
+  <temporary from="feeds/retention/matching-examples" to="feed-types/universal" />
+  <temporary from="feeds/symbol-and-source-server" to="feed-types/nuget/symbol-and-source-server" />
+  <temporary from="feeds/universal" to="core-concepts/packages"/>
+  <temporary from="feeds/universal/romp" to="core-concepts/packages"/>
+  <temporary from="feed-types" to="core-concepts/feeds" />
+  <temporary from="feed-types/bower" to="feeds/bower"/>
+  <temporary from="feed-types/chocolatey" to="feeds/chocolatey"/>
+  <temporary from="feed-types/docker" to="docker/private-registries" />
+  <temporary from="feed-types/maven" to="feeds/maven"/>
+  <temporary from="feed-types/npm" to="feeds/npm"/>
+  <temporary from="feed-types/nuget" to="feeds/nuget"/>
+  <temporary from="feed-types/nuget/symbol-and-source-server" to="feeds/nuget/symbol-and-source-server"/>
+  <temporary from="feed-types/powershell" to="feeds/powershell"/>
+  <temporary from="feed-types/rubygem" to="feeds/rubygem"/>
+  <temporary from="feed-types/universal" to="core-concepts/packages"/>
+  <temporary from="feed-types/vsix" to="feeds/vsix"/>
+  <temporary from="installation/high-availability" to="installation/load-balancing-and-automatic-failover" />
+  <temporary from="installation/hub" to="/docs/desktophub/overview" />
+  <temporary from="installation/hub/inedo-hub-cli" to="/docs/desktophub/inedo-hub-cli" />
+  <temporary from="installation/inedo-hub-guide" to="installation/installation-guide" />
+  <temporary from="installation/linux-docker" to="installation/installation-guide/linux-docker"/>
+  <temporary from="installation/load-balancing" to="installation/load-balancing-and-automatic-failover" />
+  <temporary from="installation/manual" to="installation/installation-guide/manual"/>
+  <temporary from="installation/silent-installation"  to="installation/installation-guide/silent-installation"/>
+  
+  <temporary from="manual" to="installation/manual" />
+  
+  <temporary from="proget-overview" to="support/documentation/proget/overview" />
+  <temporary from="proget-overview/the-npm-ecosystem" to="feed-types/npm" />
+  <temporary from="proget-overview/the-nuget-ecosystem" to="feed-types/nuget" />
+  
+  <temporary from="reference/api-methods" to="reference/api/native" />
+  <temporary from="reference/asset-directories-api" to="reference/api/asset-directories-api"/>
+  <temporary from="reference/sdk" to="administration/extensions"/>
+  <temporary from="reference/universal-feed-api-and-package-format" to="/docs/various/universal-packages/universal-feed-api" />
+  <temporary from="reference/universal-package-registry" to="/docs/various/universal-packages/universal-package-registry" />
+  <temporary from="reference/upack" to="/docs/various/universal-packages/upack-reference" />
+  
+  <temporary from="scheduled-tasks" to="administration/feed-cleanup" />
+  
+  <temporary from="security" to="administration/security" />
+  <temporary from="security/integrated-authentication" to="administration/ldap-active-directory" />
+  <temporary from="security/ldap-integration" to="administration/ldap-active-directory" />
+  <temporary from="security/users-and-groups" to="administration/security"/>
+  <temporary from="security/users-and-groups/built-in-directory" to="administration/ldap-active-directory" />
+  <temporary from="security/users-and-groups/domain-forest" to="administration/ldap-active-directory" />
+  <temporary from="security/users-and-groups/domain-forest-directory" to="administration/ldap-active-directory" />
+  <temporary from="security/users-and-groups/ldap-directory" to="administration/ldap-active-directory" />
+  
+  <temporary from="storage/cloud-storage" to="advanced/cloud-storage"/>
+  <temporary from="storage/feed-replication" to="storage/high-availability/feed-replication" />
+  <temporary from="storage/high-availability" to="administration/high-availability"/>
+  <temporary from="storage/high-availability/feed-replication" to="advanced/feed-replication"/>
+  <temporary from="storage/retention-policies" to="administration/retention-rules"/>
+  <temporary from="storage/webhooks" to="advanced/webhooks"/>
+  
+</redirects>

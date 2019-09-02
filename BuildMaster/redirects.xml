@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<redirects baseUrl="/docs/buildmaster/">
+
+  <temporary from="administration/agents" to="administration/agents-and-infrastructure/agents" />
+  <temporary from="administration/configuration" to="administration/agents-and-infrastructure/sync" />
+  <temporary from="administration/extensions" to="reference/extensions" />
+  <temporary from="administration/extensions/create-custom" to="reference/extensions" />
+  <temporary from="administration/import-apps" to="administration/applications/import-export" />
+  <temporary from="administration/license" to="installation-and-maintenance/license" />
+  <temporary from="administration/retenion-policies" to="administration/retention-policies" />
+  <temporary from="administration/rollback" to="releases/rollback" />
+  <temporary from="administration/users-and-security" to="administration/security" />
+  <temporary from="administration/users-and-security/ldap" to="administration/security/ldap" />
+  <temporary from="builds/packaging/artifacts-from-drop-path" to="builds/external-systems/drop-path" />
+  <temporary from="builds/plans" to="builds/platform-specific" />
+  <temporary from="builds/platform-specific/java/maven" to="builds/platform-specific/java" />
+
+  <temporary from="builds-and-ci/unit-tests" to="builds/tests/unit-tests" />
+  <temporary from="core-concepts" to="overview" />
+  <temporary from="core-concepts/build" to="builds/overview" />
+  <temporary from="core-concepts/builds-and-ci" to="builds/overview" />
+  <temporary from="core-concepts/builds-and-ci/artifacts" to="builds/packaging/artifacts" />
+  <temporary from="core-concepts/builds-and-ci/reports" to="builds/tests/build-reports" />
+  <temporary from="core-concepts/deployment-plans" to="deployments/plans" />
+  <temporary from="core-concepts/environments" to="administration/agents-and-infrastructure/environments" />
+  <temporary from="core-concepts/pipelines" to="verification/pipelines" />
+  <temporary from="core-concepts/pipelines/pipeline-model" to="verification/pipelines/json-model" />
+  <temporary from="core-concepts/release" to="releases/overview" />
+  <temporary from="core-concepts/release/templates" to="releases/templates" />
+  <temporary from="core-concepts/servers" to="administration/agents-and-infrastructure/servers" />
+  <temporary from="deployments/overview" to="deployments" />
+  
+  <temporary from="execution-engine/overview" to="deployments/plans/execution-engine" />
+  <temporary from="execution-engine/statement-and-blocks/other-statements" to="/docs/executionengine/otterscript/statements-and-blocks/other-statements" />
+  <temporary from="global-components/configuration-variables" to="administration/configuration-variables" />
+  <temporary from="global-components/event-listeners" to="administration/notifications" />
+  <temporary from="global-components/resource-credentials" to="administration/resource-credentials" />
+  <temporary from="global-components/value-renderers" to="administration/value-renderers" />
+  <temporary from="infrastructure/server-roles" to="administration/agents-and-infrastructure/server-roles" />
+  <temporary from="infrastructure/servers" to="administration/agents-and-infrastructure/servers" />
+  <temporary from="installation" to="installation-and-maintenance" />
+  <temporary from="installation/architecture" to="installation-and-maintenance/architecture" />
+  <temporary from="installation/architecture/architecture" to="installation-and-maintenance/architecture" />
+  <temporary from="installation/backing-up" to="installation-and-maintenance/backing-up" />
+  <temporary from="installation/config-files" to="installation-and-maintenance/config-files" />
+  <temporary from="installation/configuration-options" to="installation-and-maintenance/config-files" />
+  <temporary from="installation/diagnostic-center" to="installation-and-maintenance/diagnostic-center" />
+  <temporary from="installation/execution-engine" to="/docs/executionengine/overview" />
+  <temporary from="installation/global-components/resource-credentials" to="administration/resource-credentials" />
+  <temporary from="installation/installation-guide" to="installation-and-maintenance/installation-guide" />
+  <temporary from="installation/installation-guide/agent-installation-guide" to="installation-and-maintenance/installation-guide/agent-installation-guide" />
+  <temporary from="installation/installation-guide/manual" to="installation-and-maintenance/installation-guide/manual" />
+  <temporary from="installation/installation-guide/silent-installation" to="installation-and-maintenance/installation-guide/silent-installation" />
+  <temporary from="installation/service" to="installation-and-maintenance/architecture/service" />
+  <temporary from="modeling-applications/applications" to="administration/applications" />
+  <temporary from="modeling-applications/calendars" to="releases/calendars" />
+  <temporary from="modeling-applications/configuration-files" to="deployments/configuration-files" />
+  <temporary from="modeling-applications/database-changes" to="deployments/targets/databases" />
+  <temporary from="modeling-applications/issues-projects" to="verification/issue-tracking" />
+  <temporary from="modeling-applications/manual-steps-tasks" to="deployments/plans/manual-steps-tasks" />
+  <temporary from="modeling-applications/release-notes" to="releases/notes" />
+  <temporary from="modeling-infrastructure/server-roles" to="administration/agents-and-infrastructure/servers" />
+  <temporary from="reference/api/release-and-package" to="reference/api/release-and-build" />
+  <temporary from="reference/global-components/configuration-variables" to="administration/configuration-variables" />
+  <temporary from="reference/operation" to="reference/operations" />
+  
+
+</redirects>

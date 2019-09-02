@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<redirects baseUrl="/docs/various">
+
+  <temporary from="execution-engine" to="/docs/executionengine/overview"/>
+  <temporary from="execution-engine/functions" to="/docs/executionengine/components/operations-functions"/>
+  <temporary from="execution-engine/operations" to="/docs/executionengine/components/operations-functions"/>
+  <temporary from="execution-engine/otterscript" to="/docs/executionengine/otterscript/overview"/>
+  <temporary from="execution-engine/otterscript/comments-and-descriptions" to="/docs/executionengine/otterscript/comments-and-descriptions"/>
+  <temporary from="execution-engine/otterscript/formal-grammar" to="/docs/executionengine/otterscript/overview" />
+  <temporary from="execution-engine/otterscript/formal-specification" to="/docs/executionengine/reference/formal-specification"/>
+  <temporary from="execution-engine/otterscript/formal-specification/formal-grammar" to="/docs/executionengine/reference/formal-grammar"/>
+  <temporary from="execution-engine/otterscript/strings-and-literals" to="/docs/executionengine/otterscript/strings-and-literals"/>
+  <temporary from="execution-engine/resource-pools" to="/docs/executionengine/components/resource-pools"/>
+  <temporary from="execution-engine/text-templates" to="/docs/executionengine/components/text-templating"/>
+  <temporary from="execution-engine/text-templates/application-configuration-files" to="/docs/executionengine/components/text-templating/application-configuration-files"/>
+
+  <temporary from="hub/inedo-hub-cli" to="/docs/desktophub/overview" />
+  <temporary from="hub/what-is" to="/docs/desktophub/overview" />
+  
+  <temporary from="inedo-agent/architecture" to="inedo-agent/the-agent" />
+  <temporary from="inedo-agent/installation" to="/docs/inedoagent/installation/installation-guide"/>
+  <temporary from="inedo-agent/installation/manual" to="/docs/inedoagent/installation/manual"/>
+  <temporary from="inedo-agent/installation/security" to="/docs/inedoagent/installation/security"/>
+  <temporary from="inedo-agent/network-protocol" to="inedo-agent/server-architecture/network-protocol" />
+  <temporary from="inedo-agent/roadmap" to="/docs/inedoagent/roadmap"/>
+  <temporary from="inedo-agent/security" to="inedo-agent/installation/security" />
+  <temporary from="inedo-agent/server-architecture" to="/docs/inedoagent/server-architecture/server-architecture"/>
+  <temporary from="inedo-agent/server-architecture/message-formats" to="/docs/inedoagent/server-architecture/message-formats"/>
+  <temporary from="inedo-agent/server-architecture/network-protocol" to="/docs/inedoagent/server-architecture/network-protocol"/>
+  <temporary from="inedo-agent/server-architecture/server-flow" to="/docs/inedoagent/server-architecture/server-flow"/>
+  <temporary from="inedo-agent/the-agent" to="/docs/inedoagent/overview"/>
+  <temporary from="inedo-agent/upgrading" to="/docs/inedoagent/upgrading"/>
+  <temporary from="inedo-agent/versions" to="/docs/inedoagent/versions"/>
+  
+  <temporary from="inedo-sdk" to="/docs/inedosdk/overview"/>
+  <temporary from="inedo-sdk/creating" to="/docs/inedosdk/extending/creating"/>
+  <temporary from="inedo-sdk/creating/writing" to="/docs/inedosdk/extending/writing"/>
+  <temporary from="inedo-sdk/hosting" to="/docs/inedosdk/hosting"/>
+  <temporary from="inedo-sdk/the-sdk" to="/docs/inedosdk/overview"/>
+  <temporary from="inedo-sdk/versions-release-notes" to="/docs/inedosdk/versions-release-notes"/>
+  
+  <temporary from="universal-packages/universal-feed-api" to="universal-packages/universal-feeds-package-ref"/>
+  <temporary from="universal-packages/universal-feeds-package-ref" to="/docs/upack/overview"/>
+  <temporary from="universal-packages/universal-feeds-package-ref/feed-api" to="/docs/upack/feed-api"/>
+  <temporary from="universal-packages/universal-feeds-package-ref/package-format" to="/docs/upack/universal-packages/package-format"/>
+  <temporary from="universal-packages/universal-feeds-package-ref/virtual-package" to="/docs/upack/virtual-packages/what-is"/>
+  <temporary from="universal-packages/universal-package-registry" to="/docs/upack/universal-package-registry/what-is"/>
+  <temporary from="universal-packages/upack-reference" to="/docs/upack/upack-cli"/>  
+
+</redirects>

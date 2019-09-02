@@ -553,7 +553,7 @@ Invoke-RestMethod -Method Put `
             </ul>
         </tab>
     </inedo:tab-block>
-    <div class="upcoming">
+    <div>
         <h3 id="download-vpack" data-title="Download Virtual Package">Download Virtual Package Endpoint</h3>
         <p>
             This endpoint is used to download the package.version.vpack file for a virtual package, or throw error if not a virtual package.
@@ -595,6 +595,7 @@ Invoke-RestMethod -Method Put `
                 <tr><th>Property</th><th>Format</th></tr>
             </thead>
             <tbody>
+                <tr><td><code>apiVersion</code></td><td>A <i>string</i> containing the supported Universal Feed Version.</td></tr>
                 <tr><td><code>name</code></td><td>A <i>string</i> containing the name of the feed.</td></tr>
                 <tr><td><code>description</code></td><td>A <i>string</i> containing the description of the feed.</td></tr>
                 <tr><td><code>version</code></td><td>A <i>string</i> containing the Universal Feed API version of the feed.</td></tr>
@@ -608,21 +609,21 @@ Invoke-RestMethod -Method Put `
                     </td>
                     <td>
                         An <i>array of strings</i> containing any of the following values.
-                           <ul class="docs">
-                               <li><code>VirtualPackages</code> - supports virtual packages, and injects the <code>isVirtual</code> property in the list endpoints</li>
-                               <li><code>RemotePackages</code> - supports remote packages (e.g. connectors in ProGet), and injects the <code>isLocal</code> and <code>isCached</code> properties in the list endpoints</li>
-                               <li><code>UploadPackage</code> - supports simple uploading (a complete package file only)</li>
-                               <li><code>UploadContents</code> - supports partial uploading (contents, metadata, etc)</li>
-                               <li><code>Delete</code> - supports deleting packages</li>
-                               <li><code>DownloadContents</code> - supports downloading of individual files or "contentOnly" of a pcakge</li>
-                           </ul>
+                        <ul class="docs">
+                            <li><code>VirtualPackages</code> - supports virtual packages, and injects the <code>isVirtual</code> property in the list endpoints</li>
+                            <li><code>RemotePackages</code> - supports remote packages (e.g. connectors in ProGet), and injects the <code>isLocal</code> and <code>isCached</code> properties in the list endpoints</li>
+                            <li><code>UploadPackage</code> - supports simple uploading (a complete package file only)</li>
+                            <li><code>UploadContents</code> - supports partial uploading (contents, metadata, etc)</li>
+                            <li><code>Delete</code> - supports deleting packages</li>
+                            <li><code>DownloadContents</code> - supports downloading of individual files or "contentOnly" of a pcakge</li>
+                        </ul>
                     </td>
                 </tr>
 
             </tbody>
         </table>
         <p>
-            If a 404 is returned instead, the feed version is less than 1.2.0.
+            If a 400 is returned instead, the feed version is less than 1.3.0.
         </p>
     </div>
 
