@@ -64,14 +64,20 @@ To delete images, you can use Docker's [Delete Image API](https://docs.docker.co
 
     DELETE /v2/<repository-name>/manifests/<reference>
 
-Note that the `reference` must be a manifest, which can be a bit tricky to find.
+Note that the `reference` must be a digest. Deleting a tag is not allowed via this API, but deleting a manifest will remove any tag that refers directly to it.
 
-* To get a list of repositories, request `https://server1/v2/_catalog`
-* For each repository, you can get a list of tags via `https://server1/v2/main/library/node/tags/list`
-* From there, the *tagged* manifests can be accessed via `https://server1/v2/main/library/node/manifests/latest`
+In ProGet, the digest is at the top of the image details for a specific tag.
+
+Via the API, the manifest digest can be found for tagged images:
+
+* To get a list of repositories, request `https://proget.example.com/v2/_catalog`
+* For each repository, you can get a list of tags via `https://proget.example.com/v2/main/library/node/tags/list`
+* From there, the *tagged* manifests can be accessed via `https://proget.example.com/v2/main/library/node/manifests/latest`
 * The hash is in the `Docker-Content-Digest` header for the response
 
-You can also get the digest of an image you have locally via `docker inspect -f '{{.Id}}' server1:443/main/library/node:latest` 
+You can also get the digest of an image you have locally via `docker inspect -f '{{.Id}}' proget.example.com/main/library/node:latest`
+
+When building, pushing, or pulling an image, the digest is printed near the end of the command output. The build command also supports using `--iidfile` to save the digest to a text file.
 
 ## Implementation Details: Registries, Repositories, and More
 
