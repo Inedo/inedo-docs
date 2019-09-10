@@ -5,7 +5,7 @@ keywords: proget, license
 show-headings-in-nav: true
 ---
 
-ProGet is licensed *per installation* on an annual or perpetual basis and has additional restrictions based on the edition as highlighted below:
+ProGet is licensed *per installation* on an annual basis and has additional restrictions based on the edition as highlighted below:
 
 ## Features by Edition {#features-by-edition data-title="Features by Edition"}
 
