@@ -1,0 +1,55 @@
+<html>
+<head>
+    <title>Dispatching &amp; Running Executions</title>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <meta name="keywords" content="hedgehog, executions" />
+	<meta name="sequence" content="100"  />
+</head>
+<body>
+   
+
+    <p>
+        The service uses the <code>ExecutionDispatcher</code> <a href="/docs/hedgehog/installation/architecture/service-admin#task-runners">Task Runner</a> to query the database for executions with a <i>Run State</i> of "Pending" to a <i>Start Date</i> that is before or equal to the current DateTime. For each suitable execution found, a new background task is used to run the execution. 
+    </p>
+   <p>
+       The Service administration page will display the currently running background tasks that were created by the ExecutionDispatcher, and provide links to the appropriate <a href="/docs/hedgehog/global-components/executions/viewing">Execution in Progress</a> page.
+   </p>
+	<p>
+        When the execution is complete, the background task will terminate; you can view all executions (regardless of state) using the Executions administration page, although it will probably be easier to find the specific execution record using a more specific context (such as package deployment history).
+    </p>
+    <h2 id="troubleshooting">Troubleshooting: "Stuck" or "Frozen" Executions</h2>
+    <p>
+        An execution's lifecycle is generally short, but can range from just a few seconds to several hours. Executions cannot be canceled per se, but some executions (namely, deployment executions) support cancellation requests.
+    </p>
+    <div class="attention analogy">
+        <img src="/resources/images/icons/analogy.png" />
+        <p>
+            Like all computer programs, it's certainly possible for an execution to "freeze up" (i.e. remain indefinitely in an Executing state while not logging any new information).
+        </p>
+    </div>
+    <p>
+         Because execution lifecycles vary so much, there's no definitive rule for determining when an execution is "frozen", and thus there is no way to programmatically detect it. You'll simply have to use your judgment. 
+    </p>
+    <p>
+        When an execution becomes "stuck", it's most certainly one of several error conditions:
+    </p>
+    <p>
+        <ul class="docs">
+            <li>Invalid state with the EventDispatcher</li>
+            <li>Execution engine halted without reporting</li>
+            <li>Code that the execution engine is running</li>
+            <li>Third-party code never returning or timing out properly</li>
+        </ul>
+    </p>
+    <p>
+        The only safe way to clear a "stuck" execution is to stop and then start the service. This will obviously also halt all other running executions, so be careful when doing that.
+    </p>
+    <p>
+        When the service starts up again, all executions in a "Executing" state will be changed to "Completed", and marked as "Failed". 
+    </p>
+    <p>
+        If the same type of execution continues to get stuck in the same place, try to gather as much information as you can to help us isolate the problem and <a href="/support/submit-ticket">submit a ticket</a> with the details you've gathered.
+    </p>
+	
+</body>
+</html>

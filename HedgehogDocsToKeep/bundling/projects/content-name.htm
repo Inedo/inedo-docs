@@ -1,0 +1,79 @@
+﻿<html>
+<head>
+    <title>Content Name Resolution</title>
+    <meta name="subtitle" content="Content Name Resolution" />
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <meta name="keywords" content="hedgehog, packages, projects" />
+    <meta name="sequence" content="200" />
+</head>
+<body>
+
+ 
+    <h2 id="resolution">Project Content Name Resolution</h2>
+    <p>
+        Most content items reference things by name. For example, a pipeline named "Hotfix" might reference a plan named "Emergency Deploy" in a stage named "Production". While you can use the <a href="/support/sdk-reference/inedosdk/Inedo.Extensibility.RaftRepositories"><i>fully-qualified syntax</i></a>, it's best to let Hedgehog resolve simple names for you, especially when content items are contained within the same project.
+    </p>
+    <p>
+        When searching for content with an unqualified name, Hedgehog will first look in the current project for content with that name and type. If no content is found, then the parent project is searched, and then the ancestors, all the way to the global (i.e. no project) level.
+    </p>
+    <h3 id="example">Example: Sharing Resources with a Hierarchy</h3>
+    
+    <p>
+        One common use case for project nesting is to use a parent project as a sort of "container" for both other projects, and the content that those projects will use.
+    </p>
+    <div class="attention best-practice">
+        <img src="/resources/images/icons/best-practices.png" />
+        <p>
+            For example, consider a set of libraries that are all published in a consistent manner, using the same template ("Library"), which references a pipeline ("Standard") and a deployment plan ("Publish Library"):
+        </p>
+    </div>
+<pre>
+/projects
+      /CommonLibraries
+            /templates
+                Library.json
+            /plans
+                Publish-Library.otter
+            /pipelines
+                Standard.json
+            /projects
+                  /Library1
+                  /Library2
+                  /Library3
+</pre>
+    <p>
+        With this layout, new library projects can easily be added by simply creating a project under the "CommonLibraries" project. All package sets in these libraries can use the same pipeline and plan. So long as the same "Library" template is used, everything will be built and deployed consistently. Of course, the packages or projects themselves can have variables to control how and where they are published.
+    </p>
+    <h3 id="anti-example">Anti-example: Confusing Hierarchy</h3>
+    <div class="attention technical">
+        <p>
+            This following layout is <i>pretty bad</i>, and you should never set anything up like this, because it's quite confusing.
+        </p>
+    </div>
+    <p>
+        But it demonstrates how the name resolution works:
+    </p>
+<pre>
+/projects
+      /ParentProject
+            /plans
+                Emergency-Deploy.otter
+            /pipelines
+                Hotfix.json
+            /projects
+                  /ChildProject1
+                        /plans
+                            Emergency-Deploy.otter
+              /ChildProject2
+                     /pipelines
+                        Emergency.json
+</pre>
+    <p>
+        When a package set in ChildProject1 specifies "Hotfix" as a pipeline, then ParentProject's Hotfix.json will be used. If ParentProject's HotFix specifies "Emergency Deploy" as a plan, then that package set will use ChildProject1's Emergency-Deploy.json, and *not* the ParentProject's version.
+    </p>
+    <p>
+        When a package set in ChildProject2 specifies "Emergency" as pipeline, then ChildProject2's Emergency.json will be used. If this specifies "Emergency Deploy" as a plan, then the package set will use ParentProject's Emergency-Deploy.otter.
+    </p>
+
+</body>
+</html>

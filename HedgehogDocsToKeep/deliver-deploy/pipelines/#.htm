@@ -1,0 +1,228 @@
+﻿<html>
+<head>
+    <title>Pipelines</title>
+    <meta name="subtitle" content="Pipelines in Hedgehog" />
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <meta name="keywords" content="hedgehog, pipelines" />
+    <meta name="show-headings-in-nav" content="true" />
+    <meta name="sequence" content="200" />
+
+</head>
+<body>
+    <p>
+        Pipelines let you build a repeatable release process by defining the servers and environments that your release packages will be deployed to, as well as the manual and automatic approvals required at each stage of the process.
+    </p>
+    <p>
+        A basic web application might use a pipeline with only two stages (testing and production), and simply deploy to a different folder on the same server. Another application may require a dozen stages, each with multiple targets that go to different environments, and all sorts of automatic and human approvals to meet compliance requirements.
+    </p>
+
+    <h2 id="creating-pipelines" data-title="Creating Pipelines">Creating Pipelines</h2>
+    <p>
+        You can create a pipeline at the project- or global-level. Because projects are hierarchical, it is recommended to store pipelines at the appropriate project level.
+    </p>
+    <p>
+        A pipeline has three properties that help distinguish it: name, description, and a color. While the description is primarily used to guide users on which pipeline to use, the name and color are used to visualize the releases that are utilizing that pipeline.
+    </p>
+    <p>
+        Once a pipeline is created, you can select it (or any accessible to parent projects) when creating or editing a deployment set.
+    </p>
+    <h2 id="pipeline-stages" data-title="Pipeline Stages"> Pipeline Stages</h2>
+    <p>
+        Pipelines contain a sequence of stages that deployment sets will pass through on their way to the final stage. Each stage defines the requirements for stage entry, where and how release package will be deployed, and what to do after they are deployed.
+    </p>
+
+    <h3 id="manual-approvals" data-title="Manual Approvals"> Manual Approvals </h3>
+    <p>
+        There are two types of manual approvals: user and group. A user-based approval can only be entered by the specified user, whereas a group-based approval can be entered by any members of the specified group. You can also specify that more than one member of a particular group must approve a release package before deploying to a stage.
+    </p>
+    <p>
+        In either case, when a user approves a deployment set for a particular stage, the following is recorded:
+    </p>
+    <ul class="docs">
+        <li>User's Name</li>
+        <li>Group name (if group-based)</li>
+        <li>Stage name</li>
+        <li>Approval Description</li>
+        <li>User Comments</li>
+        <li>Date/Time</li>
+    </ul>
+    <p>
+        Users may revoke an approval they've given, provided that the deployment set wasn't already deployed to the target stage, and the deployment set is still active.
+    </p>
+
+    <h3 id="deployment-targets" data-title="Deployment Targets"> Deployment Targets </h3>
+    <p>
+        A target defines where and how a deployment set will be deployed. It's comprised of a deployment plan, an environment name, and a list of servers or roles.
+    </p>
+    <h4 id="deployment-plan">Deployment Plan</h4>
+    <p>
+        This is the actual OtterScript that will be run in order to deploy the release package. It can reference an project-level plan, a parent project's plan, or global plan. Plan names should be referenced by simple names, but may also be accessed via
+        normal <a href="/docs/hedgehog/global-components/rafts#asset">raft resolution rules</a>.
+    </p>
+    <div class="attention best-practice">
+        <p>
+            <b>Note:</b> depending on how server targeting is configured, the deployment plan may be run multiple times across different servers.
+        </p>
+    </div>
+    <h4 id="environment-targeting">Environment Targeting</h4>
+    <p>
+        Deployments can be targeted to an environment, which affect it in a few ways:
+    </p>
+    <ul class="docs">
+        <li>
+            <b>Permissions:</b> users must have permission to deploy to that environment in order to deploy to that stage
+        </li>
+        <li>
+            <b>Role Selection Filtering:</b> if you also target by role, then the server must be in that environment to be included
+        </li>
+        <li>
+            <b>Runtime Server Protection:</b> a server must be in the target environment, or a runtime error will occur
+        </li>
+        <li>
+            <b>Visualization:</b> this help you see which deployment sets have been deployed to which environments
+        </li>
+    </ul>
+    <h4 id="server-targeting">Server Targeting</h4>
+    <p>
+        You can target servers multiple ways:
+    </p>
+    <ul class="docs">
+        <li>
+            <b>No default server context</b>; this means you will need to explicitly specify which servers to deploy to in the deployment plan itself
+        </li>
+        <li>
+            <b>All servers in target environment</b>; this will run the deployment plan against all servers in the targeted environment
+        </li>
+        <li>
+            <b>Specific servers</b>; the plan will be run against the list of servers specified
+        </li>
+        <li>
+            <b>Specific server roles</b>; the plan will be run against servers with the specified roles and that are associated with the targeted environment
+        </li>
+    </ul>
+
+    <div class="attention best-practice">
+        <img src="/resources/images/icons/best-practices.png" />
+        <p>
+            <strong>Multiple Role Targeting Note:</strong> When you target multiple role names, the same deployment plan will be executed once for each role selected, against all servers with that role and in the target environment. This means that, if you target two roles – and one server happens to have both of those roles – the deployment plan will be executed against that server <b>at least twice</b>.
+        </p>
+    </div>
+
+    <h4 id="package-targeting">Package Targeting</h4>
+    <p>
+        You can target server packages as well. At deployment time, the <em>Pipeline Stage Deployment Execution</em> will run the specified deployment plan with each targeted package in context. If the deployment set does not contain a package with that name, the plan will not be executed.
+    </p>
+    <p class="info">
+        <strong>Note:</strong> Package targeting does not apply to attachments.
+    </p>
+    <div class="attention best-practice">
+        <img src="/resources/images/icons/best-practices.png" />
+        <p>
+            <strong>Multiple Package Targeting Note:</strong> When you target multiple packages, the same deployment plan will be executed once for each package that's in the deployment set, against all targeted servers. This means that, if you target three packages that are in the set, the deployment plan will be executed against each server at least three times.
+        </p>
+    </div>
+    <h3 id="deployment-steps">Pre- and Post-Deployment Steps</h3>
+    <p>
+        Before the pipeline stage's targets are evaluated, the <em>Pipeline Stage Deployment Execution</em> will run the pre-deployment steps associated with the stage.
+    </p>
+    <p>
+        Pre-deployment steps are executed in the sequence specified, and a failure in execution will cause the target evaluation to not be performed. Only the "run on fail" post-deployment steps will run when this happens.
+    </p>
+    <p>
+        Post-deployment steps work nearly the same way, except they are run after all of the targets have finished executing. Post-deployment steps denoted as "run on fail" will only be run if the execution has an error status, or if the pre-deployment steps failed.
+    </p>
+    <h4>Available Steps</h4>
+    <p>
+        The following steps may be selected as pre- and post-deployment steps.
+    </p>
+    <p>
+        <ul class="docs">
+            <li>
+                <strong>Send Email:</strong> this sends an email to the specified addresses with the specified priority, subject, and body
+            </li>
+            <li>
+                <strong>Set Stage Variable Value:</strong> this creates or updates an ephemeral variable that is used throughout pipeline stage execution, and is made available to all plans as a configuration variable
+            </li>
+            <li>
+                <strong>Execute PowerShell Statement</strong> this runs the specified text using PowerShell
+            </li>
+            <li>
+                <strong>Execute OtterScript Script</strong> this runs the specified text using the OtterScript runtime
+            </li>
+        </ul>
+    </p>
+    <h4>OtterScript and Steps</h4>
+    <p>
+        Each of the available steps are stored as separate OtterScript scripts, and executed by the OtterScript runtime. They are simply displayed in a more user-friendly manner in the UI.
+    </p>
+    <p>
+        The <em>Send-Email</em> and <em>PSExec</em> operations are used to perform the send email and PowerShell steps. You can use a "pseudo operation" called <code>Set-PipelineStageVariableValue</code> to set a variable value on the stage in the same manner. This operation has two required properties, <code>(Name and Value)</code>.
+    </p>
+
+
+    <h2 id="auto-deploying-pipelines" data-title="Auto-Deploying Pipelines"> Auto-Deploying Pipelines</h2>
+    <p>
+        You can configure a stage to automatically deploy into the next stage by checking the "Auto deploy" checkbox in the stage properties. When checked, deployment sets will automatically be deployed to the next stage upon a successful deployment, as soon as all requirements for following stage are met.
+    </p>
+    <p>
+        This feature can be particularly useful to build an automated deployment pipeline.
+    </p>
+    <h3 id="pipeline-variables" data-title="Pipeline Variables">Pipeline Variables</h3>
+    <p>
+        You can define key/value pairs on pipelines and stages. These behave just like <a href="/docs/hedgehog/deliver-deploy/configuration-variables">configuration variables</a>, in that you can use these variables within deployment plans that are executed through the plan.
+    </p>
+    <p>
+        However, pipeline variables are not actually configuration variables: you can't create multi-scoped variables, or modify them through the variables API.
+    </p>
+
+    <h3 id="best-practices" data-title="Best Practices">Best Practices</h3>
+    <div class="attention best-practice">
+        <img src="/resources/images/icons/best-practices.png" />
+        <h4><i>Start Simple</i></h4>
+        <p>
+            This level of flexibility can make it feel overwhelming to design the "right" pipeline. You can always "add more" to it later, and adopt your deployment process as you learn how to improve it.
+        </p>
+    </div>
+    <div class="attention best-practice">
+        <img src="/resources/images/icons/best-practices.png" />
+        <h4><i>Keep Pipelines Reusable</i></h4>
+        <p>
+            Pipelines are designed to be used for all the deployment sets in a project, and they represent a repeatable process. Don't treat them like a "release checklist" for a single release, and then start again on the next release.
+        </p>
+    </div>
+    <div class="attention best-practice">
+        <img src="/resources/images/icons/best-practices.png" />
+        <h4><i>Stages vs Targets vs Plans</i></h4>
+        <p>
+            You could, in theory, have a single deployment plan that deploys a package from one server to another, all the way through production. On the other hand, you could have a pipeline with a thousand stages, each running a micro-step in deploying to a particular environment… not to mention targets.
+        </p>
+        <p>
+            To find the best middle ground, consider the design intent of each of the elements:
+        </p>
+        <p>
+            <ul class="docs">
+                <li>
+                    Stages are designed to visualize deployment sets as they make their way to production. Too many stages, and it becomes cluttered and almost useless. Come up with a sequence of stages that shows how others may visualize this progress over the course of days and weeks.
+                </li>
+                <li>
+                    Targets are used to help keep your deployment plans reusable, and let you define servers and roles outside of the deployment plan; they are also visualized as a separate execution which may make identifying which parts of the deployment were successful, warned, or failed.
+                </li>
+                <li>
+                    Plans have a lot of flexibility, but they should generally be reusable and not server- or role-specific; but sometimes they are, and that's ok too.
+                </li>
+            </ul>
+        </p>
+    </div>
+    <div class="attention best-practice">
+        <img src="/resources/images/icons/best-practices.png" />
+        <h4><i>Don't Use and Abuse Pre- and Post-Deployment Steps</i></h4>
+        <p>
+            Although you can certainly do "anything" in a pre- or post-deployment step, in general these steps should be reserved for:
+        </p>
+        <ul class="docs">
+            <li>Auditing purposes</li>
+            <li>Sending notifications</li>
+        </ul>
+    </div>
+</body>
+</html>
