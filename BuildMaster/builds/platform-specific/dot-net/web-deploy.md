@@ -2,15 +2,15 @@
 title: Web Deploy Package
 subtitle: Creating a Web Deploy Package
 Docs URL: /builds/platform-specific/web-deploy
-sequence: 100 
-keywords: buildmaster, web-deploy, visual-studio, dotnet, 
+sequence: 100
+keywords: buildmaster, web-deploy, visual-studio, dotnet,
 ---
 
 BuildMaster can be used to build, test, and deploy any type of application, even if deploying those applications involve manual steps like handing-off files to other teams or customers for manual deployment. Not only will there be some time savings from automating some of the process, but everyone will have visibility into the status of the deployment.
 
 [Web Deploy(msdeploy)](https://www.iis.net/downloads/microsoft/web-deploy) is tool developed by Microsoft that "simplifies deployment of Web applications and Web sites to IIS servers" and "enables administrators and delegated users to use IIS Manager to deploy ASP.NET and PHP applications to an IIS server." This is accomplished by creating a Web Deploy Package (either in Visual Studio or with the tool), and then deploying that package directly to the IIS Web Deploy Extension. Visual Studio also uses Web Deploy when doing a **"One-Click publish"** or **"Right-Click Deploy"** of web applications.
 
-Although BuildMaster renders the Web Deploy technology largely obsolete (see [Build and Deploy a .NET Web Application](/support/tutorials/buildmaster/build-automation/build-and-deploy-a-net-web-application) for for a much simpler approach), there are a lot of reasons that an organization will still use Web Deploy.
+Although BuildMaster renders the Web Deploy technology largely obsolete (see [Build and Deploy a .NET Web Application](/https://inedo.com/support/tutorials/buildmaster/build-automation/build-and-deploy-a-net-web-application) for for a much simpler approach), there are a lot of reasons that an organization will still use Web Deploy.
  * legacy applications that are infrequently updated use this process, and aren't worth changing
  * there is a "throw it over the wall" culture, and developers simply deliver Web Deploy Packages to operations
  * Web Deploy Packages are used as a means to deliver applications to customers
@@ -18,7 +18,7 @@ Although BuildMaster renders the Web Deploy technology largely obsolete (see [Bu
 Fortunately, you can still use BuildMaster to create Web Deploy Packages without having to change these process, and then deliver those packages to people who will deploy them. Instead of deploying your web applications to server, you "deploy" it to stakeholders or customers by sending them and email with a link to the package. You can even use the [Manual Operatation](#next-steps) to have them notify BuildMaster when the deployment is manually performed.
 
 #### How to Create a Web Deploy Package
-By adding the Build-Project operation in your BuildMaster plan, you can configure it to package up your Web Application project within the solution and publish them as a _Web Deploy Package_ (.zip file) 
+By adding the Build-Project operation in your BuildMaster plan, you can configure it to package up your Web Application project within the solution and publish them as a _Web Deploy Package_ (.zip file)
 
 Sample Plan:
 ```
@@ -74,7 +74,7 @@ If files you would like to include into the package are in the same project and 
 ```
 
 #### Next Steps {#next-steps}
-After the Web Deploy Package is created, you can notify any BuildMaster user or group that the package is created and needs to be deployed. When you use the [Manual Operation] (/docs/buildmaster/reference/operations/buildmaster/manual-operation) in your plan, the execution will be halted until an individual completes the specified task. 
+After the Web Deploy Package is created, you can notify any BuildMaster user or group that the package is created and needs to be deployed. When you use the [Manual Operation] (/docs/buildmaster/reference/operations/buildmaster/manual-operation) in your plan, the execution will be halted until an individual completes the specified task.
 
 ```
 Perform-ManualOperation

@@ -43,4 +43,4 @@ We do not support... nay, we *strongly discourage* trying to modify any of the d
 
 Agents are a lightweight service that are installed on remote servers that you want to configure and orchestrate. They use a highly-optimized and resilient protocol, and are secured (by default) using a FIPS-compliant symmetric AES encryption scheme.
 
-Agents may also be configured to use SSL instead of built-in AES, see [KB#1040](/support/kb/1040) for those instructions.
+Agents may also be configured to use SSL instead of built-in AES, see [KB#1040](https://inedo.com/support/kb/1040/securing-self-hosted-agents-using-ssl) for those instructions.

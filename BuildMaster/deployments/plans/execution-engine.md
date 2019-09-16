@@ -32,4 +32,4 @@ You really don't need to learn OtterScript; it's simply the textual representati
 
 BuildMaster also includes a separate, side-by-side execution engine that is used to run deployment plans developed prior to v5. Although the legacy engine will be indefinitely supported, we don't recommend using it for new applications/plans.
 
-The documentation in this section will not focus on the legacy engine, but [KB#1107- Importing BuildMaster v4 Deployment Plans](/support/kb/1107) contains plenty of details on the differences, as well as migration strategies.
+The documentation in this section will not focus on the legacy engine, but [KB#1107- Importing BuildMaster v4 Deployment Plans](https://inedo.com/support/kb/1077/configuring-your-inedo-product-to-run-as-a-windows-domain-account) contains plenty of details on the differences, as well as migration strategies.

@@ -18,7 +18,7 @@ Invoke-RestMethod https://proget.example.com/vsix/FeedName `
 
 Note that PowerShell does not support TLS 1.2 (defined by [RFC 5246](https://tools.ietf.org/html/rfc5246), August 2008) by default. If your server does not allow TLS 1.0 connections (required for PCI compliance since June 2018), you will need to enable TLS 1.2 before running the above command.
 
-See [KB#1161](/support/kb/1161/tls-v12-configuration-and-connection-errors) for instructions on how to enable TLS 1.2.
+See [KB#1161](https://inedo.com/support/kb/1161/tls-v12-configuration-and-connection-errors) for instructions on how to enable TLS 1.2.
 
 
 #### VSIX Limitations

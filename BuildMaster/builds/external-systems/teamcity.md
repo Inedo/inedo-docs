@@ -6,7 +6,7 @@ keywords: buildmaster, artifacts, teamcity, import
 
 BuildMaster is a fully-functional Continuous Integration tool for a variety of platforms allowing your organization to start using CI/CD today. BuildMaster also supports referencing or importing artifacts from other CI tools like TeamCity.  
 
-If your deployment engineers are using BuildMaster but another team is using TeamCity to build and create the artifacts, BuildMaster can effectively import that artifact to be utilized throughout the rest of the deployment process. 
+If your deployment engineers are using BuildMaster but another team is using TeamCity to build and create the artifacts, BuildMaster can effectively import that artifact to be utilized throughout the rest of the deployment process.
 
 #### Implementation
 
@@ -35,12 +35,12 @@ TeamCity::Import-Artifact
 ```
 
 #### Next Steps
-After you have imported your artifact from TeamCity, BuildMaster can now [deploy](/docs/buildmaster/reference/operations/artifacts/deploy-artifact) it to any number of servers or targets. 
+After you have imported your artifact from TeamCity, BuildMaster can now [deploy](/docs/buildmaster/reference/operations/artifacts/deploy-artifact) it to any number of servers or targets.
 
 #### Self-Service TeamCity Builds
 
-With [release templates](/docs/buildmaster/releases/templates), you can build an easy-to-use deployment pipeline using data directly from TeamCity. You can set up a template variable as a _dynamic list_ and use the TeamCity resource credentials as the source and select the build configurations directly from TeamCity in real-time. This saves time and gives you more control over what is being imported. Refer to the [Choosing a specific TeamCity Build with BuildMaster](/support/tutorials/buildmaster/teamcity/choosing-specific-artifact-from-teamcity) tutorial for more information. 
+With [release templates](/docs/buildmaster/releases/templates), you can build an easy-to-use deployment pipeline using data directly from TeamCity. You can set up a template variable as a _dynamic list_ and use the TeamCity resource credentials as the source and select the build configurations directly from TeamCity in real-time. This saves time and gives you more control over what is being imported. Refer to the [Choosing a specific TeamCity Build with BuildMaster](https://inedo.com/support/tutorials/buildmaster/teamcity/choosing-specific-artifact-from-teamcity) tutorial for more information. 
 
 #### Capturing TeamCity Build Numbers
 
-Once you have queued a build and imported the artifact from TeamCity you can use the `$TeamCityBuildNumber` variable in conjunction with a [custom value renderer](/docs/buildmaster/administration/value-renderers). This is a convenient way you to quickly link back to the TeamCity server to get an overview of the build that was imported. 
+Once you have queued a build and imported the artifact from TeamCity you can use the `$TeamCityBuildNumber` variable in conjunction with a [custom value renderer](/docs/buildmaster/administration/value-renderers). This is a convenient way you to quickly link back to the TeamCity server to get an overview of the build that was imported.

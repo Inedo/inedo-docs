@@ -19,7 +19,7 @@ There are some basic rules regarding packaging and software development that our
 3. Rebuilding source code can produce different software. We talked about _dependency hell_ in chapter three, but it's also possible that a different version of the compiler will treat source code differently.
 4. A prerelease package should never be released.
 
-These are discussed at length in our book [Continuously Scale and Continuously Deliver with a Universal Package Manager](/support/resources/ebooks/continuously-scale-deliver-upm).
+These are discussed at length in our book [Continuously Scale and Continuously Deliver with a Universal Package Manager](https://inedo.com/support/resources/ebooks/continuously-scale-deliver-upm).
 
 Given these rules, it seems nearly impossible to create a logical pipeline that both the business and development can understand and follow.
 

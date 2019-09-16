@@ -9,7 +9,7 @@ The Inedo Hub is primarily used to install, update, and otherwise service applic
 
 ## Installing the Hub {#installing data-title="Installing the Hub"}
 
-The Inedo Hub is itself a lightweight installable Windows app. Currently, it can be downloaded from the [ProGet download page](/proget/download) as a small executable file that downloads and installs the latest version of the hub when you execute it.
+The Inedo Hub is itself a lightweight installable Windows app. Currently, it can be downloaded from the [ProGet download page](https://inedo.com/proget/download) as a small executable file that downloads and installs the latest version of the hub when you execute it.
 
 ## Installation {#installation data-title="Installation"}
 

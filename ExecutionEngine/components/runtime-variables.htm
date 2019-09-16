@@ -17,7 +17,7 @@
     </ul>
     <p>
         Like <a href="/docs/buildmaster/global-components/configuration-variables">configuration variables</a>, which are essentially values that you can
-        assign to a server, application, environment, release, etc., runtime variables are used by the execution engine 
+        assign to a server, application, environment, release, etc., runtime variables are used by the execution engine
         while running a plan.
     </p>
     <h2 id="types" data-title="Runtime Variable Types">Runtime Variable Types</h2>
@@ -32,7 +32,7 @@
     </table>
     <p>
         String variables are the most common, and are used about anywhere. Whenever you reference a string variable within another
-        block or statement, it is automatically replaced with the value. You can escape this with the grave apostrophe 
+        block or statement, it is automatically replaced with the value. You can escape this with the grave apostrophe
         (<code>`</code>) character.
     </p>
     <tab-block>
@@ -42,7 +42,7 @@
     </tab-block>
 
     <p>
-        Loop variables are used much less frequently, primarily as the source of a 
+        Loop variables are used much less frequently, primarily as the source of a
         <a href="/docs/executionengine/otterscript/statements-and-blocks/loop">Loop Block</a>.
     </p>
     <p>
@@ -71,10 +71,10 @@
         is retrieved.  We generally don't recommend doing this, as it may get quite confusing if others are trying
         to understand your plan.
     </p>
-	
+
     <h2 id="variable-functions" data-title="Variable Functions">Variable Functions</h2>
     <p>
-        You may have seen expressions like <code>$PathCombine($RootPath,Accounts)</code> <a href="/support/tutorials" target="_blank">used in examples</a>; these are
+        You may have seen expressions like <code>$PathCombine($RootPath,Accounts)</code> <a href="https://inedo.com/support/tutorials" target="_blank">used in examples</a>; these are
         variable functions, which take in a number of parameters and return a value.
         All of the "built-in variables" like <code>$WorkingDirectory</code>, <code>$EnvironmentName</code>, and
         <code>@AllServers</code> are implemented as variable functions.
@@ -87,7 +87,7 @@
     </p>
     <p>
         Variable functions are extensible, so you can write your own with a <a href="/docs/buildmaster/administration/extensions" target="_blank">BuildMaster Extension</a>.
-    </p>		
-		
+    </p>
+
 </body>
 </html>

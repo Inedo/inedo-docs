@@ -37,7 +37,7 @@ You can change this later by editing the configuration file in the installation 
 
 Inedo's agents use a FIPS-compliant symmetric AES encryption scheme by default, and the installer will automatically generate a secure, 32-digit key for you. You can use that key, or another one of your choosing.
 
-If you select SSL instead of built-in AES, then you will need to have a valid certificate installed on the server (see [KB#1040](/support/kb/1040)).
+If you select SSL instead of built-in AES, then you will need to have a valid certificate installed on the server (see [KB#1040](https://inedo.com/support/kb/1040/securing-self-hosted-agents-using-ssl)).
 
 **No Encryption** is also an option, but we don't recommend using it. The primary reason we have this is so that you can use a tool like [Wireshark](https://www.wireshark.org/) to inspect the individual messages, either as directed by our support engineers or because you really like studying binary TCP protocols.{.announcement}
 
@@ -58,7 +58,7 @@ Once the installation is complete, just close the installer or click the Exit bu
 Sometimes, it may be desired to install multiple instances of the Inedo Agent on the same machine. The most common reason for this is privileges; one agent may run in a higher privilege mode than the other.
 
 :::attention {.technical}
-The agent installer (including silent installation) does not currently support installation or management of multiple instances. See [KB#1146](/support/kb/1146) for guidance on how to install more than one agent on the same server manually.
+The agent installer (including silent installation) does not currently support installation or management of multiple instances. See [KB#1146](https://inedo.com/support/kb/1146/installing-multiple-instances-of-inedoagent-on-a-single-machine) for guidance on how to install more than one agent on the same server manually.
 :::
 
 ## Silent Installation

@@ -59,7 +59,7 @@ You can verify that your extension has loaded correctly by viewing the Extension
 
 ## Legacy Components {#legacy-components data-title="Legacy Components"}
 
-BuildMaster v5 and v6 have a lot of [legacy features](/support/kb/1144) from previous versions that remain functional but are generally hidden from new installations.
+BuildMaster v5 and v6 have a lot of [legacy features](/support/kb/1144/buildmaster-legacy-features) from previous versions that remain functional but are generally hidden from new installations.
 
 To extend the functionality of some of these features in BuildMaster v6, your extension will need to reference the [BuildMaster Legacy Components SDK NuGet package](https://www.nuget.org/packages/Inedo.BuildMaster.SDK/) instead of the Inedo SDK. This package references the Inedo SDK, so the resulting extension will still be considered a cross-product, Inedo extension.
 

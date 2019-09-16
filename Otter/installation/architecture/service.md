@@ -28,4 +28,4 @@ By default, the Otter Service is named `INEDOOTTERSVC`, runs under the [NetworkS
 - ExtensionsPath
 - ExtensionsTempPath
 
-If you choose to configure this as a [custom domain account](/support/kb/1077), it will be important to grant these same privileges.
+If you choose to configure this as a [custom domain account](https://inedo.com/support/kb/1077/configuring-your-inedo-product-to-run-as-a-windows-domain-account), it will be important to grant these same privileges.

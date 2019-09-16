@@ -11,16 +11,16 @@
         servers. See the <a href="/docs/hedgehog/installation/installation-guide">Installation guide</a> for more details.
     </p>
 
-    <img src="/resources/documentation/hedgehog/a-c-diagram.png" alt="Diagram" />  
+    <img src="/resources/documentation/hedgehog/a-c-diagram.png" alt="Diagram" />
 
     <h2 id="web-application">Web Application</h2>
     <p>
-        This is how most users will interact with Hedgehog on a day-to-day basis, and 
+        This is how most users will interact with Hedgehog on a day-to-day basis, and
         manages the releases, projecs, pipelines, plans, security, users, etc., and also hosts the API.
     </p>
     <p>
         It is a standard ASP.NET application, and administrators familiar with IIS may
-        tweak the application pool settings as needed. 
+        tweak the application pool settings as needed.
     </p>
     <div class="attention technical">
         <img src="/resources/images/icons/technical.png" />
@@ -43,7 +43,7 @@
             any purpose other than to change the database connection string or encryption key is not at all supported.
         </p>
     </div>
-    
+
     <p>
         The Service page details how to administer this further.
     </p>
@@ -55,7 +55,7 @@
     </p>
     <p>
         It is a standard SQL Server database, and administrators familiar with SQL Server may
-        tweak the database settings as needed. 
+        tweak the database settings as needed.
     </p>
     <h3>Encryption</h3>
     <p>
@@ -65,10 +65,10 @@
     </p>
     <h3>Reporting</h3>
     <p>
-        Experienced users are welcome to query data from the various tables, and sensitive information 
+        Experienced users are welcome to query data from the various tables, and sensitive information
         <a href="/docs/hedgehog/global-components/resource-credentials">resource credentials</a> are stored encrypted, and
         can only be decrypted by the service account.
-        The tables/columns should be fairly 
+        The tables/columns should be fairly
         obvious once you're familiar with the software, and <a href="/support/ticket">we can answer</a> any questions
         you may have about the data or relations.
     </p>
@@ -83,11 +83,11 @@
     <h2 id="agents">Agents</h2>
     <p>
         Agents are a lightweight service that are installed on remote servers that you want to configure and orchestrate.
-        They use a highly-optimized and resilient protocol, and are secured (by default) using a FIPS-compliant symmetric 
+        They use a highly-optimized and resilient protocol, and are secured (by default) using a FIPS-compliant symmetric
         AES encryption scheme.
     </p>
     <p>
-        Agents may also be configured to use SSL instead of built-in AES, see <a href="/support/kb/1040">KB#1040</a> for those instructions.
+        Agents may also be configured to use SSL instead of built-in AES, see <a href="https://inedo.com/support/kb/1040/securing-self-hosted-agents-using-ssl">KB#1040</a> for those instructions.
     </p>
 </body>
 </html>

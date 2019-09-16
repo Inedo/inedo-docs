@@ -32,9 +32,9 @@ Some of the attributes are denoted with a superscript E or A. E indicates that t
 
 ### Admin (Configure BuildMaster)
 
-::: {.attention .best-practice} 
+::: {.attention .best-practice}
 This attribute is a proxy for all other attributes, and should be only granted to people you intend to be system administrators.
-::: 
+:::
 
 It is a sort of "administrative catch all" that is used to secure pages in the administration section not covered by other attributes, including security, extensions, and all settings.
 
@@ -153,5 +153,4 @@ Deploy will allow users to deploy SQL change scripts to a specific environment o
 
 ### Change Controls (Manage<sup>AE</sup>)
 
-This allows users to create, edit, perform, or delete [legacy change controls](/support/kb/1144/buildmaster-legacy-features#change-controls). This permission will likely be removed in a future version of BuildMaster.
-
+This allows users to create, edit, perform, or delete [legacy change controls](https://inedo.com/support/kb/1144/buildmaster-legacy-features#change-controls). This permission will likely be removed in a future version of BuildMaster.

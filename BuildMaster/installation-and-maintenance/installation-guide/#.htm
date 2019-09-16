@@ -7,7 +7,7 @@
 </head>
 <body>
     <p>
-        Getting BuildMaster up-and-running takes just a few minutes: just <a href="/buildmaster/download">download</a> and
+        Getting BuildMaster up-and-running takes just a few minutes: just <a href="https://inedo.com/buildmaster/download">download</a> and
         run the installer. This guide will provide step-by-step instructions, as well provide some detail as to what's
         happening behind the scenes.
     </p>
@@ -44,13 +44,13 @@
             SQL Express for you
         </li>
         <li>
-            <strong>Firewall (Inbound)</strong> – BuildMaster is a web application and can be installed on the port of your choosing; it defaults to port 
+            <strong>Firewall (Inbound)</strong> – BuildMaster is a web application and can be installed on the port of your choosing; it defaults to port
         </li>
     </ul>
 
     <h2 id="download-buildmaster" data-title="Download BuildMaster">2. Download BuildMaster</h2>
     <p>
-        You can <a href="/buildmaster/download">download the installer</a> from inedo.com. 
+        You can <a href="https://inedo.com/buildmaster/download">download the installer</a> from inedo.com.
     </p>
     <h2 id="verify" data-title="Verify Installer">3. Verify the Installer </h2>
     <p>
@@ -61,7 +61,7 @@
     <p>
         We've never had any issues with compromised installers (it's hosted on <a href="https://aws.amazon.com/s3/">Amazon S3</a>, which is quite reliable),
         but it doesn't hurt to make sure the signature is there.
-		See <a href="/support/kb/1113">KB#1113: Anti-malware False Positives, Code Signing, and Safety of Inedo Products</a> for more information. 
+		See <a href="https://inedo.com/support/kb/1113/anti-malware-false-positives-code-signing-and-safety-of-inedo-products">KB#1113: Anti-malware False Positives, Code Signing, and Safety of Inedo Products</a> for more information.
     </p>
     <h2 id="run-installer" data-title="Run Installer">4. Run the Installer</h2>
     <p>
@@ -71,16 +71,16 @@
 
     <h2 id="license-agreement" data-title="License Agreement">5. License Agreement</h2>
     <p>
-        Take a quick read of our <a href="/buildmaster/license-agreement">BuildMaster license agreement</a>. Really, it's quick!
+        Take a quick read of our <a href="https://inedo.com/buildmaster/license-agreement">BuildMaster license agreement</a>. Really, it's quick!
     </p>
     <img class="screenshot" alt="BuildMaster License agreement" src="/resources/documentation/buildmaster-installation/license-agreement.png" />
-    
+
     <h2 id="license-key" data-title="Choose an Edition">6. Edition / License Key</h2>
     <p>
         After accepting the license agreement, select the edition of BuildMaster you'd like to use (free, trial, or enter a key).
     </p>
     <img class="screenshot" alt="BuildMaster Edition Key" src="/resources/documentation/buildmaster-installation/edition.png" />
-    
+
     <h2 id="license-registration" data-title="License Registration">7. License Registration</h2>
     <p>
         After selecting the edition, just enter your name and email. The installer will try to get this from the currently
@@ -104,7 +104,7 @@
     <h2 id="web-server-config" data-title="Web Server Configuration">10. Web Server Configuration</h2>
     <p>
         By default, the installer will configure BuildMaster to use its own web server. 
-        This is the easiest to start with, and you can always <a href="/support/kb/1013">switch to IIS</a> hosting later.
+        This is the easiest to start with, and you can always <a href="https://inedo.com/support/kb/1013/hosting-through-iis-instead-of-the-integrated-web-server">switch to IIS</a> hosting later.
     </p>
     <img class="screenshot" alt="BuildMaster Server Configuration" src="/resources/documentation/buildmaster-installation/hosting.png" />
     <p>
@@ -115,7 +115,7 @@
     <p>
         By default, the installer will use the <a href="https://msdn.microsoft.com/en-us/library/windows/desktop/ms684272(v=vs.85).aspx">NetworkService</a> account
         to run the <a href="/docs/buildmaster/administration/service">BuildMaster Service</a> and Web Application.
-        We recommend sticking with this, and <a href="/support/kb/1077">changing the account</a> later if you need to.
+        We recommend sticking with this, and <a href="https://inedo.com/support/kb/1077/configuring-your-inedo-product-to-run-as-a-windows-domain-account">changing the account</a> later if you need to.
     </p>
     <img class="screenshot" alt="BuildMaster User account" src="/resources/documentation/buildmaster-installation/user-account.png" />
     <h2 id="summary" data-title="Summary">12. Summary</h2>
@@ -123,12 +123,12 @@
         Make sure everything here looks OK, and then click Install.
     </p>
     <img class="screenshot" alt="Installation summary" src="/resources/documentation/buildmaster-installation/summary.png" />
-    <p>If any of the items indicate an error, you can click on it to go back to that page and fix it.</p> 
+    <p>If any of the items indicate an error, you can click on it to go back to that page and fix it.</p>
     <h2 id="patiently-wait" data-title="Patiently Wait">13. Patiently Wait</h2>
     <p>
         If you chose to have SQL Server Express installed, then the actual installation process will take a little while, possibly upwards of 10-15 minutes.
     </p>
-    <img class="screenshot" alt="Patiently wait" src="/resources/documentation/buildmaster-installation/patiently-wait.png" />    
+    <img class="screenshot" alt="Patiently wait" src="/resources/documentation/buildmaster-installation/patiently-wait.png" />
     <p class="announcement">
         Clicking cancel (especially during the SQL Express installation) is not advised, as you may have to manually remove some bits of SQL Server
         using Add/Remove programs. Once everything's done, you'll be ready to start using BuildMaster.
@@ -144,6 +144,6 @@
         if you see a blank page, just refresh the page until it loads.
     </p>
 
-    <p>Once BuildMaster loads, we suggest going through the <a href="/buildmaster/tutorial">Getting Started with BuildMaster</a> tutorial.</p>
+    <p>Once BuildMaster loads, we suggest going through the <a href="https://inedo.com/support/tutorials/buildmaster/deployments/deploying-a-simple-web-app-to-iis">Getting Started with BuildMaster</a> tutorial.</p>
 </body>
 </html>

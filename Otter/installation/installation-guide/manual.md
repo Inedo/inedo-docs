@@ -5,7 +5,7 @@ keywords: otter
 
 :::manual-install
 **Note:** The manual installation instructions are for informational purposes only and
-is not fully supported. Please visit the [Download](/otter/download) page to download the installer. {.announcement}
+is not fully supported. Please visit the [Download](https://inedo.com/otter/download) page to download the installer. {.announcement}
 
 
 These instructions will describe how to manually install each of [Otter's deployable components](/docs/otter/installation/architecture). The manual installation packages for these components can be found on the [All Versions](/otter/versions) page.

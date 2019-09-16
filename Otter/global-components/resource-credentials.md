@@ -11,8 +11,8 @@ There are several built-in types, and new types may be added with an [Extension]
 
 {.docs}
 - **Private Key** - a private key with an optional username and passphrase
-- **BuildMaster** - a [connection to the BuildMaster](/support/tutorials/buildmaster/utilizing-infrastructure-sync) API
-- **ProGet** - a connection to a [ProGet server](/proget)
+- **BuildMaster** - a [connection to the BuildMaster](https://inedo.com/support/tutorials/buildmaster/utilizing-infrastructure-sync) API
+- **ProGet** - a connection to a [ProGet server](https://inedo.com/proget)
 - **Username & Password** - just a simple username and password, such as a Windows domain account
 
 ## Example: IIS Application Pool Credentials
