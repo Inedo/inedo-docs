@@ -13,7 +13,7 @@ There are two ways to get started with the Inedo SDK:
 - Install the [Inedo.SDK NuGet package from nuget.org](https://www.nuget.org/packages/Inedo.SDK/) into your .NET project
 - Download the assemblies and reference them manually in your .NET project
 
-This documentation will assume you're using Visual Studio and NuGet to create an extension. For a complete type reference of the SDK, please visit the [Inedo SDK Reference](/support/sdk-reference/inedosdk).
+This documentation will assume you're using Visual Studio and NuGet to create an extension. For a complete type reference of the SDK, please visit the [Inedo SDK Reference](https://inedo.com/support/sdk-reference/inedosdk).
 
 ## Creating the Project {#creating-project data-title="Creating the Project"}
 

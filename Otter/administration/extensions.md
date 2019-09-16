@@ -64,6 +64,6 @@ You can verify that your extension has loaded correctly by viewing the Extension
 [Powershell features]: /docs/otter/modeling-infrastructure/powershell
 [creating an extension]: /docs/various/inedo-sdk/creating
 [Inedo SDK]: /docs/various/inedo-sdk/the-sdk
-[Inedo.Agents]: /support/sdk-reference/inedosdk/Inedo.Agents
-[Inedo.Documentation]: /support/sdk-reference/inedosdk/Inedo.Documentation
-[Otter v1 SDK Reference]: /support/sdk-reference/otter
+[Inedo.Agents]: https://inedo.com/support/sdk-reference/inedosdk/Inedo.Agents
+[Inedo.Documentation]: https://inedo.com/support/sdk-reference/inedosdk/Inedo.Documentation
+[Otter v1 SDK Reference]: https://inedo.com/support/sdk-reference/otter

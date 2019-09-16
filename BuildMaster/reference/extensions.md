@@ -40,8 +40,8 @@ Scripts are significantly easier to develop and manage: just write, test, then u
 Extensions are a bit more involved, but allow you to build components other than operations, and provide maximum flexibility for build operations. You can also incorporate third-party libraries into your extension, and use the powerful libraries already built in to the Inedo SDK.
 
 {.docs}
-- **Direct Agent Access** - with components from [Inedo.Agents](/support/sdk-reference/inedosdk/Inedo.Agents), you can build Operations that will be faster and scale better than using scripting runtime.
-- **Rich Descriptions** - the [Inedo.Documentation](/support/sdk-reference/inedosdk/Inedo.Documentation) components enable you to describe Operations in a plan using a consistent, visually-rich description so that anyone reading it will see, at a glance, what the operation is configured to do.
+- **Direct Agent Access** - with components from [Inedo.Agents](https://inedo.com/support/sdk-reference/inedosdk/Inedo.Agents), you can build Operations that will be faster and scale better than using scripting runtime.
+- **Rich Descriptions** - the [Inedo.Documentation](https://inedo.com/support/sdk-reference/inedosdk/Inedo.Documentation) components enable you to describe Operations in a plan using a consistent, visually-rich description so that anyone reading it will see, at a glance, what the operation is configured to do.
 
 Additionally, extensions may be easier to unit test and mock using the testing framework of your choice.
 
@@ -51,7 +51,7 @@ If you'd like to create an extension that supports BuildMaster 5.8 or earlier, y
 
 Creating an extension is quite similar: just create a .NET 4.5 project that references the Inedo.BuildMaster.SDK NuGet package from nuget.org and implement the desired extensibility points.
 
-See the [BuildMaster v5 SDK Reference](/support/sdk-reference/buildmaster/) for more information.
+See the [BuildMaster v5 SDK Reference](https://inedo.com/support/sdk-reference/buildmaster/) for more information.
 
 To deploy the extension to BuildMaster v5, add the compiled extension .dll to a zip file of the same name, with the extension .bmx. note that the .bmx file must have the same file name as the primary assembly it contains; for example, MyExtension.bmx must contain MyExtension.dll
 
@@ -59,7 +59,7 @@ You can verify that your extension has loaded correctly by viewing the Extension
 
 ## Legacy Components {#legacy-components data-title="Legacy Components"}
 
-BuildMaster v5 and v6 have a lot of [legacy features](/support/kb/1144/buildmaster-legacy-features) from previous versions that remain functional but are generally hidden from new installations.
+BuildMaster v5 and v6 have a lot of [legacy features](https://inedo.com/support/kb/1144/buildmaster-legacy-features) from previous versions that remain functional but are generally hidden from new installations.
 
 To extend the functionality of some of these features in BuildMaster v6, your extension will need to reference the [BuildMaster Legacy Components SDK NuGet package](https://www.nuget.org/packages/Inedo.BuildMaster.SDK/) instead of the Inedo SDK. This package references the Inedo SDK, so the resulting extension will still be considered a cross-product, Inedo extension.
 
