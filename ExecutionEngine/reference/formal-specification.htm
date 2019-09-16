@@ -115,8 +115,8 @@
     <ul class="docs">
         <li>
             <b>Collect Only</b>- only
-            <a href="/support/sdk-reference/inedosdk/Inedo.Extensibility.Operations/ICollectingOperation">ICollectingOperation</a> operations will run; if the
-            operation is a <a href="/support/sdk-reference/inedosdk/Inedo.Extensibility.Operations/IComparingOperation">IComparingOperation</a>, then drift
+            <a href="https://inedo.com/support/sdk-reference/inedosdk/Inedo.Extensibility.Operations/ICollectingOperation">ICollectingOperation</a> operations will run; if the
+            operation is a <a href="https://inedo.com/support/sdk-reference/inedosdk/Inedo.Extensibility.Operations/IComparingOperation">IComparingOperation</a>, then drift
             may be indicated. All ensure operations implement both interfaces.
         </li>
         <li>
@@ -124,8 +124,8 @@
             <ul class="docs">
                 <li>operations that indicated drift</li>
                 <li>
-                    <a href="/support/sdk-reference/inedosdk/Inedo.Extensibility.Operations/IExecutingOperation">IExecutingOperation</a> operations in the same scope as a drift-indicating operation that
-                    do not implement <a href="/support/sdk-reference/inedosdk/Inedo.Extensibility.Operations/IComparingOperation">IComparingOperation</a>; this is all execution actions
+                    <a href="https://inedo.com/support/sdk-reference/inedosdk/Inedo.Extensibility.Operations/IExecutingOperation">IExecutingOperation</a> operations in the same scope as a drift-indicating operation that
+                    do not implement <a href="https://inedo.com/support/sdk-reference/inedosdk/Inedo.Extensibility.Operations/IComparingOperation">IComparingOperation</a>; this is all execution actions
                 </li>
                 <li>
                     operations with an execution policy of AlwaysExecute; this can only be set on a Context Setting Statement
@@ -134,7 +134,7 @@
         </li>
         <li>
             <b>Execute Only</b>- only
-            <a href="/support/sdk-reference/inedosdk/Inedo.Extensibility.Operations/IExecutingOperation">IExecutingOperation</a> operations will run; all
+            <a href="https://inedo.com/support/sdk-reference/inedosdk/Inedo.Extensibility.Operations/IExecutingOperation">IExecutingOperation</a> operations will run; all
             ensure and execute operations implement this interface
         </li>
     </ul>
@@ -145,7 +145,7 @@
     <h4>Simulated Executions</h4>
     <p>
         In Otter, an execution may be run in <em>simulation mode</em>; when this is done, operations are responsible for respecting this flag.
-        The agent will automatically return a <a href="/support/sdk-reference/inedosdk/Inedo.Agents/IFileOperationsExecuter">IFileOperationsExecuter</a>
+        The agent will automatically return a <a href="https://inedo.com/support/sdk-reference/inedosdk/Inedo.Agents/IFileOperationsExecuter">IFileOperationsExecuter</a>
         that runs in simulation mode.
     </p>
 
@@ -232,17 +232,17 @@
     <p>When this statement is encountered, the runtime does the following:</p>
     <ol>
         <li>
-            Attempt to load the Operation with from the <a href="/support/sdk-reference/inedosdk/Inedo.Extensibility/ScriptAliasAttribute">ScriptAlias</a>
-            and <a href="/support/sdk-reference/inedosdk/Inedo.Extensibility/ScriptNamespaceAttribute">ScriptNamespace</a>; an error is raised if cannot be found
+            Attempt to load the Operation with from the <a href="https://inedo.com/support/sdk-reference/inedosdk/Inedo.Extensibility/ScriptAliasAttribute">ScriptAlias</a>
+            and <a href="https://inedo.com/support/sdk-reference/inedosdk/Inedo.Extensibility/ScriptNamespaceAttribute">ScriptNamespace</a>; an error is raised if cannot be found
         </li>
         <li>A log scope is created using the Operation's description</li>
         <li>
             The Arguments and Positional Arguments are mapped to either the Operation's template's properties (for
-            <a href="/support/sdk-reference/inedosdk/Inedo.Extensibility.Operations/EnsureOperation(TConfig)">EnsureOperation&lt;TConfig&gt;</a> operations)
+            <a href="https://inedo.com/support/sdk-reference/inedosdk/Inedo.Extensibility.Operations/EnsureOperation(TConfig)">EnsureOperation&lt;TConfig&gt;</a> operations)
             or the Operation's properties using the property's ScriptAlias.
         </li>
         <li>
-            Unless the property has a <a href="/support/sdk-reference/inedosdk/Inedo.Extensibility/DisableVariableExpansionAttribute">DisableVariableExpansionAttribute</a>,
+            Unless the property has a <a href="https://inedo.com/support/sdk-reference/inedosdk/Inedo.Extensibility/DisableVariableExpansionAttribute">DisableVariableExpansionAttribute</a>,
             the values are evaluated
         </li>
         <li>

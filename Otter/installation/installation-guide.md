@@ -54,7 +54,7 @@ You can [download the installer](https://inedo.com/otter/download) from inedo.co
 
 We always sign our installer packages. This signature can be seen when you run the installer and get a security warning, or right-click on the file for Properties and then look at Digital Signatures.
 
-![](/resources/knowledgebase/ProGet-Installation-Guide_E6DE_image_2.png)
+![](https://inedo.com/resources/knowledgebase/ProGet-Installation-Guide_E6DE_image_2.png)
 
 We've never had any issues with compromised installers (it's hosted on Amazon S3, which is quite reliable), but it doesn't hurt to make sure the signature is there. See [KB#1113: Anti-malware False Positives, Code Signing, and Safety of Inedo Products](https://inedo.com/support/kb/1113/anti-malware-false-positives-code-signing-and-safety-of-inedo-products) for more information.
 
@@ -64,7 +64,7 @@ The installer requires administrative privileges to run and will attempt to esca
 
 ## 5. License Agreement {#license-agreement}
 
-Take a quick read of our [Otter license agreement](/otter/license-agreement). Really, it's quick!
+Take a quick read of our [Otter license agreement](https://inedo.com/otter/license-agreement). Really, it's quick!
 
 ![Otter License agreement](/resources/documentation/otter-installation/license-agreement-otter.png)
 

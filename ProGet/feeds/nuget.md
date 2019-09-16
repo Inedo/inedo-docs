@@ -9,12 +9,12 @@ show-headings-in-nav: true
 NuGet is a package format developed by Microsoft to distribute free and open-source .NET libraries. Typically, these packages are publicly available on NuGet.org, and are consumed by Visual Studio or the nuget.exe command-line client.
 
 {.docs}
-- [NuGet Visual Studio Tutorial](/support/tutorials/proget/using-the-nuget-visual-studio-extension)
+
 - [NuGet command-line Reference](https://docs.microsoft.com/en-us/nuget/tools/nuget-exe-cli-reference)
 
 With ProGet, you can use NuGet packages to distribute private proprietary libraries within your organization. To do this, simply create a NuGet feed: Feeds > Create New Feed > Type = NuGet.
 
-Then [configure Visual Studio](/support/tutorials/proget/using-the-nuget-visual-studio-extension) to use your feed as a new package source.
+Then configure Visual Studio to use your feed as a new package source.
 
 You can use also ProGet as a proxy to NuGet.org, both to block [improper licenses](/docs/proget/compliance/license-scanning) and [security vulnerabilities](/docs/proget/compliance/vulnerabilities), and to cache packages in the event of an internet or NuGet.org outage. To do this, create a connector (Feeds > Connectors > Create New Connector > NuGet), then associate it with a feed (Manage Feed > Connectors).
 

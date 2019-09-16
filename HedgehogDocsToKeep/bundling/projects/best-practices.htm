@@ -12,7 +12,7 @@
 
 <body>
 
-            
+
     <div class="attention best-practice">
         <img src="/resources/images/icons/best-practices.png" />
         <p>
@@ -38,7 +38,7 @@
     </p>
     <h3 id="renaming-modifying-hierarchy" data-title="Renaming and Modifying Hierarchy">Be Careful When Renaming and Modifying Hierarchy</h3>
     <p>
-        Because content can be cross-referenced across projects, you should be careful when changing a project's name or parent project. If any content is using a <a href="/support/sdk-reference/inedosdk/Inedo.Extensibility.RaftRepositories"><i>fully-qualified syntax</i></a> to reference an item within a project you rename or "move", then that resolution may fail.
+        Because content can be cross-referenced across projects, you should be careful when changing a project's name or parent project. If any content is using a <a href="https://inedo.com/support/sdk-reference/inedosdk/Inedo.Extensibility.RaftRepositories"><i>fully-qualified syntax</i></a> to reference an item within a project you rename or "move", then that resolution may fail.
     </p>
     <p>
         Even though Hedgehog will detect and fix references when you move or rename a project, there are many cases when it's simply not possible. For example, if you use a variable to determine the name of a plan to use in a pipeline, there's no way for Hedgehog to know how that variable gets set, or that it might get set to the "old" name of a content item.

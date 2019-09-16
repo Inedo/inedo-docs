@@ -41,7 +41,7 @@ Scripts are significantly easier to develop and manage: just write, test, then u
 Extensions are a bit more involved, but allow you to build components other than operations, and provide maximum flexibility for building operations. You can also incorporate third-party libraries into your extension, and use the powerful libraries already built-in to the Inedo SDK.
 
 {.docs}
-- **Direct Agent Access** - with components from [Inedo.Agents](/support/sdk-reference/inedosdk/Inedo.Agents), you can build Operations that will be faster and scale better than using scripting runtime.
-- **Rich Descriptions** - the [Inedo Documentation](/support/sdk-reference/inedosdk/Inedo.Documentation) components enable you to describe Operations in a plan using a consistent, visually-rich description, so that anyone reading it will see, at-a-glance, what the operation is configured to do.
+- **Direct Agent Access** - with components from [Inedo.Agents](https://inedo.com/support/sdk-reference/inedosdk/Inedo.Agents), you can build Operations that will be faster and scale better than using scripting runtime.
+- **Rich Descriptions** - the [Inedo Documentation](https://inedo.com/support/sdk-reference/inedosdk/Inedo.Documentation) components enable you to describe Operations in a plan using a consistent, visually-rich description, so that anyone reading it will see, at-a-glance, what the operation is configured to do.
 
 Additionally, extension may be easier to unit test and mock using the testing framework of your choice.

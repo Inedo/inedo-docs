@@ -8,16 +8,16 @@
 </head>
 <body>
 
- 
+
     <h2 id="resolution">Project Content Name Resolution</h2>
     <p>
-        Most content items reference things by name. For example, a pipeline named "Hotfix" might reference a plan named "Emergency Deploy" in a stage named "Production". While you can use the <a href="/support/sdk-reference/inedosdk/Inedo.Extensibility.RaftRepositories"><i>fully-qualified syntax</i></a>, it's best to let Hedgehog resolve simple names for you, especially when content items are contained within the same project.
+        Most content items reference things by name. For example, a pipeline named "Hotfix" might reference a plan named "Emergency Deploy" in a stage named "Production". While you can use the <a href="https://inedo.com/support/sdk-reference/inedosdk/Inedo.Extensibility.RaftRepositories"><i>fully-qualified syntax</i></a>, it's best to let Hedgehog resolve simple names for you, especially when content items are contained within the same project.
     </p>
     <p>
         When searching for content with an unqualified name, Hedgehog will first look in the current project for content with that name and type. If no content is found, then the parent project is searched, and then the ancestors, all the way to the global (i.e. no project) level.
     </p>
     <h3 id="example">Example: Sharing Resources with a Hierarchy</h3>
-    
+
     <p>
         One common use case for project nesting is to use a parent project as a sort of "container" for both other projects, and the content that those projects will use.
     </p>
