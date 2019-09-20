@@ -125,6 +125,7 @@ To perform a NuGet feed re-index, visit the "Manage Feed" page of the NuGet, Cho
 [Repackaging](/docs/proget/advanced/repackaging) is a process of changing a package's version without changing its contents, enabling use-cases such as converting a pre-release package to a stable version, and more.
 
 ProGet supports NuGet repackaging natively. To view an example of how it can be accomplished using the [Repackaging API](/docs/proget/reference/api/repackaging) in a CI/CD system, you can view an [example application](https://buildmaster.inedo.com/applications/44/) in our public BuildMaster instance.
+
 ## Deleting and Unlisting Packages {#deleting-and-unlisting data-title="Deleting and Unlisting Packages"}
 
 You can delete (permanently remove) or unlist (hide from most search results) NuGet packages from your feed by navigating to the package page and clicking the corresponding Delete Package or Unlist Package button. These actions require the `Feeds_DeletePackage` or `Feeds_UnlistPackage`  permission attribute, respectively.
