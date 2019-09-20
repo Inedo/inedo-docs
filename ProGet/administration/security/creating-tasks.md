@@ -62,7 +62,7 @@ Allows users to create, edit, and delete known license types, as well as define 
 
 These attributes are essentially required for read-only access to a feed. There are some very limited use cases for allowing viewing feed and package metadata, but not allowing packages themselves to be downloaded (or vice versa).
 
-### Feeds (Packages: Add<sup>F</sup> , Pull<sup>F</sup>, Overwrite<sup>F</sup>, and Delete<sup>F</sup>) {#feeds data-title="Feeds (Packages: Add, Pull, Overwrite, and Delete)"}
+### Feeds (Packages: Add<sup>F</sup> , Pull<sup>F</sup>, Overwrite<sup>F</sup>, and Delete<sup>F</sup>) {#feeds data-title="Feeds (Packages: Add, Pull, Overwrite, Unlist, and Delete)"}
 
 These attributes all allow for manipulation of packages in a feed.
 
