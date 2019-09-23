@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <redirects baseUrl="/docs/buildmaster/">
 
+  <temporary from="builds/external-systems/drop-path" to="builds/external-systems/drop-folder" />
+  
+  <!-- old redirects (prior to WP migration) -->
   <temporary from="administration/agents" to="administration/agents-and-infrastructure/agents" />
   <temporary from="administration/configuration" to="administration/agents-and-infrastructure/sync" />
   <temporary from="administration/extensions" to="reference/extensions" />
