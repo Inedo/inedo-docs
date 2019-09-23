@@ -12,7 +12,7 @@ Implementing multi-site replication requires specific feed configurations: at le
 
 ## Configuration {#configuration data-title="Configuration"}
 
-Feed replication is configured on a per-feed basis on the Feed Management page and requires the *Manage Feed* permission. A feed may be configured as a replication server, a replication client, or in more advanced scenarios, as both. 
+Feed replication is configured on a per-feed basis on the Feed Management page and requires the *Manage Feed* permission. A feed may be configured as a replication server, a replication client, or in more advanced scenarios, as both.
 
 ##### Source URL:
 
@@ -35,7 +35,7 @@ A replication client is a ProGet feed configured to connect to a replication ser
 
 {.attention .best-practice} Note: prior to ProGet v5.2, the equivalent setting for a replication client was "Replicate from external feed".
 
-### Replication Server 
+### Replication Server
 
 A replication server is a ProGet feed configured to allow replication clients to connect to it and respond with a feed state. Once the feed state is processed by the replication client, packages may be downloaded, installed, or deleted from the replication server feed depending on configuration.
 
@@ -77,6 +77,8 @@ To achieve this setup, each city's feed is configured as follows:
 
 This setup will propagate all package pushes or deletes in any of the 3 installations across all others.
 
+{.attention .best-practice} Note that this configuration requires 3 ProGet Enterprise licenses for the represented production environments. Testing instances would require additional licensing. To learn more about the benefits of High Availability Test Environments, see our [ProGet Free to ProGet Enterprise blog article](https://blog.inedo.com/proget-free-to-proget-enterprise).
+
 ### Partial Replication {#partial}
 
 A more complex example involves configuring an installation to act as both a replication client and server. In the following example, New York acts as the hub for multiple ProGet servers around the globe. New York is configured to fully mirror the feed in Los Angeles, but the ProGet installations in Tokyo, Miami, and Berlin are configured only to pull changes from New York. The goal of this setup is to prevent Tokyo, Miami, or Berlin's changes from being applied to New York or Los Angeles.
@@ -98,6 +100,8 @@ The above configuration exhibits the following behavior:
  - feeds in Tokyo, Miami, and Berlin will periodically pull pushes or deletes from New York (and by extension, Los Angeles)
  - pushes or deletes to feeds in Tokyo, Miami, and Berlin will *not* be propagated to New York (or by extension Los Angeles)
  - specific packages deleted in New York would be deleted in Tokyo, Miami, and Berlin if the package type, name, and versions match, regardless if they were originally uploaded in Tokyo, Miami, or Berlin
+
+{.attention .best-practice} Note that this configuration requires 5 ProGet Enterprise licenses for the represented production environments. Testing instances would require additional licensing. To learn more about the benefits of High Availability Test Environments, see our [ProGet Free to ProGet Enterprise blog article](https://blog.inedo.com/proget-free-to-proget-enterprise).
 
 ## Best-Practices {#best-practices data-title="Best Practices" }
 
@@ -142,4 +146,3 @@ Docker feed replication is supported starting in ProGet 5.2.5, and has the follo
 - Publish date and download count are not synchronized.
 - All blobs and manifests are synchronized, so retention rules need to be set up on both ends of synchronization.
 - Deletion records ("tombstones") are not recorded in Docker feeds, so images can only be added by feed replication, never removed; a retention rule must be configured to delete untagged images.
-
