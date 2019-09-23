@@ -77,7 +77,7 @@ To achieve this setup, each city's feed is configured as follows:
 
 This setup will propagate all package pushes or deletes in any of the 3 installations across all others.
 
-Please note: this configuration requires 3 ProGet Enterprise licenses for the represented production environments.  Testing instances would require additional licensing.  To learn more about the benefits of High Availability Test Environments, read [this article](https://blog.inedo.com/proget-free-to-proget-enterprise).
+{.attention .best-practice} Note that this configuration requires 3 ProGet Enterprise licenses for the represented production environments. Testing instances would require additional licensing. To learn more about the benefits of High Availability Test Environments, see our [ProGet Free to ProGet Enterprise blog article](https://blog.inedo.com/proget-free-to-proget-enterprise).
 
 ### Partial Replication {#partial}
 
@@ -101,7 +101,7 @@ The above configuration exhibits the following behavior:
  - pushes or deletes to feeds in Tokyo, Miami, and Berlin will *not* be propagated to New York (or by extension Los Angeles)
  - specific packages deleted in New York would be deleted in Tokyo, Miami, and Berlin if the package type, name, and versions match, regardless if they were originally uploaded in Tokyo, Miami, or Berlin
 
- Please note: this configuration requires 5 ProGet Enterprise licenses for the represented production environments.  Testing instances would require additional licensing.  To learn more about the benefits of High Availability Test Environments, read [this article](https://blog.inedo.com/proget-free-to-proget-enterprise).
+{.attention .best-practice} Note that this configuration requires 5 ProGet Enterprise licenses for the represented production environments. Testing instances would require additional licensing. To learn more about the benefits of High Availability Test Environments, see our [ProGet Free to ProGet Enterprise blog article](https://blog.inedo.com/proget-free-to-proget-enterprise).
 
 ## Best-Practices {#best-practices data-title="Best Practices" }
 
