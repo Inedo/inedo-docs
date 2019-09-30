@@ -16,14 +16,14 @@ For advanced configuration, select the *Change User Directory* link on the Admin
 
 {.docs}
 - Name - a simple name to identify the user directory in the UI
-- Domain controller host - *(requires v1.0.6 or later of InedoCore extension)* the host name or IP address of the domain controller or LDAP server. When specified, LDAP search queries will use this as the root of the search query (e.g. `LDAP://ldap.corp.example.com/`) whereas the default simply uses the root (i.e. `LDAP://`)
+- Domain controller host - *(InedoCore v1.0.6+)* the host name or IP address of the domain controller or LDAP server. When specified, LDAP search queries will use this as the root of the search query (e.g. `LDAP://ldap.corp.example.com/`) whereas the default simply uses the root (i.e. `LDAP://`)
 - Search mode - *current domain* refers to domain joined to the Inedo product's server
     {.docs}
     - Current domain only - searches only within the domain of the current user credentials in effect for the security context under which the application is running
     - All trusted domains - searches all domains with an Inbound or Bidirectional Trust relationship of the current user credentials in effect for the security context under which the application is running
     - Specific list... – searches an explicit list of newline-separated domains with optional credentials named after a comma. The format for this value is: `domain.local,CredentialName`, where `,CredentialName` is optional to use a different security context than your product is running as. Configuring username/password credentials can be done from the *Manage User Directories* page.
-
-NETBIOS name mapping – by default, the global catalog for the domain will be queried to determine any mappings. A list of key/value pairs that map NETBIOS names to domain names may also be specified (one per line); e.g. `KRAMUS=us.kramerica.local` and if any value is specified, the automatic query is not performed, so all NETBIOS names must be specified.
+- NETBIOS name mapping – by default, the global catalog for the domain will be queried to determine any mappings. A list of key/value pairs that map NETBIOS names to domain names may also be specified (one per line); e.g. `KRAMUS=us.kramerica.local` and if any value is specified, the automatic query is not performed, so all NETBIOS names must be specified.
+- Search recursively - *(InedoCore v1.0.11+)* - by default, only users' direct group memberships are considered for permissions, not the groups that their groups belong to; enabling this option will check group memberships recursively, but this may cause reduced performance
 
 ## Multiple Instances {#multiple-instances}
 In some cases your organization might need to have a second instance of ProGet running with different authentication types. For this you will need to add a second website in IIS that points to the same physical path as your original ProGet instance and adjust your authentication settings as needed. 
