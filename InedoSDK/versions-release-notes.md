@@ -31,7 +31,8 @@ SDK Version           | Minimum Product Version                   
 **1.2.✱**             | BuildMaster 6.1.7<br/>ProGet 5.2.4<br/>Otter 2.2.2<br/>               | BuildMaster 6.✱<br/>ProGet 5.✱<br/>Otter 2.✱
 **1.3.✱**             | BuildMaster 6.1.10<br/>Otter 2.2.4<br/>                               | BuildMaster 6.✱<br/>ProGet 5.✱<br/>Otter 2.✱
 **1.4.✱**             | BuildMaster 6.1.11<br/>Otter 2.2.5<br/>                               | BuildMaster 6.✱<br/>ProGet 5.✱<br/>Otter 2.✱
-**1.5.✱**             | BuildMaster 6.1.12                                                    | BuildMaster 6.✱<br/>ProGet 5.✱<br/>Otter 2.✱
+**1.5.✱**             | BuildMaster 6.1.12<br/>Otter 2.2.7                                    | BuildMaster 6.✱<br/>ProGet 5.✱<br/>Otter 2.✱
+**1.6.✱**             | BuildMaster 6.1.16                                                    | BuildMaster 6.✱<br/>ProGet 5.✱<br/>Otter 2.✱
 
 The table will be expanded as new SDK versions are released.
 
