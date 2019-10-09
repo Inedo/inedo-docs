@@ -24,6 +24,9 @@ For advanced configuration, select the *Change User Directory* link on the Admin
     - Specific list... – searches an explicit list of newline-separated domains with optional credentials named after a comma. The format for this value is: `domain.local,CredentialName`, where `,CredentialName` is optional to use a different security context than your product is running as. Configuring username/password credentials can be done from the *Manage User Directories* page.
 - NETBIOS name mapping – by default, the global catalog for the domain will be queried to determine any mappings. A list of key/value pairs that map NETBIOS names to domain names may also be specified (one per line); e.g. `KRAMUS=us.kramerica.local` and if any value is specified, the automatic query is not performed, so all NETBIOS names must be specified.
 - Search recursively - *(InedoCore v1.0.11+)* - by default, only users' direct group memberships are considered for permissions, not the groups that their groups belong to; enabling this option will check group memberships recursively, but this may cause reduced performance
+- Include gMSA - *(InedoCore v1.5.0+)* - when this is checked, Group Managed Service Accounts will be included in the search results by looking for both `user` objects and `msDS-GroupManagedServiceAccount` objects
+
+When locating users in the directory, include Group Managed Service Accounts.
 
 ## Multiple Instances {#multiple-instances}
 In some cases your organization might need to have a second instance of ProGet running with different authentication types. For this you will need to add a second website in IIS that points to the same physical path as your original ProGet instance and adjust your authentication settings as needed. 
