@@ -79,7 +79,7 @@ If you are hosting a public version of ProGet Basic/Enterprise and would like to
 
 #### Requesting a ProGet Free Connector Exemption {#request-exemption}
 
-To request a new license key that supports connections from free edition instances, please [submit a support ticket](/support/submit-ticket) indicating that you are requesting a ProGet Free Connector exemption, and include your current license key in the details section.
+To request a new license key that supports connections from free edition instances, please [submit a support ticket](https://my.inedo.com/tickets/new) indicating that you are requesting a ProGet Free Connector exemption, and include your current license key in the details section.
 
 #### Examples
 
