@@ -186,9 +186,13 @@ inedo/proget:latest
 
       <pre>
 docker stop proget<br />
+
 docker rename proget proget-old<br />
+
 docker pull inedo/proget:latest<br />
-docker run -d --volumes-from=proget-old -p 80:80 --net=proget --name=proget --restart=unless-stopped inedo/proget:latest<br />
+
+docker run -d --volumes-from=proget-old -p 80:80 --net=proget --name=proget --restart=unless-stopped -e PROGET_DB_TYPE=SqlServer -e PROGET_DATABASE='Data Source=proget-sql; Initial Catalog=ProGet; User ID=sa; Password=&lt;YourStrong!Passw0rd&gt; inedo/proget:latest<br />
+
 docker rm proget-old
       </pre>
 
