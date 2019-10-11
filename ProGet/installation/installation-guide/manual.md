@@ -31,7 +31,7 @@ On Windows, ProGet consists of 3 distinct deployable application components requ
  - **Service Node** - a Windows Service that performs indexing and other background tasks
  - **Database** - a SQL Server database which contains all of the persistent data including feeds, packages, privileges, and internal settings
 
-## Pre-requisites {#pre-requisites data-title="Pre-requisites"}
+## Prerequisites {#prerequisites data-title="Prerequisites"}
 
 #### Pre-Installation Check List {#checklist}
 
@@ -104,7 +104,7 @@ ProGet is compatible with existing supported SQL Server installations, local or 
  - For single-server installations (i.e. non-HA/LB), you may have the database server running on the same server that ProGet is installed on (i.e. the connection string would be `Server=localhost; ...` or `Server=localhost\SQLEXPRESS; ...`)
  - For manual upgrades from a previous version installed via the ProGet installer, the instance name might be `INEDO`, and older versions (v3 and earlier) would have used the instance name `PROGET`
 
-### Pre-requisites
+### Prerequisites
 
 ProGet requires an existing SQL Server database server, so if you don't already have a database server, you'll need to create one. We recommend installing and configuring the latest version of SQL Server Express for this purpose: https://www.microsoft.com/en-us/sql-server/sql-server-editions-express
 
@@ -176,7 +176,7 @@ osql -E -S <db-server> -d ProGet -Q "ALTER ROLE [ProGetUser_Role] ADD MEMBER [do
 
 ## Web Node Installation (IIS) {#web data-title="Web Node (IIS)"}
 
-### Pre-requisites
+### Prerequisites
 
 Before installing ProGet in IIS, the following roles/features must be enabled in Windows:
 
@@ -294,6 +294,10 @@ Each of these directories can assigned to a path on a local volume or UNC share 
  - the user account specified as the "application pool identity" in IIS has read/write/delete access to them
 
 We do not recommend using a mapped drive (e.g. `X:\Packages`) to reference directories for the reasons described here: https://docs.microsoft.com/en-us/windows/win32/services/services-and-redirected-drives. Instead, use the full UNC path that the drive is mapped to, for example: `\\file-sv01\$x\packages`
+
+::: {.attention .best-practice}
+If you do attempt to use a mapped drive (or you are installing on Azure using Azure Files as the backing store), you may need to configure the ProGet application pool to set the `Load User Profile` property to `True`.
+:::
 
 ##### Packages Root Path {#packages-root-path}
 
