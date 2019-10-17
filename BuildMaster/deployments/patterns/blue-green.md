@@ -10,6 +10,12 @@ keywords: buildmaster, deployments, patterns, blue-green
 
 Blue-green deployments are a Continuous Delivery pattern designed to effectively eliminate deployment downtime and make rollbacks nearly instantaneous. This is done by having two nearly identical production environments: *Blue* and *Green*.
 
+::: {.attention .analogy } 
+![Light bulb](/resources/images/icons/analogy.png) 
+
+**See it live!** You can create a *Blue-Green Deployment Sample* application on your own instance of BuildMaster by just going to the Create New Application page. This sample will show you how you can implement Blue-Green deployments in your own applications.
+:::
+
 [Martin Fowler](http://martinfowler.com/bliki/BlueGreenDeployment.html) explains this in more detail:
 
 > One of the challenges with automating deployment is the cut-over itself, taking software from the final stage of testing to live production. You usually need to do this quickly in order to minimize downtime. The blue-green deployment approach does this by ensuring you have two production environments, as identical as possible. At any time one of them, let's say blue for the example, is live. As you prepare a new release of your software you do your final stage of testing in the green environment. Once the software is working in the green environment, you switch the router so that all incoming requests go to the green environment - the blue one is now idle.
@@ -34,7 +40,7 @@ The primary benefit to using Blue-green deployments is zero downtime, but there 
 
 ## How to Perform Blue-Green Deployments in BuildMaster
 
-We created a blue-green sample application ([HDars-BlueGreen](https://buildmaster.inedo.com/applications/34/)) that you are free to navigate. It's also avaiable as an [Importable Application](https://proget.inedo.com/feeds/BuildMasterSamples) for your own instance. This application lets you visualize which release are Blue and Green (or undecided) as well as shows you what's in Blue and Green:
+We created a blue-green sample application that you can create in your own instance of BuildMaster. This application lets you visualize which release are Blue and Green (or undecided) as well as shows you what's in Blue and Green:
 
 ![Blue-green application overview](/support/documentation/_resources/2019/blue-green/application-overview.png)
 
@@ -77,7 +83,7 @@ You can even simplify this process and give the user a choice when they deploy t
  - configure a Deployment Variable Template for the "Staging" stage (List: Blue, Green)
  - create a plan that changes the release's pipline to the selected variable
 
-The [HDars-BlueGreen](https://buildmaster.inedo.com/applications/34/) has this release template, pipeline, and plan already configured for you to see.
+The sample application has this release template, pipeline, and plan already configured for you to see.
 
 ## How to Roll Back Blue-Green Deployments
 
