@@ -2,7 +2,7 @@
 title: PHP
 subtitle: Building and Deploying PHP Applications in BuildMaster
 sequence: 500
-show-subheadings-in-nav: true
+show-headings-in-nav: true
 ---
 
 PHP is one of the oldest and arguably most common languages used for the web. And over the years, it's evolved from a scripting language to an application development platform.
@@ -20,9 +20,13 @@ The best way to deploy PHP is using artifacts or packages. To do this:
 
 This is the best way to deploy because artifacts are more stable and reliable because each stage of deployment receives equivalent output, whether you build your artifacts in your CI/CD tool or import from a CI server. 
 
-## Configuring BuildMaster to Build PHP Applications
+## Configuring BuildMaster to Build PHP Applications {#building data-title="Building PHP Applications"}
 
-**See it live!** Create a new application using the *PHP CI/CD template* in your own instance of BuildMaster.
+::: {.attention .analogy } 
+<img src="/resources/images/icons/analogy.png" alt="Light bulb" />
+
+**See it live!** Create a new application using the *PHP CI/CD* template in your own instance of BuildMaster.
+:::
 
 The process is relatively simple:
 
@@ -33,7 +37,7 @@ PHP does not require compilation, so from here you could simply package it as an
 
 But there are [some advanced things](#advanced-php) you can do as well.
 
-## Managing your PHP Configuration Files in BuildMaster {#php-configuration-files}
+## Managing Your PHP Configuration Files in BuildMaster {#php-configuration-files data-title="Configuration Files"}
 
 PHP applications rely on [configuration values](https://stackoverflow.com/questions/14752470/creating-a-config-file-in-php) that can change from environment to environment and even contain sensitive data such as database connection strings, third-party service URLs, API keys, etc.
 
@@ -44,7 +48,7 @@ There are two general approaches for handling this in PHP:
 
 Both methods are equally popular; it's generally a matter of your Development team's preferences. Either way, BuildMaster manages both by using configuration file assets. [Configuration file assets](/docs/buildmaster/deployments/configuration-files) store multi-instance configuration files and provide a multi-tabled editor to edit and compare these instances.
 
-## Deploying Your PHP Applications with BuildMaster
+## Deploying Your PHP Applications with BuildMaster {#deploying data-title="Deployment"}
 
 PHP is commonly hosted in Apache, but may also be hosted by any other webserver including nginx, IIS, etc. 
 
@@ -60,7 +64,20 @@ Since you can't overwrite code that's currently executing, you have to stop it b
 
 Once you've set build and deploy, using Continuous Integration and Continuous Delivery for PHP is easy: just configure a [build trigger](/docs/buildmaster/builds/continuous-integration/build-triggers-and-monitors) to automatically monitor for changes.
 
-## Advanced PHP Automation Practices
+## BuildMaster's PHP Extension {#extension data-title="PHP Extension"}
+
+BuildMaster's PHP integration is handled by the [PHP extension](https://github.com/Inedo/inedox-php). Once installed, this extension adds the following plan operations:
+
+ - `Execute-PHPUnit` - runs [PHPUnit tests](#php-unit)
+ - `Composer::Install-Packages` - installs [Composer packages](#composer)
+
+In order for these operations to function, the following extension configuration variable values must be set *if they are located in a different path than the default*:
+
+ - `$DefaultComposerExePath` - Full path of composer. The default is `/usr/bin/composer` on Linux and `C:\ProgramData\ComposerSetup\bin\composer` on Windows
+ - `$PHPExePath` - Full path of php.exe. The default is `/usr/bin/php` on Linux and `C:\Program Files\PHP\php.exe` on Windows
+ - `$PHPUnitPath` - Full path of phpunit. The default is `/usr/bin/phpunit` on Linux and `C:\bin\phpunit.phar` on Windows
+
+## Advanced PHP Automation Practices {#advanced-php data-title="Advanced PHP Practices"}
 
 Before you package your application, there are more advanced actions you can take with PHP, such as:
 
@@ -75,7 +92,7 @@ You can also use tools like [Grunt](https://gruntjs.com/) or [Gulp](https://gulp
 
 Ideally, your developer experience and BuildMaster experience should be as close as possible, but you also want BuildMaster to record unit test results. You may also want to capture open source licenses from third-party packages as a [build report](/docs/buildmaster/builds/tests/build-reports).
 
-## Using Composer and BuildMaster
+## Using Composer and BuildMaster {#composer data-title="Composer"}
 
 To install packages, you can use the `Composer::Install-Packages` operation.
 
@@ -91,7 +108,7 @@ Using third-party, open source packages brings their licensing terms along for t
 
 BuildMaster can automatically capture the licenses that third-party packages are using the `Composer::Capture-LicenseReport` and watch it **live** in the `Build-Advanced` OtterScript plan in the template application. You can also add a manual approval, so that a human must verify these licenses before deploying to production.
 
-## Using PHPUnit and BuildMaster
+## Using PHPUnit and BuildMaster {#php-unit data-title="PHPUnit"}
 
 BuildMaster supports [automatically running unit tests](/docs/buildmaster/builds/tests/unit-tests) for your PHP applications.
 
