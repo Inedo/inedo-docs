@@ -17,6 +17,7 @@
   <temporary from="builds/packaging/artifacts-from-drop-path" to="builds/external-systems/drop-path" />
   <temporary from="builds/plans" to="builds/platform-specific" />
   <temporary from="builds/platform-specific/java/maven" to="builds/platform-specific/java" />
+  <temporary from="builds/continuous-integration/build-triggers-and-monitors/repository-hooks" to="builds/continuous-integration/build-triggers-and-monitors/webhook-monitors" />
 
   <temporary from="builds-and-ci/unit-tests" to="builds/tests/unit-tests" />
   <temporary from="core-concepts" to="overview" />
