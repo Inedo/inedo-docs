@@ -5,10 +5,11 @@ keywords: proget, api, health
 sequence: 900
 ---
 
-The Health API allows users to quickly get information about the health and status of a specific instance of ProGet.
-Usage of this endpoint does not require an api key and can be accessed by simply adding the /health to your ProGet url `http://proget/health`.
+Available starting in ProGet 5.2.9, the Health API allows users to quickly get information about the health and status of a specific instance of ProGet.
 
-Sample output from the /health endpoint:
+Usage of this endpoint does not require an api key and can be accessed by simply adding the `/health` to your ProGet url (e.g. `http://proget.kramerica.corp/health`).
+
+Sample output from the `/health` endpoint:
 
 ```
 {
