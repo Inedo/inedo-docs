@@ -23,7 +23,7 @@ All products also require a license key from Inedo. The hub can request a free o
 
 ## Upgrades {#upgrades data-title="Upgrades"}
 
-You can upgrade products to any greater version number by clicking on the Upgrade button and selecting the desired version. By default, the latest stable version is selected, but you can choose a lower version or a later prerelease version as well.
+You can upgrade products to any greater version number by clicking on the Upgrade button and selecting the desired version. By default, the latest stable version is selected, but you can choose a lower version or a later [prerelease version](#prerelease) as well.
 
 Upgrades also required a connection string. By default, the connection string used by the application is used, but you may supply an alternative one to use for the upgrade instead (this is necessary if the software runs as a lower-privilege user not able to make schema changes and you are not using integrated authentication).
 
@@ -46,3 +46,21 @@ The Inedo Hub has no background services and only occupies a few megabytes of di
 That said, The hub itself may be uninstalled by either using the Programs and Features dialog in Windows or executing the InedoHubUninstaller.exe program directly.
 
 Uninstalling the hub will **not** uninstall all of the individual Inedo products automatically. If you want to uninstall everything, use the hub to uninstall each product first.
+
+## Prerelease Product Versions {#prerelease data-title="Prerelease Product Versions"}
+
+::: {.attention .best-practice}
+<img src="/resources/images/icons/best-practices.png" alt="Check" />
+
+Note that prerelease versions should be considered "beta", and should not be used in a production environment.
+:::
+
+The Inedo Hub may be configured to install prerelease product versions of any Inedo product, including CI and public beta versions. However, these versions are hidden by default. 
+
+To configure the Inedo Hub to access prerelease versions, click on the `[config]` link at the bottom-left corner of the Inedo Hub and set the package source to:
+
+```
+https://proget.inedo.com/upack/PrereleaseProducts
+```
+
+Once this value is changed, restart the Inedo Hub, and prerelease versions will appear in the version dropdowns.
