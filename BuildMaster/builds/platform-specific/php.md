@@ -110,7 +110,9 @@ Using third-party, open source packages brings their licensing terms along for t
 
 BuildMaster can automatically capture the licenses that third-party packages are using the `Composer::Capture-LicenseReport`. You can also add a manual approval, so that a human must verify these licenses before deploying to production.
 
-<div class="upcoming">Watch it **live** in the `Build-Advanced` OtterScript plan in the template application</div>
+::: {.attention .best-practice}
+See it **live** in the `Build-Advanced` OtterScript plan in the template application
+:::
 
 ## Using PHPUnit and BuildMaster {#php-unit data-title="PHPUnit"}
 
@@ -120,4 +122,6 @@ Unit testing offers several benefits, including automatic detection of problems 
 
 To test with BuildMaster, use the `PHP::Execute-PhpUnit` operation.
 
-<div class="upcoming">Watch it **live** in the `Build-Advanced` OtterScript plan in the template application</div>
+::: {.attention .best-practice}
+See it **live** in the `Build-Advanced` OtterScript plan in the template application
+:::
