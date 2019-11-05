@@ -1,76 +1,96 @@
 ---
 title: .NET Core
-subtitle: Building Cross-platform .NET Core Applications
-sequence: 200
+subtitle: Building .NET Core Applications
+sequence: 300
 show-headings-in-nav: true
 ---
 
-BuildMaster can help you build applications for Windows, Linux, MacOS, containers, and so on using Microsoft's .NET Core platform.
-
-
-## What is .NET Core?  {#dotnetcore-overview data-title="What is .NET Core?"}
-
 [.NET Core](https://docs.microsoft.com/en-us/dotnet/core/) is an open-source, cross-platform environment that is evolved from the .NET Framework. Compared to the .NET Framework, it offers a simpler toolchain, modular deployment, and support for multiple platforms rather than just Windows. 
 
-With some development and coding effort, you can convert some of your existing .NET projects to .NET Core so they can run anywhere.
+With some development and coding effort, you can convert some of your existing .NET projects to .NET Core so they can run on other platforms including Linux and MacOS.
 
-## Building .NET Core Projects with BuildMaster {#building-in-buildmaster data-title="Building in BuildMaster"}
+## Building .NET Core Applications {#building data-title="Build Process"}
+
+.NET Core applications are typically built using MSBuild or `dotnet.exe`. MSBuild and `dotnet.exe` don't require Visual Studio to be installed, but in order to use them, the following prerequisites are required on a build server:
+
+{.docs}
+ - [Visual Studio Build Tools](https://visualstudio.microsoft.com/downloads) installed
+ - Ensure that ".NET Core build tools" is chosen during installation/modification
+
+A further [comparison between the tools](#comparison) is documented below.
+
+### Building with MSBuild
+
+Refer to the [Building .NET Console Applications](console-app#building) documentation to see how to use MSBuild. .NET Core projects can be built exactly the same way.
+
+### Building with `dotnet.exe`
+
+Another method for building is using the [`dotnet.exe` command line tool](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet). An example command is as follows:
+
+```
+dotnet.exe build MyProject.csproj --configuration Release --source https://proget.kramerica.corp/nuget/internal
+```
+
+The output from this build will be an application that can be executed on a machine with .NET Core installed. However, this command alone cannot generate a standalone executable for all platforms. The [`dotnet publish`](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-publish) command must be used in conjunction with the build command in order to produce build output that is executable in your desired environment.
+
+## Building .NET Core Applications with BuildMaster {#buildmaster data-title="Automation with BuildMaster"}
 
 You can build your .NET Core projects just as easily as your regular .NET projects, using either MSBuild (`MSBuild::Build-Project`) or the newer .NET Core CLI, `dotnet.exe` (`DotNet::Build`).
 
-[MSBuild (Microsoft Build Engine)](https://docs.microsoft.com/en-us/visualstudio/msbuild/msbuild) is a platform for building applications, and it's currently used internally by `dotnet.exe` to build your project and solutions. 
+The general process for building a .NET Core application is as follows:
 
-MSBuild and `dotnet.exe` don't require Visual Studio to be installed, but you will need to install and configure the following:
 {.docs}
- - [Visual Studio Build Tools](https://visualstudio.microsoft.com/downloads) installed
- - Ensure that ".NET Core build tools" is chosen during installation/modification.
+ - Get source code from the source control repository
+ - Compile project with MSBuild or `dotnet.exe`
+ - Capture artifact for deployment
 
-### Using MSBuild to build your .NET Core Projects
+A rough example plan of this would be:
 
-Check out [Building a .NET console application in BuildMaster](console-app) documentation to see how to use MSBuild. It works the same with .NET Core projects.
-
-
-### Using dotnet.exe to build your .NET Core Projects
-
-After getting your code from source control, you can use `DotNet::Build` in your plan is as follows.
 
 ```
-# Build ~\src\MyProject.csproj with Release configuration, restoring NuGet packages from the InternalNuGet source
-DotNet::Build ~\src\MyProject.csproj
+Git::Get-Source
+(
+    RepositoryUrl: https://github.com/Inedo/ProfitCalc.git,
+    Branch: master
+);
+
+DotNet::Build ProfitCalc.NetCore\ProfitCalc.NetCore.csproj
 (
     Configuration: Release,
     PackageSource: InternalNuGet
 );
-```
 
-Behind the scenes, BuildMaster will effectively run the following `dotnet` command:
-
-```
-dotnet.exe build "c:\...<buildmaster-temp>...\MyProject.csproj" --configuration Release --source https://proget.kramerica.corp/nuget/internal
-```
-
-### Capturing build output after building a .NET Core project 
-
-After running either ``DotNet::Build`` or `MSBuild::Build-Project`, you can capture the compiled code as an artifact that you will eventually deploy.
-
-```
-Create-Artifact Web
+Create-Artifact
 (
-    From: ~\Output
+    From: ProfitCalc.NetCore\bin\Release
 );
 ```
 
-You can also capture it as a Universal Package with `ProGet::Create-Package` or NuGet package with `NuGet::Create-Package`.
+The `DotNet::Build` operation will effectively run the following `dotnet` command:
 
-::: {.attention .analogy } 
-![Light bulb](/resources/images/icons/analogy.png)  {#example data-title="Example Application"}
+```
+dotnet.exe build "c:\...<buildmaster-temp>...\ProfitCalc.NetCore.csproj" --configuration Release --source https://proget.kramerica.corp/nuget/internal
+```
+### Restoring NuGet Packages
 
-**See it live!** The [ProfitCalc-AspNet Application](https://buildmaster.inedo.com/applications/35/) demonstrates how to build a .NET application with a CI/CD process. It's also available as a tutorial application in your own instance of BuildMaster.
-:::
+By default, MSBuild does not restore NuGet packages during a build, often the cause of "are you missing an assembly reference" errors. This can be accomplished in BuildMaster using the `NuGet::Restore-Packages` operation before building a project.
+
+The `dotnet.exe` CLI however will automatically restore NuGet packages at build time (i.e. when `dotnet build` is run). To use a custom source, use the `--source` argument, which is supplied automatically when the `PackageSource` property of the `DotNet::Build` operation is executed.
+
+### Unit Tests
+
+Unit tests for .NET Core applications are normally executed using the [`dotnet test`](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-test) command. Alternatively, there is a [`dotnet vstest`](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-vstest) command that executes the VSTest.Console application under-the-hood.
+
+In order to view individual test results via BuildMaster, [VSTest](/docs/buildmaster/builds/tests/unit-tests/vstest-runner) should be used. An example operation to execute and capture unit test results against a compiled library is as follows:
+
+```
+WindowsSdk::Execute-VSTest
+(
+    TestContainer: ~\Output\ProfitCalc.Tests.dll
+);
+```
 
 ## MSBuild vs .NET Core CLI (`dotnet.exe build`) {#comparison data-title="MSBuild vs dotnet.exe"}
-
-As part of Microsoft's efforts to simplify development with .NET Core, they introduced a new CLI tool called `dotnet`. This CLI tool has a number of commands, and the `dotnet build` command is used to build projects. 
 
 While `dotnet build` is considerably simpler to use than MSBuild, it uses MSBuild behind the scenes. According to the [`dotnet build` documentation](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-build):
 
