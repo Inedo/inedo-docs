@@ -15,15 +15,22 @@ An application served by IIS generally consists of 3 fundamental components:
 
 IIS also supports [virtual directories](https://docs.microsoft.com/en-us/iis/get-started/planning-your-iis-architecture/understanding-sites-applications-and-virtual-directories-on-iis#virtual-directories) that are frequently used as a deployment target. A virtual directory is effectively a "subfolder" of a website that has a completely different home directory than its parent site.
 
+## Building Sites for IIS {#building data-title="Building Sites for IIS"}
+
+IIS supports a wide variety of development platforms, from static HTML to ASP.NET, and there are a lot of ways you can build applications for IIS in BuildMaster with these platforms.
+
+See [Building an ASP.NET Web Application](/docs/buildmaster/builds/platform-specific/dot-net/asp-net), as well as [NodeJS](/docs/buildmaster/builds/platform-specific/node-js), [PHP](/docs/buildmaster/builds/platform-specific/php), and [Python](/docs/buildmaster/builds/platform-specific/python) for some examples.
+
+
 ## Deploying IIS Websites {#deployment data-title="Deploying IIS Websites"}
 
-IIS websites are typically deployed in two stages. As a pre-requisite for new websites, the 3 fundamental components described earlier must exist on the server, whether installed manually by Operations personnel, or automated by a Configuration Management tool like [Otter], [Chef], [Puppet], etc. For smaller organizations whose Dev and Ops teams aren't silo'ed in such a manner, BuildMaster can just as easily be configured to provision these sites as well.
+IIS websites are typically deployed in two stages. As a pre-requisite for new websites, the 3 fundamental components described earlier must exist on the server, whether installed manually by Operations personnel, or automated by a Configuration Management tool like [Otter](https://inedo.com/otter), Chef, Puppet, etc. For smaller organizations whose Dev and Ops teams aren't silo'ed in such a manner, BuildMaster can just as easily be configured to provision these sites as well.
 
 Once the site infrastructure exists on a server, website build artifacts may be repeatedly deployed as long as:
 
 {.docs}
  - The application pool is stopped to prevent conflicts (or an  `app_offline.htm` file is present in the home directory). 
- - The files are deployed to a different directory and the home directory is swapped at the site level (see [Blue/Green deployment](#))
+ - The files are deployed to a different directory and the home directory is swapped at the site level (see [Blue/Green deployment](/docs/buildmaster/deployments/patterns/blue-green))
 
 ## Automating IIS Deployment with BuildMaster {#buildmaster data-title="Automation with BuildMaster"}
 
