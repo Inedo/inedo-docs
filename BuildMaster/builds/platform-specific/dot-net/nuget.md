@@ -123,12 +123,49 @@ In this case, the `ProfitCalc` package is already attached to the build from an 
 
 Unstable (pre-release) packages are important to use when testing a package's code prior to its release, but by definition they're not suitable for release. As such, you should not deploy applications that reference the prerelease packages you create.
 
-BuildMaster can help with this by performing [an automated check](/docs/buildmaster/verification/pipelines/approvals-and-gates/automated-checks) against a variable that you set your application's build process using the `??????` operation .
+BuildMaster can help with this by performing [an automated check](/docs/buildmaster/verification/pipelines/approvals-and-gates/automated-checks) against a variable that you set your application's build process using the `DotNet::Get-Dependencies` operation .
 
 ### Inedo's Use Case
 
-To prevent us from accidentally releasing a product (such as Otter) with a pre-release version of one of our libraries (like InedoLib), we use the following OtterSCript in our build plan to set the `?????` variable, and then we test that variable prior to deploying to the Release stage.
+To prevent us from accidentally releasing a product (such as Otter) with a pre-release version of one of our libraries (like InedoLib), we use the following OtterScript in our build plan to set the `$UnstableDependencies` variable, and then we test that variable prior to deploying to the Release stage.
 
-::: {.upcoming }
-Specific configuration for how to do this
-:::
+    set %prereleasePackages = %();
+    
+    foreach $projPath in @FileMask(**.csproj)
+    {
+        DotNet::Get-Dependencies
+        (
+            ProjectPath: $projPath,
+            Dependencies => %nugets
+        );
+
+        foreach $k in @MapKeys(%nugets)
+        {
+            set $v = %nugets[$k];
+
+            if $MatchesRegex($v, -)
+            {
+                set %prereleasePackages[$k] = $v;
+            }
+        }
+    }
+	
+    set $buildVar = none;
+
+    set @preList = @();
+
+    foreach $k in @MapKeys(%prereleasePackages)
+    {
+        set @preList = $ListInsert(@preList, $k $(%prereleasePackages[$k]));
+    }
+
+    if $ListCount(@preList) != 0
+    {
+        set $buildVar = $Join(', ', @preList);
+    }
+
+    Set-BuildVariable UnstableDependencies
+    (
+        Value: $buildVar
+    );
+
