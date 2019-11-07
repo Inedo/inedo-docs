@@ -75,11 +75,13 @@ By default, MSBuild does not restore NuGet packages during a build, which is oft
 
 To install NuGet packages before running MSBuild, use the `NuGet::Restore-Packages()` as follows:
 
-    NuGet::Install-Packages
-    (
-        SourceDirectory: ~\Src\src,
-        Source: http://proget/nuget/Default
-    );
+```
+NuGet::Restore-Packages
+(
+    Target: ~\Src\<project-name>,
+    Source: https://proget.corp/nuget/InternalNuGet/
+);
+```
 
 This will essentially call `nuget.exe install`, and instruct it to look for a `packages.config` file in the `SourceDirectory`, and packages in the target `Source`.
 

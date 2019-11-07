@@ -73,7 +73,17 @@ dotnet.exe build "c:\...<buildmaster-temp>...\ProfitCalc.NetCore.csproj" --confi
 ```
 ### Restoring NuGet Packages
 
-By default, MSBuild does not restore NuGet packages during a build, often the cause of "are you missing an assembly reference" errors. This can be accomplished in BuildMaster using the `NuGet::Restore-Packages` operation before building a project.
+By default, MSBuild does not restore NuGet packages during a build, which is often the cause of "are you missing an assembly reference" errors. To install NuGet packages before running MSBuild, use the `NuGet::Restore-Packages()` as follows:
+
+```
+NuGet::Restore-Packages
+(
+    Target: ~\Src\<project-name>,
+    Source: https://proget.corp/nuget/InternalNuGet/
+);
+```
+
+This will essentially call `nuget.exe install`, and instruct it to look for a `packages.config` file in the `SourceDirectory`, and packages in the target `Source`.
 
 The `dotnet.exe` CLI however will automatically restore NuGet packages at build time (i.e. when `dotnet build` is run). To use a custom source, use the `--source` argument, which is supplied automatically when the `PackageSource` property of the `DotNet::Build` operation is executed.
 
@@ -102,3 +112,6 @@ It's a bit confusing, and to make matters worse, there were some bugs in early v
 
 Ultimately, using `dotnet build` or `msbuild` is supposed to come down to personal preference, but you may find that one just works better than another.
 
+## Deploying ASP.NET Applications to IIS {#buildmaster data-title="Deploying to IIS"}
+
+While ASP.NET Core applications can be hosted in a variety of web servers, Microsoft's Internet Information Services (IIS) is the most common. See [Deploying an IIS Website](/docs/buildmaster/deployments/targets/windows/iis) to learn how to accomplish this with BuildMaster.
