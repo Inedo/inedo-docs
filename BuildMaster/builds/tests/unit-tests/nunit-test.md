@@ -1,56 +1,65 @@
 ---
 title: NUnit
-subtitle: Running unit tests with NUnit Runner
-keywords: NUnit, unit test, unit testing, buildmaster
+subtitle: Running Unit Tests with NUnit Runner
+keywords: buildmaster, unit-tests, nunit
 sequence: 100
+show-headings-in-nav: true
 ---
 
-BuildMaster is a fully-functional Continuous Integration tool for a variety of platforms allowing your organization to start using CI/CD today. That is true for Unit Testing Visual Studio projects with the NUnit Runner. You can use this in a build pipeline to run unit and functional tests.
+[NUnit](https://nunit.org/) is an evolving, open source framework designed for writing and running tests in Microsoft .NET programming languages.
 
-#### What is NUnit Testing?
-NUnit is an evolving, open source framework designed for writing and running tests in Microsoft .NET programming languages. NUnit, like JUnit, is an aspect of test-driven development (TDD). Tests can be run continuously. Results are provided immediately. Multiple tests can be run concurrently. No subjective human judgments or interpretations of test results are required
+## Running NUnit Tests {#nunit data-title="Running Tests"}
 
-#### Why should you use NUnit with BuildMaster?
-You can use this automation framework for both unit testing and UI testing.  You can set up buildmaster to require unit tests to pass before the deployment can go to the next stage. 
+NUnit tests can be executed either in Visual Studio directly and viewed in the Test Explorer, or for automated runs used by CI tools, from the command line using the [`nunit-console.exe` CLI tool](https://github.com/nunit/docs/wiki/Console-Runner). The Visual Studio version requires projects to install both the [NUnit Framework](https://www.nuget.org/packages/NUnit/) and [NUnit Test Adapter](https://www.nuget.org/packages/NUnit3TestAdapter) NuGet packages in order to be run in the Test Explorer.
 
+## Run NUnit Tests with BuildMaster {#buildmaster data-title="NUnit with BuildMaster"}
 
-#### How to Run an NUnit Test In BuildMaster
+The NUnit Runner in BuildMaster essentially runs the `nunit-console.exe` command line tool against a unit test container. A tests container must reference the [NUnit Framework](https://www.nuget.org/packages/NUnit/) and [NUnit Test Adapter](https://www.nuget.org/packages/NUnit3TestAdapter) NuGet packages, and these packages must be restored prior to running MSBuild.
 
-In a BuildMaster build plan you'll need to be working with Visual Studio solution that contains the NUnit testing framwork. 
-
-Get your source code from a repository:
+An example build plan that gets source and runs tests is as follows:
 
 ```
- GitHub::Get-Source
- (
-     Organization: Inedo,
-     Repository: ProfitCalc
- );
-```    
+GitHub::Get-Source
+(
+    Organization: Inedo,
+    Repository: ProfitCalc
+);
 
-Compile your source code
-```
- NuGet::Restore-Packages();
- MSBuild::Build-Project ProfitCalc.sln
- (  
-     To: ~\Output
- );
-```
+NuGet::Restore-Packages();
 
-Execute NUnit Test
+MSBuild::Build-Project ProfitCalc.sln
+(  
+    To: ~\Output
+);
 
-```
 NUnit::Execute-TestProject
 (
-    TestFile: ~/Output/ProfitCalc.Test.dll,
-    NUnitExePath: $NUnitConsolePath,
-    OutputDirectory: ~/Results
+    TestFile: ~\Output\ProfitCalc.Test.dll,
+    OutputDirectory: ~\Results
 );
 ```
 
+The `NUnit::Execute-TestProject` depends on a configuration variable `$NUnitConsolePath`, which defaults to `nunit-console.exe` (i.e. having the executable in the PATH), but may be overridden at the operation or server scope.
 
-#### Pass or Fail
-If your tests all pass you will see the results in your execution logs.  If __any__ of the tests happen to fail the error will be logged and the rest of your plan will be skipped. You may also want to wrap this operation in a try/catch to handle the error more cleanly or to do more with the test results like notify any interested parties. 
+## Test Result Behavior {#results data-title="Test Result Behavior"}
 
-#### Pipeline Promotion 
-Add an _Automatic Gate Approval_ with the type of _Unit Tests_ to your integration stage in your pipeline to prevent promotion to a stage if a unit test fails. (The promotion can ultimately be manually forced if needed). This will ensure that if the application has automatically been promoted to a stage that requires gate approval, it has has passed all unit tests. 
+Test results are logged in the build execution log, and also to the *Unit Test* section of a build, with a more specific breakdown and/or test history. If a unit test fails, the default behavior is to halt the build. If the desired behavior is the continue regardless of failure, wrap the operation in an OtterScript try/catch statement, for example:
+
+```
+try
+{
+    NUnit::Execute-TestProject
+    (
+        TestFile: ~\Output\ProfitCalc.Test.dll,
+        OutputDirectory: ~\Results
+    );
+}
+catch
+{
+    Log-Warning Ignoring test failures for now...;
+}
+```
+
+## Preventing Deployment of Builds with Failed Unit Tests {#preventing-deployment data-title="Prevent Deploying Untested Builds"}
+
+To ensure that a build with failed unit tests is never deployed, add a "Unit Tests Passed" [automated check](/docs/buildmaster/verification/pipelines/approvals-and-gates/automated-checks) to the pipeline stage immediately following the build stage (this is typically integration). This will prevent a build with failed unit tests (and optionally inconclusive tests) from being promoted regardless if errors were logged or ignored in the build plan. Of course, this build can still be forced to the next stage, but special administrative permissions are required in order to do so.

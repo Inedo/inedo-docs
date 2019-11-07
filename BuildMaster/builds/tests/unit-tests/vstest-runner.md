@@ -54,6 +54,6 @@ catch
 }
 ```
 
-## Preventing Deployment of Builds with Failed Unit Tests {#preventing-deployment data-title="Prevent Deploymeng of Untested Builds"}
+## Preventing Deployment of Builds with Failed Unit Tests {#preventing-deployment data-title="Prevent Deploying Untested Builds"}
 
 To ensure that a build with failed unit tests is never deployed, add a "Unit Tests Passed" [automated check](/docs/buildmaster/verification/pipelines/approvals-and-gates/automated-checks) to the pipeline stage immediately following the build stage (this is typically integration). This will prevent a build with failed unit tests (and optionally inconclusive tests) from being promoted regardless if errors were logged or ignored in the build plan. Of course, this build can still be forced to the next stage, but special administrative permissions are required in order to do so.
