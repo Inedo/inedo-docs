@@ -1,80 +1,49 @@
 ---
-title: Web Deploy Package
-subtitle: Creating a Web Deploy Package
-Docs URL: /builds/platform-specific/web-deploy
-sequence: 100
-keywords: buildmaster, web-deploy, visual-studio, dotnet,
+title: Web Deploy Packages
+sequence: 900
+keywords: buildmaster, deployment, dot-net, web-deploy
+show-headings-in-nav: true
 ---
 
-BuildMaster can be used to build, test, and deploy any type of application, even if deploying those applications involve manual steps like handing-off files to other teams or customers for manual deployment. Not only will there be some time savings from automating some of the process, but everyone will have visibility into the status of the deployment.
+[Web Deploy](https://www.iis.net/downloads/microsoft/web-deploy) (msdeploy) is tool developed by Microsoft that simplifies deployment of web applications and websites to IIS servers and enables administrators and delegated users to use IIS Manager to deploy ASP.NET and PHP applications to IIS. This is accomplished by creating a Web Deploy Package (either in Visual Studio or with the tool), and then deploying that package directly to the IIS Web Deploy Extension. Visual Studio also uses Web Deploy when doing a *One-Click publish* or *Right-Click Deploy* of a web application.
 
-[Web Deploy(msdeploy)](https://www.iis.net/downloads/microsoft/web-deploy) is tool developed by Microsoft that "simplifies deployment of Web applications and Web sites to IIS servers" and "enables administrators and delegated users to use IIS Manager to deploy ASP.NET and PHP applications to an IIS server." This is accomplished by creating a Web Deploy Package (either in Visual Studio or with the tool), and then deploying that package directly to the IIS Web Deploy Extension. Visual Studio also uses Web Deploy when doing a **"One-Click publish"** or **"Right-Click Deploy"** of web applications.
+Although BuildMaster renders the Web Deploy technology largely obsolete (see [Deploying an IIS Website](/docs/buildmaster/deployments/targets/windows/iis) for a much simpler approach), there are a lot of reasons that an organization will still use Web Deploy:
 
-Although BuildMaster renders the Web Deploy technology largely obsolete (see [Build and Deploy a .NET Web Application](/https://inedo.com/support/tutorials/buildmaster/build-automation/build-and-deploy-a-net-web-application) for for a much simpler approach), there are a lot of reasons that an organization will still use Web Deploy.
- * legacy applications that are infrequently updated use this process, and aren't worth changing
- * there is a "throw it over the wall" culture, and developers simply deliver Web Deploy Packages to operations
- * Web Deploy Packages are used as a means to deliver applications to customers
+{.docs}
+  - legacy applications that are infrequently updated use this process, and aren't worth migrating away from Web Deploy
+  - dev and release teams are silo'ed, and developers simply deliver Web Deploy packages to operations
+  - Web Deploy packages are handed-off directly to clients
 
-Fortunately, you can still use BuildMaster to create Web Deploy Packages without having to change these process, and then deliver those packages to people who will deploy them. Instead of deploying your web applications to server, you "deploy" it to stakeholders or customers by sending them and email with a link to the package. You can even use the [Manual Operatation](#next-steps) to have them notify BuildMaster when the deployment is manually performed.
+BuildMaster can be used to deploy Web Deploy packages without having to change existing development processes. Instead of the traditional method of deploying your web applications to a server, you "deploy" it to stakeholders or customers by sending them an email with a link to the package.
 
-#### How to Create a Web Deploy Package
-By adding the Build-Project operation in your BuildMaster plan, you can configure it to package up your Web Application project within the solution and publish them as a _Web Deploy Package_ (.zip file)
+## Creating a Web Deploy Package {#create data-title="Creating a Web Deploy Package"}
 
-Sample Plan:
+By adding the `MSBuild::Build-Project` operation in your BuildMaster plan, you can package and publish a web application project as a Web Deploy package by following the example plan below:
+
 ```
-MSBuild::Build-Project <pathToProject>\<web-project>.csproj
+MSBuild::Build-Project WebDeployProject.csproj
 (
     Configuration: Debug,
     Platform: AnyCPU,
-    Arguments: /t:Package /p:PackageLocation=<web-deploy-package.zip> /p:PackageAsSingleFile=True
-    To: <pathToProject>\<web-project>
+    Arguments: /t:Package /p:PackageLocation=WebDeployPackage.zip /p:PackageAsSingleFile=True
+    To: ~\Output
+);
+
+Create-Artifact WebDeployPackage
+(
+    From: ~\Output
 );
 ```
 
-This plan effectively runs this "msbuild.exe" command
-```
-msbuild <web_app.csproj> /t:Package /p:PackageLocation=<web-deploy-package.zip> /p:PackageAsSingleFile=True
-```
-
-#### Including extra files into Web Deploy package
-Sometimes you need to add additional files into Web Deploy package which are not part of Web Application project, but should be deployed to a web server along with web application. These can be some resources or content files generated by a build tool or Azure Web Job files in App_Data folder.
-
-Just to give you a sense of the technique described in that article this is how to add Azure Web Job files into App_Data folder of web application package. We assume here that your solution contains two projects: Web Application located in `$(SolutionDir)WebApp` directory and Azure Web Job project located in `$(SolutionDir)WebJob.` You should add the following snippet at the very bottom of Web Application `.csproj` (`.vbproj`) file:
+This plan effectively runs the `msbuild.exe` command, then captures the output into a BuildMaster build artifact:
 
 ```
-<PropertyGroup>
-  <CopyAllFilesToSingleFolderForPackageDependsOn>
-    CustomCollectFiles;
-    $(CopyAllFilesToSingleFolderForPackageDependsOn);
-  </CopyAllFilesToSingleFolderForPackageDependsOn>
-  <CopyAllFilesToSingleFolderForMsdeployDependsOn>
-    CustomCollectFiles;
-    $(CopyAllFilesToSingleFolderForPackageDependsOn);
-  </CopyAllFilesToSingleFolderForMsdeployDependsOn>
-</PropertyGroup>
-<Target Name="CustomCollectFiles">
-  <ItemGroup>
-    <_CustomFiles Include="$(SolutionDir)WebJob\bin\$(ConfigurationName)\**\*" />
-    <FilesForPackagingFromProject  Include="%(_CustomFiles.Identity)">
-      <DestinationRelativePath>App_Data\jobs\continuous\MyJob\%(RecursiveDir)%(Filename)%(Extension)</DestinationRelativePath>
-    </FilesForPackagingFromProject>
-  </ItemGroup>
-</Target>
+msbuild WebDeployProject.csproj /t:Package /p:PackageLocation=WebDeployPackage.zip /p:PackageAsSingleFile=True
 ```
 
-If files you would like to include into the package are in the same project and you don’t need to change their archive paths then you could use a simpler approach. Just add the following `BeforeBuild` target to Web Application’s `.csproj` or `.vbproj`:
+## Manual Deployment Notification {#notifications data-title="Ready to Deploy Notifications"}
 
-```
-<Target Name="BeforeBuild">
-  <ItemGroup>
-    <Content Include="some-path\*.*" />
-    <Content Include="some-other-path\*.*" />
-  </ItemGroup>
-</Target>
-```
-
-#### Next Steps {#next-steps}
-After the Web Deploy Package is created, you can notify any BuildMaster user or group that the package is created and needs to be deployed. When you use the [Manual Operation] (/docs/buildmaster/reference/operations/buildmaster/manual-operation) in your plan, the execution will be halted until an individual completes the specified task.
+After a Web Deploy package is created, BuildMaster users can be notified after it is created in order to deploy it. When you use the [Manual Operation](/docs/buildmaster/reference/operations/buildmaster/manual-operation) in your plan, the deployment plan will pause until a user logs in to BuildMaster and marks the task complete:
 
 ```
 Perform-ManualOperation
@@ -84,3 +53,5 @@ Perform-ManualOperation
     SendEmail: true
 );
 ```
+
+A "Manual Operation" is not required in order to do this, a simple email notification will work just as well, followed by a [user approval](/docs/buildmaster/verification/pipelines/approvals-and-gates/user-approvals) in a further stage of the pipeline.
