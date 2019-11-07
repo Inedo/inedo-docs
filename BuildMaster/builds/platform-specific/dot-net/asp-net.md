@@ -75,7 +75,18 @@ msbuild.exe ProfitCalc.Web\ProfitCalc.Web.csproj "/p:Configuration=Release" "/p:
 
 ### Restoring NuGet Packages
 
-By default, MSBuild does not restore NuGet packages during a build, often the cause of "are you missing an assembly reference" errors. This can be accomplished in BuildMaster using the `NuGet::Restore-Packages()` operation before building a project.
+By default, MSBuild does not restore NuGet packages during a build, which is often the cause of "are you missing an assembly reference" errors. 
+
+To install NuGet packages before running MSBuild, use the `NuGet::Restore-Packages()` as follows:
+
+    NuGet::Install-Packages
+    (
+        SourceDirectory: ~\Src\src,
+        Source: http://proget/nuget/Default
+    );
+
+This will essentially call `nuget.exe install`, and instruct it to look for a `packages.config` file in the `SourceDirectory`, and packages in the target `Source`.
+
 
 ### Unit Tests
 
@@ -87,3 +98,7 @@ WindowsSdk::Execute-VSTest
     TestContainer: ~\Output\ProfitCalc.Tests.dll
 );
 ```
+
+## Deploying ASP.NET Applications to IIS {#buildmaster data-title="Deploying to IIS"}
+
+While ASP.NET applications can be hosted in a variety of web servers, Microsoft's Internet Information Services (IIS) is the most common. See [Deploying an IIS Website](/docs/buildmaster/deployments/targets/windows/iis) to learn how to accomplish this with BuildMaster.
