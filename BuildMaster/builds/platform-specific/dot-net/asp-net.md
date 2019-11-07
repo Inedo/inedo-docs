@@ -34,10 +34,6 @@ The contents of this output directory are the files that would be [deployed to t
 
 ## Building ASP.NET Applications with BuildMaster {#buildmaster data-title="Automation with BuildMaster"}
 
-::: {.attention .best-practice}
-You can view an example BuildMaster application that builds and deploys to an IIS website by creating a new application and selecting the "ProfitCalc ASP.NET Tutorial" application.
-:::
-
 Because building ASP.NET applications simply involves running MSBuild, building ASP.NET applications is simple with BuildMaster. Behind the scenes, BuildMaster uses the `MSBuild::Build-Project` operation to run MSBuild.
 
 The general process for building an ASP.NET application is as follows:
