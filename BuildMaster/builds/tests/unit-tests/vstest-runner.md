@@ -3,50 +3,57 @@ title: VSTest (Visual Studio)
 subtitle: Running NUnit, xUnit, MSTest, and more with VSTest Runner
 keywords: unit test, buildmaster, vstest
 sequence: 100
+show-headings-in-nav: true
 ---
 
-BuildMaster is a fully-functional Continuous Integration tool for a variety of platforms allowing your organization to start using CI/CD today. 
-That is true for Unit Testing Visual Studio projects with the VSTest Runner. You can use this in a build pipeline to run unit and functional tests (Selenium, Appium, Coded UI test, and more). VSTest are test classes for .NET framework which are integrated into Visual Studio.
+[Visual Studio Testing Tools](https://docs.microsoft.com/en-us/visualstudio/test/improve-code-quality) is the development framework centered around unit testing, code coverage, and load testing. Developers are able to run tests directly in Visual Studio using the Test Explorer window, and their unit testing framework of choice: NUnit, xUnit, MSTest, and more.
 
-#### What Does VSTest Runner Work With?
-The VSTest Runner in BuildMaster essentially runs the VSTest.Console.exe command line tool against a unit test container like MSTest-based tests, and any test frameworks that have a Visual Studio test adapter, such as xUnit, NUnit, Chutzpah.
+Within a CI build pipeline, tests can be executed with [`VSTest.Console.exe`](https://docs.microsoft.com/en-us/visualstudio/test/vstest-console-options), allowing organizations to run unit and functional tests (Selenium, Appium, Coded UI, etc.) as early as possible in the CI/CD process.
 
-#### How to a Unit Test with VSTest Runner
+## Running VSTest with BuildMaster {#buildmaster data-title="VSTest with BuildMaster"}
 
-In a BuildMaster build plan you'll need to be working with Visual Studio solution that contains one of the test frameworks outlined above. 
+The VSTest Runner in BuildMaster essentially runs the `VSTest.Console.exe` command line tool against a unit test container like MSTest-based tests, and any test frameworks that have a Visual Studio test adapter, such as xUnit, NUnit, Chutzpah. These adapters are referenced using NuGet packages, which must be restored prior to running MSBuild.
 
-Get your source code from a repository:
+An example build plan that gets source and runs tests is as follows:
 
 ```
- GitHub::Get-Source
- (
-     Organization: Inedo,
-     Repository: ProfitCalc
- );
-```    
+GitHub::Get-Source
+(
+    Organization: Inedo,
+    Repository: ProfitCalc
+);
+ 
+NuGet::Restore-Packages();
 
-Compile your source code
-```
- NuGet::Restore-Packages();
- MSBuild::Build-Project ProfitCalc.sln
- (  
-     To: ~\Output
- );
-```
+MSBuild::Build-Project ProfitCalc.sln
+(  
+    To: ~\Output
+);
 
-Execute the VSTest runner against your test framework container. 
-```
- WindowsSdk::Execute-VSTest
- (
-     TestContainer: ~\Output\ProfitCalc.Tests.dll
- );
+WindowsSdk::Execute-VSTest
+(
+    TestContainer: ~\Output\ProfitCalc.Tests.dll
+);
 ```
 
-#### Pass or Fail
-If your tests all pass you will see the results in your execution logs.  If __any__ of the tests happen to fail the error will be logged and the rest of your plan will be skipped. You may also want to wrap this operation in a try/catch to handle the error more cleanly or to do more with the test results like notify any interested parties. 
+## Test Result Behavior {#results data-title="Test Result Behavior"}
 
-#### Pipeline Promotion 
-Add an _Automatic Gate Approval_ with the type of _Unit Tests_ to your integration stage in your pipeline to prevent promotion to a stage if a unit test fails. (The promotion can ultimately be manually forced if needed). This will ensure that if the application has automatically been promoted to a stage that requires gate approval, it has has passed all unit tests. 
+Test results are logged in the build execution log, and also to the *Unit Test* section of a build, with a more specific breakdown and/or test history. If a unit test fails, the default behavior is to halt the build. If the desired behavior is the continue regardless of failure, wrap the operation in an OtterScript try/catch statement, for example:
 
-#### More Options
-If you are intested in getting more information on how the VSTest runner works with additional options like _rerunType_, _customBatchSizeValue_, _runSettingsFile_, and more - check out [this documentation](https://docs.microsoft.com/en-us/azure/devops/pipelines/tasks/test/vstest?view=azure-devops)
+```
+try
+{
+    WindowsSdk::Execute-VSTest
+    (
+        TestContainer: ~\Output\ProfitCalc.Tests.dll
+    );
+}
+catch
+{
+    Log-Warning Ignoring test failures for now...;
+}
+```
+
+## Preventing Deployment of Builds with Failed Unit Tests {#preventing-deployment data-title="Prevent Deploymeng of Untested Builds"}
+
+To ensure that a build with failed unit tests is never deployed, add a "Unit Tests Passed" [automated check](/docs/buildmaster/verification/pipelines/approvals-and-gates/automated-checks) to the pipeline stage immediately following the build stage (this is typically integration). This will prevent a build with failed unit tests (and optionally inconclusive tests) from being promoted regardless if errors were logged or ignored in the build plan. Of course, this build can still be forced to the next stage, but special administrative permissions are required in order to do so.
