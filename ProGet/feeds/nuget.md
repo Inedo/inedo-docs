@@ -29,7 +29,16 @@ nuget install {package-name} -Version {package-version} -Source http://{proget-s
 
 ## Creating and Publishing NuGet Packages {#creating data-title="Creating and Publishing"}
 
-The [NuGet package format](https://docs.microsoft.com/en-us/nuget/schema/nuspec) is well-documented, and you can create packages in a number of ways, including [directly from Visual Studio](https://docs.microsoft.com/en-us/nuget/guides/create-net-standard-packages-vs2017) or using [nuget.exe](https://docs.microsoft.com/en-us/nuget/create-packages/creating-a-package). Once you've created a package, there are four ways you can publish it to ProGet:
+The [NuGet package format](https://docs.microsoft.com/en-us/nuget/schema/nuspec) is well-documented, and you can create packages in a number of ways, including [directly from Visual Studio](https://docs.microsoft.com/en-us/nuget/guides/create-net-standard-packages-vs2017) or using [nuget.exe](https://docs.microsoft.com/en-us/nuget/create-packages/creating-a-package). 
+
+::: {.attention .analogy } 
+<img src="/resources/images/icons/analogy.png" alt="Light bulb" />
+
+**CI/CD for NuGet Packages!** Check out the [NuGet Packages documentation in BuildMaster](/docs/buildmaster/builds/platform-specific/dot-net/nuget) to learn how to apply Continuous Integration & Continuous Delivery (CI/CD) principles to rapidly test and deliver packages you create alongside your application
+:::
+
+
+Once you've created a package, there are four ways you can publish it to ProGet:
 
 {.docs}
 - Upload from Disk - upload a pre-packaged NuGet package (.nupkg) from disk
