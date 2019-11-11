@@ -3,6 +3,7 @@ title: TeamCity
 subtitle: Integrating TeamCity with BuildMaster
 sequence: 200 
 keywords: buildmaster, builds, teamcity
+show-headings-in-nav: true
 ---
 
 [TeamCity](https://www.jetbrains.com/teamcity) is a web-based continuous integration server by JetBrains. The software can be hosted by JetBrains in the cloud (known as InCloud), or installed and managed on-premise (Standalone). TeamCity offers all the typical functionality of a CI server:
