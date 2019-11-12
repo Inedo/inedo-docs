@@ -5,6 +5,6 @@
   <temporary from="otterscript/statement-and-blocks/other-statements" to="otterscript/statements-and-blocks/other-statement" />
   <temporary from="reference/comments-and-descriptions" to="otterscript/comments-and-descriptions" />
   <temporary from="reference/strings-and-literals" to="otterscript/strings-and-literal" />
- 
+  <temporary from="components/powershell-and-shell" to="/docs/otter/modeling-infrastructure/powershell" />
   
 </redirects>
