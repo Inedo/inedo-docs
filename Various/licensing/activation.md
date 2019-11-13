@@ -4,6 +4,10 @@ sequence: 20
 keywords: license
 ---
 
+::: {.attention .technical}
+**Automatic License Activation Not Working?** See [Knowledge Base post 1758](https://inedo.com/support/kb/1758/automatic-license-activation-not-working). For more information on how to fix automatic license activation problems & errors.
+:::
+
 All licensed Inedo products require license activation regardless of the edition. License activation is the process of pairing a license key with a value that is unique per machine it is installed on. The machine-unique identifier is a hash of the following components:
 
 {.docs}
@@ -38,7 +42,7 @@ Log in to [MyInedo](https://my.inedo.com){target="_blank"} and click the *Manual
 
 ### Step 2:
 
-Enter the license key and the machine UID on the manual activation page within the software: 
+Enter the license key and the machine UID on the manual activation page within the software:
 
 ![Enter Key and UID](/resources/documentation/various/enter-key-uid.png){.screenshot}
 
@@ -48,7 +52,7 @@ Click the *Get Activation Code* button:
 
 ### Step 3:
 
-Copy and paste the resulting activation code into the software and click save: 
+Copy and paste the resulting activation code into the software and click save:
 
 ![Activation Code](/resources/documentation/various/activation-code.png){.screenshot}
 
