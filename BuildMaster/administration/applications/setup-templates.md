@@ -37,7 +37,7 @@ There are three main properties of a Setup Template:
 * **Description**: a string displayed on the application setup page
 * **RequiredExtensions**: an array of strings with extension names that the application requires; the application will display a warning in various places (including application setup page) if these are not installed
 * **Configuration**: an object with Boolean properties that indicate whether the corresponding advanced setting should be configured; valid properties are `DisplayPlans`, `DisplayPipelines`, `DisplayIssues`, `DisplayConfigurationFiles`, and `DisplayDatabases`
-* **Settings**: an array of objects, each with two optional properties (`SettingName`, `SettingPurpose`), and a required property that specifies the type of setting required 
+* **Settings**: an array of objects, each with optional properties (`SettingName`, `SettingPurpose`, `Optional`), and a required property that specifies the type of setting required 
 
   * Credential: `CredentialType`, `CredentialName`
   * Variable: `VariableName`
@@ -48,8 +48,12 @@ There are three main properties of a Setup Template:
   * IssueSource: `IssueSourceName`
   * ConfigurationFile: `ConfigurationFileName`
   *	TextTemplate: `TextTemplateName`
+  *	Container Sources: `ContainerSourceRequired` (boolean)
+  *	Package Sources: `PackageSourceRequired` (boolean)
 
-Credential setting objects may also specify a `CredentialName`. `IssueSourceName` and `ConfigurationFileName` can be "*", which indicates any is accepted.
+Credential setting objects may also specify a `CredentialName`. `IssueSourceName` and `ConfigurationFileName` can be "\*", which indicates any is accepted.
+
+Plan settings may also require a `RequiresEdit` property, which indicates the plan must be edited.
 
 #### Renaming Templates
 Although you can't rename a setup template once you've created it, you can duplicate it, adding the new name, and delete the old template.
@@ -60,5 +64,5 @@ To make application setup templates work transparently with application template
 * When you export your application as a template, the associated setup template will automatically be bundled in export package
 * If you create a new application using an application template package that you exported, the bundled template will automatically be added to BuildMaster if it doesn't exist in the system
 * If a bundled setup template already exists and is different than the template stored in BuildMaster, a warning will be logged during application import; this allows you to inspect and reconcile the differences between the setup template already stored in BuildMaster and in the package 
-* The only exception to the above rule is templates starting with the name `inedo.`, which indicates a built-in template
+* The exception to the above rule is templates starting with the name `inedo.`, which indicates a built-in template; it will always be udpated
 
