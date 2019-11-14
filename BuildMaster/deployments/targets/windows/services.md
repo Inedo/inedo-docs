@@ -32,12 +32,28 @@ While there are various methods to deploy a Windows Service, we recommend deploy
  - Deploy build artifact to the directory that contains the executable
  - Start service (`Windows::Start-Service` operation)
 
+This group of operations can be performed on any server configured in BuildMaster. BuildMaster can interact with remote servers through [agents](/docs/buildmaster/administration/agents-and-infrastructure/servers). To specify which server to deploy the service to, use a `for server` block in the OtterScript plan, or as a best-practice, specify a target server in the [pipeline stage target](/docs/buildmaster/verification/pipelines#pipeline-stages).
+
+An example BuildMaster plan that deploys a service on a server is:
+
+```
+for server us-east-svc-01
+{
+    Windows::Stop-Service HDarsService();
+    Deploy-Artifact Service
+    (
+        To: D:\Services\HDarsService
+    );
+    Windows::Start-Service HDarsService();
+}
+```
+
 Using the operations is basically the same as running the following PowerShell commands: 
 
 ```
-Stop-Service HDarsService
-# deploy files...
-Start-Service HDarsService
+PS D:\Services\HDarsService> Stop-Service HDarsService
+PS D:\Services\HDarsService> Expand-Archive -Path "E:\Artifacts\HdarsService.zip"
+PS D:\Services\HDarsService> Start-Service HDarsService
 ```
 
 Additionally, there is an `Windows::Ensure-Service` operation that can be used. It has 2 minor differences from the above control operations:

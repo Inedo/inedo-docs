@@ -45,12 +45,28 @@ While there are various methods to deploy to IIS, we recommend deploying IIS app
  - Deploy build artifact to home directory
  - Start application pool (`IIS::Start-AppPool` operation)
 
-Using the operations is basically the same as running `appcmd.exe` with the following arguments: 
+This group of operations can be performed on any server configured in BuildMaster. BuildMaster can interact with remote servers through [agents](/docs/buildmaster/administration/agents-and-infrastructure/servers). To specify which server to deploy the website to, use a `for server` block in the OtterScript plan, or as a best-practice, specify a target server in the [pipeline stage target](/docs/buildmaster/verification/pipelines#pipeline-stages).
+
+An example BuildMaster plan that deploys a website to IIS on a remote server is:
 
 ```
-appcmd.exe stop apppool -name:"HDarsAppPool"
-# deploy files…
-appcmd.exe start apppool -name:"HDarsAppPool"
+for server us-west-web-01
+{
+    IIS::Stop-AppPool HDarsAppPool();
+    Deploy-Artifact Website
+    (
+        To: D:\Websites\HDarsSite
+    );
+    IIS::Start-AppPool HDarsAppPool();
+}
+```
+
+Using the operations is basically the same as running `appcmd.exe` in PowerShell with the following arguments: 
+
+```
+PS D:\Websites\HDarsSite> appcmd.exe stop apppool -name:"HDarsAppPool"
+PS D:\Websites\HDarsSite> Expand-Archive -Path "E:\Artifacts\HdarsSite.zip"
+PS D:\Websites\HDarsSite> appcmd.exe start apppool -name:"HDarsAppPool"
 ```
 
 Additionally, there is an `IIS::Ensure-AppPool` operation that can be used. It has 2 minor differences from the above control operations:
