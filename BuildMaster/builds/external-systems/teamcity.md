@@ -24,6 +24,10 @@ Because TeamCity is such a powerful CI tool, there are a lot of good reasons to 
 **See it live!** See an example of TeamCity integration by creating a new application using the *TeamCity Import* template.
 :::
 
+## Installing the TeamCity Extension {#extension data-title="TeamCity Extension"}
+
+Simply navigate to the Admin > Extensions page in your instance of BuildMaster and install the [TeamCity Extension](https://proget.inedo.com/feeds/Extensions/inedox/TeamCity).
+
 ## Authentication with TeamCity {#authentication data-title="Authentication with TeamCity"}
 
 Authentication with TeamCity is handled through [Resource Credentials](/docs/buildmaster/administration/resource-credentials), using the TeamCity type. These credentials are effectively a username and password, so we recommend creating a specific account with the minimum amount of privileges required to interact with TeamCity, typically the permissions to the specific project or build configuration. Public servers (i.e. open-source) or internal servers that are firewalled off that don't require authentication can simply use guest authentication by leaving the username and password empty.
