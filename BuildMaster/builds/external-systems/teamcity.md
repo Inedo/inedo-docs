@@ -38,7 +38,18 @@ To connect to a standalone instance of TeamCity, make sure the API URL of the re
 
 ## Queuing Builds in TeamCity {#queuing-builds data-title="Queuing Builds"}
 
-BuildMaster supports queuing builds in TeamCity, which can be useful as an automated notification of a release team's desire to create a build artifact (or artifacts). To accomplish this, use the `TeamCity::Queue-Build` operation in a build plan. Once the build is created (and optionally waited on), the build number of the TeamCity build can be captured as an output variable using the `TeamCityBuildNumber => $buildNumber` property.
+BuildMaster supports queuing builds in TeamCity, which can be useful as an automated notification of a release team's desire to create a build artifact (or artifacts). To accomplish this, use the `TeamCity::Queue-Build` operation in a build plan. Once the build is created (and optionally waited on), the build number of the TeamCity build can be captured as an output variable using the `TeamCityBuildNumber => $buildNumber` property:
+
+```
+TeamCity::Queue-Build
+(
+	Credentials: KramericaTeamCity,
+	Project: ProfitCalc,
+	BuildConfiguration: v8builds,
+	Artifact: profit-calc-web.zip,
+	TeamCityBuildNumber => $tcBuildNumber
+); 
+```
 
 Once this variable is captured, a [variable value renderer](/docs/buildmaster/administration/value-renderers) can be used to link `$TeamCityBuildNumber` back to TeamCity on the Build Overview page, for example:
 
@@ -48,7 +59,18 @@ Once this variable is captured, a [variable value renderer](/docs/buildmaster/ad
 
 ## Importing TeamCity Artifacts {#importing-builds data-title="Importing Builds"}
 
-Once a build is queued, importing an artifact ensures BuildMaster will be able to deploy it to future stages whether TeamCity is accessible or not. Use the `TeamCity::Import-Artifact` operation (and reference `$TeamCityBuildNumber` obtained from the `TeamCity::Queue-Build` operation, or reference a special build name like `lastSuccessful`) to create a BuildMaster build artifact from an existing TeamCity artifact.
+Once a build is queued, importing an artifact ensures BuildMaster will be able to deploy it to future stages whether TeamCity is accessible or not. Use the `TeamCity::Import-Artifact` operation (and reference `$TeamCityBuildNumber` obtained from the `TeamCity::Queue-Build` operation, or reference a special build name like `lastSuccessful`) to create a BuildMaster build artifact from an existing TeamCity artifact:
+
+```
+TeamCity::Import-Artifact
+(
+    Credentials: TeamCity,
+    Project: $TeamCityProjectName,
+    BuildConfiguration: $TeamCityBuildConfiguration,
+    Artifact: $TeamCityArtifactName,
+    TeamCityBuildNumber => $TeamCityBuildNumber
+);
+```
 
 For organizations that have their continuous integration process fully configured in TeamCity, leave the build number set to `lastSuccessful` and capture the actual build number using the `$TeamCityBuildNumber` output variable on `TeamCity::Import-Artifact` operation. This will create a visible association between the BuildMaster build and TeamCity build.
 
@@ -58,7 +80,14 @@ To push artifacts from TeamCity to BuildMaster or an artifact repository like [P
 
 ## Deploying TeamCity Artifacts {#deployment data-title="Deploying TeamCity Artifacts"}
 
-Once an artifact is captured via the optional queuing followed by "import" operations in a build plan, future stages simply need to use the `Deploy-Artifact` operation to deploy to any number of servers or targets.Remember, this isn’t the same thing as deploying to production. “Deploy” in this case refers to sending the operation to the intended target.
+Once an artifact is captured via the optional queuing followed by "import" operations in a build plan, future stages simply need to use the `Deploy-Artifact` operation to deploy to any number of servers or targets:
+
+```
+Deploy-Artifact profitcalc-web
+(
+    To: E:\Websites\ProfitCalc
+);
+```
 
 ## Self-Service TeamCity Builds {#self-service data-title="Self-Service Builds"}
 
