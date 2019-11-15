@@ -18,6 +18,12 @@ By setting up multiple feeds, you can not only separate packages by package form
 
 To create a new feed, go to `Feeds > Create Feed`. You can also manage feeds from the Feeds page, or by going to the specific feed page and clicking the `Manage Feed` button.
 
+### Feed Name
+
+A feed's name becomes a part of it's [API Endpoint URL](#api-endpoints); this means you can only use URL-friendly characters and that renaming a feed will also change its API Endpoint URL.
+
+As of ProGet 5.2.19, you can create "Alternate Names" for a feeds by going to Manage Feed > Rename, then clicking the Set Alternate Names link in the warning dialog. Alternate feed names essentially provide multiple endpoint URLs for a feed, and are useful when renaming feeds to keep backwards compatibility with old names.
+
 ### Feed Types {#feed-types data-title="Feed Types"}
 
 The type of feed defines the format of package that it will contain. A NuGet feed, for example, will only ever store NuGet packages, and a npm feed will only ever store npm packages.
