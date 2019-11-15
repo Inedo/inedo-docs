@@ -1,7 +1,7 @@
 ---
 title: TeamCity
 subtitle: Integrating TeamCity with BuildMaster
-sequence: 200 
+sequence: 200
 keywords: buildmaster, builds, teamcity
 show-headings-in-nav: true
 ---
@@ -13,7 +13,7 @@ show-headings-in-nav: true
  - support for unit tests and static analysis
  - artifact storage
 
-Because TeamCity is such a powerful CI tool, there are a lot of good reasons to continue using it:
+TeamCity is such a powerful CI tool, and there are a lot of good reasons to continue using it:
 
 {.docs}
  - **Save time and resources on retraining** - if your developers are already familiar with TeamCity and processes in your organization, they do not require training for a brand new system
@@ -30,7 +30,9 @@ Simply navigate to the Admin > Extensions page in your instance of BuildMaster a
 
 ## Authentication with TeamCity {#authentication data-title="Authentication with TeamCity"}
 
-Authentication with TeamCity is handled through [Resource Credentials](/docs/buildmaster/administration/resource-credentials), using the TeamCity type. These credentials are effectively a username and password, so we recommend creating a specific account with the minimum amount of privileges required to interact with TeamCity, typically the permissions to the specific project or build configuration. Public servers (i.e. open-source) or internal servers that are firewalled off that don't require authentication can simply use guest authentication by leaving the username and password empty.
+[Resource Credentials](/docs/buildmaster/administration/resource-credentials)are used to connect BuildMaster to your Continuous Integration (CI) server, and each supported CI server has its own type of Resource Credential, and that type is defined in the corresponding extension. You can create as many resource credentials as you need, at both the system- and application-level, which means you can connect to multiple CI servers and share those connections across applications, letting your teams continue working with whatever tool each prefers.
+
+Authentication with TeamCity uses the TeamCity-type [Resource Credential](/docs/buildmaster/administration/resource-credentials). These credentials are effectively a username and password, so we recommend creating a specific account with the minimum amount of privileges required to interact with TeamCity, typically the permissions to the specific project or build configuration. Public servers (i.e., open-source) or internal servers that are firewalled off that don't require authentication can simply use guest authentication by leaving the username and password empty.
 
 To connect to a standalone instance of TeamCity, make sure the API URL of the resource credentials is configured to the hostname for your installation, for example: `https://teamcity.jetbrains.com`
 
@@ -38,7 +40,7 @@ To connect to a standalone instance of TeamCity, make sure the API URL of the re
 
 BuildMaster supports queuing builds in TeamCity, which can be useful as an automated notification of a release team's desire to create a build artifact (or artifacts). To accomplish this, use the `TeamCity::Queue-Build` operation in a build plan. Once the build is created (and optionally waited on), the build number of the TeamCity build can be captured as an output variable using the `TeamCityBuildNumber => $buildNumber` property.
 
-Once this variable is captured, a [variable value renderer](/docs/buildmaster/administration/value-renderers) can be used to link `$TeamCityBuildNumber` back to TeamCity on the Build Overview page, for example: 
+Once this variable is captured, a [variable value renderer](/docs/buildmaster/administration/value-renderers) can be used to link `$TeamCityBuildNumber` back to TeamCity on the Build Overview page, for example:
 
 ```
 <a class="ci-icon teamcity" href="https://teamcity.jetbrains.com/viewLog.html?buildNumber=$TeamCityBuildNumber&buildTypeId=acejump_buildplugin">Build #$TeamCityBuildNumber</a>
@@ -56,7 +58,7 @@ To push artifacts from TeamCity to BuildMaster or an artifact repository like [P
 
 ## Deploying TeamCity Artifacts {#deployment data-title="Deploying TeamCity Artifacts"}
 
-Once an artifact is captured via the optional queuing followed by "import" operations in a build plan, future stages simply need to use the `Deploy-Artifact` operation to deploy to any number of servers or targets.
+Once an artifact is captured via the optional queuing followed by "import" operations in a build plan, future stages simply need to use the `Deploy-Artifact` operation to deploy to any number of servers or targets.Remember, this isn’t the same thing as deploying to production. “Deploy” in this case refers to sending the operation to the intended target.
 
 ## Self-Service TeamCity Builds {#self-service data-title="Self-Service Builds"}
 
