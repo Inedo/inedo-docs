@@ -12,6 +12,12 @@ show-headings-in-nav: true
  - agile boards, whether using Scrum or Kanban
  - project planning and estimation
 
+## Installing the YouTrack Extension {#extension data-title="YouTrack Extension"}
+
+Simply navigate to the *Admin* > *Extensions* page in your instance of BuildMaster and click on the YouTrack extension to install it.
+
+If your instance doesn't have internet access, you can [manually install the YouTrack extension](/docs/buildmaster/reference/extensions#manual-install) after downloading the [YouTrack Extension Package](https://proget.inedo.com/feeds/Extensions/inedox/YouTrack).
+
 ## Authentication with YouTrack {#authentication data-title="Authentication with YouTrack"}
 
 Authentication with YouTrack is handled with [Resource Credentials](/docs/buildmaster/administration/resource-credentials), using the YouTrack type. These credentials are either username/password or token-based. Since a token is associated with a user, whichever credentials method is chosen, we recommend the user account has the minimum privileges required only to read issues, or create/append to issues. To connect, the YouTrack server URL is required, which for hosted installations follows the format: `https://example.myjetbrains.com/youtrack`
