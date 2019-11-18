@@ -61,7 +61,7 @@ Once this variable is captured, a [variable value renderer](/docs/buildmaster/ad
 
 ## Importing TeamCity Artifacts {#importing-builds data-title="Importing Builds"}
 
-Once a build is queued, importing an artifact ensures BuildMaster will be able to deploy it to future stages whether TeamCity is accessible or not. Use the `TeamCity::Import-Artifact` operation (and reference `$TeamCityBuildNumber` obtained from the `TeamCity::Queue-Build` operation, or reference a special build name like `lastSuccessful`) to create a BuildMaster build artifact from an existing TeamCity artifact:
+Once a build is queued, importing an artifact ensures BuildMaster will be able to deploy it to future stages whether TeamCity is accessible or not. Use the `TeamCity::Import-Artifact` operation (and reference `$TeamCityBuildNumber` obtained from the `TeamCity::Queue-Build` operation, or reference a [special build name](#special-build-names)) to create a BuildMaster build artifact from an existing TeamCity artifact:
 
 ```
 TeamCity::Import-Artifact
@@ -75,6 +75,19 @@ TeamCity::Import-Artifact
 ```
 
 For organizations that have their continuous integration process fully configured in TeamCity, leave the build number set to `lastSuccessful` and capture the actual build number using the `$TeamCityBuildNumber` output variable on `TeamCity::Import-Artifact` operation. This will create a visible association between the BuildMaster build and TeamCity build.
+
+Both the import and queue operations support branches in TeamCity. This is generally only useful in conjunction with [special build names](#special-build-names) because specific build numbers are already unique per branch. While leaving the `Branch` property blank will refer to the `<default>` branch for the project, you may also specify one in the plan to limit the results of `lastSuccessful`, and optionally filter branch names with BuildMaster variables, for example: `Branch: feature-$ReleaseNumber`.
+
+## Special Build Names {#special-build-names data-title="Special Build Names"}
+
+BuildMaster can reference TeamCity builds using the following special build names instead of direct build numbers:
+
+{.docs}
+ - `lastSuccessful` - refers to the last build that completed successfully
+ - `lastPinned` - refers to the last build that has been pinned
+ - `lastFinished` - refers to the latest build whether it was successful or not (should rarely be referenced in BuildMaster)
+
+Additionally, builds may be referenced by their underlying TeamCity ID as opposed to name/number. To specify a build ID instead, append `:id` as a suffix to the identifier, for example: `1234:id`
 
 ## Pushing Artifacts from TeamCity to an Artifact Repository {#push data-title="Pushing Artifacts from TeamCity"}
 
