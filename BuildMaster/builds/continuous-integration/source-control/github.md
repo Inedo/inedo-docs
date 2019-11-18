@@ -19,11 +19,21 @@ BuildMaster is designed to work alongside GitHub to provide a self-managed CI/CD
 **See it live!** See an example of GitHub integration by creating a new application using the *GitHub CI/CD* template.
 :::
 
+## Installing the GitHub Extension {#extension data-title="GitHub Extension"}
+
+Simply navigate to the *Admin* > *Extensions* page in your instance of BuildMaster and click on the GitHub extension to install it.
+
+If your instance doesn't have internet access, you can [manually install the GitHub extension](https://docs.inedo.com/docs/buildmaster/reference/extensions#manual-install) after downloading the [GitHub Extension Package](https://proget.inedo.com/feeds/Extensions/inedox/GitHub).
+
 ## Authentication with GitHub {#authentication data-title="Authentication with GitHub"}
 
 Authentication with GitHub is handled through [Resource Credentials](/docs/buildmaster/administration/resource-credentials). In most cases, creating a resource credential using the GitHub type is sufficient, but you can also use Git for "generic" source control integration that doesn't rely on GitHub-specific concepts like "organizations" or GitHub releases. These credentials are effectively a username and password, so we recommend creating a specific account with the minimum amount of privileges required to interact with GitHub, typically this is just *Read* permission, but if there are requirements to add releases or tag source code, at least the *Write* permission will be required. 
 
 To connect to a self-managed instance of GitHub Enterprise, make sure the API URL of the resource credentials is configured to the hostname for your installation instead of GitHub's public API URL.
+
+::: {.attention .technical}
+SSH connections are not supported using the built-in GitHub integration in BuildMaster, so make sure to use the HTTPS endpoint when supplying the repository URL to the resource credentials or any operations. If your organization requires SSH to connect, you must install and configure the Git CLI manually and then instruct BuildMaster to use the [Git CLI instead](#cli).
+:::
 
 ## Source Control Integration {#source-control data-title="Source Control"}
 
@@ -42,6 +52,14 @@ To get source code from a repository, use the `GitHub::Get-Source` operation. Th
 #### Prompting for branch name before a build
 
 To prompt for user input when creating a build, configure a [Release Template](/docs/buildmaster/releases/templates) for your application. The most common use-case for this is selecting a branch when building. This can be accomplished using a "GitHub Branches" dynamic list variable source as the type of build variable.
+
+#### Built-in Git Client vs. `git` CLI {#cli data-title="Built-in Git Client vs. Git CLI"}
+
+By default, BuildMaster does not require Git to be installed on a build server in order to perform source control operations. However, some users who require more advanced configuration for their Git integration may instruct BuildMaster to run the CLI instead by:
+
+{.docs}
+ - setting the `GitExePath` operation property to a valid Git executable path, e.g. `/usr/bin/git` on Linux or `C:\Program Files\Git\bin\git.exe` on Windows
+ - configuring a `$DefaultGitExePath` variable at the server or system level in BuildMaster; this will force all Git source control operations to use the CLI instead of the built-in library
 
 ### Working with GitHub releases
 
