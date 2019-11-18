@@ -26,7 +26,9 @@ TeamCity is such a powerful CI tool, and there are a lot of good reasons to cont
 
 ## Installing the TeamCity Extension {#extension data-title="TeamCity Extension"}
 
-Simply navigate to the Admin > Extensions page in your instance of BuildMaster and install the [TeamCity Extension](https://proget.inedo.com/feeds/Extensions/inedox/TeamCity).
+Simply navigate to the Admin > Extensions page in your instance of BuildMaster and click on the TeamCity extension to install it.
+
+If your instance doesn't have internet access, you can [manually install the TeamCity extension](https://docs.inedo.com/docs/buildmaster/reference/extensions#manual-install) after downloading the [TeamCity Extension Package](https://proget.inedo.com/feeds/Extensions/inedox/TeamCity).
 
 ## Authentication with TeamCity {#authentication data-title="Authentication with TeamCity"}
 
