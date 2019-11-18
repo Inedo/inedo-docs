@@ -1,7 +1,7 @@
 ---
 title: Webhook Monitors
 show-headings-in-nav: true
-sequence: 900
+sequence: 200
 keywords: buildmaster, releases, builds, webhook-monitors
 ---
 
@@ -22,9 +22,9 @@ Once these options are configured, a URL (relative to the BuildMaster host) will
 
 ## GitHub Webhook Monitor {#github data-title="GitHub Hooks"}
 
-In order for BuildMaster to receive webhooks from GitHub, a GitHub Webhook Monitor must be created in BuildMaster first, followed by adding a webhook in GitHub itself. See the [Configuring GitHub Hooks](https://github.com/Inedo/inedox-git/wiki/configuring-github-hooks) documentation for step-by-step instructions.
+In order for BuildMaster to receive webhooks from GitHub, a GitHub Webhook Monitor must be created in BuildMaster first, followed by adding a webhook in GitHub itself. See the [GitHub Webhooks](github-hooks) documentation for step-by-step instructions.
 
 ## GitLab Webhook Monitor {#gitlab data-title="GitLab Hooks"}
 
-In order for BuildMaster to receive webhooks from GitLab, a GitLab Webhook Monitor must be created in BuildMaster first, followed by adding a webhook in GitLab itself. See the [Configuring GitLab Hooks](https://github.com/Inedo/inedox-git/wiki/configuring-gitlab-hooks) documentation for step-by-step instructions.
+In order for BuildMaster to receive webhooks from GitLab, a GitLab Webhook Monitor must be created in BuildMaster first, followed by adding a webhook in GitLab itself. See the [GitLab Webhooks](gitlab-hooks) documentation for step-by-step instructions.
 

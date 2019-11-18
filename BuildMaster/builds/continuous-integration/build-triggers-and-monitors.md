@@ -21,7 +21,7 @@ The default behavior of each of these triggers is to create a new build in eithe
 ##  Executing Custom OtterScript on Trigger {#custom-plan data-title="Executing Custom Plan"}
 You can also configure a build trigger to *execute a custom plan*, which allows you to enter the name of an application-level or system-level OtterScript plan.
 
-During execution, any additional context from the commit will be  [available via deployment variables](/docs/buildmaster/builds/continuous-integration/build-triggers-and-monitors/repository-monitors#ci-plans)  to support more complex use-cases:
+During execution, any additional context from the commit will be  [available via deployment variables](/docs/buildmaster/builds/continuous-integration/build-triggers-and-monitors/repository-monitors#variables)  to support more complex use-cases:
 
 {.docs}
 -   Automatically creating a release & build when a new branch is created by combining the  `Ensure-Release`  and  `Create-Build`  operations

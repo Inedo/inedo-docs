@@ -1,7 +1,7 @@
 ---
 title: Repository Monitors
 show-headings-in-nav: true
-sequence: 900
+sequence: 100
 keywords: buildmaster, releases, builds, monitors
 ---
 
