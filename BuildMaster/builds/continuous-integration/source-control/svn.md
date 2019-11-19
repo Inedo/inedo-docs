@@ -1,11 +1,14 @@
 ---
 title: Subversion
-subtitle: Working with Subversion (SVN) in BuildMaster
-sequence: 100 
-keywords: buildmaster, source-control, svn
+subtitle: Integrating BuildMaster with Subversion (SVN)
+sequence: 700 
+keywords: buildmaster, source-control, subversion
+show-headings-in-nav: true
 ---
 
-Regardless of what kind of repository your project's source code is hosted in, BuildMaster can build it! While the most popular source control management system has become Git, BuildMaster also supports various source control operations for Subversion, including:
+Before the introduction of Git, [Apache Subversion](https://subversion.apache.org/) was the industry standard for open-source source control systems. It is still however very commonly used for many open-source projects and throughout organizations around the world.
+
+BuildMaster is designed to work with Subversion to provide a self-managed CI/CD solution and supports the following source control functionality:
 
 | Operation | Description |
 |---|---|
@@ -14,15 +17,26 @@ Regardless of what kind of repository your project's source code is hosted in, B
 | Export    | Gets the unversioned contents of a repository to a specified directory |
 | Copy      | Creates a copy of a source path to facilitate branching and tagging |
 | Delete    | Deletes a file in a repository  |
+	
+::: {.attention .best-practice}
+**See it live!** See an example of Subversion integration by creating a new application using the *SVN CI/CD* template.
+:::
 
-## How to Integrate BuildMaster with Subversion
+## Installing the Subversion Extension {#extension data-title="Subversion Extension"}
 
-To start using Subversion in your build plans, simply:
+Simply navigate to the *Admin* > *Extensions* page in your instance of BuildMaster and click on the Subversion extension to install it.
 
- 1. Install the [Subversion extension](https://inedo.com/den/inedox/subversion) from `Administration` > `Extensions` or manually
- 2. *(Optional)* Create a Subversion resource credential (secret) to your repository to simplify authentication (see [Authenticating to a Subversion Repository]( #authentication)
+If your instance doesn't have internet access, you can [manually install the Subversion extension](https://docs.inedo.com/docs/buildmaster/reference/extensions#manual-install) after downloading the [Subversion Extension Package](https://proget.inedo.com/feeds/Extensions/inedox/Subversion).
 
-## Using Subversion within BuildMaster
+## Authenticating to a Subversion Repository {#authentication data-title="Authentication with SVN"}
+
+Authentication with Subversion is handled through [Resource Credentials](/docs/buildmaster/administration/resource-credentials), which supports username/password authentication over HTTPS. This is the simplest and recommended method to authenticate with a Subversion repository. While each SVN operation supports supplying a repository URL, username, and password, it is recommended to create a resource rredential that includes the repository name, username, and password. This is not only more secure, but more convenient as the credentials are stored in one location.
+
+::: {.attention .technical}
+SSH connections are not supported using the built-in Subversion integration in BuildMaster, so make sure to use the HTTPS endpoint when supplying the repository URL to the resource credentials or any operations. If your organization requires SSH to connect, you must install and configure the SVN CLI manually and then instruct BuildMaster to use the [SVN CLI instead](#cli).
+:::
+
+## Source Control Integration {#source-control data-title="Source Control"}
 
 ### Checking out the Latest Source Code from a Subversion Repository
 
@@ -38,9 +52,11 @@ Svn-Checkout(
 );
 ```
 
-This operation effectively runs the equivalent SVN command behind the scenes: 
+This operation effectively runs the equivalent SVN command: 
 
-`svn.eve checkout https://github.com/inedo/inedox-subversion.git`
+```
+svn.eve checkout https://github.com/inedo/inedox-subversion.git
+```
 
 *Note: the `.git` extension works in this case because GitHub also supports Subversion clients.*
 
@@ -100,7 +116,9 @@ svn.exe copy trunk tags/Release-1.2.5
 
 {.attention .analogy} Because the branching/tagging operations require write access, they will likely require [authentication](#authentication) with the repository.
 
-### Automatic Builds & Continuous Integration with Subversion
+## Continuous Integration {#ci data-title="Continuous Integration"}
+
+### Automated Builds
 
 BuildMaster supports automatically monitoring a Subversion repository for changes, no matter where it is hosted. 
 
@@ -112,11 +130,14 @@ To automatically create builds when developers commit to a Subversion repository
 
 When using a [repository monitor plan](/docs/buildmaster/builds/continuous-integration/repository-monitors#ci-plans), the following variables are available:
 
+{.docs}
  - `$Branch` - the full path of the branch, e.g. `branches/develop-1.2.3`
  - `$RevisionNumber` - the highest integer revision number of any file within the specified path
 
-## Authenticating to a Subversion Repository {#authentication}
+#### Built-in Subversion Client vs. `svn` CLI {#cli data-title="Built-in SVN Client vs. SVN CLI"}
 
-BuildMaster's Subversion integration supports username/password authentication over HTTPS. This is the simplest and recommended method to authenticate with a Subversion repository.
+By default, BuildMaster does not require SVN to be installed on a build server in order to perform source control operations. However, some users who require more advanced configuration for their SVN integration may instruct BuildMaster to run the CLI instead by:
 
-While each SVN operation supports supplying a repository URL, username, and password, it is recommended to create a [Resource Credential](/docs/buildmaster/administration/resource-credentials) for Subversion that includes the repository name, username, and password. This is not only more secure, but more convenient as the credentials are stored in one location.
+{.docs}
+ - setting the `SvnExePath` operation property to a valid SVN executable path, e.g. `/usr/bin/svn` on Linux or `C:\Program Files\Subversion\bin\svn.exe` on Windows
+ - configuring a `$SvnExePath` variable at the server or system level in BuildMaster; this will force all Subversion source control operations to use the CLI instead of the built-in library
