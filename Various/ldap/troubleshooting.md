@@ -65,8 +65,11 @@ We have had many support inquiries related to the assignment of privileges to th
 
 ## Integrated Authentication Not Working {#authentication-not-working data-title="Integrated Authentication Not Working"}
 
-The underlying mechanisms for this are handled at the HTTP.SYS layer, which our products do not, nor cannot, access. They simply looks for a server variable named `LOGON_USER`, added by the web server, and uses that if available. The only configuration change you can make is to look for that variable, or not; if the variable does not exist, then the issue lies outside of our products.
+The underlying mechanisms for Integrated Windows Authentication are handled at the HTTP.SYS layer, which our products do not, nor cannot, access. Our code simply looks for a server variable named `LOGON_USER`, which is added by the web server (IIS or IIS components we use in the self-hosted version). When you enable Integrated Windows Authentication in our products, users will be automatically logged in if the `LOGON_USER` variable is present. 
 
+Undersatnding this mechanism will help troubleshoot when it goes wrong, but we've also put together [some tips](#iwa-tips) from our users about what they've found works.
+
+### Behind The Scenes: Integrated Windows Authentication
 Integrated Windows Authentication is a very complicated mechanism that requires a properly configured client, server, and domain. To summarize the most common IWA set-up ([Kerberos Authentication](https://technet.microsoft.com/en-us/library/cc772815(v=ws.10).aspx)):
 
 {.docs}
@@ -76,3 +79,28 @@ Integrated Windows Authentication is a very complicated mechanism that requires 
 - The web server adds the `LOGON_USER` variable, strips out the special client token, and sends the modified request to the application software (ProGet, BuildMaster, or Otter) for processing
 
 A lot of things can go wrong in this chain, and describing how to troubleshoot and set-up your network is well beyond the scope of this document and our support. But fortunately, since it’s not at all related to our products, there are a myriad of resources for helping debug this; just search *Integrated Windows Authentication not working*.
+
+### TIP: Add BackConnectionHostNames for same-server or self connections
+
+Integrated Windows Authentication often doesn't work when you're doing a same-server connection. For example: browsing to BuildMaster from a browser on your BuildMaster server, using a connector in ProGet to connect to itself, etc.
+
+Setting the `BackConnectionHostNames` registry value may help!
+
+1. In Registry Editor, locate and then click the following registry key: `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Lsa\MSV1_0`
+2. Right-click `MSV1_0`, point to New, and then click Multi-String Value.
+3. Type `BackConnectionHostNames`, and then press ENTER.
+4. Right-click `BackConnectionHostNames`, and then click Modify.
+5. In the Value data box, type the host names for the sites that are on the local computer (e.g. `proget.kramerica.local`), one per line, and then click OK.
+6. Restart machine
+
+### TIP: Setup a Second site in IIS
+
+Many clients will never support Integrated Windows Authentication, which means they will never be able to connect to your instance. To around this, you can create a second site in IIS that doesn't have Integrated Windows Authentication configured; this will require a different hostname and/or port.
+
+### TIP: Configure a Service Principal Name
+
+You may need to configure a [Service Principal Name](https://docs.microsoft.com/en-us/windows/win32/ad/service-principal-names); Windows is supposed to do this automatically for you when you set up a DNS name, but you may need to use the [`setspn` tool](https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/cc731241(v%3Dws.11)).
+
+### TIP: Add your own Tip!
+
+Please click "edit this page" and share your own tip! 
