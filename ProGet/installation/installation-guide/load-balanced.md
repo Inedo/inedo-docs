@@ -6,14 +6,14 @@ keywords: proget, installation, load-balanced
 ---
 
 ::: {.attention .best-practice}
-These step-by-step instructions were originally developed by Scott Cusson (Senior Release Engineer, Symbotic), primarily as a guide for internal use. We've modified and shared it as a reference guide that may help you set up your load-balanced or high-availability installation. See [load balancing and automatic failover](/docs/proget/installation/load-balancing-and-automatic-failover) for more information.
+These step-by-step instructions were originally developed by [Scott Cusson (Senior Release Engineer, Symbotic)](https://inedo.com/proget/case-studies/symbotic), primarily as a guide for internal use. We've modified and shared it as a reference guide that may help you set up your load-balanced or high-availability installation. See [load balancing and automatic failover](/docs/proget/installation/load-balancing-and-automatic-failover) for more information.
 :::
 
 ## Overview
 
 This example guide is designed to configure a cluster and its various web servers in a Network Load Balancing (NLB) environment, in order to enable the Load Balancing feature in ProGet. This uses [Microsoft Windows NLB feature](https://docs.microsoft.com/en-us/windows-server/networking/technologies/network-load-balancing) as a load balancer, and all machines in this cluster are VMs, though that is not a strict requirement.
 
-## Prerequisites
+## Prerequisites {#prerequisites data-title="Prerequisites"}
 
  - ProGet Enterprise license
  - Running ProGet installation with at least one node (see [Manual Installation Instructions](/docs/proget/installation/installation-guide/manual#first-run))
@@ -40,7 +40,7 @@ For NLB installs, the following are additional prerequisites should be considere
    - Features > Network Load Balancing
    - Features > .NET 4.5+ - (for IIS machine key gen, also install all options)
 
-## Configuring the Cluster {#cluster-configuration}
+## Configuring the Cluster {#cluster-configuration data-title="Configuring the Cluster"}
 
  - RDP as the System user into _ProGet_NLB_
  - Open the NLB manager (Control Panel\All Control Panel Items\Administrative Tools\Network Load Balancing Manager)
@@ -60,7 +60,7 @@ For NLB installs, the following are additional prerequisites should be considere
     - None (preferred); indicates that any host in the cluster which matches to the port rule can handle the client request
     - Multiple host\Single; indicates that one host in the NLB cluster can process traffic from the same client. The requests are basically transmitted to the same host every time NLB reads the IP address.
 
-## Configuring the ProGet Web Nodes
+## Configuring the ProGet Web Nodes {#node-configuration data-title="Configuring the ProGet Nodes"}
 
 Follow the [Web Node Manual Instructions](/docs/proget/installation/installation-guide/manual#web) for each web node. The following additional configuration should be considered:
 
@@ -74,20 +74,20 @@ Follow the [Web Node Manual Instructions](/docs/proget/installation/installation
         - Use validation method SHA1 and Auto Encryption method
         - Deselect any check boxes and click Generate Keys and Apply on the right panel; this will update the web.config with a machine key
 
-## Configure ProGet to Enable Load Balancing
+### Configure ProGet to Enable Load Balancing {#upgrading data-title="Upgrading HA/LB Installations"}
 
 On the ProGet Administration page, visit the "Configure Load Balancing" page, and click Enable.
 
-## Configure ProGet Service Node
+### Configure ProGet Service Node
 
 Visit the [Service Node Manual Install Instructions](/docs/proget/installation/installation-guide/manual#service) to install a service node.
 
 For HA installations, it is recommended to install service nodes on separate machines from the web nodes, but there is no technical restriction on installing a web and service node on the same machine.
 
-## Configure the Inedo Service Messenger
+### Configure the Inedo Service Messenger
 
 The service messenenger is a component of ProGet that enables simple communications between web and service nodes. By default it uses a named pipe, but in a load-balanced configuration it needs to be configured to use TCP instead. The messenger is optional, but certain parts of ProGet's web interface may be slightly degraded without it. See the documentation on the [Service Messenger](/docs/proget/installation/installation-guide/service-messenger) for more information.
 
-## Upgrading a Load Balanced ProGet Installation
+## Upgrading a Load Balanced ProGet Installation {#upgrading data-title="Upgrading HA/LB Installations"}
 
-To upgrade an existing HA/LB installation, follow the [Upgrading a Manual Install Instructions](/docs/proget/installation/installation-guide/manual#upgrade) for each web and service node.
+To upgrade an existing HA/LB installation, follow the [Upgrading a Manual Install Instructions](/docs/proget/installation/installation-guide/manual#upgrade) for each web and service node. Note that you'll only need to perform the database update steps one time.
