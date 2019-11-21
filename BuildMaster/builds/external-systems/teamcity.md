@@ -112,7 +112,7 @@ This example will also pass the `buildType=release` as an additional paramter, a
  2. Specify a Project and Bulid Configuration, which tells the operation where to look for a build.
  3. Specify Additional Parameters that will be used by TeamCity in query string format; these are often be passed to the tools TeamCity uses, such as MSBuild or Maven
  4. Specify Whether to Wait, which determines whether BuildMaster will wait for the build to complete or just queue it and continue executing your OtterScript (generally speaking, you should wait for builds so that it's clear in the execution logs whether it was successful or not).
-
+ 
 ## Special Build Names {#special-build-names data-title="Special Build Names"}
 
 BuildMaster can reference TeamCity builds using the following special build names instead of direct build numbers:
@@ -136,6 +136,27 @@ Additionally, builds may be referenced by their underlying TeamCity ID as oppose
  ````
 
 Generally speaking, you should avoid using build number or TeamCity IDs directly in OtterScript like the above example. Instead, you should [capture the actual build number](#capture) as a variable, and use that instead.
+
+## Branches in TeamCity {#branches data-title="TeamCity Branches"}
+
+TeamCity has support for builds built from feature branches, and both the import and queue operations support using these branches.
+
+For example, you can import artifacts from the last successful `calculation-fix` build on the `ProfitCalc` project by specifying the `Branch` parameter on the operation.
+
+```
+ TeamCity::Import-Artifact
+ (
+     Credentials: KramericaTeamCity,
+     Project: ProfitCalc,
+     BuildConfiguration: v8builds,
+     Branch: calculation-fix,
+     Artifact: profit-calc-web.zip
+ ); 
+ ````
+
+The Branch parameter is generally only useful in conjunction with [special build names](#special-build-names) because specific build numbers are already unique per branch. 
+
+While leaving the `Branch` property blank will refer to the `<default>` branch for the project, you may also specify one in the plan to limit the results of `lastSuccessful`, and optionally filter branch names with BuildMaster variables, for example: `Branch: feature-$ReleaseNumber`.
 
 ## Pushing Artifacts from TeamCity to an Artifact Repository {#push data-title="Pushing Artifacts from TeamCity"}
 
