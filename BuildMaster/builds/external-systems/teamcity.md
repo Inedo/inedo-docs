@@ -184,7 +184,6 @@ TeamCity::Queue-Build
     Credentials: KramericaTeamCity,
     Project: ProfitCalc,
     BuildConfiguration: v8builds,
-    Artifact: profit-calc-web.zip,
     TeamCityBuildNumber => $tcBuildNumber
 ); 
 
