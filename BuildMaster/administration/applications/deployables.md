@@ -10,6 +10,10 @@ show-headings-in-nav: true
 Deployables are an advanced feature, and with the introduction of OtterScript and the Inedo Execution Engine in BuildMaster v5, they offer significantly less benefits than in previous versions.
 :::
 
+:::attention {.technical}
+Starting with BuildMaster v6.2.20, deployables are not visible in most of BuildMaster unless the advanced setting `Legacy.Deployables` is enabled.
+:::
+
 A deployable is intended to represent a "deployable component" of an application. For example, if you had a multi-tier application called HDARS, it might have an HDARS-Web, HDARS-Service, and HDARS-API deployable to represent each of the corresponding tiers.
 
 You can add deployables to your application from the application settings tab, and once you create a deployable for your application, you will be able to select it for use in some contexts, including:
