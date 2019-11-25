@@ -100,7 +100,7 @@ Like all automatic approvals, a build may be forced into a stage even if issues 
 
 Updating an issue's status is commonly done to indicate that an issue was deployed to a new environment and is ready for the next action (e.g.,"ready for testing") or has passed the previous stage (e.g., "approved by QA") if an [automated check](/docs/buildmaster/verification/pipelines/approvals-and-gates/automated-checks) is configured in a BuildMaster pipeline.
 
-After you've [connected BuildMaster to Jira](#connecting), you can use BuildMaster to automatically change issue statuses as part of a deployment [using operations in OtterScript](#Jira-issue-status-example). In addition to reducing the tedious labor of changing issue statuses after a deployment (e.g., moving all issues from "In Progress" to "Ready to Test"), BuildMaster lets you leverage the full power of custom workflows in Jira to provide immediate status to everyone on the team.
+After you've [connected BuildMaster to Jira](#connecting), you can use BuildMaster to automatically change issue statuses as part of a deployment [using operations in OtterScript](#Jira-issue-status-example). BuildMaster reduces the tedious labor of changing issue statuses after a deployment (e.g., moving all issues from "In Progress" to "Ready to Test"). Additinoally, the strength and ease of BuildMaster's Jira integration harnesses the full, best functionality of Jira: its highly customizable issue workflows.
 
 ### Example: `Jira::Transition-Issues` Operation {#Jira-issue-status-example}
 
@@ -114,16 +114,17 @@ Jira::Transition-Issues
     To: Ready to Test
 );
 ```
+Once you run this operation, every issue associated with a given release in BuildMaster will automatically be updated when deployed to the specified stage in BuildMaster. Those working only in Jira and not also in BuildMaster, would see the updated issue status without having to rely on a release manager or to use all the same tools across the team.
 
 ## Creating New Issues Automatically {#create-new-issues-automatically data-title="Automatically Creating New Issues"}
 
-Many teams use Jira for more than just code changes. Jira's flexiblity means it can be used to model virtually any business process, such as deployment tracking. For example, audit trails, unlike working in the source code, do not require a high degree of technical know-how to use.
+Many teams use Jira for more than just code changes. Jira's flexiblity means it can be used to model virtually any business process, such as deployment tracking. For example, unlike working in the source code, locating auditing information (e.g., when something was deployed and by whom) does not require a high degree of technical know-how to use, because all information is within the issue itself.
 
 Teams are already familiar with the process of creating new issues, but they want to automate it. BuildMaster lets you model this workflow by automatically creating and linking to issues. This saves the manual effort of creating new issues and also avoids the human errors that manual processes allow.
 
 ### Example: `Jira::Create-Issue` Operation
 
-Some organizations use issues as a way to deployments throughout a release. This way, business and testing teams can see the progress of deployments, report problems on that issue, and be alerted of status changes using the issue tracking tool's notification features.
+Some organizations use issues as a way to track deployments throughout a release. This way, business and testing teams can see the progress of deployments, report problems on that issue, and be alerted of status changes using the issue tracking tool's notification features.
 
 Although issue tracking tools aren't really designed for this, it's generally easier to just automate your existing process instead of forcing a new process. This is easy to do with BuildMaster: you can use an operation to create an issue:
 
