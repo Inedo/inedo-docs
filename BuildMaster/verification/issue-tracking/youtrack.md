@@ -6,7 +6,7 @@ keywords: buildmaster, builds, youtrack
 show-headings-in-nav: true
 ---
 
-BuildMaster is designed to continuously deliver your applications and components from source code to production and to help everyone track the changes made to each release along the way. Unlike monolithic CI/CD platforms like Azure DevOps or GitLab, BuildMaster works with any combination of issue and project tracking, including YouTrack.
+BuildMaster is designed to continuously deliver your applications and components from source code to production and to help everyone track the changes made to each release along the way. BuildMaster works seamlessly with YouTrack.
 
 [YouTrack](https://www.jetbrains.com/youtrack/) is an issue tracking and project management tool from JetBrains. It can be hosted by JetBrains in the cloud (known as InCloud), or installed and managed on-premise (Standalone). While the most common use-case is "bug tracking," YouTrack offers other features as well, including:
 
@@ -33,20 +33,18 @@ If your instance doesn't have internet access, you can [manually install the You
 
 ## Connecting to YouTrack {#connecting data-title="Connecting to YouTrack"} 
 
-A combination of Issue Sources and [Resource Credentials](/docs/buildmaster/administration/resource-credentials) are used to connect BuildMaster to your Issue or Project Tracking System. Each supported issue tracker has its own type of Issue Source, and that type is defined in the corresponding extension.
+A combination of Issue Sources and [Resource Credentials](/docs/buildmaster/administration/resource-credentials) are used to connect BuildMaster to YouTrack.
 
-For example, installing the YouTrack extension will allow you to create a:
+Installing the YouTrack extension will allow you to create a:
 
 - [Resource Credential](/docs/buildmaster/administration/resource-credentials) that contains a server URL and an API key to connect to your YouTrack server
+ - The YouTrack-type [Resource Credential](/docs/buildmaster/administration/resource-credentials) credentials are either username/password or token-based. Since a token is associated with a user, whichever credentials method is chosen, we recommend the user account has the minimum privileges required only to read issues, or create/append to issues.
+ - To connect, the YouTrack server URL is required, which for hosted installations follows the format: `https://example.myjetbrains.com/youtrack`
 - Issue Source that identifies which YouTrack issues belong in which [BuildMaster release](/docs/buildmaster/releases/overview) as [outlined below](#issue-source)
 
-Both Resource Credentials and Issue Sources can be configured at the application level, the application group level, and the system level. This means you can have multiple issue sources per application or use one issue source for multiple applications, and they can all use the same resource credential.
-
-## Authentication with YouTrack {#authentication data-title="Authentication with YouTrack"}
-
-After adding the YouTrack extension, you'll need to authenticate it. The YouTrack type [Resource Credential](/docs/buildmaster/administration/resource-credentials) credentials are either username/password or token-based. Since a token is associated with a user, whichever credentials method is chosen, we recommend the user account has the minimum privileges required only to read issues, or create/append to issues. To connect, the YouTrack server URL is required, which for hosted installations follows the format: `https://example.myjetbrains.com/youtrack`
-
 Public servers (i.e., open-source) or internal servers that are firewalled off that don't require can simply use anonymous authentication.
+
+Both Resource Credentials and Issue Sources can be configured at the application level, the application group level, and the system level. This means you can have multiple issue sources per application or use one issue source for multiple applications, and they can all use the same resource credential. **(ATTN: JOHN)**
 
 ## Associating Issues with BuildMaster Releases {#issue-source data-title="Associating Issues"}
 
@@ -67,7 +65,7 @@ You can also use any [configuration variables](/docs/buildmaster/administration/
 
 BuildMaster will also periodically synchronize to its own, built-in issue tracking system. Consider this a fail-over, an additional place to keep track of issues. You can view these by going to the "Issues" tab on the application navigation bar.
 
-This issue store tracks the following information about each issue:
+This issue store tracks the following information about each issue: **(ATTN: JOHN)**
 
 | | |
 |--|--|
@@ -80,7 +78,7 @@ This issue store tracks the following information about each issue:
 | Description | a longer description of the issue, containing details |
 | URL | URL directly linking to the issue in the tool, so that it can be clicked on from the BuildMaster user interface |
 
-### Example: Inedo Use Case
+### Example: Inedo Use Case    (ATTN: JOHN)
 
 On our [public instance of BuildMaster](https://buildmaster.inedo.com/), we have dozens of nearly identical applications configured that are designed to build/deploy the various extensions to our products. We've configured just a single issue source as follows:
 
@@ -94,7 +92,7 @@ This issue source will periodically synchronize with (in our case) GitHub, and w
 
 ### Troubleshooting: Issue Synchronization 
 
-An issue synchronization will automatically occur when you visit the release or build overview page. This is mostly transparent: a "please wait" status image is displayed while the execution engine runs the synchronization with the issue source. Once complete, BuildMaster displays the freshly synchronized issues stored within internal issue storage.
+An issue synchronization will automatically occur when you visit the release or build overview page. This is mostly transparent: a "please wait" status image is displayed while the execution engine runs the synchronization with the issue source. Once complete, BuildMaster displays the freshly synchronized issues stored within internal issue storage. For details on troubleshooting manually, see [Manual Synchronization](/docs/buildmaster/verification/issue-tracking#troubleshooting-issue).
 
 ### Manual Synchronization
 
@@ -127,28 +125,13 @@ Like all automatic approvals, a build may be forced into a stage even if issues 
 
 Updating an issue's status is commonly done to indicate that an issue was deployed to a new environment and "ready for testing," or "approved by QA" if an [automated check](/docs/buildmaster/verification/pipelines/approvals-and-gates/automated-checks) is configured in a BuildMaster pipeline.
 
-After you've [connected BuildMaster to your Issue or Project Tracking System](/docs/buildmaster/verification/issue-tracking), you can use BuildMaster to automatically change issue statuses as part of a deployment using operations in OtterScript. Use the `YouTrack::Change-Issue-State` operation and supply the new state along with the issue ID obtained from the [find](#finding-issues) operation.
+After you've [connected BuildMaster to YouTrack](/docs/buildmaster/verification/issue-tracking), you can use BuildMaster to automatically change issue statuses as part of a deployment using operations in OtterScript. Use the `YouTrack::Change-Issue-State` operation and supply the new state along with the issue ID obtained from the [find](#finding-issues) operation. **(ATTN: JOHN)**
 
 In addition to reducing the tedious labor of changing issue statuses after a deployment (e.g., moving all issues from "In Progress" to "Ready to Test"), BuildMaster lets you leverage the full power of custom statuses/workflows in your issue tracker to provide immediate status to everyone on the team.
 
-### Using the Operations 
+### Using the Operation       (ATTN: JOHN)
 
 The specifics of issue status or state changing operations are documented in the corresponding *Tool & Service Integrations* pages, but they are all used similarly. Essentially, you specify various options using parameters.
-
-### Example: Advanced Workflow to Provide Immediate Status
-Business stakeholders want as much information as possible about the changes they've requested, while developers want to avoid as much tedious, manual labor as possible.
-
-Instead of forcing business stakeholders to use a simplistic issue tracker (such as the one built-in to GitHub), or forcing developers to constantly change issue statuses by hand, BuildMaster lets you automatically transition issue statuses on deployment using a workflow as follows:
-
-![](/resources/documentation/buildmaster/advanced-issue-flow.png)
-
-By using these states, it's pretty easy to set up some basic processes and procedures:
-
-{.docs}
-- Unless all Issues are "Ready for Production," the release cannot be deployed to production.
-- Immediately after a successful deployment to Integration, all issues in "Checked In" should be changed to "Deployed to Integration."
-
-It would be incredibly bothersome to update all of these statuses by hand. With automation, it's trivial.
 
 ## Adding Issue Comments/Notes at Build/Deploy Time {#issue-comments data-title="Automatically Adding Comments"} 
 
@@ -159,58 +142,15 @@ Similar to [Automatically Changing Issue Statuses](#changing-issue-status), you 
 - Link back to build in BuildMaster
 - A note entered in BuildMaster, at deployment time, by the user who deployed the build
 
-The most common use-case for commenting on issues is to add "deployed by BuildMaster to $EnvironmentName", likely with links directly to the build or artifact, possibly using the [CI Badge API] to generate links with images.To add comments to an issue, use the `YouTrack::Add-Comment` operation along with the issue ID obtained from the [find](#finding-issues) operation.
-
-### Example: Disposable Infrastructure
-
-A common deployment pattern involves deploying software to "disposable environment", in other words, environments that are created and destroyed on an ad-hoc basis. These kinds of environments are typically handled this way in order to:
-
-{.docs}
- - speed up creation of test environments
- - ensure new environments are "fresh", i.e. they might not have dependencies on data or configuration other than a default setup
- - allow multiple environments to exist at the same time
- 
-A common problem with these kinds of environments is simply knowing that they exist at all once they are created, or how to find the environments in the first place. This can create issues with testing teams, since they may not know which environment they should be testing.
-
-BuildMaster helps solve this problem by integrating with issue tracking tools that are already helping the testing teams manage their processes. For example, you can add a comment to all issues in "Ready for QA" status instructing testers how to access the environments. For example, this OtterScript used in a plan will include a URL to an environment created earlier in a previous pipeline stage:
-
-```
-YouTrack::Find-Issues
-(
-    Credentials: YouTrack,
-    Filter: Fix version: $ReleaseNumber State: Ready for QA,
-    Output => @YouTrackIssueIDs
-);
-
-foreach $IssueId in @YouTrackIssueIDs
-{
-    YouTrack::Change-Issue-State
-    (
-        Credentials: YouTrack,
-        IssueId: $IssueId,
-        State: Deployed to QA
-    );
-        
-    YouTrack::Add-Comment
-    (
-        Credentials: YouTrack,
-        IssueId: $IssueId,
-        Comment: >>The fix for this issue ($IssueId) was automatically deployed by BuildMaster on $Date to [$EnvironmentName](https://us-web-01.$ApplicationName-$ReleaseNumber-$BuildNumber.corp/) >>
-    );
-}          
-```
-
-In addition to reducing the tedious labor of changing issue statuses after a deployment (e.g., physically moving all issues from "In Progress" to "Ready to Test"), this lets you leverage the full power of custom statuses/workflows in your issue tracker to provide immediate status updates to everyone on the team.
+The most common use-case for commenting on issues is to add "deployed by BuildMaster to $EnvironmentName", likely with links directly to the build or artifact, possibly using the [CI Badge API] to generate links with images.To add comments to an issue, use the `YouTrack::Add-Comment` operation along with the issue ID obtained from the [find](#finding-issues) operation. **(ATTN: JOHN)**
 
 ## Creating New Issues Automatically {#create-new-issues-automatically data-title="Automatically Creating New Issues"}
 
-Many teams use issue and project tracking tools like YouTrack for more than just code changes.
-
-Most issue/project tracking tools available today are extremely flexible and can therefore be used to model virtually any business process, such as deployment tracking. For example, issue trackers have audit trails that, unlike working in the source code, do not require a high degree of technical know-how to use.
+Many teams use YouTrack for more than just code changes. YouTrack's flexiblity means it can be used to model virtually any business process, such as deployment tracking. For example, audit trails, unlike working in the source code, do not require a high degree of technical know-how to use.
 
 Teams are already familiar with the process of creating new issues, but they want to automate it. BuildMaster lets you model this workflow by automatically creating and linking to issues. This saves the manual effort of creating new issues and also avoids the human errors that manual processes allow.
 
-### Example: Creating a "Deployment Tracking" Issue
+### Example: Creating a "Deployment Tracking" Issue      (ATTN: JOHN)
 
 Some organizations use issues as a way to deployments throughout a release. This way, business and testing teams can see the progress of deployments, report problems on that issue, and be alerted of status changes using the issue tracking tool's notification features.
 
@@ -239,13 +179,3 @@ You can then use the `$YouTrackIssueId` in later operations to automatically [ch
 ### Tip: Use a Variable Renderer for User-friendly Display
 
 You can do this in BuildMaster with [Variable Value Renderers](/docs/buildmaster/administration/value-renderers). These are essentially instructions for how to render variables in the UI that have certain names (such as `$YouTrackIssueId`). Because you can specify HTML in a value renderer, you link directly to your issue tracker. This provides easy navigation for users.
-
-## Issues and Builds {#issues-builds data-title="Issues & Builds"}
-
-Issues are always associated with a release, but they may also be associated with up to two builds. Associating an issue with a build provides extra contextual information for end-to-end visibility. You can associate the issue with the "Opened" and "Closed" builds:
-
-{.docs}
-- Opened: Indicates in which build the issue was discovered or that it was opened for that build
-- Closed: Indicates which build successfully resolved or closed an issue (like a patch)
-
-These associations can be especially useful when there are multiple builds that are being tested at the same time.
