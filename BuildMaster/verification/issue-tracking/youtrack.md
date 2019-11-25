@@ -101,11 +101,11 @@ Like all automatic approvals, a build may be forced into a stage even if issues 
 
 Updating an issue's status is commonly done to indicate that an issue was deployed to a new environment and "ready for testing," or "approved by QA" if an [automated check](/docs/buildmaster/verification/pipelines/approvals-and-gates/automated-checks) is configured in a BuildMaster pipeline.
 
-After you've [connected BuildMaster to YouTrack](#connecting), you can use BuildMaster to automatically change issue statuses as part of a deployment using operations in OtterScript. In addition to reducing the tedious labor of changing issue statuses after a deployment (e.g., moving all issues from "In Progress" to "Ready to Test"), BuildMaster lets you leverage the full power of custom statuses/workflows in your issue tracker to provide immediate status to everyone on the team.
+After you've [connected BuildMaster to YouTrack](#connecting), you can use BuildMaster to automatically change issue statuses as part of a deployment using operations in OtterScript. In addition to reducing the tedious labor of changing issue statuses after a deployment (e.g., moving all issues from "In Progress" to "Ready to Test"), BuildMaster lets you leverage the full power of custom statuses in YouTrack to provide immediate status to everyone on the team.
 
 ### Example: `YouTrack::Change-Issue-State` Operation
 
-Use the `YouTrack::Change-Issue-State` operation and supply the new state along with the issue ID obtained from the [find](#finding-issues) operation. **(ATTN: JOHN)**
+Use the `YouTrack::Change-Issue-State` operation and supply the new state along with the issue ID obtained from the [find](#finding-issues) operation.
 
 ```
 YouTrack::Find-Issues
@@ -159,7 +159,7 @@ foreach $IssueId in @YouTrackIssueIDs
 
 ## Creating New Issues Automatically {#create-new-issues-automatically data-title="Automatically Creating New Issues"}
 
-Many teams use YouTrack for more than just code changes. YouTrack's flexiblity means it can be used to model virtually any business process, such as deployment tracking. For example, audit trails, unlike working in the source code, do not require a high degree of technical know-how to use.
+Many teams use YouTrack for more than just code changes. YouTrack's flexiblity means it can be used to model virtually any business process, such as deployment tracking. For example, unlike working in the source code, locating auditing information (e.g., when something was deployed and by whom) does not require a high degree of technical know-how to use, because all information is within the issue itself.
 
 Teams are already familiar with the process of creating new issues, but they want to automate it. BuildMaster lets you model this workflow by automatically creating and linking to issues. This saves the manual effort of creating new issues and also avoids the human errors that manual processes allow.
 
