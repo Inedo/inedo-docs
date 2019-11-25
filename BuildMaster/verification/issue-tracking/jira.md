@@ -6,7 +6,7 @@ keywords: buildmaster, builds, jira
 show-headings-in-nav: true
 ---
 
-[Jira](https://www.atlassian.com/software/jira) is an issue tracking and project management tool from Atlassian. It can be hosted by Atlassian in the cloud, or hosted on your organization's servers using the self-managed version. While Jira originally began as as "bug tracker", Jira offers many other features as well, including:
+[Jira](https://www.atlassian.com/software/jira) is an issue tracking and project management tool from Atlassian. It can be hosted by Atlassian in the cloud, or hosted on your organization's servers using the self-managed version. While it originally began as as "bug tracker," Jira offers many other features as well, including:
 
 {.docs}
  - Agile boards, whether using Scrum or Kanban
@@ -27,9 +27,9 @@ BuildMaster is designed to work especially well with Jira as an [issue tracker](
 
 ## Installing the Jira Extension {#extensions data-title="Jira Extension"}
 
-Simply navigate to the *Admin* > *Extensions* page in your instance of BuildMaster and click on the Jira extension to install it.
+Jira is one of many tools BuildMaster integrates with, and installing the extension is extremely easy. Simply navigate to the *Admin* > *Extensions* page in your instance of BuildMaster and click on the Jira extension to install it.
 
-If your instance doesn't have internet access, you can [manually install the Jira extension](/docs/buildmaster/reference/extensions#manual-install) after downloading the [Jira Extension Package](https://proget.inedo.com/feeds/Extensions/inedox/Jira).
+If your instance doesn't have Internet access, you can [manually install the Jira extension](/docs/buildmaster/reference/extensions#manual-install) after downloading the [Jira Extension Package](https://proget.inedo.com/feeds/Extensions/inedox/Jira).
 
 ## Connecting to Jira {#connecting data-title="Connecting to Jira"} 
 
@@ -42,28 +42,28 @@ Installing the Jira extension will allow you to create a:
    - To connect, the Jira server URL is required, which for hosted installations follows the format: `https://jira.internal.corp`
  - Issue Source that identifies which Jira issues belong in which [BuildMaster release](/docs/buildmaster/releases/overview) as [outlined below](#issue-source)
 
-Public servers (i.e. open-source projects) or internal servers that are firewalled off that don't require a username or password and can simply use anonymous authentication.
+Public servers (i.e., open-source projects) or internal servers that are firewalled off that don't require a username or password and can simply use anonymous authentication.
 
 Both Resource Credentials and Issue Sources can be configured at the application level, the application group level, and the system level. This means you can have multiple issue sources per application or use one issue source for multiple applications, and they can all use the same resource credential.
 
 ## Associating Issues with BuildMaster Releases {#issue-source data-title="Associating Issues"}
 
-To associate issues with Jira [issue source](/docs/buildmaster/verification/issue-tracking#issues-sources), the following fields need to be configured:
+To associate issues with your Jira [issue source](/docs/buildmaster/verification/issue-tracking#issues-sources), the following fields need to be configured:
 
 {.docs}
- - **Project name** - should be the key (e.g. PG for ProGet)
+ - **Project name** - should be the key (e.g., PG for ProGet)
  - **Fix for version** - used to associate Fix Versions in Jira with release numbers in BuildMaster (typically `$ReleaseNumber`)
  - **Custom JQL** - for advanced users, you can use a [custom JQL query](https://confluence.atlassian.com/jirasoftwarecloud/advanced-searching-764478330.html) to associate issues e.g. `project = "$ApplicationName and fixVersion = "bm-$ReleaseNumber"`
 
 ### Variable and Issue Sources
 
-BuildMaster will automatically and periodically perform one synchronization for each active release in the system. This means that a release is always "in context", and you can use any of the [variable functions](/docs/buildmaster/reference/functions) that rely on a release to be in context: [$ApplicationName](/docs/buildmaster/reference/functions/applications/applicationname), [$ReleaseNumber](/docs/buildmaster/reference/functions/releases/releasenumber), [$ReleaseName](/docs.inedo.com/docs/buildmaster/reference/functions/releases/releasename), [$ReleaseNumberPart()](/docs/buildmaster/reference/functions/releases/releasenumberpart), etc.
+BuildMaster will automatically and periodically perform one synchronization for each active release in the system. This means that a release is always "in context," and you can use any of the [variable functions](/docs/buildmaster/reference/functions) that rely on a release to be in context: [$ApplicationName](/docs/buildmaster/reference/functions/applications/applicationname), [$ReleaseNumber](/docs/buildmaster/reference/functions/releases/releasenumber), [$ReleaseName](/docs.inedo.com/docs/buildmaster/reference/functions/releases/releasename), [$ReleaseNumberPart()](/docs/buildmaster/reference/functions/releases/releasenumberpart), etc.
 
 You can also use any [configuration variables](/docs/buildmaster/administration/configuration-variables) that are accessible from a release context: release, application, application-group, or system.
 
 ### Syncing Issues in BuildMaster
 
-BuildMaster will also periodically synchronize issues in Jira with its own, built-in issue tracking system. Consider this a fail-over, an additional place to keep track of issues. You can view these by going to the "Issues" tab on the application navigation bar.
+BuildMaster will also periodically synchronize issues in Jira with BuildMaster's own, built-in issue tracking system. Consider this a fail-over, an additional place to keep track of issues. You can view these by going to the "Issues" tab on the application navigation bar.
 
 This issue source tracks the following information about each issue:
 
@@ -86,23 +86,23 @@ See [Manual Synchronization](/docs/buildmaster/verification/issue-tracking) for 
 
 Once you've [connected BuildMaster to Jira](#connecting), the next step should be ensuring that releases with unclosed or unresolved issues aren't deployed. This is an incredibly important part of "pushing left," making sure that problems are caught earlier in the CI/CD process where they are cheaper and faster to repair and are less damaging to the business.
 
-This can be done configuring one of two automated checks on your [release pipeline](/docs/buildmaster/verification/pipelines) that will prevent builds from being deployed to a particular stage unless all issues are closed. You can also permit builds to move forward after a certain status such as "Resolved" appears. Prior to deployment, these approvals will evaluate each issue associated with the release and block the deployment if the approval is not met or is unresolved. 
+This can be done by configuring one of two automated checks on your [release pipeline](/docs/buildmaster/verification/pipelines) that will prevent builds from being deployed to a particular stage unless all issues are closed. You can also permit builds to move forward after a certain status such as "Resolved" appears. Prior to deployment, these approvals will evaluate each issue associated with the release and block the deployment if the approval is not met or is unresolved. 
 
-BuildMaster supports two automated checks out of the box that can be used without further configuration once Jira is set up to [associate issues](#issue-source) using the following [automated checks](/docs/buildmaster/verification/pipelines/approvals-and-gates/automated-checks):
+BuildMaster supports two automated checks out of the box, checks that can be used without further configuration once Jira is set up to [associate issues](#issue-source). These use the following [automated checks](/docs/buildmaster/verification/pipelines/approvals-and-gates/automated-checks):
 
 {.docs}
  - **All Issues Closed** - ensures that deployments are blocked to a certain pipeline stage unless all issues have a resolution date in Jira
  - **All Issues in Status** - ensures that deployments are blocked to a certain pipeline stage unless the "status" field in Jira matches a specified status defined in a BuildMaster pipeline
 
-Like all automatic approvals, a build may be forced into a stage even if issues aren't closed or in the appropriate status. However, this requires a special action and a specific permission to be manually taken by an actual person. In other words, forcing a build forward despite being blocked on issue status is _not_ an automated process.
+Like all automatic approvals, a build may be forced into a stage even if issues aren't closed or aren't in the appropriate status. However, this requires a special action and a specific permission to be manually taken by an actual person. In other words, forcing a build forward despite being blocked on issue status is _not_ an automated process.
 
 ## Automatically Changing Issue Status {#changing-issue-status data-title="Changing Issue Status"}
 
-Updating an issue's status is commonly done to indicate that an issue was deployed to a new environment and "ready for testing," or "approved by QA" if an [automated check](/docs/buildmaster/verification/pipelines/approvals-and-gates/automated-checks) is configured in a BuildMaster pipeline.
+Updating an issue's status is commonly done to indicate that an issue was deployed to a new environment and is ready for the next action (e.g.,"ready for testing") or has passed the previous stage (e.g., "approved by QA") if an [automated check](/docs/buildmaster/verification/pipelines/approvals-and-gates/automated-checks) is configured in a BuildMaster pipeline.
 
-After you've [connected BuildMaster to Jira](#connecting), you can use BuildMaster to automatically change issue statuses as part of a deployment using operations in OtterScript. In addition to reducing the tedious labor of changing issue statuses after a deployment (e.g., moving all issues from "In Progress" to "Ready to Test"), BuildMaster lets you leverage the full power of custom workflows in Jira to provide immediate status to everyone on the team.
+After you've [connected BuildMaster to Jira](#connecting), you can use BuildMaster to automatically change issue statuses as part of a deployment [using operations in OtterScript](#Jira-issue-status-example). In addition to reducing the tedious labor of changing issue statuses after a deployment (e.g., moving all issues from "In Progress" to "Ready to Test"), BuildMaster lets you leverage the full power of custom workflows in Jira to provide immediate status to everyone on the team.
 
-### Example: `Jira::Transition-Issues` Operation
+### Example: `Jira::Transition-Issues` Operation {#Jira-issue-status-example}
 
 Use the `Jira::Transition-Issues` operation and supply the new state:
 
