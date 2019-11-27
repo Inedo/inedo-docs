@@ -34,14 +34,13 @@ You’re welcome to submit pull requests to this page or contribute to the linke
 Thanks to the investigative work of Scott Cusson (one of our users), we were able to implement Helm charts in ProGet as a proof-of-concept in a matter of days. As it turned out, a private Helm chart repository could almost entirely be implemented as an Asset Directory (Scott had tried this on his own); ProGet just needed to generate a special Metadata file to list the packages in the directory for this to work via the Helm client. Once we knew that, it was pretty easy for us to dig in and figure out how to implement this feed type. It was shipped in ProGet 5.2 thanks to Scott and his team’s help.
 
 
-### RPM: Planned for development in Q4/2019
+### R and CRAN: Will start development in December 2019
 
-Thanks to support and investigation from the user community, this seems substantially similar to Debian, but easier to implement thanks to the lack of the complex indexes required. This is being discussed in [QA#9887](https://inedo.com/support/questions/4045).
+We're still in the planning and research phase, but thanks to help form the community we'll be able to start prototyping quite soon. Please join the discussion at  [QA#2686](https://forums.inedo.com/topic/2686/support-for-r-and-cran) to learn more and help us develop this feed type!
 
+### RPM: Planned for development in Q1/2020
 
-### R and CRAN: In discussions
-
-We don’t know much about this now, and could definitely use some insight on the technical details. Got any to share? Please join the discussion at  [QA#9887](https://inedo.com/support/questions/9887).
+Thanks to support and investigation from the user community, this seems substantially similar to Debian, but easier to implement thanks to the lack of the complex indexes required. However, we hit few snags in early prototying, so we're going to push back development a bit. This is being discussed in [QA#9887](https://inedo.com/support/questions/4045).
 
 ### PHP Composer/Packagist: Evaluated, seems really tough
 
@@ -53,7 +52,7 @@ Since then, there haven’t been too many requests for it, and we have no idea w
 
 ### Vagrant: very limited demand 
 
-We've had one or two feature requests for this over the years, but our feeling is that containers might be the direction that people are going? 
+We've had three feature requests for Vagrant over the years, but they were fairly  casual inquiries and we didn't get any more info from those users. Our general feeling is that Vagrant is kind of on the outs, and containers are probably going to replace it. Hard to say. Share your thoughts by starting a thread in our [forums](https://forums.inedo.com/), and we'll link it here.
 
 ### CocoaPods: no actual interest
 
@@ -65,4 +64,5 @@ We have a lot of users who use Go, and they've told us there is no "proper" pack
 
 ### Other types?
 
-Just let us know. This is what we know about now.
+These are the third-party that we know about, but there are certainly more. Just let us know by posting something in our [forums](https://forums.inedo.com/); we can link to it from this page, and track it fairly easily then. 
+
