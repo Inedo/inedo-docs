@@ -14,7 +14,7 @@
         </p>
     </div>
     <p>
-        upack.exe is a command-line tool used to create and install universal packages; you can also see which packages are installed on a machine.
+        upack.exe is a cross-platform command-line tool used to create and install universal packages; you can also see which packages are installed on a machine.
     </p>
     <iframe width="600" height="337" src="https://www.youtube.com/embed/blGLta0cvPA" frameborder="0" allowfullscreen="true"></iframe>
 
@@ -42,13 +42,16 @@
             An installed instance of ProGet with a Universal feed configured
         </li>
         <li>
-            Basic PowerShell or Windows Command Prompt knowledge
+            Basic Shell knowledge (for Linux users), or Command Prompt / PowerShell (for Windows users) 
         </li>
     </ul>
 
     <h3 id="overview">Overview</h3>
     <p>
         In this tutorial, we will take an existing website and package it into a Universal Package using the upack.exe tool. The files in Accounts.zip are just the build output of a basic .NET web application. For those unfamiliar with .NET, it could just as easily be a Java WAR file, a collection of PHP files, or even static HTML.
+    </p>
+    <p>
+        We'll also be using a PowerShell prompt (hence the <code>PS &gt;</code>) and <code>C:\tmp\accounts</code> as a working directory, but you can do this on Linux or in the command prompt just the same.
     </p>
     <h3 id="creating">Creating a Package</h3>
    <p>
@@ -58,7 +61,7 @@
         <strong>Note:</strong> In a typical usage scenario, the "pack" step would be executed by a Continuous Integration server such as TeamCity or Jenkins immediately after build output is generated.
     </p>
     <p>
-        To begin, we will download the Accounts.zip file and extract its contents into a temporary directory (in this example, we will use <code>C:\tmp\accounts</code>). Additionally, we will download upack.exe to a directory already included in the <code>PATH</code> environment variable.
+        To begin, we will download the Accounts.zip file and extract its contents into a temporary directory. Additionally, we will download upack.exe to a directory already included in the <code>PATH</code> environment variable.
     </p>
     <p>
         In PowerShell, navigate to <code>C:\tmp\accounts</code>, and enter the following command to package the contents into a Universal Package:
