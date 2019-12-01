@@ -63,11 +63,13 @@ To download the package, select "Manual Install" link for the desired version fr
 The manual installation package contains the following:
 
 {.docs}
- - **Extensions directory** - a directory containing the default extensions shipped with the selected version of ProGet
- - **ProGet-Service.zip** - contains the files and binaries required to run the ProGet Windows Service
- - **ProGet-WebApp.zip** - contains the files and binaries required to run the web application
- - **ProGet-SqlScripts.zip** - contains the SQL scripts required to generate the SQL Server database, or update an existing one to the schema required for the downloaded version
+ - **Extensions directory** - contains the default extensions shipped with the selected version of ProGet
+ - **Service directory** - contains the files and binaries required to run the ProGet Windows Service
+ - **SqlScripts directory** - contains the SQL scripts required to generate the SQL Server database, or update an existing one to the schema required for the downloaded version
+ - **Web directory** - contains the files and binaries required to run the web application
 
+ Note that, in earlier versions of ProGet, the directory names may be different or may be .zip files instead of directories. Regardless of the structure, the process has remained the same since ProGet v4.
+ 
 #### Installation Directories {#directories}
 
 By default, the ProGet installer allows configuration of its root installation directory, and will configure temporary directories and package storage paths for you. During a manual installation, these directories must be provisioned prior to installation.
@@ -142,7 +144,17 @@ For more information on creating database logins, see: https://docs.microsoft.co
 
 #### Database Update Process
 
-Unzip `ProGet-SqlScripts.zip` into a temporary directory run the following command *in that directory*, replacing the connection string as needed:
+1. Copy the `SqlScripts` directory into a temporary directory.
+
+2. Run command line and change current directory to the `SqlScripts` folder which contains dbupdater.exe file.
+
+3. Unpack required scripts from Scripts.gz with the following command: 
+
+```
+.\dbupdater.exe unpack .\Scripts.gz .
+```
+
+4. After the required folders/files are extracted, stay in the same directory and run the following command in that directory, replacing the connection string as needed:
 
 ```
 .\dbupdater.exe update . <connection-string>
@@ -151,6 +163,8 @@ Unzip `ProGet-SqlScripts.zip` into a temporary directory run the following comma
 For example:
 
 ```
+cd C:\ProGetSetup5.2.14_Manual\
+.\dbupdater.exe unpack .\Scripts.gz .
 .\dbupdater.exe update . "Server=dbserver01\SQLEXPRESS; Database=ProGet; Integrated Security=true;"
 ```
 
@@ -194,9 +208,9 @@ Before installing ProGet in IIS, the following roles/features must be enabled in
  - .NET Framework 4.6 Features > .NET Framework 4.6
  - .NET Framework 4.6 Features > ASP.NET 4.6
 
-### 1. Extract website files
+### 1. Copy website files
 
-Extract the contents of `ProGet-WebApp.zip` from the installation package to a subdirectory of the *root installation directory* identified earlier. For reference, the installer defaults this to: `C:\Program Files\ProGet\Web`
+Copy the contents of `Web` directory from the installation package to a subdirectory of the *root installation directory* identified earlier. For reference, the installer defaults this to: `C:\Program Files\ProGet\Web`
 
 ### 2. Create an application pool in IIS
 
@@ -219,7 +233,7 @@ You may adjust other application pool settings as desired.
 The minimum requirements for the IIS web site are:
 
 {.docs}
- - **Physical Path** - the path on disk where the ProGet web application files were extracted to in step 1
+ - **Physical Path** - the path on disk where the ProGet web application files were copied to in step 1
  - **Application Pool** - the application pool to use, created in step 2
  - **Binding** - the combination of IP address(es) and port(s) used to access ProGet over the network
 
@@ -235,13 +249,13 @@ You may adjust other IIS site settings as desired.
 
 ## Service Node (Windows Service) {#service data-title="Service Node (Windows Service)"}
 
-### 1. Extract service files 
+### 1. Copy service files 
 
-Extract the contents of `ProGet-Service.zip` from the installation package to a subdirectory of the *root installation directory* identified earlier. For reference, the installer defaults this to: `C:\Program Files\ProGet\Service`
+Copy the contents of `Service` directory from the installation package to a subdirectory of the *root installation directory* identified earlier. For reference, the installer defaults this to: `C:\Program Files\ProGet\Service`
 
 ### 2. Install the service
 
-The extracted service files will contain the service executable `ProGet.Service.exe`; run this program from an elevated command prompt or PowerShell window to install the Windows Service (`INEDOPROGETSVC`):
+The copied service files will contain the service executable `ProGet.Service.exe`; run this program from an elevated command prompt or PowerShell window to install the Windows Service (`INEDOPROGETSVC`):
 
 ```
 PS C:\Program Files\ProGet\Service> .\ProGet.Service.exe install --user="ProGetServiceUser@domain" --password="<account-password>"
@@ -321,7 +335,7 @@ If you do not have a license key yet (or do not know what yours is), you may vie
 
 While extensions are available in the [Inedo Den](https://inedo.com/den) and our own [public ProGet instance](https://proget.inedo.com/feeds/Extensions), the ProGet installation ships with "frozen" or "locked" versions of the extensions at the time the installer was built.
 
-Once the `Extensions.BuiltInExtensionsPath` setting is configured to a valid directory, extract the contents of `Extensions/` directory within the manual installation package into that directory, then restart the application pool and ProGet Windows Service. Any extensions in this path are combined with the extensions managed within the ProGet software (i.e. downloaded from the Administration > Extensions page and stored in the `Extensions.ExtensionsPath` directory), and the "latest" SDK-compatible version (as per semantic versioning rules) is loaded.
+Once the `Extensions.BuiltInExtensionsPath` setting is configured to a valid directory, copy the contents of `Extensions/` directory from the installation package into that directory, then restart the application pool and ProGet Windows Service. Any extensions in this path are combined with the extensions managed within the ProGet software (i.e. downloaded from the Administration > Extensions page and stored in the `Extensions.ExtensionsPath` directory), and the "latest" SDK-compatible version (as per semantic versioning rules) is loaded.
 
 #### Manual Extension Installation
 
@@ -366,8 +380,8 @@ For the most part, an upgrade is an "XCOPY deployment" of files from the [manual
 
 | Contents | Target | Installer Default | Notes |
 |---|---|---|
-| ProGet-Service.zip | Service installation directory | `C:\Program Files\ProGet\Service` | May overwrite existing `App_appSettings.config` if empty |
-| ProGet-Web.zip | Web application home directory | `C:\Program Files\ProGet\Web` | May overwrite existing `Web_appSettings.config` if empty |
+| Service | Service installation directory | `C:\Program Files\ProGet\Service` | May overwrite existing `App_appSettings.config` if empty |
+| Web | Web application home directory | `C:\Program Files\ProGet\Web` | May overwrite existing `Web_appSettings.config` if empty |
 | Extensions | `Extensions.BuiltInExtensionPath` directory | `C:\Program Files\ProGet\Extensions` | Overwrite contents with install package contents |
 
 While v5.1.0 and later versions of ProGet should not store data in these configuration files, existing installations might contain relevant data such as connection strings that should ultimately be migrated to the [ProGet Configuration File](/docs/proget/installation/config-files) and removed from the `*_appSettings.config` file.
