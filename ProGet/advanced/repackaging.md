@@ -19,7 +19,7 @@ This versioning methodology is something that both the business and development 
 There are some basic rules regarding packaging and software development that our industry tends to follow closely.
 1. Packages are immutable. Once published, a package file should never be modified. This means you can't "edit" a version number of a package because the version number is part of the metadata embedded in the file.
 2. Software should never be deployed to a production environment without being tested thoroughly.
-3. Rebuilding source code can produce different software. We talked about _dependency hell_ in chapter three, but it's also possible that a different version of the compiler will treat source code differently.
+3. Rebuilding source code can produce different software. Being in _dependency hell_ uses wildcard versioning and, therefore, has wildcard dependencies--the enemy of predictability. This makes it hard to work with the right code when making changes. It's also possible that a different version of the compiler will treat source code differently.
 4. A prerelease package should never be released.
 
 These are discussed at length in our book [Continuously Scale and Continuously Deliver with a Universal Package Manager](https://inedo.com/support/resources/ebooks/continuously-scale-deliver-upm).
