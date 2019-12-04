@@ -73,8 +73,8 @@
   <temporary from="builds/continuous-integration/source-control" to="ci-cd/continuous-integration/server/source-control" />
   <temporary from="builds/continuous-integration/source-control/branching" to="ci-cd/continuous-integration/server/branching" />
   <temporary from="builds/continuous-integration/build-triggers-and-monitors" to="ci-cd/continuous-integration/server/build-triggers" />
-  <temporary from="builds/continuous-integration/build-triggers-and-monitors/webhook-monitors" to="ci-cd/continuous-integration/server/build-triggers/webhook-monitors" />
-  <temporary from="builds/continuous-integration/build-triggers-and-monitors/repository-monitors" to="ci-cd/continuous-integration/server/build-triggers/repository-monitors" />
+  <temporary from="builds/continuous-integration/build-triggers-and-monitors/webhook-monitors" to="ci-cd/continuous-integration/build-triggers/webhook-monitors" />
+  <temporary from="builds/continuous-integration/build-triggers-and-monitors/repository-monitors" to="ci-cd/continuous-integration/build-triggers/repository-monitors" />
   <temporary from="builds/continuous-integration/badges" to="ci-cd/continuous-integration/server/badges" />
   <temporary from="builds/external-systems" to="ci-cd/continuous-integration/importing-builds" />
   <temporary from="builds/external-systems/drop-folder" to="ci-cd/continuous-integration/importing-builds/drop-folder" />
@@ -101,6 +101,7 @@
   <temporary from="verification/pipelines/approvals-and-gates/deployment-windows" to="ci-cd/testing-and-verification/approvals/deployment-windows" />
   <temporary from="verification/pipelines/approvals-and-gates/user-approvals" to="ci-cd/testing-and-verification/approvals/user-approvals" />
   <temporary from="administration/applications" to="applications/overview" />
+  <temporary from="releases" to="applications/releases" />
   <temporary from="releases/overview" to="applications/releases" />
   <temporary from="releases/calendars" to="applications/releases/calendars" />
   <temporary from="releases/notes" to="applications/releases/notes" />
@@ -151,6 +152,6 @@
   <temporary from="builds/continuous-integration/build-triggers-and-monitors/github-hooks" to="integrations/github/webhooks" />
   <temporary from="builds/continuous-integration/build-triggers-and-monitors/gitlab-hooks" to="integrations/gitlab/webhooks" />
 
-
+  <temporary from="applications/overview" to="applications/concepts" />
 
 </redirects>

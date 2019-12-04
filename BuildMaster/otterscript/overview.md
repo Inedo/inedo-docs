@@ -11,13 +11,13 @@ While BuildMaster's execution engine is an integral part of BuildMaster itself, 
 
 ## Operations {#operations data-title="Operations"}
 
-Operations are the tasks that the execution engine will run on a server. BuildMaster ships with dozens of [built-in operations](../reference/operations) and you can add more through [BuildMaster Extensions](../administration/extensions), to see a list of all of our extensions head over to the [Inedo Den](/den).
+Operations are the tasks that the execution engine will run on a server. BuildMaster ships with dozens of [built-in operations](/docs/buildmaster/reference/operations) and you can add more through [BuildMaster Extensions](/docs/buildmaster/reference/extensions), to see a list of all of our extensions head over to the [Inedo Den](/den).
 
 Some operations are quite simple (Sleep), while others are quite complex (Synchronize Files across Servers). Through a combination of Operations, Scripts, Variables, and Blocks, you will be able to model any plan to deploy an application to an environment.
 
 ## OtterScript in BuildMaster {#otterscript data-title="OtterScript in BuildMaster"}
 
-OtterScript is a Domain-Specific Language that was designed in tandem with the execution engine to represent [configuration plans](/docs/otter/core-concepts/plans#configuration) and [orchestration plans](/docs/otter/core-concepts/plans#orchestration) in Otter, and [deployment plans](../deployments/plans) in BuildMaster.
+OtterScript is a Domain-Specific Language that was designed in tandem with the execution engine to represent [configuration plans](/docs/otter/core-concepts/plans#configuration) and [orchestration plans](/docs/otter/core-concepts/plans#orchestration) in Otter, and [deployment plans](/docs/buildmaster/ci-cd/deployments/plans) in BuildMaster.
 
 You really don't need to learn OtterScript; it's simply the textual representation of a plan, and plans are already fully editable in the drag-and-drop plan editor. If you switch back-and-forth between visual and code modes, you'll probably learn it on your own, but it's also pretty well documented.
 

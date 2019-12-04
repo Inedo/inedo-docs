@@ -14,7 +14,7 @@ See the [GitHub Webhooks](webhooks) documentation for step-by-step instructions 
 
 ## Automatic Build Triggers {#automatic-build-triggers data-title="Automatic Build Triggers"}
 
-Automatic Build Triggers are primarily designed to monitor your [GitHub source control repository](source-control) and create a new [build](/docs/buildmaster/builds/overview) whenever someone makes changes. This is generally called continuous integration and provides immediate feedback on problems with code changes, whether through basic compilation or by running [unit tests](/docs/buildmaster/builds/tests/unit-tests) and other automated tests. This also means builds are ready to deploy sooner for further testing.
+Automatic Build Triggers are primarily designed to monitor your [GitHub source control repository](/docs/buildmaster/integrations/github) and create a new [build](/docs/buildmaster/builds/overview) whenever someone makes changes. This is generally called continuous integration and provides immediate feedback on problems with code changes, whether through basic compilation or by running [unit tests](/docs/buildmaster/builds/tests/unit-tests) and other automated tests. This also means builds are ready to deploy sooner for further testing.
 
 This feature isn't limited to only creating builds on change, and you could use a Scheduled Build Trigger to deploy a build to a testing environment on a nightly basis.
 

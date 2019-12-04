@@ -4,7 +4,7 @@ sequence: 400
 show-headings-in-nav: true
 ---
 
-Behind the scenes, the [Application Template](application-templates) and [Backup & Restore](backup-restore) features use the application import and export feature.
+Behind the scenes, the [Application Template](templates) and [Backup & Restore](backup-restore) features use the application import and export feature.
 
 ## Exporting Applications {#exporting data-title="Exporting Applications"}
 

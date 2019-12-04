@@ -3,7 +3,7 @@ title: Using Application Templates
 sequence: 200
 show-headings-in-nav: true
 ---
-An application template (not to be confused with an [setup template](setup-template) or a [text template](/docs/executionengine/components/text-templating)) is an [exported application](import-export) that you can use to create new applications.
+An application template (not to be confused with an [setup template](setup-templates) or a [text template](/docs/executionengine/components/text-templating)) is an [exported application](import-export) that you can use to create new applications.
 
 {.attention .best-practice} Application Templates are available in BuildMaster 6.2+, or BuildMaster 6.1.12+ with preview features enabled.
 
@@ -17,6 +17,3 @@ Behind the scenes, the Create New Application page uses a [package source](/docs
 
 ### Creating Your Own Templates{#creating-your-own data-title="Creating Your Own Templates"}
 To create your own application, simply go to the Advanced Settings Tab in your application and export as a template. This will require that you configure your `Templates` package source to be a instance of ProGet that BuildMaster can publish packages to.
-<!--
-You may also want to start with a very lightweight version of an application where you already have set up the critical elements of the application but understand that more configuration is needed. This is where templates will be useful. A template is similar to an exported application except it will not contain any history. 
--->
