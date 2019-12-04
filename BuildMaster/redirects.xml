@@ -67,6 +67,90 @@
   <temporary from="reference/api/release-and-package" to="reference/api/release-and-build" />
   <temporary from="reference/global-components/configuration-variables" to="administration/configuration-variables" />
   <temporary from="reference/operation" to="reference/operations" />
-  
+
+  <!-- December 2019 Navigation Menu Redux Redirects -->
+  <temporary from="builds/overview" to="ci-cd/continuous-integration/builds" />
+  <temporary from="builds/continuous-integration/source-control" to="ci-cd/continuous-integration/server/source-control" />
+  <temporary from="builds/continuous-integration/source-control/branching" to="ci-cd/continuous-integration/server/branching" />
+  <temporary from="builds/continuous-integration/build-triggers-and-monitors" to="ci-cd/continuous-integration/server/build-triggers" />
+  <temporary from="builds/continuous-integration/build-triggers-and-monitors/webhook-monitors" to="ci-cd/continuous-integration/server/build-triggers/webhook-monitors" />
+  <temporary from="builds/continuous-integration/build-triggers-and-monitors/repository-monitors" to="ci-cd/continuous-integration/server/build-triggers/repository-monitors" />
+  <temporary from="builds/continuous-integration/badges" to="ci-cd/continuous-integration/server/badges" />
+  <temporary from="builds/external-systems" to="ci-cd/continuous-integration/importing-builds" />
+  <temporary from="builds/external-systems/drop-folder" to="ci-cd/continuous-integration/importing-builds/drop-folder" />
+  <temporary from="builds/packaging" to="ci-cd/continuous-integration/packaging" />
+  <temporary from="builds/packaging/artifacts" to="ci-cd/continuous-integration/packaging/artifacts" />
+  <temporary from="builds/packaging/universal-packages" to="ci-cd/continuous-integration/packaging/universal-packages" />
+  <temporary from="builds/packaging/package-sources" to="ci-cd/continuous-integration/packaging/package-and-container-sources" />
+  <temporary from="deployments/plans" to="ci-cd/deployment/plans" />
+  <temporary from="verification/pipelines" to="ci-cd/deployment/pipelines" />
+  <temporary from="verification/pipelines/json-model" to="ci-cd/deployment/pipelines/json-model" />
+  <temporary from="releases/rollback" to="ci-cd/deployment/rollback" />
+  <temporary from="deployments/targets/databases" to="ci-cd/deployment/databases" />
+  <temporary from="deployments/patterns" to="ci-cd/deployment/patterns" />
+  <temporary from="deployments/patterns/blue-green" to="ci-cd/deployment/patterns/blue-green" />
+  <temporary from="deployments/plans/manual-steps-tasks" to="ci-cd/deployment/manual-steps-and-tasks" />
+  <temporary from="builds/tests" to="ci-cd/testing-and-verification" />
+  <temporary from="builds/tests/unit-tests" to="ci-cd/testing-and-verification/unit-tests" />
+  <temporary from="builds/tests/automated-ui-tests" to="ci-cd/testing-and-verification/ui-tests" />
+  <temporary from="builds/tests/build-reports" to="ci-cd/testing-and-verification/reports" />
+  <temporary from="builds/tests/build-reports/beyond-compare" to="ci-cd/testing-and-verification/reports" />
+  <temporary from="builds/tests/build-reports/fxcop" to="platforms/dot-net/fxcop" />
+  <temporary from="verification/pipelines/approvals-and-gates" to="ci-cd/testing-and-verification/approvals" />
+  <temporary from="verification/pipelines/approvals-and-gates/automated-checks" to="ci-cd/testing-and-verification/approvals/automated-checks" />
+  <temporary from="verification/pipelines/approvals-and-gates/deployment-windows" to="ci-cd/testing-and-verification/approvals/deployment-windows" />
+  <temporary from="verification/pipelines/approvals-and-gates/user-approvals" to="ci-cd/testing-and-verification/approvals/user-approvals" />
+  <temporary from="administration/applications" to="applications/overview" />
+  <temporary from="releases/overview" to="applications/releases" />
+  <temporary from="releases/calendars" to="applications/releases/calendars" />
+  <temporary from="releases/notes" to="applications/releases/notes" />
+  <temporary from="releases/templates" to="applications/releases/templates" />
+  <temporary from="administration/applications/application-templates" to="applications/concepts/templates" />
+  <temporary from="administration/applications/backup-restore" to="applications/concepts/backup-restore" />
+  <temporary from="administration/applications/import-export" to="applications/concepts/import-export" />
+  <temporary from="administration/applications/setup-templates" to="applications/concepts/setup-templates" />
+  <temporary from="administration/applications/deployables" to="applications/concepts/deployables" />
+  <temporary from="deployments/configuration-files" to="applications/configuration-files" />
+  <temporary from="administration/configuration-variables" to="applications/configuration-variables" />
+  <temporary from="verification/issue-tracking" to="applications/issue-tracking" />
+  <temporary from="deployments/targets/windows/powershell" to="otterscript/powershell" />
+  <temporary from="deployments/targets/linux/shell-scripts" to="otterscript/shell-scripting" />
+  <temporary from="deployments/plans/run-as-different-user" to="otterscript/advanced/run-as-different-user" />
+  <temporary from="deployments/plans/invoking-otterscript" to="otterscript/advanced/invoking-otterscript" />
+  <temporary from="builds/platform-specific/dot-net" to="platforms/dot-net" />
+  <temporary from="builds/platform-specific/dot-net/asp-net" to="platforms/dot-net/asp-net" />
+  <temporary from="builds/platform-specific/dot-net/console-app" to="platforms/dot-net/console-app" />
+  <temporary from="builds/platform-specific/dot-net/core" to="platforms/dot-net/core" />
+  <temporary from="builds/platform-specific/dot-net/nuget" to="platforms/dot-net/nuget" />
+  <temporary from="builds/platform-specific/dot-net/web-deploy" to="platforms/dot-net/web-deploy" />
+  <temporary from="deployments/targets/databases/entity-framework-migration" to="platforms/dot-net/entity-framework" />
+  <temporary from="builds/platform-specific/java" to="platforms/java" />
+  <temporary from="builds/platform-specific/node-js" to="platforms/node-js" />
+  <temporary from="builds/platform-specific/php" to="platforms/php" />
+  <temporary from="builds/platform-specific/python" to="platforms/python" />
+  <temporary from="deployments/targets" to="deployment-targets" />
+  <temporary from="deployments/targets/cloud/azure/deploy-to-azure" to="deployment-targets/azure" />
+  <temporary from="deployments/targets/windows/iis" to="deployment-targets/windows/iis" />
+  <temporary from="deployments/targets/windows/services" to="deployment-targets/windows/services" />
+  <temporary from="deployments/targets/linux" to="deployment-targets/linux-unix/server" />
+  <temporary from="builds/continuous-integration/source-control/svn" to="integrations/subversion" />
+  <temporary from="verification/issue-tracking/jira" to="integrations/jira" />
+  <temporary from="verification/issue-tracking/youtrack" to="integrations/youtrack" />
+  <temporary from="builds/external-systems/jenkins-import" to="integrations/jenkins" />
+  <temporary from="builds/continuous-integration/source-control/github" to="integrations/github" />
+  <temporary from="builds/continuous-integration/source-control/gitlab" to="integrations/gitlab" />
+  <temporary from="builds/external-systems/teamcity" to="integrations/teamcity" />
+  <temporary from="deployments/plans/execution-engine" to="otterscript/overview" />
+  <temporary from="builds/tests/unit-tests/junit-testing" to="platforms/java/junit-tests" />
+  <temporary from="builds/tests/unit-tests/nunit-test" to="platforms/dot-net/nunit" />
+  <temporary from="builds/tests/unit-tests/vstest-runner" to="platforms/dot-net/vstest" />
+  <temporary from="builds/packaging/other-formats/azure-cloud-services-package" to="deployment-targets/azure/cloud-services-packages" />
+  <temporary from="builds/external-systems/trigger-via-api" to="ci-cd/continuous-integration/importing-builds/trigger-via-api" />
+  <temporary from="builds/continuous-integration/source-control/azure-devops-tfs" to="integrations/azure-devops/source-control" />
+  <temporary from="builds/continuous-integration" to="ci-cd/continuous-integration" />
+  <temporary from="builds/continuous-integration/build-triggers-and-monitors/github-hooks" to="integrations/github/webhooks" />
+  <temporary from="builds/continuous-integration/build-triggers-and-monitors/gitlab-hooks" to="integrations/gitlab/webhooks" />
+
+
 
 </redirects>
