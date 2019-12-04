@@ -1,7 +1,7 @@
 ---
 title: YouTrack
 subtitle: Integrating YouTrack with BuildMaster
-sequence: 200 
+sequence: 350 
 keywords: buildmaster, builds, youtrack
 show-headings-in-nav: true
 ---

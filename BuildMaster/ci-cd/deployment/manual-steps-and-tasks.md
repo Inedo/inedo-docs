@@ -1,7 +1,7 @@
 ﻿---
 title: Manual Steps and Tasks
 subtitle: Manual Steps and Tasks
-sequence: 500
+sequence: 400
 keywords: buildmaster, manual
 show-headings-in-nav: true
 ---

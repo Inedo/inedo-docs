@@ -1,5 +1,6 @@
 ﻿---
 title: Issue and Project Tracking
+sequence: 500
 show-headings-in-nav: true
 ---
 

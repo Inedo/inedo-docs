@@ -1,7 +1,7 @@
 ---
 title: Entity Framework
 subtitle: Performing an Entity Framework Migration
-sequence: 100 
+sequence: 600 
 keywords: buildmaster, entity-framework, sql-server, dot-net
 show-headings-in-nav: true
 ---

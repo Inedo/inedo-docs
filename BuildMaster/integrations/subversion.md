@@ -1,7 +1,7 @@
 ---
 title: Subversion
 subtitle: Integrating BuildMaster with Subversion (SVN)
-sequence: 700 
+sequence: 400 
 keywords: buildmaster, source-control, subversion
 show-headings-in-nav: true
 ---

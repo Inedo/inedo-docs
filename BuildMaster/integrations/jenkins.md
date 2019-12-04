@@ -1,8 +1,8 @@
 ---
-title: Import From Jenkins
-subtitle: Import Artifact  From Jenkins
+title: Jenkins
+subtitle: Integrating Jenkins with BuildMaster
 keywords: buildmaster, artifacts, jenkins, import
-pre-requisites: Buildmaster, InedoCore, Jenkins
+sequence: 200
 ---
 
 

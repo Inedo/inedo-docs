@@ -1,7 +1,7 @@
 ---
 title: TeamCity
 subtitle: Integrating TeamCity with BuildMaster
-sequence: 200
+sequence: 250
 keywords: buildmaster, builds, teamcity
 show-headings-in-nav: true
 ---

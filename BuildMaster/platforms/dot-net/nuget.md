@@ -1,6 +1,7 @@
 ---
 title: NuGet Packages
 subtitle: CI/CD for NuGet Packages
+sequence: 400
 show-headings-in-nav: true
 ---
 

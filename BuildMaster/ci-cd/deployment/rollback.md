@@ -1,7 +1,7 @@
 ﻿---
 title: Rollbacks
 keywords: buildmaster, releases, rollbacks
-sequence: 500
+sequence: 200
 ---
 
 BuildMaster does not have a special "rollback plan" that's used only in emergencies. Since such a plan would only get tested in rare cases (i.e. when something went wrong), chances are it will be out of date and likely make things even worse.

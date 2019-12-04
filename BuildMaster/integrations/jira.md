@@ -1,7 +1,7 @@
 ﻿---
 title: Jira
 subtitle: Integrating Jira with BuildMaster
-sequence: 200 
+sequence: 300 
 keywords: buildmaster, builds, jira
 show-headings-in-nav: true
 ---

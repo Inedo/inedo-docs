@@ -2,7 +2,7 @@
 title: Importing from a Drop Folder
 subtitle: Importing an Artifact from a Drop Folder
 keywords: builds, artifacts, drop-folder
-sequence: 500
+sequence: 100
 ---
 
 BuildMaster can be configured to capture build output or build artifacts from a drop folder and store them until they are ready for deployment. Using drop folders is a common practice when build and release teams are separated organizationally.
