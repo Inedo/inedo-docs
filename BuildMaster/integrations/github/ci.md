@@ -6,7 +6,7 @@ keywords: buildmaster, github, git, continuous-integration
 show-headings-in-nav: true
 ---
 
-In addition to its use as a hosting platform primarily for open-source projects, it can also be used for continuous integration. In this page, you'll find detailed instructions on making the most of BuildMaster's integration point with GitHub for CI.
+In addition to its use as a hosting platform primarily for open-source projects, GitHub can also be used for continuous integration (or CI). In this page, you'll find detailed instructions on making the most of BuildMaster's integration point with GitHub for CI.
 
 ## Configuring GitHub Webhook Monitors {#webhooks data-title="Configuring Webhooks"}
 
@@ -14,14 +14,14 @@ See the [GitHub Webhooks](webhooks) documentation for step-by-step instructions 
 
 ## Automatic Build Triggers {#automatic-build-triggers data-title="Automatic Build Triggers"}
 
-Automatic Build Triggers are primarily designed to monitor your [GitHub source control repository](/docs/buildmaster/integrations/github) and create a new [build](/docs/buildmaster/builds/overview) whenever someone makes changes. This is generally called continuous integration and provides immediate feedback on problems with code changes, whether through basic compilation or by running [unit tests](/docs/buildmaster/builds/tests/unit-tests) and other automated tests. This also means builds are ready to deploy sooner for further testing.
+Automatic Build Triggers are primarily designed to monitor your [GitHub source control repository](source-control) and create a new [build](/docs/buildmaster/builds/overview) whenever someone makes changes. This is generally called continuous integration (CI) and provides immediate feedback on problems with code changes, whether through basic compilation or by running [unit tests](/docs/buildmaster/builds/tests/unit-tests) and other automated tests. This also means builds are ready to deploy sooner for further testing.
 
 This feature isn't limited to only creating builds on change, and you could use a Scheduled Build Trigger to deploy a build to a testing environment on a nightly basis.
 
-BuildMaster supports three general types of build triggers:
+BuildMaster supports three general types of build triggers:   
 
 {.docs}
--	[Source Control Repository Monitors](/docs/buildmaster/builds/continuous-integration/build-triggers-and-monitors/repository-monitors) will watch a Git or Subversion repository for new commits
+-	[Source Control Repository Monitors](/docs/buildmaster/builds/continuous-integration/build-triggers-and-monitors/repository-monitors) will watch a GitHub repository for new commits
 -	[Webhook Monitors](/docs/buildmaster/builds/continuous-integration/build-triggers-and-monitors/github-hooks) will listen for webhook events that you configure in your GitHub account.
 -	Scheduled Build Trigger will execute on a daily, weekly, or custom interval
 
