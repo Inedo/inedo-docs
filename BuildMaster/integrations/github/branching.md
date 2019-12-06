@@ -6,14 +6,14 @@ keywords: buildmaster, github, git, branching, pull-requests
 show-headings-in-nav: true
 ---
 
-Branches are one of the most powerful features that most source control system offer. Although they may take a little getting used to, they ultimately can save a lot of development resources and allow teams to deliver better software releases faster because:
+Pull requests *make* GitHub. "Branching" off the master code trunk ultimately can save a lot of development resources and allow teams to deliver better software releases faster because:
 
 {.docs}
  - **Releases can be developed in parallel.** Even though two-week sprints are becoming the norm, it doesn't mean that everyone needs to be sprinting all the time and focusing only on the "next" release. Release branches allow teams to think about and work on releases that are weeks or months away without stressing about the present
  - **Features can be independently developed and tested.** By using "feature branches" to develop and test changes to an application, developers can be certain that code changes from other features won't interfere with their work, and that their work won't interfere others
  - **Experiment with innovative changes.** Feature branches also enable business stakeholders to sponsor proofs-of-concept without worrying about experimental code being released into production
 
-Despite these benefits, many development teams avoid using branches to their fullest because of complexities including:
+Despite these benefits, many development teams avoid using branches to their fullest because branching efficiently and effectively is very difficult. Some of the complexities include:
 
 {.docs}
  - **Continuous Integration servers are not designed with branching in mind.** Tools like Jenkins and TeamCity have only recently introduced branching support as a feature, and many have reported that it feels like an afterthought. It's complex to use, and you often have to design a process around what the tool supports
@@ -21,7 +21,7 @@ Despite these benefits, many development teams avoid using branches to their ful
  - **Testing "feature branches" is very difficult.** When different teams are working on dozens of different features, it's nearly impossible to keep track of which build was deployed to which environment, and by the time testing teams find that out, a different build is often deployed on top of it
  - **Managing "parallel releases" is complicated.** Software delivery pipelines are designed for a repeatable process, but many tools are not flexible enough to deal with hotfixes or parallel releases
 
-BuildMaster simplifies this complexity and makes it safe to introduce branches, thus easily enabling the true benefits of branching. 
+GitHub's pull requests simplify and secure the merging of branched content back into the main. BuildMaster further simplifies this complexity and makes it even safer to introduce branches, thus easily enabling the true benefits of branching. 
 
 ## Pull Requests {#pull-requests data-title="Pull Requests"}
 
