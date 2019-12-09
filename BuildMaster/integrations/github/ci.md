@@ -1,7 +1,7 @@
 ---
 title: Continuous Integration
 subtitle: GitHub Continuous Integration
-sequence: 100
+sequence: 200
 keywords: buildmaster, github, git, continuous-integration
 show-headings-in-nav: true
 ---
