@@ -42,7 +42,7 @@ Before installing, consider the following:
 
 {.docs}
 - **.NET Framework 4.5.2** – Otter requires .NET 4.5.2, and Windows will prompt about this if you don't already have it
-- **Web Server** – Otter has its own web server, but can also be hosted in Microsoft IIS as well; if you want to use IIS, make sure it *and* ASP.NET 4.5 is installed first (see [KB2736284](https://support.microsoft.com/en-us/kb/2736284) for instructions)
+- **Web Server** – Otter has its own web server, but can also be hosted in Microsoft IIS as well; if you want to use IIS, make sure it's [installed & configured first](/docs/various/iis/roles-and-features))
 - **Database Server** – Otter does require Microsoft SQL Server, but the Otter installer can install SQL Express
 - **Firewall (Inbound)** – Otter is a web application and can be installed on the port of your choosing
 
