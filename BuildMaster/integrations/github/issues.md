@@ -91,31 +91,33 @@ To create issues for a particular GitHub milestone, use the `GitHub::Create-Issu
 
 Some organizations use issues as a way to deployments throughout a release. This way, business and testing teams can see the progress of deployments, report problems on that issue, and be alerted of status changes using GitHub's notification features.
 
-Although GitHub isn't really designed for this, it's generally easier to just automate your existing process instead of forcing a new one. This is easy to do with BuildMaster: you can use an operation to create an issue.
-
-Each integration has different properties, but as an example, here's how you could do this in GitHub: [[ATTN: JOHN]]
+Although GitHub isn't really designed for this, it's generally easier to just automate your existing process instead of forcing a new one. This is easy to do with BuildMaster by using an operation to create an issue. Here's an example of how you could do this for GitHub:
 
 ````
-JIRA::Create-Issue(
-	Credentials: Jira7Local,
-	Project: HDARS,
-	Title: QA Testing Required for $ApplicationName,
-	Description: This issue was created by BuildMaster on $Date,
-	Type: ReadyForQA,
-	JiraIssueId => $JiraIssueId
-);
-
-Set-BuildVariable DeploymentIssueId
+GitHub::Create-Issue
 (
-	Value: $JiraIssueId
+	Project: ProfitCalc,
+	Title: QA Testing Required for $ApplicationName,
+	Body: This issue was created by BuildMaster on $Date,
+	Labels: ReadyForQA,
+	Number => $GitHubIssueId
+);
+
+Set-BuildVariable GitHubIssueId
+(
+	Value: $GitHubIssueId
 );
 ````
 
-[[ATTN: JOHN]] The second operation will then set `$JiraIssueId ` as a build variable, which means it will be not only visible on the build page, but you can also use it in all future deployments on that build.
+The second operation will then set `$GitHubIssueId ` as a build variable, which means it will be not only visible on the build page, but you can also use it in all future deployments on that build.
 
-[[ATTN: JOHN]] You can then use the $JiraIssueId in later operations to automatically [change issue status](/docs/buildmaster/verification/issue-tracking) or [add comments and notes](/docs/buildmaster/reference/operations/issue-tracking/add-comment-to-issues).
+You can then use the `$GitHubIssueId` in later operations to automatically [change issue status](/docs/buildmaster/verification/issue-tracking) or [add comments and notes](/docs/buildmaster/reference/operations/issue-tracking/add-comment-to-issues).
 
 
 ### Tip: Use a Variable Renderer for User-friendly Display
 
-You can do this in BuildMaster with [Variable Value Renderers](/docs/buildmaster/administration/value-renderers). These are essentially instructions for how to render variables in the UI that have certain names (such `$JiraIssueId `). Because you can specify HTML in a value renderer, you link directly to your issue tracker. This provides easy navigation for users.
+You can do this in BuildMaster with [Variable Value Renderers](/docs/buildmaster/administration/value-renderers). These are essentially instructions for how to render variables in the UI that have certain names (such `$GitHubIssueId `). Because you can specify HTML in a value renderer, you link directly to your issue tracker. This provides easy navigation for users. For example, adding a renderer with the following HTML will render a link back to GitHub:
+
+```
+<a href="https://github.com/Inedo/inedox-git/issues/$Value">$GitHubIssueId</a>
+```
