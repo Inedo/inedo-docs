@@ -6,7 +6,7 @@ keywords: buildmaster, source-control, subversion
 show-headings-in-nav: true
 ---
 
-Before the introduction of Git, [Apache Subversion](https://subversion.apache.org/) was the industry standard for open-source source control systems. It is still however very commonly used for many open-source projects and throughout organizations around the world.
+Before the introduction of Git, [Apache Subversion](https://subversion.apache.org/) was the industry standard for open-source source control systems. Although Git now dominates, Subversion (or SVN) is still very commonly used for many open-source projects by organizations around the world.
 
 BuildMaster is designed to work with Subversion to provide a self-managed CI/CD solution and supports the following source control functionality:
 
@@ -26,11 +26,11 @@ BuildMaster is designed to work with Subversion to provide a self-managed CI/CD 
 
 Simply navigate to the *Admin* > *Extensions* page in your instance of BuildMaster and click on the Subversion extension to install it.
 
-If your instance doesn't have internet access, you can [manually install the Subversion extension](https://docs.inedo.com/docs/buildmaster/reference/extensions#manual-install) after downloading the [Subversion Extension Package](https://proget.inedo.com/feeds/Extensions/inedox/Subversion).
+If your instance doesn't have Internet access, you can [manually install the Subversion extension](https://docs.inedo.com/docs/buildmaster/reference/extensions#manual-install) after downloading the [Subversion Extension Package](https://proget.inedo.com/feeds/Extensions/inedox/Subversion).
 
 ## Authenticating to a Subversion Repository {#authentication data-title="Authentication with SVN"}
 
-Authentication with Subversion is handled through [Resource Credentials](/docs/buildmaster/administration/resource-credentials), which supports username/password authentication over HTTPS. This is the simplest and recommended method to authenticate with a Subversion repository. While each SVN operation supports supplying a repository URL, username, and password, it is recommended to create a resource rredential that includes the repository name, username, and password. This is not only more secure, but more convenient as the credentials are stored in one location.
+Authentication with Subversion is handled through [Resource Credentials](/docs/buildmaster/administration/resource-credentials), which supports username/password authentication over HTTPS. This is the simplest and recommended method to authenticate with a Subversion repository. While each SVN operation supports supplying a repository URL, username, and password, we recommend creating a resource credential that includes the repository name, username, and password. This is not only more secure, but it is also more convenient, as the credentials are stored in one location.
 
 ::: {.attention .technical}
 SSH connections are not supported using the built-in Subversion integration in BuildMaster, so make sure to use the HTTPS endpoint when supplying the repository URL to the resource credentials or any operations. If your organization requires SSH to connect, you must install and configure the SVN CLI manually and then instruct BuildMaster to use the [SVN CLI instead](#cli).
@@ -38,11 +38,11 @@ SSH connections are not supported using the built-in Subversion integration in B
 
 ## Source Control Integration {#source-control data-title="Source Control"}
 
-### Checking out the Latest Source Code from a Subversion Repository
+Subversion functions both for source control and continuous integration, and BuildMaster supports both. The most common use-case when working with Subversion is getting the latest source code (e.g., `trunk`) then building it and creating a build artifact. 
 
-The most common use-case when working with Subversion is getting the latest source code (e.g. `trunk`), then building it and creating a build artifact. 
+### Checking Out the Latest Source Code from a Subversion Repository
 
-To do this, you can use the `Svn-Checkout` operation within your plan:
+To check out the latest source code from SVN, you can use the `Svn-Checkout` operation within your plan:
 
 ```
 Svn-Checkout(
@@ -60,11 +60,11 @@ svn.eve checkout https://github.com/inedo/inedox-subversion.git
 
 *Note: the `.git` extension works in this case because GitHub also supports Subversion clients.*
 
-### Checking-out Branches in Subversion
+### Checking Out Branches in Subversion
 
-In Subversion, branches are simply separate paths in the source tree. Many organizations use branches to determine the specific code that will be built for a given release. 
+In Subversion, branches are simply separate paths in the source tree. Many organizations use branches to determine the specific code that will be built for a given release. Branches allow teams to work simultaneously on the same project without overwriting another team member's work or presenting risks to the source code.
 
-In BuildMaster, checkout out a branch is as easy as updating the `SourcePath` in the get latest example above:
+In BuildMaster, checking out a branch is as easy as updating the `SourcePath`:
 
 ```
 Svn-Checkout(
@@ -74,7 +74,7 @@ Svn-Checkout(
 );
 ```
 
-A more general approach can be taken by using BuildMaster functions (e.g. `SourcePath: branches/$ReleaseNumber`), configuration variables, or even [release template variable prompts](/docs/buildmaster/releases/templates#components) that enable the branch to be selected at build time.
+A more general approach is using BuildMaster functions (e.g. `SourcePath: branches/$ReleaseNumber`), configuration variables, or even [release template variable prompts](/docs/buildmaster/releases/templates#components) that enable the branch to be selected at build time.
 
 ### Branching and Tagging in Subversion
 
@@ -96,7 +96,7 @@ This operation executes the equivalent SVN command when run under the context of
 svn.exe copy trunk branches/v1.2.5
 ```
 
-Similarly, tagging in Subversion follows the same process of copying source paths. Tags can be thought of as "readonly snapshots" of code in a repository at a particular moment in time where the tag is a descriptive identifier (e.g. `Release-1.2.5`).
+Similarly, tagging in Subversion follows the same process of copying source paths; in SVN, "tagging" and "branching" function the same way (i.e., copying a path). Tags can be thought of as "read-only snapshots" of code in a repository at a particular moment in time where the tag is a descriptive identifier (e.g. `Release-1.2.5`).
 
 To create a tag in Subversion, use the `Svn-Copy` operation:
 
@@ -118,11 +118,13 @@ svn.exe copy trunk tags/Release-1.2.5
 
 ## Continuous Integration {#ci data-title="Continuous Integration"}
 
+Another SVN use-case is for CI, and BuildMaster's repository monitor smoothly integrates with SVN for continuous integration.
+
 ### Automated Builds
 
-BuildMaster supports automatically monitoring a Subversion repository for changes, no matter where it is hosted. 
+BuildMaster supports automatically monitoring a Subversion repository for changes, no matter where it is hosted. Simply, BuildMaster regularly checks SVN to see if new revisions have appeared, and finding new changes, BuildMaster will automatically create a new build in BuildMaster.
 
-To automatically create builds when developers commit to a Subversion repository, simply configure a [Repository Monitor](/docs/buildmaster/builds/continuous-integration/repository-monitors).
+To automatically create builds when developers commit to a Subversion repository, simply configure a [Repository Monitor](/docs/buildmaster/ci-cd/continous-integration/build-triggers/repository-monitors).
 
 {.attention .technical} Note: a Subversion repository monitor requires BuildMaster v6.1 or later in combination with v1.1.0 or later of the Subversion extension.
 
