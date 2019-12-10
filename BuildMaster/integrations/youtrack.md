@@ -29,7 +29,7 @@ BuildMaster is designed to work especially well with YouTrack as an [issue track
 
 Simply navigate to the *Admin* > *Extensions* page in your instance of BuildMaster and click on the YouTrack extension to install it.
 
-If your instance doesn't have internet access, you can [manually install the YouTrack extension](/docs/buildmaster/reference/extensions#manual-install) after downloading the [YouTrack Extension Package](https://proget.inedo.com/feeds/Extensions/inedox/YouTrack).
+If your instance doesn't have Internet access, you can [manually install the YouTrack extension](/docs/buildmaster/reference/extensions#manual-install) after downloading the [YouTrack Extension Package](https://proget.inedo.com/feeds/Extensions/inedox/YouTrack).
 
 ## Connecting to YouTrack {#connecting data-title="Connecting to YouTrack"} 
 
@@ -43,7 +43,7 @@ Installing the YouTrack extension will allow you to create a:
    - To connect, the YouTrack server URL is required, which for hosted installations follows the format: `https://example.myjetbrains.com/youtrack`
  - Issue Source that identifies which YouTrack issues belong in which [BuildMaster release](/docs/buildmaster/releases/overview) as [outlined below](#issue-source)
 
-Public servers (i.e. open-source projects) or internal servers that are firewalled off that don't require a username or password and can simply use anonymous authentication.
+Public servers (i.e., open-source projects) or internal servers that are firewalled off that don't require a username or password and can simply use anonymous authentication.
 
 Both Resource Credentials and Issue Sources can be configured at the application level, the application group level, and the system level. This means you can have multiple issue sources per application or use one issue source for multiple applications, and they can all use the same resource credential.
 
@@ -52,9 +52,9 @@ Both Resource Credentials and Issue Sources can be configured at the application
 To associate issues with YouTrack [issue source](/docs/buildmaster/verification/issue-tracking#issues-sources), the following fields need to be configured:
 
 {.docs}
- - **Project name** - should be the key (e.g. PG for ProGet)
+ - **Project name** - should be the key (e.g., PG for ProGet)
  - **Fix version** - used to associated Fix Versions in YouTrack with release numbers in BM (typically `$ReleaseNumber`)
- - **Search query** - for advanced users, you can use a [smart search query](https://www.jetbrains.com/help/youtrack/incloud/Search-and-Command-Attributes.html) to associate issues e.g. `project: BM MyCustomField: {$ReleaseNumber}`
+ - **Search query** - for advanced users, you can use a [smart search query](https://www.jetbrains.com/help/youtrack/incloud/Search-and-Command-Attributes.html) to associate issues e.g., `project: BM MyCustomField: {$ReleaseNumber}`
 
 ### Variable and Issue Sources
 
@@ -137,7 +137,7 @@ Similar to [Automatically Changing Issue Statuses](#changing-issue-status), you 
 
 ### Example: `YouTrack::Add-Comment` Operation
 
-The most common use-case for commenting on issues is to add "deployed by BuildMaster to $EnvironmentName", likely with links directly to the build or artifact, possibly using the [CI Badge API](/docs/buildmaster/reference/api/ci-badge) to generate links with images.To add comments to an issue, use the `YouTrack::Add-Comment` operation:
+The most common use-case for commenting on issues is to add "deployed by BuildMaster to $EnvironmentName", likely with links directly to the build or artifact, possibly using the [CI Badge API](/docs/buildmaster/reference/api/ci-badge) to generate links with images. To add comments to an issue, use the `YouTrack::Add-Comment` operation:
 
 ```
 YouTrack::Find-Issues
@@ -159,7 +159,7 @@ foreach $IssueId in @YouTrackIssueIDs
 
 ## Creating New Issues Automatically {#create-new-issues-automatically data-title="Automatically Creating New Issues"}
 
-Many teams use YouTrack for more than just code changes. YouTrack's flexiblity means it can be used to model virtually any business process, such as deployment tracking. For example, unlike working in the source code, locating auditing information (e.g., when something was deployed and by whom) does not require a high degree of technical know-how to use, because all information is within the issue itself.
+Many teams use YouTrack for more than just code changes. YouTrack's flexibility means it can be used to model virtually any business process, such as deployment tracking. For example, unlike working in the source code, locating auditing information (e.g., when something was deployed and by whom) does not require a high degree of technical know-how to use, because all information is within the issue itself.
 
 Teams are already familiar with the process of creating new issues, but they want to automate it. BuildMaster lets you model this workflow by automatically creating and linking to issues. This saves the manual effort of creating new issues and also avoids the human errors that manual processes allow.
 
