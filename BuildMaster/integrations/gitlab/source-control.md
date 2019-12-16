@@ -1,21 +1,21 @@
 ---
 title: Source Control
-subtitle: GitHub Source Control Integration
+subtitle: GitLab Source Control Integration
 sequence: 100
-keywords: buildmaster, github, git, continuous-integration
+keywords: buildmaster, gitlab, git, continuous-integration
 show-headings-in-nav: true
 ---
 
-GitHub is a hosting platform primarily for open-source projects, and BuildMaster's primary integration point with GitHub is source control. This includes pulling source code, tagging it, and capturing commit IDs to maintain association between build artifacts and specific commits.
+BuildMaster's primary integration point with GitLab is source control, including pulling source code, tagging it, and capturing commit IDs to maintain association between build artifacts and specific commits.
 
 ## Checking Out Your Source Code {#checking-out data-title="Checking Out Source Code"}
 
-To get source code, use the `GitHub::Get-Source` operation in a build or deployment plan. This operation supports various optional levels of granularity including the branch name to pull from, the tag name, or even specific Git references such as the commit ID.
+To get source code, use the `Git:Lab::Get-Source` operation in a build or deployment plan. This operation supports various optional levels of granularity including the branch name to pull from, the tag name, or even specific Git references such as the commit ID.
 
-An example of using the `GitHub::Get-Source` operation is as follows:
+An example of using the `GitLab::Get-Source` operation is as follows:
 
 ```
-GitHub::Get-Source
+GitLab::Get-Source
 (
     Organization: inedo,
     Repository: ProfitCalc,
@@ -25,9 +25,9 @@ GitHub::Get-Source
 
 ### Git-based Operations Differences {#operations-differences}
 
-Git source repositories are unique in that you can use either a host-specific operation (in this case, `GitHub::Get-Source`) or the generic `Git::GetSource` operation. The primary difference is that you'll use project names for GitHub operations, and URLs in the generic operations.
+Git source repositories are unique in that you can use either a host-specific operation (in this case, `GitLab::Get-Source`) or the generic `Git::GetSource` operation. The primary difference is that you'll use project names for GitLab operations, and URLs in the generic operations.
 
-In general, you should prefer GitHub-specific operations, because it's less data to enter and you may eventually move to a self-managed or private instance, which means you'll have to edit the URLs everywhere you entered them.
+In general, you should prefer GitLab-specific operations, because it's less data to enter and you may eventually move to a self-managed or private instance, which means you'll have to edit the URLs everywhere you entered them.
 
 ## Built-in Git Client vs. Git CLI {#git-cli}
 
@@ -50,14 +50,14 @@ BuildMaster gives you a lot of flexibility in capturing this information. Althou
  1. Specify an *output* parameter on the appropriate get or checkout operation; the operation will then set the value of runtime variable to be the commit number, revision number, etc.
  2. Set a build variable from the runtime variable; because runtime variables only exist during build time, capturing this as a build variable will create a permanent record on the build
 
-### Example: Capturing CommitId from a GitHub Repository
+### Example: Capturing CommitId from a GitLab Repository
 
-By simply specifying the `CommitHash` output parameter and the `$CommitId` runtime variable, the `GitHub::Get-Source` operation will set the value of `$CommitId` to be the commit hash of the code. You can then use this to identify the entire source code state:
+By simply specifying the `CommitHash` output parameter and the `$CommitId` runtime variable, the `GitLab::Get-Source` operation will set the value of $CommitId to be the commit hash of the code. You can then use this to identify the entire source code state:
 
 ```
-GitHub::Get-Source
+GitLab::Get-Source
 (
-    Credential: GitHub,
+    Credential: GitLab,
     CommitHash => $CommitId,
 );
 Set-BuildVariable CommitId  
@@ -87,16 +87,16 @@ Tags and labels can be used for all sorts of reasons, but they're most effective
 
 If you're already capturing the commit ID in BuildMaster, each of these will already be possible. However, it's much easier for developers when this information in also source control: Not only is it faster to find information, but many source control systems will create branches or perform other operations directly from a label or tag.
 
-To tag source code in a repository, use the `GitHub::Tag-Source`, which will assign a friendly name (such as `$ReleaseNumber.$BuildNumber`) to a specific commit. This is recommended during later stages of a pipeline to indicate which specific commits have actually been released, as opposed to ones leading up to the eventual release.
+To tag source code in a repository, use the `GitLab::Tag-Source`, which will assign a friendly name (such as `$ReleaseNumber.$BuildNumber`) to a specific commit. This is recommended during later stages of a pipeline to indicate which specific commits have actually been released, as opposed to ones leading up to the eventual release.
 
-### Example: Tagging a Commit in GitHub
+### Example: Tagging a Commit in GitLab
 
-This will tag a GitHub-hosted repository with the current release and build number:
+This will tag a GitLab-hosted repository with the current release and build number:
 
 ```
-GitHub::Tag
+GitLab::Tag
 (
-    Credentials: Hdars-GitHub,
+    Credentials: Hdars-GitLab,
     Tag: $ReleaseName-$BuildNumber,
     CommitHash: $CommitId
 );
