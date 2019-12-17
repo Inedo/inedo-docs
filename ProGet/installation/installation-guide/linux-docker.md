@@ -113,7 +113,7 @@ docker run -d -v proget-packages:/var/proget/packages -p 80:80 --net=proget \
                 Exposes TCP port 80 of the container to port 80 of the host, so that
                 browsers can access the ProGet web application. If you don't want to
                 use port 80, you can change the first port number to whatever you
-                would like.
+                would like; make sure to change the BasedUrl in Admin > Advanced Settings if the ports aren't the same.
             </td>
         </tr>
         <tr>
