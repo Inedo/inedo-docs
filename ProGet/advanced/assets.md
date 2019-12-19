@@ -26,7 +26,7 @@ Internally, asset directories are represented as feeds, which means:
 - the asset directory name cannot be the same as another feed name
 
 :::attention {.analogy}
-Note: [Connectors](/docs/proget/core-concepts/feeds/connectors) and [feed replication](/docs/proget/advanced/feed-replication) are not currently supported for asset directories, but may be added in a future release. Please [contact us](/contact) if you are interested in these additions.
+Note: [Connectors](/docs/proget/core-concepts/feeds/connectors), [feed replication](/docs/proget/advanced/feed-replication), and [Cloud package Storage](/docs/proget/advanced/cloud-storage) are not currently supported for asset directories, but may be added in a future release. Please [contact us](/contact) if you are interested in these additions.
 :::
 
 To create an asset directory, go to Assets > Create Asset Directory.
