@@ -31,31 +31,35 @@ To create a Docker registry in ProGet, go to Containers > Create New Docker Regi
 
 ## Setting up Docker Client
 
-ProGet uses token-based authentication, which means you will need to use [Docker 1.11.0](https://github.com/moby/moby/blob/master/CHANGELOG.md#1110-2016-04-13) or newer.
+ProGet supports both token-based authentication (requiring [Docker 1.11.0](https://github.com/moby/moby/blob/master/CHANGELOG.md#1110-2016-04-13) or newer) and HTTP Basic authentication.
 
 First, you will need to log in to Docker. To do this, use the following command, where _progetsv1_ is the name of your ProGet server:
 
-    [~]$ sudo docker login progetsv1
+    [~]$ docker login progetsv1
 
-As mentioned previously, Docker needs an SSL connection, so this operation will fail if ProGet is only accessible via http.
+Any username and password that work to log in via ProGet's web interface should work using this command. Additionally, the username `api` can be used with an API key as the password.
+
+Docker requires TLS on any domain other than localhost, so the ProGet server must be accessible over HTTPS. Alternatively, the ProGet server name can be added to the Docker daemon's `insecure-registries` setting, but this is not recommended.
+
+Note that the current user must have permission to use Docker. On Linux, this means being a member of the `docker` group or using `sudo` or `su` to switch to the `root` user temporarily. On Windows, the cmd or powershell instance must be started with admin privileges.
 
 ## Publishing an Image
 
 To publish a Docker image to ProGet, you first need to **tag** the image using Docker in a special format. For example, if we have an image locally called `ubuntu:trusty`, we need to retag it as follows:
 
-    [~]$ sudo docker tag ubuntu:trusty progetsv1:443/dmc/ubuntu:trusty
+    [~]$ docker tag ubuntu:trusty progetsv1:443/dmc/ubuntu:trusty
 
 Or, more generally, the format is: _server/feed/image:tag_.
 
 Once tagged, the image can now be pushed to ProGet:
 
-    [~]$ sudo docker push progetsv1:443/dmc/ubuntu:trusty
+    [~]$ docker push progetsv1:443/dmc/ubuntu:trusty
 
 ### Pulling in Images
 
 You can then pull the image in the same fashion:
 
-    [~]$ sudo docker pull progetsv1:443/dmc/ubuntu:trusty
+    [~]$ docker pull progetsv1:443/dmc/ubuntu:trusty
     
 
 ## Deleting Images
