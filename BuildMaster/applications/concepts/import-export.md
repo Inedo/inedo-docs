@@ -66,4 +66,4 @@ In addition to the standard name and version properties, BuildMaster will includ
 | **log-scopes.json** | Historic; log "scopes" (headings) in log files |
 | **log-entries.json** | Historic; log text entries within a scope |
 
-This is not an exhaustive list of files, and because these files are intended to only be used by BuildMaster, the precise format of these files is documented only in the source code (but you can [request source code access](/contact)).
+This is not an exhaustive list of files, and because these files are intended to only be used by BuildMaster, the precise format of these files is documented only in the source code (but you can [request source code access](https://inedo.com/contact)).

@@ -139,7 +139,7 @@ GET or POST ::/api/configuration/::{style="opacity: 0.5"}**check**?key=&laquo;ap
 
 Triggers a *routine server configuration* check of a specific `entity-name` (`server` or `role`), or all servers/roles if not supplied; this will otherwise occur every sixty minutes (by default) or when a user clicks the [Check Configuration] button in the UI. A status of 200 (on success) or 403 (invalid key) and an empty body is returned.
 
-**Future Enhancement?** - this endpoint could return one or more *collectionId* values that could be checked against the collectionId [configuration status object](#configuration-status-object), to make sure it is the same. This would simplify the current process of checking for recent configuration changes (get collectionId, trigger run, keep getting collectionId until it changes). Please [let us know](/contact) if you think we should add this. {.announcement}
+**Future Enhancement?** - this endpoint could return one or more *collectionId* values that could be checked against the collectionId [configuration status object](#configuration-status-object), to make sure it is the same. This would simplify the current process of checking for recent configuration changes (get collectionId, trigger run, keep getting collectionId until it changes). Please [let us know](https://inedo.com/contact) if you think we should add this. {.announcement}
 
 ### Trigger Remediation Job {#trigger-remediation}
 

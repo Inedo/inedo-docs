@@ -50,7 +50,7 @@ To take full advantage of ProGet's symbol/source server, the published NuGet pac
 :::attention {.technical}
 ProGet will index and return portable PDB files as well as the traditional Microsoft PDB files, but portable PDB files are <em>not</em> transparently rewritten to enable them to work with source code in the embedded NuGet package. If you would like to debug into the source code associated with a portable PDB file, consider using a build tool such as [SourceLink](https://github.com/ctaggart/SourceLink) to embed source file URLs (or the files themselves) during compilation.
 
-If you would like support for rewriting portable PDB files in the same way ProGet handles Microsoft PDB files, [let us know](/contact)
+If you would like support for rewriting portable PDB files in the same way ProGet handles Microsoft PDB files, [let us know](https://inedo.com/contact)
 :::
 
 #### Configuring ProGet
