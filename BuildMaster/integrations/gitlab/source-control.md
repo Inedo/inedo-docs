@@ -10,7 +10,7 @@ BuildMaster's primary integration point with GitLab is source control, including
 
 ## Checking Out Your Source Code {#checking-out data-title="Checking Out Source Code"}
 
-To get source code, use the `Git:Lab::Get-Source` operation in a build or deployment plan. This operation supports various optional levels of granularity including the branch name to pull from, the tag name, or even specific Git references such as the commit ID.
+To get source code, use the `GitLab::Get-Source` operation in a build or deployment plan. This operation supports various optional levels of granularity including the branch name to pull from, the tag name, or even specific Git references such as the commit ID.
 
 An example of using the `GitLab::Get-Source` operation is as follows:
 
@@ -52,7 +52,7 @@ BuildMaster gives you a lot of flexibility in capturing this information. Althou
 
 ### Example: Capturing CommitId from a GitLab Repository
 
-By simply specifying the `CommitHash` output parameter and the `$CommitId` runtime variable, the `GitLab::Get-Source` operation will set the value of $CommitId to be the commit hash of the code. You can then use this to identify the entire source code state:
+By simply specifying the `CommitHash` output parameter and the `$CommitId` runtime variable, the `GitLab::Get-Source` operation will set the value of `$CommitId` to be the commit hash of the code. You can then use this to identify the entire source code state:
 
 ```
 GitLab::Get-Source
