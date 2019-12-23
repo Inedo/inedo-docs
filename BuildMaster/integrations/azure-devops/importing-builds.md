@@ -6,7 +6,7 @@ keywords: buildmaster, builds, azure-devops
 show-headings-in-nav: true
 ---
 
-[Azure DevOps](https://azure.microsoft.com/en-us/services/devops/) is a CI/CD service provided as part of Microsoft's Azure platform. Their [Pipelines](https://azure.microsoft.com/en-us/services/devops/pipelines/) support containers natively, so many shops using containerized release turn to Azure DevOps Pipelines.
+[Azure DevOps](https://azure.microsoft.com/en-us/services/devops/) is a CI/CD service provided as part of Microsoft's Azure platform. Their [Pipelines](https://azure.microsoft.com/en-us/services/devops/pipelines/) support containers natively, so many shops building and deploying containers turn to Azure DevOps Pipelines.
 
 While BuildMaster performs excellent [continuous integration and build automation](/docs/buildmaster/builds/continuous-integration), there are good reasons teams may choose to continue using Azure DevOps:
 
@@ -14,7 +14,7 @@ While BuildMaster performs excellent [continuous integration and build automatio
  - **Reuse complex automations** - processes like automated testing are complex to develop and are often fragile; moving these established, sensitive processes to a new system like BuildMaster will require some degree of effort that might be better spent elsewhere
  - **Keep your existing infrastructure** - you can use the Azure DevOps infrastructure that you've already built and is providing you with value
  
-A large percentage of customers use BuildMaster alongside Azure DevOps in exactly this manner and for these exact reasons. [[ATTN: JOHN - what's the simplest reason folks would want to use these two tools together??]]
+A large percentage of customers use BuildMaster alongside Azure DevOps in exactly this manner and for these exact reasons, the most common being simply that Azure DevOps is already a part of their in-house application suite, and used in combination with other hosting platforms or even self-hosted solutions.
 
 ::: {.attention .best-practice}
 **See it live!** See an example of Azure DevOps integration by creating a new application using the *Azure DevOps CI/CD* template.
@@ -22,10 +22,10 @@ A large percentage of customers use BuildMaster alongside Azure DevOps in exactl
 
 ## Azure DevOps "Builds" vs. BuildMaster "Builds" {#build-comparison data-title="Azure DevOps vs. BuildMaster Builds"}
 
-While both Azure DevOps and BuildMaster use the term "build," the concepts are a bit different. [[ATTN: JOHN - Huh??]]
+While both Azure DevOps and BuildMaster use the term "build," the concepts are slightly different.
 
+{.docs}
  - A "build" in Azure DevOps is effectively the result of a build pipeline running and typically includes build artifacts as part of the attached output. Once a pipeline is configured, it almost always has a one-to-one relationship with a commit to an Azure Repo.
-
  - A [BuildMaster build](/docs/buildmaster/builds/overview) is a broader concept. It represents a new version of an application or component that may be released to production using a pipeline with various stages that represent your software delivery process. Builds have a lifecycle that is not only visible to business stakeholders but which can also be approved at different stages in the process and are organized under [releases](/docs/buildmaster/releases/overview) and [applications](/docs/buildmaster/administration/applications) that testers, operations, and managers understand.
 
 ## Installing the Azure DevOps Extension {#extension data-title="Azure DevOps Extension"}
@@ -101,7 +101,7 @@ AzureDevOps::Import-Artifact
 ); 
 ````
 
-While leaving the `Branch` property blank will refer to the `<default>` branch for the project, you may also specify one to optionally filter branch names with BuildMaster variables, for example: `Branch: feature-$ReleaseNumber`. [[ATTN: JOHN - Why?]]
+While leaving the `Branch` property blank will refer to the `<default>` branch for the project, you may also specify one to optionally filter branch names with BuildMaster variables, for example: `Branch: feature-$ReleaseNumber`. This pattern allows feature branches in the Azure Repo to easily match up with the release number in BuildMaster.
 
 ## Pushing Artifacts from Azure DevOps to an Artifact Repository {#push data-title="Pushing Artifacts from Azure DevOps"}
 
@@ -146,7 +146,8 @@ Once this variable is captured, a [variable value renderer](/docs/buildmaster/ad
 ```
 <a class="ci-icon azure-devops" href="https://dev.azure.com/inedo/ProfitCalc/_build/results?buildId=1$AzureDevOpsBuildNumber">Build #$AzureDevOpsBuildNumber</a>
 ```
-[[ATTN: JOHN - Why would you wanna do this?]]
+
+Presenting a link directly to the Azure DevOps build in this manner helps maintain the assocation between BuildMaster builds and Azure DevOps builds, and makes it easier to find the original source of the build artifacts and logs.
 
 ## Deploying Azure DevOps Artifacts {#deployment data-title="Deploying Azure DevOps Artifacts"}
 
@@ -173,14 +174,28 @@ AzureDevOps::Download-Artifact
 
 ## Prompt for Build Number at Build Time {#prompting-for-build-numbers data-title="Prompt for Build Numbers"}
 
-With [release templates](/docs/buildmaster/releases/templates), you can build a deployment pipeline that prompts for build numbers and/or build configurations based on data directly from Azure DevOps. When creating the release template, the following list variable source options are available:
+Using distinct build numbers for each build will help keep documentation clear, avoid silos and confusion, and will make tracking a specific build much simpler. Assigning a distinct build number at the time of the build, therefore, distinguishes the build from its inception.
+
+When you create a new build from the BuildMaster web UI, a dropdown box appears. From here, you can select the build numbers that were generated by Azure DevOps.
+
+Variable prompts are configured in an application's [Release Templates](/docs/buildmaster/releases/templates). If you're not familiar with the feature, that's okay -- all applications have a "Default" release template that's used behind-the-scenes to determine which pipeline to use, and which variables to prompt for at release, build, and deploy time.
+
+After you configure a branch name variable prompt (e.g. `$AzureDevOpsBuildNumber`), BuildMaster will create a build-scoped variable based on whatever the user selects. You can use that variable in your OtterScript plans to import artifacts from that build.
+
+### Example: Creating a Drop-down for Azure DevOps Builds
+
+The following steps will configure a `$AzureDevOpsBuildNumber` variable prompt when new builds are created that defaults to master.
 
 {.docs}
- - Azure DevOps Project Name
- - Azure DevOps Build Definition
- - Azure DevOps Build Number
- 
- [[ATTN: JOHN - Again, why would you wanna do this?]]
+ - Navigate to the Default release template (*Releases* > *Release Template* > *"Default"*)
+ - Add a Build Template Variable
+   - Type: Select "Dynamic List"
+     - This will open a window where you can select the type of list
+     - Select "Azure DevOps Builds" as the type
+     - Select the Resource Credential you've already configured
+   - Name: `AzureDevOpsBuildNumber`
+   - Initial value: `latest`
+   - Options: value is required
 
 ## Automatically Importing into BuildMaster after CI Build {#auto-starting data-title="Automatically Importing into BuildMaster"} 
 
