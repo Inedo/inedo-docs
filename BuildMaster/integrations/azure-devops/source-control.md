@@ -6,13 +6,13 @@ keywords: buildmaster, git, azure-devops, source-control
 show-headings-in-nav: true
 ---
 
-BuildMaster's primary integration point with Azure DevOps is source control stored in Azure Repos, including pulling source code, tagging it, and capturing commit IDs to maintain association between build artifacts and specific commits.
+BuildMaster's primary integration point with Azure DevOps is source control stored in Azure Repos. This includes pulling source code, tagging it, and capturing commit IDs to maintain association between build artifacts and specific commits. [[ATTN: JOHN - value of this? Why do we want to maintain the association?]]
 
 ## Checking Out Your Source Code {#checking-out data-title="Checking Out Source Code"}
 
 To get source code, use the `AzureDevOps::Get-Source` operation in a build or deployment plan. This operation supports various optional levels of granularity including the branch name to pull from, the tag name, or even specific Git references such as the commit ID.
 
-An example of using the `AzureDevOps::Get-Source` operation is as follows:
+An example of using the `AzureDevOps::Get-Source` operation is:
 
 ```
 AzureDevOps::Get-Source
@@ -25,11 +25,11 @@ AzureDevOps::Get-Source
 
 ### Git-based Operations Differences {#operations-differences}
 
-Git source repositories are unique in that you can use either a host-specific operation (in this case, `AzureDevOps::Get-Source`) or the generic `Git::GetSource` operation. The primary difference is that you'll use project names for Azure DevOps operations, and URLs in the generic operations.
+Git source repositories are unique in that you can use either a host-specific operation (in this case, `AzureDevOps::Get-Source`) or the generic `Git::GetSource` operation. The primary difference is that you'll use project names for Azure DevOps operations and URLs in the generic operations.
 
 In general, you should prefer Azure DevOps-specific operations, because it's less data to enter and you may eventually move to a self-managed or private instance, which means you'll have to edit the URLs everywhere you entered them.
 
-## Built-in Git Client vs. Git CLI {#git-cli}
+## Built-in Git Client vs. Git CLI {#git-cli}  [[ATTN: JOHN - is this supposed to be Git??]]
 
 By default, BuildMaster does not require Git to be installed on a build server in order to perform source control operations. However, some users who require more advanced configuration for their Git integration may instruct BuildMaster to run the CLI instead by:
 
@@ -37,7 +37,7 @@ By default, BuildMaster does not require Git to be installed on a build server i
  - setting the `GitExePath` operation property to a valid Git executable path, e.g. `/usr/bin/git` on Linux or `C:\Program Files\Git\bin\git.exe` on Windows
  - configuring a `$DefaultGitExePath` variable at the server or system level in BuildMaster; this will force all Git source control operations to use the CLI instead of the built-in library
 
-## Capturing Commit IDs {#capturing data-title="Capturing Commit IDs"}
+## Capturing Commit IDs {#capturing data-title="Capturing Commit IDs"} [[ATTN: JOHN - is this supposed to be Git??]]
 
 Git repositories reference specific points in the history of a source tree using a 20-byte SHA1 hashcode. At the tip of a branch, this hash effectively represents the last committed changes. Capturing this reference at build time is very important so you can see exactly what code was used when an application was built:
 
@@ -85,7 +85,7 @@ Tags and labels can be used for all sorts of reasons, but they're most effective
  - Give developers information about what code was deployed
  - Easily find and compare commits by tag/label name instead of obscure identifier
 
-If you're already capturing the commit ID in BuildMaster, each of these will already be possible. However, it's much easier for developers when this information in also source control: Not only is it faster to find information, but many source control systems will create branches or perform other operations directly from a label or tag.
+If you're already capturing the commit ID in BuildMaster, each of these will already be possible. However, it's much easier for developers when this information in also source control: Not only is it faster to find information, but many source control systems will create branches or perform other operations directly from a label or tag. [[ATTN: JOHN - can we make the part of the sentence about "many source control systems" instead be about ADO? Like "but AzureDevOps will do XYZ" ??]]
 
 To tag source code in a repository, use the `AzureDevOps::Tag`, which will assign a friendly name (such as `$ReleaseNumber.$BuildNumber`) to a specific commit. This is recommended during later stages of a pipeline to indicate which specific commits have actually been released, as opposed to ones leading up to the eventual release.
 
