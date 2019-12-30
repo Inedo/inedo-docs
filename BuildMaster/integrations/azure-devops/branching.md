@@ -9,29 +9,29 @@ show-headings-in-nav: true
 Pull requests are an important feature of Azure DevOps. Using pull requests, which are effectively branches under-the-hood, ultimately can save a lot of development resources and allow teams to deliver better software releases faster because:
 
 {.docs}
- - **Releases can be developed in parallel.** Even though two-week sprints are becoming the norm, it doesn't mean that everyone needs to be sprinting all the time and focusing only on the "next" release. Release branches allow teams to think about and work on releases that are weeks or months away without stressing about the present
- - **Features can be independently developed and tested.** By using "feature branches" to develop and test changes to an application, developers can be certain that code changes from other features won't interfere with their work, and that their work won't interfere others
- - **Experiment with innovative changes.** Feature branches also enable business stakeholders to sponsor proofs-of-concept without worrying about experimental code being released into production
+ - **Releases can be developed in parallel.** Even though two-week sprints are becoming the norm, it doesn't mean that everyone needs to be sprinting all the time and focusing only on the "next" release. Release branches allow teams to think about and work on releases that are weeks or months away, without stressing about the present.
+ - **Features can be independently developed and tested.** By using "feature branches" to develop and test changes to an application, developers can be certain that code changes from other features won't interfere with their work, and that their work won't interfere others.
+ - **Experiment with innovative changes.** Feature branches also enable business stakeholders to sponsor proofs-of-concept without worrying about experimental code being released into production.
 
 Despite these benefits, many development teams avoid using branches to their fullest because branching efficiently and effectively is very difficult. Some of the complexities include:
 
 {.docs}
- - **Continuous Integration servers are not designed with branching in mind.** Tools like Jenkins and TeamCity have only recently introduced branching support as a feature, and many have reported that it feels like an afterthought. It's complex to use, and you often have to design a process around what the tool supports
- - **Deploying "feature branches" is very risky.** Introducing builds that were created from "feature branches" into your software delivery pipeline means that it could not only interrupt testing for planned releases but also that it might make its way to production
+ - **Continuous Integration servers are not designed with branching in mind.** Tools like Jenkins and TeamCity have only recently introduced branching support as a feature, and many users have reported that it feels like an afterthought. It's complex to use, and you often have to design a process around what the tool supports, rather than around precisely what you need it to do.
+ - **Deploying "feature branches" is very risky.** Introducing builds that were created from "feature branches" into your software delivery pipeline means that it could not only interrupt testing for planned releases but also that it might make its way to production.
  - **Testing "feature branches" is very difficult.** When different teams are working on dozens of different features, it's nearly impossible to keep track of which build was deployed to which environment, and by the time testing teams find that out, a different build is often deployed on top of it
- - **Managing "parallel releases" is complicated.** Software delivery pipelines are designed for a repeatable process, but many tools are not flexible enough to deal with hotfixes or parallel releases
+ - **Managing "parallel releases" is complicated.** Software delivery pipelines are designed for a repeatable process, but many tools are not flexible enough to deal with hotfixes or parallel releases.
 
-Azure DevOps' pull requests simplify and secure the merging of branched content back into the main. BuildMaster further simplifies this complexity and makes it even safer to introduce branches, thus easily enabling the true benefits of branching. 
+Pull requests in Azure DevOps simplify and secure the merging of branched content back into the main trunk. BuildMaster further simplifies this complexity and makes it even safer to introduce branches [[ATTN: JOHN - "via..." or "by doing..." then fill in the ...]], thus easily enabling the true benefits of branching. 
 
 ## Pull Requests {#pull-requests data-title="Pull Requests"}
 
-Pull requests are a feature of Azure DevOps that allow permitted users to submit changes to a repository. In Azure DevOps, pull requests are effectively branches, whether they are sourced in the same repository or a different one (i.e. a fork). When working in BuildMaster, pull requests should be referenced by the underlying source branch which can be found on the pull request listing page:
+Pull requests are a feature of Azure DevOps that allows permitted users to submit changes to a repository. In Azure DevOps, pull requests are effectively branches, whether they are sourced in the same repository or a different one (i.e., a fork). When working in BuildMaster, pull requests should be referenced by the underlying source branch which can be found on the pull request listing page:
 
 ```
 <user> request #<pull-request-id> into <target-branch>
 ```
 
-To find the source branch, select the specific pull request and it will be listed under the pull request title:
+To find the source branch, select the specific pull request, and it will be listed under the pull request title:
 
 ```
 #<pull-request-id> <status> <title>
@@ -56,7 +56,7 @@ AzureDevOps::Get-Source
    
 ### Using Variables to Specify Branches
 
-One of the greatest strengths of OtterScript is variables: Instead of putting the branch name (e.g., `dev`) directly on the operation, you can specify a variable (e.g., `$BranchName`) instead. You can then have the `$BranchName` variable set from any number of places, including:
+[[ATTN: JOHN - add a line at the start here (or tell me the content) about the fact that Azure DevOps works well with OtterScript.]] One of the greatest strengths of OtterScript is variables: Instead of putting the branch name (e.g., `dev`) directly on the operation, you can specify a variable (e.g., `$BranchName`) instead. You can then have the `$BranchName` variable set from any number of places, including:
 
 {.docs}
 - Selected by the user when creating a build
@@ -89,7 +89,7 @@ The following steps will configure a `$BranchName` variable prompt when new buil
 	- Initial value: `master`
 	- Options: value is required
 
-### Example: Triggering a build against a branch with PowerShell
+### Example: Triggering a Build Against a Branch with PowerShell
 
 You can programmatically create new builds (i.e., trigger builds) by using the [Release & Build Deployment API](/docs/buildmaster/reference/api/release-and-build). When you want to specify the branch name to build, simply supply that as a variable (e.g., `&$BranchName=dev` in the query string) when making the API request.
 
@@ -127,7 +127,7 @@ Of course, if your team prefers to make a release branch for the _current_ relea
 
 ## Working with Hotfix Branches {#hotfix-branches data-title="Hotfix Branches"}
 
-Sometimes, a critical production bug will necessitate an unscheduled release. Often called a "hotfix", this release will usually have minimal code changes (to minimize change risk), deploy to fewer environments (to minimize interruption of testing other releases), and have different approval requirements.
+Sometimes, a critical production bug will necessitate an unscheduled release. Often called a "hotfix," this release will usually have minimal code changes (to minimize change risk), deploy to fewer environments (to minimize interruption of testing other releases), and have different approval requirements.
 
 Implementing this in BuildMaster is straightforward: Just create a _Hotfix_ or _Emergency_ pipeline that models the shortened process and follows the [Branching by Releases](#branching-by-release) strategy so that you can build from a release branch.
 
@@ -155,7 +155,7 @@ For example, if want to restrict promotion to `master` or `hotfix-` branches, yo
 $ListIndexOf(@(master,hotfix-$ReleaseNumber), $BranchName) != -1
 ```
 
-You could take this one step further, and define the permitted branches at the application or system level, like this:
+You could take this one step further and define the permitted branches at the application or system level, like this:
 
 ```
 $ListIndexOf(@AllowedBranches, $BranchName) != -1
@@ -163,7 +163,7 @@ $ListIndexOf(@AllowedBranches, $BranchName) != -1
 
 ## Programmatically Determined Branches at Build-time in OtterScript Using Custom Logic {#programmatic-branches data-title="Custom/Programmatic Branching"}
 
-Sometimes, you'll want to use a combination of the techniques described above or even implement custom logic to determine which branch to build from. Because getting and checking out from source control is handled within OtterScript, it's trivial to implement this, or any other advanced logic.
+Sometimes, you'll want to use a combination of the techniques described above or even implement custom logic to determine which branch to build from. Because getting and checking out from source control is handled within OtterScript, it's trivial to implement this or any other advanced logic.
 
 For example, you could use the following OtterScript in conjunction with any of the above techniques:
 
