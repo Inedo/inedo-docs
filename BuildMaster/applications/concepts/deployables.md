@@ -7,11 +7,7 @@ show-headings-in-nav: true
 ---
 
 :::attention {.technical}
-Deployables are an advanced feature, and with the introduction of OtterScript and the Inedo Execution Engine in BuildMaster v5, they offer significantly less benefits than in previous versions.
-:::
-
-:::attention {.technical}
-Starting with BuildMaster v6.2.20, deployables are not visible in most of BuildMaster unless the advanced setting `Legacy.Deployables` is enabled.
+Deployables are an advanced feature, and with the introduction of OtterScript and the Inedo Execution Engine in BuildMaster v5, they offer significantly less benefits than in previous versions. As of BuildMaster 6.1.20, they are hidden in the UI unless the advanced setting `Legacy.Deployables` is enabled.
 :::
 
 A deployable is intended to represent a "deployable component" of an application. For example, if you had a multi-tier application called HDARS, it might have an HDARS-Web, HDARS-Service, and HDARS-API deployable to represent each of the corresponding tiers.
@@ -50,5 +46,5 @@ If HDARS-Web was an "imported deployable", then $ReleaseNumber would resolve to 
 
 However, you can also accomplish those goals through the use of configuration variables, release templates, and the "source" tab of the artifact operations. This may be more- or less-intuitive, depending on your familiarity with BuildMaster.
 
-For monolithic applications, deployables are still quite useful, in that they are easier to visualize and work with than variables.
+For monolithic applications, deployables can be useful as they are easier to visualize and work with than variables.
 :::
