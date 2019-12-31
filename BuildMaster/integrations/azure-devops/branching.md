@@ -21,7 +21,7 @@ Despite these benefits, many development teams avoid using branches to their ful
  - **Testing "feature branches" is very difficult.** When different teams are working on dozens of different features, it's nearly impossible to keep track of which build was deployed to which environment, and by the time testing teams find that out, a different build is often deployed on top of it
  - **Managing "parallel releases" is complicated.** Software delivery pipelines are designed for a repeatable process, but many tools are not flexible enough to deal with hotfixes or parallel releases.
 
-Pull requests in Azure DevOps simplify and secure the merging of branched content back into the main trunk. BuildMaster further simplifies this complexity and makes it even safer to introduce branches [[ATTN: JOHN - "via..." or "by doing..." then fill in the ...]], thus easily enabling the true benefits of branching. 
+Pull requests in Azure DevOps simplify and secure the merging of branched content back into the main trunk. BuildMaster further simplifies this complexity and makes it even safer to introduce branching strategies (like GitFlow) if they're not already being used for development, thus easily enabling the true benefits of branching. 
 
 ## Pull Requests {#pull-requests data-title="Pull Requests"}
 
@@ -56,7 +56,7 @@ AzureDevOps::Get-Source
    
 ### Using Variables to Specify Branches
 
-[[ATTN: JOHN - add a line at the start here (or tell me the content) about the fact that Azure DevOps works well with OtterScript.]] One of the greatest strengths of OtterScript is variables: Instead of putting the branch name (e.g., `dev`) directly on the operation, you can specify a variable (e.g., `$BranchName`) instead. You can then have the `$BranchName` variable set from any number of places, including:
+One of the greatest strengths of OtterScript is variables: Instead of putting the branch name (e.g., `dev`) directly on the operation, you can specify a variable (e.g., `$BranchName`) instead. You can then have the `$BranchName` variable set from any number of places, including:
 
 {.docs}
 - Selected by the user when creating a build
