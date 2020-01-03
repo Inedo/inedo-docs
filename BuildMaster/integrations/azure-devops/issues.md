@@ -9,11 +9,11 @@ show-headings-in-nav: true
 BuildMaster is designed to continuously deliver your applications and components from source code to production and to help everyone track the changes made to each release along the way. By integrating BuildMaster with Azure DevOps, you can help developers, testers, and business analysts work closely together by providing shared visibility into changes they're working on and using automation to facilitate immediate feedback. Ultimately this will help to
 
 {.docs}
-- Reduce production errors by preventing deployments without fully-tested issues
+- Reduce production errors by preventing deployments without fully tested issues
 - Save time by eliminating tedious, manual status changes on issues
 - Give testers more information about where their changes are deployed to
 - Quickly identify the issues and changes that are blocking a release
-- Create fully-automated deployments using issue statuses as checks and balances
+- Create fully automated deployments using issue statuses as checks and balances
 
 ## Connecting to Azure DevOps {#integrating data-title="Integrating Azure DevOps with BuildMaster"}
 
