@@ -44,6 +44,10 @@ To connect to a standalone instance of Azure DevOps (i.e., Azure DevOps Server),
 
 Azure DevOps can be configured to not only compile your application's source code and run automated tests against it but also to capture "artifacts" of that process. These artifacts typically include whatever files the compiler output, i.e., your compiled application. 
 
+::: {.attention .technical}
+Azure Pipelines has tasks for both capturing both build artifacts and a newer kind stored in Azure Artifacts. Azure Artifacts does not currently have any way to download artifacts via the API (outside of running `az.exe` directl), therefore the build artifact method should be used. In other words, artifacts captured using the "Publish build artifacts" tasks can be imported by BuildMaster, while ones using "Publish Pipeline Artifacts" cannot.
+:::
+
 Importing an artifact ensures BuildMaster will be able to deploy it to future stages whether Azure DevOps is accessible or not, and you can capture these artifacts in BuildMaster using the `AzureDevOps::Import-Artifact` operation.
 
 ### Example: Using the `AzureDevOps::Import-Artifact` Operation
