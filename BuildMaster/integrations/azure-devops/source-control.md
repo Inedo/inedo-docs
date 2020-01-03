@@ -23,6 +23,16 @@ AzureDevOps::Get-Source
 );
 ```
 
+## TFVC vs. Git {#tfvc-vs-git}
+
+Azure DevOps supports two types of source control integration:
+
+{.docs}
+ - **TFVC** - mostly familiar as "the source control system for TFS", TFVC is a centralized source code repository mostly still used from existing on-prem installations of TFS
+ - **Git** - the most common distributed version control system
+
+BuildMaster combined with the AzureDevOps extension only supports Git source control integration. To integrated with a TFVC source control system, you can use the BuildMaster TFS extension instead. Alternatively, you can convert existing TFVC repositories to Git repositories using the git-tfs tool available here: [https://github.com/git-tfs/git-tfs](https://github.com/git-tfs/git-tfs)
+
 ### Git-based Operations Differences {#operations-differences}
 
 Git source repositories are unique in that you can use either a host-specific operation (in this case, `AzureDevOps::Get-Source`) or the generic `Git::GetSource` operation. The primary difference is that you'll use project names for Azure DevOps operations and URLs in the generic operations.

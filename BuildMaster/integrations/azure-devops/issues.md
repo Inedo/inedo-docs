@@ -1,6 +1,6 @@
 ---
 title: Issue Tracking
-subtitle: Azure DevOps (Boards) Issue Tracking
+subtitle: Azure DevOps Issue Tracking (Azure Boards)
 sequence: 400
 keywords: buildmaster, azure-devops, issue-tracking
 show-headings-in-nav: true
