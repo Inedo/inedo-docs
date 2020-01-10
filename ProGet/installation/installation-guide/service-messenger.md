@@ -20,7 +20,7 @@ First, make sure to follow the [instructions](/docs/proget/installation/installa
 
 Some additional configuration is required to enable the service messenger to work in a load balanced environment. Since the service and web apps are not on the same machine with this configuration, you will need to configure ProGet to use TCP instead of a named pipe:
 
-  1. Determine a TCP port to use for messenger traffic to/from service nodes
+  1. Determine a TCP port to use for messenger traffic to/from service nodes (for example, 35845)
   2. Open this port in your firewall
   3. Create and configure an inbound rule for Windows Defender if applicable.
   4. Set the `Service.MessengerEndpoint` configuration value (Admin > Advanced Settings) to `tcp://<ServiceNodeHostName>:<Port>`
