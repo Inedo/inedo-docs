@@ -1,83 +1,119 @@
 ---
-title: TFS or Azure DevOps
-subtitle: Getting Latest Source Code From TFS or Azure DevOps
-Docs URL: /builds/continuous-integration/azure-devops-tfs
+title: Source Control
+subtitle: Azure DevOps Source Control Integration
 sequence: 100 
-keywords: buildmaster, git, tfs, azure-devops, source-control
+keywords: buildmaster, git, azure-devops, source-control
+show-headings-in-nav: true
 ---
 
-BuildMaster can build any type of project, whether greenfield, legacy applications, microservices, etc. It doesn’t matter where your project’s source code is hosted.
+BuildMaster's primary integration point with Azure DevOps is source control stored in Azure Repos. This includes pulling source code, tagging it, and capturing commit IDs to maintain association between build artifacts and specific commits.
 
-Both Azure DevOps Services (hosted by Microsoft) and Azure DevOps Server (formerly Team Foundation Server, hosted on premise) offers [two types of source control](https://docs.microsoft.com/en-us/azure/devops/user-guide/source-control?view=azure-devops): Git (distributed) and Team Foundation Version Control (TFVC). 
+## Checking Out Your Source Code {#checking-out data-title="Checking Out Source Code"}
 
-Your organization may have projects spread across a variety of hosted accounts and on-premise servers, both in Git and TFVC repositories, and BuildMaster will help you can centralize all of these connections in one place, so you can build and deploy consistently, and migrate from one format to another with minimal changes to your plans.
+To get source code, use the `AzureDevOps::Get-Source` operation in a build or deployment plan. This operation supports various optional levels of granularity including the branch name to pull from, the tag name, or even specific Git references such as the commit ID.
 
-### How to Build from Azure DevOps Services or Server Using Git Source Control
+An example of using the `AzureDevOps::Get-Source` operation is:
 
-1. Browse to your solutions repository page in __Azuze DevOps Server__.
-2. Click _Clone_.
-3. Copy the HTTPS repository Url.
-4. Click _Generate Git Credentials_ to open the Git credential dialog section.
-5. Fill in the username and password.
-6. Click _Save Git Credentials_.
-7. Go to Resource Credentials in the BuildMaster Administration area (_/administration/credentials_) and create a new _Git Resource Credential_ named AzureDevOps (or whatever makes the most sense), by using the repository url, username and password you just entered.
-8. Add the "Get Source from Git Repository" operation to your Build Plan and enter your information. 
-
-Sample Plan:
 ```
-Git::Get-Source
+AzureDevOps::Get-Source
 (
-    Credentials: AzureDevOps
+    Organization: inedo,
+    Repository: ProfitCalc,
+    CommitHash => $CommitId
 );
 ```
 
-_Project URLs have changed with the release of Azure DevOps Services and now have the format dev.azure.com/{your organization}/{your project}, but you can still use the existing visualstudio.com format._
+## TFVC vs. Git {#tfvc-vs-git}
 
-#### Additional Options
-You can further customize this operation by specifying values for these additional options:
+Azure DevOps supports two types of source control integration:
 
-- Export to directory: _Allows you to choose a path in your target environment where the source will be saved_
-- Branch name: _The Specific branch you want to retrieve i.e. Master/Development_
-- Reference: _A reference such as a tag name or a commit hash_  
-- Commit hash: _The full SHA1 hash of the fetched commit will be stored in this variable._
-- Copy internal: _When exporting the repository, also export .git* files._
-- Git executable path : _Path to the git executable file for running command line operations_
-- Recurse submodules : _When true, this will recurse through all submodules whenr fetching source code_
-- Workspace disk path _If not set, a workspace name will be automatically generated and persisted based on the Repository URL or other host-specific information (e.g. GitHub's repository name)._
-- Clean workspace: _If set to true, the workspace directory will be cleared before any Git-based operations are performed._
+{.docs}
+ - **TFVC** - mostly familiar as "the source control system for TFS", TFVC is a centralized source code repository mostly still used from existing on-prem installations of TFS
+ - **Git** - the most common distributed version control system
 
+BuildMaster combined with the AzureDevOps extension only supports Git source control integration. To integrated with a TFVC source control system, you can use the BuildMaster TFS extension instead. Alternatively, you can convert existing TFVC repositories to Git repositories using the git-tfs tool available here: [https://github.com/git-tfs/git-tfs](https://github.com/git-tfs/git-tfs)
 
-### How to Build from Team Foundation Version Control (TFVC)
-BuildMaster supports source code that is managed by TFVC as well. However, getting your source code from Team Foundation Version Control will differ slightly from the Azure DevOps operation. 
+### Git-based Operations Differences {#operations-differences}
 
-1. Install the TFS extention if its not currently installed. Extensions are found in the administration section under extenstions  (_/administration/extensions_)
-2. In the BuildMaster Administration area under Resource Credentials (_/administration/credentials_), create a new _TFS Resource Credential_ named TFS (or whatever makes the most sense) and use your TFVC repository url, username and password to complete the dialogue.
-3. Add the "TFS Get Source" operation (The TFS extension will need to be installed first (_/administration/extensions_) to your Build Plan and enter your information. 
-4. Your Source Path field is mandatory and will need to be in this format:
-    ```
-    `$/<projectName>/<RepositoryName>
-    ```
+Git source repositories are unique in that you can use either a host-specific operation (in this case, `AzureDevOps::Get-Source`) or the generic `Git::GetSource` operation. The primary difference is that you'll use project names for Azure DevOps operations and URLs in the generic operations.
 
-Sample Plan:
+In general, you should prefer Azure DevOps-specific operations, because it's less data to enter and you may eventually move to a self-managed or private instance, which means you'll have to edit the URLs everywhere you entered them.
+
+## Built-in Git Client vs. Git CLI {#git-cli}
+
+By default, BuildMaster does not require Git to be installed on a build server in order to perform source control operations. However, some users who require more advanced configuration for their Git integration may instruct BuildMaster to run the CLI instead by:
+
+{.docs}
+ - setting the `GitExePath` operation property to a valid Git executable path, e.g. `/usr/bin/git` on Linux or `C:\Program Files\Git\bin\git.exe` on Windows
+ - configuring a `$DefaultGitExePath` variable at the server or system level in BuildMaster; this will force all Git source control operations to use the CLI instead of the built-in library
+
+## Capturing Commit IDs {#capturing data-title="Capturing Commit IDs"}
+
+Git repositories reference specific points in the history of a source tree using a 20-byte SHA1 hashcode. At the tip of a branch, this hash effectively represents the last committed changes. Capturing this reference at build time is very important so you can see exactly what code was used when an application was built:
+
+{.docs}
+ - **From a debugging perspective**, this saves you wasted time trying to figure out which code was deployed and saves frustration when the deployed application doesn't seem to match the code
+ - **From an auditing perspective**, this lets you see exactly who made which changes to a deployed application and when those changes were made
+
+BuildMaster gives you a lot of flexibility in capturing this information. Although you could always manually dig through the execution logs to find this information, a simpler approach is:
+
+ 1. Specify an *output* parameter on the appropriate get or checkout operation; the operation will then set the value of runtime variable to be the commit number, revision number, etc.
+ 2. Set a build variable from the runtime variable; because runtime variables only exist during build time, capturing this as a build variable will create a permanent record on the build
+
+### Example: Capturing CommitId from an Azure DevOps Repository
+
+By simply specifying the `CommitHash` output parameter and the `$CommitId` runtime variable, the `AzureDevOps::Get-Source` operation will set the value of `$CommitId` to be the commit hash of the code. You can then use this to identify the entire source code state:
+
 ```
-TFS::Tfs-GetSource
+AzureDevOps::Get-Source
 (
-    Credentials: TFS,
-    SourcePath: `$/<projectName>/<RepositoryName>
+    Credential: AzureDevOps,
+    CommitHash => $CommitId,
+);
+Set-BuildVariable CommitId  
+(  
+    Value: $CommitId  
 );
 ```
 
-#### Additional Options
-You can further customize this operation by specifying values for these additional options:
-- Export to directory :  _Allows you to choose a path in your target environment where the source will be saved_
-- Label: _This gives you some flexibility regarding the exact version of the code you want to acquire_
-- Workspace Name : _Additional customization_ 
-- Workspace Disk Path: _Path where temporary work will occur_
+The second operation will then set `$CommitId` as a build variable, which means it will be not only visible on the build page, but you can use it in all future deployments on that build.
 
-You may want to bypass creating credentials and simply utilize the following options within the TFS-GetSource operation.
+### Best Practice: Use a Variable Renderer for User-friendly Display
 
-- Project collection URL:  _Url to TFVC source code_
-- User name
-- Password / token
-- Domain name 
+A 40-digit SHA1 code (i.e., a Git commit hash) is not at very user-friendly. Most web-based Git hosts will shorten these to eight characters for display purposes, while providing a hyperlink to view a page that shows the full commit.
 
+You can do this in BuildMaster using a [variable value renderer](/docs/buildmaster/administration/value-renderers). These are essentially instructions for how to render variables in the UI that have certain names (such `$CommitId`). Because you can specify HTML in a value renderer, you link to your source control system while also providing a user-friendly code.
+
+## Tagging Source Code {#tagging data-title="Tagging Source Code"}
+
+"Tagging" source code is essentially a way to give a user-friendly name to the state of your source code at a specific point in time. Like the little flags marking where a gas line lies underground, these tags help you find a specific code version among thousands or even millions of different versions.
+
+Tags and labels can be used for all sorts of reasons, but they're most effective when used to identify which specific code was deployed to production. This makes it easy to:
+
+{.docs}
+ - Create a hotfix or patch for a deployed application
+ - Give developers information about what code was deployed
+ - Easily find and compare commits by tag/label name instead of obscure identifier
+
+If you're already capturing the commit ID in BuildMaster, each of these will already be possible. However, it's much easier for developers when this information in also source control: Not only is it faster to find information, but Git-based source control systems like Azure DevOps can use this commit ID in order to tag it later on in a build or release pipeline.
+
+To tag source code in a repository, use the `AzureDevOps::Tag`, which will assign a friendly name (such as `$ReleaseNumber.$BuildNumber`) to a specific commit. This is recommended during later stages of a pipeline to indicate which specific commits have actually been released, as opposed to ones leading up to the eventual release.
+
+### Example: Tagging a Commit in Azure DevOps
+
+This will tag a Azure DevOps-hosted repository with the current release and build number:
+
+```
+Azure DevOps::Tag
+(
+    Credentials: AzureDevOps,
+    Tag: $ReleaseName-$BuildNumber,
+    CommitHash: $CommitId
+);
+```
+
+By specifying `$CommitId` for the `CommitHash` parameter, this operation will likely not tag the current version of the code, but whatever version is represented by `$CommitId`. This could have been captured weeks prior.
+
+### Best Practice: Tag at the End of Your Release Pipelines
+
+Because a release-blocking defect can be discovered at any time prior to production, you can never be sure which specific build is deployed until after a build is deployed to production. Therefore, it's best to wait until after you've deployed to production to tag or label the code.
