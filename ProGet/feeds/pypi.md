@@ -43,3 +43,6 @@ curl https://{proget-server}/pypi/{feed-name}/upload/<packageName-version.tar.gz
 {.docs}
  - ProGet only supports searching package name and summary fields via the XML-RPC API (implemented by PyPI.org), other use-cases of this API are not supported by ProGet
  - Connectors to other PyPI feeds require the PyPI JSON API to be implemented (both ProGet and PyPI.org support this)
+ - Package names are generally normalized (as per the [PEP503 specs](https://www.python.org/dev/peps/pep-0503)), but packages where versions only differ by `-` and `_` (e.g. `my-package 1.0` and `my_package 1.1`) aren't properly listed under `my-package`. In addition, UI-based searching does not treat `_` and `-` the same
+ 
+If these limitations present more than minor inconveniences, please let us know and we can consider fixing/addressing them.
