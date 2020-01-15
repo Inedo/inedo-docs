@@ -50,7 +50,25 @@ When targeting servers directly, each server is enumerated and the plan is execu
 
 You can also define a job template under *Admin* > *Job Templates*; these can be used to pre-populate fields in an orchestration job, and also allow for jobs to be triggered using the [Job Orchestration API].
 
-![Job Templates in Otter](/resources/documentation/otter/job-template.png){.screenshot}
+#### Job Template Variables
+
+Job templates support variables, which are used as the defaults when a job is created from the template. Once the job is created from a template, the variable values are effectively injected into the orchestration plan that is run. 
+
+Each variable and its value should be entered on its own line, separated by an equals sign. For example:
+
+```
+$MyVariable1=value1
+$MyVariable2=value2
+```
+
+As of Otter v2.2.14, list and map types are supported with the correct prefix, for example:
+
+```
+%Map=%(prop: val, other: val2)
+@List=@(item1, item2, item3)
+```
+
+*For scalar values, the beginning $ is optional and may be omitted.*
 
 ## Simulation Job Runs {#simulation data-title="Simulations"}
 
