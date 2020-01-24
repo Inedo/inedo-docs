@@ -25,6 +25,9 @@ As of BuildMaster v6.2, **all legacy features listed on this page will be remove
 | Extension Configuration/Profiles | Configuration Variables & Resource Credentials | [learn more](#extension-configurations) |
 | Build Importers | OtterScript Plans & Tool-specific Operations | [learn more](#build-importers) |
 | Source Control Providers | Resource Credentials & Tool-specific Operations | [learn more](#source-control-providers) |
+| SCM Build Triggers | Repository Monitors & Webhooks | [learn more](#scm-triggers) |
+| URL Build Triggers | Release & Build API | [learn more](#url-triggers) |
+| Recurring Builds | Scheduled Jobs | [learn more](#recurring-builds) |
 | Issue Tracking Providers | Resource Credentials & Issue Sources | [learn more](#issue-tracking-providers) |
 | Issue + Build Association | Automatically Change Issue Status | [learn more](#issues-and-builds) |
 | Legacy Configuration Variables | Multi-scope Configuration Variables | [learn more](#variables) |
@@ -112,6 +115,30 @@ Any source control operations may accept the full connection and repository info
 #### Migration Strategy
 
 Switching to these operations obviously requires legacy plans to be converted, and then Resource Credentials to be created for each provider or repository in the case of SVN which allows multiple repositories to be defined in a single provider. It's helpful to first take note of what operation properties are available for the specific source control system. As an example, the Git::Git-GetSource operation allows the specification of a repository URL, target disk path, branch or tag name, and credentials to connect. The values for these properties will become obvious from the saved data in the provider and Get Latest action, e.g. "Source directory" becomes "target disk path", "Remote URL" becomes "repository URL", and so on.
+
+### SCM Build Triggers => Repository Monitors & Webhooks
+
+SCM build triggers were basic pull-based monitoring against a repository that had no support for branches or debugging. They also relied on a confusing "quiet period" that was only used to prevent directory conflicts when multiple changes/commits were detected. There was also no way to monitor multiple repositories by configuring a single SCM build trigger.
+
+#### Migration Strategy
+
+The replacement for legacy build triggers can either be a [repository monitor](/docs/buildmaster/ci-cd/continuous-integration/build-triggers/repository-monitors) (to poll the repository to changes) or a [webhook monitor](/docs/buildmaster/ci-cd/continuous-integration/build-triggers/webhook-monitors) (to receive events from a repository host i.e. push-based), depending on the use-case. To perform the migration, simply create a new instance of either of those options, and delete the existing SCM trigger.
+
+### URL Build Triggers => Release & Build API
+
+With the addition of the Release & Build Deployment API, the functionality that was previously provided by URL-triggered builds became duplicative. The API offers several additional benefits that the URL-trigger did not, including: authentication and user-based authorization using an API key tied to an optional user, variable support, improved logging, and additional functionality such as creating or deployment releases.
+
+#### Migration Strategy
+
+The replacement for URL build triggers is simply adding an [API key](/docs/buildmaster/administration/security/api-keys) with access to the [Release & Build Deployment API](/docs/buildmaster/reference/api/release-and-build), then calling one of the relevant endpoints. More specifically, calling the [Create Build](/docs/buildmaster/reference/api/release-and-build#create-build) endpoint is likely the desired replacement.
+
+### Recurring Builds => Scheduled Jobs
+
+Recurring builds, also known as "build schedules", were the initial method used to create builds on a set, periodic schedule, before SCM-triggered builds took precedence. They are no fully duplicative of Scheduled Jobs functionality, which can run any plan, within an application or globally, to perform the exact same functionality.
+
+#### Migration Strategy
+
+The replacement for Recurring Builds is either adding a [Repository Monitor](/docs/buildmaster/ci-cd/continuous-integration/build-triggers/repository-monitors) (to instead monitor a source control repository for changes vs. timed interval) or, to maintain identical functionality, adding a Scheduled Job (*Admin* > *Build Triggers & Scheduled Jobs* > *Create New Scheduled Job*) with a specific plan that calls `Create-Build`, optionally specifying an application name.
 
 ### Issue Tracking Providers => Issue Sources and Tool-Specific Operations
 
