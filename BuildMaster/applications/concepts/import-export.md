@@ -6,36 +6,24 @@ show-headings-in-nav: true
 
 Behind the scenes, the [Application Template](templates) and [Backup & Restore](backup-restore) features use the application import and export feature.
 
-## Exporting Applications {#exporting data-title="Exporting Applications"}
+## Advanced Application Export {#exporting data-title="Advanced Export"}
 
-You can open the application export page from the your applications advanced settings page (Backup... > Advanced), or from Admin > Export Applications. 
-
-When exporting applications, you have the following options:
+In order to perform an advanced export, visit the *Settings* > *Advanced Settings* page from within an application. Selecting *Export as Application Template...* > *Advanced...* will enable an application export with the following options:
 
 {.docs}
-- **Applications** - list of applications to export; this option will only appear when the page is accessed from the administration section
-- **Package name** - optional; the name of the universal package to create; this defaults to the application name, and is ignored if multiple applications are selected
-- **Package version** - optional, the version of the universal package to create; this defaults to 0.0.0
-- **Include history** - when selected, the release history and deployment logs will be included in the package. Note that this does not include artifacts
+ - **Compatibility** - used by application templates to coordinate BuildMaster version and export version compatibility. This option is generally only used by Inedo for samples and templates, and otherwise should remain set at "Current"
+ - **Package name** - the name of the exported package
+ - **Package tags** - optional package tags used primarily to categorize exported application templates and samples
+ - **Title** - the UI-friendly title of the exported package
+ - **Description** - a more in-depth description of the exported package; Markdown is supported in this field
+ - **Icon** - an optional package icon
+ - **Options** - currently only a single option to include history (build/release/deployment logs, etc.)
 
-You will also select where to publish the package from a list of Package Sources.
-
-{.docs}
-- **Package sources** are configured as a feed on a ProGet instance with a feed url will become a repository for packages that you export, import, backup, restore, or templatize. A package source is simply configured as a url and credentials to a ProGet feed for univeral packages. 
-
+Packages exported from this page will be published to the Templates [package source](/docs/buildmaster/ci-cd/continuous-integration/packaging/package-and-container-sources).
 
 ## Importing Applications {#importing data-title="Importing Applications"}
-You can import an application or template that has been exported to a pre-configured package source. This will save time by minimizing the time needed to setup an application that would have similar plans and pipelines.
 
-To import an application go to Admin > Import Application. When importing, you must first select a source package:
-
-You will also be presented with the following options:
-
-{.docs}
-- **Application name** - optional; the name of the application to create, this will default to the package name
-- **Import history** - when set, any of the release and deployment history that is included in the package will also be imported
-
-Before importing from a feed, you will need to setup an Inedo Product resource credential with the URL and optionally an API key to your ProGet server.
+Follow the [Restore Applications](backup-restore#restoring-an-application) documentation to restore an application exported in the previous section.
 
 ## Package File Format {#package-file-formate data-title="Package File Format"}
 
@@ -58,9 +46,15 @@ In addition to the standard name and version properties, BuildMaster will includ
 | **issue-sources.json** | Issue sources configured for the application |
 | **issues.json** | Already synchronized issues and their status |
 | **plans.json** | Deployment plans |
+| **credentials.json** | Application-scoped credentials, [encryption info](/docs/buildmaster/installation-and-maintenance/config-files) |
+| **secure-resources.json** | Application-scoped resources |
+| **repository-monitors.json** | Application-scoped repository monitors |
+| **webhooks.json** | Application-scoped webhook monitors |
 | **counts.json** | Index/counts of all of the items in the import package |
+| **setup-template.json** | The corresponding setup template |
 | **releases.json** | Historic; releases |
 | **builds.json** | Historic; builds |
+| **artifacts.json** | Historic; build artifact metadata |
 | **promotions.json** | Historic; build deployments to stages |
 | **executions.json** | Historic; execution records |
 | **log-scopes.json** | Historic; log "scopes" (headings) in log files |
