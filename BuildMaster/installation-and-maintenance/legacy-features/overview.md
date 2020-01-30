@@ -156,7 +156,7 @@ Issues are always associated with a release, and in BuildMaster 6.1 and earlier,
 
 ### Legacy Variables => Configuration Variables {#variables data-title="Variables"}
 
-See [KB#1128 (Legacy Variables)](/support/kb/1128) for more information.
+Refer to the [Legacy Variables documentation](variables) for more information.
 
 ### Legacy Template Variables (Release, Build, Execution, Promotion) => Release Templates {#template-variables data-title="Template Variables"}
 
