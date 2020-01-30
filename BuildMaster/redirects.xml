@@ -153,5 +153,9 @@
   <temporary from="builds/continuous-integration/build-triggers-and-monitors/gitlab-hooks" to="integrations/gitlab/webhooks" />
 
   <temporary from="applications/overview" to="applications/concepts" />
+  
+  <temporary from="installation-and-maintenance/legacy-features" to="installation-and-maintenance/legacy-features/overview" />
+  
+  
 
 </redirects>
