@@ -10,9 +10,9 @@ show-headings-in-nav: true
 Because this upgrade is more involved than previous upgrades, special support for it has been included with paid licenses. If you are interested in learning more, use the [Submit Ticket Form](https://my.inedo.com/tickets/new) and put `6.2 UPGRADE` in the "How can we help" section to let us know when you are going to upgrade. We also recommend you include the [Legacy Features Dashboard Report Logs](#detection) in the body of the ticket.
 :::
 
-The 6.2 version of BuildMaster is a major, transformative version that removes all [legacy features](#detection) from the product. Because of this, the recommended strategy for upgrades is to install a new instance of BuildMaster v6.2 side-by-side, and migrate applications one at a time to the new system (for installs with legacy deployment plans) or use the [backup/restore functionality](/docs/buildmaster/applications/concepts/backup-restore) to migrate all applications at once.
+BuildMaster 6.2 is a major, transformative version that removes all [legacy features](#detection) from the product. If you still are using these features, the generally recommended strategy is to install a new instance of BuildMaster 6.2 side-by-side, and migrate applications one at a time to the new system (for installs with legacy deployment plans) or use the [backup/restore functionality](/docs/buildmaster/applications/concepts/backup-restore) to migrate all applications at once.
 
-It is still possible to upgrade directly to v6.2 using the installer, however the following must all be true before it is allowed:
+You can also upgrade directly to v6.2 using the Inedo Hub or installer, but all of following must all be true before it is allowed:
 
 {.docs}
  - existing instance has been upgraded to latest version of v6.1
