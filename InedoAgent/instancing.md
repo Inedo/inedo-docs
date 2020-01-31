@@ -13,3 +13,5 @@ Note that this is only necessary if you have multiple instances of BuildMaster o
 without setting and instance ID.
 
 After making this change, you should restart the BuildMaster/Otter service.
+
+This feature is available in BuildMaster 6.1.20 or later and Otter 2.2.10 or later.

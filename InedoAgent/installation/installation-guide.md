@@ -61,6 +61,9 @@ Sometimes, it may be desired to install multiple instances of the Inedo Agent on
 The agent installer (including silent installation) does not currently support installation or management of multiple instances. See [KB#1146](https://inedo.com/support/kb/1146/installing-multiple-instances-of-inedoagent-on-a-single-machine) for guidance on how to install more than one agent on the same server manually.
 :::
 
+If you'd just like to connect multiple instances of BuildMaster or Otter to the same agent, you can use
+[agent instancing](instancing) instead of installing multiple agents.
+
 ## Silent Installation
 
 The Inedo Agent installer may also be run without displaying a window, ideal for Infrastructure as Code or script-based installations. To perform a silent install, simply run the executable from the command line or PowerShell with the `/S` argument.
