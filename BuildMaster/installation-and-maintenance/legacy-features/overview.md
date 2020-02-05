@@ -35,6 +35,7 @@ As of BuildMaster v6.2, **all legacy features listed on this page will be remove
 | PowerShell/Shell Scripts | Script Assets | [learn more](#scripts) |
 | Change Controls | Issues, Release Notes, or Otter | [learn more](#change-controls) |
 | Variable %-syntax | OtterScript Variable $-syntax | [learn more](#variable-syntax) |
+| Configuration File $UnknownVariable Replacement | Escape with `$ | [learn more](#config-file-variable-syntax) |
 
 ## Best practice: migrate, but over time...
 
@@ -201,3 +202,14 @@ For deployments that must occur within a certain time window, Deployment Windows
 #### Migration Strategy
 
 Conversion to Deployment Windows should be done manually, and should be a straightforward 1:1 matchup of properties.
+
+
+### Configuration File Variables  {#config-file-variable-syntax data-title="Config File Variables"}
+
+In previous versions, variable expressions inside of configuration files (e.g. `$Variiiable` or `${Wrong Nam}`) would be ignored if they didn't resolve to a variable; this replacement logic was unique to configuration files, and use unique (and subtly different code). To simplify the code and unify the behavior, the Execution Engine's text templating libraries are used to perform the replacements, which means simply ignoring variable expressions is not possible. 
+
+Instead, variable expressions that can't be resolved are replaced with their name. This mostly works, but there are some cases where the name will not match the exact expression (e.g. `${aaa}` will be replaced with `$aaa`). As such, a warning is left in the execution logs to encourage you to change it.  
+
+#### Migration Strategy
+
+If you don't want a variable expression to be replaced at deploy time, then escape the `$` character with a grave apostrophe, as such: "$MyExpression" with "\`$MyExpression".
