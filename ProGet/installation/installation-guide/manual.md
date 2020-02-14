@@ -200,6 +200,7 @@ Before installing ProGet in IIS, the following roles/features must be enabled in
  - Web Server (IIS) > Web Server > Security > Windows Authentication (*if planning to configure Integrated Windows Authentication in the future*)
  - Web Server (IIS) > Web Server > Application Development > .NET Extensibility 4.6 (or greater)
  - Web Server (IIS) > Web Server > Application Development > ASP.NET 4.6 (or greater)
+ - Web Server (IIS) > Web Server > Common HTTP Features > Static Content
  - Web Server (IIS) > Management Tools > IIS Management Console
 
 #### Features
