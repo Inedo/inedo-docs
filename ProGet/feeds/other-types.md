@@ -59,6 +59,11 @@ We've had three feature requests for Vagrant over the years, but they were fairl
 
 We've had one request for Chef cookbooks (with connectors to the Chef Supermarket) to date, but we know nothing about the underlying format. Interested? Share your thoughts by starting a thread in our [forums](https://forums.inedo.com/), and we'll link it here.
 
+### Conda (Anaconda) Packages: probably not
+
+We've had some interest in [Conda packages](https://docs.conda.io/en/latest/), and wrote up our thoguhts in the community forums.  Please add to [QA#2901](https://forums.inedo.com/topic/2901) to share your thoughts!
+
+
 ### CocoaPods: no actual interest
 
 We've had one customer ask about this as a feature request; after some back-and-forths it turns out that one of the customer's development teams said "they might consider a private package manager", but didn't really care one ay or another. 
