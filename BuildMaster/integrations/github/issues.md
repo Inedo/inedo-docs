@@ -27,10 +27,10 @@ This issue store tracks the following information about each issue:
 
 {.docs}
 - **Release** - a specific [Release](/docs/buildmaster/releases/overview) of a [BuildMaster Application](/docs/buildmaster/administration/applications)
-- **Issue Id** - a human-readable identifier, such has HDARS-1281
-- **Type** - the category of issue, such as Bug or Feature
-- **Status** - the issue's status, such as Open or Resolved
-- **Closed** - a true/false value that indicates the issue is "closed"
+- **Issue Id** - the number GitHub assigned to an issue, such has 1281
+- **Type** - the *first* label on an issue, usually something like "bug" or "feature"
+- **Status** - the issue's state, either "open" or "closed"
+- **Closed** - true if the issue's status is a resolved status, false otherwise
 - **Title** - a brief description of the issue, such as "FIX: Account Status may be incorrect"
 - **Description** - a longer description of the issue, containing details
 - **URL** - URL directly linking to the issue in the tool, so that it can be clicked on from the BuildMaster user interface
@@ -59,7 +59,9 @@ You can also use any [configuration variables](/docs/buildmaster/administration/
 
 ## Creating Milestones {#creating-milestones data-title="Creating Milestones"}
 
-A milestone is the mechanism used to associate release numbers in BuildMaster with a specific GitHub issue and is intended to be a version number of sorts; it does not need to match the version used by marketing but needs to be uniquely-identifiable so that BuildMaster can use it to apply gating logic in pipeline stages (i.e. all issues closed for *this* release). You can use the `GitHub::Ensure-Milestone` operation at an early stage to ensure that a milestone exists, or could be created at the end of a previous release.
+A milestone is one of the two mechanisms that can be used to associate release numbers in BuildMaster with a specific GitHub issue and is intended to be a version number of sorts. It does not need to match the version used by marketing, but it needs to be uniquely-identifiable so that BuildMaster can use it to apply gating logic in pipeline stages (i.e. all issues closed for *this* release). You can use the `GitHub::Ensure-Milestone` operation at an early stage to ensure that a milestone exists, or could be created at the end of a previous release.
+
+GitHub Projects can also be used as a method to associate GitHub issues with BuildMaster releases, and may be easier to use if project management is primarily done via GitHub's interface.
 
 ## Closing Milestones {#closing-milestones data-title="Closing Milestones"}
 
@@ -93,7 +95,7 @@ Some organizations use issues as a way to deployments throughout a release. This
 
 Although GitHub isn't really designed for this, it's generally easier to just automate your existing process instead of forcing a new one. This is easy to do with BuildMaster by using an operation to create an issue. Here's an example of how you could do this for GitHub:
 
-````
+```
 GitHub::Create-Issue
 (
 	Project: ProfitCalc,
@@ -107,7 +109,7 @@ Set-BuildVariable GitHubIssueId
 (
 	Value: $GitHubIssueId
 );
-````
+```
 
 The second operation will then set `$GitHubIssueId ` as a build variable, which means it will be not only visible on the build page, but you can also use it in all future deployments on that build.
 
@@ -116,8 +118,8 @@ You can then use the `$GitHubIssueId` in later operations to automatically [chan
 
 ### Tip: Use a Variable Renderer for User-friendly Display
 
-You can do this in BuildMaster with [Variable Value Renderers](/docs/buildmaster/administration/value-renderers). These are essentially instructions for how to render variables in the UI that have certain names (such `$GitHubIssueId `). Because you can specify HTML in a value renderer, you link directly to your issue tracker. This provides easy navigation for users. For example, adding a renderer with the following HTML will render a link back to GitHub:
+You can do this in BuildMaster with [Variable Value Renderers](/docs/buildmaster/administration/value-renderers). These are essentially instructions for how to render variables in the UI that have certain names (such `$GitHubIssueId`). Because you can specify HTML in a value renderer, you link directly to your issue tracker. This provides easy navigation for users. For example, adding a renderer with the following HTML will render a link back to GitHub:
 
 ```
-<a href="https://github.com/Inedo/inedox-git/issues/$Value">$GitHubIssueId</a>
+<a href="https://github.com/Inedo/inedox-git/issues/$Value" class="ci-icon github">$Value</a>
 ```
