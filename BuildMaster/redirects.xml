@@ -155,7 +155,7 @@
   <temporary from="applications/overview" to="applications/concepts" />
   
   <temporary from="installation-and-maintenance/legacy-features" to="installation-and-maintenance/legacy-features/overview" />
-  
+  <temporary from="builds/continuous-integration/repository-hooks" to="ci-cd/continuous-integration/build-triggers/webhook-monitors" />
   
 
 </redirects>
