@@ -156,6 +156,7 @@
   
   <temporary from="installation-and-maintenance/legacy-features" to="installation-and-maintenance/legacy-features/overview" />
   <temporary from="builds/continuous-integration/repository-hooks" to="ci-cd/continuous-integration/build-triggers/webhook-monitors" />
-  
+
+  <temporary from="platforms/java/junit-tests" to="platforms/java/junit" />
 
 </redirects>

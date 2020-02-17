@@ -2,7 +2,7 @@
 title: JUnit
 subtitle: JUnit Tests in BuildMaster
 keywords: unit test, buildmaster, junit, junit test, java
-sequence: 100
+sequence: 400
 ---
 
 BuildMaster is a fully-functional Continuous Integration tool for a variety of platforms allowing your organization to start using CI/CD today. If your are writing __Java applications__ and want to implement unit testing as part of your deployment pipeline Buildmaster can quite easilty accomodate that. 
