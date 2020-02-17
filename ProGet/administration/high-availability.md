@@ -3,6 +3,7 @@ title: High Availability & Load Balancing
 subtitle: High Availability and Load Balancing
 sequence: 300
 keywords: proget, installation
+show-headings-in-nav: true
 
 ---
 ProGet's distributed architecture allows you to use any number of servers for both load-balancing and automatic failover purposes, such that one server node can take over in the event of any other server failure or outage.
