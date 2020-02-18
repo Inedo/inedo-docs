@@ -31,12 +31,11 @@ You’re welcome to submit pull requests to this page or contribute to the linke
 
 ### Helm: Completed!
 
-Thanks to the investigative work of Scott Cusson (one of our users), we were able to implement Helm charts in ProGet as a proof-of-concept in a matter of days. As it turned out, a private Helm chart repository could almost entirely be implemented as an Asset Directory (Scott had tried this on his own); ProGet just needed to generate a special Metadata file to list the packages in the directory for this to work via the Helm client. Once we knew that, it was pretty easy for us to dig in and figure out how to implement this feed type. It was shipped in ProGet 5.2 thanks to Scott and his team’s help.
+Thanks to the investigative work of Scott Cusson (one of our users), we were able to implement Helm charts in ProGet as a proof-of-concept in a matter of days. As it turned out, a private Helm chart repository could almost entirely be implemented as an Asset Directory (Scott had tried this on his own); ProGet just needed to generate a special Metadata file to list the packages in the directory for this to work via the Helm client. Once we knew that, it was pretty easy for us to dig in and figure out how to implement this feed type. But long story short, it was shipped in ProGet 5.2 ([see the docs](/docs/proget/feeds/helm)) thanks to Scott and his team’s help.
 
+### RPM: Completed!
 
-### RPM: Now in Pre-release!
-
-Thanks to support and investigation from the user community, we were able to publish this as a pre-release already! We will soon integrate this into a maintenance release; see [QA#9887](https://inedo.com/support/questions/4045) to join in the discussion.
+Thanks to support and investigation from the user community, we were able to include this in ProGet 5.2.5. See the [RPM Documentation](/docs/proget/feeds/rpm).
 
 ### R and CRAN: Ready for development, once we find user partners
 
@@ -61,7 +60,7 @@ We've had one request for Chef cookbooks (with connectors to the Chef Supermarke
 
 ### Conda (Anaconda) Packages: probably not
 
-We've had some interest in [Conda packages](https://docs.conda.io/en/latest/), and wrote up our thoguhts in the community forums.  Please add to [QA#2901](https://forums.inedo.com/topic/2901) to share your thoughts!
+We've had some interest in [Conda packages](https://docs.conda.io/en/latest/), and wrote up our thoughts in the community forums.  Please add to [QA#2901](https://forums.inedo.com/topic/2901) to share your thoughts!
 
 
 ### CocoaPods: no actual interest
