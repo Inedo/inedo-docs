@@ -1,30 +1,70 @@
 ---
 title: JUnit
-subtitle: JUnit Tests in BuildMaster
-keywords: unit test, buildmaster, junit, junit test, java
+subtitle: Running JUnit Tests
+keywords: buildmaster, unit-testing, junit
 sequence: 400
+show-headings-in-nav: true
 ---
 
-BuildMaster is a fully-functional Continuous Integration tool for a variety of platforms allowing your organization to start using CI/CD today. If your are writing __Java applications__ and want to implement unit testing as part of your deployment pipeline Buildmaster can quite easilty accomodate that. 
+[JUnit](https://junit.org/) is the most popular unit testing framework for Java projects. Developers are able to run tests directly in most IDEs such as IntelliJ, Eclipse, and more. 
 
-####  What is JUnit? 
-JUnit is a unit testing framework for Java programming language. JUnit has been important in the development of test-driven development, and is one of a family of unit testing frameworks collectively known as xUnit, that originated with JUnit.
+Within a CI build pipeline, tests can be run using common tasks/phases in build tools such as [Maven](https://maven.org/) and [Gradle](https://gradle.org/), or alternatively executed directly with [Java directly](https://junit.org/junit5/docs/current/user-guide/#running-tests-console-launcher-options): 
 
-#### Why should you use JUnit with BuildMaster?
-You can use this automation framework for both unit testing and UI testing. You can set up buildmaster to require unit tests to pass before the deployment can go to the next stage. 
-
-Execute the JUnit peraration
 ```
- Execute-JUnit
- (
-     Include: JUnitTest.class,
-     From: /usr/share/java/
- );
+java -jar junit-platform-console-standalone-1.6.0.jar
 ```
 
-#### Pass or Fail
-If your tests all pass you will see the results in your execution logs.  If __any__ of the tests happen to fail the error will be logged and the rest of your plan will be skipped. You may also want to wrap this operation in a try/catch to handle the error more cleanly or to do more with the test results like notify any interested parties. 
+## JUnit Testing in BuildMaster {#buildmaster data-title="JUnit with BuildMaster"}
 
-#### Pipeline Promotion 
-Add an _Automatic Gate Approval_ with the type of _Unit Tests_ to your integration stage in your pipeline to prevent promotion to a stage if a unit test fails. (The promotion can ultimately be manually forced if needed). This will ensure that if the application has automatically been promoted to a stage that requires gate approval, it has has passed all unit tests. 
+BuildMaster's [built-in unit test reporting](/docs/buildmaster/ci-cd/testing-and-verification/unit-tests) is designed to work with the JUnit test framework. To enable integration with JUnit:
 
+{.docs}
+ 1. Ensure the Java extension is installed
+ 2. A configuration variable named `$JavaPath` exists and is configured to point to the `java` executable (`java.exe` on Windows)
+
+An example build plan that gets source, runs tests, and packages a JAR using Maven is as follows:
+
+```
+GitHub::Get-Source
+(
+    Organization: Inedo,
+    Repository: ProfitCalcJava
+);
+
+Java::Execute-JUnit
+(
+    Includes: **.class,
+    From: app\src\test
+);
+
+Java::Execute-Maven
+(
+    GoalsAndPhases: "clean package",
+    In: app
+);
+```
+
+Note that this example may be slightly redundant because the default Maven lifecycle will execute tests in phase prior to "package". Running the `Execute-JUnit` operation separately enables BuildMaster to record the output in its own format for reporting purposes.
+
+## Test Result Behavior {#results data-title="Test Result Behavior"}
+
+Test results are logged in the build execution log, and also to the *Unit Test* section of a build, with a more specific breakdown and/or test history. If a unit test fails, the default behavior is to halt the build. If the desired behavior is the continue regardless of failure, wrap the operation in an OtterScript try/catch statement, for example:
+
+```
+try
+{
+    Java::Execute-JUnit
+    (
+        Includes: **.class,
+        From: app\src\test
+    );
+}
+catch
+{
+    Log-Warning Ignoring test failures for now...;
+}
+```
+
+## Preventing Deployment of Builds with Failed Unit Tests {#preventing-deployment data-title="Prevent Deploying Untested Builds"}
+
+To ensure that a build with failed unit tests is never deployed, add a "Unit Tests Passed" [automated check](/docs/buildmaster/verification/pipelines/approvals-and-gates/automated-checks) to the pipeline stage immediately following the build stage (this is typically integration). This will prevent a build with failed unit tests (and optionally inconclusive tests) from being promoted regardless if errors were logged or ignored in the build plan. Of course, this build can still be forced to the next stage, but special administrative permissions are required in order to do so.
