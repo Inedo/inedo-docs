@@ -6,7 +6,7 @@ subtitle: Package Deployment
 show-headings-in-nav: true
 ---
 
-When a package is deployed from a feed using a tool (such as [BuildMaster](buildmaster) or [Hedgehog](hedgehog) ProGet records information about that deployment, such as the target and the user that performed the deployment.
+When a package is deployed from a feed using a tool (such as [BuildMaster](buildmaster) ) ProGet records information about that deployment, such as the target and the user that performed the deployment.
 
 ![](/resources/documentation/proget/deployment-record.png)
 
