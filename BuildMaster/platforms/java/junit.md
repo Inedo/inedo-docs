@@ -34,13 +34,13 @@ GitHub::Get-Source
 Java::Execute-JUnit
 (
     Includes: **.class,
-    From: app\src\test
+    From: ProfictCalcJava\src\test
 );
 
 Java::Execute-Maven
 (
     GoalsAndPhases: "clean package",
-    In: app
+    In: ProfictCalcJava
 );
 ```
 
@@ -56,7 +56,7 @@ try
     Java::Execute-JUnit
     (
         Includes: **.class,
-        From: app\src\test
+        From: ProfictCalcJava\src\test
     );
 }
 catch

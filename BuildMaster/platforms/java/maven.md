@@ -76,11 +76,11 @@ Git::Get-Source
 Java::Execute-Maven
 (
     GoalsAndPhases: "clean package",
-    In: app
+    In: ProfitCalcJava
 );
 
 Create-Artifact ProfitCalcJava
 (
-    From: app\target
+    From: ProfitCalcJava\target
 );
 ```
