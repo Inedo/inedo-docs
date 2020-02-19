@@ -125,13 +125,13 @@ Java::Build-AntProject
 {
     BuildPath: src\ProfitCalcJava.xml
     ProjectBuildTarget: dist
-    BuildProperties: @(version=$BuildNumber)
+    BuildProperties: @(version=$ReleaseNumber.$BuildNumber)
 }
 ```
 
 - Running maven directly:
 ```
-Exec "ant -buidfile src\ProfitCalcJava.xml -Dversion:$BuildNumber dist";
+Exec "ant -buidfile src\ProfitCalcJava.xml -Dversion:$ReleaseNumber.$BuildNumber dist";
 ```
 
 - example plan that gets the latest source code from Git and captures a Maven artifact as a BuildMaster artifact:
@@ -146,7 +146,7 @@ Java::Build-AntProject
 {
     BuildPath: src\ProfitCalcJava.xml
     ProjectBuildTarget: dist
-    BuildProperties: @(version=$BuildNumber)
+    BuildProperties: @(version=$ReleaseNumber.$BuildNumber)
 };
 
 Create-Artifact ProfitCalcJava
