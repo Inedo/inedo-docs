@@ -4,46 +4,40 @@ subtitle: Building Java Applications with Maven
 sequence: 100
 show-headings-in-nav: true
 ---
+[Apache Maven] (or just "maven") is the most common build, packaging, and deployment tool for [Java](ATTN RICH: link back to the Java overview page). Maven began as an attempt to standardize the build processes in the Jakarta Turbine project, which consisted of multiple projects, build scripts, and JAR output files [[ATTN: RICH - JAR output files?]] -- but maven made it easy to publish project information and share JAR files.
 
-- [Apache Maven] is the most common build, packaging, and deployment tool for Java 
-- It began as an attempt to standardize the build processes in the Jakarta Turbine project, which consisted of multiple projects, build scripts, and JAR output files
-- Maven made it easy to publish project information and share these JAR files 
-- the original objectives of the tool were:
-    - Making the build process easy
+The original objectives of maven [[ATTN: RICH - is maven always lowercase?]] were:
+{.docs}
+    - Simplifying the build process
     - Providing a uniform build system
     - Providing quality project information
     - Providing guidelines for best practices development
     - Allowing transparent migration to new features
 - All popular IDEs (Eclipse, Netbeans, IntelliJ) use Maven under the hood
 
-## Overview & Concepts {#overview data-title="Maven Overview"}
+## maven Overview {#overview data-title="Maven Overview"}
 
-- maven is a command line tool
-- works at a project level, and a project can be thought of as an application or library
-- a project is defined by a POM.xml file
-- packages projects into an artifact (JAR, WAR, EAR, etc.)
-- artifacts may be published to a local repository on a developer's machine or build server, or a enterprise repository such as [ProGet] to share them with other developers
-- a SNAPSHOT version is the equivalent of a developer build or pre-release (i.e. unstable) version
+Maven is a command line tool that works at a project level. In maven, a project is conceptualized as an application or library and is defined by a POM.xml file. Maven packages projects into an artifact (JAR, WAR, EAR, etc.), and artifacts may be published to a local repository on a developer's machine or build server or to a enterprise repository such as [ProGet] to share them with other developers. [[ATTN: RICH - the connection between the ProGet sentence and the SNAPSHOT bit is unclear AND I also don't know what SNAPSHOT is]] A SNAPSHOT version is the equivalent of a developer build or pre-release (i.e. unstable) version
 
 ### Archetypes
 
-- an archetype is basically a project template used to create Java projects for web applications, Jakarta EE projects, plugins for Maven, "sites" (i.e. a documentation site included in the maven artifact), or even archetypes themselves
-- Maven ships with a list of archetypes by default, but additional ones are published as XML "catalogs"
-- interally, you may want to standardize J2EE development within your organization, so you may want to provide archetypes for EJBs, or WARs, or for your web services
+A maven archetype is a project template used to create Java projects for web applications, Jakarta EE projects, plugins for Maven, "sites" (i.e., a documentation site included in the maven artifact), or even other archetypes themselves [[ATTN: RICH - this last bit, I added "other" but I still don't understand this last item in the list]]. Maven ships with a list of archetypes by default, but additional ones are published as XML "catalogs" [[ATTN: RICH - "are published": does maven do it automatically or do devs USING maven publish these?]].
+- interally, you may want to standardize J2EE development [[ATTN: RICH - what's this??]] within your organization, so you may want to provide archetypes for EJBs, or WARs, or for your web services. [[ATTN: RICH - we rarely include best practices this baldly in overview sections; i suggest we either move it OR you advise me on how I can rephrase it as a general best practice]]
 
 ### Build Lifecycle
 
-- a build lifecycle in Maven consists of a series of phases, and each phase is bound to 0 or more goals
-- executing a phase will implicitly execute all phases before it in the lifecycle (e.g. `compile` must run before `test`)
-- most common way to associate goals with phases is to set the packaging for your project is in the POM file under the `<packaging>` element
-    - some of the valid packaging values are `jar`, `war`, `ear` and `pom` (default is `jar`)
-- use Settings.xml to configure environments including external repositories
-- the lifecycle for a project is configured in the POM file, but defaults to:
-- more information on various lifecycles can be found here: https://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html#Lifecycle_Reference
+A build lifecycle in maven consists of a series of phases, and each phase is bound to 0 or more goals. A "goal" in maven... [[ATTN: RICH - waht IS a goal in maven??]]. Executing a phase will implicitly execute [[ATTN: RICH - what does implicitly execute mean?]] all phases before it in the lifecycle (e.g., `compile` must run before `test`).
+
+The most common way to associate goals with phases is to set the packaging for your project is in the POM file under the `<packaging>` element [[ATTN: RICH - I think there's an oops in the middle here at "is to set the..."]]. Some of the valid packaging values are `jar` (the default), `war`, `ear`, and `pom`.
+- use Settings.xml to configure environments including external repositories [[ATTN: RICH - help me figure out if this is out of place, or how to connect it to the previous sentence]]
+The lifecycle for a project is configured in the POM file, but defaults to: [[ATTN: RICH - missing end of sentence?]]
+You can find more information on various lifecycles [here](https://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html#Lifecycle_Reference).
 
 ## Building with Maven {#building data-title="Building"}
 
-- the general pattern for building any type of maven application involves:
+[[ATTN: RICH - some intro sentence needed]]
+
+The general pattern for building any type of maven application involves: [[ATTN: RICH - I'm having a hard time figuring out which of these is going to be part of the {.docs} list and whether it will look liek the one at the top of the Java overview page]]
   - Run `mvn clean package`
     - the `clean` phase will remove all files generated by the previous build, and the `package` phase will execute all necessary phases to generate an artifact
     - for sites, it would be `mvn clean site` since the package phase does not exist for sites
@@ -52,9 +46,12 @@ show-headings-in-nav: true
 
 ## Executing Maven with BuildMaster {#buildmaster data-title="Maven in BuildMaster"}
 
-- maven must be installed on the build server prior to executing any of these commands
-- the Java extension must be installed in BuildMaster
-- use the following OtterScript in a deployment plan:
+To be execute maven builds in BuildMaster:
+{.docs}
+-maven must be installed on the build server *prior to* executing any of these commands
+-the Java extension must be installed in BuildMaster
+
+Use the following OtterScript in a deployment plan to execute maven in BuildMaster:
 ```
 Java::Execute-Maven
 (
