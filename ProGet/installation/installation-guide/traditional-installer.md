@@ -31,7 +31,7 @@ Before installing, consider the following:
 
 ## 2. Download ProGet {#download data-title="Download ProGet"}
 
-To download the Traditional Installer, visit the [ProGet All Versions](/proget/versions) page, and download using the **Traditional Installer** link for the desired version.
+To download the Traditional Installer, visit the [ProGet All Versions](https://my.inedo.com/proget/versions) page, and download using the **Traditional Installer** link for the desired version.
 
 ## 3. Verify the Installer {#verify data-title="3. Verify the Installer"}
 
