@@ -129,12 +129,6 @@
 
                     <!-- pipeline, furthest build, latest build -->
                     <tr>
-                        <td><code>pipelineId</code></td>
-                        <td>
-                            An <em>integer</em> representing the system-unique identifier of the pipeline used by the release.
-                        </td>
-                    </tr>
-                    <tr>
                         <td><code>pipelineName</code></td>
                         <td>
                             A <em>string</em> representing the name of the pipeline used by the release.
@@ -224,12 +218,6 @@
                     </tr>
 
                     <!-- pipeline, furthest stage -->
-                    <tr>
-                        <td><code>pipelineId</code></td>
-                        <td>
-                            An <em>integer</em> representing the system-unique identifier of the pipeline used by the build.
-                        </td>
-                    </tr>
                     <tr>
                         <td><code>pipelineName</code></td>
                         <td>
@@ -355,12 +343,6 @@
 
                     <!-- pipeline -->
                     <tr>
-                        <td><code>pipelineId</code></td>
-                        <td>
-                            An <em>integer</em> representing the system-unique identifier of the pipeline used by the deployment.
-                        </td>
-                    </tr>
-                    <tr>
                         <td><code>pipelineName</code></td>
                         <td>
                             A <em>string</em> representing the name of the pipeline used by the deployment.
@@ -437,6 +419,11 @@
 
     </inedo:tab-block>
 
+    <p>
+    	In BuildMaster 6.1 and earlier, these data objects included a <code>pipelineId</code>, which was an <em>integer</em> representing the system-unique identifier of the pipeline used by the release.
+	However, as of BuildMaster 6.2, pipelines are stored in raft repositories (which can be a zip file or Git repository), and thus have no system-unique identifier. 
+    </p>
+
     <h2 id="endpoints" data-title="Endpoint Specifications">Endpoint Specifications</h2>
     <p>
         This endpoint receives data entirely as key/value parameters, which may be specified in both the querystring <em>and</em> body (<code>application/x-www-form-urlencoded</code>); duplicate keys will result in an failed request (400 status).
@@ -463,7 +450,7 @@
             </tr>
             <tr>
                 <td>Pipeline</td>
-                <td>Either a key named <code>pipelineId</code> with an integer value, or a key named <code>pipelineName</code> with any value.</td>
+                <td>A key named <code>pipelineName</code> with any value.</td>
             </tr>
             <tr>
                 <td>Status</td>
@@ -496,7 +483,7 @@
             </tr>
             <tr>
                 <td>Pipeline</td>
-                <td>Required. Either a key named <code>pipelineId</code> with an integer value, or a key named <code>pipelineName</code> with any value.</td>
+                <td>Required. A key named <code>pipelineName</code> with any value.</td>
             </tr>
             <tr>
                 <td>Release Name</td>
@@ -620,7 +607,7 @@
             </tr>
             <tr>
                 <td>Pipeline</td>
-                <td>Either a key named <code>pipelineId</code> with an integer value, or a key named <code>pipelineName</code> with any value.</td>
+                <td>A key named <code>pipelineName</code> with any value.</td>
             </tr>
             <tr>
                 <td>Stage</td>
@@ -696,7 +683,7 @@
             </tr>
             <tr>
                 <td>Pipeline</td>
-                <td>Either a key named <code>pipelineId</code> with an integer value, or a key named <code>pipelineName</code> with any value.</td>
+                <td>A key named <code>pipelineName</code> with any value.</td>
             </tr>
             <tr>
                 <td>Stage</td>
