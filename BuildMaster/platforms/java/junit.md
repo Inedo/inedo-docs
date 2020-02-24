@@ -2,7 +2,7 @@
 title: JUnit
 subtitle: Running JUnit Tests
 keywords: buildmaster, unit-testing, junit
-sequence: 400
+sequence: 500
 show-headings-in-nav: true
 ---
 
