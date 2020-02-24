@@ -26,12 +26,15 @@ You can extend BuildMaster's functionality by [creating an extension](/docs/vari
 
 | Name | Description |
 | ---- | ----------- |
-| Credential | Information that is used to provide access to a particular resource (such as a name and password to a specific service), and may contain secrets (i.e. encrypted fields that are visible only to privileged users) |
+| Secure Credential | Used to represent logins and access keys containing secrets (i.e. encrypted fields that are visible only to privileged users) |
+| Secure Resource | Information that is used to provide access to a particular resource (such as a Git repository), and may be associated with a Secure Credential |
 | Operation | Used in an OtterScript plan to perform a high-level automation task, such as collecting information about a server, deploying files to a server, or ensuring a particular set of configuration |
 | Raft Repository | A self-contained abstract file system that is used as a backing store for plans, assets, and other files. |
 | User Directory | Responsible for authenticating users and groups. The default implementation uses users and groups stored in the product's database. |
 | Variable Function | A function with zero or more input parameters that returns a value when evaluated by the execution engine, and often appears to be a "built-in" variable |
 | Issue Source | Provides a filtered list of issues from an external source, such as Jira, for a given release context |
+
+Note that, prior to BuildMaster 6.2, "Resource Credentials" were used instead of Secure Credentials and Secure Resources. They will still function, but should not be used in new extensions.
 
 ## Script Assets vs. Custom Extensions {#script-assets data-title="Script Assets vs. Custom Extensions"}
 
