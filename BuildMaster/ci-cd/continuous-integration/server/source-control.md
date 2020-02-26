@@ -18,14 +18,18 @@ All of this is relatively easy because most source control interactions are done
 
 ## Connecting to Your Source Control System with Resource Credentials {#connecting data-title="Connecting to Source Control"}
 
-[Resource credentials](/docs/buildmaster/administration/resource-credentials) are used to connect BuildMaster to your Source Control Management (SCM) system, whether that's a public repository on GitHub or a self-managed Subversion Server. Each supported SCM has its own type of Resource Credential, and that type is defined in the corresponding extension.
+[Secure Resources & Secure Credentials](/docs/buildmaster/administration/resource-credentials) are used to connect BuildMaster to your Source Control Management (SCM) system, whether that's a public repository on GitHub or a self-managed Subversion Server. 
 
-For example, installing the [Subversion extension](https://inedo.com/den/subversion) will allow you to create a Subversion Resource Credential. When creating a resource credential for a source control system, you'll enter two types of information:
+Each supported SCM has its own type of Secure Resource, and often it's own type of Secure Credential, and those types are defined in the corresponding extensions.
 
-- Repository information, such as the organization name in GitLab or custom endpoint for GitHub Enterprise
+For example, installing the [Subversion extension](/docs/buildmaster/integrations/subversion) will allow you to create a Subversion Repository secure resource, which can in turn use a Username & Password secure credential. 
+
+When integrating with your source control system, you'll enter two types of information:
+
+- Resource (Repository) information, such as the organization name in GitLab or custom endpoint for GitHub Enterprise
 - Credential information, such as username and password or an authorization token 
 
-Resource credentials can be defined at the system-level or the application-level, and they can inherit from one another, such that configuring the "parent" resource credential will automatically give that configuration to its "child" credentials. This allows you to define some fields (such as name/password) at the system level, while defining repository-specific information at the application level.
+Both Secure Resources and Secure Credentials can be defined at the system-level (global/shared) or the application-level. Generally, it's easiest to create one Secure Resource per application, and share a Secure Credential across multiple applications. 
 
 
 ### Example: Inedo's Use Case
@@ -59,7 +63,7 @@ For example, here's a very basic checkout using Subversion and a credential name
 
     Subversion::Svn-Checkout 
     (
-	    Credential: KramericaSubversion,
+		From: HdarsRepo,
 	    SourcePath: trunk/hdars
     );
 
@@ -115,7 +119,7 @@ By simply specifying the `CommitHash` output parameter and the `$CommitId` runti
 
     GitHub::Get-Source
     (
-	    Credential: GitHub,
+		From: ProfitCalcRepo,
 	    CommitHash => $CommitId,
     );
 	Set-BuildVariable CommitId  

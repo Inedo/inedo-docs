@@ -23,6 +23,8 @@ AzureDevOps::Get-Source
 );
 ```
 
+For illustrative purposes, this example is *not* using a [DevOps Project Secure Resource](../azure-devops#connecting-and-authenticating) as we recommend. 
+
 ## TFVC vs. Git {#tfvc-vs-git}
 
 Azure DevOps supports two types of source control integration:
@@ -67,7 +69,7 @@ By simply specifying the `CommitHash` output parameter and the `$CommitId` runti
 ```
 AzureDevOps::Get-Source
 (
-    Credential: AzureDevOps,
+    From: ProfitCalcRepo,
     CommitHash => $CommitId,
 );
 Set-BuildVariable CommitId  
@@ -106,7 +108,7 @@ This will tag a Azure DevOps-hosted repository with the current release and buil
 ```
 Azure DevOps::Tag
 (
-    Credentials: AzureDevOps,
+    From: ProfitCalcRepo,
     Tag: $ReleaseName-$BuildNumber,
     CommitHash: $CommitId
 );

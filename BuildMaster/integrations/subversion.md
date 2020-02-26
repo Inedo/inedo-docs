@@ -30,7 +30,9 @@ If your instance doesn't have Internet access, you can [manually install the Sub
 
 ## Authenticating to a Subversion Repository {#authentication data-title="Authentication with SVN"}
 
-Authentication with Subversion is handled through [Resource Credentials](/docs/buildmaster/administration/resource-credentials), which supports username/password authentication over HTTPS. This is the simplest and recommended method to authenticate with a Subversion repository. While each SVN operation supports supplying a repository URL, username, and password, we recommend creating a resource credential that includes the repository name, username, and password. This is not only more secure, but it is also more convenient, as the credentials are stored in one location.
+The simplest and recommended method to connect to a Subversion repository is by creating a "Subversion Repository" [Secure Resource](/docs/buildmaster/administration/resource-credentials). If your repository requires authentication (most do), you can associate that secure resource with a Username & Password [Secure Credential](/docs/buildmaster/administration/resource-credentials).
+
+While each SVN operation supports supplying a repository URL, username, and password, we recommend creating a resource credential that includes the repository name, username, and password. This is not only more secure, but it is also more convenient, as the credentials are stored in one location.
 
 ::: {.attention .technical}
 SSH connections are not supported using the built-in Subversion integration in BuildMaster, so make sure to use the HTTPS endpoint when supplying the repository URL to the resource credentials or any operations. If your organization requires SSH to connect, you must install and configure the SVN CLI manually and then instruct BuildMaster to use the [SVN CLI instead](#cli).
@@ -51,6 +53,8 @@ Svn-Checkout(
     To: ~\Sources
 );
 ```
+
+Note that, for illustrative purposes, this example is *not* using a [Subversion Repository Secure Resource](#authentication) as we recommended.
 
 This operation effectively runs the equivalent SVN command: 
 

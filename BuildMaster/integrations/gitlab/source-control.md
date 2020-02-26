@@ -22,6 +22,8 @@ GitLab::Get-Source
     CommitHash => $CommitId
 );
 ```
+For illustrative purposes, this example is *not* using a [GitLab Project Secure Resource](../gitlab#connecting-and-authenticating) as we recommend. 
+
 
 ### Git-based Operations Differences {#operations-differences}
 
@@ -57,7 +59,7 @@ By simply specifying the `CommitHash` output parameter and the `$CommitId` runti
 ```
 GitLab::Get-Source
 (
-    Credential: GitLab,
+    From: ProfitCalcRepo,
     CommitHash => $CommitId,
 );
 Set-BuildVariable CommitId  

@@ -23,6 +23,9 @@ GitHub::Get-Source
 );
 ```
 
+For illustrative purposes, this example is *not* using a [GitHub Project Secure Resource](../github#connecting-and-authenticating) as we recommend. 
+
+
 ### Git-based Operations Differences {#operations-differences}
 
 Git source repositories are unique in that you can use either a host-specific operation (in this case, `GitHub::Get-Source`) or the generic `Git::GetSource` operation. The primary difference is that you'll use project names for GitHub operations, and URLs in the generic operations.
@@ -33,7 +36,6 @@ In general, you should prefer GitHub-specific operations, because it's less data
 
 By default, BuildMaster does not require Git to be installed on a build server in order to perform source control operations. However, some users who require more advanced configuration for their Git integration may instruct BuildMaster to run the CLI instead by:
 
-{.docs}
  - setting the `GitExePath` operation property to a valid Git executable path, e.g. `/usr/bin/git` on Linux or `C:\Program Files\Git\bin\git.exe` on Windows
  - configuring a `$DefaultGitExePath` variable at the server or system level in BuildMaster; this will force all Git source control operations to use the CLI instead of the built-in library
 
@@ -41,7 +43,6 @@ By default, BuildMaster does not require Git to be installed on a build server i
 
 Git repositories reference specific points in the history of a source tree using a 20-byte SHA1 hashcode. At the tip of a branch, this hash effectively represents the last committed changes. Capturing this reference at build time is very important so you can see exactly what code was used when an application was built:
 
-{.docs}
  - **From a debugging perspective**, this saves you wasted time trying to figure out which code was deployed and saves frustration when the deployed application doesn't seem to match the code
  - **From an auditing perspective**, this lets you see exactly who made which changes to a deployed application and when those changes were made
 
@@ -57,7 +58,7 @@ By simply specifying the `CommitHash` output parameter and the `$CommitId` runti
 ```
 GitHub::Get-Source
 (
-    Credential: GitHub,
+    From: ProfitCalcRepo,
     CommitHash => $CommitId,
 );
 Set-BuildVariable CommitId  
@@ -80,7 +81,6 @@ You can do this in BuildMaster using a [variable value renderer](/docs/buildmast
 
 Tags and labels can be used for all sorts of reasons, but they're most effective when used to identify which specific code was deployed to production. This makes it easy to:
 
-{.docs}
  - Create a hotfix or patch for a deployed application
  - Give developers information about what code was deployed
  - Easily find and compare commits by tag/label name instead of obscure identifier
@@ -96,7 +96,7 @@ This will tag a GitHub-hosted repository with the current release and build numb
 ```
 GitHub::Tag
 (
-    Credentials: Hdars-GitHub,
+    From: ProfitCalcRepo,
     Tag: $ReleaseName-$BuildNumber,
     CommitHash: $CommitId
 );

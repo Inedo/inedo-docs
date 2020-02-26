@@ -42,7 +42,7 @@ Because most source control interactions are handled within [OtterScript](/docs/
 ```
 GitHub::Get-Source
 (
-	Credential: KramericaGitHub,
+	From: ProfitCalcRepo,
 	Branch: dev
 );
 ```

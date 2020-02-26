@@ -49,7 +49,7 @@ Because most source control interactions are handled within [OtterScript](/docs/
 ```
 AzureDevOps::Get-Source
 (
-    Credential: AzureDevOps,
+    From: ProfitCalcRepo,
     Branch: dev
 );
 ```

@@ -57,7 +57,7 @@ Here's how to import the `profit-calc-web.zip` artifact from the latest build wi
 ```
 AzureDevOps::Import-Artifact
 (
-    Credentials: CorpAzure,
+    From: CorpAzure,
     Project: ProfitCalc,
     Artifact: profit-calc-web.zip
 ); 
@@ -83,7 +83,7 @@ Here's how to queue a build within the `ProfitCalc` project:
 ```
 AzureDevOps::Queue-Build
 (
-    Credentials: CorpAzure,
+    From: CorpAzure,
     Project: ProfitCalc,
     WaitForCompletion: true
 ); 
@@ -98,7 +98,7 @@ For example, you can import artifacts from the last successful `calculation-fix`
 ```
 AzureDevOps::Import-Artifact
 (
-    Credentials: CorpAzure,
+    From: CorpAzure,
     Project: ProfitCalc,
     Branch: calculation-fix,
     Artifact: profit-calc-web.zip
@@ -132,7 +132,7 @@ This example uses both the `AzureDevOps::Queue-Build` operation and the `Set-Bui
 ```
 AzureDevOps::Queue-Build
 (
-    Credentials: CorpAzure,
+    From: CorpAzure,
     Project: ProfitCalc,
     AzureDevOpsBuildNumber => $AzureDevOpsBuildNumber
 ); 
@@ -169,7 +169,7 @@ Alternatively, you can download artifacts directly from Azure DevOps using the `
 ```
 AzureDevOps::Download-Artifact
 (
-    Credentials: CorpAzure,
+    From: CorpAzure,
     Project: ProfitCalc,
     Artifact: profit-calc-web.zip,
     TargetDirectory: E:\Websites\ProfitCalc
