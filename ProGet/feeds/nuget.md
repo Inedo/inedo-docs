@@ -102,7 +102,7 @@ Both NuGet.org and the NuGet client tools support two different API protocols: O
 
 There is no need or benefit to having ProGet support the JSON-LD protocol. It  is extremely complex, as it is designed to solve the specific needs of NuGet.org: a massive, publicly-available static package index. Because ProGet has connectors, authentication, package filtering, etc., it's not feasible or useful to generate a static index.
 
-However, it is on our 2019 roadmap to implement this API, possibly as a new feed type or as an alternate API endpoint for an existing feed.
+We have considered implemening the JSON-LD protocol, possibly as a new feed type or as an alternate API endpoint for an existing feed. But there isn't much demand or benefit to this that we can see.
 
 ## Legacy (Quirks) NuGet Feeds {#legacy data-title="Legacy (Quirks) NuGet Feeds"}
 
