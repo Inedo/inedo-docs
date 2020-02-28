@@ -2,6 +2,7 @@
 title: npm (Node.js)
 sequence: 300
 keywords: proget, feeds, npm, connectors
+show-headings-in-nav: true
 ---
 
 A ProGet npm feed is a repository compatible with the npm client for NodeJS. ProGet npm feeds support both scoped and unscoped npm packages.
@@ -22,15 +23,11 @@ Supply a value for the <b>Feed name</b> field. This will be the name of your pri
 
 Click the **Create Feed** button, and you should be automatically directed to the newly-created registry.
 
-If your ProGet server has access to the Internet, you should see a listing of packages from npmjs.org. These are called *connector packages*,
-and are not hosted on your ProGet instance, but are transparently proxied
-from another server. After you create the npm feed, you can
-add a connector for *npmjs.org* directly within your feed or by clicking on
-the **Connectors** tab at the top of the page. This way you can have access to that
-rich library of packages in addition to your private ones. Connectors also
-allow filtering, if you would like to include only a subset of external
-packages; however, no filtering is performed by default. For more information
-about connectors, see the [documentation](/docs/proget/core-concepts/connectors).
+If your ProGet server has access to the Internet, you should see a listing of packages from npmjs.org. These are called *connector packages*, and are not hosted on your ProGet instance, but are transparently proxied from another server. 
+
+After you create the npm feed, you can add a connector for *npmjs.org* directly within your feed or by clicking on the **Connectors** tab at the top of the page. 
+
+This way you can have access to that rich library of packages in addition to your private ones. Connectors also allow filtering, if you would like to include only a subset of external packages; however, no filtering is performed by default. For more information about connectors, see the [documentation](/docs/proget/core-concepts/connectors).
 
 ## Setting up npm {#setting data-title="Setting up npm"}
 
@@ -66,7 +63,7 @@ Once you have this token you will need set your _auth value with it using npm. I
 
 First, create a key by going to ProGet > Admin > API Keys, and entering the value `apikey12345` for the key. Make sure that Feed API is checked.
 
-Next, find a base64 encoder; you can search on Google to find a website that can do it for you. Then, enter the value `api:apikey12345` in the encoder; it will output `YXBpOmFwaWtleTEyMzQ1`.
+Next, find a base64 encoder; you can search on Google to find a website that can do it for you, or you can use the `btoa()` function in your browser's development console. The value you'll want to encode is `api:apikey12345` -- and the output will be `YXBpOmFwaWtleTEyMzQ1`.
 
 From there, you can execute the following NPM commands:
 
