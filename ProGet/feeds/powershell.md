@@ -2,26 +2,27 @@
 title: PowerShell
 sequence: 150
 keywords: proget,feeds,powershell
+show-headings-in-nav: true
 ---
 A PowerShell feed is a specialized type of [NuGet](nuget) feed intended to store PowerShell modules. It is accessible directly from [PowerShellGet](https://docs.microsoft.com/en-us/powershell/module/powershellget).
 
-### Installing Modules
+## Installing Modules {#installing data-title="Installing Modules"}
 
 PowerShell packages are installed using [PowerShell](https://docs.microsoft.com/en-us/powershell/module/PowerShellGet/Install-Module). To install a package from a ProGet feed, use the following commands:
 
-##### 1. Register Module
+### 1. Register Module
 ```
 PS> Register-PSRepository -Name "{feed-name}" -SourceLocation "http://{proget-server}/nuget/{feed-name}/"
 ```
 
-##### 2. Install Module
+### 2. Install Module
 
 ```
 PS> Install-Module -Name "{package-name}" -RequiredVersion "{package-version}" -Repository "{feed-name}"
 ```
 
 
-## Differences from NuGet Feeds
+## Differences from NuGet Feeds {#differences data-title="Differences from NuGet Feeds"}
 
 Since PowerShell module packages are actually NuGet packages, PowerShell feeds are functionally the same as NuGet feeds, except for some user-interface tweaks:
 
@@ -30,7 +31,7 @@ Since PowerShell module packages are actually NuGet packages, PowerShell feeds a
 - Install instructions for a package display instructions for PsGet instead of NuGet
 - Tags are not shown on the Browse Feed page because PowerShell packages use them differently, and tend to have large numbers of tags making them impractical to show in an overview
 
-### PowerShell Module Package Version Quirks
+## PowerShell Module Package Version Quirks {#installing data-title="Package Version Quirks"}
 
 Due to a validation bug in the Microsoft-run PowerShell Gallery, several packages have two different version numbers: one in the .nuspec file, and one in the .psd1 of the module. 
 
@@ -40,7 +41,7 @@ One workaround is to turned off caching for the PSGallery connector, and then go
 
 As of 2019-Apr-08, this is being tracked in [PowerShellGallery Issue #55](https://github.com/PowerShell/PowerShellGallery/issues/55) and [work-arounds discussed on our Q&A site](https://inedo.com/support/questions/9738).
 
-## Publishing to a PowerShell Feed
+## Publishing to a PowerShell Feed {#publishing data-title="Publishing to a PowerShell Feed"}
 
 You can register and publish to a PowerShell feed in ProGet easily using PowerShell 5.0 or newer and [PowerShellGet](https://docs.microsoft.com/en-us/powershell/module/powershellget).
 
