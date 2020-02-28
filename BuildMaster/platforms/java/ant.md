@@ -5,59 +5,55 @@ sequence: 200
 show-headings-in-nav: true
 ---
 
-- [Ant](https://ant.apache.org) is a Java-based build tool for Java
-- Ant is written in Java. 
-- According to Ant's original author, James Duncan Davidson, the name is an acronym for "Another Neat Tool".
-- Originally Ant was a part of [Tomcat] and was only used to build Tomcat and nothing else
-- Ant was then separated after it's donation to the Apache Software Foundation because it was determined it could fix many issues developers had with Makefiles
-- Originally released on April 19th 2000 with Tomcat 3.1
-- The first official stand-alone release was Ant 1.1 on July 19 2000
-- Was the most popular build tool for Java until [Maven]
-- Ant is 
+[Ant](https://ant.apache.org) is a Java-based build tool for Java.
+
+Written in Java, the original author, James Duncan Davidson, said the name is an acronym for "Another Neat Tool." Ant was released on April 19th, 2000, as part of [Tomcat] 3.1 and was used to build Tomcat and nothing else. Ant was then separated after it's donation to the Apache Software Foundation because it was determined it could fix many issues developers had with Makefiles, and the first official standalone release was Ant 1.1 on July 19th, 2000. It was the most popular build tool for Java until [Maven].
+
+Some of Ant's best qualities: 
   - extremely flexible
   - does not impose coding conventions
   - does not impose directory layouts
 
 ## Overview & Concepts {#overview data-title="Ant Overview"}
 
-- Because Ant is built on Java, it can be run on any other OS
-- Ant uses XML based configuration files called build files that define a target tree
-  - Configuration files are made up of
-    - Project
-      - Master container of all the targets, tasks, and properties 
-      - Each project defines one or more targets.
-    - Targets
-      -  target is a set of tasks you want to be executed
-      -  Can depend on other targets
-    - Tasks
-      - a piece of code that can be executed 
-    - Properties
-      - Are key/value pairs used to customize or provide shortcuts to values used within targets and tasks
-      - They can be set 
-        - externally and passed in when calling ant
-        - internally within a target or task
-  - When starting ant, you select which target(s) you want to have executed
-- To extend Ant, users can develop their own "antlibs" containing Ant tasks and types
-  - These are based in Java and have specific interfaces they must implement
-- For dependency management should use [Apache Ivy](https://ant.apache.org/ivy/)
+Because Ant is built on Java, it can be run on any other OS. Ant uses XML based configuration files called build files that define a target tree. 
+
+These configuration files are made up of:
+
+{.docs}
+- Project: the master container [[ATTN: RICH - If this isn't a true CONTAINER, I'd choose a different word to avoid confusion]] of all the targets, tasks, and properties 
+  - Each project defines one or more targets.
+- Targets: a set of tasks you want to be executed
+  - Can depend on other targets
+  - When starting Ant, you select which target(s) you want executed
+- Tasks: a piece of code that can be executed 
+- Properties: key/value pairs used to customize or provide shortcuts to values used within targets and tasks
+  - These can be set:
+    - externally and passed in when calling ant
+    - internally within a target or task
+ 
+To extend Ant, users can develop their own "antlibs" containing Ant tasks and types. These are based in Java and have specific interfaces they must implement. For dependency management, use [Apache Ivy](https://ant.apache.org/ivy/).
 
 ## Apache Ivy {#ivy data-title="Apachy Ivy"}
+[[ATTN: RICH - what is the connection between Ant and Ivy?]]
 
-- Apache Ivy is a tool for recording, tracking, resolving, and reporting project dependencies
-- It is characterized by flexibility, configurability, and tightly
-- Ivy uses the Maven 2 repository to resolve the dependencies you declare in an Ivy file
-- Ivy's syntax is very similar to Apache Ant
+Apache Ivy is a tool for recording, tracking, resolving, and reporting project dependencies, and it's characterized by flexibility, configurability, and tightly [[ATTN: RICH - This sentence didn't get finished haha]]. 
+
+Ivy uses the Maven 2 repository to resolve the dependencies you declare in an Ivy file, and its syntax is very similar to Apache Ant.
 
 ## Building with Ant {#building data-title="Building with Ant"}
 
-- The first thing you need to do is create a build file for Ant
-  - A basic build file typically includes these targets
+First, create a build file for Ant. 
+
+A basic build file typically includes these targets:
+
+{.docs}
     - `init` - Creates the build directory structure used by compile 
     - `compile` - Compiles the java files in the src folder into bytecode and outputs them into the build folder
     - `dist` - Packages the build folder into a jar, war, etc... and copies that into the dist folder
     - `clean` - Deletes the build and dist directories
-  - Defining your project default target to be `dist` will simplify executing an ant build
-  - Additional targets can be included 
+  
+  Defining your project default target to be `dist` will simplify executing an Ant build. Additional targets can be included.
 
 ### Example Build File
 ```
@@ -101,24 +97,23 @@ show-headings-in-nav: true
 </project>
 ```
 
-### Running Ant via the command line
+### Running Ant Via the Command Line
 
-##### using the default target
+##### Using the Default Target
 ```
 ant -buildfile "src\ProfitCalcJava.xml" -Dversion:1.1
 ```
 
-##### Specifying targets
+##### Specifying Targets
 ```
 ant -buildfile "src\ProfitCalcJava.xml" -Dversion:1.1 clean dist
 ```
 
 ## Executing Ant with BuildMaster {#buildmaster data-title="Ant in BuildMaster"}
 
-- ant must be installed on the build server prior to executing any of these commands
-  - setting ANT_HOME in the path is preferable, but you can use the AntPath variable function to override it
-- the Java extension must be installed in BuildMaster
-- use the following OtterScript in a deployment plan:
+Ant must be installed on the build server prior to executing any of these commands. Setting ANT_HOME in the path is preferable, but you can use the AntPath variable function to override it. To do any of this, however, [[ATTN: RICH - did I just make up the content in the beginning?]] the Java extension must be installed in BuildMaster.
+
+Use the following OtterScript in a deployment plan:
 
 ```
 Java::Build-AntProject
@@ -129,12 +124,12 @@ Java::Build-AntProject
 }
 ```
 
-- Running maven directly:
+- Running Maven directly:
 ```
 Exec "ant -buidfile src\ProfitCalcJava.xml -Dversion:$ReleaseNumber.$BuildNumber dist";
 ```
 
-- example plan that gets the latest source code from Git and captures a Maven artifact as a BuildMaster artifact:
+- Example plan that gets the latest source code from Git and captures a Maven artifact as a BuildMaster artifact:
 ```
 Git::Get-Source
 (
