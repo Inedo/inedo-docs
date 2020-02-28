@@ -31,7 +31,7 @@ Since PowerShell module packages are actually NuGet packages, PowerShell feeds a
 - Install instructions for a package display instructions for PsGet instead of NuGet
 - Tags are not shown on the Browse Feed page because PowerShell packages use them differently, and tend to have large numbers of tags making them impractical to show in an overview
 
-## PowerShell Module Package Version Quirks {#installing data-title="Package Version Quirks"}
+## PowerShell Module Package Version Quirks {#versioning-quirks data-title="Versioning Quirks"}
 
 Due to a validation bug in the Microsoft-run PowerShell Gallery, several packages have two different version numbers: one in the .nuspec file, and one in the .psd1 of the module. 
 
@@ -40,6 +40,14 @@ This causes a lot of problems, the most common is that when a package is install
 One workaround is to turned off caching for the PSGallery connector, and then go through and remove the incorrectly versioned packages  (pull them to proget first, then delete them). After that, ProGet can now delivering packages directly from the connector with the correct version number.
 
 As of 2019-Apr-08, this is being tracked in [PowerShellGallery Issue #55](https://github.com/PowerShell/PowerShellGallery/issues/55) and [work-arounds discussed on our Q&A site](https://inedo.com/support/questions/9738).
+
+### PowerShell Missing Packages {#missing-packages data-title="Missing Packages"}
+
+Due to another bug in the Microsoft-run PowerShell Gallery, their API will report that some packages don't exist. The PowerShell client attempts to workaround this bug by attempting to query again, using a different queries, but it only attepts that workaround when querying PowerShell Gallery. It will not attempt that workaround when querying ProGet.
+
+The easiest workaround for this bug is to simply pull these packages locally. 
+
+As of 2018-Oct-01, this being tracked in [PowerShellGallery Issue #30](https://github.com/PowerShell/PowerShellGallery/issues/30).
 
 ## Publishing to a PowerShell Feed {#publishing data-title="Publishing to a PowerShell Feed"}
 
