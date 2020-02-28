@@ -61,6 +61,19 @@ Once you have this token you will need set your _auth value with it using npm. I
 [~]$ npm config set always-auth=true
 [~]$ npm config set _auth={ENCODEDAPIKEY}
 ```
+
+### HOWTO: Create a npm API Token
+
+First, create a key by going to ProGet > Admin > API Keys, and entering the value `apikey12345` for the key. Make sure that Feed API is checked.
+
+Next, find a base64 encoder; you can search on Google to find a website that can do it for you. Then, enter the value `api:apikey12345` in the encoder; it will output `YXBpOmFwaWtleTEyMzQ1`.
+
+From there, you can execute the following NPM commands:
+
+1. Run npm config set always-auth=true
+2. Run npm config set _auth=YXBpOmFwaWtleTEyMzQ1
+
+After that, it should work. Remember, `apikey12345` is just a sample value, for illustration purposes; it can be anythying, and should not be the value we use in our documentation.
         
 ## Publishing a Package {#publishing data-title="Publishing a Package"}
 
@@ -70,5 +83,3 @@ You can also publish packages to ProGet using npm. First, use the `adduser` comm
 [~]$ npm adduser
 [~]$ npm publish package.tgz
 ```
-
-
