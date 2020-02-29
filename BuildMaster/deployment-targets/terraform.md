@@ -148,7 +148,7 @@ call ExecTerraform
 );
 ```
 
-## Tagging Applied Configuration {#tagging data-title="Applied Configuration"}
+## Tagging Applied Configuration {#tagging data-title="Tagging Applied Configuration"}
 
 At the last stage of your pipeline, it's a good idea to apply a tag to the exact code that was applied. This can be done using the commit captured in the first stage.
 
