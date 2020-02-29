@@ -2,6 +2,7 @@
 title: Deploying a Windows Service
 sequence: 200
 keywords: buildmaster, deployments, windows, service
+show-headings-in-nav: true
 ---
 
 A Windows Service is a program that runs in the background of the Windows OS environment, similar to a Unix daemon. In order to be considered a service, a program must adhere to the interfaces provided by the [Service Control Manager (SCM)](https://docs.microsoft.com/en-us/windows/win32/services/services). The SCM controls the following:

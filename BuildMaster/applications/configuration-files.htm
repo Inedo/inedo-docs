@@ -15,27 +15,9 @@
         These configuration files often need to be managed independently from other files in a build because their contents will change from environment to environment, and even contain sensitive data such as database connection strings, third-party service URLs, API keys, etc.
     </p>
     <p>
-        BuildMaster provides two strategies for managing configuration files: text-templating and configuration file assets.
+        BuildMaster provides two strategies for managing configuration files: configuration file assets and text-templating.
     </p>
-    <h2 id="text-templating" data-title="Text-Templating"> Text-templating</h2>
 
-    <p>
-        Text-templating is the preferred method, and relies on the <a href="/docs/various/execution-engine/text-templates/application-configuration-files">text templating in the Inedo Execution Engine</a>, along with configuration variables and conditionals for environment-specific settings.
-    </p>
-    <p>
-        There are several advantages to using this method over configuration file assets:
-    </p>
-    <ul class="docs">
-        <li>
-            Allows for the use of if/else conditionals, loops blocks, and access to all variable functions (i.e. <code>$ArtifactPath(...)</code>)
-        </li>
-        <li>
-            More familiar to developers, and is how nearly all other build and deployment tools manage configuration file deployment
-        </li>
-        <li>
-            You can store the majority of your template in source control, alongside the code, and store only variables in BuildMaster
-        </li>
-    </ul>
     <h2 id="config-file-assets" data-title="Configuration File Assets"> Configuration Files Assets</h2>
     <p>
         Configuration file assets stores multi-instance configuration files, and provides a multi-tabled editor to edit and compare these instances.
@@ -197,7 +179,27 @@
     <h2 id="association-with-releases" data-title="Association with Releases">Association with Releases</h2>
     <p>A release may be associated with a specific version of a configuration, or if unspecified, associated with the latest version. By default, a release is associated with the latest configuration file version. When a release is deployed to the final stage in a pipeline, the current latest configuration file version will become associated with that release to preserve the contents at that point in time, facilitating future rollbacks if necessary.</p>
 
-    <h2 id="differences">Differences Between Configuration File Strategies</h2>
+
+    <h2 id="text-templating" data-title="Text-Templating"> Text-templating</h2>
+    <p>
+        Text-templating relies on the <a href="/docs/various/execution-engine/text-templates/application-configuration-files">text templating in the Inedo Execution Engine</a>, along with configuration variables and conditionals for environment-specific settings.
+    </p>
+    <p>
+        There are several advantages to using this method over configuration file assets:
+    </p>
+    <ul class="docs">
+        <li>
+            Allows for the use of if/else conditionals, loops blocks, and access to all variable functions (i.e. <code>$ArtifactPath(...)</code>)
+        </li>
+        <li>
+            More familiar to developers, and is how nearly all other build and deployment tools manage configuration file deployment
+        </li>
+        <li>
+            You can store the majority of your template in source control, alongside the code, and store only variables in BuildMaster
+        </li>
+    </ul>
+
+    <h3 id="differences">Differences Between Configuration File Strategies</h3>
     <p>
         While using text templates is a powerful yet simple replacement for Configuration File Assets,
         there are some important differences:
@@ -209,7 +211,6 @@
         <li>In contrast to configuration file assets, text templates allow the use of if/else conditionals, loops blocks, and access to all variable functions (i.e. <code>$ArtifactPath(...)</code>)</li>
         <li>Text templates only support OtterScript-style variable syntax (i.e. the <a href="https://inedo.com/support/kb/1144/buildmaster-legacy-features" target="_blank">legacy %-syntax and $-syntax</a> are not supported)</li>
     </ul>
-
 
 </body>
 </html>
