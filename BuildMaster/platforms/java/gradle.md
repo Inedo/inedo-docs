@@ -5,7 +5,7 @@ sequence: 500
 show-headings-in-nav: true
 ---
 
-[Gradle](https://gradle.org/)  is a Java-based build automation tool focused on flexibility and performance. Gradle is highly customizable and extensible at its core; very fast, because it only processes the inputs that have changed instead of everything each time; and powerful because it can build many popular languages.
+[Gradle](https://gradle.org/) is a Java-based build automation tool focused on flexibility and performance. Gradle is highly customizable and extensible at its core; very fast, because it only processes the inputs that have changed instead of everything each time; and powerful because it can build many popular languages.
 
 Gradle build scripts are written in [Groovy](https://groovy-lang.org/) or [Kotlin](https://kotlinlang.org/) instead of the typical XML files that Maven and Ant use. Gradle is also the official build tool for Android.
 
@@ -14,7 +14,7 @@ Gradle is not just limited to building Java; it also comes with native support f
 {.docs}
   - C/C++
   - Kotlin
-  - Grrovy
+  - Groovy
   - Scala
   - JavaScript
   - and more
