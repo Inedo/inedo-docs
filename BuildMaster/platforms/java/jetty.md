@@ -19,7 +19,7 @@ Jetty does not include a Graphical USer Interface (GUI), so you can only make ch
 
 Jetty also does not come out of the box with the components to run as a Windows Service, but you can use third-party tools to configure it. You can view [Jetty's documentation](https://www.eclipse.org/jetty/documentation/9.4.26.v20200117/startup.html) for more information.
 
-Jetty *does* include scripts to run as a Linux/Unix service out of the box. You can learn more by viewing [Jetty's documentation.](https://www.eclipse.org/jetty/documentation/9.4.26.v20200117/startup.html)
+Jetty *does* include scripts to run as a Linux/Unix service out of the box. You can learn more by viewing [Jetty's documentation](https://www.eclipse.org/jetty/documentation/9.4.26.v20200117/startup.html).
 
 
 ## Deploying Java Web Applications to Jetty {#deployment data-title="Deployment"}
