@@ -5,41 +5,42 @@ sequence: 400
 show-headings-in-nav: true
 ---
 
-- [WildFly](https://wildfly.org), formerly JBoss Application Server, is a free application runtime used to run Java web applications
-- [JBoss Enterprise Application Platform (EAP)] is a paid enterprise application runtime built on WildFly
-- the project includes open-source implementations of Jakarta EE functionality such as servlets, Java Server Pages (JSP), and more
-- when Java web applications are built, a WAR file is generated as the target or build output.
-  - JBoss refers to these war files as modules
-- most Java IDEs include templates (e.g. Maven archetypes) that create the necessary project structure to build and deploy a web application
+[WildFly](https://wildfly.org), formerly JBoss Application Server, is a free application runtime used to run Java web applications. Built on WildFly, [JBoss Enterprise Application Platform (EAP)] is a paid enterprise application runtime that includes open-source implementations of Jakarta EE functionality (e.g., servlets, Java Server Pages (JSP), and more).
+As with other Java [[ATTN: RICH - Scripts? Runtimes? Servers? what's the right noun to describe things like WildFly and Tomcat, since Tomcat had this same sentence too]], building Java web applications generates a WAR file as the target or build output. [[ATTN: RICH - if it's WildFly now, why all these references to JBoss? ]] JBoss refers to these WAR files as "modules."
+
+[[ATTN: RICH - Need a connection between this sentence and the one before it]] Most Java IDEs [[ATTN: RICH - IDEs??]] include templates (e.g., Maven archetypes) that create the necessary project structure to build and deploy a web application.
 
 ## Overview & Concepts {#overview data-title="WildFly Overview"}
 
-- WildFly can be run in `standalone` or `domain` mode
-  - There is no difference in features
-  - There is only a difference in how servers are managed
-- WildFly runs on Windows as a console application and is controllable by batch scripts (e.g. `%JBOSS_HOME%\bin\standalone.bat` or `%JBOSS_HOME%\bin\domain.bat`), or can be hosted as a Windows Service and controlled by the Windows Service Control Manager
-- WildFly runs on Linux as a console application and is controllable by shell scripts (e.g. `$JBOSS_HOME/bin/standalone.sh` or `$JBOSS_HOME/bin/domain.sh`), or configured on a per-distro basis to run as a daemon where starting/stopping it depends on the `init` script from the package
-- You can customize what modules and configurations are used by the server by modifying the configuration files found in `%JBOSS_HOME%\standalone\configuration` or `%JBOSS_HOME%\domain\configuration`
-- You can also pass a configuration file as a parameter to the startup script
-  - Standalone: `--server-config`
-  - Domain: `--domain-config`
-- WildFly includes a Web Based management console out-of-the-box, but it can also be maintained via the command line
+WildFly can be run in `standalone` or `domain` mode. The features are the same for both; the only difference is server management.
+
+{.docs}
+- WildFly can run on Windows as a console application and is controllable by batch scripts (e.g. `%JBOSS_HOME%\bin\standalone.bat` or `%JBOSS_HOME%\bin\domain.bat`) or can be hosted as a Windows Service and controlled by the Windows Service Control Manager
+- WildFly can run on Linux as a console application and is controllable by shell scripts (e.g. `$JBOSS_HOME/bin/standalone.sh` or `$JBOSS_HOME/bin/domain.sh`) or configured on a per-distro basis to run as a daemon where starting/stopping it depends on the `init` script from the package
+
+You can customize what modules and configurations are used by the server by modifying the configuration files found in `%JBOSS_HOME%\standalone\configuration` or `%JBOSS_HOME%\domain\configuration`. You can also pass a configuration file as a parameter to the startup script:
+
+{.docs}
+- Standalone: `--server-config`
+- Domain: `--domain-config`
+
+WildFly includes a web-based management console out-of-the-box, but it can also be maintained via the command line. [[ATTN: RICH - any example we can put here like in the above Linux & Windows bullets?]]
 
 ## Deploying Java Web Applications to WildFly {#deployment data-title="Deployment"}
 
-- To deploy applications to WildFly, you typically deploy them using the Web Admin Console or the Admin Console CLI
-- To deploy to using hte CLI, you would first connect to the WildFly server, then you run the deploy command.
+Typically, to deploy applications to WildFly, you'll use the Web Admin Console or the Admin Console CLI. To deploy to using the CLI, you would first connect to the WildFly server, then run the deploy command.
 
 ```
 %JBOSS_HOME%\bin\jboss-cli.bat --connect 192.168.0.100 --commands="deploy ProfitCalcJava.ear"
 ```
 
-- You can optionally specify a server list with the --server-groups parameter
+You also have the option to specify a server list with the --server-groups parameter.
 
 ## Automation with BuildMaster {#buildmaster data-title="Automation with BuildMaster"}
 
-- the process follows the same pattern as the manual process
-- example OtterScript plan:
+Automating WildFly with BuildMaster follows the same pattern as the manual process.
+
+Example OtterScript plan:
 ```
 set $JBOSS_HOME = $EnvironmentVariable(JBOSS_HOME);
 
