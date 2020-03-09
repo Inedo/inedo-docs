@@ -4,7 +4,7 @@ subtitle: Building Java Applications with Maven
 sequence: 100
 show-headings-in-nav: true
 ---
-[Apache Maven] (or just "Maven") is the most common build, packaging, and deployment tool for [Java](ATTN RICH: link back to the Java overview page). Maven began as an attempt to standardize the build processes in the Jakarta Turbine project, which consisted of multiple projects, build scripts, and JAR output files -- but Maven made it easy to publish project information and share JAR files.
+[Apache Maven](https://maven.apache.org/) (or just "Maven") is the most common build, packaging, and deployment tool for [Java](ATTN RICH: link back to the Java overview page). Maven began as an attempt to standardize the build processes in the Jakarta Turbine project, which consisted of multiple projects, build scripts, and JAR output files -- but Maven made it easy to publish project information and share JAR files.
 
 The original objectives of Maven were:
 
@@ -18,7 +18,7 @@ The original objectives of Maven were:
 
 ## Maven Overview {#overview data-title="Maven Overview"}
 
-Maven is a command line tool that works at a project level. In Maven, a project is conceptualized as an application or library and is defined by a POM.xml file. Maven packages projects into an artifact (JAR, WAR, EAR, etc.), and artifacts may be published to a local repository on a developer's machine or build server or to a enterprise repository such as [ProGet] to share them with other developers.
+Maven is a command line tool that works at a project level. In Maven, a project is conceptualized as an application or library and is defined by a POM.xml file. Maven packages projects into an artifact (JAR, WAR, EAR, etc.), and artifacts may be published to a local repository on a developer's machine or build server or to a enterprise repository such as [ProGet](/proget) to share them with other developers.
 
 ### Archetypes
 
