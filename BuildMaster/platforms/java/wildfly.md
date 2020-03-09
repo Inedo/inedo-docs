@@ -5,7 +5,7 @@ sequence: 400
 show-headings-in-nav: true
 ---
 
-[WildFly](https://wildfly.org), formerly JBoss Application Server, is a free application runtime used to run Java web applications. Built on WildFly, [JBoss Enterprise Application Platform (EAP)] is a paid enterprise application runtime that includes open-source implementations of Jakarta EE functionality (e.g., servlets, Java Server Pages (JSP), and more).
+[WildFly](https://wildfly.org), formerly JBoss Application Server, is a free application runtime used to run Java web applications. Built on WildFly, [JBoss Enterprise Application Platform (EAP)](https://www.redhat.com/en/technologies/jboss-middleware/application-platform) is a paid enterprise application runtime that includes open-source implementations of Jakarta EE functionality (e.g., servlets, Java Server Pages (JSP), and more).
 As with other Java [[ATTN: RICH - Scripts? Runtimes? Servers? what's the right noun to describe things like WildFly and Tomcat, since Tomcat had this same sentence too]], building Java web applications generates a WAR file as the target or build output. [[ATTN: RICH - if it's WildFly now, why all these references to JBoss? ]] JBoss refers to these WAR files as "modules."
 
 [[ATTN: RICH - Need a connection between this sentence and the one before it]] Most Java IDEs [[ATTN: RICH - IDEs??]] include templates (e.g., Maven archetypes) that create the necessary project structure to build and deploy a web application.
