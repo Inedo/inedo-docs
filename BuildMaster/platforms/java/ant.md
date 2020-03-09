@@ -7,7 +7,7 @@ show-headings-in-nav: true
 
 [Ant](https://ant.apache.org) is a Java-based build tool for Java.
 
-Written in Java, the original author, James Duncan Davidson, said the name is an acronym for "Another Neat Tool." Ant was released on April 19th, 2000, as part of [Tomcat] 3.1 and was used to build Tomcat and nothing else. Ant was then separated after it's donation to the Apache Software Foundation because it was determined it could fix many issues developers had with Makefiles, and the first official standalone release was Ant 1.1 on July 19th, 2000. It was the most popular build tool for Java until [Maven].
+Written in Java, the original author, James Duncan Davidson, said the name is an acronym for "Another Neat Tool." Ant was released on April 19th, 2000, as part of [Tomcat](java/tomcat) 3.1 and was used to build Tomcat and nothing else. Ant was then separated after it's donation to the Apache Software Foundation because it was determined it could fix many issues developers had with Makefiles, and the first official standalone release was Ant 1.1 on July 19th, 2000. It was the most popular build tool for Java until [Maven](java/maven).
 
 Some of Ant's best qualities: 
   - extremely flexible
@@ -50,7 +50,7 @@ A basic build file typically includes these targets:
 {.docs}
     - `init` - Creates the build directory structure used by compile 
     - `compile` - Compiles the java files in the src folder into bytecode and outputs them into the build folder
-    - `dist` - Packages the build folder into a jar, war, etc... and copies that into the dist folder
+    - `dist` - Packages the build folder into a JAR, WAR, etc... and copies that into the dist folder
     - `clean` - Deletes the build and dist directories
   
   Defining your project default target to be `dist` will simplify executing an Ant build. Additional targets can be included.
