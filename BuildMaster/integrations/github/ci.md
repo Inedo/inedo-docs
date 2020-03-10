@@ -128,24 +128,13 @@ BuildMaster can set GitHub CI status using the GitHub::Set-Status operation whic
 An example plan that uses this operation is:
 
 ```
-try
-{
-	GitHub::Set-Status 
-	(
-		CommitHash: $CommitId,
-        Status: pending
-    );
-	
-	# other build operations...
-}
-finally
-{
-	GitHub::Set-Status 
-	(
-		CommitHash: $CommitId,
-       Status: auto
-    );
-}
+GitHub::Set-Status 
+(
+	CommitHash: $CommitId,
+	Status: pending
+);
+
+# other build operations...
 ```
 
 ## Displaying a CI Badge in a GitHub README {#ci-badge data-title="CI Status Badges"}
