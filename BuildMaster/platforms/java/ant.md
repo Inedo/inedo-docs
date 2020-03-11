@@ -16,12 +16,12 @@ Some of Ant's best qualities:
 
 ## Overview & Concepts {#overview data-title="Ant Overview"}
 
-Because Ant is built on Java, it can be run on any other OS. Ant uses XML based configuration files called build files that define a target tree. 
+Because Ant is built on Java, it can be run on any OS. Ant uses XML based configuration files called build files that define a target tree. 
 
 These configuration files are made up of:
 
 {.docs}
-- Project: the master container [[ATTN: RICH - If this isn't a true CONTAINER, I'd choose a different word to avoid confusion]] of all the targets, tasks, and properties 
+- Project: the master build definition containing all of the targets, tasks, and properties 
   - Each project defines one or more targets.
 - Targets: a set of tasks you want to be executed
   - Can depend on other targets
@@ -35,9 +35,8 @@ These configuration files are made up of:
 To extend Ant, users can develop their own "antlibs" containing Ant tasks and types. These are based in Java and have specific interfaces they must implement. For dependency management, use [Apache Ivy](https://ant.apache.org/ivy/).
 
 ## Apache Ivy {#ivy data-title="Apachy Ivy"}
-[[ATTN: RICH - what is the connection between Ant and Ivy?]]
 
-Apache Ivy is a tool for recording, tracking, resolving, and reporting project dependencies, and it's characterized by flexibility, configurability, and tightly [[ATTN: RICH - This sentence didn't get finished haha]]. 
+[Apache Ivy](https://ant.apache.org/ivy/) is a tool for recording, tracking, resolving, and reporting project dependencies, and it's characterized by flexibility, configurability, and thight integration to Ant.  IT is the best option for managing dependencies when using Ant.
 
 Ivy uses the Maven 2 repository to resolve the dependencies you declare in an Ivy file, and its syntax is very similar to Apache Ant.
 
@@ -101,32 +100,33 @@ A basic build file typically includes these targets:
 
 ##### Using the Default Target
 ```
-ant -buildfile "src\ProfitCalcJava.xml" -Dversion:1.1
+ant -buildfile "ProfitCalcJava.build" -Dversion:1.1
 ```
 
 ##### Specifying Targets
 ```
-ant -buildfile "src\ProfitCalcJava.xml" -Dversion:1.1 clean dist
+ant -buildfile "ProfitCalcJava.build" -Dversion:1.1 clean dist
 ```
 
 ## Executing Ant with BuildMaster {#buildmaster data-title="Ant in BuildMaster"}
 
-Ant must be installed on the build server prior to executing any of these commands. Setting ANT_HOME in the path is preferable, but you can use the AntPath variable function to override it. To do any of this, however, [[ATTN: RICH - did I just make up the content in the beginning?]] the Java extension must be installed in BuildMaster.
+Ant must be installed on the build server prior to executing any of these commands. Setting ANT_HOME in the path is preferable, but you can use the AntPath variable function to override it. To do any of this, however, the Java extension must be installed in BuildMaster.
 
 Use the following OtterScript in a deployment plan:
 
 ```
 Java::Build-AntProject
-{
-    BuildPath: src\ProfitCalcJava.xml
-    ProjectBuildTarget: dist
+(
+    BuildPath: ProfitCalcJava.build
+    ProjectBuildTarget: dist,
+    ProjectBuildTarget: target,
     BuildProperties: @(version=$ReleaseNumber.$BuildNumber)
-}
+)
 ```
 
-- Running Maven directly:
+- Running Ant directly:
 ```
-Exec "ant -buidfile src\ProfitCalcJava.xml -Dversion:$ReleaseNumber.$BuildNumber dist";
+Exec "ant -buidfile ProfitCalcJava.build -Dversion:$ReleaseNumber.$BuildNumber dist";
 ```
 
 - Example plan that gets the latest source code from Git and captures a Maven artifact as a BuildMaster artifact:
@@ -139,13 +139,15 @@ Git::Get-Source
 
 Java::Build-AntProject
 {
-    BuildPath: src\ProfitCalcJava.xml
-    ProjectBuildTarget: dist
+    BuildPath: ProfitCalcJava.build
+    BuildTarget: dist
+    ProjectBuildTarget: target,
     BuildProperties: @(version=$ReleaseNumber.$BuildNumber)
 };
 
 Create-Artifact ProfitCalcJava
 (
-    From: dist
+    From: target,
+    Include: @(*.jar, *.war, *.ear)
 );
 ```

@@ -24,7 +24,7 @@ To enable integration with JUnit:
  1. Ensure the Java extension is installed
  2. A configuration variable named `$JavaPath` exists and is configured to point to the `java` executable (`java.exe` on Windows)
 
-An example build plan that gets source, runs tests, and packages a JAR using Maven is as follows [[ATTN: RICH - Maven?? not JUnit?]]:
+An example build plan that gets source, compiles the source using Maven, and runs JUnit tests is as follows:
 
 ```
 GitHub::Get-Source
@@ -33,16 +33,16 @@ GitHub::Get-Source
     Repository: ProfitCalcJava
 );
 
+Java::Execute-Maven
+(
+    GoalsAndPhases: "test-compile compile",
+    In: ProfictCalcJava
+);
+
 Java::Execute-JUnit
 (
     Includes: **.class,
     From: ProfictCalcJava\src\test
-);
-
-Java::Execute-Maven
-(
-    GoalsAndPhases: "clean package",
-    In: ProfictCalcJava
 );
 ```
 
