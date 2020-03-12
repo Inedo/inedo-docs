@@ -7,17 +7,17 @@ show-headings-in-nav: true
 
 [Apache Tomcat](https://tomcat.apache.org/) is the most popular web server environment used to run Java web applications. 
 
-The project includes open-source implementations of Jakarta EE functionality such as servlets, Java Server Pages (JSP), and more. Building Java web applications generate a WAR file as the target or build output, and most Java IDEs include templates (e.g., Maven archetypes) that create the necessary project structure to build and deploy a web application.
+The project includes open-source implementations of Jakarta EE functionality such as servlets, Java Server Pages (JSP), and more. When hosting your application using Tomcat, your Java web application's target output needs to generate a WAR file.  Most Java IDEs include templates (e.g., Maven archetypes) that create the necessary project structure to build and deploy a web application.
 
 ## Overview & Concepts {#overview data-title="Tomcat Overview"}
 
 Tomcat runs on both Windows and Linux, and it includes certain functionality for both.
 
-Tomcat runs on Windows as a console application and is controllable by batch scripts (e.g., `%CATALINA_HOME%\bin\startup.bat`) or can be hosted as a Windows Service and controlled by the Windows Service Control Manager. 
+On Windows, Tomcat can run as a console application and is controllable by batch scripts (e.g., `%CATALINA_HOME%\bin\startup.bat`) or can be hosted as a Windows Service and controlled by the Windows Service Control Manager. 
 
-Tomcat runs on Linux as a console application and is controllable by shell scripts (e.g. `$CATALINA_HOME/bin/startup.sh`), or configured on a per-distro basis to run as a daemon where starting/stopping it depends on the `init` script from the package
+On Linux, it can run as a console application and is controllable by shell scripts (e.g. `$CATALINA_HOME/bin/startup.sh`) or configured on a per-distro basis to run as a daemon where starting/stopping it depends on the `init` script from the package.
 
-Tomcat consists of different components that implement certain functionality:
+Tomcat internally consists of three major application service components:
 
 {.docs}
  - **Catalina** - Java servlet container
@@ -28,8 +28,7 @@ The `$CATALINA_HOME/conf/server.xml` is the configuration file for the initial s
 
 ## Deploying Java Web Applications to Tomcat {#deployment data-title="Deployment"}
 
-- by default, applications are packaged as WAR files and deployed to the `$CATALINA_HOME\webapps` directory
-- the general process involves:
+By default, applications are packaged as WAR files and deployed to the `$CATALINA_HOME\webapps` directory.  The general process involves:
 
 {.docs}
   - stopping the Tomcat server: `$CATALINA_HOME/bin/shutdown.sh`
