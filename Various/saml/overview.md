@@ -6,7 +6,7 @@ show-headings-in-nav: true
 ---
 
 ::: {.attention .technical}
-SAML support is currently only available in prerelease versions of [certain Inedo products](#supported-versions). It is still considered a proof-of-concept, and may be removed at any time.
+SAML support is currently only available in [certain Inedo product versions](#supported-versions). It is still considered a preview feature, because we are still learning how to support it. But if you're willing to try it out, we will do our best to make sure it works in your environment.
 :::
 
 ## Overview {#overview data-title="Overview"}
@@ -18,7 +18,7 @@ SAML-based single sign-on is an authentication mechanism that uses a third-party
 SAML authentication is currently in beta, installable from the Inedo Hub. This functionality is available in the following prerelease product versions:
 
 {.docs}
- - **ProGet** - v5.2.15 and later *(currently in the latest `ci` version)* - Basic or Enterprise edition only
+ - **ProGet** - v5.2.20 and later  - Basic or Enterprise edition only
  - **BuildMaster** - *coming soon*
  - **Otter** - *coming soon*
 
