@@ -22,7 +22,7 @@ It also does not come out of the box with the components to run as a Windows Ser
 
 ## Deploying Java Web Applications to Jetty {#deployment data-title="Deployment"}
 
-The standard way of deploying [[ATTN: RICH - make sure I didn't screw this up]] Jetty applications is copying the WAR file to `$JETTY_HOME\webapps` and letting Jetty's deployment scanner scan and automatically deploy the file.
+The standard way of deploying Jetty applications is copying a WAR file to `$JETTY_HOME\webapps` and letting Jetty's deployment scanner scan and automatically deploy the file.
 
 You can also customize application deployments in Jetty using the [Jetty Deployable Descriptor XML File](https://www.eclipse.org/jetty/documentation/9.4.26.v20200117/configuring-specific-webapp-deployment.html)
 
