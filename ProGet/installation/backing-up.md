@@ -12,7 +12,7 @@ There are two things to back-up on the ProGet server:
 {.docs}
 - **Packages** - disk paths that contain all the files for packages stored in ProGet; this is the most important thing to back-up.
 - **ProGet Database** - a SQL Server database that contains all of ProGet's configuration data; this is pretty important to back-up too.
-- **Shared Configuration *(v5.1 and later)*** - the file ``%PROGRAMDATA%\Inedo\SharedConfig\ProGet.config``
+- **Configuration file** - the [configuration file](/docs/proget/installation/config-files) contains your database connection string and encryption key, which is used to encrypt secrets like connector passwords; this file is generally located at ``%PROGRAMDATA%\Inedo\SharedConfig\ProGet.config``, but may be in a different location if you installed prior to 5.1; because it may have sensitive data (like a database password), consider how/if you want to back this up
 
 ## Backing-up the ProGet Database {#backup-proget data-title="Backing-up the ProGet Database"}
 
