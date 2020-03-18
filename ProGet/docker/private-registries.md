@@ -99,7 +99,7 @@ This is where garbage collection comes in; it's the process of removing blobs fr
 
 ### Connectors
 
-As of ProGet v5.1, docker feeds support [connectors](/docs/proget/core-concepts/feeds/connectors) to other docker registries.
+As of ProGet v5.1, Docker feeds support [connectors](/docs/proget/core-concepts/feeds/connectors) to other docker registries. These connectors work a little differently than other connectors in ProGet. See [Docker connectors](connectors) for details.
 
 ## Private Registry Limitations {#limitations data-title="Private Registry Limitations"}
 
