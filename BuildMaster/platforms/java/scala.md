@@ -5,13 +5,13 @@ sequence: 800
 show-headings-in-nav: true
 ---
 
-[Scala](https://www.scala-lang.org/) is a statically typed [[ATTN: RICH - what's statically typed mean??]] programming language featuring both object-oriented and functional principles. It is designed to run on the JVM or in a browser ([Scala JS](https://www.scala-js.org/)) [[ATTN: RICH - formatting on previous unclear; is that the link to run it in a browser?]] and was designed to address some of the criticisms of Java.
+[Scala](https://www.scala-lang.org/) is a statically typed programming language featuring both object-oriented and functional principles. It is designed to run on the Java JVM or in a browser ([Scala JS](https://www.scala-js.org/)) [[ATTN: Lauren - formatting on previous unclear; is that the link to run it in a browser? Yes, you would use that to run it in the web]] and to address some of the criticisms of Java.
 
 ## Building Scala Applications {#building data-title="Building Scala Applications"}
 
 Scala is built similarly to Java. Because Scala code compiles to Java bytecode, any compiled Scala application can run on the Java Runtime Environment (JRE) or, in other words, any platform that runs an application built from traditional Java source code.
 
-`sbt`, short for "Scala Build Tool", is the typical build tool used to build Scala applications and is included with common IDEs. When a project is created following a the recommended directory structure, executing the following interactive CLI commands will build a Scala application:
+`sbt`, short for "Scala Build Tool", is the typical build tool used to build Scala applications and is included with common IDEs. When a project is created following the recommended directory structure, executing the following interactive CLI commands will build a Scala application:
 ```
 $ sbt 
 > clean 
