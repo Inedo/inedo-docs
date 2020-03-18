@@ -41,7 +41,6 @@ Thanks to support and investigation from the user community, we were able to inc
 
 We've done our initial research, and have a pretty good idea of how to develop this now. But need your help to make sure it's done right. Please join the discussion at [QA#2686](https://forums.inedo.com/topic/2686/support-for-r-and-cran) to learn more and help us develop this feed type!
 
-
 ### PHP Composer/Packagist: Evaluated, seems really tough
 
 We did a pretty deep dive into PHP/Composer packages a while back, and our conclusion was that they were very difficult to implement due to the way the tightly integrate with git repositories. 
@@ -53,6 +52,10 @@ Since then, there haven’t been too many requests for it, and we have no idea w
 ### Vagrant: very limited demand 
 
 We've had three feature requests for Vagrant over the years, but they were fairly  casual inquiries and we didn't get any more info from those users. Our general feeling is that Vagrant is kind of on the outs, and containers are probably going to replace it. Hard to say. Share your thoughts by starting a thread in our [forums](https://forums.inedo.com/), and we'll link it here.
+
+### Conan (C++): very limited demand 
+
+This is currently [in discussion on the forums](https://forums.inedo.com/topic/2918); it's a relatively new package format, and the use cases or popularity isn't very clear. NuGet is already quite popular for C++ packages in Visual Studio, and Universal Packages are used quite frequently for in-house C++ libraries. 
 
 ### Chef Cookbooks: very limited demand 
 
