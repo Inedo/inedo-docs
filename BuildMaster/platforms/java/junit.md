@@ -24,7 +24,7 @@ To enable integration with JUnit:
  1. Ensure the Java extension is installed
  2. A configuration variable named `$JavaPath` exists and is configured to point to the `java` executable (`java.exe` on Windows)
 
-An example build plan that gets source, compiles the source using Maven, and runs JUnit tests is as follows:
+An example build plan that gets source, compiles the source using Maven, and runs JUnit tests is:
 
 ```
 GitHub::Get-Source
@@ -46,7 +46,7 @@ Java::Execute-JUnit
 );
 ```
 
-Note that this example may be slightly redundant because the default Maven lifecycle will execute tests in phase prior to "package". Running the `Execute-JUnit` operation separately enables BuildMaster to record the output in its own format for reporting purposes.
+Note that this example may be slightly redundant because the default Maven lifecycle will execute tests in phase prior to "package." Running the `Execute-JUnit` operation separately enables BuildMaster to record the output in its own format for reporting purposes.
 
 ## Test Result Behavior {#results data-title="Test Result Behavior"}
 
