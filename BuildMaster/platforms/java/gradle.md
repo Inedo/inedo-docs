@@ -5,7 +5,13 @@ sequence: 500
 show-headings-in-nav: true
 ---
 
-[Gradle](https://gradle.org/) is a Java-based build automation tool focused on flexibility and performance. Gradle is highly customizable and extensible at its core; very fast, because it only processes the inputs that have changed instead of everything each time; and powerful because it can build many popular languages.
+[Gradle](https://gradle.org/) is a Java-based build automation tool focused on flexibility and performance. 
+Gradle is:
+
+{.docs}
+- highly customizable and extensible at its core
+- very fast, because it only processes the inputs that have changed instead of everything each time
+- powerful, because it can build many popular languages.
 
 Gradle build scripts are written in [Groovy](https://groovy-lang.org/) or [Kotlin](https://kotlinlang.org/) instead of the typical XML files that Maven and Ant use. Gradle is also the official build tool for Android.
 
@@ -17,7 +23,7 @@ Gradle is not just limited to building Java; it also comes with native support f
   - Groovy
   - Scala
   - JavaScript
-  - and more
+  - and more.
   
 
 ## Overview & Concepts {#overview data-title="Gradle Overview"}
@@ -28,7 +34,7 @@ When creating a build file for Gradle, you typically would create a file named `
 - Groovy (most common)
 - Kotlin
 
-When using Kotlin, you will need to append `.kts` to the end you your gradle files (i.e., `build.gradle.kts` and `settings.gradle.kts`). 
+When using Kotlin, you will need to append `.kts` to the end you your Gradle files (i.e., `build.gradle.kts` and `settings.gradle.kts`). 
 
 Since the build files are built using Groovy or Kotlin, build files:
 
@@ -38,7 +44,7 @@ Since the build files are built using Groovy or Kotlin, build files:
 - Can provide intellisense while creating build files
 
 
- Gradle has migration paths for converting [Maven](https://docs.gradle.org/6.2.1/userguide/migrating_from_maven.html) and [Ant](https://docs.gradle.org/6.2.1/userguide/migrating_from_ant.html) builds to Gradle.
+Gradle has migration paths for converting [Maven](https://docs.gradle.org/6.2.1/userguide/migrating_from_maven.html) and [Ant](https://docs.gradle.org/6.2.1/userguide/migrating_from_ant.html) builds to Gradle.
 
 Currently, Gradle only works with two package sources:
 
@@ -48,7 +54,7 @@ Currently, Gradle only works with two package sources:
 
 Gradle supports single and multi-project builds. In addition to a build file, Gradle defines a settings file (named settings.gradle).  The settings file allows you define your project hierarchy and/or handle multiple build projects in your build process.  It also allows you to extend the build script by building plugins that you include as dependencies within `build.gradle`. 
 
-You can use the `gradle init` command to create a Java project using the default Gradle folder structure.  This, however, is only a starting point because Gradle does not require any specific folder structure.
+You can use the `gradle init` command to create a Java project using the default Gradle folder structure.  This, however, is only a starting point, as Gradle does not require any specific folder structure.
 
 ### Gradle Build Lifecycle
 
@@ -62,7 +68,7 @@ Gradle's build lifecycle includes:
   - Configuration: configures all project instances 
   - Execution: 
     - Determines the sub-set of tasks to execute based on which inputs have changed and which projects where configured in the Configuration phase
-    - Executes those tasks [[ATTN Lauren:  I'm struggling to say it executes the tasks found in the previous bullet point]]
+    - Executes this determined sub-set
 
 
 ## Building with Gradle {#building data-title="Building with Gradle"}
