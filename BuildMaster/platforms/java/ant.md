@@ -16,7 +16,7 @@ Some of Ant's best qualities:
 
 ## Overview & Concepts {#overview data-title="Ant Overview"}
 
-Because Ant is built on Java, it can be run on any OS. Ant uses XML based configuration files called build files that define a target tree. 
+Because Ant is built on Java, it can be run on any OS. Ant uses XML-based configuration files called build files that define a target tree. 
 
 These configuration files are made up of:
 
@@ -29,14 +29,14 @@ These configuration files are made up of:
 - Tasks: a piece of code that can be executed 
 - Properties: key/value pairs used to customize or provide shortcuts to values used within targets and tasks
   - These can be set:
-    - externally and passed in when calling ant
+    - externally and passed in when calling Ant
     - internally within a target or task
  
 To extend Ant, users can develop their own "antlibs" containing Ant tasks and types. These are based in Java and have specific interfaces they must implement. For dependency management, use [Apache Ivy](https://ant.apache.org/ivy/).
 
 ## Apache Ivy {#ivy data-title="Apachy Ivy"}
 
-[Apache Ivy](https://ant.apache.org/ivy/) is a tool for recording, tracking, resolving, and reporting project dependencies, and it's characterized by flexibility, configurability, and thight integration to Ant.  IT is the best option for managing dependencies when using Ant.
+[Apache Ivy](https://ant.apache.org/ivy/) is a tool for recording, tracking, resolving, and reporting project dependencies, and it's characterized by flexibility, configurability, and tight integration to Ant.  IT is the best option for managing dependencies when using Ant.
 
 Ivy uses the Maven 2 repository to resolve the dependencies you declare in an Ivy file, and its syntax is very similar to Apache Ant.
 
@@ -47,12 +47,12 @@ First, create a build file for Ant.
 A basic build file typically includes these targets:
 
 {.docs}
-    - `init` - Creates the build directory structure used by compile 
-    - `compile` - Compiles the java files in the src folder into bytecode and outputs them into the build folder
-    - `dist` - Packages the build folder into a JAR, WAR, etc... and copies that into the dist folder
-    - `clean` - Deletes the build and dist directories
+- `init`: Creates the build directory structure used by compile 
+- `compile`: Compiles the java files in the src folder into bytecode and outputs them into the build folder
+- `dist`: Packages the build folder into a JAR, WAR, etc... and copies that into the dist folder
+- `clean`: Deletes the build and dist directories
   
-  Defining your project default target to be `dist` will simplify executing an Ant build. Additional targets can be included.
+Defining your project default target to be `dist` will simplify executing an Ant build. Additional targets can be included.
 
 ### Example Build File
 ```
