@@ -5,7 +5,7 @@ sequence: 500
 show-headings-in-nav: true
 ---
 
-[Eclipse Jetty](https://www.eclipse.org/jetty/) is a free web server and javax.servlet container used to run Java web applications that has been part of the eclipse foundation since 2009. Jetty is open-source and is free for commercial use and distribution as well as local development needs. It includes support for HTTP/2, WebSocket, OSGi, JMX, JNDI, JAAS and many other integrations and can be stand-alone or used to embed a webserver into devices, tools, frameworks, and more. While Jetty does *not* implement the entire Jakarta EE specification, most Java IDEs include templates (e.g., Maven archetypes) that create the necessary project structure to build and deploy a web applications in Jetty.
+[Eclipse Jetty](https://www.eclipse.org/jetty/) is a free web server and javax.servlet container used to run Java web applications that has been part of the Eclipse Foundation since 2009. Jetty is open-source and is free for commercial use and distribution as well as local development needs. It includes support for HTTP/2, WebSocket, OSGi, JMX, JNDI, JAAS and many other integrations and can be standalone or used to embed a webserver into devices, tools, frameworks, and more. While Jetty does *not* implement the entire Jakarta EE specification, most Java IDEs include templates (e.g., Maven archetypes) that create the necessary project structure to build and deploy a web applications in Jetty.
 
 ## Overview & Concepts {#overview data-title="Jetty Overview"}
 
@@ -24,7 +24,7 @@ It also does not come out of the box with the components to run as a Windows Ser
 
 The standard way of deploying Jetty applications is copying a WAR file to `$JETTY_HOME\webapps` and letting Jetty's deployment scanner scan and automatically deploy the file.
 
-You can also customize application deployments in Jetty using the [Jetty Deployable Descriptor XML File](https://www.eclipse.org/jetty/documentation/9.4.26.v20200117/configuring-specific-webapp-deployment.html)
+You can also customize application deployments in Jetty using the [Jetty Deployable Descriptor XML File](https://www.eclipse.org/jetty/documentation/9.4.26.v20200117/configuring-specific-webapp-deployment.html).
 
 If you are using a non-standard web application structure or static files, you will need to set up a custom Deployable Descriptor File.
 
