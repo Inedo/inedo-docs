@@ -18,37 +18,38 @@ This is where ProGet's vulnerability scanning and blocking comes in.
 :::attention {.best-practice}
 This feature is available in paid and trial ProGet editions.
 :::
-We partner with two leading vulnerability scanning companies – Sonatype (OSS Index) and WhiteSource – to automatically scan third-party packages against vulnerability databases. You can also manually manage your vulnerabilities.
+We partner with three leading vulnerability scanning companies – Sonatype (OSS Index), WhiteSource, and Red Hat (Clair)  – to automatically scan third-party packages and Docker container repositories against vulnerability databases. You can also manually manage your vulnerabilities.  Starting in ProGet 5.3, you can now manage vulnerabilities for your container registries using a manual vulnerability source or automatically with [Clair](/docs/proget/compliance/clair).
 
 ## Vulnerability Scanning and Blocking Workflows {#scanning-and-blocking data-title="Scanning and Blocking Workflows"}
 
-ProGet supports three different workflows for managing vulnerabilities:
+ProGet supports four different workflows for managing vulnerabilities:
 
-|  | [Manual](#manual) | OSS Index | WhiteSource |
+|  | [Manual](#manual) | OSS Index | WhiteSource | Clair<sup>*</sup> |
 |---|---|---|---|
-| Cost                                      | - | - | $ |
-| Thoroughness                              | ★☆☆ | ★★☆ | ★★★ |
-| Block vulnerable packages                 | ✔ | ✔ | ✔ |
-| Manually enter vulnerability reports      | ✔ | -  |   |
-| Assess vulnerability report within ProGet | ✔ | ✔ | - |
-| Automatically scan public databases       | - | ✔ | ✔ |
-| Scan proprietary databases                | - | - | ✔ |
-| Requires subscription                     | - | -<sup>R</sup> | [Sign Up](https://www.whitesourcesoftware.com/trial3/)  |
+| Cost                                      | - | - | $ | - |
+| Thoroughness                              | ★☆☆ | ★★☆ | ★★★ | ★★☆ |
+| Block vulnerable packages                 | ✔ | ✔ | ✔ | ✔ |
+| Manually enter vulnerability reports      | ✔ | -  |   | |
+| Assess vulnerability report within ProGet | ✔ | ✔ | - | ✔ |
+| Automatically scan public databases       | - | ✔ | ✔ | ✔ |
+| Scan proprietary databases                | - | - | ✔ | - |
+| Requires subscription                     | - | -<sup>R</sup> | [Sign Up](https://www.whitesourcesoftware.com/trial3/)  | - |
 
 
-<sup>R</sup>While OSS Index doesn't require a paid subscription, users will need to create a [registered account](https://ossindex.sonatype.org/ ).
+<sup>R</sup>While OSS Index doesn't require a paid subscription, users will need to create a [registered account](https://ossindex.sonatype.org/ ).<br/>
+<sup>*</sup>Clair only works with container registries in ProGet.  Support for Clair was added starting in ProGet 5.3.
 
-See [Integrating ProGet with OSS Index](/docs/proget/compliance/vulnerabilities/vor) and [Integrating ProGet with WhiteSource](/docs/proget/compliance/whitesource) documentation for more details on those workflows.
+See [Integrating ProGet with OSS Index](/docs/proget/compliance/vulnerabilities/vor), [Integrating ProGet with WhiteSource](/docs/proget/compliance/whitesource), and [Integrating ProGet with Clair](/docs/proget/compliance/clair) documentation for more details on those workflows.
 
 
 ## Feeds and Vulnerability Configuration {#feed-and-vulnerability data-title="Feeds and Vulnerability Configuration"}
 
 A feed must be explicitly configured to use vulnerability scanning and blocking. While the end result is the same, the workflows use different features within ProGet:
 
-*   **Vulnerability sources** are used for manually-and OSS Index- managed workflows; these add vulnerability records into ProGet which you must assess
+*   **Vulnerability sources** are used for manual, OSS Index, and Clair managed workflows; these add vulnerability records into ProGet which you must assess
 *   **Package access rules** are used for WhiteSource-managed workflows; these block package downloads based on rules configured in WhiteSource
 
-You can configure both on the Manage Feed page. If you don't see OSS Index as a vulnerability source, or WhiteSource as a package access rule, check Admin > Extensions to make sure those extensions are installed.
+You can configure both on the Manage Feed page. Clair requires extra setup, please see the [configuring clair in ProGet](/docs/proget/compliance/clair#configureproget) section for setup. If you don't see OSS Index as a vulnerability source, or WhiteSource as a package access rule, check Admin > Extensions to make sure those extensions are installed.
 
 :::attention {.best-practice}
 Vulnerabilities are downloaded with a scheduled job. 
@@ -57,6 +58,8 @@ Vulnerabilities are downloaded with a scheduled job.
 ## Vulnerability Reports and Assessments in ProGet{#reports-and-assessments data-title="Reports and Assessments in ProGet"}
 
 Both the manual and OSS Index workflows use vulnerability reports, which essentially identify that a particular package, or versioned range of packages, has a known vulnerability. This record is either manually entered, or is imported from OSS Index, based on packages in a particular feed.
+
+Clair attempts to determine which operating system (OS) the container image was built with and uses that OS to scan specific security databases to check for vulnerabilities.  These vulnerabilities are then automatically associated with the container's affected layer within the registry Clair was configured to scan.
 
 All newly entered or imported vulnerability reports are considered unassessed, which means that packages matching the vulnerability will be blocked until the report is assessed. An assessment involves an authorized user reviewing the report, choosing an assessment type (Ignore, Caution, Block), and leaving an optional comment.
 
@@ -70,13 +73,13 @@ This can be useful to temporarily allow a package, or to review usage of package
 
 ### Manual Vulnerability Source {#manual}
 
-A manual vulnerability source is used to add specific package versions (or [version ranges](#version-ranges)) to be blocked. Visit the `Administration > Components & Extensibility > Vulnerability Sources` page to create one. Once created, visit the `Compliance > Vulnerabilities` page and click `Add Vulnerability` to specify the package ID and version(s) and the details of the vulnerability.
+A manual vulnerability source is used to add specific package versions (or [version ranges](#version-ranges)) or which container image layers to be blocked. Visit the `Administration > Components & Extensibility > Vulnerability Sources` page to create one. Once created, visit the `Compliance > Vulnerabilities` page and click `Add Vulnerability` to specify the package ID and version(s) or the container image layer digest and the details of the vulnerability.
 
 #### Blocking a Package Download
 
-Once a vulnerability is added,  it must be assessed. Selecting `Blocked` will prevent any packages within the version range to be downloaded. From the `Compliance > Vulnerabilities` page, selecting the vulnerability, then `Assess`, and choose `Blocked`, optionally adding a comment.
+Once a vulnerability is added,  it must be assessed. Selecting `Blocked` will prevent any packages within the version range or container images that include the vulnerable layer to be downloaded. From the `Compliance > Vulnerabilities` page, selecting the vulnerability, then `Assess`, and choose `Blocked`, optionally adding a comment.
 
-In order for this assessment to take effect, it must be associated with a feed. To accomplish this, on the `Manage Feed` page, select `add source` from the Vulnerability Sources panel and add the desired source to the feed. Browsing to a package version within the range specified in the blocked vulnerability will display `Blocked` where the download button would normally be, and the package will be not be downloadable from its associated feed API.
+In order for this assessment to take effect, it must be associated with a feed. To accomplish this, on the `Manage Feed` page, select `add source` from the Vulnerability Sources panel and add the desired source to the feed. Browsing to a package version within the range specified or a container image with an associated layer in the blocked vulnerability will display `Blocked` where the download button would normally be, and the package will be not be downloadable from its associated feed API.
 
 _Note: while the package version is blocked from download, it may still appear in search or list results._
 
@@ -96,6 +99,8 @@ Manual vulnerability sources may encompass multiple package versions using versi
 | (,1.1),(1.1,)	| Exclude version 1.1                           |
 
 _Note: versions must be specified out to their full value to match. For example, 2.0 will *not* match 2.0.0_
+
+Due to the inconsistency on container repository tags, container registries are not compatible with version ranges.
 
 ### Custom Assessment Types
 
