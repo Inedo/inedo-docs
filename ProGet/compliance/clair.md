@@ -33,11 +33,13 @@ When ProGet is running a vulnerability scan:
 2. Clair will then call to ProGet to download the layers to test
 3. ProGet will then make a second call to Clair to retrieve a list of vulnerabilities, if any, in the layers initially sent in step 1
 
-### Installing the Clair Extensions (#extension data-title="Clair Extension")
+### Installing the Clair Extensions {#extension data-title="Clair Extension"}
+
 
 Integrating Clair with ProGet is easy: Simply navigate to the _Administration > Extensions_ page in your instance of ProGet and click on the Clair extension to install it.
 
 ### Configuring Clair in ProGet {#configureproget data-title="Clair in ProGet"}
+
 
 To connect ProGet to Clair, you will first need to create a vulnerability source in _Administration > Vulnerability Sources > Create vulnerability source > Select Clair Index_.  You will then need to give the source a name and specify the host and port for your Clair instance (i.e., http://localhost:6060/).  Optionally you can specify an `API Authorization Header`.  Currently, we do not support any specific authentication in Clair.  Whatever value you put in the `API Authorization Header Value` will be passed to the Authorization property in the API request.
 

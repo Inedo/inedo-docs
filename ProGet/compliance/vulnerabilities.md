@@ -59,7 +59,7 @@ Vulnerabilities are downloaded with a scheduled job.
 
 Both the manual and OSS Index workflows use vulnerability reports, which essentially identify that a particular package or versioned range of packages has a known vulnerability. This record is either manually entered or is imported from OSS Index, based on packages in a particular feed.
 
-Determining which operating system (OS) a container image was built with, Clair uses that OS to scan specific security databases to check for vulnerabilities. These vulnerabilities are then automatically associated with the container's affected layer within the registry Clair was configured to scan.
+[[ATTN LAUREN:  This lead in is awkward to me because it feels like we are still talking about hte manual source and OSS Index]] Determining which operating system (OS) a container image was built with, Clair uses that OS to scan specific security databases to check for vulnerabilities. These vulnerabilities are then automatically associated with the container's affected layer within the registry Clair was configured to scan.
 
 All newly entered or imported vulnerability reports are considered unassessed, which means that packages matching the vulnerability will be blocked until the report is assessed. An assessment involves an authorized user reviewing the report, choosing an assessment type (Ignore, Caution, Block), and leaving an optional comment.
 
@@ -69,15 +69,15 @@ All newly entered or imported vulnerability reports are considered unassessed, w
 
 Depending on the assessment type, the assessment may expire. This means that, unless it's reassessed, the vulnerability report will be considered unassessed after expiry.
 
-This can be useful to temporarily allow a package [[ATTN: RICH - This second bit makes sense, but the first bit doesn't]] or to review usage of packages after a certain amount of time.
+This can be useful to temporarily allow a package [[ATTN: ALEX - This second bit makes sense, but the first bit doesn't]] or to review usage of packages after a certain amount of time.
 
 ### Manual Vulnerability Source {#manual}
 
-A manual vulnerability source is used to add specific package versions (or [version ranges](#version-ranges)) or which container image layers to block. Visit the `Administration > Components & Extensibility > Vulnerability Sources` page to create one [[ATTN: RICH - create one what?]]. Once created, visit the `Compliance > Vulnerabilities` page and click `Add Vulnerability` to specify the package ID and version(s) or the container image layer digest and the details of the vulnerability.
+A manual vulnerability source is used to add specific package versions (or [version ranges](#version-ranges)) or which container image layers to block. Visit the `Administration > Components & Extensibility > Vulnerability Sources` page to create a manual vulnerability source. Once created, visit the `Compliance > Vulnerabilities` page and click `Add Vulnerability` to specify the package ID and version(s) or the container image layer digest and the details of the vulnerability.
 
 #### Blocking a Package Download
 
-Once a vulnerability is added, it must be assessed. [[ATTN: RICH - Why is this section located here? It seems redundant from the sections on assessing and expiry above.]] Selecting `Blocked` will prevent any packages within the version range or container images that include the vulnerable layer to be downloaded. From the `Compliance > Vulnerabilities` page, selecting the vulnerability, then `Assess`, and choose `Blocked`, optionally adding a comment.
+Once a vulnerability is added, it must be assessed. [[ATTN: ALEX - Why is this section located here? It seems redundant from the sections on assessing and expiry above.]] Selecting `Blocked` will prevent any packages within the version range or container images that include the vulnerable layer to be downloaded. From the `Compliance > Vulnerabilities` page, selecting the vulnerability, then `Assess`, and choose `Blocked`, optionally adding a comment.
 
 In order for this assessment to take effect, it must be associated with a feed. On the `Manage Feed` page, select `add source` from the Vulnerability Sources panel and add the desired source to the feed. Browsing to a package version within the range specified or a container image with an associated layer in the blocked vulnerability will display `Blocked` where the download button would normally be, and the package will be not be downloadable from its associated feed API.
 
