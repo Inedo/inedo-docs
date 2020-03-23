@@ -11,14 +11,14 @@ When you incorporate third-party, open-source packages into your applications, y
 
 Fortunately, security researchers are constantly inspecting these packages and publishing vulnerabilities they find in public security databases, such as the [National Vulnerability Database.](https://nvd.nist.gov/) This allows both package authors and consumers to fix and patch as needed.
 
-Unfortunately, managing vulnerabilities as a consumer is challenging, especially as an enterprise. Even if you were to carefully assess each third-party package for known vulnerabilities before allowing its use in applications, new security vulnerabilities are discovered all the time. This means you would need to constantly reassess all third-party packages for new security vulnerabilities.
+But *unfortunately*, managing vulnerabilities as a consumer is challenging, especially when that "consumer" is an enterprise. Manually checking each third-party package against the National Vulnerability Database would be a full-time job for a full-time team (an extraordinary drain on resources). And even if you were to carefully assess each third-party package for known vulnerabilities before allowing its use in applications, new security vulnerabilities are discovered all the time, which would mean constantly assessing and reassessing.
 
 This is where ProGet's vulnerability scanning and blocking comes in.
 
 :::attention {.best-practice}
 This feature is available in paid and trial ProGet editions.
 :::
-We partner with three leading vulnerability scanning companies – Sonatype (OSS Index), WhiteSource, and Red Hat (Clair)  – to automatically scan third-party packages and Docker container repositories against vulnerability databases. You can also manually manage your vulnerabilities.  Starting in ProGet 5.3, you can now manage vulnerabilities for your container registries using a manual vulnerability source or automatically with [Clair](/docs/proget/compliance/clair).
+We partner with three leading vulnerability scanning companies – Sonatype (OSS Index), WhiteSource, and Red Hat (Clair)  – to automatically scan third-party packages and Docker container repositories against vulnerability databases. You can also manually manage your vulnerabilities. Starting in ProGet 5.3, you can now manage vulnerabilities for your container registries using a manual vulnerability source or automatically with [Clair](/docs/proget/compliance/clair).
 
 ## Vulnerability Scanning and Blocking Workflows {#scanning-and-blocking data-title="Scanning and Blocking Workflows"}
 
@@ -37,7 +37,7 @@ ProGet supports four different workflows for managing vulnerabilities:
 
 
 <sup>R</sup>While OSS Index doesn't require a paid subscription, users will need to create a [registered account](https://ossindex.sonatype.org/ ).<br/>
-<sup>*</sup>Clair only works with container registries in ProGet.  Support for Clair was added starting in ProGet 5.3.
+<sup>*</sup>New to ProGet 5.3 is support for Clair, which only works with container registries in ProGet.
 
 See [Integrating ProGet with OSS Index](/docs/proget/compliance/vulnerabilities/vor), [Integrating ProGet with WhiteSource](/docs/proget/compliance/whitesource), and [Integrating ProGet with Clair](/docs/proget/compliance/clair) documentation for more details on those workflows.
 
@@ -46,10 +46,10 @@ See [Integrating ProGet with OSS Index](/docs/proget/compliance/vulnerabilities/
 
 A feed must be explicitly configured to use vulnerability scanning and blocking. While the end result is the same, the workflows use different features within ProGet:
 
-*   **Vulnerability sources** are used for manual, OSS Index, and Clair managed workflows; these add vulnerability records into ProGet which you must assess
+*   **Vulnerability sources** are used for manual, OSS Index, and Clair managed workflows; these add vulnerability records into ProGet that you must assess
 *   **Package access rules** are used for WhiteSource-managed workflows; these block package downloads based on rules configured in WhiteSource
 
-You can configure both on the Manage Feed page. Clair requires extra setup, please see the [configuring clair in ProGet](/docs/proget/compliance/clair#configureproget) section for setup. If you don't see OSS Index as a vulnerability source, or WhiteSource as a package access rule, check Admin > Extensions to make sure those extensions are installed.
+You can configure both on the Manage Feed page. Note that Clair requires extra setup, the details for which can be found in the [configuring clair in ProGet](/docs/proget/compliance/clair#configureproget) section. If you don't see OSS Index as a vulnerability source or WhiteSource as a package access rule, check Admin > Extensions to make sure those extensions are installed.
 
 :::attention {.best-practice}
 Vulnerabilities are downloaded with a scheduled job. 
@@ -57,9 +57,9 @@ Vulnerabilities are downloaded with a scheduled job.
 
 ## Vulnerability Reports and Assessments in ProGet{#reports-and-assessments data-title="Reports and Assessments in ProGet"}
 
-Both the manual and OSS Index workflows use vulnerability reports, which essentially identify that a particular package, or versioned range of packages, has a known vulnerability. This record is either manually entered, or is imported from OSS Index, based on packages in a particular feed.
+Both the manual and OSS Index workflows use vulnerability reports, which essentially identify that a particular package or versioned range of packages has a known vulnerability. This record is either manually entered or is imported from OSS Index, based on packages in a particular feed.
 
-Clair attempts to determine which operating system (OS) the container image was built with and uses that OS to scan specific security databases to check for vulnerabilities.  These vulnerabilities are then automatically associated with the container's affected layer within the registry Clair was configured to scan.
+Determining which operating system (OS) a container image was built with, Clair uses that OS to scan specific security databases to check for vulnerabilities. These vulnerabilities are then automatically associated with the container's affected layer within the registry Clair was configured to scan.
 
 All newly entered or imported vulnerability reports are considered unassessed, which means that packages matching the vulnerability will be blocked until the report is assessed. An assessment involves an authorized user reviewing the report, choosing an assessment type (Ignore, Caution, Block), and leaving an optional comment.
 
@@ -67,19 +67,19 @@ All newly entered or imported vulnerability reports are considered unassessed, w
 
 ### Assessment Expiry
 
-Depending on the assessment type, the assessment may expire; this means that, unless it's reassessed, the vulnerability report will be considered unassessed after expiry.
+Depending on the assessment type, the assessment may expire. This means that, unless it's reassessed, the vulnerability report will be considered unassessed after expiry.
 
-This can be useful to temporarily allow a package, or to review usage of packages after a certain amount of time.
+This can be useful to temporarily allow a package [[ATTN: RICH - This second bit makes sense, but the first bit doesn't]] or to review usage of packages after a certain amount of time.
 
 ### Manual Vulnerability Source {#manual}
 
-A manual vulnerability source is used to add specific package versions (or [version ranges](#version-ranges)) or which container image layers to be blocked. Visit the `Administration > Components & Extensibility > Vulnerability Sources` page to create one. Once created, visit the `Compliance > Vulnerabilities` page and click `Add Vulnerability` to specify the package ID and version(s) or the container image layer digest and the details of the vulnerability.
+A manual vulnerability source is used to add specific package versions (or [version ranges](#version-ranges)) or which container image layers to block. Visit the `Administration > Components & Extensibility > Vulnerability Sources` page to create one [[ATTN: RICH - create one what?]]. Once created, visit the `Compliance > Vulnerabilities` page and click `Add Vulnerability` to specify the package ID and version(s) or the container image layer digest and the details of the vulnerability.
 
 #### Blocking a Package Download
 
-Once a vulnerability is added,  it must be assessed. Selecting `Blocked` will prevent any packages within the version range or container images that include the vulnerable layer to be downloaded. From the `Compliance > Vulnerabilities` page, selecting the vulnerability, then `Assess`, and choose `Blocked`, optionally adding a comment.
+Once a vulnerability is added, it must be assessed. [[ATTN: RICH - Why is this section located here? It seems redundant from the sections on assessing and expiry above.]] Selecting `Blocked` will prevent any packages within the version range or container images that include the vulnerable layer to be downloaded. From the `Compliance > Vulnerabilities` page, selecting the vulnerability, then `Assess`, and choose `Blocked`, optionally adding a comment.
 
-In order for this assessment to take effect, it must be associated with a feed. To accomplish this, on the `Manage Feed` page, select `add source` from the Vulnerability Sources panel and add the desired source to the feed. Browsing to a package version within the range specified or a container image with an associated layer in the blocked vulnerability will display `Blocked` where the download button would normally be, and the package will be not be downloadable from its associated feed API.
+In order for this assessment to take effect, it must be associated with a feed. On the `Manage Feed` page, select `add source` from the Vulnerability Sources panel and add the desired source to the feed. Browsing to a package version within the range specified or a container image with an associated layer in the blocked vulnerability will display `Blocked` where the download button would normally be, and the package will be not be downloadable from its associated feed API.
 
 _Note: while the package version is blocked from download, it may still appear in search or list results._
 
@@ -106,8 +106,8 @@ Due to the inconsistency on container repository tags, container registries are 
 
 ProGet comes with three built-in assessment types:
 
-*   **Ignore**; indicates that the vulnerability report is not applicable or irrelevant, and therefore allows for packages to be downloaded
-*   **Caution**; developers should be careful to avoid the vulnerability; packages may be downloaded, but a warning is issued on the web UI
-*   **Blocked**; vulnerability is too severe to allow use, and packages are prevented from being downloaded
+*   **Ignore** indicates that the vulnerability report is not applicable or irrelevant and therefore allows for packages to be downloaded
+*   **Caution** tells developers to be careful to avoid the vulnerability; packages may be downloaded, but a warning is issued on the web UI
+*   **Blocked** means a vulnerability is too severe to allow use, and packages are prevented from being downloaded
 
 You can edit or create your own assessment type, specifying a name, expiry date, severity (color), and whether or not packages would be blocked.
