@@ -59,7 +59,7 @@ Vulnerabilities are downloaded with a scheduled job.
 
 Both the manual and OSS Index workflows use vulnerability reports, which essentially identify that a particular package or versioned range of packages has a known vulnerability. This record is either manually entered or is imported from OSS Index, based on packages in a particular feed.
 
-[[ATTN LAUREN:  This lead in is awkward to me because it feels like we are still talking about hte manual source and OSS Index]] Determining which operating system (OS) a container image was built with, Clair uses that OS to scan specific security databases to check for vulnerabilities. These vulnerabilities are then automatically associated with the container's affected layer within the registry Clair was configured to scan.
+[[ATTN RICH: Did this fix it??]] For containers reports, Clair attempts to determining which operating system (OS) a container image was built with and then uses that OS to scan specific security databases to check for vulnerabilities. These vulnerabilities are then automatically associated with the container's affected layer within the registry Clair was configured to scan.
 
 All newly entered or imported vulnerability reports are considered unassessed, which means that packages matching the vulnerability will be blocked until the report is assessed. An assessment involves an authorized user reviewing the report, choosing an assessment type (Ignore, Caution, Block), and leaving an optional comment.
 
