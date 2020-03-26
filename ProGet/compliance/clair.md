@@ -16,7 +16,7 @@ Clair is typically hosted as an on-premise API.  You can install and run Clair t
 1. Create a local Clair config folder: `mkdir $PWD/clair_config`
 2. Download a sample config that can be customized to fit your needs: `curl -L https://raw.githubusercontent.com/coreos/clair/master/config.yaml.sample -o $PWD/clair_config/config`
 3. Run a new Postgres instance: `docker run -d -e POSTGRES_PASSWORD="" -p 5432:5432 postgres:9.6`
-4. Run a new Clair instance: `docker run --net=host -d -p 6060-6061:6060-6061 -v $PWD/clair_config:/config quay.io/coreos/clair:latest -config=/config/config`
+4. Run a new Clair instance: `docker run --net=host -d -p 6060-6061:6060-6061 -v $PWD/clair_config:/config quay.io/coreos/clair:v2.1.2 -config=/config/config`
 
 _Note: The port mappings may need to be customized to fit your environment.  Make sure that you modify the config file to point to the proper Postgres instance and password._
 
