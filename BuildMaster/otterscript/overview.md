@@ -7,7 +7,7 @@ keywords: buildmaster, otterscript
 
 To deploy your applications and releases, BuildMaster uses an advanced execution engine that's capable of running thousands of different operations and scripts on thousands of different servers.
 
-While BuildMaster's execution engine is an integral part of BuildMaster itself, the core engine was designed to be shared across products, and is also used in [Otter](/otter) (our Infrastructure as Code tool) and [Romp](/docs/otter/reference/romp) (a stand-alone, command-line tool).
+While BuildMaster's execution engine is an integral part of BuildMaster itself, the core engine was designed to be shared across products, and is also used in [Otter](/docs/otter) (our Infrastructure as Code tool) and [Romp](/docs/otter/reference/romp) (a stand-alone, command-line tool).
 
 ## Operations {#operations data-title="Operations"}
 

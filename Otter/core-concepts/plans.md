@@ -78,7 +78,7 @@ This simplicity also makes them hard to describe in detail, because they can be 
 - Spinning up and configuring multiple virtual servers
 - Execute existing scripts in a controlled and visible manner
 - Provisioning bare-metal hardware
-- Deploying [ProGet](/proget) packages
+- Deploying [ProGet](/docs/proget) packages
 
 ### Modules {#modules data-title="Modules"}
 

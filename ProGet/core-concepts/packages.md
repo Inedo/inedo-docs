@@ -30,7 +30,7 @@ The Universal Package format is very simple, and can be used to package applicat
 
 Third-party package formats were each designed with a very specific use case in mind and, as such, are more complex. For example, the NuGet package format was designed specifically for open source .NET libraries used by developers, and must take into account multiple versions of the .NET framework and dependency trees with multi-platform targeting.
 
-While you could certainly package .NET libraries in a universal package, they wouldn't be usable by Visual Studio's NuGet plugin, or any of the existing NuGet tooling. Although you could use the [UPack tooling](/upack) instead, because they aren't designed specifically for .NET libraries, they won't offer as rich of a user experience as the NuGet tooling.
+While you could certainly package .NET libraries in a universal package, they wouldn't be usable by Visual Studio's NuGet plugin, or any of the existing NuGet tooling. Although you could use the [UPack tooling](/docs/upack) instead, because they aren't designed specifically for .NET libraries, they won't offer as rich of a user experience as the NuGet tooling.
 
 ::: attention{.best-practice}
 

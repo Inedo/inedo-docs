@@ -38,6 +38,6 @@ In addition to implementing the *actual* requirements of an advanced execution e
 
 In fact, using the Visual Mode in the plan editor, many users may not even realize they're building plans using *OtterScript*.
 
-![Plan Editor](/otter/otter-text.gif){.screenshot}
+![Plan Editor](/resources/documentation/otter/otter-text.gif){.screenshot}
 
 As you become more familiar with the execution engine, this reference section will help you accomplish even more things using Otter.

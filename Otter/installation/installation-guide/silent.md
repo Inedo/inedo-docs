@@ -15,7 +15,7 @@ keywords: otter,installation
     }
 </style>
 
-[Otter](/otter) helps you automate configuration and installation of *other* software on your servers, and to help you automate and configure Otter, the fully-automated silent installer can perform initial [installation](#silent-installation-options) and [upgrades](#silent-upgrade-options). You could even use *another* instance of Otter to upgrade Otter... and another instance to upgrade that one, until you've reached Inception.
+[Otter](/docs/otter) helps you automate configuration and installation of *other* software on your servers, and to help you automate and configure Otter, the fully-automated silent installer can perform initial [installation](#silent-installation-options) and [upgrades](#silent-upgrade-options). You could even use *another* instance of Otter to upgrade Otter... and another instance to upgrade that one, until you've reached Inception.
 
 See the [Otter Agent Silent Install Options](#silent-agent-install) for how to silently install agents as well; note that you will not need to upgrade agents, as they are automatically upgraded when you upgrade Otter.
 

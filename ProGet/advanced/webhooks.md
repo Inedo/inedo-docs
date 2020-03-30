@@ -9,7 +9,7 @@ Webhooks let you connect ProGet with other services to notify users, trigger aut
 
 {.docs}
 - Send an instant message when a package is added to a feed
-- Deploy a package with [BuildMaster](/buildmaster) once it's promoted to a different feed
+- Deploy a package with [BuildMaster](/docs/buildmaster) once it's promoted to a different feed
 - Log a message in a third-party auditing tool when a package is deleted
 
 This is done by creating webhooks that will send HTTP-based notifications (payloads) when certain events like package publishing, deployment, and deletion occur. These payloads can be adapted to fit into nearly any other tool's API, including workflow automation services such as Zappier, Microsoft Flow, etc.
@@ -137,7 +137,7 @@ You may have seen expressions like `$JSEncode($PackageGroup)` in the [default pa
 
 You can create configuration variables with the same name of a variable function, but we don't recommend it because it can get quite confusing when things like `$FeedName` don't return the actual feed name. If there is a configuration variable of the same name, that value will be used instead, unless you explicitly reference the parameter list (such as `$FeedName()`).
 
-Variable functions are extensible, so you can write your own with an [Inedo Extension](/support/tutorials/proget/compile-and-deploy-a-custom-proget-extension).
+Variable functions are extensible, so you can write your own with an [Inedo Extension](/docs/proget/administration/extensions).
 
 #### Reading Package Metadata {#reading data-title="Reading Package Metadata"}
 
