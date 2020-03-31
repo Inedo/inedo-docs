@@ -19,8 +19,11 @@
   <temporary from="table-of-contents" to="/docs" />
   
   <temporary from="/support/documentation/various/inedo-agent/message-formats" to="various/inedo-agent/server-architecture/message-formats" />
-  <temporary from="/support/documentation/various/ldap/ldap-active-directory" to="various/ldap/ldap-active-directory" />
+  <temporary from="/docs/support/documentation/various/inedo-agent/message-formats" to="various/inedo-agent/server-architecture/message-formats" />
+  <temporary from="/support/documentation/various/ldap/ldap-active-directory" to="/docs/various/ldap/ldap-active-directory" />
+  <temporary from="/docs/support/documentation/various/ldap/ldap-active-directory" to="/docs/various/ldap/ldap-active-directory" />
   <temporary from="/support/tutorials/proget/compile-and-deploy-a-custom-proget-extension" to="proget/administration/extensions" />
+  <temporary from="/docs/support/tutorials/proget/compile-and-deploy-a-custom-proget-extension" to="proget/administration/extensions" />
   <temporary from="/proget" to="/docs/proget" />
   <temporary from="/upack" to="/docs/upack" />
   <temporary from="/buildmaster" to="/docs/buildmaster" />
