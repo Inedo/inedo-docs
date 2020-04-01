@@ -10,7 +10,7 @@ show-headings-in-nav: true
 
 This feed type is available starting in ProGet 5.2.{.info}
 
-## Pre-requisite Configuration
+## Pre-requisite Configuration {#prereq data-title="Pre-requisite"}
 
 In order to install packages from a ProGet feed, it must be added to the local list of repositories by running this command:
 
@@ -20,7 +20,7 @@ helm repo add proget http://{proget-server}/helm/{feed-name}
 
 {.attention .best-practice} Using `proget` is recommened for the repo name, unless there are multiple feeds configuration in ProGet, in which case `proget-{feed-name}` should be used.
 
-## Common Tasks
+## Common Tasks {#commontasks data-title="Common Tasks"}
 
 ### Installing Helm Charts
 
@@ -79,3 +79,19 @@ If the chart version you would like to install is available in an external Helm 
 ### Technical Limitations
 
  - Signed (i.e. provenance) charts are not supported at this time, but may become available in a future v5.2 maintenance release
+
+## Container Visibility {#containers data-title="Container Visibility"}
+
+Helm charts reference a number of container images.  These container images are defined in a `values.yaml` file that is used to populated the `deployments.yaml` template file.  A chart may also be dependent on a number of other helm charts.  These dependencies also have a `values.yaml` file and `deploment.yaml` template.
+
+ProGet will parse the `values.yaml` of the chart and its dependencies `values.yaml` files to find which container images are used.  These container images will then be displayed in the charts description under the `Associated Container Images` section.  ProGet will also attempt to match these associated container images with a container image within your ProGet container registries. If a match is found, ProGet will automatically link the helm chart to associated ProGet container image.
+
+_*This feature is available in ProGet 5.3 and above._
+
+### Parsing Requirements
+
+When configuring container images in your `values.yaml`, the image property must end in _image_ (e.g., _image:_, _redisImage:_, _postgresImage:_, etc...) and contain the following sub-properties: _repository_, _tag_ (or _dockerTag_), and optionally _registry_.    If _tag_ or _dockerTag_ is omitted, the `latest` tag will be used when defining the associated container image.
+
+### Container Vulnerabilities {#vuln data-title="Container Vulnerabilities"}
+
+If you have configured your container registries to leverage a [vulnerability source](/docs/proget/compliance/vulnerabilities), you may have a helm chart that links to a vulnerable container image.  This may cause your Kubernetes install to fail when attempting to pull the container image from your registry.  Container images will be blocked if a vulnerability has been assessed and marked `Blocked` or if you have enabled the `Unassessed` vulnerabilities to be blocked in _Administration > Advanced Settings_.
