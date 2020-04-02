@@ -12,9 +12,9 @@ But there are also times where you may want to backup and restore individual app
 
 ## Backing Up an Application
 
-To backup an application, first create a [package source](/docs/buildmaster/ci-cd/continuous-integration/packaging/package-and-container-sources) that points to a ProGet Universal Feed feed that BuildMaster has access to publish packages to, or a Universal Package Feed disk path. 
+To backup an application, first create a [secure resource](/docs/buildmaster/ci-cd/continuous-integration/packaging/secure-resources) that points to a ProGet Universal Feed feed that BuildMaster has access to publish packages to, or a Universal Package Feed disk path. 
 
-In order to use a Universal Package Feed disk path, you will need to create a Universal Package Feed [package source](/docs/buildmaster/ci-cd/continuous-integration/packaging/package-and-container-sources). Instead of specifying a ProGet feed in the _API URL_, you will need to specify a disk path in the format of `file://{PACKAGE PATH}` (i.e., `file://C:/BmApplicationBackups`).
+In order to use a Universal Package Feed disk path, you will need to create a Universal Package Feed [secure resource](/docs/buildmaster/ci-cd/continuous-integration/packaging/secure-resources). Instead of specifying a ProGet feed in the _API URL_, you will need to specify a disk path in the format of `file://{PACKAGE PATH}` (i.e., `file://C:/BmApplicationBackups`).
 
 ### What's Included {#included data-title="What's Included"}
 
