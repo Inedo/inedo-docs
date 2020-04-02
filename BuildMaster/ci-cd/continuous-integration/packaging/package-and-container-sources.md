@@ -5,6 +5,8 @@ sequence: 300
 
 To help keep track of externally-hosted packages and container images, BuildMaster uses **Package Sources** and **Container Sources**. They essentially represent external repository, such as a ProGet server hosting a Universal or NuGet package feed, or a ProGet server hosting a private Docker container registry.
 
+{.attention .best-practice} Starting in BuildMaster 6.2, [Secure Resources](secure-resources) have taken the place of package and container sources.
+
 ### Creating a Package Source or Container Source
 
 1. Go to the Admin->Package & Container Sources page.
