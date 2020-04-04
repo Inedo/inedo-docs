@@ -12,13 +12,13 @@ This feed type is available starting in ProGet 5.2.{.info}
 
 ## Pre-requisite Configuration {#prereq data-title="Pre-requisite"}
 
-In order to install packages from a ProGet feed, it [[ATTN RICH: "it" is Helm? ProGet?]] must be added to the local list of repositories by running this command:
+In order to install packages from a ProGet feed using helm, the ProGet feed must be added to the local list of repositories by running this command:
 
 ```
 helm repo add proget http://{proget-server}/helm/{feed-name}
 ```
 
-{.attention .best-practice} Using `proget` is recommended for the repo name, unless there are multiple feeds configuration [[ATTN RICH: "multiple feeds configured" or "multiple feed configurations" ??]] in ProGet, in which case `proget-{feed-name}` should be used.
+{.attention .best-practice} Using `proget` is recommended for the repo name, unless there are multiple feeds configured in ProGet, in which case `proget-{feed-name}` should be used.
 
 ## Common Tasks {#commontasks data-title="Common Tasks"}
 
@@ -31,7 +31,7 @@ helm repo update
 helm install proget/{chart-name}
 ```
 
-{.attention .technical} Note: The Helm CLI references `--repo` as the argument to install from a custom repository, but that will fail, likely with the following error message: "`Error: Could not find protocol handler for:`" [[ATTN RICH: Is there a way to remedy this? From a non-dev perspective, I'd like to see a solution follow this error note]]
+{.attention .technical} Note: The Helm CLI references `--repo` as the argument to install from a custom repository.  ProGet is not compatible with the `--repo` argument, you will likely receive the following error message: "`Error: Could not find protocol handler for:`". ProGet will only work by adding a repo using the `helm repo add` command.
 
 ### Creating Helm Charts
 
