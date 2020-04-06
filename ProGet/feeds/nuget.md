@@ -58,7 +58,7 @@ With ProGet, a principal (user or group) either has privileges to publish a pack
 - **username:password as API Key** - ProGet will allow users to authenticate in this mode using an API Key in the format: `username:password`. For example, you can push a package to a Feed with the default Admin account in ProGet using the `-ApiKey Admin:Admin` option with nuget.exe
 -   **[Create ProGet API Key](/docs/proget/administration/security/api-keys)** - you can create an API Key in ProGet (Admin &; API Key &; Access Logs) with Feed Access; you can further restrict this key by associating it to a user you've already given specific permissions
 
-### Legacy NuGet API Key {#legacy}
+### Legacy NuGet API Key {#legacy-key}
 
 NuGet feeds also support an API key definition directly on the Manage Feed page. This is a deprecated legacy feature, so it is recommended to migrate to a ProGet API Key at your earliest convenience.
 
