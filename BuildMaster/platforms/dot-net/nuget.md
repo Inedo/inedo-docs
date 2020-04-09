@@ -109,6 +109,9 @@ A package source is essentially a ProGet feed URL with a [resource credential](/
 
 The second parameter (`AttachToBuild`) indicates that a package reference will be associated with the build. Think of this as a pointer of source to the that was published; you can easily navigate to it from the UI, use it later in repackaging operations.
 
+### Publishing to NuGet.org {#nugetorg data-title="Publishing to NuGet.org"}
+To publish packages to [NuGet.org](https://www.nuget.org), you first need to create an account.  Once you have a NuGet account, you can publish packages to NuGet.org from BuildMaster by simply creating [resource credentials](/docs/buildmaster/administration/resource-credentials) pointing to NuGet.org.
+
 ## Repackaging NuGet Packages {#repackaging data-title="Repackaging NuGet Packages"}
 
 [Repackaging](/docs/proget/advanced/repackaging) is used to create a new package from an existing package using exactly the same, verified content while maintaining the integrity of the original package and providing an audit trail to show when and why the repackaging occurred.
