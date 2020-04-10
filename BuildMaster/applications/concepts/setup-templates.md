@@ -7,7 +7,7 @@ BuildMaster is used to build and deploy all sorts of applications and projects f
 
 Keeping your use of features consistent for similar application types reduces the tedious work of figuring out how to set up or change things. Maintaining this consistency, however, can be difficult as you scale. Application setup templates simplify this process.
 
-{.attention .best-practice} Application Setup Templates are only available in BuildMaster 6.2 (or BuildMaster 6.1.12+ with preview features enabled)
+{.attention .best-practice} Application Setup Templates are only available in BuildMaster 6.2 (or BuildMaster 6.1.12+ with preview features enabled). [View a step-by-step tutorial to using our Application Templates](/buildmaster/getting-started-with-application-templates-in-buildmaster).
 
 An application setup template (not to be confused with an [application template](templates) or a [text template](/docs/executionengine/components/text-templating)) provides a quick overview of important settings in your application and shows whether the application is properly configured. And if it's not or if you need to change a setting, you can directly do it from that page instead of having to navigate elsewhere to change something.
 
