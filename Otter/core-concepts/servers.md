@@ -61,10 +61,18 @@ Each server can be configured to manage configuration drift differently, through
 
 Otter will also collect information about the packages (such as Universal, Chocolatey, PowerShell, etc.) that are installed on any given server. This means you don't have to log in to each server to view the current configuration and installed packages.
 
-To configure a server package collection, go to the *Packages tab* on the server's overview pages, and click the *configure* button. You will be prompted for which types of packages to collect:
+To configure a server package collection, go to the *Packages & Containers tab* on the server's overview pages, and click the *configure* button. You will be prompted for which types of packages to collect:
 
 ![Package collection](/resources/documentation/otter/2/package-collection.png){.screenshot}
 
 When configured, Otter will regularly collect information about installed packages and display it in an easy-to-read report.
 
 ![Universal packages installed](/resources/documentation/otter/2/universal-package-installed.png){.screenshot}
+
+### Server Containers {#containers data-title="Server Containers"}
+
+Otter can also collect information about Docker containers on your servers. This provides you with much of the information available from running `docker inspect` on each container.
+
+To configure server container collection, go to the *Packages & Containers tab* on the server's overview page, and click the *configure* button. Check the box to collect server containers.
+
+Otter will now display container information along with server packages in one simple report.
