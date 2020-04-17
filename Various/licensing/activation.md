@@ -25,7 +25,8 @@ If any of these components change, re-activation would be required. There is no 
 - The software was installed on virtual machine that changes CPU IDs or network interfaces when it restarts (to prevent this, configure the network adapter of the virtual machine hosting the software to be a static value)
 - A new network interface was added
 - Upgrading to a minor or major version of the software
-## Activating Your License Key
+
+## Activating Your License Key {#activating}
 
 #### Step 1:
 Go to: Administration (Gear Icon > Administration)
@@ -85,7 +86,7 @@ Copy and paste the resulting activation code into the software and click save:
 
 Alternatively, if for some reason access to the manual activation page is blocked, the values for the license key and activation code are also configurable on the "Advanced Settings" page in each product.
 
-## FAQ
+## FAQ {#faq}
 #### Who can enter/change a key?
 A license key may be changed at any time in the software by an administrator.
 
@@ -103,7 +104,7 @@ There are three types of keys: free forever, free trial, and paid. Free forever 
 
 #### What happens when my trial key expires?
 When your trial period comes to an end, your key “expires.” When a key expires, all of your applications and components remain in ProGet in exactly the same way – there is NO SCENARIO in which your data will be locked or erased from ProGet. However, ProGet does require you to enter a key with a valid license at the end of your trial. There are two ways to do this:
-    + Enter a free forever key. If you had a free key before your trial, you can simply reenter it. If you have misplaced it or never had forever free key in the past, you can create a new one by [clicking here](https://my.inedo.com).
-    + [Purchase ProGet](https://inedo.com/proget/pricing) and enter that key to continue enjoying the advanced features of your free trial.
+- Enter a free forever key. If you had a free key before your trial, you can simply reenter it. If you have misplaced it or never had forever free key in the past, you can create a new one by [clicking here](https://my.inedo.com).
+- [Purchase ProGet](https://inedo.com/proget/pricing) and enter that key to continue enjoying the advanced features of your free trial.
 
 [Learn More about ProGet Free Trials](https://inedo.com/proget/pricing/trial)
