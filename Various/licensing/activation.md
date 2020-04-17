@@ -28,29 +28,29 @@ If any of these components change, re-activation would be required. There is no 
 
 ## Activating Your License Key {#activating}
 
-#### Step 1:
+### Step 1:
 Go to: Administration (Gear Icon > Administration)
 ![administration portal](/resources/documentation/various/administration.png){.screenshot}
 
-#### Step 2:
+### Step 2:
 Under: System select License Key & Activation
 ![license key](/resources/documentation/various/system.png){.screenshot}
 
-#### Step 3:
+### Step 3:
 Under License key select [change]
 ![change key](/resources/documentation/various/license-key.png){.screenshot}
 
-#### Step 4:
+### Step 4:
 This will change the license key or allow you to add one for the first time
 ![change key](/resources/documentation/various/change-license-key.png){.screenshot}
 
-#### Step 5:
+### Step 5:
 Select Save
 
-#### Step 6: 	
+### Step 6: 	
 After Saving the License select [activate] under Activation Status
 ![activate](/resources/documentation/various/activate.png){.screenshot}
-#### Step 7:
+### Step 7:
 License is now Active
 ![active](/resources/documentation/various/activation.png){.screenshot}
 
