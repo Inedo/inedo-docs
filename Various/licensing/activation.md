@@ -29,29 +29,29 @@ If any of these components change, re-activation would be required. There is no 
 
 #### Step 1:
 Go to: Administration (Gear Icon > Administration)
-(/resources/documentation/various/administration.png){.screenshot}
+![administration portal](/resources/documentation/various/administration.png){.screenshot}
 
 #### Step 2:
 Under: System select License Key & Activation
-(/resources/documentation/various/system.png){.screenshot}
+![license key](/resources/documentation/various/system.png){.screenshot}
 
 #### Step 3:
 Under License key select [change]
-(/resources/documentation/various/license-key.png){.screenshot}
+![change key](/resources/documentation/various/license-key.png){.screenshot}
 
 #### Step 4:
 This will change the license key or allow you to add one for the first time
-(/resources/documentation/various/change-license-key.png){.screenshot}
+![change key](/resources/documentation/various/change-license-key.png){.screenshot}
 
 #### Step 5:
 Select Save
 
 #### Step 6: 	
 After Saving the License select [activate] under Activation Status
-(/resources/documentation/various/activate.png){.screenshot}
+![activate](/resources/documentation/various/activate.png){.screenshot}
 #### Step 7:
 License is now Active
-(/resources/documentation/various/activation.png){.screenshot}
+![active](/resources/documentation/various/activation.png){.screenshot}
 
 ## Automatic Activation {#automatic}
 
@@ -103,7 +103,7 @@ There are three types of keys: free forever, free trial, and paid. Free forever 
 
 #### What happens when my trial key expires?
 When your trial period comes to an end, your key “expires.” When a key expires, all of your applications and components remain in ProGet in exactly the same way – there is NO SCENARIO in which your data will be locked or erased from ProGet. However, ProGet does require you to enter a key with a valid license at the end of your trial. There are two ways to do this:
-+Enter a free forever key. If you had a free key before your trial, you can simply reenter it. If you have misplaced it or never had forever free key in the past, you can create a new one by [clicking here](https://my.inedo.com).
-+[Purchase ProGet](https://inedo.com/proget/pricing) and enter that key to continue enjoying the advanced features of your free trial.
+    + Enter a free forever key. If you had a free key before your trial, you can simply reenter it. If you have misplaced it or never had forever free key in the past, you can create a new one by [clicking here](https://my.inedo.com).
+    + [Purchase ProGet](https://inedo.com/proget/pricing) and enter that key to continue enjoying the advanced features of your free trial.
 
 [Learn More about ProGet Free Trials](https://inedo.com/proget/pricing/trial)
