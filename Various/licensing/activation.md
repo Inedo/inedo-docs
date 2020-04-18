@@ -8,6 +8,9 @@ keywords: license
 **Automatic License Activation Not Working?** See [Knowledge Base post 1758](https://inedo.com/support/kb/1758/automatic-license-activation-not-working). For more information on how to fix automatic license activation problems & errors.
 :::
 
+- [Jump to Activating Your License Key](/docs/various/licensing/activation#activating)
+- [Jump to FAQ](/docs/various/licensing/activation#faq)
+
 All licensed Inedo products require license activation regardless of the edition. License activation is the process of pairing a license key with a value that is unique per machine it is installed on. The machine-unique identifier is a hash of the following components:
 
 {.docs}
