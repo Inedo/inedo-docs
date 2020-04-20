@@ -5,7 +5,7 @@ show-headings-in-nav: true
 ---
 An application template (not to be confused with an [setup template](setup-templates) or a [text template](/docs/executionengine/components/text-templating)) is an [exported application](import-export) that you can use to create new applications.
 
-{.attention .best-practice} Application Templates are available in BuildMaster 6.2+, or BuildMaster 6.1.12+ with preview features enabled.
+{.attention .best-practice} Application Templates are available in BuildMaster 6.2+, or BuildMaster 6.1.12+ with preview features enabled. [View a step-by-step tutorial to using our Application Templates](https://www.inedo.com/buildmaster/getting-started-with-application-templates-in-buildmaster).
 
 ### Inedo-provided Templates{#built-in data-title="Inedo-provided Templates"}
 
