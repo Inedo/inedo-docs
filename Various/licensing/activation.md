@@ -8,6 +8,8 @@ keywords: license
 **Automatic License Activation Not Working?** See [Knowledge Base post 1758](https://inedo.com/support/kb/1758/automatic-license-activation-not-working). For more information on how to fix automatic license activation problems & errors.
 :::
 
+Using a free forever license key? Need feed-level access restrictions, LDAP integration, webhooks, connectors, or cloud storage? Get them all for free with [a 30-day trial of ProGet paid](/proget/pricing/trial) (no credit card required).
+
 - [Jump to Activating Your License Key](/docs/various/licensing/activation#activating)
 - [Jump to FAQ](/docs/various/licensing/activation#faq)
 
