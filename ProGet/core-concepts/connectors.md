@@ -21,8 +21,6 @@ ProGet will periodically check the [health](#health) of each connector and repor
 
 {.attention .analogy} **Note:** Packages accessed through connectors will appear as if they are ordinary packages contained on the ProGet server to most third-party tools. Within the ProGet web interface, connector packages are displayed with a small overlay icon to indicate that they are external. A connector package can be *pulled* to ProGet, which will cause the package to be downloaded and stored on the ProGet server.
 
-This feature is available in paid and trial ProGet editions. [Get a commitment-free trial now](https://pages.inedo.com/claim-proget-trial).
-
 ## Feed Association {#feed-association data-title="Feed Association"}
 
 After a connector is created, it must be associated with one or more feeds before packages can be retrieved from the connector. To do this, click **add connector** on the **Manage Feed** page and select the connector. Packages from the connector will immediately become available in the feed.
