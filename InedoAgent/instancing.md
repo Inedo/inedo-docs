@@ -24,7 +24,7 @@ _Note: For simplicity, this section will only discuss BuildMaster. However, Otte
 
 If multiple different versions of BuildMaster connect to the same agent, each will try to update the agent files as described above. This results in erratic behavior at runtime, because whichever instance wins the race and updates extensions first will work, while the other instance will likely fail if any extensions are different.
 
-As of v44, the Inedo Agent is capable of handling simultaneous connections from multiple instances of BuildMaster by setting an instance ID. Effectively, all this does is add a second level of file-system isolation for the agent's files, so that each instance ID gets its own isolated set of extensions and host binaries.
+As of v44, one Inedo Agent is capable of handling simultaneous connections from multiple instances of BuildMaster by setting an instance ID in BuildMaster. Effectively, all this does is add a second level of file-system isolation for the agent's files, so that each instance ID gets its own isolated set of extensions and host binaries.
 
 To enable this feature, navigate to the Admin->Advanced Settings page in BuildMaster or Otter, and set the `Agent.InstanceId` field to a unique value for each of your instances.
 
