@@ -7,7 +7,7 @@ keywords: proget, installation, load-balanced
 
 ## Overview
 
-This example guide is designed to configure a cluster and its various web servers in a Network Load Balancing (NLB) environment in order to enable the load balancing feature in ProGet. This [[ATTN RICH: indefinite referent - do we mean "this" as in "this example guide" or "this" as in "ProGet"?]] uses [Microsoft Windows NLB feature](https://docs.microsoft.com/en-us/windows-server/networking/technologies/network-load-balancing) as a load balancer, and all machines in this cluster are VMs, though that is not a strict requirement.
+This example guide is designed to configure a cluster and its various web servers in a Network Load Balancing (NLB) environment in order to enable the load balancing feature in ProGet. This example guide uses [Microsoft Windows NLB feature](https://docs.microsoft.com/en-us/windows-server/networking/technologies/network-load-balancing) as a load balancer, and all machines in this cluster are VMs, though that is not a strict requirement.
 
 This guide is intended to help you set up your load-balanced or High Availability (HA) installation. ProGet was built to be compatible with any load-balancing platform (see [load balancing and automatic failover](/docs/proget/installation/load-balancing-and-automatic-failover) for more information).
 
@@ -25,25 +25,25 @@ To begin, you must meet certain prerequisites, which are:
 For NLB installs, the following are additional prerequisites should be considered:
 
 {.docs}
- - 2 NICs [[ATTN RICH: NICs are what?]] total (one dedicated for the NLB cluster) each with static IPs to host the ProGet website *(example machine names in italics)* [[ATTN RICH examples not filled in?]]
-    - One machine per web node
+ - 2 network interfaces (NICs) total (one dedicated for the NLB cluster), each with static IPs to host the ProGet website 
+    - One machine per web node *(example machine names in italics)*
         - _ProGet_Webnode1_ (this will also serve as the indexing server)
         - _ProGet_Webnode2_
         - _ProGet_Webnode3_
-    - Machine to set up the NLB cluster
+    - Machine to set up the NLB cluster *(example machine names in italics)*
         - _ProGet_NLB_
  - Cluster IP with subnet mask (see [Configuring the Cluster](#cluster-configuration) below) mapped to the internet name and company domain (e.g. `http://nuget.srv.companyname.corp/`)
  - Address Resolution Protocol (ARP) entry using the cluster IP to the switch that routes into the NLB VLAN
 
 ### Web Node Prerequisites
 
-ProGet load balancing requires IIS. The required settings are outlined in [IIS Roles & Features](/docs/various/iis/roles-and-features). You also have to [[ATTN RICH: have to? can?]] configure additional features in the Server Manager by going to Features > Network Load Balancing in your ProGet instance.
+ProGet load balancing requires IIS. The required settings are outlined in [IIS Roles & Features](/docs/various/iis/roles-and-features). You also have to configure additional features in the Server Manager by going to Features > Network Load Balancing in your ProGet instance.
 
 ## Configuring the Cluster {#cluster-configuration data-title="Configuring the Cluster"}
 
 To configure the cluster, follow these steps:
 {.docs}
- - RDP [[ATTN RICH: RDP is what..?]] as the System user into _ProGet_NLB_+
+ - Connect to _ProGet_NLB_ as the System user using a remote desktop connection
  - Open the NLB manager (Control Panel\All Control Panel Items\Administrative Tools\Network Load Balancing Manager)
     - Create a new cluster
     - Use the following as a guide to setup NLB: Microsoft's [Network Load Balancing Cluster](https://technet.microsoft.com/en-us/library/cc771008.aspx).
