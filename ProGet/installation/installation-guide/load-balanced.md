@@ -39,7 +39,7 @@ For NLB installs, the following are additional prerequisites should be considere
 
 ## Configuring the Cluster {#cluster-configuration data-title="Configuring the Cluster"}
 
- - RDP as the System user into _ProGet_NLB_
+ - RDP as the System user into _ProGet_NLB_+
  - Open the NLB manager (Control Panel\All Control Panel Items\Administrative Tools\Network Load Balancing Manager)
     - Create a new cluster
     - Use the following as a guide to setup NLB: Microsoft's [Network Load Balancing Cluster](https://technet.microsoft.com/en-us/library/cc771008.aspx).
@@ -59,40 +59,11 @@ For NLB installs, the following are additional prerequisites should be considere
 
 ## Configuring the ProGet Web Nodes {#node-configuration data-title="Configuring the ProGet Nodes"}
 
-Follow the [ProGet Installation Guide](/docs/proget/installation/installation-guide) for installing each web node using the Inedo Hub. 
+Follow the [web node & ProGet service configuration](/docs/proget/installation/load-balancing-and-automatic-failover#web-node) for installing each web node and, optionally, the [high availability configuration](/docs/proget/installation/load-balancing-and-automatic-failover#ha) to configure high availability. 
 
-::: {.attention .best-practice}
-When installing ProGet on each Web Node, make sure to point each install to the same database using the same database connection string.
-:::
-
-The following additional configuration should be considered:
+The following additional IIS configuration should be considered:
 
  - Use the bindings as per the Cluster Properties:
-   - Cluster IP - provided by IT (e.g. `10.0.0.100`)
+   - Cluster IP - provided by IT (e.g. `10.0.0.100`).
    - Port - 80
    - Host name - provided by IT (e.g. `nuget.srv.companyname.corp`)
- - In IIS Manager:
-    - Select the ProGet website
-    - Double click Machine Key
-        - Use validation method SHA1 and Auto Encryption method
-        - Deselect any check boxes and click Generate Keys and Apply on the right panel; this will update the web.config with a machine key
-
-### Configure ProGet to Enable Load Balancing 
-
-On the ProGet Administration page, visit the "Configure Load Balancing" page, and click Enable.
-
-### Configure ProGet Service {#configure-service}
-
-The [Inedo Hub](/docs/proget/installation/installation-guide) installer includes installing the ProGet service on each Web Node.  
-
-For Load Balanced installations that are not configured for High Availability, only one node should be running the ProGet service.  On the remaining servers, stop the ProGet service and set it to `Disabled` in the service properties.
-
-For HA installations, all web nodes should be running the ProGet service.  High availability will need to be configured [for automatic failover](/docs/proget/installation/load-balancing-and-automatic-failover).
-
-### Configure the Inedo Service Messenger
-
-The service messenenger is a component of ProGet that enables simple communications between web and service nodes. By default it uses a named pipe, but in a load-balanced configuration it needs to be configured to use TCP instead. The messenger is optional, but certain parts of ProGet's web interface may be slightly degraded without it. See the documentation on the [Service Messenger](/docs/proget/installation/installation-guide/service-messenger) for more information.
-
-## Upgrading a Load Balanced ProGet Installation {#upgrading data-title="Upgrading HA/LB Installations"}
-
-To upgrade an existing HA/LB installation, simply re-run the [Inedo Hub](/docs/proget/installation/installation-guide) on each node and follow the instructions for setting up the [ProGet Service](#configure-service).
