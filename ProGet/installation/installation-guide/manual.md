@@ -15,12 +15,7 @@ keywords: proget, installation, upgrade, manual
  - [Web Node Installation (IIS)](#web)
  - [Service Node Installation (Windows Service)](#service)
  - [Extensions](#extensions)
- - [High Availability & Load Balancing](#high-availability)
  - [Troubleshooting](#troubleshooting)
-
-::: { .attention .technical }
-This manual installation guide for ProGet is primarily for load-balanced and high availability installations on Windows. If you aren't using these features, you should probably use the [installer](https://inedo.com/proget/download), or refer to the [Linux/Docker installation instructions](linux-docker).
-:::
 
 ### ProGet Software Components
 
@@ -402,24 +397,6 @@ Here is an example PowerShell script that performs these operations:
 Start-Service INEDOPROGETSVC
 ```
 
-## High Availability and Load-Balanced Installations {#high-availability}
-
-::: { .attention .best-practice }
-High availability and load-balanced installations are only available in ProGet Enterprise.
-:::
-
-This manual installation guide also applies to High Availability and/or load-balanced (HA/LB) installations. In terms of ProGet Enterprise licensing, the feature as a whole is considered "high availability", but for the purposes of this documentation, HA/LB installations are distinguished *technically* from a normal/basic installation by the following characteristics:
-
-{.docs}
- - multiple web nodes behind a load balancer (LB)
- - multiple service nodes (HA)
- - one license for ProGet Enterprise (under the default agreement) enables up to 5 nodes to be installed, with a base recommendation being 2 service nodes and 3 web nodes
-
-When performing installation for HA/LB, it is recommended to first provision a non-HA, "normal" instance, then add LB (i.e. additional web nodes), and finally HA (i.e an additional service node).
-
-The database is "shared" among all the nodes in an installation in the sense that they all use the same connection string. Unless the database is configured to perform its own replication, connecting to more than one SQL Server database would require additional ProGet Enterprise licenses, and the instances would be connected via [feed replication](/docs/proget/advanced/feed-replication).
-
-Refer to the [Load Balancing & Automatic Failover](/docs/proget/installation/load-balancing-and-automatic-failover) documentation for more information.
 
 ## Troubleshooting {#troubleshooting data-title="Troubleshooting"}
 
