@@ -121,7 +121,7 @@ Once load balancing has been configured, the following components will need to b
 - Indexing nodes
 
 
-### Database Cluster {#database-cluster
+### Database Cluster {#database-cluster}
 
 ProGet can work with any SQL Server Cluster configuration, regardless of the failure detection mechanism and failover policy. SQL Server's Database Mirroring may also be used, but note that Microsoft has deprecated the feature in favor of AlwaysOn Availability Groups. 
 
