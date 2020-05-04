@@ -7,11 +7,17 @@ show-headings-in-nav: true
 
 A ProGet npm feed is a repository compatible with the npm client for NodeJS. ProGet npm feeds support both scoped and unscoped npm packages.
 
-## npm Feed Specifics {#npm data-title="npm Feed Specifics"}
-
-Connectors to the public repository at npmjs.org will not include [scoped packages](https://docs.npmjs.com/misc/scope) in search results, because the public repository does not have a mechanism for including them. Scoped packages can still be used through this connector; they are only excluded from searches, and this is the same behavior seen from searching at npmjs.org directly.
+## npm Feed Limitations {#npm data-title="npm Feed Limitations"}
 
 The npm client does not support using Windows Integrated Authentication, so ProGet attempts to disable its usage for npm API endpoints in favor of basic HTTP authentication. However, disabling Windows Authentication on a per-URL basis does not work in every environment. If you are having trouble getting this working, you may create a second web site in IIS for ProGet with Windows Authentication disabled without acquiring a separate license.
+
+### Build Metadata and npmjs.org
+
+Although the [npm semantic versioning documentation](https://docs.npmjs.com/about-semantic-versioning) mentions support for SemVer2, there is some inconsistency with build metadata (i.e. versions with a "+" symbol in them). The build metadata is not exposed in many npmjs.org queries, where as it is exposed in ProGet queries. When using a connector to npmjs.org, this may present unexpected behavior in the npm client, such as packages not found.
+
+This appears to be limited to a very small number of packages (such as [@hot-loader/react-dom](https://www.npmjs.com/package/@hot-loader/react-dom); we may change this behavior if it's a continued problem, but please contribute to see the discussion at [NPM Connector returns plus "+" in versions](https://forums.inedo.com/topic/2948) on the forums.
+
+
 
 ## Creating an npm Feed {#creating data-title="Creating an npm Feed"}
 
