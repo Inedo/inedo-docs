@@ -15,7 +15,7 @@ The npm client does not support using Windows Integrated Authentication, so ProG
 
 Although the [npm semantic versioning documentation](https://docs.npmjs.com/about-semantic-versioning) mentions support for SemVer2, there is some inconsistency with build metadata (i.e. versions with a "+" symbol in them). The build metadata is not exposed in many npmjs.org queries, where as it is exposed in ProGet queries. When using a connector to npmjs.org, this may present unexpected behavior in the npm client, such as packages not found.
 
-This appears to be limited to a very small number of packages (such as [@hot-loader/react-dom](https://www.npmjs.com/package/@hot-loader/react-dom); we may change this behavior if it's a continued problem, but please contribute to see the discussion at [NPM Connector returns plus "+" in versions](https://forums.inedo.com/topic/2948) on the forums.
+This appears to be limited to a very small number of packages (such as [@hot-loader/react-dom](https://www.npmjs.com/package/@hot-loader/react-dom); we may change this behavior if it's a continued problem, but please contribute to the discussion at [NPM Connector returns plus "+" in versions](https://forums.inedo.com/topic/2948) on the forums.
 
 
 
