@@ -17,25 +17,25 @@ To begin, you must meet certain prerequisites, which are:
 
 {.docs}
  - ProGet Enterprise license
- - Running ProGet installation with at least one node (see [Load Balancing & Automatic Failover](/docs/proget/installation/load-balancing-and-automatic-failover))
+ - ProGet already installed and running on at least one server (see [Load Balancing & Automatic Failover](/docs/proget/installation/load-balancing-and-automatic-failover))
  - Refer to the [Installation Checklist](/docs/proget/installation/installation-guide#pre-install )
 
-### NLB Prerequisites
+### Microsoft NLB Prerequisites
 
-For NLB installs, the following are additional prerequisites should be considered:
+For Microsoft NLB installs, the following are additional prerequisites should be considered:
 
 {.docs}
  - 2 network interfaces (NICs) total (one dedicated for the NLB cluster), each with static IPs to host the ProGet website 
-    - One machine per web node *(example machine names in italics)*
-        - _ProGet_Webnode1_ (this will also serve as the indexing server)
-        - _ProGet_Webnode2_
-        - _ProGet_Webnode3_
+    - Three machines to install ProGet *(example machine names in italics)*
+        - _ProGetSv1_ (already has ProGet installed)
+        - _ProGetSv2_
+        - _ProGetSv3_
     - Machine to set up the NLB cluster *(example machine names in italics)*
-        - _ProGet_NLB_
- - Cluster IP with subnet mask (see [Configuring the Cluster](#cluster-configuration) below) mapped to the internet name and company domain (e.g. `http://nuget.srv.companyname.corp/`)
+        - _ProGetNLB_
+ - Cluster IP with subnet mask (see [Configuring the Cluster](#cluster-configuration) below) mapped to the internet name and company domain (e.g. `http://proget.kramerica.local/`)
  - Address Resolution Protocol (ARP) entry using the cluster IP to the switch that routes into the NLB VLAN
 
-### Web Node Prerequisites
+### Proget Server Prerequisites
 
 ProGet load balancing requires IIS. The required settings are outlined in [IIS Roles & Features](/docs/various/iis/roles-and-features). You also have to configure additional features in the Server Manager by going to Features > Network Load Balancing in your ProGet instance.
 
@@ -51,9 +51,9 @@ To configure the cluster, follow these steps:
 
 ### Cluster Properties Example
 
-1. **IP** - provided by IT. 10.0.0.100
-2. **Subnet mask** - provided by IT. 255.255.250.0
-3. **Internet name** - provided by IT. NUGET.SRV
+1. **IP** - provided by IT, e.g. 10.0.0.100
+2. **Subnet mask** - provided by IT, e.g. 255.255.250.0
+3. **Internet name** - provided by IT, e.g. proget.kramerica.local
 4. **Operation mode** - Multicast
 5. **Port range** - 80 to 80
 6. **Protocols** - TCP
@@ -61,13 +61,13 @@ To configure the cluster, follow these steps:
     - None (preferred); indicates that any host in the cluster which matches to the port rule can handle the client request
     - Multiple host\Single; indicates that one host in the NLB cluster can process traffic from the same client. The requests are basically transmitted to the same host every time NLB reads the IP address.
 
-## Configuring the ProGet Web Nodes {#node-configuration data-title="Configuring the ProGet Nodes"}
+## Configuring the ProGet Servers {#node-configuration data-title="Configuring the ProGet Servers"}
 
-Follow the [web node & ProGet service configuration](/docs/proget/installation/load-balancing-and-automatic-failover#web-node) for installing each web node and, optionally, the [High Availability configuration](/docs/proget/installation/load-balancing-and-automatic-failover#ha) to configure HA. 
+Follow the [ProGet Website & ProGet Service configuration](/docs/proget/installation/load-balancing-and-automatic-failover#web-node) for installing each server and, optionally, the [High Availability configuration](/docs/proget/installation/load-balancing-and-automatic-failover#ha) to configure HA. 
 
 The following additional IIS configuration should be considered:
 
  - Use the bindings as per the Cluster Properties:
    - Cluster IP - provided by IT (e.g. `10.0.0.100`).
    - Port - 80
-   - Host name - provided by IT (e.g. `nuget.srv.companyname.corp`)
+   - Host name - provided by IT (e.g. `proget.kramerica.local`)

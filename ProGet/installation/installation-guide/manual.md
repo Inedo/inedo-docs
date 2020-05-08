@@ -12,8 +12,8 @@ keywords: proget, installation, upgrade, manual
  - [Pre-Installation Checklist](#checklist)
  - [Get the Manual Installation Package](#get)
  - [Database Installation (SQL Server)](#database)
- - [Web Node Installation (IIS)](#web)
- - [Service Node Installation (Windows Service)](#service)
+ - [Website Installation (IIS)](#web)
+ - [Service Installation (Windows Service)](#service)
  - [Extensions](#extensions)
  - [Troubleshooting](#troubleshooting)
 
@@ -22,32 +22,16 @@ keywords: proget, installation, upgrade, manual
 On Windows, ProGet consists of 3 distinct deployable application components required to run the software:
 
 {.docs}
- - **Web Node** - an ASP.NET 4.5 web application which serves as the primary interface to ProGet via a web UI and feed API implementations
- - **Service Node** - a Windows Service that performs indexing and other background tasks
+ - **Website** - an ASP.NET 4.5 web application which serves as the primary interface to ProGet via a web UI and feed API implementations
+ - **Service** - a Windows Service that performs indexing and other background tasks
  - **Database** - a SQL Server database which contains all of the persistent data including feeds, packages, privileges, and internal settings
 
 ## Prerequisites {#prerequisites data-title="Prerequisites"}
 
+
 #### Pre-Installation Check List {#checklist}
 
-ProGet supports all modern version of Windows that Microsoft supports (see [Windows Lifecycle Fact Sheet](https://support.microsoft.com/en-us/help/13853/windows-lifecycle-fact-sheet)). The recommended requirements are:
-
-{.docs}
-- **Minimum** - 2 Core CPU, 2 GB RAM, 1 GB for disk storage
-- **Recommended Average/Typical** - 2 Core CPU, 4 GB RAM, 10 GB disk storage
-- **Recommended Large** -  4 Core CPU, 8 GB RAM, 16 GB disk storage
-
-Before installing, consider the following:
-
-{.docs}
-- **.NET Framework 4.5.2+** - ProGet requires .NET 4.5.2 or later
-- **IIS 7.5+** - While the ProGet installer includes an Integrated Web Server to help get started, it is not supported for manual installations
-- **SQL Server 2012 SP4+** - ProGet requires any supported version of Microsoft SQL Server (2012 SP4 or later at the time of writing), and will work with SQL Server Express
-- **Disk Space (1GB+)** - ProGet itself requires minimal disk space, but keep in consideration for package storage or temporary package operations
-- **Firewall (Inbound)** - ProGet is a web application and can be installed on the port of your choosing, and service nodes may require access if the [Service Messenger](service-messenger) is configured to use TCP as its transport mechanism
-- **Firewall (Outbound)** - ProGet may require outbound access for scheduled tasks or feed connectors
-- **ProGet User Account** - The ProGet application pool and Windows Service will likely require a custom service account, for which special permissions will need to be granted as documented (this will be referred to as `ProGetServiceUser@domain`, but of course can be whatever you want)
-- ***Your* User Account** - your (i.e. the administrator's) user account needs to have administrator access for most of the following steps (and run the commands as an administrator), and database permission to create logins and grant database roles
+These are the same as the [ProGet Installation Guide](/docs/proget/installation/installation-guide).
 
 #### Get the Manual Installation Package {#get}
 
@@ -61,7 +45,7 @@ The manual installation package contains the following:
  - **Extensions directory** - contains the default extensions shipped with the selected version of ProGet
  - **Service directory** - contains the files and binaries required to run the ProGet Windows Service
  - **SqlScripts directory** - contains the SQL scripts required to generate the SQL Server database, or update an existing one to the schema required for the downloaded version
- - **Web directory** - contains the files and binaries required to run the web application
+ - **Website directory** - contains the files and binaries required to run the Website application
 
  Note that, in earlier versions of ProGet, the directory names may be different or may be .zip files instead of directories. Regardless of the structure, the process has remained the same since ProGet v4.
  
@@ -73,7 +57,7 @@ Before configuring the necessary paths, you should decide where the following ba
 
 | Directory | Description | Installer Default |
 |--|--|--|
-| Root installation directory | the root disk path for the web/service node binaries, and extensions | `C:\Program Files\ProGet` |
+| Root installation directory | the root disk path for the Website and Service binaries, and extensions | `C:\Program Files\ProGet` |
 | Program data directory | the root disk path for package storage, temporary directories, and the configuration file | `C:\ProgramData\ProGet` |
 
 Though not strictly required until later, you may also want to ensure the existence of the following directories if you would like to use the installer defaults:
@@ -183,7 +167,7 @@ Then the user must be granted access to the ProGet user role (which was added du
 osql -E -S <db-server> -d ProGet -Q "ALTER ROLE [ProGetUser_Role] ADD MEMBER [domain\ProGetServiceUser]"
 ```
 
-## Web Node Installation (IIS) {#web data-title="Web Node (IIS)"}
+## Website Installation (IIS) {#web data-title="Website (IIS)"}
 
 ### Prerequisites
 
@@ -204,7 +188,7 @@ Before installing ProGet in IIS, the following roles/features must be enabled in
  - .NET Framework 4.6 Features > .NET Framework 4.6
  - .NET Framework 4.6 Features > ASP.NET 4.6
 
-### 1. Copy website files
+### 1. Copy Website files
 
 Copy the contents of `Web` directory from the installation package to a subdirectory of the *root installation directory* identified earlier. For reference, the installer defaults this to: `C:\Program Files\ProGet\Web`
 
@@ -229,7 +213,7 @@ You may adjust other application pool settings as desired.
 The minimum requirements for the IIS web site are:
 
 {.docs}
- - **Physical Path** - the path on disk where the ProGet web application files were copied to in step 1
+ - **Physical Path** - the path on disk where the ProGet Website files were copied to in step 1
  - **Application Pool** - the application pool to use, created in step 2
  - **Binding** - the combination of IP address(es) and port(s) used to access ProGet over the network
 
@@ -243,7 +227,7 @@ Example PowerShell command to create a site:
 
 You may adjust other IIS site settings as desired.
 
-## Service Node (Windows Service) {#service data-title="Service Node (Windows Service)"}
+## Service (Windows Service) {#service data-title="Service (Windows Service)"}
 
 ### 1. Copy service files 
 
@@ -270,11 +254,11 @@ Start-Service INEDOPROGETSVC
 ```
 ## First Run {#first-run data-title="First Run"}
 
-Once the web and service nodes are started, ProGet should be accessible via the binding specified in IIS web node [step 3](#site). The first time you access ProGet via the web application, some additional settings must be configured.
+Once the Website and Service are started, ProGet should be accessible via the binding specified in IIS site [step 3](#site). The first time you access ProGet via the Website, some additional settings must be configured.
 
 ### 1. Ensure the ProGet configuration file exists with valid values
 
-Once the web, service, and database are configured, the final step is to create or update the [ProGet Configuration File](/docs/proget/installation/config-files) to supply the database connection string noted earlier in [step 3](#db-updater) of the database configuration, and ensure `WebServer Enabled="false"`.
+Once the Website, Service, and Database are configured, the final step is to create or update the [ProGet Configuration File](/docs/proget/installation/config-files) to supply the database connection string noted earlier in [step 3](#db-updater) of the database configuration, and ensure `WebServer Enabled="false"`.
 
 Once values in this file are changed, any IIS application pool or ProGet Windows Service that reference it must be restarted to see the new values.
 
@@ -289,7 +273,7 @@ The following settings within the product that must be configured, their corresp
 | `Extensions.BuiltInExtensionsPath` | path containing extensions included with the installation package | `C:\Program Files\ProGet\Extensions` |
 | `Extensions.ExtensionsPath` | the disk path where downloaded extensions are stored and loaded from by ProGet | `C:\ProgramData\ProGet\Extensions` |
 | `Extensions.ServiceTempPath` | a temp path where extensions loaded from the extensions path are extracted to and loaded by the ProGet service | `C:\ProgramData\ProGet\ExtensionsTemp\Service` |
-| `Extensions.WebTempPath` | a temp path where extensions loaded from the extensions path are extracted to and loaded by the ProGet web application |  `C:\ProgramData\ProGet\ExtensionsTemp\Web` |
+| `Extensions.WebTempPath` | a temp path where extensions loaded from the extensions path are extracted to and loaded by the ProGet Website |  `C:\ProgramData\ProGet\ExtensionsTemp\Web` |
 | `Extensions.UpdateFeedUrl` | the extensions feed URL, required to browse extensions in the software | `https://proget.inedo.com/upack/Extensions` |
 | `Storage.PackagesRootPath` | base path on disk for ProGet's default package store | `C:\ProgramData\ProGet\Packages` ([more info](#packages-root-path)) |
 
@@ -321,7 +305,7 @@ There are several other packages path settings (e.g. `Storage.NpmPackagesLibrary
 
 ### 3. Set license key and activate
 
-All editions of ProGet require a valid license to use. Once the ProGet web application is accessible, you must visit the *Administration* > *Licensing & Activation* page to apply a license key. If ProGet is able to access the internet, the key will be automatically activated.
+All editions of ProGet require a valid license to use. Once the ProGet Website is accessible, you must visit the *Administration* > *Licensing & Activation* page to apply a license key. If ProGet is able to access the internet, the key will be automatically activated.
 
 If you have already obtained a license key but cannot automatically activate, visit the [License Key Activation documentation](/docs/various/licensing/activation) for more information on manual activation. 
 
@@ -342,7 +326,7 @@ Copy the extension file (e.g. Windows.upack) to the extensions path.
  2. Visit the Admin > Advanced Settings page within your ProGet instance to determine where extensions are stored by examining the `Extensions.ExtensionsPath` setting.
  3. Ensure the file is named `<extension-name>.upack` in the extensions directory, and that no other files with the same name exist in that directory, even with a different extension. For example, make sure to delete an existing `<extension-name>.inedox` file if you are installing `<extension-name>.upack`. The downloaded file may contain a version part, which should be removed (e.g. InedoCore-1.5.0.upack should be just InedoCore.upack)
  4. Restart the product's Windows service: Admin > Service > Stop then Start (e.g. INEDOBMSVC, INEDOPROGETSVC)
- 5. Restart the product's Web application, either the IIS application pool: Admin > Service > Restart Web App
+ 5. Restart the product's Website application, either the IIS application pool: Admin > Service > Restart Web App
  6. Verify that the new extension has been loaded (Admin > Extensions)
 
 ::: {.attention .technical}
@@ -377,7 +361,7 @@ For the most part, an upgrade is an "XCOPY deployment" of files from the [manual
 | Contents | Target | Installer Default | Notes |
 |---|---|---|
 | Service | Service installation directory | `C:\Program Files\ProGet\Service` | May overwrite existing `App_appSettings.config` if empty |
-| Web | Web application home directory | `C:\Program Files\ProGet\Web` | May overwrite existing `Web_appSettings.config` if empty |
+| Web | Website application home directory | `C:\Program Files\ProGet\Web` | May overwrite existing `Web_appSettings.config` if empty |
 | Extensions | `Extensions.BuiltInExtensionPath` directory | `C:\Program Files\ProGet\Extensions` | Overwrite contents with install package contents |
 
 While v5.1.0 and later versions of ProGet should not store data in these configuration files, existing installations might contain relevant data such as connection strings that should ultimately be migrated to the [ProGet Configuration File](/docs/proget/installation/config-files) and removed from the `*_appSettings.config` file.
@@ -425,7 +409,7 @@ If there is a difference in behavior when run interactively vs. running the serv
 
 ### Can't control the service from within ProGet
 
-Visit the [Service Messenger](service-messenger) documentation for enabling inter-process communication between the ProGet web application and ProGet Windows Service.
+Visit the [Service Messenger](service-messenger) documentation for enabling inter-process communication between the ProGet Website and ProGet Service.
 
 ### Extensions failing to load
 
