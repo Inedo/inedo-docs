@@ -16,7 +16,7 @@ ProGet offers two workflows for managing licensing agreements of third-party, op
 - **WhiteSource integration**  -the built-in feature allows you to permit or restrict packages from being used based on their license
 
 :::attention {.best-practice}
-This feature is available in paid and trial ProGet editions.
+This feature is available in paid and trial ProGet editions. [Learn about ProGet free trials and get 30 days free](https://inedo.com/proget/pricing/trial).
 :::
 
 ##   License Filtering In ProGet
