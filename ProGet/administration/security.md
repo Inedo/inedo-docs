@@ -6,7 +6,9 @@ keywords: proget, packages, chocolatey
 
 Security and access control policies are defined by giving principals (users or groups) permission to perform certain tasks in a certain scope (either feed-specific or globally). For example, you can say "The 'HDARS Developers' group may 'Publish Packages' to the 'Dev' feed."
 
-This feature is available in paid and trial ProGet editions.{.info}
+:::attention {.best-practice}
+This feature is available in paid and trial ProGet editions. [Learn about ProGet free trials and get 30 days free](https://inedo.com/proget/pricing/trial).
+:::
 
 Principals are defined in a user directory, which is either internal (i.e. built-in to ProGet) or external (such as Active Directory and LDAP). This allows you to create a single sign-on experience while letting other members of the organization manage user accounts and group membership.
 
