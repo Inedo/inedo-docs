@@ -7,7 +7,7 @@ show-subheadings-in-nav: true
 ---
 
 ::: {.attention .best-practice}
-Repackaging is available in paid and trial ProGet editions starting in v5.2.5
+Repackaging is available in paid and trial ProGet editions starting in v5.2.5. [Learn about ProGet free trials and get 30 days free](https://inedo.com/proget/pricing/trial).
 :::
 
 Through prerelease versioning, it's clear to everyone which packages are release-quality and what is not ready for release. Like all software, it is important to create several prerelease packages that are tested and validated prior to creating a final, stable package. You can use different prerelease versions for this purpose, for example:
