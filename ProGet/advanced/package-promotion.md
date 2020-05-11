@@ -1,6 +1,6 @@
 ---
 title: Package Promotion
-subtitle:  What is Package Promotion and Why Should I use it.
+subtitle:  What is Package Promotion and Why Should I Use It?
 keywords: package promotion, packages, 3rd party, universal package, deployments
 sequence: 600
 ---
@@ -8,6 +8,10 @@ sequence: 600
 Package Promotion is the process of promoting packages between feeds to ensure that only approved and verified packages are used in the right environments, such as production. 
 
 In ProGet, packages can be promoted from one feed to another and tracked throughout the process. This is useful for maintaining feeds with separate levels of quality (such as Development, Production, etc), and also to easily curate selected packages from an external source to an approved repository.
+
+:::attention {.best-practice}
+Beginning in the 5.3 edition of ProGet, this feature is available in paid and trial editions. [Learn about ProGet free trials and get 30 days free](https://inedo.com/proget/pricing/trial).
+:::
 
  
 ## Package Promotion Security 
