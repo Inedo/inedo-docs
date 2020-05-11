@@ -37,7 +37,9 @@ ProGet provides two types of connector caching: package and metadata.
 
 ## Connector Filters {#connector-filters data-title="Connector Filters"}
 
-This feature is available in paid and trial ProGet editions. {.attention .best-practice}
+:::attention {.best-practice}
+This feature is available in paid and trial ProGet editions. [Learn about ProGet free trials and get 30 days free](https://inedo.com/proget/pricing/trial).
+:::
 
 Connector filters allow for simple wildcard include/exclude lists to be applied to all connector packages. Filters always refer to the package's unique name/ID, and multiple filters may be entered one-per-line. A filter starting with a "!" is an exclude filter, while all others are include filters.
 
