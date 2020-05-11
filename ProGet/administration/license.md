@@ -31,7 +31,6 @@ ProGet is licensed *per installation* on an annual basis and has additional rest
 |**High Performance Features:**|   |   |   |
 | [Load Balancing Support](/docs/proget/installation/load-balancing-and-automatic-failover)                        |    |    | ✔ |
 | [Multiple Web Nodes](/docs/proget/installation/load-balancing-and-automatic-failover#web-node-configuration)     |    |    | ✔ |
-| [Multiple Index Nodes](/docs/proget/installation/load-balancing-and-automatic-failover#indexing-nodes)           |    |   | ✔ |
 | [Automatic Failover](/docs/proget/installation/load-balancing-and-automatic-failover)                            |    |    | ✔ |
 | [Multi-Site Replication](/docs/proget/administration/feed-replication)                                           |    |    | ✔ |
 
