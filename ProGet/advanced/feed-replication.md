@@ -10,6 +10,10 @@ ProGet Enterprise offers users the ability to replicate feeds across multiple Pr
 
 Implementing multi-site replication requires specific feed configurations: at least one feed must be configured as a replication server, and one or more feeds configured as a replication client.
 
+:::attention {.best-practice}
+[View ProGet Enterprise pricing and request a quote](https://inedo.com/proget/pricing/).
+:::
+
 ## Configuration {#configuration data-title="Configuration"}
 
 Feed replication is configured on a per-feed basis on the Feed Management page and requires the *Manage Feed* permission. A feed may be configured as a replication server, a replication client, or in more advanced scenarios, as both.
