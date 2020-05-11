@@ -16,7 +16,7 @@ But *unfortunately*, managing vulnerabilities as a consumer is challenging, espe
 This is where ProGet's vulnerability scanning and blocking comes in.
 
 :::attention {.best-practice}
-This feature is available in paid and trial ProGet editions.
+This feature is available in paid and trial ProGet editions. [Learn about ProGet free trials and get a committment-free 30-day trial](https://inedo.com/proget/pricing/trial).
 :::
 
 We partner with three leading vulnerability scanning companies – Sonatype (OSS Index), WhiteSource, and Red Hat (Clair)  – to automatically scan third-party packages and Docker container images against vulnerability databases. You can also manually manage your vulnerabilities. Note that container image vulnerability management is available in ProGet 5.3 and later.
