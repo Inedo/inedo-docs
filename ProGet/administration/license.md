@@ -30,7 +30,7 @@ ProGet is licensed *per installation* on an annual basis and has additional rest
 | [Webhooks](/docs/proget/advanced/webhooks)                                                                       |    | ✔ | ✔ |
 |**High Performance Features:**|   |   |   |
 | [Load Balancing Support](/docs/proget/installation/load-balancing-and-automatic-failover)                        |    |    | ✔ |
-| [Multiple Web Nodes](/docs/proget/installation/load-balancing-and-automatic-failover#web-node-configuration)     |    |    | ✔ |
+| [Multi-Server Cluster](/docs/proget/installation/load-balancing-and-automatic-failover#web-node-configuration)     |    |    | ✔ |
 | [Automatic Failover](/docs/proget/installation/load-balancing-and-automatic-failover)                            |    |    | ✔ |
 | [Multi-Site Replication](/docs/proget/administration/feed-replication)                                           |    |    | ✔ |
 
