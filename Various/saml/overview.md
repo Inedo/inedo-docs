@@ -18,21 +18,17 @@ SAML-based single sign-on is an authentication mechanism that uses a third-party
 SAML authentication is currently in beta, installable from the Inedo Hub. This functionality is available in the following prerelease product versions:
 
 {.docs}
- - **ProGet** - v5.2.20 and later  - Basic or Enterprise edition only
+ - **ProGet** -v5.2.20 and later (Enterprise edition only)
  - **BuildMaster** - *coming soon*
  - **Otter** - *coming soon*
 
 ## Configuring SAML {#configuration data-title="Configuring SAML"}
 
-### 1. Obtain a Prerelease Version
+### 1. Enable Prerelease Features (ProGet 5.2 Only)
 
-In order to install a prerelease version, the Inedo Hub must be configured to display them. Visit the [Inedo Hub documentation](/docs/desktophub/overview#prerelease) for more information.
+If you are using ProGet 5.2, visit the *Administration* > *Advanced Settings* page to enable the `Web.PrereleaseFeaturesEnabled` setting.
 
-### 2. BETA: Enable Prerelease Features
-
-Once a product version that [supports SAML](#supported-versions) is installed, visit the *Administration* > *Advanced Settings* page to enable the `Web.PrereleaseFeaturesEnabled` setting.
-
-### 3. Configure Identity Provider
+### 2. Configure Identity Provider
 
 In general, configuring an identity provider requires the following steps to enable SAML authentication:
 
@@ -47,7 +43,7 @@ Instructions for the following specific identity providers can be found here:
  - [Azure Active Directory](azure-ad)
  - [PingID](ping-id)
 
-### 4. Configure Inedo Product
+### 3. Configure Inedo Product
 
 Once the identity provider is configured to support authentication in an Inedo product, the following properties must be configured on the *Administration* > *Enable Single Sign-on (SAML)* page:
 
@@ -61,7 +57,7 @@ Once the identity provider is configured to support authentication in an Inedo p
 Once these settings are saved, they will be validated and any errors will appear on the page. If successful, SAML authentication will be enabled, and selecting "Log In" from the user dropdown will present a sign-in button instead of username and password fields.
 
 ::: {.attention .technical}
-**Beta note:**  Once enabled, there may be errors related to the web application restarting and/or cookies. Simply click the *Clear Authentication Cookies* button to resolve this once the site restarts. See the [troubleshooting](#troubleshooting) section if you get locked out.
+**Troubleshooting note:**  Once enabled, there may be errors related to the web application restarting and/or cookies. Simply click the *Clear Authentication Cookies* button to resolve this once the site restarts. See the [troubleshooting](#troubleshooting) section if you get locked out.
 :::
 
 ## Technical Limitations {#limitations data-title="Technical Limitations"}
