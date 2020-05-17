@@ -5,10 +5,6 @@ keywords: authentication,saml,azure
 show-headings-in-nav: true
 ---
 
-::: {.attention .technical}
-SAML support is currently only available in prerelease versions of certain Inedo products. It is still considered a proof-of-concept, and may be removed at any time.
-:::
-
 ## Overview
 
 This documentation is specific to configuring SAML with Azure Active Directory. Refer to the [SAML Authentication Overview](overview) for more information.
