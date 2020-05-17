@@ -6,7 +6,7 @@ show-headings-in-nav: true
 ---
 
 ::: {.attention .technical}
-SAML support is currently only available in [certain Inedo product versions](#supported-versions). It is still considered a preview feature, because we are still learning how to support it. But if you're willing to try it out, we will do our best to make sure it works in your environment.
+SAML support is currently only available in [certain Inedo product versions](#supported-versions).
 :::
 
 ## Overview {#overview data-title="Overview"}
