@@ -20,6 +20,10 @@ Note that PowerShell does not support TLS 1.2 (defined by [RFC 5246](https://too
 
 See [KB#1161](https://inedo.com/support/kb/1161/tls-v12-configuration-and-connection-errors) for instructions on how to enable TLS 1.2.
 
+### Adding the Feed to Visual Studio
+To add a VSIX Feed to Visual Studio, an additional extension gallery will need to be added.  To do this, navigate to _Tools > Options > Environment > Extensions_ and click the _Add_ button under _Additional Extension Galleries_.  Fill out the name and set the URL to the VSIX Feed's API endpoint URL.
+
+This will allow you to install your VSIX Feed's extensions in addition to the extensions in the built-in galleries using the _Manage Extensions_ window.
 
 #### VSIX Limitations
 ##### Windows Integrated Authentication
