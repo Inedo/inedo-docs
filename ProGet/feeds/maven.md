@@ -16,6 +16,51 @@ Connectors are also slightly different in Maven than in most other feed types. A
 
 As of ProGet 5.1.0, Maven feeds support alternate package stores (AWS, Azure).
 
+### Adding a Repository
+
+There are two different ways to add a ProGet Maven feed as an additional Maven repository.  The first way is to specify the feed in the POM xml.  Within the _project > respoitories_ element, you would add a _repository_ element identifying the ProGet feed.  For Example:
+```
+<project>
+...
+    <repositories>
+        <repository>
+            <id>ProGet</id>
+            <name>{Maven-Feed-Name}</name>
+            <url>{Maven-API-endpoint-url}</url>
+        </repository>
+    </repositories>
+...
+</project>
+```
+
+The other way to specify the feed is to create a profile in the `{USER_HOME}\.m2\settings.xml` file.  An example profile is:
+```
+<settings>
+    ...
+    <profiles>
+    ...
+    <profile>
+        <id>ProGetProfile</id>
+        <repositories>
+            <repository>
+                <id>ProGet</id>
+                <name>{Maven-Feed-Name}</name>
+                <url>{Maven-API-endpoint-url}</url>
+            </repository>
+        </repositories>
+    </profile>
+    ...
+    </profiles>
+     
+    <activeProfiles>
+        <activeProfile>myprofile</activeProfile>
+    </activeProfiles>
+    ...
+</settings>
+```
+
+For more information on adding additional Maven repositories, see Maven's (Setting up Multiple Repositories)[https://maven.apache.org/guides/mini/guide-multiple-repositories.html] guide.
+
 ### Authenticating to Maven Feeds {#authenticating data-title="Authenticating to Maven Feeds"}
 
 Authentication settings for the maven client is configured in your [settings.xlm](https://maven.apache.org/settings.html) file. You can use the standard &lt;username> and &lt;password> elements to store a username/password for ProGet, or you can specify `api` as the username, and an [API Keys](/docs/proget/administration/security/api-keys) as a password.

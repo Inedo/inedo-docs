@@ -60,7 +60,7 @@ With ProGet, a principal (user or group) either has privileges to publish a pack
 
 ### Legacy NuGet API Key {#legacy-key}
 
-NuGet feeds also support an API key definition directly on the Manage Feed page. This is a deprecated legacy feature, so it is recommended to migrate to a ProGet API Key at your earliest convenience.
+Prior to ProGet 5.0, the [NuGet (Quirks) feeds](#legacy) supported an API key definition directly on the Manage Feed page; these keys will be removed upon upgrade to ProGet 5.3.
 
 Legacy NuGet API Keys behave slightly differently than ProGet API Keys: If a legacy key is defined for the feed, it will be checked *in addition to* the authenticated user. In the event the same key is defined both as a legacy key and as a ProGet key, the ProGet key will take precedence.
 
@@ -117,6 +117,8 @@ To migrate a legacy (quirks) NuGet feed, click the "migrate" link on the manage 
 - Reactivate the feed
 
 This migration is entirely a database operation and does not need to manipulate your packages at all. By default the migration is performed as a single database transaction so that it may be rolled back in the unlikely event of a failure. If you have a very large number of packages in your feed (>10,000), we strongly recommend performing a backup of the ProGet SQL database before executing the migration and disabling this single-transaction mode by unchecking the appropriate box on the "migrate feed" dialog.
+
+Legacy (Quirks) NuGet Feeds were removed in ProGet 5.3, and upgrading will be blocked unless you've migrated or deleted all of these feeds.
 
 ## NuGet Feed Re-Indexing {#re-index data-title="NuGet Feed Re-Indexing"}
 

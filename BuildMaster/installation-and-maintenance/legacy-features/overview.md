@@ -6,7 +6,7 @@ sequence: 100
 show-headings-in-nav: true
 ---
 
-With the inclusion of the [Inedo Execution Engine](/support/documentation/buildmaster/execution-engine/overview) and [the Inedo Agent](/support/documentation/various/inedo-agent/the-agent) in BuildMaster v5, several existing features were replaced with newer features that were a better fit for the new model. We consider these since-rebuilt features to be "legacy features", and this document will describe the impact of using these features as well as migration guidance to a non-legacy method.
+With the inclusion of the [Inedo Execution Engine](/docs/buildmaster/execution-engine/overview) and [the Inedo Agent](/docs/various/inedo-agent/the-agent) in BuildMaster v5, several existing features were replaced with newer features that were a better fit for the new model. We consider these since-rebuilt features to be "legacy features", and this document will describe the impact of using these features as well as migration guidance to a non-legacy method.
 
 Note that most unused legacy features are hidden from the user interface in order to prevent unintended usage on newer installations; depending on when you first started using BuildMaster, you may not see these features at all.
 
@@ -51,15 +51,15 @@ As of BuildMaster 5.8, the Legacy Feature Dashboard will be a page within BuildM
 
 OtterScript-based Plans are used by the new execution engine; this is a complete rewrite and takes into account years of experience supporting complex, multi-server orchestrations with easy-to-use deployment plans, and incorporates a tremendous amount of technological advancements, including features such as: locking, iteration, asynchronous operation blocks, textual representation, versioning, template parsing, and more.
 
-See [KB#118 (Legacy Plans in BuildMaster)](/support/kb/1118) for more information and a migration strategy.
+See [KB#118 (Legacy Plans in BuildMaster)](https://inedo.com/support/kb/1118) for more information and a migration strategy.
 
 ### Agents => Inedo Agent {#agents data-title="Agents"}
 
-The Inedo Agent was designed from the ground-up, using years of experience from the Legacy Agents, to support multiple products using a secure, lightweight, highly-optimized, and resilient protocol. See [KB#1039 - The Inedo Agent and Legacy BuildMaster Agents](/support/kb/1039) for more information and migration strategy.
+The Inedo Agent was designed from the ground-up, using years of experience from the Legacy Agents, to support multiple products using a secure, lightweight, highly-optimized, and resilient protocol. See [KB#1039 - The Inedo Agent and Legacy BuildMaster Agents](https://inedo.com/support/kb/1039) for more information and migration strategy.
 
 ### Server Groups => Server Roles {#server-groups data-title="Server Groups"}
 
-Server groups were the only way to deploy to multiple servers with a single action in a legacy deployment plan. OtterScript makes deployment in this manner trivial with [iteration blocks](/support/documentation/buildmaster/execution-engine/statements-and-blocks/loop), so there is no longer a need for server groups.
+Server groups were the only way to deploy to multiple servers with a single action in a legacy deployment plan. OtterScript makes deployment in this manner trivial with [iteration blocks](/docs/buildmaster/execution-engine/statements-and-blocks/loop), so there is no longer a need for server groups.
 
 #### Migration Strategy
 
@@ -193,7 +193,7 @@ Migrating scripts can be done at the system level by running the Legacy Script M
 
 Change controls were essentially a checklist designed to keep track of "occurrences" performed in a specific environment per release. With the advent of pipelines, change controls became less effective since promotions occurred through stages instead of environments, and ultimately replaceable by any issue tracker (including BuildMaster's built-in one) since those already handle complete/incomplete status per release based on whether the issue is closed or not.
 
-Current customers using change controls may switch to using [Issues or Notes](/support/documentation/buildmaster/modeling-applications/issues-notes) going forward. One of the main use cases for change controls was to mimic server provisioning (e.g. setting up services, app pools, etc.), it is also worth investigating [Otter](/otter) as a fully automated replacement.
+Current customers using change controls may switch to using [Issues or Notes](docs/buildmaster/modeling-applications/issues-notes) going forward. One of the main use cases for change controls was to mimic server provisioning (e.g. setting up services, app pools, etc.), it is also worth investigating [Otter](/otter) as a fully automated replacement.
 
 ### Day/Time-based Promotion Requirement => Deployment Windows
 
