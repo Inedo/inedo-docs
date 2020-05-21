@@ -8,7 +8,7 @@ show-headings-in-nav: true
 
 [Debian](https://www.debian.org/) is a free operating system whose programs are distributed using packages that can be installed with APT. As of ProGet v5.2, Debian packages can be hosted and installed from ProGet.
 
-## Pre-requisite Configuration
+## Pre-requisite Configuration {#prerequisite data-title="Pre-requisite Configuration"}
 
 ### Configure the Signing Key in ProGet
 
@@ -43,7 +43,7 @@ sudo apt update
 
 ## Common Tasks
 
-### Installing Packages
+### Installing Packages {#installing data-title="Installing Packages"}
 
 Debian packages are installed using [`apt-get`](https://manpages.debian.org/stretch/apt/apt-get.html). To install a package hosted by ProGet, use the command: 
 
@@ -51,11 +51,11 @@ Debian packages are installed using [`apt-get`](https://manpages.debian.org/stre
 sudo apt install "{package-name}"
 ```
 
-### Creating Packages
+### Creating Packages  {#creating data-title="Creating Packages"}
 
 To learn how to create a Debian package, visit the [Creating a Debian package](https://debian-handbook.info/browse/stable/debian-packaging.html) chapter of the Debian Administrator's handbook.
 
-### Publishing Packages
+### Publishing Packages  {#publihsing data-title="Publishing Packages"}
 
 `apt` does not support uploading a package, so ProGet offers a few alternative methods to publish Debian packages:
 
@@ -88,7 +88,19 @@ Invoke-WebRequest http://{proget-server}/debian-packages/upload/{feed-name}/{com
 ```
 
 
-#### Technical Limitations {#limitations}
+## Technical Limitations  {#limitations data-title="Technical Limitations"}
+
+Please 
 
  - Connectors are not support for Debian feeds
- - `InRelease` endpoint (i.e. the clear-signed index) is not supported due to issues with the BouncyCastle library generating invalid armored output, we will hopefully have this working a future maintenance release
+ - `InRelease` endpoint (i.e. the clear-signed index) is not supported due to issues with the BouncyCastle library generating invalid armored output; if there is a demand for this, we can consider it in a future maintenance release
+
+### Source Packages {#sourcepackages data-title="Source Packages"}
+
+ProGet does not currently support [Debian source packages](https://wiki.debian.org/Packaging/SourcePackage), and attempting to upload a source package (i.e. if the extension does not equal `*.deb`) will fail. 
+
+We've had one user request that we add support for source packages, for the followign reasons:
+
+*Source packages can often be useful using the Debian packaging tools (apt, apt-get, aptitude) to download the source package, especially for debugging purposes. Without the source package, one can only get the stack trace but can't actually inspect the code. Additionally, the recommended method from upgrading from one Debian release (Ubuntu 19.10) to the next version (Ubuntu 20.04) is to download all the source packages from the previous repository, and then rebuild them in the new operating system. That is standard best practices for seeding a new apt repository.*
+
+If this is a feature that woudl be of interest to you, please [contribute in the forums](https://forums.inedo.com/); users with paid versions of our software can also [submit a ticket](https://inedo.com/support/ticket).
