@@ -48,13 +48,4 @@ NugetBeta|NugetProd|1/2/2019|Admin|Ready for production
 NugetTest|NugetBeta|11/22/2018|Admin|Ready for beta
 
 
-## Best Package Promotion Practices
-
-The primary benefit of using multiple feeds is **package organization**. Tn theory you could put all packages of the same type (NuGet, Universal, etc) into a single feed of that type. However, there are millions of packages out there and maintaining them in one feed can becoming overwhelming very quickly. 
-
-You can organize package feeds in a variety of ways. For instance, you may want to segment your feeds by the groups or teams that should be using them. This can help a team focus on only the packages they need without being burdoned by packages that they don't. 
-
-Another way to organize feeds is by Quality (Untested, Production-ready, etc). Packages move across development and testing pipelines much like any other software. ProGet is a great way to create different feeds for different stages of your pipeline. 
-
-Configurations like security and storage can also be a determining factor on how to organize your various feeds. ProGet allows you to place [Security and Access Controls](/docs/proget/administration/security) to feeds and give teams different access to different feeds. For example, perhaps you'll only want Lead Engineers to be able to publish packages to the Production Feed.
 
