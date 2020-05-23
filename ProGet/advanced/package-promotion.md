@@ -20,7 +20,7 @@ There are two ways to promote a package, using the Promote Package button in the
 
 ### Creating a Validated/Promoted Package Feed {#promotion-feed data-title="Creating a Validated/Promoted Feed"}
 
-Any feed can be used as a validated/promoted package feed.  Best practice is to create a separate feed that contains only promoted internal packages and verified external packages.  [[ATTN: Alex, I'm struggling to fit in a sentence about Feed Usage]]
+Any feed can be used as a validated/promoted package feed, but best practice is to create a separate feed that contains only promoted internal packages and verified external packages.  [[ATTN: Alex, I'm struggling to fit in a sentence about Feed Usage]]
 
 #### Promoting Packages Using The Package Version Page {#promote-using-package-version-page data-title="Promote Using The UI"}
 
