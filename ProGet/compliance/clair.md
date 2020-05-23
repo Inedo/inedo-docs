@@ -1,6 +1,6 @@
 ---
-title: Clair Integration
-subtitle: Vulnerability Scanning and Blocking
+title: Clair
+subtitle: Clair
 sequence: 500
 keywords: proget, vulnerabilities, clair
 show-headings-in-nav: true
@@ -8,7 +8,7 @@ show-headings-in-nav: true
 
 [Clair](https://github.com/quay/clair) is an open source tool used for the static analysis of vulnerabilities in application containers, managed under [Red Hat's Quay project](https://github.com/quay/quay). This feature is available in the paid and trial editions of [ProGet 5.3](https://inedo.com/proget/pricing) and later.
 
-## Installing and Configuring Clair {#install data-title="Install and Configure"}
+## Installing and Configuring the Clair Server {#install data-title="Install and Configure"}
 
 Clair is typically hosted as an on-premise API and requires a Postgres database to manage its vulnerabilities. You can install and run Clair two different ways: 1) as a container-based installation using [Docker](https://github.com/quay/clair/blob/master/Documentation/running-clair.md#docker) or [Kubernetes](https://github.com/quay/clair/blob/master/Documentation/local-development.md) or 2) as a [self-hosted Go application](https://github.com/quay/clair/blob/master/Documentation/running-clair.md#source). 
 
@@ -22,15 +22,17 @@ Docker is the most common way of running Clair; to run Clair with Docker:
 
 _Note: The port mappings may need to be customized to fit your environment. Make sure that you modify the config file to point to the proper Postgres instance and password._
 
-Once Clair is running, it will automatically connect to the vulnerability sources defined in the config file and download any vulnerabilities. Clair requires Internet access to connect to the different vulnerability sources that keep its vulnerability database up-to-date.
+Once Clair is running, it will automatically connect to the vulnerability sources defined in the config file and download the needed vulnerability detection information. Clair requires Internet access to connect to the different vulnerability sources that keep its vulnerability detection information up-to-date.
 
-### Installing the Clair Extensions {#extension data-title="Clair Extension"}
+## Installing the Clair Extensions {#extension data-title="Clair Extension"}
 
 Integrating Clair with ProGet is easy: Simply navigate to the _Administration > Extensions_ page in your instance of ProGet and click on the Clair extension to install it.
 
-### Configuring Clair in ProGet {#configureproget data-title="Clair in ProGet"}
+## Configuring Clair in ProGet {#configureproget data-title="Clair in ProGet"}
 
-To connect ProGet to Clair, you will first need to create a vulnerability source in _Administration > Vulnerability Sources > Create vulnerability source > Select Clair Index_. You will then need to give the source a name and specify the host and port for your Clair instance (i.e., http://localhost:6060/). Optionally, you can specify an `API Authorization Header` for your Clair authentication method. Currently, we do not support any specific authentication method in Clair; whatever value you put in the `API Authorization Header Value` will be passed to the Authorization property in the Clair API request.
+To connect ProGet to Clair, you will first need to create a vulnerability source in _Administration > Vulnerability Sources > Create vulnerability source_, then select the _Clair Index_. You will then need to give the source a name and specify the host and port for your Clair instance (i.e., http://localhost:6060/). 
+
+Optionally, you can specify an `API Authorization Header` for your Clair authentication method. Currently, we do not support any specific authentication method in Clair; whatever value you put in the `API Authorization Header` value will be passed to the Authorization property in the Clair API request.
 
 :::attention {.best-practice}
 You must set the Web.BaseUrl to the URL of your ProGet server in _Administration > Advanced Settings_ in order for Clair to call to ProGet.
