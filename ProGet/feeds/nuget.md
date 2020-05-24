@@ -98,11 +98,14 @@ http://proget-server/nuget/{feedName}/Packages?$filter=Id%20eq%20'jQuery'
 
 ### NuGet V3 API {#nuget-v3 data-title="NuGet V3 API"}
 
-Both NuGet.org and the NuGet client tools support two different API protocols: ODATA (v2) and JSON-LD (v3). Microsoft plans to maintain and support both APIs indefinitely, to support older versions of the NuGet clients and the dozens of third-party tools (like ProGet) that use the ODATA protocol.
+Both NuGet.org and the NuGet client tools support two different API protocols -- ODATA (v2) and JSON-LD (v3) -- and now ProGet does as well. 
 
-There is no need or benefit to having ProGet support the JSON-LD protocol. It  is extremely complex, as it is designed to solve the specific needs of NuGet.org: a massive, publicly-available static package index. Because ProGet has connectors, authentication, package filtering, etc., it's not feasible or useful to generate a static index.
+When JSON-LD (v3) is enabled on a NuGet feed, the v3 API URL will be shown on the NuGet feed page, and both ODATA (v2) and JSON-LD (v3) may be used once enabled:
 
-We have considered implemening the JSON-LD protocol, possibly as a new feed type or as an alternate API endpoint for an existing feed. But there isn't much demand or benefit to this that we can see.
+* `«proget-base»/nuget/«feed-name»` is the ODATA (v2) API
+* `«proget-base»/nuget/«feed-name»/v3/index.json` is the JSON-LD (v3) API
+
+Note that connectors to nuget.org will always use the JSON-LD (v3) endpoint of https://api.nuget.org/v3/index.json, regardless of what you configured. You can add an override token (`#v2`) at the end of a nuget.org url, such as `http://nuget.org/api/v2#v2`, to force the ODATA (v2) protocol.
 
 ## Legacy (Quirks) NuGet Feeds {#legacy data-title="Legacy (Quirks) NuGet Feeds"}
 
