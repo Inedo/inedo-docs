@@ -20,15 +20,23 @@ There are two ways to promote a package, using the Promote Package button in the
 
 ### Creating a Validated/Promoted Package Feed {#promotion-feed data-title="Creating a Validated/Promoted Feed"}
 
-Any feed can be used as a validated/promoted package feed, but best practice is to create a separate feed that contains only promoted internal packages and verified external packages.  
+Any feed can be used as a validated/promoted package feed, but best practice is to create a separate feed that contains only promoted internal packages and verified external packages. When creating your new feed, select the _validated/promoted_ feed usage type.
 
 #### Promoting Packages Using The Package Version Page {#promote-using-package-version-page data-title="Promote Using The UI"}
 
 To promote a package using the Package Version page, first navigate to the feed, package, and version you would like to promote.  Hover over the _▼-button_ in the upper right corner and click the _Promote Package_ button.
 
+::: {.attention .best-practice}
+Package Promotion via the package version page is limited in ProGet Free. When using ProGet Free, you can promote packages, but only through this page and you won't be able to see who did it, when, or why. {.info}
+:::
+
 #### Promoting Packages Using API {#promote-using-api data-title="Promote Using The API"}
 
-To promote a package via the API you will first need to generate an API key that grants access to Package Promotion. Then visit our [Package Promotion Endpoint](/docs/proget/reference/api/package-promotion) guide in our [ProGet API Reference](/docs/proget/reference/api) section to familiarize yourself on how to work with the ProGet APIs and the Promote Packages endpoint. 
+To promote a package via the API you will first need to generate an API key that grants access to Package Promotion. Then visit our [Package Promotion Endpoint](/docs/proget/reference/api/package-promotion) guide in our [ProGet API Reference](/docs/proget/reference/api) section to familiarize yourself on how to work with the ProGet APIs and the Promote Packages endpoint.
+
+::: {.attention .best-practice}
+Package promotion via the API is not availabile in ProGet Free.{.info}
+:::
 
 ### Creating a Package Promotion Pipeline {#create-promotion-pipeline data-title="Creating a Package Promotion Pipeline"}
 
