@@ -6,7 +6,7 @@ keywords: ldap,active-directory
 
 In addition to its own built-in user module, Inedo's Active Directory Domain integration allows permissions to be granted to users and groups defined in a third-party LDAP directory, or Active Directory domain forest. For an active directory domain, the web server (whether the Integrated Web Server or IIS) may additionally be configured to support Windows Integrated Authentication, removing the need to enter a username and password to log in. Support for this type of authentication **requires** the InedoCore extension to be installed.
 
-This feature is available in paid and trial ProGet editions. [Get a commitment-free trial now](https://inedo.com/proget/pricing/claim-trial). [Learn how LDAP/Active Directory integration can help your business navigate feed-level permissions and access](https://www.inedo.com/proget/features/ldap-active-directory/).
+This feature is available in paid and trial ProGet editions. 
 
 ## Switching to LDAP/AD {#switching}
 
