@@ -5,7 +5,7 @@ sequence: 100
 keywords: proget, storage, cloud, amazon, azure
 ---
 
-This feature is available in paid and trial ProGet editions. {.info} *[Learn how cloud storage can provide redundancy and infrastructural flexibility - without breaking the bank](https://www.inedo.com/proget/features/cloud-storage/) and [claim a 30-day free trial of ProGet](https://inedo.com/proget/pricing/claim-trial).*
+This feature is available in paid and trial ProGet editions. 
 
 ProGet defaults to storing package files on disk, but you can configure a feed to store packages on the cloud (Amazon S3 or Microsoft Azure Blob) instead. This offers two key benefits:
 
