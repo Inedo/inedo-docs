@@ -65,4 +65,4 @@ This isn't really that much harder, but it does involve some knowledge of Micros
 
 If you're using your own SQL Server, then all you need to do is make sure the ProGet Database has been restored *before* running the installer of the version you want. The installer will make sure the restored database is up-to-date as part of the installation.
 
-If you want to use the built-in database, then start by running the installer. It will install the files and create a new ProGet database for you. From here, restore your database back-up (you can use the command above) and then run the Database Tool (available from inedo.com) for the version you are installing. That will ensure the database is up-to-date.
+If you want to use the built-in database, then start by running the installer. It will install the files and create a new ProGet database for you. From here, restore your database back-up (you can use the command above) and then run the Database Tool (see the [Database Installation section of the Manual Install](/docs/proget/installation/installation-guide/manual#database) guide) for the version you are installing. That will ensure the database is up-to-date.
