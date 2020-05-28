@@ -31,7 +31,7 @@ ProGet requires a SQL Server database. You can either host this database externa
 docker run --name proget-sql \
       -e 'ACCEPT_EULA=Y' -e 'MSSQL_SA_PASSWORD=‹YourStrong!Passw0rd›' \
       -e 'MSSQL_PID=Express' --net=proget --restart=unless-stopped \
-      -d mcr.microsoft.com/mssql/server:2017-latest
+      -d mcr.microsoft.com/mssql/server:2019-latest
 ```
 
 **Note:** This example specifies the free SQL Express edition. This is adequate for most ProGet installations, but you can use any other edition as well if you have the license for it.
@@ -57,8 +57,8 @@ The ProGet Docker image contains a web server and a background service. To get t
 ```
 docker run -d -v proget-packages:/var/proget/packages -p 80:80 --net=proget \
     --name=proget --restart=unless-stopped -e PROGET_DB_TYPE=SqlServer \
-    -e PROGET_DATABASE='Data Source=proget-sql; Initial Catalog=ProGet; User ID=sa; Password=‹YourStrong!Passw0rd›' \
-    inedo/proget:latest
+    -e SQL_CONNECTION_STRING='Data Source=proget-sql; Initial Catalog=ProGet; User ID=sa; Password=‹YourStrong!Passw0rd›' \
+    proget.inedo.com/productimages/inedo/proget:<version>
 ```
 
 <table style="margin-top: 10px; margin-bottom: 10px;">
@@ -84,13 +84,6 @@ docker run -d -v proget-packages:/var/proget/packages -p 80:80 --net=proget \
                 Tells Docker to restart the container unless it is explicitly
                 stopped using <code>docker stop</code>. This makes the container
                 automatically restart after the host reboots.
-            </td>
-        </tr>
-        <tr>
-            <td style="width: 400px;"><code>-e PROGET_DB_TYPE=SqlServer</code></td>
-            <td>
-                This is a required variable, and indicates that ProGet is connecting to SQL Server. Without this, ProGet will
-                assume it is connecting to a since-deprecated PostgreSQL instance instead.
             </td>
         </tr>
         <tr>
@@ -125,10 +118,9 @@ docker run -d -v proget-packages:/var/proget/packages -p 80:80 --net=proget \
             </td>
         </tr>
         <tr>
-            <td style="width: 400px;"><code>inedo/proget:latest</code></td>
+            <td style="width: 400px;"><code>proget.inedo.com/productimages/inedo/proget:&lt;version&gt;</code></td>
             <td>
-                This is the repository and tag for ProGet on Docker Hub. If you want
-                to run a specific version instead of the latest, just replace <code>latest</code>
+                This is the repository and tag for ProGet. Just replace <code>&lt;version&gt;</code>
                 with the appropriate ProGet release number. Note that downgrades will only
                 work if there have been no database schema changes.
             </td>
@@ -145,13 +137,13 @@ docker stop proget
 
 docker rename proget proget-old
 
-docker pull inedo/proget:latest
+docker pull proget.inedo.com/productimages/inedo/proget:<version>
 
 docker run -d --volumes-from=proget-old \
     -p 80:80 --net=proget \
     --name=proget --restart=unless-stopped \
-    -e PROGET_DB_TYPE=SqlServer -e PROGET_DATABASE='Data Source=proget-sql; Initial Catalog=ProGet; User ID=sa; Password=‹YourStrong!Passw0rd›' \
-    inedo/proget:latest
+    -e SQL_CONNECTION_STRING='Data Source=proget-sql; Initial Catalog=ProGet; User ID=sa; Password=‹YourStrong!Passw0rd›' \
+    proget.inedo.com/productimages/inedo/proget:<version>
 
 docker rm proget-old
 ```
