@@ -8,8 +8,6 @@ keywords: license
 **Automatic License Activation Not Working?** See [Knowledge Base post 1758](https://inedo.com/support/kb/1758/automatic-license-activation-not-working). For more information on how to fix automatic license activation problems & errors.
 :::
 
-Using a free forever license key? Need feed-level access restrictions, LDAP integration, webhooks, connectors, or cloud storage? Get them all for free with [a 30-day trial of ProGet paid](/proget/pricing/trial) (no credit card required).
-
 - [Jump to Activating Your License Key](/docs/various/licensing/activation#activating)
 - [Jump to FAQ](/docs/various/licensing/activation#faq)
 
@@ -96,20 +94,18 @@ Alternatively, if for some reason access to the manual activation page is blocke
 A license key may be changed at any time in the software by an administrator.
 
 #### How do I activate my key?
-In your ProGet instance, go to Administration - > Software Configuration -> License Key and Activation. Plug the key in, and once it’s marked “valid,” you can click “Activate.”
+In the tool, go to Administration - > Software Configuration -> License Key and Activation. Plug the key in, and once it’s marked “valid,” you can click “Activate.”
 
 #### How do I view my key?
-In your ProGet instance, go to Administration - > Software Configuration -> License Key and Activation. You can also view your key(s) on [My Inedo](https://my.inedo.com).
+In the tool, go to Administration - > Software Configuration -> License Key and Activation. You can also view your key(s) on [My Inedo](https://my.inedo.com).
 
 #### How much time is left on my key?
-If your key expires, you can see the expiration date under “License Key and Activation” in your ProGet Instance. Your trial begins the day you receive your key. Free forever keys do not expire.
+If your key expires, you can see the expiration date under “License Key and Activation.” Your trial begins the day you receive your key. Free forever keys do not expire.
 
 #### Does my key expire?
-There are three types of keys: free forever, free trial, and paid. Free forever keys never expire. Trial keys expire 30 days from the date they key is generated and delivered (NOT activated), and paid keys expire at the end of your subscription period. Learn all about your ProGet free trial.
+There are three types of keys: free forever, free trial, and paid. Free forever keys never expire. Trial keys expire 30 days from the date they key is generated and delivered (NOT activated), and paid keys expire at the end of your subscription period.
 
 #### What happens when my trial key expires?
-When your trial period comes to an end, your key “expires.” When a key expires, all of your applications and components remain in ProGet in exactly the same way – there is NO SCENARIO in which your data will be locked or erased from ProGet. However, ProGet does require you to enter a key with a valid license at the end of your trial. There are two ways to do this:
-- Enter a free forever key. If you had a free key before your trial, you can simply reenter it. If you have misplaced it or never had forever free key in the past, you can create a new one by [clicking here](https://my.inedo.com).
-- [Purchase ProGet](https://inedo.com/proget/pricing) and enter that key to continue enjoying the advanced features of your free trial.
-
-[Learn More about ProGet Free Trials](https://inedo.com/proget/pricing/trial)
+When your trial period comes to an end, your key “expires.” When a key expires, there is NO SCENARIO in which your data will be locked or erased. However, all our tools require you to enter a key with a valid license to continue using the tool. There are two ways to do this:
+- Enter a free forever key. If you had a free key before your trial, you can simply reenter it. If you have misplaced it or never had forever free key in the past, you can [create a new one in MyInedo](https://my.inedo.com).
+- [Purchase via MyInedo](https://inedo.com/proget/pricing) and enter the new paid key to continue enjoying the advanced features of your free trial.
