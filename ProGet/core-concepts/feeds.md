@@ -35,7 +35,7 @@ When you create a feed, the feed type is fixed. This type defines two things:
 
 Some feeds have additional options that impact what is shown in the web user interface, such as icons and navigable options. 
 
-* **NuGet package type**: Chocolatey and PowerShellGet both use NuGet packages, and by changing the package type, it changes the entire apperance of the feed
+* **NuGet package type**: Chocolatey and PowerShellGet both use NuGet packages, and by changing the package type, it changes the entire appearance of the feed
 * **Feed usage**: this option is available in ProGet 5.3 and later, and the options are:
   * *Free/Open Source packages*; cache and filter source packages from public galleries, scan for vulnerabilities, check licenses, etc. 
   * *Private/Internal packages*; publish proprietary/private packages that you build for internal use in your organization 
