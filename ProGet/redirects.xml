@@ -16,21 +16,29 @@
   <temporary from="administration/vulnerability-source" to="compliance/vulnerabilities" />
   <temporary from="administration/vulnerability-source/vor-security" to="compliance/vulnerabilities/vor" />
   <temporary from="administration/vulnerability-source/whitesource" to="compliance/whitesource" />
+
+  <temporary from="advanced/package-container-scanners" to="packages/package-scanners"/>
+  <temporary from="advanced/package-deployment" to="packages/package-deployment"/>
+  <temporary from="advanced/package-promotion" to="packages/package-promotion"/>
+  <temporary from="advanced/package-statistics" to="packages/package-statistics"/>
+  <temporary from="advanced/repackaging" to="packages/repackaging"/>
   
   <temporary from="compliance" to="compliance/vulnerabilities" />
   <temporary from="compliance/vulnerabilities/vor" to="compliance/ossindex"/>
   
-  <temporary from="connectors" to="core-concepts/connectors" />
-  <temporary from="connectors/connector-filters" to="core-concepts/connectors" />
+  <temporary from="connectors" to="feeds/connector-overview" />
+  <temporary from="connectors/connector-filters" to="feeds/connector-overview" />
   
   <temporary from="core-concepts/asset-directories" to="advanced/assets"/>
+  <temporary from="core-concepts/connectors" to="feeds/connector-overview"/>
   <temporary from="core-concepts/compliance" to="compliance"/>
   <temporary from="core-concepts/compliance/license-filters" to="compliance/license-scanning"/>
   <temporary from="core-concepts/compliance/vulnerability" to="compliance/vulnerabilities"/>
   <temporary from="core-concepts/compliance/vulnerability/vor-security" to="compliance/vulnerabilities/vor"/>
   <temporary from="core-concepts/compliance/vulnerability/whitesource" to="compliance/vulnerabilities/whitesource"/>
   <temporary from="core-concepts/containers" to="docker/private-registries"/>
-  <temporary from="core-concepts/feeds/connectors" to="core-concepts/connectors" />
+  <temporary from="core-concepts/feeds" to="feeds/feed-overview" />
+  <temporary from="core-concepts/feeds/connectors" to="feeds/connector-overview" />
   <temporary from="core-concepts/high-availability" to="storage/high-availability" />
   <temporary from="core-concepts/packages#deployment-records" to="/advanced/package-promotion#deployment-records"/>
   <temporary from="core-concepts/packages#package-promotion" to="/advanced/package-promotion"/>
@@ -41,9 +49,9 @@
   <temporary from="feeds/api-keys" to="reference/api-keys-nuget" />
   <temporary from="feeds/bower/bower-feed-configuration" to="/docs/proget" />
   <temporary from="feeds/cleanup" to="administration/feed-cleanup" />
-  <temporary from="feeds/connectors" to="core-concepts/connectors>" />
-  <temporary from="feeds/connectors/connector-filters" to="core-concepts/connectors" />
-  <temporary from="feeds/connectors/indexing-connectors" to="core-concepts/connectors" />
+  <temporary from="feeds/connectors" to="feeds/connector-overview" />
+  <temporary from="feeds/connectors/connector-filters" to="feeds/connector-overview" />
+  <temporary from="feeds/connectors/indexing-connectors" to="feeds/connector-overview" />
   <temporary from="feeds/docker" to="docker/private-registries" />
   <temporary from="feeds/feed-basics" to="feed-types/universal" />
   <temporary from="feeds/maven/maven-feed-configuration" to="/docs/proget" />

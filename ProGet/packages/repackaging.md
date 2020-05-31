@@ -2,7 +2,7 @@
 title: Prerelease Packages & Repackaging
 subtitle: Prerelease Packages & Repackaging
 keywords: packaging, repackaging, upack, nuget, universal-packages, proget
-sequence: 10
+sequence: 200
 show-subheadings-in-nav: true
 ---
 

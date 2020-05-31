@@ -1,8 +1,6 @@
 ﻿---
-title: Package Statistics
-subtitle: Package Statistics
+title: Download & Usage Statistics
 sequence: 300
-keywords: BuildMaster, manual
 ---
 
 ProGet tracks the use of packages in your feeds to help you decide which packages are being used, which packages are taking a lot of disk space, and which packages are frequently cached.

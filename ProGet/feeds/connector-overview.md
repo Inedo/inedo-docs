@@ -1,7 +1,7 @@
 ﻿---
-title: Connectors
+title: What is a "Connector" in ProGet?
 subtitle: Connectors in ProGet
-sequence: 300
+sequence: 60
 keywords: connectors, filters, licensing
 show-headings-in-nav: true
 ---

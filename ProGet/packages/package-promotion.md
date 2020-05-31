@@ -2,7 +2,7 @@
 title: Package Promotion
 subtitle:  What is Package Promotion and Why Should I use it.
 keywords: package promotion, packages, 3rd party, universal package, deployments
-sequence: 600
+sequence: 300
 show-headings-in-nav: true
 ---
 

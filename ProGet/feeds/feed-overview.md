@@ -1,7 +1,7 @@
 ﻿---
-title: Feeds
+title: What is a "Feed" in ProGet?
 subtitle: Feeds in ProGet
-sequence: 200
+sequence: 10
 keywords: proget,feeds
 show-headings-in-nav: true
 ---

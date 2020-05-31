@@ -1,5 +1,5 @@
 ﻿---
-title: Packages
+title: What is a "Package" in ProGet?
 subtitle: Packages in ProGet
 sequence: 100
 keywords: proget, packages
@@ -18,7 +18,7 @@ Packages have become a unifying concept across a DevOps toolchain because they a
 
 <iframe width="600" height="337" src="https://www.youtube.com/embed/Znflf98ahzQ" frameborder="0" allowfullscreen="true"></iframe>
 
-## Package Formats: Universal and Third-party {#package-formats data-title="Package Formats: Universal and Third-party"}
+## Package Formats: Universal and Third-party {#package-formats data-title="Formats: Universal and Third-party"}
 
 There's not a whole lot to a package: it's just a zip file containing the files you actually want to distribute, as well as a manifest file that describes the package itself. The specific layout of the zip file and manifest is referred to as a package format. ProGet supports the [universal package format](/docs/upack/universal-packages/package-format), as well as a variety of third-party formats.
 
@@ -41,22 +41,25 @@ While you could certainly package .NET libraries in a universal package, they wo
 
 ## Creating and Publishing Packages {#create-package data-title="Creating and Publishing Packages"}
 
-There are a lot of options for creating and publishing universal packages to ProGet, either from a developer's workstation, a build server, or anywhere else:
+There are a lot of free and open source tools options to help you creating and publishing packages to ProGet, either from a developer's workstation, a build server, or anywhere else.
 
-{.docs}
-- [Universal Package Explorer](/docs/upack/upe)
-- [Command-line Interface](/docs/upack/upack-cli)   
-- [UPackLib.NET library](/docs/upack/upacklib-net)
-- [Inedo ProGet Jenkins Plugin](/den/proget/jenkinsplugin)
-- [Push to ProGet Visual Sutdio Extension](/den/proget/visualstudio)
-- Upload hand-crafted package files from the UI
-- Simple HTTP Post with your own tool/scripts using the [Universal Feed API](/docs/upack/feed-api/endpoints)
+
+### Creating & Publishing Universal Packages
+You can use any of these tools or libraries:
+
+- [upack.exe Command-line Interface](/docs/upack/tools-and-libraries/upack-cli)   
+- [UPackLib.NET library](/docs/upack/tools-and-libraries/upacklib-net)
+- [Universal Package Explorer](/docs/upack/tools-and-libraries/upe)
+- [Inedo ProGet Jenkins Plugin](https://plugins.jenkins.io/inedo-proget/)
+- [Push to ProGet Visual Studio Extension](/docs/upack/tools-and-libraries/push-to-proget)
+
+You can also upload hand-crafted package files to the ProGet the UI, or simply do a HTTP Post with your own tool/scripts using the [Universal Feed API](/docs/upack/feed-api/endpoints).
+
+### Creating & Publishing Third-Party Format Packages
 
 To learn how to create and package using a third-party package format, refer to the appropriate third-party feed documentation.
 
-<iframe width="600" height="337" src="https://www.youtube.com/embed/ylb0AGnr6AA" frameborder="0" allowfullscreen="true"></iframe>
-
-## Package Identification and Verification {#package-id data-title="Package Identification and Verification"}
+## Package Identification and Versioning {#package-id data-title="Package Identification and Versioning"}
 
 One of the most important aspects of a package is that it is uniquely identifiable using a name and version. This simple, human-readable identification is what makes packages so easy to distribute and consume.
 
@@ -65,10 +68,3 @@ For example, “HDars-API 1.0.4” is version 1.0.4 of HDars-API, which is newer
 Universal packages (as well as some third-party packages) use the [SemVer specification](http://www.semver.org) to describe the version number.
 
 <iframe width="600" height="337" src="https://www.youtube.com/embed/Si3eWq1yHXs" frameborder="0" allowfullscreen="true"></iframe>
-
-
-## Unlist a Package {#unlist data-title="Unlist a package"}
-In order to remove or deprecate a package or a specific version of a package you can use the Unlist feature by browsing to the _local_ package and clicking Unlist. This will give you the option to Unlist the version of the package you are viewing or all versions of the package.  
-
-## List a Package {#list data-title="List a package"}
-If you have unlisted a package or version of a package from a feed for any reason and wish to include it again you can simply click the List button on any package that has been unlisted.

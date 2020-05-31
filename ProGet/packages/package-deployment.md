@@ -1,8 +1,6 @@
 ---
-title: Package Deployment
-sequence: 700
-keywords: proget, storage, cloud, amazon, azure
-subtitle: Package Deployment
+title: Tracking Package Deployments
+sequence: 400
 show-headings-in-nav: true
 ---
 
