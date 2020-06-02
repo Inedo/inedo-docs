@@ -58,7 +58,7 @@ Plan settings may also require a `RequiresEdit` property, which indicates the pl
 #### Renaming Templates
 Although you can't rename a setup template once you've created it, you can duplicate it, adding the new name, and delete the old template.
 
-### Importing and Exporting Setup Templates{#importing-exporting data-title="Important and Exporting"}
+### Importing and Exporting Setup Templates{#importing-exporting data-title="Importing and Exporting"}
 To make application setup templates work transparently with application template packages, BuildMaster behaves as follows:
 
 * When you export your application as a template, the associated setup template will automatically be bundled in export package
