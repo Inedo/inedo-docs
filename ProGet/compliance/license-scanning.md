@@ -13,7 +13,7 @@ ProGet offers two workflows for managing licensing agreements of third-party, op
 {.docs}
 
 - **License filtering feature** -the built-in feature allows you to permit or restrict packages from being used based on their license
-- **WhiteSource integration**  -the built-in feature allows you to permit or restrict packages from being used based on their license
+- **[WhiteSource extension](/docs/proget/compliance/whitesource)**  - provides a Package Access Rule that will block packages with improper licenses or that don't meet other conditions as defined in your WhiteSource account
 
 :::attention {.best-practice}
 This feature is available in paid and trial ProGet editions.
