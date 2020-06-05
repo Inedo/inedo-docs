@@ -8,7 +8,7 @@ By using third-party, open-source packages in your application, you agree to wha
 
 For example, if you were to use a GNU3-licensed package in your application, you would be required to open-source your application and then license it under GNU3. If your organization failed to do that, it could face a lawsuit from the package authors.
 
-To protect your business from the fallout from packages with unwanted licenses, ProGet offers two workflows for managing licensing agreements of third-party, open-source packages:
+To protect from the fallout from packages with unwanted licenses, ProGet offers two workflows for managing licensing agreements of third-party, open-source packages:
 
 {.docs}
 
@@ -21,18 +21,23 @@ This feature is available in paid and trial ProGet editions.
 
 ## License Detection
 
-ProGet ships with an editable list of open-source license types (e.g., MIT, GPL3, etc) called known licenses. This list of known licenses comes from [SPDX](https://spdx.org/licenses) and is periodically updated. ProGet's list is *not* exhaustive, so you can edit this list by going to Compliance > Licensing > Manage Known Licenses.
+ProGet can automatically detect the license agreement that a package is using, and display it in a clearly-visible manner on the Package Overview page. 
+
+ProGet ships with a comprehensive list of open-source license types (e.g., MIT, GPL3, etc) called known licenses. This list of known licenses comes from [SPDX](https://spdx.org/licenses) and is periodically updated. ProGet's list is *not* exhaustive, so you can edit this list by going to Licenses > License Types.
 
 A license type consists of the following elements:
 
-{.docs}
 - **SPDX Identifier:** a code such as MIT or GPL3 that some package formats use to identify the license used
 - **Title:** a description of the license, such as MIT License or General Public License 3.0
-- **URLs:** a list of URLs that are associated with this license agreements
+- **URLs:** a list of URLs that are associated with this license agreements, such as www.opensource.org/licenses/MIT or www.gnu.org/licenses/gpl-3.0-standalone.html
 
-By default, ProGet will display an orange warning on the Package Overview page to alert you that your packages has a known or unknown license associated with it. If the license type is unknown, you can one in ProGet. No packages are blocked by default. To create a feed-level or global block or allow rule, you must create a license filter.
+### Unknown Licenses
 
-##   License Filtering in ProGet
+If a package specifies a SPDX Identifier or URL that's not in your license type list, or if the package doesn't specify a license at all, then it's considered to have an unknown license. 
+
+When a package has an unknown license, ProGet will display a warning, and give you an opportunity to create a new license type. All other packages with the same SPDX Identifier or URL will then be detected as that license type.
+
+## License Filtering in ProGet
 
 ProGet allows you to define rules to block or allow downloads based on a package's license type. You can also define rules about whether to block downloads for unknown licenses. These rules can be set at the global and feed-specific levels.
 
@@ -46,14 +51,16 @@ A licensing rule consists of a known license type and an allow or block flag.
 
 They can be defined at both the global and feed-level:
 
-{.docs}
-- **Global license rules:** Compliance > Licenses
-- **Feed-specific license rules:** Feed > Manage Feed > License Filters
+- **Global license rules:** Licenses (on the top navigation)
+- **Feed-specific license rules:** Feed > Manage Feed > Scanning & Blocking
 
-If a feed-level rule is defined for a license type, the global rule will be ignored.
+If both a global and feed-level rule are defined for a license type, then the feed-level rule will be used.
 
-{.docs}
+### Blocking Unknown Licenses
+
+ProGet can also be configured to block packages with an unknown license, either at the global or feed-level:
+
 - **Global unknown rule:** Advanced Settings > Feeds.AllowUnknownLicenseDownloads
-- **Feed-specific unknown rule:** Manage Feed> Unknown Licenses
+- **Feed-specific unknown rule:** Feed > Manage Feed > Scanning & Blocking
 
-If you have assigned a license to an unknown URL but the Package Overview page is still displaying an unknown license warning, set a rule allow the assigned license type (e.g., Apache-2.0).
+When ProGet is configured to block packages with unknown licenses, it will also block packages with license types that are not explicitly allowed. For example, if there is only one license rule defined (e.g. allow MIT license types), and you configure ProGet to block unknown licenses, then *only* packages with that license type (i.e. MIT) will be downloadable.
