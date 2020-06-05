@@ -1,6 +1,6 @@
 ---
-title: Clair
-subtitle: Clair
+title: Clair Integration
+subtitle: Clair Integration
 sequence: 500
 keywords: proget, vulnerabilities, clair
 show-headings-in-nav: true

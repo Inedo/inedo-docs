@@ -46,22 +46,22 @@ See [Integrating ProGet with OSS Index](/docs/proget/compliance/vulnerabilities/
 
 ## Feeds and Vulnerability Configuration {#feed-and-vulnerability data-title="Feeds and Vulnerability Configuration"}
 
-A feed must be explicitly configured to use vulnerability scanning and blocking. While the end result is the same, the workflows use different features within ProGet:
+A feed must be explicitly configured to use automated vulnerability scanning and blocking. Manual vulnerability records can be added without any additional setup.  While the end result is the same, the workflows use different features within ProGet:
 
-*   **Vulnerability sources** are used for manual, OSS Index, and Clair managed workflows; these add vulnerability records into ProGet that you must assess
+*   **Automated vulnerability sources and manual vulnerability records** are used for manual, OSS Index, and Clair managed workflows; these add vulnerability records into ProGet that you must assess
 *   **Package access rules** are used for WhiteSource-managed workflows; these block package downloads based on rules configured in WhiteSource
 
-You can configure both on the Manage Feed page. Note that Clair requires extra setup, the details for which can be found in the [configuring clair in ProGet](/docs/proget/compliance/clair#configureproget) section. If you don't see OSS Index as a vulnerability source or WhiteSource as a package access rule, check Admin > Extensions to make sure those extensions are installed.
+You can configure vulnerability sources and package access rules on the Manage Feed page. Note that Clair requires extra setup, the details for which can be found in the [configuring clair in ProGet](/docs/proget/compliance/clair#configureproget) section. If you don't see OSS Index as a vulnerability source or WhiteSource as a package access rule, check Admin > Extensions to make sure those extensions are installed.
 
 :::attention {.best-practice}
-Vulnerabilities are downloaded with a scheduled job. 
+Automated vulnerability sources downloaded vulnerabilities and check associated feeds with a scheduled job. 
 :::
 
 ## Vulnerability Reports and Assessments in ProGet{#reports-and-assessments data-title="Reports and Assessments in ProGet"}
 
 Both the manual and OSS Index workflows use vulnerability reports, which essentially identify that a particular package or versioned range of packages has a known vulnerability. This record is either manually entered or is imported from OSS Index, based on packages in a particular feed.
 
-For container reports, Clair attempts to determining which operating system (OS) a container image was built with and then uses that OS to scan specific security databases to check for vulnerabilities. These vulnerabilities are then automatically associated with the container's affected layer within the registry Clair was configured to scan.
+For container reports, Clair attempts to determining which operating system (OS) a container image was built with and then uses that OS to scan specific security databases to check for vulnerabilities. These vulnerabilities are then automatically associated with the container's affected layer within the registry Clair was configured to scan.  Manual vulnerability records can also be added to affected container layers by specifying that layer's digest.
 
 All newly entered or imported vulnerability reports are considered unassessed, which means that packages matching the vulnerability will be blocked until the report is assessed. An assessment involves an authorized user reviewing the report, choosing an assessment type (Ignore, Caution, Block), and leaving an optional comment.
 
@@ -80,32 +80,32 @@ The reason to temporarily block or unblock packages is due to the nature of secu
 By temporary unblocking packages and container images, you can periodically review how engineers are using them. The usage may have changed.
 
 
-### Manual Vulnerability Source {#manual}
+### Manual Vulnerability Records {#manual}
 
-A manual vulnerability source is used to add specific package versions (or [version ranges](#version-ranges)) or which container image layers to block. Visit the `Administration > Components & Extensibility > Vulnerability Sources` page to create a manual vulnerability source. Once created, visit the `Compliance > Vulnerabilities` page and click `Add Vulnerability` to specify the package ID and version(s) or the container image layer digest and the details of the vulnerability.
+A manual vulnerability record is used to add specific package versions (or [version ranges](#version-ranges)) or which container image layers to block. Manual vulnerability records can be added to a package or container image layer without additional configuration. Visit the `Vulnerabilities` page or the `Vulnerabilities` tab on the package or container image page then click the `Add Vulnerability` button to specify the feed, the package ID and version(s) or the container image layer digest, and the details of the vulnerability.
 
 #### Blocking a Package Download
 
-Selecting `Blocked` will prevent any packages within the version range or container images that include the vulnerable layer to be downloaded. From the `Compliance > Vulnerabilities` page, selecting the vulnerability, then `Assess`, and choose `Blocked`, optionally adding a comment.
+Selecting `Blocked` will prevent any packages within the version range or container images that include the vulnerable layer to be downloaded. From the `Vulnerabilities` page or the `Vulnerabilities` tab on the package or container image page, selecting the vulnerability, then `Assess`, and choose `Blocked`, optionally adding a comment.
 
-In order for this assessment to take effect, it must be associated with a feed. On the `Manage Feed` page, select `add source` from the Vulnerability Sources panel and add the desired source to the feed. Browsing to a package version within the range specified or a container image with an associated layer in the blocked vulnerability will display `Blocked` where the download button would normally be, and the package will be not be downloadable from its associated feed API.
+Browsing to a package version within the range specified or a container image with an associated layer in the blocked vulnerability will display `Blocked` where the download button would normally be, and the packagem or container image will be not be downloadable from its associated feed API.
 
-_Note: while the package version is blocked from download, it may still appear in search or list results._
+_Note: while the package version or container image is blocked from download, it may still appear in search or list results._
 
 #### Version Ranges 
 
-Manual vulnerability sources may encompass multiple package versions using version range syntax, for example:
+Manual vulnerability records may encompass multiple package versions using version range syntax, for example:
 
 | Range         | Meaning                                       |
 |---            |---                                            |
 | 3.0.0	        | version = 3.0.0                               |
 | [3.0]     	| version = 3.0                                 |
-| (,2.0]	    | version <= 2.0                                |
+| <=2.0 	    | version <= 2.0                                |
 | [1.3,1.4]	    | 1.3 <= version <= 1.4                         |
-| [1.0,2.0)     | 1.0 <= version < 2.0                          |
-| [2.5)         | version > 2.5                                 |
-| (,1.0],[1.2,)	| version <= 1.0 or version >= 1.2              |
-| (,1.1),(1.1,)	| Exclude version 1.1                           |
+| >=1.3 <=1.4   | 1.3 <= version <= 1.4                         |
+| >2.5          | version > 2.5                                 |
+| <=1.0,>=1.2	| version <= 1.0 or version >= 1.2              |
+| <1.1 >1.1 	| Exclude version 1.1                           |
 
 _Note: versions must be specified out to their full value to match. For example, 2.0 will *not* match 2.0.0_
 
