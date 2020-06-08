@@ -21,7 +21,7 @@ This feature is available in paid and trial ProGet editions.
 
 ## License Detection
 
-ProGet can automatically detect the license agreement that a package is using, and display it in a clearly-visible manner on the Package Overview page. 
+ProGet can automatically detect the license agreement that a package is using and will display it in a clearly visible manner on the Package Overview page. 
 
 ProGet ships with a comprehensive list of open-source license types (e.g., MIT, GPL3, etc) called known licenses. This list of known licenses comes from [SPDX](https://spdx.org/licenses) and is periodically updated. ProGet's list is *not* exhaustive, so you can edit this list by going to Licenses > License Types.
 
@@ -33,9 +33,9 @@ A license type consists of the following elements:
 
 ### Unknown Licenses
 
-If a package specifies a SPDX Identifier or URL that's not in your license type list, or if the package doesn't specify a license at all, then it's considered to have an unknown license. 
+If a package specifies a SPDX Identifier or URL that's not in your license type list, or if the package doesn't specify a license at all, it's considered to have an unknown license. 
 
-When a package has an unknown license, ProGet will display a warning, and give you an opportunity to create a new license type. All other packages with the same SPDX Identifier or URL will then be detected as that license type.
+When a package has an unknown license, ProGet will display a warning and give you an opportunity to create a new license type. All other packages with the same SPDX Identifier or URL will then be detected as that license type.
 
 ## License Filtering in ProGet
 
@@ -54,7 +54,7 @@ They can be defined at both the global and feed-level:
 - **Global license rules:** Licenses (on the top navigation)
 - **Feed-specific license rules:** Feed > Manage Feed > Scanning & Blocking
 
-If both a global and feed-level rule are defined for a license type, then the feed-level rule will be used.
+If both a global and feed-level rule are defined for a license type, the feed-level rule will be used.
 
 ### Blocking Unknown Licenses
 
@@ -63,4 +63,4 @@ ProGet can also be configured to block packages with an unknown license, either 
 - **Global unknown rule:** Advanced Settings > Feeds.AllowUnknownLicenseDownloads
 - **Feed-specific unknown rule:** Feed > Manage Feed > Scanning & Blocking
 
-When ProGet is configured to block packages with unknown licenses, it will also block packages with license types that are not explicitly allowed. For example, if there is only one license rule defined (e.g. allow MIT license types), and you configure ProGet to block unknown licenses, then *only* packages with that license type (i.e. MIT) will be downloadable.
+When ProGet is configured to block packages with unknown licenses, it will also block packages with license types that are not explicitly allowed. For example, if there is only one license rule defined (e.g., allow MIT license types), and you configure ProGet to block unknown licenses then *only* packages with that license type (i.e., MIT) will be downloadable.
