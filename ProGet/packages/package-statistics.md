@@ -44,22 +44,3 @@ On the Package page, you can see an aggregate of download data by clicking on th
 ### Advanced Reporting  {#advanced-reporting data-title="Advanced Reporting"}
 
 For more advanced analysis of package downloads, you can query the `ProGet SQL` Server database directly. Each download record is stored in the `PackageDownloads` table.
-
-### Recording dependencies with pgscan
-
-[pgscan](https://github.com/Inedo/pgscan) is a simple open-source command-line tool for publishing dependencies used by a package when it is built.
-
-It can be trivially added to an OtterScript plan in BuildMaster to publish this information:
-
-    # Build MyLibrary
-    DotNet::Build MyLibrary.csproj
-    (
-        Configuration: Release
-    );
-
-    # Publish dependencies of MyLibrary to the proget.local server
-    Exec
-    (
-        FileName: pgscan.exe
-        Arguments: publish --input=MyLibrary.csproj --package-feed=Libraries --proget-url=https://proget.local --consumer-package-source=Libraries --consumer-package-version=$ReleaseNumber
-    );
