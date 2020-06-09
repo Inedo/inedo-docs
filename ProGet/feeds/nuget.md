@@ -98,7 +98,7 @@ http://proget-server/nuget/{feedName}/Packages?$filter=Id%20eq%20'jQuery'
 
 ### NuGet V3 API {#nuget-v3 data-title="NuGet V3 API"}
 
-Both NuGet.org and the NuGet client tools support two different API protocols -- ODATA (v2) and JSON-LD (v3) -- and now ProGet does as well. 
+Both NuGet.org and the NuGet client tools support two different API protocols: ODATA (v2) and JSON-LD (v3). ProGet 5.3 and later supports both, and earlier versions support only ODATA (v2).
 
 When JSON-LD (v3) is enabled on a NuGet feed, the v3 API URL will be shown on the NuGet feed page, and both ODATA (v2) and JSON-LD (v3) may be used once enabled:
 
