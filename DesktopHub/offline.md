@@ -7,11 +7,13 @@ show-headings-in-nav: true
 
 ## Offline Installs {#offline data-title="Offline Installs"}
 
-Installable product packages are Universal Packages, and the hub uses a universal package feed hosted at inedo.com to download product releases and updates for the hub itself.
+Inedo Hub can be configured to operate in an offline configuration. This is useful if you need to update an Inedo product on a server
+that does not have Internet access. To create an offline Inedo Hub, follow these steps:
 
-It is still possible to use the Inedo Hub to install/manage products on a server that is not connected to the Internet, but it will take a little extra configuration. In order for the software to work, it needs to be able to query a Universal Package Feed for available product releases - you have two options for getting this to work on a disconnected server:
-{.docs}
-1. **Use Proget** - If you have a ProGet instance on your local network, you can create a Universal Package Feed in it and then create a connector to the Inedo [product releases feed](https://inedo.com/products/feed). Make a note of the feed API Endpoint URL displayed in ProGet for the newly-created feed.
-2. **Use Directory** - Download the packages you need to a local directory. At a minimum, this should be the latest DesktopHub package and the desired ProGet package.
-
-Once you have completed one of the above options, click the [config] link in the Inedo Hub and specify either the ProGet Feed URL or the file system directory containing downloaded packages for the Package Source field.
+1. Install Inedo Hub on a workstation/server that has access to the Internet.
+2. Click the "Create Offline Installer" button on the main page of the Inedo Hub application.
+3. Select the versions of Inedo products you'd like to include in the offline installer. By default, the latest stable version of each product is selected.
+4. Select the destination directory where the offline installer will be created. This directory will be created if it does not exist. If it does exist, it must be empty.
+5. Click the "Create Installer" button and wait for the packages to be downloaded.
+6. Copy the files in the destination directory to the server where you'd like to install one of the selected products.
+7. Run InedoHub.exe on the server, and install the desired app.
