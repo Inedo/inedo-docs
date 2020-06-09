@@ -31,6 +31,7 @@ After selecting the package store type, you will be presented with a handful of 
 
 |  Option     | Description |
 | :------------- | :------------- |
+| Instance role |	This overrides the access key and secret key (only visible when ProGet is running on an EC2 instances). |
 | Access Key & Secret Access Key      | This is the equivalent of a username and password for Amazon Web Services; you can create one with the Amazon IAM console       |
 |Bucket Name |	The name of the storage bucket configured on S3 that will be used as a packages store|
 |Target Path |	The path within the specified bucket; the default is "/" |
