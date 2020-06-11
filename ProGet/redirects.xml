@@ -25,6 +25,7 @@
   
   <temporary from="compliance" to="compliance/vulnerabilities" />
   <temporary from="compliance/vulnerabilities/vor" to="compliance/ossindex"/>
+  <temporary from="compliance/license-scanning" to="compliance/license-detection"/>
   
   <temporary from="connectors" to="feeds/connector-overview" />
   <temporary from="connectors/connector-filters" to="feeds/connector-overview" />
