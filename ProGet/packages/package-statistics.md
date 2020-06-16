@@ -1,6 +1,7 @@
 ﻿---
 title: Download & Usage Statistics
 sequence: 300
+show-headings-in-nav: true
 ---
 
 ProGet tracks the use of packages in your feeds to help you decide which packages are being used, which packages are taking a lot of disk space, and which packages are frequently cached.
@@ -43,4 +44,14 @@ On the Package page, you can see an aggregate of download data by clicking on th
 
 ### Advanced Reporting  {#advanced-reporting data-title="Advanced Reporting"}
 
-For more advanced analysis of package downloads, you can query the `ProGet SQL` Server database directly. Each download record is stored in the `PackageDownloads` table.
+For more advanced analysis of package downloads, you can query the ProGet SQL Server database directly and/or export the data as needed. Each download record is stored in the `PackageDownloads` table.
+
+For example, the following query will identify which users downloaded packages named `RubbishSoft.LongGUID` in the past 90 days.
+
+```
+SELECT DISTINCT [User_Name]
+  FROM [PackageDownloads]
+ WHERE [Download_Date] > DATEADD(DAY, -90, GETUTCDATE())
+   AND [Feed_Name] = 'approved-nuget'
+   AND [Package_Id] = 'RubbishSoft.LongGUID'
+```
