@@ -14,7 +14,7 @@ Webhooks let you connect ProGet with other services to notify users, trigger aut
 
 This is done by creating webhooks that will send HTTP-based notifications (payloads) when certain events like package publishing, deployment, and deletion occur. These payloads can be adapted to fit into nearly any other tool's API, including workflow automation services such as Zappier, Microsoft Flow, etc.
 
-This feature is available in paid and trial ProGet editions. [Get a commitment-free trial now](https://inedo.com/proget/pricing/claim-trial). {.info}
+This feature is available in paid and trial ProGet editions. {.info}
 
 ## Configuring Webhooks {#configuring data-title="Configuring Webhooks"}
 
