@@ -65,6 +65,8 @@ Machine keys can also be configured within the IIS Manager. To do this:
     - Enter the _Validation key_ and _Decryption key_ that was generated on the first server
     - Click _Apply_ on the right panel; this will update the web.config with a machine key
 
+You will also need to make sure the `EncryptionKey` value in the ProGet configuration file is the same on all servers.  Please see our [Configuration Files](/docs/proget/installation/config-files) documentation on where to find the configruation file and where to set the `EncryptionKey` value.
+
 Once complete, from any web server, click on the **Configure Load Balancing** link on the ProGet administration page, then click on the **Enable Load Balancing** button.
 
 #### Important Note for Load Balancing Only
