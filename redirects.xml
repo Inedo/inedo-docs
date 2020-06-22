@@ -30,5 +30,6 @@
   <temporary from="/otter" to="/docs/otter" />
   <temporary from="/den/proget/jenkinsplugin" to="https://inedo.com/den/jenkins" />
   <temporary from="/den/proget/visualstudio" to="https://inedo.com/den/visualstudio" />
+  <temporary from="/docs/support/tutorials/proget/getting-started-with-nuget-feeds-in-proget-and-visual-studio" to="https://inedo.com/proget/getting-started-with-proget" />
 
 </redirects>
