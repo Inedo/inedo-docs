@@ -147,7 +147,7 @@ Installed by thoven using upack/2.2.0.1
     </p>
     <h3 id="repackaging">Repackaging an existing package</h3>
     <p>
-        When deploying packages, it is common to rewrite package metadata such as version information (e.g. removing pre-release identifiers), adding/appending descriptions, or changing the group name. This is where repackaging comes in, Repackaging is the process of creating a new package from an existing package using exactly the same content as the original package. While the metadata of the package changes, a history of the package names and versions is also recorded for audit purposes.
+        When deploying packages, it is common to rewrite package metadata such as version information (e.g. removing pre-release identifiers), adding/appending descriptions, or changing the group name. This is where repackaging comes in; Repackaging is the process of creating a new package from an existing package using exactly the same content as the original package. While the metadata of the package changes, a history of the package names and versions is also recorded for audit purposes.
     </p>
     <p>
         The <code>repack</code> command can be used for this purpose; it will effectively create a new package with the exact same contents but different metadata. The newly created package will default to any metadata property values of the existing package, and the <code>repack</code> command accepts any property supported by the pack command, or alternatively a upack.json file with values that will be merged into the source package’s upack.json file. Here are some common use-cases for the <code>repack</code> command:
