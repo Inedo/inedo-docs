@@ -19,7 +19,6 @@ This documentation will assume you're using Visual Studio and NuGet to create an
 
 First, create a new class library project in Visual Studio, and target .NET 4.5.2. Use NuGet to add a reference to the **Inedo.SDK** package.
 
-
 :::attention{.best-practice}
 ![](/resources/images/icons/best-practices.png)
 
@@ -34,23 +33,37 @@ See [Writing a Simple Create File Operation](writing).
 
 ## Building and Deploying the Extension {#building-deploying data-title="Building and Deploying"}
 
-Once you've added all the desired components, and your project compiles, it is now ready to be packaged as an extension, and deployed to your Inedo product. There are two deployment options.
+Once you've added all the desired components, and your project compiles, it is now ready to be packaged as an extension, and deployed to your Inedo product. 
 
-### Direct Deployment (Zip File) {#zip-file}
+### Direct Deployment {#zip-file}
 
-An extension can be directly deployed to an Inedo product's extension root as a simple zip file. To do this, create a zip file with the same name as the assembly, and with an `.inedox` extension.
+An extension can be directly deployed to an Inedo product's extension root as a simple [universal package](/docs/upack/universal-packages). 
 
-:::attention {.analogy}
-![](/resources/images/icons/analogy.png)
+To do for an extension named `MyExample`, first create a manifest file called `upack.json` with the following contents:
 
-For example, if the assembly name is `MyExample.dll`, create a zip file called `MyExample.zip`. Next, add `MyExample.dll` file to the zip file, then rename the zip file to `MyExample.inedox`.
-:::
+```
+{
+  "name": "MyExample",
+  "version": "1.0.1"
+}
+```
 
-Copy the `.inedox` file into the Product extensions directory. By default, this will usually be in `C:\ProgramData\«product-name»\Extensions`, but you can verify the exact location by going to the Admin->All Settings page and looking for the `ExtensionsPath` value.
+Then, create a zip file called `MyExample.zip` with the compiled output in a `package` folder, and the `upack.json` at the root, like this:
+
+
+```
+  /package/
+     /MyExample.dll
+     /SomeLibrary.dll
+  
+  /upack.json
+```
+
+Rename the the zip file to `MyExample.upack`, and copy the `.upack` file into the Product extensions directory. By default, this will usually be in `C:\ProgramData\«product-name»\Extensions`, but you can verify the exact location by going to the Admin->All Settings page and looking for the `ExtensionsPath` value.
 
 Finally, restart the product services (and application pool if hosting in IIS).
 
-### Extension Gallery Deployment (Universal Package) {#uni-package data-title="Extension Gallery Deployment"}
+### Extension Gallery Deployment {#uni-package data-title="Extension Gallery Deployment"}
 
 You can also package extensions in a [universal package](/docs/proget/core-concepts/packages#universal-package), deploy them to a ProGet feed, and configure your Inedo product to use your private feed instead. Such a package has three metadata requirements:
 
@@ -77,7 +90,7 @@ For example, the metadata for an assembly named `MyExample.dll` might look like 
 }
 ```
 
-  Note that the `_inedoSdkVersion` and `_inedoProducts` properties are only used for filtering what's shown on the Extensions page in the product. If the values are specified incorrectly, the extension may still be downloadable yet unloadable.
+Note that the `_inedoSdkVersion` and `_inedoProducts` properties are only used for filtering what's shown on the Extensions page in the product. If the values are specified incorrectly, the extension may still be downloadable yet unloadable.
 
 ## Verifying and Testing the Extension {#verifying-testing data-title="Verifying and Testing the Extension"}
 
