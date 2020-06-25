@@ -6,7 +6,7 @@ keywords: proget, installation
 show-headings-in-nav: true
 ---
 
-ProGet's distributed architecture allows you to use any number of servers for both load-balancing and automatic failover purposes, such that one server node can take over in the event of any other server failure or outage.
+ProGet's distributed architecture allows you to use any number of servers for both load-balancing and automatic failover purposes, such that one ProGet server can take over in the event of any other server failure or outage.
 ::: {.attention .best-practice}
 This feature is available only in ProGet Enterprise. Compare [features by edition](/docs/proget/administration/license) or [request a quote](https://inedo.com/proget/pricing/request-quote). {.info}
 :::
@@ -17,9 +17,10 @@ Load Balancing is the process of distributing network traffic across multiple se
 
 Load balancing requires three components to be configured:
 {.docs}
-- Load Balancer
-- ProGet Website & ProGet Service Setup
-- Shared Storage
+- [Load Balancer](#load-balancer)
+- [ProGet Cluster, Website & Service](#web-node)
+- [Shared Storage](#shared-storage)
+- [Shared Database](#database-cluster)
 
 ### Load Balancer {#load-balancer}
 
@@ -27,12 +28,14 @@ Like an air traffic controller, the load balancer will direct traffic bound for 
 
 ProGet was built to be compatible with any load balancing platform, including both software-based (such as HAProxy, NLP, or nginx) and appliance-based (such as F5, A10, Citrix) platforms. Each load balancer can be configured differently, so please consult the manufacturer's documentation for configuring the load balancer to work with IIS.
 
+::: {.attention .best-practice}
 **Session Affinity (sticky sessions) are not required.** While you can enable this, it may simplify your traffic and load balancer configuration not to use them.
+:::
 
 If you are new to load balancing, Microsoft's [Network Load Balancing Cluster (NLB)](https://technet.microsoft.com/en-us/library/cc771008.aspx) is relatively easy to configure. See the [ProGet & Microsoft NLB Guide](/docs/proget/installation/installation-guide/load-balanced) for installing and configuring NLB and ProGet.
 
 
-### Creating a ProGet Cluster ProGet Website & ProGet Service Configuration {#web-node}
+### Creating a ProGet Cluster, ProGet Website & ProGet Service Configuration {#web-node}
 
 Any number of servers can be in a ProGet Cluster, and a ProGet Enterprise License allows for up to five servers per instance by default.
 
@@ -40,7 +43,7 @@ To ensure both load balancing *and* high-availability, at least three servers ar
 
 Note that load balancing is only supported when using IIS for hosting ProGet.
 
-#### Configuring ProGet Servers {#configure-web-node}
+#### Configuring ProGet Server Clusters {#configure-web-node}
 
 You can use the standard [ProGet Installation Guide](/docs/proget/installation/installation-guide) to install ProGet on each server in the cluster.
 
@@ -69,17 +72,16 @@ You will also need to make sure the `EncryptionKey` value in the ProGet configur
 
 Once complete, from any web server, click on the **Configure Load Balancing** link on the ProGet administration page, then click on the **Enable Load Balancing** button.
 
-#### Important Note for Load Balancing Only
-
+::: {.attention .best-practice}
 If you have a "ProGet Basic with Load Balancing" license, additional configuration is required.
-
 Because one server can run the ProGet Service, on the remaining servers, stop the ProGet Service and set it to `Disabled` in the service properties.
+:::
 
-### Configure the Inedo Service Messenger {#service-messenger}
+### Configuring the Inedo Service Messenger {#service-messenger}
 
 The service messenger is a component of ProGet that enables simple communication between the ProGet Website and ProGet Service. By default (on a single server), it uses a named pipe, but in a load-balanced configuration, it needs to be configured to use TCP instead. The messenger is optional, but certain parts of ProGet's web interface may be slightly degraded without it. See the documentation on the [Service Messenger](/docs/proget/installation/installation-guide/service-messenger) for installation and configuration.
 
-### Configure Shared Storage {#shared-storage}
+### Configuring Shared Storage {#shared-storage}
 
 ProGet is compatible with any type of common storage that all services (and the ProGet Website and ProGet Service on each) can access, whether software-based (e.g., SAMBA share, Windows Server Storage Spaces, etc.) or appliance-based (e.g., dedicated NAS). The only requirement is that the storage is readable and writeable by all servers. Storage can be configured at the feed or server level.
 
@@ -95,7 +97,7 @@ To configure storage at a feed level, first navigate to the _Manage Feed_ page f
 
 For cloud storage options, see [Cloud Storage](/docs/proget/advanced/cloud-storage).
 
-### Configure Database Cluster {#database-cluster}
+### Configuring Database Cluster {#database-cluster}
 
 ProGet can work with any SQL Server Cluster configuration, regardless of the failure detection mechanism and failover policy. SQL Server's Database Mirroring may also be used, but note that Microsoft has deprecated the feature in favor of AlwaysOn Availability Groups. 
 
