@@ -13,17 +13,18 @@ This feature is available in all versions of ProGet, but Free users must manuall
 ## Configuring ProGet {#proget-config data-title="Configuring ProGet"}
 To begin displaying package usage, simply create a feed that supports this feature. Live package scanning is already enabled, but you can confirm this from the Manage Feed page.
 
-{.screenshot} OF MANAGE FEED PAGE
+![](/resources/documentation/proget/upack_managefeed.png){.screenshot}
+
 
 ## Configuring Otter {#otter-config data-title="Configuring Otter"}
 Otter can be used to collect package usage from your servers. See [server packages in the Otter documentation](/docs/otter/core-concepts/servers#packages) for instructions on configuring this feature.
 
 Once Otter has been configured to collect package data, you will need to [create an API key](/docs/proget/administration/security/api-keys) that allows access to the *Package/Container Usage API*. 
 
-{.screenshot} OF API KEY ADDITION
+![](/resources/documentation/proget/create_API_key_pckguse.png){.screenshot}
 
 ## Viewing Live Package Usage Data {#view-live-data data-title="Viewing Live Package Usage Data"}
 
 Once data has been collected, packages in ProGet will now have data in the "Usage & Statistics" tab. From the individual package's Overview page, click this tab to display a list of every server using that package, along with other information like name, status, time, etc.
 
-{.screenshot} OF SERVERS DISPLAYED
+![](/resources/documentation/proget/upack_servers.png){.screenshot}
