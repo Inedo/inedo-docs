@@ -6,7 +6,7 @@ keywords: proget, installation
 show-headings-in-nav: true
 ---
 
-ProGet's distributed architecture allows you to use any number of servers for both load-balancing and automatic failover purposes, such that one ProGet server can take over in the event of any other server failure or outage.
+ProGet's distributed architecture allows you to configure ProGet as a server cluster, over any number of servers for both load-balancing and automatic failover purposes, such that one server can take over in the event of any other server failure or outage.
 ::: {.attention .best-practice}
 This feature is available only in ProGet Enterprise. Compare [features by edition](/docs/proget/administration/license) or [request a quote](https://inedo.com/proget/pricing/request-quote). {.info}
 :::
@@ -15,10 +15,10 @@ This feature is available only in ProGet Enterprise. Compare [features by editio
 
 Load Balancing is the process of distributing network traffic across multiple servers. This can improve ProGet's performance in high traffic environments. This is also required to configure automatic failover (High Availability or "HA"). 
 
-Load balancing requires three components to be configured:
+Load balancing requires the following components to be configured:
 {.docs}
 - [Load Balancer](#load-balancer)
-- [ProGet Cluster, Website & Service](#web-node)
+- [ProGet software (Website & Service)](#web-node)
 - [Shared Storage](#shared-storage)
 - [Shared Database](#database-cluster)
 
@@ -35,7 +35,7 @@ ProGet was built to be compatible with any load balancing platform, including bo
 If you are new to load balancing, Microsoft's [Network Load Balancing Cluster (NLB)](https://technet.microsoft.com/en-us/library/cc771008.aspx) is relatively easy to configure. See the [ProGet & Microsoft NLB Guide](/docs/proget/installation/installation-guide/load-balanced) for installing and configuring NLB and ProGet.
 
 
-### Creating a ProGet Cluster, ProGet Website & ProGet Service Configuration {#web-node}
+### Creating a ProGet Cluster {#web-node}
 
 Any number of servers can be in a ProGet Cluster, and a ProGet Enterprise License allows for up to five servers per instance by default.
 
@@ -43,7 +43,7 @@ To ensure both load balancing *and* high-availability, at least three servers ar
 
 Note that load balancing is only supported when using IIS for hosting ProGet.
 
-#### Configuring ProGet Server Clusters {#configure-web-node}
+#### Configuring a ProGet Server Cluster {#configure-web-node}
 
 You can use the standard [ProGet Installation Guide](/docs/proget/installation/installation-guide) to install ProGet on each server in the cluster.
 
