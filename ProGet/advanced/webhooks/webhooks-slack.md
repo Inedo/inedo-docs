@@ -9,7 +9,7 @@ keywords: proget, webhooks, slack
 
 In this page, we show you how to connect ProGet to Slack and sample payload messages to copy/paste into your own webhook.
 
-## Configuring the Slack Webhook {#slack data-title="Configuring a Slack/ProGet Webhook"}
+## Configuring a Slack Webhook {#slack data-title="Configuring a Slack/ProGet Webhook"}
 
 To connect to Slack, start by following [this Slack tutorial](https://api.slack.com/messaging/webhooks) to create your incoming webhook application inside Slack. Slack now recommends this as the best way to add webhooks (instead of the previously recommended third-party app called Incoming Webhooks).
 
@@ -34,3 +34,9 @@ The payload can be tedious to configure, so you can test it by copy/pasting this
 After you've saved your webhook, take the configured action in ProGet, and your Slack should receive a notification from ProGet!
 
 ![](/resources/documentation/proget/SlackMessageEvolution.png){.screenshot}
+
+## Additional Notes
+
+You can create webhooks from the individual feed pages or by going to Settings > Webhooks > Create Webhook. Creating a global webhook requires selecting "(all feeds)," but for Docker feeds, you will not be able to select this due to different Docker URLs.
+
+Webhooks are configurable in all versions of ProGet, but they will not fire in free editions.
