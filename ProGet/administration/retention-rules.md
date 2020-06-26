@@ -6,15 +6,17 @@ keywords: proget, retention, packages
 
 This feature is available in paid and trial ProGet editions. {.info}
 
-Retention rules help you reclaim disk space by automatically deleting old or unused packages that meet a set of criteria that you define.
+Retention rules help you reclaim disk space by automatically deleting old or unused packages that meet a set of criteria that you define, while allowing you to identify specific packages to exclude from these rules.
 
-A ProGet Basic license is currently required to use feed retention. Although rules can still be configured in the free edition, they are always executed in [dry run mode](#dry-run-mode) in ProGet Free.
+A ProGet Basic or Enterprise license is currently required to use feed retention. Although rules can still be configured in the free edition, they are always executed in [dry run mode](#dry-run-mode) in ProGet Free.
 
 ## Creating Retention Rules {#creating data-title="Creating Retention Rules"}
 
   Retention rules are configured on a feed-by-feed basis by going to the Manage Feed page, and describing the packages you want to delete.
 
-A rule is comprised of the following options, based on the feed type. When multiple options are specified, then only packages that meet all of the selected criteria are considered. See [matching examples](#matching) for more information.
+A rule is comprised of the following options, based on the feed type. When a rule has multiple options selected, only packages that meet ALL of the selected criteria are evaluated for action. See [matching examples](#matching) for more information.
+
+A feed can have multiple rules applied, in this case rules are run in the order they appear in the ProGet UI (top to bottom).If [quotas](#Quotas) are being used it is possible not all rules will run after quota conditions are met. 
 
 ### Package rules
 
@@ -84,9 +86,9 @@ This delete order is implemented as a convenience and should **not** be relied u
 
 ## Dry Run Mode {#dry-run-mode data-title="Dry Run Mode"}
 
-On the Admin > Advanced Settings page is a **FeedRetentionDryRun** option. Setting this option to **True** will prevent any retention rules in ProGet from actually deleting anything. It will still run the rules as normal and log the packages that *would* be deleted if dry run mode was not enabled, but will skip the actual deletion.
+On the Admin > Advanced Settings page is a **FeedRetentionDryRun** option. Selecting this option will prevent any retention rules in ProGet from actually deleting anything. It will still run the rules as normal and log the packages that *would* be deleted if dry run mode was not enabled, but will skip the actual deletion.
 
-This can be useful to evaluate whether a rule is correct before running it on a live feed.
+This can be useful to evaluate whether a rule is correct before running it on a live feed. To trigger a dry run after setting the **FeedRetentionDryRun** option go to the admin section and select "Scheduled Jobs", you will see a list of scheduled tasks, with a green play button next to them. Select the retention rules you want to run and click the play button and you will see logs of which packages would have been affected by the rule.
 
 Testing and dry run mode are **not** intended to be a substitute for a proper backup plan for your package repository. Packages deleted through retention are deleted **permanently**. Production environments should perform regular repository backups in case of any accidents.
 
