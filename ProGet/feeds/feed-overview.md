@@ -10,7 +10,7 @@ show-headings-in-nav: true
 
 A feed is like a private 'app store', but for your own applications and components. They are used to store packages, container images, and other assets, and users can easily see what's available to download what they need. "Feed" is our catch-all term to describe registries, repositories, feeds, etc.
 
-By setting up multiple feeds, you can not only separate packages by package format and development group, but also use [package promotion](/docs/proget/advanced/package-promotion) to identify quality and compliant packages for production use. There are *no* limits for how many feeds you can create, and all feed types are available in all versions of ProGet.
+By setting up multiple feeds, you can not only separate packages by package format and development group, but also use [package promotion](/docs/proget/advanced/package-promotion) to identify quality and compliant packages for production use. There are *no* limits for how many feeds you can create, and all feed types are available in both free and paid editions of ProGet.
 
 You can [control who can access which feeds and assign granular privileges for performing specific tasks](/docs/proget/administration/security) on a feed. For example, you could allow everyone to view and download packages on all feeds, but only allow ".NET Developers" to publish packages to the "NuGet-Dev" feed.
 
@@ -55,7 +55,7 @@ Another way to organize feeds is by quality (Untested, Production-ready, etc.). 
 
 [Connectors](/docs/proget/core-concepts/feeds/connectors) allow ProGet feeds to include and curate packages from an external source (e.g., another ProGet feed or any other implementer of the package API for the feed type, like NuGet.org), to filter and curate them, and to aggregate packages from multiple sources into one feed. All versions of ProGet can use connectors, making ProGet an ideal private proxy for a public feed like NuGet. [Connector filters](/docs/proget/feeds/connector-overview#connector-filters) are limited in free versions of ProGet, and connections between ProGet instances is a violation of [the ProGet EULA](https://inedo.com/proget/license-agreement).
 
-[Feed replication](/docs/proget/advanced/feed-replication) is an Enterprise feature that allows you to replicate packages among different ProGet instances across the globe to allow different teams to share feeds without setting up complicated, global infrastructure. 
+[Feed replication](/docs/proget/advanced/feed-replication) is a feature in ProGet Enterprise that allows you to replicate packages among different ProGet instances across the globe to allow different teams to share feeds without setting up complicated, global infrastructure. 
 
 ### Drop Path and Bulk Package Importing {#drop data-title="Drop Path and Bulk Package Importing"}
 
