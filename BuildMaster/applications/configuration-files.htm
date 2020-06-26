@@ -160,11 +160,12 @@
     <p>All configuration variables, runtime variables, and parameterless variable functions in context are considered when variable replacement occurs before deployment and follows the same resolution rules as <a href="/docs/buildmaster/administration/configuration-variables">configuration variable replacement</a>. </p>
     <p>Template file variables are treated as runtime variables when replacement occurs, and therefore override any configuration variables. In practice, it is not recommended to have template instance variables override existing configuration variables or variable functions. It is also not recommended to rely on runtime variables created during a deployment.</p>
 
-    <h3 id="empty-missing-variables">Empty/Missing Variables</h3>
-    <p>Variables or functions that exist but do not have any value (e.g. <code>$DeployableName</code> when no deployable is in context) will be replaced with an empty string, and variables that do not exist will remain as literal strings. It is not recommended to have a configuration file that falls into either of these cases.</p>
-
     <h3 id="escaping-variables">Escaping Variables</h3>
-    <p>There are many cases where a configuration file needs to contain literal text that appears to be a variable name. In this case, escape any $ signs with another $, e.g. <code>$$DoNotProcess</code>.</p>
+    <p>There are many cases where a configuration file needs to contain literal text that appears to be a variable name. In this case, escape any $ signs with a `, e.g. <code>`$DoNotProcess</code>.</p>
+    
+    <p>
+    Note that the behavior for variable replacement prior to BuildMaster 6.2 was different; see the <a href="/docs/buildmaster/installation-and-maintenance/legacy-features/overview#config-file-variable-syntax">Legacy Features</a> to learn more.
+    </p>
 
     <h2 id="deployment" data-title="Deployment">Deployment</h2>
 
