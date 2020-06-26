@@ -12,11 +12,11 @@ Start simple and then scale to thousands of servers and the cloud.
 
 ### Here is a Short Guide to get you Started Quick:
 
-In this tutorial, you will learn how to deploy a simple ASP.NET web application along with its IIS configuration through a pipeline to create a repeatable release process.
+In this tutorial, you’ll learn how to create an ASP.NET CI/CD application and deploy it using BuildMaster’s CI/CD pipeline.
 
-<iframe width="600" height="337" src="https://www.youtube.com/embed/iwvlgZmp5Ug" frameborder="0" allowfullscreen="true"></iframe>
+<iframe width="600" height="337" src="https://www.youtube.com/embed/xRoX9eFQOdg" frameborder="0" allowfullscreen="true"></iframe>
 
-*View the full step-by-step tutorial [here](https://inedo.com/support/tutorials/buildmaster/deployments/deploying-a-simple-web-app-to-iis).*
+*View the full step-by-step tutorial [here](https://inedo.com/buildmaster/getting-started-with-buildmaster).*
 
 BuildMaster will install on any supported version of Windows; simply [download](https://inedo.com/buildmaster/download), and click through the installer to get BuildMaster up and running in minutes. Through the installer, you select the edition you wish to install; a trial, the free edition, or enter a license key. Review the [step-by-step Installation Guide](/docs/buildmaster/installation/windows-guide) for details as to what's happening behind the scenes.
 
