@@ -81,19 +81,25 @@ In addition, here are a few common queries you may find helpful:
 **Listing all packages of a feed in JSON format**
 
 ```
-http://proget-server/nuget/{feedName}/Packages?$format=json
+https://«proget-server»/nuget/«feed-name»/Packages?$format=json
 ```
 
 **Manually downloading packages from a ProGet feed**
 
 ```
-http://proget-server/api/v2/package/{feedName}/{packageName}/{optional-version}
+https://«proget-server»/api/v2/package/«feed-name»/«packageName»/«versionNumber[optional]»
 ```
 
 **ODATA package queries**
 
 ```
-http://proget-server/nuget/{feedName}/Packages?$filter=Id%20eq%20'jQuery'
+https://«proget-server»/nuget/{feed-name}/Packages?$filter=Id%20eq%20'«package-name»'
+```
+
+**Get Latest Version number of a package**
+
+```
+https://«proget-server»/nuget/{feed-name}/Packages()?$filter=Id%20eq%20%27«package-name»%27%20and%20IsAbsoluteLatestVersion&$top=1
 ```
 
 ### NuGet V3 API {#nuget-v3 data-title="NuGet V3 API"}
