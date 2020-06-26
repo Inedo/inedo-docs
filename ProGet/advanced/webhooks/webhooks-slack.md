@@ -13,17 +13,17 @@ In this page, we show you how to connect ProGet to Slack and sample payload mess
 
 To connect to Slack, start by following [this Slack tutorial](https://api.slack.com/messaging/webhooks) to create your incoming webhook application inside Slack. Slack now recommends this as the best way to add webhooks (instead of the previously recommended third-party app called Incoming Webhooks).
 
-SLACKWEBHOOKS.PNG
+![](/resources/documentation/proget/SlackWebHooks.png){.screenshot}
 
 Once you've created your Incoming Webhook application in Slack, you can optionally change the notification colors and the app's icon.
 
-SLACKAPP
+![](/resources/documentation/proget/SlackApp.png){.screenshot}
 
 Note that to edit the webhook again, you must go to "Your Apps" inside Slack, rather than from the channel where the webhook posts.
 
 Inside **ProGet**, go to the Manage Feed page, click the "Webhooks" tab, and click "create." Note that you can create a webhook at the feed or at global level.
 
-SLACK-PROGET-WEBHOOK.PNG
+![](/resources/documentation/proget/Slack-ProGet-WebHook.png){.screenshot}
 
 The payload can be tedious to configure, so you can test it by copy/pasting this sample Slack payload we created:
 
@@ -32,3 +32,5 @@ The payload can be tedious to configure, so you can test it by copy/pasting this
 ```
 
 After you've saved your webhook, take the configured action in ProGet, and your Slack should receive a notification from ProGet!
+
+![](/resources/documentation/proget/SlackMessageEvolution.png){.screenshot}
