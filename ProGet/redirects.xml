@@ -86,6 +86,7 @@
   <temporary from="installation/load-balancing" to="installation/load-balancing-and-automatic-failover" />
   <temporary from="installation/manual" to="installation/installation-guide/manual"/>
   <temporary from="installation/silent-installation"  to="installation/installation-guide/silent-installation"/>
+  <temporary from="installation/installation-guide/manual#db-updater" to="installation/installation-guide/manual#inedosql"/>
   
   <temporary from="manual" to="installation/manual" />
   

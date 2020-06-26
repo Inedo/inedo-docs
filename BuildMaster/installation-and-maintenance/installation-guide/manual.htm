@@ -12,197 +12,211 @@
    </style>
 </head>
 <body>
-   <div class="manual-install">
-      <p class="announcement">
-         <b>Note:</b> The following manual installation instructions for BuildMaster is for informational purposes only and is not fully supported.
-         Please visit the <a href="https://inedo.com/buildmaster/download">Download</a> page to download the installer.
-      </p>
-      <p><b>The manual installation packages can be found on the <a href="/buildmaster/versions">All Versions</a> page.</b></p>
-      <p>BuildMaster consists of four main deployable components: </p>
-      <ul class="docs">
-         <li>
-            <b>Web Application</b> – the primary interface to BuildMaster
-         </li>
-         <li>
-            <b>Service</b> – running aside the web application, the BuildMaster
-            Service is a Windows Service that performs tasks requested through the Web
-            Application
-         </li>
-         <li>
-            <b>Database</b> – a SQL Server database which stores the state and history
+    <div class="manual-install">
+        <p class="announcement">
+            <b>Note:</b> The following manual installation instructions for BuildMaster is for informational purposes only and is not fully supported.
+            Please visit the <a href="https://inedo.com/buildmaster/download">Download</a> page to download the installer.
+        </p>
+        <p><b>The manual installation packages can be found on the <a href="/buildmaster/versions">All Versions</a> page.</b></p>
+        <p>BuildMaster consists of four main deployable components: </p>
+        <ul class="docs">
+            <li>
+                <b>Web Application</b> – the primary interface to BuildMaster
+            </li>
+            <li>
+                <b>Service</b> – running aside the web application, the BuildMaster
+                Service is a Windows Service that performs tasks requested through the Web
+                Application
+            </li>
+            <li>
+                <b>Database</b> – a SQL Server database which stores the state and history
 
-         </li>
-         <li>
-            <b>Agent</b> – a light-weight application installed on servers used by
-            BuildMaster to manage and orchestrate the servers (may be installed as a Windows service or hosted through IIS)
-         </li>
-      </ul>
+            </li>
+            <li>
+                <b>Agent</b> – a light-weight application installed on servers used by
+                BuildMaster to manage and orchestrate the servers (may be installed as a Windows service or hosted through IIS)
+            </li>
+        </ul>
 
-      <p class="info">
-         Prior to installation of BuildMaster or a BuildMaster Agent, a BuildMaster
-         "home" directory needs to be created. We recommend <b>C:\BuildMaster</b> (or a
-         similarly rooted path) because a number of 3rd-party tools that BuildMaster
-         integrates with have issues with very long path names. Replace any instances of <b>{BuildMaster.RootDir}</b>
-         in the following documentation with the actual path you have selected.
-      </p>
+        <p class="info">
+            Prior to installation of BuildMaster or a BuildMaster Agent, a BuildMaster
+            "home" directory needs to be created. We recommend <b>C:\BuildMaster</b> (or a
+            similarly rooted path) because a number of 3rd-party tools that BuildMaster
+            integrates with have issues with very long path names. Replace any instances of <b>{BuildMaster.RootDir}</b>
+            in the following documentation with the actual path you have selected.
+        </p>
 
-      <h2 id="identity" data-title="Identity">BuildMaster's Identity</h2>
-      <p>
-         BuildMaster may be configured to use its own domain account or may run as
-         <i>NETWORK SERVICE</i> or <i>LOCAL SYSTEM</i>. While not required,
-         administrator-level privileges are strongly recommended as it will eliminate any
-         difficulty or confusion with moving files and running different actions.
-      </p>
-       <h2 id="encryption-key" data-title="Encryption Key">BuildMaster's Encryption Key</h2>
-       <p>
-           In order to store sensitive data, such as <a href="../global-components/resource-credentials">resource credentials</a>, a
-           32-character hex string is used for AES encryption. You can generate this however you'd like, including by
-           <a href="JavaScript: alert((Math.random().toString(16).slice(2,10)+Math.random().toString(16).slice(2,10)+Math.random().toString(16).slice(2,10)+Math.random().toString(16).slice(2,10)+'00000000000000000000000000000000').slice(0,32))">clicking here</a>,
-           and copying the resulting JavaScript-generated pseudorandom string.
-       </p>
-       <p>
-           Take note of this encryption key; if you do not set one, then sensitive data will be stored unencrypted.
-       </p>
+        <h2 id="identity" data-title="Identity">BuildMaster's Identity</h2>
+        <p>
+            BuildMaster may be configured to use its own domain account or may run as
+            <i>NETWORK SERVICE</i> or <i>LOCAL SYSTEM</i>. While not required,
+            administrator-level privileges are strongly recommended as it will eliminate any
+            difficulty or confusion with moving files and running different actions.
+        </p>
+        <h2 id="encryption-key" data-title="Encryption Key">BuildMaster's Encryption Key</h2>
+        <p>
+            In order to store sensitive data, such as <a href="../global-components/resource-credentials">resource credentials</a>, a
+            32-character hex string is used for AES encryption. You can generate this however you'd like, including by
+            <a href="JavaScript: alert((Math.random().toString(16).slice(2,10)+Math.random().toString(16).slice(2,10)+Math.random().toString(16).slice(2,10)+Math.random().toString(16).slice(2,10)+'00000000000000000000000000000000').slice(0,32))">clicking here</a>,
+            and copying the resulting JavaScript-generated pseudorandom string.
+        </p>
+        <p>
+            Take note of this encryption key; if you do not set one, then sensitive data will be stored unencrypted.
+        </p>
 
-      <h4 id="database" data-title="Database">Database Installation</h4>
-      <ol>
-         <li>
-            Create a database named BuildMaster on any SQL Server database server (see <a href="/kb/1046" target="_blank">Supported SQL Server editions</a> for more information.)
-         </li>
-         <li>
-            Unzip <b>BuildMaster-DbChangeScripts.zip</b> into any directory and run the executable with the following arguments:
-            <p><pre>bmdbupdate.exe Update /conn=[connection string] /init=yes</pre></p>
-         </li>
-         <li>
-            Take note of the connection string used in this step
-         </li>
-      </ol>
+        <h4 id="database" data-title="Database">Database Installation</h4>
+        <h5 id="database-6.2" data-title="Database">Database Installation in BuildMaster 6.2 and later</h5>
+        <ol>
+            <li>
+                Create a database named BuildMaster on any SQL Server database server (see <a href="/kb/1046" target="_blank">Supported SQL Server editions</a> for more information.)
+            </li>
+            <li>
+               Open a command prompt, navigate to the SqlScripts directory and run the executable with the following arguments:
+                <p><pre>inedosql.exe update . &gt;connection-string&lt;</pre></p>
+            </li>
+            <li>
+                Take note of the connection string used in this step
+            </li>
+        </ol>
+        <h5 id="database-6.1" data-title="Database">Database Installation in BuildMaster 6.1 and earlier</h5>
+        <ol>
+            <li>
+                Create a database named BuildMaster on any SQL Server database server (see <a href="/kb/1046" target="_blank">Supported SQL Server editions</a> for more information.)
+            </li>
+            <li>
+                Unzip <b>BuildMaster-DbChangeScripts.zip</b> into any directory and run the executable with the following arguments:
+                <p><pre>bmdbupdate.exe Update /conn=[connection string] /init=yes</pre></p>
+            </li>
+            <li>
+                Take note of the connection string used in this step
+            </li>
+        </ol>
 
-      <h4 id="web-application" data-title="Web Application">Web Application Installation</h4>
-      <ol>
-         <li>Create a web root directory (e.g. <b>WebApp</b>) in <b>{BuildMaster.RootDir}</b>, which will be referred to as <b>{BuildMaster.WebApp.RootDir}</b> for the remainder of these instructions</li>
-         <li>Unzip <b>BuildMaster-WebApp.zip</b> into <b>{BuildMaster.WebApp.RootDir}</b></li>
-         <li>Create a directory which will be used for website background operations (e.g. <b>_WEBTEMP</b>) in <b>{BuildMaster.RootDir}</b></li>
-         <li>
-            Edit <b>Web_appSettings.config</b> to ensure two settings:
-            <ul class="docs">
-               <li><b>Core.DbConnectionString</b> - the same one entered into the database installation earlier</li>
-               <li><b>Core.BaseWorkingDirectory</b> - should be the same as <b>{BuildMaster.RootDir}\_WEBTEMP</b> </li>
-               <li><code>Persistence.EncryptionKey</code> - the same encryption key generated earlier</li>
-            </ul>
-            <p class="info"><b>Note:</b> Make sure to double-check that the values of these configuration settings are correct!</p>
-         </li>
-         <li>
-            Create an application pool in IIS to run under the appropriate identity;
-            for IIS7 and later, a classic (non-integrated) pipeline should be used.
-         </li>
-         <li>
-            Create a website that points to <b>{BuildMaster.WebApp.RootDir}</b> using
-            whichever host name configuration or ports preferred. <b>Note</b>: A virtual
-            directory is not supported at this time. Verify that the website is configured for ASP.NET 4.0
-         </li>
-      </ol>
+        <h4 id="web-application" data-title="Web Application">Web Application Installation</h4>
+        <ol>
+            <li>Create a web root directory (e.g. <b>WebApp</b>) in <b>{BuildMaster.RootDir}</b>, which will be referred to as <b>{BuildMaster.WebApp.RootDir}</b> for the remainder of these instructions</li>
+            <li>Unzip <b>BuildMaster-WebApp.zip</b> into <b>{BuildMaster.WebApp.RootDir}</b></li>
+            <li>Create a directory which will be used for website background operations (e.g. <b>_WEBTEMP</b>) in <b>{BuildMaster.RootDir}</b></li>
+            <li>
+                Edit <b>Web_appSettings.config</b> to ensure two settings:
+                <ul class="docs">
+                    <li><b>Core.DbConnectionString</b> - the same one entered into the database installation earlier</li>
+                    <li><b>Core.BaseWorkingDirectory</b> - should be the same as <b>{BuildMaster.RootDir}\_WEBTEMP</b> </li>
+                    <li><code>Persistence.EncryptionKey</code> - the same encryption key generated earlier</li>
+                </ul>
+                <p class="info"><b>Note:</b> Make sure to double-check that the values of these configuration settings are correct!</p>
+            </li>
+            <li>
+                Create an application pool in IIS to run under the appropriate identity;
+                for IIS7 and later, a classic (non-integrated) pipeline should be used.
+            </li>
+            <li>
+                Create a website that points to <b>{BuildMaster.WebApp.RootDir}</b> using
+                whichever host name configuration or ports preferred. <b>Note</b>: A virtual
+                directory is not supported at this time. Verify that the website is configured for ASP.NET 4.0
+            </li>
+        </ol>
 
-      <h4 id="service" data-title="Service">Service Installation</h4>
-      <ol>
-         <li>Create a service root directory (e.g. <b>Service</b>) under <b>{BuildMaster.RootDir}</b>, which will be referred to as <b>{BuildMaster.Service.RootDir}</b> for the remainder of these instructions</li>
-         <li>Unzip <b>BuildMaster-Service.zip</b> into <b>{BuildMaster.Service.RootDir}</b></li>
-         <li>Create a directory which will be used for service operations (e.g. <b>_SVCTEMP</b>) in <b>{BuildMaster.Service.RootDir}</b></li>
-         <li>
-            Edit <b>App_appSettings.config</b> to ensure two settings:
-            <ul class="docs">
-               <li><b>Core.DbConnectionString</b> - the same one entered into the database installation earlier</li>
-               <li><b>Core.BaseWorkingDirectory</b> - should be the same as <b>{BuildMaster.RootDir}\_SVCTEMP</b> </li>
-               <li><code>Persistence.EncryptionKey</code> - the same encryption key generated earlier</li>
-            </ul>
-            <p class="info"><b>Note:</b> Make sure to double-check that the values of these configuration settings are correct!</p>
-         </li>
-         <li>
-            Install the Windows service by running the following command from an elevated command prompt or PowerShell session in <b>{BuildMaster.Service.RootDir}</b>:
-            <p><pre>bmservice.exe install</pre></p>
-         </li>
-      </ol>
+        <h4 id="service" data-title="Service">Service Installation</h4>
+        <ol>
+            <li>Create a service root directory (e.g. <b>Service</b>) under <b>{BuildMaster.RootDir}</b>, which will be referred to as <b>{BuildMaster.Service.RootDir}</b> for the remainder of these instructions</li>
+            <li>Unzip <b>BuildMaster-Service.zip</b> into <b>{BuildMaster.Service.RootDir}</b></li>
+            <li>Create a directory which will be used for service operations (e.g. <b>_SVCTEMP</b>) in <b>{BuildMaster.Service.RootDir}</b></li>
+            <li>
+                Edit <b>App_appSettings.config</b> to ensure two settings:
+                <ul class="docs">
+                    <li><b>Core.DbConnectionString</b> - the same one entered into the database installation earlier</li>
+                    <li><b>Core.BaseWorkingDirectory</b> - should be the same as <b>{BuildMaster.RootDir}\_SVCTEMP</b> </li>
+                    <li><code>Persistence.EncryptionKey</code> - the same encryption key generated earlier</li>
+                </ul>
+                <p class="info"><b>Note:</b> Make sure to double-check that the values of these configuration settings are correct!</p>
+            </li>
+            <li>
+                Install the Windows service by running the following command from an elevated command prompt or PowerShell session in <b>{BuildMaster.Service.RootDir}</b>:
+                <p><pre>bmservice.exe install</pre></p>
+            </li>
+        </ol>
 
-      <h4 id="extensions" data-title="Extensions">Extensions</h4>
-      <ol>
-         <li>
-            Create a directory to store extensions (i.e. <b>Extensions</b>) under <b>{BuildMaster.RootDir}</b>, which will be referred to as <b>{BuildMaster.Extensions.RootDir}</b>
-            for the remainder of these instructions
-         </li>
-         <li>
-            Unzip the 4 included extensions in <b>BuildMaster-Extensions.zip</b> into <b>{BuildMaster.Extensions.RootDir}</b>
-         </li>
-         <li>
-            Additional extensions downloaded from within BuildMaster will be stored in <b>{BuildMaster.Extensions.RootDir}</b>, and you may also download extensions manually from:
-            <a href="/buildmaster/integrations" target="_blank">the extensions overview</a> page
-         </li>
-      </ol>
+        <h4 id="extensions" data-title="Extensions">Extensions</h4>
+        <ol>
+            <li>
+                Create a directory to store extensions (i.e. <b>Extensions</b>) under <b>{BuildMaster.RootDir}</b>, which will be referred to as <b>{BuildMaster.Extensions.RootDir}</b>
+                for the remainder of these instructions
+            </li>
+            <li>
+                Unzip the 4 included extensions in <b>BuildMaster-Extensions.zip</b> into <b>{BuildMaster.Extensions.RootDir}</b>
+            </li>
+            <li>
+                Additional extensions downloaded from within BuildMaster will be stored in <b>{BuildMaster.Extensions.RootDir}</b>, and you may also download extensions manually from:
+                <a href="/buildmaster/integrations" target="_blank">the extensions overview</a> page
+            </li>
+        </ol>
 
-      <hr />
-      <h2 id="agent-installation" data-title="Agent Installaton">Manual Agent Installation</h2>
+        <hr />
+        <h2 id="agent-installation" data-title="Agent Installaton">Manual Agent Installation</h2>
 
-      <p class="info">
-         <b>Note:</b> agents should be installed on remote servers that BuildMaster will orchestrate or deploy to, and are not required to be installed on the BuildMaster
-         server itself.
-      </p>
-      <p class="info">
-         <b>Note:</b> the agent version you download MUST be the same version as the BuildMaster software. Do not attempt to install a newer agent
-         version, or the BuildMaster software will report errors when attempting to connect to the agent. Older agents (provided the major version number is the same)
-         will automatically be upgraded to the same version as the BuildMaster software.
-      </p>
+        <p class="info">
+            <b>Note:</b> agents should be installed on remote servers that BuildMaster will orchestrate or deploy to, and are not required to be installed on the BuildMaster
+            server itself.
+        </p>
+        <p class="info">
+            <b>Note:</b> the agent version you download MUST be the same version as the BuildMaster software. Do not attempt to install a newer agent
+            version, or the BuildMaster software will report errors when attempting to connect to the agent. Older agents (provided the major version number is the same)
+            will automatically be upgraded to the same version as the BuildMaster software.
+        </p>
 
-      <h4 id="agent-service" data-title="1. TCP Service">Agent Option #1: TCP Remote Agent Service</h4>
-      <ol>
-         <li>Create an agent service root directory (e.g. <b>Agent</b>) under <b>{BuildMaster.RootDir}</b>, which will be referred to as <b>{BuildMaster.TcpAgent.RootDir}</b> for the remainder of these instructions</li>
-         <li>Unzip <b>BuildMaster-Agent-Standalone.zip</b> into <b>{BuildMaster.TcpAgent.RootDir}</b></li>
-         <li>Create a directory which will be used for agent operations (e.g. <b>_AGTTEMP</b>) in <b>{BuildMaster.TcpAgent.RootDir}</b></li>
-         <li>
-            Edit <b>app_appSettings.config</b> and ensure the following settings:
-            <ul class="docs">
-               <li><b>Core.BaseWorkingDirectory</b> - points to a temporary directory, unique per agent </li>
-               <li><b>Agent.AgentExtensionsPath</b> - a path where the BuildMaster extensions will be stored, unique per agent </li>
-               <li>
-                  <b>Agent.Port</b> - the port used to access the agent, should be unique for the system, and accessible for inbound connections (i.e. firewall disabled)
-                  for BuildMaster to be able to communicate with it
-               </li>
-               <li><b>Agent.ServiceName</b> - the name of the Windows service this agent will run under, unique per agent</li>
-            </ul>
-            <p class="info"><b>Note:</b> Make sure to double-check that the values of these configuration settings are correct!</p>
-         </li>
-         <li>
-            Install the TCP agent's Windows service by running the following command from an elevated command prompt or PowerShell session in <b>{BuildMaster.TcpAgent.RootDir}</b>:
-            <p><pre>bmtcpagent.exe install</pre></p>
-         </li>
-      </ol>
+        <h4 id="agent-service" data-title="1. TCP Service">Agent Option #1: TCP Remote Agent Service</h4>
+        <ol>
+            <li>Create an agent service root directory (e.g. <b>Agent</b>) under <b>{BuildMaster.RootDir}</b>, which will be referred to as <b>{BuildMaster.TcpAgent.RootDir}</b> for the remainder of these instructions</li>
+            <li>Unzip <b>BuildMaster-Agent-Standalone.zip</b> into <b>{BuildMaster.TcpAgent.RootDir}</b></li>
+            <li>Create a directory which will be used for agent operations (e.g. <b>_AGTTEMP</b>) in <b>{BuildMaster.TcpAgent.RootDir}</b></li>
+            <li>
+                Edit <b>app_appSettings.config</b> and ensure the following settings:
+                <ul class="docs">
+                    <li><b>Core.BaseWorkingDirectory</b> - points to a temporary directory, unique per agent </li>
+                    <li><b>Agent.AgentExtensionsPath</b> - a path where the BuildMaster extensions will be stored, unique per agent </li>
+                    <li>
+                        <b>Agent.Port</b> - the port used to access the agent, should be unique for the system, and accessible for inbound connections (i.e. firewall disabled)
+                        for BuildMaster to be able to communicate with it
+                    </li>
+                    <li><b>Agent.ServiceName</b> - the name of the Windows service this agent will run under, unique per agent</li>
+                </ul>
+                <p class="info"><b>Note:</b> Make sure to double-check that the values of these configuration settings are correct!</p>
+            </li>
+            <li>
+                Install the TCP agent's Windows service by running the following command from an elevated command prompt or PowerShell session in <b>{BuildMaster.TcpAgent.RootDir}</b>:
+                <p><pre>bmtcpagent.exe install</pre></p>
+            </li>
+        </ol>
 
-      <h4 id="agent-iis" data-title="2. IIS">Agent Option #2: IIS Remote Agent Servers</h4>
-      <ol>
-         <li>Create a home directory for the agent web application (e.g. <b>Agent</b>) in <b>{BuildMaster.RootDir}</b>, which will be referred to as <b>{BuildMaster.IisAgent.RootDir}</b> for the remainder of these instructions</li>
-         <li>Unzip <b>BuildMaster-Agent.zip</b> into <b>{BuildMaster.IisAgent.RootDir}</b></li>
-         <li>Create a directory which will be used for agent operations (e.g. <b>_AGTTEMP</b>) in <b>{BuildMaster.IisAgent.RootDir}</b></li>
-         <li>
-            Edit <b>Web_appSettings.config</b> to ensure one setting:
-            <ul class="docs">
-               <li><b>Core.BaseWorkingDirectory</b> - points to a temporary directory, unique per agent </li>
-               <li><b>Agent.AgentExtensionsPath</b> - a path where the BuildMaster extensions will be stored, unique per agent </li>
-            </ul>
-            <p class="info"><b>Note:</b> Make sure to double-check that the values of these configuration settings are correct!</p>
-         </li>
-         <li>
-            Create an application pool in IIS to run under the appropriate identity;
-            for IIS7 and later, a classic (non-integrated) pipeline should be used
-         </li>
-         <li>
-            Create a website with a Home Directory of <b>{BuildMaster.IisAgent.RootDir}</b> using
-            whichever host name configuration or ports preferred.
-            <p class="announcement">
-               <b>Note</b>: A virtual
-               directory is not supported at this time. Verify
-               that the website is configured to support ASP.NET 4.0 applications.
-            </p>
-         </li>
-      </ol>
+        <h4 id="agent-iis" data-title="2. IIS">Agent Option #2: IIS Remote Agent Servers</h4>
+        <ol>
+            <li>Create a home directory for the agent web application (e.g. <b>Agent</b>) in <b>{BuildMaster.RootDir}</b>, which will be referred to as <b>{BuildMaster.IisAgent.RootDir}</b> for the remainder of these instructions</li>
+            <li>Unzip <b>BuildMaster-Agent.zip</b> into <b>{BuildMaster.IisAgent.RootDir}</b></li>
+            <li>Create a directory which will be used for agent operations (e.g. <b>_AGTTEMP</b>) in <b>{BuildMaster.IisAgent.RootDir}</b></li>
+            <li>
+                Edit <b>Web_appSettings.config</b> to ensure one setting:
+                <ul class="docs">
+                    <li><b>Core.BaseWorkingDirectory</b> - points to a temporary directory, unique per agent </li>
+                    <li><b>Agent.AgentExtensionsPath</b> - a path where the BuildMaster extensions will be stored, unique per agent </li>
+                </ul>
+                <p class="info"><b>Note:</b> Make sure to double-check that the values of these configuration settings are correct!</p>
+            </li>
+            <li>
+                Create an application pool in IIS to run under the appropriate identity;
+                for IIS7 and later, a classic (non-integrated) pipeline should be used
+            </li>
+            <li>
+                Create a website with a Home Directory of <b>{BuildMaster.IisAgent.RootDir}</b> using
+                whichever host name configuration or ports preferred.
+                <p class="announcement">
+                    <b>Note</b>: A virtual
+                    directory is not supported at this time. Verify
+                    that the website is configured to support ASP.NET 4.0 applications.
+                </p>
+            </li>
+        </ol>
 
-   </div>
+    </div>
 </body>
 </html>

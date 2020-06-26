@@ -116,12 +116,39 @@ Note that built-in accounts may be used, such as `NT AUTHORITY\NETWORK SERVICE` 
 
 For more information on creating database logins, see: https://docs.microsoft.com/en-us/sql/t-sql/statements/create-login-transact-sql
 
-### 3. Run `dbupdater.exe` to update the database {#db-updater}
+### 3. Run `inedosql` to update the database {#inedosql}
 
-> ##### What is `dbupdater.exe`?
-> `dbupdater.exe` is a simple command-line tool developed internally by Inedo in order to update a database schema based on scripts within the supplied directory (or subdirectories). Scripts with `AH:ScriptId` headers specify a globally unique GUID to a specific script that is added to an implementation-defined metadata table (typically named similar to `DbSchemaChanges`) when the script is run so it only gets run once no matter how many times the `update` command is run. SQL scripts without this header are executed every time the command is run. All scripts are run in the order they are defined on disk, i.e. lexicographically.
+> ##### What is `inedosql`?
+> [inedosql](https://github.com/Inedo/inedosql) is a open-source command-line tool developed by Inedo in order to execute SQL (.sql) scripts against a SQL Server database. Scripts with `AH:ScriptId` headers specify a globally unique GUID to a specific script that is added to an implementation-defined metadata table (typically named similar to `__InedoDb_DbSchemaChanges`) when the script is run so it only gets run once no matter how many times the `update` command is run. SQL scripts without this header are executed every time the command is run. All scripts are run in the order they are defined on disk, i.e. lexicographically.  See the [inedosql GitHub page](https://github.com/Inedo/inedosql) for more information.
 
 #### Database Update Process
+
+1. Copy the `SqlScripts` directory into a temporary directory.
+
+2. Run command line and change current directory to the `SqlScripts` folder which contains `inedosql.exe` file.
+
+3. Run the following command in that directory, replacing the connection string as needed:
+
+```
+.\inedosql.exe update . <connection-string>
+```
+
+For example:
+
+```
+cd C:\ProGetSetup5..14_Manual\
+.\inedosql.exe update . "Server=dbserver01\SQLEXPRESS; Database=ProGet; Integrated Security=true;"
+```
+
+This command will both update the schema of the target database, and recreate all objects (views, functions, stored procedures).
+
+::: {.attention .best-practice}
+On new installations, be sure to note the connection string that was used for this command, as it be a required value in the [configuration file](#first-run-file) that instructs ProGet which database to connect to.
+::: 
+
+##### ProGet 5.2 and earlier
+
+In ProGet 5.2 and earlier, `dbupdater.exe` is used to update the database.  Use these instructions for updating the database:
 
 1. Copy the `SqlScripts` directory into a temporary directory.
 
@@ -146,12 +173,6 @@ cd C:\ProGetSetup5.2.14_Manual\
 .\dbupdater.exe unpack .\Scripts.gz .
 .\dbupdater.exe update . "Server=dbserver01\SQLEXPRESS; Database=ProGet; Integrated Security=true;"
 ```
-
-This command will both update the schema of the target database, and recreate all objects (views, functions, stored procedures).
-
-::: {.attention .best-practice}
-On new installations, be sure to note the connection string that was used for this command, as it be a required value in the [configuration file](#first-run-file) that instructs ProGet which database to connect to.
-::: 
 
 ### 4. Create a database user and grant access to `ProGet` database role
 
