@@ -54,8 +54,14 @@ A feed must be explicitly configured to use automated vulnerability scanning and
 You can configure vulnerability sources and package access rules on the Manage Feed page. Note that Clair requires extra setup, the details for which can be found in the [configuring clair in ProGet](/docs/proget/compliance/clair#configureproget) section. If you don't see OSS Index as a vulnerability source or WhiteSource as a package access rule, check Admin > Extensions to make sure those extensions are installed.
 
 :::attention {.best-practice}
-Automated vulnerability sources downloaded vulnerabilities and check associated feeds with a scheduled job. 
+Automated vulnerability sources download vulnerabilities and check associated feeds using a scheduled job. 
 :::
+
+### Manually Check For Vulnerabilities {#manually-run data-title="Manually Check For Vulnerabilities"}
+
+Automated vulnerability sources can have their scheduled job executed manually at any time by running the `VulnerabilityDownloader` task.  To execute this job, navigate to _Administration -> Scheduled Jobs_ page.  Then click the green play button to the right of the `VulnerabilityDownloader` task.  This is a system-level scoped task that will download vulnerabilities for all of the configured sources and check their associated feeds for vulnerabilities.  
+
+
 
 ## Vulnerability Reports and Assessments in ProGet{#reports-and-assessments data-title="Reports and Assessments in ProGet"}
 
