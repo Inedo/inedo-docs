@@ -1,34 +1,21 @@
 ﻿---
-title: Download & Usage Statistics
+title: Package Download Statistics
 sequence: 300
-show-headings-in-nav: true
 ---
 
-ProGet tracks the use of packages in your feeds to help you decide which packages are being used, which packages are taking a lot of disk space, and which packages are frequently cached.
+ProGet's package download statistics let you track individual package downloads. When enabled, ProGet will record the download date, user, etc., giving you information about the packages your organization is using.
 
-## All Feed Disk Usage  {#all-feed data-title="All Feed Disk Usage"}
+All editions of ProGet can record package downloads, but dates, users, etc. are visible only with paid and trial editions of ProGet. 
 
-On the ProGet Overview page, you can see how much total disk space each feed is using.
+## Configuring Package Download Statistics  {#configure data-title="Configure Package Download Statistics"}
 
-![](/resources/documentation/proget/feed-disk.png){.screenshot}
+Because package download statistics can consume a lot of database disk space, you must first enable these statistics. Do this by going to Manage Feed > Properties > Change "Package Statistics." From here you can enable "Record individual downloads for advanced statistics." 
 
-## Feed-specific Disk Usage Statistics  {#feed-specific data-title="Feed-specific Disk Usage Statistics"}
+You can also "Restrict viewing download statistics to Feed Administrators," if you want to restrict whom can view potentially sensitive information like IP addresses. 
 
-On the Manage Feed page, you can identify if any packages are consuming a disproportionate amount of disk space, as well as how much cached packages (i.e. packages downloading from connectors) are using.
+## Viewing Package Download Statistics in the UI {#view-stats data-title="Viewing Package Download Statistics in the UI"}
 
-
-![](/resources/documentation/proget/package-usage.png){.screenshot}
-
-This can help you when you define [retention rules](/docs/proget/administration/retention-rules) to cut back on disk space usage if needed.
-
-
-## Package Statistics  {#package-statistics data-title="Package Statistics"}
-
-ProGet can also be configured to track individual package downloads and record every user that downloads every package.
-
-This feature is available in paid and trial ProGet editions. {.info}
-
-Because this can potentially consume a lot of database disk space, you must first enable it by going to Administration > Advanced Settings and checking the Package Statistics enabled box. Once enabled, ProGet will record the following information each time a package file is requested:
+Once download statistics are enabled, ProGet will record the following information each time a package file is requested:
 
 {.docs}
 - **Username** – the name of the authenticated user who downloaded the package, or “Anonymous” if the user was not logged in
@@ -36,13 +23,24 @@ Because this can potentially consume a lot of database disk space, you must firs
 - **User Agent** - the user agent header that was sent in the download request
 - **Date/time** - the specific date/time the package was downloaded
 
-### Viewing in the UI  {#viewing-ui data-title="Viewing in the UI"}
+On the Package page, you can see this download data by clicking on the Usage & Statistics tab on a package overview page.
 
-On the Package page, you can see an aggregate of download data by clicking on the Package Statistics button on a package overview page.
+![](/resources/documentation/proget/package-statistics-2.JPG){.screenshot}
 
-![](/resources/documentation/proget/package-statistics.png){.screenshot}
+### Limitations in Free {#free data-title="Limitations in Free"}
 
-### Advanced Reporting  {#advanced-reporting data-title="Advanced Reporting"}
+The free version of ProGet allows you to preview this feature, as well as to trial it manually.
+
+ProGet will continue to record actual downloads, but Free users will see the date, user, and IP address marked "hidden":
+
+![](/resources/documentation/proget/package-statistics-1.JPG){.screenshot}
+
+To view the records you'd see in paid and trial editions of ProGet, click "add record" and manually add a record with an IP address of 127.0.0.* (not 1):
+
+{.screenshot}
+
+
+## Advanced Reporting  {#advanced-reporting data-title="Advanced Reporting"}
 
 For more advanced analysis of package downloads, you can query the ProGet SQL Server database directly and/or export the data as needed. Each download record is stored in the `PackageDownloads` table.
 
