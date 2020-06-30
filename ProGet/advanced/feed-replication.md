@@ -24,7 +24,11 @@ Configuring a feed as a replication server will require a sync token to be added
 
 ### Replication Client
 
-A replication client is a ProGet feed configured to connect to a replication server feed in another ProGet instance. Replication client feeds are able to pull, push, or mirror packages from a replication server.
+A replication client is a ProGet feed configured to connect to a replication server feed in another ProGet instance. Replication client feeds are able to: 
+
+  - **Pull** - the local feed will bring changes (e.g. newly-pushed packages, deleted packages, etc.) in from a replication server feed
+  - **Push** - the local feed will issue changes to a replication server feed
+  - **Mirror** - the local feed will both push to AND pull from a replication server feed
 
 ##### Options:
 
@@ -69,7 +73,7 @@ A simple example would be the complete mirroring of a single feed across multipl
 
 To achieve this setup, each city's feed is configured as follows:
 
-| Node | Client | Server |
+| Location | Client | Server |
 |-|-|-|
 |Tokyo | Mirror external feed *(Los Angeles)* | Disabled  |
 |Los Angeles | Disabled | Allow local feeds to be changed by external feeds |
@@ -87,7 +91,7 @@ A more complex example involves configuring an installation to act as both a rep
 
 To achieve this setup, each city's feed is configured as follows:
 
-| Node | Client | Server |
+| Location | Client | Server |
 |-|-|-|
 |Los Angeles | Disabled | Allow local feeds to be changed by external feeds |
 |New York | Mirror external feed *(Los Angeles)* | Allow external feeds to replicate from this feed |
@@ -116,7 +120,7 @@ Based on usage and support tickets we have encountered in the past, we recommend
 
 ## Troubleshooting {#troubleshooting data-title="Troubleshooting" }
 
-Perhaps the most common issue related to replication is that ProGet Enterprise (or trial) is required for each node involved in the replication, otherwise an error will be generated and replication will not occur.
+Perhaps the most common issue related to replication is that ProGet Enterprise (or trial) is required for each server cluster involved in the replication, otherwise an error will be generated and replication will not occur.
 
 ### Replication Status & Overview
 
