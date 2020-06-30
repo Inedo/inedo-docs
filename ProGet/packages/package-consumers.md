@@ -44,10 +44,8 @@ It can be trivially added to an OtterScript plan in BuildMaster to publish this 
     );
 
 ### Register Consumers via the Deployments API {#pgscan data-title="Register Consumers via API"}
-You can also use the 
 
-API Endpoint
-This will work like all of our other ones, and will not require any permissions (for now). Set the Web.ShowDependenciesTab = true on first call.
+You can also use the API endpoint to register package consumers. 
 
 ```
 POST /api/dependencies/dependents
