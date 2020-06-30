@@ -54,8 +54,8 @@ You cannot create scheduled jobs, but you can disable and change their schedule 
 |---|---|---|
 |**ExecutionLogRetention** |system|purges execution logs; default schedule is `0 0 0 * * ?` (nightly at 12:00AM)|
 |**FeedCleanup**|feed|runs user-defined retention rules on the associated feed; default schedule is `0 0 2 * * ?` (nightly at 02:00AM)|
-|**UpdateChecker** |system|purges execution logs; default schedule is `0 0 0 ? * SUN` (Sundays at 12:00AM)|
-|**VulnerabilityDownloader**|system|purges execution logs; default schedule is `0 0 2 * * ?` (nightly at 02:00AM)|
+|**UpdateChecker** |system|checks for ProGet updates; default schedule is `0 0 0 ? * SUN` (Sundays at 12:00AM)|
+|**VulnerabilityDownloader**|system|downloads and scans feeds for [vulnerabilities](/docs/proget/compliance/vulnerabilities); default schedule is `0 0 2 * * ?` (nightly at 02:00AM)|
 |**BuildMavenFeedIndex**|feed|generates a `nexus-maven-repository-index.gz` against the associated feed; default schedule is `0 0 2 * * ?` (nightly at 02:00AM)|
 |**FullMavenConnectorIndex** |feed|downloads and processes `nexus-maven-repository-index.gz` from remote connectors for Maven feeds; default schedule is `0 0 2 ? * SUN` (Sundays at 02:00AM)|
 |**FullNpmConnectorIndex** |feed|downloads and processes a full npm index file from remote connectors for npm feeds; default schedule is `0 0 0 ? * SUN` (Sundaysat 12:00AM)|
