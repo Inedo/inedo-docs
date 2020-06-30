@@ -26,7 +26,7 @@ Configuring a feed as a replication server will require a sync token to be added
 
 A replication client is a ProGet feed configured to connect to a replication server feed in another ProGet instance. Replication client feeds are able to: 
 
-  - **Pull** - the local feed will bring changes in from a replication server feed
+  - **Pull** - the local feed will bring changes (e.g. newly-pushed packages, deleted packages, etc.) in from a replication server feed
   - **Push** - the local feed will issue changes to a replication server feed
   - **Mirror** - the local feed will both push to AND pull from a replication server feed
 
