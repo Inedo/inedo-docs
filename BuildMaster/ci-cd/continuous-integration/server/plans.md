@@ -23,8 +23,6 @@ show-headings-in-nav: true
 
 You can create a build plan at the application or global level. Global plans behave in exactly the same manner, except you may only reference global modules.
 
-You may associate a build plan with an environment after you create it, which will allow you to restrict certain users from viewing its contents by defining an environment-scoped [access control](/docs/buildmaster/administration/users-and-security). There's no good reason to do this, as you shouldn't be putting sensitive information in your build plans… but sometimes it can't be helped.
-
 ### Association with Pipelines {#pipelines data-title="Association with Pipelines"}
 
 All build plans are run under the context of a build and a pipeline, except those defined as the target of a Repository Hook/Monitor plan. Visit the [pipelines](/docs/buildmaster/verification/pipelines) documentation for more information on how to configure pipeline stages and targets.
