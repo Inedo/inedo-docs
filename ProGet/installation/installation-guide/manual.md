@@ -130,14 +130,14 @@ For more information on creating database logins, see: https://docs.microsoft.co
 3. Run the following command in that directory, replacing the connection string as needed:
 
 ```
-.\inedosql.exe update . <connection-string>
+.\inedosql.exe update . --connection-string=<connection-string>
 ```
 
 For example:
 
 ```
 cd C:\ProGetSetup5..14_Manual\
-.\inedosql.exe update . "Server=dbserver01\SQLEXPRESS; Database=ProGet; Integrated Security=true;"
+.\inedosql.exe update . --connection-string="Server=dbserver01\SQLEXPRESS; Database=ProGet; Integrated Security=true;"
 ```
 
 This command will both update the schema of the target database, and recreate all objects (views, functions, stored procedures).
