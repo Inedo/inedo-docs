@@ -56,7 +56,7 @@ The ProGet Docker image contains a web server and a background service. To get t
 
 ```
 docker run -d -v proget-packages:/var/proget/packages -p 80:80 --net=proget \
-    --name=proget --restart=unless-stopped -e PROGET_DB_TYPE=SqlServer \
+    --name=proget --restart=unless-stopped \
     -e SQL_CONNECTION_STRING='Data Source=proget-sql; Initial Catalog=ProGet; User ID=sa; Password=‹YourStrong!Passw0rd›' \
     proget.inedo.com/productimages/inedo/proget:<version>
 ```
@@ -87,7 +87,7 @@ docker run -d -v proget-packages:/var/proget/packages -p 80:80 --net=proget \
             </td>
         </tr>
         <tr>
-            <td style="width: 400px;"><code>-e PROGET_DATABASE=...</code></td>
+            <td style="width: 400px;"><code>-e SQL_CONNECTION_STRING=...</code></td>
             <td>
                 The connection string for SQL Server. The value specified in the example here
                 assumes you are using the <code>proget-sql</code> container. To connect to a
