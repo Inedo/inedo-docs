@@ -1,6 +1,6 @@
 ---
 title: Package Consumers (Usage Tracking)
-subtitle: Track Applications & Components Using Your Package
+subtitle: Track Applications & Components Consuming Your Package
 sequence: 600
 keywords: BuildMaster, manual
 show-headings-in-nav: true
