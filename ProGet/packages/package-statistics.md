@@ -25,7 +25,7 @@ Once download statistics are enabled, ProGet will record the following informati
 
 On the Package page, you can see this download data by clicking on the Usage & Statistics tab on a package overview page.
 
-![](/resources/documentation/proget/package-statistics-2.JPG){.screenshot}
+![](/resources/documentation/proget/PG_usage-and-stats_tab.png){.screenshot}
 
 ### Limitations in Free {#free data-title="Limitations in Free"}
 
@@ -33,11 +33,11 @@ The free version of ProGet allows you to preview this feature, as well as to tri
 
 ProGet will continue to record actual downloads, but Free users will see the date, user, and IP address marked "hidden":
 
-![](/resources/documentation/proget/package-statistics-1.JPG){.screenshot}
+![](/resources/documentation/proget/paid view of package download stats (IP address hidden).png){.screenshot}
 
 To view the records you'd see in paid and trial editions of ProGet, click "add record" and manually add a record with an IP address of 127.0.0.* (not 1):
 
-{.screenshot}
+![](/resources/documentation/proget/free view of package download stats.png){.screenshot}
 
 
 ## Advanced Reporting  {#advanced-reporting data-title="Advanced Reporting"}
