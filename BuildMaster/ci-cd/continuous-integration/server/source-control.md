@@ -4,7 +4,7 @@ sequence: 100
 show-headings-in-nav: true
 ---
 
-BuildMaster is designed to continuously deliver your applications and components from source code to production by integrating with the source control system(s) you are already using. Unlike monolithic CI/CD platforms like Azure DevOps or GitLab, askjdflkasjdlfkjalsdkfjlBuildMaster works with any combination of source control tools or project hosting.
+BuildMaster is designed to continuously deliver your applications and components from source code to production by integrating with the source control systems you are already using. Unlike monolithic CI/CD platforms like Azure DevOps or GitLab, BuildMaster works with any combination of source control tools or project hosting.
 
 Source control integration in BuildMaster works a bit differently than dedicated Continuous Integration servers like Jenkins or TeamCity. With BuildMaster, you can:
 
@@ -14,7 +14,7 @@ Source control integration in BuildMaster works a bit differently than dedicated
  - Tag/label code at any time, as needed
  - Easily change source control systems or hosts
 
-All of this is relatively easy because most source control interactions are done within [OtterScript](/docs/otter/reference/otter-script).
+All of this is relatively easy because most source control interactions are done with [OtterScript](/docs/otter/reference/otter-script).
 
 ## Connecting to Your Source Control System with Resource Credentials {#connecting data-title="Connecting to Source Control"}
 
