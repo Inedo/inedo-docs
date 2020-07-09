@@ -6,24 +6,23 @@ keywords: BuildMaster, manual
 show-headings-in-nav: true
 ---
 
-Developer library packages (e.g. NuGet, npm, Pypi, etc.) are often built using *other* library packages, and this usage is noted as a "dependency" in that package's manifest file. For example, the popular [Moq library](https://www.nuget.org/packages/Moq/) has a dependency on the [Castle.Core library](https://www.nuget.org/packages/Castle.Core/), and hundreds of other library packages take dependencies on both of those.
+Packages (e.g., NuGet, npm, PyPI, etc.) are often built using *other* packages. This usage is noted as a "dependency" in that package's manifest file. Modern applications are often built with dozens (or even hundreds) of packages, and each of those can be built with any number of packages themselves. This means that the actual packages that make up the bulk of the shipped code in any given application may change by simply rebuilding the application, even if you don't change a *single line* of your own code.
 
-These dependencies allow tools like Visual Studio to simplify library package consumption when you build your own applications and components. For example, if used Castle.Core in your application, but then later added Moq, you could potentially end up with two different and conflicting versions of the Castle.Core: the version that you're using, and the version that Moq requires. This is solved with "version ranges", and library authors will typically specify a wide range of versions when defining dependencies. For example, the [Moq 4.8.0 package](https://www.nuget.org/packages/Moq/4.8.0) will work with any version of Castle.Core that's greater than 4.2.1.
+After building your application (and resolving all of those complicated dependencies), ProGet's Package Consumers feature will use [pgscan](#pgscan) to scan the build output, search for the specific package versions consumed by the application, and publish that data to ProGet along with your application's name and version.
 
-But things get quite a lot more complicated in the real world. Modern applications are often built with dozens (or even hundreds) of libraries, and each of those can be built with any number of libraries themselves. Resolving all of the versions across all of the dependencies is not a trivial (for example, see [Microsoft's NuGet Package Dependency Documentation](https://docs.microsoft.com/en-us/nuget/concepts/dependency-resolution)), and the results are often different, depending on what library packages are available at any given time.  This means, the actual libraries -- which make up the bulk of the shipped code in any given application -- may change by simply rebuilding the application; even if you don't change a single line of your own code.
-
-This is where ProGet's Package Consumer feature comes in. After building your application (and resolving all of those complicated dependencies), ProGet's [pgscan tool](#pgscan) will scan the build output, search for the specific library package versions consumed by the application, then publish that data to ProGet, along with your application's name and version.
-
-As a library author, this gives you invaluable insight into which specific applications or components versions are consuming specific versions of your library. If you discover a critical bug or security vulnerability in your library, you can quickly identify the consumers and fix them or notify the responsible parties. Or, if no one is consuming the bad version of your library, you can simply delete it; no need to keep around a potentially buggy or dangerous version.
+This gives you, the package author, invaluable insight into which specific versions of applications or components are consuming specific versions of your packages. If you discover a critical bug or security vulnerability, you can quickly identify the consumers and fix them or notify responsible parties, or simply delete it if it's not in use.
 
 ### Automatically Scan with pgscan {#pgscan data-title="Automatically Scan with pgscan"}
 
-[pgscan](https://github.com/Inedo/pgscan) is a simple open-source command-line tool for publishing dependencies used by a package when it is built.
+[pgscan](https://github.com/Inedo/pgscan) is a simple, open-source, command-line tool for publishing dependencies used by a package when it is built.
 
+### Viewing Consumers {#view-consumers data-title="Viewing Consumers"}
+
+Package consumers are listed under the Usage & Statistics tab for the package. Note that those with ProGet Free licenses can only add these records manually.
 
 #### Using pgscan for .NET applications
 
-It can be trivially added to an OtterScript plan in BuildMaster to publish this information:
+pgscan can be added to an OtterScript plan in BuildMaster to publish this information:
 
     # Build MyLibrary
     DotNet::Build MyLibrary.csproj
