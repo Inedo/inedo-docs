@@ -29,18 +29,9 @@ With the Inedo SDK, you can create your own ProGet extension. Check out the foll
 {.docs}
 - [Inedo SDK Overview](/docs/various/inedo-sdk/the-sdk)
 - [Creating an Extension using the SDK](/docs/various/inedo-sdk/creating)
+- Infragistics' example: [Using ProGet: Package Level Filtering for Infragistics Customers](https://www.infragistics.com/community/blogs/b/infragistics/posts/using-project-package-level-filtering-for-infragistics-customers)
 
-### Extensions in ProGet v4
-
-If you'd like to create an extension that supports ProGet 4.8 or earlier, you'll need to use the ProGet SDK. Although extensions created with the ProGet SDK are not compatible with ProGet 5.0 and later, they are managed in the same way (under Admin > Extensions).
-
-]Creating an extension is quite similar too: just create a .NET 4.5 project that references the [Inedo.ProGet.SDK](/packages/Inedo.ProGet.SDK)NuGet package from nuget.org, and implement the desired extensibility points [PackageStore](/support/sdk-reference/proget/Inedo.ProGet.Extensibility.PackageStores/PackageStore), [PackageFilter](/support/sdk-reference/proget/Inedo.ProGet.Extensibility.PackageFilters/PackageFilter), or [UserDirectoryBase](/support/sdk-reference/proget/Inedo.ProGet.Extensibility.UserDirectories/UserDirectoryBase).
-
-See the [ProGet v4 SDK Reference](/support/sdk-reference/proget) and the [Sample ProGet v4 Extension](https://github.com/Inedo/SampleProGetExtension) for more information on how these extensibility points are used.
-
-To deploy the extension to ProGet v4, add the compiled extension .dll to a zip file of the same name, with the extension .progetx. Note that the .progetx file must have the same file name as the primary assembly it contains; for example, MyExtension.progetx must contain MyExtension.dll.
-
-You can verify that your extension has loaded correctly by viewing the Extensions Overview page from within the ProGet v4 Administration section. From there you will see all of the extensions that are loaded in ProGet v4 and the services they provide.
+To install your custom extension, follow the [Offline Extension Installation](#offline-install) steps.
 
 ## Manual Installation {#manual-install data-title="Manual Installation"}
 
@@ -50,7 +41,7 @@ For installations that are restricted from accessing the internet, or if you wis
 
 If your product installation can access the internet (specifically the https://proget.inedo.com/upack/Extensions URL), simply navigate to the *Admin* > *Extensions* page to browse and install the latest available extension versions.
 
-### Offline or Previous Version Extension Installation
+### Offline or Previous Version Extension Installation {#offline-install}
 
 1. Download the desired version of the extension from the public ProGet feed
 2. Copy the extension file (e.g. `Sonatype.upack`) to the extensions path. Visit the *Admin* > *Advanced Settings* page within ProGet to determine where extensions are stored by examining the `Extensions.ExtensionsPath` setting.
