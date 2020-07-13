@@ -11,6 +11,9 @@ The Inedo Hub is primarily used to install, update, and otherwise service applic
 
 The Inedo Hub is itself a lightweight installable Windows app. Currently, it can be downloaded from the [ProGet download page](https://inedo.com/proget/download) as a small executable file that downloads and installs the latest version of the hub when you execute it.
 
+<iframe width="600" height="337" src="https://www.youtube.com/embed/yv7C-yrz1_E" frameborder="0" allowfullscreen="true"></iframe>
+
+
 ## Installation {#installation data-title="Installation"}
 
 All products require an instance of SQL Server (any version of SQL Server currently supported by Microsoft may be used). The Hub can download and install a SQL Express instance – if this option is selected, an “Inedo” instance of SQL Express is installed (if the Inedo instance is already present on the local machine, that will be used and SQL Express will not be downloaded and installed again). If a connection string is supplied, the Hub must have permission to create and modify databases.
