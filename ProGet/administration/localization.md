@@ -1,7 +1,7 @@
 ---
 title: Localization
 subtitle: Localization in ProGet
-sequence: 500
+sequence: 600
 keywords: proget, administration, localization, translations
 ---
 
