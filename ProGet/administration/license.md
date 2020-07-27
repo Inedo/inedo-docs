@@ -18,8 +18,8 @@ ProGet is licensed *per installation* on an annual basis and has additional rest
 | [Deployment Records](/docs/proget/advanced/package-promotion#deployment-records)                                 | ✔ | ✔ | ✔ |
 | [Connectors to Third-Party Feeds](#connector-limitations)                                                                         | ✔ | ✔ | ✔ |
 | [Connectors to Other ProGet Instances](#connector-limitations)                                                                  |   | ✔ | ✔ |
-| [License Scanning and Blocking](/docs/proget/compliance/license-scanning)                                        |    | ✔ | ✔ |
 | [Connector Filtering](/docs/proget/core-concepts/feeds/connectors#connector-filters)                             |    | ✔ | ✔ |
+| [License Detection and Blocking](/docs/proget/compliance/license-detection)                                        |    | ✔ | ✔ |
 | [Security and Access Controls](/docs/proget/administration/security)                                             |    | ✔ | ✔ |
 | [Active Directory Integration](/docs/various/ldap/ldap-active-directory)                                         |    | ✔ | ✔ |
 | [Retention Rules](/docs/proget/administration/retention-rules)                                                   |    | ✔ | ✔ |
