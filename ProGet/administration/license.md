@@ -43,9 +43,9 @@ For more information on License Key Management and Activation, visit the shared 
 
 *The following limitations are additional to the ones listed in the table above.*
 
-### Client-side Feed Aggegation
+### Client-side Feed Aggregation
 
-Client-side feed aggregation in this context is defined as adding multiple package sources *of the same feed type* configured in a client tool, IDE, or by a build server. While ProGet users are unlimited by default license terms, developers **must not** aggregate feeds from more than one ProGet instance if *any* of them are free edition and used in a production environment. Developers **may** aggreggate feeds from more than one instance even if one of the instances is a free edition for **local** testing purposes, such as: testing/creating packages, developing against the Inedo SDK, or experimenting with any of the [ProGet APIs](/docs/proget/reference/api). However, using a free edition instance in a testing or staging environment is not permitted and each environment would require its own separate license.
+Client-side feed aggregation in this context is defined as adding multiple package sources *of the same feed type* configured in a client tool, IDE, or by a build server. While ProGet users are unlimited by default license terms, developers **must not** aggregate feeds from more than one ProGet instance if *any* of them are free edition and used in a production environment. Developers **may** aggregate feeds from more than one instance even if one of the instances is a free edition for **local** testing purposes, such as: testing/creating packages, developing against the Inedo SDK, or experimenting with any of the [ProGet APIs](/docs/proget/reference/api). However, using a free edition instance in a testing or staging environment is not permitted and each environment would require its own separate license.
 
 ### Connector Limitations
 
