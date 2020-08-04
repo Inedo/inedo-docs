@@ -1,11 +1,11 @@
 ---
-title: Linux Installation Guide
+title: Linux and Docker Installation Guide
 sequence: 100
 show-headings-in-nav: true
-keywords: proget, installation, linux
+keywords: proget, installation, linux, docker
 ---
 
-ProGet for Linux is available using our official Docker image.
+ProGet for Linux is available using our official Docker image. This set-up guide will also help you prepare to use Docker with ProGet, even on Windows.
 
 ## Prerequisites {#prerequisites data-title="Prerequisites"}
 
