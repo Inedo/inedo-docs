@@ -87,11 +87,10 @@ docker run -d -v proget-packages:/var/proget/packages -p 80:80 --net=proget \
             </td>
         </tr>
         <tr>
-            <td style="width: 400px;"><code>-e SQL_CONNECTION_STRING=...</code></td>
+            <td style="width: 400px;"><code>-e</code></td>
             <td>
-                The connection string for SQL Server. The value specified in the example here
-                assumes you are using the <code>proget-sql</code> container. To connect to a
-                different instance, just change this connection string to the appropriate value.
+                This tells docker to pass the proceding environment variables to the container. 
+                For a full list of supported environment variables see below.
             </td>
         </tr>
         <tr>
@@ -125,6 +124,44 @@ docker run -d -v proget-packages:/var/proget/packages -p 80:80 --net=proget \
                 work if there have been no database schema changes.
             </td>
         </tr>
+    </tbody>
+</table>
+
+## Supported envrionment variables
+
+<table style="margin-top: 10px; margin-bottom: 10px;">
+      </tbody>
+        <tr>
+            <td style="width: 400px;"><code>SQL_CONNECTION_STRING</code></td>
+            <td>
+                The connection string for your SQL Server. The value specified in the example here
+                assumes you are using the <code>proget-sql</code> container. To connect to a
+                different instance, just change this connection string to the appropriate value. Enclosed in single quotes
+            </td>
+            <td>
+                  'Data Source=proget-sql; Initial Catalog=ProGet; User ID=sa; Password=‹YourStrong!Passw0rd›'
+            </td>
+       </tr>
+       <tr>
+            <td style="width: 400px;"><code>SQL_CONNECTION_STRING_FILE</code></td>
+            <td>
+                Can be used instead of the connection string above to read the connection string from file location within the container. 
+                This facilitates the use of Docker secrets to prevent passing clear text passwords in a docker stack file.
+                A docker secret must be set first and 'called' within the stack file. 
+            </td>
+            <td>
+                  "/run/secrets/proget_connection_string"
+            </td>
+      </tr>
+      <tr>
+            <td style="width: 400px;"><code>TZ</code></td>
+            <td>
+                Used to specify the timezone of the container. Can be set to any <a href="https://en.wikipedia.org/wiki/List_of_tz_database_time_zones">TZ database name</a>
+            </td>
+            <td>
+                  "America/Denver"
+            </td>
+      </tr>
     </tbody>
 </table>
 
