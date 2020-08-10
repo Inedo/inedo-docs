@@ -5,47 +5,74 @@ sequence: 600
 keywords: proget, administration, localization, translations
 ---
 
-Localization allows for text in ProGet to be translated into different languages. Currently only support for English (en-US), but the Japanese (ja-JP) translations are coming soon.  You can also create custom language translations that can be submitted to Inedo for offical language support.
+Localization allows for ProGet to be translated into your local language. Currently ProGet only supports English (en-US), but the Japanese (ja-JP) languages are coming soon.  You can also submit new language or modifications to existing language to Inedo to be included in ProGet's official language support.
 
-# Changing Your Language{#change-language data-title="Change Your LAnguage"}
+# Changing Your Language{#change-language data-title="Change Your Language"}
 
-By default, ProGet will use the logged in user's current culture (if available) to select a user's language.  You can change this at any time by going to your user settings and selecting a different language.
+By default, ProGet will use the servers current culture to select a user's default language.  You can change this at any time by going to your user preferences and selecting a different language.  You can access your user preferences by clicking on the user icon in the upper right corner and selecting _User Preferences_ from the drop down menu.
+
+*Note: User preferences are currently only available when pre-release features are enabled. Navigate to Administration -> Advanced Settings and enable the `Web.PrereleaseFeaturesEnabled` option.*
 
 # Updating Translations{#updating data-title="Update Translations"}
 
-You can modify existing languages or create a custom language in ProGet.  To modify a system language, you will first need to make a clone of it and deactivate the system language.
+ProGet supports the ability to add a new language or modify an existing language by allowing you to create a custom language.
 
-## Using the Editor {#editor data-title="Using the Editor"}
+::: {.attention .best-practice}
+Custom languages are meant as a temporary means to create/modify languages with the intent to submit them to Inedo so they can be included in our official language support.
+:::
 
-ProGet includes a language editor to change different pieces of text directly in ProGet.  It also allows you to perform different actions on a language like editing translations, activate/deactivate a language, clone a language, and import/export a language as XML.  To use the language editor, navigate to _Administration -> Localization_.
+To create/modify a language, you must:
+1.  [Clone a base language](#clone)
+2.  [Select that language](#change-language) as your language
+3.  Update the translation by one of the following options
+    1.  [Using the language editor](#editor)
+    2.  [Live Dictionary Edit Mode](#edit-mode)
+    3.  [Exporting and importing the language](#export-import)
+4.  [Export](#export-import) the language as an XML file
+5.  [Submit](#new) the XML file to Inedo
 
-### Dictionary Edit Mode {#edit-mode data-titel="Dictionary Edit Mode"}
-
-Dictionary edit mode allows you to change translations on a language while using ProGet.  It will add an edit translation button on any text that can be translated.  You will simply hover over text that looks like {add description} and click edit.  This will then bring up the language editor and focused on the text you would like to change.
-
-To enter Dictionary Edit Mode, navigate to the Language editor and click the `Enter Dictionary Edit Mode` button.  To leave Dictionary Edit Mode, navigate back to the Language Editor and click `Leave Dictionary Edit Mode`.
+*Note: Creating/modifying languages are currently only available when pre-release features are enabled. Navigate to Administration -> Advanced Settings and enable the `Web.PrereleaseFeaturesEnabled` option.*
 
 ## Cloning a Languages{#clone data-title="Clone a Language"}
 
-To clone a language, you will need navigate to the Localization editor by navigating to _Administration -> Localization_ and clicking clone.  To use the newly cloned language, you will need to [activate](#activate-deactivate) the language by clicking the `Activate` button at the top of the page.  If this culture exists on another language, activating this language will deactivate the existing language.
+To clone a language, you will need navigate to _Administration -> Custom Languages_. Find the language you would like to base your translation on and click `clone`.  To use the newly cloned language, you will need to select the language in your [User Preferences](#chang-language).  Only one custom language per culture can exist and it will also take precedence over a system language with the same culture.
+
+## Using the Editor {#editor data-title="Using the Editor"}
+
+ProGet includes a language editor to change different pieces of text directly in ProGet.  To use the language editor, navigate to _Administration -> Custom Languages_ and click on the 'edit' link next to language you would to edit.
+
+_Note: System languages can not be directly edited.  You will first need to [clone](#clone) the language prior to editing it._
+
+### Live Dictionary Edit Mode {#edit-mode data-titel="Dictionary Edit Mode"}
+
+Live dictionary edit mode allows you to change translations on a language while using ProGet. Text that can be translated will have a pencil icon next to it. When you hover over the text, the text will highlight and an `edit` link will appear.  Click on the `edit` link to edit that translation.
+
+To enter Dictionary Edit Mode, open your _User Preferences_ and enable `Live Dictionary Edit Mode`.
+
+_Note: System languages can not be directly edited.  You will first need to [clone](#clone) the language prior to editing it._
 
 ## Exporting and Importing Languages {#export-import data-title="Export/Import"}
 
-You can export a translation as an XML file that can be modified in an editor of choice.  You can then re-import that language XML file back into ProGet to update a language.
+You can export a translation as an XML file that can be modified in your editor of choice.  You can then re-import that language XML file back into ProGet to update a language.
 
-## Activate/Deactivate a Language {#activate-deactivate data-title="Activate/Deactivate"}
+### Export a Language
 
-Languages can be activated and deactivated.  Only one instance of a culture can be activated at a time.  If you try to activate a second instance of a culture, the previously activated culture will be deactivated.
+You can export a language as XML by navigating to _Administration -> Custom Languages_ and clicking the `export` link to the right. 
 
-# Submit New Translation to Inedo {#new data-title="Submit a New Translation"}
+### Import a Language
 
-You can submit new languages to Inedo to be included as a system language.  To do this, first [export the language](#import-export) as an XML file.  Next, navigate to [my.inedo.com](https://my.inedo.com) and open a new support ticket.  Enter the subject as `[New Language] {culture being added}`, enter a brief message, and attach the exported Language XML.
+You can import a language XML by navigating to _Administration -> Custom Languages_ and clicking the `import` button.
 
-# Submit an Update of a Translatiojn to Inedo {#change data-title="Submit a Update of a Translation"}
+## Submit an Update of a Translation to Inedo {#new data-title="Submit a Update of a Translation"}
 
-You can submit an update of a system languages to Inedo.  To do this, first [export the language](#import-export) with the change included as an XML file.  Next, navigate to [my.inedo.com](https://my.inedo.com) and open a new support ticket.  Enter the subject as `[Change Language] {culture being changed}`, enter a brief message including your what is changed, and attach the exported Language XML.
+You can submit a new language or an update of a system languages to Inedo.  To do this, perform the following steps:
+1. [Export the language](#import-export) as an XML file.
+2. [Submit a support ticket](https://my.inedo.com/tickets/new).
+    1. Enter the subject as `[Add Language] {culture being added}` or `[Change Language] {culture being changed}` based on the modification you are submitting.
+    2. Enter a brief message including what you have changed.
+    3. Attach the exported Language XML.
 
-# Upgrades to ProGet and Languages {#updates data-title="Upgrading ProGet"}
+## Upgrades to ProGet and Languages {#updates data-title="Upgrading ProGet"}
 
-When you upgrade ProGet, it will open any custom languages and remove any unused keys in that language.  ProGet always uses the system's en-US based language as a base.  Any keys missing from your custom language will be pulled from the en-US based system language.
+When you upgrade ProGet, there is a chance that language keys have been removed, added, or updated. It is not recommended to use a custom languages long term because of this. Keys that were removed from ProGet will be removed from your custom language next time a change is saved in the language editor (this includes updating values in live dictionary edit mode).   ProGet always uses the en-US system language as a base, any keys missing from your custom language will be pulled from the base language.
 
