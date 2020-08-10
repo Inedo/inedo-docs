@@ -62,7 +62,7 @@ You can export a language as XML by navigating to _Administration -> Custom Lang
 
 You can import a language XML by navigating to _Administration -> Custom Languages_ and clicking the `import` button.
 
-## Submit an Update of a Translation to Inedo {#new data-title="Submit a Update of a Translation"}
+## Submit a Translation to Inedo {#new data-title="Submit a Update of a Translation"}
 
 You can submit a new language or an update of a system languages to Inedo. To do this, perform the following steps:
 1. [Export the language](#import-export) as an XML file.
