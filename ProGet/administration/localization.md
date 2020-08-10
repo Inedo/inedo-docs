@@ -30,7 +30,9 @@ To create/modify a language, you must:
   3. [Exporting and importing the language](#export-import)
 4. When you're happy with your translation, [submit](#new) the XML file to Inedo
 
-*Note: Creating/modifying languages are currently only available when pre-release features are enabled. Navigate to Administration -> Advanced Settings and enable the `Web.PrereleaseFeaturesEnabled` option.*
+_Note: Creating/modifying languages are currently only available when pre-release features are enabled. Navigate to Administration -> Advanced Settings and enable the `Web.PrereleaseFeaturesEnabled` option.__
+
+_Note: This feature is limited to users with Administrator permissions._
 
 ## Cloning a Language {#clone data-title="Cloning a Language"}
 
@@ -49,8 +51,6 @@ Live Dictionary Edit Mode allows you to change translations directly in the UI w
 To enter Live Dictionary Edit Mode, open your _User Preferences_ and enable `Live Dictionary Edit Mode`.
 
 _Note: System languages can not be directly edited. You will first need to [clone](#clone) the language prior to editing it._
-
-_Note: This feature is limited to users with Administrator permissions._
 
 ## Exporting and Importing Languages {#export-import data-title="Export/Import"}
 
