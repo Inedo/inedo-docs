@@ -5,7 +5,7 @@ sequence: 600
 keywords: proget, administration, localization, translations
 ---
 
-Localization allows for ProGet to be translated into your local language. Currently ProGet only supports English (en-US), but Japanese (ja-JP) is coming soon. You can also submit new language or modifications to existing language to Inedo to be included in ProGet's official language support.
+Localization allows for ProGet to be translated into your local language. Currently ProGet only supports English (en-US), but Japanese (ja-JP) is coming soon. You can also submit new language or modifications to existing language to Inedo to be included in ProGet's official language support.  Localization is available starting in ProGet 5.3.9.
 
 # Changing Your Language{#change-language data-title="Change Your Language"}
 
