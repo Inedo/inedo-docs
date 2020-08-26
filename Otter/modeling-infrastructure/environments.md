@@ -24,4 +24,4 @@ You can associate a server with more than one environment, though it's generally
 
 Also, both sets of permissions and restrictions will be applied, and if they overlap (one environment grants some things, while the other denies other things), then that will yield unpredictable and ambiguous behavior.
 
-In addition, when a server is in mutliple environments, then there can be no single environment in context when executing OtterScript against this server. This means that the variable function `$EnvironmentName` will return empty, and variables cannot be resolved. Instead, multiple roles are recommended.
+In addition, when a server is in multiple environments, then there can be no single environment in context when executing OtterScript against this server. This means that the variable function `$EnvironmentName` will return empty, and variables cannot be resolved. Instead, multiple roles are recommended.
