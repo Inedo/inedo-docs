@@ -20,8 +20,8 @@ Environments can have parent environments, which helps with visualization. Privi
 
 ## Multiple Environments per Server {#multiple-environments data-title="Multiple Environments"}
 
-You can associate a server with more than one environment, though it's generally not recommended because it may create unexpected behaviors for other users in your organization.
-
-For example, let's say you configured `APISV` to be in both the `Staging` and `Production` environments. Someone probably would expect that a job that targets production servers to target `APISV` (which Otter would), but they may not want a staging job to target `APISV` since it might already be used in production.
+You can associate a server with more than one environment, though it's generally not recommended because it may create unexpected behaviors for other users in your organization. For example, let's say you configured `APISV` to be in both the `Staging` and `Production` environments. Someone probably would expect that a job that targets production servers to target `APISV` (which Otter would), but they may not want a staging job to target `APISV` since it might already be used in production.
 
 Also, both sets of permissions and restrictions will be applied, and if they overlap (one environment grants some things, while the other denies other things), then that will yield unpredictable and ambiguous behavior.
+
+In addition, when a server is in mutliple environments, then there can be no single environment in context when executing OtterScript against this server. This means that the variable function `$EnvironmentName` will return empty, and variables cannot be resolved. Instead, multiple roles are recommended.
