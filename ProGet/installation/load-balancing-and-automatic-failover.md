@@ -114,4 +114,4 @@ High Availability (HA) ensures that ProGet can function without interruption whe
 
 From any ProGet server, click on the **Configure High Availability Mode** link on the ProGet administration page, then click on the **Enable High Availability Mode** button.
 
-Once enabled, the *Indexing Cluster Health* box on the administration page will replace the *Service Status* box. Clicking on the *More Info* link will display the Indexing Cluster Status page. On this page, you can see the status of every server in your cluster, as well as which server is currently the primary server. If a server is no longer in your cluster, you may delete it by clicking the appropriate red X button.
+Once enabled, the *Indexing Cluster Health* box on the administration page will be shown above the *Service Status* box. Clicking on the *More Info* link will display the Indexing Cluster Status page. On this page, you can see the status of every server in your cluster, as well as which server is currently the primary server. If a server is no longer in your cluster, you may delete it by clicking the appropriate red X button.
