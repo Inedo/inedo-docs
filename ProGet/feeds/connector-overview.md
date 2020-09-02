@@ -85,7 +85,7 @@ Most connectors allow transparent forwarding to the connector URL to query metad
 
 Self-connectors are defined as connectors that refer to the same instance of ProGet. These may be useful to:
 
- - aggreggate feeds specific to different teams or organizations
+ - aggregate feeds specific to different teams or organizations
  - apply a different set of permissions to a feed
  - filter packages from a different feed
 
