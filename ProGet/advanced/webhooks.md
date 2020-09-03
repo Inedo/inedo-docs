@@ -177,7 +177,7 @@ However, if you actually want a `$`-character somewhere in your payload, you'll 
 
 ### Error Handling and Debugging {#error data-title="Error Handling and Debugging"}
 
-ProGet will not wait for a response from the external server to continue. When an error does occur (either from bad HTTP status codes or network-level issues), it will be saved to ProGet's event log.
+ProGet will not wait for a response from the external server to continue. When an error does occur (either from bad HTTP status codes or network-level issues), it will be saved to ProGet's error log.  You can view these errors by navigating to _Administration -> Diagnostics Center_ and then click the `View Messages` button.  There is also a Category filter to only show webhook messages.
 
 Note that, some errors -- such as variables being unable to be replaced, or an invalid URL -- will cause a HTTP request to not be made.
 
