@@ -61,6 +61,13 @@ docker run -d -v proget-packages:/var/proget/packages -p 80:80 --net=proget \
     proget.inedo.com/productimages/inedo/proget:<version>
 ```
 
+::: {.attention .best-practice}
+The `inedo/proget` image is hosted using the Mono runtime. If you'd like to try the new .NET Core based ProGet image, use `inedo/progetcore` instead.
+
+[See our blog article about .NET Core/.NET 5 support for more information.](https://blog.inedo.com/proget-for-.net-core-is-here-and-.net-5-is-coming)
+:::
+
+
 <table style="margin-top: 10px; margin-bottom: 10px;">
     <tbody>
         <tr>
@@ -122,7 +129,8 @@ docker run -d -v proget-packages:/var/proget/packages -p 80:80 --net=proget \
             <td>
                 This is the repository and tag for ProGet. Just replace <code>&lt;version&gt;</code>
                 with the appropriate ProGet release number. Note that downgrades will only
-                work if there have been no database schema changes.
+                work if there have been no database schema changes. As mentioned above, you can use `progetcore`
+                instead of `proget` here if you'd like to use the .NET Core based image.
             </td>
         </tr>
     </tbody>
