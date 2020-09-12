@@ -61,10 +61,14 @@ This is currently [in discussion on the forums](https://forums.inedo.com/topic/2
 
 We've had one request for Chef cookbooks (with connectors to the Chef Supermarket) to date, but we know nothing about the underlying format. Interested? Share your thoughts by starting a thread in our [forums](https://forums.inedo.com/), and we'll link it here.
 
+### Elixir Hex: very limited demand
+
+We've had one request for Elixir Hex packages to date, but we know nothing about Elixir, Hex, or the underlying format. Happy to learn though! Interested? Share your thoughts by starting a thread in our [forums](https://forums.inedo.com/), and we'll link it here.
+
+
 ### Conda (Anaconda) Packages: probably not
 
 We've had some interest in [Conda packages](https://docs.conda.io/en/latest/), and wrote up our thoughts in the community forums.  Please add to [QA#2901](https://forums.inedo.com/topic/2901) to share your thoughts!
-
 
 ### CocoaPods: no actual interest
 
@@ -73,6 +77,8 @@ We've had one customer ask about this as a feature request; after some back-and-
 ### Go: package manager not found
 
 We have a lot of users who use Go, and they've told us there is no "proper" package management solution, so no sense in implementing it. Some use universal packages. 
+
+
 
 ### Other types?
 
