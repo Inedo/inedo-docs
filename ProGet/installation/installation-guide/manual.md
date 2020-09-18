@@ -293,10 +293,13 @@ The following settings within the product that must be configured, their corresp
 |---|---|---| 
 | `Extensions.BuiltInExtensionsPath` | path containing extensions included with the installation package | `C:\Program Files\ProGet\Extensions` |
 | `Extensions.ExtensionsPath` | the disk path where downloaded extensions are stored and loaded from by ProGet | `C:\ProgramData\ProGet\Extensions` |
-| `Extensions.ServiceTempPath` | a temp path where extensions loaded from the extensions path are extracted to and loaded by the ProGet service | `C:\ProgramData\ProGet\ExtensionsTemp\Service` |
-| `Extensions.WebTempPath` | a temp path where extensions loaded from the extensions path are extracted to and loaded by the ProGet Website |  `C:\ProgramData\ProGet\ExtensionsTemp\Web` |
+| `Extensions.UseNewExtensionLoader` | when set, uses `CommonCachePath` instead of `ServiceTempPath` and `WebTempPath` for Extensions | true (checked) |
+| `Extensions.CommonCachePath` | used only when `UseNewExtensionLoader` is true, a temp path where extensions loaded from `ExtensionsPath` are extracted to and loaded by the ProGet service | `C:\ProgramData\ProGet\ExtensionsCache` |
+| `Extensions.ServiceTempPath` | used only when `UseNewExtensionLoader` is false, a temp path where extensions loaded from the extensions path are extracted to and loaded by the ProGet service | `C:\ProgramData\ProGet\ExtensionsTemp\Service` |
+| `Extensions.WebTempPath` | used only when `UseNewExtensionLoader` is false, a temp path where extensions loaded from the extensions path are extracted to and loaded by the ProGet Website |  `C:\ProgramData\ProGet\ExtensionsTemp\Web` |
 | `Extensions.UpdateFeedUrl` | the extensions feed URL, required to browse extensions in the software | `https://proget.inedo.com/upack/Extensions` |
 | `Storage.PackagesRootPath` | base path on disk for ProGet's default package store | `C:\ProgramData\ProGet\Packages` ([more info](#packages-root-path)) |
+
 
 ::: {.attention .technical}
 The directories referenced in the configuration values **must exist** prior to beginning use of ProGet as a package manager - ProGet does not create them for you. If they do not exist, several extensions-related errors will be logged in the Diagnostic Center, and/or packages may be stored on disk in an undefined manner. If the directories did not exist but ProGet was already started, both the IIS application pool and Windows Service must be restarted.
