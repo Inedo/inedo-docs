@@ -135,6 +135,12 @@ You can also get the digest of an image you have locally via `docker inspect -f 
 
 When building, pushing, or pulling an image, the digest is printed near the end of the command output. The build command also supports using `--iidfile` to save the digest to a text file.
 
+## Using ProGet's Docker Registries Behind a Proxy Server {#proxy data-title="Using a Proxy"}
+
+Many users will use a proxy server (like nginx or Apache) to proxy connections with ProGet to add SSL support or help manage incoming connections.  It is also recommended to use a proxy server when using the Docker based version of ProGet.  Sometimes this may cause Docker login issues causing users to not be able to log in.  When using a proxy, you will need to set the `Web.BaseUrl` in ProGet's _Advanced Settings_ to the URL bound to your proxy server.  
+
+When the Docker client attempts to authenticate with ProGet, a request is sent to the `/v2/` URL (i.e. `https://proget.server.com/v2/`).  ProGet will then return a header to tell Docker how to authenticate that looks similar to `WWW-Authenticate: Bearer realm="https://proget.server.com/v2/_auth",service="proget.server.com"`.  You will need to make sure that your proxy server properly sends this header back to the client with the URL of you proxy server in it.
+
 ## Advanced Concepts {#advanced data-title="Advanced Concepts"}
 ### Chunked and Monolithic Uploading
 
