@@ -17,5 +17,5 @@ This is where ProGet's Container Versioning feature comes in. Instead of allowin
 
 - **Informational Tags** are a small set of pre-defined tags (e.g. latest, production, integration) that are defined by ProGet administrators and may be freely used by container publishers. By default, "latest" is the only allowed tag, and list should be kept relatively short.
 
-Container Versioning is available paid versions of ProGet and may be enabled on a registry-by-registry basis. Enabling this will not impact container images stored in the registry; it’s only enforced on tags applied through the API (i.e. tags applied via replicated repositories are not impacted).
+Container Versioning is available paid versions of ProGet and may be enabled on a registry-by-registry basis. Enabling this will not impact container images stored in the registry; it's only enforced on tags applied through the API (i.e. tags applied via replicated repositories are not impacted).
 
