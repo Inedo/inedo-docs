@@ -20,15 +20,42 @@ ProGet lets you define as many Docker registries as you wish. This enables you t
 
 ## Creating and using a Docker Registries in ProGet {#using-registries data-title="Using Docker Registries"}
 
-<div class="attention technical">
-
-![](/resources/images/icons/technical.png)
-
-Docker requires an SSL connection, so you will need to configure ProGet to use IIS rather than its integrated web server, and configure the web site to use SSL (https). See [testing an insecure registry](https://docs.docker.com/registry/insecure/) in the Docker documentation for some help on configuring Docker to use a self-signed certificate.
-
-</div>
-
 To create a Docker registry in ProGet, go to Containers > Create New Docker Registry, then enter a registry name.
+
+:::attention {.technical}
+![](/resources/images/icons/technical.png)
+By default, Docker requires an SSL connection.  You will either need to configure ProGet to use IIS with a valid SSL certificate or configure your Docker client to use an [insecure registry](#insecure).
+:::
+
+### Using an Insecure Registry (HTTP not HTTPS or Self-signed Certificates) {#insecure data-title="Using insecure registries (HTTP or Self-signed)"}
+
+By default, the Docker client requires a Docker registry to use SSL with a valid certificate if not using `localhost:<PORT>` as your URL. This would require ProGet to be setup in IIS with a valid security certificate. If you have ProGet setup using HTTP (in IIS or using the Integrated Web Server) or you are using a self-signed certificate in IIS, you must setup ProGet as an [insecure registry](https://docs.docker.com/registry/insecure/) in your Docker client.
+
+#### HTTP Registries (IIS or Integrated Web Server)
+
+To setup your Docker client to work with a registry using HTTP, you will need to add the registry's base URL name (not including the registry name) to the Docker `daemon.json` file.  If your URL is not using port `80` or does not contain a `.` (like when using only a server name), you will also need to include the port in your URL.
+
+For Example:
+- `"insecure-registries" : ["myregistrydomain.com:80"]`
+- `"insecure-registries" : ["prodserver.inedo.local"]`
+- `"insecure-registries" : ["prodserver:80"]`
+
+An example Docker `daemon.json`:
+
+```
+{
+  "registry-mirrors": [],
+  "insecure-registries": [
+    "myregistrydomain.com:80"
+  ],
+  "debug": false,
+  "experimental": false
+}
+```
+
+#### Self-signed  Certificates
+
+To setup your Docker client to work with a registry using HTTPS with a self-signed certificate, you will need to install those certificates locally.  See Docker's documentation for [using self-signed certificates](https://docs.docker.com/registry/insecure/#use-self-signed-certificates) on how to properly install these certificates.
 
 ### Setting up Docker Client
 
@@ -36,11 +63,35 @@ ProGet supports both token-based authentication (requiring [Docker 1.11.0](https
 
 First, you will need to log in to Docker. To do this, use the following command, where _progetsv1_ is the name of your ProGet server:
 
-    [~]$ docker login progetsv1
+    [~]$ docker login progetsv1:80
 
 Any username and password that work to log in via ProGet's web interface should work using this command. Additionally, the username `api` can be used with an API key as the password.
 
-Docker requires TLS on any domain other than localhost, so the ProGet server must be accessible over HTTPS. Alternatively, the ProGet server name can be added to the Docker daemon's `insecure-registries` setting, but this is not recommended.
+Docker requires TLS on any domain other than localhost, so the ProGet server must be accessible over HTTPS with a valid certificate. Alternatively, the ProGet server can be setup as an [insecure registry](#insecure) using HTTP or HTTPS with a self-signed certificate.
+
+:::attention {.best-practice}
+If your URL is not using port "`80`" or does not contain a "`.`" (i.e. using only a server name), you will also need to include the port in your URL.
+:::
+
+For Example:
+- This will **NOT** work
+   - This URL will tell docker to try and pull from the docker hub
+    ```
+    docker pull prodserver/myimages/dotnet/aspnet:5
+    ```
+- What will work:
+   - This will use the server `prodserver.inedo.local`
+    ```
+    docker pull prodserver.inedo.local/myimages/dotenet/aspnet:5
+    ```
+   - This will use the server `prodserver` over port `80`
+    ```
+    docker push prodserver:80/myimages/dotnet/aspnet:5
+    ```
+   - This will use the server `prodserver` over port `443`
+    ```
+    docker push prodserver:443/myimages/dotnet/aspnet:5
+    ```
 
 Note that the current user must have permission to use Docker. On Linux, this means being a member of the `docker` group or using `sudo` or `su` to switch to the `root` user temporarily. On Windows, the cmd or powershell instance must be started with admin privileges.
 
