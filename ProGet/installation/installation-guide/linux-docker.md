@@ -62,7 +62,7 @@ docker run -d -v proget-packages:/var/proget/packages -p 80:80 --net=proget \
 ```
 
 ::: {.attention .best-practice}
-The `inedo/proget` image is hosted using the Mono runtime. If you'd like to try the new .NET Core based ProGet image, use `inedo/progetcore` instead.
+Since ProGet v5.2.12, the `inedo/proget` image is hosted using the .NET Core runtime. Previously, it was hosted using the Mono runtime. If you encounter issues after upgrading to v5.2.12 or later, try using `inedo/progetmono` instead.
 
 [See our blog article about .NET Core/.NET 5 support for more information.](https://blog.inedo.com/proget-for-.net-core-is-here-and-.net-5-is-coming)
 :::
