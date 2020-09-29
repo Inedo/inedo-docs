@@ -15,7 +15,7 @@ BuildMaster should be backed up frequently, and as a .NET- and SQL Server-based 
 
 You may also back up your [extensions](/docs/buildmaster/reference/extensions) folder, which is stored in the path defined in the Extensions.ExtensionsPath advanced configuration setting. This will make restoring to a new server as easy as possible, in that you'll just need to copy the backup files to the same location on the new server. 
 
-See our guide for [migrating BuildMaster to a server](https://inedo.com/support/kb/1768/migrate-buildmaster-to-a-new-server).
+See our guide for [migrating BuildMaster to a new server](https://inedo.com/support/kb/1768/migrate-buildmaster-to-a-new-server).
 
 ## Database Backup {#database-backup data-title="Database Backup"}
 
