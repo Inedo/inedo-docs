@@ -57,4 +57,4 @@ Teams' message JSON is more complex because they use [Cards](https://docs.micros
 }
 ```
 
-_Note:_ The `$BuildMasterUrl` function is only available in BuildMaster 5.3.14+. Check your functions reference inside of BuildMaster for more information.
+_Note:_ The `$BuildMasterUrl` function is only available in BuildMaster 6.2.21+. Check your functions reference inside of BuildMaster for more information.
