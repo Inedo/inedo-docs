@@ -23,7 +23,7 @@ Teams will create a URL that you must copy and bring it over to your Otter Scrip
 
 ![](/resources/documentation/buildmaster/Teams/TeamsConnectorConfig2.png){.screenshot}
 
-Inside **BuildMaster**, find the Otter Script plan, module, pre-deployment script, or post-deployment script you would like to send the message from. You will then add a new `Post-Http` operation that will post to the URL from above.  For the `TextData` property, you will need to include a [Teams' message JSON](#teams-message-json).  You message JSON can leverage BuildMaster's variables and variable functions in the message.  See the [Otter Script example](#otter-script-example) below.
+Inside **BuildMaster**, find the Otter Script plan, module, pre-deployment script, or post-deployment script you would like to send the message from. You will then add a new `Post-Http` operation that will post to the URL from above.  For the `TextData` property, you will need to include the [Teams message JSON](#teams-message-json).  Your JSON message can leverage BuildMaster's variables and variable functions in the message.  See the [Otter Script example](#otter-script-example) below.
 
 
 ### Example: Otter Script to POST a Message to Microsoft Teams {#otter-script-example}
@@ -45,7 +45,7 @@ Post-Http <URL from Teams WebHook Configuration>
 
 ### Microsoft Teams Message JSON {#teams-message-json}
 
-Teams' message Json is more complex because they use [Cards](https://docs.microsoft.com/en-us/microsoftteams/platform/task-modules-and-cards/cards/cards-reference) and therefore can be tedious to configure. Visit [Microsoft's connectors documentation page]( https://docs.microsoft.com/en-us/outlook/actionable-messages/send-via-connectors) to get some sample syntax, or just test your Teams webhook by copy/pasting this sample syntax we created:
+Teams' message JSON is more complex because they use [Cards](https://docs.microsoft.com/en-us/microsoftteams/platform/task-modules-and-cards/cards/cards-reference) and therefore can be tedious to configure. Visit [Microsoft's connectors documentation page]( https://docs.microsoft.com/en-us/outlook/actionable-messages/send-via-connectors) to get some sample syntax, or just test your Teams webhook by copy/pasting this sample syntax we created:
 
 ```
 {
