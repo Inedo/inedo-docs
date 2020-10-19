@@ -27,7 +27,7 @@ To install ProGet using Docker Compose:
 4.  Create the ProGet database using the docker command
 ```
 docker exec -it proget-sql /opt/mssql-tools/bin/sqlcmd \
-   -S localhost -U SA -P '‹YourStrong!Passw0rd›' \
+   -S localhost -U SA -P '<YourStrong!Passw0rd>' \
    -Q 'CREATE DATABASE [ProGet] COLLATE SQL_Latin1_General_CP1_CI_AS'
 ```
 5. Start the remaining images using `docker compose up -d`
@@ -43,7 +43,7 @@ To upgrade ProGet when setup using Docker Compose:
 
 Docker Compose will handle the difference in image versions and pull the new image, restart the ProGet image, and the new ProGet image will automatically upgrade the database schema upon start of the image.
 
-## Uninstall The ProGet Instance (#uninstall data-title="Uninstall ProGet using Compose")
+## Uninstall The ProGet Instance {#uninstall data-title="Uninstall using Compose"}
 
 To uninstall ProGet when setup using Docker Compose:
 
@@ -54,7 +54,7 @@ This will stop all images listed in your compose file, remove the containers, an
 
 ## An Example Docker Compose configuration file {#example data-title="Example docker-compose.yml"}
 
-When creating your `docker-compose.yml` using this example, you will need to set your SQL password (`‹YourStrong!Passw0rd›`) and the ProGet version (`<ProGet Version>`).  You may also need to update the volumes to meet your environment.
+When creating your `docker-compose.yml` using this example, you will need to set your SQL password (`<YourStrong!Passw0rd>`) and the ProGet version (`<ProGet Version>`).  You may also need to update the volumes to meet your environment.
 
 **Note:** This example specifies the free SQL Express edition. This is adequate for most ProGet installations, but you can use any other edition as well if you have the license for it.
 
@@ -73,7 +73,7 @@ services:
           - proget-sql
     environment:
       ACCEPT_EULA: Y
-      MSSQL_SA_PASSWORD: ‹YourStrong!Passw0rd›
+      MSSQL_SA_PASSWORD: <YourStrong!Passw0rd>
       MSSQL_PID: Express
 # Optional if using persisted storage locations (https://docs.microsoft.com/en-us/sql/linux/sql-server-linux-docker-container-configure?view=sql-server-ver15&pivots=cs1-bash#persist)
 #    volumes:
@@ -85,7 +85,7 @@ services:
     container_name: proget
     restart: unless-stopped
     environment: 
-      SQL_CONNECTION_STRING: Data Source=proget-sql; Initial Catalog=ProGet; User ID=sa; Password=‹YourStrong!Passw0rd›
+      SQL_CONNECTION_STRING: Data Source=proget-sql; Initial Catalog=ProGet; User ID=sa; Password=<YourStrong!Passw0rd>
     ports:
       - "80:80"
     networks:
