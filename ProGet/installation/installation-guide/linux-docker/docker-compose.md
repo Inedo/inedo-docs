@@ -5,7 +5,7 @@ show-headings-in-nav: true
 keywords: proget, installation, linux, docker, docker-compose
 ---
 
-One Docker command manages a single image, but with Docker Compose, one command can manage multilple images. Docker Compose is a tool for defining and running multi-container Docker applications on a single server. Docker Compose leverages YAML-based configuration files to define the settings for an application's services. This tool lets you specify all your settings for multiple images in one file. An entire ProGet installation can be set up using Docker Compose.
+One Docker command manages a single image, but with Docker Compose, one command can manage multilple images. Docker Compose is a tool for defining and running multi-container Docker applications on a single server. Docker Compose leverages YAML-based configuration files to define the settings for multiple images in one file. An entire ProGet installation can be set up using Docker Compose.
 
 ## Prerequisites {#prerequisites data-title="Prerequisites"}
 
