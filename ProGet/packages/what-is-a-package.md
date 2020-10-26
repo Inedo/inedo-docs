@@ -16,8 +16,9 @@ The manifest file included in the package format gives you context on who did wh
 - [Blocked](/docs/proget/compliance/license-detection) from ever entering ProGet (and your environments)
 - [Inspected](/docs/proget/compliance/vulnerabilities) for vulnerabilities using quality controls you define
 
-
-**Packages help you uniformly distribute your applications and components. They have become a unifying concept across DevOps toolchains because packages are built once and deployed consistently across environments. Because of this, you can be certain that what does to production is *exactly* what was tested.** 
+::: {.attention .best-practice}
+Packages help you uniformly distribute your applications and components. They have become a unifying concept across DevOps toolchains because packages are built once and deployed consistently across environments. Because of this, you can be certain that what does to production is *exactly* what was tested.
+:::
 
 Because ProGet is a **self-managed** package repository, every package you store in ProGet stays as private to your organization as you like. And unlike basic solutions like nuget.server, ProGet can support many hundreds of packages in a single instance, even in the free forever version. These packages can be cached copies of third-party open source packages or proprietary first-party packages, and everything in between.
 
