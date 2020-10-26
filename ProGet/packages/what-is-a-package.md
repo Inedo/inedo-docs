@@ -32,7 +32,7 @@ With ProGet, you get much more than just a place to store packages:
 - [Cloud storage](/docs/proget/advanced/cloud-storage)
 - And much more
 
-The rest of this page explains more about what packages are, how to use them, and other commonly asked questions. Looking for a specific package type? Documentation for different package types can be found in the menu to your left.
+The rest of this page explains more about what packages are, how to use them, and other commonly asked questions. Looking for a specific package type? Documentation for different package types can be found in the menu to your left under "Feeds Types & Third-Party Packages."
 
 ## What's inside a package?
 
@@ -40,7 +40,7 @@ There's not a whole lot to a package: It's just a zip file containing the files 
 
 ## How is a package different from an artifact?
 
-Artifacts can be any type of file (e.g., .jar., .war, .dll, .rpm, .zip, .jpg). Artifacts are just files; no manifest data is included. You may have the file that you need, but not the context you may require.
+Artifacts can be any type of file (e.g., .jar., .war, .dll, .rpm, .zip, .jpg). Artifacts are just files; no manifest data is included. You may have the file that you need but not the context you may require.
 
 Packages have a standards-defined format (e.g., NuGet, PyPi, etc.) and include not just the files but the metadata as well.
 
@@ -57,7 +57,7 @@ In addition to the [Universal Package](/docs/proget/reference/universal-package-
 - [Chocolatey (Windows/Machine)](/docs/proget/feeds/chocolatey)
 - [Debian (apt)](/docs/proget/feeds/debian)
 - [Helm (Kubernetes)](/docs/proget/feeds/helm)
-- [PyPi (Python](/docs/proget/feeds/pypi)
+- [PyPi (Python)](/docs/proget/feeds/pypi)
 - [RPM (yum)](/docs/proget/feeds/rpm)
 - [Docker (containers)](/docs/proget/docker/private-registries)
 
@@ -67,7 +67,7 @@ Not seeing the package type you want? We are always looking for input on [other 
 
 Many times, your development will draw on third-party/open-source packages, like NuGet or Chocolatey. To use these packages in ProGet, you'll first create a [feed](/docs/proget/feeds/feed-overview) for that package type. Then add a [connector](/docs/proget/feeds/connector-overview) to your ProGet feed and point ProGet at the correct URL. The feed will then populate with packages from the external source.
 
-You can eliminate time wasted waiting for third-party packages to download by pulling a local copy of the package to ProGet. You can also [cache packages and/or metadata](/docs/proget/feeds/connector-overview#connector-caching) to ensure the packages you need are there when you need them.
+You can eliminate time wasted waiting for third-party packages to download by pulling a local copy of the package to ProGet. You can also [cache packages and/or metadata](/docs/proget/feeds/connector-overview#connector-caching) to ensure the packages you need are available in ProGet when you need them.
 
 ## Creating and Publishing Proprietary Packages {#first-party data-title="Creating and Publishing Packages"}
 
@@ -80,17 +80,15 @@ Once you've created a package, there are four ways to publish it to ProGet for u
 - **Pull from another feed**: pulls a package from another feed of the same package type
 - **Bulk package import/file copy**: imports multiple existing packages at once
 
-For more specific instructions on how to add a package to a feed, while *inside ProGet*, click the Add Package button in the ProGet feed for that package type.
+For more specific instructions on how to add a package to a feed, while *inside ProGet*, click the 'Add Package' button in the ProGet feed for that package type.
 
-If there is a third-party package format designed for your specific case, we recommend you use it. In many cases, however, universal packages provide the best combination of simplicity, utility, and extensibility.
+If there is a third-party package format designed for your specific case, we recommend you use it. In many cases, however, [universal packages](/docs/proget/reference/universal-package-feed-reference) provide the best combination of simplicity, utility, and extensibility.
 
 ## Publishing Your Own Applications as Universal Packages {#universal-packages data-title="Universal Packages"}
 
 The Universal Package format is very simple and can be used to package applications and components built with any technology: ASP.NET websites, NodeJS applications, Windows services, plug-ins for your applications, system configuration scripts, and so on. It's designed for both general-purpose use and as a platform for creating a new proprietary package format. You can also extend a universal package's manifest file with additional metadata (and then search using that metadata).
 
 There are a lot of free and open-source tool options to help you create and publish packages to ProGet, either from your workstation, a build server, or anywhere else.
-
-You can use any of these tools or libraries:
 
 You can use any of these tools or libraries:
 
@@ -108,7 +106,7 @@ You can also upload hand-crafted package files to the ProGet the UI, or simply d
 
 One of the most important aspects of a package is that it is uniquely identifiable using a name and version. This simple, human-readable identification is what makes packages so easy to distribute and consume.
 
-For example, "HDars-API 1.0.4" is version 1.0.4 of HDars-API, which is newer than "HDars-API 1.0.2", older than "HDars-API 1.3.0", and different than "HDars-Web 1.0.4". "HDars-API" by itself is fairly meaningless, because it could refer to any version of HDars-API.
+For example, "HDars-API 1.0.4" is version 1.0.4 of HDars-API, which is newer than "HDars-API 1.0.2," older than "HDars-API 1.3.0," and different than "HDars-Web 1.0.4." "HDars-API" by itself is fairly meaningless, because it could refer to any version of HDars-API.
 
 Universal packages (as well as some third-party packages) use the [SemVer specification](https://semver.org/) to describe the version number.
 
