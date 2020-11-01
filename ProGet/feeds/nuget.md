@@ -87,7 +87,7 @@ https://«proget-server»/nuget/«feed-name»/Packages?$format=json
 **Manually downloading packages from a ProGet feed**
 
 ```
-https://«proget-server»/api/v2/package/«feed-name»/«packageName»/«versionNumber[optional]»
+https://«proget-server»/«feed-name»/«packageName»/«versionNumber[optional]»
 ```
 
 **ODATA package queries**
