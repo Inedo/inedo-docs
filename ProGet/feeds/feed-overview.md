@@ -36,7 +36,7 @@ Some feeds have additional options that impact what is shown in the web user int
 
 * **NuGet package type**: Chocolatey and PowerShellGet both use NuGet packages, and by changing the package type, it changes the entire appearance of the feed
 * **Feed usage**: this option is available in ProGet 5.3 and later, and the options are:
-  * *Free/Open Source packages*; cache and filter source packages from public galleries, scan for vulnerabilities, check licenses, etc. 
+  * *Free/Open Source packages*; cache and filter source packages from public galleries, scan for vulnerabilities, check licenses, etc. **Note:** At least one connector is required before any packages will be displayed.
   * *Private/Internal packages*; publish proprietary/private packages that you build for internal use in your organization 
   * *Validated/promoted packages*; promote packages that meet internal quality standards and are appropriate for production usage
   * *Mixed packages*; host both third-party and packages you create
