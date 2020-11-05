@@ -6,7 +6,7 @@ sequence: 200
 show-subheadings-in-nav: true
 ---
 
-Prerelease versioning is a package-naming best practice. Adding contextual information directly into the package name indicates package quality and prevents production-unready packages from being used in production. [Repackaging](/docs/proget/packages/repackaging/#repackage) -ci or -rc prerelease packages in ProGet ensures that only tested and validated packages move forward for production use.
+Prerelease versioning is a package-naming best practice. Adding contextual information directly into the package name indicates package quality and prevents production-unready packages from being used in production. [Repackaging](#repackage) -ci or -rc prerelease packages in ProGet ensures that only tested and validated packages move forward for production use.
 
 *Example prerelease and stable package versions:*
 
@@ -59,7 +59,7 @@ ProGet allows users to see the repackaging audit trail on the "History" tab of t
 
 These historic audit trails are embedded within the package itself and allows you to easily replicate or promote this package to other feeds while preserving the repackaging history. For Universal packages, the history is embedded in `upack.json`. For NuGet packages, the history is embedded (in the same JSON format) in `.progetRepackagingHistory.json` in the `.nupkg` file.
 
-Note: [This is limited in ProGet Free](/docs/proget/packages/repackaging/#free-limitations/).
+Note: [This is limited in ProGet Free](#free-limitations).
 
 ## Other Repackaging Options {#options data-title="Other Repackaging Options"}
 
