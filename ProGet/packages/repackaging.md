@@ -6,7 +6,7 @@ sequence: 200
 show-subheadings-in-nav: true
 ---
 
-Prerelease versioning is a package-naming best practice. Ddding contextual information directly into the package name indicates package quality and prevents production-unready packages from being used in production. [Repackaging](/docs/proget/packages/repackaging/#repackage) -ci or -rc prerelease packages in ProGet ensures that only tested and validated packages move forward for production use.
+Prerelease versioning is a package-naming best practice. Adding contextual information directly into the package name indicates package quality and prevents production-unready packages from being used in production. [Repackaging](/docs/proget/packages/repackaging/#repackage) -ci or -rc prerelease packages in ProGet ensures that only tested and validated packages move forward for production use.
 
 *Example prerelease and stable package versions:*
 
