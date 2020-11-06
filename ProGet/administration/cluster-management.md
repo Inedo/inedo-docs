@@ -30,6 +30,7 @@ The servers in the cluster section lists which servers and components are includ
 The server table displays:
 - The server name.
 - The operating system and version.
+- The IP address configured on the server.
 - The ProGet components installed on the server. (Web & Service)
 - The health and verification status of each component.
   - The current heartbeat status.
