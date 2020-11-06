@@ -6,11 +6,6 @@ keywords: connectors, filters, licensing
 show-headings-in-nav: true
 ---
 
-<style type="text/css">
-.rubbish td:nth-child(2) { font-size: 12px; }
-.rubbish img { max-width: 635px; }
-</style>
-
 Connectors are at the core of ProGet’s functionality, unlocking most other ProGet features, including [license filters](/docs/proget/compliance/license-detection), [vulnerability scanning and blocking](/docs/proget/compliance/vulnerabilities), [promotion](/docs/proget/packages/package-promotion), and of course using multiple feeds.
 
 Connectors allow ProGet feeds to include packages from an external source, whether it is another ProGet feed, a public gallery like NuGet.org, or another third-party package source like Azure DevOps Packages or [Artifactory](https://inedo.com/proget/proget-vs-jfrog-artifactory).
@@ -26,7 +21,7 @@ ProGet checks connector health once per hour to determine whether a connector UR
 
 ## ProGet Free Edition Limitations {#free-edition-limitations data-title="Limitations in Free"}
 
-ProGet Free may only connect to public repositories (e.g., nuget.org, registry.npmjs.org) or [between feeds in the same ProGet instance](/docs/proget/feeds/connector-overview#self-connectors). 
+ProGet Free may only connect to public repositories (e.g., nuget.org, registry.npmjs.org) or [between feeds in the same ProGet instance](/docs/proget/feeds/connector-overview#self-connectors), but you will not be able to filter unwanted packages for inappropriate licenses, security vulnerabilities, or known-quality.
 
 Connecting to another ProGet instance is not permitted and could result in license violation notifications being displayed on both instances. See [ProGet Free Edition Limitations](/docs/proget/administration/license#proget-free-edition-limitations) for more information about the specific restrictions that apply to connectors. Many ProGet users combine paid and free ProGet licenses to use connectors between different ProGet instances.
 
