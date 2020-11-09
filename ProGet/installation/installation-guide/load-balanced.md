@@ -7,7 +7,7 @@ keywords: proget, installation, load-balanced
 
 ## Overview
 
-This example guide is designed to configure a cluster and its various web servers in a Network Load Balancing (NLB) environment in order to enable the load balancing feature in ProGet. This example guide uses [Microsoft Windows NLB feature](https://docs.microsoft.com/en-us/windows-server/networking/technologies/network-load-balancing) as a load balancer, and all machines in this cluster are VMs, though that is not a strict requirement.
+This example guide is designed to configure a cluster and its various web servers in a Network Load Balancing (NLB) environment in order to enable the load balancing feature in ProGet. This example guide uses [Microsoft Windows NLB feature](https://docs.microsoft.com/en-us/windows-server/networking/technologies/network-load-balancing) as a load balancer, and all machines in this cluster are VMs, though that is not a strict requirement.  You can manage your cluster by using the [cluster management page in ProGet](/docs/proget/administration/cluster-management).
 
 This guide is intended to help you set up your load-balanced or High Availability (HA) installation. ProGet was built to be compatible with any load-balancing platform (see [load balancing and automatic failover](/docs/proget/installation/load-balancing-and-automatic-failover) for more information).
 

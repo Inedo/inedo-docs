@@ -6,7 +6,7 @@ keywords: proget, installation
 show-headings-in-nav: true
 ---
 
-ProGet's distributed architecture allows you to configure ProGet as a server cluster, over any number of servers for both load-balancing and automatic failover purposes, such that one server can take over in the event of any other server failure or outage.
+ProGet's distributed architecture allows you to configure ProGet as a server cluster, over any number of servers for both load-balancing and automatic failover purposes, such that one server can take over in the event of any other server failure or outage. You can manage your cluster by using the [cluster management page in ProGet](/docs/proget/administration/cluster-management).
 ::: {.attention .best-practice}
 This feature is available only in [ProGet Enterprise](https://inedo.com/proget/enterprise/). Compare [features by edition](/docs/proget/administration/license) or [request a quote](https://inedo.com/proget/pricing/request-quote). {.info}
 :::
