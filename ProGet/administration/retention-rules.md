@@ -12,7 +12,7 @@ A ProGet Basic or Enterprise license is currently required to use feed retention
 
 ## Creating Retention Rules {#creating data-title="Creating Retention Rules"}
 
-  Retention rules are configured on a feed-by-feed basis by going to the Manage Feed page, and describing the packages you want to delete.
+  Retention rules are configured on a feed-by-feed basis by going to the Manage Feed page and navigating to the Storage & retention tab, and describing the packages you want to delete.
 
 A rule is comprised of the following options, based on the feed type. When a rule has multiple options selected, only packages that meet ALL of the selected criteria are evaluated for action. See [matching examples](#matching) for more information.
 
@@ -28,6 +28,7 @@ A feed can have multiple rules applied, in this case rules are run in the order 
 | Delete unused versions | All packages except those that have been downloaded in the last N days and with less than Y downloads will be deleted |
 | Delete/keep by package name | Packages with the specified names will either be deleted or not deleted; this field supports [wildcards](#wildcards) |
 | Delete/keep by package version | Packages with the specified versions will either be deleted or not deleted; this field supports [wildcards](#wildcards) |
+|  Delete/keep consumed packages | Packages consumed by other packages can be deleted if not used in other feeds or not deleted if consumed by packages in other feeds |
 
 ### Container rules
 
@@ -38,6 +39,7 @@ A feed can have multiple rules applied, in this case rules are run in the order 
 | Delete unused versions | All images except those that have been downloaded in the last N days and with less than Y downloads will be deleted |
 | Delete/keep by repository name | Images with the specified names will either be deleted or not deleted; this field supports [wildcards](#wildcards) |
 | Delete/keep by image tag | Images with the specified tags will either be deleted or not deleted; this field supports [wildcards](#wildcards) |
+| Delete when all package usage removed | Images are removed when the [container has not been used](/docs/proget/docker/container-scanners) for N days |
 
 *Untagged and tagged images cannot be deleted by the same retention rule.*
 
