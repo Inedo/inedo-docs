@@ -72,6 +72,13 @@ Invoke-WebRequest http://{proget-server}/helm/{feed-name} -Headers @{"AUTHORIZAT
 curl http://{proget-server}/helm/{feed-name} --user <user>:<password> --upload-file <chart-name>-<chart-version>.tgz
 ```
 
+##### What about the  `helm-push` command?
+
+The `helm-push` command comes from a third-party plugin that is designed exclusively to push packages to ChartMusuem (which is a private Helm repository). It is not a "standard", and it's only compatible with ChartMusuem's API, and behind the scenes it appears to be quite complicated. With the other methods, you're just uploading the exact file you specify, and are given a standardized HTTP status code as a response.
+
+The reason it doesn't work with ProGet is that the ChartMusuem repository is a very different product than ProGet; for example, it doesn't have the concept of "Feeds", or even custom URL endpoint points. This means that only a root path like `https://proget.kramerica.corp/` is supported. Even if we could "hack something together" by reverse-engineering and re-implementing the ChartMusuem's API, it will could unexpectedly break as they release new versions of the plug-in and clients.
+
+
 #### Pull From External Repository
 
 If the chart version you would like to install is available in an external Helm repository, use this option.
