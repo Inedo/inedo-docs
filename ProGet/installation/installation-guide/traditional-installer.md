@@ -1,24 +1,22 @@
 ---
 title: Traditional (Legacy) Installer Guide
 sequence: 500
-keywords: proget, installation, legacy, traditional, silent install
 ---
 
 ::: {.attention .best-practice} 
+We are planning to stop shipping legacy installer in 2021.
 For new installations on Windows, we recommend installation using the Inedo Hub. See the [Inedo Hub Installation Guide](/docs/proget/installation/installation-guide) for more information.
 :::
 
-*We are planning to stop shipping legacy installer in 2021*
+For the most convenient way to install ProGet is to use the [Inedo Hub](https://docs.inedo.com/docs/desktophub/overview). It is primarily used to install, update, and otherwise service applications in the Inedo Suit. You can learn more about it on how the InedoHub can help you save time by [reading our guide](https://docs.inedo.com/docs/desktophub/overview).
 
-For the most convenient way to install ProGet is to use the [InedoHub](https://my.inedo.com/downloads). It is primarily used to install, update, and otherwise service applications in the Inedo Suit. You can learn more about it on how the InedoHub can help you save time by reading our [guide](https://docs.inedo.com/docs/desktophub/overview).
+Note that if you have the Inedo Hub installed you will **not** be able to use the traditional installer without first uninstalling the Inedo Hub and any products installed using it.
 
-Please also note that if you have the InedoHub installed you will NOT be able to use the traditional install method without first completely removing the InedoHub and any products installed using it.
+If you require a traditional (legacy) installer for any version of ProGet, you can on the [ProGet All Version](https://my.inedo.com/proget/versions) page, and clicking on the “Traditional Installer” for the version you want. Note that you can use the Inedo Hub to create offline installers for ProGet.
 
-If you require a legacy installer for any version of ProGet, you can on the [ProGet All Version](https://my.inedo.com/proget/versions) page, and clicking on the “Traditional Installer” for the version you want.
+Once you run the installer, you’ll be asked to review and accept our [license agreement](https://inedo.com/proget/license-agreement) before you can use ProGet.
 
-Once you have downloaded and opened the installer, you’ll be asked to review and accept out [license agreement](https://inedo.com/proget/license-agreement) before you can use ProGet
-
-Complete the rest of the installation by selecting each setting appropriate for your system. We have updated our [detailed installation guide](https://docs.inedo.com/docs/proget/installation/installation-guide) to reflect the new streamlined layout of the InedoHub, but the options are still the same.
+Complete the rest of the installation by selecting each setting appropriate for your system. Although the [ProGet installation guide](https://docs.inedo.com/docs/proget/installation/installation-guide) uses the Inedo Hub, the settings are mostly the same.
 
     <h1>ProGet Silent Installation</h1>
     <p>
