@@ -9,7 +9,7 @@ An API key is used to grant programmatic access to ProGet, and allows scripts, t
 
 ### Creating and Managing API Keys {#creating-keys}
 
-To create or manage API keys, go to `Administration` > `API Keys and Access Logs`. You will be presented with a list of API keys in the system, as well as the ability to edit, delete, and create new ones.
+To create or manage API keys, go to `Administration` > `API Keys`. You will be presented with a list of API keys in the system, as well as the ability to edit, delete, and create new ones.
 
 The most important property of an API key is the **Key**. This is an arbitrary string that acts like a password, so make sure to treat it like one. You can set the key value to anything you'd like, or let ProGet auto-generate a value for you.
 
