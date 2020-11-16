@@ -7,12 +7,13 @@ keywords: proget, installation, silent-installation
 {<value>=value}
 ### Table of Contents
 
+- [Introduction](#introduction)
 - [Basic Installation](#basic-installation)
 - [ProGet Silent Upgrade](#proget-silent-upgrade)
 - [ProGet Silent Uninstall](#proget-silent-uninstall)
 - [Customizing Your ProGet Silent Installation](#customizing-your-proget-silent-installation)
 
-##[Intorduction](#introduction)
+## [Introduction](#introduction)
 
 A silent (non-interactive) installation doesn’t display a user interface or ask the user any questions. Instead, the installer uses information from a properties file for this purpose. Silent installations use the Windows command line to run the ProGet installer.
 Note that a Silent installation of ProGet requires the Inedo Hub to be installed. You can use the Inedo Hub to [create an offline installer for ProGet and other Inedo products](https://docs.inedo.com/docs/desktophub/offline).
