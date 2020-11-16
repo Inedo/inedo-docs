@@ -2,9 +2,7 @@
 title: Silent Installation
 sequence: 300
 keywords: proget, installation, silent-installation
-
 ---
-{<value>=value}
 ### Table of Contents
 
 - [Introduction](#introduction)
