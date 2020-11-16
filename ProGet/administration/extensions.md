@@ -9,17 +9,17 @@ Some of ProGet's functionality is delivered through extensions, a type of plugga
 
 ## Built-in and Required Extensions {#built-in data-title="Built-in Extensions"}
 
-ProGet ships with the following extensions: [InedoCore](/den/proget/inedocore), [Amazon](/den/proget/amazon), [Azure](/den/proget/azure), [VorSecurity](/den/proget/vorsecurity), [Whitesource](/den/proget/whitesource).
+ProGet ships with the following extensions: [Inedo.SDK](/docs/various/inedo-sdk/the-sdk), [InedoCore](https://proget.inedo.com/feeds/Extensions/inedox/InedoCore), [Amazon AWS](https://proget.inedo.com/feeds/Extensions/inedox/AWS), and [Azure](https://proget.inedo.com/feeds/Extensions/inedox/Azure).
 
-Although we recommend keeping all of these built-in extensions installed, InedoCore is the only one that's required. When it's not installed, you will receive warnings in the UI, and the software will be missing core functionality. If you've configured cloud storage, or a Whitesource or Vor account, those feeds will be inoperable.
+Although we recommend keeping all of these built-in extensions installed, Inedo.SDK and InedoCore are the only ones that are required. When they are not installed, you will receive warnings in the UI, and the software will be missing core functionality. If you've configured cloud storage those feeds will be inoperable.
 
 ## New Extensions and Updates {#extensions-updates data-title="New Extensions and Updates"}
 
-ProGet will automatically connect to the [inedo.com/den](/den), and notify you of newly available extensions and updates.  You can download and install these from the same extensions overview page.
+ProGet will automatically connect to the [proget.inedo.com/feeds/Extensions](https://proget.inedo.com/feeds/Extensions) feed, and notify you of newly available extensions and updates.  You can download and install these from the same extensions overview page.
 
 :::attention {.analogy}
 
-  A connection to inedo.com is recommended, but not required. If your ProGet instance cannot connect to [inedo.com/den](/den), then you will need to manually install and update extensions.
+  A connection to inedo.com is recommended, but not required. If your ProGet instance cannot connect to [https://proget.inedo.com/feeds/Extensions](https://proget.inedo.com/feeds/Extensions), then you will need to manually install and update extensions.
   :::
 
 ## Creating Your Own Extensions {#creating-extension data-title="Creating your Own Extensions"}
@@ -39,7 +39,7 @@ For installations that are restricted from accessing the internet, or if you wis
 
 ### Default Extension Installation
 
-If your product installation can access the internet (specifically the https://proget.inedo.com/upack/Extensions URL), simply navigate to the *Admin* > *Extensions* page to browse and install the latest available extension versions.
+If your product installation can access the internet (specifically the https://proget.inedo.com/feeds/Extensions URL), simply navigate to the *Admin* > *Extensions* page to browse and install the latest available extension versions.
 
 ### Offline or Previous Version Extension Installation {#offline-install}
 
@@ -55,7 +55,7 @@ If your product installation can access the internet (specifically the https://p
 To access prerelease versions of this extension, you can configure ProGet to use a prerelease extensions feed. To configure your product installation to point to the prerelease feed, visit the *Admin* > *Advanced Settings* page within the product installation and set the `Extensions.UpdateFeedUrl` value to:
 
 ```
-https://proget.inedo.com/upack/PrereleaseExtensions/
+https://proget.inedo.com/feeds/PrereleaseExtensions
 ```
 
-This feed has a connector configured to the default URL (i.e. `https://proget.inedo.com/upack/Extensions`), so if there are no prerelease versions, the latest stable version will also be available.
+This feed has a connector configured to the default URL (i.e. `https://proget.inedo.com/feeds/Extensions`), so if there are no prerelease versions, the latest stable version will also be available.

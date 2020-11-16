@@ -7,7 +7,7 @@ show-headings-in-nav: true
 
 Typical usage of an Inedo product does not require additional configuration to connect with the Inedo Den that serves extensions for our products. What you may not realize is that extensions are served using a [Universal Feed](/docs/upack/feed-api/endpoints).
 
-Because of this, Inedo product administrators can host their own "extension gallery" simply by creating a Universal Feed within ProGet, optionally adding a connector to the Inedo Den https://inedo.com/den/feed, and updating the Extensions.UpdateFeedUrl setting in the Inedo product as desired.
+Because of this, Inedo product administrators can host their own "extension gallery" simply by creating a Universal Feed within ProGet, optionally adding a connector to the Extensions Feed https://proget.inedo.com/feeds/Extensions, and updating the Extensions.UpdateFeedUrl setting in the Inedo product as desired.
 
 ## Why Host a Private Extensions Feed? {#why-host data-title="Why Host a Private Extensions Feed?"}
 
@@ -25,9 +25,9 @@ To create a private extensions feed in ProGet, select *Feeds* > *Create New Feed
 
 ![Creating Private Feed](/resources/documentation/various/creating-custom-feed.png){.screenshot}
 
-## Adding a Connector to the Inedo Den {#adding-connector data-title="Adding a Connector to the Inedo Den"}
+## Adding a Connector to the Extensions Feed {#adding-connector data-title="Adding a Connector to the Inedo Den"}
 
-Once the feed is created, we will add a connector. From the Manage Feed page, select *Feed Connectors* > *Add Connector* >  *Create Connector* to establish a connection to the Inedo Den:
+Once the feed is created, we will add a connector. From the Manage Feed page, select *Feed Connectors* > *Add Connector* >  *Create Connector* to establish a connection to the Extensions Feed:
 
 ![Add Connector to Den](/resources/documentation/various/den-connector.png){.screenshot}
 

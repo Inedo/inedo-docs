@@ -337,7 +337,7 @@ If you do not have a license key yet (or do not know what yours is), you may vie
 
 ## Extensions {#extensions}
 
-While extensions are available in the [Inedo Den](https://inedo.com/den) and our own [public ProGet instance](https://proget.inedo.com/feeds/Extensions), the ProGet installation ships with "frozen" or "locked" versions of the extensions at the time the installer was built.
+While extensions are available in our own [public ProGet instance](https://proget.inedo.com/feeds/Extensions), the ProGet installation ships with "frozen" or "locked" versions of the extensions at the time the installer was built.
 
 Once the `Extensions.BuiltInExtensionsPath` setting is configured to a valid directory, copy the contents of `Extensions/` directory from the installation package into that directory, then restart the application pool and ProGet Windows Service. Any extensions in this path are combined with the extensions managed within the ProGet software (i.e. downloaded from the Administration > Extensions page and stored in the `Extensions.ExtensionsPath` directory), and the "latest" SDK-compatible version (as per semantic versioning rules) is loaded.
 

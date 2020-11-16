@@ -5,7 +5,7 @@ sequence: 300
 keywords: proget, vulnerabilities, license filtering
 ---
 
-The [WhiteSource extension](/den/proget/whitesource) provides a Package Access Rule that will block packages with vulnerabilities, improper licenses, or that don't meet other conditions as defined in your WhiteSource account.
+The [WhiteSource extension](https://proget.inedo.com/feeds/Extensions/inedox/WhiteSource) provides a Package Access Rule that will block packages with vulnerabilities, improper licenses, or that don't meet other conditions as defined in your WhiteSource account.
 
 ## Connecting to WhiteSource {#connecting data-title="Connecting to WhiteSource"}
 
@@ -55,7 +55,7 @@ Once you've added your necessary license-type and vulnerability-severity Policie
 
 ### The WhiteSource Extension in ProGet {#the data-title="The WhiteSource Extension in ProGet"}
 
-The WhiteSource Integration is enabled through an extension. ProGet is shipped with this extension installed. You can navigate to the extensions tab in your instance to confirm the extension is installed. If missing from the installed extension list, you will also be able to install the extension from the [den](/den/all-items).
+The WhiteSource Integration is enabled through an extension. ProGet is shipped with this extension installed. You can navigate to the extensions tab in your instance to confirm the extension is installed. If missing from the installed extension list, you will also be able to install the extension from the [Extension feed](https://proget.inedo.com/feeds/Extensions).
 
 *Admin > Manage Extensions*
 

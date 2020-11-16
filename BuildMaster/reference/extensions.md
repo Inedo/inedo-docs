@@ -14,7 +14,7 @@ BuildMaster ships with three required extensions: *InedoCore*, *Windows*, and *L
 
 ## New Extensions and Updates {#extensions-updates data-title="New Extensions and Updates"}
 
-BuildMaster will automatically connect to the [Inedo Den](/den), and notify you of newly available extensions and updates. You can download and install these from the same extensions overview page.
+BuildMaster will automatically connect to the [Extensions Feed](https://proget.inedo.com/feeds/Extensions), and notify you of newly available extensions and updates. You can download and install these from the same extensions overview page.
 
 ::: {.attention .best-practice}
 A connection to inedo.com is recommended, but not required. If your BuildMaster instance cannot connect to proget.inedo.com, then you will need to [install and update extensions manually](#manual-install).

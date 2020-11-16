@@ -293,8 +293,8 @@ Returns an array of objects representing the specified `entity-type` (feeds, con
     "filters": []
   },
   {
-    "name": "Inedo Den",
-    "url": "https://inedo.com/den/feed",
+    "name": "Inedo",
+    "url": "https://proget.inedo.com/feeds/Extensions",
     "feedType": "ProGet",
     "timeout": 10,
     "metadataCacheEnabled": true,
@@ -413,8 +413,8 @@ Returns a single data object with the name `entity-name` for the specified `enti
 
 ```
 {
-  "name": "Inedo Den",
-  "url": "https://inedo.com/den/feed",
+  "name": "Inedo",
+  "url": "https://proget.inedo.com/feeds/Extensions",
   "feedType": "ProGet",
   "timeout": 10,
   "metadataCacheEnabled": true,

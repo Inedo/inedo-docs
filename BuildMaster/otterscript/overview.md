@@ -11,7 +11,7 @@ While BuildMaster's execution engine is an integral part of BuildMaster itself, 
 
 ## Operations {#operations data-title="Operations"}
 
-Operations are the tasks that the execution engine will run on a server. BuildMaster ships with dozens of [built-in operations](/docs/buildmaster/reference/operations) and you can add more through [BuildMaster Extensions](/docs/buildmaster/reference/extensions), to see a list of all of our extensions head over to the [Inedo Den](/den).
+Operations are the tasks that the execution engine will run on a server. BuildMaster ships with dozens of [built-in operations](/docs/buildmaster/reference/operations) and you can add more through [BuildMaster Extensions](/docs/buildmaster/reference/extensions), to see a list of all of our extensions head over to the [Extensions feed](https://proget.inedo.com/feeds/Extensions).
 
 Some operations are quite simple (Sleep), while others are quite complex (Synchronize Files across Servers). Through a combination of Operations, Scripts, Variables, and Blocks, you will be able to model any plan to deploy an application to an environment.
 
