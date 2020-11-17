@@ -28,54 +28,93 @@ Even with a well-planned security restrictions in one part of a system, users ca
 
 Some of the attributes are denoted with a superscript F, which indicates that they are scopable by feed.
 
-### Admin (Configure ProGet) {#admin data-title="Admin (Configure ProGet)"}
+### Administration
+
+##### Configure ProGet {#admin data-title="Configure ProGet"}
 
 **This attribute is a proxy for all other attributes, and should be only granted to people you intend to be system administrators.** It is a sort of "administrative catch all" that is used to secure pages in the administration section not covered by other attributes, including security, extensions, and all settings.
 
-### Connectors (Manage) {#connectors data-title="Connectors (Manage)"}
+##### Manage Connectors<sup>F</sup> {#connectors data-title="Manage Connectors"}
 
 This allows users to create, edit, and delete connectors. This can provide transitive access to editing feeds that use a connector.
 
-### Scheduled Jobs (View and Manage) {#scheduled data-title="Scheduled Jobs (View and Manage)"}
+##### Manage Feeds<sup>F</sup> {#feeds data-title="Manage Feeds"}
 
-View will allow users to see the result of scheduled jobs. Manage will allow users to manually execute, and also deactivate and change the status of these jobs.
+This allows for full control over the feed, including changing package stores. It is effectively administrative access for the feed, and is a proxy attribute for all other attributes.
 
-### Credentials (Manage and View Passwords) {#credentials data-title="Credentials (Manage and View Passwords)"}
+##### Manage Scheduled Tasks {#manage-scheduled data-title="Manage Scheduled Tasks"}
 
-View Passwords will allow users to view sensitive (encrypted) fields on resource credentials. This attribute primarily exists to allow some users to view credentials only associated with certain environments.
+Manage will allow users to manually execute, and also deactivate and change the status of these jobs.
+
+##### View Scheduled Tasks  {#view-scheduled data-title="ViewScheduled Tasks"}
+
+View will allow users to see the result of scheduled jobs.
+
+### Licenses
+
+##### Manage Licenses {#licenses data-title="Manage Licenses"}
+
+Allows users to create, edit, and delete known license types, as well as define licensing rules on feeds and globally. This is not feed-specific by design; many packages do not use standard SPDX codes, but instead specify a custom URL (often, to their project site or source repository), and it would be practically unusable to not be permitted to define new known license types, or to make known license types a feed-specific setting.
+
+### Credentials
 
 :::attention {.analogy}
 Currently, ProGet only uses Credentials for advanced Active Directory configuration; eventually we will use credentials for connecting username/passwords as well.
 :::
 
+##### Manage Credentials {#credentials data-title="Manage Credentials"}
+
+View Passwords will allow users to view sensitive (encrypted) fields on resource credentials. This attribute primarily exists to allow some users to view credentials only associated with certain environments.
+
+##### View Passwords {#view-passwords data-title="View Passwords"}
+
 Manage will allow users to create, edit, delete credentials, as well as view all sensitive (encrypted) fields. This could provide transitive access to connected systems, so be very careful when granting this.
 
-### Vulnerabilities (Manage) {#vulnerabilities data-title="Vulnerabilities (Manage)"}
+### Vulnerabilities
+
+##### Assess {#vulnerabilities data-title="Assess Vulnerabilities"}
 
 Allows users to create, edit, and delete assessment types, as well as asses vulnerabilities.
 
-### Licenses (Manage) {#licenses data-title="Licenses (Manage)"}
+### Feeds
 
-Allows users to create, edit, and delete known license types, as well as define licensing rules on feeds and globally. This is not feed-specific by design; many packages do not use standard SPDX codes, but instead specify a custom URL (often, to their project site or source repository), and it would be practically unusable to not be permitted to define new known license types, or to make known license types a feed-specific setting.
+These attributes all allow for manipulation of packages in a feed. Generally, you offer Add and Pull to package authors, but restrict Overwrite and Delete access to administrative users; packages are intended to be immutable (and can be automatically purged through retention policies), and giving this access encourages a suboptimal workflow.
 
-### Feeds (View Feed<sup>F</sup> and Download Package<sup>F</sup>) {#feeds data-title="Feeds (View Feed and Download Package)"}
+_Note: Delete with Add privileges are proxy attributes for Overwrite._
 
-These attributes are essentially required for read-only access to a feed. There are some very limited use cases for allowing viewing feed and package metadata, but not allowing packages themselves to be downloaded (or vice versa).
-
-### Feeds (Packages: Add<sup>F</sup> , Pull<sup>F</sup>, Overwrite<sup>F</sup>, and Delete<sup>F</sup>) {#feeds data-title="Feeds (Packages: Add, Pull, Overwrite, Unlist, and Delete)"}
-
-These attributes all allow for manipulation of packages in a feed.
-
-The Add attribute allows for UI- and API-based adding of packages, while the Pull attribute only allows for using the UI's "pull package" function. Granting only Pull may be useful for building a sort of approval workflow for connector packages.
-
-Generally, you offer Add and Pull to package authors, but restrict Overwrite and Delete access to administrative users; packages are intended to be immutable (and can be automatically purged through retention policies), and giving this access encourages a suboptimal workflow.
-
-Note: Delete with Add privileges are proxy attributes for Overwrite.
-
-### Feeds (Accept Package Promotions<sup>F</sup>) {#feeds data-title="Feeds (Accept Package Promotions)"}
+##### Accept Package Promotions<sup>F</sup> {#accept-promotions data-title="Accept Package Promotions"}
 
 This attribute permits promoting a package from another feed (the "source" feed) into the feed this permission applies to. You should also grant View and Download Package permissions on the source feed.
 
-### Feeds (Manage<sup>F</sup>) {#feeds data-title="Feeds (Manage)"}
+##### Add Package <sup>F</sup> {#add-package data-title="Add Package"}
 
-This allows for full control over the feed, including changing package stores. It is effectively administrative access for the feed, and is a proxy attribute for all other attributes.
+The Add attribute allows for UI- and API-based adding of packages.
+
+##### Delete Package <sup>F</sup> {#delete-package data-title="Delete Package"}
+
+The Delete attribute allows for UI- and API-based deleting of packages. 
+
+_Note: Delete with Add privileges are proxy attributes for Overwrite._
+
+##### Download Package <sup>F</sup> {#download-package data-title="Download Package"}
+
+The Download attribute allows for UI- and API-based downloading of packages. This attribute is essentially required for read-only access to a feed. There are some very limited use cases for allowing viewing feed and package metadata, but not allowing packages themselves to be downloaded (or vice versa).
+
+##### Overwrite Package <sup>F</sup> {#overwrite-package data-title="Overwrite Package"}
+
+The Overwrite attribute allows for UI- and API-based overwriting of existing packages. 
+
+_Note: Delete with Add privileges are proxy attributes for Overwrite._
+
+##### Pull Package <sup>F</sup> {#pull-package data-title="Pull Package"}
+
+The Pull attribute only allows for using the UI's "pull package" function. Granting only Pull may be useful for building a sort of approval workflow for connector packages.
+
+##### Unlist Package <sup>F</sup> {#unlist-package data-title="Unlist Package"}
+
+The Unlist attribute allows for UI- unlisting of packages from the Feed and the API.
+
+##### View Package <sup>F</sup> {#view-package data-title="View Package"}
+
+The View attribute allows for UI- and API-based viewing of packages. This attribute is essentially required for read-only access to a feed. There are some very limited use cases for allowing viewing feed and package metadata, but not allowing packages themselves to be downloaded (or vice versa).
+
