@@ -1,12 +1,14 @@
 ﻿---
 title: Security and Access Controls
 sequence: 200
-keywords: proget, packages, chocolatey
+keywords: proget, user, user directory, active directory, log in, authentication
 ---
 
 Security and access control policies are defined by giving principals (users or groups) permission to perform certain tasks in a certain scope (either feed-specific or globally). For example, you can say "The 'HDARS Developers' group may 'Publish Packages' to the 'Dev' feed."
 
-This feature is available in paid and trial ProGet editions.{.info}
+::: {.attention .best-practice}
+Feed-specific scoping is only available in paid and trial ProGet editions.{.info}
+:::
 
 Principals are defined in a user directory, which is either internal (i.e. built-in to ProGet) or external (such as Active Directory and LDAP). This allows you to create a single sign-on experience while letting other members of the organization manage user accounts and group membership.
 
@@ -69,11 +71,12 @@ A user directory is a collection of users and groups that ProGet can query. They
 
 {.docs}
 *   **Built-In** - The default basic user account system used by new installs of ProGet
-*   **LDAP/Single Domain** - Users and groups from an LDAP directory (Active Directory) are used; this can come from multiple domains in an Active Directory forest
+*   **Active Directory (LDAP)** - Users and groups from an LDAP directory (Active Directory) are used; this can come from multiple domains in an Active Directory forest.
+*   [**Hybrid**](#hybrid) - Combine multiple directories into one.
 
 Task permissions and restrictions are associated with a user directory, which means that "bob-smith" from the Built-in directory will not necessarily have the same permissions as "bob-smith" from the Active Directory.
 
-Directories are also exclusive; meaning you can only use one at a time. For this reason, it's important to make sure you will have sufficient administer permissions in ProGet for the user directory you are switching to. If you do accidentally lock yourself out, don't worry; you can easily run the ProGet.Service.exe program, and select the reset to Built-In option.
+Directories are also exclusive; meaning you can only use one at a time. For this reason, it's important to make sure you will have sufficient administer permissions in ProGet for the user directory you are switching to. If you do accidentally lock yourself out, don't worry; you can easily run the ProGet.Service.exe program, and select the reset to Built-In option.  To combine more than one directory together, see the [Hybrid User Directories](#hybrid) information.
 
 ## Built In Directory {#built-in data-title="Built In Directory"}
 
@@ -91,7 +94,7 @@ As of ProGet v5.2.5, privileges may be granted or restricted to the following "c
  - **Authenticated** - all users who have supplied valid login credentials
  - **Anonymous** - all unauthenticated users with network access to the sytem (i.e. have not logged in)
 
-## Hybrid User Directories
+## Hybrid User Directories {#hybrid}
 
 As of ProGet v5.2.6, a hybrid user directory may be used to combine multiple user directories together, resolving principals from one or more existing user directories. This allows ProGet administrators to configure the system such that, for example, user accounts can be defined in ProGet with a fallback to Active Directory.
 
