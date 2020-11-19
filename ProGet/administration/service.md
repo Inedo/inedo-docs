@@ -5,14 +5,16 @@ sequence: 500
 keywords: proget, administration, service
 ---
 
-The ProGet Service is key component of ProGet's [architecture](high-availability), and performs a variety of background tasks such as health checks, replication, and package cleanup. It's a standard Windows Service Application, and may be managed and configured using the [Windows Service Manager](https://msdn.microsoft.com/en-us/library/windows/desktop/ms685141(v=vs.85).aspx) or sc.exe as you see fit. 
+The ProGet Service is key component of ProGet's [architecture](high-availability), and performs a variety of background tasks such as health checks, replication, vulnerability scanning, and package cleanup. It's a standard Windows Service Application, and may be managed and configured using the [Windows Service Manager](https://msdn.microsoft.com/en-us/library/windows/desktop/ms685141(v=vs.85).aspx) or sc.exe as you see fit. 
 
 ## Service Configuration {#configuration data-title="Service Configuration"}
 
 By default, the ProGet Service is named `INEDOPROGETSVC`, runs under the `NetworkService` account, and is granted Read, Write, ListDirectory privileges to the following paths, as defined in Advanced Settings: 
 
 {.docs}
+ -  `Extensions.CommonCachePath`  
  -  `Extensions.ExtensionsPath`
+ -  `Extensions.BuiltInExtensionsPath`
  -  `Extensions.ServiceTempPath`
  -  `Extensions.WebTempPath`
  -  `Storage.PackagesRootPath`
@@ -21,7 +23,7 @@ By default, the ProGet Service is named `INEDOPROGETSVC`, runs under the `Networ
 
 ## Managing the Service from the Web Application
 
-In addition to stopping and starting the ProGet Service, you can see the service's live logs; this may be helpful when diagnosing problems or working with Inedo's support team to track down unexpected behavior or bugs. 
+In addition to stopping, starting, and restarting (on Windows only) the ProGet Service, you can see the service's live logs; this may be helpful when diagnosing problems or working with Inedo's support team to track down unexpected behavior or bugs. On the .NET 5 based Docker image, there is also an option to reload the extensions without the need to restart the service.
 
  - For distributed installations (load balanced / high availability), you'll need to [configure the service messenger](https://docs.inedo.com/docs/proget/installation/installation-guide/service-messenger) to work over a network connection instead of a local pipe.
 
@@ -42,6 +44,9 @@ Task runners run well-defined background jobs, on either a periodic and/or manua
 |**Docker Upload Cleanup**|deletes orphaned partial uploads of Docker blobs; this runs every 16 minutes|
 |**Connector Cache Check**|purges old cached connector metadata and refreshes cached metadata for queries that are frequently used; this runs periodically, as defined by the `Service.MetadataCacheCheckExecuterThrottle` (5 minutes by default)|
 |**Multipart Upload Cleanup**|terminates unfinished multipart asset uploads so that partial files will be deleted during feed cleanup; this runs every 16 minutes|
+|**Package/Container Scanner**|collects information about package/container usage from an external system, as defined by the `Service.PackageContainerScannerThrottle` (60 minutes by default)|
+|**Failover Detection**|when running in a High Availability configuration, detects failover conditions and ensures task runners are running on another server. Configurable on the Cluster Management page (ProGet 5.3.16+)|
+|**Service Heartbeat**|periodically pings the ProGet database to verify connectivity every 5 minutes|
 
 
 ## Scheduled Jobs {#scheduled-jobs data-title="Scheduled Jobs"}
@@ -58,7 +63,24 @@ You cannot create scheduled jobs, but you can disable and change their schedule 
 |**VulnerabilityDownloader**|system|downloads and scans feeds for [vulnerabilities](/docs/proget/compliance/vulnerabilities); default schedule is `0 0 2 * * ?` (nightly at 02:00AM)|
 |**BuildMavenFeedIndex**|feed|generates a `nexus-maven-repository-index.gz` against the associated feed; default schedule is `0 0 2 * * ?` (nightly at 02:00AM)|
 |**FullMavenConnectorIndex** |feed|downloads and processes `nexus-maven-repository-index.gz` from remote connectors for Maven feeds; default schedule is `0 0 2 ? * SUN` (Sundays at 02:00AM)|
-|**FullNpmConnectorIndex** |feed|downloads and processes a full npm index file from remote connectors for npm feeds; default schedule is `0 0 0 ? * SUN` (Sundaysat 12:00AM)|
-|**IncrementalNpmConnectorIndex** |feed|downloads and processes an incremental npm index file from remote connectors for npm feeds; default schedule is `0 0 0 ? * MON-SAT` (Monday-Saturday at 12:00AM)|
+|**DockerGarbageCollection**|system|cleans up orphaned bobs and multipart uploads; default schedule is `0 0 0 * * ?` (nightly at 12:00AM)|
 
 You can stagger these jobs as needed during off-peak hours to ensure minimal disruption, or even disable them and run them manually.
+
+## ProGet.Service.exe CLI
+
+The `ProGet.Service.exe` also contains a command line interface (CLI) to reset the admin account, manage the integrated web server, manually install the service, and can be run interactively for debugging purposes.
+
+The CLI commands are:
+
+| Command | Description |
+| --- | --- | --- |
+| run | Runs the ProGet service and/or the ProGet web server interactively. |
+| install | Installs the ProGet service as a Windows service. |
+| installweb | Installs the ProGet integrated web server as a Windows service. |
+| uninstall | Uninstalls the ProGet Windows service. |
+| uninstallweb | Uninstalls the Otter integrated web server Windows service. |
+| listreservations | Displays the URL reservations in the system. |
+| reserveurls | Reserves one or more URLs with HTTP.SYS. |
+| deletereservations | Deletes one or more URL reservations. |
+| resetadminpassword | Switches to the built-in user directory and changes the Admin account password to "Admin". |
