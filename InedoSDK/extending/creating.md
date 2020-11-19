@@ -17,7 +17,12 @@ This documentation will assume you're using Visual Studio and NuGet to create an
 
 ## Creating the Project {#creating-project data-title="Creating the Project"}
 
-First, create a new class library project in Visual Studio, and target .NET 4.5.2. Use NuGet to add a reference to the **Inedo.SDK** package.
+First, create a new class library project in Visual Studio, and select the appropriate target based on the edition you want to build an extension for:
+
+ * Windows edition (.NET Framework 4.5.2)
+ * Linux (Docker)  edition (.NET 5)
+
+Then, use NuGet to add a reference to the **Inedo.SDK** package.
 
 :::attention{.best-practice}
 ![](/resources/images/icons/best-practices.png)
@@ -95,3 +100,37 @@ Note that the `_inedoSdkVersion` and `_inedoProducts` properties are only used f
 ## Verifying and Testing the Extension {#verifying-testing data-title="Verifying and Testing the Extension"}
 
 On the Admin > Extensions page, you should now see your custom extension. If you click on it, you will be shown all the types that are loaded by the product. These types should appear in the appropriate parts of the software.
+
+## Multi-targeted Extensions {#multi-targeting data-title="Multi-targeted Extensions"}
+
+Starting with Inedo SDK 1.9, many of our own extensions are "multi-targeted", which means that they will work in both the Windows edition (.NET Framework 4.5.2) and the cross-platform edition (.NET 5+) of our products. 
+
+We don't recommend this for your own extensions, as you likely won't be running both editions in your organization at the same time, and building multi-targeted extensions adds complexity.
+
+To multi-target an extension, simply package the built outputs for each edition into the `net452` and `.net5` folders under the root path:
+
+```
+  /package/
+     /net452 
+        /MyExample.dll
+        /SomeLibrary.dll
+     /.net5
+        /MyExample.dll
+        /SomeLibrary.dll
+
+  /upack.json
+```
+
+If those folders exist when the extension is unpackaged, then the appropriate folder will be used instead of the root folder. 
+
+You can also add a `_targetFrameworks` array to the metadata file, which will be used to filter what's shown on the Extensions page.
+
+```
+{
+  "group": "inedox",
+  "name": "MyExample",
+  "version": "1.0.1",
+  "_inedoSdkVersion": "1.9.0",
+  "_inedoProducts": [ "ProGet" ],
+  "_targetFrameworks":["net452",".net5"]
+}
