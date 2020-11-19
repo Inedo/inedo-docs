@@ -43,7 +43,7 @@ If your product installation can access the internet (specifically the https://p
 
 ### Offline or Previous Version Extension Installation {#offline-install}
 
-1. Download the desired version of the extension from the public ProGet feed
+1. Download the desired version of the extension from the public ProGet feed. _Note: The public ProGet feed will include the version in the filename. You will need to remove that version in step 3. For example, `InedoCore-1.7.11.upack` will need to be `InedoCore.upack`._
 2. Copy the extension file (e.g. `Sonatype.upack`) to the extensions path. Visit the *Admin* > *Advanced Settings* page within ProGet to determine where extensions are stored by examining the `Extensions.ExtensionsPath` setting.
 3. Ensure the file name follows the format `<extension-name>.upack` in the extensions directory, and that no other files with the same name exist in that directory, even with a different extension. For example, make sure to delete an existing `Windows.inedox` file if you are installing `Windows.upack`
 4. Restart ProGet's Windows service (INEDOPROGETSVC): *Admin* > *Service* > click *Restart*
