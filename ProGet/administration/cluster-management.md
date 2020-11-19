@@ -5,7 +5,7 @@ sequence: 550
 keywords: proget, administration, ha, high availability, load balancing, automatic failover, failover
 ---
 
-Cluster Management allows you to monitor your ProGet server components configured for [load balancing and automatic failover](/docs/proget/installation/load-balancing-and-automatic-failover).  Starting in ProGet 5.3.16 you cane manage your ProGet cluster from a single page in ProGet by navigating to _Administation -> ProGet Cluster Overview -> More Info_. 
+Cluster Management allows you to monitor your ProGet server components configured for [load balancing and automatic failover](/docs/proget/installation/load-balancing-and-automatic-failover).  Starting in ProGet 5.3.16 you can manage your ProGet cluster from a single page in ProGet by navigating to _Administation -> ProGet Cluster Overview -> More Info_. 
 
 ::: {.attention .best-practice}
 This feature is available only in [ProGet Enterprise](https://inedo.com/proget/enterprise/). Compare [features by edition](/docs/proget/administration/license) or [request a quote](https://inedo.com/proget/pricing/request-quote). {.info}
