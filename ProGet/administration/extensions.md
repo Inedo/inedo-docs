@@ -19,7 +19,7 @@ ProGet will automatically connect to the [proget.inedo.com/feeds/Extensions](htt
 
 :::attention {.analogy}
 
-  A connection to inedo.com is recommended, but not required. If your ProGet instance cannot connect to [https://proget.inedo.com/feeds/Extensions](https://proget.inedo.com/feeds/Extensions), then you will need to manually install and update extensions.
+  A connection to inedo.com is recommended, but not required. If your ProGet instance cannot connect to [https://proget.inedo.com/upack/Extensions](https://proget.inedo.com/feeds/Extensions), then you will need to manually install and update extensions.
   :::
 
 ## Creating Your Own Extensions {#creating-extension data-title="Creating your Own Extensions"}
@@ -39,7 +39,7 @@ For installations that are restricted from accessing the internet, or if you wis
 
 ### Default Extension Installation
 
-If your product installation can access the internet (specifically the https://proget.inedo.com/feeds/Extensions URL), simply navigate to the *Admin* > *Extensions* page to browse and install the latest available extension versions.
+If your product installation can access the internet (specifically the https://proget.inedo.com/upack/Extensions URL), simply navigate to the *Admin* > *Extensions* page to browse and install the latest available extension versions.
 
 ### Offline or Previous Version Extension Installation {#offline-install}
 
@@ -55,7 +55,7 @@ If your product installation can access the internet (specifically the https://p
 To access prerelease versions of this extension, you can configure ProGet to use a prerelease extensions feed. To configure your product installation to point to the prerelease feed, visit the *Admin* > *Advanced Settings* page within the product installation and set the `Extensions.UpdateFeedUrl` value to:
 
 ```
-https://proget.inedo.com/feeds/PrereleaseExtensions
+https://proget.inedo.com/upack/PrereleaseExtensions
 ```
 
-This feed has a connector configured to the default URL (i.e. `https://proget.inedo.com/feeds/Extensions`), so if there are no prerelease versions, the latest stable version will also be available.
+This feed has a connector configured to the default URL (i.e. `https://proget.inedo.com/upack/Extensions`), so if there are no prerelease versions, the latest stable version will also be available.
