@@ -2,7 +2,6 @@
 title: Package Consumers (Usage Tracking)
 subtitle: Package Consumers
 sequence: 600
-keywords: BuildMaster, manual
 show-headings-in-nav: true
 ---
 
