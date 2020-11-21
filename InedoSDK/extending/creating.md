@@ -80,7 +80,7 @@ You can also package extensions in a [universal package](/docs/proget/core-conce
 You can also specify property named `_inedoProducts` that is an array comprised of:
 
 {.docs}
-- *string* values; `BuildMaster`, `Otter`, `Hedgehog`, or `ProGet`
+- *string* values; `BuildMaster`, `Otter`, or `ProGet`
 - *object* values;  a key/value pair with the product name and a string semantic version, representing the [SDK version compatibility](/docs/inedosdk/versions-release-notes#compatibility-ranges)
 
 For example, the metadata for an assembly named `MyExample.dll` might look like this:
@@ -107,14 +107,14 @@ Starting with Inedo SDK 1.9, many of our own extensions are "multi-targeted", wh
 
 We don't recommend this for your own extensions, as you likely won't be running both editions in your organization at the same time, and building multi-targeted extensions adds complexity.
 
-To multi-target an extension, simply package the built outputs for each edition into the `net452` and `.net5` folders under the root path:
+To multi-target an extension, simply package the built outputs for each edition into the `net452` and `net5.0` folders under the root path:
 
 ```
   /package/
      /net452 
         /MyExample.dll
         /SomeLibrary.dll
-     /.net5
+     /net5.0
         /MyExample.dll
         /SomeLibrary.dll
 
@@ -132,5 +132,5 @@ You can also add a `_targetFrameworks` array to the metadata file, which will be
   "version": "1.0.1",
   "_inedoSdkVersion": "1.9.0",
   "_inedoProducts": [ "ProGet" ],
-  "_targetFrameworks":["net452",".net5"]
+  "_targetFrameworks":["net452","net5.0"]
 }
