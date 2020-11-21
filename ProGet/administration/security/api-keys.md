@@ -7,37 +7,47 @@ keywords: proget, api
 
 An API key is used to grant programmatic access to ProGet, and allows scripts, tools, and other integrations to automate and interact with the system.
 
-### Creating and Managing API Keys {#creating-keys}
+## Creating and Managing API Keys {#creating-keys}
 
 To create or manage API keys, go to `Administration` > `API Keys`. You will be presented with a list of API keys in the system, as well as the ability to edit, delete, and create new ones.
 
+### Create/Edit API Key
+
+#### Key
+
 The most important property of an API key is the **Key**. This is an arbitrary string that acts like a password, so make sure to treat it like one. You can set the key value to anything you'd like, or let ProGet auto-generate a value for you.
+
+#### Desccription
 
 The **Description** field is used for a human-friendly name, and can be used to describe what the key is used for.
 
-### API Key Permissions {#permissions}
+#### API Key Permissions {#permissions}
 
 A key can only be used for the API endpoints that you specify:
 
 {.docs}
-- [Package Promotion API](/docs/proget/reference/api/package-promotion)
-- [Webhook Management API](/docs/proget/reference/api/webhook)
-- [Asset Directory API](/docs/proget/reference/api/asset-directories-api)
+- [Native API](/docs/proget/reference/api#native)
+- [Package Promotion](/docs/proget/reference/api/package-promotion)
+- [Webhooks](/docs/proget/reference/api/webhook)
+- [Repackaging](/docs/proget/reference/api/repackaging.htm)
 - [Feed Management API](/docs/proget/reference/api/feed-management)
 - [Connector Health API](/docs/proget/reference/api/connector-health)
+- [Feed API endpoints](#feeds)
 
 :::attention {.analogy}
 Granting access to the [Native API](/docs/proget/reference/api#native) will effectively allow for full control of the instance.
 :::
 
-You can also specify a "Feed API Username". When configured, the Feed API key will effectively authenticate as the specified user and be restricted to whatever privileges that user has. If no Feed API user is specified, the Feed API key will have permission to perform any feed-scoped privilege.
+#### Impersonate User
 
-### Logging Options
+You can also specify an ["Impersonate User"](#impersonation). When configured, the Feed API key will effectively authenticate as the specified user and be restricted to whatever privileges that user has. If no Feed API user is specified, the Feed API key will have permission to perform any feed-scoped privilege.
+
+#### Logging Options
 
 You can configure an API key to log both the request and the response body of each request. While this is really important for debugging purposes, if you have a lot of large requests, there will be a nontrivial overhead and amount of disk space required.
 
 ## Using API Keys {#usage}
-
+ 
 An API key may be passed to any endpoint (except [Feed API endpoints](#feeds)) in one of four ways, depending on the content type of the expected request:
 
 | Method | Name or Key | Details |
@@ -56,8 +66,13 @@ Although different third-party package formats (NuGet, npm, etc.) have different
 | NuGet | NuGet API key / `X-NUGET-APIKEY` header | this also applies to all NuGet-like feed types; [more info](/docs/proget/feeds/nuget#nuget) |
 | npm | Token Authentication | [more info](/docs/proget/feeds/npm#token) |
 | Ruby Gems | Token Authentication |  |
+| Docker | Basic Authentication | Use `api` as the username and the API key as the password |
 
 However, most clients will not send the API key for operations like listing or pulling packages. In this case, ProGet will issue an authentication challenge, and the client will respond by prompting for a username and password. In this case, you can supply `api` for the username, and your API key for the password.
+
+## Review API Logs
+
+You can review the API access logs by clicking the _Access Logs_ tab or by clicking the _logs_ link to the right of the key.
 
 ### User Impersonation {#impersonation}
 

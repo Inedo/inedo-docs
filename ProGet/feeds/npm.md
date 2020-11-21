@@ -58,11 +58,12 @@ In order to interact with your private registry without using the `npm adduser` 
 - **[Create an API Key](/docs/proget/administration/security/api-keys)** - you can create an API Key in ProGet (Admin > API Key & Access Logs) with Feed Access. you can further restrict this key by associating it to a user you've already given specific permissions
 - **Encode The API Key** - Once the key has been generated you will need to encrypt the key along with the username `api`. This needs to be encoded in base64 format. Your string prior to encoding should be: `api:{APIKEY}` 
 
-Once you have this token you will need set your _auth value with it using npm. It is also recommended that you set always-auth to true.
+Once you have this token you will need set your _auth value with it using npm. It is also recommended that you set always-auth to true and set the email associated with this registry.  
           
 ```
-[~]$ npm config set always-auth=true
-[~]$ npm config set _auth={ENCODEDAPIKEY}
+[~]$ npm config set always-auth true
+[~]$ npm config set _auth {ENCODEDAPIKEY}
+[~]$ npm config set email {email address}
 ```
 
 ### HOWTO: Create a npm API Token
@@ -73,10 +74,44 @@ Next, find a base64 encoder; you can search on Google to find a website that can
 
 From there, you can execute the following NPM commands:
 
-1. Run npm config set always-auth=true
-2. Run npm config set _auth=YXBpOmFwaWtleTEyMzQ1
+1. Run npm config set always-auth true
+2. Run npm config set _auth YXBpOmFwaWtleTEyMzQ1
+2. Run npm config set _auth support@inedo.com
 
 After that, it should work. Remember, `apikey12345` is just a sample value, for illustration purposes; it can be anythying, and should not be the value we use in our documentation.
+
+### Using scoped registries
+
+To use a registries for scoped packages, you would run similar commands normal [token authenticaion][#token], but you will also need to specify the scope and namespace. To do this you will need to run these commands:
+
+- **[Create an API Key](/docs/proget/administration/security/api-keys)** - you can create an API Key in ProGet (Admin > API Key & Access Logs) with Feed Access. you can further restrict this key by associating it to a user you've already given specific permissions
+- **Encode The API Key** - Once the key has been generated you will need to encrypt the key along with the username `api`. This needs to be encoded in base64 format. Your string prior to encoding should be: `api:{APIKEY}` 
+- The namespace is equal to your registry excluding the http: or https:. ex: for `http://proget/npm/private-npm` use `//proget/npm/private-npm`
+
+Once you have this token you will need set your _auth value with it using npm. It is also recommended that you set always-auth to true and set the email associated with this registry.  
+
+```
+[~]$ npm config set {scope}:registry {registry}
+[~]$ npm config set {namespace}:always-auth true
+[~]$ npm config set {namespace}:_auth {ENCODEDAPIKEY}
+[~]$ npm config set {namespace}:email {email address}
+```
+
+#### Scoped Registry Example:
+
+In this example, we will use the following values:
+- Scope: `@inedo` 
+- Registry: `http://proget/npm/private-npm` 
+- API key of `apikey1234`.
+
+First encode the API Key: `api:apikey1234` as YXBpOmFwaWtleTEyMzQ1
+
+Then run:
+1. Run `npm config set @inedo:registry http://proget/npm/private-npm`
+2. Run `npm config set //proget/npm/private-npm:always-auth true`
+2. Run `npm config set //proget/npm/private-npm:_auth YXBpOmFwaWtleTEyMzQ1`
+2. Run `npm config set //proget/npm/private-npm:_auth support@inedo.com`
+
         
 ## Publishing a Package {#publishing data-title="Publishing a Package"}
 
