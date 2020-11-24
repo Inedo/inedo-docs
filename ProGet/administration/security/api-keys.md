@@ -44,7 +44,11 @@ You can also specify an ["Impersonate User"](#impersonation). When configured, t
 
 #### Logging Options
 
-You can configure an API key to log both the request and the response body of each request. While this is really important for debugging purposes, if you have a lot of large requests, there will be a nontrivial overhead and amount of disk space required.
+You can configure an API key to log both the request and the response body of each request. While this is really important for debugging purposes, if you have a lot of large requests, there will be a nontrivial overhead and amount of disk space required.  
+
+:::{.attention .best-practice}
+API Key logging will only log requests and responses made to the ProGet APIs.  Feed APIs will **NOT** log requests.
+:::
 
 ## Using API Keys {#usage}
  
@@ -70,10 +74,6 @@ Although different third-party package formats (NuGet, npm, etc.) have different
 
 However, most clients will not send the API key for operations like listing or pulling packages. In this case, ProGet will issue an authentication challenge, and the client will respond by prompting for a username and password. In this case, you can supply `api` for the username, and your API key for the password.
 
-## Review API Logs
-
-You can review the API access logs by clicking the _Access Logs_ tab or by clicking the _logs_ link to the right of the key.
-
 ### User Impersonation {#impersonation}
 
 API keys may optionally be associated with a user account. Doing so allows for more granular task permissions to be applied to the specific API endpoints to which the key allows access. The supplied user name must match the exact user name of the account it is impersonating, for example: `kharnagy@domain.corp`
@@ -83,3 +83,7 @@ When a user name is omitted, the user is treated as an administrator (also known
 #### Windows Integrated Authentication and API Keys {#integrated-windows-auth}
 
 If you've configured [Windows Integrated Authentication](/docs/various/ldap/integrated-authentication), the client will first need to authenticate with an Active Directory account, which may make API-key based authentication redundant.
+
+## Review API Logs
+
+You can review the API access logs by clicking the _Access Logs_ tab or by clicking the _logs_ link to the right of the key.
