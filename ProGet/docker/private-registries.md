@@ -1,8 +1,7 @@
 ---
-title: Private Docker Registry
+title: Private Docker Registries in ProGet
 subtitle: Private Docker Registry
-sequence: 100
-keywords: proget,feeds,docker,containers
+sequence: 200
 show-headings-in-nav: true
 ---
 

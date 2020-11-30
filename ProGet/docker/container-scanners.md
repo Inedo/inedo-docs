@@ -1,7 +1,6 @@
 ---
 title: Container Usage Scanning
 sequence: 700
-keywords: proget
 subtitle: Package/Container Scanners
 show-headings-in-nav: true
 ---

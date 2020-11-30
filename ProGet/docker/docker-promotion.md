@@ -1,8 +1,7 @@
 ﻿---
 title: Docker Image Promotion
 subtitle:  What is Docker Image Promotion and Why Should I Use It?
-keywords: docker promotion, docker image promotion, image promotion, docker, containers, container, image, images, deployments
-sequence: 400
+sequence: 500
 show-headings-in-nav: true
 ---
 

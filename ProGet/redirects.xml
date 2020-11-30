@@ -45,6 +45,8 @@
   <temporary from="core-concepts/packages#package-promotion" to="/advanced/package-promotion"/>
   
   <temporary from="deploy" to="feeds/nuget" />
+  <temporary from="docker/packages-vs-containers" to="docker/fundamentals" />
+  <temporary from="docker/implementation-details" to="docker/fundamentals/terminology" />
   
   <temporary from="feeds/advanced-feed-settings" to="feed-types/universal" />
   <temporary from="feeds/api-keys" to="reference/api-keys-nuget" />
@@ -120,3 +122,4 @@
   <temporary from="storage/webhooks" to="advanced/webhooks"/>
   
 </redirects>
+

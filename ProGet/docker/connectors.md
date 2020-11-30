@@ -1,7 +1,6 @@
 ---
-title: Connectors
-sequence: 600
-keywords: proget,feeds,docker,connectors
+title: Connectors in Docker Registries
+sequence: 300
 show-headings-in-nav: true
 ---
 

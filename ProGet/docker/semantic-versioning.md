@@ -1,7 +1,6 @@
 ---
-title: Semantic Versioning
-sequence: 500
-keywords: proget,feeds,docker,containers
+title: Semantic Versioning for Containers
+sequence: 400
 show-headings-in-nav: true
 ---
 
