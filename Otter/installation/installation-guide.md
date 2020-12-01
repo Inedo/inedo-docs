@@ -56,7 +56,7 @@ We always sign our installer packages. This signature can be seen when you run t
 
 ![](https://inedo.com/resources/knowledgebase/ProGet-Installation-Guide_E6DE_image_2.png)
 
-We've never had any issues with compromised installers (it's hosted on Amazon S3, which is quite reliable), but it doesn't hurt to make sure the signature is there. See [KB#1113: Anti-malware False Positives, Code Signing, and Safety of Inedo Products](https://inedo.com/support/kb/1113/anti-malware-false-positives-code-signing-and-safety-of-inedo-products) for more information.
+We've never had any issues with compromised installers (it's hosted on Amazon S3, which is quite reliable), but it doesn't hurt to make sure the signature is there. See [KB#1113: Anti-malware False Positives, Code Signing, and Safety of Inedo Products](https://inedo.com/support/kb/1113) for more information.
 
 ## 4. Run the Installer {#run}
 
@@ -96,7 +96,7 @@ Otherwise, you'll need to point to an existing server using a standard SQL Conne
 
 ## 10. Web Server Configuration {#web-server-configuration}
 
-By default, the installer will configure Otter to use its own web server.  This is the easiest to start with, and you can always [switch to IIS](https://inedo.com/support/kb/1013/hosting-through-iis-instead-of-the-integrated-web-server) hosting later.
+By default, the installer will configure Otter to use its own web server.  This is the easiest to start with, and you can always [switch to IIS](https://inedo.com/support/kb/1013) hosting later.
 
 ![Otter Web Server Configuration](/resources/documentation/otter-installation/webserver-configuration-otter.png)
 
@@ -104,7 +104,7 @@ If IIS is installed on the server, you will have the option of installing Otter 
 
 ## 11. User Account {#user-account}
 
-By default, the installer will use the [NetworkService](https://msdn.microsoft.com/en-us/library/windows/desktop/ms684272(v=vs.85).aspx) account to run the [Otter Service](/docs/otter/administration/service) and Web Application. We recommend sticking with this, and [changing the account](https://inedo.com/support/kb/1077/configuring-your-inedo-product-to-run-as-a-windows-domain-account) later if you need to.
+By default, the installer will use the [NetworkService](https://msdn.microsoft.com/en-us/library/windows/desktop/ms684272(v=vs.85).aspx) account to run the [Otter Service](/docs/otter/administration/service) and Web Application. We recommend sticking with this, and [changing the account](https://inedo.com/support/kb/1077) later if you need to.
 
 ![Otter User Account](/resources/documentation/otter-installation/user-account-otter.png)
 
