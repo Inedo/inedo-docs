@@ -43,6 +43,7 @@
   <temporary from="core-concepts/high-availability" to="storage/high-availability" />
   <temporary from="core-concepts/packages#deployment-records" to="/advanced/package-promotion#deployment-records"/>
   <temporary from="core-concepts/packages#package-promotion" to="/advanced/package-promotion"/>
+  <temporary from="core-concepts/packages" to="packages/what-is-a-package"/>
   
   <temporary from="deploy" to="feeds/nuget" />
   <temporary from="docker/packages-vs-containers" to="docker/fundamentals" />
