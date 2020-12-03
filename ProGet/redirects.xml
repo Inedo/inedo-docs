@@ -41,8 +41,6 @@
   <temporary from="core-concepts/feeds" to="feeds/feed-overview" />
   <temporary from="core-concepts/feeds/connectors" to="feeds/connector-overview" />
   <temporary from="core-concepts/high-availability" to="storage/high-availability" />
-  <temporary from="core-concepts/packages#deployment-records" to="/advanced/package-promotion#deployment-records"/>
-  <temporary from="core-concepts/packages#package-promotion" to="/advanced/package-promotion"/>
   <temporary from="core-concepts/packages" to="packages/what-is-a-package"/>
   
   <temporary from="deploy" to="feeds/nuget" />
@@ -67,8 +65,8 @@
   <temporary from="feeds/retention" to="administration/retention-policies" />
   <temporary from="feeds/retention/matching-examples" to="feed-types/universal" />
   <temporary from="feeds/symbol-and-source-server" to="feed-types/nuget/symbol-and-source-server" />
-  <temporary from="feeds/universal" to="core-concepts/packages"/>
-  <temporary from="feeds/universal/romp" to="core-concepts/packages"/>
+  <temporary from="feeds/universal" to="packages/what-is-a-package"/>
+  <temporary from="feeds/universal/romp" to="packages/what-is-a-package"/>
   <temporary from="feed-types" to="core-concepts/feeds" />
   <temporary from="feed-types/bower" to="feeds/bower"/>
   <temporary from="feed-types/chocolatey" to="feeds/chocolatey"/>
@@ -79,7 +77,7 @@
   <temporary from="feed-types/nuget/symbol-and-source-server" to="feeds/nuget/symbol-and-source-server"/>
   <temporary from="feed-types/powershell" to="feeds/powershell"/>
   <temporary from="feed-types/rubygem" to="feeds/rubygem"/>
-  <temporary from="feed-types/universal" to="core-concepts/packages"/>
+  <temporary from="feed-types/universal" to="packages/what-is-a-package"/>
   <temporary from="feed-types/vsix" to="feeds/vsix"/>
   <temporary from="installation/high-availability" to="installation/load-balancing-and-automatic-failover" />
   <temporary from="installation/hub" to="/docs/desktophub/overview" />
@@ -123,4 +121,3 @@
   <temporary from="storage/webhooks" to="advanced/webhooks"/>
   
 </redirects>
-
