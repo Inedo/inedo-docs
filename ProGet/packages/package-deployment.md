@@ -4,9 +4,11 @@ sequence: 400
 show-headings-in-nav: true
 ---
 
-When a package is deployed from a feed using a tool (such as [BuildMaster](buildmaster)) ProGet records information about that deployment, such as the target and the user that performed the deployment.
+The Package Deployments feature records package deployment information (like the target and the user) from tools like [BuildMaster](https://inedo.com/buildmaster/) and OctopusDeploy, giving you a package-centered view of deployments.
 
-![](/resources/documentation/proget/deployment-record.png)
+This feature lets you know precisely which package versions have been deployed when, by whom, using what tool, and so on. This simplifies the auditing process by keeping clear records directly in ProGet. It also helps you find vulnerable servers fast [when a known vulnerability is identified](/docs/proget/compliance/vulnerabilities): The feature in ProGet shows all the servers running that specific package, letting you make quick updates. 
+
+There are no restrictions on this feature in the Free edition of ProGet. Package deployment records can be found, once configured, in the "History" tab on the Package Overview page.
 
 ## Custom Records {#custom-records data-title="Custom Records"}
 
@@ -14,7 +16,7 @@ Consumers of any package type may customize the Feed API GET request with the fo
 
 {.docs}
 
-- **X-ProGet-Deployment-Application** - (Required) the application or tool doing the deployment e.g. NuGet, BuildMaster, Some Custom Tool
+- **X-ProGet-Deployment-Application** - (Required) the application or tool doing the deployment e.g., NuGet, BuildMaster, Some Custom Tool
 - **X-ProGet-Deployment-Description** - (Required) brief summary of deployment
 - **X-ProGet-Deployment-Target** - (Required) string that identifies where the package was installed, typically the server name         
 - **X-ProGet-Deployment-Url** - (Optional) URL that links to more information about the deployment
@@ -23,4 +25,4 @@ Consumers of any package type may customize the Feed API GET request with the fo
 
 ## Package Deployment API {#package-deployment-api data-title="Package Deployment API"}
 
-If you are using a tool other than BuildMaster to deploy your packages, you can use the [Package Deployment API](/docs/proget/reference/api/package-deployment-api) to send package deployment records to ProGet.
+If you are using a tool other than BuildMaster or OctopusDeploy to deploy your packages, you can use the [Package Deployment API](/docs/proget/reference/api/package-deployment-api) to extend this feature in ProGet and add deployment records from other tools.
