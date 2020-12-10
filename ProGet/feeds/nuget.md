@@ -76,6 +76,10 @@ ProGet implements the NuGet ODATA protocol. Because this is a third-party API, w
 - [ODATA Overview](http://www.odata.org/getting-started/basic-tutorial/)
 - [Fun With NuGet Web Api](http://chris.eldredge.io/blog/2013/02/25/fun-with-nuget-rest-api/)
 
+::: {.attention .technical}
+NuGet.org will deprecate V2 ODATA queries on March 9, 2020.  Please see [KB#1800 for how this will affect ProGet](https://inedo.com/support/kb/1800).
+:::
+
 In addition, here are a few common queries you may find helpful:
 
 **Listing all packages of a feed in JSON format**
@@ -105,6 +109,10 @@ https://«proget-server»/nuget/{feed-name}/Packages()?$filter=Id%20eq%20%27«pa
 ### NuGet V3 API {#nuget-v3 data-title="NuGet V3 API"}
 
 Both NuGet.org and the NuGet client tools support two different API protocols: ODATA (v2) and JSON-LD (v3). ProGet 5.3 and later supports both, and earlier versions support only ODATA (v2).
+
+::: {.attention .technical}
+NuGet.org will deprecate V2 ODATA queries on March 9, 2020.  Please see [KB#1800 for how this will affect ProGet](https://inedo.com/support/kb/1800).
+:::
 
 When JSON-LD (v3) is enabled on a NuGet feed, the v3 API URL will be shown on the NuGet feed page, and both ODATA (v2) and JSON-LD (v3) may be used once enabled:
 
