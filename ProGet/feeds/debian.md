@@ -90,16 +90,14 @@ Invoke-WebRequest http://{proget-server}/debian-packages/upload/{feed-name}/{com
 
 ## Technical Limitations  {#limitations data-title="Technical Limitations"}
 
-Please 
-
- - Connectors are not support for Debian feeds
+ - Connectors are not supported for Debian feeds at this time
  - `InRelease` endpoint (i.e. the clear-signed index) is not supported due to issues with the BouncyCastle library generating invalid armored output; if there is a demand for this, we can consider it in a future maintenance release
 
 ### Source Packages {#sourcepackages data-title="Source Packages"}
 
 ProGet does not currently support [Debian source packages](https://wiki.debian.org/Packaging/SourcePackage), and attempting to upload a source package (i.e. if the extension does not equal `*.deb`) will fail. 
 
-We've had one user request that we add support for source packages, for the followign reasons:
+We've had one user request that we add support for source packages, for the following  reasons:
 
 *Source packages can often be useful using the Debian packaging tools (apt, apt-get, aptitude) to download the source package, especially for debugging purposes. Without the source package, one can only get the stack trace but can't actually inspect the code. Additionally, the recommended method from upgrading from one Debian release (Ubuntu 19.10) to the next version (Ubuntu 20.04) is to download all the source packages from the previous repository, and then rebuild them in the new operating system. That is standard best practices for seeding a new apt repository.*
 
