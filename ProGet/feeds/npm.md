@@ -17,7 +17,9 @@ Although the [npm semantic versioning documentation](https://docs.npmjs.com/abou
 
 This appears to be limited to a very small number of packages (such as [@hot-loader/react-dom](https://www.npmjs.com/package/@hot-loader/react-dom); we may change this behavior if it's a continued problem, but please contribute to the discussion at [NPM Connector returns plus "+" in versions](https://forums.inedo.com/topic/2948) on the forums.
 
+### npm audit and Proxying (Experimental feature)
 
+Npm Audit Proxying is an Experimental feature. The npm audit API is undocumented and npm, Inc. does not support third-party implementations. But, ProGet can attempt to forward requests to the audit endpoint to npmjs.org or a connector. This may stop working if npmjs.org changes the API or blocks ProGet's requests. You can configure the proxy URL in ProGet 5.3 by navigating to the `Manage Feed` page on your `npm` feed.
 
 ## Creating an npm Feed {#creating data-title="Creating an npm Feed"}
 
