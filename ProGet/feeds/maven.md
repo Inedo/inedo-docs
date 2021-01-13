@@ -68,3 +68,14 @@ Authentication settings for the maven client is configured in your [settings.xlm
 ### Local Indexing
 
 Maven uses a local Lucene database. This indexing is performed on a schedule. To trigger the index task manually, navigate to `Admin` > `Scheduled Jobs` and select `FullMavenConnectorIndex`. If this connector index is not available, go to `Admin` > `Service` page and trigger the `Scheduled Job Dispatcher.` This will re-configure any missing connector index-scheduled jobs.
+
+### Bulk Importing
+
+ProGet does not currently import drop paths for Maven; the precise reason is complex, but it's ultimately a result of the way Maven is structured (i.e. a file system vs packages), and how files can be added piece-meal. It is something we are considering adding in a future release, however.  Please consider adding to [the existing discussion on our forums](https://forums.inedo.com/topic/3128).
+
+Other users have reported that they've used a process like this for a disk-based repository.
+
+1. Traverse all directories and upload all POM files with a path relative to the root
+2. Traverse all directories again, and upload all non-POM and non-checksum files (like .md5)
+
+There will be errors, particularly if you have invalid POM files or your directory structure doesn't match the required MAVEN convention, so inspect those case-by-case to determine if it matters (like an bad artifact from 5 years ago can probably be ignored).
