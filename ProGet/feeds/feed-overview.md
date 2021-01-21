@@ -35,13 +35,15 @@ When you create a feed, the feed type is fixed. This type defines two things:
 Some feeds have additional options that impact what is shown in the web user interface, such as icons and navigable options. 
 
 * **NuGet package type**: Chocolatey and PowerShellGet both use NuGet packages, and by changing the package type, it changes the entire appearance of the feed
-* **Feed usage**: this option is available in ProGet 5.3 and later, and the options are:
+* **Feed usage**: this option is available in ProGet 5.3 and later, and the options may include:
   * *Free/Open Source packages*; cache and filter source packages from public galleries, scan for vulnerabilities, check licenses, etc. **Note:** At least one connector is required before any packages will be displayed.
   * *Private/Internal packages*; publish proprietary/private packages that you build for internal use in your organization 
   * *Validated/promoted packages*; promote packages that meet internal quality standards and are appropriate for production usage
   * *Mixed packages*; host both third-party and packages you create
 
-We do not recommend using mixed packages, because there are a lot of options that won't be relevant for packages you create (like license filtering).
+Feed usage controls which tabs and messages are displayed in the user interface. For example, "Private/Internal packages" won't display the license filtering options, as you wouldn't create license usage restrictions for your own packages. 
+
+Note that not all feeds have all of these Feed Usage options. Generally speaking, we don't recommend using mixed packages, as it will present all of the user interface options; most of them won't be relevant for packages you create (like license filtering or vulnerability scanning).
 
 ## Configuring Multiple Feeds {#multiple data-title="Configuring Multiple Feeds"}
 
