@@ -72,6 +72,26 @@ Invoke-WebRequest http://{proget-server}/helm/{feed-name} -Headers @{"AUTHORIZAT
 curl http://{proget-server}/helm/{feed-name} --user <user>:<password> --upload-file <chart-name>-<chart-version>.tgz
 ```
 
+### Deleting (Unpublishing) Charts
+
+You can delete (permanently remove) Helm charts from your feed by navigating to the package page and clicking the Delete Package button. This actions requires the `Feeds_DeletePackage` permission attribute.
+
+To programmatically delete a helm chart from your feed, issue a DELETE request to: `http://{proget-server}/helm/{feed-name}/package/{ID}/{VERSION}`
+
+This can be accomplished with the following examples: 
+
+##### PowerShell
+
+```
+Invoke-WebRequest http://{proget-server}/helm/{feed-name}/package/{ID}/{VERSION} -Headers @{"AUTHORIZATION"="Basic " + [System.Convert]::ToBase64String([System.Text.Encoding]::UTF8.GetBytes("{username}:{password}"))} -Method DELETE
+```
+
+##### cURL
+
+```
+curl http://{proget-server}/helm/{feed-name}/package/{ID}/{VERSION} --user <user>:<password> -X DELETE
+```
+
 ##### What about the  `helm-push` command?
 
 The `helm-push` command comes from a third-party plugin that is designed exclusively to push packages to ChartMusuem (which is a private Helm repository). It is not a "standard", and it's only compatible with ChartMusuem's API, and behind the scenes it appears to be quite complicated. With the other methods, you're just uploading the exact file you specify, and are given a standardized HTTP status code as a response.
