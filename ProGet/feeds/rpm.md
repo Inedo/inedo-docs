@@ -84,4 +84,4 @@ Invoke-WebRequest http://{proget-server}/rpm/{feed-name}/ -Credential [System.Ne
 
  - Connectors are not supported
  - GPG signing is currently not supported, but is on our internal roadmap.
-   - If you would like us to prioritize this feature for an upcoming release, please [open a ticket](https://my.inedo.com/tickets/new) or [contact Inedo](https://inedo.com/support).
+   - If you would like us to prioritize this feature for an upcoming release (currently: one user has requested to prioritize this), please [open a ticket](https://my.inedo.com/tickets/new) or [post on the forums](https://forums.inedo.com/).
