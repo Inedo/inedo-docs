@@ -8,7 +8,7 @@ keywords: otter
 is not fully supported. Please visit the [Download](https://inedo.com/otter/download) page to download the installer. {.announcement}
 
 
-These instructions will describe how to manually install each of [Otter's deployable components](/docs/otter/installation/architecture). The manual installation packages for these components can be found on the [All Versions](/otter/versions) page.
+These instructions will describe how to manually install each of [Otter's deployable components](/docs/otter/installation/architecture). The manual installation packages for these components can be found on the [All Versions](https://my.inedo.com/otter/versions) page.
 
 Prior to installation of Otter or an Otter Agent, an Otter "home" directory needs to be created. We recommend `C:\Otter` when installing manually, because `Program Files` tend to have special permissions, and because a number of 3rd-party tools that you may integrate with might have issues with very long path names. Replace any instances of `{Otter.RootDir}` in the following documentation with the actual path you have selected. {.info}
 
@@ -41,7 +41,7 @@ Take note of this encryption key; if you do not set one, then sensitive data wil
 
 ## Database Installation {#database}
 
-1. Create a database named Otter on any SQL Server database server (see [Supported SQL Server editions](/kb/1046){target="_blank"} for more information.)
+1. Create a database named Otter on any SQL Server database server (see [Supported SQL Server editions](https://inedo.com/support/kb/1167){target="_blank"} for more information.)
 2. Unzip `Otter-DbChangeScripts.zip` into any directory and run the executable with the following arguments:
 
     ```
