@@ -70,9 +70,14 @@ Although different third-party package formats (NuGet, npm, etc.) have different
 | NuGet | NuGet API key / `X-NUGET-APIKEY` header | this also applies to all NuGet-like feed types; [more info](/docs/proget/feeds/nuget#nuget) |
 | npm | Token Authentication | [more info](/docs/proget/feeds/npm#token) |
 | Ruby Gems | Token Authentication |  |
-| Docker | Basic Authentication | Use `api` as the username and the API key as the password |
 
-However, most clients will not send the API key for operations like listing or pulling packages. In this case, ProGet will issue an authentication challenge, and the client will respond by prompting for a username and password. In this case, you can supply `api` for the username, and your API key for the password.
+Not all feeds support an API key to be passed in. In this case, you can also use `api` as the username and the API key as the password.
+
+#### API Keys for Pulling/Listing Packages
+
+Most clients will not send the API key for operations like listing or pulling packages. In this case, ProGet will issue an authentication challenge, and the client will respond by prompting for a username and password. In this case, you can supply `api` for the username, and your API key for the password.
+
+
 
 ### User Impersonation {#impersonation}
 
