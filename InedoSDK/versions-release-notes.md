@@ -26,7 +26,7 @@ The below table shows which version of the Inedo SDK is compatible with which ve
 SDK Version           | Minimum Product Version                                               | Maximum Product Version
 ----------------------|----------------------------------------------------------------------------------------------------------------------
 **1.10.✱**            | Otter  3.0.0                                                          | BuildMaster 6.✱<br/>ProGet 5.✱<br/>Otter 3.✱
-**1.9.✱**             | ProGet 5.3.19                                                         | BuildMaster 6.✱<br/>ProGet 5.✱<br/>Otter 2.✱
+**1.9.✱**             | ProGet 5.3.12                                                         | BuildMaster 6.✱<br/>ProGet 5.✱<br/>Otter 2.✱
 **1.8.✱**             | ProGet 5.3.0                                                          | BuildMaster 6.✱<br/>ProGet 5.✱<br/>Otter 2.✱
 **1.7.✱**             | BuildMaster 6.2.0                                                     | BuildMaster 6.✱<br/>ProGet 5.✱<br/>Otter 2.✱
 **1.6.✱**             | BuildMaster 6.1.16                                                    | BuildMaster 6.✱<br/>ProGet 5.✱<br/>Otter 2.✱
