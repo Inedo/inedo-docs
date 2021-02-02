@@ -6,7 +6,7 @@ keywords: inedo, inedo sdk, versions, release notes
 show-headings-in-nav: true
 ---
 
-The Inedo SDK is used to build extensions to Inedo's core products (BuildMaster, ProGet, Hedgehog, Otter) that implement core capabilities or add functionality. As new features are introduced into the core products, new components will be added to the SDK.
+The Inedo SDK is used to build extensions to Inedo's core products (BuildMaster, ProGet,  Otter) that implement core capabilities or add functionality. As new features are introduced into the core products, new components will be added to the SDK.
 
 To keep track of which version of the SDK is compatible with which version of each product:
 
@@ -25,16 +25,18 @@ The below table shows which version of the Inedo SDK is compatible with which ve
 
 SDK Version           | Minimum Product Version                                               | Maximum Product Version
 ----------------------|----------------------------------------------------------------------------------------------------------------------
-**1.0.4**             | BuildMaster 6.0.0<br/>ProGet 5.0.0<br/>Hedgehog 1.0.0<br/>Otter 2.0.0 | BuildMaster 6.✱<br/>ProGet 5.✱<br/>Otter 2.✱
-**1.0.7**             | Otter 2.1.0                                                           | BuildMaster 6.✱<br/>ProGet 5.✱<br/>Otter 2.✱
-**1.1.✱**             | BuildMaster 6.1.0<br/>ProGet 5.1.0<br/>Otter 2.1.0<br/>               | BuildMaster 6.✱<br/>ProGet 5.✱<br/>Otter 2.✱
-**1.2.✱**             | BuildMaster 6.1.7<br/>ProGet 5.2.4<br/>Otter 2.2.2<br/>               | BuildMaster 6.✱<br/>ProGet 5.✱<br/>Otter 2.✱
-**1.3.✱**             | BuildMaster 6.1.10<br/>Otter 2.2.4<br/>                               | BuildMaster 6.✱<br/>ProGet 5.✱<br/>Otter 2.✱
-**1.4.✱**             | BuildMaster 6.1.11<br/>Otter 2.2.5<br/>                               | BuildMaster 6.✱<br/>ProGet 5.✱<br/>Otter 2.✱
-**1.5.✱**             | BuildMaster 6.1.12<br/>Otter 2.2.7                                    | BuildMaster 6.✱<br/>ProGet 5.✱<br/>Otter 2.✱
-**1.6.✱**             | BuildMaster 6.1.16                                                    | BuildMaster 6.✱<br/>ProGet 5.✱<br/>Otter 2.✱
-**1.7.✱**             | BuildMaster 6.2.0                                                     | BuildMaster 6.✱<br/>ProGet 5.✱<br/>Otter 2.✱
+**1.10.✱**            | Otter  3.0.0                                                          | BuildMaster 6.✱<br/>ProGet 5.✱<br/>Otter 3.✱
+**1.9.✱**             | ProGet 5.3.19                                                         | BuildMaster 6.✱<br/>ProGet 5.✱<br/>Otter 2.✱
 **1.8.✱**             | ProGet 5.3.0                                                          | BuildMaster 6.✱<br/>ProGet 5.✱<br/>Otter 2.✱
+**1.7.✱**             | BuildMaster 6.2.0                                                     | BuildMaster 6.✱<br/>ProGet 5.✱<br/>Otter 2.✱
+**1.6.✱**             | BuildMaster 6.1.16                                                    | BuildMaster 6.✱<br/>ProGet 5.✱<br/>Otter 2.✱
+**1.5.✱**             | BuildMaster 6.1.12<br/>Otter 2.2.7                                    | BuildMaster 6.✱<br/>ProGet 5.✱<br/>Otter 2.✱
+**1.4.✱**             | BuildMaster 6.1.11<br/>Otter 2.2.5<br/>                               | BuildMaster 6.✱<br/>ProGet 5.✱<br/>Otter 2.✱
+**1.3.✱**             | BuildMaster 6.1.10<br/>Otter 2.2.4<br/>                               | BuildMaster 6.✱<br/>ProGet 5.✱<br/>Otter 2.✱
+**1.2.✱**             | BuildMaster 6.1.7<br/>ProGet 5.2.4<br/>Otter 2.2.2<br/>               | BuildMaster 6.✱<br/>ProGet 5.✱<br/>Otter 2.✱
+**1.1.✱**             | BuildMaster 6.1.0<br/>ProGet 5.1.0<br/>Otter 2.1.0<br/>               | BuildMaster 6.✱<br/>ProGet 5.✱<br/>Otter 2.✱
+**1.0.7**             | Otter 2.1.0                                                           | BuildMaster 6.✱<br/>ProGet 5.✱<br/>Otter 2.✱
+**1.0.4**             | BuildMaster 6.0.0<br/>ProGet 5.0.0<br/>Otter 2.0.0 | BuildMaster 6.✱<br/>ProGet 5.✱<br/>Otter 2.✱
 
 The table will be expanded as new SDK versions are released.
 
@@ -46,6 +48,6 @@ The version compatibility range is generally specified as a one-part version num
 
 Version Compatibility Ranges are "hard coded" in each product which means that, once a product version ships, the range cannot be changed. This can get a bit inconvenient when extensions are designed to work with multiple products with different ranges.
 
-For example, let's say you have an extension with various components that are shared across your ProGet, Otter, and Hedgehog installations. If a new version of ProGet were to come out that introduces a new feature you wanted to extend, you would need to target a newer version of the Inedo SDK to access that new component. This would then mean you would have to upgrade Otter and Hedgehog (both which, presumably would be compatible with the new Inedo SDK), just so that extension can load.
+For example, let's say you have an extension with various components that are shared across your ProGet, Otter, and BuildMaster installations. If a new version of ProGet were to come out that introduces a new feature you wanted to extend, you would need to target a newer version of the Inedo SDK to access that new component. This would then mean you would have to upgrade Otter and BuildMaster (both which, presumably would be compatible with the new Inedo SDK), just so that extension can load.
 
 To work around this, you can override the version number used for compatibility verification with the [ProductVersionCompatibilityAttribute](https://inedo.com/support/sdk-reference/inedosdk/Inedo.Extensibility/ProductVersionCompatibilityAttribute).   
