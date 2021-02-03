@@ -25,18 +25,20 @@ The below table shows which version of the Inedo SDK is compatible with which ve
 
 SDK Version           | Minimum Product Version                                               | Maximum Product Version
 ----------------------|----------------------------------------------------------------------------------------------------------------------
-**1.10.✱**            | Otter 3.0.0<br/>ProGet 5.3.21                                         | BuildMaster 6.✱<br/>ProGet 5.✱<br/>Otter 3.✱
-**1.9.✱**             | ProGet 5.3.12                                                         | BuildMaster 6.✱<br/>ProGet 5.✱<br/>Otter 2.✱
-**1.8.✱**             | ProGet 5.3.0                                                          | BuildMaster 6.✱<br/>ProGet 5.✱<br/>Otter 2.✱
-**1.7.✱**             | BuildMaster 6.2.0                                                     | BuildMaster 6.✱<br/>ProGet 5.✱<br/>Otter 2.✱
-**1.6.✱**             | BuildMaster 6.1.16                                                    | BuildMaster 6.✱<br/>ProGet 5.✱<br/>Otter 2.✱
-**1.5.✱**             | BuildMaster 6.1.12<br/>Otter 2.2.7                                    | BuildMaster 6.✱<br/>ProGet 5.✱<br/>Otter 2.✱
-**1.4.✱**             | BuildMaster 6.1.11<br/>Otter 2.2.5<br/>                               | BuildMaster 6.✱<br/>ProGet 5.✱<br/>Otter 2.✱
-**1.3.✱**             | BuildMaster 6.1.10<br/>Otter 2.2.4<br/>                               | BuildMaster 6.✱<br/>ProGet 5.✱<br/>Otter 2.✱
-**1.2.✱**             | BuildMaster 6.1.7<br/>ProGet 5.2.4<br/>Otter 2.2.2<br/>               | BuildMaster 6.✱<br/>ProGet 5.✱<br/>Otter 2.✱
-**1.1.✱**             | BuildMaster 6.1.0<br/>ProGet 5.1.0<br/>Otter 2.1.0<br/>               | BuildMaster 6.✱<br/>ProGet 5.✱<br/>Otter 2.✱
+**1.10.✱**           | Otter 3.0.0<br/>ProGet 5.3.21                                         | BuildMaster 6.✱<br/>ProGet 5.✱<br/>Otter 3.✱
+**1.9.✱**            | ProGet 5.3.12                                                         | BuildMaster 6.✱<br/>ProGet 5.✱<br/>Otter 2.✱
+**1.8.✱**            | ProGet 5.3.0                                                          | BuildMaster 6.✱<br/>ProGet 5.✱<br/>Otter 2.✱
+**1.7.✱**            | BuildMaster 6.2.0                                                     | BuildMaster 6.✱<br/>ProGet 5.✱<br/>Otter 2.✱
+**1.6.✱**            | BuildMaster 6.1.16                                                    | BuildMaster 6.✱<br/>ProGet 5.✱<br/>Otter 2.✱
+**1.5.✱**            | BuildMaster 6.1.12<br/>Otter 2.2.7                                    | BuildMaster 6.✱<br/>ProGet 5.✱<br/>Otter 2.✱
+**1.4.✱**            | BuildMaster 6.1.11<br/>Otter 2.2.5                                    | BuildMaster 6.✱<br/>ProGet 5.✱<br/>Otter 2.✱
+**1.3.✱**            | BuildMaster 6.1.10<br/>Otter 2.2.4                                    | BuildMaster 6.✱<br/>ProGet 5.✱<br/>Otter 2.✱
+**1.2.✱**            | BuildMaster 6.1.7<br/>ProGet 5.2.4<br/>Otter 2.2.2                    | BuildMaster 6.✱<br/>ProGet 5.✱<br/>Otter 2.✱
+**1.1.✱**            | BuildMaster 6.1.0<br/>ProGet 5.1.0<br/>Otter 2.1.0                    | BuildMaster 6.✱<br/>ProGet 5.✱<br/>Otter 2.✱
 **1.0.7**             | Otter 2.1.0                                                           | BuildMaster 6.✱<br/>ProGet 5.✱<br/>Otter 2.✱
-**1.0.4**             | BuildMaster 6.0.0<br/>ProGet 5.0.0<br/>Otter 2.0.0 | BuildMaster 6.✱<br/>ProGet 5.✱<br/>Otter 2.✱
+**1.0.4**             | BuildMaster 6.0.0<br/>ProGet 5.0.0<br/>Otter 2.0.0                    | BuildMaster 6.✱<br/>ProGet 5.✱<br/>Otter 2.✱
+
+<sup>ProGet 5.3.12+ and Otter 3.0.0+ on Linux (Docker) only supports extensions using SDK 1.9+</sup>
 
 The table will be expanded as new SDK versions are released.
 
