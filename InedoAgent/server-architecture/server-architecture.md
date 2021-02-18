@@ -1,15 +1,17 @@
 ﻿---
-title: Server Architecture
-subtitle: Server Architecture
+title: Client/Server Architecture
 sequence: 10
-keywords: inedo, inedo agent, server architecture
 ---
+
+:::attention {.technical}
+**Reference Documentation.** This documentation is intended to describe the inner workings of the Inedo Agent, and does not provide any guidance on configuration or troubleshooting.
+:::
+
 
 An Inedo Agent server has, at a minimum, the InedoAgent.exe process. This typically runs as a Windows service, although may be run interactively for diagnostic purposes.
 
-![](/resources/documentation/agent-architecture.png)
 
-This process is only responsible for listening for requests from agent clients (BuildMaster, Hedgehog, and Otter); as such, it consumes minimal system resources and should have a quick startup time.
+This process is only responsible for listening for requests from agent clients (BuildMaster or Otter); as such, it consumes minimal system resources and should have a quick startup time.
 
 The Inedo Agent listens for and receives individual messages from the network stack (protocol described separately); there two types of messages:
 
@@ -19,7 +21,7 @@ The Inedo Agent listens for and receives individual messages from the network st
 
 ### Product Host Processes {#product data-title="Product Host Processes"}
 
-All orchestration happens in the context of a product host process. For Otter, this process is named Otter.Agent.exe. For BuildMaster, this process is named BuildMaster.Agent.exe. For Hedgehog, this process is named Hedgehog.Agent.exe.
+All orchestration happens in the context of a product host process. For Otter, this process is named Otter.Agent.exe. For BuildMaster, this process is named BuildMaster.Agent.exe.
 
 These processes are only ever intended to be started from a running InedoAgent.exe process, and will terminate immediately if executed any other way. Once started, a product host process communicates with InedoAgent.exe using a shared-memory buffer; this is functionally similar to a pipe.
 
@@ -45,7 +47,7 @@ Messages sent to the server (i.e. a product to an agent) are either instructions
 
 #### *Message Targets* {#message data-title="Message Targets"}
 
-Server messages specify a target (either Meta, BuildMaster, Hedgehog, or Otter), which is used by InedoAgent.exe to determine which component will process the message. Its either processed by InedoAgent.exe directly (Meta), or forwarded to a product host process for processing.
+Server messages specify a target (either Meta, BuildMaster, or Otter), which is used by InedoAgent.exe to determine which component will process the message. Its either processed by InedoAgent.exe directly (Meta), or forwarded to a product host process for processing.
 
 Client messages do not need to specify a target, as the target will already be part of an open session.
 
@@ -53,7 +55,7 @@ Client messages do not need to specify a target, as the target will already be p
 
 While all messages specify a message code that identifies the type of message (i.e. how it should be processed), each target can only process its own message types. As such, [Meta](/docs/inedoagent/server-architecture/message-formats#meta)-targeted messages are part of the Inedo Agent specification, but product-targeted messages are not.
 
-Any references to BuildMaster, Hedgehog, or Otter messages types are for example purposes only; they are not part of the agent specification, and are subject to change in any version of the product.
+Any references to BuildMaster or Otter messages types are for example purposes only; they are not part of the agent specification, and are subject to change in any version of the product.
 
 #### Message Responses {message data-title="Message Responses"}
 

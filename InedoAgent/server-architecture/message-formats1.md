@@ -1,9 +1,11 @@
 ﻿---
 title: Message Formats
-subtitle: Message Formats
 sequence: 20
-keywords: inedo, inedo agent, message formats
 ---
+
+:::attention {.technical}
+**Reference Documentation.** This documentation is intended to describe the inner workings of the Inedo Agent, and does not provide any guidance on configuration or troubleshooting.
+:::
 
 Meta-agent messages are backward and forward compatible, meaning that any changes to their formats must work in all past and future versions of the InedoAgent without error. In the event a breaking change is needed, the agent's protocol version number in the [handshake](/docs/inedoagent/server-architecture/network-protocol) will be incremented. Product-specific agent messages are allowed to change completely at any time, since agent host processes run in a totally isolated environment, and are always brought up to date with the connecting client version.
 

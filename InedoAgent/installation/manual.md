@@ -1,8 +1,6 @@
 ﻿---
 title: Manual Installation
-subtitle: Manual Agent Installation
-sequence: 20
-keywords: inedo, inedo agent, installation
+sequence: 40
 show-headings-in-nav: true
 ---
 

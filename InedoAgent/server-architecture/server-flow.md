@@ -1,13 +1,13 @@
 ﻿---
 title: Server Flow
-subtitle: Server Flow
 sequence: 30
-keywords: inedo, inedo agent, server architecture
 ---
-
+:::attention {.technical}
+**Reference Documentation.** This documentation is intended to describe the inner workings of the Inedo Agent, and does not provide any guidance on configuration or troubleshooting.
+:::
 This is the series of events which occurs when a client (product) connects to an Inedo Agent:
 
-1. The client (BuildMaster, Hedgehog, or Otter) opens a TCP socket to the server (InedoAgent.exe) and sends a 24-byte Handshake message
+1. The client (BuildMaster or Otter) opens a TCP socket to the server (InedoAgent.exe) and sends a 24-byte Handshake message
 2. The server sends a [Handshake](/docs/inedoagent/server-architecture/network-protocol) acknowledgement to the client
 3. The server is now ready to receive a message from the client
 

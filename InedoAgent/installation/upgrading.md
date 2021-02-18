@@ -1,8 +1,6 @@
 ﻿---
 title: Upgrading
-subtitle: Upgrading
-sequence: 40
-keywords: inedo, inedo agent, upgrading
+sequence: 50
 
 ---
 Because the Inedo Agent is essentially a lightweight host for product-specific agents (see [General Architecture](/docs/inedoagent/overview#arch)), updating the Inedo Agent is usually not necessary.

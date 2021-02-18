@@ -1,10 +1,12 @@
 ﻿---
-title: Network Protocol
-subtitle: Network protocol
+title: Network Protocol (v2)
 sequence: 40
-keywords: inedo, inedo agent, network protocol
 show-headings-in-nav: true
 ---
+
+:::attention {.technical}
+**Reference Documentation.** This documentation is intended to describe the inner workings of the Inedo Agent, and does not provide any guidance on configuration or troubleshooting.
+:::
 
 This protocol is intended for use over bidirectional TCP.
 
