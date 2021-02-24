@@ -10,6 +10,7 @@ Published versions:
 
 | Version | Date | Shipped in Product | Notes |
 | ------- |------| ------------------ |-------|
+| [49](http://cdn.inedo.com/downloads/inedo-agent/InedoAgentSetup.49.0.0.exe) | January 20, 2021 | Otter 3.0.0 | Support for outgoing connection mode<br/>Automatic instancing based on source address<br/>New configuration file format |
 | [46](http://cdn.inedo.com/downloads/inedo-agent/InedoAgentSetup.46.exe) | December 20, 2019 | BuildMaster 6.1.21<br/>Otter 2.2.13 | [IAGT-23](https://inedo.myjetbrains.com/youtrack/issue/IAGT-23) - FIX: Agent impersonation may fail when impersonating a non-administrator account |
 | [45](http://cdn.inedo.com/downloads/inedo-agent/InedoAgentSetup.45.exe) | December 4, 2019 | BuildMaster 6.1.20 | [IAGT-21](https://inedo.myjetbrains.com/youtrack/issue/IAGT-21) - FIX: Starting a process with different credentials may fail when agent service is running as Local System<br/>[IAGT-22](https://inedo.myjetbrains.com/youtrack/issue/IAGT-22) - FIX: Impersonation fails when specifying a domain account in domain\user format |
 | [44](http://cdn.inedo.com/downloads/inedo-agent/InedoAgentSetup.44.exe) | August 7, 2019 | BuildMaster 6.1.11 | [IAGT-10](https://inedo.myjetbrains.com/youtrack/issue/IAGT-18) - FIX: Instance ID is not always respected in agent commands |

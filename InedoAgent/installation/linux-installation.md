@@ -4,7 +4,7 @@ sequence: 20
 
 ---
 
-Because the Inedo Agent is written in .NET5+, it can run on Linux. 
+The Inedo Agent is written on cross-platform .NET 5, and has been confirmed to run on x64 Linux.
 
 While it will certainly offer a performance improvement over SSH, the additional installation and configuration may not be worth the benefit. 
 
