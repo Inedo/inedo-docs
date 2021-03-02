@@ -1,7 +1,7 @@
 ﻿---
 title: Inedo Agent Instancing
 subtitle: Using the Same Agent with Multiple Instances
-sequence: 20
+sequence: 100
 keywords: inedo, inedo agent
 
 ---
