@@ -38,7 +38,7 @@ Though not strictly required until later, you may also want to ensure the existe
  - `C:\ProgramData\InedoAgent\Otter`
  - `C:\ProgramData\InedoAgent\BuildMaster`
 
-## Install the Inedo Agent {#install-agent}
+## Install the Inedo Agent {#install-agent data-title="Install Agent"}
 
 ### Prerequisites
 
