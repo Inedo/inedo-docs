@@ -1,19 +1,19 @@
-﻿---
-title: Installation Guide
-subtitle: Installation Guide
-sequence: 10
-keywords: inedo, inedo agent, installation
-
 ---
-## Using the Installer {#installer data-tile="Using the Installer"}
+title: Installation Guide
+subtitle: Inedo Agent Installation Guide
+sequence: 10
+show-headings-in-nav: true
+---
 
- ### 1. Pre-Installation Check List {#preinstall data-title="1. Pre-Installation Check List"}
+The Inedo Agent is really easy to install. You can use our GUI-based installer (step-by-step guide follows), or use the [silent installation](/docs/inedoagent/installation/silent-installation) or [manual installation](/docs/inedoagent/installation/manual) options.
+
+### 1. Pre-Installation Check List {#preinstall data-title="1. Pre-Installation Check List"}
 
  There are no intense server requirements, and support all modern version of Windows (7+/2008+). Before installing, consider the following:
 
 {.docs}
 - **.NET Framework 4.5.2** – Requires .NET 4.5.2 or later; this is already installed on Windows Server 2012, and you can [download it from microsoft](https://www.microsoft.com/en-us/download/details.aspx?id=30653) on earlier servers
-- **Firewall (Inbound)** – the agent will listen on the port of your choosing
+- **Firewall (Inbound)** – the agent will listen on the port of your choosing (default 46336)
 
 ### 2. Download Inedo Agent {#download data-title="Download Otter Windows Agent"}
 
@@ -55,11 +55,12 @@ Once the installation is complete, just close the installer or click the Exit bu
 
 ## Installing Multiple Agents on Same Machine {#multiple data-title="Installing Multiple Agents on Same Machine"}
 
-Sometimes, it may be desired to install multiple instances of the Inedo Agent on the same machine. The most common reason for this is privileges; one agent may run in a higher privilege mode than the other.
+Sometimes, it may be desired to install multiple instances of the Inedo Agent on the same machine. The most common reason for this is privileges; one agent may run in a higher privilege mode than the other. The agent installer (including silent installation) does not currently support installation or management of multiple instances, but you can use the [manual installation](/docs/inedoagent/installation/manual).
 
-:::attention {.technical}
-The agent installer (including silent installation) does not currently support installation or management of multiple instances. See [KB#1146](https://inedo.com/support/kb/1146/installing-multiple-instances-of-inedoagent-on-a-single-machine) for guidance on how to install more than one agent on the same server manually.
-:::
+If you'd just like to connect multiple instances of BuildMaster or Otter to the same agent, you can use [agent instancing](/docs/inedoagent/configuration/instancing) instead of installing multiple agents.
 
-If you'd just like to connect multiple instances of BuildMaster or Otter to the same agent, you can use
-[agent instancing](instancing) instead of installing multiple agents.
+## Installing In Outbound-communication Mode {#multiple data-title="Outbound Communication Mode"}
+
+As of v49, the Inedo Agent supports an outbound communication mode, so that it can connect to a product instance instead of only wait for incoming connections. This may be useful for when an agent is hosted on local infrastructure, but the product is hosted in a cloud service.
+
+The agent installer (including silent installation) does not currently support configuration of outbound communication; you can [configure for outbound mode](https://docs.inedo.com/docs/inedoagent/configuration/outbound-mode) after installation, however.
