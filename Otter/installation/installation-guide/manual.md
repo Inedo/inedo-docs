@@ -53,7 +53,7 @@ The manual installation package contains the following:
  
 #### Installation Directories {#directories}
 
-By default, the Otter installer allows configuration of its root installation directory, and will configure temporary directories and package storage paths for you. During a manual installation, these directories must be provisioned prior to installation.
+By default, the Otter installer allows configuration of its root installation directory, and will configure temporary directories for you. During a manual installation, these directories must be provisioned prior to installation.
 
 Before configuring the necessary paths, you should decide where the following base directories will reside:
 
