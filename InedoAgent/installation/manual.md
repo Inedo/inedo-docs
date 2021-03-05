@@ -10,6 +10,15 @@ show-headings-in-nav: true
 
 ## Prerequisites {#prerequisites data-title="Prerequisites"}
 
+### Pre-Installation Check List
+
+There are no intense server requirements, and support all modern version of Windows (7+/2008+). Before installing, consider the following:
+
+{.docs}
+- **.NET Framework 4.5.2** – Requires .NET 4.5.2 or later; this is already installed on Windows Server 2012, and you can [download it from microsoft](https://www.microsoft.com/en-us/download/details.aspx?id=30653) on earlier servers
+- **Firewall (Inbound)** – the agent will listen on the port of your choosing (default 46336)
+
+
 ### Get the Manual Installation Package {#get}
 
 The manual installation package is a .zip file that contains all the files to create or upgrade the Inedo Agent.
@@ -26,17 +35,11 @@ Before configuring the necessary paths, you should decide where the following ba
 | Directory | Description | Installer Default |
 |--|--|--|
 | Root installation directory | the root disk path for the Website and Service binaries, and extensions | `C:\Program Files\InedoAgent` |
-| Program data directory | the root disk path for package storage, temporary directories, and the configuration file | `C:\ProgramData\InedoAgent` |
 
 Though not strictly required until later, you may also want to ensure the existence of the following directories if you would like to use the installer defaults:
 
-#warning Greg Look At this
-
 {.docs}
  - `C:\ProgramData\Inedo\SharedConfig`
- - `C:\ProgramData\InedoAgent\Extensions`
- - `C:\ProgramData\InedoAgent\Otter`
- - `C:\ProgramData\InedoAgent\BuildMaster`
 
 ## Install the Inedo Agent {#install-agent data-title="Install Agent"}
 
@@ -50,8 +53,6 @@ Before installing the Inedo Agent, the following features must be enabled in Win
  - .NET Framework 4.6 Features > .NET Framework 4.6
 
 ### 1. Ensure the Inedo Agent configuration file exists with valid values
-
-#warning Greg Look At this, need links to agent setups? Should AES generation move to config page
 
 The first step is to create or update the [Inedo Agent Configuration File](/docs/inedoagent/configuration/configuration-file) to supply the temporary paths and connection information.
 
@@ -109,3 +110,9 @@ The service can be started from the Windows Service Controller, or using the fol
 ```
 Start-Service INEDOAGENTSVC
 ```
+
+## Installing In Outbound-communication Mode {#multiple data-title="Outbound Communication Mode"}
+
+As of v49, the Inedo Agent supports an outbound communication mode, so that it can connect to a product instance instead of only wait for incoming connections. This may be useful for when an agent is hosted on local infrastructure, but the product is hosted in a cloud service.
+
+Please see our guide to [configure for outbound mode](https://docs.inedo.com/docs/inedoagent/configuration/outbound-mode).
