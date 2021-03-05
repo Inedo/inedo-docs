@@ -25,12 +25,9 @@ _Note: quotes are required if the `argument-value` contains whitespace._
 |TargetPath|%ProgramFiles%\InedoAgent|The directory that will contain the service's executable and supporting files. If specified, `argument-value` must be an absolute path (i.e. %PROGRAMFILES will not expand)|
 |Port|46336|
 |TempPath|%ProgramData%\InedoAgent|The base directory for any *Product*RootPath option not explicitly specified. If specified, `argument-value` must be an absolute path (i.e. %PROGRAMDATA will not expand)|
-|OtterRootPath|*TempPath*\Otter|
-|BuildMasterRootPath|*TempPath*\BuildMaster|
-|HedgehogRootPath|*TempPath*\Hedgehog|
 |UserAccount|LocalSystem|The user account to run the service under. For built-in accounts, use `NetworkService` or `LocalSystem`|
 |Password||The password for UserAccount. Omit this field for built-in accounts.|
 |ServiceName|INEDOAGENTSVC|
 |Security|AES|Also accepts SSL or None. It is recommended that this is left as AES as the other options do not have any way of validating the identity of the client.|
 |CertificateName||Used if Security is set to SSL. Represents the case-sensitive friendly name of a certificate in the Local Machine store.|
-|EncryptionKey||Used if Security is set to AES. Must be a 32-character hex string. If EncryptionKey is not specified, one will be randomly generated (which could overwrite an existing key on upgrade).|
+|EncryptionKey||Used if Security is set to AES. Must be a 32-character or 64-character hex string. If EncryptionKey is not specified, one will be randomly generated (which could overwrite an existing key on upgrade).|

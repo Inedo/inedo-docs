@@ -5,7 +5,7 @@ sequence: 50
 ---
 Because the Inedo Agent is essentially a lightweight host for product-specific agents (see [General Architecture](/docs/inedoagent/overview#arch)), updating the Inedo Agent is usually not necessary.
 
-To help upgrade the Inedo Agent, BuildMaster includes an feature that [automatically updates the Agents](/docs/buildmaster/administration/agents#automatic-updates). You can also upgrade an Inedo Agent by running the installer (or by following the manual process) on the server itself.
+To help upgrade the Inedo Agent, BuildMaster and Otter include an feature that [automatically updates the Agents](/docs/buildmaster/administration/agents#automatic-updates). You can also upgrade an Inedo Agent by running the installer (or by following the manual process) on the server itself.
 
 ## When to Upgrade {#Upgrade data-title="When to Upgrade"}
 Generally speaking, you shouldn't need to upgrade unless you are directed to by an Inedo support engineer, or a new version of your Inedo tool (Otter, BuildMaster, etc). When we introduce that feature in our products, we will update this documentation to explain why.
