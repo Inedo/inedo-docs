@@ -4,14 +4,115 @@ sequence: 40
 show-headings-in-nav: true
 ---
 
-**Note:** agents should be installed on remote servers, and are not required to be installed on the Otter or BuildMaster server itself. {.info}
+::: {.attention .best-practice} 
+**Note:** agents should be installed on remote servers, and are not required to be installed on the Otter or BuildMaster server itself. 
+:::
 
-**Note:** the agent version you download MUST be the same version as the Otter or BuildMaster software. Do not attempt to install a newer agent version, or the software will report errors when attempting to connect to the agent. Older agents (provided the major version number is the same) will automatically be upgraded to the same version as the BuildMaster software. {.info}
+## Prerequisites {#prerequisites data-title="Prerequisites"}
 
-1. Download the [Otter manual installation package](/otter/versions).
-2. Extract the **Otter-Agent.zip** file from the archive, then extract the files from **Otter-Agent.zip** to the directory where you want to install the agent (for example, C:\Otter\Agent).
-3. Edit the **InedoAgentService.exe.config** file and change the value of the **Otter.RootPath** configuration item to a directory where the Otter Agent will be allowed to write files (example, C:\Otter\AgentData).
-4. Open a command prompt window as Administrator in the directory where the Otter agent was extracted and type **InedoAgentServer.exe install**
-5. Start the service by typing **sc \\\localhost start INEDOAGENTSVC**
-6. That's it! You'll also want to make sure **port 46336** is open in your firewall. Currently the port is not configurable, but it will be in a future version.
-7. By default, the agent is installed to run as **Local System**, giving it full access to the machine. If you do not want to give it full control, you may change the service account to something more suitable in the services.msc dialog.
+### Pre-Installation Check List
+
+There are no intense server requirements, and support all modern version of Windows (7+/2008+). Before installing, consider the following:
+
+{.docs}
+- **.NET Framework 4.5.2** – Requires .NET 4.5.2 or later; this is already installed on Windows Server 2012, and you can [download it from microsoft](https://www.microsoft.com/en-us/download/details.aspx?id=30653) on earlier servers
+- **Firewall (Inbound)** – the agent will listen on the port of your choosing (default 46336)
+
+
+### Get the Manual Installation Package {#get}
+
+The manual installation package is a .zip file that contains all the files to create or upgrade the Inedo Agent.
+
+To download the package, select "Manual Install" link for the desired version from the [Inedo Agent Versions](/docs/inedoagent/versions). If you are unsure which version to select, use the latest version.
+
+ 
+### Installation Directories {#directories}
+
+By default, the Inedo Agent installer allows configuration of its root installation directory, and will configure temporary directories for you. During a manual installation, these directories must be provisioned prior to installation.
+
+Before configuring the necessary paths, you should decide where the following base directories will reside:
+
+| Directory | Description | Installer Default |
+|--|--|--|
+| Root installation directory | the root disk path for the Website and Service binaries, and extensions | `C:\Program Files\InedoAgent` |
+
+Though not strictly required until later, you may also want to ensure the existence of the following directories if you would like to use the installer defaults:
+
+{.docs}
+ - `C:\ProgramData\Inedo\SharedConfig`
+
+## Install the Inedo Agent {#install-agent data-title="Install Agent"}
+
+### Prerequisites
+
+Before installing the Inedo Agent, the following features must be enabled in Windows:
+
+#### Features
+
+{.docs}
+ - .NET Framework 4.6 Features > .NET Framework 4.6
+
+### 1. Ensure the Inedo Agent configuration file exists with valid values
+
+The first step is to create or update the [Inedo Agent Configuration File](/docs/inedoagent/configuration/configuration-file) to supply the temporary paths and connection information.
+
+When using AES Encryption, the Key is a 32-character hex string is used for AES encryption. You can generate this however you'd like, including by copying the pseudorandom string below, which is regenerated every time you refresh this page:
+
+<pre id="random-aes-key"></pre>
+<script>
+var aesKey;
+if (window.crypto) {
+    if (crypto.getRandomValues){
+        aesKey = new Uint8Array(16);
+        crypto.getRandomValues(aesKey);
+        aesKey = aesKey.reduce(function(str, byte) {
+            return str + ('0' + byte.toString(16)).substr(-2);
+        }, '').toUpperCase();
+    } else {
+        aesKey = Array(32).map(function() {
+            return Math.floor(Math.random() * 16).toString(16);
+        }).join('').toUpperCase();
+    }
+} else {
+    aesKey = Array(32).map(function() {
+        return Math.floor(Math.random() * 16).toString(16);
+    }).join('').toUpperCase();
+}
+document.getElementById('random-aes-key').textContent = aesKey;
+</script>
+
+::: {.attention .best-practice}
+Note: The port you specify to listen on must be allowed in the Windows Firewall.
+:::
+
+### 2. Copy Inedo Agent Files
+
+Copy the contents from the installation package to a subdirectory of the *root installation directory* identified earlier. For reference, the installer defaults this to: `C:\Program Files\InedoAgent`
+
+### 3. Install the Inedo Agent Service
+
+The copied files will contain the service executable `InedoAgentService.exe`; run this program from an elevated command prompt or PowerShell window to install the Windows Service (`INEDOAGENTSVC`):
+
+```
+PS C:\Program Files\InedoAgent> .\InedoAgentService.exe install --user="InedoAgentServiceUser@domain" --password="<account-password>"
+```
+
+If you want the Inedo Agent to run as the `NT AUTHORITY\LocalSystem` user, you can omit the `--user` and `--password` parameters.
+
+::: {.attention .technical}
+Note: at this time, it is not permitted to change the service name from `INEDOAGENTSVC`.
+:::
+
+### 4. Start the service
+
+The service can be started from the Windows Service Controller, or using the following PowerShell command:
+
+```
+Start-Service INEDOAGENTSVC
+```
+
+## Installing In Outbound-communication Mode {#multiple data-title="Outbound Communication Mode"}
+
+As of v49, the Inedo Agent supports an outbound communication mode, so that it can connect to a product instance instead of only wait for incoming connections. This may be useful for when an agent is hosted on local infrastructure, but the product is hosted in a cloud service.
+
+Please see our guide to [configure for outbound mode](https://docs.inedo.com/docs/inedoagent/configuration/outbound-mode).
