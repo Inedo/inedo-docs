@@ -41,13 +41,9 @@ Thanks to support and investigation from the user community, we were able to inc
 
 We've done our initial research, and have a pretty good idea of how to develop this now. But need your help to make sure it's done right. Please join the discussion at [QA#2686](https://forums.inedo.com/topic/2686/support-for-r-and-cran) to learn more and help us develop this feed type!
 
-### PHP Composer/Packagist: Evaluated, seems really tough
+### Dart/Flutter/pub.dev: limited demand 
 
-We did a pretty deep dive into PHP/Composer packages a while back, and our conclusion was that they were very difficult to implement due to the way the tightly integrate with git repositories. 
-
-However, we did this assessment without any user partners, and we know next to nothing about PHP, so it could be we misunderstood or looked at the wrong things. Maybe not everyone uses the tight git-repository integration? Hard to say. This is why we partner with customers now.
-
-Since then, there haven’t been too many requests for it, and we have no idea what the level of interest is for. Please add to [QA#2690](https://inedo.com/support/questions/2690) if you've got some insight.
+We've had some interest in [Dart/Flutter/pub.dev packages](https://github.com/dart-lang/pub-dev), and the discussion is ongoing in the community forums.  Please add to [QA#3197 on the forums](https://forums.inedo.com/topic/3179) to share your thoughts!
 
 ### Vagrant: very limited demand 
 
@@ -65,6 +61,13 @@ We've had one request for Chef cookbooks (with connectors to the Chef Supermarke
 
 We've had one request for Elixir Hex packages to date, but we know nothing about Elixir, Hex, or the underlying format. Happy to learn though! Interested? Share your thoughts by starting a thread in our [forums](https://forums.inedo.com/), and we'll link it here.
 
+### PHP Composer/Packagist: Evaluated, seems really tough
+
+We did a pretty deep dive into PHP/Composer packages a while back, and our conclusion was that they were very difficult to implement due to the way the tightly integrate with git repositories. 
+
+However, we did this assessment without any user partners, and we know next to nothing about PHP, so it could be we misunderstood or looked at the wrong things. Maybe not everyone uses the tight git-repository integration? Hard to say. This is why we partner with customers now.
+
+Since then, there haven’t been too many requests for it, and we have no idea what the level of interest is for. Please add to [QA#2690](https://inedo.com/support/questions/2690) if you've got some insight.
 
 ### Conda (Anaconda) Packages: probably not
 
@@ -77,7 +80,6 @@ We've had one customer ask about this as a feature request; after some back-and-
 ### Go: package manager not found
 
 We have a lot of users who use Go, and they've told us there is no "proper" package management solution, so no sense in implementing it. Some use universal packages. 
-
 
 
 ### Other types?
