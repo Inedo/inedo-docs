@@ -35,3 +35,7 @@ The latest version of BuildMaster v6.1 includes a legacy feature detector that g
 Once the detector finishes, the dashboard will show status icons that indicate if a feature is in-use. Select the "View Full Log" option to view a raw text log of all items that will need to be migrated or deleted.
 
 If all the features are denoted OK (ignoring "[Variable Syntax](overview#variable-syntax)", which is always gray since its presence cannot be detected like the other features), then a direct upgrade to v6.2 will be allowed by the installer.
+
+::: {.attention .best-practice}
+Note: The legacy features detector will scan all active and deactivated applications.  If it finds a legacy feature in a deactivated application, you will either need to update the deactivated application or purge the deactivated application.
+:::
