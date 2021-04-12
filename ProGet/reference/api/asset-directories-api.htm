@@ -57,7 +57,8 @@
     <p class="info">POST <span style="opacity: 0.5;">.../content/&laquo;path_to_asset&raquo;</span></p>
     <p>
         Creates a new asset (or overwrites an existing asset) at the specified path using the request content as the asset.
-        This endpoint returns a status of 201 (success), 401 (auth required), 403 (access denied).
+        This endpoint returns a status of 201 (success), 401 (auth required), 403 (access denied). If specified, the Content-Type
+        header will be stored for the asset.
     </p>
     <p>
         On success, the asset is saved to the asset directory.
@@ -67,7 +68,8 @@
     <p class="info">PUT <span style="opacity: 0.5;">.../content/&laquo;path_to_asset&raquo;</span></p>
     <p>
         Creates a new asset (but <b>will not</b> overwrite an existing asset) at the specified path using the request content as the asset.
-        This endpoint returns a status of 201 (success), 400 (asset already exists), 401 (auth required), 403 (access denied).
+        This endpoint returns a status of 201 (success), 400 (asset already exists), 401 (auth required), 403 (access denied). If specified, the Content-Type
+        header will be stored for the asset.
     </p>
     <p>
         On success, the asset is saved to the asset directory.
@@ -77,7 +79,8 @@
     <p class="info">PATCH <span style="opacity: 0.5;">.../content/&laquo;path_to_asset&raquo;</span></p>
     <p>
         Overwrites an existing asset at the specified path using the request content as the asset.
-        This endpoint returns a status of 201 (success), 404 (asset not found), 401 (auth required), 403 (access denied).
+        This endpoint returns a status of 201 (success), 404 (asset not found), 401 (auth required), 403 (access denied). If specified, the Content-Type
+        header will be stored for the asset.
     </p>
     <p>
         On success, the existing asset is replaced.
