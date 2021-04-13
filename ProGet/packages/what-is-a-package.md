@@ -9,7 +9,7 @@ A **package** is a file that contains other files.
 
 Unlike packages on NuGet.org or other open-source sites (RubyGems, Chocolatey, etc.), ProGet packages are private to you, even if they originated from a third-party source.
 
-The manifest file included in the package has the package name and version. It can can gives you context on who did what and when with the package, which simplifies two of the most stressful dev events: auditing and rollbacks. This is because packages can be:
+The manifest file included in the package has the package name and version. It gives you context on who did what and when with the package, which simplifies two of the most stressful dev events: auditing and rollbacks. This is because packages can be:
 
 - [Repackaged](/docs/proget/packages/repackaging) to indicate that a package has been tested
 - [Promoted](/docs/proget/packages/package-promotion) to indicate a change in quality or who may access it
