@@ -152,7 +152,7 @@ To perform a NuGet feed re-index, visit the "Manage Feed" page of the NuGet, Cho
 
 [Repackaging](/docs/proget/advanced/repackaging) is a process of changing a package's version without changing its contents, enabling use-cases such as converting a pre-release package to a stable version, and more.
 
-ProGet supports NuGet repackaging natively. To view an example of how it can be accomplished using the [Repackaging API](/docs/proget/reference/api/repackaging) in a CI/CD system, you can view an [example application](https://proget.inedo.com/feeds/BuildMasterTemplates) in our public BuildMaster instance.
+ProGet supports NuGet repackaging natively. To view an example of how it can be accomplished using the [Repackaging API](/docs/proget/reference/api/repackaging) in a CI/CD system, you can view an [example application](https://buildmaster.inedo.com/applications/2/overview) in our public BuildMaster instance.
 
 ## Deleting and Unlisting Packages {#deleting-and-unlisting data-title="Deleting and Unlisting Packages"}
 
