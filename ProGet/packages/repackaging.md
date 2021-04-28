@@ -73,4 +73,4 @@ We have built an example application on our [public BuildMaster instance](https:
 
 The application contains deployment plans, pipelines, and source control repository monitor configuration such that commits pushed to any source control repository branch will automatically create a package and deploy it to a CI repository. Deploying the build through future pipeline stages causes it to be repackaged and then redeploys it to a [public repository](https://proget.inedo.com/feeds/ExternalBuild) used to build Inedo projects that require NuGet packages.
 
-You can view the example application here: [Inedo.Core Library](https://buildmaster.inedo.com/applications/44/)
+You can view the example application here: [Inedo.Core Library](https://buildmaster.inedo.com/applications/2/overview)
