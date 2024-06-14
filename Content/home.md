@@ -1,0 +1,327 @@
+---
+title: Inedo Documentation
+masterpage: HomePage.html
+---
+
+<style>
+a {
+   color: #025291
+}
+
+ul {
+   padding: 0;   
+}
+
+ul li {
+   list-style: none;   
+   margin-bottom: 0.75rem;
+}
+
+h3 {
+   margin-top: 4rem;
+}
+
+.icon {
+  background-size: 1.8rem;
+  padding-left: 2.2rem;
+}
+
+.content-container .content {
+   max-width: 1000px;
+}
+
+
+
+#sub-footer.content-container {
+   border-top: solid 1px #CCC;
+}
+
+#inedo-links.content-container .content {
+   max-width: 1000px;
+   margin-left: 0;
+}
+
+
+.product-blocks {
+   display: flex;
+   flex-wrap: no-wrap;
+}
+
+.product-blocks > .block {
+   flex-grow: 1;
+   flex-basis: 30%;
+   max-width: 30%;
+   padding-right: 0.75rem;
+}
+
+.three-column {
+   display: flex;
+   flex-wrap: wrap;
+}
+
+.three-column h3 {
+   border-bottom: solid 1px #CCC;
+   flex-basis: 100%;
+}
+
+.three-column ul {
+   display: flex;
+   flex-wrap: wrap;
+}
+
+.three-column ul li {
+   padding-right: 0.75rem;
+   flex-grow: 1;
+   flex-basis: 30%;
+   max-width: 30%;
+}
+
+.two-column {
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: center;
+   gap: 0.75rem;
+   margin-bottom: 4rem;
+}
+
+.two-column h3 {
+   flex-basis: 100%;
+}
+
+.two-column > a {
+   border-top: solid 1px #ccc;
+   flex-basis: 48%;
+   max-width: 48%;
+   padding: 5px;
+   
+}
+
+.two-column > a:hover {
+   color: #025291;
+   text-decoration: none;
+   background-color: #ccc;
+}
+.two-column > a:hover p {
+   color: #444;
+   opacity: 1;
+}
+
+.two-column > a h5 {
+   font-size: 1rem;
+   margin-bottom: 0;
+}
+
+.two-column > a p {
+   color: #444;
+   font-size: 0.85rem;
+   opacity: 0.8;
+}
+
+.two-column > a p:last-child {
+   margin-bottom: 0px;
+}
+
+
+@media (max-width: 50rem) {
+   .content-container .content.home-page {
+      margin-left: 1.25rem;
+      margin-right: 1.25rem;
+   }
+   
+   .product-blocks {
+      flex-wrap: wrap;
+      justify-content: center;
+   }
+   
+   .product-blocks > .block {
+      max-width: 48%;
+      flex-basis: 48%;
+   }
+   
+   .three-column {
+      justify-content: flex-start;
+   }
+   
+   .three-column h3 {      
+      max-width: 100%;
+   }
+   
+   .three-column ul {
+      justify-content: flex-start;
+   }
+   .three-column ul li {
+      max-width: 48%;
+      flex-basis: 48%;
+   }
+   
+   .two-column {
+      justify-content: flex-start;
+   }
+   
+   .two-column > a {
+      flex-basis: 100%;
+      max-width: initial;
+   }
+}
+
+@media (max-width: 30rem) {
+   .content-container .content.home-page {
+      margin-left: 1.25rem;
+      margin-right: 1.25rem;
+   }
+
+   .product-blocks {
+      display: block;
+      gap: 0;
+      flex-direction: column;
+      justify-content: flex-start;
+   }
+   
+   .product-blocks > .block {
+      max-width: initial;
+      flex-basis: initial;
+      flex-grow: initial;
+   }
+   
+   .three-column {
+      display: block;
+      margin: auto;
+   }
+   
+   .three-column h3 {
+      max-width: initial;
+   }
+   
+   .three-column ul {
+      display: block;
+      margin: auto;
+   }
+   
+   .three-column ul li {
+      max-width: initial;
+      flex-basis: initial;
+   }
+}
+
+</style>
+
+<div class="product-blocks"><div class="block">
+
+### **ProGet** {.icon .proget}
+- [Getting Started With ProGet](/docs/proget/overview)
+- [Packages in ProGet](/docs/proget/packages/what-is-a-package)
+- [How to Approve and Promote Open-source Packages in ProGet](/docs/proget/overview)
+      
+</div><div class="block">
+
+### **BuildMaster** {.icon .buildmaster}
+- [Getting Started With BuildMaster](/docs/proget/overview)
+- [What is a "Build" in BuildMaster?](/docs/proget/packages/what-is-a-package)
+- [Build Scripts & Templates](/docs/proget/overview)
+      
+</div><div class="block">
+
+### **Otter** {.icon .otter}
+- [Getting Started With Otter](/docs/proget/overview)
+- [Jobs & Templates](/docs/proget/packages/what-is-a-package)
+- [What is a "server" in Otter](/docs/proget/overview)
+      
+</div></div>
+
+
+<div class="three-column">
+
+### **Installation** {.icon .installation}
+
+- [ProGet Installation Guide](/docs/proget/overview)
+- [BuildMaster Installation Guide](/docs/proget/overview)
+- [Otter Installation Guide](/docs/proget/overview)
+- [Windows Installation (Inedo Hub)](/docs/proget/packages/what-is-a-package)
+- [Linux Installation (Docker)](/docs/proget/overview)
+- [Configuring IIS Roles & Features](/docs/proget/overview)
+- [SQL Server & Inedo Products](/docs/proget/overview)
+- [HTTPS Support on Windows](/docs/proget/overview)
+- [HTTPS Support on Linux](/docs/proget/overview)
+
+</div>
+
+<div class="three-column">
+
+### **Inedo Hub** {.icon .inedo-hub}
+
+- [What is the Inedo Hub?](/docs/proget/overview)
+- [Configuring & Maintaining Inedo Products](/docs/proget/packages/what-is-a-package)
+- [Offline Installation](/docs/proget/overview)
+- [HOWTO: Install on Windows](/docs/proget/overview)
+- [HOWTO: Upgrade or Downgrade with the Inedo Hub](/docs/proget/overview)
+- [HOWTO: Install Pre-release Product Versions](/docs/proget/overview)
+
+</div>
+
+<div class="three-column">
+
+### **Inedo Agent** {.icon .inedo-agent}
+
+- [What is the Inedo Agent?](/docs/proget/overview)
+- [Installation Guide](/docs/proget/packages/what-is-a-package)
+- [Upgrade Guide](/docs/proget/packages/what-is-a-package)
+- [Configuring the Inedo Agent](/docs/proget/overview)
+- [Downloads & Release Notes](/docs/proget/overview)
+- [Troubleshooting](/docs/proget/overview)
+
+</div>
+
+<div class="two-column">
+
+### **Popular Topics** {.icon .popular}
+
+<a href="/docs/proget/overview" class="item">
+
+##### Upgrading to ProGet 2024
+ProGet 2024 is a major update, and this article provides information about what will change, the impact to your instance, and how to mitigate risk during upgrade.
+
+</a>
+<a href="/docs/proget/overview" class="item">
+
+##### Upgrading to BuildMaster 2023
+BuildMaster 2023 is a major update, and this article provides information about what will change, the impact to your instance, and how to mitigate risk during upgrade.
+
+</a>
+<a href="/docs/proget/overview" class="item">
+
+##### Otter to ProGet 2024
+Otter 2023 is a major upgrade, and this article provides information about what changed, the impact to your instance, and how to mitigate risk during upgrade.
+
+</a>
+<a href="/docs/proget/overview" class="item">
+
+##### Getting Started with pgutil
+`pgutil` is an open-source (github.com), cross-platform command line tool that provides a variety of commands to upload/download packages, manage feeds, audit package compliance, assess vulnerabilities, etc. 
+
+</a>
+<a href="/docs/proget/overview" class="item">
+
+##### LDAP/AD Integration
+Inedo products come with built-in users and groups, but it can also integrate with an external directory service like Active Directory and other LDAP-based services. This allows you to use the organization's existing users, logins, and groups to secure the product and define the tasks users are permitted to do. 
+
+</a>
+<a href="/docs/proget/overview" class="item">
+
+##### SAML Authentication
+SAML-based single sign-on is an authentication mechanism that uses a third-party identity provider to verify the identity of user, and relay user metadata back into the Inedo product, effectively replacing the Inedo product login page, with that of the identity provider's, or removes it altogether if a user is already signed-in to the identity provider.
+
+</a>
+<a href="/docs/proget/overview" class="item">
+
+##### High Availability & Load Balancing
+The distributed architecture of ProGet, BuildMaster, and Otter allows you to configure an instance over any number of servers for both load-balancing and failover purposes. By doing so, any single server can take over the cluster in the event of server failure and outage. This can improve your Inedo product's performance in high-traffic environments.
+
+</a>
+<a href="/docs/proget/overview" class="item">
+
+##### Backing up & Restoring
+Your Inedo products should be backed up frequently.
+
+</a>
+
+</div>

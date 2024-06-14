@@ -1,0 +1,4 @@
+Contains global master pages to be shared amongst all pages.
+
+DocsArticlePage.html is required.
+HomPage.html is used by home.md
