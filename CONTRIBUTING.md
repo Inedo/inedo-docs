@@ -11,5 +11,4 @@ Note that this repository is for **issues related to Inedo's online documentatio
 If you have any non-documentation related issues, feel free to use one of these alternative channels:
 
  - Inedo Community Forums: https://forums.inedo.com
- - Inedo Slack Workspace: https://inedo.com/support/slack
  - Inedo Contact Form: https://inedo.com/contact
