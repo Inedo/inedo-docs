@@ -41,6 +41,11 @@ h3 {
    margin-left: 0;
 }
 
+#footer .content {
+   padding-left: 0.75rem;
+   padding-right: 0.75rem;
+}
+
 
 .product-blocks {
    display: flex;
@@ -235,7 +240,7 @@ h3 {
 
 - [ProGet Installation Guide](/docs/proget/installation/installation-guide)
 - [BuildMaster Installation Guide](/docs/buildmaster/installation-maintenance/buildmaster-installation-guide)
-- [Otter Installation Guide](/docs/otter/installation-upgrading-1/otter-installation-guide)
+- [Otter Installation Guide](/docs/otter/installation-upgrading/otter-installation-guide)
 - [Windows Installation (Inedo Hub)](/docs/installation/windows/inedo-hub-installation-guide)
 - [Linux Installation (Docker)](/docs/installation/linux/docker-guide)
 - [Configuring IIS Roles & Features](/docs/installation/installing-on-iis/various-iis-configuring-iis-roles-and-features)
@@ -275,19 +280,19 @@ h3 {
 
 ### **Popular Topics** {.icon .popular}
 
-<a href="/docs/proget/installation/proget-upgrade-guide/proget-upgrade-2024" class="item">
+<a href="/docs/proget-upgrade-2024" class="item">
 
 ##### Upgrading to ProGet 2024
 ProGet 2024 is a major update, and this article provides information about what will change, the impact to your instance, and how to mitigate risk during upgrade.
 
 </a>
-<a href="/docs/buildmaster/installation-maintenance/buildmaster-upgrading/buildmaster-upgrade-2023" class="item">
+<a href="/docs/buildmaster-upgrade-2023" class="item">
 
 ##### Upgrading to BuildMaster 2023
 BuildMaster 2023 is a major update, and this article provides information about what will change, the impact to your instance, and how to mitigate risk during upgrade.
 
 </a>
-<a href="/docs/otter/installation-upgrading/otter-upgrading/otter-upgrade-2023" class="item">
+<a href="/docs/otter-upgrade-2023" class="item">
 
 ##### Upgrading to Otter 2023
 Otter 2023 is a major upgrade, and this article provides information about what changed, the impact to your instance, and how to mitigate risk during upgrade.
