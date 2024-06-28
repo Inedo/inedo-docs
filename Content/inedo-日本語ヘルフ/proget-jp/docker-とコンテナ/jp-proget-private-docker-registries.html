@@ -1,0 +1,195 @@
+---
+title: "プライベート Docker レジストリ"
+order: 5
+---
+
+<p>ProGet を使えば、プライベートな Docker レジストリを作成し、詳細なアクセスコントロールなど、サードパーティの Docker イメージと、自社製の Docker イメージの両方を同じように管理できます。Docker Hub などのリモート Docker リソースからダウンロードしたイメージでも、内部で作成したイメージでも、ProGet は Docker クライアントと透明に連携をします。</p>
+
+<p>ProGet上で、Docker&nbsp;レジストリはフィードとして表示されます。そのため、以下が可能です。</p>
+
+<ul>
+	<li>フィードの特権を&nbsp;Docker&nbsp;レジストリに適用できる</li>
+	<li>AmazonS3&nbsp;と&nbsp;AzureBlob&nbsp;ストレージを構成できる</li>
+	<li>Docker&nbsp;レジストリの名前は別のフィード名と重複する名前を使用できない</li>
+</ul>
+
+<h2>複数の&nbsp;Docker&nbsp;レジストリ</h2>
+
+<p>ProGetでは無制限のDockerレジストリを定義できます。それぞれのプロジェクトを特定のレジストリで管理でき、Docker&nbsp;イメージに対するアクセスコントロールがよりスムーズになります。</p>
+
+<h2>ProGetでDockerレジストリを作成および使用する</h2>
+
+<p id="8fbc1deb-2174-42aa-b62c-de0e23ff3bfd">ProGet&nbsp;で&nbsp;Docker&nbsp;レジストリを作成するには&nbsp;[Containers&nbsp;(コンテナ)]&nbsp;＞&nbsp;[Create New Docker Registry&nbsp;(新しいDockerレジストリを作成)]&nbsp;から新しいレジストリに名前を付けてください。</p>
+<figure class="block-color-gray_background callout" id="e46358df-4db7-4916-a787-c538478cdd8f" style="box-sizing: border-box; -webkit-print-color-adjust: exact; margin: 1.25em 0px; break-inside: avoid; border-radius: 3px; padding: 1rem; background: rgb(235, 236, 237); color: rgb(55, 53, 47); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Helvetica, &quot;Apple Color Emoji&quot;, Arial, sans-serif, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;; font-size: medium; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: pre-wrap; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; display: flex;">
+	<div style="box-sizing: border-box; -webkit-print-color-adjust: exact; font-size: 1.5em;"><span class="icon" style="box-sizing: border-box; -webkit-print-color-adjust: exact; display: inline-block; max-width: 1.2em; max-height: 1.2em; text-decoration: none; vertical-align: text-bottom; margin-right: 0.5em;">💡</span></div>
+	<div style="box-sizing: border-box; -webkit-print-color-adjust: exact; width: 831.453px;">デフォルトの設定では、Docker&nbsp;は&nbsp;SSL&nbsp;コネクションが必要になっています。ProGet&nbsp;が有効な&nbsp;SSL&nbsp;証明書を使って&nbsp;IIS&nbsp;を実行するように設定するか、Docker&nbsp;クライアントが非セキュアなレジストリを使用できるようにに設定してください。</div>
+</figure>
+
+<h2 id="a37b690f-49c6-498c-af5f-80aba108cbaa">非セキュアなレジストリ&nbsp;(HTTP&nbsp;ではなく&nbsp;HTTPS&nbsp;もしくは自己署名証明書)の使用</h2>
+
+<p id="9d468566-88b4-44ea-b091-89407b3b95af">Docker&nbsp;クライアントが&nbsp;localhost:&lt;PORT&gt;&nbsp;を&nbsp;URL&nbsp;に使っていない場合、有効な証明書で&nbsp;SSL&nbsp;を使用するには&nbsp;Docker&nbsp;レジストリが必要です。その場合、ProGet&nbsp;を有効な証明書と共に&nbsp;IIS&nbsp;内で設定する必要があります。HTTP&nbsp;を使って（IIS内もしくは組み込まれたウェブサーバ内で）ProGetを設定している、もしくは&nbsp;IIS&nbsp;内で自己署名証明書を使っている場合、ProGetをDockerクライアント内で<a href="https://docs.docker.com/registry/insecure/" style="box-sizing: border-box; -webkit-print-color-adjust: exact; color: inherit; text-decoration: underline;">非セキュアなレジストリ（リンク先英語）</a>として設定してください。</p>
+
+<h2 id="0dfa5876-e357-42ea-bbd5-5b854f174b2c">HTTP&nbsp;レジストリ（IIS&nbsp;もしくは組み込みウェブサーバ）</h2>
+
+<p id="45d96bdd-4db7-4a19-938a-ad9cda856b3a">HTTP&nbsp;を使用してレジストリを操作するように&nbsp;Docker&nbsp;クライアントを設定するには、レジストリのベース&nbsp;URL&nbsp;名を&nbsp;Dockerdaemon.json&nbsp;ファイルに追加する必要があります。その際、レジストリ名は含まないでください。URL&nbsp;がポート&nbsp;80&nbsp;を使用していないか、「.」&nbsp;（サーバー名のみを使用する場合のように）が含まれていない場合、URLにポートも含める必要があります。</p>
+
+<p id="34549ab4-f2e5-42c4-b475-ed3d80edfff2">例：</p>
+
+<ul id="e60c636c-eab1-48d8-8787-c24d932bffd6">
+	<li>"insecure-registries" : ["myregistrydomain.com:80"]</li>
+</ul>
+
+<ul id="2e44bdc7-aa1b-40eb-8f1f-77d13d73deda">
+	<li>"insecure-registries" : ["prodserver.inedo.local"]</li>
+</ul>
+
+<ul id="4154b16c-9a87-490a-b88d-e64104c4e52c">
+	<li>"insecure-registries" : ["prodserver:80"]</li>
+</ul>
+
+<p id="81a71347-739e-4c17-ac85-36420223e6c4">Docker daemon.jsonの例：</p>
+
+	<pre class="code" id="ce8d2de1-828e-4989-a597-a21d22b869c1" style="box-sizing: border-box; -webkit-print-color-adjust: exact; background: rgba(135, 131, 120, 0.15); padding: 1.5em 1em; border-radius: 3px; font-size: 13.6px; tab-size: 2; font-family: SFMono-Regular, Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; color: rgb(55, 53, 47); font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;"><code data-code-id="section-1710211613818" style="box-sizing: border-box; -webkit-print-color-adjust: exact; background: none; padding: 0px; border-radius: 3px; font-size: 11.05px; tab-size: 2; color: inherit;">{
+&nbsp;&nbsp;&nbsp;&nbsp;"registry-mirrors": [],
+&nbsp;&nbsp;&nbsp;&nbsp;"insecure-registries": [
+&nbsp;&nbsp;&nbsp;&nbsp;"myregistrydomain.com:80"
+],
+&nbsp;&nbsp;&nbsp;&nbsp;"debug": false,
+&nbsp;&nbsp;&nbsp;&nbsp;"experimental": false
+}</code></pre>
+
+<h3 id="544bd21a-f583-42e2-8e34-515121336fd4">自己署名証明書</h3>
+
+<p id="7b51bd8b-f62f-48da-858a-907ed3eb7bff">自己署名証明書を使ってDockerクライアントが HTTPS のレジストリを使用するようにしたい場合は、証明書をローカルでインストールする必要があります。証明書の正しいインストール方法については、こちらの Docker の資料 <a href="https://docs.docker.com/registry/insecure/" rel="nofollow noopener noreferrer" target="_blank" translate="no">using self-signed certificates</a> （リンク先英語）をご覧ください。</p>
+
+<h2 id="475035af-1a2a-47dc-8f75-15d7fb721b9a">Dockerクライアントの設定方法</h2>
+
+<p id="589805c9-213e-4969-96a9-c52097e81048">ProGetはトークンベースの認証&nbsp;(Docker 1.11.0&nbsp;（リンク先英語）以上が必須)&nbsp;とHTTP&nbsp;の基本的な認証の両方に対応しています。</p>
+
+<p id="76584804-e71e-477e-b432-482d93387246">まずは、Docker&nbsp;にログインしてください。ログインをするには、以下のコマンドを使用します。このコマンドでは&nbsp;progetsv1&nbsp;が&nbsp;ProGet&nbsp;サーバ名&nbsp;となっています：</p>
+
+	<pre class="code" id="7c368315-1608-45a3-8342-06f364ce3955" style="box-sizing: border-box; -webkit-print-color-adjust: exact; background: rgba(135, 131, 120, 0.15); padding: 1.5em 1em; border-radius: 3px; font-size: 13.6px; tab-size: 2; font-family: SFMono-Regular, Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; color: rgb(55, 53, 47); font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;"><code data-code-id="section-1710211613820" style="box-sizing: border-box; -webkit-print-color-adjust: exact; background: none; padding: 0px; border-radius: 3px; font-size: 11.05px; tab-size: 2; color: inherit;">[~]$ docker login progetsv1:80</code></pre>
+
+<p id="7a5270b4-8211-4d87-8a8c-69da34bf7fcb">このコマンドでは、ProGet&nbsp;のウェブインターフェイスからログインできる全てのユーザー名やパスワードが使えます。さらに、ユーザーネームがapiなら、APIキーをパスワードとして使用することができます。</p>
+
+<p id="885771c8-0317-4af7-bca5-5a0368038697">Docker&nbsp;は&nbsp;localhost&nbsp;以外のどのようなドメインでも&nbsp;TLS&nbsp;が必要です。なので、ProGet&nbsp;のサーバーに&nbsp;HTTPS&nbsp;経由で（有効な証明書を使って）アクセスができる状態してください。代わりに、ProGet&nbsp;のサーバを非セキュアなレジストリとして設定もできます。その場合は、HTTP&nbsp;か自己署名証明書のある&nbsp;HTTPS&nbsp;を使います。</p>
+<figure class="block-color-gray_background callout" id="f9781771-e0d9-40be-a240-390311a508f2" style="box-sizing: border-box; -webkit-print-color-adjust: exact; margin: 1.25em 0px; break-inside: avoid; border-radius: 3px; padding: 1rem; background: rgb(235, 236, 237); color: rgb(55, 53, 47); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Helvetica, &quot;Apple Color Emoji&quot;, Arial, sans-serif, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;; font-size: medium; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: pre-wrap; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; display: flex;">
+	<div style="box-sizing: border-box; -webkit-print-color-adjust: exact; font-size: 1.5em;"><span class="icon" style="box-sizing: border-box; -webkit-print-color-adjust: exact; display: inline-block; max-width: 1.2em; max-height: 1.2em; text-decoration: none; vertical-align: text-bottom; margin-right: 0.5em;">💡</span></div>
+	<div style="box-sizing: border-box; -webkit-print-color-adjust: exact; width: 831.453px;">URL&nbsp;がポート&nbsp;80&nbsp;を使っていなかったり、「.」が含まれていなかったりする場合（サーバ名のみを使用する場合など）は、URLに追加でポートも入力する必要があります。</div>
+</figure>
+
+<p id="b5693037-184f-4c9e-9e1e-990124882cca">例：</p>
+
+<p id="f1b9076b-86bb-4576-92cd-cbfea5983a2e">以下は間違った例です</p>
+
+<ul id="83abfc53-d601-4cff-958a-57444b0d3c95">
+	<li>このURLはdockerにdocker hubから情報を引き出すことを要求します</li>
+</ul>
+
+	<pre class="code" id="1a6fbe57-40f6-43b5-b013-5e96fe195aa1" style="box-sizing: border-box; -webkit-print-color-adjust: exact; background: rgba(135, 131, 120, 0.15); padding: 1.5em 1em; border-radius: 3px; font-size: 13.6px; tab-size: 2; font-family: SFMono-Regular, Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; color: rgb(55, 53, 47); font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;"><code data-code-id="section-1710211613822" style="box-sizing: border-box; -webkit-print-color-adjust: exact; background: none; padding: 0px; border-radius: 3px; font-size: 11.05px; tab-size: 2; color: inherit;">docker pull prodserver/myimages/dotnet/aspnet:5</code></pre>
+
+<p id="bfdabc5d-2ca3-4230-91f2-4e94699f470b">以下は正しい例です</p>
+
+<ul id="059b4307-17bd-4150-aa9a-a1555375844e">
+	<li>このURLはサーバprodserver.inedo.localを使います</li>
+</ul>
+
+	<pre class="code" id="6565babd-f25b-426f-a86b-a9282241ee32" style="box-sizing: border-box; -webkit-print-color-adjust: exact; background: rgba(135, 131, 120, 0.15); padding: 1.5em 1em; border-radius: 3px; font-size: 13.6px; tab-size: 2; font-family: SFMono-Regular, Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; color: rgb(55, 53, 47); font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;"><code data-code-id="section-1710211613824" style="box-sizing: border-box; -webkit-print-color-adjust: exact; background: none; padding: 0px; border-radius: 3px; font-size: 11.05px; tab-size: 2; color: inherit;">docker pull prodserver.inedo.local/myimages/dotenet/aspnet:5</code></pre>
+
+<ul id="fa39193f-6906-4fe9-978b-c37ec0089dd7">
+	<li>このURLはポート80を経由しサーバprodserverを使います</li>
+</ul>
+
+	<pre class="code" id="6456b3ff-b300-4cbc-95cd-bca38808bd8d" style="box-sizing: border-box; -webkit-print-color-adjust: exact; background: rgba(135, 131, 120, 0.15); padding: 1.5em 1em; border-radius: 3px; font-size: 13.6px; tab-size: 2; font-family: SFMono-Regular, Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; color: rgb(55, 53, 47); font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;"><code data-code-id="section-1710211613826" style="box-sizing: border-box; -webkit-print-color-adjust: exact; background: none; padding: 0px; border-radius: 3px; font-size: 11.05px; tab-size: 2; color: inherit;">docker push prodserver:80/myimages/dotnet/aspnet:5</code></pre>
+
+<ul id="645b5016-01c2-47ca-b793-b9bd0dcbd93b">
+	<li>このURLはポート443を経由しサーバprodserverを使います</li>
+</ul>
+
+	<pre class="code" id="06cad36d-d22c-42a3-a4b1-ce75e286f468" style="box-sizing: border-box; -webkit-print-color-adjust: exact; background: rgba(135, 131, 120, 0.15); padding: 1.5em 1em; border-radius: 3px; font-size: 13.6px; tab-size: 2; font-family: SFMono-Regular, Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; color: rgb(55, 53, 47); font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;"><code data-code-id="section-1710211613828" style="box-sizing: border-box; -webkit-print-color-adjust: exact; background: none; padding: 0px; border-radius: 3px; font-size: 11.05px; tab-size: 2; color: inherit;">docker push prodserver:443/myimages/dotnet/aspnet:5</code></pre>
+
+<p id="66c732a9-2fd9-475e-b840-c3312b276827">Dockerを利用するには、専用の権限が必要です。つまり&nbsp;Linux&nbsp;では、docker&nbsp;グループのメンバーであること、もしくは&nbsp;sudo&nbsp;や&nbsp;su&nbsp;を使って一時的に&nbsp;root&nbsp;ユーザへの切り替えをしていることが条件になります。Windowsの場合、cmd&nbsp;や&nbsp;PowerShell&nbsp;インスタンスを起動させるには管理者権限が必要です。</p>
+
+<h2 id="42b0f0b3-b790-4a0c-88e9-0fe339a3afae">イメージを公開する</h2>
+
+<p id="b639eaef-5337-4f38-9502-343a520afe38">ProGet&nbsp;に&nbsp;Docker&nbsp;イメージを公開するには、まず特別なフォーマット内でDockerを使ってイメージをタグ付けします。例えば、ローカル名が&nbsp;ubuntu:trustyのイメージがある場合、以下のようにタグ付けし直します：</p>
+
+	<pre class="code" id="c53fef1f-12c2-4f52-b71b-44c69ba3595e" style="box-sizing: border-box; -webkit-print-color-adjust: exact; background: rgba(135, 131, 120, 0.15); padding: 1.5em 1em; border-radius: 3px; font-size: 13.6px; tab-size: 2; font-family: SFMono-Regular, Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; color: rgb(55, 53, 47); font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;"><code data-code-id="section-1710211613830" style="box-sizing: border-box; -webkit-print-color-adjust: exact; background: none; padding: 0px; border-radius: 3px; font-size: 11.05px; tab-size: 2; color: inherit;">[~]$ docker tag ubuntu:trusty progetsv1:443/dmc/ubuntu:trusty</code></pre>
+
+<p id="44557d42-ef5d-437c-8234-d6cfc5cd72e0">ざっくりまとめるとこのようなフォーマットになります：server/feed/image:tag</p>
+
+<p id="fe8bd032-56f5-42ec-aea8-f3d5089d9624">タグ付けをしたら、ProGetにイメージをプッシュすることができます：</p>
+
+	<pre class="code" id="854fd262-dd8d-4a4a-8e7c-2d6ec04d587d" style="box-sizing: border-box; -webkit-print-color-adjust: exact; background: rgba(135, 131, 120, 0.15); padding: 1.5em 1em; border-radius: 3px; font-size: 13.6px; tab-size: 2; font-family: SFMono-Regular, Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; color: rgb(55, 53, 47); font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;"><code data-code-id="section-1710211613832" style="box-sizing: border-box; -webkit-print-color-adjust: exact; background: none; padding: 0px; border-radius: 3px; font-size: 11.05px; tab-size: 2; color: inherit;">[~]$ docker push progetsv1:443/dmc/ubuntu:trusty</code></pre>
+
+<h2 id="ee33d78b-e463-459e-b0be-102930124cbf">イメージをプルする</h2>
+
+<p id="9ee0cf23-f42e-41de-a42b-7812bf4ded85">イメージをプルするのもほとんど同じフォーマットです：</p>
+
+	<pre class="code" id="6f94bffe-273a-4cc0-b3ee-b1ed030dd4a5" style="box-sizing: border-box; -webkit-print-color-adjust: exact; background: rgba(135, 131, 120, 0.15); padding: 1.5em 1em; border-radius: 3px; font-size: 13.6px; tab-size: 2; font-family: SFMono-Regular, Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; color: rgb(55, 53, 47); font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;"><code data-code-id="section-1710211613834" style="box-sizing: border-box; -webkit-print-color-adjust: exact; background: none; padding: 0px; border-radius: 3px; font-size: 11.05px; tab-size: 2; color: inherit;">[~]$ docker pull progetsv1:443/dmc/ubuntu:trusty</code></pre>
+
+<h2 id="4b95ba3e-bff2-4008-a84a-a7018067679f">イメージの削除</h2>
+
+<p id="56ee981d-60b1-420a-8d64-ad6e2f9d4d28">イメージを削除するには、DockerのDelete Image API（イメージAPIの削除：リンク先英語）から以下の通りに&nbsp;HTTP DELETE&nbsp;リクエストを実行します：</p>
+
+	<pre class="code" id="fca8c35e-d282-4ec9-b411-1af973776a4b" style="box-sizing: border-box; -webkit-print-color-adjust: exact; background: rgba(135, 131, 120, 0.15); padding: 1.5em 1em; border-radius: 3px; font-size: 13.6px; tab-size: 2; font-family: SFMono-Regular, Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; color: rgb(55, 53, 47); font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;"><code data-code-id="section-1710211613836" style="box-sizing: border-box; -webkit-print-color-adjust: exact; background: none; padding: 0px; border-radius: 3px; font-size: 11.05px; tab-size: 2; color: inherit;">DELETE /v2/-name&gt;/manifests/</code></pre>
+
+<p id="e6cc58a6-402e-4140-a2b6-b9282b9a0708">reference はダイジェストである必要があるのでご注意ください。このAPIからはタグを削除できませんが、マニフェストを削除することによって直接関連しているタグも同時に外されます。</p>
+
+<p id="fa740685-135e-4009-b035-1fc630fac509">ProGet&nbsp;では、特定のタグに関連した&nbsp;image details（イメージの詳細）の上にダイジェストが表示されます。</p>
+
+<p id="e1cd9cd5-a1c0-424f-8e8c-fa754b133ab3">API&nbsp;を通して、タグ付けされたイメージのマニフェストダイジェストを確認できます：</p>
+
+<ul id="205fd09a-084c-4834-a0e9-f5bb661d28af">
+	<li>リポジトリのリストにアクセスしたい場合は、 <code>https://proget.example.com/v2/_catalog</code> をリクエストしてください。</li>
+</ul>
+
+<ul id="d55a9101-f1a8-4bf8-8d34-09f1db0c77a4">
+	<li><code>https://proget.example.com/v2/main/library/node/tags/list</code> からリポジトリごとのタグのリストを入手できます</li>
+</ul>
+
+<ul id="c3325d6a-3a5b-4912-b56c-ca5e91bc4c65">
+	<li>そこから、<code>https://proget.example.com/v2/main/library/node/manifests/latest</code> を通してタグ付けされたマニフェストにアクセスできます</li>
+</ul>
+
+<ul id="06888c6c-fd40-480f-94df-7573cb82d1f9">
+	<li>ハッシュは、レスポンスの&nbsp;Docker-Content-Digest&nbsp;ヘッダーにあります</li>
+</ul>
+
+<p id="1a2c7a77-564e-4e4f-85fa-44f1ecc62d3e">ローカルで保持しているイメージのダイジェストは、docker inspect -f '{{.Id}}' proget.example.com/main/library/node:latest&nbsp;からも入手できます</p>
+
+<p id="4bc1fbfc-90de-4e04-b4ea-d37490e5d395">イメージをビルド、プッシュ、またはプルをする場合の全てにおいて、ダイジェストはコマンドアウトプットの最後の方にプリントされます。ビルドコマンドは--iidfileを使ってダイジェストをテキストファイルに保存する機能にも対応しています。</p>
+
+<h3 id="0642cd4b-e521-47fb-a94c-8db0f2116050">プロキシサーバでProGetのDockerレジストリを使う</h3>
+
+<p id="7e7b9265-9882-40da-bc8b-6f9169c7abdd">SSL&nbsp;サポートを追加したり、受信される接続を管理したりするためにプロキシサーバ（nginx&nbsp;や&nbsp;Apache&nbsp;など）を使って&nbsp;ProGet&nbsp;との接続をプロキシするユーザは多くいます。Docker&nbsp;ベースの&nbsp;ProGet&nbsp;を利用している場合も、プロキシサーバの使用をおすすめします。しかし、Docker&nbsp;のログイン時にトラブルが起こり、ユーザがログインできなくなってしまう場合があります。プロキシを使用する時には、ProGet&nbsp;の&nbsp;[Advanced Settings&nbsp;(詳細設定)]&nbsp;からプロキシサーバの&nbsp;URL&nbsp;を&nbsp;Web.BaseUrl&nbsp;に設定する必要があります。</p>
+
+<p id="edfbff58-b41a-418a-a18c-3d56254ec108">Docker クライアントが ProGet を使って認証を行おうとした場合、/v2/ のURL（<code>https://proget.server.com/v2/</code> など）にリクエストが送信されます。そうすると、ProGet は Docker に対して認証の手順を示す WWW-Authenticate: に似たようなヘッダーを表示します：Bearer realm="https://proget.server.com/v2/_auth",service="proget.server.com"。プロキシサーバがURLを含めたヘッダーをクライアントに正しく送信されること確認してください。</p>
+
+<h2 id="a985ad0e-e8b1-4b1a-b8b4-2288cbb8516a">高度なコンセプト</h2>
+
+<h3 id="02647e7a-fbe4-4f9d-9df6-fd8adb01f4b6">チャンク化・モノリシックアップロード</h3>
+
+<p id="e9be57df-1708-49da-8c57-6a695715595b">一度の&nbsp;HTTP&nbsp;リクエストで大容量のファイルをアップロードするには、Dockerクライアントがチャンク化アップロードプロセス（リンク先英語）を使う場合がほとんどです。このプロセスでは、アップロードの開始、いくつかのチャンク（断片的なBlobファイル）、そしてアップロードの完了情報を送信します。ProGet&nbsp;は&nbsp;DockerAPI&nbsp;が指定したチャンクを作成することによって、このプロセスをサポートします。</p>
+
+<p id="2dbc9f3c-cca2-4e89-bad6-c1944adbf8d0">また、「フィードクリーンアップ」では、ProGet&nbsp;が未完了のアップロードを消去します（例：アップロード完了情報なしでチャンクが送信された場合など）。</p>
+
+<h3 id="bbadc0ed-4791-497b-8b1e-b26a012e14a6">不要な&nbsp;blob&nbsp;の収集</h3>
+
+<p id="ad810732-7cb5-444d-abd8-bcbd64c408fd">パッケージとは違い、Docker&nbsp;イメージは独立したファイルではありません。Docker&nbsp;イメージはマニフェスト&nbsp;blob&nbsp;の参照用ファイルであり、代わりにいくつかのレイヤーblob&nbsp;を提供します。これらのレイヤー&nbsp;blob&nbsp;はレジストリ内の他のマニフェストが参照できます。つまり、マニフェスト&nbsp;blob&nbsp;を消去しても、参照されたレイヤー&nbsp;blob&nbsp;は消去されません。</p>
+
+<p id="aad80f5b-5787-44c7-87c9-cb954a5537fa">ここで&nbsp;garbage collection（不要&nbsp;blob&nbsp;の収集）の機能が役立ってきます。garbage collection&nbsp;は、蓄積されたパッケージの中から、マニフェストに参照されなくなったblob&nbsp;を消去してくれます。この機能は&nbsp;ProGet&nbsp;が「フィードクリーンアップ」のジョブスケジュールを通して、Docker&nbsp;レジストリに対して&nbsp;garbage collection&nbsp;を行います。</p>
+
+<h3 id="72f26c22-262f-4f09-9498-9edd91f5350a">コネクタ</h3>
+
+<p id="25209a60-1ce7-46a2-9035-7cb5be1b4fc7">ProGet v5.1&nbsp;以降の&nbsp;Docker&nbsp;フィードは、他の&nbsp;Docker&nbsp;レジストリに対するコネクタ（リンク先英語）に対応しています。これらのコネクタは、ProGet&nbsp;の他のコネクタとは少し違った動きをします。詳細は&nbsp;Docker connectors&nbsp;についての記事（リンク先英語）をご覧ください。</p>
+
+<h2 id="8a54397f-05ad-4b72-ad26-f4b520cd931f">プライベートレジストリの制約</h2>
+
+<h3 id="5305cea0-888f-4e1e-aa8b-3795da61f4c0">統合&nbsp;Windows&nbsp;認証</h3>
+
+<p id="4cd78c70-426c-4dee-9371-d2d95c4c7cc1">Docker&nbsp;クライアントは統合&nbsp;Windows&nbsp;認証に対応していません。なので、この機能が有効な&nbsp;ProGet&nbsp;インスタンスに「匿名」アクセスを確立することはできません。対策としては、統合&nbsp;Windows&nbsp;認証が無効の状態で、IIS&nbsp;内にディスク上の同じパスを指す二つ目のサイトを構成する方法があります。</p>
+
+<h3 id="1b1eaa83-25cb-4adc-a402-2be182b542b2">その他の制約</h3>
+
+<p id="58fb2f68-54c7-427e-a71d-552ce6f61323">Docker は、パブリックにホストされている hub.docker.com と密接に統合するように設計されています。プライベートレジストリもある程度までは対応しています。しかし、Docker クライアントや関連ツールは主にパブリックレジストリ、もしくは Docker クライアントが構築した、認証済みのプライベート Docker レジストリ（リンク先英語）の使用を前提としています。結論として、プライベートレジストリの使用はやや複雑になってしまう傾向がありますが、このようなケースに対する Docker クライアントの対応の質も徐々に向上しています。</p>

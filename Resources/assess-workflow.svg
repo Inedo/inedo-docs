@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 650 373">
+<style>
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:600&amp;display=block');
+
+text {
+    text-anchor: middle;
+    alignment-baseline: central;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
+    letter-spacing: 0.75px;
+    fill: #fff;
+    text-transform: uppercase;
+}
+text.small {
+    font-size: 9pt;
+}
+text.large {
+    font-size: 12pt;
+}
+.red {
+    fill: #903;
+}
+.yellow {
+    fill: #f6a52b;
+}
+.green {
+    fill: #3d871b;
+}
+.blue_1 {
+    fill: #025291;
+    stroke: #025291;
+}
+.blue_2 {
+    fill: #152c53;
+    stroke: #152c53;
+}
+.blue_3 {
+    fill: #282b3a;
+    stroke: #282b3a;
+}
+.line {
+    fill: none;
+    stroke-width: 2;
+}
+.arrow.blue_1 {
+    marker-end:url(#triangle_1);
+}
+.arrow.blue_2 {
+    marker-end:url(#triangle_2);
+}
+.arrow.blue_3 {
+    marker-end:url(#triangle_3);
+}
+marker {
+    overflow: visible;
+}
+marker path {
+    transform: scale(0.5);
+}
+</style>
+<defs>
+<marker orient="auto" refY="0.0" refX="0.0" id="triangle_1" class="blue_1"><path d="M 5.77,0 -2.88,5 V -5 Z"/></marker>
+<marker orient="auto" refY="0.0" refX="0.0" id="triangle_2" class="blue_2"><path d="M 5.77,0 -2.88,5 V -5 Z"/></marker>
+<marker orient="auto" refY="0.0" refX="0.0" id="triangle_3" class="blue_3"><path d="M 5.77,0 -2.88,5 V -5 Z"/></marker>
+</defs>
+<rect class="green" width="110" height="40" x="535" y="246" rx="20"/>
+<rect class="yellow" width="110" height="40" x="535" y="142" rx="20"/>
+<rect class="red" width="110" height="40" x="535" y="39" rx="20"/>
+<path class="blue_1" d="m 114,246 l 144,0 -30,48 -144,0 z" />
+<path class="blue_1" d="m 65,320 l 144,0 -30,48 -144,0 z"/>
+<rect class="blue_1" width="128" height="76" x="4" y="21" rx="38"/>
+<path class="blue_3" d="m 394,96 -104,65 104,65 104,-65 z"/>
+<path class="line arrow blue_1" d="m 131,60 h 22"/>
+<path class="line arrow blue_2" d="M 395,60 H 526"/>
+<path class="line blue_2" d="m 329,60 h 35"/>
+<path class="blue_2" d="m 247,7 -84,53 84,53 84,-53 z" />
+<path class="line blue_2" d="m 247,111 v 18"/>
+<path class="line arrow blue_2" d="m 247,149 v 12 h 34"/>
+<path class="line arrow blue_3" d="m 476,60 v 206 c 17,0 -24,0 51,0"/>
+<path class="line arrow blue_3" d="m 476,161 h 51"/>
+<path class="line arrow blue_3" d="m 395,223 v 52"/>
+<path class="line arrow blue_2" d="M 415,284 V 225"/>
+<path class="blue_2" d="M 356 282 A 26 40 0 0 0 330 322 A 26 40 0 0 0 356 362 L 471 362 A 26 40 0 0 1 445 322 A 26 40 0 0 1 471 282 L 356 282 z " />
+<text class="large" x="590" y="59">Block</text>
+<text class="large" x="590" y="162">Caution</text>
+<text class="large" x="590" y="266">Ignore</text>
+<text class="small" x="392" y="325">
+<tspan x="392" dy="-0.65em">Assessment</tspan>
+<tspan x="392" dy="1.3em">Record</tspan>
+</text>
+<text class="small" x="171" y="270">OSS Index</text>
+<text class="small" x="122" y="344">Manual Entry</text>
+<text class="small" x="68" y="62">
+<tspan x="68" dy="-1.3em">Vulnerability</tspan>
+<tspan x="68" dy="1.3em">Assessment</tspan>
+<tspan x="68" dy="1.3em">Check</tspan>
+</text>
+<text class="small" x="247" y="60">
+<tspan x="247" dy="-1.3em">Is the</tspan>
+<tspan x="247" dy="1.3em">vulnerability</tspan>
+<tspan x="247" dy="1.3em">assessed</tspan>
+</text>
+<text class="small" x="395" y="166">
+<tspan x="395" dy="-1.3em">What does</tspan>
+<tspan x="395" dy="1.3em">the assessment</tspan>
+<tspan x="395" dy="1.3em">indicate</tspan>
+</text>
+<text class="small blue_2" x="247" y="139">Yes</text>
+<text class="small blue_2" x="380" y="60">No</text>
+<path class="line arrow blue_1" d="m 239,271 h 22 v 51 h 59"/>
+<path class="line blue_1" d="m 191,345 70,-1 v -22"/>
+</svg>

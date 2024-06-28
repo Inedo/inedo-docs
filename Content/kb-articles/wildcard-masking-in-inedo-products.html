@@ -1,0 +1,16 @@
+---
+title: "Wildcard Masking in Inedo Products"
+order: 6
+hidden: true
+---
+
+<p>Wildcard masks in BuildMaster and Otter are used to include and/or exclude file/directory paths in the context of an operation. Typically, masks are used for file-based operations. The values for the masks are similar to ant-style masks.</p><h3>Rules</h3><ul><li>A single asterisk (*) represents a matching file name within a specific directory</li><li>A double asterisk (**) represents a matching file name within a specific directory and all subdirectories</li></ul><h3>Masking Examples</h3><p>For the following examples, consider the working directory for a <code>CopyFilesOperation</code> contains the following files:</p><pre>BigDoc.pdf
+Documentation.pdf
+WordDoc.docx
+WordDoc2.docx
+TextFile1.txt
+TextFile2.txt
+Subdir\SubBigDoc.pdf
+Subdir\SubWordDoc.docx
+Subdir\SubText.txt
+Subdir\SubSubDir\SubSubPdf.pdf</pre><table id="masks"><thead><tr><th>Include Mask</th><th>Exclude Mask</th><th>Files Copied</th><th>Description</th></tr></thead><tbody><tr><td>**.docx</td><td>-</td><td><ul><li>WordDoc.docx</li><li>WordDoc2.docx</li><li>Subdir\SubWordDoc.docx</li></ul></td><td>All .docx files recursively.</td></tr><tr><td>@(*.docx, *.pdf)</td><td>-</td><td><ul><li>BigDoc.pdf</li><li>Documentation.pdf</li><li>WordDoc.docx</li><li>WordDoc2.docx</li></ul></td><td>Only .docx and .pdf files in the root are transferred.</td></tr><tr><td>**</td><td>*.txt</td><td><ul><li>BigDoc.pdf</li><li>Documentation.pdf</li><li>WordDoc.docx</li><li>WordDoc2.docx</li><li>Subdir\SubBigDoc.pdf</li><li>Subdir\SubWordDoc.docx</li><li>Subdir\SubText.txt</li><li>Subdir\SubSubDir\SubSubPdf.pdf</li></ul></td><td>All files except .txt files in the root directory.</td></tr><tr><td>**</td><td>**.txt</td><td><ul><li>BigDoc.pdf</li><li>Documentation.pdf</li><li>WordDoc.docx</li><li>WordDoc2.docx</li><li>Subdir\SubBigDoc.pdf</li><li>Subdir\SubWordDoc.docx</li><li>Subdir\SubSubDir\SubSubPdf.pdf</li></ul></td><td>All files except any .txt file.</td></tr><tr><td>Subdir\*</td><td>-</td><td><ul><li>Subdir\SubBigDoc.pdf</li><li>Subdir\SubWordDoc.docx</li><li>Subdir\SubText.txt</li></ul></td><td>Only files in Subdir, but not Subdir/SubSubDir.</td></tr><tr><td>Subdir\**</td><td>-</td><td><ul><li>Subdir\SubBigDoc.pdf</li><li>Subdir\SubWordDoc.docx</li><li>Subdir\SubText.txt</li><li>Subdir\SubSubDir\SubSubPdf.pdf</li></ul></td><td>All files within Subdir recursively.</td></tr><tr><td>**</td><td>@(**1**, **2**)</td><td><ul><li>BigDoc.pdf</li><li>Documentation.pdf</li><li>WordDoc.docx</li><li>Subdir\SubBigDoc.pdf</li><li>Subdir\SubWordDoc.docx</li><li>Subdir\SubText.txt</li><li>Subdir\SubSubDir\SubSubPdf.pdf</li></ul></td><td>All files except files with the numbers 1 or 2 in any part of the path.</td></tr></tbody></table>

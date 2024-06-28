@@ -1,0 +1,124 @@
+---
+title: "Docker をパイプライン管理する"
+order: 5
+---
+
+<p id="02d287ff-6d27-40bd-8080-16bcf2694f49">
+
+	Docker イメージプロモーションとは、許可・認証されたイメージのみが本番環境などの最適な環境下で使用されるように、レジストリ間でプロモーションを行うことです。</p>
+
+<p id="62b1b492-820a-492c-8e86-9a6823ac93cd">ProGet&nbsp;では、レジストリ間でイメージをプロモーションし、そのプロセスを最初から最後までトラッキング（追跡）できます。それによりプロモーションのパイプラインを構築し、レジストリ内のさまざまな要素（開発や本番環境など）を分けて管理できます。</p>
+<figure class="block-color-gray_background callout" id="49c611b3-17fc-4155-9a22-0d3896d2868d" style="box-sizing: border-box; -webkit-print-color-adjust: exact; margin: 1.25em 0px; break-inside: avoid; border-radius: 3px; padding: 1rem; background: rgb(235, 236, 237); color: rgb(55, 53, 47); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Helvetica, &quot;Apple Color Emoji&quot;, Arial, sans-serif, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;; font-size: medium; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: pre-wrap; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; display: flex;">
+	<div style="box-sizing: border-box; -webkit-print-color-adjust: exact; font-size: 1.5em;"><span class="icon" style="box-sizing: border-box; -webkit-print-color-adjust: exact; display: inline-block; max-width: 1.2em; max-height: 1.2em; text-decoration: none; vertical-align: text-bottom; margin-right: 0.5em;">💡</span></div>
+	<div style="box-sizing: border-box; -webkit-print-color-adjust: exact; width: 831.453px;">無料版の ProGet ではこの機能は制限されています。詳細は、<a href="/docs/proget-license" rel="nofollow noopener noreferrer" target="_blank" translate="no">エディションごとの機能</a>を比較をご覧下さい。または<a href="https://inedo.co.jp/contact/" rel="noopener noreferrer" target="_blank" translate="no">見積もりを依頼ください</a>。</div>
+</figure>
+
+<h2 id="e5262742-f058-4b59-9469-8db702caa476"><strong>イメージのプロモーション方法</strong></h2>
+
+<p id="b2d041f4-3231-4456-8079-5e715951a7ed">イメージのプロモーション方法には、ProGet&nbsp;内にあるリポジトリのタグページの&nbsp;[Promote (プロモーション)]&nbsp;ボタンを使う方法と、API&nbsp;呼び出しを使う方法の&nbsp;2&nbsp;つがあります。ターゲットレジストリに対してプロモーションされたイメージは、ソースレジストリから削除されません。</p>
+
+<p id="22222806-b587-4556-85de-4c784ba301a7">現在、<a href="https://docs.docker.com/registry/spec/manifest-v2-2/%22%20/" style="box-sizing: border-box; -webkit-print-color-adjust: exact; color: inherit; text-decoration: underline;">fatマニフェスト</a>（リンク先英語）を使ったイメージのプロモーションには対応していません。このようなイメージを再作成し、dockerCLI&nbsp;からターゲットレジストリにプッシュ&nbsp;（送信）する必要があります。</p>
+
+<h3 id="5092e9a3-6ff5-458b-8e6b-dd7beb5eac64"><strong>検証済み</strong><strong>/</strong><strong>プロモートされた</strong><strong>&nbsp;</strong><strong>Docker</strong><strong>&nbsp;</strong><strong>レジストリの作成</strong></h3>
+
+<p id="c0d3d4d2-38d5-465b-ba45-219c11ecb4bf">どのようなレジストリも検証済み/プロモートされた&nbsp;Docker&nbsp;レジストリとして使用できます。しかし、原則的にはプロモートされた内部イメージと検証済みの外部イメージを含む別のレジストリの作成をおすすめしています。新しいDockerレジストリを作成する場合、使用タイプの&nbsp;[validated/promoted feed (検証済み/プロモートされたフィード)]&nbsp;を選択してください。</p>
+
+<h3 id="7eea0062-eb27-4a0d-a9d2-1db4566412a0"><strong>リポジトリのタグページからイメージをプロモーションする方法</strong></h3>
+
+<p id="baaf6822-a938-49f8-94a1-8dd6d467124a">リポジトリのタグページからイメージをプロモーションしたい場合、まずプロモーションしたいレジストリ、リポジトリ、タグの順に移動してください。次に右上の▼ボタンにカーソルを合わせ、[Promote (プロモーション)]&nbsp;ボタンをクリックしてください。</p>
+<figure class="block-color-gray_background callout" id="06c759da-0043-4ba4-9c1a-8c2dad621c40" style="box-sizing: border-box; -webkit-print-color-adjust: exact; margin: 1.25em 0px; break-inside: avoid; border-radius: 3px; padding: 1rem; background: rgb(235, 236, 237); color: rgb(55, 53, 47); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Helvetica, &quot;Apple Color Emoji&quot;, Arial, sans-serif, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;; font-size: medium; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: pre-wrap; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; display: flex;">
+	<div style="box-sizing: border-box; -webkit-print-color-adjust: exact; font-size: 1.5em;"><span class="icon" style="box-sizing: border-box; -webkit-print-color-adjust: exact; display: inline-block; max-width: 1.2em; max-height: 1.2em; text-decoration: none; vertical-align: text-bottom; margin-right: 0.5em;">💡</span></div>
+	<div style="box-sizing: border-box; -webkit-print-color-adjust: exact; width: 831.453px;">無料版の&nbsp;ProGet&nbsp;では、リポジトリのタグページを使用したイメージプロモーションが制限されています。無料版の&nbsp;ProGet&nbsp;ではこのページのみからイメージのプロモーションができます。また、誰がいつ、何の目的でプロモーションしたのかは確認できません。</div>
+</figure>
+
+<h3 id="57da8064-3178-43c5-ae49-087b55050100"><strong>API</strong><strong>&nbsp;</strong><strong>を使ってイメージをプロモーションする</strong></h3>
+
+<p id="024f7a53-7f2a-4f71-bc6f-c3d40b98731c">API&nbsp;を通してイメージをプロモーションしたい場合、まずはパッケージプロモーションへのアクセスを許可する&nbsp;API&nbsp;キーを作成します。次に<a href="/docs/proget/reference-api" style="box-sizing: border-box; -webkit-print-color-adjust: exact; color: inherit; text-decoration: underline;">ProGetのAPIレファレンス</a>（リンク先英語）から<a href="/docs/proget/packages/package-promotion" style="box-sizing: border-box; -webkit-print-color-adjust: exact; color: inherit; text-decoration: underline;">パッケージプロモーションエンドポイント</a>（リンク先英語）のガイドを参照し、ProGet APIとパッケージプロモーションエンドポイントについてのステップを理解します。</p>
+<figure class="block-color-gray_background callout" id="cd9051bb-95e5-4445-935e-1b22ec3dec87" style="box-sizing: border-box; -webkit-print-color-adjust: exact; margin: 1.25em 0px; break-inside: avoid; border-radius: 3px; padding: 1rem; background: rgb(235, 236, 237); color: rgb(55, 53, 47); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Helvetica, &quot;Apple Color Emoji&quot;, Arial, sans-serif, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;; font-size: medium; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: pre-wrap; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; display: flex;">
+	<div style="box-sizing: border-box; -webkit-print-color-adjust: exact; font-size: 1.5em;"><span class="icon" style="box-sizing: border-box; -webkit-print-color-adjust: exact; display: inline-block; max-width: 1.2em; max-height: 1.2em; text-decoration: none; vertical-align: text-bottom; margin-right: 0.5em;">💡</span></div>
+	<div style="box-sizing: border-box; -webkit-print-color-adjust: exact; width: 831.453px;">無料版の&nbsp;ProGet&nbsp;は&nbsp;API&nbsp;を使ったイメージプロモーションに対応していません。</div>
+</figure>
+
+<h3 id="ab922a07-611b-43ff-897b-0e85995acfb3"><strong>イメージプロモーションのパイプラインを作る</strong></h3>
+
+<p id="cfe33327-fb2d-4d1f-af93-35c33adfff6e">特定のレジストリをターゲットに選ぶことにより、さまざまなレジストリ/環境の間でイメージプロモーションのパイプラインがイメージを elevation（昇格）させるプロセスを助けます。ターゲットのレジストリが選択されると、リポジトリのタグページと<a href="/docs/proget-package-promotion" rel="nofollow noopener noreferrer" target="_blank" translate="no">パッケージプロモーション</a>エンドポイントのどちらからでも、そのレジストリに対してのみプロモーションを行うことができます。</p>
+
+<p id="899f7301-3682-4c95-b439-5cf2bfeddf16">パイプラインを構成するためのステップ：</p>
+
+<p id="19028662-90ea-46a5-a865-73a7b6a50ebf">1. &nbsp; &nbsp;プロモーションしたいイメージが含まれるソースレジストリに移動</p>
+
+<p id="625817a1-ec7b-480c-8ff7-16c61cb7ca6a">2. &nbsp; &nbsp;ページの右上にある [Manage Feed (フィードの管理)] のボタンをクリック</p>
+
+<p id="17683fb8-3ba2-43a5-8569-fe981d3c5dd2">3. &nbsp; &nbsp;[Promote To Feed (フィードへプロモーション)] プロパティーの右にある [configure (構成)] のリンクをクリック</p>
+
+<p id="5c979a21-38d1-4711-9dc9-30c7e6a8bf76">4. &nbsp; &nbsp;ターゲットのプロモーションレジストリを選択</p>
+<figure class="block-color-gray_background callout" id="1ef161c4-5ac8-4651-abb4-cfd3c452197c" style="box-sizing: border-box; -webkit-print-color-adjust: exact; margin: 1.25em 0px; break-inside: avoid; border-radius: 3px; padding: 1rem; background: rgb(235, 236, 237); color: rgb(55, 53, 47); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Helvetica, &quot;Apple Color Emoji&quot;, Arial, sans-serif, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;; font-size: medium; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: pre-wrap; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; display: flex;">
+	<div style="box-sizing: border-box; -webkit-print-color-adjust: exact; font-size: 1.5em;"><span class="icon" style="box-sizing: border-box; -webkit-print-color-adjust: exact; display: inline-block; max-width: 1.2em; max-height: 1.2em; text-decoration: none; vertical-align: text-bottom; margin-right: 0.5em;">💡</span></div>
+	<div style="box-sizing: border-box; -webkit-print-color-adjust: exact; width: 831.453px;">検証済み/プロモーションされた&nbsp;Docker&nbsp;レジストリは、他の検証済み/プロモーションされた&nbsp;Docker&nbsp;レジストリのソースレジストリとして使えます。これにより別々のレジストリで環境を分けて管理し、レジストリ全体のelevation（昇格）プロセスを施行できます。</div>
+</figure>
+
+<h2 id="5b09c77b-d89f-42bb-b237-cfbcd912de99"><strong>パッケージプロモーションのセキュリティー</strong></h2>
+
+<p id="3b5bc71e-3c02-49b2-8c8f-2cfbf96e7293">パッケージプロモーションはProGetに<a href="/docs/proget-access-control" rel="nofollow noopener noreferrer" target="_blank" translate="no">組み込まれたタスク</a>であり、特定のレジストリにイメージをプロモーションするためのアクセスを許可します。このタスクへの権限を持ったユーザーは、ソースレジストリにある View &amp; Download Packagesのタスクへのアクセスも許可されます。</p>
+
+<p id="4e007b1a-94be-4655-862b-e3c6039f705c">[Administration (管理)] ＞ [Users &amp; Tasks (ユーザー＆タスク)] ＞ [Customize Tasks (タスクをカスタマイズする)] から、<a href="/docs/proget-access-control" rel="nofollow noopener noreferrer" target="_blank" translate="no">カスタムタスク</a>の作成もできます。また、[Users &amp; Tasks (ユーザー＆タスク)] ページから、特定のユーザーやグループに対して権限を与えたり拒否したりできます。</p>
+
+<h2 id="ace81ead-5793-4ec8-8efb-1367203c93f4"><strong>イメージプロモーションのトラッキング（追跡）</strong></h2>
+
+<p id="101aab33-7bb9-40f8-89fb-b189dc75ba44">イメージプロモーションのトラッキングはリポジトリにあるタグページの、[History (履歴)]&nbsp;から見ることができます。履歴上で以下のプロモーションのアクションが表示されます：</p>
+
+<p id="07e252f6-345e-4407-a93a-1a83fb9e0305">o &nbsp; &nbsp;プロモーションの実行日時</p>
+
+<p id="49b71f34-eb6d-4a44-8119-eb5d21fc01e5">o &nbsp; &nbsp;イメージをプロモーションしたユーザー</p>
+
+<p id="03247ca0-f0bc-40a9-896e-97dfd8ed3af2">o &nbsp; &nbsp;ソースレジストリ</p>
+
+<p id="d43dc90a-e322-46ea-a291-35db980b48ec">o &nbsp; &nbsp;ターゲットレジストリ</p>
+
+<p id="93b3e91c-e9a1-4853-b1c7-10658bb5a3ba">o &nbsp; &nbsp;プロモーションした人からのコメント（あれば）</p>
+
+<table style="width: 100%;">
+	<thead>
+		<tr>
+			<th>Action (アクション)</th>
+			<th>On (日時)</th>
+			<th>Deals (詳細)</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td style="width: 33.3333%;">Promoted (プロモーション済み)</td>
+			<td style="width: 33.3333%;">5/14/2020 1:30:15 PM by Admin
+				<br>（Adminがユーザー名）
+				<br>
+			</td>
+			<td style="width: 33.3333%;">from devdocker to rcdocker Ready for testing (devdocker から rcdockerテスト準備完了)
+				<br>
+			</td>
+		</tr>
+		<tr>
+			<td style="width: 33.3333%;">Promoted (プロモーション済み)
+				<br>
+			</td>
+			<td style="width: 33.3333%;">5/15/2020 1:30:15 PM by API（APIがユーザー名）
+				<br>
+			</td>
+			<td style="width: 33.3333%;">from rcdocker to proddocker Release 12.0.5 (rcdocker から proddockerリリース12.0.5)
+				<br>
+			</td>
+		</tr>
+	</tbody>
+</table>
+<div class="collection-content" id="03dd53b2-bc5a-4424-a864-1dbef9977585" style="box-sizing: border-box; -webkit-print-color-adjust: exact; font-size: 0.875rem; color: rgb(55, 53, 47); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Helvetica, &quot;Apple Color Emoji&quot;, Arial, sans-serif, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: pre-wrap; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;">
+
+	<h4 class="collection-title">
+		<br>
+	</h4>
+</div>
+<div class="collection-content" id="03dd53b2-bc5a-4424-a864-1dbef9977585" style="box-sizing: border-box; -webkit-print-color-adjust: exact; font-size: 0.875rem; color: rgb(55, 53, 47); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Helvetica, &quot;Apple Color Emoji&quot;, Arial, sans-serif, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: pre-wrap; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;">
+	<br>
+</div>
+
+<p>
+	<br>
+</p>
