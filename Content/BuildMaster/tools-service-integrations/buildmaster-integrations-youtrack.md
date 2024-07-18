@@ -19,7 +19,7 @@ By integrating BuildMaster with YouTrack, you can help developers, testers, and 
 - Quickly identify the issues and changes that are blocking a release
 - Create fully automated deployments using issue status as a check and balance
 
-BuildMaster is designed to work especially well with YouTrack as an [issue tracker](/docs/buildmaster/modeling-your-applications/buildmaster-applications-issue-tracking) tool. As a more concrete example, Inedo uses YouTrack internally to track internal product changes and also list product issues publicly. You can view our [BuildMaster issues list](https://inedo.myjetbrains.com/youtrack/issues/BM) as an example.
+BuildMaster is designed to work especially well with YouTrack as an [issue tracker](/docs/buildmaster/modeling-your-applications/buildmaster-applications-issue-tracking) tool. As a more concrete example, Inedo uses YouTrack internally to track internal product changes and also list product issues publicly. You can view our [BuildMaster issues list](https://issues.inedo.com/youtrack/issues/BM) as an example.
 
 ## Installing the YouTrack Extension 
 

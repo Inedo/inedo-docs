@@ -20,7 +20,7 @@ There are two supported options; there is also [Legacy (Traditional) Installer](
 ### Easiest: Inedo Hub
 The easiest way to install ProGet on your Windows servers is to use [Inedo Hub](/docs/installation/windows/desktophub-overview), a lightweight Windows application. Inedo Hub is used to install, update and maintain your ProGet installation as well as other Inedo products installed on your server.
 
-<a href="/docs/inedo-hub-installation-guide" style=" background:#025291;color:#ffffff;padding: 6px 20px;  border-radius: 3px;font-size: 14pt;text-decoration:none">Install ProGet using the Inedo Hub</a>
+<a href="/docs/installation/windows/inedo-hub-installation-guide" style=" background:#025291;color:#ffffff;padding: 6px 20px;  border-radius: 3px;font-size: 14pt;text-decoration:none">Install ProGet using the Inedo Hub</a>
 
 The Inedo Hub also supports [Offline Installation](/docs/installation/windows/desktophub-offline) for servers with limited or no Internet access.
 
@@ -51,7 +51,7 @@ The recommended container resources are:
 
 In addition, we recommend reserving a volume with at least 10GB to store your packages and container images.
 
-<a href="/docs/installation-linux-docker-guide" style=" background:#025291;color:#ffffff;padding: 6px 20px;  border-radius: 3px;font-size: 14pt;text-decoration:none">Install ProGet on Linux using Docker</a>
+<a href="/docs/installation/linux/docker-guide" style=" background:#025291;color:#ffffff;padding: 6px 20px;  border-radius: 3px;font-size: 14pt;text-decoration:none">Install ProGet on Linux using Docker</a>
 
 In addition to Docker Engine, you can run ProGet through [Docker Compose](/docs/installation/linux/docker-compose-installation-guide) or Kubernetes.
 

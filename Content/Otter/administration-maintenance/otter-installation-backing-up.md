@@ -50,7 +50,7 @@ Just make sure the Otter Windows Service(s) are stopped, otherwise SQL Server wi
 
 ### The Advanced Way (Restore from any version) 
 
-This isn't really that much harder, but it does involve some knowledge of Microsoft SQL Server or the willingness to [contact us](/support/ticket) for assistance. Firstly, you won't be able to restore a newer back-up to an older version (i.e. a 3.0.0 back-up to 2.6.1). But since you should never need to do that anyway, there's nothing to worry about.
+This isn't really that much harder, but it does involve some knowledge of Microsoft SQL Server or the willingness to [contact us](https://my.inedo.com/tickets/new) for assistance. Firstly, you won't be able to restore a newer back-up to an older version (i.e. a 3.0.0 back-up to 2.6.1). But since you should never need to do that anyway, there's nothing to worry about.
 
 If you're using your own SQL Server, then all you need to do is make sure the Otter Database has been restored *before* running the installer of the version you want. The installer will make sure the restored database is up-to-date as part of the installation.
 

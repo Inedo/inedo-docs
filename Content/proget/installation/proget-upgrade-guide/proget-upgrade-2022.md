@@ -166,7 +166,7 @@ ASP.NET Core takes a different approach: it doesn't have built-in resource throt
 While you're welcome to tweak ProGet's IIS settings or database connection settings to match your needs, our current guidance and default setting is 1000 connections, which is ten times the current default value of 100.
 
 :::(Info)
-Starting in ProGet 2022.5 ([PG-2182](https://inedo.myjetbrains.com/youtrack/issue/PG-2182), the default value for connection pools will be `1000` if the default value of `100` is used. If you're using an earlier version, or otherwise modified this value, you can modify your database connection string, which you can edit in the Inedo Hub: 
+Starting in ProGet 2022.5 ([PG-2182](https://issues.inedo.com/youtrack/issue/PG-2182), the default value for connection pools will be `1000` if the default value of `100` is used. If you're using an earlier version, or otherwise modified this value, you can modify your database connection string, which you can edit in the Inedo Hub: 
 
 `«existing-connection-string»;Max Pool Size=1000`.
 :::
@@ -176,7 +176,7 @@ Our guidance is based on several factors, but most notably that ADO.NET's curren
 ## Upgrade Process
 You should generally perform the upgrade using the same method you used to install.
 
-* On Windows, the most common installation method is using the internet-connected [Inedo Hub](/docs/installation/windows/desktophub-overview); see  [HOWTO: Upgrade or Downgrade with the Inedo Hub](/inedo-hub-upgrade-downgrade) for more details on how to upgrade.
+* On Windows, the most common installation method is using the internet-connected [Inedo Hub](/docs/installation/windows/desktophub-overview); see  [HOWTO: Upgrade or Downgrade with the Inedo Hub](/docs/installation/windows/inedo-hub-upgrade-downgrade) for more details on how to upgrade.
 * On Linux, the most common installation method is using our Docker container; see [Upgrading Docker Containers](/docs/installation/linux/installation-upgrading-docker-containers) for more details.
 
 However, there are other installation options available, including [offline installation](/docs/installation/windows/desktophub-offline), [cluster installation](/docs/installation/high-availability-load-balancing/high-availability-load-balancing), and even [manual installation](/docs/installation/manual-installation). If you want to change installation methods, the easiest way is to simply uninstall (by following the process in reverse) and install using the new method.

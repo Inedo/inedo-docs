@@ -164,7 +164,7 @@ For example, if you pushed `myapp` to ProGet, then `library/myapp` would be stor
 ## Upgrade Process
 You should generally perform the upgrade using the same method you used to install.
 
-* On Windows, the most common installation method is using the internet-connected [Inedo Hub](/docs/installation/windows/desktophub-overview); see  [HOWTO: Upgrade or Downgrade with the Inedo Hub](/inedo-hub-upgrade-downgrade) for more details on how to upgrade.
+* On Windows, the most common installation method is using the internet-connected [Inedo Hub](/docs/installation/windows/desktophub-overview); see  [HOWTO: Upgrade or Downgrade with the Inedo Hub](/docs/installation/windows/inedo-hub-upgrade-downgrade) for more details on how to upgrade.
 * On Linux, the most common installation method is using our Docker container; see [Upgrading Docker Containers](/docs/installation/linux/installation-upgrading-docker-containers) for more details.
 
 However, there are other installation options available, including [offline installation](/docs/installation/windows/desktophub-offline), [cluster installation](/docs/installation/high-availability-load-balancing/high-availability-load-balancing), and even [manual installation](/docs/installation/manual-installation). If you want to change installation methods, the easiest way is to simply uninstall (by following the process in reverse) and install using the new method.

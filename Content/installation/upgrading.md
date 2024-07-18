@@ -26,7 +26,7 @@ Maintenance releases are low risk and contain only backward-compatible enhanceme
 
 We publish maintenance releases of each product at least twice a month, and most of the changes are very small and impact only a handful of customers. We will occasionally ship "preview" features in maintenance updates, but only if it can be done safely and if it's clearly marked in the product as a preview. 
 
-Individual changes are carefully documented on our <a href="https://inedo.myjetbrains.com/">public issue tracker</a> and follow our rigorous <a href="https://inedo.myjetbrains.com/youtrack/dashboard?id=fa2b918f-c687-4c96-a6ec-b9fa7e1c5c90">Change Management Process</a>. Users may even request <a href="https://inedo.com/open/source-code-request">source code access</a> to see exactly what changed.</p>
+Individual changes are carefully documented on our <a href="https://issues.inedo.com/">public issue tracker</a> and follow our rigorous <a href="https://issues.inedo.com/youtrack/dashboard?id=fa2b918f-c687-4c96-a6ec-b9fa7e1c5c90">Change Management Process</a>. Users may even request <a href="https://inedo.com/open/source-code-request">source code access</a> to see exactly what changed.</p>
 
 However, lots of small, low-risk changes add up over time, so we recommend upgrading  at least once per quarter to minimize the risk of regression.
 
@@ -58,13 +58,13 @@ Performing the upgrade itself is generally very easy.
 ### Upgrading on Windows Servers
 The easiest way to manage your product installation on Windows is with [Inedo Hub](/docs/installation/windows/desktophub-overview). This is a lightweight Windows application that's used to install, update, and otherwise service the Inedo products on your server.
 
-<a href="/docs/inedo-hub-upgrade-downgrade" style=" background:#025291;color:#ffffff;padding: 6px 20px;  border-radius: 3px;font-size: 14pt;text-decoration:none">HOWTO: Upgrade using the Inedo Hub</a>
+<a href="/docs/installation/windows/inedo-hub-upgrade-downgrade" style=" background:#025291;color:#ffffff;padding: 6px 20px;  border-radius: 3px;font-size: 14pt;text-decoration:none">HOWTO: Upgrade using the Inedo Hub</a>
 
 
 ### Upgrading on Linux Servers
 
 Inedo products running on Linux using Docker containers, and can be upgraded by installing and running a new version of the container image.
 
-<a href="/docs/installation-upgrading-docker-containers" style=" background:#025291;color:#ffffff;padding: 6px 20px;  border-radius: 3px;font-size: 14pt;text-decoration:none">Upgrading Docker Containers</a>
+<a href="/docs/installation/linux/installation-upgrading-docker-containers" style=" background:#025291;color:#ffffff;padding: 6px 20px;  border-radius: 3px;font-size: 14pt;text-decoration:none">Upgrading Docker Containers</a>
 
 You can also run ProGet through [Docker Compose](/docs/installation/linux/docker-compose-installation-guide) or Kubernetes, which will follow the same upgrade principles.

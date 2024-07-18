@@ -13,7 +13,7 @@ To learn about the options, see [Managing Agents and Servers](/docs/installation
 ### Installing the Inedo Agent (Recommended) 
 The [Inedo Agent](/docs/inedo-agent/inedoagent-overview) offers easy configuration, optimized performance with BuildMaster, and a lower risk of attack than other protocols. It can also be configured in an outbound (listener) configuration mode, which may simplify router and firewall configuration.
 
-<a href="/docs/inedoagent-versions" style=" background:#025291;color:#ffffff;padding: 6px 20px;  border-radius: 3px;font-size: 14pt;text-decoration:none">Download the Inedo Agent</a>
+<a href="/docs/inedo-agent/inedoagent-versions" style=" background:#025291;color:#ffffff;padding: 6px 20px;  border-radius: 3px;font-size: 14pt;text-decoration:none">Download the Inedo Agent</a>
 
 To install the Inedo Agent, you can follow our [step-by-step guide for the GUI-based installer](/docs/inedo-agent/inedoagent-installation-installation-guide) or use more advanced options like [silent installation](/docs/inedo-agent/inedoagent-installation-installation-guide/inedoagent-installation-silent-installation) or [manual installation](/docs/inedo-agent/inedoagent-installation-installation-guide/inedoagent-installation-manual). 
 

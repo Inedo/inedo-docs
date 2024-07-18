@@ -20,7 +20,7 @@ There are three supported options; there is also [Legacy (Traditional) Installer
 ### Easiest: Inedo Hub
 The easiest way to install BuildMaster on your Windows Servers is with [Inedo Hub](/docs/installation/windows/desktophub-overview), which is a lightweight Windows application. The Inedo Hub is used to install, update, and otherwise service your BuildMaster installation, as well as other Inedo products installed on your server.
 
-<a href="/docs/inedo-hub-installation-guide" style=" background:#025291;color:#ffffff;padding: 6px 20px;  border-radius: 3px;font-size: 14pt;text-decoration:none">Install BuildMaster using the Inedo Hub</a>
+<a href="/docs/installation/windows/inedo-hub-installation-guide" style=" background:#025291;color:#ffffff;padding: 6px 20px;  border-radius: 3px;font-size: 14pt;text-decoration:none">Install BuildMaster using the Inedo Hub</a>
 
 The Inedo Hub also supports [Offline Installation](/docs/installation/windows/desktophub-offline) for severs with limited or no Internet access.
 
@@ -47,7 +47,7 @@ The recommended Container resources are:
 
 In addition, we recommend reserving a volume with at least 10GB to store your packages and container images.
 
-<a href="/docs/installation-linux-docker-guide" style=" background:#025291;color:#ffffff;padding: 6px 20px;  border-radius: 3px;font-size: 14pt;text-decoration:none">Install BuildMaster on Linux using Docker</a>
+<a href="/docs/installation/linux/docker-guide" style=" background:#025291;color:#ffffff;padding: 6px 20px;  border-radius: 3px;font-size: 14pt;text-decoration:none">Install BuildMaster on Linux using Docker</a>
 
 In addition to Docker Engine, you can run BuildMaster through [Docker Compose](/docs/installation/linux/docker-compose-installation-guide) or Kubernetes.
 

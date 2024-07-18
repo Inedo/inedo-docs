@@ -71,7 +71,7 @@ Sometimes, it's desirable to avoid expansion all together, without needing to es
 
 We're considering adding this using a `/literal` decorator at the _end_ of a quoted or swim string. For example, `"Not $escaped"/literal`.
 
-If you have any interest in this, please [submit a ticket](https://my.inedo.com/tickets/new) with how you would plan to use this, and how it would be helpful; this is currently tracked as [IEE-20](https://inedo.myjetbrains.com/youtrack/issue/IEE-20), and we will link your ticket and seek to prioritize this.
+If you have any interest in this, please [submit a ticket](https://my.inedo.com/tickets/new) with how you would plan to use this, and how it would be helpful; this is currently tracked as [IEE-20](https://issues.inedo.com/youtrack/issue/IEE-20), and we will link your ticket and seek to prioritize this.
 
 </div>
 

@@ -81,7 +81,7 @@ Create-Build
 );
 ```
 
-A more advanced example can be found in the [GitHub instructions](/docs/buildmaster-git-source-control#git-workflows-pipelines).
+A more advanced example can be found in the [GitHub instructions](/docs/buildmaster/builds-continuous-integration/buildmaster-git-source-control).
 
 ## Troubleshooting
 
