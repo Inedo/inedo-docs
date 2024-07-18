@@ -1,0 +1,32 @@
+---
+title: "Changing an Inedo Product’s URL with the Integrated Web Server"
+order: 2
+hidden: true
+---
+
+<div class="attention"><section class="infoBox"><div class="title">Info:</div><div class="content">If you installed an Inedo Product using <strong>Inedo Hub</strong>, you can change the URL in the <strong>Configuration</strong> tab of the Inedo Hub desktop application.</div></section></div><p>All Inedo products can run using an Integrated Web Server instead of IIS. While this offers a simpler configuration and installation, the integrated web server lacks many of the advanced features of a full-fledged web application server, and certain configuration is far from obvious. For example, this post will cover binding the integrated webserver to a hostname.</p><h4>Host Names</h4><p>Binding a website to a hostname is a familiar task to anyone that has administered a site. In IIS 7, it’s usually accomplished with a configuration dialog similar to this one:</p><p><img class="screenshot fr-fic fr-dii" alt="IIS 7 Site Binding" src="https://inedo.files.wordpress.com/2011/10/image9.png"></p><p>Our product's integrated servers also allow you to bind to a hostname, but in a less obvious manner.</p><h4>Host Names with our Product's Web Servers</h4><p>For BuildMaster and Otter follow the steps below. For ProGet the steps are actually the same, except ProGet uses a single service for both web- and back-end processing, so there are fewer options. But the syntax is identical.</p><p>Refer to this table - depending on which product you are using, enter the coinciding name, or abbreviation, into each space that has a red <span style="color: red;">[product's name]</span>, <span style="color: red;">[service]</span>, or <span style="color: red;">[shared config]</span>.</p><table style="width: 650px; margin: 30px 0px;"><tbody><tr><td align="center">The Inedo Product You're Using</td><td align="center"><span style="color: red;">[product's name]</span></td><td align="center"><span style="color: red;">[service]</span></td><td align="center"><span style="color: red;">[shared config]</span></td></tr><tr><td align="center"><img src="https://inedo.com/resources/knowledgebase/buildmaster-1077.png" class="fr-fic fr-dii"></td><td align="center">BuildMaster</td><td align="center">bmservice</td><td align="center"><a href="/docs/installation/configuration-files">Shared Config</a></td></tr><tr><td align="center"><img src="https://inedo.com/resources/knowledgebase/proget-1077.png" class="fr-fic fr-dii"></td><td align="center">ProGet</td><td align="center">ProGet.Service</td><td align="center"><a href="/docs/installation/configuration-files">Shared Config</a></td></tr><tr><td align="center"><img src="https://inedo.com/resources/knowledgebase/otter-1077.png" class="fr-fic fr-dii"></td><td align="center">Otter</td><td align="center">Otter.Service</td><td align="center"><a href="/docs/installation/configuration-files">Shared Config</a></td></tr></tbody></table><p><span style="color: red;">[product's name]</span> uses the HTTP.SYS driver to manage HTTP requests, and this driver requires that bindings are reserved at a system-wide level. The service provides a utility to help with this.</p><ol><li>Shut down the <span style="color: red;">[product's name]</span> webserver service.</li><li>Open an <strong>elevated</strong> command prompt on the <span style="color: red;">[product's name]</span> server and navigate to the <span style="color: red;">[product's name]</span> Server directory (by default, this is C:\<span style="color: red;">[product's name]</span>\Service)</li><li>Run &gt;<span style="color: red;">[service]</span>.exe; this will open a text-based menu with options like this:<pre>**************************************************
+* <span style="color: red;">[product's name]</span> Service
+* Copyright c 2008 - 2014, Inedo, LLC
+**************************************************
+*
+* [H] Display Help
+* [Q] Quit
+*
+* Actions:
+*  [ 1] Install
+*  [ 2] InstallWeb
+*  [ 3] Uninstall
+*  [ 4] UninstallWeb
+*  [ 5] Run
+*  [ 6] ListReservations
+*  [ 7] ReserveUrls
+*  [ 8] DeleteReservations
+*  [ 9] AllowServiceControl
+*
+*
+**************************************************</pre></li><li>Type <strong>7</strong>at the prompt, then press enter; this will prompt for several fields<ul><li><strong>URLs</strong>– &nbsp;enter the hostname and port;<ul><li><em>for example,</em> http://buildmaster:80/ would bind to http://buildmaster as the hostname at port 80. Note that the port and trailing slash are both <em>required.&nbsp;</em>enter a semi-colon separated list of names to reserve</li></ul></li><li><strong>User</strong> – The user account which will run the website (May be LocalSystem, NetworkService, or any other user account); this user will own the URL</li></ul></li><li>Note that you can also view and delete reservations with options <strong>6</strong> and <strong>8</strong>.</li><li>Update the <span style="color: red;">[shared config]</span> by changing (or adding) the URLs from above into the <strong>URLs</strong> attribute on the <strong>WebServer</strong>node.<pre>&lt;InedoAppConfig&gt;
+&lt;ConnectionString&gt;[SQL Server database connection string]&lt;/ConnectionString&gt;
+&lt;EncryptionKey&gt;[32-character hex key for stored secrets]&lt;/EncryptionKey&gt;
+&lt;WebServer Enabled="[true/false]" Urls="http://buildmaster:80/;http://*:8622/" /&gt;
+&lt;/InedoAppConfig&gt;
+            </pre></li><li>Start the <span style="color: red;">[product's name]</span> webserver service.</li></ol><p><span style="color: red;">[product's name]</span> should now be accessible using the hostname you have specified, provided your DNS/hosts file has been properly configured.</p><p><br></p>
