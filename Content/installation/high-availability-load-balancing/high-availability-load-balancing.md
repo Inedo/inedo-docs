@@ -29,7 +29,6 @@ Your Inedo product is built to be compatible with any load balancing platform, i
 
 #### Example:  Microsoft's Network Load Balancer 
 If you are new to load balancing, Microsoft's Network Load Balancing Cluster (NLB) is relatively easy to configure. See [Using Microsoft Network Load Balancing (NLB)](/docs/installation/high-availability-load-balancing/high-availability-load-balancing) for guidance on how to use NLB with Inedo products.
-:::
 
 ###  Database Server
 You will need a stand-alone SQL Server that all servers in your clustercan connect to. This could be as simple as SQL Express, but we recommend a database cluster so that there's no single point of failure within your High-availability setup.
@@ -70,6 +69,7 @@ Your Inedo product is compatible with any type of common storage that all servic
 
 #### Server-level Shared Storage
 To configure server level shared storage, update the following:
+
 | Inedo Product | Value|
 | --- | --- |
 | BuildMaster | `Artifacts.BasePath` value in _Administration > Advanced Settings_. |
