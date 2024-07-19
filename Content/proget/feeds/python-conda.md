@@ -1,0 +1,113 @@
+---
+title: "Conda (Python)"
+order: 14
+---
+
+A Conda feed in ProGet acts as a private Conda package repository. Packages can be used directly by the Conda client and can also be browsed directly on the ProGet website.
+
+:::(Info)
+Conda feeds are available starting in ProGet 6.0.7.
+:::
+
+## Prerequisite Configuration
+
+Although ProGet was tested with older versions, we recommend using Conda 4.10.0 or higher. You can use `conda --version` to see which version you have installed.
+
+### Conda Client Configuration
+
+Before installing packages from ProGet, you should add ProGet to your list of Conda channels by using the [`conda config` command](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-channels.html).
+
+```(Shell)
+conda config --add channels http://«proget-server»/conda/«feed-name»
+```
+
+If you want to install packages only from ProGet, then you'll want to remove other channels. 
+
+```(Shell)
+$ conda config --show channels
+channels:
+ - defaults
+ http://«proget-server»/conda/«feed-name»
+
+$ conda config --remove channels defaults
+```
+
+Note that these sources are stored in your `~/.condarc` file.
+
+#### Authenticated Feeds & Channels
+If you've configured your feed to require authentication, you'll need to edit your `~/.condarc` file to include basic authentication credentials in the channel URL.
+
+These credentials can be your ProGet username and password, or a ProGet API key (that uses "api" as the username). For example:
+* `http://«username»:«password»@«proget-server»/conda/«feed-name»`
+* `http://api:«api-key»@«proget-server»/conda/«feed-name»`
+
+::: (Info) (Note:)
+The ` «username»`, `«password»`, and `«api-key»` must be url-encoded.
+:::
+
+You can also override the channel in the `conda install` and `conda search` command and include authentication in the URL.  This can be done using the `--override-channels` parameter and formating the URL to include the username and password `--channel http://«username»:«password»@«proget-server»/conda/«feed-name»`.  For example:
+
+```(Shell)
+$ conda install «package-name»=«package-version» --channel http://«username»:«password»@«proget-server»/conda/«feed-name» --override-channels
+```
+
+### Testing Client Configuration
+
+You can use the [`conda search` command](https://docs.conda.io/projects/conda/en/latest/commands/search.html) to make sure that your client is properly connected to ProGet.
+
+```(Shell)
+$ conda search «search-string»
+```
+
+This will search all sources configured in your `~/.condarc` file.
+
+
+
+## Installing Packages
+
+You can use Conda packages from ProGet just like you would from anaconda.org. Packages are generally installed using the [`conda install` command](https://docs.conda.io/projects/conda/en/latest/commands/install.html):
+
+
+```(Shell)
+$ conda install «package-name»=«package-version»
+```
+
+## Creating Packages
+
+There are no special considerations when creating Conda packages for use in ProGet. ProGet supports all types of Conda packages, including .tar.bz2 files and the newer .conda format files. 
+
+
+
+## Publishing Packages
+
+You can push a Conda package to Proget by either uploading it through the ProGet site, or uploading a package to http://«proget-server»/conda/«feed-name» using an HTTP PUT or POST request. For example, to upload a package using curl:
+
+```(Shell)
+$ curl --host http://«proget-server»/conda/«feed-name» --user «user»:«password» --upload-file «package-name-version».conda
+```
+
+## Using pgscan With Conda and ProGet SCA
+`pgscan` is a [free and open-source](https://github.com/inedo/pgscan) tool designed to run immediately after building your application, generally as part of the Continuous Integration (CI) process. Starting in 1.5.6, pgscan added support to scan a [Conda environment file](https://conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#building-identical-conda-environments).
+
+To create a Conda environment file, you will need to run either:
+```
+conda list --explicit > requirments.txt
+```
+or
+```
+conda list --export > requirments.txt
+```
+
+This will list create a text file with a list of depedencies used by your Conda library or application.  Once this hfile has been generated, you will need to run the `pgscan identify` passing your requirements.txt to the `--input` command.  
+
+For example, to run pgscan for your Conda application, you would run:
+```
+conda list --explicit > requirments.txt
+pgscan identify
+ --api-key=mySecretKey1000
+ --proget-url=https://proget.corp.local/
+ --input=requirements.txt
+ --type=Conda
+ --project-name="My Application"
+ --version=5.00.21
+```
