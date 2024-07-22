@@ -27,9 +27,13 @@ Example output:
 
 ```
 Build 1.2.3
+Packages:
+  pkg:nuget/CsvHelper@30.0.1
+  pkg:nuget/Newtonsoft.Json@12.0.3
+  pkg:nuget/Polly@7.2.3
 Comments:
 1 - This is a comment
-3 - This is another comment
+2 - This is another comment.
 ```
 
 
