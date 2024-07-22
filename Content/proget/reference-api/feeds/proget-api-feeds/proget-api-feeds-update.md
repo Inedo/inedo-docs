@@ -114,14 +114,16 @@ pgutil feeds retention list --feed=myPypiFeed
  triggerDownloadCount=*not set*
 ```
 
-**Updating retention rules for a feed** requires the feed name (e.g. `myNugetFeed`) and the existing retention rule properties to be updated (e.g.  `deleteCached` as `true` and `keepVersionsCount` as `5`):
+**Updating retention rules for a feed** requires the feed name (e.g. `myNugetFeed`), the existing retention rule (e.g.  `1`), and  the properties to be updated (e.g.  `deleteCached` as `true` and `keepVersionsCount` as `5`, and keepUsedWithinDays as blank to revert it to `not-set`):
 
 ```
-pgutil feeds retention update --feed=myNugetFeed --deleteCached=true --keepVersionsCount=5
+pgutil feeds retention update --feed=myNugetFeed --deleteCached=true --keepVersionsCount=5 --keepUsedWithinDays= --rule=1
 ```
 
 :::(info)
 One or more options can be selected. This command will update the value of any existing set properties, or create a value if it was previously "not set". The command will only update the specified properties, while retaining the values of any other existing properties.
+
+Selecting an existing option 
 :::
 
 Example update (Before):
@@ -134,7 +136,7 @@ Example update (Before):
  keepIfActivelyConsumed=false
  keepPackageIds=*not set*
  keepPackageUsageRemovedDays=*not set*
- keepUsedWithinDays=*not set*
+ keepUsedWithinDays=30
  keepVersionsCount=*not set*
  sizeExclusive=false
  sizeTrigger=*not set*
