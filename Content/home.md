@@ -17,6 +17,10 @@ ul li {
    margin-bottom: 0.75rem;
 }
 
+h1 {
+    margin-bottom: 14px;
+}
+
 h3 {
    margin-top: 4rem;
 }
@@ -30,7 +34,9 @@ h3 {
    max-width: 1000px;
 }
 
-
+#header .content {
+    max-width: 1000px;
+}
 
 #sub-footer.content-container {
    border-top: solid 1px #CCC;
@@ -46,10 +52,17 @@ h3 {
    padding-right: 0.75rem;
 }
 
+.home-page-search-box {
+   height: 7rem;
+}
 
 .product-blocks {
    display: flex;
    flex-wrap: no-wrap;
+}
+
+.product-blocks > .block  h3{
+    margin-top: 1.25rem;
 }
 
 .product-blocks > .block {
@@ -62,6 +75,10 @@ h3 {
 .three-column {
    display: flex;
    flex-wrap: wrap;
+}
+
+.three-column.last {
+    margin-bottom: 4rem;
 }
 
 .three-column h3 {
@@ -86,7 +103,7 @@ h3 {
    flex-wrap: wrap;
    justify-content: center;
    gap: 0.75rem;
-   margin-bottom: 4rem;
+   margin-bottom: 1.25rem;
 }
 
 .two-column h3 {
@@ -210,6 +227,9 @@ h3 {
 
 </style>
 
+## Welcome to Inedo Docs!
+Inedo Docs is the documentation portal for our software products (ProGet, BuildMaster, and Otter), related tools, and our [MyInedo](https://my.inedo.com){ target=_blank} user portal. 
+
 <div class="product-blocks"><div class="block">
 
 ### **ProGet** {.icon .proget}
@@ -247,32 +267,6 @@ h3 {
 - [SQL Server & Inedo Products](/docs/installation/sql-server)
 - [HTTPS Support on Windows](/docs/installation/installing-on-iis/installation-windows-https-support)
 - [HTTPS Support on Linux](/docs/installation/linux/https-support)
-
-</div>
-
-<div class="three-column">
-
-### **Inedo Hub** {.icon .inedo-hub}
-
-- [What is the Inedo Hub?](/docs/installation/windows/desktophub-overview)
-- [Configuring & Maintaining Inedo Products](/docs/installation/windows/inedohub-configure-products)
-- [Offline Installation](/docs/installation/windows/desktophub-offline)
-- [HOWTO: Install on Windows](/docs/installation/windows/inedo-hub-installation-guide)
-- [HOWTO: Upgrade or Downgrade with the Inedo Hub](/docs/installation/windows/inedo-hub-upgrade-downgrade)
-- [HOWTO: Install Pre-release Product Versions](/docs/installation/windows/howto-install-prerelease-product-versions)
-
-</div>
-
-<div class="three-column">
-
-### **Inedo Agent** {.icon .inedo-agent}
-
-- [What is the Inedo Agent?](/docs/inedo-agent/inedoagent-overview)
-- [Installation Guide](/docs/inedo-agent/inedoagent-installation-installation-guide)
-- [Upgrade Guide](/docs/inedo-agent/inedoagent-installation-installation-guide/inedoagent-installation-upgrading)
-- [Configuring the Inedo Agent](/docs/inedo-agent/maintenance-configuration/inedoagent-configuration-configuration-file)
-- [Downloads & Release Notes](/docs/inedo-agent/inedoagent-versions)
-- [Troubleshooting](/docs/inedo-agent/maintenance-configuration/inedoagent-configuration-troubleshooting)
 
 </div>
 
@@ -328,5 +322,31 @@ The distributed architecture of ProGet, BuildMaster, and Otter allows you to con
 Your Inedo products should be backed up frequently.
 
 </a>
+
+</div>
+
+<div class="three-column">
+
+### **Inedo Hub** {.icon .inedo-hub}
+
+- [What is the Inedo Hub?](/docs/installation/windows/desktophub-overview)
+- [Configuring & Maintaining Inedo Products](/docs/installation/windows/inedohub-configure-products)
+- [Offline Installation](/docs/installation/windows/desktophub-offline)
+- [HOWTO: Install on Windows](/docs/installation/windows/inedo-hub-installation-guide)
+- [HOWTO: Upgrade or Downgrade with the Inedo Hub](/docs/installation/windows/inedo-hub-upgrade-downgrade)
+- [HOWTO: Install Pre-release Product Versions](/docs/installation/windows/howto-install-prerelease-product-versions)
+
+</div>
+
+<div class="three-column last">
+
+### **Inedo Agent** {.icon .inedo-agent}
+
+- [What is the Inedo Agent?](/docs/inedo-agent/inedoagent-overview)
+- [Installation Guide](/docs/inedo-agent/inedoagent-installation-installation-guide)
+- [Upgrade Guide](/docs/inedo-agent/inedoagent-installation-installation-guide/inedoagent-installation-upgrading)
+- [Configuring the Inedo Agent](/docs/inedo-agent/maintenance-configuration/inedoagent-configuration-configuration-file)
+- [Downloads & Release Notes](/docs/inedo-agent/inedoagent-versions)
+- [Troubleshooting](/docs/inedo-agent/maintenance-configuration/inedoagent-configuration-troubleshooting)
 
 </div>
