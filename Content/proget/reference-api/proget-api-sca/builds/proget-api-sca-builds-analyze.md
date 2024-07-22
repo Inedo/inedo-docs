@@ -24,6 +24,19 @@ The `--project` and `--build` options are always required.
 pgutil builds audit --project=myProject --build=1.2.3
 ```
 
+Example output (Project analyzed):
+```
+Auditing myProject 1.2.3...
+Analyzed: 7/21/2024 5:49:38 PM
+Status: Active
+```
+
+Example output (Project not analyzed):
+```
+Auditing myProject 1.2.3...
+ProGet reported that the build was not analyzed.
+```
+
 ## HTTP Request Specification
 To analyze a build, simply `POST` to the URL with an [appropriate API Key](/docs/proget/reference-api/proget-api-sca#authentication)
 
