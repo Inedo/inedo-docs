@@ -4,7 +4,7 @@ order: 8
 ---
 
 Providing support is a central part of our engineers’ jobs. It’s not a burden; it’s a point of pride. Inedo support tickets are simple to open. We are happy to offer additional technical support if our documentation doesn't answer the question you have. 
-:::(INFO) (**Support tickets are for paid users only.**)
+:::(INFO) (Support tickets are for paid users only.)
 We appreciate users of our free software. Our engineers and other users are on the [Inedo Forums](https://forums.inedo.com){target="_blank"} and can help you there. If we can't find a paid license, we will likely ask you to post on the Inedo Forum.
 :::
 

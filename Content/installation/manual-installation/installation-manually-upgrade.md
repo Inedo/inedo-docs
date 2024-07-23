@@ -28,6 +28,7 @@ Stop-Service INEDO«Inedo-product»SVC
 For the most part, an upgrade is an "XCOPY deployment" of files from the [manual installation package](/docs/installation/manual-installation#get). Copy all of the contents of each of the following into the specified target directory while carefully analyzing the differences in configuration files as noted:
 
 **BuildMaster**
+
 | Contents | Target | Installer Default | Notes |
 | --- | --- | --- | --- |
 | Service | Service installation directory | `C:\Program Files\BuildMaster\Service` | May overwrite existing `App_appSettings.config` if empty |
@@ -37,6 +38,7 @@ For the most part, an upgrade is an "XCOPY deployment" of files from the [manual
 While v6.0.7 and later versions of BuildMaster should not store data in these configuration files, existing installations might contain relevant data such as connection strings that should ultimately be migrated to the [BuildMaster Configuration File](/docs/installation/configuration-files) and removed from the `*_appSettings.config` file.
 
 **ProGet**
+
 | Contents | Target | Installer Default | Notes |
 | --- | --- | --- | --- |
 | Service | Service installation directory | `C:\Program Files\ProGet\Service` | May overwrite existing `App_appSettings.config` if empty |
@@ -46,6 +48,7 @@ While v6.0.7 and later versions of BuildMaster should not store data in these co
 While v5.1.0 and later versions of ProGet should not store data in these configuration files, existing installations might contain relevant data such as connection strings that should ultimately be migrated to the [ProGet Configuration File](/docs/installation/configuration-files) and removed from the `*_appSettings.config` file.
 
 **Otter**
+
 | Contents | Target | Installer Default | Notes |
 |---|---|---| --- |
 | Service | Service installation directory | `C:\Program Files\Otter\Service` | May overwrite existing `App_appSettings.config` if empty |
