@@ -55,7 +55,7 @@ In addition to Docker Engine, you can run Otter through [Docker Compose](/docs/i
 
 Otter can be installed on a virtual machine or container in the cloud provider of your choosing. 
 
-The [Installing ProGet on AWS Lightsail](https://inedo.com/proget/lightsail_install) guide is a good starting point for using Lightsail to install an Inedo product.
+The [Installing ProGet on AWS Lightsail](/docs/proget/installation/proget-how-to-install-on-aws-lightsail) guide is a good starting point for using Lightsail to install an Inedo product.
 
 ## Firewall & Network Access
 On Windows, Otter installs on port 8626 by default, and you should consider changing that after installation to the standard ports of HTTP (80) and/or HTTPS (443) after installation.

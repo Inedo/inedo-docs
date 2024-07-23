@@ -25,4 +25,4 @@ Once the Server Roles above are selected, ensure the following features are also
  - .NET Framework 4.6 Features > .NET Framework 4.6
  - .NET Framework 4.6 Features > ASP.NET 4.6
 
-Once the Server Manager completes the installation, ProGet, BuildMaster, or Otter may be hosted through IIS. Visit the manual install documentation for specific instructions and configuration, or refer to the [switching from the Integrated Web Server documentation](/docs/installation/installing-on-iis/various-iis-switching-to-iis){target="_blank"} to switch from an installation using the Integrated Web Server.
+Once the Server Manager completes the installation, ProGet, BuildMaster, or Otter may be hosted through IIS. Visit the manual install documentation for specific instructions and configuration, or refer to the [switching from the Integrated Web Server documentation](/docs/installation/installing-on-iis/various-iis-switching-to-iis) to switch from an installation using the Integrated Web Server.
