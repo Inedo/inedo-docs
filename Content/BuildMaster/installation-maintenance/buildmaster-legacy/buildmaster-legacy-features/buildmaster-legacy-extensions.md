@@ -5,10 +5,10 @@ order: 4
 
 
 ::: (ERROR)
-All legacy components were removed in BuildMaster v6.2. Visit the [v6.2 Upgrade Notes](https://inedo.com/support/kb/1766/buildmaster-6-2-upgrade-notes) for more information.
+All legacy components were removed in BuildMaster v6.2. Visit the [v6.2 Upgrade Notes](/docs/buildmaster-upgrading-to-6-2) for more information.
 :::
 
-BuildMaster v5 and v6 have many [legacy features](https://inedo.com/support/kb/1144/buildmaster-legacy-features) from previous versions that continue to work, but are generally hidden from new installations.
+BuildMaster v5 and v6 have many [legacy features](/docs/buildmaster/installation-maintenance/buildmaster-legacy/buildmaster-legacy-features) from previous versions that continue to work, but are generally hidden from new installations.
 
 To extend the functionality of some of these features in BuildMaster v6, your extension will need to reference the [BuildMaster Legacy Components SDK NuGet package](https://www.nuget.org/packages/Inedo.BuildMaster.SDK/) instead of the Inedo SDK. This package references the Inedo SDK, so the resulting extension is still considered a cross-product, Inedo extension.
 

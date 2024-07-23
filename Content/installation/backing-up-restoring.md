@@ -54,7 +54,7 @@ By default, artifacts are stored in a location (defined in `Artifacts.Base.Path 
 ## Restoring an Installation 
 There are generally three reasons why you might want to restore an Inedo product installation from a backup.
 - **Rolling back to an earlier version of your Inedo product** - if there were issues with or during the installation of a new version of the product
-- **Moving your Inedo product to a new server** - see our guide for [migrating BuildMaster to a new server](https://inedo.com/support/kb/1768/migrate-buildmaster-to-a-new-server)
+- **Moving your Inedo product to a new server** - see our guide for [migrating BuildMaster to a new server](/docs/buildmaster/installation-maintenance/buildmaster-migrating-instance-to-new-server)
 - **Undoing a Serious Error** - such as making a mistake in the software itself
 
 
