@@ -4,7 +4,7 @@ order: 7
 ---
 
 
-BuildMaster manages the CI/CD process for applications of all types and is designed to integrate with any existing process. Sometimes, this process involves initiating a build through a deployment pipeline from an existing CI tool (e.g., TeamCity, Jenkins) or package manager such as [ProGet](/proget).
+BuildMaster manages the CI/CD process for applications of all types and is designed to integrate with any existing process. Sometimes, this process involves initiating a build through a deployment pipeline from an existing CI tool (e.g., TeamCity, Jenkins) or package manager such as [ProGet](/docs/proget).
 
 Builds may be created in BuildMaster by sending an HTTP request to the [Release & Build Deployment API](/docs/buildmaster/reference/api/release-and-build). Common use-cases for this include:
 
