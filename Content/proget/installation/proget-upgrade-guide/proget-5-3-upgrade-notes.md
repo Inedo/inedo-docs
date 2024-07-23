@@ -56,7 +56,7 @@ See [restoring your ProGet instance](/docs/installation/linux/docker-guide) for 
 #### Breaking Change: PostgreSQL Support Removed
 As of ProGet 5.3, PostgreSQL is no longer supported as a database engine. ProGet will only support SQL Server (all editions including Express) on Windows or [Linux](https://docs.microsoft.com/en-us/sql/linux/sql-server-linux-overview?view=sql-server-ver15) going forward.
 
-**Impact:** Any installation using PostgreSQL will need to be [migrated to SQL Server](https://inedo.com/support/kb/1168/proget-feed-migration) prior to the upgrade.
+**Impact:** Any installation using PostgreSQL will need to be [migrated to SQL Server](/docs/proget/feeds/feed-overview/proget-administration-migrating-a-proget-feed) prior to the upgrade.
 
 #### Breaking Change: NuGet (Quirks) Feed Removed
 NuGet "Quirks" feeds have been _deprecated_ beginning with ProGet 5.0. In ProGet 5.3, Quirks feeds have been removed. You will need to [migrate your NuGet Quirks feeds](/docs/proget/feeds/nuget#legacy) prior upgrading to 5.3.

@@ -89,7 +89,7 @@ When we investigated other package servers that claim to proxy Packagist reposit
 
 That being said, we did this assessment without any user partners, and we know next to nothing about PHP, so it could be that we misunderstood or looked at the wrong things. Maybe they added a real package? 
 
-Since then, there haven’t been too many requests for it, and we have no idea what the level of interest is. Please add your thoughts to [QA#2690](https://inedo.com/support/questions/2690) if you've got some insight.
+Since then, there haven’t been too many requests for it, and we have no idea what the level of interest is. Please add your thoughts to [this forum topic](https://forums.inedo.com/topic/734/composer-packagist-feeds) if you've got some insight.
 
 ### 🚫 CocoaPods: not possible
 
