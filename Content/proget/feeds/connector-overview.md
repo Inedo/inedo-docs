@@ -1,10 +1,11 @@
 ---
-title: "What is a \"Connector\" in ProGet?"
+title: Connectors in ProGet
+nav-title: "What is a \"Connector\" in ProGet?"
 order: 2
 ---
 
 
-Connectors are at the core of ProGet’s functionality and unlock most other ProGet features, including [license filters](/docs/proget/sca/licenses){target="_blank"}, [vulnerability scanning and blocking](/docs/proget/sca/vulnerabilities){target="_blank"}, [promotion](/docs/proget/packages/package-promotion){target="_blank"}, and of course, the use of multiple feeds.
+Connectors are at the core of ProGet’s functionality and unlock most other ProGet features, including [license filters](/docs/proget/sca/licenses), [vulnerability scanning and blocking](/docs/proget/sca/vulnerabilities), [promotion](/docs/proget/packages/package-promotion), and of course, the use of multiple feeds.
 
 Connectors allow ProGet feeds to include packages from an external source, whether it is another ProGet feed, a public gallery like NuGet.org, or another third-party package source like Azure DevOps Packages or [Artifactory](https://inedo.com/proget/proget-vs-jfrog-artifactory).
 
