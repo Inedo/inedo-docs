@@ -50,8 +50,8 @@ Executions come from three sources. In each case, the user's script is wrapped i
 | Type | TaskRunner | Mode |
 | --- | --- | --- |
 | Orchestration Job | JobDispatcher | Execute Only |
-| <span style="background-color: #9263AB"> Routine Configuration Check *(Otter only)* </span> | Routine Configuration | CollectOnly or CollectAndExecute |
-| <span style="background-color: #9263AB">Configuration Job *(Otter only)* </span> | JobDispatcher | CollectAndExecute |
+| Routine Configuration Check *(Otter only)* | Routine Configuration | CollectOnly or CollectAndExecute |
+|Configuration Job *(Otter only)* | JobDispatcher | CollectAndExecute |
 
 An Orchestration Job may or may not target servers. If there are target servers, the above logic is performed. If no servers are specified, the script is executed directly.
 

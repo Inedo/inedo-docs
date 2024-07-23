@@ -7,7 +7,7 @@ A script template is a simple, no-code solution for performing common build or d
 
 The Build NuGet Package script template will:
 * [check out code from Git](#checking-out-from-git)
-* [compile a .NET project or solution](#buildingcompiling-net-project)
+* [compile a .NET project or solution](#buildingcompiling.net-project)
 * [optionally run tests](#running-unit-tests)
 * [pack your project into a NuGet package](#packaging-into-nuget)
 * [publish your NuGet package to a Package Source](#push-to-feed)

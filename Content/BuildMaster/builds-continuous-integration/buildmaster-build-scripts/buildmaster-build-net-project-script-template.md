@@ -7,11 +7,10 @@ A script template is a simple, no-code solution for performing common build or d
 
 The Build .NET Project Script Template will:
 * [check out out code from Git](#checking-out-from-git)
-* [optionally build an npm based front-end](#building-npm-frontends)
-* [compile a .NET project or solution](#buildingcompiling-net-project)
+* [optionally build an npm based front-end](#building-npm-front-ends)
+* [compile a .NET project or solution](#buildingcompiling.net-project)
 * [optionally run tests](#running-unit-tests)
-* [track NuGet package usage](#record-dependencies-to-proget)
-* [capture build artifacts for later deployment](#other-artifact-options)
+* [capture build artifacts for later deployment](#capturing-build-artifacts)
 
 This article will detail the options for these steps, as well as how they're performed.
 

@@ -145,7 +145,7 @@ x:::
 :::
 
 ## Capturing Build Artifacts
-As the last step, BuildMaster will [capture artifacts](/docs/buildmaster/builds-continuous-integration/buildmaster-artifacts) from a path within the working directory that you specify. These are the files that you will deploy later.
+As the last step, BuildMaster will [capture artifacts](#capturing-build-artifacts) from a path within the working directory that you specify. These are the files that you will deploy later.
 
 The specific path within the working directory can be difficult to predict, and it may take a few builds for you to find the path you'd like to capture. 
  

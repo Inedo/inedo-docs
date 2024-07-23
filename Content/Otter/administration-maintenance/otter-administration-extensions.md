@@ -14,7 +14,7 @@ Otter ships with three required extensions: *InedoCore*, *Windows*, and *Linux*.
 Otter will automatically connect to [Extensions feed](https://proget.inedo.com/feeds/Extensions), and notify you of newly available extensions and updates. You can download and install these from the same extensions overview page.
 
 :::(INFO)
-A connection to inedo.com is recommended, but not required. If your Otter instance cannot connect to [https://proget.inedo.com/feeds/Extensions](https://proget.inedo.com/feeds/Extensions?_ga=2.107574402.1811665350.1618188594-1045598186.1617146819){target="_blank"}, then you will need to manually install and update extensions.
+A connection to inedo.com is recommended, but not required. If your Otter instance cannot connect to [https://proget.inedo.com/feeds/Extensions](https://proget.inedo.com/feeds/Extensions){target="_blank"}, then you will need to manually install and update extensions.
 :::
 
 ## Creating Your Own Extension 

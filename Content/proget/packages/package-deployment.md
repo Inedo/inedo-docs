@@ -5,7 +5,7 @@ order: 5
 
 The Package Deployments feature records package deployment information (such as the target and user) from tools such as [BuildMaster](https://inedo.com/buildmaster/) and OctopusDeploy, and provides you with a package-centric view of deployments.
 
-This feature allows you to determine exactly which package versions were deployed, when, by whom, with which tool, and so on. This simplifies the auditing process by keeping clear records directly in ProGet. It also helps you quickly find vulnerable servers [when a known vulnerability is identified](/docs/proget/sca/vulnerabilities){target="_blank"}: The feature in ProGet shows all servers running a particular package so you can quickly make updates.
+This feature allows you to determine exactly which package versions were deployed, when, by whom, with which tool, and so on. This simplifies the auditing process by keeping clear records directly in ProGet. It also helps you quickly find vulnerable servers [when a known vulnerability is identified](/docs/proget/sca/vulnerabilities): The feature in ProGet shows all servers running a particular package so you can quickly make updates.
 
 There are no restrictions on this feature in the Free edition of ProGet. Package deployment records can be found, once configured, in the "History" tab on the Package Overview page.
 

@@ -60,7 +60,7 @@ GET /api/promotions/list?fromFeed=npm-development&toFeed=npm-production&group=my
 ```
 
 ## Response Specification
-A successful (`200`) response body will contain an array of [PromotedPackage](/docs#promoted-package) objects. For example, querying version `1.2.3` of `myNugetPackage`, promoted from feed `nuget-unapproved` to feed `nuget-approved` return a single object:
+A successful (`200`) response body will contain an array of [PromotedPackage](#promoted-package) objects. For example, querying version `1.2.3` of `myNugetPackage`, promoted from feed `nuget-unapproved` to feed `nuget-approved` return a single object:
 
 ```
 GET /api/promotions/list?fromFeed=nuget-unapproved&toFeed=nuget-unapproved&package=myNugetPackage&version=1.2.3
@@ -86,7 +86,7 @@ GET /api/promotions/list?fromFeed=nuget-unapproved&toFeed=nuget-unapproved&packa
 
 | Response | Details |
 | --- | --- |
-| **200 (Success)** | body will contain an array of [PromotedPackage](/docs#promoted-package) objects |
+| **200 (Success)** | body will contain an array of [PromotedPackage](#promoted-package) objects |
 | **400 (Invalid Input)** | indicates invalid or missing properties on the package; the body will provide some details as text |
 |  **403 (Unauthorized API Key)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/packages/package-promotion#authentication); the body will be empty |
 
@@ -127,7 +127,7 @@ GET /api/promotions/list?fromFeed=nuget-unapproved&toFeed=nuget-unapproved&packa
 
 <h3 id="promotion-data">PromotionData Object Attributes</h3>
 
-`PromotionData`is a subset of attributes on the PromotedPackage Object that provide details of an individual promotion, used as output data for the Query Promoted Package endpoint.
+`PromotionData` is a subset of attributes on the [PromotedPackage](#promoted-package) Object that provide details of an individual promotion, used as output data for the **Query Promoted Package** endpoint.
 
 | Property | Format | Notes
 | --- | --- | ---
