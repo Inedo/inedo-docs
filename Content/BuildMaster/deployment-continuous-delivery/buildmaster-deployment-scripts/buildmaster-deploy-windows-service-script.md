@@ -6,10 +6,10 @@ order: 2
 A script template is a simple, no-code solution for performing common build or deployment operations, and can be converted to OtterScript at any time.
 
 The Deploy Windows Service script template will:
-* [Stop Windows Service](#stop-service) to allow for the artifact to be deployed
+* [Stop Windows Service](#stop-windows-service) to allow for the artifact to be deployed
 * [Deploy Artifact](#deploying-artifact), which will synchronize the contents of the artifacts file and target directory by performing an incremental transfer
 * optionally [Deploy an application configuration file](#deploying-config-files), which can be either a [built-in configuration file](/docs/buildmaster/deployment-continuous-delivery/buildmaster-applications-configuration-files) or a configuration transform
-* [Start Windows Service](#start-service) again.
+* [Start Windows Service](#start-windows-service) again.
 
 This article will detail the options for these steps, as well as how they're performed.
 
