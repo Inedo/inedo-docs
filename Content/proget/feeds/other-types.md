@@ -40,12 +40,11 @@ Feel free to submit pull requests for this page or participate in the linked Q&A
 ### ✔ CRAN (R) Packages: Completed
  [CRAN (R) feeds](/docs/proget/feeds/cran) are available as of ProGet 2023.23.
 
+### ✔ pub (Dart/Flutter): Completed 
+ [pub (Dart/Flutter) feeds](/docs/proget/feeds/pub) are available as of ProGet 2024.11.
+
 ### 📈 Terraform: some recent demand
 We've had some interest in [Terraform Private Registries](https://www.terraform.io/registry/private), and the discussion is ongoing in the community forums.  Please join [QA#3570](https://forums.inedo.com/topic/3570) to share your thoughts!
-
-### 📈 Dart/Flutter/pub.dev: some demand 
-
-We've had some interest in [Dart/Flutter/pub.dev packages](https://github.com/dart-lang/pub-dev), and the discussion is ongoing in the community forums. Please join [QA#3197 on the forums](https://forums.inedo.com/topic/3179) to share your thoughts!
 
 ### 📉 WinGet: very limited demand
 This is brand new from Microsoft, so there's not much demand for private feeds—but there is a [discusson on the forums](https://forums.inedo.com/topic/3257), so please contribute if you're interested.
