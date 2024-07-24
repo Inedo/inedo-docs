@@ -73,14 +73,18 @@ info: Microsoft.Hosting.Lifetime[0]
 ## Making Documentation Changes
 Documentation changes should always be made on a new branch in git and a pull request must be submitted for review.  The process for making documentation changes:
 
-1. Switch to master branch.
+1. Switch to master branch (if not already on it).
 2. Pull latest changes.
 3. Create a new branch and switch to branch.
 4. Make changes **NOTE: If you change a file name and/or folder name, make sure to add a redirect to the redirects.xml for the old URL to the new URL**
 5. Commit and push changes to new branch
-6. Create a pull request in GitHub to merge your changes in.  
-7. Create an Asana task and assign to Rich or Alex to review changes 
-8. Rich or Alex will approve pull request, delete branch, deploy inedo-docs application in BuildMaster to production
+6. Create a [pull request in GitHub](#pull-requests) to merge your changes in.  
+7. Assign a reviewer to the pull request
+8. Rich or Alex will approve pull request, delete branch, and deploy inedo-docs application in BuildMaster to production
+
+::: (Warn) (Important!)
+Changes should never be made on the **master** branch.  All changes should be made on a feature branch and a [pull request](#pull-requests) **must** be used to merge changes back to the `master` branch.
+:::
 
 ### Page File Layouts
 Currently nDocs supports two formats of pages; MarkDown and HTML.  Markdown files end with `.md` and HTML pages end with `.html`.  Files are made up of two components; a YAML heading and body content.  A URL will be generated for a file based on the path relative to `C:\Projects\inedo-docs\Content`. For example, a MarkDown file that is stored at `C:\Projects\inedo-docs\Content\proget\installation\installation-guide.md` will be accessed using the URL `/docs/proget/installation/installation-guide`.
@@ -117,14 +121,14 @@ Folders are considered URL segments. Folders will show in the navigation tree wh
 To make a folder also work as a page, add body contents to the `#` file.  When body contents are included, the URL will be the folder path relative to `C:\Projects\inedo-docs\Content`. For example, for a folder with body contents stored at `C:\Projects\inedo-docs\Content\proget\installation\#.md` will be accessed using the URL `/docs/proget/installation`.
 
 ::: (Info) (Note:)
-If there are no visible `.md` or `.html` files within the folder, the folder will show as a page, not a group in the Navigation Tree.
+If there are no visible `.md` or `.html` files within the folder and it has a `#` file with body contents, the folder will show as a page, not a group, in the Navigation Tree.
 :::
 
 ### MarkDown
 MarkDown is specified using the CommonMark language syntax.  nDocs use the [MarkDig NuGet Package](https://github.com/xoofx/markdig) with a number of extensions to display MarkDown pages.
 
 #### Info Blocks Syntax
-Info Blocks are a custom Indeo MarkDown block that can specified in the following format:
+Info Blocks are a custom Indeo MarkDown block that can be specified in the following format:
 ```
 ::: (Type) (Title)
 Body
@@ -173,6 +177,37 @@ Images can be stored either in the global folder (`C:\Projects\inedo-docs\Resour
 
 Images stored side-by-side with the content should use `/docs/path/to/file.extension`.  For example, if the file is stored at `C:\projects\inedo-docs\content\BuildMaster\buildmaster-install.png` the URL would be `/docs/buildmaster/buildmaster-install.png`.
 
+### Pull Requests
+When making changes to our documentation, all changes must be made using a feature branch and a pull request must be used to  merge changes back to the `master` branch.
+
+#### Maintainer Process
+The pull request will work as follows:
+1. Make all commits to your feature branch
+2. Create a [pull request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request)  on GitHub using a short readable description of the change as the name
+    1. Make sure to pay attention to the arrow when selecting your branches to ensure changes are merged the correct way (the target branch is to the left)
+1. Assign a reviewer to approve the pull request changes
+
+::: (Info)
+Make sure to create clear and usable commit messages that explain what the changes include.  These commit messages are public and our entire user community will see them.
+:::
+
+#### Approver Process
+When approving a pull request, the reviewer will have the responsibility to ensure the documentation changes match the [required documentation canon](#development-canon), approving or rejecting request, and completing the pull request by merging the  changes back to the `master` branch.  If a pull request is rejected, a comment will be left for the maintainer to either correct their changes or cancel the pull request and scrap the rejected changes.
+
+The process for completing a pull request will work as follow:
+1. Approve the changes for the pull request
+2. Click the "Squash and Merge" button option to merge in changes
+    1. If multiple commits are made, the commit messages will need to be merged into a single commit message on the confirmation page
+3. Confirm squash and merge
+4. Delete the source branch
+
+## Renaming Files & Folders
+::: (Warn) (Important!)
+When you rename a file or folder, this will change the URL for that page.  
+:::
+
+When a URL is changed for a page, you will need to add a [redirect rule](adding-redirects) to link from the old URL to the new URL.  You will also need to update any pages that link to that old URL as well.  The [link scanner](#link-scanner) can help you find all the pages that use that link.  You can also search in all files using Visual Studio Code or a tool like File Locator Pro.
+
 ## Adding redirects
 All redirects are stored at `C:\Projects\inedo-docs\redirects.xml`.  To add a new redirect, add a new `redirect` node under the root `redirects` with the `from`, `to`, and `modified` attributes.
 
@@ -206,7 +241,7 @@ The config file is stored side-by-side with the nDocs local server in a file nam
 ## Development Canon
 
 - Links should **always** be with /docs/url/to/file (example: If the file is stored at `C:\Projects\inedo-docs\Content\BuildMaster\overview.md` the URL would be `/docs/buildmaster/overview`)
-  - Be sure to not include the file extension (.md/.html) in the URL
+  - Be sure to **not** include the file extension (.md/.html) in the URL
   - Never link to https://docs.inedo.com/docs/...
 - Images can be stored side-by-side with the file or in the global resources folder
    - The global resources folder is `/resources/docs/filename.extension` (example: `/resources/docs/buildmaster-install.png`)
