@@ -80,7 +80,25 @@ GET /api/storage
 
 [
     {
-
+    "id": "azure",
+    "name": "Microsoft Azure",
+    "description": "A file system backed by Microsoft Azure Blob Storage.",
+    "properties": {
+        "ConnectionString": {
+        "required": true,
+        "name": "Connection string",
+        "description": "A Microsoft Azure connection string"
+        },
+        "ContainerName": {
+        "required": true,
+        "name": "Container",
+        "description": "The name of the Azure Blob Container"
+        },
+        "TargetPath": {
+        "name": "Target path",
+        "description": "The path in the specified Azure Blob Container"
+        }
+      }
     },
     { ... } // remaining feed storage options
 ]

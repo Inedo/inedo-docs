@@ -58,19 +58,10 @@ POST /api/storage?feed=«feed-name»
 ```
 
 ## HTTP Response Specification
-A successful (`200`) response body will contain an updated [FeedStorageConfiguration](/docs/proget/reference-api/feeds/proget-api-feeds#storage-object) object. For example, when updating the storage configuration of a NuGet feed `myNugetFeed`, this returns:
-
-```
-POST /api/storage?feed=myNugetFeed
-
-{
-
-}
-```
 
 | Response | Details |
 |---|---|
-| **200 (Success)** | response body contains an updated [FeedStorageConfiguration](/docs/proget/reference-api/feeds/proget-api-feeds#storage-object) object|
+| **200 (Success)** | indicates the feed's storage configuration was updated |
 | **400 (Invalid Input)** | indicates invalid or missing properties in the request; the body will provide some details as text |
 | **403 (Unauthorized API Key)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/reference-api/feeds/proget-api-feeds#authentication); the body will be empty |
 | **404 (Feed Not Found)** | indicates that the specified `feed` does not exist |

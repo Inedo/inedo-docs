@@ -43,7 +43,10 @@ A successful (`200`) response body will contain a single [FeedStorageConfigurati
 GET /api/storage?feed=myNugetFeed
 
 {
-
+  "id": "disk",
+  "properties": {
+    "StoragePath": null
+  }
 }
 ```
 
