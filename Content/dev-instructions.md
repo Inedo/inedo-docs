@@ -240,17 +240,37 @@ The config file is stored side-by-side with the nDocs local server in a file nam
 
 ## Development Canon
 
+### Links
 - Links should **always** be with /docs/url/to/file (example: If the file is stored at `C:\Projects\inedo-docs\Content\BuildMaster\overview.md` the URL would be `/docs/buildmaster/overview`)
   - Be sure to **not** include the file extension (.md/.html) in the URL
   - Never link to https://docs.inedo.com/docs/...
+
+### Images
 - Images can be stored side-by-side with the file or in the global resources folder
    - The global resources folder is `/resources/docs/filename.extension` (example: `/resources/docs/buildmaster-install.png`)
    - Side-by-side references should use `/docs/path/to/file.extension` (example: if the file is stored at `C:\projects\inedo-docs\content\BuildMaster\buildmaster-install.png` the URL would be `/docs/buildmaster/buildmaster-install.png`)
+- Image file names should be named as to be easily identifiable. 
+    - Typically this means naming them with a combination of the Inedo product, page and description of the image
+    - For example, an image depicting the feeds page, indicating where to click to create a new feed in ProGet could be named `proget_feeds_create_new_feed.png`
+- When adding markdown to insert an image, it should be followed with code to decrease the image by 50%, using `{height="" width="50%"}`
+
+### Screenshot formatting
+- When taking screenshots of Inedo products, the following should be applied where possible:
+    - Omit the header and footer of the page (e.g. the quicklink bar at the top and the bar at the bottom that contains the version, user, etc.)
+        - Only include the header if it's relevant to the purpose of the image (e.g. instructing the user to select the settings icon)
+    - Omit the scroll bar on the right if it's present
+    - White space should be kept to a minimum, resizing the window where needed
+- Example:
+
+![Screenshot](/resources/docs/proget-policies-sharedpolicy-blocked.png){height="" width="50%"}
+
+- When taking screenshots of modal pop ups:
+    - some may have significant whitespace by default. Resize them to reduce this where possible.
+    - Include the grey outline of the modal
+- Example:
+
+![Modal](/resources/docs/proget-chocolatey-privatename.png){height="" width="50%"}
+
+### Text formatting
 - Never start your page with an H1, nDocs will automatically add an H1 based on the page metadata title or file name if the title is not specified.
 
-::: (internal) (Vasse Add This)
-Canon to add Images/Screenshots
-- Image file name, general filename conventions
-- Image width when adding images
-- Screenshot notes
-:::
