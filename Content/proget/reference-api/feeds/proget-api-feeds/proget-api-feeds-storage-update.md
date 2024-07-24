@@ -1,4 +1,9 @@
 ---
+title: "Update Feed Storage"
+order: 7
+---
+
+---
 title: "List Feeds"
 order: 3
 ---
@@ -73,37 +78,7 @@ GET /api/management/feeds/list
 
 | Response | Details |
 |---|---|
-| **200 (Success)** | body will contain an array of [ProgetFeed](/docs/proget/reference-api/feeds/proget-api-feeds#feed-object) objects |
+| **200 (Success)** | will delete the specified `feed` |
+| **400 (Invalid Input)** | indicates invalid or missing properties in the request; the body will provide some details as text |
 | **403 (Unauthorized API Key)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/reference-api/feeds/proget-api-feeds#authentication); the body will be empty |
-
-## Sample Usage Scripts
-
-### List all feeds (Powershell)
-This script will print a list of all existing feeds and their feed types. 
-
-```powershell
-$apiUrl = "https://proget.corp.local/api/management/feeds/list"
-$apiKey = "abc12345"
-
-$headers = @{"X-ApiKey" = $apiKey}
-
-$response = Invoke-RestMethod -Uri $apiUrl -Method Get -Headers $headers
-
-foreach ($feed in $response) {
-    $feedName = $feed.name
-    $feedType = $feed.feedType
-    $formattedFeed = "{0} ({1})" -f $feedName, $feedType
-    Write-Host $formattedFeed
-}
-```
-
-#### Example Output:
-
-```
-internal-npm (npm)
-nuget-approved (nuget)
-nuget-unapproved (nuget)
-public-files (asset)
-public-npm (npm)
-universal-feed (universal)
-```
+| **404 (Feed Not Found)** | indicates that the specified `feed` does not exist |
