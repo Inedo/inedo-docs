@@ -17,7 +17,7 @@ Pub packages are added as dependencies to a `pubspec.yaml` file. To use a packag
 
 #### Authenticated Feeds
 
-If you've configured your feed to require authentication, you must add a token to dart/flutter. First, [create any API key](https://docs.inedo.com/docs/proget/reference-api/proget-apikeys) (such as a personal API key) with the desired permissions in ProGet.
+If you've configured your feed to require authentication, you must add a token to dart/flutter. First, [create any API key](/docs/proget/reference-api/proget-apikeys) (such as a personal API key) with the desired permissions in ProGet.
 
 Next, add that API key to dart/flutter as a token using the `pub token add` command:
 
