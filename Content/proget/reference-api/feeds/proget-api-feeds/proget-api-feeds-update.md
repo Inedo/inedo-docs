@@ -218,7 +218,7 @@ A successful (`200`) response body will contain an updated [Feed](/docs/proget/r
 | **200 (Success)** | response body contains an updated [Feed](/docs/proget/reference-api/feeds/proget-api-feeds#feed-object) object|
 | **400 (Invalid Input)** | indicates invalid or missing properties in the request; the body will provide some details as text |
 | **403 (Unauthorized API Key)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/reference-api/feeds/proget-api-feeds#authentication); the body will be empty |
-| **404 (Feed Not Found)** | indicates that the specified `license` does not exist |
+| **404 (Feed Not Found)** | indicates that the specified `feed` does not exist |
 
 
 ## Sample Usage Scripts
