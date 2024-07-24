@@ -22,27 +22,25 @@ The `--feed` and `--type` options are always required. Additional options are re
 pgutil feeds storage change --feed=myNugetFeed --type=disk --StoragePath=C:\ProgramData\Proget\Packages
 ```
 
-**Updating a feed's storage type to `s3`** requires the feed name (e.g. `myPypiFeed`), the storage type (e.g. `disk`) and the following options:
+**Updating a feed's storage type to `s3`** requires the feed name (e.g. `myPypiFeed`), the storage type (e.g. `disk`), and the region endpoint (e.g. `us-east-1`). The following options can also be included:
 
-| Option | Description | 
-| --- | --- | 
-| --deleteCached | Consider only cached packages or all packages (either `true` or `false`) |
-| --deletePackageIds | Comma separated list of packages subject for deletion |
-| --deletePrereleaseVersions | Consider only prerelease versions or all versions (either `true` or `false`) |
-| --deleteVersions | Comma separated list of versions subject for deletion |
+| Option | Description | Example
+| --- | --- | --- |
+| --AccessKey | User's access key | `AKIAIOSFODNN7EXAMPLE` |
+| --SecretAccessKey | User's secret access key | `wJalrXUtnFEMI/K7MDENG/bPxRfiCYKEY` |
+| --BucketName | Name of the S3 bucket | `my-bucket` |
+| --TargetPath | (Default: `none`) | `backups/2024/July`|
+| --MakePublic | Setting to `true` will make data publicly available. (default `false`) | `false` |
+| --Encrypted | Setting to `true` will encrypt the data. (default `false`) | `false` |
+| --InstanceRole | Overrides access key and secret key; only available on EC2 instances or ECS Tasks. | `arn:aws:iam::123456789012:instance-profile/S3AccessRole` |
+| --UseInstanceProfile | When using an IAM Role, indicates if role is an instance profile. (default `false`). | `false` |
+| --CustomServiceUrl | Specifying a custom service URL will override the region endpoint. | `https://proget.corp.local` |
 
 ```
-pgutil feeds storage change --feed=myPypiFeed --type=s3 --StoragePath=C:\ProgramData\Proget\Packages
+pgutil feeds storage change --feed=myPypiFeed --type=s3 --RegionEndpoint=us-east-1 --AccessKey=AKIAIOSFODNN7EXAMPLE --SecretAccessKey=wJalrXUtnFEMI/K7MDENG/bPxRfiCYKEY
 ```
 
-**Updating a feed's storage type to `azure`** requires the feed name (e.g. `myNpmFeed`), the storage type (e.g. `disk`) and the following options:
-
-| Option | Description | 
-| --- | --- | 
-| --deleteCached | Consider only cached packages or all packages (either `true` or `false`) |
-| --deletePackageIds | Comma separated list of packages subject for deletion |
-| --deletePrereleaseVersions | Consider only prerelease versions or all versions (either `true` or `false`) |
-| --deleteVersions | Comma separated list of versions subject for deletion |
+**Updating a feed's storage type to `azure`** requires the feed name (e.g. `myNpmFeed`), the storage type (e.g. `disk`), the connection string (e.g. `DefaultEndpointsProtocol=https;AccountName=myazurestorage;AccountKey=H+2dPzlkXN3k5r8GwS1o9YX3u5pAzU+8LWosFSQxBTG1CRl3q8k9ZjQz1qE1ZnxyG+0jl5vKlRjN2o2MWwzA==;EndpointSuffix=core.windows.net`), and the container name (e.g. projectdocuments). Optionally, a target path can be included (e.g. `projectdocuments/uploads/2024/07/`)
 
 ```
 pgutil feeds storage change --feed=myNpmFeed --type=azure --ConnectionString=DefaultEndpointsProtocol=https;AccountName=myazurestorage;AccountKey=H+2dPzlkXN3k5r8GwS1o9YX3u5pAzU+8LWosFSQxBTG1CRl3q8k9ZjQz1qE1ZnxyG+0jl5vKlRjN2o2MWwzA==;EndpointSuffix=core.windows.net --ContainerName=projectdocuments --TargetPath=projectdocuments/uploads/2024/07/
