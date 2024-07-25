@@ -593,10 +593,10 @@
   <redirect from="/docs/proget/administration/feed-cleanup" to="/docs/proget/advanced/package-statistics" modified="7/18/2024 2:59:32 PM" />
   <redirect from="/docs/proget/administration/feed-replication" to="/docs/proget/storage/feed-replication" modified="7/18/2024 2:59:32 PM" />
   <redirect from="/docs/proget/administration/high-availability" to="/docs/proget/installation/load-balancing-and-automatic-failover" modified="7/18/2024 2:59:32 PM" />
-  <redirect from="/docs/proget/administration/ldap" to="/docs/proget//docs/various/ldap/ldap-active-directory" modified="7/18/2024 2:59:32 PM" />
-  <redirect from="/docs/proget/administration/ldap/advanced" to="/docs/proget//docs/various/ldap/advanced" modified="7/18/2024 2:59:32 PM" />
-  <redirect from="/docs/proget/administration/ldap/integrated-authentication" to="/docs/proget//docs/various/ldap/integrated-authentication" modified="7/18/2024 2:59:32 PM" />
-  <redirect from="/docs/proget/administration/ldap/troubleshooting" to="/docs/proget//docs/various/ldap/troubleshooting" modified="7/18/2024 2:59:32 PM" />
+  <redirect from="/docs/proget/administration/ldap" to="/docs/various/ldap/ldap-active-directory" modified="7/18/2024 2:59:32 PM" />
+  <redirect from="/docs/proget/administration/ldap/advanced" to="docs/various/ldap/advanced" modified="7/18/2024 2:59:32 PM" />
+  <redirect from="/docs/proget/administration/ldap/integrated-authentication" to="/docs/various/ldap/integrated-authentication" modified="7/18/2024 2:59:32 PM" />
+  <redirect from="/docs/proget/administration/ldap/troubleshooting" to="/docs/various/ldap/troubleshooting" modified="7/18/2024 2:59:32 PM" />
   <redirect from="/docs/proget/administration/license-filters" to="/docs/proget/core-concepts/compliance/license-filters" modified="7/18/2024 2:59:32 PM" />
   <redirect from="/docs/proget/administration/package-statistics" to="/docs/proget/advanced/package-statistics" modified="7/18/2024 2:59:32 PM" />
   <redirect from="/docs/proget/administration/retention-policies" to="/docs/proget/administration/rentention-rules" modified="7/18/2024 2:59:32 PM" />
@@ -631,19 +631,19 @@
   <redirect from="/docs/proget/docker/implementation-details" to="/docs/proget/docker/fundamentals/terminology" modified="7/18/2024 2:59:32 PM" />
   <redirect from="/docs/proget/feeds/advanced-feed-settings" to="/docs/proget/feed-types/universal" modified="7/18/2024 2:59:32 PM" />
   <redirect from="/docs/proget/feeds/api-keys" to="/docs/proget/reference/api-keys-nuget" modified="7/18/2024 2:59:32 PM" />
-  <redirect from="/docs/proget/feeds/bower/bower-feed-configuration" to="/docs/proget//docs/proget" modified="7/18/2024 2:59:32 PM" />
+  <redirect from="/docs/proget/feeds/bower/bower-feed-configuration" to="/docs/proget" modified="7/18/2024 2:59:32 PM" />
   <redirect from="/docs/proget/feeds/cleanup" to="/docs/proget/administration/feed-cleanup" modified="7/18/2024 2:59:32 PM" />
   <redirect from="/docs/proget/feeds/connectors" to="/docs/proget/feeds/connector-overview" modified="7/18/2024 2:59:32 PM" />
   <redirect from="/docs/proget/feeds/connectors/connector-filters" to="/docs/proget/feeds/connector-overview" modified="7/18/2024 2:59:32 PM" />
   <redirect from="/docs/proget/feeds/connectors/indexing-connectors" to="/docs/proget/feeds/connector-overview" modified="7/18/2024 2:59:32 PM" />
   <redirect from="/docs/proget/feeds/docker" to="/docs/proget/docker/private-registries" modified="7/18/2024 2:59:32 PM" />
   <redirect from="/docs/proget/feeds/feed-basics" to="/docs/proget/feed-types/universal" modified="7/18/2024 2:59:32 PM" />
-  <redirect from="/docs/proget/feeds/maven/maven-feed-configuration" to="/docs/proget//docs/proget" modified="7/18/2024 2:59:32 PM" />
-  <redirect from="/docs/proget/feeds/multiple-feeds" to="/docs/proget//docs/proget" modified="7/18/2024 2:59:32 PM" />
+  <redirect from="/docs/proget/feeds/maven/maven-feed-configuration" to="/docs/proget" modified="7/18/2024 2:59:32 PM" />
+  <redirect from="/docs/proget/feeds/multiple-feeds" to="/docs/proget" modified="7/18/2024 2:59:32 PM" />
   <redirect from="/docs/proget/feeds/npm/npm-feed-configuration" to="/docs/proget/feeds/nuget/legacy-feeds" modified="7/18/2024 2:59:32 PM" />
-  <redirect from="/docs/proget/feeds/nuget/feed-sync" to="/docs/proget//docs/proget" modified="7/18/2024 2:59:32 PM" />
-  <redirect from="/docs/proget/feeds/nuget/legacy-feeds" to="/docs/proget//docs/proget" modified="7/18/2024 2:59:32 PM" />
-  <redirect from="/docs/proget/feeds/nuget/nuget-feed-configuration" to="/docs/proget//docs/proget" modified="7/18/2024 2:59:32 PM" />
+  <redirect from="/docs/proget/feeds/nuget/feed-sync" to="/docs/proget" modified="7/18/2024 2:59:32 PM" />
+  <redirect from="/docs/proget/feeds/nuget/legacy-feeds" to="/docs/proget" modified="7/18/2024 2:59:32 PM" />
+  <redirect from="/docs/proget/feeds/nuget/nuget-feed-configuration" to="/docs/proget" modified="7/18/2024 2:59:32 PM" />
   <redirect from="/docs/proget/feeds/retention" to="/docs/proget/administration/retention-policies" modified="7/18/2024 2:59:32 PM" />
   <redirect from="/docs/proget/feeds/retention/matching-examples" to="/docs/proget/feed-types/universal" modified="7/18/2024 2:59:32 PM" />
   <redirect from="/docs/proget/feeds/symbol-and-source-server" to="/docs/proget/feed-types/nuget/symbol-and-source-server" modified="7/18/2024 2:59:32 PM" />
@@ -662,8 +662,8 @@
   <redirect from="/docs/proget/feed-types/universal" to="/docs/proget/packages/what-is-a-package" modified="7/18/2024 2:59:32 PM" />
   <redirect from="/docs/proget/feed-types/vsix" to="/docs/proget/feeds/vsix" modified="7/18/2024 2:59:32 PM" />
   <redirect from="/docs/proget/installation/high-availability" to="/docs/proget/installation/load-balancing-and-automatic-failover" modified="7/18/2024 2:59:32 PM" />
-  <redirect from="/docs/proget/installation/hub" to="/docs/proget//docs/desktophub/overview" modified="7/18/2024 2:59:32 PM" />
-  <redirect from="/docs/proget/installation/hub/inedo-hub-cli" to="/docs/proget//docs/desktophub/inedo-hub-cli" modified="7/18/2024 2:59:32 PM" />
+  <redirect from="/docs/proget/installation/hub" to="/docs/desktophub/overview" modified="7/18/2024 2:59:32 PM" />
+  <redirect from="/docs/proget/installation/hub/inedo-hub-cli" to="/docs/desktophub/inedo-hub-cli" modified="7/18/2024 2:59:32 PM" />
   <redirect from="/docs/proget/installation/inedo-hub-guide" to="/docs/proget/installation/installation-guide" modified="7/18/2024 2:59:32 PM" />
   <redirect from="/docs/proget/installation/linux-docker" to="/docs/proget/installation/installation-guide/linux-docker" modified="7/18/2024 2:59:32 PM" />
   <redirect from="/docs/proget/installation/load-balancing" to="/docs/proget/installation/load-balancing-and-automatic-failover" modified="7/18/2024 2:59:32 PM" />
@@ -677,9 +677,9 @@
   <redirect from="/docs/proget/reference/api-methods" to="/docs/proget/reference/api/native" modified="7/18/2024 2:59:32 PM" />
   <redirect from="/docs/proget/reference/asset-directories-api" to="/docs/proget/reference/api/asset-directories-api" modified="7/18/2024 2:59:32 PM" />
   <redirect from="/docs/proget/reference/sdk" to="/docs/proget/administration/extensions" modified="7/18/2024 2:59:32 PM" />
-  <redirect from="/docs/proget/reference/universal-feed-api-and-package-format" to="/docs/proget//docs/various/universal-packages/universal-feed-api" modified="7/18/2024 2:59:32 PM" />
-  <redirect from="/docs/proget/reference/universal-package-registry" to="/docs/proget//docs/various/universal-packages/universal-package-registry" modified="7/18/2024 2:59:32 PM" />
-  <redirect from="/docs/proget/reference/upack" to="/docs/proget//docs/various/universal-packages/upack-reference" modified="7/18/2024 2:59:32 PM" />
+  <redirect from="/docs/proget/reference/universal-feed-api-and-package-format" to="/docs/various/universal-packages/universal-feed-api" modified="7/18/2024 2:59:32 PM" />
+  <redirect from="/docs/proget/reference/universal-package-registry" to="/docs/various/universal-packages/universal-package-registry" modified="7/18/2024 2:59:32 PM" />
+  <redirect from="/docs/proget/reference/upack" to="/docs/various/universal-packages/upack-reference" modified="7/18/2024 2:59:32 PM" />
   <redirect from="/docs/proget/scheduled-tasks" to="/docs/proget/administration/feed-cleanup" modified="7/18/2024 2:59:32 PM" />
   <redirect from="/docs/proget/security" to="/docs/proget/administration/security" modified="7/18/2024 2:59:32 PM" />
   <redirect from="/docs/proget/security/integrated-authentication" to="/docs/proget/administration/ldap-active-directory" modified="7/18/2024 2:59:32 PM" />
@@ -725,7 +725,7 @@
   <redirect from="/docs/buildmaster/core-concepts/servers" to="/docs/buildmaster/administration/agents-and-infrastructure/servers" modified="7/18/2024 2:59:32 PM" />
   <redirect from="/docs/buildmaster/deployments/overview" to="/docs/buildmaster/deployments" modified="7/18/2024 2:59:32 PM" />
   <redirect from="/docs/buildmaster/execution-engine/overview" to="/docs/buildmaster/deployments/plans/execution-engine" modified="7/18/2024 2:59:32 PM" />
-  <redirect from="/docs/buildmaster/execution-engine/statement-and-blocks/other-statements" to="/docs/buildmaster//docs/executionengine/otterscript/statements-and-blocks/other-statements" modified="7/18/2024 2:59:32 PM" />
+  <redirect from="/docs/buildmaster/execution-engine/statement-and-blocks/other-statements" to="/docs/executionengine/otterscript/statements-and-blocks/other-statements" modified="7/18/2024 2:59:32 PM" />
   <redirect from="/docs/buildmaster/global-components/configuration-variables" to="/docs/buildmaster/administration/configuration-variables" modified="7/18/2024 2:59:32 PM" />
   <redirect from="/docs/buildmaster/global-components/event-listeners" to="/docs/buildmaster/administration/notifications" modified="7/18/2024 2:59:32 PM" />
   <redirect from="/docs/buildmaster/global-components/resource-credentials" to="/docs/buildmaster/administration/resource-credentials" modified="7/18/2024 2:59:32 PM" />
@@ -739,7 +739,7 @@
   <redirect from="/docs/buildmaster/installation/config-files" to="/docs/buildmaster/installation-and-maintenance/config-files" modified="7/18/2024 2:59:32 PM" />
   <redirect from="/docs/buildmaster/installation/configuration-options" to="/docs/buildmaster/installation-and-maintenance/config-files" modified="7/18/2024 2:59:32 PM" />
   <redirect from="/docs/buildmaster/installation/diagnostic-center" to="/docs/buildmaster/installation-and-maintenance/diagnostic-center" modified="7/18/2024 2:59:32 PM" />
-  <redirect from="/docs/buildmaster/installation/execution-engine" to="/docs/buildmaster//docs/executionengine/overview" modified="7/18/2024 2:59:32 PM" />
+  <redirect from="/docs/buildmaster/installation/execution-engine" to="/docs/executionengine/overview" modified="7/18/2024 2:59:32 PM" />
   <redirect from="/docs/buildmaster/installation/global-components/resource-credentials" to="/docs/buildmaster/administration/resource-credentials" modified="7/18/2024 2:59:32 PM" />
   <redirect from="/docs/buildmaster/installation/installation-guide" to="/docs/buildmaster/installation-and-maintenance/installation-guide" modified="7/18/2024 2:59:32 PM" />
   <redirect from="/docs/buildmaster/installation/installation-guide/agent-installation-guide" to="/docs/buildmaster/installation-and-maintenance/installation-guide/agent-installation-guide" modified="7/18/2024 2:59:32 PM" />

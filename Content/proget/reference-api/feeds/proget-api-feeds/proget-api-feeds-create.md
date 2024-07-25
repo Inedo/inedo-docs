@@ -63,4 +63,4 @@ POST /api/management/feeds/create
 |---|---|
 | **200 (Success)** | a `feed` will be created, the body will contain a [ProgetFeed](/docs/proget/reference-api/feeds/proget-api-feeds#feed-object) object |
 | **400 (Invalid Input)** | indicates invalid or missing properties in the request; the body will provide some details as text |
-|  **403 (Unauthorized API Key)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/reference-api/feeds/proget-api-feeds#authentication); the body will be empty |
+| **403 (Unauthorized API Key)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/reference-api/feeds/proget-api-feeds#authentication); the body will be empty |

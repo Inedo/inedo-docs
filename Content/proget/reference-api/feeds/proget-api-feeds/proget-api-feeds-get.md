@@ -73,6 +73,6 @@ GET /api/management/feeds/get/myNugetFeed
 |---|---|
 | **200 (Success)** | body will contain a [ProgetFeed](/docs/proget/reference-api/feeds/proget-api-feeds#feed-object) object |
 | **400 (Invalid Input)** | indicates invalid or missing properties in the request; the body will provide some details as text |
-|  **403 (Unauthorized API Key)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/reference-api/feeds/proget-api-feeds#authentication); the body will be empty |
+| **403 (Unauthorized API Key)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/reference-api/feeds/proget-api-feeds#authentication); the body will be empty |
 | **404 (Feed Not Found)** | indicates that the specified `feed` does not exist |
 
