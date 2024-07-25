@@ -21,12 +21,14 @@ docker network create inedo
 Inedo products requires an SQL Server database. You can either host this database externally or simply [use an SQL Server Docker image](https://docs.microsoft.com/en-us/sql/linux/sql-server-linux-configure-docker); it doesn't matter how it's hosted, as long as your instance can access it. 
 
 To start an SQL Server container on the `inedo` network you created, use this command:
+
 ```Shell
 docker run --name inedo-sql \
   -e 'ACCEPT_EULA=Y' -e 'MSSQL_SA_PASSWORD=«YourStrong!Passw0rd»' \
   -e 'MSSQL_PID=Express' --net=inedo --restart=unless-stopped \
   -d mcr.microsoft.com/mssql/server:2019-latest
 ```
+
 :::(Info) ()
 In this example, the free SQL Express edition is specified. This is sufficient for most installations, but you can use any other edition if you have the license for it.
 :::
@@ -41,8 +43,10 @@ docker exec -it inedo-sql /opt/mssql-tools/bin/sqlcmd \
   -S localhost -U SA -P '«YourStrong!Passw0rd»' \
   -Q 'CREATE DATABASE [ProGet] COLLATE SQL_Latin1_General_CP1_CI_AS'
 ```
+
 <br>
-:::(Info) ()
+
+::: (Info)( )
 You can create the database however you want, but to avoid issues make sure you specify its collation as **SQL_Latin1_General_CP1_CI_AS**.
 :::
 
@@ -82,6 +86,7 @@ docker run -d --name=otter --restart=unless-stopped \
   proget.inedo.com/productimages/inedo/otter:latest
   ```
 ### Configuration Parameters
+
 |Parameter | Description |
 | --- | --- |
 | `-d` | Starts the container in detached mode. Without this argument, Docker will block your current terminal session and output the logs to your terminal. |

@@ -33,7 +33,7 @@ Clicking on a ticket allows you to view the ticket information, including attach
 
 New tickets and comments are emailed to you.  You can reply to the email to add new comments and attachments.  Those email replies will also show up in the ticket history on MyInedo.
 
-:::(INFO) (**Support tickets are for paid users only.**)
+:::(INFO) (Support tickets are for paid users only.)
 We appreciate users of our free software. Our engineers and other users are on the [Inedo Forums](https://forums.inedo.com){target="_blank"} and can help you there. If we can't find a paid license, we will likely ask you to post on the Inedo Forum.
 :::
 

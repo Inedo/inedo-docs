@@ -48,7 +48,8 @@ Don't hesitate to [contact us](https://inedo.com/contact) with ideas or if you n
 
 Comments made within a statement are ignored by the compiler, which means that they will not be preserved when switching between text and visual modes in the plan editor. For example, consider the following script.
 
-<pre>#Ensure HDars
+```
+#Ensure HDars
 #Creates the Hdars AppPool and Site if it doesn't exist
 {
     IIS::Ensure-AppPool HDarsAppPool (
@@ -62,7 +63,8 @@ Comments made within a statement are ignored by the compiler, which means that t
         # bind to port 1000 on all IPs, any hostname
         Binding: *:1000:
     );
-}</pre>
+}
+```
 
 Log messages from the operations will be under a "Ensure HDars" log scope, and the script editor will display the "block" with a "Ensure HDars" name the following line as a comment.
 

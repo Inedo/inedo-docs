@@ -35,14 +35,18 @@ This is how we create single-exe bundles, and it involves using files from [7-zi
 
 1. Copy `7zS.sfx`, `7za.dll`, `7za.exe`, and `7zxa.dll` to `C:\OfflineHub`
 2. Create `C:\OfflineHub\config.txt` with the following contents:
- ```plain text
+ 
+
+ ```
  ;!@Install@!UTF-8!
 Title="Inedo Hub Offline Installer"
 RunProgram="InedoHub.exe"
 ;!@InstallEnd@!
 ```
+
 3. Create an offline Inedo Hub following the instructions above to `C:\OfflineHub\src`
 4. Run the following commands
+
 ```
 cd c:\OfflineHub\src
 ..\7za.exe -r a ..\pack.7z *.*
