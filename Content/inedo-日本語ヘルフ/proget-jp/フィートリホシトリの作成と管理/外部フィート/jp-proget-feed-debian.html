@@ -1,6 +1,7 @@
 ---
 title: "Debian (apt) フィードのホスト"
 order: 4
+hidden: true
 ---
 
 <h2><strong>ProGet で Debian フィードをホストする方法</strong></h2><p><a href="https://www.debian.org/">Debian</a> は、無料で利用できるLinuxOSのディストリビューション（種類）のひとつです。</p><p>Debian のソフトウェアは、パッケージ管理コマンド「APT」で、インストール、アップデート、アンインストールできます。</p><p>ProGet v5.2 以降では、ProGet サーバに Debian フィードをホストして、Debian のパッケージをインストール、アップデート、アンインストールできます。</p><h2>フィードを設定する前にすること</h2><h3>1. <strong>ProGet&nbsp;内に署名鍵を作成する</strong></h3><p>Debian&nbsp;のフィードからパッケージを入手するには、ProGet&nbsp;内に署名鍵が作成されていることが前提条件となります。</p><p>フィードが作成されたら、[Manage Feed (フィードの管理)]&nbsp;ページにアクセスし、[Properties (プロパティ)]&nbsp;パネルで&nbsp;[manage keys (キーの管理)]&nbsp;を選択してください。詳細を入力し&nbsp;[Generate Key (キーの作成)]&nbsp;をクリックします。</p><p>1つのみ作成する場合には、簡単に「proget」や「default」などを入力してもけっこうです。</p><p>少し待つとキーが完成し、そのフィンガープリントが&nbsp;[Manage Keys (キーの管理)]&nbsp;のウィンドウに表示されます。</p><h3><strong>クライアントの設定</strong></h3><p>ProGet&nbsp;から Debian パッケージをインストールするには、各クライアントで次の手順を実行してください。</p><h3><strong>1.署名鍵を追加する</strong></h3><p>キーを apt に追加するには、次のコマンドを実行します。</p><pre><code class="language-powershell" data-language="powershell">wget -O "deb.gpg" http://{proget-server}/debian-feeds/{feed-name}.pub &amp;&amp; sudo apt-key add "{feed-name}.gpg" 

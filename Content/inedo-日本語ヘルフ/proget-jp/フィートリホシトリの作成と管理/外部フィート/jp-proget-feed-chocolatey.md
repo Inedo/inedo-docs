@@ -1,6 +1,7 @@
 ---
 title: "Chocolatey フィードのホスト"
 order: 9
+hidden: true
 ---
 
 [Chocolatey](https://chocolatey.org/) は、Windows 用のパッケージマネージャーです。apt や yum のような Linux ツールに似ていますが、Windows の特性を考慮した、使いやすい機能が盛り込まれています。必要なアプリケーションやツールを素早くインストールする分散型フレームワーク、Chocolatey の導入方法をご覧ください。

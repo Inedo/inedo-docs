@@ -1,6 +1,7 @@
 ---
 title: "デプロイのトラッキング"
 order: 6
+hidden: true
 ---
 
 <p>パッケージデプロイメント機能は、BuildMaster や OctopusDeploy などのツールからのパッケージデプロイメント情報（ターゲットやユーザーなど）を記録し、パッケージを中心とした、デプロイメントの概要を表示します。</p><p>この機能により、どのパッケージバージョンがいつ、誰によって、どのツールを使用してデプロイされたかなどを正確に知ることができます。</p><p>明確なレコードが ProGet に直接保持されるため、監査プロセスが簡素化されます。また、既知の脆弱性が特定された場合に、脆弱なサーバーをすばやく見つけるのに役立ちます。ProGet の機能は、その特定のパッケージを実行しているすべてのサーバーを表示し、迅速な更新を可能にします。</p><p>ProGet の無料版では、この機能に制限はありません。 パッケージデプロイメントの記録は、構成が完了すると、[パッケージの概要] ページの [履歴] タブに表示されます。</p><h2>カスタムレコード</h2><p>どのパッケージタイプのコンシューマーも、次の HTTP ヘッダーを使用して Feed APIGET リクエストをカスタマイズできます。</p><ul><li><strong>X-ProGet-Deployment-Application&nbsp;</strong>-（必須）デプロイメントを実行するアプリケーションまたはツール（NuGet、BuildMaster、一部のカスタムツールなど）</li><li><strong>X-ProGet-Deployment-Description&nbsp;</strong>-（必須）デプロイメントの簡単な要約</li><li><strong>X-ProGet-Deployment-Target&nbsp;</strong>-（必須）パッケージがインストールされた場所を識別する文字列（通常はサーバー名）</li><li><strong>X-ProGet-Deployment-Url&nbsp;</strong>-（任意）デプロイメントに関する詳細情報にリンクするURL</li><li><strong>X-ProGet-Deployment-UserName&nbsp;</strong>-（任意）デプロイメントを実行するユーザーの名前。デフォルトは認証済みユーザーです。</li><li><strong>X-ProGet-Deployment-Date&nbsp;</strong>-（任意）ISO 8601 UTCデプロイ日、または提供されていない場合は現在の日付</li></ul>

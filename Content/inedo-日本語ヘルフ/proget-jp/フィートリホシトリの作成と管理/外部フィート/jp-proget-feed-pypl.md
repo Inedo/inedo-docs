@@ -1,6 +1,7 @@
 ---
 title: "PyPI (Python) フィードのホスト"
 order: 5
+hidden: true
 ---
 
 Python Package Index（[PyPI](https://pypi.org/)）は、Pythonのソフトウェアとライブラリのリポジトリです。

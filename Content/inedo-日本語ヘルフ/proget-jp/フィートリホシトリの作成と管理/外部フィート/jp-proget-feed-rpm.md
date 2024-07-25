@@ -1,6 +1,7 @@
 ---
 title: "RPMフィードのホスト"
 order: 6
+hidden: true
 ---
 
 RPM Package Manager （[RPM](https://access.redhat.com/documentation/ja-jp/red_hat_enterprise_linux/7/html-single/rpm_packaging_guide/index)、以前の名称Red Hat Package Manager）は、RedHat や CentOS を含む多くの Linux ディストリビューションで使用されている、無料のオープンソースパッケージ管理システムです。

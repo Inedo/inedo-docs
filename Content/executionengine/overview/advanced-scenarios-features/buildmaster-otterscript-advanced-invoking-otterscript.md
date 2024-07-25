@@ -10,9 +10,9 @@ BuildMaster 5.1.6 introduced the ability to programmatically invoke OtterScript.
  * Invoking plans and modules from other applications
 
  These are accomplished through three operations:
- * [Invoke-Plan](/docs/buildmaster-reference-operations-buildmaster-invoke-plan), which executes a deployment plan stored within BuildMaster, in the current application, another application, or the global context
- * [Invoke-Module](/docs/buildmaster-reference-operations-buildmaster-invoke-module), which calls a module stored within BuildMaster
- * [Invoke-OtterScript](/docs/buildmaster-reference-operations-buildmaster-invoke-otterscript), which invokes an arbitrary string of OtterScript
+ * `Invoke-Plan`, which executes a deployment plan stored within BuildMaster, in the current application, another application, or the global context
+ * `Invoke-Module`, which calls a module stored within BuildMaster
+ * `Invoke-OtterScript`, which invokes an arbitrary string of OtterScript
 
 ### Invoking plans and modules
 
@@ -76,7 +76,7 @@ You can, however, use the `AdditionalVariables` or `Arguments` to pass in variab
 
 ### Programmatically invoking single operations
 
-You can also use [Invoke-Operation](/docs/buildmaster-reference-operations-general-invoke-operation) to execute a single operation:
+You can also use `Invoke-Operation` to execute a single operation:
 
     Invoke-Operation [Operation_Name]
     (

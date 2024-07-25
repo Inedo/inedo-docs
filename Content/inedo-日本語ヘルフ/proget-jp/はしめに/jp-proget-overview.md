@@ -1,6 +1,7 @@
 ---
 title: "ProGet のインストール方法"
 order: 1
+hidden: true
 ---
 
 パッケージ管理システム ProGet をご利用いただきありがとうございます。 

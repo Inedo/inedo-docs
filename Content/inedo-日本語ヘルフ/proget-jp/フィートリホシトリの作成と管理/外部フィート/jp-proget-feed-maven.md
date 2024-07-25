@@ -1,6 +1,7 @@
 ---
 title: "Mavenフィードのホスト"
 order: 12
+hidden: true
 ---
 
 ProGet では、ProGetをインストールしたサーバに Maven フィードをホストして、Maven のパッケージをインストール、アップデート、アンインストールできます。
