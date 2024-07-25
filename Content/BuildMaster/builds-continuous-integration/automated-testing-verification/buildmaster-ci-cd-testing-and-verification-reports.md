@@ -12,21 +12,20 @@ Build reports are used to attach some form of generated text output with a speci
 As an implementation detail, build reports are associated with an execution, therefore if a build deployment is re-executed (or executed in a different stage), captured reports of the same name will overwrite the existing report.
 
 :::(Info) (Note:)
- Build reports are not persisted by [application import/export](/docs/buildmaster/installation-maintenance/buildmaster-legacy/buildmaster-applications-concepts-import-export). To maintain important information across this boundary, use build artifacts instead.
+ Build reports are not persisted by [application backup/restore](/docs/buildmaster/modeling-your-applications/buildmaster-applications-concepts/buildmaster-applications-concepts-backup-restore). To maintain important information across this boundary, use build artifacts instead.
 :::
 
-Capturing Build Reports
------------------------
+## Capturing Build Reports
 
 Build reports are captured using one of the following operations:
 
-#### [`Capture-HtmlDirectoryReport`](/docs/buildmaster-reference-operations-reports-capture-html-report-from-directory)
+#### `Capture-HtmlDirectoryReport`
 
 An HTML directory report requires a specific format to be displayed correctly within BuildMaster. At minimum, the directory must contain an index file (typically index.html) that provides `<a>` links relative to the captured directory.
 
 This operation also allows an optional preview file to be displayed on the build overview page.
 
-#### [`Capture-FileReport`](/docs/buildmaster-reference-operations-reports-capture-report-from-file)
+#### `Capture-FileReport`
 
 A file report is displayed as either plain text or HTML, depending on the format specified in the operation. By default, a file is assumed to be HTML if it begins with a `<` angle bracket.
 
@@ -34,7 +33,7 @@ A file report is displayed as either plain text or HTML, depending on the format
 
 Generating reports are accomplished using one of the two built-in operations below, or by running a third-party tool and capturing the output.
 
-#### [`Compare-Directories`](/docs/buildmaster-reference-operations-reports-directory-comparison-report)
+#### `Compare-Directories`
 
 This operation compares two directories on the same server and highlights the following information:
 
@@ -42,7 +41,7 @@ This operation compares two directories on the same server and highlights the fo
 *   Deleted files or directories
 *   Modified file contents
 
-#### [`Compare-Artifacts`](/docs/buildmaster-reference-operations-reports-artifact-comparison-report)
+#### `Compare-Artifacts`
 
 This operation works in the same manner as the Compare-Directories operation, with the following caveats:
 
