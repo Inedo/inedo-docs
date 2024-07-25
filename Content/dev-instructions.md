@@ -206,7 +206,7 @@ The process for completing a pull request will work as follow:
 When you rename a file or folder, this will change the URL for that page.  
 :::
 
-When a URL is changed for a page, you will need to add a [redirect rule](adding-redirects) to link from the old URL to the new URL.  You will also need to update any pages that link to that old URL as well.  The [link scanner](#link-scanner) can help you find all the pages that use that link.  You can also search in all files using Visual Studio Code or a tool like File Locator Pro.
+When a URL is changed for a page, you will need to add a [redirect rule](#adding-redirects) to link from the old URL to the new URL.  You will also need to update any pages that link to that old URL as well.  The [link scanner](#link-scanner) can help you find all the pages that use that link.  You can also search in all files using Visual Studio Code or a tool like File Locator Pro.
 
 ## Adding redirects
 All redirects are stored at `C:\Projects\inedo-docs\redirects.xml`.  To add a new redirect, add a new `redirect` node under the root `redirects` with the `from`, `to`, and `modified` attributes.
@@ -224,13 +224,9 @@ When the old docs site was migrated to Document360, we had a rule in CloudFlare 
 When a page URL is not found (either in the folder structure or in the redirect file), nDocs will automatically convert from the folders-based URL to the slug based URL.  This may cause confusion when developing new pages.  If this happens, please check that a page exists at the URL you are specifying or add a redirect rule as needed.
 
 ### Link Scanner
-::: (Warn)
-Coming soon....
-:::
+The Link Scanner detects broken links, links that are redirected, and links to hidden pages within the docs content.  This scan is ran anytime the nDocs Local Server indexes the pages to build the navigation tree.  When development mode is enabled and issues are detected, a message containing links to the problem pages will show at the top of every page.  This allows issues to be found at development time, prior to running Screaming Frog.  When navigating to a page that contains issues, each link's text and URL will also be shown at the top of the page.
 
-This will show a message at the top of every page when in development when there are broken internal links or when pages include redirected links.  This allows URLs to be updated at development time, prior to Screaming Frog.
-
-Screaming Frog will still be ran weekly to find broken internal links, broken image links, and broken external links.
+The link scanner does **not** find broken image links, broken external links, broken links in the home page, or broken links that are contained on the master pages.  Screaming Frog will still be ran weekly to find broken internal links, broken image links, and broken external links.
 
 ## Config file
 
@@ -239,6 +235,15 @@ The config file is stored side-by-side with the nDocs local server in a file nam
 - `IsDevelopment`:  Changing this value to false, will hide all hidden pages, hide all internal info blocks, show custom error pages, and will enable caching.  This can be used to test what the site will look like in production.
 
 ## Development Canon
+
+### Headings
+- Never start your page with an H1, nDocs will automatically add an H1 based on the page metadata title or file name if the title is not specified.
+- If an ID is not specified for a header, an ID will be generated based on the text within the header
+- When using Markdown
+    - Headings must be specified in Markdown syntax instead of HTML syntax
+        - If HTML headings are used in Markdown, they will not show in the table of contents
+    - If a custom ID is needed in a Markdown heading, append `{ #heading-id }` to the end of the heading
+        - Example: `## Using Feed Connectors { #feed-connectors }`
 
 ### Links
 - Links should **always** be with /docs/url/to/file (example: If the file is stored at `C:\Projects\inedo-docs\Content\BuildMaster\overview.md` the URL would be `/docs/buildmaster/overview`)
@@ -271,6 +276,4 @@ The config file is stored side-by-side with the nDocs local server in a file nam
 
 ![Modal](/resources/docs/proget-chocolatey-privatename.png){height="" width="50%"}
 
-### Text formatting
-- Never start your page with an H1, nDocs will automatically add an H1 based on the page metadata title or file name if the title is not specified.
 
