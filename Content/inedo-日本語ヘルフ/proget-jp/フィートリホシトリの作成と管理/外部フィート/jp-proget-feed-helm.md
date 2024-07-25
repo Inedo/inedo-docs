@@ -1,6 +1,7 @@
 ---
 title: "Helm (Kubernetes) フィードのホスト"
 order: 7
+hidden: true
 ---
 
 Helmは、 [Kubernetes](https://kubernetes.io/) アプリケーションのパッケージマネージャーです。（参照：[Helm The package manager for Kubernetes](https://helm.sh/)、[Kubernetes (K8s)](https://kubernetes.io/)）

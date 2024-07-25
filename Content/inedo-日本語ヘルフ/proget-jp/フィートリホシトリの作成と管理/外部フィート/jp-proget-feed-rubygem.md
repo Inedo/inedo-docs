@@ -1,6 +1,7 @@
 ---
 title: "RubyGemフィードのホスト"
 order: 11
+hidden: true
 ---
 
 # ProGet で RubyGems フィードをホストする方法

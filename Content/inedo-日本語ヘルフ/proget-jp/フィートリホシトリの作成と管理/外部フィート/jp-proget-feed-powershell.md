@@ -1,6 +1,7 @@
 ---
 title: "PowerShellフィードのホスト"
 order: 13
+hidden: true
 ---
 
 PowerShell フィードは、PowerShell モジュールを保管することに特化した [NuGet フィード](/docs/inedo-日本語ヘルフ/proget-jp/フィートリホシトリの作成と管理/外部フィート/jp-proget-feed-nuget){target="_blank"}です。

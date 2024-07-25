@@ -1,6 +1,7 @@
 ---
 title: ".vsix フィードのホスト"
 order: 3
+hidden: true
 ---
 
 Visual Studio Code (VSCode) では、Marketplace に多くの拡張機能が公開されています。

@@ -1086,4 +1086,45 @@
   <redirect from="/docs/otter-global-components-rafts-pipeline-rafts" to="/docs/otter/scripting-in-otter/otter-rafts-and-git-storage" modified="2/25/2022 12:00:00 AM" />
   <redirect from="/docs/otter-global-components-rafts" to="/docs/otter/scripting-in-otter/otter-rafts-and-git-storage" modified="2/25/2022 12:00:00 AM" />
   <!--End of Doc360 Redirects-->
+
+  <!-- BEGIN Post Migration -->
+  <redirect from="/docs/inedo-日本語ヘルフ/proget-jp/脆弱性とライセンスのスキャン/jp-proget-vulnerabilities-scanning" to="/" modified="7/25/2024 11:00:00 AM" />
+  <redirect from="/docs/inedo-日本語ヘルフ/proget-jp/脆弱性とライセンスのスキャン/jp-proget-license-detection" to="/" modified="7/25/2024 11:00:00 AM" />
+  <redirect from="/docs/inedo-日本語ヘルフ/proget-jp/高度な機能/jp-webhooks" to="/" modified="7/25/2024 11:00:00 AM" />
+  <redirect from="/docs/inedo-日本語ヘルフ/proget-jp/高度な機能/jp-proget-cloud-storage" to="/" modified="7/25/2024 11:00:00 AM" />
+  <redirect from="/docs/inedo-日本語ヘルフ/proget-jp/高度な機能/jp-proget-assets" to="/" modified="7/25/2024 11:00:00 AM" />
+  <redirect from="/docs/inedo-日本語ヘルフ/proget-jp/高度な機能/jp-proget-feed-replication" to="/" modified="7/25/2024 11:00:00 AM" />
+  <redirect from="/docs/inedo-日本語ヘルフ/proget-jp/高度な機能/jp-proget-webhooks-teams" to="/" modified="7/25/2024 11:00:00 AM" />
+  <redirect from="/docs/inedo-日本語ヘルフ/proget-jp/管理機能/jp-proget-extensions" to="/" modified="7/25/2024 11:00:00 AM" />
+  <redirect from="/docs/inedo-日本語ヘルフ/proget-jp/管理機能/jp-proget-retention-rules" to="/" modified="7/25/2024 11:00:00 AM" />
+  <redirect from="/docs/inedo-日本語ヘルフ/proget-jp/管理機能/jp-proget-access-control" to="/" modified="7/25/2024 11:00:00 AM" />
+  <redirect from="/docs/inedo-日本語ヘルフ/proget-jp/ハッケーシの管理とトラッキンク/jp-proget-what-is-a-package" to="/" modified="7/25/2024 11:00:00 AM" />
+  <redirect from="/docs/inedo-日本語ヘルフ/proget-jp/ハッケーシの管理とトラッキンク/jp-proget-package-deployment" to="/" modified="7/25/2024 11:00:00 AM" />
+  <redirect from="/docs/inedo-日本語ヘルフ/proget-jp/ハッケーシの管理とトラッキンク/jp-package-deployment" to="/" modified="7/25/2024 11:00:00 AM" />
+  <redirect from="/docs/inedo-日本語ヘルフ/proget-jp/ハッケーシの管理とトラッキンク/jp-package-promotion" to="/" modified="7/25/2024 11:00:00 AM" />
+  <redirect from="/docs/inedo-日本語ヘルフ/proget-jp/ハッケーシの管理とトラッキンク/jp-proget-repackaging" to="/" modified="7/25/2024 11:00:00 AM" />
+  <redirect from="/docs/inedo-日本語ヘルフ/proget-jp/ハッケーシの管理とトラッキンク/jp-proget-package-statistics" to="/" modified="7/25/2024 11:00:00 AM" />
+  <redirect from="/docs/inedo-日本語ヘルフ/proget-jp/はしめに/jp-proget-overview" to="/" modified="7/25/2024 11:00:00 AM" />
+  <redirect from="/docs/inedo-日本語ヘルフ/proget-jp/インストールとメンテナンス/jp-proget-license" to="/" modified="7/25/2024 11:00:00 AM" />
+  <redirect from="/docs/inedo-日本語ヘルフ/proget-jp/インストールとメンテナンス/jp-proget-installation-guide" to="/" modified="7/25/2024 11:00:00 AM" />
+  <redirect from="/docs/inedo-日本語ヘルフ/proget-jp/docker-とコンテナ/jp-proget-docker-container-scanners" to="/" modified="7/25/2024 11:00:00 AM" />
+  <redirect from="/docs/inedo-日本語ヘルフ/proget-jp/docker-とコンテナ/jp-proget-docker-promotion" to="/" modified="7/25/2024 11:00:00 AM" />
+  <redirect from="/docs/inedo-日本語ヘルフ/proget-jp/docker-とコンテナ/jp-proget-private-docker-registries" to="/" modified="7/25/2024 11:00:00 AM" />
+  <redirect from="/docs/inedo-日本語ヘルフ/proget-jp/docker-とコンテナ/jp-proget-docker-connectors" to="/" modified="7/25/2024 11:00:00 AM" />
+  <redirect from="/docs/inedo-日本語ヘルフ/proget-jp/フィートリホシトリの作成と管理/jp-feed-overview" to="/" modified="7/25/2024 11:00:00 AM" />
+  <redirect from="/docs/inedo-日本語ヘルフ/proget-jp/フィートリホシトリの作成と管理/jp-proget-connector-overview" to="/" modified="7/25/2024 11:00:00 AM" />
+  <redirect from="/docs/inedo-日本語ヘルフ/proget-jp/フィートリホシトリの作成と管理/外部フィート/jp-proget-feed-debian" to="/" modified="7/25/2024 11:00:00 AM" />
+  <redirect from="/docs/inedo-日本語ヘルフ/proget-jp/フィートリホシトリの作成と管理/外部フィート/jp-proget-feed-pypl" to="/" modified="7/25/2024 11:00:00 AM" />
+  <redirect from="/docs/inedo-日本語ヘルフ/proget-jp/フィートリホシトリの作成と管理/外部フィート/jp-proget-symbol-and-source-server" to="/" modified="7/25/2024 11:00:00 AM" />
+  <redirect from="/docs/inedo-日本語ヘルフ/proget-jp/フィートリホシトリの作成と管理/外部フィート/jp-proget-feed-helm" to="/" modified="7/25/2024 11:00:00 AM" />
+  <redirect from="/docs/inedo-日本語ヘルフ/proget-jp/フィートリホシトリの作成と管理/外部フィート/jp-proget-feed-vsix" to="/" modified="7/25/2024 11:00:00 AM" />
+  <redirect from="/docs/inedo-日本語ヘルフ/proget-jp/フィートリホシトリの作成と管理/外部フィート/jp-proget-feed-chocolatey" to="/" modified="7/25/2024 11:00:00 AM" />
+  <redirect from="/docs/inedo-日本語ヘルフ/proget-jp/フィートリホシトリの作成と管理/外部フィート/jp-proget-feed-rpm" to="/" modified="7/25/2024 11:00:00 AM" />
+  <redirect from="/docs/inedo-日本語ヘルフ/proget-jp/フィートリホシトリの作成と管理/外部フィート/jp-proget-feed-powershell" to="/" modified="7/25/2024 11:00:00 AM" />
+  <redirect from="/docs/inedo-日本語ヘルフ/proget-jp/フィートリホシトリの作成と管理/外部フィート/jp-proget-feed-npm" to="/" modified="7/25/2024 11:00:00 AM" />
+  <redirect from="/docs/inedo-日本語ヘルフ/proget-jp/フィートリホシトリの作成と管理/外部フィート/jp-proget-feed-bower" to="/" modified="7/25/2024 11:00:00 AM" />
+  <redirect from="/docs/inedo-日本語ヘルフ/proget-jp/フィートリホシトリの作成と管理/外部フィート/jp-proget-feed-rubygem" to="/" modified="7/25/2024 11:00:00 AM" />
+  <redirect from="/docs/inedo-日本語ヘルフ/proget-jp/フィートリホシトリの作成と管理/外部フィート/jp-proget-feed-maven" to="/" modified="7/25/2024 11:00:00 AM" />
+  <redirect from="/docs/inedo-日本語ヘルフ/proget-jp/フィートリホシトリの作成と管理/外部フィート/jp-proget-feed-nuget" to="/" modified="7/25/2024 11:00:00 AM" />
+  <!-- END Post Migration -->
 </redirects>

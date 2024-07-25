@@ -1,6 +1,7 @@
 ---
 title: "npm (Node.js)フィードのホスト"
 order: 8
+hidden: true
 ---
 
 npm の正式名称は、Node Package Manager です。npm の正式名称からも解るように、Node.jsのパッケージ（Package ）を管理する（Manager）ツールです。

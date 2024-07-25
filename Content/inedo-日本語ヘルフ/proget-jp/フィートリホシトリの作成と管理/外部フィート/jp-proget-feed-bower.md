@@ -1,6 +1,7 @@
 ---
 title: "Bowerフィードのホスト"
 order: 10
+hidden: true
 ---
 
 **Bowerフィードのご利用について**
