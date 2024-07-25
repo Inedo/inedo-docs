@@ -17,7 +17,7 @@ curl -X GET --header "X-ApiKey: abc12345" "http://54.168.224.223:8624/api/promot
 ````
 :::
 
-<h2 id="authentication">Authentication and API Keys</h2>
+## Authentication and API Keys { #authentication }
 
 The following is a summary of access types and their corresponding requirements for various API keys types and endpoints within this API.
 
@@ -90,9 +90,9 @@ GET /api/promotions/list?fromFeed=nuget-unapproved&toFeed=nuget-unapproved&packa
 | **400 (Invalid Input)** | indicates invalid or missing properties on the package; the body will provide some details as text |
 |  **403 (Unauthorized API Key)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/packages/package-promotion#authentication); the body will be empty |
 
-<h2 id="data-specifications">Data Specifications</h2>
+## Data Specifications { #data-specifications }
 
-<h3 id="promoted-package">PromotedPackage Object Attributes</h3>
+### PromotedPackage Object Attributes { #promoted-package }
 
 `PromotedPackage` is a set of key/value pairs used as output data for the Query Promoted Package endpoint as a JSON-formatted object.
 
@@ -125,7 +125,7 @@ GET /api/promotions/list?fromFeed=nuget-unapproved&toFeed=nuget-unapproved&packa
 }
 ```
 
-<h3 id="promotion-data">PromotionData Object Attributes</h3>
+### PromotionData Object Attributes { #promotion-data }
 
 `PromotionData` is a subset of attributes on the [PromotedPackage](#promoted-package) Object that provide details of an individual promotion, used as output data for the **Query Promoted Package** endpoint.
 
