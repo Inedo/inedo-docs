@@ -48,7 +48,8 @@ Don't hesitate to [contact us](https://inedo.com/contact) with ideas or if you n
 
 Comments made within a statement are ignored by the compiler, which means that they will not be preserved when switching between text and visual modes in the plan editor. For example, consider the following script.
 
-```#Ensure HDars
+```
+#Ensure HDars
 #Creates the Hdars AppPool and Site if it doesn't exist
 {
     IIS::Ensure-AppPool HDarsAppPool (
