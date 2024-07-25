@@ -10,6 +10,7 @@ This example returns storage properties of the feed `myNugetFeed`
 ```
 pgutil feeds storage info --feed=myNugetFeed
 ```
+:::
 
 ## Command Specification (CLI)
 The `feeds storage info` command is used to get storage properties of the specified feed.
