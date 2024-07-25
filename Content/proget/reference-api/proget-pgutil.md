@@ -89,11 +89,11 @@ We're very open to developing and enhancing `pgutil`, and working closely with u
 
 We are unlikely to remove any commands once they're added, except during a major version update, and we'll make sure to notify users beforehand.
 
-<h2 id="sources">Working with Sources</h2>
+## Working with Sources { #sources }
 
 To help manage urls, feeds, and credentials (API keys), you can register one or more "sources" with `pgutil`. These sources are stored in the configuration file located at `%appdata%\pgutil\pgutil.config` (Windows) and `~/.config/pgutil/pgutil.config` (Mac/Linux).
 
-<h3 id="sources-add">Adding Sources to pgutil</h3>
+### Adding Sources to pgutil { #sources-add }
 
 The `sources add` command is used to add a source to the configuration file. 
 
@@ -116,7 +116,7 @@ A source named "Default" has special behavior. When a source name is not specifi
 Unless you specify the `--plain-text` option, Passwords and API Keys will not be stored in plain text. Instead, they will be  obscured from casual consumption using a Data Protection scheme . However, note that anyone with `pgutil` will be able to read and decode the password or API key.
 
 
-<h3 id="sources-test">Test Sources Added to pgutil</h3>
+### Test Sources Added to pgutil { #sources-test }
 
 The `sources test` command is used to test the connections to your sources. 
 
@@ -131,7 +131,7 @@ $: pgutil sources test
  
  Note that any non-successful test will report a nonzero exit code.
 
-<h3 id="sources-list">Listing Sources</h3>
+### Listing Sources { #sources-list }
 
 The `sources list` command will list all sources located in the configuration file.
 
@@ -147,7 +147,7 @@ $> pgutil sources list
 
 The `sources list` command does not require any arguments.
 
-<h3 id="sources-remove">Removing Sources</h3>
+### Removing Sources { #sources-remove }
 
 The `sources remove` command will remove a source from the configuration file.
 
