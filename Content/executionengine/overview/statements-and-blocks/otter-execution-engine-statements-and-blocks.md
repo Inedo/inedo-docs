@@ -7,10 +7,10 @@ The execution engine interprets a [Plan](/docs/otter/scripting-in-otter/otter-ot
 
 * **Statements** - most of the statements in your plans will be [Operations](/docs/otter/scripting-in-otter/otter-otterscript-and-operations#operations){target="_blank"}, but there are a few [Other Statements](/docs/executionengine/overview/statements-and-blocks/otter-execution-engine-statements-and-blocks-other-statements){target="_blank"} that can be used to build extremely advanced plans.
 * **Blocks** - blocks contain statements and other blocks, and help with organization, flow, and error control; there are four block types:
-    *[General Blocks](/docs/executionengine/overview/statements-and-blocks/otter-execution-engine-statements-and-blocks-general-blocks){target="_blank"}
-    *[ Loop Blocks](/docs/executionengine/overview/statements-and-blocks/otter-execution-engine-statements-and-blocks-loop){target="_blank"}
-    *[ Try /Catch Blocks](/docs/executionengine/otterscript/statements-and-blocks/try-catch){target="_blank"}
-    [* If/Else Blocks](/docs/executionengine/overview/statements-and-blocks/otter-execution-engine-statements-and-blocks-if-else){target="_blank"}
+    * [General Blocks](/docs/executionengine/overview/statements-and-blocks/otter-execution-engine-statements-and-blocks-general-blocks){target="_blank"}
+    * [ Loop Blocks](/docs/executionengine/overview/statements-and-blocks/otter-execution-engine-statements-and-blocks-loop){target="_blank"}
+    * [ Try /Catch Blocks](/docs/executionengine/otterscript/statements-and-blocks/try-catch){target="_blank"}
+    * [ If/Else Blocks](/docs/executionengine/overview/statements-and-blocks/otter-execution-engine-statements-and-blocks-if-else){target="_blank"}
     
 If you're comfortable with programming or scripting, you'll probably already be familiar with how these blocks work. There is a formal specification available if you want to know precisely how the execution engine and plans/OtterScript work.
 

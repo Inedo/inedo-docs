@@ -35,7 +35,7 @@ To integrate Prometheus with SQL Server:
 
 - Start by downloading the latest version of Prometheus from the [Official Website](https://prometheus.io/download/) and extracting the Prometheus archive to a directory of your choice.
 
-- Download and install the [Prometheus SQL Server Exporter](https://github.com/prometheus-community/sql_exporter).
+- Download and install a SQL Server Exporter. The official website recommends [ SQL Exporter](https://github.com/burningalchemist/sql_exporter).
 
 ### Step 2: Configure Prometheus and SQL Server Exporter
 
