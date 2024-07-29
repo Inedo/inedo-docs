@@ -28,11 +28,11 @@ The `--key` and `--value` options are required for the `custom` command. The `--
 
 **Updating an asset's custom metadata** requires the asset directory (e.g. `MyAssetDirectory`), asset path (e.g. `data-files/data.bin`), the metadata key (e.g. `myKey`) and metadata value (e.g. `myValue`):
 ```
-pgutil assets metadata set --path=data-files/data.bin --feed=myAssetDirectory --key=myKey --value=myValue
+pgutil assets metadata set custom --path=data-files/data.bin --feed=myAssetDirectory --key=myKey --value=myValue
 ```
 **Updating an asset's cache header** requires the asset directory (e.g. `MyAssetDirectory`), asset path (e.g. `data-files/data.bin`), the header type (e.g. `TTL`) and value (e.g. `60`):
 ```
-pgutil assets metadata set --path=data-files/data.bin --feed=myAssetDirectory --type=TTL --value=60
+pgutil assets metadata set cache --path=data-files/data.bin --feed=myAssetDirectory --type=TTL --value=60
 ```
 
 ## HTTP Request Specification
