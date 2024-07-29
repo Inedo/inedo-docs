@@ -1,6 +1,6 @@
 ---
 title: "Other Feed Types"
-order: 18
+order: 99
 ---
 
 Although ProGet was designed from day one to support multiple types of third-party packages, it wasn’t until [ProGet 3.0](https://inedo.com/products/roadmap/proget) that we introduced support for feed types other than NuGet. Since then, we have added quite a few packages, and we plan to add many more.
