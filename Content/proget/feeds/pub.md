@@ -49,7 +49,7 @@ See [Publishing to a custom package repository](https://dart.dev/tools/pub/custo
 
 ### Connecting to External Repositories
 
-You can create a connector to any pub repository (including `https://pub.dev`). This will allow you to proxy the external feed through ProGet, but browsing through the web application is limited, since pub repositories do not provide a search API, and do not expose certain metadata such as a package's README file.
+You can create a connector to any pub repository (including `https://pub.dev`). This will allow you to proxy the external feed through ProGet, but browsing through the web application is limited, since pub repositories do not provide a search API, and do not expose certain metadata such as a package's README file or the LICENSE. Once you download/cache the package, you'll be able to see this information.
 
 ### Proxying pub.dev
 
