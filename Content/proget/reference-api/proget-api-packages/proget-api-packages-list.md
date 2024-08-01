@@ -27,7 +27,7 @@ The `--package` option is optional, and can be used in the event that the user w
 
 **Listing the latest stable npm package version** requires the package name (e.g. `myNpmPackage`), the scope (e.g. `@myScope`) and setting `--stable` as `true`.
 ```
-pgutil packages latest --package=@myScop/myNpmPackage --feed=myNpmFeed --stable=true
+pgutil packages list --package=@myScope/myNpmPackage --feed=myNpmFeed --stable=true
 ```
 
 ## HTTP Request Specification
