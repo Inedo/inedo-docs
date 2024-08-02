@@ -106,9 +106,9 @@ For example:
 #### Packages with Multiple Licenses
 If a package has multiple licenses detected, this means that the consumer can choose which license they'd like to use. When this is the case, ProGet will use the *more compliant* license for evaluation purposes. For example, if a package is dual-licensed with GPL and MIT, it would still be considered compliant if GPL licenses were noncompliant and MIT licenses were compliant.
 
-### Listed & Deprecated Rules
+### Other Rules (Listed, Deprecated, Latest Patch)
 
-ProGet includes two additional rules that can help determine compliance.
+ProGet includes three additional rules that can help determine compliance.
 
 #### Unlisted Rule
 
@@ -116,7 +116,7 @@ Packages in ProGet and public repositories like NuGet.org can be marked as "unli
 
 Unlisted packages are displayed with a small "invisible" icon in the ProGet web interface, and some clients (like `dotnet nuget`, Visual Studio, `pip`, `gem`, etc.) will "decrease the visibility in search results" of unlisted packages.
 
-The Unlisted Rule is applied to packages that are marked as "unlisted", and it defaults to *Compliant*
+The Unlisted Rule is applied to packages that are marked as "unlisted", and it defaults to *Warn*
 
 #### Deprecated Rule
 
@@ -125,6 +125,15 @@ Similar to "unlisted", packages in ProGet and public repositories like NuGet.org
 Deprecated packages are displayed with a small "caution" icon in the ProGet web interface, and some clients (Visual Studio, `dotnet nuget,` `npm`) will also warn about deprecated packages in the project.
 
 The Deprecated Rule is applied to packages that are marked as "deprecated", and it defaults to *Warn*.
+
+#### Latest Patch Version Rule
+
+Packages may have a newer patch version available, which means they generally should be upgraded to fix bugs or performance problems. For example, if you're currently using 1.3.0 or 1.3.1, then 1.3.2 would be considered a new patch version. Some clients (Visual Studio, `npm`, etc.) will also advise to update to newer patch versions.
+
+To determine if a package is compliant with the Latest Patch Version Rule, ProGet will either inspect local packages in the feed or utilize the [OSS Metadata Cache](#oss-metadata-updating-caching) if the package originated from a public repository like nuget.org or npmjs.org.
+
+This rule is only evaluated in ProGet Enterprise and defaults to *Compliant*.
+
 
 ### Other & Custom Rules
 
@@ -198,6 +207,42 @@ Note that the format of this archive file is not documented, and it's not intend
 
 When importing a policy backup, ProGet will overwrite existing policies or create ones if they don't exist. Importing does not impact vulnerability assessments or any associated policy.
 :::
+
+## OSS Metadata Updating & Caching
+
+*OSS Metadata Updating & Caching is a ProGet 2025 preview feature. Only NuGet and npm packages are currently supported, but we'd be happy to add another feed type if you're interested in trying this feature.*
+
+ProGet can cache and update metadata for open source packages you're using from public repositories like NuGet.org and npmjs.org. This helps you ensure the packages you're using haven't been deprecated, unlisted, or are outdated. 
+
+This is a ProGet Enterprise feature, but you can still configure and use OSS metadata caches for evaluation purposes. 
+
+### Enabling & Using Metadata Caching
+
+ProGet uses *metadata providers* to periodically query public repositories. These providers are disabled by default and can be enabled under Admin > OSS Metadata Caching.
+
+When enabled, ProGet will also maintain a cache of metadata from the repository. You can see recent items in the cache under each provider, which can help provide an insight of usage and query volume.
+
+### Compliance Analyzer Metadata Queries
+
+Most of metadata queries will occur during the nightly [Compliance Analyzer Scheduled Job](/docs/proget/administration/service#scheduled-jobs), which is responsible for checking packages in feeds and builds for compliance with the [Policy Rules](#compliance-rules) you've defined.
+
+#### Feed Packages
+
+For packages in feeds, ProGet will only query a metadata provider if the package originated from connector that shares a URL with the provider. This means that if you manually downloaded a package file from NuGet.org, and then manually uploaded it to a feed, then ProGet will not query for updated metadata.
+
+Once metadata has been retrieved from a provider, ProGet will update the package's deprecated, unlisted, and outdated status. This may trigger behavior changes in clients like Visual Studio or `npm` that consume these packages, or cause packages to become Noncompliant or Warn.
+
+ProGet also uses the package's last download date to determine how often to query the metadata provider. For packages downloaded within the past 7 days, the provide will be queried at most daily. Packages downloaded with 30 days will be queried no more than once a week, and all other packages are queried every fifteen days.
+
+#### Build Packages
+
+For packages in [active builds](/docs/proget/sca/builds), ProGet will only query a metadata provider if the package was not found in any feed. This may happen if your CI/build servers don't exclusively use ProGet Feeds or in certain ecosystems (like NuGet) that have "built-in" packages that are never downloaded.
+
+### Custom Metadata Providers
+
+Although metadata providers are designed to work with the official public repositories, (NuGet.org, npmjs.org, etc.), they can also be configured to connect to another repository. To create a custom metadata provider, first enable the default provider, edit it, and then click "create custom provider".
+
+We're not entirely sure what the use case would be (which is why creating them is a bit convoluted), but you may find it helpful to get deprecated, unlisted, or outdated package status from another repository.  Please [let us know](https://forums.inedo.com/) if you find this feature useful, so that we can properly document and support it, as well as add authentication and other options .
 
 ## ProGet 2023 and Earlier
 Policies & Compliance Rules are a new feature for ProGet 2024 and replaced the download blocking rules for [licenses (archive.org)](https://web.archive.org/web/20231210172007/https://docs.inedo.com/docs/proget-sca-licenses) and [vulnerabilities (archive.org)](https://web.archive.org/web/20230927141932/https://docs.inedo.com/docs/proget-sca-vulnerabilities) in which you could implement similar functionality. 
