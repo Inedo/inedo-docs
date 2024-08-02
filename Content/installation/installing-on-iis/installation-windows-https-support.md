@@ -51,9 +51,6 @@ IIS has built-in support for [SSL connections](https://learn.microsoft.com/en-us
 Link to the win-acme HOWTO once completed
 :::
 
-If you're not using IIS, but instead used the Integrated Web Server, see our [hosting through IIS instead of the integrated web server](/docs/installation/installing-on-iis/various-iis-switching-to-iis) guide.
-
-
 ### Add an HTTPS Binding To Your Website
 To add an HTTPS binding to IIS:
 1. Open Internet Information Services (IIS) Manager

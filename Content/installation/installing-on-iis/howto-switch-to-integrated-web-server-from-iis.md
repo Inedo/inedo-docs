@@ -6,7 +6,7 @@ order: 3
 When you install any of our products using the installer, you're presented with two application hosting options: Integrated Web Server or IIS Web Application.
 
 :::(Error) (💀 IIS is Not Recommended 💀)
-Following Microsoft's guidance to [no longer use IIS for modern .NET applications](https://learn.microsoft.com/en-us/aspnet/core/fundamentals/servers/kestrel), we no longer recommend using IIS to host our products.  
+Following Microsoft's guidance to [no longer use IIS for modern .NET applications](https://learn.microsoft.com/en-us/aspnet/core/fundamentals/servers/kestrel), we no longer recommend using IIS to host modern versions (2022+) of our products.  
 
 Instead, you should use the Integrated Web Server, which is our (and Microsoft's) recommended web server. Although IIS is still supported, there are no benefits aside from a more familiar user interface.
 :::

@@ -3,7 +3,10 @@ title: "Configuring IIS Roles & Features for Inedo Products"
 order: 1
 ---
 
-All Inedo products support hosting with IIS, which is the recommended hosting option for the web applications in Enterprise installations.
+All Inedo products support hosting with IIS. However, Following Microsoft's guidance to [no longer use IIS for modern .NET applications](https://learn.microsoft.com/en-us/aspnet/core/fundamentals/servers/kestrel), we no longer recommend using IIS to host modern versions (2022+) of our products.  
+
+Instead, you should use the Integrated Web Server, which is our (and Microsoft's) recommended web server. Although IIS is still supported, there are no benefits aside from a more familiar user interface.
+
 
 ## Required Settings
 
@@ -25,4 +28,4 @@ Once the Server Roles above are selected, ensure the following features are also
  - .NET Framework 4.6 Features > .NET Framework 4.6
  - .NET Framework 4.6 Features > ASP.NET 4.6
 
-Once the Server Manager completes the installation, ProGet, BuildMaster, or Otter may be hosted through IIS. Visit the manual install documentation for specific instructions and configuration, or refer to the [switching from the Integrated Web Server documentation](/docs/installation/installing-on-iis/various-iis-switching-to-iis) to switch from an installation using the Integrated Web Server.
+Once the Server Manager completes the installation, ProGet, BuildMaster, or Otter may be hosted through IIS. s
