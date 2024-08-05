@@ -7,23 +7,46 @@ order: 4
 Not working as of ProGet version 2023.22
 :::
 
-*Update License* is available as both a `pgutil` command and an HTTP Request, and will update a specified license using the [License](/docs/proget/reference-api/proget-api-licenses#license-object) object properties defined in the request body. This endpoint supports partial updating by only updating the properties that are supplied in the request. 
+*Update License* is available as both a `pgutil` command and an HTTP Request, and will update a specified license using the [License](/docs/proget/reference-api/proget-api-licenses#license-object) object properties defined in the request body. 
 
-:::(Info) (🚀 Quick Example: Updating a license with Curl)
-This example updates a nuget license with the id `XYZ-1.0`, authenticating with the API key `abc12345`, adding "npm-approved" and "pypi-approved" as allowed licenses:
+
+
+:::(Info) (🚀 Quick Example: Updating a license with pgutil)
+This example updates a nuget license with the id `XYZ-1.0`, adding version `1.2.3` of the nuget package `myNugetPackage` as a `PUrl`
 
 ````
-curl -X POST -H "Content-Type: application/json" -H "X-ApiKey: abc12345" -d "{\"allowedFeeds\": [\"npm-approved\", \"pypi-approved\"]}" "https://proget.corp.local/api/management/licenses/update/XYZ-1.0"
+pgutil licenses detection add --code=XYZ-1.0 --type=purl --value=pkg:nuget/myNugetPackage@1.2.3
 ````
 :::
 
 ## Command Specification (CLI)
-:::(Info) (🚧 Coming Soon 🚧)
-The `license update` command is coming soon. Similar to the HTTP Request, it will update a specified license. 
-:::
+The `licenses detection` command set is used to update a license by adding or removing detection types. There are two commands available:
+
+| Command | Description |
+| --- | --- |
+| `add` | Adds a `spdx`, `url`, `packagename` or `purl` detection type | 
+| `remove`  | Removes a `spdx`, `url`, `packagename` or `purl` detection type` |
+
+The `--code`, `--type`, and `--value` options are always required.
+
+**Adding a PUrl detection type to a license** requires the license code (e.g. `ABC-1.0`), the detection type (e.g `purl`), and the value (e.g. `pkg:nuget/myNugetPackage@1.2.3`):
+
+```
+pgutil licenses detection add --code=ABC-1.0 --type=purl --value=pkg:nuget/myNugetPackage@1.2.3
+
+```
+
+**Removing an SPDX detection type to a license** requires the license code (e.g. `ABC-1.0`), the detection type (e.g `spdx`), and the value (e.g. `MIT`):
+
+```
+pgutil licenses detection remove --code=ABC-1.0 --type=spdx --value=MIT
+
+```
 
 ## HTTP Request Specification
 To update a license, simply `POST` to the URL with the `license` id, an [appropriate API Key](/docs/proget/reference-api/proget-api-licenses#authentication) and a [License](/docs/proget/reference-api/proget-api-licenses#license-object) object as the request body.
+
+This endpoint supports partial updating by only updating the properties that are supplied in the request. 
 
 :::(info) (📄 Note)
 When updating, any properties omitted will keep their existing values. Updating a property with an array value will overwrite the existing value. For example, if a license has `allowedFeeds: ["A", "B"]`, updating with `allowedFeeds: ["C"]` will remove allowedFeeds "A" and "B" from the license, keeping only "C". 
@@ -35,21 +58,6 @@ To append values, perform a [Get License](/docs/proget/reference-api/proget-api-
 POST /api/management/licenses/update/«license-id»
 ```
 
-**Updating a license by adding allowed feeds** requires the `license` id (e.g. `ABC-1.0`) and a [License](/docs/proget/reference-api/proget-api-licenses#license-object) object as the body.
-
-```
-POST /api/management/licenses/update/ABC-1.0
-
-{
-  {
-  "allowedFeeds": [
-    "npm-approved",
-    "nuget-approved",
-    "pypi-approved"
-    ]
-  }
-}
-```
 ## HTTP Response Specification
 A successful (`200`) response body will contain an updated [License](/docs/proget/reference-api/proget-api-licenses#license-object) object. For example, when updating a license `MIT`, adding an additional `allowedFeed`, this returns:
 
