@@ -1,15 +1,15 @@
 ---
-title: "Azure AD (Mircosoft Entra ID) Single Sign-on"
+title: "Azure AD (Microsoft Entra ID) Single Sign-on"
 order: 2
 ---
 
 ## Overview
 
-This documentation is specific to configuring SAML with Azure Active Directory (Mircosoft Entra ID). Refer to the [SAML Authentication Overview](/docs/installation/saml-authentication/various-saml-overview){target="_blank"} for more information.
+This documentation is specific to configuring SAML with Azure Active Directory (Microsoft Entra ID). Refer to the [SAML Authentication Overview](/docs/installation/saml-authentication/various-saml-overview){target="_blank"} for more information.
 
-## Configuring Azure AD (Mircosoft Entra ID)
+## Configuring Azure AD (Microsoft Entra ID)
 
-Before you can use Azure AD (Mircosoft Entra ID) in Inedo's products, you will first need to create an Enterprise Application in Azure.
+Before you can use Azure AD (Microsoft Entra ID) in Inedo's products, you will first need to create an Enterprise Application in Azure.
 
 1. Navigate to Enterprise Applications and click "New application"
 2. Click "Create your own application"
@@ -27,7 +27,7 @@ Before you can use Azure AD (Mircosoft Entra ID) in Inedo's products, you will f
 
 ## Inedo Product Configuration
 
-### Option 1: Configure using the Azure AD (Mircosoft Entra ID) provider
+### Option 1: Configure using the Azure AD (Microsoft Entra ID) provider
 ::: (INFO) (Note)
 Currently this is only supported in ProGet v6.0.11+ when v6.1 preview security features are enabled.
 :::
@@ -68,7 +68,7 @@ When using ProGet 5.3 or 6.0 security features:
 5. For the Email attribute, enter `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`
 6. Click "Save"
 
-## Connecting Azure AD (Mircosoft Entra ID) to Your AD User Directory
+## Connecting Azure AD (Microsoft Entra ID) to Your AD User Directory
 
 While SAML authentication does require the Built-In User Directory to be enabled, you can update SAML claims to allow you to match to [LDAP/AD User Directory](/docs/installation/security-ldap-active-directory) users.  If a match is found, it will use the permissions of hte LDAP/AD user.  If a user is not found, it will create a new user in the Built-In User Directory.
 
