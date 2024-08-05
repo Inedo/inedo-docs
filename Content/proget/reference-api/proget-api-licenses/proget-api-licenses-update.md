@@ -43,6 +43,27 @@ pgutil licenses detection remove --code=ABC-1.0 --type=spdx --value=MIT
 
 ```
 
+### Updating License Files
+The `licenses files` command set is used to add, remove, or view license files in a license. There are two commands available:
+
+| Command | Description | Required Options |
+| --- | --- | --- |
+| `add` | Uploads a license file to ProGet | `--code`, `--file` |
+| `delete`  | Removes a license file from ProGet | `--hash` |
+
+**Adding a license file to a license** requires the license code (e.g. `ABC-1.0`) and the file (e.g. `C:\documents\license-files\abc-1.0-license-file.txt`):
+
+```
+pgutil licenses files add --code=ABC-1.0 --file=C:\documents\license-files\abc-1.0-license-file.txt
+```
+
+**Deleting a license file** requires the license file's hash (e.g. `	00462de3d7b6f3e5551a69ae84344bc69d23c02e1353be3e8445d16f025e523b`):
+
+```
+pgutil licenses files delete --hash=	00462de3d7b6f3e5551a69ae84344bc69d23c02e1353be3e8445d16f025e523b
+```
+
+
 ## HTTP Request Specification
 To update a license, simply `POST` to the URL with the `license` id, an [appropriate API Key](/docs/proget/reference-api/proget-api-licenses#authentication) and a [License](/docs/proget/reference-api/proget-api-licenses#license-object) object as the request body.
 
