@@ -21,17 +21,12 @@ The `--code` option is always required.
 ```
 pgutil licenses delete --code=ABC-1.0
 ```
+
 ## HTTP Request Specification
 To delete a specified license simply `DELETE` to the URL with the `license` id and an [appropriate API Key](/docs/proget/reference-api/proget-api-licenses#authentication). This request supports partial updating by only updating the properties that are supplied in the request.
 
 ```
 DELETE /api/management/licenses/delete/«license-id»
-```
-
-**Deleting a license** requires the `license` id (e.g. `XYZ-1.0`)
-
-```
-DELETE /api/management/licenses/delete/XYZ-1.0
 ```
 
 ## HTTP Response Specification

@@ -29,21 +29,8 @@ pgutil licenses create --title="ABC License 1.0" --code=ABC-1.0
 ## Request Specification
 To create a license, simply `PUT` or `POST` to the URL with an [appropriate API Key](/docs/proget/reference-api/proget-api-licenses#authentication) and a [License](/docs/proget/reference-api/proget-api-licenses#license-object) object as the request body.
 
-`licenseId` and `title` properties are required for this endpoint.
-
 ```
 POST/PUT /api/management/licenses/create
-```
-
-**Creating a license** requires a [License](/docs/proget/reference-api/proget-api-licenses#license-object) object as the request body with at least the `licenseId` and `title` property.
-
-```
-POST /api/management/licenses/create
-
-{
-    licenseId: "ABC-1.0"
-    title: "ABC License 1.0"
-}
 ```
 
 ## HTTP Response Specification
