@@ -44,6 +44,7 @@ pgutil licenses detection remove --code=ABC-1.0 --type=spdx --value=MIT
 ```
 
 ### Updating License Files
+
 The `licenses files` command set is used to add, remove, or view license files in a license. There are two commands available:
 
 | Command | Description | Required Options |
@@ -57,7 +58,7 @@ The `licenses files` command set is used to add, remove, or view license files i
 pgutil licenses files add --code=ABC-1.0 --file=C:\documents\license-files\abc-1.0-license-file.txt
 ```
 
-**Deleting a license file** requires the license file's hash (e.g. `	00462de3d7b6f3e5551a69ae84344bc69d23c02e1353be3e8445d16f025e523b`):
+**Deleting a license file** requires the license file's hash (e.g. `00462de3d7b6f3e5551a69ae84344bc69d23c02e1353be3e8445d16f025e523b`):
 
 ```
 pgutil licenses files delete --hash=	00462de3d7b6f3e5551a69ae84344bc69d23c02e1353be3e8445d16f025e523b
