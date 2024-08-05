@@ -12,18 +12,18 @@ Not working as of ProGet version 2023.22
 :::(Info) (🚀 Quick Example: Creating a license with pgutil)
 This example will create the license `ABC License 1.0` with the ID `ABC-1.0`
 ```
-pgutil licenses add --title="ABC License 1.0" --code=ABC-1.0
+pgutil licenses create --title="ABC License 1.0" --code=ABC-1.0
 ```
 :::
 
 ## Command Specification (CLI)
-The `licenses add` command is used to add a license by name and code.
+The `licenses create` command is used to create a license by name and code.
 
 The `--title` and `--code` options are always required.
 
 **Adding a license** requires the license name (e.g. `ABC License 1.0`) and license code (e.g. `ABC-1.0`):
 ```
-pgutil licenses add --title="ABC License 1.0" --code=ABC-1.0
+pgutil licenses create --title="ABC License 1.0" --code=ABC-1.0
 ```
 
 ## Request Specification

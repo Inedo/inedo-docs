@@ -8,18 +8,18 @@ order: 5
 :::(Info) (🚀 Quick Example: Deleting a license with pgutil)
 This example will Delete the license `ABC License 1.0` with the ID `ABC-1.0`
 ```
-pgutil licenses remove --code=ABC-1.0
+pgutil licenses delete --code=ABC-1.0
 ```
 :::
 
 ## Command Specification (CLI)
-The `licenses delete` command is used to remove a license.
+The `licenses delete` command is used to delete a license.
 
 The `--code` option is always required.
 
 **Deleting a license** requires the license code (e.g. `ABC-1.0`):
 ```
-pgutil licenses remove --code=ABC-1.0
+pgutil licenses delete --code=ABC-1.0
 ```
 ## HTTP Request Specification
 To delete a specified license simply `DELETE` to the URL with the `license` id and an [appropriate API Key](/docs/proget/reference-api/proget-api-licenses#authentication). This request supports partial updating by only updating the properties that are supplied in the request.
