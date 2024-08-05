@@ -30,12 +30,12 @@ The `--package` and `--version` options are always required, and the `--feed` op
 
 **Example: Re-Listing  a NuGet package** requires a feed (e.g. `MyNugetFeed`), package name (e.g. `myNugetPackage`),  version (e.g. `1.0.0`), and state (`listed`).
 ```
-pgutil packages status unlisted  --feed=myNugetFeed --package=myNugetPackage --version=1.0.0 --state listed
+pgutil packages status unlisted --feed=myNugetFeed --package=myNugetPackage --version=1.0.0 --state=listed
 ```
 
 **Example: Deprecating an NPM package with a reason** requires a feed (`MyNpmFeed`),  the name (e.g. `@myScope/myNpmPackage`), a version (e.g. `2.0.0`), and optionally a reason:
 ```
-pgutil packages status deprecated --feed MyNpmFeed --package=@myScope/myNpmPackage --version=2.0.0 --reason CriticalBugs
+pgutil packages status deprecated --feed MyNpmFeed --package=@myScope/myNpmPackage --version=2.0.0 --reason=CriticalBugs
 ```
 
 Note source options must also be specified unless you have the "Default" source configured, and that a feed may be instead specified in the soruce. See [Working with Sources](/docs/proget/reference-api/proget-pgutil#sources) to learn more.
