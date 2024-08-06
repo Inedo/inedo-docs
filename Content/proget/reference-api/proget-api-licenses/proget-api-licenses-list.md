@@ -20,11 +20,58 @@ The `licenses list` command is used to list all existing licenses.
 pgutil licenses list
 ```
 
+Example Output:
+
+```
+0BSD: BSD Zero Clause License
+
+AAL: Attribution Assurance License
+
+ABC: ABC License
+
+Abstyles: Abstyles License
+
+AdaCore-doc: AdaCore Doc License
+
+Adobe-2006: Adobe Systems Incorporated Source Code License Agreement
+
+Adobe-Display-PostScript: Adobe Display PostScript License
+
+Adobe-Glyph: Adobe Glyph List License
+
+Adobe-Utopia: Adobe Utopia Font License
+
+...
+
+```
+### Listing License Files
+The `licenses files list` command is used to list all existing license files.
+
+**Listing all license files** does not require any options beyond the basic command:
+```
+pgutil licenses files list
+```
+
+Example Output:
+
+```
+0BSD 0a93c5768997c4ab6aea20386831cd5c63b8a2dd8484a36d99341aa2aafaa6b1
+AAL 7608408f4ffdbc1ea582fcf9c2932489b87fd2bab912147612110ab75dfe65cd
+Abstyles 2c7874987a8cb6de0690e4b779d2bc12afa94274fe295d6b147a9dcb30368de2
+AdaCore-doc d74075bcffa19dbb1144512552a28b38fc8ba53085b2973c94ff8010c50eab5a
+Adobe-2006 07aed3e8f1c4fb27b1240b5a0eb173b4fd8840367d5875fde130445f72b59f5c
+Adobe-Display-PostScript 1d7589c8f1adbc5713e928a263cff5c942b00861c94ecaa8c0be0fcdbc1b5c56
+Adobe-Glyph 33220eb7a88f19f3f0b2991a9208c137b122c45bdc0139567cc29f162acdae27
+Adobe-Utopia 1e55fcd0120578420962bb39ec22ebdcb8e879c14c04f7c08892fbd33f4c906a
+
+...
+```
+
 ## HTTP Request Specification
 To list all existing licenses, simply `GET` to the URL with an [appropriate API Key](/docs/proget/reference-api/proget-api-licenses#authentication).
 
 ```
-GET /api/management/licenses/list
+GET /api/licenses/list
 ```
 
 ## HTTP Response Specification
@@ -67,7 +114,7 @@ GET /api/management/licenses/list
 
 ## Sample Usage Scripts
 
-### List all licenses (Powershell)
+### List all licenses (PowerShell)
 This script will print a list of all existing licenses by their ID, name and URLS. 
 
 ```powershell
