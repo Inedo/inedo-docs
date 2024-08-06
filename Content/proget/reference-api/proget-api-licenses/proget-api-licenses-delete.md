@@ -26,7 +26,7 @@ pgutil licenses delete --code=ABC-1.0
 To delete a specified license simply `DELETE` to the URL with the `license` id and an [appropriate API Key](/docs/proget/reference-api/proget-api-licenses#authentication). This request supports partial updating by only updating the properties that are supplied in the request.
 
 ```
-DELETE /api/management/licenses/delete/«license-id»
+POST /api/licenses/delete?code=«license-id»
 ```
 
 ## HTTP Response Specification

@@ -73,39 +73,20 @@ This endpoint supports partial updating by only updating the properties that are
 :::(info) (📄 Note)
 When updating, any properties omitted will keep their existing values. Updating a property with an array value will overwrite the existing value. For example, if a license has `allowedFeeds: ["A", "B"]`, updating with `allowedFeeds: ["C"]` will remove allowedFeeds "A" and "B" from the license, keeping only "C". 
 
-To append values, perform a [Get License](/docs/proget/reference-api/proget-api-licenses/proget-api-licenses-get) first, then append the existing values returned in the "Update License" request. For example, GET the values of allowedFeeds "A" and "B", and add them along with "C", supplying `allowedFeeds: ["A", "B", "C"]`in the update request.
+To append values, perform a [List License](/docs/proget/reference-api/proget-api-licenses/proget-api-licenses-list) first, then append the existing values returned in the "Update License" request. For example, GET the values of allowedFeeds "A" and "B", and add them along with "C", supplying `allowedFeeds: ["A", "B", "C"]`in the update request.
 :::
 
 ```
-POST /api/management/licenses/update/«license-id»
+POST /api/licenses/update
 ```
 
 ## HTTP Response Specification
-A successful (`200`) response body will contain an updated [License](/docs/proget/reference-api/proget-api-licenses#license-object) object. For example, when updating a license `MIT`, adding an additional `allowedFeed`, this returns:
+A successful (`200`) response body will be empty.
 
-```
-{
-  "licenseId": "MIT",
-  "title": "MIT License",
-  "urls": [
-    "https://spdx.org/licenses/MIT.html"
-  ],
-  "allowed": true,
-  "allowedFeeds": [
-    "npm-approved",
-    "nuget-approved",
-    "pypi-approved"
-  ],
-  "blockedFeeds": [
-    "restricted-feed",
-    "nuget-unapproved"
-  ]
-}
-```
 
 | Response | Details |
 |---|---|
-| **200 (Success)** | response body contains an updated [License](/docs/proget/reference-api/proget-api-licenses#license-object) object|
+| **200 (Success)** | update succeeded |
 | **400 (Invalid Input)** | indicates invalid or missing properties in the request; the body will provide some details as text |
 | **403 (Unauthorized API Key)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/reference-api/proget-api-licenses#authentication); the body will be empty |
 | **404 (License Not Found)** | indicates that the specified `license` does not exist |

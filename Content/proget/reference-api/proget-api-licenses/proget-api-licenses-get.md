@@ -70,34 +70,30 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 ```
 
 ## HTTP Request Specification
-To return a specified license, simply `GET` to the URL with the ID of the `license` and an [appropriate API Key](/docs/proget/reference-api/proget-api-licenses#authentication).
+To return a specified license file, simply `GET` to the URL with the ID of the `license`, the license file hash, and an [appropriate API Key](/docs/proget/reference-api/proget-api-licenses#authentication).
 
 ```
-GET /api/management/licenses/get/«license-id»
+GET /api/licenses/files/download?code=«license-id»&hash=«file-hash»
 ```
 
 ## HTTP Response Specification
 A successful (`200`) response body will contain a single [License](/docs/proget/reference-api/proget-api-licenses#license-object) object. For example, to requesting a license with the ID `0BSD`, the request would return:
 
 ```
-GET /api/management/licenses/get/0BSD
+MIT License
 
-{
-  "licenseId": "0BSD",
-  "title": "BSD Zero Clause License",
-  "urls": [
-    "landley.net/toybox/license.html",
-    "spdx.org/licenses/0BSD.html"
-  ],
-  "allowed": true,
-  "allowedlicenses": ["OpenLicenses"],
-  "blockedlicenses": []
-}
+Copyright (c) <year> <copyright holders>
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice (including the next paragraph) shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 ```
 
 | Response | Details |
 |---|---|
-| **200 (Success)** | body will contain a [License](/docs/proget/reference-api/proget-api-licenses#license-object) object |
+| **200 (Success)** | body will contain the license text |
 | **400 (Invalid Input)** | indicates invalid or missing properties in the request; the body will provide some details as text |
 |  **403 (Unauthorized API Key)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/reference-api/proget-api-licenses#authentication); the body will be empty |
 | **404 (License Not Found)** | indicates that the specified `license` does not exist |

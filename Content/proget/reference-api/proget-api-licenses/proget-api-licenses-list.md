@@ -71,7 +71,7 @@ Adobe-Utopia 1e55fcd0120578420962bb39ec22ebdcb8e879c14c04f7c08892fbd33f4c906a
 To list all existing licenses, simply `GET` to the URL with an [appropriate API Key](/docs/proget/reference-api/proget-api-licenses#authentication).
 
 ```
-GET /api/management/licenses/list
+GET /api/licenses/list
 ```
 
 ## HTTP Response Specification
@@ -114,7 +114,7 @@ GET /api/management/licenses/list
 
 ## Sample Usage Scripts
 
-### List all licenses (Powershell)
+### List all licenses (PowerShell)
 This script will print a list of all existing licenses by their ID, name and URLS. 
 
 ```powershell

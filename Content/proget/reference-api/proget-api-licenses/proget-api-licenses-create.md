@@ -30,27 +30,14 @@ pgutil licenses create --title="ABC License 1.0" --code=ABC-1.0
 To create a license, simply `PUT` or `POST` to the URL with an [appropriate API Key](/docs/proget/reference-api/proget-api-licenses#authentication) and a [License](/docs/proget/reference-api/proget-api-licenses#license-object) object as the request body.
 
 ```
-POST/PUT /api/management/licenses/create
+POST/PUT /api/licenses/add
 ```
 
 ## HTTP Response Specification
-A successful (`200`) response body will contain a single [License](/docs/proget/reference-api/proget-api-licenses#license-object) object. For example, creating a new license, with the ID `XYZ-1.0` returns:
-
-```
-{
-  "licenseId": "XYZ-1.0",
-  "title": "XYZ License 1.0",
-  "urls": [
-    "https://proget.corp.local/licenses/XYZ.html"
-  ],
-  "allowed": true,
-  "allowedFeeds": [],
-  "blockedFeeds": []
-}
-```
+A successful (`200`) response body will be empty.
 
 | Response | Details |
 |---|---|
-| **200 (Success)** | a `license` will be created, the body will contain a [License](/docs/proget/reference-api/proget-api-licenses#license-object) object |
+| **200 (Success)** | a `license` will be created |
 | **400 (Invalid Input)** | indicates invalid or missing properties in the request; the body will provide some details as text |
 | **403 (Unauthorized API Key)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/reference-api/proget-api-licenses#authentication); the body will be empty |
