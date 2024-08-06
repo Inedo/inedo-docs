@@ -13,7 +13,7 @@ pgutil assets rm --feed=myAssetDirectory --path=test-files/old-file.txt
 :::
 
 ## Command Specification (CLI)
-The `assets rm` command is used to delete a file in the asset directory.
+The `assets delete` command is used to delete a file in the asset directory.
 
 The `--path` options is always required. The `--feed` option is required if there is no default feed configured.
 

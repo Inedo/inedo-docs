@@ -19,7 +19,7 @@ The`--path` and `--output` options are always required. The `--feed` option is r
 
 **Downloading a file** requires the asset directory (e.g. `MyAssetDirectory`), the path of the file (e.g. `test-files/info.txt`) and the output path to download to (e.g. `C:\Inedo\test-files`):
 ```
-pgutil assets rm --feed=myAssetDirectory --path=test-files/info.txt --output=C:\Inedo\test-files
+pgutil assets download --feed=myAssetDirectory --path=test-files/info.txt --output=C:\Inedo\test-files
 ```
 
 ## HTTP Request Specification

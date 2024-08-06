@@ -16,7 +16,7 @@ pgutil builds comments create --project=myProject --build=1.2.3 --comment="Check
 ## Command Specification (CLI)
 The `builds comments create` command is used to create a comment in a project's build.
 
-The `--project`, ` --build` and `--comment` options are always required.
+The `--project`, `--build` and `--comment` options are always required.
 
 **Creating a comment** requires the project (e.g. `myProject`), the build version number (e.g. `1.2.3`), and the comment (e.g. `This is a comment`)
 
