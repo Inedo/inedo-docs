@@ -9,7 +9,7 @@ order: 5
 This example will import an archive `data-import.zip` from the local path `C:\Inedo\data-files` in to the `data-files` folder in the asset directory `myAssetDirectory`
 
 ```
-pgutil assets folder import  --file=C:\Inedo\data-files\data-import.zip --path=data-files --feed=myAssetDirectory
+pgutil assets folder import --file=C:\Inedo\data-files\data-import.zip --path=data-files --feed=myAssetDirectory
 ```
 :::
 

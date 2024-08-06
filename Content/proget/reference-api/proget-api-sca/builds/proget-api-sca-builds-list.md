@@ -20,7 +20,7 @@ The `--project` option is always required.
 
 **Listing builds of a project** requires the project name (e.g. `myProject`)
 ```
-pgutil builds list  --project=myProject 
+pgutil builds list --project=myProject 
 ```
 Example output:
 ```

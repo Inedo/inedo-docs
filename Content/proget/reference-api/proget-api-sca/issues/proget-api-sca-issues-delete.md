@@ -15,7 +15,7 @@ pgutil builds issues delete --project=myProject --build=1.2.3 --number=4
 ## Command Specification (CLI)
 The `builds issues delete` command is used to delete an issue in a project's build.
 
-The `--project`, ` --build` and `--number` options are always required.
+The `--project`, `--build` and `--number` options are always required.
 
 **Deleting an issue** requires the project (e.g. `myProject`), the build version number (e.g. `1.2.3`), and the issue number (e.g. `4`)
 

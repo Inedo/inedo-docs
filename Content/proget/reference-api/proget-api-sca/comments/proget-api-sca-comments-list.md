@@ -18,7 +18,7 @@ pgutil builds comments list --project=myProject --build=1.2.3
 ## Command Specification (CLI)
 The `builds comments list` command is used to list comments in a project's build.
 
-The `--project` and ` --build` options are always required.
+The `--project` and `--build` options are always required.
 
 **Listing comments** requires the project (e.g. `myProject`) and the build version number (e.g. `1.2.3`):
 
