@@ -151,7 +151,7 @@ For example, private packages that you create won't really have a license agreem
 
 ![](/resources/docs/proget-exception-name-wildcard.png){height="" width=""}
 
-An example for a temporary exemption is a deprecated third-party package. If the author deprecates a package that you have no intention of upgrading for at least a year, an expiring exemption would allow you to effectively "ignore" those compliance warnings.
+An example of a temporary exemption is a deprecated third-party package. If the author deprecates a package that you have no intention of upgrading for at least a year, an expiring exemption would allow you to effectively "ignore" those compliance warnings.
 
 ![](/resources/docs/proget-exception-version-range.png){height="" width=""}
 
@@ -163,7 +163,7 @@ An exception can be for a single package, or for all packages with a matching na
 
 Names support wildcards. For example, `MyCorp.*` will match all packages that start with `MyCorp.`. You can specify multiple wildcards, although that may be confusing and isn't recommended.
 
-Versions support wildcards in the same format as names, and they also support internval range syntax, which is slightly more complicated. For example:
+Versions support wildcards in the same format as names, and they also support interval range syntax, which is slightly more complicated. For example:
 
 * `1.3.1` means "exactly version 1.3.1"
 * `1.3.*` means "any version that starts with 1.3."
@@ -182,7 +182,7 @@ These shared policies can be created on Manage Feed > Policies & Blocking, or Ad
 
 ### Naming Convention
 
-ProGet uses the policy's name to determine it's type.
+ProGet uses the policy's name to determine its type.
 
  * **Global Policy** is the policy named "Global", and is always used by all feeds
  * **Feed Policies** have the same name as a feed, and will always be used by that feed
@@ -201,7 +201,7 @@ You could then create as many shared policies as needed.
 
 #### Exporting and Importing
 
-You can export all of the policies configured in ProGet as a .zip archive by clicking the "export" button on policies. This file can be used to import policies into a new ProGet instance or as a means to back-up/restore policies within a single instance. 
+You can export all of the policies configured in ProGet as a .zip archive by clicking the "export" button on policies. This file can be used to import policies into a new ProGet instance or as a means to back up/restore policies within a single instance. 
 
 Note that the format of this archive file is not documented, and it's not intended to be edited/created by anything but ProGet.
 
@@ -212,7 +212,7 @@ When importing a policy backup, ProGet will overwrite existing policies or creat
 
 *OSS Metadata Updating & Caching is a ProGet 2025 preview feature. Only NuGet and npm packages are currently supported, but we'd be happy to add another feed type if you're interested in trying this feature.*
 
-ProGet can cache and update metadata for open source packages you're using from public repositories like NuGet.org and npmjs.org. This helps you ensure the packages you're using haven't been deprecated, unlisted, or are outdated. 
+ProGet can cache and update metadata for open-source packages you're using from public repositories like NuGet.org and npmjs.org. This helps you ensure the packages you're using haven't been deprecated, unlisted, or are outdated. 
 
 This is a ProGet Enterprise feature, but you can still configure and use OSS metadata caches for evaluation purposes. 
 
@@ -220,19 +220,19 @@ This is a ProGet Enterprise feature, but you can still configure and use OSS met
 
 ProGet uses *metadata providers* to periodically query public repositories. These providers are disabled by default and can be enabled under Admin > OSS Metadata Caching.
 
-When enabled, ProGet will also maintain a cache of metadata from the repository. You can see recent items in the cache under each provider, which can help provide an insight of usage and query volume.
+When enabled, ProGet will also maintain a cache of metadata from the repository. You can see recent items in the cache under each provider, which can help provide an insight into usage and query volume.
 
 ### Compliance Analyzer Metadata Queries
 
-Most of metadata queries will occur during the nightly [Compliance Analyzer Scheduled Job](/docs/proget/administration/service#scheduled-jobs), which is responsible for checking packages in feeds and builds for compliance with the [Policy Rules](#compliance-rules) you've defined.
+Most metadata queries will occur during the nightly [Compliance Analyzer Scheduled Job](/docs/proget/administration/service#scheduled-jobs), which is responsible for checking packages in feeds and builds for compliance with the [Policy Rules](#compliance-rules) you've defined.
 
 #### Feed Packages
 
-For packages in feeds, ProGet will only query a metadata provider if the package originated from connector that shares a URL with the provider. This means that if you manually downloaded a package file from NuGet.org, and then manually uploaded it to a feed, then ProGet will not query for updated metadata.
+For packages in feeds, ProGet will only query a metadata provider if the package originated from a connector that shares a URL with the provider. This means that if you manually downloaded a package file from NuGet.org, and then manually uploaded it to a feed, then ProGet will not query for updated metadata.
 
 Once metadata has been retrieved from a provider, ProGet will update the package's deprecated, unlisted, and outdated status. This may trigger behavior changes in clients like Visual Studio or `npm` that consume these packages, or cause packages to become Noncompliant or Warn.
 
-ProGet also uses the package's last download date to determine how often to query the metadata provider. For packages downloaded within the past 7 days, the provide will be queried at most daily. Packages downloaded with 30 days will be queried no more than once a week, and all other packages are queried every fifteen days.
+ProGet also uses the package's last download date to determine how often to query the metadata provider. For packages downloaded within the past 7 days, the provider will be queried at most daily. Packages downloaded within 30 days will be queried no more than once a week, and all other packages are queried every fifteen days.
 
 #### Build Packages
 
@@ -242,9 +242,9 @@ For packages in [active builds](/docs/proget/sca/builds), ProGet will only query
 
 Although metadata providers are designed to work with the official public repositories, (NuGet.org, npmjs.org, etc.), they can also be configured to connect to another repository. To create a custom metadata provider, first enable the default provider, edit it, and then click "create custom provider".
 
-We're not entirely sure what the use case would be (which is why creating them is a bit convoluted), but you may find it helpful to get deprecated, unlisted, or outdated package status from another repository.  Please [let us know](https://forums.inedo.com/) if you find this feature useful, so that we can properly document and support it, as well as add authentication and other options .
+We're not entirely sure what the use case would be (which is why creating them is a bit convoluted), but you may find it helpful to get deprecated, unlisted, or outdated package status from another repository.  Please [let us know](https://forums.inedo.com/) if you find this feature useful, so that we can properly document and support it, as well as add authentication and other options.
 
 ## ProGet 2023 and Earlier
-Policies & Compliance Rules are a new feature for ProGet 2024 and replaced the download blocking rules for [licenses (archive.org)](https://web.archive.org/web/20231210172007/https://docs.inedo.com/docs/proget-sca-licenses) and [vulnerabilities (archive.org)](https://web.archive.org/web/20230927141932/https://docs.inedo.com/docs/proget-sca-vulnerabilities) in which you could implement similar functionality. 
+Policies & Compliance Rules are a new feature for ProGet 2024, replacing the download blocking rules for [licenses (archive.org)](https://web.archive.org/web/20231210172007/https://docs.inedo.com/docs/proget-sca-licenses) and [vulnerabilities (archive.org)](https://web.archive.org/web/20230927141932/https://docs.inedo.com/docs/proget-sca-vulnerabilities) in which you could implement similar functionality. 
 
-When Policies & Compliance Rules is first enabled after updating from ProGet 2023 and earlier, existing license rules and vulnerability assessments will be used to create new policies that you can view, edit, and combine as described below. These policies will then be used to determine if a package download should be blocked.
+When "Policies & Compliance Rules" is first enabled after updating from ProGet 2023 and earlier, existing license rules and vulnerability assessments will be used to create new policies that you can view, edit, and combine as described below. These policies will then be used to determine if a package download should be blocked.
