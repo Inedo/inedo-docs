@@ -89,6 +89,15 @@ We're very open to developing and enhancing `pgutil`, and working closely with u
 
 We are unlikely to remove any commands once they're added, except during a major version update, and we'll make sure to notify users beforehand.
 
+### How is pgutil Pronounced?
+
+In addition to a growing number of commands options, `pgutil` offers multiple pronunciation options for maximum flexibility. 
+
+The most popular option -- and our absolute favorite -- is /pəˈɡuːtəl/ ("puh-goo-tuhl"), which uses a soft "puh" sound, followed by a stressed "goo" sound, and another soft "tuhl." 
+
+We've also heard /pəˈɡʌtəl/ ("puh-guh-tuhl") and /piːˈɡjuːtɪl/ ("pee-GYOO-till"). Every now and then, we'll hear /piːdʒiːʌtɪl/ ("pee-gee-utt-il").
+
+
 ## Working with Sources { #sources }
 
 To help manage urls, feeds, and credentials (API keys), you can register one or more "sources" with `pgutil`. These sources are stored in the configuration file located at `%appdata%\pgutil\pgutil.config` (Windows) and `~/.config/pgutil/pgutil.config` (Mac/Linux).
