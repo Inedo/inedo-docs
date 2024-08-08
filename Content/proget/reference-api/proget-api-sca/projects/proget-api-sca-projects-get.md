@@ -3,30 +3,15 @@ title: "Get Project"
 order: 2
 ---
 
-*Get Project* is available as both a `pgutil` command and an HTTP Request, and will return information on a specified project, and return a [ProjectInfo Object](/docs/proget/reference-api/proget-api-sca#projectinfo-object) object describing the project.
+*Get Project* is available as an HTTP Request, and will return information on a specified project, and return a [ProjectInfo Object](/docs/proget/reference-api/proget-api-sca#projectinfo-object) object describing the project.
 
-:::(Info) (🚀 Quick Example: Getting Project Information with pguti)
-This example gets information of a project `myProject`
+:::(Info) (🚀 Quick Example: Getting a Project with Curl)
+This example gets a project `myProject`, authenticating with the API key `abc12345`:
 
 ````
-pgutil builds projects info --project=myProject
+curl -X GET -H "X-ApiKey: abc12345" "https://proget.corp.local/api/sca/projects?project=myProject"
 ````
 :::
-
-## Command Specification (CLI)
-The `builds projects info` command is used to get information on a project.
-
-The `--project` option is always required.
-
-**Getting information on a project** requires the project (e.g. myProject)
-
-```
-pgutil builds projects info --project=myProject
-```
-Example output:
-```
-myProject (application)
-```
 
 ## HTTP Request Specification
 To get a project, simply `GET` to the URL with an [appropriate API Key](/docs/proget/reference-api/proget-api-sca#authentication).
