@@ -128,6 +128,8 @@ The Deprecated Rule is applied to packages that are marked as "deprecated", and 
 
 #### Latest Patch Version Rule
 
+*Latest Patch Version Rule is a ProGet 2025 preview feature that's available in ProGet 2024.12.*
+
 Packages may have a newer patch version available, which means they generally should be upgraded to fix bugs or performance problems. For example, if you're currently using 1.3.0 or 1.3.1, then 1.3.2 would be considered a new patch version. Some clients (Visual Studio, `npm`, etc.) will also advise to update to newer patch versions.
 
 To determine if a package is compliant with the Latest Patch Version Rule, ProGet will either inspect local packages in the feed or utilize the [OSS Metadata Cache](#oss-metadata-updating-caching) if the package originated from a public repository like nuget.org or npmjs.org.
@@ -210,7 +212,7 @@ When importing a policy backup, ProGet will overwrite existing policies or creat
 
 ## OSS Metadata Updating & Caching
 
-*OSS Metadata Updating & Caching is a ProGet 2025 preview feature. Only NuGet and npm packages are currently supported, but we'd be happy to add another feed type if you're interested in trying this feature.*
+*OSS Metadata Updating & Caching is a ProGet 2025 preview feature that's available in ProGet 2024.12. Only NuGet and npm packages are currently supported, but we'd be happy to add another feed type if you're interested in trying this feature.*
 
 ProGet can cache and update metadata for open-source packages you're using from public repositories like NuGet.org and npmjs.org. This helps you ensure the packages you're using haven't been deprecated, unlisted, or are outdated. 
 
