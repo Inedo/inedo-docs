@@ -278,9 +278,11 @@ Finally, you can restart the ProGet, BuildMaster, or Otter services. If the serv
 :::(Internal) (REMOVED BECAUSE IT SEEMED LIKE TMI)
 The IWS will use either [Kestrel](https://learn.microsoft.com/en-us/aspnet/core/fundamentals/servers/kestrel?view=aspnetcore-6.0) or [HTTP.sys](https://learn.microsoft.com/en-us/aspnet/core/fundamentals/servers/httpsys?view=aspnetcore-6.0) depending on the URL configuration specified in the [shared configuration file](/docs/installation/configuration-files). 
 
-is a basic and easy to configure web server that includes only the core features to host a ProGet, BuildMaster, or Otter web site.  
-
 When specifying the URL with an `*` (ex: `https://*:443`) the IWS will use Kestrel and specifying a host name (ex: `https://proget.kramerica.com:443`) the IWS will use HTTP.sys.
 
 As of ProGet v2022.17 HTTPS bindings can be used with either configuration, but prior to ProGet v2022.17 and in BuildMaster and Otter only the HTTP.sys configuration supports it.
 :::
+
+### Automated / Silent Configuring HTTPS on the Integrated Web Server
+
+The Inedo Hub's [silent installation process](/docs/installation/windows/silent) will not configure HTTPS in this manner. However, it's possible to automate this after installation with scripting; user Stephen Valdinger (steviecoaster) wrote a script ([Set-ProGetSslConfig.ps1](https://gist.github.com/steviecoaster/0a2c0d4b09988dedf8e1df1844ec6b8a)) that serves as an excellent starting point.
