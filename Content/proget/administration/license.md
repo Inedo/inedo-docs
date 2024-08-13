@@ -53,6 +53,7 @@ ProGet Basic only supports basic vulnerability assessments (i.e. not scoped to a
 | Track dependencies across builds |❌|☑|✔
 | Generate license attribution reports  |❌|❌|✔
 | Advanced project compliance  |❌|❌|✔
+| OSS Metadata Updating & Caching  |❌|❌|✔
 
 ProGet Basic only supports 1000 active builds and projects may not be associated with feeds or policies.
 
