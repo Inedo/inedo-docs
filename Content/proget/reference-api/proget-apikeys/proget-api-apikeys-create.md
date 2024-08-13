@@ -35,7 +35,7 @@ pgutil apikeys create system --apis="feeds,sca" --expiration="2024/08/01"
 
 **Example: Creating a Feed API key** requires a feed name (`MyNpmFeed`):
 ```
-pgutil apikeys create feed --name=MyNpmFeed
+pgutil apikeys create feed --feed=MyNpmFeed
 ```
 
 **Example: Creating a Feed API key for a group** requires a feed group name (`MyFeedGroup`):
