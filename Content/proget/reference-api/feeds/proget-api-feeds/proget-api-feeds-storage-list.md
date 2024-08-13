@@ -19,7 +19,7 @@ The `feeds storage types` command is used to list all feed storage types.
 **Listing all feed storage types** does not require any additional options:
 
 ```
-pgutil feeds list
+feeds storage types
 ```
 
 Example output:
