@@ -55,7 +55,7 @@ Now set "Event Type" as "Package Status Changed", and set "Action" to your prefe
 
 Finally, select "Save" to create this notifier, which will now be sent when a deprecated package is in use.
 
-## Step 4: Optional: Set Customized Conditions and Messages
+## Step 4: Optional: Customize Conditions & Messages
 
 When creating the notifier in Step 3, you have the choice of setting some additional options:
 
@@ -64,7 +64,13 @@ On this tab you can set the notifier to run on specific feeds only, or for packa
 
 ![](/resources/docs/proget-notifiers-new-conditions.jpg){height="" width="50%"}
 
+This includes using advanced conditions like triggering notifications only for packages with a vulnerability score above a certain threshold (e.g., $Compare($VulnerabilityScore,>=,7.5)) or based on patterns in package names (e.g., $MatchesRegex($PackageName, "^MyPackage\.*$")). These conditions give you more control over when notifications are sent.
+
 ### Custom Message
 You can create a customized text to be sent, be it email, slack or teams message, or customized webhook:
 
 ![](/resources/docs/proget-notifiers-new-message.jpg){height="" width="50%"}
+
+You can personalize these messages using [variables and expressions](/docs/proget/administration/proget-notifications-webhooks/proget-notifications-custom-webhook#variables-expressions). Your notifications can include dynamic content such as package details, user actions, or data from third-party APIs. Additionally, custom webhooks can be configured to integrate with external tools, enabling automated workflows or audits. 
+
+For more details and examples, take a look at [Customizing Content & Webhooks and Variables & Expressions](/docs/proget/administration/proget-notifications-webhooks/proget-notifications-custom-webhook).
