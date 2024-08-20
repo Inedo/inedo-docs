@@ -7,7 +7,7 @@ order: 1
 Not working as of ProGet version 2023.22
 :::
 
-*Create License* is available as both a `pgutil` command and an HTTP Request, and will create a license, with the properties defined by a [License](/docs/proget/reference-api/proget-api-licenses#license-object) object in the body of the request.
+*Create License* is available as both a `pgutil` command and an HTTP Request, and will create a license, with the properties defined by a [LicenseInfo](/docs/proget/reference-api/proget-api-licenses#license-object) object in the body of the request.
 
 :::(Info) (🚀 Quick Example: Creating a license with pgutil)
 This example will create the license `ABC License 1.0` with the ID `ABC-1.0`
@@ -27,7 +27,7 @@ pgutil licenses create --title="ABC License 1.0" --code=ABC-1.0
 ```
 
 ## Request Specification
-To create a license, simply `PUT` or `POST` to the URL with an [appropriate API Key](/docs/proget/reference-api/proget-api-licenses#authentication) and a [License](/docs/proget/reference-api/proget-api-licenses#license-object) object as the request body.
+To create a license, simply `PUT` or `POST` to the URL with an [appropriate API Key](/docs/proget/reference-api/proget-api-licenses#authentication) and a [LicenseInfo](/docs/proget/reference-api/proget-api-licenses#license-object) object as the request body.
 
 ```
 POST/PUT /api/licenses/add
