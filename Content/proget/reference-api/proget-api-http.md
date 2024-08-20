@@ -1,5 +1,5 @@
 ---
-title: "Getting Stared with HTTP Endpoints"
+title: "Getting Started with HTTP Endpoints"
 order: 2
 ---
 

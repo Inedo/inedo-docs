@@ -61,7 +61,7 @@ pgutil licenses files add --code=ABC-1.0 --file=C:\documents\license-files\abc-1
 **Deleting a license file** requires the license file's hash (e.g. `00462de3d7b6f3e5551a69ae84344bc69d23c02e1353be3e8445d16f025e523b`):
 
 ```
-pgutil licenses files delete --hash=	00462de3d7b6f3e5551a69ae84344bc69d23c02e1353be3e8445d16f025e523b
+pgutil licenses files delete --hash=00462de3d7b6f3e5551a69ae84344bc69d23c02e1353be3e8445d16f025e523b
 ```
 
 

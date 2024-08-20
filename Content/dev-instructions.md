@@ -42,7 +42,8 @@ If you want to use a different folder for your git repository, you will need to 
 :::
 
 To clone the git repository, you will need to run the following command from an administrative command prompt:
-```
+
+```bash
 cd C:\projects
 git clone https://github.com/Inedo/inedo-docs.git
 ```
@@ -57,7 +58,7 @@ Do not extract the nDocs local server into your content directory!
 When the program first starts, you will see the url that nDocs is hosted on.  The URL will be listed after the statement "`Now listening on:`".  Open your browser and navigate to that URL.  Now anytime a change is made to your markdown, the nDocs site will show your change.
 
 Example Output:
-```
+```bash
 info: Inedo.Web.BackgroundTaskQueueService[0]
       Background Task Queue is starting.
 info: Microsoft.Hosting.Lifetime[14]
@@ -129,7 +130,7 @@ MarkDown is specified using the CommonMark language syntax.  nDocs use the [Mark
 
 #### Info Blocks Syntax
 Info Blocks are a custom Indeo MarkDown block that can be specified in the following format:
-```
+```bash
 ::: (Type) (Title)
 Body
 :::
@@ -151,7 +152,7 @@ HTML files should only contain the contents of the page.  It **should not** incl
 
 #### Info Blocks Syntax
 Info blocks can be used in HTML, but there entire HTML will need to be specified:
-```
+```html
 <div class="info-content-box info">
    <div class="title">The Title</div>
    <div class="content">Body contents</div>
@@ -212,7 +213,7 @@ When a URL is changed for a page, you will need to add a [redirect rule](#adding
 All redirects are stored at `C:\Projects\inedo-docs\redirects.xml`.  To add a new redirect, add a new `redirect` node under the root `redirects` with the `from`, `to`, and `modified` attributes.
 
 Example:
-```
+```xml
 <redirect from="/docs/otter-global-components-rafts" to="/docs/otter/scripting-in-otter/otter-rafts-and-git-storage" modified="2/25/2022 12:00:00 AM" />
 ```
 
@@ -245,6 +246,13 @@ The config file is stored side-by-side with the nDocs local server in a file nam
     - If a custom ID is needed in a Markdown heading, append `{ #heading-id }` to the end of the heading
         - Example: `## Using Feed Connectors { #feed-connectors }`
 
+### Code Blocks
+- Codeblocks should always have a language applied to them (e.g ` ```bash `)
+    - This is to ensure that code blocks are displayed consistently
+    - Use the language most applicable to the code (e.g. `yaml`, `xml`, `html`, etc.)
+    - When a language does not appear applicable (e.g. CLI commands) use `bash`
+        - `plaintext` can also be used in the event that bash is not suitable
+
 ### Links
 - Links should **always** be with /docs/url/to/file (example: If the file is stored at `C:\Projects\inedo-docs\Content\BuildMaster\overview.md` the URL would be `/docs/buildmaster/overview`)
   - Be sure to **not** include the file extension (.md/.html) in the URL
@@ -275,5 +283,3 @@ The config file is stored side-by-side with the nDocs local server in a file nam
 - Example:
 
 ![Modal](/resources/docs/proget-chocolatey-privatename.png){height="" width="50%"}
-
-

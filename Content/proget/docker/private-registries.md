@@ -144,11 +144,15 @@ To support uploading large files over a single HTTP request, the Docker client w
 
 During the "FeedCleanUp" scheduled job, ProGet will purge incomplete uploads (i.e. chunks that were sent without an upload completion).
 
-### Garbage Collection
+### Garbage Collection & Unreferenced Blobs
 
-Unlike packages, a Docker image is not self-contained: It is a reference to a manifest blob, which in turn references a set of layer blobs. These layer blobs can be referenced by other manifests in the registry, which means that you cannot simply delete referenced layer blobs when you delete a manifest blob.
+An "unreferenced blob" is a blob file that's known to ProGet (i.e. a database record and a file on disk) but has no Docker manifest that references the blob. An unreferenced blob isn't an error condition per se, and will generally occur if you upload a blob to ProGet but never upload a manifest that references the blob. For example, if you were to cancel a docker push halfway through, then you will have some unreferenced blobs. The "Docker Garbage Collection" Scheduled Job (Admin > Scheduled Jobs) runs nightly to clean up these unreferenced blobs.
 
-This is where garbage collection comes in; it is the process of removing blobs from package memory when they are no longer referenced by a manifest. ProGet performs garbage collection for Docker registries via the scheduled job "FeedCleanUp".
+#### Orphaned Files
+
+Separately, there is also an "orphaned blob". This is basically a blob file that is unknown to ProGet (i.e. a file on disk without a database record). This is a rare error condition, as ProGet will raise an error if there was an error deleting the blob file. However, it's usually not a problem (just a few orphaned blob files here and there), so we do not currently have a tool/mechanism within ProGet to clean them up.
+
+It's relatively easy to script an orphaned file cleanup. A ProGet user wrote a script that will do just that: https://gitlab.com/fhusson/proget-stuff/
 
 ### Connectors
 
