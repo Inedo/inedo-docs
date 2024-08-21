@@ -124,22 +124,6 @@ A source named "Default" has special behavior. When a source name is not specifi
 
 Unless you specify the `--plain-text` option, Passwords and API Keys will not be stored in plain text. Instead, they will be  obscured from casual consumption using a Data Protection scheme . However, note that anyone with `pgutil` will be able to read and decode the password or API key.
 
-
-### Test Sources Added to pgutil { #sources-test }
-
-The `sources test` command is used to test the connections to your sources. 
-
-```cli
-$: pgutil sources test
-
-[Default] Successfully contacted ProGet 24.0.0
-[MyOtherServer] Successfully contacted ProGet 23.0.32
-[MyBadSource] Error contacting ProGet: invalid host name
-```
- If you specify the `--name` option, then only that source will be tested. 
- 
- Note that any non-successful test will report a nonzero exit code.
-
 ### Listing Sources { #sources-list }
 
 The `sources list` command will list all sources located in the configuration file.
@@ -167,3 +151,18 @@ Removed MyPackages source.
 ```
 
 Note that you must specify the `--name` when removing a source, even for the "Default" source.
+
+### Test Sources Added to pgutil { #sources-test }
+
+The `sources test` command is used to test the connections to your sources. 
+
+```cli
+$: pgutil sources test
+
+[Default] Successfully contacted ProGet 24.0.0
+[MyOtherServer] Successfully contacted ProGet 23.0.32
+[MyBadSource] Error contacting ProGet: invalid host name
+```
+ If you specify the `--name` option, then only that source will be tested. 
+ 
+ Note that any non-successful test will report a nonzero exit code.
