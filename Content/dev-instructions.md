@@ -107,7 +107,7 @@ Available Properties:
 
 | Property | Type | Description |
 | -------- | ---- | ----------- |
-| `title` | `string` | Title that will show in the tab, navigarion tree, and H1 (default uses the file name) |
+| `title` | `string` | Title that will show in the tab, navigation tree, and H1 (default uses the file name) |
 | `nav-title` | `string` | Title that will show in the navigation tree (**overrides `title`**) (default uses the title) |
 | `max-header-level` | `int` | The max header level to show in the table of contents (default is 2) |
 | `masterpage` | `string` | The name of the master page file to use for the page layout.  This can be a global or a side-by-side path (default is DocsArticlePage.html) |
