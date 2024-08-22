@@ -24,29 +24,30 @@ If you previously have configured your npm feed to use an npm audit proxy and wa
 :::
 
 #### Prior to ProGet 2023.22
+
 Npm Audit Proxying is an experimental feature. ProGet may attempt to forward requests to the audit endpoint to npmjs.org or a connector. This may stop working if npmjs.org changes the API or blocks ProGet's requests. You can configure the proxy URL in ProGet 5.3 by navigating to the `Manage Feed` page on your `npm` feed.
 
 ## Creating an npm Feed 
 
-Click on the *Feeds* tab in the navigation bar to see a list of feeds in the system.
+Click on the "Feeds" tab in the navigation bar to see a list of feeds in the system.
 
-Click the *Create New Feed* button and select *npm*.
+Click the "Create New Feed" button and select "npm".
 
-Supply a value for the <b>Feed Name</b> field. This will be the name of your private npm registry, and should contain characters that can be easily typed in a URL. For example, you could use **private-npm**.
+Supply a value for the "Feed Name" field. This will be the name of your private npm registry, and should contain characters that can be easily typed in a URL. For example, you could use `private-npm`.
 
-Click the **Create Feed** button, and you should be automatically directed to the newly created registry.
+Click the "Create Feed" button, and you should be automatically directed to the newly created registry.
 
-If your ProGet server has access to the Internet, you should see a list of packages from npmjs.org. These are called *connector packages* and are not hosted on your ProGet instance, but transparently proxied from another server.
+If your ProGet server has access to the Internet, you should see a list of packages from npmjs.org. These are called "connector packages" and are not hosted on your ProGet instance, but transparently proxied from another server.
 
-Once you have created the npm feed, you can add a connector for *npmjs.org* directly to your feed or by clicking on the **Connectors** tab at the top of the page.
+Once you have created the npm feed, you can add a connector for *npmjs.org* directly to your feed or by clicking on the "Connectors" tab at the top of the page.
 
 This way you can access this extensive library in addition to your private ones. Connectors also allow filtering if you want to include only a subset of the external packages; however, by default, no filtering is applied. For more information about connectors, see the [documentation](/docs/proget/feeds/connector-overview).
 
 ## Setting up npm
 
-First, you need to tell npm where to look for its registry; by default, it is configured for *npmjs.org*. Use the following command and replace **proget** with the name/port of your ProGet server and **private-npm** with the name of the npm feed you created above.
+First, you need to tell npm where to look for its registry; by default, it is configured for npmjs.org. Use the following command and replace `proget` with the name/port of your ProGet server and `private-npm` with the name of the npm feed you created above.
 
-```
+```bash
 [~]$ npm config set registry http://proget/npm/private-npm
 ```
 
@@ -54,7 +55,7 @@ First, you need to tell npm where to look for its registry; by default, it is co
 
 npm packages are installed using [npm](https://docs.npmjs.com/cli/install). To install a package from a ProGet feed, first you will need to set up npm using the command above, then use the following command :
 
-```
+```bash
 npm install {package-name}@{package-version}
 ```
 
@@ -63,6 +64,7 @@ npm install {package-name}@{package-version}
 To authenticate to your feed, you'll need to add an `_auth` token to your `.npmrc` file. This base-64 encoded token will be sent to ProGet as an authentication header.
 
 ### Creating an Auth Token
+
 An `_auth` token is a username and password string `«username»:«password»` that's been base64-encoded  We strongly recommend using `api` as the username, and  [API Key](/docs/proget/reference-api/proget-apikeys) as the password for this token. You can create one by navigating to Admin > API Key & Access Logs. Feed Access is all that's required, and you can further restrict this key by associating it to a user you've already given specific permissions
 
 :::(Error) (Base64 Encoding is Required)
@@ -70,23 +72,30 @@ npm only supports base64-encoded tokens, and you'll need to use a tool to help y
 :::
 
 #### Example: PowerShell Script to Encode an API Key
+
 Replace `«api-key»` in the script below with your key.
+
 ```PowerShell
 [Convert]::ToBase64String([System.Text.Encoding]::UTF8.GetBytes("api:«api-key»"))
 ```
+
 The encoded auth token will be written in the console.
 
 #### Example: Encode in your Web Browser
+
 Press F12 to open the Developer Tools, click on the "Console", then run the following script (replace `«api-key»`).
+
 ```JavaScript
 btoa('api:«api-key»')
 ```
+
 The encoded auth token will be written in the console below.
 
 ### For npm version 9.4 and above
+
 npm 9.4+ requires that auth tokens are scoped to a server and url. The following command will add the appropriate value to your `.npmrc` file. 
 
-```
+```bash
 [~]$ npm config set //«proget-server»/npm/«npm-feed-name»/:_auth «encoded-auth-token»
 [~]$ npm config set //«proget-server»/npm/«npm-feed-name»/:email «your-email-address»
 ```
@@ -98,20 +107,22 @@ When using the `npm login` and the `npm adduser` commands in npm 9 and above, Pr
 :::
 
 ### For npm versions 8 and below
+
 The following command will add the appropriate value to your `.npmrc` file. 
-```
+
+```bash
 [~]$ npm config set always-auth true
 [~]$ npm config set _auth «encoded-auth-token»
 [~]$ npm config set email «your-email-address»
 ```
 
-### Example Steps for  Create an npm API Token
+### Example Steps to Create an npm API Token
 
 First, create a key by going to ProGet > Admin > API Keys, and entering the value `apikey12345` for the key. Make sure that Feed API is checked.
 
 Next, encode `api:apikey12345` as a base64 string using this PowerShell.
 
-```(PowerShell)
+```powershell
 [Convert]::ToBase64String([System.Text.Encoding]::UTF8.GetBytes("api:apikey12345"))
 ```
 
@@ -126,34 +137,36 @@ From there, you can execute the following NPM commands:
     2. Run `npm config set _auth YXBpOmFwaWtleTEyMzQ1`
     2. Run `npm config set email support@inedo.com`
 
-After that, it should work. Remember, `apikey12345` is just a sample value for illustration purposes; it can be anythying, and should not be the value we use in our documentation.
+After that, it should work. Remember, `apikey12345` is just a sample value for illustration purposes; it can be anything, and should not be the value we use in our documentation.
 
 ### Using scoped registries
 
-To use a registries for scoped packages, you'll need to specify the scope and namespace.
+To use a registry for scoped packages, you'll need to specify the scope and namespace.
 
 Before setting the auth token, you'll need to set a configuration scope. 
 
-```
+```bash
 [~]$ npm config set @«scope-name»:registry «feed-api-endpoint»
 ```
 
 Then, you'll need to set a namespace-qualified auth token with these commands:
 
-```
+```bash
 [~]$ npm config set //«proget-server»/npm/«npm-feed-name»/:_auth «encoded-auth-token»
 [~]$ npm config set //«proget-server»/npm/«npm-feed-name»/:email «your-email-address»
 ```
 
 For example, if you wanted to scope the `@kramerica` packages to the `private-npm` feed on the `packages.kramerica.corp` server, you'd run these commands:
-```
+
+```bash
 [~]$ npm config set @kramerica:registry https://packages.kramerica.corp/npm/private-npm
 [~]$ npm config set //packages.kramerica.corp/npm/private-npm:_auth YXBpOmFwaWtleTEyMzQ1
 [~]$ npm config set //packages.kramerica.corp/npm/private-npm:email support@kramerica.corp
 ```
 
 ### Advanced: Authenticating using an npmrc file
-The `npm config` command is the more reliable and safe way to make configuration changes because it contains proper safeguards and validation checks to ensure proper structure in the npmrc file.  There are times where you may need to edit the npmrc file directly or create a custom npmrc file to use with the `--userconfig` parameter to the `npm` command.
+
+The `npm config` command is the more reliable and safe way to make configuration changes because it contains proper safeguards and validation checks to ensure proper structure in the npmrc file.  There are times when you may need to edit the `.npmrc` file directly or create a custom npmrc file to use with the `--userconfig` parameter to the `npm` command.
 
 The npmrc file can be stored:
 - per-project (`/path/to/my/project/.npmrc`)
@@ -163,8 +176,10 @@ The npmrc file can be stored:
 - User specified with the `--userconfig` parameter
 
 #### Example for npm version 9 and above
+
 Using the examples from above:
-```
+
+```bash
 registry=http://proget/npm/private-npm
 always-auth=true
 //proget/npm/private-npm:_auth=YXBpOmFwaWtleTEyMzQ1
@@ -173,13 +188,16 @@ always-auth=true
 For scoped registries, you can also add `@kramerica:registry=http://proget/npm/private-npm`  right after your registry.
 
 #### Example for npm version 8 and below
+
 Using the examples from above:
-```
+
+```bash
 registry=http://proget/npm/private-npm
 always-auth=true
 //proget/npm/private-npm:username=api
 //proget/npm/private-npm:_password=YXBpa2V5MTIzNDU=
 ```
+
 The password in this case is a Base 64 encoded version of just your password.
 
 For scoped registries, you can also add `@kramerica:registry=http://proget/npm/private-npm`  right after your registry.
@@ -187,20 +205,22 @@ For scoped registries, you can also add `@kramerica:registry=http://proget/npm/p
 ## Publishing a Package 
 
 You can also publish packages to ProGet using npm. First, configure npm token authentication for your feed using an account or an API key that has the Add Package permission, then run the `npm publish` command. For example:
-```
+
+```bash
 [~]$ npm publish package.tgz
 ```
 
 ## Troubleshooting
 
 ### Error: Unable to query https://npm.pkg.github.com/
+
 GitHub npm connectors work a bit differently than other connectors.  GitHub does not implement the full npm API specification so certain things like package count and the search API are not working.  To get around this in ProGet, you will need to make sure that you have updated to at least ProGet 2023.20 and then use the following settings:
 
 1. On the *General* tab
    1. For the URL use `https://npm.pkg.github.com/<OWNER>`
    2. For Authentication
       1. Use Basic authentication
-      2. For the username, use your GitHub user name
+      2. For the username, use your GitHub username
       3. For the password, use your  and then use a Personal Access Token (classic)
 1. On the *Advanced* tab
    1. Check "Exact package name match only" 
