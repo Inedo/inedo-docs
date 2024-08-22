@@ -21,7 +21,7 @@ To create a usage instruction for a feed:
 
 The title will be shown in the multi-button on the package list page. You can also duplicate an existing instruction by clicking on the instruction in the manage feed page and then clicking the _Duplicate_ button in the bottom left corner.
 
-### Hiding/Showing a Usage Instructions
+### Hiding/Showing a Usage Instruction
 
 Usage instructions can be hidden from users. This is useful if you only want to use custom usage instructions instead of using the built-in instructions.
 
@@ -54,9 +54,9 @@ To create an installation instruction for a feed:
 
 The title will be shown as a tab on the package details page. You can also duplicate an existing instruction by clicking on the instruction in the manage feed page and then clicking the _Duplicate_ button in the bottom left corner.
 
-Instructions are written using MarkDown syntax and support a sub-set of [variables](#package-installation-instruction-variables).
+Instructions are written using MarkDown syntax and support a subset of [variables](#package-installation-instruction-variables).
 
-### Hiding/Showing an Installation Instructions
+### Hiding/Showing an Installation Instruction
 
 Package installation instructions can be hidden from users. This is useful if you only want to use custom installation instructions instead of using the built-in instructions.
 
@@ -73,7 +73,7 @@ You can delete a custom package installation instruction by clicking the red "X"
 Built-in package installation instructions can only be hidden, they cannot be deleted.
 :::
 
-<h3 id="package-installation-instruction-variables">Package Installation Instructions Variables</h3>
+### Package Installation Instructions Variables  { #package-installation-instruction-variables }
 
 When customizing a package installation instruction, you can use MarkDown syntax for formatting and a specific set of variables. Included variables are:
 

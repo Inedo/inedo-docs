@@ -18,12 +18,12 @@ Direct access to package files for purposes other than backing up files is not s
 The default directory of a feed is created by combining the following path elements:
 
 - **Root Storage Path** - This path is configured in the `Storage.PackagesRootPath` setting (`Admin > Advanced Settings`), and defaults to `%ProGramData%\ProGet\PackagesRoot`. Its value may be assigned in Advanced Settings or, for load-balanced installations, set in the installation's .config file (web.config or ProGet.Service.config) with a key name of `ProGetConfig.Storage.PackagesRootPath`. To use the .config file value, the value specified here must be saved with an empty value. If it is configured in the .config file, this value is displayed here.
-- **Package Type Path** - Each feed type uses a different setting and a different default. For example, npm feeds use `Storage.NpmPackagesLibrary`, which default to `.npm`. In general, you should keep the default settings, but it may be useful to change them if you want to enable data deduplication for all feeds of a certain type.
+- **Package Type Path** - Each feed type uses a different setting and a different default. For example, npm feeds use `Storage.NpmPackagesLibrary`, which defaults to `.npm`. In general, you should keep the default settings, but it may be useful to change them if you want to enable data deduplication for all feeds of a certain type.
 - **FeedId.** The immutable, integer-based identifier for a feed.
 
-If the package type path is an absolute path, the root storage path is ignored. For example, assuming that the default settings haven't been changed, a NuGet feed with a ID of 1 would store packages in the following path:
+If the package type path is an absolute path, the root storage path is ignored. For example, assuming that the default settings haven't been changed, a NuGet feed with an ID of 1 would store packages in the following path:
 
-```
+```bash
 %ProgramData%\ProGet\PackagesRoot\.nugetv2\F1
 ```
 
@@ -38,9 +38,10 @@ If you change the disk directory of a feed, either directly (by going to the fee
 :::
 
 If you want to change the directories where your packages are stored, you must also move/copy the contents from the current location to the new location. We generally recommend:
+
 1. Plan for downtime and inform your users.
 2. Change the desired settings in ProGet 
-3. Disable the feed or the ProGet applicationcompletely 
+3. Disable the feed or the ProGet application completely 
 4. Transfer the files to the new location 
 5. Activate ProGet again
 
@@ -60,4 +61,4 @@ In some cases, it may be easier for users or programs to simply copy package fil
 
 [You can configure a feed to use a "drop path,"](/docs/proget/feeds/feed-overview/proget-bulk-import-with-droppath) which is a local or network path that ProGet will scan for files periodically. If that directory contains a package with a valid format for the feed type, it will be imported to ProGet.
 
-By default, existing packages will not be overwritten, but you can change this by going to `Admin > Advanced Settings`, and changing `Feeds.AllowDropPathImportOverwrite` to `true`.
+By default, existing packages will not be overwritten, but you can change this by going to "Administration Overview" > "Advanced Settings", and changing `Feeds.AllowDropPathImportOverwrite` to `true`.
