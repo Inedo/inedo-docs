@@ -247,7 +247,7 @@ The config file is stored side-by-side with the nDocs local server in a file nam
         - Example: `## Using Feed Connectors { #feed-connectors }`
 
 ### Code Blocks
-- Codeblocks should always have a language applied to them (e.g ` ```bash `)
+- Code blocks should always have a language applied to them (e.g ` ```bash `)
     - This is to ensure that code blocks are displayed consistently
     - Use the language most applicable to the code (e.g. `yaml`, `xml`, `html`, etc.)
     - When a language does not appear applicable (e.g. CLI commands) use `bash`
