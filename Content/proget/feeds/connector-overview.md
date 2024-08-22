@@ -4,7 +4,6 @@ nav-title: "What is a \"Connector\" in ProGet?"
 order: 2
 ---
 
-
 Connectors are at the core of ProGet’s functionality and unlock most other ProGet features, including [license filters](/docs/proget/sca/licenses), [vulnerability scanning and blocking](/docs/proget/sca/vulnerabilities), [promotion](/docs/proget/packages/package-promotion), and of course, the use of multiple feeds.
 
 Connectors allow ProGet feeds to include packages from an external source, whether it is another ProGet feed, a public gallery like NuGet.org, or another third-party package source like Azure DevOps Packages or [Artifactory](https://inedo.com/proget/proget-vs-jfrog-artifactory).
@@ -26,24 +25,25 @@ Connecting to another ProGet instance is not permitted and may result in license
 
 ## Feed Association 
 
-After a connector is created, it must be associated with one or more feeds before packages can be retrieved from the connector. To do this, click **add connector** on the **Manage Feed** page and select the connector. Packages from the connector are then immediately available in the feed.
+After a connector is created, it must be associated with one or more feeds before packages can be retrieved from the connector. To do this, click "Add Connector" on the "Manage Feed" page and select the connector. Packages from the connector are then immediately available in the feed.
 
 Starting with ProGet 5.3, connectors are created within a specific feed and are then automatically connected to that feed.
 
 If you need to change the feed associated with the connector:
 
-1. navigate to the "Manage Feed" page.
-2. select the "Connectors & Replication" tab.
-3. click the X to disassociate the connector from the feed.
+1. Navigate to the "Manage Feed" page.
+2. Select the "Connectors & Replication" tab.
+3. Click the X to disassociate the connector from the feed.
 
-You can then add the connector to another feed from the Manage Feed page. You can delete a connector completely from the Connectors screen (Feeds > Connectors ).
+You can then add the connector to another feed from the Manage Feed page. You can delete a connector completely from the Connectors screen ("Feeds" > "Connectors" ).
 
 ## Self-Connectors 
-Self connectors are connectors that refer to the same instance of ProGet. These can be useful to:
 
- - aggregate feeds for different teams or organizations, and store packages in a single location
- - apply a different set of permissions to a feed, for example, to restrict access to pre-production feeds
- - filter packages from another feed, e.g., to view quality
+Self-Connectors are connectors that refer to the same instance of ProGet. These can be useful to:
+
+ - Aggregate feeds for different teams or organizations, and store packages in a single location
+ - Apply a different set of permissions to a feed, for example, to restrict access to pre-production feeds
+ - Filter packages from another feed, e.g., to view quality
  
 :::(Error) 
 Self-connectors are locally connected to the same instance, but still forward all web requests as if they were not local. This means that users with built-in Windows authentication enabled must configure either the ProGet Integrated Web Server login user (or the application pool identity if using IIS) to run as an account with access rights to the connected feed.
@@ -56,7 +56,7 @@ The URL needed to create a self-connector can be found on the "Feed Overview" pa
 
 ProGet provides two types of connector caching: package and metadata. Caching packages and metadata in ProGet reduces queries and decreases wait times as packages are already in ProGet.
 
-**Package Caching** is configured at the feed level. When enabled, a copy of each Connector package downloaded in the associated feed is cached. The package will still show up as a Connector package in UI, but it will be available even if the external package source is unreachable. Package caching is enabled by default and included in all editions of ProGet.
+**Package Caching** is configured at the feed level. When enabled, a copy of each Connector package downloaded in the associated feed is cached. The package will still show up as a Connector package in the UI, but it will be available even if the external package source is unreachable. Package caching is enabled by default and included in all editions of ProGet.
 
 **Metadata Caching** is configured at the connector level. When enabled, metadata caching stores responses from recently used queries to the connector's source. For example, a tool may query a ProGet feed for the latest version of a package, so ProGet must then query each of the connectors in the feed for the latest versions. With metadata caching enabled, this can significantly increase performance. However, this has the disadvantage that the queries may become stale. Metadata caching is only available in paid ProGet editions.
 
@@ -68,10 +68,9 @@ Connector filters help you select third-party packages by automatically includin
 This feature is available in the paid and trial versions of ProGet. Connector filters can be configured in ProGet Free, but are ignored.
 :::
 
-
 How to add a connection filter:
 
-1. navigate to the "Manage Feed" page.
-2. select the "Connectors & Replication" tab.
-3. select the name of the desired connector.
-4. click "Add Filter", enter the filter specifications and select "Allow" or "Block"
+1. Navigate to the "Manage Feed" page.
+2. Select the "Connectors & Replication" tab.
+3. Select the name of the desired connector.
+4. Click "Add Filter", enter the filter specifications, and select "Allow" or "Block"
