@@ -5,13 +5,13 @@ order: 15
 
 [RPM Package Manager](https://rpm.org/) (RPM, originally Red Hat Package Manager), is a free, open-source package management system used by many Linux distributions including Red Hat and CentOS. As of ProGet v5.2.25, RPM packages can be hosted and installed from ProGet.
 
-# Prerequisite Configuration
+## Prerequisite Configuration
 
-## Client Configuration
+### Client Configuration
 
 In order to install packages from ProGet, each client must perform the following steps:
 
-### 1. Add a .repo file to /etc/yum.repos.d
+#### 1. Add a .repo file to /etc/yum.repos.d
 
 Yum stores its repository configuration in `.repo` files located in `/etc/yum.repos.d/`. To register a ProGet feed as a repository, create a new `<RepoName>.repo` file in that directory with content:
 
@@ -25,7 +25,7 @@ enabled=1
 
 Note that `<RepoName>` can be anything, but we recommend using the ProGet feed name for clarity.
 
-### 2. Verify yum configuration
+#### 2. Verify yum configuration
 
 To verify that Yum is able to download package metadata, execute:
 
@@ -34,8 +34,6 @@ yum repolist all
 ```
 
 If the configuration is correct, this will list all repos (including the ProGet feed registered in Step 1).
-
-# Common Tasks
 
 ## Installing Packages
 
