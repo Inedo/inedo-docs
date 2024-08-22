@@ -1,6 +1,6 @@
 ---
 title: "HOWTO: Scan for Installed Chocolatey Packages on a Server"
-order: 3
+order: 2
 ---
 
 When a critical bug or vulnerability is discovered in a package, it is important to know which servers are using the affected package.  ProGet’s [Package Usage Scanning](/docs/proget/packages/package-scanners) feature provides valuable information about which packages are installed on which servers.
