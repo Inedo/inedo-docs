@@ -18,11 +18,11 @@ If you have the [.NET Core SDK](https://learn.microsoft.com/en-us/dotnet/core/sd
 ## Commands & Usage
 The easiest way to explore the available commands is by running `pgutil`, which provides a comprehensive list of "command sets". 
 
-```cli
+```plaintext
 $> pgutil
 
     .--. --. ..- - .. .-..
-        pgutil v1.0.0
+        pgutil v1.1.8.0
     .--. --. ..- - .. .-..
 
 Description:
@@ -31,53 +31,49 @@ Description:
 Usage:
   pgutil [command] [options]
 
-Options:
-  -?, --help  Show help and usage information
-
 Commands:
-  sources   Manages the list of sources located in the configuration file located at
-            C:\Users\sdennis\AppData\Roaming\pgutil\pgutil.config
-  packages  Work with packages on a ProGet server
-  vulns     Audit packages and assess vulnerabilities
-  builds    Manage SCA builds and SBOM documents
-  licenses  Manage license definitions and audit package licenses
+  sources     Manages the list of sources located in the configuration file located at
+              C:\Users\Vasse\AppData\Roaming\pgutil\pgutil.config
+  health      Displays health and status information
+  packages    Works with packages on a ProGet server
+  vulns       Audits packages and assesses vulnerabilities
+  builds      Manages SCA builds and SBOM documents
+  licenses    Manages license definitions and audits package licenses
+  apikeys     Manages ProGet API keys
+  assets      Works with a ProGet asset directory
+  settings    Manages ProGet Settings
+  feeds       Views and manages ProGet feeds
+  connectors  Views and manages ProGet connectors
 ```
 
 ### pgutil Commands
 
 If you run `pgutil` with a command (e.g. `pgutil packages`), it will return the description and usage of the command, along with all the options categorized under that particular set:
 
-```
+```plaintext
 $> pgutil packages
 
 Description:
-  Work with packages on a ProGet server
+  Works with packages on a ProGet server
 
 Usage:
   pgutil packages [command] [options]
 
-
-Common Options (packages):
-  --api-key=<api-key>    ProGet API key used to authorize access
-  --feed=<feed>          Name of feed in ProGet
-  --no-connectors        Only include local (non-connector) package data in results
-  --password=<password>  ProGet user password used to authorize access
-  --source=<source>      Named source or URL of ProGet
-  --username=<username>  ProGet user name used to authorize access
-  -?, --help             Show help and usage information
-
 Commands:
-  download   Download a package file from ProGet
-  upload     Upload a package file to ProGet.
+  download   Downloads a package file from ProGet
+  upload     Uploads a package file to ProGet.
   delete     Deletes a package from ProGet
-  status     Change the status of a package on ProGet
+  status     Changes the status of a package on ProGet
   repackage  Repackages a package in ProGet to a package with a different version
   promote    Promotes a package from one feed to another
-  audit      Analyze a package for compliance issues
+  audit      Analyzes a package for compliance issues
+  list       Displays latest versions of packages in a feed
+  versions   Displays all versions of packages in a feed
 ```
+
 To return a detailed list of options for any command, you can use the `--help` option with the respective command. For example, to view all available options for the command `pgutil packages download`, run:
 
-```
+```plaintext
 pgutil packages download --help
 ```
 
@@ -109,7 +105,7 @@ The `sources add` command is used to add a source to the configuration file.
 At a minimum, a source requires a name (e.g. `Default`) and a ProGet server url (e.g. `https://proget.corp.local/`), but you you'll likely also want to add an API key (e.g. `abc12345`).
 
 :::(Info) (🚀 Quick Example: Adding Default Source with an API Key)
-```cli
+```plaintext
 pgutil sources add --name=Default --url=https://proget.corp.local/ --api-key=abc12345
 ```
 :::
@@ -128,7 +124,7 @@ Unless you specify the `--plain-text` option, Passwords and API Keys will not be
 
 The `sources list` command will list all sources located in the configuration file.
 
-```cli
+```plaintext
 $> pgutil sources list
 
 1. Default
@@ -144,7 +140,7 @@ The `sources list` command does not require any arguments.
 
 The `sources remove` command will remove a source from the configuration file.
 
-```cli
+```plaintext
 $> pgutil sources remove --name=MyPackages
 
 Removed MyPackages source.
@@ -156,7 +152,7 @@ Note that you must specify the `--name` when removing a source, even for the "De
 
 The `sources test` command is used to test the connections to your sources. 
 
-```cli
+```plaintext
 $: pgutil sources test
 
 [Default] Successfully contacted ProGet 24.0.0
