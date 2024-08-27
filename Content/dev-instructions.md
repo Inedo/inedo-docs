@@ -107,7 +107,7 @@ Available Properties:
 
 | Property | Type | Description |
 | -------- | ---- | ----------- |
-| `title` | `string` | Title that will show in the tab, navigarion tree, and H1 (default uses the file name) |
+| `title` | `string` | Title that will show in the tab, navigation tree, and H1 (default uses the file name) |
 | `nav-title` | `string` | Title that will show in the navigation tree (**overrides `title`**) (default uses the title) |
 | `max-header-level` | `int` | The max header level to show in the table of contents (default is 2) |
 | `masterpage` | `string` | The name of the master page file to use for the page layout.  This can be a global or a side-by-side path (default is DocsArticlePage.html) |
@@ -247,7 +247,7 @@ The config file is stored side-by-side with the nDocs local server in a file nam
         - Example: `## Using Feed Connectors { #feed-connectors }`
 
 ### Code Blocks
-- Codeblocks should always have a language applied to them (e.g ` ```bash `)
+- Code blocks should always have a language applied to them (e.g ` ```bash `)
     - This is to ensure that code blocks are displayed consistently
     - Use the language most applicable to the code (e.g. `yaml`, `xml`, `html`, etc.)
     - When a language does not appear applicable (e.g. CLI commands) use `bash`

@@ -3,45 +3,52 @@ title: "PyPI (Python)"
 order: 13
 ---
 
-
 The Python Package Index ([PyPI](https://pypi.org/)) is the main repository for software and libraries written in the Python programming language. Since version 5.2, ProGet supports the creation of PyPI feeds to host and deploy custom Python software packages.
 
 ### Installing Packages
 
 PyPI packages are installed using [pip](https://pip.pypa.io). To install a package from a ProGet feed, use the following command:
 
-```
+```bash
 pip install {package-name}=={package-version} -i http://{proget-server}/pypi/{feed-name}/simple 
 ```
 
 #### Authenticated Feeds
+
 If you've configured your feed to require authentication, there are two ways that pip can be configured to include authentication; basic authentication passed with the URL in the `pip install` command or by configuing a [pip config](https://pip.pypa.io/en/stable/topics/configuration/) file.
 
-<h5>Using `pip install` With a URL Parameter</h5>
+#### Using `pip install` With a URL Parameter
 
-To pass basic authentication along with the URL in the `pip install` command, you will need to add a `--trusted-host` parameter containing your ProGet host and insert the username and password into the begining of your URL.  The pip install command would look like this:
-```
+To pass basic authentication along with the URL in the `pip install` command, you will need to add a `--trusted-host` parameter containing your ProGet host and insert the username and password into the beginning of your URL. The pip install command would look like this:
+
+```bash
 pip install {package-name}=={package-version} --trusted-host {proget-server} -i https://{user-name}:{password}@{proget-server}/pypi/{feed-name}/simple 
 ```
 
 For example, if you are installing Flask 2.3.3 from a ProGet feed with the endpoint `https://myprogetserver.com/pypi/approved-pypi/simple`, your command would look like this:
-```
+
+```bash
 pip install flask==2.3.3 --trusted-host myprogetserver.com -i https://MyUserName:MyPassword123!@{myprogetserver.com/pypi/approved-pypi/simple
 ```
 
 If you are using an API key, you will need to use `api` for the username:
-```
+
+```bash
 pip install flask==2.3.3 --trusted-host myprogetserver.com -i https://api:MyApiKey123!@{myprogetserver.com/pypi/approved-pypi/simple
 ```
-<h5>Using a pip Config</h5>
-To configure pip to use a [pip config](https://pip.pypa.io/en/stable/topics/configuration/) file to store the authenticated feed, you will need use the [pip config](https://pip.pypa.io/en/stable/cli/pip_config/) command.
-```
+
+#### Using a pip Config
+
+To configure pip to use a [pip config](https://pip.pypa.io/en/stable/topics/configuration/) file to store the authenticated feed, you will need to use the [pip config](https://pip.pypa.io/en/stable/cli/pip_config/) command.
+
+```bash
 pip config --global set global.index-url https://{user-name}:{password}@{proget-server}/pypi/{feed-name}/simple
 pip config --global set global.trusted-host {proget-server}
 ```
 
 These commands will generate a pip config file that looks like:
-```
+
+```bash
 [global]
 index-url = https://{user-name}:{password}@{proget-server}/pypi/{feed-name}/simple
 trusted-host = {proget-server}
@@ -61,7 +68,7 @@ To learn how to create a package that can be hosted by ProGet, visit the [Packag
 
 PyPI packages are pushed to ProGet using [twine](https://pypi.org/project/twine/). To push a package to a ProGet feed, use the following command:
 
-```
+```bash
 twine upload -u {user-name} -p {password} --repository-url http://{proget-server}/pypi/{feed-name}/legacy <dist>
 ```
 
@@ -73,7 +80,7 @@ To use an API key, you will need to use `api` for the username and the API key a
 
 PyPI packages may be published to ProGet with cURL using the following syntax:
 
-```
+```bash
 curl https://{proget-server}/pypi/{feed-name}/upload/<packageName-version.tar.gz> --user <user>:<password> --upload-file <packageName-version.tar.gz>
 ```
 
@@ -91,7 +98,6 @@ Most PyPI repositories do not provide a user interface and are not designed to b
 #### Non-PyPI.org repositories
  * PyPI.org implements a JSON API that provides some extra metadata for packages (such as a readme file), but most other repositories do not have this
  * Very basic information can be browsed in the ProGet UI if you know the exact name of the package, but this should primarily be used as a proxy instead of browsed directly
-
 
 ### Technical Limitations (ProGet 2023)
 

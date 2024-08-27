@@ -14,6 +14,7 @@ You can organize package feeds in a number of ways. For example, you may want to
 Another way to organize feeds is by quality ( Untested, Production-ready, etc.). Configurations such as security and storage can also be a deciding factor in organizing your various feeds. With ProGet, you to place [Security and Access Controls](/docs/proget/administration-security) to feeds and give teams different access to different feeds. For example, you may want Lead Engineers to be able to publish packages to the Production Feed.
 
 ## Feed Groups
+
 As of ProGet v6, feeds can be placed in different feed groups, which can be helpful:
 
 * Visual grouping of related applications in the user interface

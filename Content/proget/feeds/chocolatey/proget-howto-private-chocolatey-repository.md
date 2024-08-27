@@ -3,7 +3,6 @@ title: "HOWTO: Set Up a Private Chocolatey Repository"
 order: 1
 ---
 
-
 Chocolatey is a system package manager for Windows that helps you configure computers quickly and automatically by installing applications and tools with Chocolatey packages.
 
 ProGet can be configured as a private Chocolatey repository and host all your Chocolatey packages! If you want to download third-party Chocolatey packages, a ProGet feed can be used to directly connect to [chocolatey.org](https://chocolatey.org/). Alternatively, if you want to use internalized packages exclusively, a separate feed that hosts internalized Chocolatey packages can be created.
@@ -40,7 +39,7 @@ It is usually recommended to create two feeds, for unapproved and approved packa
 
 ## Step 3: Name feed
 
-Next, name your feed. `public-chocolately` would be appropriate in this case as it clearly indicates that this feed contains public Chocolatey packages. Then select [Create Feeds].
+Next, name your feed. `public-chocolatey` would be appropriate in this case as it clearly indicates that this feed contains public Chocolatey packages. Then select [Create Feeds].
 
 ![Name Feed "name-feed"](/resources/docs/proget-chocolatey-namefeed.png){height="" width="50%"}
 
@@ -94,7 +93,7 @@ Be sure to change the title or edit the description of your internalized package
 ## Step 2: Create an Internalized Feed in ProGet
 Now that your packages are internalized, a separate feed should be created exclusively for approved internalized Chocolatey packages.
 
-As with creating a public feed, start by navigating to "Feed", selecting [Create New Feed] and selecting "Chocolately Packages" from the list.
+As with creating a public feed, start by navigating to "Feed", selecting [Create New Feed] and selecting "Chocolatey Packages" from the list.
 
 ## Step 3: Configure feed
 

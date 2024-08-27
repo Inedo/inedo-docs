@@ -15,7 +15,7 @@ Depending on the version of ProGet you're using and the feed type, there are sev
 ##  ProGet Feed-to-Feed Migration (Recommended)
 *This method requires ProGet 2023.22+ and works with all feed types except Docker and Bower.*
 
-The built-in Feed-to-Feed is the preferred method for migration and involves using ProGet's step by step instructions to migrate all packages from an existing feed to a newly created one.
+The built-in Feed-to-Feed is the preferred method for migration and involves using ProGet's step-by-step instructions to migrate all packages from an existing feed to a newly created one.
 
 It is easy to configure and involves creating a new feed in an instance that migrates across all packages from a feed in another instance.
 
@@ -30,14 +30,13 @@ During this set up you will need the **ProGet server URL** of your previous inst
 
 Bulk Upload method is a good alternative for users on ProGet versions earlier than 2023.22.
 
-Using bulk upload  simple but requires packages to be manually copied to the target server, or to a network path accessible from the target server. 
+Using bulk upload is simple but requires packages to be manually copied to the target server, or to a network path accessible from the target server. 
 
 :::(Info)
 Before migrating via drop path we recommend clearing your [Feed Connector cache](/docs/proget/feeds/connector-overview#connector-caching?#connector-caching). Otherwise, you'll import all of your cached packages.
 :::
 
 See the [Uploading via Bulk Upload](/docs/proget/installation/migrating-to-proget/proget-other-feed-migration#uploading-via-bulk-upload) section of our guide on [Migrating From Other Repositories to ProGet](/docs/proget/installation/migrating-to-proget/proget-other-feed-migration) to learn more.
-
 
 ## Using Feed Replication
 *This method requires at least two instances of ProGet with Enterprise Edition licenses. If you do not have ProGet Enterprise or your instances are isolated, you must use an alternative method.*
@@ -53,9 +52,11 @@ To replicate a feed navigate to "Feeds" and select the navigation tab.
 See our page on [Feed Replication](/docs/proget/replication-feed-mirroring/proget-advanced-feed-replication) to learn more.
 
 ## Additional Migration Methods
-Users of older versions of ProGet may not be able to use the methods listed above as certain features or package types may not have been implemented. For these users there are a few options available:
+
+Users of older versions of ProGet may not be able to use the methods listed above as certain features or package types may not have been implemented. For these users, there are a few options available:
 
 ### Connector Downloaders (Legacy)
+
 This involves setting up a Feed Connector to directly connect to a ProGet feed, and then importing packages from it. The feature will likely be removed in ProGet 2024, in favor of Feed-to-Feed migrations.
 
 See the [Configuring a Connector](/docs/proget/installation/migrating-to-proget/proget-other-feed-migration#configuring-a-connector) section of our guide on [Migrating from other repositories](/docs/proget/installation/migrating-to-proget/proget-other-feed-migration) to learn more on how to set this up.
@@ -64,23 +65,28 @@ By selecting "Manage Feed" in any feed and navigating to "Connectors", you can t
 
 ![Import](/resources/docs/proget-connector-import.png){height="" width="50%"}
 
-The icon is only available for supported feed types and non-public repositories. It is intended for migration and is not supported for public open source repositories (e.g. nuget.org, npmjs.org), which have an extremely large number of packages.
+The icon is only available for supported feed types and non-public repositories. It is intended for migration and is not supported for public open-source repositories (e.g. nuget.org, npmjs.org), which have an extremely large number of packages.
 
 ### Direct Database and File System Import/Export (Not recommended / Not Supported)
+
 This method is complicated, and the samples provided only work on ProGet 2022 and earlier. We don't recommend using this method... but if you're comfortable with SQL Server it might work for you.
 
 #### Step 1: Find Feed ID and Storage Path
+
 Determine the feed ID of the source feed by visiting the "Admin" > "Manage Feed" page and looking at the ?feedId= part of the URL in the browser. Then locate the package storage path from the source feed.
 
 #### Step 2: Execute Export Script
+
 Connect to the source instance's database using SSMS (for SQL Server). Next, Execute an [export script](https://gist.github.com/inedo-builds/3bfdf846fb78fdf5ecd03d736682679f) against your ProGet database, substituting the feed ID determined in step 1.
 
-#### Step 3: Create a Feed 
+#### Step 3: Create a Feed
+
 Save the XML output from step 3 into a file, and copy the file to the server hosting the target's database. Then, create a new feed of the same type in the target instance.
 
 #### Step 4: Copy Contents
-Locate the package storage path of the target feed by visiting the "Admin" > "Manage Feed" page and copy all contents recursively from the path determined in step 1 to this path.
+
+Locate the package storage path of the target feed by visiting the "Admin" > "Manage Feed" page and copy all contents recursively from the path determined in Step 1 to this path.
 
 #### Step 5: Execute Import Script
-Connect to the target instance's database using SSMS and execute the [import script](https://gist.github.com/inedo-builds/80486de84fd413313d54eb80edb821bf), substituting the target feed ID and input the XML file name. Finally, disable the old feed.
 
+Connect to the target instance's database using SSMS and execute the [import script](https://gist.github.com/inedo-builds/80486de84fd413313d54eb80edb821bf), substituting the target feed ID and inputting the XML file name. Finally, disable the old feed.
