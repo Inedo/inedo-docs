@@ -61,7 +61,7 @@ We don't recommend using the Native API unless absolutely necessary; we do not d
 
 All of these methods require that an API Key with Native API Access is passed into each request; see _Using API Keys_ for more information.
 
-```
+```plaintext
 URL:
 http://feeds.fd.local:2000/api/json/Feeds_CreateFeed
 
@@ -78,13 +78,13 @@ Body:
 
 You can also use querystrings with the JSON-based API. To delete a license and all associated rules, we need to perform two requests:
 
-```
+```plaintext
 GET or POST /api/json/Licenses_GetLicenses?key=«api-key»
 ```
 
 The first request gives us a JSON array containing JSON objects with properties of licenses in ProGet. Each license is uniquely identified with a `License_Id`, which we will feed into the next request:
 
-```
+```plaintext
 POST /api/json/Licenses_DeleteLicense?key=«api-key»&License_Id=«application-id»
 ```
 
@@ -95,7 +95,7 @@ The response contains no data, as it's just a delete, and the built-in reference
 Those familiar with SQL Server and database coding may find it simpler to invoke the stored procedures directly instead of going through the Native API. This is particularly useful for one-off scripts and it can be used in conjunction with `SELECT` statements against other tables in the database.
 
 For example:
-```
+```sql
 DECLARE @License_Id INT
 
 SELECT @License_Id = [License_Id] FROM [Licenses] WHERE [External_Id] = '«MIT, etc.»'
