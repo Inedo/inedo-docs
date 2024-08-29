@@ -1129,6 +1129,30 @@
   <redirect from="/docs/otter-global-components-rafts-git-rafts" to="/docs/otter/scripting-in-otter/otter-rafts-and-git-storage" modified="2/25/2022 12:00:00 AM" />
   <redirect from="/docs/otter-global-components-rafts-pipeline-rafts" to="/docs/otter/scripting-in-otter/otter-rafts-and-git-storage" modified="2/25/2022 12:00:00 AM" />
   <redirect from="/docs/otter-global-components-rafts" to="/docs/otter/scripting-in-otter/otter-rafts-and-git-storage" modified="2/25/2022 12:00:00 AM" />
+  
+  <redirect from="/docs/upack-universal-packages-metacontent-guidance-manifest-speci" to="/docs/proget/upack/upack-universal-packages/upack-universal-packages-manifest"
+  <redirect from="/docs/upack-feed-api-endpoints)." to="/docs/proget/upack/proget-api-universalfeed"
+  <redirect from="/docs/proget-reference-api-feed-management" to="/docs/proget/reference-api/feeds/proget-api-feeds"
+  <redirect from="/docs/upack-feed-api-endpoints" to="/docs/proget/upack/proget-api-universalfeed"
+  <redirect from="/docs/upack-universal-packages-metacontent-guidance-manifest-speci-docs-upack-universal-packages-metacontent-guidance-manifest-speci" to="/docs/proget/upack/upack-universal-packages/upack-universal-packages-manifest"
+  <redirect from="/docs/proget-reference-api-feed-management)." to="/docs/proget/reference-api/feeds/proget-api-feeds"
+  <redirect from="/docs/proget-reference-api-native-docs-proget-reference-api-proget-api-http" to="/docs/proget/reference-api"
+  <redirect from="/docs/various-universal-packages-universal-feed-api-docs-proget-upack-upack-overview-docs-various-universal-packages-universal-feed-api-docs-proget-upack-upack-overview" to="/docs/proget/upack/upack-overview"
+  <redirect from="/docs/upack-feed-api-endpoints).-docs-upack-feed-api-endpoints).-docs-upack-feed-api-endpoints).-docs-upack-feed-api-endpoints)." to="/docs/proget/upack/proget-api-universalfeed"
+  <redirect from="/docs/upack-feed-api-endpoints-docs-upack-feed-api-endpoints" to="/docs/proget/upack/proget-api-universalfeed"
+  <redirect from="/docs/upack-universal-packages-metacontent-guidance-manifest-speci-docs-upack-universal-packages-metacontent-guidance-manifest-speci-docs-upack-universal-packages-metacontent-guidance-manifest-speci-docs-upack-universal-packages-metacontent-guidance-manifest-speci" to="/docs/proget/upack/upack-universal-packages/upack-universal-packages-manifest"
+  <redirect from="/docs/various-universal-packages-universal-feed-api-docs-proget-upack-upack-overview" to="/docs/proget/upack/upack-overview"
+  <redirect from="/docs/otter-execution-engine-statements-and-blocks-runtime-variables" to="/docs/executionengine/overview/statements-and-blocks/otter-execution-engine-runtime-variables"
+  <redirect from="/docs/upack-feed-api-endpoints).-docs-upack-feed-api-endpoints)." to="/docs/proget/upack/proget-api-universalfeed"
+  <redirect from="/docs/upack-feed-api-endpoints).-docs-upack-feed-api-endpoints).-docs-upack-feed-api-endpoints).-docs-upack-feed-api-endpoints).-docs-upack-feed-api-endpoints).-docs-upack-feed-api-endpoints).-docs-upack-feed-api-endpoints).-docs-upack-feed-api-endpoints)." to="/docs/proget/upack/proget-api-universalfeed"
+  <redirect from="/docs/upack-feed-api-endpoints-docs-upack-feed-api-endpoints-docs-upack-feed-api-endpoints-docs-upack-feed-api-endpoints" to="/docs/proget/upack/proget-api-universalfeed"
+  <redirect from="/docs/upack-feed-api-endpoints-docs-upack-feed-api-endpoints-docs-upack-feed-api-endpoints-docs-upack-feed-api-endpoints-docs-upack-feed-api-endpoints-docs-upack-feed-api-endpoints-docs-upack-feed-api-endpoints-docs-upack-feed-api-endpoints" to="/docs/proget/upack/proget-api-universalfeed"
+  <redirect from="/docs/buildmaster-reference-operations-buildmaster-invoke-module" to="/docs/buildmaster/reference/operations"
+  <redirect from="/docs/buildmaster/installation-maintenance/buildmaster-legacy/buildmaster-howto-application-templates" to="/docs/buildmaster/installation-maintenance/buildmaster-legacy/buildmaster-legacy-application-templates"
+  <redirect from="/docs/docs" to="/"
+  <redirect from="/docs/proget-reference-api-native-docs-proget-reference-api-proget-api-http-docs-proget-reference-api-native-docs-proget-reference-api-proget-api-http" to="/docs/proget/reference-api"
+  <redirect from="/docs/proget-reference-api-package-promotion" to="/docs/proget/reference-api/proget-api-packages/proget-api-packages-promote"
+  <redirect from="/docs/search" to="/"
   <!--End of Doc360 Redirects-->
 
 
