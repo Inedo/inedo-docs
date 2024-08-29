@@ -18,14 +18,14 @@ The `builds scan` command is used to scan a build of a project.
 
 The `--input`, `--project-name` and `--version` options are always required.
 
-**Scanning a build** requires the input (e.g. `myApplication.csproj`), project name (e.g. `myProject`) and version (e.g. `1.2.3`):
+**Scanning a project** requires the input (e.g. `myApplication.csproj`), project name (e.g. `myProject`) and version (e.g. `1.2.3`):
 
 ```
 pgutil builds scan --input=myApplication.csproj --project-name="myProject" --version=1.2.3
 ```
 
 ## HTTP Request Specification
-To scan a build, simply `POST` to the URL with an [appropriate API Key](/docs/proget/reference-api/proget-api-sca#authentication)
+To scan a project, simply `POST` to the URL with an [appropriate API Key](/docs/proget/reference-api/proget-api-sca#authentication)
 
 ```
 POST /api/sca/
