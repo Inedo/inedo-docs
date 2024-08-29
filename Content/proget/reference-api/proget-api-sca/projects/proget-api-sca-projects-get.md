@@ -8,7 +8,7 @@ order: 2
 :::(Info) (🚀 Quick Example: Getting a Project with Curl)
 This example gets a project `myProject`, authenticating with the API key `abc12345`:
 
-````
+````bash
 curl -X GET -H "X-ApiKey: abc12345" "https://proget.corp.local/api/sca/projects?project=myProject"
 ````
 :::
@@ -16,7 +16,7 @@ curl -X GET -H "X-ApiKey: abc12345" "https://proget.corp.local/api/sca/projects?
 ## HTTP Request Specification
 To get a project, simply `GET` to the URL with an [appropriate API Key](/docs/proget/reference-api/proget-api-sca#authentication).
 
-```
+```plaintext
 GET /api/sca/projects?name=«projectName»
 ```
 
@@ -44,5 +44,5 @@ GET /api/sca/projects?project=myProject
 | **200 (Success)** | body will contain a [ProjectInfo](/docs/proget/reference-api/proget-api-sca#projectinfo-object) object |
 | **400 (Invalid Input)** | indicates invalid or missing properties |
 | **403 (Unauthorized API Key)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/reference-api/proget-api-sca#authentication); the body will be empty |
-|  **404 (Project or Release Not Found)** | indicates that the specified project or project does not exist | 
+| **404 (Project Not Found)** | indicates that the specified project does not exist | 
 | **500 (Server Error)** | indicates an unexpected error; the body will contain the message and stack trace, and this will also be logged |

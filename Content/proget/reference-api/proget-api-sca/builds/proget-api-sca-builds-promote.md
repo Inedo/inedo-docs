@@ -38,5 +38,5 @@ POST /api/sca/promote-build?project=«project»&version=«version»&stage=«stag
 | **200 (Success)** | The build was promoted to the specified stage |
 | **400 (Invalid Input)** | indicates invalid or missing properties |
 | **403 (Unauthorized API Key)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/reference-api/proget-api-sca#authentication); the body will be empty |
-|  **404 (Project or Build Not Found)** | indicates that the specified project or build was not found | 
+| **404 (Project or Build Not Found)** | indicates that the specified project or build does not exist | 
 | **500 (Server Error)** | indicates an unexpected error; the body will contain the message and stack trace, and this will also be logged |

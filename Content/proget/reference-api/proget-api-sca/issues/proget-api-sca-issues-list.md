@@ -10,7 +10,7 @@ Note, that if there are no issues in a release, an empty array is returned.
 :::(Info) (🚀 Quick Example: Listing Issues with pgutil)
 This example lists all issues in build version `1.2.3` of a project `myProject`:
 
-```
+```bash
 pgutil builds issues list --project=myProject --build=1.2.3
 ```
 :::
@@ -22,19 +22,19 @@ The `--project` and `--build` options are always required.
 
 **Listing issues** requires the project (e.g. `myProject`) and the build version (e.g. `1.2.3`)
 
-```
+```bash
 pgutil builds issues list --project=myProject --build=1.2.3
 ```
 
 Example output:
-```
+```plaintext
 #1 -  because of Vulnerability (PGV-2245804), Package Status (Unlisted, Deprecated) is unknown, No license detected.
 ```
 
 ## HTTP Request Specification
 To list all issues of a release, simply `GET` to the URL with an [appropriate API Key](/docs/proget/reference-api/proget-api-sca#authentication).
 
-```
+```plaintext
 GET /api/sca/issues?project=«projectName»&version=«releaseVersion»
 ```
 
@@ -73,6 +73,6 @@ GET /api/sca/issues?project=myProject&version=1.2.3
 | --- | --- |
 | **200 (Success)** | body will contain an array of [IssueInfo](/docs/proget/reference-api/proget-api-sca#issueinfo-object) objects |
 | **400 (Invalid Input)** | indicates invalid or missing properties |
-|  **403 (Unauthorized API Key)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/reference-api/proget-api-sca#authentication); the body will be empty |
-|  **404 (Project or Release Not Found)** | indicates that the specified project | 
+| **403 (Unauthorized API Key)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/reference-api/proget-api-sca#authentication); the body will be empty |
+|  **404 (Project Not Found)** | indicates that the specified project does not exist | 
 | **500 (Server Error)** | indicates an unexpected error; the body will contain the message and stack trace, and this will also be logged |
