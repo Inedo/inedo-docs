@@ -51,7 +51,7 @@ This additional syntax means that `@` and `%` characters do not need to be expli
 
 ### Escaping Expansion
 
-The grave apostrophe (```) serves as an escape character. The following can be escaped:
+The grave apostrophe (` ``` `) serves as an escape character. The following can be escaped:
 
 *   Variable indicator - `$`, `@`, `%`
 *   Whitespace - `n`, `t`, `r`
