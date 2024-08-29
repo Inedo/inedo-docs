@@ -9,7 +9,7 @@ order: 18
 
 Pub packages are added as dependencies to a `pubspec.yaml` file. To use a package from a ProGet feed, add an entry like this to `pubspec.yaml` in the `dependencies` section:
 
-```
+```yaml
 {package-name}:
  hosted: {proget-server}/pub/{feed-name}
  version: ^{package-version}
@@ -21,13 +21,13 @@ If you've configured your feed to require authentication, you must add a token t
 
 Next, add that API key to dart/flutter as a token using the `pub token add` command:
 
-```
+```bash
 dart pub token add {proget-server}/pub/{feed-name}
 ```
 
 or
 
-```
+```bash
 flutter pub token add {proget-server}/pub/{feed-name}
 ```
 
@@ -41,7 +41,7 @@ To learn how to create a pub package that can be hosted by ProGet, see [the offi
 
 To publish a package to ProGet using Dart or Flutter, add a `publish_to` field to your `pubspec.yaml` file:
 
-```
+```bash
 publish_to: {proget-server}/pub/{feed-name}
 ```
 

@@ -3,7 +3,6 @@ title: "HOWTO: Add ProGet as Package Source in Visual Studio"
 order: 4
 ---
 
-
 Connecting ProGet with Visual Studio is a great way to increase the security of the most widely used integrated development environment for Windows developers. ProGet acts as a NuGet Package Manager for Visual Studio, as ProGet can detect package licenses, scan packages for vulnerabilities, and control promotion between feeds.
 
 This guide describes how to connect Visual Studio and ProGet and how to set up authentication for a NuGet feed connected to ProGet in Visual Studio.
@@ -20,7 +19,7 @@ Navigate to the top of the desired feed and copy the API endpoint URL at the top
 
 ## Step 2: In Visual Studio, open Package Manager Settings
 
-Navigate *Tools > NuGet Package Manager > Package Manager Settings*
+Navigate to "Tools" > "NuGet Package Manager" > "Package Manager Settings"
 
 ## Step 3: Disable nuget.org in your Package Manager Settings
 
@@ -40,15 +39,15 @@ This prevents Visual Studio from scanning both NuGet.org and ProGet for packages
 
 ## Step 5: Save your package source configuration
 
-1. Click the  [Update] button.
-2. Click the [OK] button.
+1. Click the "Update" button.
+2. Click the "OK" button.
 
 ![visualstudio-packagesources-updateandok.png](/resources/docs/visualstudio-packagesources-updateandok.png)
 
 Visual Studio and ProGet are now connected.
 
-:::(Warning) (Be sure to click [Update] prior to clicking [OK])
-If you click [OK] without clicking [Update] your package source configuration will not be saved in Visual Studio.
+:::(Warning) (Be sure to click "Update" prior to clicking "OK")
+If you click "OK" without clicking "Update" your package source configuration will not be saved in Visual Studio.
 :::
 
 ## Step 6: Check the connection
@@ -67,7 +66,7 @@ Teams can require authentication for feeds in ProGet, which means that users mus
 
 Before you can set up an authenticated feed in Visual Studio, you must be logged in as an administrator in ProGet.
 
-Once you're logged in, navigate to *Settings > Users and Tasks > Tasks*
+Once you're logged in, navigate to "Settings" > "Users and Tasks" > "Tasks"
 
 In ProGet, "Anonymous" is an administrator by default. This is to facilitate the initial setup of ProGet on a server. If you haven't already done so, remove the anonymous access.
 
@@ -81,11 +80,11 @@ Read [our guide on restrictions and permissions](/docs/proget/administration-sec
 
 Under the user icon in the top-right of ProGet, select “Personal API Keys”
 
-At the bottom of the page, click [Create Personal API Key]
+At the bottom of the page, click "Create Personal API Key"
 
 ![proget-personalapikey-create.png](/resources/docs/proget-personalapikey-create.png)
 
-In the pop-up, type an appropriate display name and click [Create API Key]
+In the pop-up, type an appropriate display name and click "Create API Key"
 
 Then, click on the display name and the pop-up will appear again, this time with the Personal API key generated.
 
@@ -103,11 +102,12 @@ As the password, add the personal API key from step B.
 
 ![visualstudio-connecttoserver-inputted.png](/resources/docs/visualstudio-connecttoserver-inputted.png)
 
-Click [OK]
+Click "OK"
 
 You’ve now configured an Authenticated NuGet feed in Visual Studio. 
 
 ## Troubleshooting
+
 ### Authentication Error
 
 An error may occur when trying to browse the authenticated NuGet feed in Visual Studio.

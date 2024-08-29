@@ -17,13 +17,13 @@ Although ProGet was tested with older versions, we recommend using Conda 4.10.0 
 
 Before installing packages from ProGet, you should add ProGet to your list of Conda channels by using the [`conda config` command](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-channels.html).
 
-```(Shell)
+```shell
 conda config --add channels http://«proget-server»/conda/«feed-name»
 ```
 
 If you want to install packages only from ProGet, then you'll want to remove other channels. 
 
-```(Shell)
+```shell
 $ conda config --show channels
 channels:
  - defaults
@@ -35,6 +35,7 @@ $ conda config --remove channels defaults
 Note that these sources are stored in your `~/.condarc` file.
 
 #### Authenticated Feeds & Channels
+
 If you've configured your feed to require authentication, you'll need to edit your `~/.condarc` file to include basic authentication credentials in the channel URL.
 
 These credentials can be your ProGet username and password, or a ProGet API key (that uses "api" as the username). For example:
@@ -45,9 +46,9 @@ These credentials can be your ProGet username and password, or a ProGet API key 
 The ` «username»`, `«password»`, and `«api-key»` must be url-encoded.
 :::
 
-You can also override the channel in the `conda install` and `conda search` command and include authentication in the URL.  This can be done using the `--override-channels` parameter and formating the URL to include the username and password `--channel http://«username»:«password»@«proget-server»/conda/«feed-name»`.  For example:
+You can also override the channel in the `conda install` and `conda search` command and include authentication in the URL.  This can be done using the `--override-channels` parameter and formating the URL to include the username and password `--channel http://«username»:«password»@«proget-server»/conda/«feed-name»`. For example:
 
-```(Shell)
+```shell
 $ conda install «package-name»=«package-version» --channel http://«username»:«password»@«proget-server»/conda/«feed-name» --override-channels
 ```
 
@@ -55,20 +56,18 @@ $ conda install «package-name»=«package-version» --channel http://«username
 
 You can use the [`conda search` command](https://docs.conda.io/projects/conda/en/latest/commands/search.html) to make sure that your client is properly connected to ProGet.
 
-```(Shell)
+```shell
 $ conda search «search-string»
 ```
 
 This will search all sources configured in your `~/.condarc` file.
-
-
 
 ## Installing Packages
 
 You can use Conda packages from ProGet just like you would from anaconda.org. Packages are generally installed using the [`conda install` command](https://docs.conda.io/projects/conda/en/latest/commands/install.html):
 
 
-```(Shell)
+```shell
 $ conda install «package-name»=«package-version»
 ```
 
@@ -76,32 +75,35 @@ $ conda install «package-name»=«package-version»
 
 There are no special considerations when creating Conda packages for use in ProGet. ProGet supports all types of Conda packages, including .tar.bz2 files and the newer .conda format files. 
 
-
-
 ## Publishing Packages
 
-You can push a Conda package to Proget by either uploading it through the ProGet site, or uploading a package to http://«proget-server»/conda/«feed-name» using an HTTP PUT or POST request. For example, to upload a package using curl:
+You can push a Conda package to Proget by either uploading it through the ProGet site, or uploading a package to http://«proget-server»/conda/«feed-name» using an HTTP `PUT` or `POST` request. For example, to upload a package using curl:
 
-```(Shell)
+```shell
 $ curl --host http://«proget-server»/conda/«feed-name» --user «user»:«password» --upload-file «package-name-version».conda
 ```
 
 ## Using pgscan With Conda and ProGet SCA
+
 `pgscan` is a [free and open-source](https://github.com/inedo/pgscan) tool designed to run immediately after building your application, generally as part of the Continuous Integration (CI) process. Starting in 1.5.6, pgscan added support to scan a [Conda environment file](https://conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#building-identical-conda-environments).
 
 To create a Conda environment file, you will need to run either:
-```
+
+```bash
 conda list --explicit > requirments.txt
 ```
+
 or
-```
+
+```bash
 conda list --export > requirments.txt
 ```
 
-This will list create a text file with a list of depedencies used by your Conda library or application.  Once this hfile has been generated, you will need to run the `pgscan identify` passing your requirements.txt to the `--input` command.  
+This will list create a text file with a list of dependencies used by your Conda library or application.  Once this file has been generated, you will need to run the `pgscan identify` passing your requirements.txt to the `--input` command.  
 
 For example, to run pgscan for your Conda application, you would run:
-```
+
+```bash
 conda list --explicit > requirments.txt
 pgscan identify
  --api-key=mySecretKey1000

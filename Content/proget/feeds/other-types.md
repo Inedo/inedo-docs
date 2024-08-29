@@ -11,43 +11,49 @@ This document explains the challenges of new feed types, how we support them, an
 
 We learned the hard way that many third-party package managers have an insanely complicated API that isn't only undocumented, but also requires a significant amount of reverse engineering just to understand how it might be implemented in a private repository.
 
-This isn't a criticism per se, it's just that most of these third-party package managers were designed for community-built, free/open source packages. This use case is completely different than a private repository like ProGet, which requires things like security beyond a simple API key, connectors, replication, license validation, etc.
+This isn't a criticism per se, it's just that most of these third-party package managers were designed for community-built, free/open-source packages. This use case is completely different than a private repository like ProGet, which requires things like security beyond a simple API key, connectors, replication, license validation, etc.
 
-For us, one of the biggest challenges with these third-party package types is that we lack expertise in most third-party package formats. For example, when it comes to developer packages, we're experts in C#/. NET (we use it to build our tools), so our engineers are very familiar with all the intricacies and complexities of NuGet. We definitely don't have that expertise in Java, Python, R, Perl, Rust, Ada, COBOL or 99% of programming languages. This makes it quite difficult to learn the package managers that use these languages.
+For us, one of the biggest challenges with these third-party package types is that we lack expertise in most third-party package formats. For example, when it comes to developer packages, we're experts in C#/. NET (we use it to build our tools), so our engineers are very familiar with all the intricacies and complexities of NuGet. We definitely don't have that expertise in Java, Python, R, Perl, Rust, Ada, COBOL, or 99% of programming languages. This makes it quite difficult to learn the package managers that use these languages.
 
 Supporting a new package format means we have to learn how those packages are used, learn the tools in the ecosystem, reverse engineer the package format, figure out the usage conventions, reverse engineer the APIs, etc. before we can even estimate how long it might take to engineer an architecture.
 
-
 ## Partnering with our users
 
-Given the complexity of just understanding the basics of a third-party package format, we've found that the best way to implement new feed types is to work with our users. They're usually much more familiar with these package formats than we're, so they can tell us how to use them, point us to conventions, help us discover the internals, and finally try out a proof-of-concept. The last part (the trial and error) is really important, because we don't want to release a feed type that doesn't work... and we just don't know how to test it in real-world scenarios.
+Given the complexity of just understanding the basics of a third-party package format, we've found that the best way to implement new feed types is to work with our users. They're usually much more familiar with these package formats than we are, so they can tell us how to use them, point us to conventions, help us discover the internals, and finally try out a proof-of-concept. The last part (the trial and error) is really important, because we don't want to release a feed type that doesn't work... and we just don't know how to test it in real-world scenarios.
 
 Without a user partnership, it's hard to support a new feed type. So this page will mainly serve as a place where we discuss the status of various requested third-party feed types.
 
-
 ## Status of new third-party feed types
+
 Feel free to submit pull requests for this page or participate in the linked Q&A discussions if you have more information.
 
 ### ✔ Helm: Completed!
+
 [Helm feeds](/docs/proget/feeds/helm) are available as of ProGet 5.2.
 
 ### ✔ Conda (Anaconda) Packages: Completed
+
  [Conda feeds](/docs/proget/feeds/python-conda) are available as of ProGet v6.0.6.
  
  ### ✔ Alpine (APK) Packages: Completed
+
  [Alpine (APK) feeds](/docs/proget/feeds/alpine) are available as of ProGet 2023.22.
  
 ### ✔ CRAN (R) Packages: Completed
+
  [CRAN (R) feeds](/docs/proget/feeds/cran) are available as of ProGet 2023.23.
 
-### ✔ pub (Dart/Flutter): Completed 
+### ✔ pub (Dart/Flutter): Completed
+
  [pub (Dart/Flutter) feeds](/docs/proget/feeds/pub) are available as of ProGet 2024.11.
 
 ### 📈 Terraform: some recent demand
+
 We've had some interest in [Terraform Private Registries](https://www.terraform.io/registry/private), and the discussion is ongoing in the community forums.  Please join [QA#3570](https://forums.inedo.com/topic/3570) to share your thoughts!
 
 ### 📉 WinGet: very limited demand
-This is brand new from Microsoft, so there's not much demand for private feeds—but there is a [discusson on the forums](https://forums.inedo.com/topic/3257), so please contribute if you're interested.
+
+This is brand new from Microsoft, so there's not much demand for private feeds—but there is a [discussion on the forums](https://forums.inedo.com/topic/3257), so please contribute if you're interested.
 
 ### 📉 Rust Cargo: very limited demand 
 
@@ -56,7 +62,6 @@ We don't really know anything about this format, but we're eager to learn! This 
 ### 📉Vagrant: very limited demand 
 
 We've had three feature requests for Vagrant over the years, but they were casual inquiries and we didn't get any more info from those users. Our general feeling is that Vagrant is kind of on the outs, and containers are probably going to replace it. Hard to say. Share your thoughts by starting a thread in our [forums](https://forums.inedo.com/), and we'll link it here.
-
 
 ### 📉 Conan (C++): very limited demand 
 
@@ -76,7 +81,7 @@ We've had [one request for a Generic OCI Registry](https://forums.inedo.com/topi
 
 ProGet already has rich Docker and Helm chart support, and lets you see what charts relate to which containers, what packages containers use, the vulnerabilities, etc. Implementing an inferior means to store these doesn't seem like a good idea.
 
-Of course, we could be wrong, so please contribute to the above linked discussion to help us understand better!
+Of course, we could be wrong, so please contribute to the above-linked discussion to help us understand better!
 
 ### ❓ PHP Composer/Packagist: Just GitHub Pointers??
 
@@ -97,7 +102,7 @@ This is currently [in discussion on the forms](https://forums.inedo.com/topic/42
 Seems that just using a private Git repository to act as a CocoaPod repo is the only option.
 
 ### 🚫 Homebrew (MacOS): not possible
-This is currently [in discussion on the forums](https://forums.inedo.com/topic/3306); technically this seems as impossible to do as CocoaPods, as Homebrew looks like it's just  GitHub  repositories?  But moreover, there is no market.
+This is currently [in discussion on the forums](https://forums.inedo.com/topic/3306); technically this seems as impossible to do as CocoaPods, as Homebrew looks like it's just GitHub repositories. But moreover, there is no market.
 
 ### 🔎Go: package manager not found
 

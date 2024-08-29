@@ -8,10 +8,13 @@ order: 1
 While other languages, like C#, NodeJs, and Python, can use Inedo's [pgscan](https://github.com/inedo/pgscan) to scan for dependencies and import them to ProGet, Maven works best using the [CycloneDX Maven Plugin](https://github.com/CycloneDX/cyclonedx-maven-plugin) directly.
 
 ## Configuring Your Maven Project
+
 Use the [CycloneDX Maven Plugin](https://github.com/CycloneDX/cyclonedx-maven-plugin) to generate a Software Bill Of Materials (SBOM) and import that file into [ProGet's SCA Projects](https://inedo.com/proget/software-composition-analysis) using the [Exec Maven Plugin](https://www.mojohaus.org/exec-maven-plugin/index.html).
 
 ### Configuring CycloneDX
+
 Add the [CycloneDX Maven Plugin](https://github.com/CycloneDX/cyclonedx-maven-plugin) plugin to the `plugins` node in your project `pom.xml`.
+
 ```xml
 <plugin>
 	<groupId>org.cyclonedx</groupId>
@@ -44,9 +47,9 @@ Add the [CycloneDX Maven Plugin](https://github.com/CycloneDX/cyclonedx-maven-pl
 </plugin>
 ```
 
-Once added, this plugin will generate a Software Bill of Materials (SBOM) XML file duing the package phase of the Maven lifecycle. 
+Once added, this plugin will generate a Software Bill of Materials (SBOM) XML file during the package phase of the Maven lifecycle. 
 
-This will also configure the deploy phase of the Maven lifecycle to append the bom.xml as an artifact on the pacakge with the name `<package_name>-<version>-cyclonedx.xml` (ex: `hello-world-maven-2.0.1-cyclonedx.xml`).
+This will also configure the deploy phase of the Maven lifecycle to append the bom.xml as an artifact on the package with the name `<package_name>-<version>-cyclonedx.xml` (ex: `hello-world-maven-2.0.1-cyclonedx.xml`).
 
 To prevent this file from being uploaded, add `<skipAttach>false</skipAttach>` to the `configuration` node of the CycloneDX Maven plugin.
 
@@ -55,9 +58,10 @@ SNAPSHOT dependencies will be recorded as a snapshot version, not the actual ver
 :::
 
 ### Configuring Maven to Import your SBOM
+
 Once you have configured Maven to generate your SBOM file, you will need to configure the [Exec Maven Plugin](https://www.mojohaus.org/exec-maven-plugin/index.html) to execute curl to import it into your [project in ProGet](/docs/proget/sca/builds).
 
-To do this, we recommend first [creating an API key](/docs/proget/reference-api/proget-apikeys) that has the appropriate permissions upload SBOM documents. Once you have that, you can edit the `plugins` node of your `pom.xml` file as follows.
+To do this, we recommend first [creating an API key](/docs/proget/reference-api/proget-apikeys) that has the appropriate permissions to upload SBOM documents. Once you have that, you can edit the `plugins` node of your `pom.xml` file as follows.
 
 ```xml
 <plugin>
@@ -95,10 +99,12 @@ To do this, we recommend first [creating an API key](/docs/proget/reference-api/
 	</executions>
 </plugin>
 ```
+
 Once added, this plugin will call curl to import the file `sbom.xml` in the build directory into ProGet during the deploy phase of the Maven lifecycle. 
 
 #### Best Practice: Use Properties for the API and API Key
-Instead of specifying the repository URL directly, we recommend using a property. This allows you to not only override the setting at when running the `mvn deploy` command, but to specify the property in the `settings.xml` file instead of in each project.
+
+Instead of specifying the repository URL directly, we recommend using a property. This allows you to not only override the settings when running the `mvn deploy` command, but to specify the property in the `settings.xml` file instead of in each project.
 
 To do this, add (or edit) the `properties` node under the ProGet profile in your `settings.xml` file:
 
@@ -114,6 +120,7 @@ To do this, add (or edit) the `properties` node under the ProGet profile in your
 ```
 
 Then, you can use a property in your POM file like this:
+
 ```xml
 <plugin>
 	<groupId>org.codehaus.mojo</groupId>
@@ -152,8 +159,5 @@ Then, you can use a property in your POM file like this:
 ```
 
 ## Publish Your Dependencies
-Once the plugins have been configured, your dependencies will then be published to a ProGet SCA project when `mvn deploy` is ran.
 
-
-
-
+Once the plugins have been configured, your dependencies will then be published to a ProGet SCA project when `mvn deploy` is run.

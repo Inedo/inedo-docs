@@ -3,7 +3,6 @@ title: "HOWTO: Bulk Import Packages using Drop Paths"
 order: 6
 ---
 
-
 ProGet users come into the software with several packages to import—whether from their local drive, a package hosting service, or an alternative private repository.
 
 It's entirely possible to write a script to publish your package via the feed's API endpoints, but it's often easier to import these packages from a local disk or network. This ProGet feature configures a feed to use a local or network path that ProGet periodically scans for files to import.
@@ -15,7 +14,8 @@ If you are looking to migrate packages between two ProGet feeds, please see our 
 :::
 
 ## Step 1: Create a bulk import folder on your server
-In this guide we will be importing from a folder named `bulk-import`, and importing it to a feed we have created named `nuget`.
+
+In this guide, we will be importing from a folder named `bulk-import`, and importing it to a feed we have created named `nuget`.
 
 On our server, we need to start by navigating to our drive and selecting a folder for the bulk import process. This can be an existing folder, or a new one.
 
@@ -57,11 +57,9 @@ Note that the appropriate permissions must be set for them to function.
 
 ![Bulk Import "bulk-import"](/resources/docs/proget-nuget-bulkpackageimport.png){height="" width="50%"}
 
-Finally, we select [Import]. The packages were imported successfully, and are now visible on our "NuGet" feed’s page.
+Finally, we select "Import". The packages are imported successfully, and are now visible on our "NuGet" feed’s page.
 
 ![Imported "imported"](/resources/docs/proget-nuget-feed.png){height="" width="50%"}
-
-***
 
 ## Troubleshooting
 
@@ -76,9 +74,10 @@ For warnings and errors associated with importing packages look for executions t
 ![Admin "admin"](/resources/docs/proget-executions-importerror.png){height="" width="50%"}
 
 ### Issue: “The Package Already Exists on the Feed”
+
 This warning will display as such in the Execution Logs window:
 
-```
+```plaintext
 WARN: The package Microsoft.Extensions.DependencyInjection.8.0.0-preview.3.23174.8 already exists and will not be installed because the current configuration does not support overwriting packages.
 ```
 
@@ -93,6 +92,7 @@ There are several common reasons for this issue:
 There are two ways to fix this warning.
 
 #### Option 1: Delete the file from the import path
+
 Deleting the file from the import path folder does not delete it from ProGet. ProGet has already imported the data and files to its server, so the information will not be lost.
 
 You can check if a file is still accessible by navigating to Feed > Package > Package Version > Files
@@ -100,11 +100,13 @@ You can check if a file is still accessible by navigating to Feed > Package > Pa
 ![ProGet CSharp Package](/resources/docs/proget-csharp-packagefilesview.png){height="" width="50%"}
 
 #### Option 2: Allow overwriting (_not recommended_)
+
 In general, we don't recommend this method, since most developers don't want to overwrite packages and instead version their packages.
 
 However, if your organization is comfortable with overwriting packages, you can fix this warning by checking the box "Overwrite packages in feed" when importing packages (see [Step 3](#step-3))
 
 ### Issue: “An error occurred in the web application: Could not find file …”
+
 This warning may occur if the package was deleted from the drive for some reason.
 
 You will see this page when you navigate to the Files tab of the deleted package:
@@ -124,9 +126,10 @@ To solve the problem, delete the package in ProGet.
 The Drop Path configuration will then re-import and install the package.
 
 ### Issue: "Error deleting imported package..."
+
 This warning will display as such in the Execution Logs window:
 
-```
+```plaintext
 WARN: Error deleting imported package C:\bulk-import\microsoft.extensions.dependencyinjection.8.0.0-preview.3.23174.8.nupkg from bulk import path.
 ```
 
@@ -142,10 +145,10 @@ This warning occurs when Proget fails to read a package file from the import pat
 
 This warning will display as such in the Execution Logs window:
 
-```
+```plaintext
 WARN: Error installing package: End of Central Directory record could not be found.
 ```
 
 This is usually because either the file is corrupt, or is not a genuine package file, such as being a foreign file type with the wrong extension.
 
-To solve this problem, delete the file from the import path source, and reacquire it from a verified resource, such as [NuGet.org](https://nuget.org)
+To solve this problem, delete the file from the import path source, and reacquire it from a verified resource, such as [nuget.org](https://nuget.org)

@@ -5,13 +5,13 @@ order: 2
 
 Storing your private PowerShell modules publicly on PowerShellGallery.com is not an option for most organizations.
 
-ProGet allows you to set up a private repository.  ProGet’s [feeds](/docs/proget/feeds/feed-overview) allow you to securely store and share PowerShell modules with all members of your organization without the risks associated with a public repository.
+ProGet allows you to set up a private repository. ProGet’s [feeds](/docs/proget/feeds/feed-overview) allow you to securely store and share PowerShell modules with all members of your organization without the risks associated with a public repository.
 
 This article explains how to create a PowerShell module repository in ProGet and then create, publish, and install private packages from it.
 
 ## Step 1: Create a PowerShell Module Repository in ProGet 
 
-Create a new feed by navigating to Feeds > Create New Feed
+Create a new feed by navigating to "Feeds" > "Create New Feed"
 
 ![Create a New Feed in ProGet](/resources/docs/amazons3-createfeed%281%29.jpg)
 
@@ -19,18 +19,19 @@ Choose "PowerShell Modules" from the options presented and give it a name and op
 
 ![PowerShell Feed Creation](/resources/docs/powershellmodulesproget-powershellfeedcreation.jpg)
 
-After clicking on Create New Feed, you now have your own private PowerShell module repository!
+After clicking on "Create New Feed", you now have your own private PowerShell module repository!
 
 ## Step 2: Create a PowerShell Module & Manifest
-First you will need to create a PowerShell Module. Modules combine several PowerShell functions into a single reusable and easily sharable resource. 
+
+First, you will need to create a PowerShell Module. Modules combine several PowerShell functions into a single reusable and easily sharable resource. 
 
 For demonstration purposes, we’ll create a simple PowerShell Module named `Foobar.psm1` and save it to `C:\Foobar`.
 
-```(PowerShell)
+```powershell
 function Get-Foobar {
     <#
     .SYNOPSIS
-    Take the inputs for two variables $Foo and $Bar. THen return $Foo$Bar
+    Take the inputs for two variables $Foo and $Bar. Then return $Foo$Bar
 
     .PARAMETER Foo
     Foo
@@ -62,37 +63,42 @@ function Get-Foobar {
 ```
 
 ### Create a PowerShell Module Manifest
-A module manifest is a PowerShell data file (.psd1) that, is simply an “about” file for your module that contains information about the module, including the version number, copyright, exported variables, etc. 
+
+A module manifest is a PowerShell data file (`.psd1`) that, is simply an “about” file for your module that contains information about the module, including the version number, copyright, exported variables, etc. 
 
 Microsoft published a [guide on writing PowerShell module manifests](https://docs.microsoft.com/en-us/powershell/scripting/developer/module/how-to-write-a-powershell-module-manifest), but to sum it up: you can use the [New-ModuleManifest CmdLet](https://docs.microsoft.com/en-us/powershell/module/Microsoft.PowerShell.Core/New-ModuleManifest) to create the manifest, and only the Author and Description metadata fields are required.
 
 Using our `Foobar.psm1` example we would type:
 
-```
+```powershell
 New-ModuleManifest -Path "C:\Foobar\Foobar.psd1" -Author Inedo -Description "Contains functions that will write Foobar to the console and debug" -PassThru
 ```
 
 ## Step 3: Publish Your Module to ProGet
+
 Once you have a PowerShell module set up, you can add it to your ProGet feed to securely share it with your entire organization. 
 
 ### Create an API key in ProGet
-You will need to [create an API Key](/docs/proget/reference-api/proget-apikeys) that allows your PowerShell module to connect to your ProGet instance. To do this navigate to Administration Overview > Integrations & Extensibility > API Keys > Create API Key. 
+
+You will need to [create an API Key](/docs/proget/reference-api/proget-apikeys) that allows your PowerShell module to connect to your ProGet instance. To do this navigate to "Administration Overview" > "Integrations & Extensibility" > "API Keys" > "Create API Key". 
 
 ![Create an API Key in ProGet](/resources/docs/powershellmodulesproget-createapikey%282%29.jpg)
 
-ProGet uses three types of API keys, but since we created a PowerShell feed in step 1, we'll use a feed API key. If you need a temporary API key, you can specify the following as the API key instead:
-```
+ProGet uses three types of API keys, but since we created a PowerShell feed in Step 1, we'll use a feed API key. If you need a temporary API key, you can specify the following as the API key instead:
+
+```powershell
 username:password
 ``` 
 
 For more information on how API Keys function in ProGet, see [our documentation](/docs/proget/reference-api/proget-apikeys)
 
 ### Import PowerShellGet Module
+
 [PowerShellGet](https://docs.microsoft.com/en-us/powershell/module/powershellget/?view=powershell-7.1) is a module that allows you to both publish to and import from a repository. It is installed by default, but running the command will ensure that the module is up to date.
 
 To do this in PowerShell, enter:
 
-```
+```powershell
 Import-Module PowerShellGet
 ```
 
@@ -115,13 +121,13 @@ You’ll also need to use the following parameters to publish to your ProGet Pow
 
 Using our `Foobar.psm1` example we would type:
 
-```
+```powershell
 Register-PSRepository -Name internal-powershell -SourceLocation http://54.250.56.60:8624/nuget/internal-powershell/ -PublishLocation http://54.250.56.60:8624/nuget/internal-powershell/
 ```
 
 ### Publish Module to ProGet Feed
-To publish the module, use the cmdlet [Publish-Module](https://docs.microsoft.com/en-us/powershell/module/powershellget/publish-module) in combination with the following parameters: 
 
+To publish the module, use the cmdlet [Publish-Module](https://docs.microsoft.com/en-us/powershell/module/powershellget/publish-module) in combination with the following parameters: 
 
 | Parameters | Description |
 | --- | --- |
@@ -132,7 +138,7 @@ To publish the module, use the cmdlet [Publish-Module](https://docs.microsoft.co
 
 Using our `Foobar.psm1` example we would type:
 
-```
+```powershell
 Publish-Module -Path c:\Foobar -NuGetApiKey http://54.250.56.60:8624/nuget/internal-powershell/ -Repository internal-powershell -verbose
 ```
 
@@ -142,13 +148,14 @@ At this point "Foobar" will now appear in your ProGet feed.
 
 
 ## Step 4: Install Modules from your ProGet Feed
+
 To use a PowerShell module in your ProGet feed, you must first download and install the module on the target system.
 
 Open PowerShell and register the feed from which you want to download the module. As with publishing, it is necessary to specify a custom location instead of the default PowerShell gallery.
 
 ### Register ProGet Feed for Downloads
-Use [Register-PSRepository](https://docs.microsoft.com/en-us/powershell/module/powershellget/register-psrepository?view=powershell-7.2) in combination with the following parameters: 
 
+Use [Register-PSRepository](https://docs.microsoft.com/en-us/powershell/module/powershellget/register-psrepository?view=powershell-7.2) in combination with the following parameters: 
 
 | Parameters | Description |
 | --- | --- |
@@ -160,19 +167,22 @@ ProGet will display the command to use under Usage Instruction in: Feeds > feed-
 ![Register ProGet Feed](/resources/docs/powershellmodulesproget-registerprogetfeed.jpg)
 
 Using our “Foobar.psm1” example we would type:
-```
+
+```powershell
 Register-PSRepository -Name "internal-powershell" -SourceLocation "http://54.250.56.60:8624/nuget/internal-powershell/"
 ```
+
 :::(Info) (Feed name exists error message)
-If you get an error message saying that “«feed-name» exists,” run the following code and try registering the new feed again:  
-```
+If you get an error message saying that “«feed-name» exists,” run the following code and try registering the new feed again:
+
+```powershell
 Unregister-PackageSource -Name «feed-name»
 ```
 :::
 
 ### Download and Install Modules from Your ProGet Feed
-Use [Install-Module](https://docs.microsoft.com/en-us/powershell/module/powershellget/install-module?view=powershell-7.2) with the following parameters: 
 
+Use [Install-Module](https://docs.microsoft.com/en-us/powershell/module/powershellget/install-module?view=powershell-7.2) with the following parameters: 
 
 | Parameter | Description |
 | --- | --- |
@@ -186,7 +196,7 @@ ProGet will display the command to use under Usage Instruction in: Feeds > feed-
 
 Using our “Foobar.psm1” example we would type:
 
-```
+```powershell
 Install-Module -Name "Foobar" -RequiredVersion "1.0" -Repository "internal-powershell"
 ```
 

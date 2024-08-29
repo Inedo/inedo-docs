@@ -14,7 +14,7 @@ This article will run through a standard example scenario of a company, Krameric
 
 The first thing we need to do is create two "PowerShell" feeds, one for unapproved packages, and the other for approved packages that have been promoted.
 
-We start by selecting "Feeds" and [Create New Feed].
+We start by selecting "Feeds" and "Create New Feed".
 
 ![Create New Feed "create-feed"](/resources/docs/proget-feeds-createnewfeed.png){height="" width="50%"}
 
@@ -36,7 +36,7 @@ In this example, we will create an `unapproved-powershell` feed where unverified
 
 ## Step 3: Naming our feeds
 
-From here, we name our feeds as specified above, and then click [Create Feeds].
+From here, we name our feeds as specified above, and then click "Create Feeds".
 
 ![Name Feeds "name-feeds"](/resources/docs/proget-powershell-namefeeds.png){height="" width="50%"}
 
@@ -72,8 +72,6 @@ After saving these two privileges, the task overview page looks like this:
 
 ![Overview "overview"](/resources/docs/proget-taskspermissions-powershelladded.png){height="" width="50%"}
 
-* * *
-
 ## How to Use Your PowerShell Feed
 
 To use this newly created feed, we first need to find the endpoint URL on the Feed Overview page and register it as a source.
@@ -97,7 +95,7 @@ However, PowerShell will try to pull modules from the PowerShell Gallery, so we 
 
 For example, using the feed names we created earlier:
 
-```
+```powershell
 Register-PSRepository -Name approved-powershell -SourceLocation https://«host-name»/nuget/approved-powershell
 Unregister-PSRepository -Name PSGallery
 ```
