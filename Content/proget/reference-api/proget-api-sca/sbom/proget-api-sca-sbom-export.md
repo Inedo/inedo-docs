@@ -3,20 +3,26 @@ title: "Export SBOM"
 order: 1
 ---
 
-*Export SBOM* is available as both a `pgutil` command and an HTTP Request, and will generate an [SBOM](/docs/proget/sca/builds/proget-sca-sbom-importing-exporting#what-is-a-software-bill-of-materials-sbom) of project and release information of a project in ProGet.
+*Export SBOM* is available as both a `pgutil` command and an HTTP Request, and will generate an [SBOM](/docs/proget/sca/builds/proget-sca-sbom-importing-exporting#what-is-a-software-bill-of-materials-sbom) of project and build information of a project in ProGet.
 
-:::(Info) (🚀 Quick Example: Exporting SBOM with Curl)
-This example exports an SBOM of version `1.2.3` of a project `myProject` as an `XML`, authenticating with the API key `abc12345`:
+:::(Info) (🚀 Quick Example: Generating an SBOM with pgutil)
+This example generates an SBOM of version `1.2.3` of a project `myProject` to `C:\mySboms\sbom.xml`, authenticating with the API key `abc12345`:
 
 ````
-curl -X GET -H "X-ApiKey: abc12345" "https://proget.corp.local/api/sca/export?project=myProject&version=1.2.3&format=xml"
+pgutil builds sbom --input=myApplication.csproj --output=C:\mySboms\sbom.xml --project-name="myProject" --version=1.2.3  
 ````
 :::
 
 ## Command Specification (CLI)
-:::(Info) (🚧 Coming Soon 🚧)
-The `sca sbom export` command is coming soon. Similar to the HTTP Request, it will generate an SBOM of project and release information of a project.
-:::
+The `builds sbom` command is used to generate a minimal SBOM document
+
+The `--input`, `--project-name`, `--output` and `--version` options are always required. 
+
+**Generating an SBOM** requires the input (e.g. `myApplication.csproj` ), the project name (e.g. `myProject`), the output (e.g. `C:\mySboms\sbom.xml` ), and the version (e.g. `1.2.3` )
+
+```bash
+pgutil builds sbom --input=myApplication.csproj --output=C:\mySboms\sbom.xml --project-name="myProject" --version=1.2.3  
+```
 
 ## HTTP Request Specification
 To export an SBOM document, simply `GET` to the URL with an [appropriate API Key](/docs/proget/reference-api/proget-api-sca#authentication).
