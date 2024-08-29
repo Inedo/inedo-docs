@@ -44,12 +44,6 @@ To analyze a build, simply `POST` to the URL with an [appropriate API Key](/docs
 POST /api/sca/analyze-release?project=«projectName»&version=«releaseVersion»
 ```
 
-**Analyzing a build** requires the `project` name (e.g. `myProject` ) and build `version` (e.g. `1.2.3`) properties.
-
-```
-POST /api/sca/analyze-release?project=myProject»&version=1.2.3
-```
-
 ## HTTP Response Specification
 
 | Response | Details |
