@@ -47,15 +47,15 @@ Because the `@` and `%` characters are only recognized as variable indicators wh
 * `string with @var[1] value` - will **not** expand the `@var[1]` expression
 * `string with $(@var[1]) value` - **will** expand the `@var[1]` expression
 
-This additional syntax means that @ and % characters do not need to be explicitly escaped; since indexing was added to OtterScript, this was required to maintain compatibility with older scripts. It is also practical, as @ and % characters are not that uncommon in text.
+This additional syntax means that `@` and `%` characters do not need to be explicitly escaped; since indexing was added to OtterScript, this was required to maintain compatibility with older scripts. It is also practical, as `@` and `%` characters are not that uncommon in text.
 
 ### Escaping Expansion
 
 The grave apostrophe (```) serves as an escape character. The following can be escaped:
 
-*   Variable indicator -``$`, ``@`, ``%`
-*   Whitespace - ``n`, ``t`, ``r`
-*   Escape character - ````
+*   Variable indicator - `$`, `@`, `%`
+*   Whitespace - `n`, `t`, `r`
+*   Escape character - ` ``` `
 
 If any other character follows the grave apostrophe, then it will still be considered an escape character, but may raise a warning during compilation.
 
