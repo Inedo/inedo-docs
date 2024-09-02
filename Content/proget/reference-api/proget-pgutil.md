@@ -20,9 +20,8 @@ The easiest way to explore the available commands is by running `pgutil`, which 
 
 ```plaintext
 $> pgutil
-
     .--. --. ..- - .. .-..
-        pgutil v1.1.8.0
+        pgutil v2.0.0.0
     .--. --. ..- - .. .-..
 
 Description:
