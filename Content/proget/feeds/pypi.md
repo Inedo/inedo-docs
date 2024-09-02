@@ -98,6 +98,7 @@ Most PyPI repositories do not provide a user interface and are not designed to b
 #### Non-PyPI.org repositories
  * PyPI.org implements a JSON API that provides some extra metadata for packages (such as a readme file), but most other repositories do not have this
  * Very basic information can be browsed in the ProGet UI if you know the exact name of the package, but this should primarily be used as a proxy instead of browsed directly
+ * You may need to use the "Advanced" tab of the connector to specify an alternative `/simple` path; for example, if you try to connect to `https://download.pytorch.org/whl/cu124` without specifying this, you will receive `403` errors; changing the simple path to `/` will resolve this
 
 ### Technical Limitations (ProGet 2023)
 
