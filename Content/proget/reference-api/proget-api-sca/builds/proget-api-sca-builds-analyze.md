@@ -8,9 +8,9 @@ order: 4
 :::(Info) (🚀 Quick Example: Analyzing a build with pgutil)
 This example analyzes build `1.2.3` of the project `myProject`
 
-````
+```bash
 pgutil builds audit --project=myProject --build=1.2.3
-````
+```
 :::
 
 ## Command Specification (CLI)
@@ -20,19 +20,19 @@ The `--project` and `--build` options are always required.
 
 **Analyzing a build** requires the project name (e.g. `myProject`) and build number (e.g. `1.2.3`):
 
-```
+```bash
 pgutil builds audit --project=myProject --build=1.2.3
 ```
 
 Example output (Project analyzed):
-```
+```plaintext
 Auditing myProject 1.2.3...
 Analyzed: 7/21/2024 5:49:38 PM
 Status: Active
 ```
 
 Example output (Project not analyzed):
-```
+```plaintext
 Auditing myProject 1.2.3...
 ProGet reported that the build was not analyzed.
 ```
@@ -40,14 +40,8 @@ ProGet reported that the build was not analyzed.
 ## HTTP Request Specification
 To analyze a build, simply `POST` to the URL with an [appropriate API Key](/docs/proget/reference-api/proget-api-sca#authentication)
 
-```
+```plaintext
 POST /api/sca/analyze-release?project=«projectName»&version=«releaseVersion»
-```
-
-**Analyzing a build** requires the `project` name (e.g. `myProject` ) and build `version` (e.g. `1.2.3`) properties.
-
-```
-POST /api/sca/analyze-release?project=myProject»&version=1.2.3
 ```
 
 ## HTTP Response Specification
@@ -56,5 +50,5 @@ POST /api/sca/analyze-release?project=myProject»&version=1.2.3
 | --- | --- |
 | **200 (Success)** | analysis was successful |
 | **400 (Invalid Input)** | indicates invalid or missing arguments; the body will provide some details as text |
-|  **403 (Unauthorized API Key)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/reference-api/proget-api-sca#authentication); the body will be empty |
+| **403 (Unauthorized API Key)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/reference-api/proget-api-sca#authentication); the body will be empty |
 | **500 (Server Error)** | indicates an unexpected error; the body will contain the message and stack trace, and this will also be logged |

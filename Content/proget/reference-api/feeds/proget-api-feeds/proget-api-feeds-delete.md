@@ -6,8 +6,9 @@ order: 5
 *Delete Feed* is available as both a `pgutil` command and an HTTP Request, and will delete a specified feed.
 
 :::(Info) (🚀 Quick Example: Deleting a feed with pgutil)
-This example deletes the feed `myNugetFeed`
-```
+This example deletes the feed `myNugetFeed`:
+
+```bash
 pgutil feed delete --feed=myNugetFeed
 ```
 :::
@@ -18,14 +19,15 @@ The `feed delete` command is used to delete a feed.
 The `--feed` option is always required.
 
 **Deleting a feed** requires the feed name (e.g. `myNugetFeed`):
-```
+
+```bash
 pgutil feed delete --feed=myNugetFeed
 ```
 
 ## HTTP Request Specification
 To delete a specified feed simply `DELETE` to the URL with the `feed` name and an [appropriate API Key](/docs/proget/reference-api/feeds/proget-api-feeds#authentication).
 
-```
+```plaintext
 DELETE /api/management/feeds/delete/«feed-name»
 ```
 

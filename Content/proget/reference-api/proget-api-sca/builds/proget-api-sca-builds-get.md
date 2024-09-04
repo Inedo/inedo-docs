@@ -8,9 +8,9 @@ order: 2
 :::(Info) (🚀 Quick Example: Getting information of a build with pgutil)
 This example gets information on build `1.2.3` of the project `myProject`
 
-````
+```bash
 pgutil builds info --build=1.2.3 --project=myProject 
-````
+```
 :::
 
 ## Command Specification (CLI)
@@ -19,13 +19,13 @@ The `builds info` command is used to get information on a build of a project.
 The `--project` and `--build` options are always required.
 
 **Getting information on a build** requires the project name (e.g. `myProject`) and the build number (e.g `1.2.3`)
-```
+```bash
 pgutil builds info --build=1.2.3 --project=myProject 
 ```
 
 Example output:
 
-```
+```plaintext
 Build 1.2.3
 Packages:
   pkg:nuget/CsvHelper@30.0.1
@@ -40,7 +40,7 @@ Comments:
 ## HTTP Request Specification
 To get a build, simply `GET` to the URL with an [appropriate API Key](/docs/proget/reference-api/proget-api-sca#authentication).
 
-```
+```plaintext
 GET /api/sca/releases?name=«projectName»&version=«versionNumber»
 ```
 
@@ -102,5 +102,5 @@ GET /api/sca/releases?project=myProject&version=1.2.3
 | **200 (Success)** | body will contain a [BuildInfo](/docs/proget/reference-api/proget-api-sca#buildinfo-object) object |
 | **400 (Invalid Input)** | indicates invalid or missing properties |
 | **403 (Unauthorized API Key)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/reference-api/proget-api-sca#authentication); the body will be empty |
-|  **404 (Project or Release Not Found)** | indicates that the specified project or build does not exist | 
+| **404 (Project Not Found)** | indicates that the specified project does not exist | 
 | **500 (Server Error)** | indicates an unexpected error; the body will contain the message and stack trace, and this will also be logged |

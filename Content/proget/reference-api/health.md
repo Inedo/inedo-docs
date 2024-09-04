@@ -7,7 +7,7 @@ ProGet Health is available as both a `pgutil` command and an HTTP Request, and a
 
 :::(Info) (🚀 Quick Example: Get the Health of a ProGet Instance with pgutil)
 
-```
+```bash
 pgutil health --source=http://progets.corp.local/
 ```
 :::
@@ -17,7 +17,7 @@ An API key is not required for ProGet Health.
 ## Command Specification (CLI)
 The `health` command has a single optional argument (`--source`), which can be a URL or the name of a source. See [Working with Sources](/docs/proget/reference-api/proget-pgutil#working-with-sources) to learn more.
 
-```
+```bash
 $> pgutil health --source=http://progets.corp.local/
 Version: 2022.28 (Build 4)
 
@@ -30,7 +30,6 @@ Replication (Client): OK
 ```
 
 If any of the displayed statuses are not OK, a nonzero exit code will be reported.
-
 
 ## HTTP Request Specification
 

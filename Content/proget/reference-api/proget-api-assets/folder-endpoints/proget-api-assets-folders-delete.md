@@ -6,8 +6,9 @@ order: 3
 *Delete Asset Folder* is available as both a `pgutil` command and an HTTP Request, and will delete a folder at the specified path. 
 
 :::(Info) (🚀 Quick Example: Deleting a folder with pgutil)
-This example will delete a folder `old-folder` in the asset directory `myAssetDirectory`
-```
+This example will delete a folder `old-folder` in the asset directory `myAssetDirectory`:
+
+```bash
 pgutil assets delete --feed=myAssetDirectory --path=old-folder
 ```
 :::
@@ -18,7 +19,8 @@ The `assets delete` command is used to delete a folder in the asset directory.
 The `--path` options is always required. The `--feed` option is required if there is no default feed configured. 
 
 **Deleting a folder** requires the asset directory (e.g. `MyAssetDirectory`) and folder name (e.g. `old-folder`):
-```
+
+```bash
 pgutil assets delete --feed=myAssetDirectory --path=old-folder --force
 ```
 * The `--force` option is optional, and when used will delete a folder even if it is not empty. When not specified, the specified folder will only be deleted if empty.
@@ -26,7 +28,7 @@ pgutil assets delete --feed=myAssetDirectory --path=old-folder --force
 ## HTTP Request Specification
 To delete a folder, simply `POST` to the URL with the `AssetDirectoryName` and path to the folder. This HTTP request also allows for deleting files without using an `DELETE` request.
 
-```
+```plaintext
 POST /endpoints/«AssetDirectoryName»/delete/«path»?recursive=«true/false»
 ```
 

@@ -7,8 +7,9 @@ order: 1
  create a [connector](/docs/proget/feeds/connector-overview), with the properties defined by a [ProgetConnector](/docs/proget/reference-api/feeds/proget-api-connectors#connector-object) object in the body of the request.
 
 :::(Info) (🚀 Quick Example: Creating a connector with pgutil)
-This example will create a `NuGet` connector `myNugetConnector`, connecting to `https://proget.connector.local`
-```
+This example will create a `NuGet` connector `myNugetConnector`, connecting to `https://proget.connector.local`:
+
+```bash
 pgutil connectors create --name=myNugetConnector --type=NuGet --url=https://proget.connector.local
 ```
 :::
@@ -19,21 +20,22 @@ The `connectors create` command is used to create a [connector](/docs/proget/fee
 The `--name`, `--type` and `--url` options are always required. 
 
 **Creating a connector** requires the connector name (e.g. `myNugetConnector`), type (e.g. `NuGet`) and the URL (e.g. `https://proget.connector.local`):
-```
+
+```bash
 pgutil connectors create --name=myNugetConnector --type=NuGet --url=https://proget.connector.local
 ```
 
 ## HTTP Request Specification
 To create a [connector](/docs/proget/feeds/connector-overview), simply `POST` to the URL with an [appropriate API Key](/docs/proget/reference-api/feeds/proget-api-connectors#authentication) and a [ProgetConnector](/docs/proget/reference-api/feeds/proget-api-connectors#connector-object) object as the request body.
 
-```
+```plaintext
 POST/PUT /api/management/connectors/create
 ```
 
 ## HTTP Response Specification
 A successful (`200`) response body will contain a single [Connector](/docs/proget/reference-api/feeds/proget-api-connectors#connector-object) object. For example, creating a new `nuget` connector, with the name `myConnector` returns:
 
-```
+```json
 POST /api/management/connectors/create
 
 {

@@ -6,8 +6,9 @@ order: 2
 *Get Asset Metadata* is available as both a `pgutil` command and an HTTP Request, and will return metadata for the specified asset "item" (file or folder) as a JSON [AssetDirectoryItem](/docs/proget/reference-api/proget-api-assets#item-data) object 
 
 :::(Info) (🚀 Quick Example: Getting asset metadata with pgutil)
-This example will return the metadata for the file `data.bin` in the `data-files` folder of the asset directory `myAssetDirectory`
-```
+This example will return the metadata for the file `data.bin` in the `data-files` folder of the asset directory `myAssetDirectory`:
+
+```bash
 pgutil assets metadata get --path=data-files/data.bin --feed=myAssetDirectory
 ```
 :::
@@ -18,13 +19,14 @@ The `assets metadata get` command is used to return metadata for the specified a
 The `--path` option is always required. The `--feed` option is required if there is no default feed configured.
 
 **Getting asset metadata** requires the asset directory (e.g. `MyAssetDirectory`) and asset path (e.g. `data-files/data.bin`):
-```
+
+```bash
 pgutil assets metadata get --path=data-files/data.bin --feed=myAssetDirectory
 ```
 
 Running the command will return metadata of the specified asset:
 
-```
+```bash
 Name: example.txt
 Size: 4
 Type: http://proget.corp.local/endpoints/myAssetDirectory/content/data-files/example.txt
@@ -46,13 +48,14 @@ myKey2: myValue2
 ## HTTP Request Specification
 To get the metadata of an item, simply `GET` to the URL with the `AssetDirectoryName` and path to the item.
 
-```
+```plaintext
 GET /endpoints/«AssetDirectoryName»/metadata/«path»
 ```
+
 ## HTTP Response Specification
 A successful (`200`) response body will contain a [AssetDirectoryItem](/docs/proget/reference-api/proget-api-assets#item-data) object describing a file or folder in the specified path. For example, querying `example.txt`, the request would return a single object:
 
-```
+```json
 {
   "name": "example.txt",
   "parent": "folder",

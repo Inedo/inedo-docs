@@ -24,7 +24,7 @@ All arguments are required to initiate or continue a multipart upload. Only `id`
 | `totalParts` | Total number of parts that will be uploaded for the entire file. |
 
 
-```
+```plaintext
 POST /endpoints/«AssetDirectoryName»/content/«path»?multipart=upload&id=«uuid»&index=«partIndex»&offset=«byteOffset»&totalSize=«byteSize»&partSize=«partSize»&totalParts=«partCount»
 ```
 
@@ -32,7 +32,7 @@ POST /endpoints/«AssetDirectoryName»/content/«path»?multipart=upload&id=«uu
 
 To complete a multi-part upload, simply `POST` to the URL with the `AssetDirectoryName` and the unique identifier `id`.
 
-```
+```plaintext
 POST /endpoints/«AssetDirectoryName»/content/«path»?multipart=complete&id=«uuid»
 ```
 
@@ -50,7 +50,8 @@ Orphaned parts will be deleted during the "Feed Cleanup" scheduled task. Orphane
 
 ## Sample Usage Scripts
 
-<h3 id="powershell-script">Multipart Upload (Powershell - Single Script)</h3>
+
+### Multipart Upload (Powershell - Single Script)
 
 This PowerShell script can be used to automatically perform a multipart upload if necessary. 
 
@@ -140,7 +141,7 @@ function Upload-ProGetAsset {
 Upload-ProGetAsset -FileName $LocalFileName -AssetName $FilePath -EndpointUrl $EndpointUrl -ApiKey $ApiKey
 ```
 
-<h3 id="powershell-ps1">Multipart Upload (Powershell - .PS1 file)</h3>
+### Multipart Upload (Powershell - .PS1 file)
 
 This PowerShell script can be used by saving it (e.g. `Upload-ProGetAsset.ps1`), loading it in a Powershell terminal, and then running the following:
 

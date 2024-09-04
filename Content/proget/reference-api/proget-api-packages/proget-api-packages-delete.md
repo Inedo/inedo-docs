@@ -6,7 +6,8 @@ order: 5
 *Delete Package* is available as both a `pgutil` command and an HTTP Request, and will delete a single package from the specified feed. 
 
 :::(Info) (🚀 Quick Example: Deleting a NuGet package with pgutil)
-```
+
+```bash
 pgutil packages delete --feed=myNugetFeed --package=myNugetPackage --version=1.0.0
 ```
 :::
@@ -21,17 +22,20 @@ The `--package` and `--version` options are always required. The `--feed` option
 Additional options may be required depending on the package type. If a required option is missing, an error will be returned indicating the missing option.
 
 **Deleting an npm Package** requires the scope (e.g. `myscope`), name (e.g. `@myscope/my-npm-package`) and version (e.g. `2.0.0`):
-```
+
+```bash
 pgutil packages delete --feed=MyNpmFeed --package=@my-scope/my-npm-package --version=2.0.0
 ```
 
-**Deleting a Pypi Package** requires the package (e.g. `myPypiPackage`), version (e.g. `7.8.9`) and filename (e.g. `myPypiPackage-7.8.9.tar.gz`)
-```
+**Deleting a Pypi Package** requires the package (e.g. `myPypiPackage`), version (e.g. `7.8.9`) and filename (e.g. `myPypiPackage-7.8.9.tar.gz`):
+
+```bash
 pgutil packages delete --feed=myPypiFeed --package=myPypiPackage --version=7.8.9 --filename=myPypiPackage-7.8.9.tar.gz
 ```
 
-**Deleting a Debian Package** requires the package (e.g. `myDebianPackage`), version (e.g. `2.3.4`), component (e.g. `main`), distribution (e.g. `stable`) and architecture (e.g. `amd64`)
-```
+**Deleting a Debian Package** requires the package (e.g. `myDebianPackage`), version (e.g. `2.3.4`), component (e.g. `main`), distribution (e.g. `stable`) and architecture (e.g. `amd64`):
+
+```bash
 pgutil packages delete --feed=myDebianFeed --package=myDebianPackage --version=2.3.4 --component=main --distro=stable --arch=amd64
 ```
 
@@ -41,9 +45,9 @@ Note source options must also be specified unless you have the "Default" source 
 
 To delete a package, simply `POST` to the URL with a feed name, [package identifiers](/docs/proget/reference-api/proget-api-packages#using-multiple-parameters), and an [appropriate API Key](/docs/proget/reference-api/proget-api-packages#authentication).
 
-````
+```plaintext
 POST /api/packages/«feed-name»/delete?«package-identifiers»
-````
+```
 
 Unless you use a `purl`, the parameters required will vary by feedtype. 
 
@@ -56,13 +60,12 @@ Unless you use a `purl`, the parameters required will vary by feedtype.
 | **403 (Unauthorized API Key)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/reference-api/proget-api-packages#authentication); the package will not be deleted
 | **500 (Server Error)** | indicates an unexpected error; the body will contain the message and stack trace, and this will also be logged
 
-
 ## Sample Usage Scripts
 
 ### Delete All Packages Except for Latest Version (Powershell)
 The following script will delete all non-latest versions of `GeneralUtils.NET` in the `private-nuget` feed.
 
-````powershell
+```powershell
 $baseUrl = "https://proget.corp.local/api/packages"
 $feedName = "private-nuget"
 $packageName = "GeneralUtils.NET"
@@ -92,11 +95,12 @@ Deleted version 3.0.3-beta1
 Deleted version 2.0.2
 Deleted version 2.0.2-beta3
 All old versions of GeneralUtils.NET have been deleted, except for the latest version 3.0.3.
-````
+```
 
 ### Delete All Pre-release (Alpha or Beta) Versions of a Package (Python)
 The following script will delete all "alpha" and "beta" versions of the `GeneralUtils.NET` package in the `private-nuget`, leaving only release versions in the feed.
-````python
+
+```python
 import requests
 
 packageName = "GeneralUtils.NET"
@@ -128,10 +132,12 @@ if response.status_code == 200:
     print(f"All 'beta' or 'alpha' versions of {packageName} have been deleted.")
 else:
     print(f"Failed to retrieve package information for {packageName}. Status code: {response.status_code}")
-````
+```
+
 Running this script will output something like this:
-````python
+
+```python
 GeneralUtils.NET version 13.0.3-beta1 deleted.
 GeneralUtils.NET version 13.0.2-beta3 deleted.
 All 'beta' or 'alpha' versions of GeneralUtils.NET have been deleted.
-````
+```
