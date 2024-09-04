@@ -23,27 +23,28 @@ For example, the `UseVisualMode` header key is used to instruct the OtterScript 
 
 In a future version of BuildMaster and Otter, `Evaluate Statement Descriptions` will be supported, allowing variables and variable functions to be used in block comments.
 
-
-<pre>##AH:EvaluateStatementDescriptions
+```
+##AH:EvaluateStatementDescriptions
 foreach $database in @DatabasesToUpdate
 {
     # Update Database - $database
     {
         # …
     }
-}</pre>
+}
+```
 
 In future releases, Additional Headers could be used for all sorts of things, such as:
 
-*  Instruct Evaluate Statement Descriptions`
-*   Insert name of person who last edited the plan
-*   [Indent style](https://en.wikipedia.org/wiki/Indent_style) - curly brace formatting
-*   Casing preferences - whether to use PowerShell-Style or bash_style operation names
-*   Preventing any debug messages from being logged
+* Instruct Evaluate Statement Descriptions`
+* Insert name of person who last edited the plan
+* [Indent style](https://en.wikipedia.org/wiki/Indent_style) - curly brace formatting
+* Casing preferences - whether to use PowerShell-Style or bash_style operation names
+* Preventing any debug messages from being logged
 
 Don't hesitate to [contact us](https://inedo.com/contact) with ideas or if you need one of these for your organization.
-
 :::
+
 ## Other comments
 
 Comments made within a statement are ignored by the compiler, which means that they will not be preserved when switching between text and visual modes in the plan editor. For example, consider the following script.
