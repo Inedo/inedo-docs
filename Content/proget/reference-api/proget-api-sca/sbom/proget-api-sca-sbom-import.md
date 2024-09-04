@@ -8,15 +8,15 @@ order: 2
 :::(Info) (🚀 Quick Example: Importing SBOM with Curl)
 This example imports a locally stored SBOM of version `1.2.3` of a project `myProject` as an `XML`, authenticating with the API key `abc12345`:
 
-````
+```bash
 curl -X POST -H "X-ApiKey: abc12345" -H "Content-Type: text/xml" -d "@C:/Users/Inedo/myProject-1.2.3-bom.xml" https://proget.corp.local/api/sca/import
-````
+```
 :::
 
 ## HTTP Request Specification
 To import an SBOM document, simply `POST` to the URL with an [appropriate API Key](/docs/proget/reference-api/proget-api-sca#authentication).
 
-```
+```plaintext
 POST /api/sca/import
 ```
 
@@ -24,7 +24,7 @@ Note that the `Content-Type` header should either be `text/xml` (XML) or `applic
 
 **Importing an SBOM** requires the `project` name (e.g. `myProject`), the `version` (e.g. `1.2.3`), and either an `XML` or `JSON` as the body (e.g. `sbom.xml`):
 
-```xml
+```plaintext
 POST /api/sca/import
 
 «contents of sbom.xml»

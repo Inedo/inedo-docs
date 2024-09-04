@@ -6,8 +6,9 @@ order: 3
 *List Feeds* is available as both a `pgutil` command and an HTTP Request, and will return an array of [ProgetFeed](/docs/proget/reference-api/feeds/proget-api-feeds#feed-object) objects, describing all existing feeds.
 
 :::(Info) (🚀 Quick Example: Listing feeds with pgutil)
-This example lists all existing feeds
-```
+This example lists all existing feeds:
+
+```bash
 pgutil feeds list
 ```
 :::
@@ -16,12 +17,14 @@ pgutil feeds list
 The `feeds list` command is used to list all existing feeds.
 
 **Listing all feeds** does not require any additional options:
-```
+
+```bash
 pgutil feeds list
 ```
+
 This will return a list of feeds:
 
-```
+```plaintext
 approved-nuget (nuget)
 approved-pypi (pypi)
 assets (asset)
@@ -34,14 +37,14 @@ unapproved-pypi (pypi)
 ## HTTP Request Specification
 To list all existing feeds, simply `GET` to the URL with an [appropriate API Key](/docs/proget/reference-api/feeds/proget-api-feeds#authentication).
 
-```
+```plaintext
 GET /api/management/feeds/list
 ```
 
 ## HTTP Response Specification
 A successful (`200`) response body will contain an array of [ProgetFeed](/docs/proget/reference-api/feeds/proget-api-feeds#feed-object) objects. For example:
 
-```
+```json
 GET /api/management/feeds/list
 
 [
@@ -99,7 +102,7 @@ foreach ($feed in $response) {
 
 #### Example Output:
 
-```
+```powershell
 internal-npm (npm)
 nuget-approved (nuget)
 nuget-unapproved (nuget)

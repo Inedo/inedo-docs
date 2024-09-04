@@ -10,9 +10,9 @@ Note: this API endpoint functions by creating a new build when the version speci
 :::(Info) (🚀 Quick Example: Creating a new build with pgutil)
 This example creates build `1.2.3` of the project `myProject`
 
-````bash
+```bash
 pgutil builds create --build=1.2.3 --project=myProject 
-````
+```
 :::
 
 ## Command Specification (CLI)

@@ -10,9 +10,9 @@ Note: this API endpoint functions by creating a new project when the one specifi
 :::(Info) (🚀 Quick Example: Creating a new project with pgutil)
 This example creates a project named `myProject:
 
-````bash
+```bash
 pgutil builds projects create --project=myProject
-````
+```
 :::
 
 ## Command Specification (CLI)

@@ -8,9 +8,9 @@ order: 1
 :::(Info) (🚀 Quick Example: Generating an SBOM with pgutil)
 This example generates an SBOM of version `1.2.3` of a project `myProject` to `C:\mySboms\sbom.xml`, authenticating with the API key `abc12345`:
 
-````
+```bash
 pgutil builds sbom --input=myApplication.csproj --output=C:\mySboms\sbom.xml --project-name="myProject" --version=1.2.3  
-````
+```
 :::
 
 ## Command Specification (CLI)
@@ -27,7 +27,7 @@ pgutil builds sbom --input=myApplication.csproj --output=C:\mySboms\sbom.xml --p
 ## HTTP Request Specification
 To export an SBOM document, simply `GET` to the URL with an [appropriate API Key](/docs/proget/reference-api/proget-api-sca#authentication).
 
-```
+```plaintext
 GET /api/sca/export?project=«projectName»&version=«versionNumber»&format=«xml/json»
 ```
 

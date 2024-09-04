@@ -12,7 +12,7 @@ It's not considered an error to export a folder that does not exist, and will re
 :::(Info) (🚀 Quick Example: Exporting a folder with pgutil)
 This example will export a folder `project-data` in the asset directory `myAssetDirectory` to the local path and archive file `C:\Inedo\data-export.zip`
 
-```
+```bash
 pgutil assets folder export --file=C:\Inedo\data-export.zip --feed=myAssetDirectory --path=project-data
 ```
 :::
@@ -23,17 +23,20 @@ The `assets folder export` command is used to export the contents of the specifi
 The `--file` and `--path` options are always required. The `--feed` option is required if there is no default feed configured.
 
 **Exporting a folder** requires the asset directory (e.g. `MyAssetDirectory`), the folder to be exported (e.g. `MyFolder`) and the output archive file (e.g. `C:\Inedo\MyArchive.zip`):
-```
+
+```plaintext
 pgutil assets folder export --file=C:\Inedo\MyArchive.zip --feed=myAssetDirectory --path=MyFolder
 ```
+
 * The option `--overwrite` can be used to overwrite the output archive file if it already exists
 
 ## HTTP Request Specification
 To export an asset directory or folder, simply `GET` to the URL with the `AssetDirectoryName`, path to the folder and the format.
 
-```
+```plaintext
 GET /endpoints/«AssetDirectoryName»/export/«path_to_folder»?format=«zip/tgz»&recursive=«true/false»
 ```
+
 The `format` argument may be either `zip` (for a zip file) or `tgz` (for a GZipped tar file). When `recursive` is `false` or not specified, only items contained directly in the specified path are included. When `recursive` is `true`, the archive will contain all subfolders as well. 
 
 ## HTTP Response Specification

@@ -8,9 +8,9 @@ order: 2
 :::(Info) (🚀 Quick Example: Getting a Project with Curl)
 This example gets a project `myProject`, authenticating with the API key `abc12345`:
 
-````bash
+```bash
 curl -X GET -H "X-ApiKey: abc12345" "https://proget.corp.local/api/sca/projects?project=myProject"
-````
+```
 :::
 
 ## HTTP Request Specification

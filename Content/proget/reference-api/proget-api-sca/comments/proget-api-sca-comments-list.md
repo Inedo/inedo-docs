@@ -10,9 +10,9 @@ Note, that if there are no comments in a release, an empty array is returned.
 :::(Info) (🚀 Quick Example: Listing comments with pgutil)
 This example lists comments in version `1.2.3` of a project named `myProject`:
 
-````bash
+```bash
 pgutil builds comments list --project=myProject --build=1.2.3
-````
+```
 :::
 
 ## Command Specification (CLI)

@@ -6,8 +6,9 @@ order: 4
 *Update Connector* is available as both a `pgutil` command and an HTTP Request, and will update a specified [connector](/docs/proget/feeds/connector-overview) using the [Connector](/docs/proget/reference-api/feeds/proget-api-connectors#connector-object) object properties defined in the request body. This endpoint supports partial updating by only updating the properties that are supplied in the request. 
 
 :::(Info) (🚀 Quick Example: Enabling a connector's metadata caching with pgutil)
-This example will enable metadata caching for the connector `nuget.org`
-```
+This example will enable metadata caching for the connector `nuget.org`:
+
+```bash
 pgutil connectors properties set --connector=nuget.org --property=metadataCacheEnabled --value=true
 ```
 :::
@@ -25,12 +26,14 @@ The `--property` and `--value` options are always required. The `--feed` option 
 | `metadataCacheMinutes`  | The number of minutes a connector metadata request to a specific URL is cached by ProGet  | 
                                       
 **Enabling a connector's Metadata Caching** requires the connector name (e.g. `nuget.org`), the property to be updated (e.g. `metadataCacheEnabled`), and the value to update this with (e.g. `true`):
-```
+
+```bash
 pgutil connectors properties set --connector=nuget.org --property=metadataCacheEnabled --value=true
 ```
 
 **Updating a connector's timeout** requires the connector name (e.g. `registry.npmjs.org`), the property to be updated (e.g. `timeout`), and the timeout duration in seconds (e.g. `30`):
-```
+
+```bash
 pgutil connectors properties set --connector=registry.npmjs.org --property=timeout --value=30
 ```
 
@@ -45,29 +48,35 @@ The `--connector` option is required for all commands. The `--filter` option is 
 When creating filters, terms written as `name` will be allowed, but terms prefixed with an exclamation mark, like `!name` will be blocked
 :::
 
-**Adding a filter to block** requires the connector name (e.g. `nuget.org`) and the filter (e.g. `!Jquery`)
-```
+**Adding a filter to block** requires the connector name (e.g. `nuget.org`) and the filter (e.g. `!Jquery`):
+
+```bash
 pgutil connectors filters add --connector=nuget.org --filter=!JQuery
 ```
 
-**Adding a filter to allow** requires the connector name (e.g. `registry.npmjs.org`) and the filter (e.g. `Microsoft.*`)
-```
+**Adding a filter to allow** requires the connector name (e.g. `registry.npmjs.org`) and the filter (e.g. `Microsoft.*`):
+
+```bash
 pgutil connectors filters add --connector=registry.npmjs.org --filter=Microsoft.*
 ```
 
 **Listing all filters** requires the connector name (e.g. `registry.npmjs.org`):
-```
+
+```bash
 pgutil connectors filters list --connector=registry.npmjs.org
 ```
+
 Example output:
-```
+
+```bash
 Microsoft.*
 !lodash
 !event-stream
 ```
 
 **Removing a filter** requires the connector name (e.g. `pypi.org`), and the filter to remove (e.g. `!simplejson`):
-```
+
+```bash
 pgutil connectors filters remove --connector=pypi.org --filter=!simplejson
 ```
 
@@ -80,14 +89,14 @@ When updating, any properties omitted will keep their existing values. Updating 
 To append values, perform a [Get Connector](/docs/proget/reference-api/feeds/proget-api-connectors/proget-api-connectors-get) first, then append the existing values returned in the "Update Connector" request. For example, GET the values of filters "A" and "B", and add them along with "C", supplying `filters: ["A", "B", "C"]`in the update request.
 :::
 
-```
+```plaintext
 POST /api/management/connectors/update/«connector-name»
 ```
 
 ## HTTP Response Specification
 A successful (`200`) response body will contain an updated [Connector](/docs/proget/reference-api/feeds/proget-api-connectors#connector-object) object. For example, when updating the timeout on a NuGet connector `myNugetConnector`, this returns:
 
-```
+```bash
 {
   "name": "MyNugetConnector",
   "url": "http://proget.corp.local",

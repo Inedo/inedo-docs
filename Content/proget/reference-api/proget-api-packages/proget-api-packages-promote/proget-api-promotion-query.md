@@ -12,9 +12,9 @@ The *Query Package Promotions* returns a JSON array of [PromotedPackage](#promot
 :::(Info) (🚀 Quick Example: Querying with Curl)
 This example queries a promoted package (`myNugetPackage`, version `1.2.3`) from one feed (`nuget-unapproved`) to another (`nuget-approved`), authenticating with the API key `abc12345`:
 
-````
+```bash
 curl -X GET --header "X-ApiKey: abc12345" "http://54.168.224.223:8624/api/promotions/list?package=Newtonsoft.Json&version=13.0.2"
-````
+```
 :::
 
 ## Authentication and API Keys { #authentication }
@@ -49,20 +49,20 @@ You may filter the results by specifying one or more parameters:
 |`package`| the package name of the promoted package
 |`version`| the version of the promoted package
 
-```
+```plaintext
 GET /api/promotions/list/fromFeed=«feed-name»&toFeed=«feed-name»&group=«group-name»&package=«package-name»&version=«version»
 ```
 
 **Querying a specific promoted NuGet package** requires the package name (e.g. `myNugetPackage`), the version (e.g. `1.2.3`), the feed promoted from (e.g. `nuget-unapproved`) and the feed promoted to (e.g. `nuget-approved`)
 
-```
+```plaintext
 GET /api/promotions/list?fromFeed=npm-development&toFeed=npm-production&group=myScope&package=myNpmPackage&version=1.2.3
 ```
 
 ## Response Specification
 A successful (`200`) response body will contain an array of [PromotedPackage](#promoted-package) objects. For example, querying version `1.2.3` of `myNugetPackage`, promoted from feed `nuget-unapproved` to feed `nuget-approved` return a single object:
 
-```
+```bash
 GET /api/promotions/list?fromFeed=nuget-unapproved&toFeed=nuget-unapproved&package=myNugetPackage&version=1.2.3
 
 [

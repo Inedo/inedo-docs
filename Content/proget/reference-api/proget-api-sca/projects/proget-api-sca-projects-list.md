@@ -8,9 +8,9 @@ order: 3
 :::(Info) (🚀 Quick Example: Listing Projects with pgutil)
 This example lists all existing projects:
 
-````bash
+```bash
 pgutil builds projects list
-````
+```
 :::
 
 ## Command Specification (CLI)

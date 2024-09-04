@@ -8,7 +8,7 @@ order: 5
 :::(Info) (🚀 Quick Example: Importing an archive with pgutil)
 This example will import an archive `data-import.zip` from the local path `C:\Inedo\data-files` in to the `data-files` folder in the asset directory `myAssetDirectory`
 
-```
+```bash
 pgutil assets folder import --file=C:\Inedo\data-files\data-import.zip --path=data-files --feed=myAssetDirectory
 ```
 :::
@@ -19,13 +19,15 @@ The `assets folder import` command is used to import the contents of the specifi
 The `--file` and `--path` options are always required. The `--feed` option is required if there is no default feed configured.
 
 **Importing an archive** requires the path of the archive (e.g. `C:\Inedo\myArchive.zip`), the asset directory (e.g. `myAssetDirectory`) and folder name (e.g. `myFolder`):
-```
+
+```plaintext
 pgutil assets folder import  --file=C:\Inedo\data-files\myArchive.zip --path=myFolder --feed=myAssetDirectory
 ```
+
 ## HTTP Request Specification
 To import an archive, simply `POST` to the URL with the `AssetDirectoryName`, path to the folder and the format.
 
-```
+```plaintext
 POST /endpoints/«AssetDirectoryName»/import/«path_to_folder»?format=«zip/tgz»&overwrite=«true/false»
 ```
 

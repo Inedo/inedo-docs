@@ -7,9 +7,9 @@ order: 2
 
 :::(Info) (🚀 Quick Example: Deleting an Issue with pgutil)
 This example deletes issue `4` in build version `1.2.3` of a project `myProject`
-````bash
+```bash
 pgutil builds issues delete --project=myProject --build=1.2.3 --number=4
-````
+```
 :::
 
 ## Command Specification (CLI)

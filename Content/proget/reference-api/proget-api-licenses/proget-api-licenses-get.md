@@ -8,9 +8,9 @@ order: 2
 :::(Info) (🚀 Quick Example: Getting a license with pgutil)
 This example returns information on a license with the ID `ABC-1.0`:
 
-````
+```bash
 pgutil licenses info --code=ABC-1.0
-````
+```
 :::
 
 ## Command Specification (CLI)
@@ -19,13 +19,14 @@ The `licenses info` command is used to get information on a license.
 The `--code` options is always required.
 
 **Getting a license** requires the license code (e.g. `MIT`):
-```
+
+```bash
 pgutil licenses info --code=MIT
 
 ```
 Example Output:
 
-```
+```bash
 Code: MIT
 Title: MIT License
 
@@ -51,13 +52,13 @@ The `--code` and `--hash` options are always required.
 
 **Getting a license file** requires the license code (e.g. `MIT`) and the license file's hash (e.g. `00462de3d7b6f3e5551a69ae84344bc69d23c02e1353be3e8445d16f025e523b`):
 
-```
+```bash
 pgutil licenses files show --code=MIT --hash=0630520a7440edc1e05c3f318eba0df31920d5b4ff0848ed10d7922b34eed796
 ```
 
 Example Output:
 
-```
+```plaintext
 MIT License
 
 Copyright (c) <year> <copyright holders>
@@ -72,7 +73,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 ## HTTP Request Specification
 To return a specified license file, simply `GET` to the URL with the ID of the `license`, the license file hash, and an [appropriate API Key](/docs/proget/reference-api/proget-api-licenses#authentication).
 
-```
+```plaintext
 GET /api/licenses/files/download?code=«license-id»&hash=«file-hash»
 ```
 

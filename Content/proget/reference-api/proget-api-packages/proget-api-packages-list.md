@@ -8,7 +8,7 @@ order: 1
 :::(Info) (🚀 Quick Example: Listing packages with pgutil)
 This example will list the packages in the feed `myNugetFeed`
 
-```
+```bash
 pgutil packages list --feed=myNugetFeed
 ```
 :::
@@ -18,28 +18,33 @@ The `packages list` command is used to list the packages in a feed.
 
 The `--feed` option is required if there is no default feed configured. The `--stable` parameter is optional, but when set true, latest stable versions of packages are returned instead of absolute latest versions. 
 
-**Listing packages in a feed** requires the `--feed` option (e.g. `myNugetFeed`) if there is no default feed configured.
-```
+**Listing packages in a feed** requires the `--feed` option (e.g. `myNugetFeed`) if there is no default feed configured:
+
+```bash
 pgutil packages list  --feed=myNugetFeed
 ```
 
 The `--package` option is optional, and can be used in the event that the user wishes to list the latest version of a single package in a feed. 
 
-**Listing the latest stable npm package version** requires the package name (e.g. `myNpmPackage`), the scope (e.g. `@myScope`) and setting `--stable` as `true`.
-```
+**Listing the latest stable npm package version** requires the package name (e.g. `myNpmPackage`), the scope (e.g. `@myScope`) and setting `--stable` as `true`:
+
+```bash
 pgutil packages list --package=@myScope/myNpmPackage --feed=myNpmFeed --stable=true
 ```
 
 ## HTTP Request Specification
 To list packages, simply `GET` to the URL with a feed name, and `stableOnly` parameters, and an [appropriate API Key](/docs/proget/reference-api/proget-api-packages#authentication).
-````
+
+```plaintext
 GET /api/packages/«feed-name»/latest[?group=«group»][&name=«name»][&stableOnly=«true/false»]
-````
+```
+
 Note that all parameters are optional. The `group name`and `package name` parameters can be used to filter the results. The `stableOnly` parameter defaults to `false`, but when set true, latest stable versions of packages are returned instead of absolute latest versions
 
 ## HTTP Response Specification
 A successful (`200`) response body will contain an array of [PackageVersionInfo](/docs/proget/reference-api/proget-api-packages#package-version) objects. For example, to querying the latest stable packages in a feed, the request would return this:
-```
+
+```json
 GET /api/packages/MyNuGetFeed/latest&stableOnly=true
 [
     {
@@ -59,6 +64,7 @@ GET /api/packages/MyNuGetFeed/latest&stableOnly=true
     { ... } // remaining packages
 ]
 ```
+
 Note that, if an API call is made on a package that does not exist, an empty object is returned. In addition,  Package hash values may not be present for all packages because earlier versions of ProGet would typically only generate some of the hash types.
 
 | Response | Details |
@@ -71,7 +77,8 @@ Note that, if an API call is made on a package that does not exist, an empty obj
 
 ### Latest npm packages in scope (Powershell)
 This script will print out the name and latest version number of all stable (non prerelease) packages in the `@mygroup` scope in the `private-npm` feed.
-````powershell
+
+```powershell
 $feedName = "private-npm"
 $apiUrl = "https://proget.corp.local/api/packages/$feedName/latest"
 $apiKey = "a1b2c3d4e5"
@@ -92,10 +99,11 @@ foreach ($package in $response) {
     Write-Host "Latest Version: $($package.version)"
     Write-Host "--------------------"
 }
-````
+```
 
-Running this script will output something like this
-````
+Running this script will output something like this:
+
+```
 Package Name: core
 Latest Version: 16.2.6
 --------------------
@@ -105,10 +113,11 @@ Latest Version: 16.2.9
 Package Name: cdk
 Latest Version: 16.2.9
 --------------------
-````
+```
 
 ### Check Latest version (Python)
 This function checks to see if `4.2.1` is the latest version of the `GeneralUtils.NET` package in the `private-nuget` feed, and returns a message depending on the result.
+
 ```python
 import requests
 
@@ -143,7 +152,9 @@ if response.status_code == 200:
 else:
     print(f"Failed to make the API request. Status code: {response.status_code}")
 ```
+
 Running this script will output something like this:
-````python
+
+```python
 GeneralUtils.NET 4.2.1 is the latest version.
-````
+```

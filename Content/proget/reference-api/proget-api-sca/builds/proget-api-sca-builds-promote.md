@@ -8,9 +8,9 @@ order: 5
 :::(Info) (🚀 Quick Example: Promoting a build with pgutil)
 This example promotes build `1.2.3` of the project `myProject` to the production stage.
 
-````bash
+```bash
 pgutil builds promote --project=myProject --build=1.2.3 --stage=Production
-````
+```
 :::
 
 ## Command Specification (CLI)

@@ -8,9 +8,9 @@ order: 1
 :::(Info) (🚀 Quick Example: Creating a New Comment with pgutil)
 This example creates a comment (`Checked for errors on 01/01`) in version `1.2.3` of a project named `myProject`:
 
-````bash
+```bash
 pgutil builds comments create --project=myProject --build=1.2.3 --comment="Checked for errors on 01/01"
-````
+```
 :::
 
 ## Command Specification (CLI)

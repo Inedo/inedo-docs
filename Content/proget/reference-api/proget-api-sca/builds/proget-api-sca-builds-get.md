@@ -8,9 +8,9 @@ order: 2
 :::(Info) (🚀 Quick Example: Getting information of a build with pgutil)
 This example gets information on build `1.2.3` of the project `myProject`
 
-````bash
+```bash
 pgutil builds info --build=1.2.3 --project=myProject 
-````
+```
 :::
 
 ## Command Specification (CLI)

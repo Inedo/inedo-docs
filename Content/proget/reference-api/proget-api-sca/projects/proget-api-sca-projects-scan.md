@@ -8,9 +8,9 @@ order: 4
 :::(Info) (🚀 Quick Example: Scanning a project with pgutil)
 This example scans version `1.2.3` of the project `myProject`
 
-````bash
+```bash
 pgutil builds scan --input=myApplication.csproj --project-name="myProject" --version=1.2.3
-````
+```
 :::
 
 ## Command Specification (CLI)

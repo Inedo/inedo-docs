@@ -7,9 +7,10 @@ order: 3
 
 :::(Info) (🚀 Quick Example: Resolving an Issue with pgutil)
 This example resolves issue `4` in build version `1.2.3` of a project `myProject`
-````bash
+
+```bash
 pgutil builds issues resolve --project=myProject --build=1.2.3 --number=4
-````
+```
 :::
 
 ## Command Specification (CLI)

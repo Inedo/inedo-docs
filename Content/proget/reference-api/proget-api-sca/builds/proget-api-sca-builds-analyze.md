@@ -8,9 +8,9 @@ order: 4
 :::(Info) (🚀 Quick Example: Analyzing a build with pgutil)
 This example analyzes build `1.2.3` of the project `myProject`
 
-````bash
+```bash
 pgutil builds audit --project=myProject --build=1.2.3
-````
+```
 :::
 
 ## Command Specification (CLI)

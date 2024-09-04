@@ -7,7 +7,8 @@ order: 2
 
 :::(Info) (🚀 Quick Example: Listing package versions with pgutil)
 This example will list versions of the package `myNugetPackage` in the feed `myNugetFeed`
-```
+
+```bash
 pgutil packages versions --package=myNugetPackage --feed=myNugetFeed
 ```
 :::
@@ -17,32 +18,42 @@ The `packages versions` command is used to list versions of the specified packag
 
 The `--package` option is always required, and the `--feed` option is required if there is no default feed configured.  The `--version` option is optional and will filter the package by version.
 
-**Listing all NuGet packages** requires the package name (e.g. `myNugetPackage`)
-```
+**Listing all NuGet packages** requires the package name (e.g. `myNugetPackage`):
+
+```bash
 pgutil packages versions --package=myNugetPackage --feed=myNugetFeed
 ```
+
 **Listing a single NuGet package version** requires the name (e.g. `myNugetPackage`) and version (e.g. `1.0.0`):
-```
+
+```bash
 pgutil packages versions --package=myNugetPackage --version=1.0.0 --feed=myNugetFeed
 ```
 **Listing multiple versions of an NPM package** requires the scope (e.g. `myScope`) and name (e.g. `myNpmPackage`):
-```
+
+```bash
 pgutil packages versions --package=@myScope/myNpmPackage --feed=myNpmFeed
 ```
+
 **Listing a single NPM package version** requires the scope (e.g. `myScope`), name (e.g. `myNpmPackage`) and version (e.g. `2.0.0`):
-```
+
+```bash
 pgutil packages versions --package=@myScope/myNpmPackage --version=2.0.0 --feed=myNpmFeed
 ```
+
 ## HTTP Request Specification
 To list a package version, simply `GET` to the URL with a feed name, [package identifiers](/docs/proget/reference-api/proget-api-packages#using-multiple-parameters), and an [appropriate API Key](/docs/proget/reference-api/proget-api-packages#authentication).
-```
+
+```plaintext
 GET /api/packages/«feed-name»/versions?«package-identifiers»
 ```
+
 Unless you use a `purl`, the parameters required will vary by feedtype. When the package identifiers you use may resolve to multiple packages (e.g. specifying `name` only), multiple package versions will be returned.
 
 ## HTTP Response Specification
 A successful (`200`) response body will contain an array of [PackageVersionInfo](/docs/proget/reference-api/proget-api-packages#package-version) objects. For example, querying version `1.0.0` of `myNuGetPackage`, the request would return a single object:
-```
+
+```json
 GET /api/packages/MyNuGetFeed/versions?purl=pkg:nuget/myNugetPackage@1.0.0
 
 [{
@@ -61,9 +72,11 @@ GET /api/packages/MyNuGetFeed/versions?purl=pkg:nuget/myNugetPackage@1.0.0
     "sha512":"99b252bc77d1c5f5f7b51fd4ea7d5653e9961d7b3061cf9207f8643a9c
     7cc9965eebc84d6467f2989bb4723b1a244915cc232a78f894e8b748ca882a7c89fb92"
  }]
-````
+```
+
 You can also return multiple [PackageVersion](/docs/proget/reference-api/proget-api-packages#package-version) objects versions by just querying the package name:
-````
+
+```json
 GET /api/packages/MyNuGetFeed/versions?name=myNugetPackage
 
 [{
@@ -100,7 +113,8 @@ GET /api/packages/MyNuGetFeed/versions?name=myNugetPackage
  },
  ...
 ]
-````
+```
+
 Note that, if an API call is made on a package that does not exist, an empty object is returned. In addition,  Package hash values may not be present for all packages because earlier versions of ProGet would typically only generate some of the hash types.
 
 The response will always be an array, even if only one version is requested. For feed types that can have multiple files associated with a version, the array may contain more than one item (such as PyPI, Conda, Ruby, etc).
@@ -132,7 +146,8 @@ $stableVersions | ForEach-Object {
 }
 ```
 
-Running this script will output something lke this
+Running this script will output something lke this:
+
 ```powershell
 Package: GeneralUtils.NET, Version: 3.0.3
 Package: GeneralUtils.NET, Version: 3.0.2
@@ -144,6 +159,7 @@ Package: GeneralUtils.NET, Version: 2.0.1
 
 ### List all versions (Python)
 This script will print out all versions of the `GeneralUtils.NET` package in the `private-nuget` feed published by "John Smith" (username: `jsmith`).
+
 ```python
 import requests
 from datetime import datetime
@@ -173,7 +189,9 @@ else:
         formatted_date = datetime.strptime(version_info["published"], "%Y-%m-%dT%H:%M:%S.%fZ").strftime("%m/%d/%Y at %I:%M %p")
         print(f"----\nVersion: {version_info['version']}\nPublished: {formatted_date}")
 ```
-Running this script will output something like this
+
+Running this script will output something like this:
+
 ```python
 Versions of GeneralUtils.NET published by jsmith found in the private-nuget feed:
 ----

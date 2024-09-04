@@ -159,6 +159,7 @@ $: pgutil sources test
 [MyOtherServer] Successfully contacted ProGet 23.0.32
 [MyBadSource] Error contacting ProGet: invalid host name
 ```
- If you specify the `--name` option, then only that source will be tested. 
- 
- Note that any non-successful test will report a nonzero exit code.
+
+If you specify the `--name` option, then only that source will be tested. 
+
+Note that any non-successful test will report a nonzero exit code.

@@ -8,9 +8,9 @@ order: 3
 :::(Info) (🚀 Quick Example: Deleting a comment with pgutil)
 This example deletes a comment (`2`) in version `1.2.3` of a project named `myProject`:
 
-````bash
+```bash
 pgutil builds comments delete --project=myProject --build=1.2.3 --number=2
-````
+```
 :::
 
 ## Command Specification (CLI)
