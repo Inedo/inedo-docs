@@ -29,7 +29,6 @@ Once `pgutil` is installed, simply invoke the `pgutil builds scan` command after
 pgutil builds scan
  --api-key=mySecretKey1000
  --input=MyApplication.csproj 
- --type=nuget
  --project-name="My Application"
  --version=5.00.21
  ```

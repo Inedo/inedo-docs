@@ -20,9 +20,8 @@ The easiest way to explore the available commands is by running `pgutil`, which 
 
 ```plaintext
 $> pgutil
-
     .--. --. ..- - .. .-..
-        pgutil v1.1.8.0
+        pgutil v2.0.0.0
     .--. --. ..- - .. .-..
 
 Description:
@@ -160,6 +159,6 @@ $: pgutil sources test
 [MyBadSource] Error contacting ProGet: invalid host name
 ```
 
-If you specify the `--name` option, then only that source will be tested. 
-
-Note that any non-successful test will report a nonzero exit code.
+ If you specify the `--name` option, then only that source will be tested. 
+ 
+ Note that any non-successful test will report a nonzero exit code.
