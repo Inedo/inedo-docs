@@ -51,11 +51,11 @@ This additional syntax means that `@` and `%` characters do not need to be expli
 
 ### Escaping Expansion
 
-The grave apostrophe (` ``` `) serves as an escape character. The following can be escaped:
+The grave apostrophe (<code>`</code>) serves as an escape character. The following can be escaped:
 
-*   Variable indicator - `$`, `@`, `%`
-*   Whitespace - `n`, `t`, `r`
-*   Escape character - ` ``` `
+*   Variable indicator - <code>\`$</code>, <code>\`@</code>, <code>\`%</code>
+*   Whitespace - <code>\`n</code>, <code>\`t</code>, <code>\`r</code>
+*   Escape character - <code>`</code>
 
 If any other character follows the grave apostrophe, then it will still be considered an escape character, but may raise a warning during compilation.
 
