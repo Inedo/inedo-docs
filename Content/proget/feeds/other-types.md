@@ -47,25 +47,37 @@ Feel free to submit pull requests for this page or participate in the linked Q&A
 
  [pub (Dart/Flutter) feeds](/docs/proget/feeds/pub) are available as of ProGet 2024.11.
 
-### 📈 Terraform: some recent demand
+### ⏳ Rust Cargo: coming soon
 
-We've had some interest in [Terraform Private Registries](https://www.terraform.io/registry/private), and the discussion is ongoing in the community forums.  Please join [QA#3570](https://forums.inedo.com/topic/3570) to share your thoughts!
+*We are planning to add this in a maintenance release of ProGet 2024, ahead of ProGet 2025*
+
+We don't really know anything about this format, but we're eager to learn! This is currently [in discussion on the forums](https://forums.inedo.com/topic/3246), so please contribute to the discussion if you have an interest!
+
+### ⏳ Terraform: coming soon
+
+*We are planning to add this in a maintenance release of ProGet 2024, ahead of ProGet 2025*
+
+We've had some interest in [Terraform Private Registries](https://www.terraform.io/registry/private), and the discussion is ongoing in the community forums. Please join [QA#3570](https://forums.inedo.com/topic/3570) to share your thoughts!
+
+### ⏳ PHP Composer/Packagist: coming soon
+
+*We are planning to add this in a maintenance release of ProGet 2024, ahead of ProGet 2025*
+
+Please join add your thoughts to [this forum topic](https://forums.inedo.com/topic/734/composer-packagist-feeds) to share your thoughts!
+
+### ⏳ Conan (C++): coming soon
+
+*We are planning to add this in a maintenance release of ProGet 2024, ahead of ProGet 2025*
+
+This is currently [in discussion on the forums](https://forums.inedo.com/topic/2918); it's a relatively new package format, and the use cases or popularity isn't clear. NuGet is already quite popular for C++ packages in Visual Studio, and Universal Packages are used frequently for in-house C++ libraries. 
 
 ### 📉 WinGet: very limited demand
 
 This is brand new from Microsoft, so there's not much demand for private feeds—but there is a [discussion on the forums](https://forums.inedo.com/topic/3257), so please contribute if you're interested.
 
-### 📉 Rust Cargo: very limited demand 
-
-We don't really know anything about this format, but we're eager to learn! This is currently [in discussion on the forums](https://forums.inedo.com/topic/3246), so please contribute to the discussion if you have an interest!
-
 ### 📉Vagrant: very limited demand 
 
 We've had three feature requests for Vagrant over the years, but they were casual inquiries and we didn't get any more info from those users. Our general feeling is that Vagrant is kind of on the outs, and containers are probably going to replace it. Hard to say. Share your thoughts by starting a thread in our [forums](https://forums.inedo.com/), and we'll link it here.
-
-### 📉 Conan (C++): very limited demand 
-
-This is currently [in discussion on the forums](https://forums.inedo.com/topic/2918); it's a relatively new package format, and the use cases or popularity isn't clear. NuGet is already quite popular for C++ packages in Visual Studio, and Universal Packages are used frequently for in-house C++ libraries. 
 
 ### 📉 Chef Cookbooks: very limited demand 
 
@@ -82,18 +94,6 @@ We've had [one request for a Generic OCI Registry](https://forums.inedo.com/topi
 ProGet already has rich Docker and Helm chart support, and lets you see what charts relate to which containers, what packages containers use, the vulnerabilities, etc. Implementing an inferior means to store these doesn't seem like a good idea.
 
 Of course, we could be wrong, so please contribute to the above-linked discussion to help us understand better!
-
-### ❓ PHP Composer/Packagist: Just GitHub Pointers??
-
-We did a pretty deep dive into PHP/Composer a while back, and our conclusion was that a Composer package is not really a "package “at all -- it's simply a "pointer" to a GitHub repository, and uses Git tags for versions, and seemingly other GitHub-specific features. At least, that's all we could find on Packagist and in the documentation.
-
-If that's the case, that means Connectors (remote packages) and Private Packages are pretty much meaningless. You'd not only need to set up a private GitHub server, but you'd also need to sync the repositories.
-
-When we investigated other package servers that claim to proxy Packagist repositories... but they don't seem to do anything more than just proxy the "pointers". You still need to go to GitHub to get the "package" version list and files. There doesn't seem any value in that.
-
-That being said, we did this assessment without any user partners, and we know next to nothing about PHP, so it could be that we misunderstood or looked at the wrong things. Maybe they added a real package? 
-
-Since then, there haven’t been too many requests for it, and we have no idea what the level of interest is. Please add your thoughts to [this forum topic](https://forums.inedo.com/topic/734/composer-packagist-feeds) if you've got some insight.
 
 ### 🚫 CocoaPods: not possible
 
