@@ -6,7 +6,7 @@ order: 11
 [Debian](https://www.debian.org/) is a free operating system whose programs are distributed via packages that can be installed with APT.
 
 :::(Warning)
-This documentation refers to the "new" type of Debian feeds added In ProGet 2023.22. If you're using an older version of ProGet, see [Debian (Classic) Feed Types](#debian-classic-feed-types) to learn how to configure the "older" type of Debian feed.
+This documentation refers to the "new" type of Debian feeds added in ProGet 2023.22. If you're using an older version of ProGet, see [Debian (Legacy) Feed Types](#debian-legacy-feed-types) to learn how to configure the "older" type of Debian feed.
 :::
 
 ## Prerequisite Configuration
@@ -103,23 +103,23 @@ A user has asked us to add support for source packages for the following reasons
 
 If Source Packages are a feature that would be of interest to you, please [contribute in the forums](https://forums.inedo.com/); users with paid versions of our software can also [submit a ticket](https://inedo.com/support/ticket).
 
-## Debian (Classic) Feed Types
+## Debian (Legacy) Feed Types
 
-In ProGet 2023.22, we [created a new Debian feed type](https://blog.inedo.com/inedo/new-debian-feeds) called "Debian (New)" feeds, and called the old feeds to "Debian (Classic)".
+In ProGet 2023.22, we [created a new Debian feed type](https://blog.inedo.com/inedo/new-debian-feeds) called "Debian (New)" feeds, and called the old feeds to "Debian (Classic)". In ProGet 2024, the old feeds are called "Debian (Legacy)" and the new are simply "Debian".
 
-The key differences between the feed types are that Debian (Classic) feeds tie distribution to feeds and do not support connectors. 
+The key differences between the feed types are that Debian (Legacy) feeds tie distribution to feeds and do not support connectors. 
 
-### Migration from Debian (Classic) Feeds
+### Migration from Debian (Legacy) Feeds
 
-You can migrate packages in this (and other) Debian feeds to the new  feed type. Debian (Classic) feeds will be considered a legacy feature in ProGet 2024 and likely removed in a future version.
+You can migrate packages in this (and other) Debian feeds to the new  feed type. Debian (Legacy) feeds will be considered a legacy feature in ProGet 2024 and likely removed in a future version.
 
-### Signing Keys in Debian (Classic) Feeds
+### Signing Keys in Debian (Legacy) Feeds
 
-In order to serve packages from a Debian (Classic) feed, a signing key must be created in ProGet. Once a feed is created, visit the Manage Feed page and select "manage keys" in the Properties panel. Enter a description (just use something like "proget" or "default" if you are creating a single feed) and click "Generate Key". After a short delay, the key is generated and its fingerprint is displayed in the Manage Keys window.
+In order to serve packages from a Debian (Legacy) feed, a signing key must be created in ProGet. Once a feed is created, visit the Manage Feed page and select "manage keys" in the Properties panel. Enter a description (just use something like "proget" or "default" if you are creating a single feed) and click "Generate Key". After a short delay, the key is generated and its fingerprint is displayed in the Manage Keys window.
 
 ### Distributions & Feed Names 
 
-In Debian (Classic) feeds, the feed name served as the distribution name. Therefore, to add the repository to your  system, you would need to run the following command:
+In Debian (Legacy) feeds, the feed name served as the distribution name. Therefore, to add the repository to your  system, you would need to run the following command:
 
 ```sh
 echo "deb http://{proget-server}/ {feed-name} {component-name}" | sudo tee /etc/apt/sources.list.d/{feed-name}.list
