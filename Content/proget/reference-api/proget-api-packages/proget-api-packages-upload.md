@@ -32,6 +32,12 @@ pgutil packages upload --feed=MyNpmFeed --input-file=C:\inedo\packages\myNpmPack
 pgutil packages upload --feed=approved-debian --input-file=C:\inedo\packages\myDebianPackage_3.0.0_all.deb --distribution=main
 ```
 
+**Uploading a Maven Package** is not supported on [Maven (Classic) feeds](docs/proget/feeds/maven#maven-classic-feed-types), and requires the feed (e.g. `internal-maven`), the input file path (e.g. `c:\apps\my-app-1.1\my-app-1.1.jar`), and the artifactPath (e.g. `/com/my-company/my-app/1.1`)
+
+```bash
+pgutil packages upload --feed=internal-maven --input-file=c:\apps\my-app-1.1\my-app-1.1.jar --artifactPath=/com/my-company/my-app/1.1
+```
+
 Note source options must also be specified unless you have the "Default" source configured, and that a feed may be instead specified in the source. See [Working with Sources](/docs/proget/reference-api/proget-pgutil#sources) to learn more.
 
 ## HTTP Request Specification
