@@ -6,8 +6,9 @@ order: 2
 *Download File* is available as both a `pgutil` command and an HTTP Request, and will return the file as content, allowing the file to be downloaded. 
 
 :::(Info) (🚀 Quick Example: Downloading a file with pgutil)
-This example will download a file `info.txt` located in the folder `test-files` of the asset directory `myAssetDirectory` to the local path `C:\Inedo\test-files`
-```
+This example will download a file `info.txt` located in the folder `test-files` of the asset directory `myAssetDirectory` to the local path `C:\Inedo\test-files`:
+
+```bash
 pgutil assets download --feed=myAssetDirectory --path=test-files/info.txt --output=C:\Inedo\test-files
 ```
 :::
@@ -18,27 +19,28 @@ The `assets download` command is used to download a file from the asset director
 The`--path` and `--output` options are always required. The `--feed` option is required if there is no default feed configured.
 
 **Downloading a file** requires the asset directory (e.g. `MyAssetDirectory`), the path of the file (e.g. `test-files/info.txt`) and the output path to download to (e.g. `C:\Inedo\test-files`):
-```
+
+```bash
 pgutil assets download --feed=myAssetDirectory --path=test-files/info.txt --output=C:\Inedo\test-files
 ```
 
 ## HTTP Request Specification
 To return the content a file, `GET` to the URL with the `AssetDirectoryName` and path to the file.
 
-```
+```plaintext
 GET /endpoints/«AssetDirectoryName»/content/«path_to_file»
 ```
 
 To return only the headers of an file, `HEAD` to the URL with the `AssetDirectoryName` and path to the file.
 
-```
+```plaintext
 HEAD /endpoints/«AssetDirectoryName»/content/«path_to_file»
 ```
 
 ## HTTP Response Specification
 A successful (`200`) response to a `GET` or `HEAD` request will contain the file headers, for example, to a request of a file, `mycontent.bin`:
 
-```
+```plaintext
 HEAD/GET /endpoints/myAssetDirectory/content/mycontent.bin
 
 HTTP/1.1 200 OK

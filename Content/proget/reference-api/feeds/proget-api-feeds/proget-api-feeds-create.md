@@ -6,8 +6,9 @@ order: 1
 *Create Feed* is available as both a `pgutil` command and an HTTP Request, and will create a feed, with the properties defined by a [ProgetFeed](/docs/proget/reference-api/feeds/proget-api-feeds#feed-object) object in the body of the request.
 
 :::(Info) (🚀 Quick Example: Creating a feed with pgutil)
-This example will create a `NuGet` feed `myNugetFeed`
-```
+This example will create a `NuGet` feed `myNugetFeed`:
+
+```bash
 pgutil feeds create --name=myNugetFeed --type=NuGet
 ```
 :::
@@ -18,21 +19,22 @@ The `feeds create` command is used to create a feed.
 The `--name` and `--type` options are always required. 
 
 **Creating a feed** requires the feed name (e.g. `MyNugetFeed`) and type (e.g. `NuGet`):
-```
+
+```bash
 pgutil feeds create --name=myNugetFeed --type=NuGet
 ```
 
 ## HTTP Request Specification
 To create a feed, simply `POST` to the URL with an [appropriate API Key](/docs/proget/reference-api/feeds/proget-api-feeds#authentication) and a [ProgetFeed](/docs/proget/reference-api/feeds/proget-api-feeds#feed-object) object as the request body.
 
-```
+```plaintext
 POST/PUT /api/management/feeds/create
 ```
 
 ## HTTP Response Specification
 A successful (`200`) response body will contain a single [ProgetFeed](/docs/proget/reference-api/feeds/proget-api-feeds#feed-object) object. For example, creating a new `nuget` feed, with the name `myNugetFeed` returns:
 
-```
+```json
 POST /api/management/feeds/create
 
 {

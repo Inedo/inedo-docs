@@ -6,8 +6,9 @@ order: 1
 *Audit Vulnerabilities* is available as both a `pgutil` command and an HTTP Request, and will audit packages individually or associated with a project file.
 
 :::(Info) (🚀 Quick Example: Auditing vulnerabilities in a project with pgutil)
-This example will audit vulnerabilities in the project `MyProject.csproj` located locally in `c:\projects\`
-```
+This example will audit vulnerabilities in the project `MyProject.csproj` located locally in `c:\projects\`:
+
+```plaintext
 pgutil vulns audit --project=c:\projects\MyProject.csproj
 ```
 :::
@@ -21,11 +22,14 @@ The `vulns audit` command is used audit a project file. This command is intended
 The  `--project` option is always required. The `--type` option is optional and will filter by package type.
 
 **Auditing project vulnerabilities** requires the project file name (e.g. `myProject`).
-```
+
+```plaintext
 pgutil vulns audit --project=c:\projects\MyProject.csproj
 ```
+
 Running this command will asses the specified project and output the results:
-```
+
+```plaintext
 Scanning for dependencies in projects/MyProject.csproj...
 Found 2 package dependencies. Performing audit...
 1 vulnerable package detected.
@@ -41,13 +45,15 @@ PGV-2245804: 7.5 (High) - Improper Handling of Exceptional Conditions in Newtons
 If you disallow anonymous access to your feed, you will need to create an [API Key](/docs/proget/reference-api/proget-apikeys) that grants access to the Feed API.  You will need to include that key as a header named `X-ApiKey` and set its value to that API key.
 
 For example, to authenticate with the API key `abc12345`  to this endpoint, you could specify the API key as follows:
-````
+
+```bash
 curl -X POST -H "X-ApiKey: abc12345" https://proget.corp.local/api/sca/audit-package-vulns
-````
+```
 :::
 
 To audit packages via the API, simply `POST` to the URL with an appropriate API Key and an array of [PackageVersionIdentifier](https://github.com/Inedo/pgutil/blob/thousand/Inedo.ProGet/PackageVersionIdentifier.cs) objects as the request body.
-```
+
+```bash
 POST /api/sca/audit-package-vulns
 [ 
     {
@@ -66,7 +72,7 @@ POST /api/sca/audit-package-vulns
 ## HTTP Response Specification
 A successful (`200`) response body will contain an array of [VulnerabilityInfo](https://github.com/Inedo/pgutil/blob/thousand/Inedo.ProGet/VulnerabilityInfo.cs) objects. For example, auditing version `1.2.3` of the package `myPackage` returns:
 
-```
+```bash
 [
     {
         "id": "PGV-12345678",

@@ -6,8 +6,9 @@ order: 2
 *List Asset Folders* is available as both a `pgutil` command and an HTTP Request, and will list Asset "items" (files and folders) in the specified path.
 
 :::(Info) (🚀 Quick Example: Listing Asset Files and Folders with pgutil)
-This example will list the files in the folder `production-files` in the asset directory `myAssetDirectory`
-```
+This example will list the files in the folder `production-files` in the asset directory `myAssetDirectory`:
+
+```bash
 pgutil assets list --feed=myAssetDirectory --path=production-files
 ```
 :::
@@ -17,18 +18,22 @@ The `assets list` command is used to list files and folders in an asset director
 
 The `--feed` option is always required, and the `--path` option is required for folders within the asset directory.
 
-**Listing the contents of the root folder of the asset directory** requires the asset directory (e.g. `myAssetDirectory`)
-```
+**Listing the contents of the root folder of the asset directory** requires the asset directory (e.g. `myAssetDirectory`):
+
+```bash
 pgutil assets list --feed=myAssetDirectory
 ```
-**Listing the contents of a folder of the asset directory** requires the asset directory (e.g. `myAssetDirectory`) and the folder (e.g. `test-files`) 
-```
+
+**Listing the contents of a folder of the asset directory** requires the asset directory (e.g. `myAssetDirectory`) and the folder (e.g. `test-files`):
+
+```bash
 pgutil assets list --feed=myAssetDirectory --path=test-files
 ```
+
 ## HTTP Request Specification
 To list item data, simply `GET` to the URL with the `AssetDirectoryName` and path to the folder. 
 
-```
+```plaintext
 GET /endpoints/«AssetDirectoryName»/dir/«path-to-folder»[?recursive=«true/false»]
 ```
 
@@ -41,7 +46,7 @@ A successful (`200`) response body will contain a JSON array of [AssetDirectoryI
 
 When listing the `internal-files` directory and omitting the `«path-to-folder»` and `recursive` argument, only the items in the root folder of the asset directory will be returned:
 
-```
+```json
 GET /endpoints/internal-files/dir
 
 [
@@ -89,7 +94,7 @@ GET /endpoints/internal-files/dir
 
 When listing the `internal-files` directory, setting recursive to `true` and omitting the `«path_to_folder»`, lists items all data of items within the folders located in the root folder of the asset directory:
 
-```
+```json
 GET /endpoints/internal-files/dir/
 [
   {
@@ -167,7 +172,8 @@ GET /endpoints/internal-files/dir/
 ```
 
 Note that querying a nonexistent path (i.e. a folder that does not exist) will not return a `404`, but will instead return an empty array:
-```
+
+```plaintext
 GET /endpoints/internal-files/dir/does/not/exist
 []
 ```

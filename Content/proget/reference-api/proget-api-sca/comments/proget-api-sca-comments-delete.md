@@ -8,9 +8,9 @@ order: 3
 :::(Info) (🚀 Quick Example: Deleting a comment with pgutil)
 This example deletes a comment (`2`) in version `1.2.3` of a project named `myProject`:
 
-````
+```bash
 pgutil builds comments delete --project=myProject --build=1.2.3 --number=2
-````
+```
 :::
 
 ## Command Specification (CLI)
@@ -20,14 +20,14 @@ The `--project`, `--build` and `--number` options are always required.
 
 **Deleting a comment** requires the project (e.g. `myProject`), the build version number (e.g. `1.2.3`), and the comment number (e.g. `2`)
 
-```
+```bash
 pgutil builds comments delete --project=myProject --build=1.2.3 --number=2
 ```
 
 ## HTTP Request Specification
 To delete a comment, simply `DELETE` to the URL with an [appropriate API Key](/docs/proget/reference-api/proget-api-sca#authentication).
 
-```
+```plaintext
 DELETE /api/sca/comments?project=«projectName»&version=«releaseVersion»&number=«commentNumber»
 ```
 ## HTTP Response Specification
@@ -36,7 +36,7 @@ DELETE /api/sca/comments?project=«projectName»&version=«releaseVersion»&numb
 | --- | --- |
 | **200 (Success)** | indicates the comment was successfully deleted |
 | **400 (Invalid Input)** | indicates invalid or missing properties in the request |
-|  **403 (Unauthorized API Key)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/reference-api/proget-api-sca#authentication); the body will be empty |
+| **403 (Unauthorized API Key)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/reference-api/proget-api-sca#authentication); the body will be empty |
 | **500 (Server Error)** | indicates an unexpected error; the body will contain the message and stack trace, and this will also be logged |
 
 ### Delete all comments (Powershell)

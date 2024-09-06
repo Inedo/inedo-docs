@@ -15,7 +15,7 @@ Although most HTTP Endpoints in ProGet can *technically* be used without authent
 
 The best way to authenticate with an API Key is to specify it in the `X-ApiKey` HTTP header. For example:
 
-```
+```bash
 curl --header "X-ApiKey: 70f875c2593ef93d0b21400d5f94ea1d8ed519d0" https://proget.corp.local/api/promotions/list?package=Newtonsoft.Json&version=13.0.2
 ```
 

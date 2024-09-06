@@ -6,7 +6,8 @@ order: 1
 *Create ApiKey* is available as both a `pgutil` command and an HTTP Request, and will create a system, personal, or feed API key in ProGet.
 
 :::(Info) (🚀 Quick Example: Create a Personal API Key with pgutil)
-```
+
+```bash
 pgutil apikeys create personal --source=https://proget.corp.local/ --username=jrdobbs --password=hunter42
 ```
 :::
@@ -29,22 +30,26 @@ These commands also have optional `--source` and related authentication options 
 The key will be written to stdout on success.
 
 **Example: Creating a System API key with restrictions**  can be done by limiting the APIs  (e.g. Feeds and SCA) and setting an expiration (`2024/08/01``).
-```
+
+```bash
 pgutil apikeys create system --apis="feeds,sca" --expiration="2024/08/01"
 ```
 
 **Example: Creating a Feed API key** requires a feed name (`MyNpmFeed`):
-```
+
+```bash
 pgutil apikeys create feed --feed=MyNpmFeed
 ```
 
 **Example: Creating a Feed API key for a group** requires a feed group name (`MyFeedGroup`):
-```
+
+```bash
 pgutil apikeys create feed --group=MyFeedGroup
 ```
 
 **Example: Creating a Personal Key for another user** requires the user's name (`johnsmith`):
-```
+
+```bash
 pgutil apikeys create personal --user=johnsmith
 ```
 

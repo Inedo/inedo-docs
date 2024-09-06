@@ -9,14 +9,12 @@ Not working as of ProGet version 2023.22
 
 *Update License* is available as both a `pgutil` command and an HTTP Request, and will update a specified license using the [License](/docs/proget/reference-api/proget-api-licenses#license-object) object properties defined in the request body. 
 
-
-
 :::(Info) (🚀 Quick Example: Updating a license with pgutil)
 This example updates a nuget license with the id `XYZ-1.0`, adding version `1.2.3` of the nuget package `myNugetPackage` as a `PUrl`
 
-````
+```bash
 pgutil licenses detection add --code=XYZ-1.0 --type=purl --value=pkg:nuget/myNugetPackage@1.2.3
-````
+```
 :::
 
 ## Command Specification (CLI)
@@ -31,18 +29,15 @@ The `--code`, `--type`, and `--value` options are always required.
 
 **Adding a PUrl detection type to a license** requires the license code (e.g. `ABC-1.0`), the detection type (e.g `purl`), and the value (e.g. `pkg:nuget/myNugetPackage@1.2.3`):
 
-```
+```bash
 pgutil licenses detection add --code=ABC-1.0 --type=purl --value=pkg:nuget/myNugetPackage@1.2.3
-
 ```
 
 **Removing an SPDX detection type to a license** requires the license code (e.g. `ABC-1.0`), the detection type (e.g `spdx`), and the value (e.g. `MIT`):
 
-```
+```bash
 pgutil licenses detection remove --code=ABC-1.0 --type=spdx --value=MIT
-
 ```
-
 ### Updating License Files
 
 The `licenses files` command set is used to add, remove, or view license files in a license. There are two commands available:
@@ -54,16 +49,15 @@ The `licenses files` command set is used to add, remove, or view license files i
 
 **Adding a license file to a license** requires the license code (e.g. `ABC-1.0`) and the file (e.g. `C:\documents\license-files\abc-1.0-license-file.txt`):
 
-```
+```bash
 pgutil licenses files add --code=ABC-1.0 --file=C:\documents\license-files\abc-1.0-license-file.txt
 ```
 
 **Deleting a license file** requires the license file's hash (e.g. `00462de3d7b6f3e5551a69ae84344bc69d23c02e1353be3e8445d16f025e523b`):
 
-```
+```bash
 pgutil licenses files delete --hash=00462de3d7b6f3e5551a69ae84344bc69d23c02e1353be3e8445d16f025e523b
 ```
-
 
 ## HTTP Request Specification
 To update a license, simply `POST` to the URL with the `license` id, an [appropriate API Key](/docs/proget/reference-api/proget-api-licenses#authentication) and a [License](/docs/proget/reference-api/proget-api-licenses#license-object) object as the request body.
@@ -76,13 +70,12 @@ When updating, any properties omitted will keep their existing values. Updating 
 To append values, perform a [List License](/docs/proget/reference-api/proget-api-licenses/proget-api-licenses-list) first, then append the existing values returned in the "Update License" request. For example, GET the values of allowedFeeds "A" and "B", and add them along with "C", supplying `allowedFeeds: ["A", "B", "C"]`in the update request.
 :::
 
-```
+```plaintext
 POST /api/licenses/update
 ```
 
 ## HTTP Response Specification
 A successful (`200`) response body will be empty.
-
 
 | Response | Details |
 |---|---|

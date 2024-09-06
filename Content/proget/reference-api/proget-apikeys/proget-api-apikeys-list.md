@@ -6,7 +6,8 @@ order: 2
 *List ApiKeys* is available as both a `pgutil` command and an HTTP Request, and will list the  API keys in ProGet.
 
 :::(Info) (🚀 Quick Example: List API Keys with pgutil)
-```
+
+```bash
 pgutil apikeys list
 ```
 :::
@@ -19,7 +20,7 @@ The `apikeys list` has an optional `--source` and related authentication options
 
 Running the command will print API Key and related fields to the standard output.
 
-```
+```bash
 $> pgutil apikeys list
 (unnamed key)
   Id:          1000

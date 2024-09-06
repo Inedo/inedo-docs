@@ -6,8 +6,9 @@ order: 6
 *Get Feed Storage* is available as both a `pgutil` command and an HTTP Request, and will return a [FeedStorageConfiguration](/docs/proget/reference-api/feeds/proget-api-feeds#storage-object) object, or properties for the specified feed's storage.
 
 :::(Info) (🚀 Quick Example: Getting a feed's storage properties with pgutil)
-This example returns storage properties of the feed `myNugetFeed`
-```
+This example returns storage properties of the feed `myNugetFeed`:
+
+```bash
 pgutil feeds storage info --feed=myNugetFeed
 ```
 :::
@@ -19,13 +20,13 @@ The `--feed` option is always required.
 
 **Getting a feed's storage properties** requires the feed name (e.g. `myNugetFeed`):
 
-```
+```bash
 pgutil feeds storage info --feed=myNugetFeed
 ```
 
 Example output:
 
-```
+```plaintext
 Type: disk
 StoragePath: <default>
 ```
@@ -33,14 +34,14 @@ StoragePath: <default>
 ## HTTP Request Specification
 To return a specified feed's storage properties, simply `GET` to the URL with the name of the `feed` and an [appropriate API Key](/docs/proget/reference-api/feeds/proget-api-feeds#authentication).
 
-```
+```plaintext
 GET /api/storage?feed=«feed-name»
 ```
 
 ## HTTP Response Specification
 A successful (`200`) response body will contain a single [FeedStorageConfiguration](/docs/proget/reference-api/feeds/proget-api-feeds#storage-object) object. For example, to requesting storage properties a feed with the name `myNugetFeed`, the request would return:
 
-```
+```json
 GET /api/storage?feed=myNugetFeed
 
 {

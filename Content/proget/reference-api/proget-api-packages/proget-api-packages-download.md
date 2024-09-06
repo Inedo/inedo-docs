@@ -6,8 +6,9 @@ order: 3
 *Download Package* is available as both a `pgutil` command and an HTTP Request, and will download a package to the specified path or return it as content.
 
 :::(Info) (🚀 Quick Example: Downloading a package with pgutil)
-This example downloads version `1.2.3` of the package `myNugetPackage` to the path `C:\packages\nuget-packages`
-```
+This example downloads version `1.2.3` of the package `myNugetPackage` to the path `C:\packages\nuget-packages`:
+
+```bash
 pgutil packages download --feed=myNugetFeed --package=myNugetPackage --version=1.2.3 --output-file=C:\packages\nuget-packages\myNugetPackage.nupkg
 ```
 :::
@@ -19,29 +20,36 @@ The `--package` and `--version` options are always required. The `--feed` option
 
 Additional options may be required depending on the package type. If a required option is missing, an error will be returned indicating the missing option.
 
-**Downloading a NuGet Package** requires the package (e.g. `myNugetPackage`) and version (e.g. `1.2.3`)
-```
+**Downloading a NuGet Package** requires the package (e.g. `myNugetPackage`) and version (e.g. `1.2.3`):
+
+```bash
 pgutil packages download --feed=myNugetFeed --package=myNugetPackage --version=1.2.3 --output-file=C:\packages\nuget-packages\myNugetPackage.nupkg
 ```
-**Downloading an npm Package** requires the package (e.g. `myNpmPackage`), version (e.g. `4.5.6`) and scope (e.g. `@scope`)
-```
+
+**Downloading an npm Package** requires the package (e.g. `myNpmPackage`), version (e.g. `4.5.6`) and scope (e.g. `@scope`):
+
+```bash
 pgutil packages download --feed=myNpmFeed --package=@scope/myNpmPackage --version=4.5.6 --output-file=C:\npm-packages\package.tgz
 ```
-**Downloading a Pypi Package** requires the package (e.g. `myPypiPackage`), version (e.g. `7.8.9`) and filename (e.g. `myPypiPackage-7.8.9.tar.gz`)
-```
+
+**Downloading a Pypi Package** requires the package (e.g. `myPypiPackage`), version (e.g. `7.8.9`) and filename (e.g. `myPypiPackage-7.8.9.tar.gz`):
+
+```bash
 pgutil packages download --feed=myPypiFeed --package=myPypiPackage --version=7.8.9 --filename=myPypiPackage-7.8.9.tar.gz --output-file=C:\pypi-packages\myPypiPackage-7.8.9.tar.gz
 ```
 
 **Downloading a Debian Package** requires the package (e.g. `myDebianPackage`), version (e.g. `2.3.4`), component (e.g. `main`), distribution (e.g. `stable`) and architecture (e.g. `amd64`)
-```
+```bash
 pgutil packages download --feed=myDebianFeed --package=myDebianPackage --version=2.3.4 --component=main --distro=stable --arch=amd64 --output-file=C:\debian-packages\myDebianPackage_2.3.4_amd64.deb
 ```
 
 ## HTTP Request Specification
 To download a package, simply `GET` to the URL with a feed name, [package identifiers](/docs/proget/reference-api/proget-api-packages#using-multiple-parameters), and an [appropriate API Key](/docs/proget/reference-api/proget-api-packages#authentication).
-````
+
+```plaintext
 GET /api/packages/«feed-name»/download?«package-identifiers»
-````
+```
+
 Unless you use a `purl`, the parameters required will vary by feedtype. 
 :::(info) (📄 Note)
 The package identifier you use must resolve to a single package, otherwise a `400` will be returned.
@@ -110,10 +118,12 @@ if ($response -eq $null) {
     }
 }
 ```
+
 This will download the package to the folder `C:\MyOrganizationFolder\GeneralUtilsPackages`. If the file already exists the user will be prompted to overwrite the existing file or not.
 
 ### Download All Packages (Python)
 This script will download all versions of the `GeneralUtils.NET` package in the `private-nuget` feed.
+
 ```python
 import os
 import requests
@@ -153,4 +163,5 @@ for version in package_versions:
 
 print(f"All versions of {package_name} have been downloaded to {target_directory}.")
 ```
+
 This will download the all packages to the folder `C:\MyOrganizationFolder\GeneralUtilsPackages`. If the file already exists the user will be prompted to overwrite the existing file or not.

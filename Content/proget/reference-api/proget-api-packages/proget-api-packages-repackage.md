@@ -11,7 +11,8 @@ The Repackaging API is available as both a `pgutil` command and an HTTP Request,
 
 :::(Info) (🚀 Quick Example: Repackaging a NuGet package with pgutil)
 This example will repackage `myNugetPackage` version `4.3.2-rc.1` to `4.3.2` in the feed `myNugetFeed`
-```
+
+```bash
 pgutil packages repackage --feed=myNugetFeed --package=myNugetPackage --version=4.3.2-rc.1 --new-version=4.3.2
 ```
 :::
@@ -24,12 +25,14 @@ The `packages repackage` command is used to repackage a package to a package wit
 The `--package` and `--version` options are always required, and the `--qualifier` option is required for multifile packages like Debian and RubyGems.
 
 **Repackaging a NuGet Package** requires the feed (e.g. `myNugetFeed`), name (e.g. `myNugetPackage`) current version (e.g. `1.0.0-rc.1`) and new version (e.g. `1.0.0`):
-```
+
+```bash
 pgutil packages repackage --feed=myNugetFeed --package=myNugetPackage --version=1.0.0-rc.1 --new-version=1.0.0
 ```
 
 **Repackaging an npm Package** requires the feed (e.g. `MyNpmFeed`), name (e.g. `myNpmPackage`), scope (e.g. `myScope`), current version (e.g. `2.0.0-rc.1`) and new version (e.g. `2.0.0`):
-```
+
+```bash
 pgutil packages repackage --feed=MyNpmFeed --package=@myScope/myNpmPackage --version=2.0.0-rc.1 --new-version=2.0.0
 ```
 

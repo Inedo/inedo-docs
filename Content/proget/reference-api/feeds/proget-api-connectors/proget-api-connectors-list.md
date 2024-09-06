@@ -6,8 +6,9 @@ order: 3
 *List Connectors* is available as both a `pgutil` command and an HTTP Request, and will return an array of [ProGetConnector](/docs/proget/reference-api/feeds/proget-api-connectors#connector-object) objects, describing all existing [connectors](/docs/proget/feeds/connector-overview).
 
 :::(Info) (🚀 Quick Example: Listing connectors with pgutil)
-This example lists all existing connectors
-```
+This example lists all existing connectors:
+
+```bash
 pgutil connectors list
 ```
 :::
@@ -16,12 +17,13 @@ pgutil connectors list
 The `connectors list` command is used to list all existing [connectors](/docs/proget/feeds/connector-overview).
 
 **Listing all connectors** does not require any additional options:
-```
+
+```bash
 pgutil connectors list
 ```
 This will return a list of connectors, their type, and their URL:
 
-```
+```plaintext
 myNugetConnector (nuget) https://proget.connector.local
 nuget.org (nuget) https://api.nuget.org/v3/index.json
 pypi.org (pypi) https://pypi.org/
@@ -32,14 +34,14 @@ rubygems.org (rubygems) https://api.rubygems.org/
 ## HTTP Request Specification
 To list all existing [connectors](/docs/proget/feeds/connector-overview), simply `GET` to the URL with an [appropriate API Key](/docs/proget/reference-api/feeds/proget-api-connectors#authentication).
 
-```
+```plaintext
 GET /api/management/connectors/list
 ```
 
 ## HTTP Response Specification
 A successful (`200`) response body will contain an array of [ProgetConnector](/docs/proget/reference-api/feeds/proget-api-connectors#connector-object) objects. For example:
 
-```
+```json
 GET /api/management/connectors/list
 
 [
@@ -67,7 +69,6 @@ GET /api/management/connectors/list
   },
   { ... } // other connectors
 ]
-
 ```
 
 | Response | Details |
@@ -99,7 +100,7 @@ foreach ($connector in $response) {
 
 #### Example Output:
 
-```
+```powershell
 nuget.org (nuget) https://api.nuget.org/v3/index.json
 registry.npmjs.org (npm) https://registry.npmjs.org
 ...

@@ -6,7 +6,8 @@ order: 3
 *Delete ApiKey* is available as both a `pgutil` command and an HTTP Request, and will delete an API key in ProGet.
 
 :::(Info) (🚀 Quick Example: Delete an API Key with pgutil)
-```
+
+```bash
 pgutil apikeys delete --id=1000
 ```
 :::
@@ -19,7 +20,7 @@ The `apikeys delete` command requires an `--id` option and has an optional `--so
 ### Example: Finding then Deleting an API Key
 You can find the Id of an ApiKey using the `apikeys list` command. See [List ApiKeys](/docs/proget/reference-api/proget-apikeys/proget-api-apikeys-list) to learn more.
 
-```
+```bash
 $> pgutil apikeys list
 (unnamed key)
   Id:          1000
@@ -39,7 +40,6 @@ Note source options must also be specified unless you have the "Default" source 
 ## HTTP Request Specification
 
 To delete an API key, simply `POST` to `/api/api-keys/delete?id=«apikey-id»`. 
-
 
 ## HTTP Response Specification
 | Response | Details |

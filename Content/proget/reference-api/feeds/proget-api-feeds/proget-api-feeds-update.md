@@ -6,8 +6,9 @@ order: 4
 *Update Feed* is available as both a `pgutil` command and an HTTP Request, and will update a specified feed using the [Feed](/docs/proget/reference-api/feeds/proget-api-feeds#feed-object) object properties defined in the request body. This endpoint supports partial updating by only updating the properties that are supplied in the request. 
 
 :::(Info) (🚀 Quick Example: Updating a feed's drop path with pgutil)
-This example adds a drop path `c:\bulk-import` to a feed `myNugetFeed`
-```
+This example adds a drop path `c:\bulk-import` to a feed `myNugetFeed`:
+
+```bash
 pgutil feeds properties set --feed=myNugetFeed --property=dropPath --value=c:\bulk-import
 ```
 :::
@@ -26,17 +27,20 @@ The `--property` and `--value` options are always required. The `--feed` option 
 | `vulnerabilitiesEnabled` | Indicates whether vulnerability detection is enabled (`true`) or disabled (`false`) | 
 
 **Updating a feed's drop path** requires the feed name (e.g. `myNugetFeed`), the property to be updated (e.g. `dropPath`), and the value to update this with (e.g. `c:\bulk-import`):
-```
+
+```bash
 pgutil feeds properties set --feed=myNugetFeed --property=dropPath --value=c:\bulk-import
 ```
 
 **Adding multiple connectors to a feed** requires the feed name (e.g. `myFeed`), the property to be updated (e.g. `connectors`), and the name of the connectors (e.g. `registry.npmjs.org` and `nuget.org`):
-```
+
+```bash
 pgutil feeds properties set --feed=myFeed --property=connectors --value=registry.npmjs.org,nuget.org
 ```
 
 **Disabling a feed** requires the feed name (e.g. `myPypiFeed`), the property to be updated (e.g. `active`), and the value to update this with (e.g. `false`):
-```
+
+```bash
 pgutil feeds properties set --feed=myPypiFeed --property=active --value=false
 ```
 
@@ -44,7 +48,7 @@ pgutil feeds properties set --feed=myPypiFeed --property=active --value=false
 
 The `feeds retention` commands are used to update a feed's retention rules. 
 
-There are four commands available (`create`, `list`, `update`, and `delete`), and each command has options that correspond to fields in the web UI. The `--feed` option is required in all commands if there is no default feed configured. The `--rule` option is required for the `update` and `delete` commands, and corresponds to the rule number, identified using the `list` command. (see [example](#list))
+There are four commands available (`create`, `list`, `update`, and `delete`), and each command has options that correspond to fields in the web UI. The `--feed` option is required in all commands if there is no default feed configured. The `--rule` option is required for the `update` and `delete` commands, and corresponds to the rule number, identified using the `list` command. (See example below)
 
 The following options are used with the `create`, `update`, and`delete` commands:
 
@@ -71,19 +75,19 @@ The following options are used with the `create`, `update`, and`delete` commands
 One or more options can be selected. Creating a new retention rule will set property values to those specified in the command. All other properties will be set to "not set" with the exception of  `deleteCached`, `deletePrereleaseVersions`, `keepIfActivelyConsumed` and `sizeExclusive` which will be set as `false` by default.
 :::
 
-```
+```bash
 pgutil feeds retention create --feed=myNugetFeed --deletePrereleaseVersions=true
 ```
 
 **Listing a feed's retention rules** requires the feed name (e.g. `myPypiFeed`):
 
-```
+```bash
 pgutil feeds retention list --feed=myPypiFeed
 ```
 
-<p id="list">Example output of listing retention rules:</p>
+Example output of listing retention rules:
 
-```
+```plaintext
 [1]
  deleteCached=true
  deletePackageIds=*not set*
@@ -116,7 +120,7 @@ pgutil feeds retention list --feed=myPypiFeed
 
 **Updating retention rules for a feed** requires the feed name (e.g. `myNugetFeed`), the existing retention rule (e.g.  `1`), and  the properties to be updated (e.g.  `deleteCached` as `true` and `keepVersionsCount` as `5`, and keepUsedWithinDays as blank to revert it to `not-set`):
 
-```
+```bash
 pgutil feeds retention update --feed=myNugetFeed --deleteCached=true --keepVersionsCount=5 --keepUsedWithinDays= --rule=1
 ```
 
@@ -127,41 +131,44 @@ Selecting an existing option
 :::
 
 Example update (Before):
-```
- deleteCached=false
- deletePackageIds=*not set*
- deletePrereleaseVersions=false
- deleteVersions=*not set*
- keepConsumedWithinDays=*not set*
- keepIfActivelyConsumed=false
- keepPackageIds=*not set*
- keepPackageUsageRemovedDays=*not set*
- keepUsedWithinDays=30
- keepVersionsCount=*not set*
- sizeExclusive=false
- sizeTrigger=*not set*
- triggerDownloadCount=*not set*
- ```
-Example update (After):
-```
- deleteCached=true
- deletePackageIds=*not set*
- deletePrereleaseVersions=false
- deleteVersions=*not set*
- keepConsumedWithinDays=*not set*
- keepIfActivelyConsumed=false
- keepPackageIds=*not set*
- keepPackageUsageRemovedDays=*not set*
- keepUsedWithinDays=*not set*
- keepVersionsCount=5
- sizeExclusive=false
- sizeTrigger=*not set*
- triggerDownloadCount=*not set*
+
+```plaintext
+deleteCached=false
+deletePackageIds=*not set*
+deletePrereleaseVersions=false
+deleteVersions=*not set*
+keepConsumedWithinDays=*not set*
+keepIfActivelyConsumed=false
+keepPackageIds=*not set*
+keepPackageUsageRemovedDays=*not set*
+keepUsedWithinDays=30
+keepVersionsCount=*not set*
+sizeExclusive=false
+sizeTrigger=*not set*
+triggerDownloadCount=*not set*
  ```
 
+Example update (After):
+
+```plaintext
+deleteCached=true
+deletePackageIds=*not set*
+deletePrereleaseVersions=false
+deleteVersions=*not set*
+keepConsumedWithinDays=*not set*
+keepIfActivelyConsumed=false
+keepPackageIds=*not set*
+keepPackageUsageRemovedDays=*not set*
+keepUsedWithinDays=*not set*
+keepVersionsCount=5
+sizeExclusive=false
+sizeTrigger=*not set*
+triggerDownloadCount=*not set*
+ ```
 
 **Deleting a retention rule for a feed** requires the feed name (e.g. `myNpmFeed`) and the retention rules number (e.g. `4`) from the `list` command:
-```
+
+```bash
 pgutil feeds retention delete --feed=myNpmFeed --rule=4
 ```
 
@@ -174,14 +181,14 @@ When updating, any properties omitted will keep their existing values. Updating 
 To append values, perform a [Get Feed](/docs/proget/reference-api/feeds/proget-api-feeds/proget-api-feeds-get) first, then append the existing values returned in the "Update Feed" request. For example, GET the values of connectors "A" and "B", and add them along with "C", supplying `connectors: ["A", "B", "C"]`in the update request.
 :::
 
-```
+```plaintext
 POST /api/management/feeds/update/«feed-name»
 ```
 
 ## HTTP Response Specification
 A successful (`200`) response body will contain an updated [Feed](/docs/proget/reference-api/feeds/proget-api-feeds#feed-object) object. For example, when updating a NuGet feed `myNugetFeed` with a new description, this returns:
 
-```
+```json
 {
   "name": "myNugetFeed",
   "alternateNames": [],

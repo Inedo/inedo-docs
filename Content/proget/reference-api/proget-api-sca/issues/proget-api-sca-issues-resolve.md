@@ -7,9 +7,10 @@ order: 3
 
 :::(Info) (🚀 Quick Example: Resolving an Issue with pgutil)
 This example resolves issue `4` in build version `1.2.3` of a project `myProject`
-````
+
+```bash
 pgutil builds issues resolve --project=myProject --build=1.2.3 --number=4
-````
+```
 :::
 
 ## Command Specification (CLI)
@@ -19,14 +20,14 @@ The `--project`, `--build` and `--number` options are always required.
 
 **Resolving an issue** requires the project (e.g. `myProject`), the build version number (e.g. `1.2.3`), and the issue number (e.g. `4`)
 
-```
+```bash
 pgutil builds issues resolve --project=myProject --build=1.2.3 --number=4
 ```
 
 ## HTTP Request Specification
 To resolve an issue, simply `POST` to the URL with an [appropriate API Key](/docs/proget/reference-api/proget-api-sca#authentication).
 
-```
+```plaintext
 POST /api/sca/issues?project=«projectName»&version=«releaseVersion»&number=«issueNumber»&resolve=true
 ```
 

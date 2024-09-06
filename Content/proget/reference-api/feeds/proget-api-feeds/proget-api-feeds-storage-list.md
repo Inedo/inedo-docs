@@ -6,9 +6,9 @@ order: 8
 *List Feed Storage Types* is available as both a `pgutil` command and an HTTP Request, and will return an array of [FeedStorageType](/docs/proget/reference-api/feeds/proget-api-feeds#type-object) objects, describing all feed storage types.
 
 :::(Info) (🚀 Quick Example: Listing feed storage types with pgutil)
-This example lists all feed storage types
+This example lists all feed storage types:
 
-```
+```bash
 pgutil feeds storage types
 ```
 :::
@@ -18,13 +18,13 @@ The `feeds storage types` command is used to list all feed storage types.
 
 **Listing all feed storage types** does not require any additional options:
 
-```
-feeds storage types
+```bash
+pgutil feeds storage types
 ```
 
 Example output:
 
-```
+```plaintext
 Type: disk
 Storage path on the local file system or network share.
 Options:
@@ -68,14 +68,14 @@ Options:
 ## HTTP Request Specification
 To list all feed storage types, simply `GET` to the URL with an [appropriate API Key](/docs/proget/reference-api/feeds/proget-api-feeds#authentication).
 
-```
+```plaintext
 GET /api/storage
 ```
 
 ## HTTP Response Specification
 A successful (`200`) response body will contain an array of [FeedStorageType](/docs/proget/reference-api/feeds/proget-api-feeds#type-object) objects. For example:
 
-```
+```json
 GET /api/storage
 
 [
