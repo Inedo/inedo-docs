@@ -103,7 +103,11 @@ This allows you to install the extensions of your VSIX feed in addition to the e
 
 ![extensions](/resources/docs/visualstudio-extensions-manager.png){height="" width="50%"}
 
-## Step 4.1: Adding Packages from a Feed to VS Code
+### Managing Galleries with Registry Settings
+
+To [manage multiple machines or control access to extension galleries in Visual Studio](https://learn.microsoft.com/en-us/visualstudio/extensibility/how-to-manage-a-private-gallery-by-using-registry-settings?view=vs-2022), you can use a `.pkgdef file`. This allows you to add, prioritize, or disable galleries, including your private ProGet feed, by modifying registry settings. You can also disable public galleries or set your private feed to appear first.
+
+## Step 4.2: Adding Packages from a Feed to VS Code
 
 Currently, Visual Studio Code does not support private galleries, despite there being a [request](https://github.com/microsoft/vscode/issues/21839) for it that has been open since 2017. You can still upload extensions to a VSIX feed, but users will need to manually download them and then import them into their Visual Studio Code.
 
