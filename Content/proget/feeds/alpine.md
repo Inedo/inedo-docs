@@ -97,11 +97,9 @@ AlpineLinux.org hosts dozens of different Alpine (APK) repositories; there's gen
 
 When creating a connector and connecting to an official repository, we recommend using a name that follows the URL conventions. For example:
 
-```html
 <table>
     <tr><td>URL:</td><td><code>https://dl-cdn.alpinelinux.org/alpine/v3.18/main/x86_64/</code></td></tr>
     <tr><td>Connector name:</td><td><code>alpine-v3.18-main-x86_64</code></td></tr>
 </table>
-```
 
 You can see a list of the default repositories in the `/etc/apk/repositories` file on a new Alpine installation.
