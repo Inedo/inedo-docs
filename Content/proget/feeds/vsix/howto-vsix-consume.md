@@ -57,7 +57,7 @@ Visual Studio does not support authenticated feeds, and will be unable to connec
 
 Now we will populate our Visual Studio Extensions feed `private-vsix` with extensions. These can be downloaded from the [Visual Studio Marketplace](https://marketplace.visualstudio.com/). 
 
-ProGet allows you to upload packages from a local source through various means. This guide will offer four options; using [pgutil](/docs/proget/reference-api/proget-pgutil), through the UI, bulk uploading or by using PowerShell (For ProGet 2023 and below).
+ProGet allows you to upload packages from a local source through various means. This guide will offer three options; using [pgutil](/docs/proget/reference-api/proget-pgutil), through the UI, or by bulk uploading.
 
 ### Option 1: Using Pgutil
 You can use Inedo's [pgutil](/docs/proget/reference-api/proget-pgutil) tool to upload packages by running this command:
