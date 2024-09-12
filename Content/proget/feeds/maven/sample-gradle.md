@@ -3,7 +3,7 @@ title: "Sample: Gradle"
 order: 2
 ---
 
-[Gradle](https://gradle.org/) is a Java-based build automation tool focused on flexibility and performance. Gradle's build scripts can be written in [Groovy](https://groovy-lang.org/) or [Kotlin](https://kotlinlang.org/. In this sample, we built a simple Java library that demonstrates integrating Gradle with ProGet. Our sample is written using a Groovy-based build file but should be easy to convert to Kotlin if needed.
+[Gradle](https://gradle.org/) is a Java-based build automation tool focused on flexibility and performance. Gradle's build scripts can be written in [Groovy](https://groovy-lang.org/) or [Kotlin](https://kotlinlang.org/). In this sample, we built a simple Java library that demonstrates integrating Gradle with ProGet. Our sample is written using a Groovy-based build file but should be easy to convert to Kotlin if needed.
 
 ## Gradle Hello World Library
 

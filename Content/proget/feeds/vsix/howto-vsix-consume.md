@@ -53,8 +53,6 @@ Visual Studio does not support authenticated feeds, and will be unable to connec
 ![permission](/resources/docs/proget-permissions-vsix.png){height="" width="50%"}
 :::
 
-If you want to add permissions this way, first create
-
 ## Step 3: Upload Extensions as Packages to ProGet
 
 Now we will populate our Visual Studio Extensions feed `private-vsix` with extensions. These can be downloaded from the [Visual Studio Marketplace](https://marketplace.visualstudio.com/). 
