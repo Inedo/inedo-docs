@@ -57,15 +57,49 @@ Next fill out the following dialog to give the "Network Engineers" user group pe
 
 ![Permit Engineers](){height="" width="50%"}
 
-Following the same steps, we will also give "Developers" user group permission to "View and Download" packages from the `approved-conda` feed.
-
-![Permit Developers](){height="" width="50%"}
-
-After saving these two privileges, the task overview page looks like this:
+After saving this permission, the task overview page looks like this:
 
 ![Permissions Overview](){height="" width="50%"}
 
-## Step 3: Create API Key for Authorization
+## Step 3: Adding the Feed to Local Conda Environments
+
+Finally we'll add the conda feed to the developers local environment. For this you will need the URL of the `approved-conda` feed. This can be found at the top right of the feed's page.
+
+![Feed](){height="" width="50%"}
+
+In your terminal of choice, enter the following, which will require the `approved-conda` feed URL:
+
+```bash
+$ conda config --add channels «feed-url»
+```
+
+For example: 
+
+```bash
+$ conda config --add channels «feed-url»
+```
+
+You can confirm that it was registered by entering:
+
+```bash
+$ conda config --show channels
+```
+
+Finally, to ensure that developers are only using approved packages from the `approved-conda` feed, we recommend removing the `defaults` channel, which exists by default. This can be done by entering:
+
+```bash
+$ conda config --remove channels defaults
+```
+
+## Listing and Searching for Packages in Conda Feeds
+
+
+
+## Authenticating to Your Conda Feed (Optional)
+
+Following the same steps, we will also give "Developers" user group permission to "View and Download" packages from the `approved-conda` feed.
+
+![Permit Developers](){height="" width="50%"}
 
 To allow our developers to access the approved-conda feed from their development environment we will need to create an [API Key](/docs/proget/reference-api/proget-apikeys). 
 
@@ -82,28 +116,3 @@ Then fill in the fields by selecting "Feeds ("Use Certain Feeds)" as the "Feed T
 Ensure that the "View/Download" box is checked, and then select "Save" 
 
 ![API Key](){height="" width="50%"}
-
-## Step 3: Adding the Feed to Local Conda Environments
-
-Finally we'll add the conda feed to the developers local environment. For this you will need the URL of the `approved-conda` feed. This can be found at the top right of the feed's page.
-
-![Feed](){height="" width="50%"}
-
-In your terminal of choice, enter the following, which will require your API Key and the `approved-conda` feed URL:
-
-```bash
-$ conda config --add channels http://api:«api-key»@«feed-url»
-```
-
-You can confirm that it was registered by entering:
-
-```bash
-$ conda config --show channels
-```
-
-Finally, to ensure that developers are only using approved packages from the `approved-conda` feed, we recommend removing the `defaults` channel, which exists by default. This can be done by entering:
-
-```bash
-$ conda config --remove channels defaults
-```
-
