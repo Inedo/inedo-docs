@@ -19,27 +19,27 @@ Start by selecting "Feeds" and "Create New Feed".
 
 Next, select "Conda Packages", as we will be creating feeds to proxy and host Conda packages.
 
-![Select Conda](){height="" width="50%"}
+![Select Conda](/resources/docs/proget-conda-newfeed.png){height="" width="50%"}
 
 Now select "Connect to Anaconda Packages" which will allow us to proxy feeds from the [Anaconda OSS Package Repository](repo.anaconda.com)
 
-![Connector](){height="" width="50%"}
+![Connector](/resources/docs/proget-conda-newfeed-connector.png){height="" width="50%"}
 
 Then select "Yes, Create Two Feeds", as we will be creating two feeds; `unapproved-conda` to proxy OSS Conda packages and `approved-conda` to host approved packages.
 
-![Two Feeds](){height="" width="50%"}
+![Two Feeds](/resources/docs/proget-conda-twofeeds.png){height="" width="50%"}
 
 From here, we name our feeds as specified above, and then click "Create Feeds".
 
-![Name Feed](){height="" width="50%"}
+![Name Feed](/resources/docs/proget-conda-twofeeds-name.png){height="" width="50%"}
 
 We are then presented with several options. More information on these can be found in the [Vulnerability Scanning and Blocking](/docs/proget/sca/vulnerabilities) documentation.
 
-![SCA Features](){height="" width="50%"}
+![SCA Features](/resources/docs/proget-conda-newfeeds-sca.png){height="" width="50%"}
 
 Finally, we select [Set Feed Features], which will create the feeds, and redirect us to our `unapproved-conda` feed, now populated with packages proxied from the public OSS Conda repository.
 
-![Feed](){height="" width="50%"}
+![Feed](/resources/docs/proget-conda-unapprovedfeed.png){height="" width="50%"}
 
 ## Step 2: Set Permissions
 
@@ -55,17 +55,17 @@ Then navigate to the "Tasks / Permissions" tab, listing the currently configured
 
 Next fill out the following dialog to give the "Network Engineers" user group permission to "Promote Packages" from the `unapproved-conda` feed.
 
-![Permit Engineers](){height="" width="50%"}
+![Permit Engineers](/resources/docs/proget-conda-addprivilage.png){height="" width="50%"}
 
 After saving this permission, the task overview page looks like this:
 
-![Permissions Overview](){height="" width="50%"}
+![Permissions Overview](/resources/docs/proget-conda-permissions.png){height="" width="50%"}
 
 ## Step 3: Adding the Feed to Local Conda Environments
 
 Finally we'll add the conda feed to the developers local environment. For this you will need the URL of the `approved-conda` feed. This can be found at the top right of the feed's page.
 
-![Feed](){height="" width="50%"}
+![Feed](/resources/docs/proget-conda-approved-url.png){height="" width="50%"}
 
 In your terminal of choice, enter the following, which will require the `approved-conda` feed URL:
 
@@ -111,23 +111,23 @@ We don't recommend requiring authentication for viewing feeds, but if you want t
 
 First navigate to navigate to "Settings"> "Manage Security" as described in Step 2, and remove anonymous access by clicking the small "X" in the "Anonymous" entry. 
 
-![Remove Anonymous](){height="" width="50%"}
+![Permissions Remove](/resources/docs/proget-conda-permissions-remove.png){height="" width="50%"}
 
 Now you will need to create an [API Key](/docs/proget/reference-api/proget-apikeys). 
 
 Start by navigating to "Administration Overview" > "API Keys & Access Logs" under "Security & Authentication"
 
-![Admin Overview](){height="" width="50%"}
+![Admin Overview](/resources/docs/proget-admin-apikeys.png){height="" width="50%"}
 
 Then select "Create API Key"
 
-![Create Key](){height="" width="50%"}
+![Create Key](/resources/docs/proget-apikey-new.png){height="" width="50%"}
 
 Then fill in the fields by selecting "Feeds ("Use Certain Feeds)" as the "Feed Type" and selecting the `approved-conda` feed. Then set the API key. You can specify any alphanumeric sequence for this, or leave it blank to autogenerate one.
 
 Ensure that the "View/Download" box is checked, and then select "Save".
 
-![API Key](){height="" width="50%"}
+![API Key](/resources/docs/proget-conda-apikey-1.png){height="" width="50%"}
 
 Now, we'll add the feed to a local Conda environment. Instead of adding the URL like in Step 3, enter the following, containing both URL and API Key:
 

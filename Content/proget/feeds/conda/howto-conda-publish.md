@@ -17,11 +17,11 @@ First, we will create a Conda feed to host your Conda packages. Start by selecti
 
 Next, select "Conda Packages".
 
-![Select Conda](){height="" width="50%"}
+![Select Conda](/resources/docs/proget-conda-newfeed){height="" width="50%"}
 
-Now select "No Connector" as we will be creating a private feed.
+Now select "No Connectors (Private packages only)" as we will be creating a private feed.
 
-![Connector](){height="" width="50%"}
+![No Connector](/resources/docs/proget-conda-newfeed-noconnector){height="" width="50%"}
 
 Then select "No, Create One Feed".
 
@@ -45,11 +45,11 @@ We will now create an [API Key](/docs/proget/reference-api/proget-apikeys) allow
 
 Start by navigating to "Administration Overview" > "API Keys & Access Logs" under "Security & Authentication"
 
-![Admin Overview](){height="" width="50%"}
+![Admin Overview](/resources/docs/proget-admin-apikeys.png){height="" width="50%"}
 
 Then select "Create API Key"
 
-![Create Key](){height="" width="50%"}
+![Create Key](/resources/docs/proget-apikey-new.png){height="" width="50%"}
 
 Then fill in the fields by selecting "Feeds ("Use Certain Feeds)" as the "Feed Type" and selecting the `approved-conda` feed. Then set the API key. You can specify any alphanumeric sequence for this, or leave it blank to autogenerate one.
 
