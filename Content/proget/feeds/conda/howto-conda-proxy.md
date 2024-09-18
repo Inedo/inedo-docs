@@ -53,7 +53,7 @@ Then navigate to the "Tasks / Permissions" tab, listing the currently configured
 
 ![Add Permission](/resources/docs/proget-taskspermissions-add.png){height="" width="50%"}
 
-Next fill out the following dialog to give the "Network Engineers" user group permission to "Promote Packages" from the `unapproved-conda` feed.
+Next, fill out the following dialog to give the "Network Engineers" user group permission to "Promote Packages" from the `unapproved-conda` feed.
 
 ![Permit Engineers](/resources/docs/proget-conda-addprivilage.png){height="" width="50%"}
 
@@ -63,7 +63,7 @@ After saving this permission, the task overview page looks like this:
 
 ## Step 3: Adding the Feed to Local Conda Environments
 
-Finally we'll add the conda feed to the developers local environment. For this you will need the URL of the `approved-conda` feed. This can be found at the top right of the feed's page.
+Finally, we'll add the conda feed to the developer's local environment. For this, you will need the URL of the `approved-conda` feed. This can be found at the top right of the feed's page.
 
 ![Feed](/resources/docs/proget-conda-approved-url.png){height="" width="50%"}
 
@@ -138,7 +138,7 @@ $ conda config --add channels http://api:«api-key»@«feed-url»
 For example, when authenticating with the API key abc12345 to the URL `http://proget.corp.local/conda/private-conda/`:
 
 ```bash
-$ conda config --add channels http://api:abac12345@192.168.0.129:8624/conda/private-conda/
+$ conda config --add channels http://api:abc12345@192.168.0.129:8624/conda/private-conda/
 ```
 
 Confirm that it was registered by entering:

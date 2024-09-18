@@ -3,7 +3,7 @@ title: "HOWTO: Publish Conda Packages to a ProGet Feed"
 order: 2
 ---
 
-Many organizations prefer to host Conda packages on private repositories rather that OSS repositories like the [Anaconda OSS Package Repository](repo.anaconda.com) to maintain control over security, compliance, and access management.
+Many organizations prefer to host Conda packages on private repositories rather than OSS repositories like the [Anaconda OSS Package Repository](repo.anaconda.com) to maintain control over security, compliance, and access management.
 
 ProGet makes it easy to set up a private repository for your Conda packages to publish, store and share your packages internally.
 
@@ -23,7 +23,7 @@ Now select "No Connectors (Private packages only)" as we will be creating a priv
 
 ![No Connector](/resources/docs/proget-conda-newfeed-noconnector.png){height="" width="50%"}
 
-From here, we name our feed. For this example we will call it `internal-conda`, and then click "Create Feed".
+From here, we name our feed. For this example, we will call it `internal-conda`, and then click "Create Feed".
 
 ![Name Feed](/resources/docs/proget-conda-newfeed-internal.png){height="" width="50%"}
 
@@ -55,7 +55,7 @@ Ensure that the "View/Download" box is checked, and then select "Save".
 
 ## Step 3: Build Your Package
 
-Next we will build and publish our packages. You can follow the [official Conda documentation](https://docs.conda.io/projects/conda-build/en/latest/user-guide/tutorials/build-pkgs.html) to learn more about creating packages. To build your package you will need to have conda-build installed if you haven't already by entering:
+Next, we will build and publish our packages. You can follow the [official Conda documentation](https://docs.conda.io/projects/conda-build/en/latest/user-guide/tutorials/build-pkgs.html) to learn more about creating packages. To build your package you will need to have conda-build installed if you haven't already by entering:
 
 ```bash
 $ conda install conda-build
