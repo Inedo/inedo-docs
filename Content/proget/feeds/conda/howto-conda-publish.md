@@ -17,31 +17,27 @@ First, we will create a Conda feed to host your Conda packages. Start by selecti
 
 Next, select "Conda Packages".
 
-![Select Conda](/resources/docs/proget-conda-newfeed){height="" width="50%"}
+![Select Conda](/resources/docs/proget-conda-newfeed.png){height="" width="50%"}
 
 Now select "No Connectors (Private packages only)" as we will be creating a private feed.
 
-![No Connector](/resources/docs/proget-conda-newfeed-noconnector){height="" width="50%"}
+![No Connector](/resources/docs/proget-conda-newfeed-noconnector.png){height="" width="50%"}
 
-Then select "No, Create One Feed".
+From here, we name our feed. For this example we will call it `internal-conda`, and then click "Create Feed".
 
-![One Feed](){height="" width="50%"}
-
-From here, we name our feed. For this example we will call it `private-conda`, and then click "Create Feed".
-
-![Name Feed](){height="" width="50%"}
+![Name Feed](/resources/docs/proget-conda-newfeed-internal.png){height="" width="50%"}
 
 We are then presented with several options. More information on these can be found in the [Vulnerability Scanning and Blocking](/docs/proget/sca/vulnerabilities) documentation.
 
-![SCA Features](){height="" width="50%"}
+![SCA Features](/resources/docs/proget-conda-internal-sca.png){height="" width="50%"}
 
-Finally, we select [Set Feed Features], which will create the feed, and redirect us to our `private-conda` feed, currently empty.
+Finally, we select [Set Feed Features], which will create the feed, and redirect us to our `internal-conda` feed, currently empty.
 
-![Feed](){height="" width="50%"}
+![Feed](/resources/docs/proget-conda-internal-emptyfeed.png){height="" width="50%"}
 
 ## Step 2: Create an API Key
 
-We will now create an [API Key](/docs/proget/reference-api/proget-apikeys) allowing our local client to authenticate to our `private-conda` feed and publish packages. 
+We will now create an [API Key](/docs/proget/reference-api/proget-apikeys) allowing our local client to authenticate to our `internal-conda` feed and publish packages. 
 
 Start by navigating to "Administration Overview" > "API Keys & Access Logs" under "Security & Authentication"
 
@@ -52,6 +48,8 @@ Then select "Create API Key"
 ![Create Key](/resources/docs/proget-apikey-new.png){height="" width="50%"}
 
 Then fill in the fields by selecting "Feeds ("Use Certain Feeds)" as the "Feed Type" and selecting the `approved-conda` feed. Then set the API key. You can specify any alphanumeric sequence for this, or leave it blank to autogenerate one.
+
+![New Key](/resources/docs/proget-conda-apikey-2.png){height="" width="50%"}
 
 Ensure that the "View/Download" box is checked, and then select "Save".
 
@@ -93,12 +91,12 @@ Now upload your packages by entering:
 $ pgutil packages upload --feed=«proget-url» --input-file=«path-to-package»
 ```
 
-For example, uploading the package `my-package.tar.bz2` stored at `C:\development\conda_packages\` to your `private-conda` feed you would enter:
+For example, uploading the package `my-package-0.1.0-0.tar.bz2` stored at `C:\development\conda_packages\` to your `internal-conda` feed you would enter:
 
 ```bash
-$ pgutil packages upload --feed=«proget-url» --input-file=«path-to-package»
+$ pgutil packages upload --feed=«proget-url» --input-file==C:\development\conda_packages\my-package-0.1.0-0.tar.bz2
 ```
 
-Your package will then be uploaded to the `private-conda` feed.
+Your package will then be uploaded to the `internal-conda` feed.
 
-![Feed](){height="" width="50%"}
+![Feed](/resources/docs/proget-conda-internal-package.png){height="" width="50%"}
