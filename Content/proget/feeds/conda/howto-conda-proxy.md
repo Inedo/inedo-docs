@@ -11,7 +11,7 @@ In this article, we'll explain how to proxy Conda packages from the public OSS R
 
 ## Step 1: Create New Feeds
 
-First, we will create to Conda feeds, one for unapproved packages, and the other for approved packages that will contain packages that have been approved for development.
+First, we will create two Conda feeds, one for unapproved packages, and the other for approved packages that will contain packages that have been approved for development.
 
 Start by selecting "Feeds" and "Create New Feed".
 
@@ -35,7 +35,7 @@ From here, we name our feeds as specified above, and then click "Create Feeds".
 
 We are then presented with several options. More information on these can be found in the [Vulnerability Scanning and Blocking](/docs/proget/sca/vulnerabilities) documentation.
 
-![SCA Featuers](){height="" width="50%"}
+![SCA Features](){height="" width="50%"}
 
 Finally, we select [Set Feed Features], which will create the feeds, and redirect us to our `unapproved-conda` feed, now populated with packages proxied from the public OSS Conda repository.
 
@@ -73,10 +73,10 @@ In your terminal of choice, enter the following, which will require the `approve
 $ conda config --add channels «feed-url»
 ```
 
-For example: 
+For example, adding a feed with the URL `http://proget.corp.local/conda/private-conda/`:
 
 ```bash
-$ conda config --add channels «feed-url»
+$ conda config --add channels http://proget.corp.local/conda/private-conda/
 ```
 
 You can confirm that it was registered by entering:
@@ -91,17 +91,29 @@ Finally, to ensure that developers are only using approved packages from the `ap
 $ conda config --remove channels defaults
 ```
 
-## Listing and Searching for Packages in Conda Feeds
+## Step 4: (Optional) Confirming Connection to your Conda Feed
 
+You can confirm that your local Conda environment can connect with your ProGet feed by listing Conda packages from the feed by entering:
 
+```bash
+$ conda search -c «feed-url»
+```
 
-## Authenticating to Your Conda Feed (Optional)
+Or by filtering by package name:
 
-Following the same steps, we will also give "Developers" user group permission to "View and Download" packages from the `approved-conda` feed.
+```bash
+$ conda search -c «feed-url» «package-name»
+```
 
-![Permit Developers](){height="" width="50%"}
+## Step 5: (Optional) Authenticating to Your Conda Feed
 
-To allow our developers to access the approved-conda feed from their development environment we will need to create an [API Key](/docs/proget/reference-api/proget-apikeys). 
+We don't recommend requiring authentication for viewing feeds, but if you want to make your repository private and require authentication to access it, you can follow these steps. 
+
+First navigate to navigate to "Settings"> "Manage Security" as described in Step 2, and remove anonymous access by clicking the small "X" in the "Anonymous" entry. 
+
+![Remove Anonymous](){height="" width="50%"}
+
+Now you will need to create an [API Key](/docs/proget/reference-api/proget-apikeys). 
 
 Start by navigating to "Administration Overview" > "API Keys & Access Logs" under "Security & Authentication"
 
@@ -111,8 +123,26 @@ Then select "Create API Key"
 
 ![Create Key](){height="" width="50%"}
 
-Then fill in the fields by selecting "Feeds ("Use Certain Feeds)" as the "Feed Type" and selecting the approved-conda feed. Then set the API key. You can specify any alphanumeric sequence for this, or leave it blank to autogenerate one.
+Then fill in the fields by selecting "Feeds ("Use Certain Feeds)" as the "Feed Type" and selecting the `approved-conda` feed. Then set the API key. You can specify any alphanumeric sequence for this, or leave it blank to autogenerate one.
 
-Ensure that the "View/Download" box is checked, and then select "Save" 
+Ensure that the "View/Download" box is checked, and then select "Save".
 
 ![API Key](){height="" width="50%"}
+
+Now, we'll add the feed to a local Conda environment. Instead of adding the URL like in Step 3, enter the following, containing both URL and API Key:
+
+```bash
+$ conda config --add channels http://api:«api-key»@«feed-url»
+```
+
+For example, when authenticating with the API key abc12345 to the URL `http://proget.corp.local/conda/private-conda/`:
+
+```bash
+$ conda config --add channels http://api:abac12345@192.168.0.129:8624/conda/private-conda/
+```
+
+Confirm that it was registered by entering:
+
+```bash
+$ conda config --show channels
+```
