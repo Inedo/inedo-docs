@@ -3,7 +3,7 @@ title: "HOWTO: Publish Conda Packages to a ProGet Feed"
 order: 2
 ---
 
-Many organizations prefer to host Conda packages on private repositories rather than OSS repositories like the [Anaconda OSS Package Repository](repo.anaconda.com) to maintain control over security, compliance, and access management.
+Many organizations prefer to host Conda packages on private repositories rather than OSS repositories like the [Anaconda OSS Package Repository](https://repo.anaconda.com/) to maintain control over security, compliance, and access management.
 
 ProGet makes it easy to set up a private repository for your Conda packages to publish, store and share your packages internally.
 
