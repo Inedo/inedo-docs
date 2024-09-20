@@ -124,7 +124,7 @@ $ conda config --add channels http://api:«api-key»@«feed-url»
 For example, when authenticating with the API key abc12345 to the URL `http://proget.corp.local/conda/public-conda/` you would enter:
 
 ```bash
-$ conda config --add channels http://api:abc12345@192.168.0.129:8624/conda/public-conda/
+$ conda config --add channels http://api:abc12345@proget.corp.local/conda/public-conda/
 ```
 
 Confirm that it was registered by entering:
