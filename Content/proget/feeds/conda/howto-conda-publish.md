@@ -3,9 +3,9 @@ title: "HOWTO: Publish Conda Packages to a Private Repository in ProGet"
 order: 2
 ---
 
-Organizations will host their internal Conda packages on private repositories to maintain control over security, compliance, and access management. ProGet makes it easy to set up a private repository for your Conda packages to publish, store and share your packages internally.
+Organizations will host their internal Conda packages on private repositories to maintain control over security, compliance, and access. ProGet makes it easy to set up a private repository for your Conda packages to publish, store and share your packages internally.
 
-This guide will show you how to set up a ["Feed"](/docs/proget/feeds/feed-overview) in ProGet to act as a Private Conda package repository, and walk you through creating, publishing, and installing private packages for your team.
+This guide will show you how to set up a ["Feed"](/docs/proget/feeds/feed-overview) in ProGet to as a Private Conda package repository. We will also walk you through creating, publishing and consuming packages from this feed. 
 
 ## Step 1: Create a New Feed
 
@@ -35,7 +35,7 @@ You will then be redirected to your new `internal-conda` feed, currently empty.
 
 ## Step 2: Create an API Key { #step-2 }
 
-We will now create an [API Key](/docs/proget/reference-api/proget-apikeys) allowing our local client to authenticate to our `internal-conda` feed. This allows us to publish packages to the feed, as well as view and download them once published.
+We will now create an [API Key](/docs/proget/reference-api/proget-apikeys) allowing our local client to authenticate to our `internal-conda` feed. This allows us to publish packages to the feed, as well as consume them once published.
 
 Start by navigating to "Administration Overview" > "API Keys & Access Logs" under "Security & Authentication"
 
@@ -45,13 +45,13 @@ Then select "Create API Key"
 
 ![Create Key](/resources/docs/proget-apikey-new.png){height="" width="50%"}
 
-Then fill in the fields by selecting "Feeds ("Use Certain Feeds)" as the "Feed Type" and selecting the `internal-conda` feed. Then set the API key. You can specify any alphanumeric sequence for this, or leave it blank to autogenerate one.
+Then fill in the fields by selecting "Feeds (Use Certain Feeds)" as the "Feed Type" and selecting the `internal-conda` feed. Then set the API key. You can specify any alphanumeric sequence for this, or leave it blank to autogenerate one.
 
 ![New Key](/resources/docs/proget-conda-apikey-2.png){height="" width="50%"}
 
-Ensure that the "View/Download" and "Add Packages" boxes are checked, and then select "Save".
+Ensure that the "View/Download" and "Add/Repackage" boxes are checked, and then select "Save".
 
-## Step 3: Build Your Package
+## Step 3: Build and Publish Your Package
 
 Next, we will build and publish our packages. You can follow the [official Conda documentation](https://docs.conda.io/projects/conda-build/en/latest/user-guide/tutorials/build-pkgs.html) to learn more about creating packages. To build your package you will need to have conda-build installed if you haven't already by entering:
 
@@ -111,7 +111,7 @@ In your terminal of choice, enter the following, which will require the `interna
 $ conda config --add channels http://api:«api-key»@«feed-url»
 ```
 
-For example, adding a feed with the URL `http://proget.corp.local/conda/internal-conda`, authenticating with the API key `abc12345`:
+For example, adding a feed with the URL `http://proget.corp.local/conda/internal-conda`, authenticating with the API key `abc12345` you would enter:
 
 ```bash
 $ conda config --add channels http://api:abc12345@proget.corp.local/conda/internal-conda

@@ -6,12 +6,12 @@ order: 1
 With ProGet teams can proxy packages from the [Anaconda OSS Package Repository](https://repo.anaconda.com/) and consume them in their projects as they would if they were pulling from the OSS package repository directly. 
 
 The advantages of using ProGet for this are:
-* ProGet will cache packages allowing teams to access them even when the Anaconda package repository is down
+* ProGet will cache packages allowing teams to access them even when the Anaconda Packages repository is down
 * ProGet will show which packages are being downloaded and used frequently
 
 In this article, we'll explain how to create a ["Feed"](/docs/proget/feeds/feed-overview) in ProGet that will proxy Conda packages from the public OSS Repository. 
 
-We'll also look at how to create a private repository for when you also want to use internal packages, and how to create a package approval flow if you need to control which packages your team are using in production. 
+We'll also look at creating a private repository for when you also want to use internal packages, and how to create a package approval flow if you need to control which packages your team are using in production. 
 
 ## Step 1: Create a New Feed { #step-1 }
 
@@ -49,7 +49,7 @@ Finally, we select [Set Feed Features], which will create the feeds, and redirec
 
 ## Step 3: Adding the Feed to Local Conda Environments { #step-3 }
 
-Finally, we'll add the conda feed to the developer's local environment. For this, you will need the URL of the `public-conda` feed. This can be found at the top right of the feed's page.
+For your team to consume packages from the `public-conda` feed, you'll need to add it as a channel in their local environment. For this, you will need feed's URL. This can be found at the top right of the feed's page.
 
 ![Feed](/resources/docs/proget-conda-publicfeed-url.png){height="" width="50%"}
 
@@ -59,7 +59,7 @@ In your terminal of choice, enter the following, which will require the `public-
 $ conda config --add channels «feed-url»
 ```
 
-For example, adding a feed with the URL `http://proget.corp.local/conda/public-conda/`:
+For example, adding a feed with the URL `http://proget.corp.local/conda/public-conda/` you would enter:
 
 ```bash
 $ conda config --add channels http://proget.corp.local/conda/public-conda
@@ -115,13 +115,13 @@ Ensure that the "View/Download" box is checked, and then select "Save".
 
 ![API Key](/resources/docs/proget-conda-apikey-3.png){height="" width="50%"}
 
-Now, we'll add the feed to a local Conda environment. Instead of adding the URL like in Step 3, enter the following, containing both URL and API Key:
+Now, we'll add the feed to a local Conda environment. Instead of adding the URL like in [Step 3](#step-3), enter the following, containing both URL and API Key:
 
 ```bash
 $ conda config --add channels http://api:«api-key»@«feed-url»
 ```
 
-For example, when authenticating with the API key abc12345 to the URL `http://proget.corp.local/conda/public-conda/`:
+For example, when authenticating with the API key abc12345 to the URL `http://proget.corp.local/conda/public-conda/` you would enter:
 
 ```bash
 $ conda config --add channels http://api:abc12345@192.168.0.129:8624/conda/public-conda/
