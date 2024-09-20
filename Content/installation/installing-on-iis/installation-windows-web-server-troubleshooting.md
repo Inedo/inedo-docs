@@ -32,3 +32,13 @@ This is commonly caused by:
 The most common way to fix this is to run a `netsh add urlacl` to allow the Windows service account to bind to that host name and/or port.  For example: 
 - To bind to a host name: `netsh http add urlacl url=https://proget.myserver.com:443/ user="Network Service"` 
 - To bind to a port below 1024: `netsh http add urlacl url=https://+:443/ user="Network Service"` 
+
+## Cannot configure SSL in ProGet due to a permissions issue
+
+This typically happens when you are using a non-Administrator level service account (on Windows) to run the service with the Integrated Web Server.  The service account needs Modify rights to the following folders on `C:\ProgramData\ProGet` and `C:\ProgramData\Indeo`.  This account also needs Read access to the certificate within the certificate store.  To configure read permissions:
+1. Open the Certificate Manager using Window's MMC
+2. Navigate to Certificates (Local Computer) -> YOUR_STORE (ex: Personal) -> Certificates
+3. Right click on the certificate and select All Tasks -> Manage Private Keys
+4. And give read access to your service account
+
+If you are still having issues, ensure that your service account has the "Log on as a service" privilege.
