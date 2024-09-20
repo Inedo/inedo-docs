@@ -161,7 +161,7 @@ Finally, we select [Set Feed Features], which will create the feeds, and redirec
 
 ![Feed](/resources/docs/proget-conda-unapprovedfeed.png){height="" width="50%"}
 
-## Step 2: Set Permissions
+### Step 2: Set Permissions
 
 Now we need to [configure security access controls for uses and groups](/docs/proget/administration-security) to set permissions that allow only certain team members to promote packages to the `approved-conda` feed. In this example we will assign our Lead Developers this permission, since they're trained to check the quality, licenses, and vulnerabilities of open-source packages. By default, only administrators have assigned permissions.
 
@@ -191,7 +191,7 @@ After saving these permissions, the task overview page looks like this:
 
 ![Permissions Overview](/resources/docs/proget-conda-permissions.png){height="" width="50%"}
 
-## Step 3: Adding the Feed to Local Conda Environments
+### Step 3: Adding the Feed to Local Conda Environments
 
 Finally, follow the steps in [Step 3](#step-3) to add the `approved-conda` feed as a channel to your local Conda environments, entering:
 
