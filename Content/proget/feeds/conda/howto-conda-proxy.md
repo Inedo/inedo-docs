@@ -43,7 +43,7 @@ We are then presented with several options. More information on these can be fou
 
 ![SCA Features](/resources/docs/proget-conda-newfeed-sca.png){height="" width="50%"}
 
-Finally, we select [Set Feed Features], which will create the feeds, and redirect us to our `public-conda` feed, now populated with packages proxied from the public OSS Conda repository.
+Finally, we select [Set Feed Features], which will create the feed, and redirect us to our `public-conda` feed, now populated with packages proxied from the public OSS Conda repository.
 
 ![Feed](/resources/docs/proget-conda-publicfeed.png){height="" width="50%"}
 
@@ -137,69 +137,17 @@ $ conda config --show channels
 
 So far we've looked at proxying packages from an OSS repository. However you may want to make sure that only approved packages are used in your development or production environment to avoid risks related to quality, vulnerabilities, licenses, etc.
 
-In ProGet, you can create a "Package Approval Flow" that involves promoting packages between feeds to ensure that only approved and verified packages are used in the right environments, such as production. 
+In ProGet, you can create a "Package Approval Flow" that involves promoting packages between feeds to ensure that only approved and verified packages are used in the right environments, such as production. You can read more about package promotion [in our documentation](/docs/proget/packages/package-promotion).
 
-You can read more about [package promotion in our documentation](/docs/proget/packages/package-promotion), however here we will explain how to set up package promotion by creating feeds and configuring permissions. 
+To configure package approval flow you can read [HOWTO: Approve and Promote Open-source Packages](/docs/proget/packages/package-promotion/proget-howto-promote-packages). In this guide it talks about setting up a NuGet package approval, but it can just as easily be done with Conda packages by creating Conda feeds instead. 
 
-### Step 1: Create New Feeds
-
-We will create two Conda feeds for our package approval flow. One feed that we will call `unapproved-conda` will proxy packages from the [Anaconda OSS Package Repository](https://repo.anaconda.com/), much like the `public-conda` feed we created earlier. A second feed that we will call `approved-conda` will host packages that have been promoted and approved for use in production. 
-
-Start by following the same steps found in [Step 1](#step-1), however when given the choice of creating one or two feeds, select "Yes, Create Two Feeds", as we will be creating our `unapproved-conda` and `approved-conda` feeds.
-
-![Two Feeds](/resources/docs/proget-conda-twofeeds.png){height="" width="50%"}
-
-From here, we name our feed, which in this example we will call `public-conda`, and then click "Create Feeds".
-
-![Name Feed](/resources/docs/proget-conda-twofeeds-name.png){height="" width="50%"}
-
-We are then presented with several options. More information on these can be found in the [Vulnerability Scanning and Blocking](/docs/proget/sca/vulnerabilities) documentation.
-
-![SCA Features](/resources/docs/proget-conda-newfeeds-sca.png){height="" width="50%"}
-
-Finally, we select [Set Feed Features], which will create the feeds, and redirect us to our `unapproved-conda` feed, now populated with packages proxied from the public OSS Conda repository.
-
-![Feed](/resources/docs/proget-conda-unapprovedfeed.png){height="" width="50%"}
-
-### Step 2: Set Permissions
-
-Now we need to [configure security access controls for uses and groups](/docs/proget/administration-security) to set permissions that allow only certain team members to promote packages to the `approved-conda` feed. In this example we will assign our Lead Developers this permission, since they're trained to check the quality, licenses, and vulnerabilities of open-source packages. By default, only administrators have assigned permissions.
-
-To start, navigate to "Settings"> "Manage Security".
-
-![Manage Security](/resources/docs/proget-settings-managesecurity.png){height="" width="50%"}
-
-Then navigate to the "Tasks / Permissions" tab, listing the currently configured permissions.
-
-If you haven't already, remove anonymous access by clicking the small "X" in the "Anonymous" entry. This will prevent developers accessing any feed other than the `approved-conda` feed that we will specify in a later step.
-
-![Permissions Remove](/resources/docs/proget-conda-permissions-remove.png){height="" width="50%"}
-
-Next, select "add permission"
-
-![Add Permission](/resources/docs/proget-taskspermissions-add.png){height="" width="50%"}
-
-Now fill out the following dialog to give the "Lead Developers" user group permission to "View/Download" and "Promote Packages" from the `unapproved-conda` feed.
-
-![Permit Leads](/resources/docs/proget-conda-addprivilages-leaddevelopers.png){height="" width="50%"}
-
-Next add another permission, this time allowing anonymous access to the `approved-conda` feed to "View/Download" packages.
-
-![Permit Leads](/resources/docs/proget-conda-anonpermissions.png){height="" width="50%"}
-
-After saving these permissions, the task overview page looks like this:
-
-![Permissions Overview](/resources/docs/proget-conda-permissions.png){height="" width="50%"}
-
-### Step 3: Adding the Feed to Local Conda Environments
-
-Finally, follow the steps in [Step 3](#step-3) to add the `approved-conda` feed as a channel to your local Conda environments, entering:
+Once you have created your "Unapproved" and "Approved" feeds, follow the steps in [Step 3](#step-3) to add the "Approved" feed as a channel to your local Conda environments, entering:
 
 ```bash
 $ conda config --add channels «feed-url»
 ```
 
-Finally, to ensure that developers only consume packages from the `approved-conda` feed rather than the OSS repository, we recommend removing the `defaults` channel, which exists by default. This can be done by entering:
+To ensure that developers only consume packages from the "Approved" feed rather than the OSS repository, we recommend removing the `defaults` channel, which exists by default. This can be done by entering:
 
 ```bash
 $ conda config --remove channels defaults
