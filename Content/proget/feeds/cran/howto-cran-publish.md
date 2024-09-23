@@ -9,7 +9,7 @@ This guide will walk you through the process of setting up a ["Feed"](/docs/prog
 
 ## Step 1: Create a New Feed
 
-We'll being by creating a CRAN feed to host your CRAN packages. Navigate to "Feeds" and "Create New Feed".
+We'll begin by creating a CRAN feed to host your CRAN packages. Navigate to "Feeds" and "Create New Feed".
 
 ![New Feed](/resources/docs/proget-feeds-createnewfeed.png){height="" width="50%"}
 
@@ -25,7 +25,7 @@ From here, we name our feed. For this example, we will call it `internal-cran`, 
 
 ![Name Feed](){height="" width="50%"}
 
-You'll then see several options related to ProGet's [Vulnerability Scanning and Blocking](/docs/proget/sca/vulnerabilities) features. These are only for users looking to use third party OSS packages. Leave these boxes unchecked, and select [Set Feed Features].
+You'll then see several options related to ProGet's [Vulnerability Scanning and Blocking](/docs/proget/sca/vulnerabilities) features. These are only for users looking to use third-party OSS packages. Leave these boxes unchecked, and select [Set Feed Features].
 
 ![SCA Features](/resources/docs/proget-cran-internal-sca.png){height="" width="50%"}
 
@@ -35,7 +35,7 @@ You will then be directed to the new `internal-cran` feed, currently empty.
 
 ## Step 2: Create an API Key { #step-2 }
 
-Next we'll create an [API Key](/docs/proget/reference-api/proget-apikeys) allowing our local client to authenticate to our `internal-cran` feed. This allows us to upload and install packages from the feed.
+Next, we'll create an [API Key](/docs/proget/reference-api/proget-apikeys) allowing our local client to authenticate to our `internal-cran` feed. This allows us to upload and install packages from the feed.
 
 Start by navigating to "Administration Overview" > "API Keys & Access Logs" under "Security & Authentication"
 
@@ -55,19 +55,19 @@ Make sure the "View/Download" and "Add/Repackage" boxes are checked, and then se
 
 Next, we will build our CRAN packages. More information on developing CRAN packages can be found in [the official documentation](https://cran.r-project.org/web/packages/rcompendium/vignettes/developing_a_package.html).
 
-To build your package, first you'll need devtools installed. To do this enter:
+To build your package, you'll first need `devtools` installed. To do this enter:
 
 ```r
 install.packages("devtools")
 library(devtools)
 ```
  
-Then make sure that the current working directory is set to the folder your package files are located (e.g. `DESCRIPTION`, `NAMESPACE` and `.r` files) by entering:
+Then make sure that the current working directory is set to the folder that your package files are located in (e.g. `DESCRIPTION`, `NAMESPACE` and `.r` files) by entering:
 
 ```r
 setwd("path/to/package")
 ```
-Before building, we also recommend generating documentation by entering `devtools::document()`, then running a check with `devtools::check()` to make sure your project is free from errors.
+Before building, we also recommend generating documentation by entering `devtools::document()` and then running a check with `devtools::check()` to make sure your project is free from errors.
  
 Then build your package by entering:
 
@@ -111,7 +111,7 @@ Your package will then be uploaded to the `internal-cran` feed.
 
 ## Step 5: Add the Feed to Local R Environments
 
-To install CRAN packages you have published to your `internal-cran` feed, you'll need to add it to your local R environments. For this, you will need the feed's URL. This is found at the top right of the feed's page.
+To install CRAN packages you have published to your `internal-cran` feed, you'll need to add the feed to your local R environments. For this, you will need the feed's URL. This is found at the top right of the feed's page.
 
 ![Feed](){height="" width="50%"}
 
@@ -127,7 +127,7 @@ For example, to install the package `devtools` from `http://proget.corp.local/cr
 install.packages("devtools", repos="http://api:abc12345@proget.corp.local/cran/public-cran/")
 ```
 
-However to avoid having to type in the repo URL every time, you can set your ProGet instance as a custom repository. This will configure R to look first at the specified URL for packages, instead of the default CRAN repository. You can do this by entering:
+However, to avoid having to type in the repo URL every time, you can set your ProGet instance as a custom repository. This will configure R to look first at the specified URL for packages, instead of the default CRAN repository. You can do this by entering:
 
 ```r
 options(repos = c(«repository-name» = "http://api:«api-key»@«feed-url»"))
