@@ -15,15 +15,15 @@ We'll begin by creating a CRAN feed to host your CRAN packages. Navigate to "Fee
 
 Next, select "CRAN Packages".
 
-![Select CRAN](){height="" width="50%"}
+![](){height="" width="50%"}
 
 Now select "No Connectors (Private packages only)" as this feed will be intended as a private repository.
 
-![No Connector](){height="" width="50%"}
+![](){height="" width="50%"}
 
 From here, we name our feed. For this example, we will call it `internal-cran`, and then click "Create Feed".
 
-![Name Feed](){height="" width="50%"}
+![](){height="" width="50%"}
 
 You'll then see several options related to ProGet's [Vulnerability Scanning and Blocking](/docs/proget/sca/vulnerabilities) features. These are only for users looking to use third-party OSS packages. Leave these boxes unchecked, and select [Set Feed Features].
 
@@ -47,7 +47,7 @@ Then select "Create API Key"
 
 Next, fill in the fields by selecting "Feeds (Use Certain Feeds)" as the "Feed Type" and selecting the `internal-cran` feed. Then set the API key. You can use any alphanumeric sequence, or just leave it blank to autogenerate one.
 
-![New Key](/resources/docs/proget-cran-apikey-2.png){height="" width="50%"}
+![](){height="" width="50%"}
 
 Make sure the "View/Download" and "Add/Repackage" boxes are checked, and then select "Save".
 
@@ -107,13 +107,13 @@ $ pgutil packages upload --feed=internal-cran --input-file==C:\development\cran_
 
 Your package will then be uploaded to the `internal-cran` feed.
 
-![Feed](){height="" width="50%"}
+![](){height="" width="50%"}
 
 ## Step 5: Add the Feed to Local R Environments
 
 To install CRAN packages you have published to your `internal-cran` feed, you'll need to add the feed to your local R environments. For this, you will need the feed's URL. This is found at the top right of the feed's page.
 
-![Feed](){height="" width="50%"}
+![](){height="" width="50%"}
 
 Then, any time you want to install a package, take the `internal-cran` feed URL and the API key you created in [Step 2](#step-2), and enter:
 

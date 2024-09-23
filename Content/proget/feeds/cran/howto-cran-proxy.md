@@ -17,39 +17,39 @@ We'll start by creating a CRAN feed that will proxy packages from the [Comprehen
 
 In your ProGet instance, select "Feeds" and "Create New Feed".
 
-![New Feed](){height="" width="50%"}
+![](){height="" width="50%"}
 
 Next, select "CRAN Packages".
 
-![Select CRAN](){height="" width="50%"}
+![](){height="" width="50%"}
 
 Then select "Connect to Official CRAN Repository" which will allow us to proxy and cache packages from the [Comprehensive R Archive Network](https://cran.r-project.org/web/packages/available_packages_by_name.html)
 
-![Connector](){height="" width="50%"}
+![](){height="" width="50%"}
 
 Now select "No, Create One Feed", as we will only need a single feed to proxy CRAN packages.
 
-![One Feeds](){height="" width="50%"}
+![](){height="" width="50%"}
 
 ## Step 2: Name Your Feed
 
 Next, we name our feed. For this example, we will name it `public-cran`, and then click "Create Feed".
 
-![Name Feed](){height="" width="50%"}
+![](){height="" width="50%"}
 
 We are then presented with several options. More information on these can be found in the [Vulnerability Scanning and Blocking](/docs/proget/sca/vulnerabilities) documentation.
 
-![SCA Features](){height="" width="50%"}
+!](){height="" width="50%"}
 
 Then select [Set Feed Features]. ProGet will create The `public-cran` feed and redirect you to it. This feed will now be populated with packages proxied from the CRAN public repository.
 
-![Feed](){height="" width="50%"}
+![](){height="" width="50%"}
 
 ## Step 3: Adding the Feed to Your Local R Environments { #step-3 }
 
 To install packages from the `public-cran` feed, you will first need the URL of the `public-cran` feed. This can be found on the top right of the feed page:
 
-![Feed](){height="" width="50%"}
+![](){height="" width="50%"}
 
 Then, you can simply enter the following command to install a package:
 
