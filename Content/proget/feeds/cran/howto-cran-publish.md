@@ -27,11 +27,11 @@ From here, we name our feed. For this example, we will call it `internal-cran`, 
 
 You'll then see several options related to ProGet's [Vulnerability Scanning and Blocking](/docs/proget/sca/vulnerabilities) features. These are only for users looking to use third-party OSS packages. Leave these boxes unchecked, and select [Set Feed Features].
 
-![SCA Features](/resources/docs/proget-cran-internal-sca.png){height="" width="50%"}
+![](){height="" width="50%"}
 
 You will then be directed to the new `internal-cran` feed, currently empty.
 
-![Feed](/resources/docs/proget-cran-internal-emptyfeed.png){height="" width="50%"}
+![](){height="" width="50%"}
 
 ## Step 2: Create an API Key { #step-2 }
 
