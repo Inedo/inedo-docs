@@ -1,41 +1,41 @@
 ---
-title: "HOWTO: Publish Conda Packages to a Private Repository in ProGet"
+title: "HOWTO: Create and Upload CRAN Packages to a Private Repository in ProGet"
 order: 2
 ---
 
-Organizations will host their internal Conda packages on private repositories to maintain control over security, compliance, and access. ProGet makes it easy to set up a private repository for your Conda packages to publish, store and share your packages internally.
+Many organizations manage their R packages in private repositories to control access and maintain security. Setting up a private repository in ProGet for your CRAN packages allows you to store, publish, and share them securely within your organization.
 
-This guide will show you how to set up a ["Feed"](/docs/proget/feeds/feed-overview) in ProGet to as a Private Conda package repository. We will also walk you through creating, publishing and consuming packages from this feed. 
+This guide will walk you through the process of setting up a ["Feed"](/docs/proget/feeds/feed-overview) in ProGet to act as a private, custom CRAN repository. We'll also cover how to create, upload, and install packages from this repository.
 
 ## Step 1: Create a New Feed
 
-First, we will create a Conda feed to host your Conda packages. Start by selecting "Feeds" and "Create New Feed".
+We'll being by creating a CRAN feed to host your CRAN packages. Navigate to "Feeds" and "Create New Feed".
 
 ![New Feed](/resources/docs/proget-feeds-createnewfeed.png){height="" width="50%"}
 
-Next, select "Conda Packages".
+Next, select "CRAN Packages".
 
-![Select Conda](/resources/docs/proget-conda-newfeed.png){height="" width="50%"}
+![Select CRAN](){height="" width="50%"}
 
-Now select "No Connectors (Private packages only)" as we will be creating a private feed.
+Now select "No Connectors (Private packages only)" as this feed will be intended as a private repository.
 
-![No Connector](/resources/docs/proget-conda-newfeed-noconnector.png){height="" width="50%"}
+![No Connector](){height="" width="50%"}
 
-From here, we name our feed. For this example, we will call it `internal-conda`, and then click "Create Feed".
+From here, we name our feed. For this example, we will call it `internal-cran`, and then click "Create Feed".
 
-![Name Feed](/resources/docs/proget-conda-newfeed-internal.png){height="" width="50%"}
+![Name Feed](){height="" width="50%"}
 
-We are then presented with several options. This relate to ProGet's [Vulnerability Scanning and Blocking](/docs/proget/sca/vulnerabilities) features, however they are only for users looking to use third party packages. Leave these boxes unchecked, and select [Set Feed Features].
+You'll then see several options related to ProGet's [Vulnerability Scanning and Blocking](/docs/proget/sca/vulnerabilities) features. These are only for users looking to use third party OSS packages. Leave these boxes unchecked, and select [Set Feed Features].
 
-![SCA Features](/resources/docs/proget-conda-internal-sca.png){height="" width="50%"}
+![SCA Features](/resources/docs/proget-cran-internal-sca.png){height="" width="50%"}
 
-You will then be redirected to your new `internal-conda` feed, currently empty.
+You will then be directed to the new `internal-cran` feed, currently empty.
 
-![Feed](/resources/docs/proget-conda-internal-emptyfeed.png){height="" width="50%"}
+![Feed](/resources/docs/proget-cran-internal-emptyfeed.png){height="" width="50%"}
 
 ## Step 2: Create an API Key { #step-2 }
 
-We will now create an [API Key](/docs/proget/reference-api/proget-apikeys) allowing our local client to authenticate to our `internal-conda` feed. This allows us to publish packages to the feed, as well as consume them once published.
+Next we'll create an [API Key](/docs/proget/reference-api/proget-apikeys) allowing our local client to authenticate to our `internal-cran` feed. This allows us to upload and install packages from the feed.
 
 Start by navigating to "Administration Overview" > "API Keys & Access Logs" under "Security & Authentication"
 
@@ -45,33 +45,43 @@ Then select "Create API Key"
 
 ![Create Key](/resources/docs/proget-apikey-new.png){height="" width="50%"}
 
-Then fill in the fields by selecting "Feeds (Use Certain Feeds)" as the "Feed Type" and selecting the `internal-conda` feed. Then set the API key. You can specify any alphanumeric sequence for this, or leave it blank to autogenerate one.
+Next, fill in the fields by selecting "Feeds (Use Certain Feeds)" as the "Feed Type" and selecting the `internal-cran` feed. Then set the API key. You can use any alphanumeric sequence, or just leave it blank to autogenerate one.
 
-![New Key](/resources/docs/proget-conda-apikey-2.png){height="" width="50%"}
+![New Key](/resources/docs/proget-cran-apikey-2.png){height="" width="50%"}
 
-Ensure that the "View/Download" and "Add/Repackage" boxes are checked, and then select "Save".
+Make sure the "View/Download" and "Add/Repackage" boxes are checked, and then select "Save".
 
 ## Step 3: Build Your Package
 
-Next, we will build and publish our packages. You can follow the [official Conda documentation](https://docs.conda.io/projects/conda-build/en/latest/user-guide/tutorials/build-pkgs.html) to learn more about creating packages. To build your package you will need to have conda-build installed if you haven't already by entering:
+Next, we will build our CRAN packages. More information on developing CRAN packages can be found in [the official documentation](https://cran.r-project.org/web/packages/rcompendium/vignettes/developing_a_package.html).
 
-```bash
-$ conda install conda-build
-```
+To build your package, first you'll need devtools installed. To do this enter:
 
-Then build your package by navigating to the directory containing your package files and `meta.yaml` and entering:
-
-```bash
-$ conda-build .
+```r
+install.packages("devtools")
+library(devtools)
 ```
  
-When conda-build is finished, it displays the package filename and location of the `.tar.bz2` file created.
+Then make sure that the current working directory is set to the folder your package files are located (e.g. `DESCRIPTION`, `NAMESPACE` and `.r` files) by entering:
 
-### Step 4: Publish Your Package to ProGet
+```r
+setwd("path/to/package")
+```
+Before building, we also recommend generating documentation by entering `devtools::document()`, then running a check with `devtools::check()` to make sure your project is free from errors.
+ 
+Then build your package by entering:
 
-To publish your package to your ProGet Conda feed, we can use Inedo's [pgutil](/docs/proget/reference-api/proget-pgutil) tool.
+```r
+devtools::build()
+```
 
-pgutil will require some [minor configuration](/docs/proget/reference-api/proget-pgutil#sources) before use. This includes setting up your ProGet instance and API key as a source by running:
+Your `.tar.gz` CRAN package is then built, and saved to the same location as your project folder. 
+
+### Step 4: Upload Your Package to ProGet
+
+To upload your package to your `internal-cran` CRAN feed, you can use Inedo's [pgutil](/docs/proget/reference-api/proget-pgutil) tool.
+
+pgutil will require some [minor configuration](/docs/proget/reference-api/proget-pgutil#sources) before use. This includes configuring your ProGet instance and API key as a source by running:
 
 ```bash
 $ pgutil sources add --name=Default --url=«proget-url» --api-key=«api-key»
@@ -89,50 +99,60 @@ Now upload your packages by entering:
 $ pgutil packages upload --feed=«feed-name» --input-file=«path-to-package»
 ```
 
-For example, uploading the package `my-package-0.1.0-0.tar.bz2` stored at `C:\development\conda_packages\` to your `internal-conda` feed you would enter:
+For example, to upload the package `my-package-0.1.0-0.tar.gz` stored at `C:\development\cran_packages\` to your `internal-cran` feed you would enter:
 
 ```bash
-$ pgutil packages upload --feed=internal-conda --input-file==C:\development\conda_packages\my-package-0.1.0-0.tar.bz2
+$ pgutil packages upload --feed=internal-cran --input-file==C:\development\cran_packages\my-package-0.1.0-0.tar.gz
 ```
 
-Your package will then be uploaded to the `internal-conda` feed.
+Your package will then be uploaded to the `internal-cran` feed.
 
-![Feed](/resources/docs/proget-conda-internal-package.png){height="" width="50%"}
+![Feed](){height="" width="50%"}
 
-## Step 5: Add the Feed to Local Conda Environments
+## Step 5: Add the Feed to Local R Environments
 
-To consume the Conda packages you have published to your `internal-conda` feed, you'll need to add it to your local Conda environments. For this, you will need the feed's URL. This can be found at the top right of the feed's page.
+To install CRAN packages you have published to your `internal-cran` feed, you'll need to add it to your local R environments. For this, you will need the feed's URL. This is found at the top right of the feed's page.
 
-![Feed](/resources/docs/proget-conda-internal-url.png){height="" width="50%"}
+![Feed](){height="" width="50%"}
 
-In your terminal of choice, enter the following, which will require the `internal-conda` feed URL and the API key you created in [Step 2](#step-2):
+Then, any time you want to install a package, take the `internal-cran` feed URL and the API key you created in [Step 2](#step-2), and enter:
 
-```bash
-$ conda config --add channels http://api:«api-key»@«feed-url»
+```r
+install.packages("«package-name»", repos="http://api:«api-key»@«feed-url»")
 ```
 
-For example, adding a feed with the URL `http://proget.corp.local/conda/internal-conda`, authenticating with the API key `abc12345` you would enter:
+For example, to install the package `devtools` from `http://proget.corp.local/cran/public-cran/`, authenticating with `abc12345` you would enter:
 
-```bash
-$ conda config --add channels http://api:abc12345@proget.corp.local/conda/internal-conda
+```r
+install.packages("devtools", repos="http://api:abc12345@proget.corp.local/cran/public-cran/")
 ```
 
-You can confirm that it was registered by entering:
+However to avoid having to type in the repo URL every time, you can set your ProGet instance as a custom repository. This will configure R to look first at the specified URL for packages, instead of the default CRAN repository. You can do this by entering:
 
-```bash
-$ conda config --show channels
+```r
+options(repos = c(«repository-name» = "http://api:«api-key»@«feed-url»"))
 ```
 
-## Step 6: (Optional) Confirm Connection to your Conda Feed
+For example, to create a custom repository with the name ProGet that points to `http://proget.corp.local/cran/public-cran/` authenticating with abc12345, you would enter: 
 
-You can confirm that your local Conda environment can connect with your `internal-conda` feed by listing Conda packages. This is done by entering:
-
-```bash
-$ conda search -c «feed-url»
+```r
+options(repos = c(ProGet = "http://api:abc12345@proget.corp.local/cran/public-cran/"))
 ```
 
-Or by filtering by package name:
+In the above example, we name the custom repository `ProGet`, though you can choose any name you prefer.
 
-```bash
-$ conda search -c «feed-url» «package-name»
+Now you can simply install packages such as `devtools` by entering:
+
+```r
+install.packages("devtools")
 ```
+
+## Step 6: (Optional) Confirming Connection to your CRAN Feed
+
+You can confirm that your local CRAN environment is configured with your CRAN feed by entering:
+
+```r
+getOption("repos")
+```
+
+This should list all repositories connected. If your ProGet instance is at the top, this indicates that it is set as the primary repository source for packages.

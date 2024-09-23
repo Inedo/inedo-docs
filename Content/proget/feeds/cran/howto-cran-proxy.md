@@ -21,13 +21,13 @@ In your ProGet instance, select "Feeds" and "Create New Feed".
 
 Next, select "CRAN Packages".
 
-![Select Conda](){height="" width="50%"}
+![Select CRAN](){height="" width="50%"}
 
 Then select "Connect to Official CRAN Repository" which will allow us to proxy and cache packages from the [Comprehensive R Archive Network](https://cran.r-project.org/web/packages/available_packages_by_name.html)
 
 ![Connector](){height="" width="50%"}
 
-Now select "No, Create One Feed", as we will only need a single feed to proxy Conda packages.
+Now select "No, Create One Feed", as we will only need a single feed to proxy CRAN packages.
 
 ![One Feeds](){height="" width="50%"}
 
@@ -47,13 +47,13 @@ Then select [Set Feed Features]. ProGet will create The `public-cran` feed and r
 
 ## Step 3: Adding the Feed to Your Local R Environments { #step-3 }
 
-To install packages from the `public-conda` feed, you will first need the URL of the `public-cran` feed. This can be found on the top right of the feed page:
+To install packages from the `public-cran` feed, you will first need the URL of the `public-cran` feed. This can be found on the top right of the feed page:
 
 ![Feed](){height="" width="50%"}
 
 Then, you can simply enter the following command to install a package:
 
-```
+```r
 install.packages("«package-name»", repos="«feed-url»")
 ```
 
@@ -99,7 +99,7 @@ By default your `public-cran` feed will not require authentication and can be vi
 
 You will first need to remove anonymous access to your feed. Navigate to "Settings"> "Manage Security", and click the small "X" in the "Anonymous" entry. 
 
-![Permissions Remove](/resources/docs/proget-conda-permissions-remove.png){height="" width="50%"}
+![Permissions Remove](/resources/docs/proget-CRAN-permissions-remove.png){height="" width="50%"}
 
 Next, you will need to create an [API Key](/docs/proget/reference-api/proget-apikeys). 
 
@@ -115,7 +115,7 @@ Fill in the fields by selecting "Feeds ("Use Certain Feeds)" as the "Feed Type" 
 
 Make sure that the "View/Download" box is checked, and then select "Save".
 
-![API Key](/resources/docs/proget-conda-apikey-3.png){height="" width="50%"}
+![API Key](/resources/docs/proget-CRAN-apikey-3.png){height="" width="50%"}
 
 Now, we'll add the feed to a local R environment. For the two methods detailed in [Step 3](#step-3), you will also need to enter your API key, in addition to the URL.
 
