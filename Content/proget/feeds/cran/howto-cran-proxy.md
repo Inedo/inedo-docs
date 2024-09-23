@@ -33,7 +33,7 @@ Now select "No, Create One Feed", as we will only need a single feed to proxy Co
 
 ## Step 2: Name Your Feed
 
-Next we name our feed. For this example we will name it `public-cran`, and then click "Create Feed".
+Next, we name our feed. For this example, we will name it `public-cran`, and then click "Create Feed".
 
 ![Name Feed](){height="" width="50%"}
 
@@ -65,7 +65,7 @@ install.packages("devtools", repos="http://proget.corp.local/cran/public-cran/")
 
 However, we recommend setting your ProGet instance as a custom repository. This will configure R to look first at the specified URL for packages, instead of the default CRAN repository. You can do this by entering:
 
-```
+```r
 options(repos = c(«repository-name» = "«feed-url»"))
 ```
 
@@ -75,7 +75,7 @@ For example, to create a custom repository with the name ProGet that points to `
 options(repos = c(ProGet = "http://proget.corp.local/cran/public-cran/"))
 ```
 
-In the above example we give the custom repository the name `ProGet`, however you can give it any name you want.
+In the above example, we name the custom repository `ProGet`, though you can choose any name you prefer.
 
 Now you can simply install packages such as `devtools` by entering:
 
@@ -95,62 +95,58 @@ This should list all repositories connected. If your ProGet instance is at the t
 
 ## (Optional) Authenticating to Your CRAN Feed
 
-By default your `public-conda` feed will not require authentication and can be viewed anonymously. However you may want to make your repository private and require authentication to access it. This is recommended when hosting your own internal packages in a feed, in addition to proxied packages from the OSS repository. 
+By default your `public-cran` feed will not require authentication and can be viewed anonymously. However, you may want to make your repository private and configure it to require authentication to access. One reason for doing this would be when using internal packages in a feed, either solely or in addition to using OSS packages. 
 
-First navigate to navigate to "Settings"> "Manage Security", and remove anonymous access by clicking the small "X" in the "Anonymous" entry. 
+You will first need to remove anonymous access to your feed. Navigate to "Settings"> "Manage Security", and click the small "X" in the "Anonymous" entry. 
 
 ![Permissions Remove](/resources/docs/proget-conda-permissions-remove.png){height="" width="50%"}
 
-Now you will need to create an [API Key](/docs/proget/reference-api/proget-apikeys). 
+Next, you will need to create an [API Key](/docs/proget/reference-api/proget-apikeys). 
 
-Start by navigating to "Administration Overview" > "API Keys & Access Logs" under "Security & Authentication"
+Navigate to "Administration Overview" > "API Keys & Access Logs" under "Security & Authentication"
 
 ![Admin Overview](/resources/docs/proget-admin-apikeys.png){height="" width="50%"}
 
-Then select "Create API Key"
+Then select "Create API Key".
 
 ![Create Key](/resources/docs/proget-apikey-new.png){height="" width="50%"}
 
-Then fill in the fields by selecting "Feeds ("Use Certain Feeds)" as the "Feed Type" and selecting the `public-conda` feed. Then set the API key. You can specify any alphanumeric sequence for this, or leave it blank to autogenerate one.
+Fill in the fields by selecting "Feeds ("Use Certain Feeds)" as the "Feed Type" and selecting the `public-cran` feed. Then set the API key. You can specify any alphanumeric sequence for this, or leave it blank to autogenerate one.
 
-Ensure that the "View/Download" box is checked, and then select "Save".
+Make sure that the "View/Download" box is checked, and then select "Save".
 
 ![API Key](/resources/docs/proget-conda-apikey-3.png){height="" width="50%"}
 
-Now, we'll add the feed to a local Conda environment. Instead of adding the URL like in [Step 3](#step-3), enter the following, containing both URL and API Key:
+Now, we'll add the feed to a local R environment. For the two methods detailed in [Step 3](#step-3), you will also need to enter your API key, in addition to the URL.
 
-```bash
-$ conda config --add channels http://api:«api-key»@«feed-url»
+For example, authenticating to http://proget.corp.local/cran/public-cran/ using the API key abc12345 you would enter either:
+
+```r
+install.packages("devtools", repos="http://api:abc12345@proget.corp.local/cran/public-cran/")
 ```
 
-For example, when authenticating with the API key abc12345 to the URL `http://proget.corp.local/conda/public-conda/` you would enter:
+or
 
-```bash
-$ conda config --add channels http://api:abc12345@proget.corp.local/conda/public-conda/
+```r
+options(repos = c(ProGet = "http://api:abc12345@proget.corp.local/cran/public-cran/"))
 ```
 
-Confirm that it was registered by entering:
+Confirm that it was set by entering:
 
-```bash
-$ conda config --show channels
+```r
+getOption("repos")
 ```
 
 ## (Optional) Creating a Package Approval Flow
 
-So far we've looked at proxying packages from an OSS repository. However you may want to make sure that only approved packages are used in your development or production environment to avoid risks related to quality, vulnerabilities, licenses, etc.
+In this article, we explored how to proxy packages from the [Comprehensive R Archive Network](https://cran.r-project.org/web/packages/available_packages_by_name.html). However, this allows developers to use any OSS package from the public repository without oversight. In many cases, it's important to include some form of approval or oversight in development or production to avoid risks associated with quality, vulnerabilities, licenses, etc.
 
-In ProGet, you can create a "Package Approval Flow" that involves promoting packages between feeds to ensure that only approved and verified packages are used in the right environments, such as production. You can read more about package promotion [in our documentation](/docs/proget/packages/package-promotion).
+With ProGet, you can establish a "Package Approval Flow" that lets you promote packages between feeds, making sure that only packages approved for use are installed in development or production. For more information on package promotion, read [our documentation](/docs/proget/packages/package-promotion).
 
-To configure package approval flow you can read [HOWTO: Approve and Promote Open-source Packages](/docs/proget/packages/package-promotion/proget-howto-promote-packages). In this guide it talks about setting up a NuGet package approval, but it can just as easily be done with Conda packages by creating Conda feeds instead. 
+To set up the package approval flow, refer to [HOWTO: Approve and Promote Open-source Packages](/docs/proget/packages/package-promotion/proget-howto-promote-packages). This guide uses NuGet feeds as an example, but the steps are identical when creating CRAN feeds.
 
-Once you have created your "Unapproved" and "Approved" feeds, follow the steps in [Step 3](#step-3) to add the "Approved" feed as a channel to your local Conda environments, entering:
+After creating your "Unapproved" and "Approved" feeds, follow the steps in [Step 3](#step-3) to add the "Approved" feed as a custom repository in your local R environments, entering:
 
-```bash
-$ conda config --add channels «feed-url»
-```
-
-To ensure that developers only consume packages from the "Approved" feed rather than the OSS repository, we recommend removing the `defaults` channel, which exists by default. This can be done by entering:
-
-```bash
-$ conda config --remove channels defaults
+```r
+options(repos = c(«repository-name» = "«feed-url»"))
 ```
