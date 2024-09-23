@@ -25,7 +25,7 @@ Next, select "Conda Packages", as we will be creating feeds to proxy and host Co
 
 ![Select Conda](/resources/docs/proget-conda-newfeed.png){height="" width="50%"}
 
-Now select "Connect to Anaconda Packages" which will allow us to proxy feeds from the [Anaconda OSS Package Repository](https://repo.anaconda.com/)
+Now select "Connect to Anaconda Packages" which will allow us to proxy packages from the [Anaconda OSS Package Repository](https://repo.anaconda.com/)
 
 ![Connector](/resources/docs/proget-conda-newfeed-connector.png){height="" width="50%"}
 
