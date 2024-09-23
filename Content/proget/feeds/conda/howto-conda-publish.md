@@ -51,7 +51,7 @@ Then fill in the fields by selecting "Feeds (Use Certain Feeds)" as the "Feed Ty
 
 Ensure that the "View/Download" and "Add/Repackage" boxes are checked, and then select "Save".
 
-## Step 3: Build and Publish Your Package
+## Step 3: Build Your Package
 
 Next, we will build and publish our packages. You can follow the [official Conda documentation](https://docs.conda.io/projects/conda-build/en/latest/user-guide/tutorials/build-pkgs.html) to learn more about creating packages. To build your package you will need to have conda-build installed if you haven't already by entering:
 
@@ -67,7 +67,7 @@ $ conda-build .
  
 When conda-build is finished, it displays the package filename and location of the `.tar.bz2` file created.
 
-### Step 4: Publishing Your Package to ProGet
+### Step 4: Publish Your Package to ProGet
 
 To publish your package to your ProGet Conda feed, we can use Inedo's [pgutil](/docs/proget/reference-api/proget-pgutil) tool.
 
@@ -99,7 +99,7 @@ Your package will then be uploaded to the `internal-conda` feed.
 
 ![Feed](/resources/docs/proget-conda-internal-package.png){height="" width="50%"}
 
-## Step 5: Adding the Feed to Local Conda Environments
+## Step 5: Add the Feed to Local Conda Environments
 
 To consume the Conda packages you have published to your `internal-conda` feed, you'll need to add it to your local Conda environments. For this, you will need the feed's URL. This can be found at the top right of the feed's page.
 
@@ -123,7 +123,7 @@ You can confirm that it was registered by entering:
 $ conda config --show channels
 ```
 
-## Step 6: (Optional) Confirming Connection to your Conda Feed
+## Step 6: (Optional) Confirm Connection to your Conda Feed
 
 You can confirm that your local Conda environment can connect with your `internal-conda` feed by listing Conda packages. This is done by entering:
 
