@@ -97,7 +97,7 @@ By default your `public-conda` feed will not require authentication and can be v
 
 First navigate to navigate to "Settings"> "Manage Security", and remove anonymous access by clicking the small "X" in the "Anonymous" entry. 
 
-![Permissions Remove](/resources/docs/proget-conda-permissions-remove.png){height="" width="50%"}
+![Permissions Remove](/resources/docs/proget-permissions-remove.png){height="" width="50%"}
 
 Now you will need to create an [API Key](/docs/proget/reference-api/proget-apikeys). 
 

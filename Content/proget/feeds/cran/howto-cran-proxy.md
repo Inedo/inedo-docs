@@ -101,7 +101,7 @@ By default your `public-cran` feed will not require authentication and can be vi
 
 You will first need to remove anonymous access to your feed. Navigate to "Settings"> "Manage Security", and click the small "X" in the "Anonymous" entry. 
 
-![](/resources/docs/proget-CRAN-permissions-remove.png){height="" width="50%"}
+![](/resources/docs/proget-permissions-remove.png){height="" width="50%"}
 
 Next, you will need to create an [API Key](/docs/proget/reference-api/proget-apikeys). 
 
@@ -121,13 +121,13 @@ Make sure that the "View/Download" box is checked, and then select "Save".
 
 Now, we'll add the feed to a local R environment. For the two methods detailed in [Step 3](#step-3), you will also need to enter your API key, in addition to the URL.
 
-For example, authenticating to http://proget.corp.local/cran/public-cran/ using the API key abc12345 you would enter either:
+For example, authenticating to http://proget.corp.local/cran/public-cran/ using the API key `abc12345` you would enter:
 
 ```r
 install.packages("devtools", repos="http://api:abc12345@proget.corp.local/cran/public-cran/")
 ```
 
-or
+or add it as your `public-cran` feed as a custom repository by entering:
 
 ```r
 options(repos = c(ProGet = "http://api:abc12345@proget.corp.local/cran/public-cran/"))

@@ -25,7 +25,13 @@ You'll then see several options related to ProGet's [Vulnerability Scanning and 
 
 ![](/resources/docs/proget-cran-feed-empty.png){height="" width="50%"}
 
-## Step 2: Create an API Key { #step-2 }
+## Step 2: Remove Anonymous Access and Create an API Key { #step-2 }
+
+To keep our `internal-cran` feed private we will need to first remove anonymous access to the feed (enabled by default) and then create an API key to authenticate to it.
+
+To remove anonymous access, Navigate to "Settings"> "Manage Security", and click the small "X" in the "Anonymous" entry. 
+
+![](/resources/docs/proget-permissions-remove.png){height="" width="50%"}
 
 Next, we'll create an [API Key](/docs/proget/reference-api/proget-apikeys) allowing our local client to authenticate to our `internal-cran` feed. This allows us to upload and install packages from the feed.
 

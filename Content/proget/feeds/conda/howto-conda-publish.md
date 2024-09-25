@@ -33,9 +33,15 @@ You will then be redirected to your new `internal-conda` feed, currently empty.
 
 ![Feed](/resources/docs/proget-conda-internal-emptyfeed.png){height="" width="50%"}
 
-## Step 2: Create an API Key { #step-2 }
+## Step 2: Remove Anonymous Access and Create an API Key { #step-2 }
 
-We will now create an [API Key](/docs/proget/reference-api/proget-apikeys) allowing our local client to authenticate to our `internal-conda` feed. This allows us to publish packages to the feed, as well as consume them once published.
+To keep our `internal-conda` feed private we will need to first remove anonymous access to the feed (enabled by default) and then create an API key to authenticate to it.
+
+To remove anonymous access, Navigate to "Settings"> "Manage Security", and click the small "X" in the "Anonymous" entry. 
+
+![](/resources/docs/proget-permissions-remove.png){height="" width="50%"}
+
+Next, we'll create an [API Key](/docs/proget/reference-api/proget-apikeys) allowing our local client to authenticate to our `internal-conda` feed. This allows us to upload and install packages from the feed.
 
 Start by navigating to "Administration Overview" > "API Keys & Access Logs" under "Security & Authentication"
 
