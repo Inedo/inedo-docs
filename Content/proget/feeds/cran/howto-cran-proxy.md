@@ -3,17 +3,17 @@ title: "HOWTO: Proxy Packages from the Comprehensive R Archive Network (CRAN)"
 order: 1
 ---
 
-ProGet can be configured to proxy CRAN packages from the [Comprehensive R Archive Network](https://cran.r-project.org/web/packages/available_packages_by_name.html) so that teams can install them in their projects just as they would when selecting a CRAN mirror in their R CLI or IDE. 
+ProGet can be configured to proxy CRAN packages from the [Comprehensive R Archive Network (CRAN)](https://cran.r-project.org/web/packages/available_packages_by_name.html) so that teams can install them in their projects just as they would when selecting a CRAN mirror in their R CLI or an IDE like [RStudio](https://posit.co/downloads/). 
 
 This is useful when the particular mirror you are using is experiencing issues, or when you want to easily see which packages are being downloaded and used frequently.
 
-In this article, we'll explain how to create a ["Feed"](/docs/proget/feeds/feed-overview) in ProGet that will proxy packages from the CRAN package repository. 
+In this article, we'll explain how to create a ["Feed"](/docs/proget/feeds/feed-overview) in ProGet that will proxy packages from the CRAN repository. 
 
-We’ll also discuss how to set up a private repository for using internal CRAN packages, as well as how to establish a package approval process to manage which packages your team can utilize in production.
+We’ll also discuss how to set up a private repository for using internal R packages, as well as how to establish a package approval process to manage which packages your team can utilize in production.
 
 ## Step 1: Create a New Feed { #step-1 }
 
-We'll start by creating a CRAN feed that will proxy packages from the [Comprehensive R Archive Network](https://cran.r-project.org/web/packages/available_packages_by_name.html).
+We'll start by creating a CRAN feed that will proxy packages from the [CRAN](https://cran.r-project.org/web/packages/available_packages_by_name.html) repository.
 
 In your ProGet instance, select "Feeds" and "Create New Feed".
 
@@ -23,7 +23,7 @@ Next, select "CRAN Packages".
 
 ![](){height="" width="50%"}
 
-Then select "Connect to Official CRAN Repository" which will allow us to proxy and cache packages from the [Comprehensive R Archive Network](https://cran.r-project.org/web/packages/available_packages_by_name.html)
+Then select "Connect to Official CRAN Repository" which will allow us to proxy and cache packages from the [CRAN](https://cran.r-project.org/web/packages/available_packages_by_name.html) repository.
 
 ![](){height="" width="50%"}
 
@@ -85,7 +85,7 @@ install.packages("devtools")
 
 ## Step 4: (Optional) Confirming Connection to your CRAN Feed
 
-You can confirm that your local CRAN environment is configured with your CRAN feed by entering:
+You can confirm that your local R environment is configured with your CRAN feed by entering:
 
 ```r
 getOption("repos")
@@ -139,11 +139,9 @@ getOption("repos")
 
 ## (Optional) Creating a Package Approval Flow
 
-In this article, we explored how to proxy packages from the [Comprehensive R Archive Network](https://cran.r-project.org/web/packages/available_packages_by_name.html). However, this allows developers to use any OSS package from the public repository without oversight. In many cases, it's important to include some form of approval or oversight in development or production to avoid risks associated with quality, vulnerabilities, licenses, etc.
+In this article, we explored how to proxy packages from the [CRAN](https://cran.r-project.org/web/packages/available_packages_by_name.html) repository. However, this allows developers to use any OSS package from the public repository without oversight. In many cases, it's important to include some form of approval or oversight in development or production, which can be done by introducing a ["Package Approval Flow"](/docs/proget/packages/package-promotion).
 
-With ProGet, you can establish a "Package Approval Flow" that lets you promote packages between feeds, making sure that only packages approved for use are installed in development or production. For more information on package promotion, read [our documentation](/docs/proget/packages/package-promotion).
-
-To set up the package approval flow, refer to [HOWTO: Approve and Promote Open-source Packages](/docs/proget/packages/package-promotion/proget-howto-promote-packages). This guide uses NuGet feeds as an example, but the steps are identical when creating CRAN feeds.
+To set up a package approval flow, refer to [HOWTO: Approve and Promote Open-source Packages](/docs/proget/packages/package-promotion/proget-howto-promote-packages). This guide uses NuGet feeds as an example, but the steps are identical when creating CRAN feeds.
 
 After creating your "Unapproved" and "Approved" feeds, follow the steps in [Step 3](#step-3) to add the "Approved" feed as a custom repository in your local R environments, entering:
 
