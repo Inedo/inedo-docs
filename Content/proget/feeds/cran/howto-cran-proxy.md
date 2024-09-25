@@ -11,15 +11,11 @@ In this article, we'll explain how to create a ["Feed"](/docs/proget/feeds/feed-
 
 We’ll also discuss how to set up a private repository for using internal R packages, as well as how to establish a package approval process to manage which packages your team can utilize in production.
 
-## Step 1: Create a New Feed { #step-1 }
+## Step 1: Create and Name a CRAN Feed { #step-1 }
 
-We'll start by creating a CRAN feed that will proxy packages from the [CRAN](https://cran.r-project.org/web/packages/available_packages_by_name.html) repository.
+We'll start by creating a CRAN feed that will proxy packages from the [CRAN](https://cran.r-project.org/web/packages/available_packages_by_name.html) repository. You can read more on creating feeds by reading 
 
-In your ProGet instance, select "Feeds" and "Create New Feed".
-
-![](){height="" width="50%"}
-
-Next, select "CRAN Packages".
+In your ProGet instance, select "Feeds" and "Create New Feed", and select "CRAN Packages".
 
 ![](){height="" width="50%"}
 
@@ -27,13 +23,7 @@ Then select "Connect to Official CRAN Repository" which will allow us to proxy a
 
 ![](){height="" width="50%"}
 
-Now select "No, Create One Feed", as we will only need a single feed to proxy CRAN packages.
-
-![](){height="" width="50%"}
-
-## Step 2: Name Your Feed
-
-Next, we name our feed. For this example, we will name it `public-cran`, and then click "Create Feed".
+Select "No, Create One Feed", as we will only need a single feed to proxy CRAN packages. You'll then need to name feed. For this example, we will name it `public-cran`, and then click "Create Feed".
 
 ![](){height="" width="50%"}
 
@@ -77,11 +67,23 @@ options(repos = c(ProGet = "http://proget.corp.local/cran/public-cran/"))
 
 In the above example, we name the custom repository `ProGet`, though you can choose any name you prefer.
 
-Now you can simply install packages such as `devtools` by entering:
+You can also configure this in RStudio by navigating to "Tools" > "Global Options" > "Packages" and selecting "Change"
+
+![Repo](){height="" width="50%"}
+
+And then entering your Feed URL in the "Custom" field.
+
+![](){height="" width="50%"}
+
+After setting the custom repository URL, you can simply install packages such as `devtools` by entering:
 
 ```r
 install.packages("devtools")
 ```
+
+Or in the RStudio interface, you can also navigate to "Tools" > "Install Packages..." and enter devtools in the "Packages" field.
+
+![Rstudio](/resources/docs/rstudio-install-devtools.png){height="" width="50%"}
 
 ## Step 4: (Optional) Confirming Connection to your CRAN Feed
 
