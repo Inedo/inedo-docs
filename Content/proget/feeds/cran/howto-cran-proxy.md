@@ -117,7 +117,7 @@ Fill in the fields by selecting "Feeds ("Use Certain Feeds)" as the "Feed Type" 
 
 Make sure that the "View/Download" box is checked, and then select "Save".
 
-![](/resources/docs/proget-CRAN-apikey-3.png){height="" width="50%"}
+![](/resources/docs/proget-cran-apikey-2.png){height="" width="50%"}
 
 Now, we'll add the feed to a local R environment. For the two methods detailed in [Step 3](#step-3), you will also need to enter your API key, in addition to the URL.
 

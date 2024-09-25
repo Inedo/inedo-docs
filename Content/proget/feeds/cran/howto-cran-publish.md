@@ -3,7 +3,7 @@ title: "HOWTO: Create and Upload CRAN Packages to a Private Repository in ProGet
 order: 2
 ---
 
-ProGet let's you set up private repositories for your internal R packages that will allow you to store, publish, and share them within your organization.
+ProGet let's you set up private repositories for your internal R packages that will allow you to publish. store and share them within your organization.
 
 This guide will walk you through the process of setting up a CRAN ["Feed"](/docs/proget/feeds/feed-overview) in ProGet as a private, custom repository. We'll also cover how to create, upload, and install packages from this repository.
 
@@ -21,13 +21,9 @@ From here, we name our feed. For this example, we will call it `internal-cran`, 
 
 ![](/resources/docs/proget-cran-internalfeed.png){height="" width="50%"}
 
-You'll then see several options related to ProGet's [Vulnerability Scanning and Blocking](/docs/proget/sca/vulnerabilities) features. These are only for users looking to use third-party OSS packages. Leave these boxes unchecked, and select [Set Feed Features].
+You'll then see several options related to ProGet's [Vulnerability Scanning and Blocking](/docs/proget/sca/vulnerabilities) features. These are only for users looking to use third-party OSS packages. Leave these boxes unchecked, and select [Set Feed Features]. You will then be directed to the new `internal-cran` feed, currently empty.
 
-![](){height="" width="50%"}
-
-You will then be directed to the new `internal-cran` feed, currently empty.
-
-![](){height="" width="50%"}
+![](/resources/docs/proget-cran-feed-empty.png){height="" width="50%"}
 
 ## Step 2: Create an API Key { #step-2 }
 
@@ -43,7 +39,7 @@ Then select "Create API Key"
 
 Next, fill in the fields by selecting "Feeds (Use Certain Feeds)" as the "Feed Type" and selecting the `internal-cran` feed. Then set the API key. You can use any alphanumeric sequence, or just leave it blank to autogenerate one.
 
-![](){height="" width="50%"}
+![](/resources/docs/proget-cran-apikey-1.png){height="" width="50%"}
 
 Make sure the "View/Download" and "Add/Repackage" boxes are checked, and then select "Save".
 
@@ -108,13 +104,14 @@ $ pgutil packages upload --feed=internal-cran --input-file==C:\development\cran_
 
 Your package will then be uploaded to the `internal-cran` feed.
 
-![](){height="" width="50%"}
+![](/resources/docs/proget-cran-internal-package.png){height="" width="50%"}
+
 
 ## Step 5: Add the Feed to Local R Environments
 
 To install R packages you have published to your `internal-cran` feed, you'll need to add the feed to your local R environments. For this, you will need the feed's URL. This is found at the top right of the feed's page.
 
-![](){height="" width="50%"}
+![](/resources/docs/proget-cran-internal-url.png){height="" width="50%"}
 
 Then, any time you want to install a package, take the `internal-cran` feed URL and the API key you created in [Step 2](#step-2), and in enter:
 
@@ -142,15 +139,23 @@ options(repos = c(ProGet = "http://api:abc12345@proget.corp.local/cran/public-cr
 
 In the above example, we name the custom repository `ProGet`, though you can choose any name you prefer.
 
-Now you can simply install packages such as `devtools` by entering:
+You can also configure this in RStudio by navigating to "Tools" > "Global Options" > "Packages" and selecting "Change".
+
+![](/resources/docs/rstudio-addproget.png){height="" width="50%"}
+
+And then entering your Feed URL in the "Custom" field.
+
+![](/resources/docs/rstudio-customrepo-internal.png){height="" width="50%"}
+
+Now you can install your internal packages by entering:
 
 ```r
-install.packages("devtools")
+install.packages("my-internal-package")
 ```
 
-Or, in RStudio, by navigating to "Tools" > "Install Packages...". Then entering the package name in the "Package" field, ensuring that your ProGet feed is selected in the "Install From" field.
+Or, in RStudio, by navigating to "Tools" > "Install Packages..." and enter the package name in the "Packages" field.
 
-![](){height="" width="50%"}
+![](/resources/docs/rstudio-install-internal.png){height="" width="50%"}
 
 ## Step 6: (Optional) Confirming Connection to your CRAN Feed
 
