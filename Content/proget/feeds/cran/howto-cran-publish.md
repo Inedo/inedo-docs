@@ -11,15 +11,15 @@ This guide will walk you through the process of setting up a CRAN ["Feed"](/docs
 
 We'll begin by creating a CRAN feed to host your R packages. Navigate to "Feeds" and "Create New Feed". Then select "CRAN Packages".
 
-![](){height="" width="50%"}
+![](/resources/docs/proget-cran-newfeed.png){height="" width="50%"}
 
 Now select "No Connectors (Private packages only)" as this feed will be intended as a private repository.
 
-![](){height="" width="50%"}
+![](/resources/docs/proget-cran-noconnector.png){height="" width="50%"}
 
 From here, we name our feed. For this example, we will call it `internal-cran`, and then click "Create Feed".
 
-![](){height="" width="50%"}
+![](/resources/docs/proget-cran-internalfeed.png){height="" width="50%"}
 
 You'll then see several options related to ProGet's [Vulnerability Scanning and Blocking](/docs/proget/sca/vulnerabilities) features. These are only for users looking to use third-party OSS packages. Leave these boxes unchecked, and select [Set Feed Features].
 
@@ -35,11 +35,11 @@ Next, we'll create an [API Key](/docs/proget/reference-api/proget-apikeys) allow
 
 Start by navigating to "Administration Overview" > "API Keys & Access Logs" under "Security & Authentication"
 
-![Admin Overview](/resources/docs/proget-admin-apikeys.png){height="" width="50%"}
+![](/resources/docs/proget-admin-apikeys.png){height="" width="50%"}
 
 Then select "Create API Key"
 
-![Create Key](/resources/docs/proget-apikey-new.png){height="" width="50%"}
+![](/resources/docs/proget-apikey-new.png){height="" width="50%"}
 
 Next, fill in the fields by selecting "Feeds (Use Certain Feeds)" as the "Feed Type" and selecting the `internal-cran` feed. Then set the API key. You can use any alphanumeric sequence, or just leave it blank to autogenerate one.
 
@@ -60,7 +60,7 @@ library(devtools)
 
 Or in the RStudio interface, you can also navigate to "Tools" > "Install Packages..." and enter devtools in the "Packages" field.
 
-![Rstudio](/resources/docs/rstudio-install-devtools.png){height="" width="50%"}
+![](/resources/docs/rstudio-install-devtools.png){height="" width="50%"}
  
 If you're using a CLI you're also need to make sure that the current working directory is set to the folder that your package files are located in (e.g. `DESCRIPTION`, `NAMESPACE` and `.r` files) by entering `setwd("path/to/package")`
 
@@ -74,7 +74,7 @@ devtools::build()
 
 Or in RStudio, you can alternatively navigate to the "Build" tab and select "Build Source Package".
 
-![Rstudio](/resources/docs/rstudio-build.png){height="" width="50%"}
+![](/resources/docs/rstudio-build.png){height="" width="50%"}
 
 Your `.tar.gz` R package is then built, and saved to the same location as your project folder. 
 
@@ -150,7 +150,7 @@ install.packages("devtools")
 
 Or, in RStudio, by navigating to "Tools" > "Install Packages...". Then entering the package name in the "Package" field, ensuring that your ProGet feed is selected in the "Install From" field.
 
-![Install](){height="" width="50%"}
+![](){height="" width="50%"}
 
 ## Step 6: (Optional) Confirming Connection to your CRAN Feed
 
