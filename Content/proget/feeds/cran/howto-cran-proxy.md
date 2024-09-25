@@ -23,7 +23,7 @@ Then select "Connect to Official CRAN Repository" which will allow us to proxy a
 
 ![](/resources/docs/proget-cran-connector.png){height="" width="50%"}
 
-Select "No, Create One Feed", as we will only need a single feed to proxy CRAN packages. You'll then need to name feed. For this example, we will name it `public-cran`, and then click "Create Feed".
+Select "No, Create One Feed", as we will only need a single feed to proxy CRAN packages. You'll then need to name the feed. For this example, we will name it `public-cran`, and then click "Create Feed".
 
 ![](/resources/docs/proget-cran-publicfeed.png){height="" width="50%"}
 
@@ -151,6 +151,6 @@ After creating your "Unapproved" and "Approved" feeds, follow the steps in [Step
 options(repos = c(«repository-name» = "«feed-url»"))
 ```
 
-Or, in RStudio by navigating to "Tools" > "Global Options" > "Packages" and selecting "Change" and then entering your Feed URL in the "Custom" field.
+Or, in RStudio by navigating to "Tools" > "Global Options" > "Packages", selecting "Change" and then entering your Feed URL in the "Custom" field.
 
 ![](/resources/docs/rstudio-customrepo-approved.png){height="" width="50%"}
