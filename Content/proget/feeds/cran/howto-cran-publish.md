@@ -96,10 +96,10 @@ Now upload your packages by entering:
 $ pgutil packages upload --feed=«feed-name» --input-file=«path-to-package»
 ```
 
-For example, to upload the package `my-package-0.1.0-0.tar.gz` stored at `C:\development\cran_packages\` to your `internal-cran` feed you would enter:
+For example, to upload the package `my-package-1.0.0.0000.tar.gz` stored at `C:\development\cran_packages\` to your `internal-cran` feed you would enter:
 
 ```bash
-$ pgutil packages upload --feed=internal-cran --input-file==C:\development\cran_packages\my-package-0.1.0-0.tar.gz
+$ pgutil packages upload --feed=internal-cran --input-file==C:\development\cran_packages\my-package-1.0.0.0000.tar.gz
 ```
 
 Your package will then be uploaded to the `internal-cran` feed.
@@ -150,7 +150,7 @@ And then entering your Feed URL in the "Custom" field.
 Now you can install your internal packages by entering:
 
 ```r
-install.packages("my-internal-package")
+install.packages("my-package")
 ```
 
 Or, in RStudio, by navigating to "Tools" > "Install Packages..." and enter the package name in the "Packages" field.
