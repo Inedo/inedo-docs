@@ -29,17 +29,17 @@ Select "No, Create One Feed", as we will only need a single feed to proxy CRAN p
 
 We are then presented with several options. More information on these can be found in the [Vulnerability Scanning and Blocking](/docs/proget/sca/vulnerabilities) documentation.
 
-![](){height="" width="50%"}
+![](/resources/docs/proget-cran-sca.png){height="" width="50%"}
 
 Then select [Set Feed Features]. ProGet will create The `public-cran` feed and redirect you to it. This feed will now be populated with packages proxied from the CRAN public repository.
 
-![](){height="" width="50%"}
+![](/resources/docs/proget-cran-feed.png){height="" width="50%"}
 
 ## Step 3: Adding the Feed to Your Local R Environments { #step-3 }
 
 To install packages from the `public-cran` feed, you will first need the URL of the `public-cran` feed. This can be found on the top right of the feed page:
 
-![](){height="" width="50%"}
+![](/resources/docs/proget-cran-url.png){height="" width="50%"}
 
 Then, you can simply enter the following command to install a package:
 
@@ -67,13 +67,13 @@ options(repos = c(ProGet = "http://proget.corp.local/cran/public-cran/"))
 
 In the above example, we name the custom repository `ProGet`, though you can choose any name you prefer.
 
-You can also configure this in RStudio by navigating to "Tools" > "Global Options" > "Packages" and selecting "Change"
+You can also configure this in RStudio by navigating to "Tools" > "Global Options" > "Packages" and selecting "Change".
 
-![](){height="" width="50%"}
+![](/resources/docs/rstudio-addproget.png){height="" width="50%"}
 
 And then entering your Feed URL in the "Custom" field.
 
-![](){height="" width="50%"}
+![](/resources/docs/rstudio-customrepo-public.png){height="" width="50%"}
 
 After setting the custom repository URL, you can simply install packages such as `devtools` by entering:
 
@@ -150,3 +150,7 @@ After creating your "Unapproved" and "Approved" feeds, follow the steps in [Step
 ```r
 options(repos = c(«repository-name» = "«feed-url»"))
 ```
+
+Or, in RStudio by navigating to "Tools" > "Global Options" > "Packages" and selecting "Change" and then entering your Feed URL in the "Custom" field.
+
+![](/resources/docs/rstudio-customrepo-approved.png){height="" width="50%"}
