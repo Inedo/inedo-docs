@@ -3,13 +3,13 @@ title: "HOWTO: Create and Upload CRAN Packages to a Private Repository in ProGet
 order: 2
 ---
 
-Many organizations manage their R packages in private repositories to control access and maintain security. Setting up a private repository in ProGet for your CRAN packages allows you to store, publish, and share them securely within your organization.
+ProGet let's you set up private repositories for your internal R packages that will allow you to store, publish, and share them within your organization.
 
-This guide will walk you through the process of setting up a ["Feed"](/docs/proget/feeds/feed-overview) in ProGet to act as a private, custom CRAN repository. We'll also cover how to create, upload, and install packages from this repository.
+This guide will walk you through the process of setting up a CRAN ["Feed"](/docs/proget/feeds/feed-overview) in ProGet to act as a private, custom repository. We'll also cover how to create, upload, and install packages from this repository.
 
 ## Step 1: Create a New Feed
 
-We'll begin by creating a CRAN feed to host your CRAN packages. Navigate to "Feeds" and "Create New Feed".
+We'll begin by creating a CRAN feed to host your R packages. Navigate to "Feeds" and "Create New Feed".
 
 ![New Feed](/resources/docs/proget-feeds-createnewfeed.png){height="" width="50%"}
 
@@ -51,9 +51,9 @@ Next, fill in the fields by selecting "Feeds (Use Certain Feeds)" as the "Feed T
 
 Make sure the "View/Download" and "Add/Repackage" boxes are checked, and then select "Save".
 
-## Step 3: Build Your Package
+## Step 3: Build Your R Package
 
-Next, we will build our CRAN packages. More information on developing CRAN packages can be found in [the official documentation](https://cran.r-project.org/web/packages/rcompendium/vignettes/developing_a_package.html).
+Next, we will build our R packages. More information on developing these can be found in [the official documentation](https://cran.r-project.org/web/packages/rcompendium/vignettes/developing_a_package.html).
 
 To build your package, you'll first need `devtools` installed. To do this enter:
 
@@ -75,7 +75,7 @@ Then build your package by entering:
 devtools::build()
 ```
 
-Your `.tar.gz` CRAN package is then built, and saved to the same location as your project folder. 
+Your `.tar.gz` R package is then built, and saved to the same location as your project folder. 
 
 ### Step 4: Upload Your Package to ProGet
 
@@ -111,7 +111,7 @@ Your package will then be uploaded to the `internal-cran` feed.
 
 ## Step 5: Add the Feed to Local R Environments
 
-To install CRAN packages you have published to your `internal-cran` feed, you'll need to add the feed to your local R environments. For this, you will need the feed's URL. This is found at the top right of the feed's page.
+To install R packages you have published to your `internal-cran` feed, you'll need to add the feed to your local R environments. For this, you will need the feed's URL. This is found at the top right of the feed's page.
 
 ![](){height="" width="50%"}
 
@@ -149,7 +149,7 @@ install.packages("devtools")
 
 ## Step 6: (Optional) Confirming Connection to your CRAN Feed
 
-You can confirm that your local CRAN environment is configured with your CRAN feed by entering:
+You can confirm that your local R environment is configured with your CRAN feed by entering:
 
 ```r
 getOption("repos")
