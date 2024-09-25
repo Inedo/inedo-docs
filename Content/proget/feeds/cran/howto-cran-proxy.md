@@ -99,7 +99,7 @@ This should list all repositories connected. If your ProGet instance is at the t
 
 By default your `public-cran` feed will not require authentication and can be viewed anonymously. However, you may want to make your repository private and configure it to require authentication to access. One reason for doing this would be when using internal packages in a feed, either solely or in addition to using OSS packages. 
 
-You will first need to remove anonymous access to your feed. Navigate to "Settings"> "Manage Security", and click the small "X" in the "Anonymous" entry. 
+First navigate "Settings"> "Manage Security" and select the "Tasks/Permissions" tab. Remove anonymous access by clicking the small "X" in the "Anonymous" entry. 
 
 ![](/resources/docs/proget-permissions-remove.png){height="" width="50%"}
 

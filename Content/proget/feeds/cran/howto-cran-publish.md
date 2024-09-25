@@ -29,7 +29,7 @@ You'll then see several options related to ProGet's [Vulnerability Scanning and 
 
 To keep our `internal-cran` feed private we will need to first remove anonymous access to the feed (enabled by default) and then create an API key to authenticate to it.
 
-To remove anonymous access, Navigate to "Settings"> "Manage Security", and click the small "X" in the "Anonymous" entry. 
+First navigate "Settings"> "Manage Security" and select the "Tasks/Permissions" tab. Remove anonymous access by clicking the small "X" in the "Anonymous" entry. 
 
 ![](/resources/docs/proget-permissions-remove.png){height="" width="50%"}
 
