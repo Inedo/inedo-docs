@@ -175,9 +175,9 @@ Navigate "Settings"> "Manage Security" and select the "Tasks/Permissions" tab. R
 
 ![](/resources/docs/proget-permissions-remove.png){height="" width="50%"}
 
-Then create an API key as explained in [step 2](#step-2), but this time Make sure the "View/Download" box is checked, and then select "Save".
+Then create an API key as explained in [Step 2](#step-2), but this time make sure the "View/Download" box is checked, and then select "Save".
 
-Now, add the `internal-cran` feed to your R environment as we did in [step 5](#step-5) but this time take the API key you just created in addition to the the `internal-cran` feed URL and enter:
+Now, add the `internal-cran` feed to your R environment as we did in [Step 5](#step-5) but this time take the API key you just created in addition to the the `internal-cran` feed URL and enter:
 
 ```r
 install.packages("«package-name»", repos="http://api:«api-key»@«feed-url»")

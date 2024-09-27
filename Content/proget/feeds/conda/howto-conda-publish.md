@@ -33,13 +33,7 @@ You will then be redirected to your new `internal-conda` feed, currently empty.
 
 ![Feed](/resources/docs/proget-conda-internal-emptyfeed.png){height="" width="50%"}
 
-## Step 2: Remove Anonymous Access and Create an API Key { #step-2 }
-
-To keep our `internal-conda` feed private we will need to first remove anonymous access to the feed (enabled by default) and then create an API key to authenticate to it.
-
-First navigate "Settings"> "Manage Security" and select the "Tasks/Permissions" tab. Remove anonymous access by clicking the small "X" in the "Anonymous" entry. 
-
-![](/resources/docs/proget-permissions-remove.png){height="" width="50%"}
+## Step 2: Create an API Key { #step-2 }
 
 Next, we'll create an [API Key](/docs/proget/reference-api/proget-apikeys) allowing our local client to authenticate to our `internal-conda` feed. This allows us to upload and install packages from the feed.
 
@@ -105,22 +99,22 @@ Your package will then be uploaded to the `internal-conda` feed.
 
 ![Feed](/resources/docs/proget-conda-internal-package.png){height="" width="50%"}
 
-## Step 5: Add the Feed to Local Conda Environments
+## Step 5: Add the Feed to Local Conda Environments { #step-5 }
 
 To consume the Conda packages you have published to your `internal-conda` feed, you'll need to add it to your local Conda environments. For this, you will need the feed's URL. This can be found at the top right of the feed's page.
 
 ![Feed](/resources/docs/proget-conda-internal-url.png){height="" width="50%"}
 
-In your terminal of choice, enter the following, which will require the `internal-conda` feed URL and the API key you created in [Step 2](#step-2):
+In your terminal of choice, enter the following, which will require the `internal-conda` feed URL:
 
 ```bash
-$ conda config --add channels http://api:«api-key»@«feed-url»
+$ conda config --add channels http://«feed-url»
 ```
 
-For example, adding a feed with the URL `http://proget.corp.local/conda/internal-conda`, authenticating with the API key `abc12345` you would enter:
+For example, adding a feed with the URL `http://proget.corp.local/conda/internal-conda` you would enter:
 
 ```bash
-$ conda config --add channels http://api:abc12345@proget.corp.local/conda/internal-conda
+$ conda config --add channels http://proget.corp.local/conda/internal-conda
 ```
 
 You can confirm that it was registered by entering:
@@ -141,4 +135,26 @@ Or by filtering by package name:
 
 ```bash
 $ conda search -c «feed-url» «package-name»
+```
+
+## Step 7: (Optional) Authenticate to your Conda Feed
+
+By default, anonymous access is allowed for viewing and downloading from your `internal-conda` feed. However, if you want to enforce authentication, such as in the case of a public ProGet instance, you can disable anonymous access and use an API key to authenticate to it.
+
+Navigate "Settings"> "Manage Security" and select the "Tasks/Permissions" tab. Remove anonymous access by clicking the small "X" in the "Anonymous" entry. 
+
+![](/resources/docs/proget-permissions-remove.png){height="" width="50%"}
+
+Then create an API key as explained in [Step 2](#step-2), but this time check only the "View/Download" box, and select "Save".
+
+Now add the `internal-conda` to your local Conda environments as you did in [Step 5](#step-5) by entering:
+
+```bash
+$ conda config --add channels http://api:«api-key»@«feed-url»
+```
+
+For example, adding a feed with the URL `http://proget.corp.local/conda/internal-conda`, authenticating with the API key `abc12345` you would enter:
+
+```bash
+$ conda config --add channels http://api:abc12345@proget.corp.local/conda/internal-conda
 ```
