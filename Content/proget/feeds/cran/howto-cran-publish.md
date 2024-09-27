@@ -5,7 +5,7 @@ order: 2
 
 ProGet let's you set up private repositories for your internal R packages that will allow you to publish. store and share them within your organization.
 
-This guide will walk you through the process of setting up a CRAN ["Feed"](/docs/proget/feeds/feed-overview) in ProGet as a private, custom repository. We'll also cover how to create, upload, and install packages from this repository.
+This guide will walk you through the process of setting up a CRAN ["Feed"](/docs/proget/feeds/feed-overview) in ProGet as a private, custom repository. We'll also cover how to build, upload, and install packages from this repository.
 
 ## Step 1: Create and Name a CRAN Feed
 
