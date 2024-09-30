@@ -13,7 +13,7 @@ We’ll also discuss how to set up a private repository for using internal R pac
 
 ## Step 1: Create and Name a CRAN Feed { #step-1 }
 
-We'll start by creating a CRAN feed that will proxy packages from the [CRAN](https://cran.r-project.org/web/packages/available_packages_by_name.html) repository. You can read more on creating feeds by reading 
+We'll start by creating a CRAN feed that will proxy packages from the [CRAN](https://cran.r-project.org/web/packages/available_packages_by_name.html) repository. You can read more on creating feeds by reading [Creating and Managing Feeds](/docs/proget/feeds/feed-overview#creating-and-managing-feeds)
 
 In your ProGet instance, select "Feeds" and "Create New Feed", and select "CRAN Packages".
 
