@@ -11,9 +11,11 @@ ProGet doesn't have any intense server requirements, and supports all modern ver
 
 The recommended Windows server requirements are:
 
-* Minimum - 2 Core CPU, 2 GB RAM, 1 GB for storage
-* Recommended Average/Typical - 2 Core CPU, 4 GB RAM, 10 GB storage
-* Recommended Large - 4 Core CPU, 8 GB RAM, 16 GB Storage
+* Minimum - 2 Core CPU, 4 GB RAM
+* Recommended Average/Typical - 2 Core CPU, 8 GB RAM
+* Recommended Large - 4 Core CPU, 16 GB RAM
+
+ProGet itself does not require much disk space (less than 1GB); however, the content (package, container images, and asset files) you store in ProGet will determine how much space you'll need. We recommend reserving at least 10GB to store this content at first and be prepared to expand it.
 
 There are two supported options; there is also [Legacy (Traditional) Installer](/docs/installation/windows/installation-legacy-traditional-installer) available for ProGet v5.3 and earlier.
 
@@ -49,7 +51,7 @@ The recommended container resources are:
 * Recommended Average/Typical - 2 vCPU, 4 GB RAM
 * Recommended Large - v4 CPU, 8 GB RAM
 
-In addition, we recommend reserving a volume with at least 10GB to store your packages and container images.
+ProGet itself does not require much disk space (less than 1GB); however, the content (package, container images, and asset files) you store in ProGet will determine how much space you'll need. We recommend reserving a volume with at least  10GB to store this content at first and be prepared to expand it.
 
 <a href="/docs/installation/linux/docker-guide" style=" background:#025291;color:#ffffff;padding: 6px 20px;  border-radius: 3px;font-size: 14pt;text-decoration:none">Install ProGet on Linux using Docker</a>
 
