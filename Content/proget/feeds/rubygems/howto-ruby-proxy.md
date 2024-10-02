@@ -20,29 +20,29 @@ First we will create a RubyGems feed that will proxy packages from [RubyGems.org
 
 In your ProGet instance, select "Feeds" and "Create New Feed", and select "RubyGems".
 
-![](){height="" width="50%"}
+![](/resources/docs/proget-ruby-newfeed.png){height="" width="50%"}
 
 Then select "Connect to RubyGems.org" which will allow us to proxy and cache packages from the RubyGems.org.
 
-![](){height="" width="50%"}
+![](/resources/docs/proget-ruby-connector.png){height="" width="50%"}
 
 Select "No, Create One Feed", as we will only need a single feed to proxy gems. Now we'll name the feed, which we will call `public-gems`, and then click "Create Feed".
 
-![](){height="" width="50%"}
+![](/resources/docs/proget-ruby-onefeed.png){height="" width="50%"}
 
 We are then presented with several options. More information on these can be found in the [Vulnerability Scanning and Blocking](/docs/proget/sca/vulnerabilities) documentation.
 
-![](){height="" width="50%"}
+![](/resources/docs/proget-ruby-sca.png){height="" width="50%"}
 
 Then select [Set Feed Features]. ProGet will create The `public-gems` feed and redirect you to it. This feed will now be populated with packages proxied from RubyGems.org
 
-![](){height="" width="50%"}
+![](/resources/docs/proget-ruby-packagesfeed.png){height="" width="50%"}
 
 ## Step 3: Adding the Feed to Your Local Ruby Environments { #step-3 }
 
 To install packages from the `public-gems` feed, you will first need the feed's URL. This can be found on the top right of the feed page:
 
-![](){height="" width="50%"}
+![](/resources/docs/proget-ruby-publicurl.png){height="" width="50%"}
 
 Then, you will need to add it as a source by entering:
 
@@ -92,7 +92,7 @@ You can read more about creating API keys in ProGet on our [API Key](/docs/proge
 
 When creating an API Key you will need to fill in the fields by selecting "Feeds ("Use Certain Feeds)" as the "Feed Type" and selecting the `public-gems` feed, and make sure that the "View/Download" box is checked, and then select "Save".
 
-![](){height="" width="50%"}
+![](/resources/docs/proget-ruby-public-api.png){height="" width="50%"}
 
 Alternatively you can create a "Personal API Key", which lets users create/delete API keys that are tied to their username.
 

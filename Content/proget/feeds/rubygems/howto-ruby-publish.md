@@ -11,19 +11,19 @@ This guide will walk you through the process of setting up a RubyGems feed as a 
 
 Start by creating a RubyGems feed to host your RubyGems. Navigate to "Feeds" and "Create New Feed". Then select "RubyGems".
 
-![](){height="" width="50%"}
+![](/resources/docs/proget-ruby-newfeed.png){height="" width="50%"}
 
 Now select "No Connectors (Private packages only)" as this feed will be intended as a private repository.
 
-![](){height="" width="50%"}
+![](/resources/docs/proget-ruby-noconnector.png){height="" width="50%"}
 
 From here, we name our feed. For this example, we will call it `internal-gems`, and then click "Create Feed".
 
-![](){height="" width="50%"}
+![](/resources/docs/proget-ruby-internalfeed.png){height="" width="50%"}
 
 You'll then see several options related to ProGet's [Vulnerability Scanning and Blocking](/docs/proget/sca/vulnerabilities) features. These are only for users looking to use open source gems like those hosted on [RubyGems.org](https://rubygems.org). Leave these boxes unchecked, and select [Set Feed Features]. You will then be directed to the new `internal-gems` feed, currently empty.
 
-![](){height="" width="50%"}
+![](/resources/docs/proget-ruby-emptyfeed.png){height="" width="50%"}
 
 ## Step 2: Create an API Key { #step-2 }
 
@@ -33,7 +33,7 @@ You can read more about creating API keys in ProGet on our [API Key](/docs/proge
 
 When creating an API Key, fill in the fields by selecting "Feeds (Use Certain Feeds)" as the "Feed Type" and selecting the `internal-gems` feed. Then set the API key. You can use any alphanumeric sequence, or just leave it blank to autogenerate one.
 
-![](){height="" width="50%"}
+![](/resources/docs/proget-ruby-internal-api.png){height="" width="50%"}
 
 Make sure the "View/Download" and "Add/Repackage" boxes are checked, and then select "Save".
 
@@ -65,7 +65,7 @@ Your `.gem` RubyGem is then built, and saved inside your project folder.
 
 To push your RubyGem to your `internal-gems` feed, you will need your feed URL. This can be located in the top right of the feed's page:
 
-![](){height="" width="50%"}
+![](/resources/docs/proget-ruby-internalurl.png){height="" width="50%"}
 
 Then, enter the following:
 
@@ -90,7 +90,7 @@ Pushing gem to http://proget.corp.local/rubygems/internal-gems/...
 
 And the gem should be pushed to your `internal-gems` feed:
 
-![](){height="" width="50%"}
+![](/resources/docs/proget-ruby-uploadgem.png){height="" width="50%"}
 
 ## Step 5: Adding the Feed to Your Local Ruby Environments { #step-5 }
 
@@ -134,7 +134,7 @@ You can also list the packages in the source by entering:
 $ gem search --remote
 ```
 
-## (Optional) Configure Authentication to Feeds When Installing Gems
+## (Optional) Configure Authentication to Feeds When Installing RubyGems
 
 By default your `internal-gems` feed will not require authentication and can be viewed anonymously. However, you may want to make your feed private and configure it to require authentication to access, for example, if your ProGet instance is public. To do this you can remove anonymous access and create an API key to authenticate to the feed.
 
