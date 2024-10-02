@@ -61,16 +61,6 @@ By default, RubyGems.org is configured as a source. We recommend removing this s
 $ gem sources --remove https://rubygems.org/
 ```
 
-#### Adding The Feed as a Source in Ruby/Rails Projects
-
-Whle using `gem sources --add` adds a gem source globally for all Ruby and/or Ruby on Rails projects, adding a source in a `Gemfile` specifies the `public-gems` feed for a specific project. This makes sure bundler installs dependencies only from this feed, which helps maintain a consistent project environment. To add `public-gems` as a project's source, add the following to the `Gemfile`:
-
-```ruby
-source 'http://proget.corp.local/rubygems/public-gems/'
-
-gem 'bundler'
-```
-
 ## Step 4: (Optional) Confirming Connection to your RubyGems Feed
 
 You can confirm that your local Ruby environment is configured with your RubyGems feed by entering:
@@ -135,14 +125,6 @@ Confirm that it was set by entering:
 $ gem sources list 
 ```
 
-#### Authenticating from a Project's Gemfile
-
-When authenticating to your `public-gems` feed from a project's `Gemfile` you will need to add the following line:
-
-```ruby
-source 'http://api:abc12345@proget.corp.local/rubygems/public-gems/'
-```
-
 ## (Optional) Creating a Package Approval Flow
 
 In this article, we talked about how to proxy packages from [RubyGems.org](https://rubygems.org/). However, this allows developers to use any OSS package from the public source without oversight. In many cases, it's important to include some form of approval or oversight in development or production, which can be done by introducing a ["Package Approval Flow"](/docs/proget/packages/package-promotion).
@@ -154,9 +136,6 @@ After creating your "Unapproved" and "Approved" feeds, follow the steps in [Step
 ```bash
 $ gem sources --add «feed-url»
 ```
-
-Or in a project's gemfile by adding the line:
-
 
 And optionally confirming the connection by entering:
 

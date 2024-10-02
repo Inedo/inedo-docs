@@ -118,14 +118,6 @@ By default, RubyGems.org is configured as a source. This will need to be removed
 $ gem sources --remove https://rubygems.org/
 ```
 
-#### Adding The Feed as a Source in Ruby/Rails Projects
-
-Whle using `gem sources --add` adds a gem source globally for all Ruby and/or Ruby on Rails projects, adding a source in a `Gemfile` specifies the `internal-gems` feed for a specific project. To add `internal-gems` as a project's source, add the following to the `Gemfile`:
-
-```ruby
-source 'http://proget.corp.local/rubygems/internal-gems/'
-```
-
 ## Step 6: (Optional) Confirming Connection to your RubyGems Feed
 
 You can confirm that your local Ruby environment is configured with your RubyGems feed by entering:
@@ -168,10 +160,4 @@ For example, authenticating to `http://proget.corp.local/rubygems/internal-gems/
 
 ```bash
 $ gem sources --add http://api:abc12345@proget.corp.local/rubygems/internal-gems/
-```
-
-Or, in the case of a Gemfile, adding the line
-
-```ruby
-source 'http://api:abc12345@proget.corp.local/rubygems/internal-gems/'
 ```
