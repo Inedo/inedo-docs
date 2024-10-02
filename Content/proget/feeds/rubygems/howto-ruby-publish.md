@@ -29,15 +29,9 @@ You'll then see several options related to ProGet's [Vulnerability Scanning and 
 
 Next, we'll create an [API Key](/docs/proget/reference-api/proget-apikeys) allowing our local environment to authenticate to our `internal-gems` feed. This allows us to push and install packages from the feed.
 
-Start by navigating to "Administration Overview" > "API Keys & Access Logs" under "Security & Authentication"
+You can read more about creating API keys in ProGet on our [API Key](/docs/proget/reference-api/proget-apikeys) page. 
 
-![](/resources/docs/proget-admin-apikeys.png){height="" width="50%"}
-
-Then select "Create API Key"
-
-![](/resources/docs/proget-apikey-new.png){height="" width="50%"}
-
-Next, fill in the fields by selecting "Feeds (Use Certain Feeds)" as the "Feed Type" and selecting the `internal-gems` feed. Then set the API key. You can use any alphanumeric sequence, or just leave it blank to autogenerate one.
+When creating an API Key, fill in the fields by selecting "Feeds (Use Certain Feeds)" as the "Feed Type" and selecting the `internal-gems` feed. Then set the API key. You can use any alphanumeric sequence, or just leave it blank to autogenerate one.
 
 ![](){height="" width="50%"}
 
@@ -140,7 +134,7 @@ You can also list the packages in the source by entering:
 $ gem search --remote
 ```
 
-## (Optional) Authenticating to Your RubyGems Feed
+## (Optional) Configure Authentication to Feeds When Installing Gems
 
 By default your `internal-gems` feed will not require authentication and can be viewed anonymously. However, you may want to make your feed private and configure it to require authentication to access, for example, if your ProGet instance is public. To do this you can remove anonymous access and create an API key to authenticate to the feed.
 

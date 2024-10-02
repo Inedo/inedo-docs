@@ -8,6 +8,7 @@ ProGet lets you create ["Feeds"](/docs/proget/feeds/feed-overview) that can be c
 The advantages of using ProGet as a source to proxy gems are:
 * ProGet will cache gems, allowing teams to access them even when RubyGems.org is down
 * ProGet will show which gems are being downloaded and used frequently
+* You can view and assess licenses, vulnerabilities and quality of the gems in your projects
 
 In this article, we'll explain how to create a feed in ProGet that will proxy packages from RubyGems.org and then configure it as a source in your local Ruby environment, or add it as a source in a `Gemfile`. 
 
@@ -87,25 +88,13 @@ $ gem search --remote
 
 By default your `public-gems` feed will not require authentication and can be viewed anonymously. However, you may want to make your feed private and configure it to require authentication to access. One reason for doing this would be when using internal gems in a feed, either solely or in addition to using gems from RubyGems.org. 
 
-First navigate "Settings"> "Manage Security" and select the "Tasks/Permissions" tab. Remove anonymous access by clicking the small "X" in the "Anonymous" entry. 
+You can read more about creating API keys in ProGet on our [API Key](/docs/proget/reference-api/proget-apikeys) page. 
 
-![](/resources/docs/proget-permissions-remove.png){height="" width="50%"}
-
-Next, you will need to create an [API Key](/docs/proget/reference-api/proget-apikeys). 
-
-Navigate to "Administration Overview" > "API Keys & Access Logs" under "Security & Authentication"
-
-![](/resources/docs/proget-admin-apikeys.png){height="" width="50%"}
-
-Then select "Create API Key".
-
-![](/resources/docs/proget-apikey-new.png){height="" width="50%"}
-
-Fill in the fields by selecting "Feeds ("Use Certain Feeds)" as the "Feed Type" and selecting the `public-gems` feed. Then set the API key. You can specify any alphanumeric sequence for this, or leave it blank to autogenerate one.
-
-Make sure that the "View/Download" box is checked, and then select "Save".
+When creating an API Key you will need to fill in the fields by selecting "Feeds ("Use Certain Feeds)" as the "Feed Type" and selecting the `public-gems` feed, and make sure that the "View/Download" box is checked, and then select "Save".
 
 ![](){height="" width="50%"}
+
+Alternatively you can create a "Personal API Key", which lets users create/delete API keys that are tied to their username.
 
 Now, we'll add the feed to a local Ruby environment which will require the URL from [Step 3](#step-3), as well as your API key. Add the feed as a source by entering:
 
