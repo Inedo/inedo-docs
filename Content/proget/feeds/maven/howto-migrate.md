@@ -18,7 +18,7 @@ Choosing the right migration technique depends on the configuration and capabili
 * [Direct download](#direct-download): Requires that the repository is using the [Maven Indexer](https://maven.apache.org/maven-indexer/).
 *Examples: JFrog Artifactory, Sonatype Nexus*
 
-* [Importing from a Folder](#folder-import): Recommended when the repository does not have a maven indexer.
+* [Importing from a Folder](#folder-import): Recommended when the repository does not have a Maven Indexer.
 *Examples: MyGet, Azure DevOps/Azure Artifacts, GitHub*
  
 * [Uploading using a script](#script-upload): Recommended when ProGet does not have access to your Maven repository and it's inconvenient or complicated to put files on a ProGet server or a network share.
@@ -78,7 +78,7 @@ This is a best practice when:
 * ProGet does not have access to your maven repository, either because it's cloud hosted and your maven repository isn't, or due to other networking complications.
 * It's' either inconvenient or complicated to put files on ProGet server or a network share
  
-Instead, you can simply upload files on disk using a very basic PUT command for each artifact. Just `PUT` it to the desired path (e.g. `group/name/artifactid/version/file` )
+Instead, you can simply upload files on disk using a very basic `PUT` command for each artifact. Just `PUT` it to the desired path (e.g. `group/name/artifactid/version/file` )
 
 ProGet ignores `maven-metadata.xml` and hashfiles (`.sha1`, `.md5`, etc), so you will not need to worry about uploading them. ProGet will also warn/error if invalid files are uploaded.
  
