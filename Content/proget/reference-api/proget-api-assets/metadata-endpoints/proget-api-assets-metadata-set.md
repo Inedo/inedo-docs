@@ -14,7 +14,7 @@ pgutil assets metadata set custom --path=data-files/data.bin --feed=myAssetDirec
 :::
 
 ## Command Specification (CLI)
-The `assets metadata set` command is used to return metadata for the specified asset item.
+The `assets metadata set` command is used to write metadata for the specified asset item.
 
 There are two commands available (`custom`, and `cache`), and each command has options that correspond to fields in an asset's metadata. See [Custom Metadata](/docs/proget/asset-directories-file-storage/what-is-an-asset-directory#custom-metadata) to learn more. 
 

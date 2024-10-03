@@ -1,14 +1,8 @@
-# Contributing to Inedo Documentation
-
 First and foremost, thank you for helping us improve our documentation! It is users like yourself who help make our products better!
 
-The official contribution guidelines for this repository (and all open Inedo repositories) can be found here: https://inedo.com/open/contributing
+Here's some information from our CEO about what our documentation is all about, and why it's in a GitHub repository:
+https://blog.inedo.com/inedo/the-new-inedo-docs-and-why-we-built-yet-another-cms/
 
-## Before you submit an issue...
+That being said, we don't have any official contribution guidelines for this repository. If you spot typos, mistakes, or small areas of improvement, we would greatly appreciate a pull request. 
 
-Note that this repository is for **issues related to Inedo's online documentation on https://docs.inedo.com only!** Please do not submit inquiries or issues related to bug reports or feature requests for Inedo products or tools in this repository.
-
-If you have any non-documentation related issues, feel free to use one of these alternative channels:
-
- - Inedo Community Forums: https://forums.inedo.com
- - Inedo Contact Form: https://inedo.com/contact
+If you notice any other big gaps / issues, feel free to post at  https://forums.inedo.com; a lot of topics lead to docs changes (including [the discussion that led to this file being edited](https://forums.inedo.com/topic/4330/docs-on-github-contributing-md)), which are pretty easy for us to make.

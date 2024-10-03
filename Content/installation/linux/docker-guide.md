@@ -3,7 +3,7 @@ title: "Docker Installation Guide"
 order: 1
 ---
 
-The easiest way to install ProGet, BuildMaster or Otter on Linux is to use Docker. Inedo product images are hosted on the official [Inedo Docker Registry](https://proget.inedo.com/containers/registry?feedId=8), and this guide walks you through running those container images.
+The easiest way to install ProGet, BuildMaster or Otter on Linux is to use Docker. Inedo product images are hosted on the official [Inedo Docker Registry](https://proget.inedo.com/feeds/ProductImages), and this guide walks you through running those container images.
 
 ### Docker Prerequisites
 Docker must be installed and the Docker daemon must be running on your server. If you don't already have Docker installed, you can get [installation instructions for your specific Linux distribution from Docker](https://docs.docker.com/engine/installation/#installation).

@@ -7,7 +7,7 @@ By using ProGet, teams can take extension packages from Microsoft’s public Vis
 
 If the Visual Studio Extension feed is hosted internally, this will also allow your team to access the packages in an offline environment. 
 
-This article will run through a standard example scenario of a company, Kramerica, configuring ProGet to create a feed that acts as a private Visual Studio Extension gallery for a team using either Visual Studio or Visual Studio Code to access and consume a curated selection of Visual Studio Extension packages. This configuration would also allow the feed to be used offline.
+This article will run through configuring ProGet to create a feed that acts as a private Visual Studio Extension gallery for a team using either Visual Studio or Visual Studio Code to access and consume a curated selection of Visual Studio Extension packages. This configuration would also allow the feed to be used offline.
 
 ## Step 1: Creating and Naming a New Feed
 
