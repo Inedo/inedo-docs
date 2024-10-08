@@ -67,15 +67,15 @@ For your team to install packages from the `public-rpm` feed, you'll need to add
 To add the feed, you'll need to create a .repo file locally. Create the file by entering: 
 
 ```bash
-$ sudo vi /etc/yum.repos.d/proget.repo  
+$ sudo vi /etc/yum.repos.d/public-rpm.repo  
 ```
 
 In this case we used the `vi` text editor, but you can use any other such as `nano`. With the `.repo ` file open, enter the following:
 
 ```bash
-[proget]
+[public-rpm]
 
-name=ProGet 
+name=PublicRpm 
 
 baseurl=http://proget.corp.local/rpm/public-rpm/ # your RPM feed URL
 
@@ -89,6 +89,13 @@ Then save and exit (`:wq` in the case of `vi`). You can confirm the feed has bee
 ```bash
 $ yum repolist all
 ```
+
+Or listing packages by entering:
+
+```bash
+$ yum list available --disablerepo="*" --enablerepo=public-rpm
+```
+
 
 By default, repositories will already be configured, depending on the distribution of your local environment. We recommend removing these to install packages exclusively from your ProGet feed. You can remove a repository by entering:
 
@@ -144,4 +151,10 @@ And then confirm that the feed was configured by entering:
 
 ```bash
 $ yum repolist all
+```
+
+Or listing packages in a configured repo named `internal-rpm` by entering:
+
+```bash
+$ yum list available --disablerepo="*" --enablerepo=internal-rpm
 ```
