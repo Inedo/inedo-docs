@@ -44,12 +44,12 @@ Then select "Other Connectors" and find "RPM Connector" in the list.
 
 Give your connector a name, and then enter the URL of the OSS repository in the "Connector URL" field. Add your `public-rpm` feed in the "Associated Feeds" field and then select "Save". 
 
-In this example we will be using the URL `https://rpmfind.net/linux/centos-stream/9-stream/BaseOS/x86_64/os/`, the base repository for `CentOS Stream 9`.  
+In this example we will be using the URL `https://mirror.stream.centos.org/9-stream/BaseOS/x86_64/os/`, the base repository for `CentOS Stream 9`.  
 
 ![](){height="" width="50%"}
 
 :::(info)(📄 Note: OSS Repository URL)
-The exact URL will vary from repository to repository, however you want to select a URL that links to a directory containing a `repodata` folder which contains the files needed to index the RPM packages within the repository. 
+The exact URL will vary from repository to repository, however you want to enter a URL that links to a directory containing a `repodata` folder which contains the files needed to index the RPM packages within the repository. 
 :::
 
 Navigating back to your `public-rpm` feed, it should now be populated with packages proxied from the configured OSS repository.
@@ -74,13 +74,9 @@ In this case we used the `vi` text editor, but you can use any other such as `na
 
 ```bash
 [public-rpm]
-
 name=PublicRpm 
-
 baseurl=http://proget.corp.local/rpm/public-rpm/ # your RPM feed URL
-
 enabled=1 
-
 gpgcheck=0 
 ```
 
@@ -120,17 +116,13 @@ Now, we'll add the feed to a local RPM environment which will require the URL fr
 baseurl=http://api:«api-key»@«feed-url»
 ```
 
-For example when authenticating with the API key abc12345 to the public-rpm feed, your .repo file should look like this:
+For example when authenticating with the API key abc12345 to the public-rpm feed, your `.repo` file should look like this:
 
 ```bash
 [proget]
-
 name=ProGet 
-
 baseurl=http://api:abc12345@proget.corp.local/rpm/public-rpm/  
-
 enabled=1 
-
 gpgcheck=0 
 ```
 

@@ -59,7 +59,7 @@ When the build is finished, the `.rpm` file will be located in the `rpmbuild/RPM
 
 ## Step 4: Publish Your Package to ProGet
 
-To publish your package to your ProGet Conda feed, we can use Inedo's [pgutil](/docs/proget/reference-api/proget-pgutil) tool.
+To publish your package to your ProGet RPM feed, we can use Inedo's [pgutil](/docs/proget/reference-api/proget-pgutil) tool.
 
 pgutil will require some [minor configuration](/docs/proget/reference-api/proget-pgutil#sources) before use. This includes setting up your ProGet instance and API key as a source by running:
 
@@ -105,13 +105,9 @@ In this case we used the `vi` text editor, but you can use any other such as `na
 
 ```bash
 [internal-rpm]
-
 name=InternalRpm 
-
 baseurl=http://proget.corp.local/rpm/internal-rpm/ # your RPM feed URL
-
 enabled=1 
-
 gpgcheck=0 
 ```
 
