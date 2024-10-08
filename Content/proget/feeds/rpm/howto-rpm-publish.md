@@ -9,53 +9,55 @@ This guide will show you how to set up a ["Feed"](/docs/proget/feeds/feed-overvi
 
 ## Step 1: Create a New Feed
 
-First, we will create a Conda feed to host your Conda packages. Start by selecting "Feeds" and "Create New Feed". Next, select "Conda Packages".
+Start by creating an RPM feed to host your packages. Select "Feeds" and "Create New Feed". Next, select "RPM Packages".
 
-![](/resources/docs/proget-conda-newfeed.png){height="" width="50%"}
+![](){height="" width="50%"}
 
-Now select "No Connectors (Private packages only)" as we will be creating a private feed. From here, we name our feed. For this example, we will call it `internal-conda`, and then click "Create Feed".
+Now name your feed. For this guide, we will call it `internal-rpm`. Then select "Create Feed".
 
-![](/resources/docs/proget-conda-newfeed-internal.png){height="" width="50%"}
+![](){height="" width="50%"}
 
-We are then presented with several options. This relate to ProGet's [Vulnerability Scanning and Blocking](/docs/proget/sca/vulnerabilities) features, however they are only for users looking to use third party packages. Leave these boxes unchecked, and select [Set Feed Features]. You will then be redirected to your new `internal-conda` feed, currently empty.
+You will then be redirected to your new `internal-rpm` feed, currently empty.
 
 ![Feed](/resources/docs/proget-conda-internal-emptyfeed.png){height="" width="50%"}
 
 ## Step 2: Create an API Key { #step-2 }
 
-We will now create an [API Key](/docs/proget/reference-api/proget-apikeys) allowing our local client to authenticate to our `internal-conda` feed. This allows us to publish packages to the feed, as well as consume them once published.
+Now create an [API Key](/docs/proget/reference-api/proget-apikeys) which will allow your local RPM environment to authenticate to the `internal-conda` feed tp publish packages to the feed, as well as install them once published.
 
-Start by navigating to "Administration Overview" > "API Keys & Access Logs" under "Security & Authentication"
+You can read more about creating API keys in ProGet on our [API Key](/docs/proget/reference-api/proget-apikeys) page. 
 
-![Admin Overview](/resources/docs/proget-admin-apikeys.png){height="" width="50%"}
+When creating an API Key, fill in the fields by selecting "Feeds (Use Certain Feeds)" as the "Feed Type" and selecting the `internal-rpm` feed. Then set the API key. You can use any alphanumeric sequence, or just leave it blank to autogenerate one.
 
-Then select "Create API Key"
+![](){height="" width="50%"}
 
-![Create Key](/resources/docs/proget-apikey-new.png){height="" width="50%"}
-
-Then fill in the fields by selecting "Feeds (Use Certain Feeds)" as the "Feed Type" and selecting the `internal-conda` feed. Then set the API key. You can specify any alphanumeric sequence for this, or leave it blank to autogenerate one.
-
-![New Key](/resources/docs/proget-conda-apikey-2.png){height="" width="50%"}
-
-Ensure that the "View/Download" and "Add/Repackage" boxes are checked, and then select "Save".
+Make sure the "View/Download" and "Add/Repackage" boxes are checked, and then select "Save".
 
 ## Step 3: Build Your Package
 
-Next, we will build and publish our packages. You can follow the [official Conda documentation](https://docs.conda.io/projects/conda-build/en/latest/user-guide/tutorials/build-pkgs.html) to learn more about creating packages. To build your package you will need to have conda-build installed if you haven't already by entering:
+Next, we will build and publish our packages. You can follow the [official Red Hat documentation](https://www.redhat.com/sysadmin/create-rpm-package) to learn more about creating packages. To build your package you will need to install `rpmdevtools` if you haven't already by entering:
 
 ```bash
-$ conda install conda-build
+$ sudo dnf install rpm-build rpmdevtools 
 ```
 
-Then build your package by navigating to the directory containing your package files and `meta.yaml` and entering:
+And then set up the build environment by entering:
 
 ```bash
-$ conda-build .
+$ rpmdev-setuptree 
+```
+
+Once you have the tarball (`.tar.gz`) and `.spec` file needed for the build, run the build command by entering:
+
+```bash
+$ rpmbuild -ba ~/rpmbuild/SPECS/«spec-file».spec
 ```
  
-When conda-build is finished, it displays the package filename and location of the `.tar.bz2` file created.
+When the build is finished, the `.rpm` file will be located in the `rpmbuild/RPMS` folder, for example:
 
-### Step 4: Publish Your Package to ProGet
+`~/rpmbuild/RPMS/noarch/my-package-1.0-1.el9.noarch.rpm`
+
+## Step 4: Publish Your Package to ProGet
 
 To publish your package to your ProGet Conda feed, we can use Inedo's [pgutil](/docs/proget/reference-api/proget-pgutil) tool.
 
@@ -77,50 +79,56 @@ Now upload your packages by entering:
 $ pgutil packages upload --feed=«feed-name» --input-file=«path-to-package»
 ```
 
-For example, uploading the package `my-package-0.1.0-0.tar.bz2` stored at `C:\development\conda_packages\` to your `internal-conda` feed you would enter:
+For example, uploading the package `my-package-1.0-1.el9.noarch.rpm` stored at `/home/user/rpmbuild/RPMS/noarch/my-package-1.0-1.el9.noarch.rpm` to your `internal-rpm` feed you would enter:
 
 ```bash
-$ pgutil packages upload --feed=internal-conda --input-file==C:\development\conda_packages\my-package-0.1.0-0.tar.bz2
+$ pgutil packages upload --feed=internal-rpm --input-file=/home/user/rpmbuild/RPMS/noarch/my-package-1.0-1.el9.noarch.rpm
 ```
 
-Your package will then be uploaded to the `internal-conda` feed.
+Your package will then be uploaded to the `internal-rpm` feed.
 
-![Feed](/resources/docs/proget-conda-internal-package.png){height="" width="50%"}
+![](){height="" width="50%"}
 
-## Step 5: Add the Feed to Local Conda Environments
+## Step 5: Add the Feed to Your Local RPM Environment { #step-3 }
 
-To consume the Conda packages you have published to your `internal-conda` feed, you'll need to add it to your local Conda environments. For this, you will need the feed's URL. This can be found at the top right of the feed's page.
+To install packages from the `internal-rpm` feed, you'll need to add it as a channel in the local RPM environment. For this, you will need feed's URL. This can be found at the top right of the feed's page.
 
-![Feed](/resources/docs/proget-conda-internal-url.png){height="" width="50%"}
+![](){height="" width="50%"}
 
-In your terminal of choice, enter the following, which will require the `internal-conda` feed URL and the API key you created in [Step 2](#step-2):
+To add the feed, you'll need to create a `.repo` file locally. Create the file by entering: 
 
 ```bash
-$ conda config --add channels http://api:«api-key»@«feed-url»
+$ sudo vi /etc/yum.repos.d/internal-rpm.repo  
 ```
 
-For example, adding a feed with the URL `http://proget.corp.local/conda/internal-conda`, authenticating with the API key `abc12345` you would enter:
+In this case we used the `vi` text editor, but you can use any other such as `nano`. With the `.repo ` file open, enter the following:
 
 ```bash
-$ conda config --add channels http://api:abc12345@proget.corp.local/conda/internal-conda
+[internal-rpm]
+
+name=InternalRpm 
+
+baseurl=http://proget.corp.local/rpm/internal-rpm/ # your RPM feed URL
+
+enabled=1 
+
+gpgcheck=0 
 ```
 
-You can confirm that it was registered by entering:
+Then save and exit (`:wq` in the case of `vi`). You can confirm the feed has been set by listing the configured repositories:
 
 ```bash
-$ conda config --show channels
+$ yum repolist all
 ```
 
-## Step 6: (Optional) Confirm Connection to your Conda Feed
-
-You can confirm that your local Conda environment can connect with your `internal-conda` feed by listing Conda packages. This is done by entering:
+Or listing packages by entering:
 
 ```bash
-$ conda search -c «feed-url»
+$ yum list available --disablerepo="*" --enablerepo=internal-rpm
 ```
 
-Or by filtering by package name:
+By default, repositories will already be configured, depending on the distribution of your local environment. We recommend removing these to install packages exclusively from your `internal-rpm` feed. You can remove a repository by entering:
 
 ```bash
-$ conda search -c «feed-url» «package-name»
+$ sudo rm /etc/yum.repos.d/«repo-name».repo
 ```

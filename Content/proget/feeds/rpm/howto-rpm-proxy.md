@@ -64,7 +64,7 @@ For your team to install packages from the `public-rpm` feed, you'll need to add
 
 ![](){height="" width="50%"}
 
-To add the feed, you'll need to create a .repo file locally. Create the file by entering: 
+To add the feed, you'll need to create a `.repo` file locally. Create the file by entering: 
 
 ```bash
 $ sudo vi /etc/yum.repos.d/public-rpm.repo  
@@ -96,8 +96,7 @@ Or listing packages by entering:
 $ yum list available --disablerepo="*" --enablerepo=public-rpm
 ```
 
-
-By default, repositories will already be configured, depending on the distribution of your local environment. We recommend removing these to install packages exclusively from your ProGet feed. You can remove a repository by entering:
+By default, repositories will already be configured, depending on the distribution of your local environment. We recommend removing these to install packages exclusively from your `public-rpm` feed. You can remove a repository by entering:
 
 ```bash
 $ sudo rm /etc/yum.repos.d/«repo-name».repo
