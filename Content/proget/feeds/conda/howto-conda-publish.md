@@ -53,7 +53,7 @@ Ensure that the "View/Download" and "Add/Repackage" boxes are checked, and then 
 
 ## Step 3: Build Your Package
 
-Next, we will build and publish our packages. You can follow the [official Conda documentation](https://docs.conda.io/projects/conda-build/en/latest/user-guide/tutorials/build-pkgs.html) to learn more about creating packages. To build your package you will need to have conda-build installed if you haven't already by entering:
+Next, we will build and publish our packages. You can follow the [official Conda documentation](https://docs.conda.io/projects/conda-build/en/latest/user-guide/tutorials/build-pkgs.html) to learn more about creating packages. To build your package you will need to have `conda-build` installed if you haven't already by entering:
 
 ```bash
 $ conda install conda-build
