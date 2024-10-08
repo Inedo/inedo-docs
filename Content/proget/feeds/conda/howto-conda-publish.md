@@ -89,7 +89,7 @@ Now upload your packages by entering:
 $ pgutil packages upload --feed=«feed-name» --input-file=«path-to-package»
 ```
 
-For example, uploading the package `my-package-0.1.0-0.tar.bz2` stored at `C:\development\conda_packages\` to your `internal-conda` feed you would enter:
+For example, to upload the package `my-package-0.1.0-0.tar.bz2` stored at `C:\development\conda_packages\` to your `internal-conda` feed you would enter:
 
 ```bash
 $ pgutil packages upload --feed=internal-conda --input-file==C:\development\conda_packages\my-package-0.1.0-0.tar.bz2
