@@ -99,9 +99,7 @@ $ sudo rm /etc/yum.repos.d/«repo-name».repo
 
 By default your `rpm-x86_64-aggregate` feed does not require authentication and can be viewed anonymously. However, you may want to make your feed private and configure it to require authentication to access. For example, when also hosting your own internal packages.
 
-You can read more about creating API keys in ProGet on our [API Key](/docs/proget/reference-api/proget-apikeys) page. 
-
-When creating an API Key you will need to fill in the fields by selecting "Feeds ("Use Certain Feeds)" as the "Feed Type" and selecting the `rpm-x86_64-aggregate` feed, and make sure that the "View/Download" box is checked, and then select "Save".
+First you will need to create an API key in ProGet. You can read more about this on our [API Key](/docs/proget/reference-api/proget-apikeys) page. When creating an API Key you will need to fill in the fields by selecting "Feeds ("Use Certain Feeds)" as the "Feed Type" and selecting the `rpm-x86_64-aggregate` feed, and make sure that the "View/Download" box is checked, and then select "Save".
 
 ![](){height="" width="50%"}
 
