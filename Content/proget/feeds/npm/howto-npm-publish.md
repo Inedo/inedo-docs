@@ -39,6 +39,10 @@ Then fill in the fields by selecting "Feeds (Use Certain Feeds)" as the "Feed Ty
 
 ## Step 3: Build Your Package
 
+### Scoping Your Packages
+
+While not necessary for private packages, we recommend scoping the packages you create. 
+
 
 ### Step 4: Publish Your Package to ProGet
 

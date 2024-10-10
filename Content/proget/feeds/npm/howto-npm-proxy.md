@@ -1,94 +1,48 @@
 ---
-title: "HOWTO: Proxy OSS Conda Packages from Anaconda Packages"
+title: "HOWTO: Proxy Packages from the npm Registry in ProGet"
 order: 1
 ---
 
-With ProGet teams can proxy packages from the [Anaconda OSS Package Repository](https://repo.anaconda.com/) and consume them in their projects as they would if they were pulling from the OSS package repository directly. 
+With ProGet you can create ["Feeds"](/docs/proget/feeds/feed-overview) to proxy packages from the [npm Registry](https://www.npmjs.com/) and install them just as you would when installing them from the npm Registry directly. 
 
-The advantages of using ProGet for this are:
-* ProGet will cache packages allowing teams to access them even when the Anaconda Packages repository is down
-* ProGet will show which packages are being downloaded and used frequently
+Using ProGet as a proxy will cache packages, allowing teams to access them even if the npm Registry is down. ProGet will also tell you which packages are being downloaded and used frequently
 
-In this article, we'll explain how to create a ["Feed"](/docs/proget/feeds/feed-overview) in ProGet that will proxy Conda packages from the public OSS Repository. 
-
-We'll also look at creating a private repository for when you also want to use internal packages, and how to create a package approval flow if you need to control which packages your team are using in production. 
+This guide will cover how to set up a feed to proxy packages. We'll also cover how to create a private repository for your internal packages as an alternative to the npm Registry's paid private repositories (npm Teams, npm Enterprise).
 
 ## Step 1: Create a New Feed { #step-1 }
 
-First, we will create a Conda feed that will proxy packages from [Anaconda OSS Package Repository](https://repo.anaconda.com/).
+First, we will create an npm feed that will proxy packages from the [npm Registry](https://www.npmjs.com/).
 
-Start by selecting "Feeds" and "Create New Feed".
+Start by selecting "Feeds" and "Create New Feed". Next, select "npm Packages", as we will be creating feeds to proxy and host npm packages.
 
-![New Feed](/resources/docs/proget-feeds-createnewfeed.png){height="" width="50%"}
+![](){height="" width="50%"}
 
-Next, select "Conda Packages", as we will be creating feeds to proxy and host Conda packages.
+Now select "Connect to npmJS.org" which will allow us to proxy packages from the npm Registry.
 
-![Select Conda](/resources/docs/proget-conda-newfeed.png){height="" width="50%"}
+![](){height="" width="50%"}
 
-Now select "Connect to Anaconda Packages" which will allow us to proxy packages from the [Anaconda OSS Package Repository](https://repo.anaconda.com/)
+Then select "No, Create One Feed", as we will be creating a single feed to proxy npm packages. From here, name the feed (we will call it `public-npm` for this guide). Then click "Create Feed".
 
-![Connector](/resources/docs/proget-conda-newfeed-connector.png){height="" width="50%"}
+![](){height="" width="50%"}
 
-Then select "No, Create One Feed", as we will be creating a single feed to proxy Conda packages.
+We are then presented with several options. More information on these can be found in the [Vulnerability Scanning and Blocking](/docs/proget/sca/vulnerabilities) documentation. Select "Set Feed Features", which will create the feed, and redirect you to the newly created `public-conda` feed, now populated with packages proxied from the npm Registry.
 
-![One Feeds](/resources/docs/proget-conda-onefeed.png){height="" width="50%"}
+![](){height="" width="50%"}
 
-## Step 2: Name Your Feed
+## Step 3: Add the Feed to Local npm Environments { #step-3 }
 
-From here, we name our feed, which in this example we will call `public-conda`. Then click "Create Feed".
+For your team to install packages from the `public-npm` feed, you'll need to add it as a source in their local environment. For this, you will need feed's URL. This can be found at the top right of the feed's page.
 
-![Name Feed](/resources/docs/proget-conda-onefeed-name.png){height="" width="50%"}
+![](){height="" width="50%"}
 
-We are then presented with several options. More information on these can be found in the [Vulnerability Scanning and Blocking](/docs/proget/sca/vulnerabilities) documentation.
 
-![SCA Features](/resources/docs/proget-conda-newfeed-sca.png){height="" width="50%"}
 
-Finally, we select [Set Feed Features], which will create the feed, and redirect us to our `public-conda` feed, now populated with packages proxied from the public OSS Conda repository.
 
-![Feed](/resources/docs/proget-conda-publicfeed.png){height="" width="50%"}
 
-## Step 3: Adding the Feed to Local Conda Environments { #step-3 }
-
-For your team to consume packages from the `public-conda` feed, you'll need to add it as a channel in their local environment. For this, you will need feed's URL. This can be found at the top right of the feed's page.
-
-![Feed](/resources/docs/proget-conda-publicfeed-url.png){height="" width="50%"}
-
-In your terminal of choice, enter the following, which will require the `public-conda` feed URL:
-
-```bash
-$ conda config --add channels «feed-url»
-```
-
-For example, adding a feed with the URL `http://proget.corp.local/conda/public-conda/` you would enter:
-
-```bash
-$ conda config --add channels http://proget.corp.local/conda/public-conda
-```
-
-You can confirm that it was registered by entering:
-
-```bash
-$ conda config --show channels
-```
-
-Finally, to ensure that developers consume packages from the `public-conda` feed rather than the OSS repository, we recommend removing the `defaults` channel, which exists by default. This can be done by entering:
-
-```bash
-$ conda config --remove channels defaults
-```
-
-## Step 4: (Optional) Confirming Connection to your Conda Feed
-
-You can confirm that your local Conda environment can connect with your ProGet feed by listing Conda packages from the feed by entering:
+You can confirm that the public-npm feed has been configured correctly by entering:
 
 ```bash
 $ conda search -c «feed-url»
-```
-
-Or by filtering by package name:
-
-```bash
-$ conda search -c «feed-url» «package-name»
 ```
 
 ## (Optional) Authenticating to Your Conda Feed
