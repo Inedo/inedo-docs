@@ -53,7 +53,7 @@ Ensure that the "View/Download" and "Add/Repackage" boxes are checked, and then 
 
 ## Step 3: Build Your Package
 
-Next, we will build and publish our packages. You can follow the [official Conda documentation](https://docs.conda.io/projects/conda-build/en/latest/user-guide/tutorials/build-pkgs.html) to learn more about creating packages. To build your package you will need to have conda-build installed if you haven't already by entering:
+Next, we will build and publish our packages. You can follow the [official Conda documentation](https://docs.conda.io/projects/conda-build/en/latest/user-guide/tutorials/build-pkgs.html) to learn more about creating packages. To build your package you will need to have `conda-build` installed if you haven't already by entering:
 
 ```bash
 $ conda install conda-build
@@ -69,7 +69,7 @@ When conda-build is finished, it displays the package filename and location of t
 
 ### Step 4: Publish Your Package to ProGet
 
-To publish your package to your ProGet Conda feed, we can use Inedo's [pgutil](/docs/proget/reference-api/proget-pgutil) tool.
+To publish your package to your ProGet Conda feed, we can use [pgutil](/docs/proget/reference-api/proget-pgutil).
 
 pgutil will require some [minor configuration](/docs/proget/reference-api/proget-pgutil#sources) before use. This includes setting up your ProGet instance and API key as a source by running:
 
@@ -92,7 +92,7 @@ $ pgutil packages upload --feed=«feed-name» --input-file=«path-to-package»
 For example, to upload the package `my-package-0.1.0-0.tar.bz2` stored at `C:\development\conda_packages\` to your `internal-conda` feed you would enter:
 
 ```bash
-$ pgutil packages upload --feed=internal-conda --input-file==C:\development\conda_packages\my-package-0.1.0-0.tar.bz2
+$ pgutil packages upload --feed=internal-conda --input-file=C:\development\conda_packages\my-package-0.1.0-0.tar.bz2
 ```
 
 Your package will then be uploaded to the `internal-conda` feed.
