@@ -60,7 +60,7 @@ Now we will populate our Visual Studio Extensions feed `private-vsix` with exten
 ProGet allows you to upload packages from a local source through various means. This guide will offer three options; using [pgutil](/docs/proget/reference-api/proget-pgutil), through the UI, or by bulk uploading.
 
 ### Option 1: Using Pgutil
-You can use Inedo's [pgutil](/docs/proget/reference-api/proget-pgutil) tool to upload packages by running this command:
+You can use [pgutil](/docs/proget/reference-api/proget-pgutil) to upload packages by running this command:
 
 ```bash
 pgutil packages upload --feed=«vsix-feed-name» --input-file=«path-to-extension»
