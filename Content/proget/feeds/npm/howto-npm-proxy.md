@@ -57,27 +57,18 @@ When creating an API Key you will need to fill in the fields by selecting "Feeds
 
 Alternatively you can create a "Personal API Key", which lets users create/delete API keys that are tied to their username.
 
-Now, we'll add the feed to a local RPM environment which will require the URL from [Step 3](#step-3), as well as your API key. When editing the `.repo` file, enter your API key and URL in the baseurl parameter:
+Now, we'll 
 
-```bash
-baseurl=http://api:«api-key»@«feed-url»
-```
 
-For example when authenticating with the API key `abc12345` to the public-rpm feed, your `.repo` file should look like this:
 
-```bash
-[rpm-x86_64-aggregate]
-name=rpm-x86_64-aggregate
-baseurl=http://api:abc12345@proget.corp.local/rpm/rpm-x86_64-aggregate/  
-enabled=1 
-gpgcheck=0 
-```
+
+
 
 ## (Optional) Creating a Package Approval Flow
 
-This guide covered how to proxy packages from the various RPM public repositories. However, this allows developers to install any OSS packages without oversight. In many cases, it's important to include some form of approval in development or production, which can be done by introducing a ["Package Approval Flow"](/docs/proget/packages/package-promotion).
+In this guide we looked at proxying packages from the npm Registry. However, with no form of approval, developers will be able to install any OSS packages without oversight. In many cases, it's important to include some form of oversight in development or production, which can be done by creating a ["Package Approval Flow"](/docs/proget/packages/package-promotion).
 
-To set up a package approval flow, refer to [HOWTO: Approve and Promote Open-source Packages](/docs/proget/packages/package-promotion/proget-howto-promote-packages). This guide uses NuGet feeds as an example, but the steps are identical when creating RPM package feeds.
+To set up a package approval flow, refer to [HOWTO: Approve and Promote Open-source Packages](/docs/proget/packages/package-promotion/proget-howto-promote-packages). This guide uses NuGet feeds as an example, but the steps are identical when creating npm package feeds.
 
 After creating your "Unapproved" and "Approved" feeds, follow the steps in [Step 3](#step-3) to add the "Approved" feed as a source in your local Ruby environments, entering:
 
