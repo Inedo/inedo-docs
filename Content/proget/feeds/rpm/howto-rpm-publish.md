@@ -3,9 +3,9 @@ title: "HOWTO: Publish RPM Packages to a Private Repository in ProGet"
 order: 2
 ---
 
-Using ProGet, you can easily set up a private repository to publish and store your RPM packages.
+Using ProGet, you can easily set up a private repository to publish and store your internal RPM packages.
 
-This guide will show you how to set up a ["Feed"](/docs/proget/feeds/feed-overview) in ProGet to as a private RPM package repository. We will also walk you through creating, publishing and installing packages from this feed.
+This guide will show you how to set up a ["Feed"](/docs/proget/feeds/feed-overview) in ProGet to as a private RPM package repository. We will also walk you through creating your own packages and publishing them to this feed.
 
 ## Step 1: Create a New Feed
 
@@ -23,7 +23,7 @@ You will then be redirected to your new `internal-rpm` feed, currently empty.
 
 ## Step 2: Create an API Key { #step-2 }
 
-Now create an [API Key](/docs/proget/reference-api/proget-apikeys) which will allow your local RPM environment to authenticate to the `internal-conda` feed tp publish packages to the feed, as well as install them once published.
+Now create an [API Key](/docs/proget/reference-api/proget-apikeys) which will allow your local RPM environment to authenticate to the `internal-rpm` feed to publish packages to it, as well as install them once published.
 
 You can read more about creating API keys in ProGet on our [API Key](/docs/proget/reference-api/proget-apikeys) page. 
 
@@ -55,11 +55,11 @@ $ rpmbuild -ba ~/rpmbuild/SPECS/«spec-file».spec
  
 When the build is finished, the `.rpm` file will be located in the `rpmbuild/RPMS` folder, for example:
 
-`~/rpmbuild/RPMS/noarch/my-package-1.0-1.el9.noarch.rpm`
+`~/rpmbuild/RPMS/x86_64/my-package-1.0-1.el9.x86_64.rpm`
 
 ## Step 4: Publish Your Package to ProGet
 
-To publish your package to your ProGet RPM feed, we can use Inedo's [pgutil](/docs/proget/reference-api/proget-pgutil) tool.
+To publish your package to your ProGet RPM feed, you can use [pgutil](/docs/proget/reference-api/proget-pgutil).
 
 pgutil will require some [minor configuration](/docs/proget/reference-api/proget-pgutil#sources) before use. This includes setting up your ProGet instance and API key as a source by running:
 
@@ -79,10 +79,10 @@ Now upload your packages by entering:
 $ pgutil packages upload --feed=«feed-name» --input-file=«path-to-package»
 ```
 
-For example, uploading the package `my-package-1.0-1.el9.noarch.rpm` stored at `/home/user/rpmbuild/RPMS/noarch/my-package-1.0-1.el9.noarch.rpm` to your `internal-rpm` feed you would enter:
+For example, uploading the package `my-package-1.0-1.el9.x86_64.rpm` stored at `/home/user/rpmbuild/RPMS/x86_64/my-package-1.0-1.el9.x86_64.rpm` to your `internal-rpm` feed you would enter:
 
 ```bash
-$ pgutil packages upload --feed=internal-rpm --input-file=/home/user/rpmbuild/RPMS/noarch/my-package-1.0-1.el9.noarch.rpm
+$ pgutil packages upload --feed=internal-rpm --input-file=/home/user/rpmbuild/RPMS/x86_64/my-package-1.0-1.el9.x86_64.rpm
 ```
 
 Your package will then be uploaded to the `internal-rpm` feed.
@@ -91,7 +91,7 @@ Your package will then be uploaded to the `internal-rpm` feed.
 
 ## Step 5: Add the Feed to Your Local RPM Environment { #step-3 }
 
-To install packages from the `internal-rpm` feed, you'll need to add it as a channel in the local RPM environment. For this, you will need feed's URL. This can be found at the top right of the feed's page.
+To install packages from the `internal-rpm` feed, you'll need to add it as a source in the local RPM environment. For this, you will need feed's URL. This can be found at the top right of the feed's page.
 
 ![](){height="" width="50%"}
 
