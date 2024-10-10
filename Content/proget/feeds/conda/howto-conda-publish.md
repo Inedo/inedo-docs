@@ -3,9 +3,7 @@ title: "HOWTO: Publish Conda Packages to a Private Repository in ProGet"
 order: 2
 ---
 
-Organizations will host their internal Conda packages on private repositories to maintain control over security, compliance, and access. ProGet makes it easy to set up a private repository for your Conda packages to publish, store and share your packages internally.
-
-This guide will show you how to set up a ["Feed"](/docs/proget/feeds/feed-overview) in ProGet to as a Private Conda package repository. We will also walk you through creating, publishing and consuming packages from this feed. 
+ProGet makes it easy to set up a private repository for your Conda packages to publish, store and share your packages internally. This guide will show you how to set up a ["Feed"](/docs/proget/feeds/feed-overview) in ProGet as a Private Conda package repository. We will also walk you through creating, publishing and consuming packages from this feed. 
 
 ## Step 1: Create a New Feed
 
