@@ -42,72 +42,57 @@ For your team to install packages from the `public-npm` feed, you'll need to add
 You can confirm that the public-npm feed has been configured correctly by entering:
 
 ```bash
-$ conda search -c «feed-url»
+$ 
 ```
 
-## (Optional) Authenticating to Your Conda Feed
+## (Optional) Authenticating to Your npm Feed
 
-By default your `public-conda` feed will not require authentication and can be viewed anonymously. However you may want to make your repository private and require authentication to access it. This is recommended when hosting your own internal packages in a feed, in addition to proxied packages from the OSS repository. 
+By default your `public-npm` feed does not require authentication and can be viewed anonymously. However, you may want to make your feed private and set it to require authentication to access. For example, when also hosting your own internal packages.
 
-First navigate to navigate to "Settings"> "Manage Security", and remove anonymous access by clicking the small "X" in the "Anonymous" entry. 
+First, you will need to create an API key. You can more on how to do this on our [API Key](/docs/proget/reference-api/proget-apikeys) page. 
 
-![Permissions Remove](/resources/docs/proget-conda-permissions-remove.png){height="" width="50%"}
+When creating an API Key you will need to fill in the fields by selecting "Feeds ("Use Certain Feeds)" as the "Feed Type" and selecting the `public-npm` feed, and make sure that the "View/Download" box is checked, and then select "Save".
 
-Now you will need to create an [API Key](/docs/proget/reference-api/proget-apikeys). 
+![](){height="" width="50%"}
 
-Start by navigating to "Administration Overview" > "API Keys & Access Logs" under "Security & Authentication"
+Alternatively you can create a "Personal API Key", which lets users create/delete API keys that are tied to their username.
 
-![Admin Overview](/resources/docs/proget-admin-apikeys.png){height="" width="50%"}
-
-Then select "Create API Key"
-
-![Create Key](/resources/docs/proget-apikey-new.png){height="" width="50%"}
-
-Then fill in the fields by selecting "Feeds ("Use Certain Feeds)" as the "Feed Type" and selecting the `public-conda` feed. Then set the API key. You can specify any alphanumeric sequence for this, or leave it blank to autogenerate one.
-
-Ensure that the "View/Download" box is checked, and then select "Save".
-
-![API Key](/resources/docs/proget-conda-apikey-3.png){height="" width="50%"}
-
-Now, we'll add the feed to a local Conda environment. Instead of adding the URL like in [Step 3](#step-3), enter the following, containing both URL and API Key:
+Now, we'll add the feed to a local RPM environment which will require the URL from [Step 3](#step-3), as well as your API key. When editing the `.repo` file, enter your API key and URL in the baseurl parameter:
 
 ```bash
-$ conda config --add channels http://api:«api-key»@«feed-url»
+baseurl=http://api:«api-key»@«feed-url»
 ```
 
-For example, when authenticating with the API key abc12345 to the URL `http://proget.corp.local/conda/public-conda/` you would enter:
+For example when authenticating with the API key `abc12345` to the public-rpm feed, your `.repo` file should look like this:
 
 ```bash
-$ conda config --add channels http://api:abc12345@proget.corp.local/conda/public-conda/
-```
-
-Confirm that it was registered by entering:
-
-```bash
-$ conda config --show channels
+[rpm-x86_64-aggregate]
+name=rpm-x86_64-aggregate
+baseurl=http://api:abc12345@proget.corp.local/rpm/rpm-x86_64-aggregate/  
+enabled=1 
+gpgcheck=0 
 ```
 
 ## (Optional) Creating a Package Approval Flow
 
-So far we've looked at proxying packages from an OSS repository. However you may want to make sure that only approved packages are used in your development or production environment to avoid risks related to quality, vulnerabilities, licenses, etc.
+This guide covered how to proxy packages from the various RPM public repositories. However, this allows developers to install any OSS packages without oversight. In many cases, it's important to include some form of approval in development or production, which can be done by introducing a ["Package Approval Flow"](/docs/proget/packages/package-promotion).
 
-In ProGet, you can create a "Package Approval Flow" that involves promoting packages between feeds to ensure that only approved and verified packages are used in the right environments, such as production. You can read more about package promotion [in our documentation](/docs/proget/packages/package-promotion).
+To set up a package approval flow, refer to [HOWTO: Approve and Promote Open-source Packages](/docs/proget/packages/package-promotion/proget-howto-promote-packages). This guide uses NuGet feeds as an example, but the steps are identical when creating RPM package feeds.
 
-To configure package approval flow you can read [HOWTO: Approve and Promote Open-source Packages](/docs/proget/packages/package-promotion/proget-howto-promote-packages). In this guide it talks about setting up a NuGet package approval, but it can just as easily be done with Conda packages by creating Conda feeds instead. 
-
-Once you have created your "Unapproved" and "Approved" feeds, follow the steps in [Step 3](#step-3) to add the "Approved" feed as a channel to your local Conda environments, entering:
+After creating your "Unapproved" and "Approved" feeds, follow the steps in [Step 3](#step-3) to add the "Approved" feed as a source in your local Ruby environments, entering:
 
 ```bash
-$ conda config --add channels «feed-url»
+baseurl=http://«feed-url»
 ```
 
-To ensure that developers only consume packages from the "Approved" feed rather than the OSS repository, we recommend removing the `defaults` channel, which exists by default. This can be done by entering:
+And then confirm that the feed was configured by entering:
 
 ```bash
-$ conda config --remove channels defaults
+$ yum repolist all
 ```
 
+Or listing packages in a configured repo named `internal-rpm-aggregate` by entering:
 
-
-
-
+```bash
+$ yum list available --disablerepo="*" --enablerepo=internal-rpm-aggregate
+```
