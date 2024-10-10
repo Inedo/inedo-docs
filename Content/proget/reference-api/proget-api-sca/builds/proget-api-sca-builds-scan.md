@@ -1,6 +1,6 @@
 ---
 title: "Scan Build"
-order: 4
+order: 6
 ---
 
 *Scan Build* is available as a `pgutil` command, and will generate a minimal SBOM from project dependencies and uploads it to ProGet.
