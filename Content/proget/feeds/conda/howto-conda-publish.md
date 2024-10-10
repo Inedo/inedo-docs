@@ -69,7 +69,7 @@ When conda-build is finished, it displays the package filename and location of t
 
 ### Step 4: Publish Your Package to ProGet
 
-To publish your package to your ProGet Conda feed, we can use Inedo's [pgutil](/docs/proget/reference-api/proget-pgutil) tool.
+To publish your package to your ProGet Conda feed, we can use [pgutil](/docs/proget/reference-api/proget-pgutil).
 
 pgutil will require some [minor configuration](/docs/proget/reference-api/proget-pgutil#sources) before use. This includes setting up your ProGet instance and API key as a source by running:
 
