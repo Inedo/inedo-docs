@@ -3,9 +3,10 @@ title: "HOWTO: Publish Conda Packages to a Private Repository in ProGet"
 order: 2
 ---
 
-Organizations will host their internal Conda packages on private repositories to maintain control over security, compliance, and access. ProGet makes it easy to set up a private repository for your Conda packages to publish, store, and share your packages internally.
+ProGet makes it easy to set up a private repository for your Conda packages to publish, store and share your packages internally.
 
-This guide will show you how to set up a ["Feed"](/docs/proget/feeds/feed-overview) in ProGet to as a Private Conda package repository. We will also walk you through building, publishing and consuming packages from this feed. 
+This guide will show you how to set up a ["Feed"](/docs/proget/feeds/feed-overview) in ProGet to as a Private Conda package repository. We will also walk you through creating, publishing and consuming packages from this feed. 
+
 
 ## Step 1: Create a New Feed
 
@@ -35,7 +36,7 @@ You will then be redirected to your new `internal-conda` feed, currently empty.
 
 ## Step 2: Create an API Key { #step-2 }
 
-Next, we'll create an [API Key](/docs/proget/reference-api/proget-apikeys) allowing our local client to authenticate to our `internal-conda` feed. This allows us to upload and install packages from the feed.
+We will now create an [API Key](/docs/proget/reference-api/proget-apikeys) allowing our local client to authenticate to our `internal-conda` feed. This allows us to publish packages to the feed, as well as consume them once published.
 
 Start by navigating to "Administration Overview" > "API Keys & Access Logs" under "Security & Authentication"
 
@@ -89,7 +90,7 @@ Now upload your packages by entering:
 $ pgutil packages upload --feed=«feed-name» --input-file=«path-to-package»
 ```
 
-For example, uploading the package `my-package-0.1.0-0.tar.bz2` stored at `C:\development\conda_packages\` to your `internal-conda` feed you would enter:
+For example, to upload the package `my-package-0.1.0-0.tar.bz2` stored at `C:\development\conda_packages\` to your `internal-conda` feed you would enter:
 
 ```bash
 $ pgutil packages upload --feed=internal-conda --input-file==C:\development\conda_packages\my-package-0.1.0-0.tar.bz2
@@ -98,6 +99,7 @@ $ pgutil packages upload --feed=internal-conda --input-file==C:\development\cond
 Your package will then be uploaded to the `internal-conda` feed.
 
 ![Feed](/resources/docs/proget-conda-internal-package.png){height="" width="50%"}
+
 
 ## Step 5: Add the Feed to Local Conda Environments { #step-5 }
 
@@ -135,26 +137,4 @@ Or by filtering by package name:
 
 ```bash
 $ conda search -c «feed-url» «package-name»
-```
-
-## Step 7: (Optional) Authenticate to your Conda Feed
-
-By default, anonymous access is allowed for viewing and downloading from your `internal-conda` feed. However, if you want to enforce authentication, such as in the case of a public ProGet instance, you can disable anonymous access and use an API key to authenticate to it.
-
-Navigate "Settings"> "Manage Security" and select the "Tasks/Permissions" tab. Remove anonymous access by clicking the small "X" in the "Anonymous" entry. 
-
-![](/resources/docs/proget-permissions-remove.png){height="" width="50%"}
-
-Then create an API key as explained in [Step 2](#step-2), but this time check only the "View/Download" box, and select "Save".
-
-Now add the `internal-conda` to your local Conda environments as you did in [Step 5](#step-5) by entering:
-
-```bash
-$ conda config --add channels http://api:«api-key»@«feed-url»
-```
-
-For example, adding a feed with the URL `http://proget.corp.local/conda/internal-conda`, authenticating with the API key `abc12345` you would enter:
-
-```bash
-$ conda config --add channels http://api:abc12345@proget.corp.local/conda/internal-conda
 ```

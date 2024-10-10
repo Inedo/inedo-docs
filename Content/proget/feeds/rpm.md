@@ -93,12 +93,10 @@ When connecting to an official RPM repository, ProGet will periodically download
 
 When creating a connector to an official repository, we recommend using a name that follows the URL conventions. For example:
 
-```html
 <table>
     <tr><td>URL:</td><td><code>http://mirror.centos.org/centos/7/os/x86_64/</code></td></tr>
     <tr><td>Connector name:</td><td><code>centos-7-os-x86_64</code></td></tr>
 </table>
-```
 
 You can see a list of the default repositories in the`/etc/yum.repos.d/` directory on a new installation.
 
