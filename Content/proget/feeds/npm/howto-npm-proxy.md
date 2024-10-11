@@ -7,7 +7,7 @@ With ProGet you can create ["Feeds"](/docs/proget/feeds/feed-overview) to proxy 
 
 Using ProGet as a proxy will cache packages, allowing teams to access them even if the npm Registry is down. ProGet will also tell you which packages are being downloaded and used frequently
 
-This guide will cover how to set up a feed to proxy packages. We'll also cover how to create a private repository for your internal packages as an alternative to the npm Registry's paid private repositories (npm Teams, npm Enterprise).
+This guide will cover how to set up a feed to proxy packages. We'll also cover how to create a private repository for your internal packages as an alternative to the npm Registry's paid private repositories (npm Teams/npm Pro).
 
 ## Step 1: Create a New Feed { #step-1 }
 
@@ -25,7 +25,7 @@ Then select "No, Create One Feed", as we will be creating a single feed to proxy
 
 ![](){height="" width="50%"}
 
-We are then presented with several options. More information on these can be found in the [Vulnerability Scanning and Blocking](/docs/proget/sca/vulnerabilities) documentation. Select "Set Feed Features", which will create the feed, and redirect you to the newly created `public-conda` feed, now populated with packages proxied from the npm Registry.
+We are then presented with several options. More information on these can be found in the [Vulnerability Scanning and Blocking](/docs/proget/sca/vulnerabilities) documentation. Select "Set Feed Features", which will create the feed, and redirect you to the newly created `public-npm` feed, now populated with packages proxied from the npm Registry.
 
 ![](){height="" width="50%"}
 
@@ -35,14 +35,16 @@ For your team to install packages from the `public-npm` feed, you'll need to add
 
 ![](){height="" width="50%"}
 
-
-
-
-
-You can confirm that the public-npm feed has been configured correctly by entering:
+Now configure your local environment with your `public-npm` feed by entering: 
 
 ```bash
-$ 
+$ npm config set registry http://«proget-url»/npm/public-npm
+```
+
+You can confirm that the `public-npm` feed has been set correctly by entering:
+
+```bash
+$ npm get registry
 ```
 
 ## (Optional) Authenticating to Your npm Feed
@@ -55,35 +57,31 @@ When creating an API Key you will need to fill in the fields by selecting "Feeds
 
 ![](){height="" width="50%"}
 
-Alternatively you can create a "Personal API Key", which lets users create/delete API keys that are tied to their username.
+Next you'll need to add an `_auth token`. This is a username and password string `«username»:«password»` that's been base64-encoded We strongly recommend using your API key for this, with api as the username, and then API Key as the password. To encode your API key in base64 you can use this PowerShell script:
 
-Now, we'll 
+```powershell
+[Convert]::ToBase64String([System.Text.Encoding]::UTF8.GetBytes("api:«api-key»")) 
+```
 
+Then, if you haven't already, configure your local environment with your `public-npm` feed by entering: 
 
+```bash
+$ npm config set registry http://«proget-url»/npm/public-npm
+```
 
+Now set this token to your local environment by entering:
 
-
-
+```bash
+$ npm config set //«proget-url»/npm/public-npm/:_auth «encoded-auth-token»
+```
 ## (Optional) Creating a Package Approval Flow
 
 In this guide we looked at proxying packages from the npm Registry. However, with no form of approval, developers will be able to install any OSS packages without oversight. In many cases, it's important to include some form of oversight in development or production, which can be done by creating a ["Package Approval Flow"](/docs/proget/packages/package-promotion).
 
 To set up a package approval flow, refer to [HOWTO: Approve and Promote Open-source Packages](/docs/proget/packages/package-promotion/proget-howto-promote-packages). This guide uses NuGet feeds as an example, but the steps are identical when creating npm package feeds.
 
-After creating your "Unapproved" and "Approved" feeds, follow the steps in [Step 3](#step-3) to add the "Approved" feed as a source in your local Ruby environments, entering:
+After creating your "Unapproved" and "Approved" feeds, follow the steps in [Step 3](#step-3) to add the "Approved" feed (e.g. `npm-approved`) as a source in your local npm environments, entering:
 
 ```bash
-baseurl=http://«feed-url»
-```
-
-And then confirm that the feed was configured by entering:
-
-```bash
-$ yum repolist all
-```
-
-Or listing packages in a configured repo named `internal-rpm-aggregate` by entering:
-
-```bash
-$ yum list available --disablerepo="*" --enablerepo=internal-rpm-aggregate
+$ npm config set registry http://«proget-url»/npm/npm-approved
 ```
