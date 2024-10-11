@@ -95,9 +95,9 @@ $ conda search -c «feed-url» «package-name»
 
 By default your `public-conda` feed will not require authentication and can be viewed anonymously. However you may want to make your repository private and require authentication to access it. This is recommended when hosting your own internal packages in a feed, in addition to proxied packages from the OSS repository. 
 
-First navigate to navigate to "Settings"> "Manage Security", and remove anonymous access by clicking the small "X" in the "Anonymous" entry. 
+First navigate to "Settings"> "Manage Security" and select the "Tasks/Permissions" tab. Remove anonymous access by clicking the small "X" in the "Anonymous" entry. 
 
-![Permissions Remove](/resources/docs/proget-conda-permissions-remove.png){height="" width="50%"}
+![Permissions Remove](/resources/docs/proget-permissions-remove.png){height="" width="50%"}
 
 Now you will need to create an [API Key](/docs/proget/reference-api/proget-apikeys). 
 

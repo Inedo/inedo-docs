@@ -3,7 +3,9 @@ title: "HOWTO: Publish Conda Packages to a Private Repository in ProGet"
 order: 2
 ---
 
-ProGet makes it easy to set up a private repository for your Conda packages to publish, store and share your packages internally. This guide will show you how to set up a ["Feed"](/docs/proget/feeds/feed-overview) in ProGet as a Private Conda package repository. We will also walk you through creating, publishing and consuming packages from this feed. 
+ProGet makes it easy to set up a private repository for your Conda packages to publish, store and share your packages internally.
+
+This guide will show you how to set up a ["Feed"](/docs/proget/feeds/feed-overview) in ProGet to as a Private Conda package repository. We will also walk you through creating, publishing and consuming packages from this feed.
 
 ## Step 1: Create a New Feed
 
@@ -97,22 +99,23 @@ Your package will then be uploaded to the `internal-conda` feed.
 
 ![Feed](/resources/docs/proget-conda-internal-package.png){height="" width="50%"}
 
-## Step 5: Add the Feed to Local Conda Environments
+
+## Step 5: Add the Feed to Local Conda Environments { #step-5 }
 
 To consume the Conda packages you have published to your `internal-conda` feed, you'll need to add it to your local Conda environments. For this, you will need the feed's URL. This can be found at the top right of the feed's page.
 
 ![Feed](/resources/docs/proget-conda-internal-url.png){height="" width="50%"}
 
-In your terminal of choice, enter the following, which will require the `internal-conda` feed URL and the API key you created in [Step 2](#step-2):
+In your terminal of choice, enter the following, which will require the `internal-conda` feed URL:
 
 ```bash
-$ conda config --add channels http://api:«api-key»@«feed-url»
+$ conda config --add channels http://«feed-url»
 ```
 
-For example, adding a feed with the URL `http://proget.corp.local/conda/internal-conda`, authenticating with the API key `abc12345` you would enter:
+For example, adding a feed with the URL `http://proget.corp.local/conda/internal-conda` you would enter:
 
 ```bash
-$ conda config --add channels http://api:abc12345@proget.corp.local/conda/internal-conda
+$ conda config --add channels http://proget.corp.local/conda/internal-conda
 ```
 
 You can confirm that it was registered by entering:
