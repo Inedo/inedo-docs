@@ -57,7 +57,7 @@ When creating an API Key you will need to fill in the fields by selecting "Feeds
 
 ![](){height="" width="50%"}
 
-Next you'll need to add an `_auth token`. This is a username and password string `«username»:«password»` that's been base64-encoded We strongly recommend using your API key for this, with api as the username, and then API Key as the password. To encode your API key in base64 you can use this PowerShell script:
+Next you'll need to add an `_auth` token. This is a username and password string `«username»:«password»` that's been base64-encoded We strongly recommend using your API key for this, with api as the username, and then API Key as the password. To encode your API key in base64 you can use this PowerShell script:
 
 ```powershell
 [Convert]::ToBase64String([System.Text.Encoding]::UTF8.GetBytes("api:«api-key»")) 
