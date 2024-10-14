@@ -11,33 +11,33 @@ In this guide, we'll start by looking at how to create a feed in ProGet and add 
 
 We'll also look at creating a private repository for when you also want to use internal packages, and how to create a package approval flow if you need to control which packages your team are using in production.
 
-## Step 1: Create a New Feed { #step-1 }
+## Step 1: Create a New Feed
 
 First, we will create an RPM feed that will proxy packages from several RPM repositories.
 
 Start by selecting "Feeds" and "Create New Feed". Then select "RPM Packages", which will be listed under the "System & Software Configuration" section.
 
-![](){height="" width="50%"}
+![](/resources/docs/proget-rpm-createfeed.png){height="" width="50%"}
 
-From here, name your feed. For the example in this guide we will call our feed `rpm-x86_64-aggregate`. Then click "Create Feed".
+From here, name your feed. For the example in this guide we will call our feed `centos9-packages`. Then click "Create Feed".
 
-![](){height="" width="50%"}
+![](/resources/docs/){height="" width="50%"}
 
 You'll then be redirected us to your RPM feed, which will appear empty for now.
 
-![](){height="" width="50%"}
+![](/resources/docs/){height="" width="50%"}
 
-## Step 2: Create a Connector { #step-2 }
+## Step 2: Create a Connector
 
-Now we'll add connectors to our `rpm-x86_64-aggregate` feed to aggregate several RPM repositories. To add a connector, navigate to "Feeds" > "Connectors" and select "Create Connector".
+Now we'll add connectors to our `centos9-packages` feed to aggregate several RPM repositories. To add a connector, navigate to "Feeds" > "Connectors" and select "Create Connector".
 
-![](){height="" width="50%"}
+![](/resources/docs/){height="" width="50%"}
 
 Then select "Other Connectors" and find "RPM Connector" in the list.
 
-![](){height="" width="50%"}
+![](/resources/docs/){height="" width="50%"}
 
-Give your connector a name, and then enter the URL of the repository in the "Connector URL" field. Add your `rpm-x86_64-aggregate` feed in the "Associated Feeds" field and then select "Save".
+Give your connector a name, and then enter the URL of the repository in the "Connector URL" field. Add your `centos9-packages` feed in the "Associated Feeds" field and then select "Save".
 
 When creating a connector to an official repository, we recommend using a name that follows the URL conventions. For example, for the repository URL `https://mirror.stream.centos.org/9-stream/BaseOS/x86_64/os/`, we'll call the connector `centos-9-stream-baseos-x86_64-os`
 
@@ -49,30 +49,30 @@ The exact URL will vary from repository to repository, however you want to enter
 
 Repeat as necessary to create connectors to additional repositories you want to proxy from.
 
-![](){height="" width="50%"}
+![](/resources/docs/){height="" width="50%"}
 
-Navigating back to your `rpm-x86_64-aggregate` feed, it should now be populated with packages proxied from the configured OSS repository.
+Navigating back to your `centos9-packages` feed, it should now be populated with packages proxied from the configured OSS repository.
 
-![](){height="" width="50%"}
+![](/resources/docs/){height="" width="50%"}
 
-## Step 3: Add the Feed to Your Local RPM Environment { #step-3 }
+## Step 3: Add the Feed to Your Local RPM Environment
 
-For your team to install packages proxied to the `rpm-x86_64-aggregate` feed, you'll need to add it as a source in their local environment. For this, you will need feed's URL. This can be found at the top right of the feed's page.
+For your team to install packages proxied to the `centos9-packages` feed, you'll need to add it as a source in their local environment. For this, you will need feed's URL. This can be found at the top right of the feed's page.
 
-![](){height="" width="50%"}
+![](/resources/docs/){height="" width="50%"}
 
 To add the feed, you'll need to create a `.repo` file locally. Create the file by entering:
 
 ```bash
-$ sudo vi /etc/yum.repos.d/rpm-x86_64-aggregate.repo
+$ sudo vi /etc/yum.repos.d/centos9-packages.repo
 ```
 
 In this case we used the `vi` text editor, but you can use any other such as `nano`. With the `.repo ` file open, enter the following:
 
 ```bash
-[rpm-x86_64-aggregate]
-name=rpm-x86_64-aggregate
-baseurl=http://proget.corp.local/rpm/rpm-x86_64-aggregate/ # your RPM feed URL
+[centos9-packages]
+name=centos9-packages
+baseurl=http://proget.corp.local/rpm/centos9-packages/ # your RPM feed URL
 enabled=1
 gpgcheck=0
 ```
@@ -89,7 +89,7 @@ Or listing packages by entering:
 $ yum list available --disablerepo="*" --enablerepo=public-rpm
 ```
 
-By default, repositories will already be configured, depending on the distribution of your local environment. We recommend removing these to install packages exclusively from your `rpm-x86_64-aggregate` feed. You can remove a repository by entering:
+By default, repositories will already be configured, depending on the distribution of your local environment. We recommend removing these to install packages exclusively from your `centos9-packages` feed. You can remove a repository by entering:
 
 ```bash
 $ sudo rm /etc/yum.repos.d/«repo-name».repo
@@ -97,29 +97,7 @@ $ sudo rm /etc/yum.repos.d/«repo-name».repo
 
 ## (Optional) Authenticating to Your RPM Feed
 
-By default your `rpm-x86_64-aggregate` feed does not require authentication and can be viewed anonymously. However, you may want to make your feed private and configure it to require authentication to access. For example, when also hosting your own internal packages.
-
-First you will need to create an API key in ProGet. You can read more about this on our [API Key](/docs/proget/reference-api/proget-apikeys) page. When creating an API Key you will need to fill in the fields by selecting "Feeds ("Use Certain Feeds)" as the "Feed Type" and selecting the `rpm-x86_64-aggregate` feed, and make sure that the "View/Download" box is checked, and then select "Save".
-
-![](){height="" width="50%"}
-
-Alternatively you can create a "Personal API Key", which lets users create/delete API keys that are tied to their username.
-
-Now, we'll add the feed to a local RPM environment which will require the URL from [Step 3](#step-3), as well as your API key. When editing the `.repo` file, enter your API key and URL in the `baseurl` parameter:
-
-```bash
-baseurl=http://api:«api-key»@«feed-url»
-```
-
-For example when authenticating with the API key `abc12345` to the public-rpm feed, your `.repo` file should look like this:
-
-```bash
-[rpm-x86_64-aggregate]
-name=rpm-x86_64-aggregate
-baseurl=http://api:abc12345@proget.corp.local/rpm/internal-rpm/
-enabled=1
-gpgcheck=0
-```
+By default your `centos9-packages` feed does not require authentication and can be viewed anonymously. However, you may want to make your feed private and [configure it to require authentication to access](/docs/proget/feeds/rpm#authenticating-to-rpm-yum-feeds). For example, when also hosting your own internal packages.
 
 ## (Optional) Creating a Package Approval Flow
 
@@ -127,7 +105,7 @@ This guide covered how to proxy packages from the various RPM public repositorie
 
 To set up a package approval flow, refer to [HOWTO: Approve and Promote Open-source Packages](/docs/proget/packages/package-promotion/proget-howto-promote-packages). This guide uses NuGet feeds as an example, but the steps are identical when creating RPM package feeds.
 
-After creating your "Unapproved" and "Approved" feeds, follow the steps in [Step 3](#step-3) to add the "Approved" feed as a source in your local rpm environments, entering:
+After creating your "Unapproved" and "Approved" feeds, follow the [earlier steps](#step-3-add-the-feed-to-your-local-rpm-environment) to add the "Approved" feed as a source in your local rpm environments, entering:
 
 ```bash
 baseurl=http://«feed-url»
@@ -139,8 +117,8 @@ And then confirm that the feed was configured by entering:
 $ yum repolist all
 ```
 
-Or listing packages in a configured repo named `internal-rpm-aggregate` by entering:
+Or listing packages in a configured repository named `internal-npm` by entering:
 
 ```bash
-$ yum list available --disablerepo="*" --enablerepo=internal-rpm-aggregate
+$ yum list available --disablerepo="*" --enablerepo=internal-npm
 ```

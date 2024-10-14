@@ -11,25 +11,25 @@ This guide will show you how to set up a ["Feed"](/docs/proget/feeds/feed-overvi
 
 Start by creating an RPM feed to host your packages. Select "Feeds" and "Create New Feed". Next, select "RPM Packages".
 
-![](){height="" width="50%"}
+![](/resources/docs/){height="" width="50%"}
 
 Now name your feed. For this guide, we will call it `internal-rpm`. Then select "Create Feed".
 
-![](){height="" width="50%"}
+![](/resources/docs/){height="" width="50%"}
 
 You will then be redirected to your new `internal-rpm` feed, currently empty.
 
 ![Feed](/resources/docs/proget-conda-internal-emptyfeed.png){height="" width="50%"}
 
-## Step 2: Create an API Key { #step-2 }
+## Step 2: Create an API Key
 
 Now create an [API Key](/docs/proget/reference-api/proget-apikeys) which will allow your local RPM environment to authenticate to the `internal-rpm` feed to publish packages to it, as well as install them once published.
 
-You can read more about creating API keys in ProGet on our [API Key](/docs/proget/reference-api/proget-apikeys) page. 
+You can read more about creating API keys in ProGet on our [API Key](/docs/proget/reference-api/proget-apikeys) page.
 
 When creating an API Key, fill in the fields by selecting "Feeds (Use Certain Feeds)" as the "Feed Type" and selecting the `internal-rpm` feed. Then set the API key. You can use any alphanumeric sequence, or just leave it blank to autogenerate one.
 
-![](){height="" width="50%"}
+![](/resources/docs/){height="" width="50%"}
 
 Make sure the "View/Download" and "Add/Repackage" boxes are checked, and then select "Save".
 
@@ -38,13 +38,13 @@ Make sure the "View/Download" and "Add/Repackage" boxes are checked, and then se
 Next, we will build and publish our packages. You can follow the [official Red Hat documentation](https://www.redhat.com/sysadmin/create-rpm-package) to learn more about creating packages. To build your package you will need to install `rpmdevtools` if you haven't already by entering:
 
 ```bash
-$ sudo dnf install rpm-build rpmdevtools 
+$ sudo dnf install rpm-build rpmdevtools
 ```
 
 And then set up the build environment by entering:
 
 ```bash
-$ rpmdev-setuptree 
+$ rpmdev-setuptree
 ```
 
 Once you have the tarball (`.tar.gz`) and `.spec` file needed for the build, run the build command by entering:
@@ -52,7 +52,7 @@ Once you have the tarball (`.tar.gz`) and `.spec` file needed for the build, run
 ```bash
 $ rpmbuild -ba ~/rpmbuild/SPECS/«spec-file».spec
 ```
- 
+
 When the build is finished, the `.rpm` file will be located in the `rpmbuild/RPMS` folder, for example:
 
 `~/rpmbuild/RPMS/x86_64/my-package-1.0-1.el9.x86_64.rpm`
@@ -87,28 +87,28 @@ $ pgutil packages upload --feed=internal-rpm --input-file=/home/user/rpmbuild/RP
 
 Your package will then be uploaded to the `internal-rpm` feed.
 
-![](){height="" width="50%"}
+![](/resources/docs/){height="" width="50%"}
 
-## Step 5: Add the Feed to Your Local RPM Environment { #step-3 }
+## Step 5: Add the Feed to Your Local RPM Environment
 
 To install packages from the `internal-rpm` feed, you'll need to add it as a source in the local RPM environment. For this, you will need feed's URL. This can be found at the top right of the feed's page.
 
-![](){height="" width="50%"}
+![](/resources/docs/){height="" width="50%"}
 
-To add the feed, you'll need to create a `.repo` file locally. Create the file by entering: 
+To add the feed, you'll need to create a `.repo` file locally. Create the file by entering:
 
 ```bash
-$ sudo vi /etc/yum.repos.d/internal-rpm.repo  
+$ sudo vi /etc/yum.repos.d/internal-rpm.repo
 ```
 
 In this case we used the `vi` text editor, but you can use any other such as `nano`. With the `.repo ` file open, enter the following:
 
 ```bash
 [internal-rpm]
-name=InternalRpm 
+name=InternalRpm
 baseurl=http://proget.corp.local/rpm/internal-rpm/ # your RPM feed URL
-enabled=1 
-gpgcheck=0 
+enabled=1
+gpgcheck=0
 ```
 
 Then save and exit (`:wq` in the case of `vi`). You can confirm the feed has been set by listing the configured repositories:
