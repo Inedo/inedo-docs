@@ -21,27 +21,27 @@ Start by selecting "Feeds" and "Create New Feed". Then select "RPM Packages", wh
 
 From here, name your feed. For the example in this guide we will call our feed `centos9-packages`. Then click "Create Feed".
 
-![](/resources/docs/){height="" width="50%"}
+![](/resources/docs/proget-rpm-feedname-centos.png){height="" width="50%"}
 
 You'll then be redirected us to your RPM feed, which will appear empty for now.
 
-![](/resources/docs/){height="" width="50%"}
+![](/resources/docs/proget-rpm-feed-centos-empty.png){height="" width="50%"}
 
 ## Step 2: Create a Connector
 
 Now we'll add connectors to our `centos9-packages` feed to aggregate several RPM repositories. To add a connector, navigate to "Feeds" > "Connectors" and select "Create Connector".
 
-![](/resources/docs/){height="" width="50%"}
+![](/resources/docs/proget-addconnector.png){height="" width="50%"}
 
 Then select "Other Connectors" and find "RPM Connector" in the list.
 
-![](/resources/docs/){height="" width="50%"}
+![](/resources/docs/proget-addconnector-rpm.png){height="" width="50%"}
 
 Give your connector a name, and then enter the URL of the repository in the "Connector URL" field. Add your `centos9-packages` feed in the "Associated Feeds" field and then select "Save".
 
 When creating a connector to an official repository, we recommend using a name that follows the URL conventions. For example, for the repository URL `https://mirror.stream.centos.org/9-stream/BaseOS/x86_64/os/`, we'll call the connector `centos-9-stream-baseos-x86_64-os`
 
-![](){height="" width="50%"}
+![](/resources/docs/proget-createconnector-rpm-centos.png){height="" width="50%"}
 
 :::(info)(📄 Note: OSS Repository URL)
 The exact URL will vary from repository to repository, however you want to enter a URL that links to a directory containing a `repodata` folder which contains the files needed to index the RPM packages within the repository.
@@ -49,17 +49,17 @@ The exact URL will vary from repository to repository, however you want to enter
 
 Repeat as necessary to create connectors to additional repositories you want to proxy from.
 
-![](/resources/docs/){height="" width="50%"}
+![](/resources/docs/proget-connectors-rpm.png){height="" width="50%"}
 
 Navigating back to your `centos9-packages` feed, it should now be populated with packages proxied from the configured OSS repository.
 
-![](/resources/docs/){height="" width="50%"}
+![](/resources/docs/proget-rpm-feed-packages.png){height="" width="50%"}
 
 ## Step 3: Add the Feed to Your Local RPM Environment
 
 For your team to install packages proxied to the `centos9-packages` feed, you'll need to add it as a source in their local environment. For this, you will need feed's URL. This can be found at the top right of the feed's page.
 
-![](/resources/docs/){height="" width="50%"}
+![](/resources/docs/proget-rpm-feed-url.png){height="" width="50%"}
 
 To add the feed, you'll need to create a `.repo` file locally. Create the file by entering:
 
