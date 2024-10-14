@@ -11,15 +11,15 @@ This guide will show you how to set up a ["Feed"](/docs/proget/feeds/feed-overvi
 
 Start by creating an RPM feed to host your packages. Select "Feeds" and "Create New Feed". Next, select "RPM Packages".
 
-![](/resources/docs/){height="" width="50%"}
+![](/resources/docs/proget-rpm-createfeed.png){height="" width="50%"}
 
 Now name your feed. For this guide, we will call it `internal-rpm`. Then select "Create Feed".
 
-![](/resources/docs/){height="" width="50%"}
+![](/resources/docs/proget-rpm-feedname-internal.png){height="" width="50%"}
 
 You will then be redirected to your new `internal-rpm` feed, currently empty.
 
-![Feed](/resources/docs/proget-conda-internal-emptyfeed.png){height="" width="50%"}
+![Feed](/resources/docs/proget-rpm-internal-empty.png){height="" width="50%"}
 
 ## Step 2: Create an API Key
 
@@ -29,7 +29,7 @@ You can read more about creating API keys in ProGet on our [API Key](/docs/proge
 
 When creating an API Key, fill in the fields by selecting "Feeds (Use Certain Feeds)" as the "Feed Type" and selecting the `internal-rpm` feed. Then set the API key. You can use any alphanumeric sequence, or just leave it blank to autogenerate one.
 
-![](/resources/docs/){height="" width="50%"}
+![](/resources/docs/proget-rpm-internal-apikey.png){height="" width="50%"}
 
 Make sure the "View/Download" and "Add/Repackage" boxes are checked, and then select "Save".
 
@@ -87,13 +87,13 @@ $ pgutil packages upload --feed=internal-rpm --input-file=/home/user/rpmbuild/RP
 
 Your package will then be uploaded to the `internal-rpm` feed.
 
-![](/resources/docs/){height="" width="50%"}
+![](/resources/docs/proget-feed-internal-upload.png){height="" width="50%"}
 
 ## Step 5: Add the Feed to Your Local RPM Environment
 
 To install packages from the `internal-rpm` feed, you'll need to add it as a source in the local RPM environment. For this, you will need feed's URL. This can be found at the top right of the feed's page.
 
-![](/resources/docs/){height="" width="50%"}
+![](/resources/docs/proget-feed-internal-url.png){height="" width="50%"}
 
 To add the feed, you'll need to create a `.repo` file locally. Create the file by entering:
 
