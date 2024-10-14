@@ -7,13 +7,13 @@ With ProGet teams can create ["Feeds"](/docs/proget/feeds/feed-overview) to aggr
 
 Feeds will also cache RPM packages allowing teams to access them even when repositories they are proxying from are down, and show which packages are being downloaded and used frequently.
 
-In this guide, we'll start by looking at how to create a feed in ProGet and add connectors to proxy packages through one or more RPM repositories. We'll then add this feed to your local RPM environment so that these proxied packages can be accessed and installed. 
+In this guide, we'll start by looking at how to create a feed in ProGet and add connectors to proxy packages through one or more RPM repositories. We'll then add this feed to your local RPM environment so that these proxied packages can be accessed and installed.
 
-We'll also look at creating a private repository for when you also want to use internal packages, and how to create a package approval flow if you need to control which packages your team are using in production. 
+We'll also look at creating a private repository for when you also want to use internal packages, and how to create a package approval flow if you need to control which packages your team are using in production.
 
 ## Step 1: Create a New Feed { #step-1 }
 
-First, we will create an RPM feed that will proxy packages from several RPM repositories. 
+First, we will create an RPM feed that will proxy packages from several RPM repositories.
 
 Start by selecting "Feeds" and "Create New Feed". Then select "RPM Packages", which will be listed under the "System & Software Configuration" section.
 
@@ -37,17 +37,17 @@ Then select "Other Connectors" and find "RPM Connector" in the list.
 
 ![](){height="" width="50%"}
 
-Give your connector a name, and then enter the URL of the repository in the "Connector URL" field. Add your `rpm-x86_64-aggregate` feed in the "Associated Feeds" field and then select "Save". 
+Give your connector a name, and then enter the URL of the repository in the "Connector URL" field. Add your `rpm-x86_64-aggregate` feed in the "Associated Feeds" field and then select "Save".
 
 When creating a connector to an official repository, we recommend using a name that follows the URL conventions. For example, for the repository URL `https://mirror.stream.centos.org/9-stream/BaseOS/x86_64/os/`, we'll call the connector `centos-9-stream-baseos-x86_64-os`
 
 ![](){height="" width="50%"}
 
 :::(info)(📄 Note: OSS Repository URL)
-The exact URL will vary from repository to repository, however you want to enter a URL that links to a directory containing a `repodata` folder which contains the files needed to index the RPM packages within the repository. 
+The exact URL will vary from repository to repository, however you want to enter a URL that links to a directory containing a `repodata` folder which contains the files needed to index the RPM packages within the repository.
 :::
 
-Repeat as necessary to create connectors to additional repositories you want to proxy from. 
+Repeat as necessary to create connectors to additional repositories you want to proxy from.
 
 ![](){height="" width="50%"}
 
@@ -61,10 +61,10 @@ For your team to install packages proxied to the `rpm-x86_64-aggregate` feed, yo
 
 ![](){height="" width="50%"}
 
-To add the feed, you'll need to create a `.repo` file locally. Create the file by entering: 
+To add the feed, you'll need to create a `.repo` file locally. Create the file by entering:
 
 ```bash
-$ sudo vi /etc/yum.repos.d/rpm-x86_64-aggregate.repo  
+$ sudo vi /etc/yum.repos.d/rpm-x86_64-aggregate.repo
 ```
 
 In this case we used the `vi` text editor, but you can use any other such as `nano`. With the `.repo ` file open, enter the following:
@@ -73,8 +73,8 @@ In this case we used the `vi` text editor, but you can use any other such as `na
 [rpm-x86_64-aggregate]
 name=rpm-x86_64-aggregate
 baseurl=http://proget.corp.local/rpm/rpm-x86_64-aggregate/ # your RPM feed URL
-enabled=1 
-gpgcheck=0 
+enabled=1
+gpgcheck=0
 ```
 
 Then save and exit (`:wq` in the case of `vi`). You can confirm the feed has been set by listing the configured repositories:
@@ -105,7 +105,7 @@ First you will need to create an API key in ProGet. You can read more about this
 
 Alternatively you can create a "Personal API Key", which lets users create/delete API keys that are tied to their username.
 
-Now, we'll add the feed to a local RPM environment which will require the URL from [Step 3](#step-3), as well as your API key. When editing the `.repo` file, enter your API key and URL in the baseurl parameter:
+Now, we'll add the feed to a local RPM environment which will require the URL from [Step 3](#step-3), as well as your API key. When editing the `.repo` file, enter your API key and URL in the `baseurl` parameter:
 
 ```bash
 baseurl=http://api:«api-key»@«feed-url»
@@ -116,9 +116,9 @@ For example when authenticating with the API key `abc12345` to the public-rpm fe
 ```bash
 [rpm-x86_64-aggregate]
 name=rpm-x86_64-aggregate
-baseurl=http://api:abc12345@proget.corp.local/rpm/rpm-x86_64-aggregate/  
-enabled=1 
-gpgcheck=0 
+baseurl=http://api:abc12345@proget.corp.local/rpm/internal-rpm/
+enabled=1
+gpgcheck=0
 ```
 
 ## (Optional) Creating a Package Approval Flow
