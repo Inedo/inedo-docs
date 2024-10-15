@@ -49,31 +49,8 @@ $ npm get registry
 
 ## (Optional) Authenticating to Your npm Feed
 
-By default your `public-npm` feed does not require authentication and can be viewed anonymously. However, you may want to make your feed private and set it to require authentication to access. For example, when also hosting your own internal packages.
+By default your `public-npm` feed does not require authentication and can be viewed anonymously. However, you may want to make your feed private and [configure it to require authentication](/docs/proget/feeds/npm#authenticating-to-npm-feeds) to access. For example, when also hosting your own internal packages.
 
-First, you will need to create an API key. You can more on how to do this on our [API Key](/docs/proget/reference-api/proget-apikeys) page. 
-
-When creating an API Key you will need to fill in the fields by selecting "Feeds ("Use Certain Feeds)" as the "Feed Type" and selecting the `public-npm` feed, and make sure that the "View/Download" box is checked, and then select "Save".
-
-![](){height="" width="50%"}
-
-Next you'll need to add an `_auth` token. This is a username and password string `«username»:«password»` that's been base64-encoded We strongly recommend using your API key for this, with api as the username, and then API Key as the password. To encode your API key in base64 you can use this PowerShell script:
-
-```powershell
-[Convert]::ToBase64String([System.Text.Encoding]::UTF8.GetBytes("api:«api-key»")) 
-```
-
-Then, if you haven't already, configure your local environment with your `public-npm` feed by entering: 
-
-```bash
-$ npm config set registry http://«proget-url»/npm/public-npm
-```
-
-Now set this token to your local environment by entering:
-
-```bash
-$ npm config set //«proget-url»/npm/public-npm/:_auth «encoded-auth-token»
-```
 ## (Optional) Creating a Package Approval Flow
 
 In this guide we looked at proxying packages from the npm Registry. However, with no form of approval, developers will be able to install any OSS packages without oversight. In many cases, it's important to include some form of oversight in development or production, which can be done by creating a ["Package Approval Flow"](/docs/proget/packages/package-promotion).
