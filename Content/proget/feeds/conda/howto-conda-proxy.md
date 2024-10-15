@@ -13,15 +13,11 @@ In this article, we'll explain how to create a ["Feed"](/docs/proget/feeds/feed-
 
 We'll also look at creating a private repository for when you also want to use internal packages, and how to create a package approval flow if you need to control which packages your team are using in production. 
 
-## Step 1: Create a New Feed { #step-1 }
+## Step 1: Create a New Feed
 
 First, we will create a Conda feed that will proxy packages from [Anaconda OSS Package Repository](https://repo.anaconda.com/).
 
-Start by selecting "Feeds" and "Create New Feed".
-
-![New Feed](/resources/docs/proget-feeds-createnewfeed.png){height="" width="50%"}
-
-Next, select "Conda Packages", as we will be creating feeds to proxy and host Conda packages.
+Start by selecting "Feeds" and "Create New Feed". Next, select "Conda Packages", as we will be creating feeds to proxy and host Conda packages.
 
 ![Select Conda](/resources/docs/proget-conda-newfeed.png){height="" width="50%"}
 
@@ -29,25 +25,15 @@ Now select "Connect to Anaconda Packages" which will allow us to proxy packages 
 
 ![Connector](/resources/docs/proget-conda-newfeed-connector.png){height="" width="50%"}
 
-Then select "No, Create One Feed", as we will be creating a single feed to proxy Conda packages.
-
-![One Feeds](/resources/docs/proget-conda-onefeed.png){height="" width="50%"}
-
-## Step 2: Name Your Feed
-
-From here, we name our feed, which in this example we will call `public-conda`. Then click "Create Feed".
+Then select "No, Create One Feed", as we will be creating a single feed to proxy Conda packages. From here, we name our feed, which in this example we will call `public-conda`. Then click "Create Feed".
 
 ![Name Feed](/resources/docs/proget-conda-onefeed-name.png){height="" width="50%"}
 
-We are then presented with several options. More information on these can be found in the [Vulnerability Scanning and Blocking](/docs/proget/sca/vulnerabilities) documentation.
-
-![SCA Features](/resources/docs/proget-conda-newfeed-sca.png){height="" width="50%"}
-
-Finally, we select [Set Feed Features], which will create the feed, and redirect us to our `public-conda` feed, now populated with packages proxied from the public OSS Conda repository.
+We are then presented with several options. More information on these can be found in the [Vulnerability Scanning and Blocking](/docs/proget/sca/vulnerabilities) documentation Finally, we select [Set Feed Features], which will create the feed, and redirect us to our `public-conda` feed, now populated with packages proxied from the public OSS Conda repository.
 
 ![Feed](/resources/docs/proget-conda-publicfeed.png){height="" width="50%"}
 
-### (Optional) Changing your Connector to Conda-Forge
+### Step 2: (Optional) Changing your Connector to Conda-Forge
 
 By default ProGet creates a connector to [Anaconda Packages](https://repo.anaconda.com/) when creating a new Conda feed. If you need to proxy Conda packages from [Conda Forge](https://conda.anaconda.org/conda-forge) instead, navigate to "Feeds" > "Connectors" and select the `repo.anaconda.com` connector.
 
@@ -59,7 +45,7 @@ Then select "edit" under "Basic Properties". Replace the URL in the "Connector U
 
 Note this it may take a short time for the local index to update. You can see the status under "Local Index" on the connector's page.
 
-## Step 3: Adding the Feed to Local Conda Environments { #step-3 }
+## Step 3: Adding the Feed to Local Conda Environments
 
 For your team to consume packages from the `public-conda` feed, you'll need to add it as a channel in their local environment. For this, you will need feed's URL. This can be found at the top right of the feed's page.
 
@@ -109,55 +95,15 @@ $ conda install «package-name»
 
 ## (Optional) Authenticating to Your Conda Feed
 
-By default your `public-conda` feed will not require authentication and can be viewed anonymously. However you may want to make your repository private and require authentication to access it. This is recommended when hosting your own internal packages in a feed, in addition to proxied packages from the OSS repository. 
-
-First navigate to "Settings"> "Manage Security" and select the "Tasks/Permissions" tab. Remove anonymous access by clicking the small "X" in the "Anonymous" entry. 
-
-![Permissions Remove](/resources/docs/proget-permissions-remove.png){height="" width="50%"}
-
-Now you will need to create an [API Key](/docs/proget/reference-api/proget-apikeys). 
-
-Start by navigating to "Administration Overview" > "API Keys & Access Logs" under "Security & Authentication"
-
-![Admin Overview](/resources/docs/proget-admin-apikeys.png){height="" width="50%"}
-
-Then select "Create API Key"
-
-![Create Key](/resources/docs/proget-apikey-new.png){height="" width="50%"}
-
-Then fill in the fields by selecting "Feeds ("Use Certain Feeds)" as the "Feed Type" and selecting the `public-conda` feed. Then set the API key. You can specify any alphanumeric sequence for this, or leave it blank to autogenerate one.
-
-Ensure that the "View/Download" box is checked, and then select "Save".
-
-![API Key](/resources/docs/proget-conda-apikey-3.png){height="" width="50%"}
-
-Now, we'll add the feed to a local Conda environment. Instead of adding the URL like in [Step 3](#step-3), enter the following, containing both URL and API Key:
-
-```bash
-$ conda config --add channels http://api:«api-key»@«feed-url»
-```
-
-For example, when authenticating with the API key abc12345 to the URL `http://proget.corp.local/conda/public-conda/` you would enter:
-
-```bash
-$ conda config --add channels http://api:abc12345@proget.corp.local/conda/public-conda/
-```
-
-Confirm that it was registered by entering:
-
-```bash
-$ conda config --show channels
-```
+By default your `public-conda` feed does not require authentication and can be viewed anonymously. However, you may want to make your feed private and [configure it to require authentication](/docs/proget/feeds/rpm#authenticating-to-conda-feeds) to access. For example, when also hosting your own internal packages.
 
 ## (Optional) Creating a Package Approval Flow
 
-So far we've looked at proxying packages from an OSS repository. However you may want to make sure that only approved packages are used in your development or production environment to avoid risks related to quality, vulnerabilities, licenses, etc.
-
-In ProGet, you can create a "Package Approval Flow" that involves promoting packages between feeds to ensure that only approved and verified packages are used in the right environments, such as production. You can read more about package promotion [in our documentation](/docs/proget/packages/package-promotion).
+So far we've looked at proxying packages from OSS repositories. However, this leaves developers free to install any OSS packages in the repository. In many cases, it's important to include some form of oversight in development, which can be done by introducing [Package Approval](/docs/proget/packages/package-promotion).
 
 To configure package approval flow you can read [HOWTO: Approve and Promote Open-source Packages](/docs/proget/packages/package-promotion/proget-howto-promote-packages). In this guide it talks about setting up a NuGet package approval, but it can just as easily be done with Conda packages by creating Conda feeds instead. 
 
-Once you have created your "Unapproved" and "Approved" feeds, follow the steps in [Step 3](#step-3) to add the "Approved" feed as a channel to your local Conda environments, entering:
+After creating your "Unapproved" and "Approved" feeds, follow the earlier steps to add the "Approved" feed as a source in your local rpm environments, entering:
 
 ```bash
 $ conda config --add channels «feed-url»
