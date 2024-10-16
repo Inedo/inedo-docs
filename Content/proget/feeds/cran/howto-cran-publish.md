@@ -25,7 +25,7 @@ You'll then see several options related to ProGet's [Vulnerability Scanning and 
 
 ![](/resources/docs/proget-cran-feed-empty.png){height="" width="50%"}
 
-## Step 2: Create an API Key { #step-2 }
+## Step 2: Create an API Key { #api-key }
 
 Next, we'll create an [API Key](/docs/proget/reference-api/proget-apikeys) allowing our local client to authenticate to our `internal-cran` feed. This allows us to upload and install packages from the feed.
 
@@ -107,13 +107,13 @@ Your package will then be uploaded to the `internal-cran` feed.
 ![](/resources/docs/proget-cran-internal-package.png){height="" width="50%"}
 
 
-## Step 5: Add the Feed to Local R Environments { #step-5 }
+## Step 5: Add the Feed to Local R Environments { #add-feed }
 
 To install R packages you have published to your `internal-cran` feed, you'll need to add the feed to your local R environments. For this, you will need the feed's URL. This is found at the top right of the feed's page.
 
 ![](/resources/docs/proget-cran-internal-url.png){height="" width="50%"}
 
-Then, any time you want to install a package, take the `internal-cran` feed URL and the API key you created in [Step 2](#step-2), and in enter:
+Then, any time you want to install a package, take the `internal-cran` feed URL and the API key you created in ["Create an API Key"](#api-key), and in enter:
 
 ```r
 install.packages("«package-name»", repos="«feed-url»")
@@ -175,9 +175,9 @@ Navigate "Settings"> "Manage Security" and select the "Tasks/Permissions" tab. R
 
 ![](/resources/docs/proget-permissions-remove.png){height="" width="50%"}
 
-Then create an API key as explained in [Step 2](#step-2), but this time make sure the "View/Download" box is checked, and then select "Save".
+Then create an API key as explained in ["Create an API Key](#api-key), but this time make sure the "View/Download" box is checked, and then select "Save".
 
-Now, add the `internal-cran` feed to your R environment as we did in [Step 5](#step-5) but this time take the API key you just created in addition to the the `internal-cran` feed URL and enter:
+Now, add the `internal-cran` feed to your R environment as we did in ["Add the Feed to Local R Environments"](#add-feed) but this time take the API key you just created in addition to the the `internal-cran` feed URL and enter:
 
 ```r
 install.packages("«package-name»", repos="http://api:«api-key»@«feed-url»")

@@ -25,7 +25,7 @@ You'll then see several options related to ProGet's [Vulnerability Scanning and 
 
 ![](/resources/docs/proget-ruby-emptyfeed.png){height="" width="50%"}
 
-## Step 2: Create an API Key { #step-2 }
+## Step 2: Create an API Key { #api-key }
 
 Next, we'll create an [API Key](/docs/proget/reference-api/proget-apikeys) allowing our local environment to authenticate to our `internal-gems` feed. This allows us to push and install packages from the feed.
 
@@ -61,7 +61,7 @@ $ gem build my_gem.gemspec
 
 Your `.gem` RubyGem is then built, and saved inside your project folder. 
 
-### Step 4: Push Your RubyGem to ProGet { #step-4 }
+### Step 4: Push Your RubyGem to ProGet
 
 To push your RubyGem to your `internal-gems` feed, you will need your feed URL. This can be located in the top right of the feed's page:
 
@@ -92,7 +92,7 @@ And the gem should be pushed to your `internal-gems` feed:
 
 ![](/resources/docs/proget-ruby-uploadgem.png){height="" width="50%"}
 
-## Step 5: Adding the Feed to Your Local Ruby Environments { #step-5 }
+## Step 5: Adding the Feed to Your Local Ruby Environments { #add-feed }
 
 To install packages from the `internal-gems` feed, take the URL from [Step 4](#step-4), and add it as a source by entering:
 
@@ -142,9 +142,9 @@ Navigate "Settings"> "Manage Security" and select the "Tasks/Permissions" tab. R
 
 ![](/resources/docs/proget-permissions-remove.png){height="" width="50%"}
 
-Then create an API key as explained in [Step 2](#step-2), but this time make sure the "View/Download" box is checked, and then select "Save".
+Then create an API key as explained in [Create an API Key](#api-key), but this time make sure the "View/Download" box is checked, and then select "Save".
 
-Now, add the `internal-gems` feed to your either your Ruby environment or `Gemfile` as we did in [Step 5](#step-5) but this time take the API key you just created in addition to the the `internal-cran` feed URL and enter:
+Now, add the `internal-gems` feed to your either your Ruby environment or `Gemfile` as we did in ["Adding the Feed to Your Local Ruby Environments"](#add-feed) but this time take the API key you just created in addition to the the `internal-cran` feed URL and enter:
 
 ```bash
 $ gem sources --add http://api:«api-key»@«feed-url

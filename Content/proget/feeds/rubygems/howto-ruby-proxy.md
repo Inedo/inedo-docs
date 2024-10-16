@@ -14,7 +14,7 @@ In this article, we'll explain how to create a feed in ProGet that will proxy pa
 
 We’ll also explain how to set up a private source for using internal gems, as well as how to establish a package approval process to manage which packages your team can utilize in production.
 
-## Step 1: Create and Name a RubyGems Feed { #step-1 }
+## Step 1: Create and Name a RubyGems Feed
 
 First we will create a RubyGems feed that will proxy packages from [RubyGems.org](https://rubygems.org/). You can read more on creating feeds by reading [Creating and Managing Feeds](/docs/proget/feeds/feed-overview#creating-and-managing-feeds)
 
@@ -38,7 +38,7 @@ Then select [Set Feed Features]. ProGet will create The `public-gems` feed and r
 
 ![](/resources/docs/proget-ruby-packagesfeed.png){height="" width="50%"}
 
-## Step 3: Adding the Feed to Your Local Ruby Environments { #step-3 }
+## Step 2: Add the Feed to Your Local Ruby Environments { #add-feed }
 
 To install packages from the `public-gems` feed, you will first need the feed's URL. This can be found on the top right of the feed page:
 
@@ -62,7 +62,7 @@ By default, RubyGems.org is configured as a source. We recommend removing this s
 $ gem sources --remove https://rubygems.org/
 ```
 
-## Step 4: (Optional) Confirming Connection to your RubyGems Feed
+## Step 3: (Optional) Confirm Connection to your RubyGems Feed
 
 You can confirm that your local Ruby environment is configured with your RubyGems feed by entering:
 
@@ -84,7 +84,7 @@ You can also list the packages in the source by entering:
 $ gem search --remote
 ```
 
-## (Optional) Authenticating to Your RubyGems Feed
+## (Optional) Authenticate to Your RubyGems Feed
 
 By default your `public-gems` feed will not require authentication and can be viewed anonymously. However, you may want to make your feed private and configure it to require authentication to access. One reason for doing this would be when using internal gems in a feed, either solely or in addition to using gems from RubyGems.org. 
 
@@ -96,7 +96,7 @@ When creating an API Key you will need to fill in the fields by selecting "Feeds
 
 Alternatively you can create a "Personal API Key", which lets users create/delete API keys that are tied to their username.
 
-Now, we'll add the feed to a local Ruby environment which will require the URL from [Step 3](#step-3), as well as your API key. Add the feed as a source by entering:
+Now, we'll add the feed to a local Ruby environment which will require the URL from ["Add the Feed to Your Local Ruby Environments"](#add-feed), as well as your API key. Add the feed as a source by entering:
 
 ```bash
 $ gem sources --add http://api:«api-key»@«feed-url
@@ -120,7 +120,7 @@ In this article, we talked about how to proxy packages from [RubyGems.org](https
 
 To set up a package approval flow, refer to [HOWTO: Approve and Promote Open-source Packages](/docs/proget/packages/package-promotion/proget-howto-promote-packages). This guide uses NuGet feeds as an example, but the steps are identical when creating RubyGem feeds.
 
-After creating your "Unapproved" and "Approved" feeds, follow the steps in [Step 3](#step-3) to add the "Approved" feed as a source in your local Ruby environments, entering:
+After creating your "Unapproved" and "Approved" feeds, follow the steps in ["Add the Feed to Your Local Ruby Environments"](#add-feed) to add the "Approved" feed as a source in your local Ruby environments, entering:
 
 ```bash
 $ gem sources --add «feed-url»
