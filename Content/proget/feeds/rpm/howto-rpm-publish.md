@@ -89,6 +89,16 @@ Your package will then be uploaded to the `internal-rpm` feed.
 
 ![](/resources/docs/proget-feed-internal-upload.png){height="" width="50%"}
 
+### ProGet 2023 and Earlier
+
+To push an RPM package via HTTP, issue a `PUT` or `POST` request with the package file as the content to: `http://«proget-url»/rpm/feed-name»/`
+
+For example, to upload the RPM package `mypackage-1.0.0.rpm` to the feed `internal-rpm` with the API key `abc12345`:
+
+```bash
+$ curl http://proget.corp.local/rpm/internal-rpm/ --user api:abc12345 --upload-file mypackage-1.0.0.rpm
+```
+
 ## Step 5: Add the Feed to Your Local RPM Environment
 
 To install packages from the `internal-rpm` feed, you'll need to add it as a source in the local RPM environment. For this, you will need feed's URL. This can be found at the top right of the feed's page.
