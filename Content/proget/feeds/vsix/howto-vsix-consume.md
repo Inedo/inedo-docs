@@ -11,21 +11,17 @@ This article will run through configuring ProGet to create a feed that acts as a
 
 ## Step 1: Creating and Naming a New Feed
 
-The first thing we need to do is create a "Visual Studio Extension" feed. We start by selecting "Feeds" and "Create New Feed".
+The first thing we need to do is create a "Visual Studio Extension" feed. We start by selecting "Feeds" and "Create New Feed". Next, select "Visual Studio Extensions" as we will be using Visual Studio Extension packages.
 
-![Create New Feed](/resources/docs/proget-feeds-createnewfeed.png){height="" width="50%"}
+![](/resources/docs/proget-newfeed-vsix.png){height="" width="50%"}
 
-Next, we need to select "Visual Studio Extensions" as we will be using Visual Studio Extension packages.
+From here, name the feed, which we will call `private-vsix` in this example.
 
-![Create Vsix Feed](/resources/docs/proget-newfeed-vsix.png){height="" width="50%"}
-
-From here, we name our feed, which we will call `private-vsix` in this example.
-
-![Name Feed](/resources/docs/proget-vsix-naming.png){height="" width="50%"}
+![](/resources/docs/proget-vsix-naming.png){height="" width="50%"}
 
 Finally, we select "Create Feed", which will create the feed, and redirect us to our `private-vsix` feed, which is currently empty and will be populated with packages later.
 
-![Feed Detail](/resources/docs/proget-vsix-empty.png){height="" width="50%"}
+![](/resources/docs/proget-vsix-empty.png){height="" width="50%"}
 
 ## Step 2: Set Permissions
 

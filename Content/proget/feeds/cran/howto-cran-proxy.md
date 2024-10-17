@@ -11,7 +11,7 @@ In this article, we'll explain how to create a ["Feed"](/docs/proget/feeds/feed-
 
 We’ll also discuss how to set up a private repository for using internal R packages, as well as how to establish a package approval process to manage which packages your team can utilize in production.
 
-## Step 1: Create and Name a CRAN Feed { #step-1 }
+## Step 1: Create and Name a CRAN Feed
 
 We'll start by creating a CRAN feed that will proxy packages from the [CRAN](https://cran.r-project.org/web/packages/available_packages_by_name.html) repository. You can read more on creating feeds by reading [Creating and Managing Feeds](/docs/proget/feeds/feed-overview#creating-and-managing-feeds)
 
@@ -27,15 +27,11 @@ Select "No, Create One Feed", as we will only need a single feed to proxy CRAN p
 
 ![](/resources/docs/proget-cran-publicfeed.png){height="" width="50%"}
 
-We are then presented with several options. More information on these can be found in the [Vulnerability Scanning and Blocking](/docs/proget/sca/vulnerabilities) documentation.
-
-![](/resources/docs/proget-cran-sca.png){height="" width="50%"}
-
-Then select [Set Feed Features]. ProGet will create The `public-cran` feed and redirect you to it. This feed will now be populated with packages proxied from the CRAN public repository.
+We are then presented with several options. More information on these can be found in the [Vulnerability Scanning and Blocking](/docs/proget/sca/vulnerabilities) documentation. Select [Set Feed Features]. ProGet will create The `public-cran` feed and redirect you to it. This feed will now be populated with packages proxied from the CRAN public repository.
 
 ![](/resources/docs/proget-cran-feed.png){height="" width="50%"}
 
-## Step 3: Adding the Feed to Your Local R Environments { #step-3 }
+## Step 2: Adding the Feed to Your Local R Environments { #add-feed }
 
 To install packages from the `public-cran` feed, you will first need the URL of the `public-cran` feed. This can be found on the top right of the feed page:
 
@@ -85,7 +81,7 @@ Or in the RStudio interface, you can also navigate to "Tools" > "Install Package
 
 ![](/resources/docs/rstudio-install-devtools.png){height="" width="50%"}
 
-## Step 4: (Optional) Confirming Connection to your CRAN Feed
+## Step 3: (Optional) Confirming Connection to your CRAN Feed
 
 You can confirm that your local R environment is configured with your CRAN feed by entering:
 
@@ -97,47 +93,7 @@ This should list all repositories connected. If your ProGet instance is at the t
 
 ## (Optional) Authenticating to Your CRAN Feed
 
-By default your `public-cran` feed will not require authentication and can be viewed anonymously. However, you may want to make your repository private and configure it to require authentication to access. One reason for doing this would be when using internal packages in a feed, either solely or in addition to using OSS packages. 
-
-First navigate "Settings"> "Manage Security" and select the "Tasks/Permissions" tab. Remove anonymous access by clicking the small "X" in the "Anonymous" entry. 
-
-![](/resources/docs/proget-permissions-remove.png){height="" width="50%"}
-
-Next, you will need to create an [API Key](/docs/proget/reference-api/proget-apikeys). 
-
-Navigate to "Administration Overview" > "API Keys & Access Logs" under "Security & Authentication"
-
-![](/resources/docs/proget-admin-apikeys.png){height="" width="50%"}
-
-Then select "Create API Key".
-
-![](/resources/docs/proget-apikey-new.png){height="" width="50%"}
-
-Fill in the fields by selecting "Feeds ("Use Certain Feeds)" as the "Feed Type" and selecting the `public-cran` feed. Then set the API key. You can specify any alphanumeric sequence for this, or leave it blank to autogenerate one.
-
-Make sure that the "View/Download" box is checked, and then select "Save".
-
-![](/resources/docs/proget-cran-apikey-2.png){height="" width="50%"}
-
-Now, we'll add the feed to a local R environment. For the two methods detailed in [Step 3](#step-3), you will also need to enter your API key, in addition to the URL.
-
-For example, authenticating to http://proget.corp.local/cran/public-cran/ using the API key `abc12345` you would enter:
-
-```r
-install.packages("devtools", repos="http://api:abc12345@proget.corp.local/cran/public-cran/")
-```
-
-or add it as your `public-cran` feed as a custom repository by entering:
-
-```r
-options(repos = c(ProGet = "http://api:abc12345@proget.corp.local/cran/public-cran/"))
-```
-
-Confirm that it was set by entering:
-
-```r
-getOption("repos")
-```
+By default your `public-cran` feed will not require authentication and can be viewed anonymously. However, you may want to make your repository private and [configure it to require authentication to access](/docs/proget/feeds/cran#authenticating-to-cran-feeds). One reason for doing this would be when using internal packages in a feed, either solely or in addition to using OSS packages. 
 
 ## (Optional) Creating a Package Approval Flow
 
@@ -145,7 +101,7 @@ In this article, we explored how to proxy packages from the [CRAN](https://cran.
 
 To set up a package approval flow, refer to [HOWTO: Approve and Promote Open-source Packages](/docs/proget/packages/package-promotion/proget-howto-promote-packages). This guide uses NuGet feeds as an example, but the steps are identical when creating CRAN feeds.
 
-After creating your "Unapproved" and "Approved" feeds, follow the steps in [Step 3](#step-3) to add the "Approved" feed as a custom repository in your local R environments, entering:
+After creating your "Unapproved" and "Approved" feeds, follow the steps in ["Adding the Feed to Your Local R Environments"](#add-feed) to add the "Approved" feed as a custom repository in your local R environments, entering:
 
 ```r
 options(repos = c(«repository-name» = "«feed-url»"))

@@ -55,7 +55,7 @@ Navigating back to your `centos9-packages` feed, it should now be populated with
 
 ![](/resources/docs/proget-rpm-feed-packages.png){height="" width="50%"}
 
-## Step 3: Add the Feed to Your Local RPM Environment
+## Step 3: Add the Feed to Your Local RPM Environment { #add-feed }
 
 For your team to install packages proxied to the `centos9-packages` feed, you'll need to add it as a source in their local environment. For this, you will need feed's URL. This can be found at the top right of the feed's page.
 
@@ -105,7 +105,7 @@ This guide covered how to proxy packages from the various RPM public repositorie
 
 To set up a package approval flow, refer to [HOWTO: Approve and Promote Open-source Packages](/docs/proget/packages/package-promotion/proget-howto-promote-packages). This guide uses NuGet feeds as an example, but the steps are identical when creating RPM package feeds.
 
-After creating your "Unapproved" and "Approved" feeds, follow the [earlier steps](#step-3-add-the-feed-to-your-local-rpm-environment) to add the "Approved" feed as a source in your local rpm environments, entering:
+After creating your "Unapproved" and "Approved" feeds, follow the steps in ["Add the Feed to Your Local RPM Environment"](#add-feed) to add the "Approved" feed as a source in your local rpm environments, entering:
 
 ```bash
 baseurl=http://«feed-url»
