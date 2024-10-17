@@ -1,11 +1,11 @@
 ---
-title: "HOWTO: Create and Upload CRAN Packages to a Private Repository in ProGet"
-order: 2
+title: "HOWTO: Create and Upload Nuget Packages to a Private Repository in ProGet"
+order: 6
 ---
 
-ProGet let's you set up private repositories for your internal R packages that will allow you to publish, store, and share them within your organization.
+ProGet let's you set up private repositories for your internal NuGet that will allow you to publish, store and share them within your organization.
 
-This guide will walk you through the process of setting up a CRAN ["Feed"](/docs/proget/feeds/feed-overview) in ProGet as a private, custom repository. We'll also cover how to build, upload, and install packages from this repository.
+This guide will walk you through the process of setting up a NuGet ["Feed"](/docs/proget/feeds/feed-overview) in ProGet as a private, custom repository. We'll also cover how to build, upload, and install packages from this repository.
 
 ## Step 1: Create and Name a CRAN Feed
 
