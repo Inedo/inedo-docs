@@ -19,7 +19,7 @@ Now name your feed. For this guide, we will call it `internal-rpm`. Then select 
 
 You will then be redirected to your new `internal-rpm` feed, currently empty.
 
-![Feed](/resources/docs/proget-rpm-internal-empty.png){height="" width="50%"}
+![](/resources/docs/proget-rpm-internal-empty.png){height="" width="50%"}
 
 ## Step 2: Create an API Key
 
@@ -87,7 +87,7 @@ $ pgutil packages upload --feed=internal-rpm --input-file=/home/user/rpmbuild/RP
 
 Your package will then be uploaded to the `internal-rpm` feed.
 
-![](/resources/docs/proget-feed-internal-upload.png){height="" width="50%"}
+![](/resources/docs/proget-rpm-internal-upload.png){height="" width="50%"}
 
 ### ProGet 2023 and Earlier
 
