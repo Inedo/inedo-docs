@@ -47,7 +47,7 @@ To install packages from the `public-nuget` feed, you will need the feed URL. Th
 Then add the feed as a source to your NuGet client by entering:
 
 ```bash
-$ nuget add source https://«proget-server»/nuget/public-nuget/v3/index.json --name ProGet
+$ nuget add source https://«proget-server»/nuget/public-nuget/v3/index.json --name public-nuget
 ```
 
 By default, NuGet clients are configured with nuget.org as a source. We recommend removing this to exclusively use your public-nuget feed as a source:
@@ -60,6 +60,14 @@ You can confirm that your have configured your sources correctly by entering:
 
 ```bash
 $ nuget sources list
+```
+
+## Step 3: Installing NuGet Packages
+
+Once you have created your `public-nuget` feed and configured it with NuGet CLI, you can install packages by entering:
+
+```bash
+$ nuget install «package-name» -Source public-nuget
 ```
 
 ## Step 3: (Optional) Authenticating to Your NuGet Feed
