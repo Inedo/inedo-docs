@@ -7,6 +7,12 @@ ProGet lets you easily set up private repositories for your [npm](https://www.np
 
 This article will show you how to create a ["Feed"](/docs/proget/feeds/feed-overview) in ProGet to act as a private npm package repository. We'll also look at how to create, publish, and install packages from this feed.
 
+:::(info)(Note: Scoped Packages)
+In this guide we create a package that is scoped to `@my-organization`. A scoped package in npm is a package that is grouped under a "namespace". Scoped packages are useful for organizing related packages, such as when public registries are added, and helps to reduce dependency confusion attacks.
+
+Scoped packages are prefixed with an `@`, followed by the namespace, e.g., `@my-organization/my-package`.
+:::
+
 ## Step 1: Create a New Feed
 
 First, we will create a feed to host your npm packages. Start by selecting "Feeds" and "Create New Feed". Next, select "npm Packages".
@@ -21,44 +27,29 @@ We are then presented with several options. This relate to ProGet's [Vulnerabili
 
 ![](){height="" width="50%"}
 
-## Step 2: Create an API Key { #step-2 }
+## Step 2: Build Your Package
 
-Now you'll need an [API Key](/docs/proget/reference-api/proget-apikeys) to allow your local client to authenticate to your `internal-npm` and publish packages to it, as well as install them once they are in the feed.
-
-Start by navigating to "Administration Overview" > "API Keys & Access Logs" under "Security & Authentication"
-
-![Admin Overview](/resources/docs/proget-admin-apikeys.png){height="" width="50%"}
-
-Then select "Create API Key"
-
-![Create Key](/resources/docs/proget-apikey-new.png){height="" width="50%"}
-
-Then fill in the fields by selecting "Feeds (Use Certain Feeds)" as the "Feed Type" and selecting the `internal-npm` feed. Then set the API key. You can specify any alphanumeric sequence for this, or leave it blank to autogenerate one. Check the "View/Download" and "Add/Repackage" boxes, and select "Save".
-
-![New Key](/resources/docs/proget-conda-apikey-2.png){height="" width="50%"}
-
-## Step 3: Build Your Package
-
-To create a package, navigate to the directory you wish to create it in and initialize a new `package.json` by running this command:
+To create a package, navigate to the directory you wish to create it in and initialize a new `package.json` scoped to the namespace `@my-organization` by running this command:
 
 ```bash
-$ npm init
+$ npm init --scope=@my-organization
 ```
+Note: if you do not want to scope your package, omit `--scope=@my-organization`.
 
 You will be asked for details of the project name, version, etc. After this you will need the URL of your `internal-npm` feed, which can be found on the feed page:
 
 ![](){height="" width="50%"}
 
-Once you have the URL, edit your package.json and add a `publishConfig` field, adding the internal-npm URL. It should look like this:
+Once you have the URL, edit your `package.json` and add a `publishConfig` field, adding the `internal-npm` URL. This will also scope the package to the namespace `@my-organization`: 
 
 ```json
 {
-  "name": "npm-hello-world",
+  "name": "@my-organization/npm-hello-world",
   "version": "1.0.0",
   "description": "Simple Hello World",
   "main": "index.js",
   "publishConfig": {
-    "registry": "https:/proget.corp.local/npm/internal-npm/"
+    "@my-organization:registry": "https:/proget.corp.local/npm/internal-npm/"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -71,31 +62,19 @@ Once you have the URL, edit your package.json and add a `publishConfig` field, a
 }
 ```
 
-### Scoping Your Packages
-
-If you have created scopes for your organization, you can add these to your package by editing the publishConfig field in the package.json. For example, if your package uses the scope `my-scope` you would add:
+If you do not want to add a scope to your package, you can edit the `name` and `publishConfig` fields as follows:
 
 ```json
+ "name": "npm-hello-world",
+...
   "publishConfig": {
-    "@my-scope:registry": "https:/proget.corp.local/npm/internal-npm/"
+    "registry": "https:/proget.corp.local/npm/internal-npm/"
   },
 ```
 
-## Step 5: Create an .npmrc file
+## Step 3: Authenticate to your npm Feed
 
-To authenticate to your internal-npm feed, your package will need an .npmrc file containing an `_auth` token. This will use your API Key, encoded into base64. To encode your API Key you can use this PowerShell script:
-
-```powershell
-[Convert]::ToBase64String([System.Text.Encoding]::UTF8.GetBytes("api:«api-key»")) 
-```
-
-Then create an .npmrc file in your project folder, and enter the following:
-
-```plaintext
-registry=https://«proget-url»/npm/internal-npm/
-always-auth=true
-//«proget-url»/npm/internal-npm/:_auth=YXBpOnByb2dldA==
-```
+Next you will need to authenticate to your `internal-npm` feed [by creating an `_auth` token](/docs/proget/feeds/npm#authenticating-to-npm-feeds). This is a username and password string `«username»:«password»` that's been base64-encoded. 
 
 ## Step 4: Publish Your Package to ProGet
 
@@ -109,9 +88,9 @@ Your package should then be uploaded to your `internal-npm` feed:
 
 ![](){height="" width="50%"}
 
-## Step 6: Add the Feed to Local npm Environments
+## Step 5: Add the Feed to npm Clients
 
-To install packages from the `internal-npm` feed, you'll need to add it as a source in their local environment by entering: 
+To install packages from the `internal-npm` feed, you'll need to add it as a source in your npm client by entering: 
 
 ```bash
 $ npm config set registry http://«proget-url»/npm/internal-npm
