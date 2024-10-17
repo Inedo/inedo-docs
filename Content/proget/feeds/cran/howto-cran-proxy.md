@@ -27,11 +27,7 @@ Select "No, Create One Feed", as we will only need a single feed to proxy CRAN p
 
 ![](/resources/docs/proget-cran-publicfeed.png){height="" width="50%"}
 
-We are then presented with several options. More information on these can be found in the [Vulnerability Scanning and Blocking](/docs/proget/sca/vulnerabilities) documentation.
-
-![](/resources/docs/proget-cran-sca.png){height="" width="50%"}
-
-Then select [Set Feed Features]. ProGet will create The `public-cran` feed and redirect you to it. This feed will now be populated with packages proxied from the CRAN public repository.
+We are then presented with several options. More information on these can be found in the [Vulnerability Scanning and Blocking](/docs/proget/sca/vulnerabilities) documentation. Select [Set Feed Features]. ProGet will create The `public-cran` feed and redirect you to it. This feed will now be populated with packages proxied from the CRAN public repository.
 
 ![](/resources/docs/proget-cran-feed.png){height="" width="50%"}
 

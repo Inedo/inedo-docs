@@ -29,19 +29,10 @@ You'll then see several options related to ProGet's [Vulnerability Scanning and 
 
 Next, we'll create an [API Key](/docs/proget/reference-api/proget-apikeys) allowing our local client to authenticate to our `internal-cran` feed. This allows us to upload and install packages from the feed.
 
-Start by navigating to "Administration Overview" > "API Keys & Access Logs" under "Security & Authentication"
-
-![](/resources/docs/proget-admin-apikeys.png){height="" width="50%"}
-
-Then select "Create API Key"
-
-![](/resources/docs/proget-apikey-new.png){height="" width="50%"}
-
-Next, fill in the fields by selecting "Feeds (Use Certain Feeds)" as the "Feed Type" and selecting the `internal-cran` feed. Then set the API key. You can use any alphanumeric sequence, or just leave it blank to autogenerate one.
+When creating the API key, fill in the fields by selecting "Feeds (Use Certain Feeds)" as the "Feed Type" and selecting the `internal-cran` feed. Then set the API key. You can use any alphanumeric sequence, or just leave it blank to autogenerate one. Make sure the "View/Download" and "Add/Repackage" boxes are checked, and then select "Save".
 
 ![](/resources/docs/proget-cran-apikey-1.png){height="" width="50%"}
 
-Make sure the "View/Download" and "Add/Repackage" boxes are checked, and then select "Save".
 
 ## Step 3: Build Your R Package
 
