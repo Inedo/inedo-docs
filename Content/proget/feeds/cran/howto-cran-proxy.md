@@ -97,47 +97,7 @@ This should list all repositories connected. If your ProGet instance is at the t
 
 ## (Optional) Authenticating to Your CRAN Feed
 
-By default your `public-cran` feed will not require authentication and can be viewed anonymously. However, you may want to make your repository private and configure it to require authentication to access. One reason for doing this would be when using internal packages in a feed, either solely or in addition to using OSS packages. 
-
-First navigate "Settings"> "Manage Security" and select the "Tasks/Permissions" tab. Remove anonymous access by clicking the small "X" in the "Anonymous" entry. 
-
-![](/resources/docs/proget-permissions-remove.png){height="" width="50%"}
-
-Next, you will need to create an [API Key](/docs/proget/reference-api/proget-apikeys). 
-
-Navigate to "Administration Overview" > "API Keys & Access Logs" under "Security & Authentication"
-
-![](/resources/docs/proget-admin-apikeys.png){height="" width="50%"}
-
-Then select "Create API Key".
-
-![](/resources/docs/proget-apikey-new.png){height="" width="50%"}
-
-Fill in the fields by selecting "Feeds ("Use Certain Feeds)" as the "Feed Type" and selecting the `public-cran` feed. Then set the API key. You can specify any alphanumeric sequence for this, or leave it blank to autogenerate one.
-
-Make sure that the "View/Download" box is checked, and then select "Save".
-
-![](/resources/docs/proget-cran-apikey-2.png){height="" width="50%"}
-
-Now, we'll add the feed to a local R environment. For this you will need to enter your API key, in addition to the URL.
-
-For example, authenticating to http://proget.corp.local/cran/public-cran/ using the API key `abc12345` you would enter:
-
-```r
-install.packages("devtools", repos="http://api:abc12345@proget.corp.local/cran/public-cran/")
-```
-
-or add it as your `public-cran` feed as a custom repository by entering:
-
-```r
-options(repos = c(ProGet = "http://api:abc12345@proget.corp.local/cran/public-cran/"))
-```
-
-Confirm that it was set by entering:
-
-```r
-getOption("repos")
-```
+By default your `public-cran` feed will not require authentication and can be viewed anonymously. However, you may want to make your repository private and [configure it to require authentication to access](/docs/proget/feeds/cran#authenticating-to-cran-feeds). One reason for doing this would be when using internal packages in a feed, either solely or in addition to using OSS packages. 
 
 ## (Optional) Creating a Package Approval Flow
 

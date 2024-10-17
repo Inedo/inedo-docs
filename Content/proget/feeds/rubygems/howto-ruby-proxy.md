@@ -86,33 +86,7 @@ $ gem search --remote
 
 ## (Optional) Authenticate to Your RubyGems Feed
 
-By default your `public-gems` feed will not require authentication and can be viewed anonymously. However, you may want to make your feed private and configure it to require authentication to access. One reason for doing this would be when using internal gems in a feed, either solely or in addition to using gems from RubyGems.org. 
-
-You can read more about creating API keys in ProGet on our [API Key](/docs/proget/reference-api/proget-apikeys) page. 
-
-When creating an API Key you will need to fill in the fields by selecting "Feeds ("Use Certain Feeds)" as the "Feed Type" and selecting the `public-gems` feed, and make sure that the "View/Download" box is checked, and then select "Save".
-
-![](/resources/docs/proget-ruby-public-api.png){height="" width="50%"}
-
-Alternatively you can create a "Personal API Key", which lets users create/delete API keys that are tied to their username.
-
-Now, we'll add the feed to a local Ruby environment which will require the URL from ["Add the Feed to Your Local Ruby Environments"](#add-feed), as well as your API key. Add the feed as a source by entering:
-
-```bash
-$ gem sources --add http://api:«api-key»@«feed-url
-```
-
-For example, authenticating to `http://proget.corp.local/rubygems/public-gems/` using the API key `abc12345` you would enter:
-
-```bash
-$ gem sources --add http://api:abc12345@proget.corp.local/rubygems/public-gems/
-```
-
-Confirm that it was set by entering:
-
-```bash
-$ gem sources list 
-```
+By default your `public-gems` feed will not require authentication and can be viewed anonymously. However, you may want to make your feed private and [configure it to require authentication to access](/docs/proget/feeds/rubygems#authenticating-to-a-ruby-gems-feed). One reason for doing this would be when using internal gems in a feed, either solely or in addition to using gems from RubyGems.org. 
 
 ## (Optional) Creating a Package Approval Flow
 

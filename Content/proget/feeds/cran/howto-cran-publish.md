@@ -157,8 +157,6 @@ Or, in RStudio, by navigating to "Tools" > "Install Packages..." and enter the p
 
 ![](/resources/docs/rstudio-install-internal.png){height="" width="50%"}
 
-## Step 6: (Optional) Confirming Connection to your CRAN Feed
-
 You can confirm that your local R environment is configured with your CRAN feed by entering:
 
 ```r
@@ -166,41 +164,3 @@ getOption("repos")
 ```
 
 This should list all repositories connected. If your ProGet instance is at the top, this indicates that it is set as the primary repository source for packages.
-
-## Step 7: (Optional) Authenticating to Your CRAN Feed
-
-Anonymous access to view and download from your `internal-cran` feed is enabled by default, but if you need it to require authentication (e.g. if your ProGet instance is public) you can remove anonymous access and create an API key to authenticate to the feed.
-
-Navigate "Settings"> "Manage Security" and select the "Tasks/Permissions" tab. Remove anonymous access by clicking the small "X" in the "Anonymous" entry. 
-
-![](/resources/docs/proget-permissions-remove.png){height="" width="50%"}
-
-Then create an API key as explained in ["Create an API Key](#api-key), but this time make sure the "View/Download" box is checked, and then select "Save".
-
-Now, add the `internal-cran` feed to your R environment as we did in ["Add the Feed to Local R Environments"](#add-feed) but this time take the API key you just created in addition to the the `internal-cran` feed URL and enter:
-
-```r
-install.packages("«package-name»", repos="http://api:«api-key»@«feed-url»")
-```
-
-For example, to install the package `devtools` from `http://proget.corp.local/cran/internal-cran/`, authenticating with `abc12345` you would enter:
-
-```r
-install.packages("devtools", repos="http://api:abc12345@proget.corp.local/cran/internal-cran/")
-```
-
-Or set your `internal-cran` as a custom repository by entering:
-
-```r
-options(repos = c(«repository-name» = "http://api:«api-key»@«feed-url»"))
-```
-
-For example, to create a custom repository with the name ProGet that points to `http://proget.corp.local/cran/internal-cran/` authenticating with `abc12345`, you would enter: 
-
-```r
-options(repos = c(ProGet = "http://api:abc12345@proget.corp.local/cran/internal-cran/"))
-```
-
-You can also configure this in RStudio by navigating to "Tools" > "Global Options" > "Packages" and selecting "Change" and then entering the feed URL in the "Custom" field.
-
-![](/resources/docs/rstudio-customrepo-internal-apikey.png){height="" width="50%"}
