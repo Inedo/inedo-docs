@@ -29,7 +29,7 @@ Then select "No, Create One Feed", as we will be creating a single feed to proxy
 
 ![Name Feed](/resources/docs/proget-conda-onefeed-name.png){height="" width="50%"}
 
-We are then presented with several options. More information on these can be found in the [Vulnerability Scanning and Blocking](/docs/proget/sca/vulnerabilities) documentation Finally, we select [Set Feed Features], which will create the feed, and redirect us to our `public-conda` feed, now populated with packages proxied from the public OSS Conda repository.
+We are then presented with several options. More information on these can be found in the [Vulnerability Scanning and Blocking](/docs/proget/sca/vulnerabilities) documentation Finally, we select "Set Feed Features", which will create the feed, and redirect us to our `public-conda` feed, now populated with packages proxied from the public OSS Conda repository.
 
 ![Feed](/resources/docs/proget-conda-publicfeed.png){height="" width="50%"}
 
