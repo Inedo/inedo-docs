@@ -57,7 +57,7 @@ Then run the following to create the package:
 $ dotnet pack --configuration Release 
 ```
 
-### Step 4: Adding the Feed to NuGet CLI { #add-feed }
+## Step 3: Adding the Feed to NuGet CLI { #add-feed }
 
 To add your `internal-nuget` feed to NuGet CLI, you will need the feed URL. This is found on the top right of the feed page:
 
@@ -69,11 +69,11 @@ Then add the feed as a source to your NuGet client by entering:
 $ nuget add source https://«proget-server»/nuget/public-nuget/v3/index.json --name internal-nuget
 ```
 
-### Step 5: Setting Up Authentication to Your NuGet Feed.
+## Step 4: Setting Up Authentication to Your NuGet Feed.
 
 To push packages to a feed you will need to configure authentication using a "NuGet API Key". To authenticate you can either create an API Key in ProGet or use `«username:password»` as one. To learn how to do either, see [Authenticating to a NuGet Feed](/docs/proget/feeds/nuget/#authenticating-to-a-nuget-feed).
 
-## Step 6: Pushing Your Package to Your NuGet Feed
+## Step 5: Pushing Your Package to Your NuGet Feed
 
 To push your NuGet package to your `internal-nuget` feed, enter:
 

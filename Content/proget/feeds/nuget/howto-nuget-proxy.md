@@ -70,7 +70,7 @@ Once you have created your `public-nuget` feed and configured it with NuGet CLI,
 $ nuget install «package-name» -Source public-nuget
 ```
 
-## Step 3: (Optional) Authenticating to Your NuGet Feed
+## Step 4: (Optional) Authenticating to Your NuGet Feed
 
 By default your `public-nuget` feed does not need to be authenticated to, and can be viewed anonymously. However, you may want to make your repository private and [configure it to require authentication to access](/docs/proget/feeds/nuget#authenticating-to-nuget-feeds). You may need to do this when pushing internal NuGet packages to your feed, to consume either solely or in combination with OSS packages. 
 
