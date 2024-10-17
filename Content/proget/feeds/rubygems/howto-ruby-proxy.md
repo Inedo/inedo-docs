@@ -30,7 +30,7 @@ Select "No, Create One Feed", as we will only need a single feed to proxy gems. 
 
 ![](/resources/docs/proget-ruby-onefeed.png){height="" width="50%"}
 
-We are then presented with several options. More information on these can be found in the [Vulnerability Scanning and Blocking](/docs/proget/sca/vulnerabilities) documentation. Select [Set Feed Features]. ProGet will create The `public-gems` feed and redirect you to it. This feed will now be populated with packages proxied from RubyGems.org
+We are then presented with several options. More information on these can be found in the [Vulnerability Scanning and Blocking](/docs/proget/sca/vulnerabilities) documentation. Select "Set Feed Features". ProGet will create The `public-gems` feed and redirect you to it. This feed will now be populated with packages proxied from RubyGems.org
 
 ![](/resources/docs/proget-ruby-packagesfeed.png){height="" width="50%"}
 

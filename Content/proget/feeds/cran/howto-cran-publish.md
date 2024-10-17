@@ -21,7 +21,7 @@ From here, we name our feed. For this example, we will call it `internal-cran`, 
 
 ![](/resources/docs/proget-cran-internalfeed.png){height="" width="50%"}
 
-You'll then see several options related to ProGet's [Vulnerability Scanning and Blocking](/docs/proget/sca/vulnerabilities) features. These are only for users looking to use third-party OSS packages. Leave these boxes unchecked, and select [Set Feed Features]. You will then be directed to the new `internal-cran` feed, currently empty.
+You'll then see several options related to ProGet's [Vulnerability Scanning and Blocking](/docs/proget/sca/vulnerabilities) features. These are only for users looking to use third-party OSS packages. Leave these boxes unchecked, and select "Set Feed Features". You will then be directed to the new `internal-cran` feed, currently empty.
 
 ![](/resources/docs/proget-cran-feed-empty.png){height="" width="50%"}
 

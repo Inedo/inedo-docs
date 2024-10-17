@@ -19,7 +19,7 @@ Now name your feed. For this guide, we will call it `internal-rpm`. Then select 
 
 You will then be redirected to your new `internal-rpm` feed, currently empty.
 
-![Feed](/resources/docs/proget-rpm-internal-empty.png){height="" width="50%"}
+![](/resources/docs/proget-rpm-internal-empty.png){height="" width="50%"}
 
 ## Step 2: Create an API Key
 
@@ -87,7 +87,7 @@ $ pgutil packages upload --feed=internal-rpm --input-file=/home/user/rpmbuild/RP
 
 Your package will then be uploaded to the `internal-rpm` feed.
 
-![](/resources/docs/proget-feed-internal-upload.png){height="" width="50%"}
+![](/resources/docs/proget-rpm-internal-upload.png){height="" width="50%"}
 
 ### ProGet 2023 and Earlier
 
@@ -103,7 +103,7 @@ $ curl http://proget.corp.local/rpm/internal-rpm/ --user api:abc12345 --upload-f
 
 To install packages from the `internal-rpm` feed, you'll need to add it as a source in the local RPM environment. For this, you will need feed's URL. This can be found at the top right of the feed's page.
 
-![](/resources/docs/proget-feed-internal-url.png){height="" width="50%"}
+![](/resources/docs/proget-rpm-internal-url.png){height="" width="50%"}
 
 To add the feed, you'll need to create a `.repo` file locally. Create the file by entering:
 
