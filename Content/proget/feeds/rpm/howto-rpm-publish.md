@@ -103,7 +103,7 @@ $ curl http://proget.corp.local/rpm/internal-rpm/ --user api:abc12345 --upload-f
 
 To install packages from the `internal-rpm` feed, you'll need to add it as a source in the local RPM environment. For this, you will need feed's URL. This can be found at the top right of the feed's page.
 
-![](/resources/docs/proget-feed-internal-url.png){height="" width="50%"}
+![](/resources/docs/proget-rpm-internal-url.png){height="" width="50%"}
 
 To add the feed, you'll need to create a `.repo` file locally. Create the file by entering:
 
