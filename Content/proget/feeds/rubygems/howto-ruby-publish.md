@@ -21,21 +21,19 @@ From here, we name our feed. For this example, we will call it `internal-gems`, 
 
 ![](/resources/docs/proget-ruby-internalfeed.png){height="" width="50%"}
 
-You'll then see several options related to ProGet's [Vulnerability Scanning and Blocking](/docs/proget/sca/vulnerabilities) features. These are only for users looking to use open source gems like those hosted on [RubyGems.org](https://rubygems.org). Leave these boxes unchecked, and select [Set Feed Features]. You will then be directed to the new `internal-gems` feed, currently empty.
+You'll then see several options related to ProGet's [Vulnerability Scanning and Blocking](/docs/proget/sca/vulnerabilities) features. These are only for users looking to use open source gems like those hosted on [RubyGems.org](https://rubygems.org). Leave these boxes unchecked, and select "Set Feed Features". You will then be directed to the new `internal-gems` feed, currently empty.
 
 ![](/resources/docs/proget-ruby-emptyfeed.png){height="" width="50%"}
 
-## Step 2: Create an API Key { #step-2 }
+## Step 2: Create an API Key { #api-key }
 
 Next, we'll create an [API Key](/docs/proget/reference-api/proget-apikeys) allowing our local environment to authenticate to our `internal-gems` feed. This allows us to push and install packages from the feed.
 
 You can read more about creating API keys in ProGet on our [API Key](/docs/proget/reference-api/proget-apikeys) page. 
 
-When creating an API Key, fill in the fields by selecting "Feeds (Use Certain Feeds)" as the "Feed Type" and selecting the `internal-gems` feed. Then set the API key. You can use any alphanumeric sequence, or just leave it blank to autogenerate one.
+When creating an API Key, fill in the fields by selecting "Feeds (Use Certain Feeds)" as the "Feed Type" and selecting the `internal-gems` feed. Then set the API key. You can use any alphanumeric sequence, or just leave it blank to autogenerate one. Make sure the "View/Download" and "Add/Repackage" boxes are checked, and then select "Save".
 
 ![](/resources/docs/proget-ruby-internal-api.png){height="" width="50%"}
-
-Make sure the "View/Download" and "Add/Repackage" boxes are checked, and then select "Save".
 
 ## Step 3: Build Your RubyGem
 
@@ -61,7 +59,7 @@ $ gem build my_gem.gemspec
 
 Your `.gem` RubyGem is then built, and saved inside your project folder. 
 
-### Step 4: Push Your RubyGem to ProGet { #step-4 }
+### Step 4: Push Your RubyGem to ProGet
 
 To push your RubyGem to your `internal-gems` feed, you will need your feed URL. This can be located in the top right of the feed's page:
 
@@ -92,7 +90,7 @@ And the gem should be pushed to your `internal-gems` feed:
 
 ![](/resources/docs/proget-ruby-uploadgem.png){height="" width="50%"}
 
-## Step 5: Adding the Feed to Your Local Ruby Environments { #step-5 }
+## Step 5: Adding the Feed to Your Local Ruby Environments { #add-feed }
 
 To install packages from the `internal-gems` feed, take the URL from [Step 4](#step-4), and add it as a source by entering:
 
@@ -132,26 +130,4 @@ You can also list the packages in the source by entering:
 
 ```bash
 $ gem search --remote
-```
-
-## (Optional) Configure Authentication to Feeds When Installing RubyGems
-
-By default your `internal-gems` feed will not require authentication and can be viewed anonymously. However, you may want to make your feed private and configure it to require authentication to access, for example, if your ProGet instance is public. To do this you can remove anonymous access and create an API key to authenticate to the feed.
-
-Navigate "Settings"> "Manage Security" and select the "Tasks/Permissions" tab. Remove anonymous access by clicking the small "X" in the "Anonymous" entry. 
-
-![](/resources/docs/proget-permissions-remove.png){height="" width="50%"}
-
-Then create an API key as explained in [Step 2](#step-2), but this time make sure the "View/Download" box is checked, and then select "Save".
-
-Now, add the `internal-gems` feed to your either your Ruby environment or `Gemfile` as we did in [Step 5](#step-5) but this time take the API key you just created in addition to the the `internal-cran` feed URL and enter:
-
-```bash
-$ gem sources --add http://api:«api-key»@«feed-url
-```
-
-For example, authenticating to `http://proget.corp.local/rubygems/internal-gems/` using the API key `abc12345` you would enter:
-
-```bash
-$ gem sources --add http://api:abc12345@proget.corp.local/rubygems/internal-gems/
 ```

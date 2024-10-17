@@ -11,9 +11,15 @@ BuildMaster doesn't have any intense server requirements, and supports all moder
 
 The recommended Windows server requirements are:
 
-* Minimum - 2 Core CPU, 2 GB RAM, 1 GB for storage
-* Recommended Average/Typical - 2 Core CPU, 4 GB RAM, 10 GB storage
-* Recommended Large - 4 Core CPU, 8 GB RAM, 16 GB Storage
+* Minimum - 2 Core CPU, 4 GB RAM
+* Recommended Average/Typical - 2 Core CPU, 8 GB RAM
+* Recommended Large - 4 Core CPU, 16 GB RAM
+
+BuildMaster itself does not require much disk space (less than 1GB); however, two major factors will impact how much space you'll need:
+* the build artifacts you store in BuildMaster 
+* the size of the Git repositories you've sync'd to BuildMaster
+
+We recommend reserving at least 10GB to store this content at first and be prepared to expand it.
 
 There are three supported options; there is also [Legacy (Traditional) Installer](/docs/installation/windows/installation-legacy-traditional-installer) available for BuildMaster v6.2 and earlier.
 

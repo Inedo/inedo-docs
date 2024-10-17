@@ -9,11 +9,7 @@ This guide will show you how to set up a ["Feed"](/docs/proget/feeds/feed-overvi
 
 ## Step 1: Create a New Feed
 
-First, we will create a Conda feed to host your Conda packages. Start by selecting "Feeds" and "Create New Feed".
-
-![New Feed](/resources/docs/proget-feeds-createnewfeed.png){height="" width="50%"}
-
-Next, select "Conda Packages".
+First, we will create a Conda feed to host your Conda packages. Start by selecting "Feeds" and "Create New Feed". Next, select "Conda Packages".
 
 ![Select Conda](/resources/docs/proget-conda-newfeed.png){height="" width="50%"}
 
@@ -25,31 +21,17 @@ From here, we name our feed. For this example, we will call it `internal-conda`,
 
 ![Name Feed](/resources/docs/proget-conda-newfeed-internal.png){height="" width="50%"}
 
-We are then presented with several options. This relate to ProGet's [Vulnerability Scanning and Blocking](/docs/proget/sca/vulnerabilities) features, however they are only for users looking to use third party packages. Leave these boxes unchecked, and select [Set Feed Features].
-
-![SCA Features](/resources/docs/proget-conda-internal-sca.png){height="" width="50%"}
-
-You will then be redirected to your new `internal-conda` feed, currently empty.
+We are then presented with several options. This relate to ProGet's [Vulnerability Scanning and Blocking](/docs/proget/sca/vulnerabilities) features, however they are only for users looking to use third party packages. Leave these boxes unchecked, and select "Set Feed Features". You will then be redirected to your new `internal-conda` feed, currently empty.
 
 ![Feed](/resources/docs/proget-conda-internal-emptyfeed.png){height="" width="50%"}
 
-## Step 2: Create an API Key { #step-2 }
+## Step 2: Create an API Key
 
 We will now create an [API Key](/docs/proget/reference-api/proget-apikeys) allowing our local client to authenticate to our `internal-conda` feed. This allows us to publish packages to the feed, as well as consume them once published.
 
-Start by navigating to "Administration Overview" > "API Keys & Access Logs" under "Security & Authentication"
-
-![Admin Overview](/resources/docs/proget-admin-apikeys.png){height="" width="50%"}
-
-Then select "Create API Key"
-
-![Create Key](/resources/docs/proget-apikey-new.png){height="" width="50%"}
-
-Then fill in the fields by selecting "Feeds (Use Certain Feeds)" as the "Feed Type" and selecting the `internal-conda` feed. Then set the API key. You can specify any alphanumeric sequence for this, or leave it blank to autogenerate one.
+When creating an API Key, fill in the fields by selecting "Feeds (Use Certain Feeds)" as the "Feed Type" and selecting the `internal-conda` feed. Then set the API key. You can use any alphanumeric sequence, or just leave it blank to autogenerate one. Ensure that the "View/Download" and "Add/Repackage" boxes are checked, and then select "Save".
 
 ![New Key](/resources/docs/proget-conda-apikey-2.png){height="" width="50%"}
-
-Ensure that the "View/Download" and "Add/Repackage" boxes are checked, and then select "Save".
 
 ## Step 3: Build Your Package
 
@@ -100,7 +82,7 @@ Your package will then be uploaded to the `internal-conda` feed.
 ![Feed](/resources/docs/proget-conda-internal-package.png){height="" width="50%"}
 
 
-## Step 5: Add the Feed to Local Conda Environments { #step-5 }
+## Step 5: Add the Feed to Local Conda Environments
 
 To consume the Conda packages you have published to your `internal-conda` feed, you'll need to add it to your local Conda environments. For this, you will need the feed's URL. This can be found at the top right of the feed's page.
 
@@ -122,18 +104,4 @@ You can confirm that it was registered by entering:
 
 ```bash
 $ conda config --show channels
-```
-
-## Step 6: (Optional) Confirm Connection to your Conda Feed
-
-You can confirm that your local Conda environment can connect with your `internal-conda` feed by listing Conda packages. This is done by entering:
-
-```bash
-$ conda search -c «feed-url»
-```
-
-Or by filtering by package name:
-
-```bash
-$ conda search -c «feed-url» «package-name»
 ```

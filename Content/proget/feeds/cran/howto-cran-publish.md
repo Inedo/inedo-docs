@@ -21,27 +21,18 @@ From here, we name our feed. For this example, we will call it `internal-cran`, 
 
 ![](/resources/docs/proget-cran-internalfeed.png){height="" width="50%"}
 
-You'll then see several options related to ProGet's [Vulnerability Scanning and Blocking](/docs/proget/sca/vulnerabilities) features. These are only for users looking to use third-party OSS packages. Leave these boxes unchecked, and select [Set Feed Features]. You will then be directed to the new `internal-cran` feed, currently empty.
+You'll then see several options related to ProGet's [Vulnerability Scanning and Blocking](/docs/proget/sca/vulnerabilities) features. These are only for users looking to use third-party OSS packages. Leave these boxes unchecked, and select "Set Feed Features". You will then be directed to the new `internal-cran` feed, currently empty.
 
 ![](/resources/docs/proget-cran-feed-empty.png){height="" width="50%"}
 
-## Step 2: Create an API Key { #step-2 }
+## Step 2: Create an API Key { #api-key }
 
 Next, we'll create an [API Key](/docs/proget/reference-api/proget-apikeys) allowing our local client to authenticate to our `internal-cran` feed. This allows us to upload and install packages from the feed.
 
-Start by navigating to "Administration Overview" > "API Keys & Access Logs" under "Security & Authentication"
-
-![](/resources/docs/proget-admin-apikeys.png){height="" width="50%"}
-
-Then select "Create API Key"
-
-![](/resources/docs/proget-apikey-new.png){height="" width="50%"}
-
-Next, fill in the fields by selecting "Feeds (Use Certain Feeds)" as the "Feed Type" and selecting the `internal-cran` feed. Then set the API key. You can use any alphanumeric sequence, or just leave it blank to autogenerate one.
+When creating the API key, fill in the fields by selecting "Feeds (Use Certain Feeds)" as the "Feed Type" and selecting the `internal-cran` feed. Then set the API key. You can use any alphanumeric sequence, or just leave it blank to autogenerate one. Make sure the "View/Download" and "Add/Repackage" boxes are checked, and then select "Save".
 
 ![](/resources/docs/proget-cran-apikey-1.png){height="" width="50%"}
 
-Make sure the "View/Download" and "Add/Repackage" boxes are checked, and then select "Save".
 
 ## Step 3: Build Your R Package
 
@@ -107,13 +98,13 @@ Your package will then be uploaded to the `internal-cran` feed.
 ![](/resources/docs/proget-cran-internal-package.png){height="" width="50%"}
 
 
-## Step 5: Add the Feed to Local R Environments { #step-5 }
+## Step 5: Add the Feed to Local R Environments { #add-feed }
 
 To install R packages you have published to your `internal-cran` feed, you'll need to add the feed to your local R environments. For this, you will need the feed's URL. This is found at the top right of the feed's page.
 
 ![](/resources/docs/proget-cran-internal-url.png){height="" width="50%"}
 
-Then, any time you want to install a package, take the `internal-cran` feed URL and the API key you created in [Step 2](#step-2), and in enter:
+Then, any time you want to install a package, take the `internal-cran` feed URL and the API key you created in ["Create an API Key"](#api-key), and in enter:
 
 ```r
 install.packages("«package-name»", repos="«feed-url»")
@@ -157,8 +148,6 @@ Or, in RStudio, by navigating to "Tools" > "Install Packages..." and enter the p
 
 ![](/resources/docs/rstudio-install-internal.png){height="" width="50%"}
 
-## Step 6: (Optional) Confirming Connection to your CRAN Feed
-
 You can confirm that your local R environment is configured with your CRAN feed by entering:
 
 ```r
@@ -166,41 +155,3 @@ getOption("repos")
 ```
 
 This should list all repositories connected. If your ProGet instance is at the top, this indicates that it is set as the primary repository source for packages.
-
-## Step 7: (Optional) Authenticating to Your CRAN Feed
-
-Anonymous access to view and download from your `internal-cran` feed is enabled by default, but if you need it to require authentication (e.g. if your ProGet instance is public) you can remove anonymous access and create an API key to authenticate to the feed.
-
-Navigate "Settings"> "Manage Security" and select the "Tasks/Permissions" tab. Remove anonymous access by clicking the small "X" in the "Anonymous" entry. 
-
-![](/resources/docs/proget-permissions-remove.png){height="" width="50%"}
-
-Then create an API key as explained in [Step 2](#step-2), but this time make sure the "View/Download" box is checked, and then select "Save".
-
-Now, add the `internal-cran` feed to your R environment as we did in [Step 5](#step-5) but this time take the API key you just created in addition to the the `internal-cran` feed URL and enter:
-
-```r
-install.packages("«package-name»", repos="http://api:«api-key»@«feed-url»")
-```
-
-For example, to install the package `devtools` from `http://proget.corp.local/cran/internal-cran/`, authenticating with `abc12345` you would enter:
-
-```r
-install.packages("devtools", repos="http://api:abc12345@proget.corp.local/cran/internal-cran/")
-```
-
-Or set your `internal-cran` as a custom repository by entering:
-
-```r
-options(repos = c(«repository-name» = "http://api:«api-key»@«feed-url»"))
-```
-
-For example, to create a custom repository with the name ProGet that points to `http://proget.corp.local/cran/internal-cran/` authenticating with `abc12345`, you would enter: 
-
-```r
-options(repos = c(ProGet = "http://api:abc12345@proget.corp.local/cran/internal-cran/"))
-```
-
-You can also configure this in RStudio by navigating to "Tools" > "Global Options" > "Packages" and selecting "Change" and then entering the feed URL in the "Custom" field.
-
-![](/resources/docs/rstudio-customrepo-internal-apikey.png){height="" width="50%"}
