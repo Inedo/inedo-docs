@@ -15,25 +15,25 @@ First, we will create an npm feed that will proxy packages from the [www.npmjs.c
 
 Start by selecting "Feeds" and "Create New Feed". Next, select "npm Packages", as we will be creating feeds to proxy and host npm packages.
 
-![](){height="" width="50%"}
+![](/resources/docs/proget-npm-createfeed.png){height="" width="50%"}
 
 Now select "Connect to npmJS.org" which will allow us to proxy packages from the npm Registry.
 
-![](){height="" width="50%"}
+![](/resources/docs/proget-npm-connectors.png){height="" width="50%"}
 
 Then select "No, Create One Feed", as we will be creating a single feed to proxy npm packages. From here, name the feed (we will call it `public-npm` for this guide). Then click "Create Feed".
 
-![](){height="" width="50%"}
+![](/resources/docs/proget-npm-public-name.png){height="" width="50%"}
 
 We are then presented with several options. Keeping these checked will allow your feed to use ProGet's [Vulnerability Scanning and Blocking](/docs/proget/sca/vulnerabilities) amd [Licensing Detection and Blocking](https://docs.inedo.com/docs/proget/sca/licenses) features. This will allow you to [use `npm audit` to scan packages](#scan-feed) for vulnerabilities. Select "Set Feed Features", which will create the feed, and redirect you to the newly created `public-npm` feed, now populated with packages proxied from the npm Registry.
 
-![](){height="" width="50%"}
+![](/resources/docs/proget-npm-public.png){height="" width="50%"}
 
 ## Step 3: Add the Feed to npm Clients { #add-feed }
 
 For your team to install packages from the `public-npm` feed, you'll need to add it as a source in their npm clients. For this, you will need feed's URL. This can be found at the top right of the feed's page.
 
-![](){height="" width="50%"}
+![](/resources/docs/proget-npm-public-url.png){height="" width="50%"}
 
 Now configure your npm client with your `public-npm` feed by entering: 
 
@@ -49,17 +49,19 @@ $ npm get registry
 
 ## (Optional) Authenticating to Your npm Feed
 
-By default your `public-npm` feed does not require authentication and can be viewed anonymously. However, you may want to make your feed private and require authentication] to access [by creating an `_auth` token](/docs/proget/feeds/npm#authenticating-to-npm-feeds). This is a username and password string `«username»:«password»` that's been base64-encoded. 
+By default your `public-npm` feed does not require authentication and can be viewed anonymously. However, you may want to make your feed private and require authentication to access. Authentication is done by creating an `_auth` token and then [configuring it in your npm client](/docs/proget/feeds/npm#authenticating-to-npm-feeds).
 
 ## (Optional) Auditing npm Packages { #scan-feed }
 
-If you enabled "Scan for Security Vulnerabilties" when you [created a feed](#create-feed) you can use npm-audit to scan for vulnerabilities in packages by simply running:
+If you enabled "Scan for Security Vulnerabilities" when you [created a feed](#create-feed) you can use npm-audit to scan for vulnerabilities in packages by simply running:
 
 ```bash
 $ npm audit
 ```
 
-You can also use ProGet's [Policies & Compliance Rules](https://docs.inedo.com/docs/proget/sca/policies) to define rules about licensing, vulnerability, deprecation, etc. This will let you block download or usage of any packages you have defined as "noncompliant".
+Using `npm audit` with [Vulnerability Scanning and Blocking](/docs/proget/sca/vulnerabilities), lets you assess vulnerabilities in packages, and how they impact your organization.
+
+You can also set up [Policies & Compliance Rules](https://docs.inedo.com/docs/proget/sca/policies) to create rules for vulnerabilities, licenses, deprecated packages, etc. Setting these up lets you block any packages that are considered "noncompliant".
 
 ## (Optional) Creating a Package Approval Flow
 

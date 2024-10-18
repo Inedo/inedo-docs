@@ -17,15 +17,15 @@ Scoped packages are prefixed with an `@`, followed by the namespace, e.g., `@my-
 
 First, we will create a feed to host your npm packages. Start by selecting "Feeds" and "Create New Feed". Next, select "npm Packages".
 
-![](){height="" width="50%"}
+![](/resources/docs/proget-npm-createfeed.png){height="" width="50%"}
 
 Then select "No Connectors (Private packages only)" as we will be creating a private feed. From here, we will give our feed a name. For this article, we will call it `internal-npm`, and then click "Create Feed".
 
-![](){height="" width="50%"}
+![](/resources/docs/proget-npm-internal-name.png){height="" width="50%"}
 
 We are then presented with several options. This relate to ProGet's [Vulnerability Scanning and Blocking](/docs/proget/sca/vulnerabilities) features, however they are only for users looking to use third party packages. Leave these boxes unchecked, and select [Set Feed Features]. You will then be redirected to your new `internal-npm` feed, currently empty.
 
-![](){height="" width="50%"}
+![](/resources/docs/proget-npm-internal-empty.png){height="" width="50%"}
 
 ## Step 2: Build Your Package
 
@@ -38,7 +38,7 @@ Note: if you do not want to scope your package, omit `--scope=@my-organization`.
 
 You will be asked for details of the project name, version, etc. After this you will need the URL of your `internal-npm` feed, which can be found on the feed page:
 
-![](){height="" width="50%"}
+![](/resources/docs/proget-npm-internal-url.png){height="" width="50%"}
 
 Once you have the URL, edit your `package.json` and add a `publishConfig` field, adding the `internal-npm` URL. This will also scope the package to the namespace `@my-organization`: 
 
@@ -74,7 +74,7 @@ If you do not want to add a scope to your package, you can edit the `name` and `
 
 ## Step 3: Authenticate to your npm Feed
 
-Next you will need to authenticate to your `internal-npm` feed [by creating an `_auth` token](/docs/proget/feeds/npm#authenticating-to-npm-feeds). This is a username and password string `«username»:«password»` that's been base64-encoded. 
+Next you will need to authenticate to your `internal-npm` feed creating an `_auth` token and then [configuring it in your npm client](/docs/proget/feeds/npm#authenticating-to-npm-feeds).
 
 ## Step 4: Publish Your Package to ProGet
 
@@ -86,7 +86,7 @@ $ npm publish --registry=https://«proget-url»/npm/internal-npm/
 
 Your package should then be uploaded to your `internal-npm` feed:
 
-![](){height="" width="50%"}
+![](/resources/docs/proget-npm-internal-uploaded.png){height="" width="50%"}
 
 ## Step 5: Add the Feed to npm Clients
 
