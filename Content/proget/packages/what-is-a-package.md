@@ -52,7 +52,7 @@ In addition to the [Universal Package](/docs/proget/upack/upack-overview) type, 
 
 - [NuGet](/docs/proget/feeds/nuget)
 - [PowerShell](/docs/proget/feeds/powershell)
-- [Ruby Gems](/docs/proget/feeds/rubygem)
+- [Ruby Gems](/docs/proget/feeds/rubygems)
 - [Visual Studio Extension (.vsix)](/docs/proget/feeds/vsix)
 - [Maven (Java)](/docs/proget/feeds/maven)
 - [npm (Node.js)](/docs/proget/feeds/npm)
