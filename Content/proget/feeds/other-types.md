@@ -33,7 +33,7 @@ Feel free to submit pull requests for this page or participate in the linked Q&A
 
 ### ✔ Conda (Anaconda) Packages: Completed
 
- [Conda feeds](/docs/proget/feeds/python-conda) are available as of ProGet v6.0.6.
+ [Conda feeds](/docs/proget/feeds/conda) are available as of ProGet v6.0.6.
  
  ### ✔ Alpine (APK) Packages: Completed
 
