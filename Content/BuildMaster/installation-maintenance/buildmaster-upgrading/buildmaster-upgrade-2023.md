@@ -1,8 +1,14 @@
 ---
 title: "Upgrading to BuildMaster 2023"
-order: 1
+nav-title: "BuildMaster 2023"
+order: 2
 url-slug: "buildmaster-upgrade-2023"
 ---
+
+:::(Error) (Skip BuildMaster 2023: Upgrade Directly to BuildMaster 2024)
+If you are using BuildMaster 6.1, BuildMaster 6.2, BuildMaster 7.0, or BuildMaster 2022 we recommend directly [Upgrading to BuildMaster 2024](/docs/buildmaster-upgrade-2024). If you using an earlier version, you will first need to [Upgrade to BuildMaster 6.1](/docs/buildmaster-upgrading-to-6-1).
+:::
+
 
 BuildMaster 2023 is a major update, and this article provides information about what will change, the impact to your instance, and how to mitigate risk during upgrade.
 
@@ -209,7 +215,7 @@ You should generally perform the upgrade using the same method you used to insta
 
 However, there are other installation options available, including [offline installation](/docs/installation/windows/desktophub-offline), [cluster installation](/docs/installation/high-availability-load-balancing/high-availability-load-balancing), and even [manual installation](/docs/installation/manual-installation). If you want to change installation methods, the easiest way is to simply uninstall (by following the process in reverse) and install using the new method.
 
-If you're upgrading from ProGet 6.2 or earlier, it's possible BuildMaster was installed with the [legacy installer](/docs/installation/windows/installation-legacy-traditional-installer), The Inedo Hub should be able to upgrade these installations, but you may need to uninstall and then reinstall using the Inedo Hub. 
+If you're upgrading from BuildMaster 6.2 or earlier, it's possible BuildMaster was installed with the [legacy installer](/docs/installation/windows/installation-legacy-traditional-installer), The Inedo Hub should be able to upgrade these installations, but you may need to uninstall and then reinstall using the Inedo Hub. 
 
 If you are upgrading from BuildMaster 6.1, you will need to perform some additional steps after upgrading to BuildMaster 2023:
 1. Remove old ( Legacy SDK) extensions as required 
@@ -228,4 +234,4 @@ While you can upgrade from BuidMaster 6.1 and later to BuildMaster 2023 (i.e. th
 If you want to rollback to BuildMaster 7.0 or earlier, you will need to restore the instance to the previous state. See the [Backing Up & Restoring](/docs/installation/backing-up-restoring) documentation to learn more.
 :::
 
-However, if you need to rollback to BuildMaster 2022, you can do so without restoring the database by simply using the Inedo Hub. While there are database schema changes, they are all backwards-compatible with BuildMaster 2022, which means you can safely rollback your ProGet installation if there's a showstopper bug, and then upgrade later.
+However, if you need to rollback to BuildMaster 2022, you can do so without restoring the database by simply using the Inedo Hub. While there are database schema changes, they are all backwards-compatible with BuildMaster 2022, which means you can safely rollback your BuildMaster installation if there's a showstopper bug, and then upgrade later.

@@ -1,6 +1,7 @@
 ---
 title: "Legacy Configuration and Release Variables"
 order: 3
+url-slug: "buildmaster/installation-maintenance/buildmaster-legacy/buildmaster-legacy-features/buildmaster-installation-and-maintenance-legacy-features-variables"
 ---
 
 In BuildMaster 5.3, we introduced two new features that enhanced and replaced existing features:

@@ -1,6 +1,7 @@
 ---
 title: "Deployables"
 order: 3
+url-slug: "buildmaster/installation-maintenance/buildmaster-legacy/buildmaster-applications-concepts-deployables"
 ---
 
 :::(Error) (Deployables are Deprecated)
