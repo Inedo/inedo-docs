@@ -70,7 +70,7 @@ Note that some clients such as NuGet and Visual Studio may warn about HTTPS prim
 
 Now that you've created a feed, you can use other ProGet features such as license detection or vulnerability scanning. 
 
-You can also connect ProGet to Visual Studio as a Package Manager by following the on-screen instructions or reading [How To Add ProGet As A NuGet Package Manager In Visual Studio](/docs/proget/feeds/nuget/proget-howto-nuget-visual-studio). 
+You can also connect ProGet to Visual Studio as a Package Manager by following the on-screen instructions or reading [How To Add ProGet As A NuGet Package Manager In Visual Studio](/docs/proget/feeds/nuget/howto-nuget-visual-studio). 
 
 ![Visual Studio](/resources/docs/proget-publicnuget-visualstudio.png){height="" width="50%"}
 
