@@ -3,122 +3,124 @@ title: "Helm (Kubernetes)"
 order: 12
 ---
 
-[Helm](https://helm.sh/) is the package manager for [Kubernetes](https://kubernetes.io/) applications. A ProGet package for a Helm feed is known as a [chart](https://helm.sh/docs/developing_charts/#charts), which can be used to describe even the most complex application and provide a repeatable, versioned approach to Kubernetes deployments.
+[Helm](https://helm.sh/) is the package manager for Kubernetes applications and uses a packaging format called [Charts](https://helm.sh/docs/topics/charts/) to define, install, and upgrade Kubernetes applications in a repeatable and versioned manner.
 
-This feed type is available starting in ProGet 5.2.
+Charts can be stored and shared using a Helm feed in ProGet, which acts as a [Chart Repository](https://helm.sh/docs/topics/chart_repository/). You also [Create connectors](/docs/proget/feeds/connector-overview) to other Chart Repositories ([including Artifact Hub](#artifacthub)) that let you use third-party charts through a Helm feed and create a curated list of approved Helm Charts.
 
-## Pre-requisite Configuration 
+Helm feeds also allow you to see which container images are referenced by your Helm charts and help you discover vulnerabilities in images referenced by Helm charts.
 
-In order to install packages from a ProGet feed using Helm, the ProGet feed must be added to the local list of repositories by running this command:
+
+## Adding a Helm Feed as a Repository
+Before installing a chart from a Helm feed, the feed needs to be registered as a repository. You can use the [helm repo add](https://helm.sh/docs/helm/helm_repo_add/) command to do this:
 
 ```bash
-helm repo add proget http://{proget-server}/helm/{feed-name}
+helm repo add proget https://«proget-server»/helm/«feed-name»
 ```
 
-:::(Info) 
-Using `proget` is recommended for the repo name, unless there are multiple feeds configured in ProGet, in which case `proget-{feed-name}` should be used.
+We recommend using `proget` as the repository name or, if you have multiple Helm feeds configured, you should use `proget-«feed-name»` instead. When your feed is connected to Artifact Hub, you'll need to register additional repositories for charts.
+ 
+
+### Authenticated Feeds
+
+If your feed is not configured for anonymous access, then you'll need to authenticate to the Helm feed by specifying the `--username` and `--password` argument. We recommend creating an API key, using `api` as the username, and specifying the key as the password.
+
+```bash
+helm repo add proget https://«proget-server»/helm/«feed-name» --username api --password «your-api-key»
+```
+
+See [Creating and Managing API Keys](/docs/proget/reference-api/proget-apikeys#creating-and-managing-api-keys) to learn more.
+
+## Installing Helm Charts
+
+To install a chart from this repository, you can use the [helm install](https://helm.sh/docs/helm/helm_install/) command. 
+
+```bash
+helm install proget/«chart-name»
+```
+
+Note that, because Helm caches repository information locally, you should generally run the [helm repo update](https://helm.sh/docs/helm/helm_repo_update/) command first to ensure you'll get the latest version of the chart.
+
+
+## Creating Your Own Helm Charts
+
+There are no special requirements for creating Helm Charts in ProGet, but you will need to follow [image naming conventions in your Values file](#values-yaml) if you'd like ProGet to detect the container images that your chart references.
+
+In general, we recommend creating simple charts from scratch instead of trying to modify or use a third-party chart you might find on Artifact Hub. This involves using the [helm create](https://helm.sh/docs/helm/helm_create/) command, modifying files in created directory, and then using the [helm package](https://helm.sh/docs/helm/helm_package/) command to create a package file (e.g. `my-chart-1.15.3.tgz`) that can be published to your feed.
+
+See the official [Chart Template Guide](https://helm.sh/docs/chart_template_guide/getting_started/) to learn how to get started with creating your own Helm Charts.
+
+
+## Publishing Helm Chart Packages
+
+The easiest way to push a Helm Chart to your feed is with [pgutil packages upload](/docs/proget/reference-api/proget-api-packages/proget-api-packages-upload) command:
+
+```
+$ pgutil packages upload --feed=«feed-name» --input-file=«path-to-chart-tgz»
+```
+
+If you're using ProGet 2023 or earlier, you can instead issue a `PUT` request with the package file as the content to the endpoint URL. For example:
+
+```bash
+curl https://«proget-server»/helm/«feed-name» --user api:«api-key» --upload-file «path-to-chart-tgz»
+```
+
+This method also works in ProGet 2024 and later, should you prefer to use that. Note that neither the `helm push` nor the  `helm-push` are compatible with ProGet feeds.
+
+<h2 id="artifacthub">Connecting to Artifact Hub</h2>
+
+ProGet 2024.17+ support connecting a Helm feed to [ArtifactHub.io](https://artifacthub.io/), the defacto public source for open-source and publicly distributed Helm charts. Earlier versions of ProGet default to [Helm Stable](https://charts.helm.sh/stable/), which is no longer maintained.
+
+Artifact Hub is not a Helm repository itself, but an aggregator of Helm repositories. When a Helm connector is configured to use the Artifact Hub API (i.e. `https://artifacthub.io/api/v1/`), ProGet will use a [special API](https://artifacthub.io/docs/api/) to search and download packages. Earlier versions of ProGet do not have this capability and will instead give an error message.
+
+Helm charts that come from Artifact Hub will always be "prefixed" with a repository name. For example, the [kube-prometheus-stack](https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack) chart will appear as `prometheus-community/kube-prometheus-stack` in ProGet.
+
+To install these packages, you'll often need to add an additional repository. The instructions for doing this will be on the Helm chart overview page in ProGet, and will look something like this:
+
+```bash
+helm repo add prometheus-community https://«proget-server»/helm/«feed-name»/prometheus-community
+helm install prometheus-community/kube-prometheus-stack --version 65.2.0
+```
+
+This  prefixed repository will persist if you promote the Helm chart to another feed or pull the package into ProGet. However, if you were to download the package file and then upload it again, the prefix will no longer be there.
+
+At this time, it's not possible to create prefixes or namespaces like this. If you're interested in this functionality, [let us know](https://forums.inedo.com/). We can always consider it as an enhancement in a future version.
+
+<h2 id="values-yaml">Container Images & Values.yaml</h2>
+
+To display the container images that a Chart Uses, ProGet will parse the Value Files (i.e. `values.yaml`) inside your Chart and link them to matching container images in your ProGet feeds. 
+
+:::(Info) (💡 What is a Values File?)
+The [Values Files](https://helm.sh/docs/chart_template_guide/values_files/) (i.e. `values.yaml`) is typically used to define the container images that will populate the [deployments file](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/) (i.e. `templates/deployments.yaml` template file) used by Kubernetes.
 :::
 
-## Common Tasks 
+This relationship is also used to display the charts that reference a container image and to prevent docker images from being deleted during retention.
 
-### Installing Helm Charts
+### Container Image Naming Conventions
 
-To install a chart hosted by ProGet, run the following commands: 
+When configuring container images in your `values.yaml`, the image property must end in _image_ (e.g., _image:_, _redisImage:_, _postgresImage:_, etc.) and contain the following sub-properties: _repository_, _tag_ (or _dockerTag_), and optionally _registry_.  If _tag_ or _dockerTag_ is omitted, the `appVersion` will be used when defining the associated container image.
 
-```bash
-helm repo update
-helm install proget/{chart-name}
+
+For example, a single-container chart (i.e. the default created from the helm create command) should have the following entries in the `values.yaml` file in order for ProGet to detect it:
+```
+image:
+  repository: proget.corp.local/corp-images/corp/my-app
 ```
 
-:::(Error)
- Note: The Helm CLI references `--repo` as the argument to install from a custom repository.  ProGet is not compatible with the `--repo` argument, you will likely receive the following error message: "`Error: Could not find protocol handler for:`". ProGet will only work by adding a repo using the `helm repo add` command.
-:::
+A multi-container chart might look like this: 
 
-### Creating Helm Charts
+```
+myAppImage:
+  repository: proget.corp.local/corp-images/corp/my-app
 
-A basic Helm chart can be created using the following commands:
-
-```bash
-helm create {chart-name}
-helm package {chart-name}
+postgresImage:
+  repository: proget.corp.local/dockerhub-images/postgres
+  tag: 13.16
 ```
 
-The `create` command will create a template/skeleton chart which can be modified as desired. The `package` command will package the chart into a `.tgz` file that can be pushed to ProGet. 
 
-Refer to the [Helm chart creation documentation](https://helm.sh/docs/using_helm/#creating-your-own-charts) for more information.
+## Container Image Vulnerabilities
 
-### Publishing Charts
+If you have configured your container registries to leverage ProGet's vulnerability scanning, then you may have a Helm chart that links to a vulnerable container image. This will be displayed on the "Vulnerabilities" tab of the Helm chart.
 
-The `helm` executable does not support pushing Helm charts, so ProGet offers three alternative methods to add charts to ProGet Helm feed:
+This can cause your Kubernetes installation to fail when you try to pull the container image from your registry. Container images will be blocked if a vulnerability has been assessed and marked `Blocked` or if you have enabled the `Unassessed` vulnerabilities to be blocked in "Administration Overview" > "Advanced Settings".
 
-#### Upload from ProGet Web Application
-
-On the feed overview page, select "Add Package" and "Upload Chart" to upload a packaged Helm chart (i.e., `.tgz` file generated from the `helm package` command).
-
-#### Publish via HTTP
-
-To push a Helm chart via HTTP, issue a `PUT` or `POST` request with the package file as the content to: `http://{proget-server}/helm/{feed-name}`
-
-This can be accomplished with the following examples: 
-
-#### PowerShell
-
-```powershell
-Invoke-WebRequest http://{proget-server}/helm/{feed-name} -Headers @{"AUTHORIZATION"="Basic " + [System.Convert]::ToBase64String([System.Text.Encoding]::UTF8.GetBytes("{username}:{password}"))} -Method PUT -InFile {chart-name}-{chart-version}.tgz
-```
-
-#### cURL
-
-```bash
-curl http://{proget-server}/helm/{feed-name} --user <user>:<password> --upload-file <chart-name>-<chart-version>.tgz
-```
-
-### Deleting (Unpublishing) Charts
-
-You can delete (permanently remove) Helm charts from your feed by navigating to the package page and clicking the Delete Package button. This action requires the `Feeds_DeletePackage` permission attribute.
-
-To programmatically delete a Helm chart from your feed, issue a `DELETE` request to: `http://{proget-server}/helm/{feed-name}/package/{ID}/{VERSION}`
-
-This can be accomplished with the following examples: 
-
-#### PowerShell
-
-```powershell
-Invoke-WebRequest http://{proget-server}/helm/{feed-name}/package/{ID}/{VERSION} -Headers @{"AUTHORIZATION"="Basic " + [System.Convert]::ToBase64String([System.Text.Encoding]::UTF8.GetBytes("{username}:{password}"))} -Method DELETE
-```
-
-#### cURL
-
-```bash
-curl http://{proget-server}/helm/{feed-name}/package/{ID}/{VERSION} --user <user>:<password> -X DELETE
-```
-
-#### What about the  `helm-push` command?
-
-The `helm-push` command comes from a third-party plugin that is designed exclusively to push packages to ChartMusuem (which is a private Helm repository). It is not a "standard" and is only compatible with the ChartMusuem API, and behind the scenes, it seems quite complicated. With the other methods, you just upload the file you specify and get a standard HTTP status code in response.
-
-The reason it doesn't work with ProGet is that the ChartMusuem repository is a very different product than ProGet; for example, it doesn't have the concept of "Feeds", or even custom URL endpoint points. This means that only a root path like `https://proget.kramerica.corp/` is supported. Even if we could "hack something together" by reverse-engineering and re-implementing the ChartMusuem API, it could unexpectedly break as they release new versions of the plug-in and clients.
-
-#### Pull From External Repository
-
-If the chart version you want to install is available in an external Helm repository, use this option.
-
-### Technical Limitations
-
-Signed (i.e., provenance) charts are not supported at this time but may become available in a future v5.2 maintenance release.
-
-## Container Visibility 
-
-Helm charts reference a number of container images. These container images are defined in a `values.yaml` file that is used to populate the `deployments.yaml` template file. A chart may also be dependent on a number of other Helm charts. These dependencies also have a `values.yaml` file and `deploment.yaml` template.
-
-ProGet will parse the `values.yaml` of the chart and its dependencies `values.yaml` files to find which container images are used. These container images will then be displayed in the chart's description under the `Associated Container Images` section. ProGet will also attempt to match these associated container images with a container image within your ProGet container registries. If a match is found, ProGet will automatically link the Helm chart to the associated ProGet container image.
-
-**This feature is available in ProGet 5.3 and above.*
-
-### Parsing Requirements
-
-When configuring container images in your `values.yaml`, the image property must end in _image_ (e.g., _image:_, _redisImage:_, _postgresImage:_, etc.) and contain the following sub-properties: _repository_, _tag_ (or _dockerTag_), and optionally _registry_. If _tag_ or _dockerTag_ is omitted, the `latest` tag will be used when defining the associated container image.
-
-### Container Vulnerabilities
-
-If you have configured your container registries to leverage a [vulnerability source](/docs/proget/sca/vulnerabilities), you may have a Helm chart that links to a vulnerable container image. This can cause your Kubernetes installation to fail when you try to pull the container image from your registry. Container images will be blocked if a vulnerability has been assessed and marked `Blocked` or if you have enabled the `Unassessed` vulnerabilities to be blocked in "Administration Overview" > "Advanced Settings".
