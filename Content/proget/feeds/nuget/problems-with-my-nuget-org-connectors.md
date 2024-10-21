@@ -1,6 +1,6 @@
 ---
 title: "Problems With My NuGet.org Connectors"
-order: 5
+order: 6
 ---
 
 This article applies to NuGet.org [deprecating API features](https://devblogs.microsoft.com/nuget/custom-v2-odata-queries-will-be-deprecated-march-9-2021/) on **March 9, 2021**, and may help explain problems with connectors as a result.

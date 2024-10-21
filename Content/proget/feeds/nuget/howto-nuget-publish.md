@@ -71,7 +71,7 @@ $ nuget add source https://«proget-server»/nuget/public-nuget/v3/index.json --
 
 ## Step 4: Setting Up Authentication to Your NuGet Feed.
 
-To push packages to a feed you will need to configure authentication using a "NuGet API Key". To authenticate you can either create an API Key in ProGet or use `«username:password»` as one. To learn how to do either, see [Authenticating to a NuGet Feed](/docs/proget/feeds/nuget/#authenticating-to-a-nuget-feed).
+To push packages to a feed you will need to configure authentication using a "NuGet API Key". To authenticate you can either create an API Key in ProGet or use `«username:password»` as one. To learn how to do either, see [Authenticating to a NuGet Feed](/docs/proget/feeds/nuget#authenticating-to-a-nuget-feed).
 
 ## Step 5: Pushing Your Package to Your NuGet Feed
 
