@@ -11,19 +11,19 @@ This guide will walk you through the process of setting up a NuGet ["Feed"](/doc
 
 Start by creating a NuGet feed to host your internal packages. Navigate to "Feeds" and "Create New Feed". Then select "NuGet (.NET) Packages".
 
-![](){height="" width="50%"}
+![](/resources/docs/proget-newfeed-nugetselect.png){height="" width="50%"}
 
 Now select "No Connectors (Private packages only)" as this feed will be intended to host private packages.
 
-![](){height="" width="50%"}
+![](/resources/docs/proget-nuget-noconnectors.png){height="" width="50%"}
 
 From here, we name our feed. For this example, we will call it `internal-nuget`, and then click "Create Feed".
 
-![](/resources/docs/proget-cran-internalfeed.png){height="" width="50%"}
+![](/resources/docs/proget-nuget-internal-name.png){height="" width="50%"}
 
 You'll then see several options related to ProGet's [Vulnerability Scanning and Blocking](/docs/proget/sca/vulnerabilities) features. These are only for users looking to use third-party OSS packages. Leave these boxes unchecked, and select "Set Feed Features". You will then be directed to the new `internal-proget` feed, currently empty.
 
-![](/resources/docs/proget-cran-feed-empty.png){height="" width="50%"}
+![](/resources/docs/proget-nuget-internal-empty.png){height="" width="50%"}
 
 ## Step 2: Create a NuGet Package
 
@@ -61,7 +61,7 @@ $ dotnet pack --configuration Release
 
 To add your `internal-nuget` feed to NuGet CLI, you will need the feed URL. This is found on the top right of the feed page:
 
-![](){height="" width="50%"}
+![](/resources/docs/proget-nuget-internal-url.png){height="" width="50%"}
 
 Then add the feed as a source to your NuGet client by entering:
 
@@ -86,3 +86,7 @@ Or if you are using `«username:password»` as an API Key:
 ```bash
 $ nuget push «feed-url» -Source internal-nuget -ApiKey «username:password»
 ```
+
+Your package will then be uploaded and appear in your `internal-nuget` feed.
+
+![](/resources/docs/proget-nuget-internal-uploaded.png){height="" width="50%"}

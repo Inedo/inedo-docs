@@ -19,30 +19,29 @@ We'll first create a NuGet feed to proxy packages from [NuGet.org](https://www.n
 
 In your ProGet instance, select "Feeds" and "Create New Feed", and select "NuGet (.NET) Packages".
 
-![](){height="" width="50%"}
+![](/resources/docs/proget-newfeed-nugetselect.png){height="" width="50%"}
 
 Then select "Connect to NuGet.org" which will allow us to proxy and cache packages from NuGet.org.
 
-![](){height="" width="50%"}
+![](/resources/docs/proget-nuget-connecttoorg.png){height="" width="50%"}
 
 Select "No, Create One Feed", as we will only need a single feed to proxy NuGet packages. 
-
 
 ## Step 2: Name your Feed
 
 Now you will need to name the feed. For this example, we will name it `public-nuget`, and then click "Create Feed".
 
-![](){height="" width="50%"}
+![](/resources/docs/proget-nuget-onefeedname.png){height="" width="50%"}
 
 You'll then choose from several vulnerability and license options. More information on these can be found in the [Vulnerability Scanning and Blocking](/docs/proget/sca/vulnerabilities) and [Licensing Detection and Blocking](https://docs.inedo.com/docs/proget/sca/licenses) documentation. Select "Set Feed Features". ProGet will create The `public-nuget` feed, which will now be populated with packages proxied from NuGet.org.
 
-![](){height="" width="50%"}
+![](/resources/docs/proget-publicnuget-feed.png){height="" width="50%"}
 
 ## Step 3: Adding the Feed to NuGet CLI { #add-feed }
 
 To install packages from the `public-nuget` feed, you will need the feed URL. This is found on the top right of the feed page:
 
-![](){height="" width="50%"}
+![](/resources/docs/proget-nuget-public-url){height="" width="50%"}
 
 Then add the feed as a source to your NuGet client by entering:
 
