@@ -3,9 +3,9 @@ title: "HOWTO: Proxy Packages from the npm Registry in ProGet"
 order: 1
 ---
 
-With ProGet you can create ["Feeds"](/docs/proget/feeds/feed-overview) to proxy packages from the npm Registry([www.npmjs.com](https://www.npmjs.com/)) and install them just as you would when installing them from the npm Registry directly. 
+With ProGet you can create ["Feeds"](/docs/proget/feeds/feed-overview) to proxy packages from the npm Registry ([www.npmjs.com](https://www.npmjs.com/)) and install them just as you would when installing them from the npm Registry directly. 
 
-Using ProGet as a proxy will cache packages, allowing teams to access them even if the npm Registry is down. ProGet will also tell you which packages are being downloaded and used frequently
+Using ProGet as a proxy will cache packages, allowing teams to access them even if the npm Registry is down. ProGet will also let you [audit packages and assess any vulnerabilities](#scan-feed), as well as tell you which packages are being downloaded and used frequently.
 
 This guide will cover how to set up a feed to proxy packages. We'll also cover how to create a private repository for your internal packages as an alternative to the npm Registry's paid private repositories (npm Teams/npm Pro).
 
