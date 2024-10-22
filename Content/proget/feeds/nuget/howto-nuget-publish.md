@@ -71,22 +71,36 @@ $ dotnet nuget add source https://«proget-server»/nuget/public-nuget/v3/index.
 
 ## Step 4: Setting Up Authentication to Your NuGet Feed.
 
-To push packages to a feed you will need to configure authentication using a "NuGet API Key". To authenticate you can either create an API Key in ProGet or use `«username:password»` as one. To learn how to do either, see [Authenticating to a NuGet Feed](/docs/proget/feeds/nuget#authenticating-to-a-nuget-feed).
+To push packages to a feed you will need to configure authentication using a "NuGet API Key". To authenticate you can either create an API Key in ProGet or use `«username:password»` as one. To learn how to do either, see [Authenticating to a NuGet Feed](/docs/proget/feeds/nuget#authenticating-to-nuget-feeds).
 
 ## Step 5: Pushing Your Package to Your NuGet Feed
 
-To push your NuGet package to your `internal-nuget` feed, enter:
+To push your NuGet package to your NuGet feed, first make sure you have [added the feed as a source](#add-feed) with [authentication](/docs/proget/feeds/nuget#authenticating-to-nuget-feeds), and then use the `dotnet nuget push` command:
 
 ```bash
-$ dotnet nuget push «feed-url» -Source internal-nuget
+$ dotnet nuget push «package-name» -Source «source-name»
 ```
 
-Or if you are using `«username:password»` as an API Key:
+Or if you are using `«username:password»` to authenticate:
 
 ```bash
-$ dotnet nuget push «feed-url» -Source internal-nuget -ApiKey «username:password»
+$ dotnet nuget push «package-name» -Source «source-name» -ApiKey «username:password»
 ```
 
-Your package will then be uploaded and appear in your `internal-nuget` feed.
+### Examples:
+
+Pushing the package `MyPackage` to a configured source named `internal-nuget`, you would enter:
+
+```bash
+$ dotnet nuget push bin/Release/MyPackage.1.0.0.nupkg -Source internal-nuget
+```
+
+Or using the username `johnsmith` and password `abc12345` you would enter:
+
+```bash
+$ dotnet nuget push bin/Release/MyPackage.1.0.0.nupkg -Source internal-nuget -ApiKey johnsmith:abc12345
+```
+
+Your package will then be uploaded and appear in your NuGet feed.
 
 ![](/resources/docs/proget-nuget-internal-uploaded.png){height="" width="50%"}
