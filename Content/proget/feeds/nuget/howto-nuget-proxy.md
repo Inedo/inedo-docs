@@ -1,6 +1,6 @@
 ---
 title: "HOWTO: Proxy Packages from NuGet.org in Visual Studio or CLI"
-order: 5
+order: 1
 ---
 
 Connecting ProGet with Visual Studio or CLI is a great way to increase the security of the most widely used integrated development environment for Windows developers. ProGet acts as a NuGet Package Manager, as it can [detect package licenses](https://docs.inedo.com/docs/proget/sca/licenses), [scan packages for vulnerabilities](/docs/proget/sca/vulnerabilities), and control promotion between feeds.
@@ -37,9 +37,9 @@ To add your `public-nuget` feed to either Visual Studio or the CLI, you will nee
 
 ![](/resources/docs/proget-nuget-public-url){height="" width="50%"}
 
-## Step 3.2 Adding the Feed to Visual Studio { #add-visual-studio }
+## Step 3.2 Adding ProGet As A NuGet Package Manager In Visual Studio { #add-visual-studio }
 
-To add your feed as a source in Visual Studio, navigate to "Tools" > "NuGet Package Manager" > "Package Manager Settings". Then uncheck the box to the left of *nuget.org*
+To add your feed as a Package Manager in Visual Studio, navigate to "Tools" > "NuGet Package Manager" > "Package Manager Settings". Then uncheck the box to the left of *nuget.org*
 
 ![visualstudio-packagesources-highlightednugetorg.png](/resources/docs/visualstudio-packagesources-highlightednugetorg.png)
 
@@ -64,7 +64,7 @@ To confirm the connection in Visual Studio, right-click on a project in the Solu
 ![visualstudio-connectedprogetfeed.png](/resources/docs/visualstudio-connectedprogetfeed.png)
 
 
-## Step 3.2: Adding the Feed to NuGet CLI { #add-cli }
+## Step 3.2: Adding the Feed to The NuGet CLI { #add-cli }
 
 To add the feed as a source to your NuGet client, use the `dotnet nuget add source` command:
 

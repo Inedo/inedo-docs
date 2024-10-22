@@ -1,5 +1,5 @@
 ---
-title: "Problems With My NuGet.org Connectors"
+title: "Troubleshooting: NuGet.org Connectors"
 order: 6
 ---
 

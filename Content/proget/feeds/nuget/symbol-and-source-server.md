@@ -1,6 +1,6 @@
 ---
 title: "Symbol and Source Server"
-order: 1
+order: 3
 ---
 
 Debugging in NuGet packages can be tedious, but you can make it easier by configuring your NuGet feeds to work as a Symbol/Source server compatible with debuggers like Visual Studio and WinDbg.
@@ -25,7 +25,7 @@ http://«proget-server»/symbols/«feed-name»
 
 ## Creating Symbol Packages
 
-There are two types of NuGet symbol packages: standard (`.snupkg`) and legacy (`.symbols.nupkg`). As of v2022.20, ProGet supports both package formats, but earlier versions support only the legacy format. See [Symbol Package Formats](/docs/proget/feeds/nuget/proget-nuget-symbol-package-types) for more information about these formats; in general, we recommend using standard symbol packages when possible.
+There are two types of NuGet symbol packages: standard (`.snupkg`) and legacy (`.symbols.nupkg`). As of v2022.20, ProGet supports both package formats, but earlier versions support only the legacy format. See [Symbol Package Formats](/docs/proget/feeds/nuget/symbol-package-formats) for more information about these formats; in general, we recommend using standard symbol packages when possible.
 
 #### Pushing Symbol Packages to ProGet
 

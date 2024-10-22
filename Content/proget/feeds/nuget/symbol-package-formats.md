@@ -1,6 +1,6 @@
 ---
 title: "Symbol Package Formats"
-order: 2
+order: 4
 ---
 
 When setting up a dedicated symbols feed on ProGet, the question often arises as to whether you should use the "standard" or the "legacy" symbol format. This article explains the difference between these two formats and how they relate to ProGet.

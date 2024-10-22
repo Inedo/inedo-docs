@@ -1,22 +1,15 @@
 ---
-title: "Temporary Page"
+title: "Legacy NuGet Feeds and API in ProGet"
 order: 7
-hidden: true
 ---
 
+As part of ProGet's package management system, support for older technologies like the NuGet ODATA (v2) API and Legacy NuGet (Quirks) feeds remains for certain use cases. 
 
+In this article, we’ll cover:
+* The NuGet ODATA (v2) API for custom queries
+* Management and migration of Legacy (Quirks) NuGet feeds.
 
-## Using the NuGet API
-
-ProGet implements the  [NuGet Server API](https://learn.microsoft.com/en-us/nuget/api/overview), which is extensively documented by Microsoft.
-
-:::(Info) (⚙ NuGet API Endpoint URL)
- `«proget-base»/nuget/«feed-name»/v3/index.json`
-:::
-
-This is referred to as the JSON-LD (v3) API. ProGet also implements the older NuGet API, called the ODATA (v2) API.
-
-### NuGet ODATA (v2) API
+## NuGet ODATA (v2) API
 
 NuGet feeds can also be queried with an older API, called the ODATA (v2) API.
 
@@ -56,7 +49,6 @@ NuGet.org deprecated certain V2 ODATA queries, which will lead to an error if yo
 :::
 
 Because the  ODATA (v2) API has limited support on NuGet.org, ProGet will always use the JSON-LD (v3) endpoint ( `https://api.nuget.org/v3/index.json`) if the connector host name is nuget.org. You can add an override token (`#v2`) at the end of a nuget.org URL, such as `http://nuget.org/api/v2#v2`, to force the ODATA (v2) protocol.
-
 
 ## Legacy (Quirks) NuGet Feeds 
 

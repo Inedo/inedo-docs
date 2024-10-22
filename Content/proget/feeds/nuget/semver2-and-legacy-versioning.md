@@ -1,6 +1,6 @@
 ---
 title: "NuGet Package Versioning (SemVer2, Legacy)"
-order: 3
+order: 5
 ---
 
 All NuGet packages—whether hosted on NuGet.org or in your own ProGet repository—have version numbers like `4.2.3`, `3.1.2.50012`, `6.2.0-beta1`, etc. The format of these version numbers is called a *version number scheme*, and NuGet has had several different schemes over the years.
