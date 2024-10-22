@@ -44,11 +44,10 @@ https://«proget-server»/nuget/{feed-name}/Packages()?$filter=Id%20eq%20%27«pa
 ### NuGet.org and the ODATA (V2) API
 
 :::(Warning)
-NuGet.org deprecated certain V2 ODATA queries, which will lead to an error if you have a connector to NuGet.org and query the feed with these queries. See  [Problems With My NuGet.org Connectors
-](/docs/proget/feeds/nuget/problems-with-my-nuget-org-connectors) to learn more.
+NuGet.org deprecated certain V2 ODATA queries, which will lead to an error if you have a connector to NuGet.org and query the feed with these queries. See [Troubleshooting: NuGet.org Connectors](/docs/proget/feeds/nuget#nuget-connectors) to learn more.
 :::
 
-Because the  ODATA (v2) API has limited support on NuGet.org, ProGet will always use the JSON-LD (v3) endpoint ( `https://api.nuget.org/v3/index.json`) if the connector host name is nuget.org. You can add an override token (`#v2`) at the end of a nuget.org URL, such as `http://nuget.org/api/v2#v2`, to force the ODATA (v2) protocol.
+Because the  ODATA (v2) API has limited support on NuGet.org, ProGet will always use the JSON-LD (v3) endpoint (`https://api.nuget.org/v3/index.json`) if the connector host name is nuget.org. You can add an override token (`#v2`) at the end of a nuget.org URL, such as `http://nuget.org/api/v2#v2`, to force the ODATA (v2) protocol.
 
 ## Legacy (Quirks) NuGet Feeds 
 
