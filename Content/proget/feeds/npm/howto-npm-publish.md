@@ -1,11 +1,11 @@
 ---
-title: "HOWTO: Publish npm Packages to a Private Repository in ProGet"
+title: "HOWTO: Publish npm Packages to a Private Registry in ProGet"
 order: 2
 ---
 
-ProGet lets you easily set up private repositories for your [npm](https://www.npmjs.com/) packages, so you can publish, store, and share them internally.
+ProGet lets you easily set up private registries for your [npm](https://www.npmjs.com/) packages, so you can publish, store, and share them internally.
 
-This article will show you how to create a ["Feed"](/docs/proget/feeds/feed-overview) in ProGet to act as a private npm package repository. We'll also look at how to create, publish, and install packages from this feed.
+This article will show you how to create a ["Feed"](/docs/proget/feeds/feed-overview) in ProGet to act as a private npm package Registry. We'll also look at how to create, publish, and install packages from this feed.
 
 :::(info)(Note: Scoped Packages)
 In this guide we create a package that is scoped to `@my-organization`. A scoped package in npm is a package that is grouped under a "namespace". Scoped packages are useful for organizing related packages, such as when public registries are added, and helps to reduce dependency confusion attacks.
