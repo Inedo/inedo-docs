@@ -103,3 +103,37 @@ In this guide, we covered how to proxy packages from [NuGet.org](https://www.nug
 This can be achieved by introducing a ["Package Approval Flow"](/docs/proget/packages/package-promotion). To set up a package approval flow, refer to [HOWTO: Approve and Promote Open-source Packages](/docs/proget/packages/package-promotion/proget-howto-promote-packages). 
 
 After creating your "Unapproved" and "Approved" feeds, add your "Approved" feed to either [Visual Studio](#add-visual-studio) or [CLI](#add-cli) to add the "Approved" feed (e.g. `approved-nuget`) as a custom repository.
+
+## Troubleshooting
+
+### Authentication Error
+
+An error may occur when trying to browse the authenticated NuGet feed in Visual Studio.
+
+![visualstudio-nugetfeed-error.png](/resources/docs/visualstudio-nugetfeed-error.png)
+
+The window does not fill with packages and the error list says "API Key ... does not exist"
+
+There may have been an error entering the personal API key while connecting to the server, or the API key may have been deleted in ProGet.
+
+**To resolve**, in Visual Studio, close all your instances.
+
+Then, in Windows, open Control Panel and navigate to Credential Manager.
+
+![windows-credentialmanager.png](/resources/docs/windows-credentialmanager.png)
+
+Under Windows Credentials, delete the one named as the ProGet host (in this demonstration, *3.144.230.132*)
+
+![windows-credentialmanager-windowscredentials.png](/resources/docs/windows-credentialmanager-windowscredentials.png)
+
+Under Generic Credentials, find and remove the one named “VSCredentials_<progethost>” (in this demonstration, *VSCredentials_3.144.230.132*)
+
+![windows-credentialmanager-genericcredentials.png](/resources/docs/windows-credentialmanager-genericcredentials.png)
+
+Now, In Visual Studio open your instance and navigate to the Package Manager again as in Step 6. 
+
+You will be prompted again to enter a Personal API key, as in Step C. 
+
+![visualstudio-connecttoserver.png](/resources/docs/visualstudio-connecttoserver.png)
+
+Repeat Step C to reconnect to the authenticated NuGet feed. 
