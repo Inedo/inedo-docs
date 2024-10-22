@@ -9,10 +9,6 @@ In this article, we'll explain how to set up a in ProGet that will proxy NuGet p
 
 We’ll also look at how to set up a private repository for using internal NuGet packages, as well as how to establish a package approval process to manage which packages your team can utilize in production.
 
-:::(info)(CLI Commands)
-The commands in this guide assume you are using the NuGet CLI. For Windows CLI (e.g. `cmd.exe`) all commands need to be prefixed with `dotnet`, e.g. `dotnet nuget add source`.
-:::
-
 ## Step 1: Create and Name a NuGet Feed
 
 We'll first create a NuGet feed to proxy packages from [NuGet.org](https://www.nuget.org/). You can read more on creating feeds by reading [Creating and Managing Feeds](/docs/proget/feeds/feed-overview#creating-and-managing-feeds)
@@ -46,19 +42,19 @@ To install packages from the `public-nuget` feed, you will need the feed URL. Th
 Then add the feed as a source to your NuGet client by entering:
 
 ```bash
-$ nuget add source https://«proget-server»/nuget/public-nuget/v3/index.json --name public-nuget
+$ dotnet nuget add source https://«proget-server»/nuget/public-nuget/v3/index.json --name public-nuget
 ```
 
 By default, NuGet clients are configured with nuget.org as a source. We recommend removing this to exclusively use your public-nuget feed as a source:
 
 ```bash
-$ nuget remove source nuget.org
+$ dotnet nuget remove source nuget.org
 ```
 
 You can confirm that your have configured your sources correctly by entering:
 
 ```bash
-$ nuget sources list
+$ dotnet nuget sources list
 ```
 
 ## Step 3: Installing NuGet Packages
@@ -66,7 +62,7 @@ $ nuget sources list
 Once you have created your `public-nuget` feed and configured it with NuGet CLI, you can install packages by entering:
 
 ```bash
-$ nuget install «package-name» -Source public-nuget
+$ dotnet nuget install «package-name» -Source public-nuget
 ```
 
 ## Step 4: (Optional) Authenticating to Your NuGet Feed
@@ -82,5 +78,5 @@ This can be achieved by introducing a ["Package Approval Flow"](/docs/proget/pac
 After creating your "Unapproved" and "Approved" feeds, follow the steps in ["Adding the Feed to Your NuGet Client"](#add-feed) to add the "Approved" feed (e.g. `approved-nuget`) as a custom repository in your local R environments, entering:
 
 ```bash
-$ nuget add source https://«proget-server»/nuget/approved-nuget/v3/index.json --name ApprovedPackages
+$ dotnet nuget add source https://«proget-server»/nuget/approved-nuget/v3/index.json --name ApprovedPackages
 ```

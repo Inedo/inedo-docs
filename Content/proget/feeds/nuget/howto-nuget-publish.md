@@ -66,7 +66,7 @@ To add your `internal-nuget` feed to NuGet CLI, you will need the feed URL. This
 Then add the feed as a source to your NuGet client by entering:
 
 ```bash
-$ nuget add source https://«proget-server»/nuget/public-nuget/v3/index.json --name internal-nuget
+$ dotnet nuget add source https://«proget-server»/nuget/public-nuget/v3/index.json --name internal-nuget
 ```
 
 ## Step 4: Setting Up Authentication to Your NuGet Feed.
@@ -78,13 +78,13 @@ To push packages to a feed you will need to configure authentication using a "Nu
 To push your NuGet package to your `internal-nuget` feed, enter:
 
 ```bash
-$ nuget push «feed-url» -Source internal-nuget
+$ dotnet nuget push «feed-url» -Source internal-nuget
 ```
 
 Or if you are using `«username:password»` as an API Key:
 
 ```bash
-$ nuget push «feed-url» -Source internal-nuget -ApiKey «username:password»
+$ dotnet nuget push «feed-url» -Source internal-nuget -ApiKey «username:password»
 ```
 
 Your package will then be uploaded and appear in your `internal-nuget` feed.
