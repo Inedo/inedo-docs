@@ -56,7 +56,7 @@ index-url = https://«proget-server»/pypi/pypi/public-pypi/simple
 The `pip config` can be scoped to global (`--global`), user (`--user`), and to the environment (`--site`). The commands above are scoped to the global scope.
 :::
 
-## (Optional) Authenticating to Your npm Feed
+## (Optional) Authenticating to Your PyPI Feed
 
 By default your `public-npm` feed does not require authentication and can be viewed anonymously. However if you've configured your feed to require authentication, you can use the two `pip` methods above to authenticate to it. [Feeds can be authenticated](/docs/proget/feeds/pypi#authenticating-to-a-pypi-feed) with a username and password string `«username»:«password»` but we strongly recommend using an [API Key](/docs/proget/reference-api/proget-apikeys) for this, with `api` as the username, and then API Key as the password.
 
