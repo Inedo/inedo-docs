@@ -1,76 +1,69 @@
 ---
-title: "HOWTO: Proxy Packages from the npm Registry in ProGet"
+title: "HOWTO: Proxy Packages from PyPI.org in ProGet"
 order: 1
 ---
 
-With ProGet you can create ["Feeds"](/docs/proget/feeds/feed-overview) to proxy packages from the npm Registry ([www.npmjs.com](https://www.npmjs.com/)) and install them just as you would when installing them from the npm Registry directly. 
+ProGet let's you create ["Feeds"](/docs/proget/feeds/feed-overview) to proxy packages from The Python Package Index ([PyPI](https://pypi.org/)) and install them just as you would when installing them from PyPI directly. 
 
-Using ProGet as a proxy will cache packages, allowing teams to access them even if the npm Registry is down. ProGet will also let you [audit packages and assess any vulnerabilities](#scan-feed), as well as tell you which packages are being downloaded and used frequently.
+Using ProGet as a proxy will let you [assess vulnerabilities](#scan-feed) in PyPI packages, tell you which packages are being downloaded and used frequently, and cache packages, allowing teams to access them even if PyPI is down.
 
-This guide will cover how to set up a feed to proxy packages. We'll also cover how to create a private registry for your internal packages as an alternative to the npm Registry's paid private repositories (npm Teams/npm Pro).
+This article will look at how to set up a feed in ProGet to proxy PyPI packages, as well as how to create a private repository for your internal Python packages.
 
 ## Step 1: Create a New Feed { #create-feed }
 
-First, we will create an npm feed that will proxy packages from the [www.npmjs.com](https://www.npmjs.com/).
+To begin, we will create a PyPI feed that will proxy Python packages from [PyPI](https://pypi.org/).
 
-Start by selecting "Feeds" and "Create New Feed". Next, select "npm Packages", as we will be creating feeds to proxy and host npm packages.
+Start by selecting "Feeds" and "Create New Feed". Next, select "Python Packages" under "Developer Libraries".
 
-![](/resources/docs/proget-npm-createfeed.png){height="" width="50%"}
+![](/resources/docs/proget-pypi-createfeed.png){height="" width="50%"}
 
-Now select "Connect to npmJS.org" which will allow us to proxy packages from the npm Registry.
+Now select "Connect to PyPI.org" which will allow us to proxy packages from PyPI.
 
-![](/resources/docs/proget-npm-connectors.png){height="" width="50%"}
+![](/resources/docs/proget-pypi-connectors.png){height="" width="50%"}
 
-Then select "No, Create One Feed", as we will be creating a single feed to proxy npm packages. From here, name the feed (we will call it `public-npm` for this guide). Then click "Create Feed".
+Then select "No, Create One Feed", as we will be creating a single feed to proxy PyPI packages. From here, name the feed (we will call it `public-pypi` for this example). Then click "Create Feed".
 
-![](/resources/docs/proget-npm-public-name.png){height="" width="50%"}
+![](/resources/docs/proget-pypi-public-namefeed.png){height="" width="50%"}
 
-We are then presented with several options. Keeping these checked will allow your feed to use ProGet's [Vulnerability Scanning and Blocking](/docs/proget/sca/vulnerabilities) amd [Licensing Detection and Blocking](https://docs.inedo.com/docs/proget/sca/licenses) features. This will allow you to [use `npm audit` to scan packages](#scan-feed) for vulnerabilities. Select "Set Feed Features", which will create the feed, and redirect you to the newly created `public-npm` feed, now populated with packages proxied from the npm Registry.
+We are then presented with several options. Keeping these checked will allow your feed to use ProGet's [Vulnerability Scanning and Blocking](/docs/proget/sca/vulnerabilities) amd [Licensing Detection and Blocking](https://docs.inedo.com/docs/proget/sca/licenses) features, allowing you to assess vulnerabilities and create policies for licenses. Select "Set Feed Features", which will create the feed, and redirect you to the newly created `public-pypi` feed, now populated with packages proxied from PyPI.
 
-![](/resources/docs/proget-npm-public.png){height="" width="50%"}
+![](/resources/docs/proget-pypi-public-feed.png){height="" width="50%"}
 
-## Step 3: Add the Feed to npm Clients { #add-feed }
+## Step 3: Using the Feed in Python Clients { #add-feed }
 
-For your team to install packages from the `public-npm` feed, you'll need to add it as a source in their npm clients. For this, you will need feed's URL. This can be found at the top right of the feed's page.
+To let your teams use the `public-pypi` feed when installing packages you can either include it when running the `pip install` command, or set it globally with the `pip config` command. 
 
-![](/resources/docs/proget-npm-public-url.png){height="" width="50%"}
-
-Now configure your npm client with your `public-npm` feed by entering: 
+To install Python packages with the `pip install` command, you will need to add a `--extra-index-url` parameter containing the endpoint URL of your `public-pypi` feed:
 
 ```bash
-$ npm config set registry http://«proget-url»/npm/public-npm
+$ pip install «package-name»==«package-version» --extra-index-url https://«proget-server»/pypi/public-pypi/simple
 ```
 
-You can confirm that the `public-npm` feed has been set correctly by entering:
+To configure pip to use a [pip config](https://pip.pypa.io/en/stable/topics/configuration/) file to store the feed, you will need to use the [pip config](https://pip.pypa.io/en/stable/cli/pip_config/) command with a `--global` parameter containing your `public-pypi` endpoint URL.
 
 ```bash
-$ npm get registry
+$ pip config --global set global.index-url https://«proget-server»/pypi/public-pypi/simple
 ```
+
+These commands will generate a `pip config` file that looks like:
+
+```bash
+[global]
+index-url = https://«proget-server»/pypi/pypi/public-pypi/simple
+```
+
+::: (Info) (Note: Scoping)
+The `pip config` can be scoped to global (`--global`), user (`--user`), and to the environment (`--site`). The commands above are scoped to the global scope.
+:::
 
 ## (Optional) Authenticating to Your npm Feed
 
-By default your `public-npm` feed does not require authentication and can be viewed anonymously. However, you may want to make your feed private and require authentication to access. Authentication is done by creating an `_auth` token and then [configuring it in your npm client](/docs/proget/feeds/npm#authenticating-to-npm-feeds).
-
-## (Optional) Auditing npm Packages { #scan-feed }
-
-If you enabled "Scan for Security Vulnerabilities" when you [created a feed](#create-feed) you can use npm-audit to scan for vulnerabilities in packages by simply running:
-
-```bash
-$ npm audit
-```
-
-Using `npm audit` with [Vulnerability Scanning and Blocking](/docs/proget/sca/vulnerabilities), lets you assess vulnerabilities in packages, and how they impact your organization.
-
-You can also set up [Policies & Compliance Rules](https://docs.inedo.com/docs/proget/sca/policies) to create rules for vulnerabilities, licenses, deprecated packages, etc. Setting these up lets you block any packages that are considered "noncompliant".
+By default your `public-npm` feed does not require authentication and can be viewed anonymously. However if you've configured your feed to require authentication, you can use the two `pip` methods above to authenticate to it. [Feeds can be authenticated](/docs/proget/feeds/pypi#authenticating-to-a-pypi-feed) with a username and password string `«username»:«password»` but we strongly recommend using an [API Key](/docs/proget/reference-api/proget-apikeys) for this, with `api` as the username, and then API Key as the password.
 
 ## (Optional) Creating a Package Approval Flow
 
-In this guide we looked at proxying packages from the npm Registry. However, with no form of approval, developers will be able to install any OSS packages without oversight. In many cases, it's important to include some form of oversight in development or production, which can be done by creating a ["Package Approval Flow"](/docs/proget/packages/package-promotion).
+In this guide we looked at proxying packages from PyPI. However, without oversight approval, developers will be able to install any OSS packages from [PyPI](https://pypi.org/) without oversight. It's recommended to include some form package vetting in development or production, which can be done by creating a ["Package Approval Flow"](/docs/proget/packages/package-promotion).
 
-To set up a package approval flow, refer to [HOWTO: Approve and Promote Open-source Packages](/docs/proget/packages/package-promotion/proget-howto-promote-packages). This guide uses NuGet feeds as an example, but the steps are identical when creating npm package feeds.
+To set up a package approval flow, refer to [HOWTO: Approve and Promote Open-source Packages](/docs/proget/packages/package-promotion/proget-howto-promote-packages). This guide uses NuGet feeds as an example, but the steps are identical when creating PyPI package feeds.
 
-After creating your "Unapproved" and "Approved" feeds, follow the steps in ["Add the Feed to npm Cients"](#add-feed) to add the "Approved" feed (e.g. `npm-approved`) as a source in your npm client, entering:
-
-```bash
-$ npm config set registry http://«proget-url»/npm/npm-approved
-```
+After creating your "Unapproved" and "Approved" feeds, follow the steps in ["Using the Feed in Python Clients"](#add-feed) to add the "Approved" feed (e.g. `npm-approved`) as a source using either `pip install` or `pip config`.
