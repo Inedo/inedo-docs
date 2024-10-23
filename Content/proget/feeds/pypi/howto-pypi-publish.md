@@ -3,27 +3,21 @@ title: "HOWTO: Publish npm Packages to a Private Registry in ProGet"
 order: 2
 ---
 
-ProGet lets you easily set up private registries for your [npm](https://www.npmjs.com/) packages, so you can publish, store, and share them internally.
+With ProGet you can set up private repositories for your Python packages, so you can publish, store, and share them internally.
 
-This article will show you how to create a ["Feed"](/docs/proget/feeds/feed-overview) in ProGet to act as a private npm package Registry. We'll also look at how to create, publish, and install packages from this feed.
-
-:::(info)(Note: Scoped Packages)
-In this guide we create a package that is scoped to `@my-organization`. A scoped package in npm is a package that is grouped under a "namespace". Scoped packages are useful for organizing related packages, such as when public registries are added, and helps to reduce dependency confusion attacks.
-
-Scoped packages are prefixed with an `@`, followed by the namespace, e.g., `@my-organization/my-package`.
-:::
+This article will run through how to create a ["Feed"](/docs/proget/feeds/feed-overview) in ProGet to act as a private Python package repository, as well as covering how to create, publish, and install packages from this feed.
 
 ## Step 1: Create a New Feed
 
-First, we will create a feed to host your npm packages. Start by selecting "Feeds" and "Create New Feed". Next, select "npm Packages".
+To start with, we will create a feed to host your Python packages. In ProGet, select "Feeds" and "Create New Feed". Then, select "Python Packages" under "Developer Libraries".
 
-![](/resources/docs/proget-npm-createfeed.png){height="" width="50%"}
+![](/resources/docs/proget-pypi-createfeed.png){height="" width="50%"}
 
-Then select "No Connectors (Private packages only)" as we will be creating a private feed. From here, we will give our feed a name. For this article, we will call it `internal-npm`, and then click "Create Feed".
+Then select "No Connectors (Private packages only)" as we will be creating a private feed. Now name your feed. For this example we will call it `internal-pypi`.
 
 ![](/resources/docs/proget-npm-internal-name.png){height="" width="50%"}
 
-We are then presented with several options. This relate to ProGet's [Vulnerability Scanning and Blocking](/docs/proget/sca/vulnerabilities) features, however they are only for users looking to use third party packages. Leave these boxes unchecked, and select [Set Feed Features]. You will then be redirected to your new `internal-npm` feed, currently empty.
+You are then presented with several options. These relate to ProGet's [Vulnerability Scanning and Blocking](/docs/proget/sca/vulnerabilities) features, however they are only for users looking to use third party packages. Leave these boxes unchecked, and select [Set Feed Features]. You will then be redirected to your new `internal-npm` feed, currently empty.
 
 ![](/resources/docs/proget-npm-internal-empty.png){height="" width="50%"}
 
