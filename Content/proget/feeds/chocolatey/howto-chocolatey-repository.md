@@ -1,6 +1,6 @@
 ---
 title: "HOWTO: Set Up a Private Chocolatey Repository"
-order: 1
+order: 2
 ---
 
 Chocolatey is a system package manager for Windows that helps you configure computers quickly and automatically by installing applications and tools with Chocolatey packages.
