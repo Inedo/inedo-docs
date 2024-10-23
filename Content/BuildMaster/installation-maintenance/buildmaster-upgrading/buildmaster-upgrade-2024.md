@@ -41,18 +41,37 @@ You wont be able to upgrade to BuildMaster 2024 until the [Legacy Feature Detect
 
 Because upgrading from BuildMaster 6.1 is more involved than previous upgrades, special support for it has been included with paid licenses. Simply use the [Submit Ticket Form](https://my.inedo.com/tickets/new), put `2024 UPGRADE` in the "How can we help" section, and include the [Legacy Features Dashboard Report Logs](/docs/buildmaster/installation-maintenance/buildmaster-legacy/buildmaster-legacy-features#legacy-feature-detector) in the text body of the ticket.
 
-## Features & Notable Changes in BuildMaster 2024
+## All Applications: Deployments by Pipelines
 
-The most noticeably change will likely on the "Applications" link in the top navigation. This used to show "what versions are deployed in which environment."  Now it's a multi-tab page that defaults to showing the "current pipeline progress of builds" (i.e. Deployments by Pipeline). However, the old view is still available on the "Deployments by Environment" tab.
+The most noticeably change will likely on the "Applications" link in the top navigation. In previous versions of BuildMaster, this link would show *what versions are deployed in which environment* with a grid of applications and environments.
 
-The Pipeline Overview page also got a bit of an overhaul to make editing/viewing a single pipeline (especially with lots of stages, variables, and events) a lot easier.
+In BuildMaster 2024, this link now navigates to a multi-tab page that shows *current pipeline progress of builds/deployments* with a listing of applications and their pipelines.  The old view is still available on the "Deployments by Environment" tab.
+
+## Pipeline Editor & Parallel Grouping Feature
+
+The Pipeline Editor  page also got a bit of a UX overhaul:
+
+* A "pipeline map" lets you filter the displayed stages to make editing long piplines easier
+* Stage-specific variable inputs and prompts are displayed on the stage
+* Stage-specific event listeners are now displayed under Deployment Steps
+
+You can also specify a *parallel grouping* value on a stage target. When set (valid values are 1 to 99), this target will await for targets with a lower grouping value to complete.
+
+
+## Other Notable Changes in BuildMaster 2024
 
 Other notable changes include:
 * **Insecure Git Repositories** can now be added/browsed in BuildMaster when you bypass certificate errors on the connection
 * **Resource Monitors** have more options for matching newly-created builds to releases
-* **Pipline Event Listener** 
 * **Shutdown Preparation** is available under Administration and allows you to pause any new builds/deployments
 * **HTTPS/SSL Settings (Integrated Web Server)** can now be edited from the Administration section
+
+### Non-Inedo Database Objects Now Dropped
+
+Although adding views, triggers, or stored procedures to the BuildMaster database has never been supported, some users have added them over the years.
+
+Starting in BuildMaster 2024, all such database objects will be dropped upon upgrade. If you wish to do custom reporting with custom database views, create a
+second database (e.g. BuildMasterReports) that queries your main database (e.g. BuildMaster).
 
 ### Discontinued Features in BuildMaster 2024
 
@@ -84,7 +103,7 @@ If you are upgrading from BuildMaster 6.1, you will need to perform some additio
 You should make sure your [installation is backed-up](/docs/installation/backing-up-restoring).
 :::
 
-While you can upgrade from BuidMaster 6.1 and later to BuildMaster 2024 (i.e. there is no need to install intermediate versions), you can only rollback to BuildMaster 2023 without restoring your database.
+While you can upgrade from BuildMaster 6.1 and later to BuildMaster 2024 (i.e. there is no need to install intermediate versions), you can only rollback to BuildMaster 2023 without restoring your database.
 
 ## Rolling Back
 
