@@ -1,5 +1,5 @@
 ---
-title: "HOWTO: Publish npm Packages to a Private Registry in ProGet"
+title: "HOWTO: Upload Python Packages to a Private PyPI Repository in ProGet"
 order: 2
 ---
 
@@ -15,83 +15,130 @@ To start with, we will create a feed to host your Python packages. In ProGet, se
 
 Then select "No Connectors (Private packages only)" as we will be creating a private feed. Now name your feed. For this example we will call it `internal-pypi`.
 
-![](/resources/docs/proget-npm-internal-name.png){height="" width="50%"}
+![](/resources/docs/proget-pypi-internal-namefeed.png){height="" width="50%"}
 
-You are then presented with several options. These relate to ProGet's [Vulnerability Scanning and Blocking](/docs/proget/sca/vulnerabilities) features, however they are only for users looking to use third party packages. Leave these boxes unchecked, and select [Set Feed Features]. You will then be redirected to your new `internal-npm` feed, currently empty.
+You are then presented with several options. These relate to ProGet's [Vulnerability Scanning and Blocking](/docs/proget/sca/vulnerabilities) features, however they are only for users looking to use third party packages. Leave these boxes unchecked, and select [Set Feed Features]. You will then be redirected to your new `internal-pypi` feed, currently empty.
 
-![](/resources/docs/proget-npm-internal-empty.png){height="" width="50%"}
+![](/resources/docs/proget-pypi-internal-empty.png){height="" width="50%"}
 
-## Step 2: Build Your Package
+## Step 2: Create Your Python Package { #create-package }
 
-To create a package, navigate to the directory you wish to create it in and initialize a new `package.json` scoped to the namespace `@my-organization` by running this command:
+Next, we will create our Python packages. You can follow the [official Python documentation](https://packaging.python.org/en/latest/tutorials/packaging-projects/) to learn more about creating these. To create a Python package you will need a folder with the necessary project files, including `setup.py`, `README.md`, and `__init__.py`. The a project structure will typically look like this:
+
+```plaintext
+my_package/
+│
+├── my_package/
+│   ├── __init__.py
+│   ├── python_module.py
+
+├── setup.py
+├── README.md
+```
+
+Then build your package by navigating to the directory containing `setup.py` and entering:
 
 ```bash
-$ npm init --scope=@my-organization
-```
-Note: if you do not want to scope your package, omit `--scope=@my-organization`.
-
-You will be asked for details of the project name, version, etc. After this you will need the URL of your `internal-npm` feed, which can be found on the feed page:
-
-![](/resources/docs/proget-npm-internal-url.png){height="" width="50%"}
-
-Once you have the URL, edit your `package.json` and add a `publishConfig` field, adding the `internal-npm` URL. This will also scope the package to the namespace `@my-organization`: 
-
-```json
-{
-  "name": "@my-organization/npm-hello-world",
-  "version": "1.0.0",
-  "description": "Simple Hello World",
-  "main": "index.js",
-  "publishConfig": {
-    "@my-organization:registry": "https:/proget.corp.local/npm/internal-npm/"
-  },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "Inedo",
-  "license": "MIT",
-  "dependencies": {
-    "npm-hello-world": "^1.0.0"
-  }
-}
+python setup.py sdist bdist_wheel  
 ```
 
-If you do not want to add a scope to your package, you can edit the `name` and `publishConfig` fields as follows:
+This will create two directories: `dist/` and `build/`, with `.tar.gz` (e.g. `my_package-1.0.0.tar.gz`) and `.whl` (e.g. `my_package-1.0.0-py3-none-any.whl`)files inside `dist/`.
 
-```json
- "name": "npm-hello-world",
-...
-  "publishConfig": {
-    "registry": "https:/proget.corp.local/npm/internal-npm/"
-  },
-```
+## Step 3: Create an API Key
 
-## Step 3: Authenticate to your npm Feed
+Now you will need to create an [API Key](/docs/proget/reference-api/proget-apikeys) to let local Python clients authenticate to the `internal-pypi` feed. This will let you publish and access packages from that feed. While you _can_ authenticate with a ProGet username and password, we highly recommend using an API Key instead. For that, use `api` as the username and the API Key as the password.
 
-Next you will need to authenticate to your `internal-npm` feed creating an `_auth` token and then [configuring it in your npm client](/docs/proget/feeds/npm#authenticating-to-npm-feeds).
+When creating an API Key, fill in the fields by selecting "Feeds (Use Certain Feeds)" as the "Feed Type" and selecting the `internal-pypi` feed. Then set the API key. You can use any alphanumeric sequence, or just leave it blank to autogenerate one. Ensure that the "View/Download" and "Add/Repackage" boxes are checked, and then select "Save".
 
-## Step 4: Publish Your Package to ProGet
+When setting up the API Key, choose "Feeds (Use Certain Feeds)" as the "Feed Type" and select the `internal-pypi` feed. You can either pick your own alphanumeric key or leave it blank to have one autogenerated. Make sure to check both the "View/Download" and "Add/Repackage" boxes, and then click "Save."
 
-To publish your package to your `internal-npm` feed, you will need to run the npm publish command by entering:
+![New Key](/resources/docs/proget-conda-apikey-2.png){height="" width="50%"}
+
+## Step 4: Upload Your Package to ProGet { #upload-package }
+
+Python packages are uploaded to ProGet using [twine](https://pypi.org/project/twine/). To use your [API Key](/docs/proget/reference-api/proget-apikeys), you will need to use `api` for the username and the API key as the password. 
+
+To upload a package to a ProGet feed, use the `twine upload` command:
 
 ```bash
-$ npm publish --registry=https://«proget-url»/npm/internal-npm/ 
+$ twine upload «package-name» -u api -p «api-key» --repository-url http://«proget-server»/pypi/«feed-name»/legacy
 ```
 
-Your package should then be uploaded to your `internal-npm` feed:
+:::(warn)(Feed Endpoint URL)
+Note that the feed endpoint URLs used when pushing packages vary slightly from the standard feed URL, ending with `/legacy` rather than `/simple`
+:::
 
-![](/resources/docs/proget-npm-internal-uploaded.png){height="" width="50%"}
-
-## Step 5: Add the Feed to npm Clients
-
-To install packages from the `internal-npm` feed, you'll need to add it as a source in your npm client by entering: 
+For example, uploading `my_package` to your `internal-nuget` feed, on the ProGet server `proget.corp.local`, with the API Key `abc12345`, you would enter:
 
 ```bash
-$ npm config set registry http://«proget-url»/npm/internal-npm
+$ twine upload my_package -u api -p abc12345 --repository-url http://«proget-server»/pypi/«feed-name»/legacy 
 ```
 
-You can confirm that the `public-npm` feed has been set correctly by entering:
+### Using .pypirc to Upload Python Packages
+
+You can also set your PyPI feed globally to publish packages to by editing the `.pypirc` file located in `~\Users\«user»\` as follows:
 
 ```bash
-$ npm get registry
+[distutils] 
+index-servers = proget 
+
+[proget] 
+repository = http://«proget-server»/pypi/«feed-name»/legacy
+username = api
+password = «api-key»
 ```
+
+For example, globally setting the `internal-nuget` feed, on the ProGet server `proget.corp.local`, with the API Key `abc12345`, the file would look like:
+
+```bash
+[distutils] 
+index-servers = proget 
+
+[proget] 
+repository = http://proget.corp.local/pypi/internal-nuget/legacy
+username = api
+password = abc12345
+```
+
+Once your `.pypirc` file has been configured, install packages using the `twine upload` command:
+
+```bash
+$ twine upload -r proget dist/*
+```
+
+## Step 4: Using your PyPI Feed as a Souce to Install Packages
+
+To use your PyPI feed when installing packages you can either include it when running the `pip install` command, or set it globally with the `pip config` command. 
+
+To install Python packages with the URL in the `pip install` command, you will need to add a `--extra-index-url` parameter containing your feed endpoint URL. For example, when installing `my_package 1.0.0` from your `internal-pypi` package on the ProGet server `proget.corp.local` you would enter:
+
+```bash
+$ pip install my_package==1.0.0 --extra-index-url https://proget.corp.local/pypi/internal-pypi/simple
+```
+
+To configure pip to use a [pip config](https://pip.pypa.io/en/stable/topics/configuration/) file to store the feed, you will need to use the [pip config](https://pip.pypa.io/en/stable/cli/pip_config/) command with a `--global` parameter containing your feed endpoint URL. For example, when globally setting your `internal-pypi` package on the ProGet server `proget.corp.local` you would enter:
+
+```bash
+$ pip config --global set global.index-url https:/proget.corp.local/pypi/internal-pypi/simple 
+```
+
+This command will generate a `pip config` file that looks like:
+
+```bash
+[global]
+index-url = https:/proget.corp.local/pypi/internal-pypi/simple
+```
+
+Then you can install packages simply using the `pip install` command:
+
+```bash
+pip install «package-name»==«package-version»
+```
+
+::: (Info) (Note: Scoping)
+The `pip config` can be scoped to global (`--global`), user (`--user`), and to the environment (`--site`). The commands above are scoped to the global scope.
+:::
+
+## (Optional) Authenticating to the PyPI Feed
+
+By default your `public-conda` feed does not require authentication and can be viewed anonymously. However, if you want to make your PyPI feed private, you can use the two `pip` methods above to [authenticate to it](/docs/proget/feeds/pypi#authenticating-to-a-pypi-feed). You can authenticated with a ProGet username and password string `«username»:«password»` but we strongly recommend using an [API Key](/docs/proget/reference-api/proget-apikeys) for this, with `api` as the username, and then API Key as the password. 
