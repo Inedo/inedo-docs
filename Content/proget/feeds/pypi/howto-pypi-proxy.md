@@ -39,17 +39,29 @@ To install Python packages with the `pip install` command, you will need to add 
 $ pip install «package-name»==«package-version» --extra-index-url https://«proget-server»/pypi/public-pypi/simple
 ```
 
+For example, if you are installing `Flask 2.3.3` from a your `public-pypi` feed on the server `proget.corp.local`, your command would look like this:
+
+```bash
+$ pip install flask==2.3.3 --extra-index-url proget.corp.local -i https://proget.corp.local/pypi/public-pypi/simple
+```
+
 To configure pip to use a [pip config](https://pip.pypa.io/en/stable/topics/configuration/) file to store the feed, you will need to use the [pip config](https://pip.pypa.io/en/stable/cli/pip_config/) command with a `--global` parameter containing your `public-pypi` endpoint URL.
 
 ```bash
 $ pip config --global set global.index-url https://«proget-server»/pypi/public-pypi/simple
 ```
 
-These commands will generate a `pip config` file that looks like:
+For example, to globally set the `public-pypi` feed on the server `proget.corp.local` you would enter:
+
+```bash
+$ pip config --global set global.index-url https://proget.corp.local/pypi/public-pypi/simple 
+```
+
+This command will generate a `pip config` file that looks like:
 
 ```bash
 [global]
-index-url = https://«proget-server»/pypi/pypi/public-pypi/simple
+index-url = https://proget.corp.local/pypi/public-pypi/simple 
 ```
 
 ::: (Info) (Note: Scoping)
