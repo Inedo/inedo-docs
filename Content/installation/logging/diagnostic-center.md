@@ -2,14 +2,6 @@
 title: "Diagnostic Center"
 ---
 
-:::(Internal)
-/docs/proget/administration/proget-installation-diagnostic-center
-/docs/buildmaster/administration/buildmaster-installation-and-maintenance-diagnostic-center
-/docs/otter/administration-maintenance/otter-installation-diagnostic-center
-/docs/installation/logging/various-ceip-overview
-
-:::
-
 The Diagnostic Center can be found under the Administration section in BuildMaster, ProGet, and Otter. It displays system messages that may help you troubleshoot a recent problem that you've encountered in the product, such as a "500 Server Error" or other unexpected messages.
 
 :::(Info)
@@ -35,6 +27,8 @@ In some cases (in particular, older versions of the products) you may see a SQL 
 
 ## Log Collection & Transmission
 
+**This feature used to be called Customer Experience Improvement Program (CEIP)**, as it was originally intended to connect usage telemetry. However, we only use the collected data for troubleshooting specific problems and thus renamed the feature to "Log Collection & Transmission"; it will still be called CEIP in product versions released prior to November 2024.
+
 :::(Warning)
 We do not recommend enabling this feature unless you're actively working with one of our support engineers
 :::
@@ -44,7 +38,6 @@ BuildMaster, ProGet, and Otter can collect and transmit detailed diagnostic data
 
 Although no secure data (keys, passwords, user-generated logs, etc) will be transmitted, some information that's readily displayed in the UI (application names, build numbers, etc) is included The data is mostly system load (memory, CPU, etc), performance metrics (web requests, database calls, etc), log messages, and error stack traces.
 
-**This feature used to be called Customer Experience Improvement Program (CEIP)**, as it was originally intended to connect usage telemetry. However, we only use the collected data for troubleshooting specific problems and thus renamed the feature to "Log Collection & Transmission"; it may still be called CEIP in your product.
 
 
 
