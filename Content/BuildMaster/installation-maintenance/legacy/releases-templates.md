@@ -1,6 +1,7 @@
 ---
 title: "Release Templates"
 order: 7
+url-slug: "buildmaster/installation-maintenance/buildmaster-legacy/buildmaster-applications-releases-templates"
 ---
 
 :::(Error) (Release Templates are Deprecated)

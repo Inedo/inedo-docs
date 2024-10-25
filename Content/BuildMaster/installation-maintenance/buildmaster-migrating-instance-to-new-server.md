@@ -60,5 +60,5 @@ When you're satisfied with the import of individual applications, you can export
 
 *   Consider **exporting your infrastructure** from the original instance and importing into the new one before doing anything else. This will prevent you from having to recreate servers, roles, and environments in the new instance. Of course, if you want to start fresh, you may want to skip this.
 *   Upgrade your Inedo Agents to the latest version, and set the **`Agents.InstanceId`** advanced configuration setting to a unique value in your new BuildMaster instance. This will allow your second instance to reuse the same agents without any interference.
-*   Consider **enabling [CEIP](/docs/installation/logging/various-ceip-overview)**. This data is very valuable in case you experience any bugs or performance issues.
+*   Consider **enabling [CEIP](/docs/installation/logging/diagnostic-center#ceip)**. This data is very valuable in case you experience any bugs or performance issues.
 *   Don't forget about **permissions**! Make sure you copy over any required permissions, or start from scratch if your original list has gotten too complicated.

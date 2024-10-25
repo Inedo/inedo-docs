@@ -1,6 +1,7 @@
 ---
 title: "Legacy Extensions"
 order: 4
+url-slug: "buildmaster/installation-maintenance/buildmaster-legacy/buildmaster-legacy-features/buildmaster-legacy-extensions"
 ---
 
 

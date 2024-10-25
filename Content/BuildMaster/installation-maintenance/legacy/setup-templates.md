@@ -1,12 +1,13 @@
 ---
 title: "Setup Templates"
 order: 6
+url-slug: "buildmaster/installation-maintenance/buildmaster-legacy/buildmaster-applications-concepts-setup-templates"
 ---
 
-:::(Error) (Setup Templates are Deprecated)
+:::(Error) (Setup Templates were Removed in BuildMaster 2024)
 This feature was mainly used in BuildMaster 6.2 and BuildMaster 7.0 to customize template applications managed by Inedo when creating a new application.
 
-With the introduction of improved application creation in BuildMaster 2022, this feature is obsolete and will be removed in a future version of BuildMaster; see [Legacy (Deprecated) Features](/docs/buildmaster/installation-maintenance/buildmaster-legacy) to learn more.
+With the introduction of improved application creation in BuildMaster 2022, this feature is obsolete and was removed in BuildMaster 2024; see [Legacy (Deprecated) Features](/docs/buildmaster/installation-maintenance/buildmaster-legacy) to learn more.
 :::
 
 BuildMaster is used to build and deploy all kinds of applications and projects, from developer libraries to mobile applications to legacy monoliths. BuildMaster has many different features that can automate and give visibility into different parts of your build and deployment process.
