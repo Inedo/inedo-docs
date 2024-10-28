@@ -56,23 +56,41 @@ When setting up the API Key, choose "Feeds (Use Certain Feeds)" as the "Feed Typ
 
 ## Step 4: Upload Your Package to ProGet { #upload-package }
 
-Python packages are uploaded to ProGet using [twine](https://pypi.org/project/twine/). To use your [API Key](/docs/proget/reference-api/proget-apikeys), you will need to use `api` for the username and the API key as the password. 
+To publish your package to your ProGet PyPI feed, you can use [pgutil](/docs/proget/reference-api/proget-pgutil).
 
-To upload a package to a ProGet feed, use the `twine upload` command:
+pgutil will require some [minor configuration](/docs/proget/reference-api/proget-pgutil#sources) before use. This includes setting up your ProGet instance and API key as a source by running:
 
 ```bash
-$ twine upload «package-name» -u api -p «api-key» --repository-url http://«proget-server»/pypi/«feed-name»/legacy
+$ pgutil sources add --name=Default --url=«proget-url» --api-key=«api-key»
 ```
+
+For example, adding the ProGet instance `https://proget.corp.local/` with the API Key `abc12345` you would enter:
+
+```bash
+$ pgutil sources add --name=Default --url=https://proget.corp.local/ --api-key=abc12345
+```
+
+Now upload your packages by entering:
+
+```bash
+$ pgutil packages upload --feed=«feed-name» --input-file=«path-to-package»
+```
+
+For example, to upload the package `my_package-0.1-py3-none-any.whl` stored at `C:\development\pypi_packages\my-package\dist` to your `internal-pypi` feed you would enter:
+
+```bash
+$ pgutil packages upload --feed=internal-pypi --input-file=C:\development\pypi_packages\my-package\dist\my_package-0.1-py3-none-any.whl
+```
+
+Your package will then be uploaded to ProGet:
+
+![](/resources/docs/proget-pypi-internal-uploaded.png){height="" width="50%"}
 
 :::(warn)(Feed Endpoint URL)
 Note that the feed endpoint URLs used when pushing packages vary slightly from the standard feed URL, ending with `/legacy` rather than `/simple`
 :::
 
-For example, uploading `my_package` to your `internal-nuget` feed, on the ProGet server `proget.corp.local`, with the API Key `abc12345`, you would enter:
-
-```bash
-$ twine upload my_package -u api -p abc12345 --repository-url http://«proget-server»/pypi/«feed-name»/legacy 
-```
+It's also possible to use the `twine upload` command if want to use [twine](https://pypi.org/project/twine/). 
 
 ### Using .pypirc to Upload Python Packages
 
