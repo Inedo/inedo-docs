@@ -39,6 +39,7 @@ The below table shows the *minimum* version of each Inedo Product that the Inedo
 ### SDK v3 (3.0)
 | SDK Version | ProGet | BuildMaster | Otter
 | --- | --- | --- | --- 
+| 3.1.* | *n/a* | 2024.0 | 2024.0
 | 3.0.\*     | 2024.0      | *n/a*  | *n/a* 
 
 

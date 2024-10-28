@@ -35,17 +35,21 @@ For your team to install packages from the `public-npm` feed, you'll need to add
 
 ![](/resources/docs/proget-npm-public-url.png){height="" width="50%"}
 
-Now configure your npm client with your `public-npm` feed by entering: 
+Now configure your npm client with your `public-npm` feed with `npm config`: 
+
+### Using npm
 
 ```bash
-$ npm config set registry http://«proget-url»/npm/public-npm
+$ npm config set registry http://«proget-url»/npm/«feed-name»
 ```
 
-You can confirm that the `public-npm` feed has been set correctly by entering:
+Or in Yarn with `yarn config`:
 
 ```bash
-$ npm get registry
+$ yarn config set registry http://«proget-url»/npm/«feed-name»
 ```
+
+You can confirm that the feed has been set correctly by using `npm get registry` for npm, `yarn config get registry` for Yarn.
 
 ## (Optional) Authenticating to Your npm Feed
 
@@ -53,11 +57,7 @@ By default your `public-npm` feed does not require authentication and can be vie
 
 ## (Optional) Auditing npm Packages { #scan-feed }
 
-If you enabled "Scan for Security Vulnerabilities" when you [created a feed](#create-feed) you can use npm-audit to scan for vulnerabilities in packages by simply running:
-
-```bash
-$ npm audit
-```
+If you enabled "Scan for Security Vulnerabilities" when you [created a feed](#create-feed) you can use npm-audit to scan for vulnerabilities in packages by simply running either `npm audit` or `yarn audit`.
 
 Using `npm audit` with [Vulnerability Scanning and Blocking](/docs/proget/sca/vulnerabilities), lets you assess vulnerabilities in packages, and how they impact your organization.
 
@@ -69,8 +69,14 @@ In this guide we looked at proxying packages from the npm Registry. However, wit
 
 To set up a package approval flow, refer to [HOWTO: Approve and Promote Open-source Packages](/docs/proget/packages/package-promotion/proget-howto-promote-packages). This guide uses NuGet feeds as an example, but the steps are identical when creating npm package feeds.
 
-After creating your "Unapproved" and "Approved" feeds, follow the steps in ["Add the Feed to npm Cients"](#add-feed) to add the "Approved" feed (e.g. `npm-approved`) as a source in your npm client, entering:
+After creating your "Unapproved" and "Approved" feeds, follow the steps in ["Add the Feed to npm Cients"](#add-feed) to add the "Approved" feed (e.g. `npm-approved`) as a source in your npm client using `npm config`:
 
 ```bash
 $ npm config set registry http://«proget-url»/npm/npm-approved
+```
+
+Or in Yarn with `yarn config`:
+
+```bash
+$ yarn config set registry http://«proget-url»/npm/npm-approved
 ```

@@ -1,11 +1,12 @@
 ---
 title: "Upgrading to BuildMaster 2022"
-order: 2
+nav-title: "BuildMaster 2022"
+order: 3
 url-slug: "buildmaster-upgrade-2022"
 ---
 
-:::(Error) (Skip BuildMaster 2022: Upgrade Directly to BuildMaster 2023)
-If you are using BuildMaster 6.1, BuildMaster 6.2, or BuildMaster 7.0, we recommend directly [Upgrading to BuildMaster 2023](/docs/buildmaster-upgrade-2023). If you using an earlier version, you will first need to [Upgrade to BuildMaster 6.1](/docs/buildmaster-upgrading-to-6-1).
+:::(Error) (Skip BuildMaster 2022: Upgrade Directly to BuildMaster 2024)
+If you are using BuildMaster 6.1, BuildMaster 6.2, or BuildMaster 7.0, we recommend directly [Upgrading to BuildMaster 2024](/docs/buildmaster-upgrade-2024). If you using an earlier version, you will first need to [Upgrade to BuildMaster 6.1](/docs/buildmaster-upgrading-to-6-1).
 :::
 
 BuildMaster 2022 is a major update, and this article contains information about what will change, how it will affect your instance, and how you can minimize risk during the upgrade.

@@ -1,6 +1,7 @@
 ---
 title: "Webhook Monitors"
 order: 2
+url-slug: "buildmaster/installation-maintenance/buildmaster-legacy/buildmaster-legacy-webhooks"
 ---
 
 :::(Error) (Webhook Monitors are Deprecated)
@@ -23,7 +24,9 @@ Once these options are configured, a URL (relative to the BuildMaster host) is p
 
 ## GitHub Webhook Monitor
 
-In order for BuildMaster to receive webhooks from GitHub, a GitHub Webhook Monitor must first be created in BuildMaster, followed by adding a webhook in GitHub itself. See the [GitHub Webhooks](/docs/buildmaster/installation-maintenance/buildmaster-legacy/buildmaster-legacy-webhooks/buildmaster-integrations-github-webhooks) documentation for step-by-step instructions.
+In order for BuildMaster to receive webhooks from GitHub, a GitHub Webhook Monitor must first be created in BuildMaster, followed by adding a webhook in GitHub itself.
+See the [archived GitHub Webhooks documentation](https://github.com/Inedo/inedo-docs/blob/c82fd2881e2f1d0c36e77bc8b8b48e2a2c7b75a9/Content/BuildMaster/installation-maintenance/buildmaster-legacy/buildmaster-legacy-webhooks/buildmaster-integrations-github-webhooks.md) for step-by-step instructions.
 
 ## GitLab Webhook Monitor
-In order for BuildMaster to receive webhooks from GitLab, a GitLab Webhook Monitor must first be created in BuildMaster, followed by adding a webhook in GitLab itself. See the [GitLab Webhooks](/docs/buildmaster/installation-maintenance/buildmaster-legacy/buildmaster-legacy-webhooks/buildmaster-integrations-gitlab-webhooks) documentation for step-by-step instructions.
+In order for BuildMaster to receive webhooks from GitLab, a GitLab Webhook Monitor must first be created in BuildMaster, followed by adding a webhook in GitLab itself. 
+See the [archived GitLab Webhooks documentation](https://github.com/Inedo/inedo-docs/blob/c82fd2881e2f1d0c36e77bc8b8b48e2a2c7b75a9/Content/BuildMaster/installation-maintenance/buildmaster-legacy/buildmaster-legacy-webhooks/buildmaster-integrations-gitlab-webhooks.md) for step-by-step instructions.
