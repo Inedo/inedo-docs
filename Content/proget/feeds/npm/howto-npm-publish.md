@@ -29,11 +29,18 @@ We are then presented with several options. This relate to ProGet's [Vulnerabili
 
 ## Step 2: Build Your Package
 
-To create a package, navigate to the directory you wish to create it in and initialize a new `package.json` scoped to the namespace `@my-organization` by running this command:
+To create a package, navigate to the directory you wish to create it in and initialize a new `package.json` scoped to the namespace `@my-organization` by running running the `npm init` command:
 
 ```bash
 $ npm init --scope=@my-organization
 ```
+
+For Yarn, the command is similar:
+
+```bash
+$ yarn init --scope=@my-organization
+```
+
 Note: if you do not want to scope your package, omit `--scope=@my-organization`.
 
 You will be asked for details of the project name, version, etc. After this you will need the URL of your `internal-npm` feed, which can be found on the feed page:
@@ -78,10 +85,16 @@ Next you will need to authenticate to your `internal-npm` feed creating an `_aut
 
 ## Step 4: Publish Your Package to ProGet
 
-To publish your package to your `internal-npm` feed, you will need to run the npm publish command by entering:
+To publish your package to your `internal-npm` feed, you will need to run the `npm publish`:
 
 ```bash
 $ npm publish --registry=https://«proget-url»/npm/internal-npm/ 
+```
+
+Or in Yarn using the `yarn publish` command:
+
+```bash
+$ yarn publish --registry=https://«proget-url»/npm/internal-npm/ 
 ```
 
 Your package should then be uploaded to your `internal-npm` feed:
@@ -90,14 +103,16 @@ Your package should then be uploaded to your `internal-npm` feed:
 
 ## Step 5: Add the Feed to npm Clients
 
-To install packages from the `internal-npm` feed, you'll need to add it as a source in your npm client by entering: 
+To install packages from the `internal-npm` feed, you'll need to add it as a source in your npm client using `npm config`: 
 
 ```bash
-$ npm config set registry http://«proget-url»/npm/internal-npm
+$ npm config set registry http://«proget-url»/npm/«feed-name»
 ```
 
-You can confirm that the `public-npm` feed has been set correctly by entering:
+Or in Yarn using `yarn config`:
 
 ```bash
-$ npm get registry
+$ yarn config set registry http://«proget-url»/npm/«feed-name»
 ```
+
+You can confirm that the feed has been set correctly by using `npm get registry` for npm, `yarn config get registry` for Yarn.
