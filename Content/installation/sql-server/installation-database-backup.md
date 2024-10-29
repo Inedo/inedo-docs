@@ -55,8 +55,8 @@ When you need to restore a database from a backup made using the command mention
 
 | Product | Restore command |
 | --- | --- |
-| BuildMaster | ``osql -S .\INEDO -E -Q "RESTORE DATABASE [ProGet] FROM DISK = N'C:\Backups\ProGet.bak' WITH FILE = 1, NOUNLOAD, STATS = 10"``
-| ProGet | ``osql -S .\INEDO -E -Q "RESTORE DATABASE [BuildMaster] FROM DISK = N'C:\Backups\BuildMaster.bak' WITH FILE = 1, NOUNLOAD, STATS = 10""``
+| BuildMaster | ``osql -S .\INEDO -E -Q "RESTORE DATABASE [BuildMaster] FROM DISK = N'C:\Backups\BuildMaster.bak' WITH FILE = 1, NOUNLOAD, STATS = 10""``
+| ProGet | ``osql -S .\INEDO -E -Q "RESTORE DATABASE [ProGet] FROM DISK = N'C:\Backups\ProGet.bak' WITH FILE = 1, NOUNLOAD, STATS = 10"``
 | Otter | ``osql -S .\INEDO -E -Q "RESTORE DATABASE [Otter] FROM DISK = N'C:\Backups\Otter.bak' WITH FILE = 1, NOUNLOAD, STATS = 10"``
 
 Make sure the Inedo product's Windows Service(s) is stopped; otherwise, SQL Server will complain with a "database in use" error.

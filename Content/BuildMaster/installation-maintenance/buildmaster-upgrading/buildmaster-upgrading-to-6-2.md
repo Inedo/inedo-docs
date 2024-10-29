@@ -1,6 +1,7 @@
 ---
-title: "Upgrading to BuildMaster 6.2  (2020)"
-order: 4
+title: "Upgrading to BuildMaster 6.2"
+nav-title: "BuildMaster 6.2 (2020)"
+order: 88
 url-slug: "buildmaster-upgrading-to-6-2"
 ---
 

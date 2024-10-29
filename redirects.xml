@@ -1,9 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <redirects>
 
+  <redirect from="/docs/proget/administration/proget-installation-diagnostic-center" to="/docs/installation/logging/diagnostic-center" modified="10/24/2024" />
+  <redirect from="/docs/buildmaster/administration/buildmaster-installation-and-maintenance-diagnostic-center" to="/docs/installation/logging/diagnostic-center" modified="10/24/2024" />
+  <redirect from="/docs/otter/administration-maintenance/otter-installation-diagnostic-center" to="/docs/installation/logging/diagnostic-center" modified="10/24/2024" />
+  <redirect from="/docs/installation/logging/various-ceip-overview" to="/docs/installation/logging/diagnostic-center#ceip" modified="10/24/2024" />
   <redirect from="/docs/installation/installing-on-iis/various-iis-switching-to-iis" to="/docs/installation/installing-on-iis/howto-switch-to-integrated-web-server-from-iis" modified="8/2/2024" />
-  
-  <!-- BEGIN Japanese Docs Migration -->
+
+	<!-- BEGIN Japanese Docs Migration -->
   <redirect from="/docs/inedo-日本語ヘルフ/proget-jp/脆弱性とライセンスのスキャン/jp-proget-vulnerabilities-scanning" to="/" modified="7/25/2024 11:00:00 AM" />
   <redirect from="/docs/inedo-日本語ヘルフ/proget-jp/脆弱性とライセンスのスキャン/jp-proget-license-detection" to="/" modified="7/25/2024 11:00:00 AM" />
   <redirect from="/docs/inedo-日本語ヘルフ/proget-jp/高度な機能/jp-webhooks" to="/" modified="7/25/2024 11:00:00 AM" />
