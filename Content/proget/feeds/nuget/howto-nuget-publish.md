@@ -7,7 +7,7 @@ ProGet let's you set up private NuGet repositories that will allow you to publis
 
 This guide will walk you through the process of setting up a NuGet ["Feed"](/docs/proget/feeds/feed-overview) in ProGet as a private, custom repository. We'll also cover how to create, push, and install NuGet packages from this repository.
 
-## Step 1: Create and Name a NuGet Feed
+## Step 1: Create and Name a NuGet Feed { #create-feed }
 
 Start by creating a NuGet feed to host your internal packages. Navigate to "Feeds" and "Create New Feed". Then select "NuGet (.NET) Packages".
 
@@ -71,8 +71,7 @@ To add your `internal-nuget` feed to either Visual Studio or NuGet CLI, you will
 
 ![](/resources/docs/proget-nuget-internal-url.png){height="" width="50%"}
 
-
-### Using Visual Studio
+### Using Visual Studio { #add-visualstudio }
 
 To add your feed as a Package Manager in Visual Studio, navigate to "Tools" > "NuGet Package Manager" > "Package Manager Settings". Then uncheck the box to the left of *nuget.org*
 
@@ -98,8 +97,7 @@ To confirm the connection in Visual Studio, right-click on a project in the Solu
 
 ![visualstudio-connectedprogetfeed.png](/resources/docs/visualstudio-connectedprogetfeed.png)
 
-
-### Using NuGet CLI
+### Using NuGet CLI { #add-cli }
 Then add the feed as a source to your NuGet client by entering:
 
 ```bash
@@ -131,7 +129,7 @@ In the Name field, enter a name for your source (e.g., `internal-nuget`), and th
 
 ## Step 4: Setting Up Authentication to Your NuGet Feed.
 
-To push packages to a feed you will need to configure authentication using a "NuGet API Key". To authenticate you can either create an API Key in ProGet or use `«username:password»` as one. To learn how to do either, see [Authenticating to a NuGet Feed](/docs/proget/feeds/nuget#authenticating-to-nuget-feeds).
+To push packages to a feed you will need to configure authentication using a "NuGet API Key". While you can authenticate with a "psedo key" (`«username»:«password»`), we strongly recommend using an [API Key](/docs/proget/reference-api/proget-apikeys) for this, with `api` as the username, and then API Key as the password. To learn more about creating one, read [Authenticating to NuGet Feeds](/docs/proget/feeds/nuget#authenticating-to-nuget-feeds). 
 
 ## Step 5: Pushing Your Package to Your NuGet Feed
 
@@ -172,3 +170,7 @@ $ dotnet nuget push bin/Release/MyPackage.1.0.0.nupkg -Source internal-nuget
 Your package will then be uploaded and appear in your NuGet feed.
 
 ![](/resources/docs/proget-nuget-internal-uploaded.png){height="" width="50%"}
+
+## (Optional) Repackaging NuGet Packages in CI/CD
+
+After publishing your NuGet packages, you might want to improve your CI/CD workflow by [repackaging](/docs/proget/packages/repackaging) pre-release versions into production-ready packages. This step allows you to create stable versions while maintaining an audit trail of the original pre-release versions, including details on who performed the operation and when. To learn more about repackaging your NuGet packages you can read [Repackaging NuGet Packages](/docs/proget/feeds/nuget#repackaging-packages)

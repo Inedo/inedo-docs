@@ -115,7 +115,7 @@ $ dotnet nuget install «package-name» -Source public-nuget
 
 ## Step 4: (Optional) Authenticating to Your NuGet Feed
 
-By default your `public-nuget` feed does not need to be authenticated to, and can be viewed anonymously. However, you may want to make your repository private and [authenticate to it](/docs/proget/feeds/nuget#authenticating-to-nuget-feeds) using either an API key or a username/password combination. You may need to do this when pushing internal NuGet packages to your feed, to consume either solely or in combination with OSS packages. 
+By default your `public-nuget` feed does not need to be authenticated to, and can be viewed anonymously. However, you may want to make your repository private and authenticate to it. While you can authenticate with a "psedo key" (`«username»:«password»`), we strongly recommend using a Personal [API Key](/docs/proget/reference-api/proget-apikeys), with `api` as the username, and the Personal API Key as the password. To learn more about creating one, read [Authenticating to NuGet Feeds](/docs/proget/feeds/nuget#authenticating-to-nuget-feeds). 
 
 ## (Optional) Creating a Package Approval Flow
 
