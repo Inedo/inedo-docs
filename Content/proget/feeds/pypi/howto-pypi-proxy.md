@@ -68,9 +68,46 @@ index-url = https://proget.corp.local/pypi/public-pypi/simple
 The `pip config` can be scoped to global (`--global`), user (`--user`), and to the environment (`--site`). The commands above are scoped to the global scope.
 :::
 
+### Using Pipenv
+
+To configure Pipenv to use your PyPI feed, set the `PIP_INDEX_URL` environment variable in your shell before running `pipenv install`, or include it in your Pipfile:
+
+```bash
+$ export PIP_INDEX_URL=https://«proget-server»/pypi/public-pypi/simple
+```
+
+Alternatively, modify your Pipfile to include:
+
+```bash
+[[source]]
+name = "public-pypi"
+url = "https://«proget-server»/pypi/public-pypi/simple"
+verify_ssl = true
+```
+
+Then install packages with:
+
+```bash
+$ pipenv install «package-name»==«package-version»
+```
+
+### Using Poetry
+
+To configure Poetry to use your `public-pypi` feed, you can add the repository to your project using the `poetry config` command:
+
+```bash
+$ poetry config repositories.public-pypi https://«proget-server»/pypi/public-pypi/simple
+```
+
+Then, to install a package from your feed, use the `poetry add` command:
+
+```bash
+poetry add «package-name» --source public-pypi
+```
+
 ## (Optional) Authenticating to Your PyPI Feed
 
-By default your `public-npm` feed does not require authentication and can be viewed anonymously. However if you've configured your feed to require authentication, you can use the two `pip` methods above to authenticate to it. [Feeds can be authenticated](/docs/proget/feeds/pypi#authenticating-to-a-pypi-feed) with a username and password string `«username»:«password»` but we strongly recommend using an [API Key](/docs/proget/reference-api/proget-apikeys) for this, with `api` as the username, and then API Key as the password.
+By default your `public-npm` feed does not require authentication and can be viewed anonymously. However if you've configured your feed to require authentication, you can use [authenticate to it](/docs/proget/feeds/pypi#authenticating-to-a-pypi-feed) with a username and password string `«username»:«password»`. However, we strongly recommend using an [API Key](/docs/proget/reference-api/proget-apikeys) for this, with `api` as the username, and then API Key as the password.
 
 ## (Optional) Creating a Package Approval Flow
 
@@ -78,4 +115,4 @@ In this guide we looked at proxying packages from PyPI. However, without oversig
 
 To set up a package approval flow, refer to [HOWTO: Approve and Promote Open-source Packages](/docs/proget/packages/package-promotion/proget-howto-promote-packages). This guide uses NuGet feeds as an example, but the steps are identical when creating PyPI package feeds.
 
-After creating your "Unapproved" and "Approved" feeds, follow the steps in ["Using the Feed in Python Clients"](#add-feed) to add the "Approved" feed (e.g. `npm-approved`) as a source using either `pip install` or `pip config`.
+After creating your "Unapproved" and "Approved" feeds, follow the steps in ["Using the Feed in Python Clients"](#add-feed) to add the "Approved" feed (e.g. `npm-approved`) as a source.

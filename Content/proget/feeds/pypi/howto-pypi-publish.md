@@ -157,6 +157,43 @@ pip install «package-name»==«package-version»
 The `pip config` can be scoped to global (`--global`), user (`--user`), and to the environment (`--site`). The commands above are scoped to the global scope.
 :::
 
+### Using Pipenv
+
+To configure Pipenv to use your PyPI feed, set the `PIP_INDEX_URL` environment variable in your shell before running `pipenv install`, or include it in your Pipfile. For example if adding your `internal-pypi` feed on the server `proget.corp.local`, you would enter:
+
+```bash
+$ export PIP_INDEX_URL=https://proget.corp.local/pypi/internal-pypi/simple
+```
+
+Alternatively, modify your Pipfile to include:
+
+```bash
+[[source]]
+name = "internal-pypi"
+url = "https://proget.corp.local»/pypi/internal-pypi/simple"
+verify_ssl = true
+```
+
+Then install packages with:
+
+```bash
+$ pipenv install «package-name»==«package-version»
+```
+
+### Using Poetry
+
+To configure Poetry to use your PyPI feed, you can add the repository to your project using the `poetry config` command. For example if adding your `internal-pypi` feed on the server `proget.corp.local` you would enter:
+
+```bash
+$ poetry config repositories.internal-pypi https://proget.corp.local/pypi/internal-pypi/simple
+```
+
+Then, to install a package from your feed, use the `poetry add` command:
+
+```bash
+poetry add «package-name» --source internal-pypi
+```
+
 ## (Optional) Authenticating to the PyPI Feed
 
-By default your `public-conda` feed does not require authentication and can be viewed anonymously. However, if you want to make your PyPI feed private, you can use the two `pip` methods above to [authenticate to it](/docs/proget/feeds/pypi#authenticating-to-a-pypi-feed). You can authenticated with a ProGet username and password string `«username»:«password»` but we strongly recommend using an [API Key](/docs/proget/reference-api/proget-apikeys) for this, with `api` as the username, and then API Key as the password. 
+By default your `public-npm` feed does not require authentication and can be viewed anonymously. However if you've configured your feed to require authentication, you can use [authenticate to it](/docs/proget/feeds/pypi#authenticating-to-a-pypi-feed) with a username and password string `«username»:«password»`. However, we strongly recommend using an [API Key](/docs/proget/reference-api/proget-apikeys) for this, with `api` as the username, and then API Key as the password.
