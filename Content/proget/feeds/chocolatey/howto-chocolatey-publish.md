@@ -41,7 +41,7 @@ From here you will need to create and edit the necessary package files such as t
 $ choco pack
 ```
 
-You can read more about creating a Chocolatey package in [Chocolatey's Official Documentation].
+You can read more about creating a Chocolatey package in [Chocolatey's Official Documentation](https://docs.chocolatey.org/en-us/features/create-packages/).
 
 ## Step 3: Adding ProGet As A Source  { #add-source }
 
