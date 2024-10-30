@@ -76,11 +76,19 @@ For example, to upload the package `my-package-1.2.3.nupkg` stored at `C:\chocol
 
 ```bash
 $ pgutil packages upload --feed=internalized-chocolatey --input-file=C:\chocolatey_packages\my-package-1.2.3.nupkg
-```
+``` 
 
 Your package will then be uploaded to the `internalized-chocolatey` feed.
 
 ![](){height="" width="50%"}
+
+Alternatively you can use the choco push command to upload packages:
+
+To push a package use the `choco push` command. This will require an API Key:  
+
+```bash
+$ choco push «path-to-package» --source=internalized-chocolatey --api-key=«api-key»
+```
 
 ## Step 5: Adding ProGet as a Source { #add-source }
 

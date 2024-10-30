@@ -29,147 +29,65 @@ You'll then see several options related to ProGet's [Vulnerability Scanning and 
 
 ## Step 2: Create a Chocolatey Package
 
-If you are using Visual Studio, you can create a Chocolatey package by following these steps:
-
-1. Create a class library project in Visual Studio by selecting the Class Library template, choosing a suitable framework, then building the project to ensure it's set up correctly.
-2. Configure the Chocolatey package properties by accessing project settings, ensuring the Package ID is unique and other details are filled out.
-3. Use the Pack command in Release configuration to generate a `.nupkg` file, checking the Output window for its location
-
-For more detail you can read [Microsoft's Official Documentation](https://learn.microsoft.com/en-us/Chocolatey/quickstart/create-and-publish-a-package-using-visual-studio?tabs=netcore-cli).
-
-In this guide we will cover creating a project in dotnet as it is easier to demonstrate, and also lets us cover the individual files that make up a Chocolatey package. To start, create the project in `dotnet` CLI by entering:
+To create a Chocolatey package, you will need to start by opening an elevated PowerShell and running the `choco new` command:
 
 ```bash
-$ dotnet new classlib -n MyPackage 
-$ cd MyPackage 
+$ choco new «package-name»
 ```
 
-In the project folder, create a `.nuspec` file, that will contain the package metadata. For example:
-
-```xml
-<?xml version="1.0"?> 
-<package > 
-  <metadata> 
-    <id>MyPackage</id> 
-    <version>1.0.0</version> 
-    <authors>Your Name</authors> 
-    <owners>Your Organization</owners> 
-    <description>A simple example Chocolatey package.</description> 
-    <language>en-US</language> 
-    <tags>example</tags> 
-  </metadata> 
-</package> 
-```
-
-Then run the following to create the package: 
+From here you will need to create and edit the necessary package files such as the `.nuspec` and `chocolateyInstall.ps1`, and then build the package with the choco pack command:
 
 ```bash
-$ dotnet pack --configuration Release 
+$ choco pack
 ```
 
-## Step 3: Adding the Feed to Chocolatey CLI { #add-feed }
+You can read more about creating a Chocolatey package in [Chocolatey's Official Documentation].
 
-To add your `internal-Chocolatey` feed to either Visual Studio or Chocolatey CLI, you will need the feed URL. This is found on the top right of the feed page:
+## Step 3: Adding ProGet As A Source  { #add-source }
 
-![](/resources/docs/proget-Chocolatey-internal-url.png){height="" width="50%"}
-
-### Using Visual Studio { #add-visualstudio }
-
-To add your feed as a Package Manager in Visual Studio, navigate to "Tools" > "Chocolatey Package Manager" > "Package Manager Settings". Then uncheck the box to the left of *Chocolatey.org*
-
-![visualstudio-packagesources-highlightedChocolateyorg.png](/resources/docs/visualstudio-packagesources-highlightedChocolateyorg.png)
-
-This prevents Visual Studio from scanning both Chocolatey.org and ProGet for packages. If you configure Visual Studio to search only ProGet instead of Chocolatey.org and ProGet, you avoid problems such as bad licenses, vulnerable packages, and [dependency confusion](https://blog.inedo.com/software-supply-chain-security/three-things) in your packages when you use multiple sources.
-
-Now you will need to create a new package source. Click the green `+` in the top right of the window, and then name the new package source. Then paste in your `internal-Chocolatey` feed URL.
-
-![visualstudio-packagesources-configureproget.png](/resources/docs/visualstudio-packagesources-configureproget.png)
-
-Now, click the "Update" button, followed by the "OK" button.
-
-![visualstudio-packagesources-updateandok.png](/resources/docs/visualstudio-packagesources-updateandok.png)
-
-Visual Studio and ProGet are now connected.
-
-:::(Warning) (Be sure to click "Update" prior to clicking "OK")
-If you click "OK" without clicking "Update" your package source configuration will not be saved in Visual Studio.
-:::
-
-To confirm the connection in Visual Studio, right-click on a project in the Solution Explorer and select “Manage Chocolatey Packages…” from the menu. In the Package Manager window under "Browse", your should see a window populated with packages from the `internal-Chocolatey` feed.
-
-![visualstudio-connectedprogetfeed.png](/resources/docs/visualstudio-connectedprogetfeed.png)
-
-### Using Chocolatey CLI { #add-cli }
-Then add the feed as a source to your Chocolatey client by entering:
+To add your `internal-chocolatey` feed as a source in your client, use the `choco source add` command. We recommend giving the source the same name as your feed. For example, if adding the ProGet server `proget.corp.local` as a source, you would enter:
 
 ```bash
-$ dotnet Chocolatey add source https://«proget-server»/Chocolatey/internal-Chocolatey/v3/index.json --name internal-Chocolatey
+$ choco source add -n="internal-chocolatey" -s="http://proget.corp.local/feeds/internal-chocolatey" --priority=1 
 ```
 
-## Using Other Chocolatey Clients { #add-others }
+To make sure that your client only installs Chocolatey Packages from ProGet, we recommend removing any default sources already configured using the `choco source remove` command:
 
-ProGet can be added as a source in a number of other popular clients, including [VS Code](https://code.visualstudio.com/) and [JetBrains Rider](https://www.jetbrains.com/rider/).
-
-### In VS Code
-
-To add your `internal-Chocolatey` feed as a source, add it to a `Chocolatey.config` in your project. The config could look like this:
-
-```xml
-<?xml version="1.0" encoding="utf-8"?>
-<configuration>
-  <packageSources>
-    <add key="internal-Chocolatey" value="https://«proget-server»/Chocolatey/internal-Chocolatey/v3/index.json" />
-  </packageSources>
-</configuration>
+```bash
+$ choco source remove -n="chocolatey"
 ```
+You can confirm your client is properly connected to ProGet using the `choco source list` command:
 
-### In JetBrains Rider
+```bash
+$ choco source list
+```
+## Step 4: Create an API Key
 
-To add your `internal-Chocolatey` feed as a source, open "Chocolatey Settings" by navigating to "File" > "Settings", and then "Build, Execution, Deployment" > "Chocolatey". Next, under the "Package Sources" tab, click on the + (Add) button to create a new package source.
+We will now create an [API Key](/docs/proget/reference-api/proget-apikeys) allowing our local client to authenticate to our `internal-chocolatey` feed. This allows us to push packages to the feed.
 
-In the Name field, enter a name for your source (e.g., `internal-Chocolatey`), and then in the URL field, enter the URL of your `internal-Chocolatey` feed. 
+When creating an API Key, fill in the fields by selecting "Feeds (Use Certain Feeds)" as the "Feed Type" and selecting the `internal-chocolatey` feed. Then set the API key. You can use any alphanumeric sequence, or just leave it blank to autogenerate one. Ensure that the "View/Download" and "Add/Repackage" boxes are checked, and then select "Save".
 
-## Step 4: Setting Up Authentication to Your Chocolatey Feed.
-
-To push packages to a feed you will need to configure authentication using a "Chocolatey API Key". While you can authenticate with a "psedo key" (`«username»:«password»`), we strongly recommend using an [API Key](/docs/proget/reference-api/proget-apikeys) for this, with `api` as the username, and then API Key as the password. To learn more about creating one, read [Authenticating to Chocolatey Feeds](/docs/proget/feeds/Chocolatey#authenticating-to-Chocolatey-feeds). 
+![](){height="" width="50%"}
 
 ## Step 5: Pushing Your Package to Your Chocolatey Feed
 
-You can push your Chocolatey package to your Chocolatey feed in either Visual Studio or Chocolatey CLI. First make sure you have [added the feed as a source](#add-feed) with [authentication](/docs/proget/feeds/Chocolatey#authenticating-to-Chocolatey-feeds).
-
-### Pushing a Package in Visual Studio
-
-To push your Chocolatey package using Visual Studio, open the Package Manager Console by navigating to "Tools" > "Chocolatey Package Manager" > "Package Manager Console". Then. run the following Push command:
+To push a package use the `choco push` command:  
 
 ```bash
-$ Chocolatey push «path-to-package» -Source «source-name» -ApiKey api:«apikey»
+$ choco push «path-to-package» --source=internal-chocolatey --api-key=«api-key»
 ```
 
-#### Example:
-
-Pushing the package `MyPackage` to a configured source named `internal-Chocolatey`, you would enter:
+For example, if pushing the Chocolatey package MyApplication-1.2.3.nupkg stored at `C:\chocolatey_packages\` to your `internal-chocolatey` feed with the API key `abc12345` you would enter:
 
 ```bash
-$ Chocolatey push bin\Release\MyPackage.1.0.0.nupkg -Source internal-Chocolatey -ApiKey api:abc12345
+$ choco push C:\chocolatey_packages\MyApplication-1.2.3.nupkg --source=internal-chocolatey --api-key=abc12345
 ```
 
-### Pushing a Package with Chocolatey CLI
+This will upload it to your `internal-chocolatey` feed:
 
-To push a Chocolatey package to ProGet in Chocolatey CLI, use the `dotnet Chocolatey push` command:
+![](){height="" width="50%"}
 
-```bash
-$ dotnet Chocolatey push «package-name» -Source «source-name»
-```
+## (Optional) Internalizing Chocolatey Packages
 
-### Examples:
-
-Pushing the package `MyPackage` to a configured source named `internal-Chocolatey`, you would enter:
-
-```bash
-$ dotnet Chocolatey push bin/Release/MyPackage.1.0.0.nupkg -Source internal-Chocolatey
-```
-
-Your package will then be uploaded and appear in your Chocolatey feed.
-
-![](/resources/docs/proget-Chocolatey-internal-uploaded.png){height="" width="50%"}
+If you want to minimizing reliance on external sources for software installed using Chocolatey Packages, you can [internalize your packages](https://blog.inedo.com/chocolatey/internalization). Chocolatey’s [package internalizer](https://docs.chocolatey.org/en-us/features/package-internalizer) can internalize packages automatically or you can do it yourself. To learn more on how to do this you can read [HOWTO: Set Up a Private Chocolatey Repository for Internalized Packagesy](/docs/proget/feeds/chocolatey/howto-chocolatey-internalized)
 
