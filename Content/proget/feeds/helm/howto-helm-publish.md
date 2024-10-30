@@ -17,16 +17,15 @@ Then select "No Connectors (Private packages only)" as we will be creating a pri
 
 ![](){height="" width="50%"}
 
-You will then see several options. These relate to ProGet's [Vulnerability Scanning and Blocking](/docs/proget/sca/vulnerabilities) features, however they are only for users looking to use third party packages. Leave these boxes unchecked, and select [Set Feed Features]. You will then be redirected to your new `internal-npm` feed, currently empty.
+You will then see several options. These relate to ProGet's [Vulnerability Scanning and Blocking](/docs/proget/sca/vulnerabilities) features, however they are only for users looking to use third party packages. Leave these boxes unchecked, and select [Set Feed Features]. You will then be redirected to your new `internal-helm` feed, currently empty.
 
-![](/resources/docs/proget-npm-internal-empty.png){height="" width="50%"}
+![](){height="" width="50%"}
 
 ## Step 2: Create Your Helm Chart
 
-There are no special requirements for creating Helm Charts in ProGet, but you will need to follow [image naming conventions in your Values file](#values-yaml) if you'd like ProGet to detect the container images that your chart references.
+There are no special requirements for creating Helm Charts in ProGet, but you will need to follow [image naming conventions in your Values file](/docs/proget/feeds/helm#values-yaml) if you'd like ProGet to detect the container images that your chart references.
 
-In general, we recommend creating simple charts from scratch instead of trying to modify or use a third-party chart you might find on Artifact Hub. 
-
+In general, we recommend creating simple charts from scratch instead of trying to modify or use a third-party chart you might find on [Artifact Hub](/docs/proget/feeds/helm#artifacthub). 
 
 This involves using the [helm create](https://helm.sh/docs/helm/helm_create/) command:
 
@@ -58,11 +57,11 @@ See the official [Chart Template Guide](https://helm.sh/docs/chart_template_guid
 
 ## Step 3: Create an API Key
 
-Now create an [API Key](/docs/proget/reference-api/proget-apikeys) which will allow youto authenticate to the `internal-rpm` feed to publish Helm charts to it.
+Now create an [API Key](/docs/proget/reference-api/proget-apikeys) which will allow youto authenticate to the `internal-helm` feed to publish Helm charts to it.
 
 You can read more about creating API keys in ProGet on our [API Key](/docs/proget/reference-api/proget-apikeys) page.
 
-When creating an API Key, fill in the fields by selecting "Feeds (Use Certain Feeds)" as the "Feed Type" and selecting the `internal-rpm` feed. Then set the API key. You can use any alphanumeric sequence, or just leave it blank to autogenerate one.
+When creating an API Key, fill in the fields by selecting "Feeds (Use Certain Feeds)" as the "Feed Type" and selecting the `internal-helm` feed. Then set the API key. You can use any alphanumeric sequence, or just leave it blank to autogenerate one.
 
 ![](){height="" width="50%"}
 
@@ -70,7 +69,21 @@ Make sure the "View/Download" and "Add/Repackage" boxes are checked, and then se
 
 ## Step 4: Publish Your Helm Chart Package
 
-The easiest way to push a Helm Chart to your feed is with [`pgutil packages upload`](/docs/proget/reference-api/proget-api-packages/proget-api-packages-upload) command:
+To publish your Helm chart to your `internal-helm` feed, you can use [pgutil](/docs/proget/reference-api/proget-pgutil).
+
+pgutil will require some [minor configuration](/docs/proget/reference-api/proget-pgutil#sources) before use. This includes setting up your ProGet instance and API key as a source by running:
+
+```bash
+$ pgutil sources add --name=Default --url=«proget-url» --api-key=«api-key»
+```
+
+For example, adding the ProGet instance `https://proget.corp.local/` with the API Key `abc12345` you would enter:
+
+```bash
+$ pgutil sources add --name=Default --url=https://proget.corp.local/ --api-key=abc12345
+```
+
+Now upload your packages by using the [`pgutil packages upload`](/docs/proget/reference-api/proget-api-packages/proget-api-packages-upload) command:
 
 ```bash
 $ pgutil packages upload --feed=«feed-name» --input-file=«path-to-chart-tgz»
