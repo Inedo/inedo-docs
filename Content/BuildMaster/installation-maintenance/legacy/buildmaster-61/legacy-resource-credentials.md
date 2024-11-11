@@ -1,6 +1,7 @@
 ---
 title: "Legacy Resource Credentials"
 order: 5
+url-slug: "buildmaster/installation-maintenance/buildmaster-legacy/buildmaster-legacy-features/legacy-resource-credentials"
 ---
 
 ## Legacy Resource Credentials (BuildMaster 6.1)
