@@ -147,3 +147,27 @@ In either case, we ought not package these because they are quite large. For exa
 
 One option is just to store these as manifest-less packages. For example, `hashicorp/aws` packages could be `pkg:tfprovider/hashicorp@5.75.0?os=windows&arch=amd64`. This would be two purls in one feed, which might not work, so it might require a new feed.
 :::
+
+## Support for Terraform Backends
+
+A [Terraform Backend](https://developer.hashicorp.com/terraform/language/backend) stores [state files](https://developer.hashicorp.com/terraform/language/state) that Terraform uses to keep track of the resources it manages.  
+
+[ProGet Asset Directories](https://docs.inedo.com/docs/proget/asset-directories-file-storage/what-is-an-asset-directory) can be used as an [HTTP backend](https://developer.hashicorp.com/terraform/language/backend/http) by simply setting `address` as the desired folder in your asset directory.
+
+For example:
+
+```
+terraform {
+  backend "http" {
+    address = "https://proget.corp/endpoints/my-assets/terraform/backends"'
+    username = "api"
+    password ="abcd12345"
+  }
+}
+```
+
+Note that the username/password is only required if your asset directory is authenticated, and it can alternatively be configured using the `TF_HTTP_USERNAME` and `TF_HTTP_PASSWORD` environment variables.
+
+:::(Internal)
+If there was a need/desire for state locking, we would could add `LOCK` and `UNLOCK` verb support to asset directories. These appear to be some kind of WebDAV standard.
+:::
