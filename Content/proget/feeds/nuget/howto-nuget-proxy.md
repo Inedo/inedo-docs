@@ -1,9 +1,9 @@
 ---
 title: "HOWTO: Proxy Packages from NuGet.org in Visual Studio or CLI"
-order: 1
+order: 5
 ---
 
-Connecting ProGet with Visual Studio or CLI is a great way to increase the security of the most widely used integrated development environment for Windows developers. ProGet acts as a NuGet Package Manager, as it can [detect package licenses](https://docs.inedo.com/docs/proget/sca/licenses), [scan packages for vulnerabilities](/docs/proget/sca/vulnerabilities), and control promotion between feeds.
+Connecting ProGet with Visual Studio or integrating it into `dotnet` is a great way to increase the security of the most widely used integrated development environment for Windows developers. ProGet acts as a NuGet Package Manager, as it can [detect package licenses](https://docs.inedo.com/docs/proget/sca/licenses), [scan packages for vulnerabilities](/docs/proget/sca/vulnerabilities), and control promotion between feeds.
 
 ProGet can create a ["Feed"](/docs/proget/feeds/feed-overview) to proxy NuGet packages from [NuGet.org](https://www.nuget.org/) so that teams can consume them in their projects just as they would if pulling directly from the OSS repository. Using this feed will let you cache packages, which is useful when Nuget.org is experiencing issues. It also lets you easily see which packages are being downloaded and used frequently.
 
@@ -21,11 +21,7 @@ Then select "Connect to NuGet.org" which will allow us to proxy and cache packag
 
 ![](/resources/docs/proget-nuget-connecttoorg.png){height="" width="50%"}
 
-Select "No, Create One Feed", as we will only need a single feed to proxy NuGet packages. 
-
-## Step 2: Name your Feed
-
-Now you will need to name the feed. For this example, we will name it `public-nuget`, and then click "Create Feed".
+Select "No, Create One Feed", as we will only need a single feed to proxy NuGet packages. Now you will need to name the feed. For this example, we will name it `public-nuget`, and then click "Create Feed".
 
 ![](/resources/docs/proget-nuget-onefeedname.png){height="" width="50%"}
 
@@ -33,12 +29,13 @@ You'll then choose from several vulnerability and license options. More informat
 
 ![](/resources/docs/proget-publicnuget-feed.png){height="" width="50%"}
 
+## Step 2: Adding ProGet As A Source  { #add-source }
+
 To add your `public-nuget` feed to either Visual Studio or the CLI, you will need the feed URL. This is found on the top right of the feed page:
 
 ![](/resources/docs/proget-nuget-public-url){height="" width="50%"}
 
-## Step 3.2 Adding ProGet As A NuGet Package Manager In Visual Studio { #add-visual-studio }
-
+### Adding ProGet to Visual Studio
 To add your feed as a Package Manager in Visual Studio, navigate to "Tools" > "NuGet Package Manager" > "Package Manager Settings". Then uncheck the box to the left of *nuget.org*
 
 ![visualstudio-packagesources-highlightednugetorg.png](/resources/docs/visualstudio-packagesources-highlightednugetorg.png)
@@ -63,8 +60,7 @@ To confirm the connection in Visual Studio, right-click on a project in the Solu
 
 ![visualstudio-connectedprogetfeed.png](/resources/docs/visualstudio-connectedprogetfeed.png)
 
-
-## Step 3.2: Adding the Feed to The NuGet CLI { #add-cli }
+### Adding the Feed to The NuGet CLI { #add-cli }
 
 To add the feed as a source to your NuGet client, use the `dotnet nuget add source` command:
 
@@ -84,17 +80,42 @@ You can confirm that your have configured your sources correctly by entering:
 $ dotnet nuget sources list
 ```
 
-### Installing NuGet Packages
+### Adding the Feed to Other NuGet Clients { #add-others }
 
-Once you have created your `public-nuget` feed and configured it with either Visual Studio or CLI, you can install packages. For Visual 
+ProGet can be added as a source in a number of other popular clients, including [VS Code](https://code.visualstudio.com/) and [JetBrains Rider](https://www.jetbrains.com/rider/).
+
+### In VS Code
+
+To add your `public-nuget` feed as a source, add it to a `nuget.config` in your project. The config could look like this:
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+  <packageSources>
+    <add key="public-nuget" value="https://«proget-server»/nuget/public-nuget/v3/index.json" />
+  </packageSources>
+</configuration>
+```
+
+### In JetBrains Rider
+
+To add your `public-nuget` feed as a source, open "NuGet Settings" by navigating to "File" > "Settings", and then "Build, Execution, Deployment" > "NuGet". Next, under the "Package Sources" tab, click on the + (Add) button to create a new package source.
+
+In the Name field, enter a name for your source (e.g., `internal-nuget`), and then in the URL field, enter the URL of your `internal-nuget` feed. 
+
+## Step 3: Installing NuGet Packages
+
+Once you have created your `public-nuget` feed and configured it with either Visual Studio or CLI, you can install packages. For Visual Studio you can do this from the "NuGet Package Manager" by navigating to "Tools" > "NuGet Package Manager" > "Manage NuGet Packages for Solution".
+
+In NuGet CLI you can use the `dotnet nuget install` command:
 
 ```bash
 $ dotnet nuget install «package-name» -Source public-nuget
 ```
 
-## Step 45: (Optional) Authenticating to Your NuGet Feed
+## Step 4: (Optional) Authenticating to Your NuGet Feed
 
-By default your `public-nuget` feed does not need to be authenticated to, and can be viewed anonymously. However, you may want to make your repository private and [authenticate to it](/docs/proget/feeds/nuget#authenticating-to-nuget-feeds) using either an API key or a username/password combination. You may need to do this when pushing internal NuGet packages to your feed, to consume either solely or in combination with OSS packages. 
+By default your `public-nuget` feed does not need to be authenticated to, and can be viewed anonymously. However, you may want to make your repository private and authenticate to it. While you can authenticate with a "psedo key" (`«username»:«password»`), we strongly recommend using a Personal [API Key](/docs/proget/reference-api/proget-apikeys), with `api` as the username, and the Personal API Key as the password. To learn more about creating one, read [Authenticating to NuGet Feeds](/docs/proget/feeds/nuget#authenticating-to-nuget-feeds). 
 
 ## (Optional) Creating a Package Approval Flow
 
