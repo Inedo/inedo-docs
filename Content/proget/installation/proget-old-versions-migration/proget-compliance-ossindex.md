@@ -1,9 +1,10 @@
 ---
 title: "Deprecated: OSS Index and ProGet"
+nav-title: "OSS Index"
 order: 1
 ---
 
-:::(error) (OSS Index Has Been Discontinued)
+:::(error) (OSS Index Was Discontinued in ProGet 2024)
 This article is for users who have configured an OSS Index Vulnerability Source and wish to learn how to migrate. If you haven't configured vulnerability scanning in ProGet yet, check out [HOWTO: Scan and Block Packages in ProGet](/docs/proget/sca/vulnerabilities/howto) to learn more.
 :::
 
