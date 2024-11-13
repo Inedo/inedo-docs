@@ -124,7 +124,7 @@ Once your `.pypirc` file has been configured, install packages using the `twine 
 $ twine upload -r proget dist/*
 ```
 
-## Step 4: Using your PyPI Feed as a Souce to Install Packages
+## Step 5: Using your PyPI Feed as a Source to Install Packages
 
 To use your PyPI feed when installing packages you can either include it when running the `pip install` command, or set it globally with the `pip config` command. 
 

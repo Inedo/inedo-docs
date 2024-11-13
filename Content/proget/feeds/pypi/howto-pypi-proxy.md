@@ -29,7 +29,7 @@ We are then presented with several options. Keeping these checked will allow you
 
 ![](/resources/docs/proget-pypi-public-feed.png){height="" width="50%"}
 
-## Step 3: Using the Feed in Python Clients { #add-feed }
+## Step 2: Using the Feed in Python Clients { #add-feed }
 
 To let your teams use the `public-pypi` feed when installing packages you can either include it when running the `pip install` command, or set it globally with the `pip config` command. 
 
