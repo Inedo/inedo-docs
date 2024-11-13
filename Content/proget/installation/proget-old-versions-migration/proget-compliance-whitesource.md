@@ -1,9 +1,10 @@
 ---
-title: "Deprecated: WhiteSource and and ProGet"
+title: "Deprecated: WhiteSourcePackage Access Rules"
+nav-title: "Package Access Rules"
 order: 3
 ---
 
-:::(error) (WhiteSource & Package Access Rules Have Been Discontinued)
+:::(error) (WhiteSource & Package Access Rules Were  Discontinued in ProGet 2024)
 This article is for users who have configured Whitesource integration or created their own Package Access Rules and wish to explore alternative options in ProGet 2024. 
 :::
 

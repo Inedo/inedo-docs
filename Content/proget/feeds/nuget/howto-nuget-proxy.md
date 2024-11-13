@@ -1,6 +1,6 @@
 ---
 title: "HOWTO: Proxy Packages from NuGet.org in Visual Studio or CLI"
-order: 1
+order: 5
 ---
 
 Connecting ProGet with Visual Studio or integrating it into `dotnet` is a great way to increase the security of the most widely used integrated development environment for Windows developers. ProGet acts as a NuGet Package Manager, as it can [detect package licenses](https://docs.inedo.com/docs/proget/sca/licenses), [scan packages for vulnerabilities](/docs/proget/sca/vulnerabilities), and control promotion between feeds.

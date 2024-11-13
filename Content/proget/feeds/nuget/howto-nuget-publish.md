@@ -1,6 +1,6 @@
 ---
 title: "HOWTO: Create and Upload Nuget Packages to a Private Repository in ProGet"
-order: 2
+order: 4
 ---
 
 ProGet let's you set up private NuGet repositories that will allow you to publish, store and share your internal NuGet packages within your organization.
