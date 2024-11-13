@@ -5,7 +5,7 @@ order: 20
 
 [Terraform Modules](https://developer.hashicorp.com/terraform/language/modules) are used to package and reuse resource configurations with Terraform.
 
-A Terraform feed in ProGet acts as a private module registry that allows you to store your own modules. You also create connectors to other Terraform Module Registries such as the [Hashicorp registry](https://registry.terraform.io/) to use third-party modules through a Terraform feed and create a curated list of approved Terraform modules.
+A Terraform feed in ProGet acts as a private module registry that allows you to store your own modules. You can also create connectors to other Terraform Module Registries such as the [Hashicorp registry](https://registry.terraform.io/) to use third-party modules through a Terraform feed and create a curated list of approved Terraform modules.
 
 Terraform feeds are available in ProGet ProGet 2024.20+.
 
@@ -43,7 +43,7 @@ Unless the remote registry implements a special search/listing APIs like `regist
 
 ### Connector Download Limitations
 
-Because a Terraform Module Registry simply providers the Terraform CLI with a "pointer" to download content, ProGet needs to decode and follow those pointers to download and package the module's content.
+Because a Terraform Module Registry simply provides the Terraform CLI with a "pointer" to download content, ProGet needs to decode and follow those pointers to download and package the module's content.
 
 ProGet supports two types of download pointers:
 
