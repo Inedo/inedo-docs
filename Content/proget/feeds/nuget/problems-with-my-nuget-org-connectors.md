@@ -1,34 +1,36 @@
 ---
-title: "Problems With My NuGet.org Connectors"
-order: 5
+title: "NuGet ODATA (v2) API"
+order: 3
 ---
 
-This article applies to NuGet.org [deprecating API features](https://devblogs.microsoft.com/nuget/custom-v2-odata-queries-will-be-deprecated-march-9-2021/) on **March 9, 2021**, and may help explain problems with connectors as a result.
+NuGet Feeds in ProGet implement an older called the ODATA (v2) API. 
 
-### My NuGet feed is suddenly empty and not showing remote packages
+:::(Error) (💀 Avoid Using the NuGet ODATA (v2) API 💀)
+The ODATA (v2) API is complex, undocumented, and can be very resource-intensive. NuGet.org officially deprecated this API in 2021 and ProGet NuGet Feeds only support an undocumented subset API queries.
+:::
 
-If you configured a connector to NuGet.org in ProGet 5.2 or earlier, it may suddenly stop working and not return any packages. This is due to an API change in NuGet.org, and the only solution is to upgrade to ProGet 5.3 or later. You can also work around the problem temporarily by [disabling your connector filters](/docs/proget/feeds/connector-overview#connector-filters).
+If you are looking to programmaticaly query NuGet packages in ProGet, we strongly recommend using the [Packages API](/docs/proget/reference-api/proget-api-packages). NuGet feeds in ProGet do implement the NuGet Server API, but it's a lot harder to use.
 
-### My NuGet connector shows healthy, but it has the wrong package count
 
-If you configured a connector to NuGet.org in ProGet 5.2 or earlier, you may notice a healthy connector status but an incorrect package count. NuGet.org has deprecated its previous queries to check the status and count of NuGet packages because they are very taxing on the NuGet servers. In the future, NuGet.org will display a fixed number of packages when health status is queried.
+## NuGet.org and the ODATA (v2) API
 
-## NuGet API Background
+On March 9, 2021, NuGet.org [stopped supporting most custom ODATA (v2) API queries](https://devblogs.microsoft.com/nuget/custom-v2-odata-queries-will-be-deprecated-march-9-2021/). This meant that any tool making these queries to NuGet.org  -- including older versions of ProGet -- will receive an error instead of the expected response.
 
-NuGet is a package format developed by Microsoft to distribute free and open-source .NET libraries. Usually, these packages are publicly available on NuGet.org and are used by Visual Studio or the command line client nuget.exe.
+### ProGet 5.2 and Earlier
 
-When NuGet was released, a client/server protocol was needed for users to query packages, retrieve package metadata, and download package artifacts. The logical choice at the time was [OData](http://www.odata.org): by exposing their Entity Framework model via OData, the NuGet client could run any query on the database, using OData as the protocol. The problem with this architecture is that every query is a direct database query. This caused significant performance issues with NuGet.org, causing the server to crawl under heavy load.
+If you are using ProGet 5.2 or lower, you will notice that some features of the ProGet connectors no longer work:
 
-In early 2016, NuGet introduced the third version of its API to dramatically improve the overall performance of NuGet.org.
+* **Connector Filters**, which relied on custom ODATA queries, will no longer function and will cause the connector to essentially break; you'll need to disable connector filters if you wish to still use ProGet 5.2 or older
+* **Connector Health Status**  may always show an error or display an an incorrect package count
 
-In late 2019, NuGet announced that they would begin deprecating features of their API v2 to make it a stable and performant shim on API v3, ensuring that the data returned in both APIs is identical without breaking backward compatibility. The first step was to throttle the usage of API v2. The second step of this process is to eliminate non-performing queries that do not match API v3 on a 1:1 basis.
+It's likely that other queries will stop working on NuGet.org in the future, so we strongly recommend upgrading to a modern version of ProGet.
 
-On March 9, 2021, NuGet.org began blocking select endpoints used by third-party clients such as ProGet. For more information, Microsoft's blog article [Custom V2 OData queries will be deprecated on March 9, 2021](https://devblogs.microsoft.com/nuget/custom-v2-odata-queries-will-be-deprecated-march-9-2021/).
+### ProGet 5.3 and Later
 
-## How Does This Affect ProGet?
+If you have already upgraded to ProGet 5.3+, you are not directly affected.  ProGet will always use the JSON-LD (v3) endpoint ( `https://api.nuget.org/v3/index.json`) if the connector host name is nuget.org. You can add an override token (`#v2`) at the end of a nuget.org URL, such as `http://nuget.org/api/v2#v2`, to force the ODATA (v2) protocol if you really want to break your NuGet feed.
 
-If you have already upgraded to ProGet 5.3+, you are not directly affected, but we recommend that you make sure that the v3 API is enabled in ProGet on the feed Manage Feed page, and configure your NuGet clients (and Visual Studio) to use the new v3 API URL for your feeds.
+## ProGet and the ODATA (v2) API
 
-In ProGet 5.3, we introduced the implementation of the NuGet v3 API and gave connectors the ability to use the v3 API to connect to NuGet.org. ProGet 5.3 is also backward compatible with the NuGet v2 API. This means that any v2 client that connects to ProGet to query, push, pull, etc. will not be affected as long as those packages are local or their connector uses the v3 API. If you are still using a v2-based connector, ProGet 5.3 (via [PG-1847](https://issues.inedo.com/youtrack/issue/PG-1847)) will display a message if an unsupported query is used. Unsupported queries can be viewed in the Diagnostics Center under the "NuGet v2 Bad Requests" message category. This message can be turned off from the Manage Feed page of the respective feed.
+Unless you disable the ODATA (v2) API on your NuGet feed, ProGet will still respond to ODATA (v2) API requests. ProGet will forward these requests to connectors, including NuGet.org, which may result in errors.
 
-If you are using ProGet 5.2 or lower, you will notice that some features of the ProGet connectors no longer work (see above). Nothing will change in your local packages, they will continue to work as before. The state of the connectors may be displayed correctly, but the total number of NuGet packages may not be the correct number of packages.
+When an unsupported query is used against NuGet.org, ProGet will log the error and display a special error message in the ProGet UI. Unsupported queries can be viewed in the Diagnostics Center under the "NuGet v2 Bad Requests" message category. This message can be turned off from the Manage Feed page of the respective feed.
