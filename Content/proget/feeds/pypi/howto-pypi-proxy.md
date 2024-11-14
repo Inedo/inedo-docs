@@ -31,23 +31,6 @@ The next several options will let your feed use ProGet's [Vulnerability Scanning
 
 To let your teams use the `public-pypi` feed when installing packages you can either include it when running the `pip install` command, or set it globally with the `pip config` command. You can also add it if using [PipEnv](#add-pipenv) or [Poetry](#add-poetry).
 
-### Using `pip install`
-
-To install Python packages with the `pip install` command, you will need to add a `--extra-index-url` parameter containing the endpoint URL of your `public-pypi` feed:
-
-```bash
-$ pip install «package-name»==«package-version» --extra-index-url https://«proget-server»/pypi/public-pypi/simple
-```
-
-:::(info) (Example:)
-If installing `Flask 2.3.3` from a your `public-pypi` feed on the server `proget.corp.local`, your command would look like this:
-```bash
-$ pip install flask==2.3.3 --extra-index-url proget.corp.local -i https://proget.corp.local/pypi/public-pypi/simple
-```
-:::
-
-Using `pip install` is good for one-time installs, but as it is not persistent, you'll need to enter your `public-pypi` feed URL for every installation. For a more long-term setup, it's better to use a [pip config](https://pip.pypa.io/en/stable/topics/configuration/) file.
-
 ### Using `pip config`
 
 To set your `public-pypi` feed globally as a default source for all installations, you can store it in the [pip config](https://pip.pypa.io/en/stable/topics/configuration/) file. Use the [pip config](https://pip.pypa.io/en/stable/cli/pip_config/) command with a `--global` parameter containing your `public-pypi` endpoint URL.
@@ -72,6 +55,23 @@ index-url = https://proget.corp.local/pypi/public-pypi/simple
 
 ::: (Info) (Note: Scoping)
 The `pip config` can be scoped to global (`--global`), user (`--user`), and to the environment (`--site`). The commands above are scoped to the global scope.
+:::
+
+### Using `pip install`
+
+You can also use `pip install` for one-off package installations. However, as it is not persistent, you'll need to enter your `public-pypi` feed URL for every installation. For a more long-term setup, it's better to use a [pip config](https://pip.pypa.io/en/stable/topics/configuration/) file.
+
+To install Python packages with the `pip install` command, you will need to add a `--extra-index-url` parameter containing the endpoint URL of your `public-pypi` feed:
+
+```bash
+$ pip install «package-name»==«package-version» --extra-index-url https://«proget-server»/pypi/public-pypi/simple
+```
+
+:::(info) (Example:)
+If installing `Flask 2.3.3` from a your `public-pypi` feed on the server `proget.corp.local`, your command would look like this:
+```bash
+$ pip install flask==2.3.3 --extra-index-url proget.corp.local -i https://proget.corp.local/pypi/public-pypi/simple
+```
 :::
 
 ### Using Pipenv { #add-pipenv }

@@ -23,7 +23,13 @@ You are then presented with several options. These relate to ProGet's [Vulnerabi
 
 ## Step 2: Create Your Python Package { #create-package }
 
-Next, we will create our Python packages. You can follow the [official Python documentation](https://packaging.python.org/en/latest/tutorials/packaging-projects/) to learn more about creating these. To create a Python package you will need a folder with the necessary project files, including `setup.py`, `README.md`, and `__init__.py`. The a project structure will typically look like this:
+Next, we will create our Python packages. You can follow the [official Python documentation](https://packaging.python.org/en/latest/tutorials/packaging-projects/) to learn more about creating these. Before you create a package you will need to have `setuptools` installed by running:
+
+```bash
+$ pip install setuptools wheel
+```
+
+To create a Python package you will need a folder with the necessary project files, including `setup.py`, `README.md`, and `__init__.py`. The a project structure will typically look like this:
 
 ```plaintext
 my_package/
@@ -106,14 +112,14 @@ username = api
 password = «api-key»
 ```
 
-For example, globally setting the `internal-nuget` feed, on the ProGet server `proget.corp.local`, with the API Key `abc12345`, the file would look like:
+For example, globally setting the `internal-pypi` feed, on the ProGet server `proget.corp.local`, with the API Key `abc12345`, the file would look like:
 
 ```bash
 [distutils] 
 index-servers = proget 
 
 [proget] 
-repository = http://proget.corp.local/pypi/internal-nuget/legacy
+repository = http://proget.corp.local/pypi/internal-pypi/legacy
 username = api
 password = abc12345
 ```
@@ -126,14 +132,9 @@ $ twine upload -r proget dist/*
 
 ## Step 5: Using your PyPI Feed as a Source to Install Packages
 
-To use your PyPI feed when installing packages you can either include it when running the `pip install` command, or set it globally with the `pip config` command. 
+To use your `internal-pypi` feed when installing packages you can either set it globally with the `pip config` command or run the `pip install` command. You can also install packages using either [PipEnv](/docs/proget/feeds/pypi#authenticate-pipenv) or [Poetry](/docs/proget/feeds/pypi#authenticate-poetry).
 
-To install Python packages with the URL in the `pip install` command, you will need to add a `--extra-index-url` parameter containing your feed endpoint URL. For example, when installing `my_package 1.0.0` from your `internal-pypi` package on the ProGet server `proget.corp.local` you would enter:
-
-```bash
-$ pip install my_package==1.0.0 --extra-index-url https://proget.corp.local/pypi/internal-pypi/simple
-```
-
+### Using `pip config`
 To configure pip to use a [pip config](https://pip.pypa.io/en/stable/topics/configuration/) file to store the feed, you will need to use the [pip config](https://pip.pypa.io/en/stable/cli/pip_config/) command with a `--global` parameter containing your feed endpoint URL. For example, when globally setting your `internal-pypi` package on the ProGet server `proget.corp.local` you would enter:
 
 ```bash
@@ -156,6 +157,14 @@ pip install «package-name»==«package-version»
 ::: (Info) (Note: Scoping)
 The `pip config` can be scoped to global (`--global`), user (`--user`), and to the environment (`--site`). The commands above are scoped to the global scope.
 :::
+
+### Installing with `pip install` 
+
+To install Python packages with the URL in the `pip install` command, you will need to add a `--extra-index-url` parameter containing your feed endpoint URL. For example, when installing `my_package 1.0.0` from your `internal-pypi` package on the ProGet server `proget.corp.local` you would enter:
+
+```bash
+$ pip install my_package==1.0.0 --extra-index-url https://proget.corp.local/pypi/internal-pypi/simple
+```
 
 ### Using Pipenv
 
@@ -196,4 +205,8 @@ poetry add «package-name» --source internal-pypi
 
 ## (Optional) Authenticating to the PyPI Feed
 
-By default your `public-npm` feed does not require authentication and can be viewed anonymously. However if you've configured your feed to require authentication, you can use [authenticate to it](/docs/proget/feeds/pypi#authenticating-to-a-pypi-feed) with a username and password string `«username»:«password»`. However, we strongly recommend using an [API Key](/docs/proget/reference-api/proget-apikeys) for this, with `api` as the username, and then API Key as the password.
+By default, your `public-pypi` feed is accessible without authentication and can be accessed anonymously. However, if you have set up authentication for your feed, you [authenticate to it](/docs/proget/feeds/pypi#authenticating-to-a-pypi-feed) by configuring your [pip config](https://pip.pypa.io/en/stable/topics/configuration/) file with `pip config`, or by using the `pip install` command. You also have the option to authenticate using [PipEnv](/docs/proget/feeds/pypi#authenticate-pipenv) or [Poetry](/docs/proget/feeds/pypi#authenticate-poetry).
+
+::: (Info) (💡 Best Practices: Use API Keys for Authenticated Feeds)
+ Although you can authenticate with your ProGet username and password (e.g. `«username»:«password»`), we highly recommend [Creating a ProGet API Key](/docs/proget/reference-api/proget-apikeys) for authentication, where `api` is the username and the API key is the password. 
+:::
