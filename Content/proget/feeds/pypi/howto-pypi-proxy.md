@@ -7,7 +7,7 @@ ProGet let's you create ["Feeds"](/docs/proget/feeds/feed-overview) to proxy pac
 
 Using ProGet as a proxy will let you [assess vulnerabilities](#scan-feed) in PyPI packages, tell you which packages are being downloaded and used frequently, and cache packages, allowing teams to access them even if PyPI is down.
 
-This article will look at how to set up a feed in ProGet to proxy PyPI packages, as well as how to create a private repository for your internal Python packages.
+This article will look at how to set up a feed in ProGet to proxy PyPI packages, as well as how to create a private repository for your internal Python packages. The PyPI CLI commands on this page primarily use [pip](https://pip.pypa.io/), but we've also included information for those using [PipEnv](#add-pipenv) or [Poetry](#add-poetry).
 
 ## Step 1: Create a New Feed { #create-feed }
 
