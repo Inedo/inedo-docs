@@ -97,6 +97,8 @@ Your package will then be uploaded to ProGet:
 Note that the feed endpoint URLs used when pushing packages vary slightly from the standard feed URL, ending with `/legacy` rather than `/simple`
 :::
 
+### Uploading with Twine 
+
 It's also possible to use the `twine upload` command if want to use [twine](https://pypi.org/project/twine/). 
 
 ### Using .pypirc to Upload Python Packages
