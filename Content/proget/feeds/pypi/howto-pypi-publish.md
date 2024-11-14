@@ -62,18 +62,12 @@ When setting up the API Key, choose "Feeds (Use Certain Feeds)" as the "Feed Typ
 
 ## Step 4: Upload Your Package to ProGet { #upload-package }
 
-To publish your package to your ProGet PyPI feed, you can use [pgutil](/docs/proget/reference-api/proget-pgutil).
+To publish your package to your ProGet `internal-pypi` feed, you can use [pgutil](/docs/proget/reference-api/proget-pgutil).
 
 pgutil will require some [minor configuration](/docs/proget/reference-api/proget-pgutil#sources) before use. This includes setting up your ProGet instance and API key as a source by running:
 
 ```bash
 $ pgutil sources add --name=Default --url=«proget-url» --api-key=«api-key»
-```
-
-For example, adding the ProGet instance `https://proget.corp.local/` with the API Key `abc12345` you would enter:
-
-```bash
-$ pgutil sources add --name=Default --url=https://proget.corp.local/ --api-key=abc12345
 ```
 
 Now upload your packages by entering:
@@ -82,11 +76,18 @@ Now upload your packages by entering:
 $ pgutil packages upload --feed=«feed-name» --input-file=«path-to-package»
 ```
 
-For example, to upload the package `my_package-0.1-py3-none-any.whl` stored at `C:\development\pypi_packages\my-package\dist` to your `internal-pypi` feed you would enter:
+:::(info) (Example:)
+To add the ProGet instance `https://proget.corp.local/` with the API Key `abc12345` you would enter:
+```bash
+$ pgutil sources add --name=Default --url=https://proget.corp.local/ --api-key=abc12345
+```
+
+Then, to upload your package `my_package-0.1-py3-none-any.whl` stored at `C:\development\pypi_packages\my-package\dist` to your `internal-pypi` feed you would enter:
 
 ```bash
 $ pgutil packages upload --feed=internal-pypi --input-file=C:\development\pypi_packages\my-package\dist\my_package-0.1-py3-none-any.whl
 ```
+:::
 
 Your package will then be uploaded to ProGet:
 
@@ -135,7 +136,8 @@ $ twine upload -r proget dist/*
 To use your `internal-pypi` feed when installing packages you can either set it globally with the `pip config` command or run the `pip install` command. You can also install packages using either [PipEnv](/docs/proget/feeds/pypi#authenticate-pipenv) or [Poetry](/docs/proget/feeds/pypi#authenticate-poetry).
 
 ### Using `pip config`
-To configure pip to use a [pip config](https://pip.pypa.io/en/stable/topics/configuration/) file to store the feed, you will need to use the [pip config](https://pip.pypa.io/en/stable/cli/pip_config/) command with a `--global` parameter containing your feed endpoint URL. For example, when globally setting your `internal-pypi` package on the ProGet server `proget.corp.local` you would enter:
+
+Using the pip config command will store your `internal-pypi` feed in the [pip config](https://pip.pypa.io/en/stable/topics/configuration/) file, setting it globally as a default source for all package installations. Use the [pip config](https://pip.pypa.io/en/stable/cli/pip_config/) command with a `--global` parameter containing your feed endpoint URL. For example, when globally setting your `internal-pypi` package on the ProGet server `proget.corp.local` you would enter:
 
 ```bash
 $ pip config --global set global.index-url https:/proget.corp.local/pypi/internal-pypi/simple 
@@ -159,6 +161,8 @@ The `pip config` can be scoped to global (`--global`), user (`--user`), and to t
 :::
 
 ### Installing with `pip install` 
+
+You can also use `pip install` for one-time package installations. Note that as it is not persistent, you'll need to enter your `internal-pypi` feed URL every time you install a PyPI package, which is why it's recommended that you store your feed in the [pip config](https://pip.pypa.io/en/stable/topics/configuration/) file using `pip config`.
 
 To install Python packages with the URL in the `pip install` command, you will need to add a `--extra-index-url` parameter containing your feed endpoint URL. For example, when installing `my_package 1.0.0` from your `internal-pypi` package on the ProGet server `proget.corp.local` you would enter:
 
