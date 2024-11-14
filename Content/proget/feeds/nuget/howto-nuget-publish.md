@@ -127,7 +127,13 @@ In the Name field, enter a name for your source (e.g., `internal-nuget`), and th
 
 ## Step 4: Setting Up Authentication to Your NuGet Feed.
 
-To push packages to a feed you will need to configure authentication using a "NuGet API Key". While you can authenticate with a "psedo key" (`«username»:«password»`), we strongly recommend using an [API Key](/docs/proget/reference-api/proget-apikeys) for this, with `api` as the username, and then API Key as the password. To learn more about creating one, read [Authenticating to NuGet Feeds](/docs/proget/feeds/nuget#authenticating-to-nuget-feeds). 
+To push packages to a feed you will need to configure authentication using a "NuGet API Key". 
+
+::: (Info) (💡 Best Practices: Use API Keys for Authenticated Feeds)
+Instead of using your ProGet username/password for a NuGet feed, we recommend [Creating a ProGet API Key](/docs/proget/reference-api/proget-apikeys) to authenticate. You can enter `api` as the username and your key as the password.
+:::
+
+To learn how to authenticate to your NuGet feed to push packages to it, read [Authentication for Publishing Packages](/docs/proget/feeds/feed-overview#authenticate-cli)
 
 ## Step 5: Pushing Your Package to Your NuGet Feed
 
