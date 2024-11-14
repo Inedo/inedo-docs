@@ -31,6 +31,8 @@ The next several options will let your feed use ProGet's [Vulnerability Scanning
 
 To let your teams use the `public-pypi` feed when installing packages you can either include it when running the `pip install` command, or set it globally with the `pip config` command. You can also add it if using [PipEnv](#add-pipenv) or [Poetry](#add-poetry).
 
+### Using `pip install`
+
 To install Python packages with the `pip install` command, you will need to add a `--extra-index-url` parameter containing the endpoint URL of your `public-pypi` feed:
 
 ```bash
@@ -44,7 +46,7 @@ $ pip install flask==2.3.3 --extra-index-url proget.corp.local -i https://proget
 ```
 :::
 
-### Configuring with `pip config`
+### Using `pip config`
 
 To configure pip to use a [pip config](https://pip.pypa.io/en/stable/topics/configuration/) file to store the feed, you will need to use the [pip config](https://pip.pypa.io/en/stable/cli/pip_config/) command with a `--global` parameter containing your `public-pypi` endpoint URL.
 
@@ -70,7 +72,7 @@ index-url = https://proget.corp.local/pypi/public-pypi/simple
 The `pip config` can be scoped to global (`--global`), user (`--user`), and to the environment (`--site`). The commands above are scoped to the global scope.
 :::
 
-### Using Pipenv  { #add-pipenv }
+### Using Pipenv { #add-pipenv }
 
 To configure Pipenv to use your PyPI feed, set the `PIP_INDEX_URL` environment variable in your shell before running `pipenv install`, or include it in your Pipfile:
 
@@ -109,12 +111,16 @@ poetry add «package-name» --source public-pypi
 
 ## (Optional) Authenticating to Your PyPI Feed
 
-By default your `public-npm` feed does not require authentication and can be viewed anonymously. However if you've configured your feed to require authentication, you can use [authenticate to it](/docs/proget/feeds/pypi#authenticating-to-a-pypi-feed) with a username and password string `«username»:«password»`. However, we strongly recommend using an [API Key](/docs/proget/reference-api/proget-apikeys) for this, with `api` as the username, and then API Key as the password.
+By default your `public-pypi` feed does not need to be authenticated to can be viewed anonymously. However if you've configured your feed to require authentication, you can [authenticate to it](/docs/proget/feeds/pypi#authenticating-to-a-pypi-feed) when using `pip install` or with `pip config`. Alternatively you can authenticate with [PipEnv](/docs/proget/feeds/pypi#authenticate-pipenv) or [Poetry](/docs/proget/feeds/pypi#authenticate-poetry).
+
+::: (Info) (💡 Best Practices: Use API Keys for Authenticated Feeds)
+While you can authenticate with the username and password string `«username»:«password»`, we strongly recommend [Creating a ProGet API Key](/docs/proget/reference-api/proget-apikeys) to authenticate, using `api` as the username and your key as the password.
+:::
 
 ## (Optional) Creating a Package Approval Flow
 
-In this guide we looked at proxying packages from PyPI. However, without oversight approval, developers will be able to install any OSS packages from [PyPI](https://pypi.org/) without oversight. It's recommended to include some form package vetting in development or production, which can be done by creating a ["Package Approval Flow"](/docs/proget/packages/package-promotion).
+In this guide we looked at proxying packages from PyPI. However, without oversight approval, developers will be able to install any OSS packages from [PyPI](https://pypi.org/) without oversight. We recommend implementing some form package vetting of your PyPI packages, which can be done by creating a ["Package Approval Flow"](/docs/proget/packages/package-promotion).
 
-To set up a package approval flow, refer to [HOWTO: Approve and Promote Open-source Packages](/docs/proget/packages/package-promotion/proget-howto-promote-packages). This guide uses NuGet feeds as an example, but the steps are identical when creating PyPI package feeds.
+To set up a package approval flow, refer to [HOWTO: Approve and Promote Open-source Packages](/docs/proget/packages/package-promotion/proget-howto-promote-packages). The guide uses NuGet feeds as an example, but the steps are identical when [creating PyPI package feeds](#create-feed).
 
-After creating your "Unapproved" and "Approved" feeds, follow the steps in ["Using the Feed in Python Clients"](#add-feed) to add the "Approved" feed (e.g. `npm-approved`) as a source.
+After creating your "Unapproved" and "Approved" feeds, follow the steps in ["Using the Feed in Python Clients"](#add-feed) to add the "Approved" feed (e.g. `pypi-approved`) as a source.
