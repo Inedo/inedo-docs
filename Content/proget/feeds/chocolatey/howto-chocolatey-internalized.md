@@ -60,31 +60,33 @@ pgutil will require some [minor configuration](/docs/proget/reference-api/proget
 $ pgutil sources add --name=Default --url=«proget-server» --api-key=«api-key»
 ```
 
-For example, adding the ProGet instance `https://proget.corp.local/` with the API Key `abc12345` you would enter:
-
-```bash
-$ pgutil sources add --name=Default --url=https://proget.corp.local/ --api-key=abc12345
-```
-
 Now upload your packages by entering:
 
 ```bash
 $ pgutil packages upload --feed=internalized-chocolatey --input-file=«path-to-package»
 ```
 
-For example, to upload the package `my-package-1.2.3.nupkg` stored at `C:\chocolatey_packages\` to your `internalized-chocolatey` feed you would enter:
+:::(info) (Example:)
+Adding the ProGet instance `https://proget.corp.local/` with the API Key `abc12345` you would enter:
+
+```bash
+$ pgutil sources add --name=Default --url=https://proget.corp.local/ --api-key=abc12345
+```
+
+Then, to upload the package `my-package-1.2.3.nupkg` stored at `C:\chocolatey_packages\` to your `internalized-chocolatey` feed you would enter:
 
 ```bash
 $ pgutil packages upload --feed=internalized-chocolatey --input-file=C:\chocolatey_packages\my-package-1.2.3.nupkg
 ``` 
+:::
 
 Your package will then be uploaded to the `internalized-chocolatey` feed.
 
 ![](){height="" width="50%"}
 
-Alternatively you can use the choco push command to upload packages:
+### Uploading with `choco push`
 
-To push a package use the `choco push` command. This will require an API Key:  
+Alternatively you can use the `choco push` command to upload packages. This will require an API Key:  
 
 ```bash
 $ choco push «path-to-package» --source=internalized-chocolatey --api-key=«api-key»
@@ -111,4 +113,10 @@ $ choco source list
 
 ## Step 5: (Optional) Authenticating to Your Chocolatey Feed
 
-By default your `internalized-chocolatey` feed does not need to be authenticated to, and can be viewed and installed from anonymously. However, you may want to make your repository private and authenticate to it. You can use a username and password for this, but we strongly recommend using an [API Key](/docs/proget/reference-api/proget-apikeys), with `api` as the username, and the API Key as the password. To learn more about creating one, read [Authenticating to Chocolatey Feeds](/docs/proget/feeds/chocolatey#authenticating-to-a-chocolatey-feed). 
+By default your `internalized-chocolatey` feed does not need to be authenticated to, and can be viewed and installed from anonymously. However, you may want to make your repository private and authenticate to it. 
+
+:::(info) (Authenticating with an API Key)
+Instead of using your ProGet username and password, we strongly recommend using an [API Key](/docs/proget/reference-api/proget-apikeys), with `api` as the username, and the API Key as the password. 
+:::
+
+To learn more about how to configure this, read [Authenticating to Chocolatey Feeds](/docs/proget/feeds/chocolatey#authenticating-to-a-chocolatey-feed). 

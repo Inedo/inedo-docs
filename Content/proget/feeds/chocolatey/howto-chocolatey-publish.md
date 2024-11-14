@@ -61,6 +61,7 @@ You can confirm your client is properly connected to ProGet using the `choco sou
 ```bash
 $ choco source list
 ```
+
 ## Step 4: Create an API Key
 
 We will now create an [API Key](/docs/proget/reference-api/proget-apikeys) allowing our local client to authenticate to our `internal-chocolatey` feed. This allows us to push packages to the feed.
@@ -89,5 +90,7 @@ This will upload it to your `internal-chocolatey` feed:
 
 ## (Optional) Internalizing Chocolatey Packages
 
-If you want to minimizing reliance on external sources for software installed using Chocolatey Packages, you can [internalize your packages](https://blog.inedo.com/chocolatey/internalization). Chocolatey’s [package internalizer](https://docs.chocolatey.org/en-us/features/package-internalizer) can internalize packages automatically or you can do it yourself. To learn more on how to do this you can read [HOWTO: Set Up a Private Chocolatey Repository for Internalized Packagesy](/docs/proget/feeds/chocolatey/howto-chocolatey-internalized)
+If you want to minimizing reliance on external sources for software installed using Chocolatey Packages, you can [internalize your packages](https://blog.inedo.com/chocolatey/internalization). 
+
+Chocolatey’s [package internalizer](https://docs.chocolatey.org/en-us/features/package-internalizer) can internalize packages automatically or you can do it yourself. To learn more on how to do this you can read [HOWTO: Set Up a Private Chocolatey Repository for Internalized Packagesy](/docs/proget/feeds/chocolatey/howto-chocolatey-internalized)
 

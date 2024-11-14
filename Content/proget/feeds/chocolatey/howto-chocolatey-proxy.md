@@ -70,7 +70,13 @@ $ choco install MyApplication --version 1.2.3 --source public-chocolatey
 
 ## Step 5: (Optional) Authenticating to Your Chocolatey Feed
 
-By default your `public-chocolatey` feed does not need to be authenticated to, and can be viewed and installed from anonymously. However, you may want to make your repository private and authenticate to it. You can use a username and password for this, but we strongly recommend using an [API Key](/docs/proget/reference-api/proget-apikeys), with `api` as the username, and the API Key as the password. To learn more about creating one, read [Authenticating to Chocolatey Feeds](/docs/proget/feeds/chocolatey#authenticating-to-a-chocolatey-feed). 
+By default your `public-chocolatey` feed does not need to be authenticated to, and can be viewed and installed from anonymously. However, you may want to make your repository private and authenticate to it. 
+
+:::(info) (Authenticating with an API Key)
+RAther than using your ProGet username and password, we strongly recommend using an [API Key](/docs/proget/reference-api/proget-apikeys), with `api` as the username, and the API Key as the password. 
+:::
+
+To learn more about how to configure this, read [Authenticating to Chocolatey Feeds](/docs/proget/feeds/chocolatey#authenticating-to-a-chocolatey-feed). 
 
 ## (Optional) Creating a Package Approval Flow
 
@@ -86,4 +92,6 @@ $ choco source add -n="approved-chocolatey" -s="https://«proget-server»/feeds/
 
 ## (Optional) Internalizing Chocolatey Packages
 
-If you want to minimizing reliance on external sources for software installed using Chocolatey Packages, you can [internalize your packages](https://blog.inedo.com/chocolatey/internalization). Chocolatey’s [package internalizer](https://docs.chocolatey.org/en-us/features/package-internalizer) can internalize packages automatically or you can do it yourself. To learn more on how to do this you can read [HOWTO: Set Up a Private Chocolatey Repository for Internalized Packagesy](/docs/proget/feeds/chocolatey/howto-chocolatey-internalized)
+If you want to minimizing reliance on external sources for software installed using Chocolatey Packages, you can [internalize your packages](https://blog.inedo.com/chocolatey/internalization). 
+
+Chocolatey’s [package internalizer](https://docs.chocolatey.org/en-us/features/package-internalizer) can internalize packages automatically or you can do it yourself. To learn more on how to do this you can read [HOWTO: Set Up a Private Chocolatey Repository for Internalized Packagesy](/docs/proget/feeds/chocolatey/howto-chocolatey-internalized)
