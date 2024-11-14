@@ -46,9 +46,11 @@ $ pip install flask==2.3.3 --extra-index-url proget.corp.local -i https://proget
 ```
 :::
 
+Using `pip install` is good for one-time installs, but as it is not persistent, you'll need to enter your `public-pypi` feed URL for every installation. For a more long-term setup, it's better to use a [pip config](https://pip.pypa.io/en/stable/topics/configuration/) file.
+
 ### Using `pip config`
 
-To configure pip to use a [pip config](https://pip.pypa.io/en/stable/topics/configuration/) file to store the feed, you will need to use the [pip config](https://pip.pypa.io/en/stable/cli/pip_config/) command with a `--global` parameter containing your `public-pypi` endpoint URL.
+To set your `public-pypi` feed globally as a default source for all installations, you can store it in the [pip config](https://pip.pypa.io/en/stable/topics/configuration/) file. Use the [pip config](https://pip.pypa.io/en/stable/cli/pip_config/) command with a `--global` parameter containing your `public-pypi` endpoint URL.
 
 ```bash
 $ pip config --global set global.index-url https://«proget-server»/pypi/public-pypi/simple
