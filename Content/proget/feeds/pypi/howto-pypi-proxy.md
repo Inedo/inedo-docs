@@ -116,7 +116,7 @@ poetry add «package-name» --source public-pypi
 By default your `public-pypi` feed does not need to be authenticated to can be viewed anonymously. However if you've configured your feed to require authentication, you can [authenticate to it](/docs/proget/feeds/pypi#authenticating-to-a-pypi-feed) when using `pip install` or with `pip config`. Alternatively you can authenticate with [PipEnv](/docs/proget/feeds/pypi#authenticate-pipenv) or [Poetry](/docs/proget/feeds/pypi#authenticate-poetry).
 
 ::: (Info) (💡 Best Practices: Use API Keys for Authenticated Feeds)
-While you can authenticate with the username and password string `«username»:«password»`, we strongly recommend [Creating a ProGet API Key](/docs/proget/reference-api/proget-apikeys) to authenticate, using `api` as the username and your key as the password.
+Rather than using your ProGet username/password for a NuGet feed, we strongly recommend [Creating a ProGet API Key](/docs/proget/reference-api/proget-apikeys) to authenticate, using `api` as the username and your key as the password.
 :::
 
 ## (Optional) Creating a Package Approval Flow

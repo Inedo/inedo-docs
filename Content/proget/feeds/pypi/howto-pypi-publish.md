@@ -214,5 +214,5 @@ poetry add «package-name» --source internal-pypi
 By default, your `public-pypi` feed is accessible without authentication and can be accessed anonymously. However, if you have set up authentication for your feed, you [authenticate to it](/docs/proget/feeds/pypi#authenticating-to-a-pypi-feed) by configuring your [pip config](https://pip.pypa.io/en/stable/topics/configuration/) file with `pip config`, or by using the `pip install` command. You also have the option to authenticate using [PipEnv](/docs/proget/feeds/pypi#authenticate-pipenv) or [Poetry](/docs/proget/feeds/pypi#authenticate-poetry).
 
 ::: (Info) (💡 Best Practices: Use API Keys for Authenticated Feeds)
- Although you can authenticate with your ProGet username and password (e.g. `«username»:«password»`), we highly recommend [Creating a ProGet API Key](/docs/proget/reference-api/proget-apikeys) for authentication, where `api` is the username and the API key is the password. 
+Instead of authenticating with your ProGet username and password, we highly recommend [Creating a ProGet API Key](/docs/proget/reference-api/proget-apikeys) for authentication, where `api` is the username and the API key is the password. 
 :::
