@@ -31,11 +31,10 @@ You'll then choose from several vulnerability and license options. More informat
 
 ## Step 2: Adding ProGet As A Source  { #add-source }
 
-To add your `public-nuget` feed to either Visual Studio or the CLI, you will need the feed URL. This is found on the top right of the feed page:
+To add your `public-nuget` feed as a source, you will need the feed URL. This is found on the top right of the feed page:
 
 ![](/resources/docs/proget-nuget-public-url){height="" width="50%"}
 
-### Adding ProGet to Visual Studio
 To add your feed as a Package Manager in Visual Studio, navigate to "Tools" > "NuGet Package Manager" > "Package Manager Settings". Then uncheck the box to the left of *nuget.org*
 
 ![visualstudio-packagesources-highlightednugetorg.png](/resources/docs/visualstudio-packagesources-highlightednugetorg.png)
@@ -60,7 +59,11 @@ To confirm the connection in Visual Studio, right-click on a project in the Solu
 
 ![visualstudio-connectedprogetfeed.png](/resources/docs/visualstudio-connectedprogetfeed.png)
 
-### Adding the Feed to The NuGet CLI { #add-cli }
+### Adding the Feed to Other NuGet Clients { #add-others }
+
+ProGet can be added as a source in a number of other popular clients, including the NuGet CLI, [VS Code](https://code.visualstudio.com/) and [JetBrains Rider](https://www.jetbrains.com/rider/).
+
+### Adding to The NuGet CLI { #add-cli }
 
 To add the feed as a source to your NuGet client, use the `dotnet nuget add source` command:
 
@@ -80,11 +83,7 @@ You can confirm that your have configured your sources correctly by entering:
 $ dotnet nuget sources list
 ```
 
-### Adding the Feed to Other NuGet Clients { #add-others }
-
-ProGet can be added as a source in a number of other popular clients, including [VS Code](https://code.visualstudio.com/) and [JetBrains Rider](https://www.jetbrains.com/rider/).
-
-### In VS Code
+### Adding to VS Code
 
 To add your `public-nuget` feed as a source, add it to a `nuget.config` in your project. The config could look like this:
 
@@ -97,7 +96,7 @@ To add your `public-nuget` feed as a source, add it to a `nuget.config` in your 
 </configuration>
 ```
 
-### In JetBrains Rider
+### Adding to JetBrains Rider
 
 To add your `public-nuget` feed as a source, open "NuGet Settings" by navigating to "File" > "Settings", and then "Build, Execution, Deployment" > "NuGet". Next, under the "Package Sources" tab, click on the + (Add) button to create a new package source.
 
@@ -107,7 +106,7 @@ In the Name field, enter a name for your source (e.g., `internal-nuget`), and th
 
 Once you have created your `public-nuget` feed and configured it with either Visual Studio or CLI, you can install packages. For Visual Studio you can do this from the "NuGet Package Manager" by navigating to "Tools" > "NuGet Package Manager" > "Manage NuGet Packages for Solution".
 
-In NuGet CLI you can use the `dotnet nuget install` command:
+Alternatively, you can use the `dotnet nuget install` command in the NuGet CLI:
 
 ```bash
 $ dotnet nuget install «package-name» -Source public-nuget
@@ -115,7 +114,14 @@ $ dotnet nuget install «package-name» -Source public-nuget
 
 ## Step 4: (Optional) Authenticating to Your NuGet Feed
 
-By default your `public-nuget` feed does not need to be authenticated to, and can be viewed anonymously. However, you may want to make your repository private and authenticate to it. While you can authenticate with a "psedo key" (`«username»:«password»`), we strongly recommend using a Personal [API Key](/docs/proget/reference-api/proget-apikeys), with `api` as the username, and the Personal API Key as the password. To learn more about creating one, read [Authenticating to NuGet Feeds](/docs/proget/feeds/nuget#authenticating-to-nuget-feeds). 
+By default your `public-nuget` feed does not need to be authenticated to. However, you may want to make your repository private and authenticate to it, in which case you'll need to configure an *authenticated* source when adding the feed. 
+
+::: (Info) (💡 Best Practices: Use API Keys for Authenticated Feeds)
+Instead of using your ProGet username/password for a NuGet feed, we recommend [Creating a ProGet API Key](/docs/proget/reference-api/proget-apikeys) to authenticate. You can enter `api` as the username and your key as the password.
+:::
+
+To learn how to authenticate to your NuGet feed, read [Authenticating to NuGet Feeds](/docs/proget/feeds/feed-overview##authenticating-to-feed)
+
 
 ## (Optional) Creating a Package Approval Flow
 

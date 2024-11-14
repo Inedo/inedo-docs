@@ -71,8 +71,6 @@ To add your `internal-nuget` feed to either Visual Studio or NuGet CLI, you will
 
 ![](/resources/docs/proget-nuget-internal-url.png){height="" width="50%"}
 
-### Using Visual Studio { #add-visualstudio }
-
 To add your feed as a Package Manager in Visual Studio, navigate to "Tools" > "NuGet Package Manager" > "Package Manager Settings". Then uncheck the box to the left of *nuget.org*
 
 ![visualstudio-packagesources-highlightednugetorg.png](/resources/docs/visualstudio-packagesources-highlightednugetorg.png)
@@ -97,18 +95,18 @@ To confirm the connection in Visual Studio, right-click on a project in the Solu
 
 ![visualstudio-connectedprogetfeed.png](/resources/docs/visualstudio-connectedprogetfeed.png)
 
-### Using NuGet CLI { #add-cli }
+### Using Other NuGet Clients { #add-others }
+
+ProGet can be added as a source in a number of other popular clients, including the NuGet CLI, [VS Code](https://code.visualstudio.com/), and [JetBrains Rider](https://www.jetbrains.com/rider/).
+
+#### Using NuGet CLI { #add-cli }
 Then add the feed as a source to your NuGet client by entering:
 
 ```bash
 $ dotnet nuget add source https://«proget-server»/nuget/internal-nuget/v3/index.json --name internal-nuget
 ```
 
-## Using Other NuGet Clients { #add-others }
-
-ProGet can be added as a source in a number of other popular clients, including [VS Code](https://code.visualstudio.com/) and [JetBrains Rider](https://www.jetbrains.com/rider/).
-
-### In VS Code
+#### In VS Code
 
 To add your `internal-nuget` feed as a source, add it to a `nuget.config` in your project. The config could look like this:
 
@@ -121,7 +119,7 @@ To add your `internal-nuget` feed as a source, add it to a `nuget.config` in you
 </configuration>
 ```
 
-### In JetBrains Rider
+#### In JetBrains Rider
 
 To add your `internal-nuget` feed as a source, open "NuGet Settings" by navigating to "File" > "Settings", and then "Build, Execution, Deployment" > "NuGet". Next, under the "Package Sources" tab, click on the + (Add) button to create a new package source.
 
@@ -135,21 +133,23 @@ To push packages to a feed you will need to configure authentication using a "Nu
 
 You can push your NuGet package to your NuGet feed in either Visual Studio or NuGet CLI. First make sure you have [added the feed as a source](#add-feed) with [authentication](/docs/proget/feeds/nuget#authenticating-to-nuget-feeds).
 
-### Pushing a Package in Visual Studio
-
 To push your NuGet package using Visual Studio, open the Package Manager Console by navigating to "Tools" > "NuGet Package Manager" > "Package Manager Console". Then. run the following Push command:
 
 ```bash
 $ nuget push «path-to-package» -Source «source-name» -ApiKey api:«apikey»
 ```
 
-#### Example:
-
+:::(info) (Example:)
 Pushing the package `MyPackage` to a configured source named `internal-nuget`, you would enter:
 
 ```bash
 $ nuget push bin\Release\MyPackage.1.0.0.nupkg -Source internal-nuget -ApiKey api:abc12345
 ```
+::::
+
+Your package will then be uploaded and appear in your NuGet feed.
+
+![](/resources/docs/proget-nuget-internal-uploaded.png){height="" width="50%"}
 
 ### Pushing a Package with NuGet CLI
 
@@ -158,18 +158,6 @@ To push a NuGet package to ProGet in NuGet CLI, use the `dotnet nuget push` comm
 ```bash
 $ dotnet nuget push «package-name» -Source «source-name»
 ```
-
-### Examples:
-
-Pushing the package `MyPackage` to a configured source named `internal-nuget`, you would enter:
-
-```bash
-$ dotnet nuget push bin/Release/MyPackage.1.0.0.nupkg -Source internal-nuget
-```
-
-Your package will then be uploaded and appear in your NuGet feed.
-
-![](/resources/docs/proget-nuget-internal-uploaded.png){height="" width="50%"}
 
 ## (Optional) Repackaging NuGet Packages in CI/CD
 
