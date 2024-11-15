@@ -42,3 +42,20 @@ This typically happens when you are using a non-Administrator level service acco
 4. And give read access to your service account
 
 If you are still having issues, ensure that your service account has the "Log on as a service" privilege.
+
+## Extended Key Usage does not include Server Authentication (OID 1.3.6.1.5.5.7.3.1)
+If hosting fails to start with the error `Certificate ... cannot be used as an SSL server certificate. It has an Extended Key Usage extension but the usages do not include Server Authentication (OID 1.3.6.1.5.5.7.3.1).`, then that means that the certificate the was loaded by the Integrated Web Server is missing the Server Authentication (OID 1.3.6.1.5.5.7.3.1) usage.  You will need to regenerate the certificate to include that OID.  
+
+If your certificate has that usage, then you most likely have multiple certificates with the same subject name and your Inedo product is selecting the wrong certificate. See [I have two certificates with the same name and the wrong certificate is selected](#i-have-two-certificates-with-the-same-name-and-the-wrong-certificate-is-selected) for how to handle this.
+
+## I have two certificates with the same name and the wrong certificate is selected
+If you have two certificates with the same name, the workaround for this is to edit the [installation configuration file](/docs/installation/configuration-files) and specify the certificate's thumbprint instead of the subject.  This will force the integrated web server to use a  specific certificate.  
+
+#### Example WebServer Element
+```
+<WebServer Enabled="true" Urls="http://*:2365;https://*:2364"  Thumbprint="0fa73d6fe6bffd12594d617a595d46d0b738903a" Store="My" Location="CurrentUser" />
+```
+
+:::(Warn)
+When using a certificate's thumbprint, you will need to modify the [installation configuration file](/docs/installation/configuration-files) anytime the certificate is renewed.
+:::
