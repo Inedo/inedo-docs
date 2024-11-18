@@ -1,9 +1,9 @@
 ---
 title: "Cargo (Rust)"
-order: 19
+order: 20
 ---
 
-[Cargo](https://doc.rust-lang.org/cargo/index.html) is the package manager for the [Rust](https://www.rust-lang.org/) programming language and uses a package format called a *[crate](https://doc.rust-lang.org/cargo/appendix/glossary.html#crate)*.  *[Crates](https://doc.rust-lang.org/cargo/appendix/glossary.html#crate)* are a way to package your rust libraries and executables.
+[Cargo](https://doc.rust-lang.org/cargo/index.html) is the package manager for the [Rust](https://www.rust-lang.org/) programming language and uses *crates* to package your rust libraries and executables.
 
 A Cargo feed in ProGet acts a private Cargo registry that allows you to store your own crates.  You can also create connectors to [crates.io](https://crates.io) and other Cargo registries that let you use third-party crates through your Cargo feed and create a curated list of approved Cargo crates.
 
@@ -61,38 +61,40 @@ cargo login --registry proget "Basic «your-Base64-encoded-username-and-password
 
 Cargo supports [two different protocols](https://doc.rust-lang.org/cargo/reference/registries.html#registry-protocols) for Registries; git and sparse.  ProGet **only supports** registries that implement the sparse protocol.  When creating a connector for your feed, you do not need to include `sparse+` before your URL, only include your URL (ex: `https://crates.io`).
 
-### Connector Limitations
 While `crates.io` support licenses in their Web API, not all third-party registries include license information.  The minimum requirements for the sparse protocol only requires a registry index that does not include license information.  This may prevent OSS Metadata updating and caching from finding licenses on third-party feeds.  
 
 If your third-party registry requires authentication, Cargo connectors only supports the use basic authentication.
 
 ## Creating and Publishing Crates
-Creating Cargo crates are [well documented](https://doc.rust-lang.org/cargo/guide/creating-a-new-project.html), but to get started, the easiest way is to use the `cargo new` command:
+
+Cargo crates are [well documented](https://doc.rust-lang.org/cargo/guide/creating-a-new-project.html), but to get started, the easiest way is to use the `cargo new` command:
 
 ```bash
 cargo new hello_world --bin
 ```
 
-*\*`--bin` will create a program (binary) and `--lib` will create a library*
+The `--bin` argument will create a program (binary) and `--lib` will create a library.
 
-To publish this package to ProGet, there are two ways; `cargo publish` and `pgutil packages upload`.  If you have already configured cargo to authenticate your feeds, then use `cargo publish`.  If not, use `pgutil packages upload`.
+### Publishing Crates to ProGet
 
-To publish packages using cargo:
+There are two ways to publish a Create to ProGet:
+* `cargo publish` is simpler to use if you've already configured `cargo` for authenticated feeds
+* `pgutil packages upload` is more versatile and provides full access to `pgutil` commands
+
+
+**To publish packages using cargo**, simply run `cargo publish` and the default registry you've configured in `.cargo/config.toml` will be used. You can also specify a registry argument:
 
 ```bash
 cargo publish --registry=proget
 ```
 
-:::(Info)(Note:)
-If you configured your default registry in your `.cargo/config.toml`, then you do not need to specify `--registry=proget`.
-:::
 
-To publish packages using `pgutil`:
+
+**To publish packages using `pgutil`**, you'll need to first [configure a source](/docs/proget/reference-api/proget-pgutil#sources). Then you can run the `cargo package` and `pgutil packages upload` command while specifying the crate file:
 ```bash
 cargo package
 pgutil packages upload --feed=«feed-name» --input-file=./target/package/«package-name»-«package-version».crate
 ```
-
 
 ## Adding Packages to You Rust Program or Library
 To add a cargo dependency to your Rust program or library, you will need to add the dependency to your `Cargo.toml`.
