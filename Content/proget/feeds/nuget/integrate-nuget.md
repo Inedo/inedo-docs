@@ -1,9 +1,9 @@
 ---
 title: "Integrating NuGet Client Tools with ProGet"
-order: 7
+order: 2
 ---
 
-ProGet's NuGet feeds allow you to manage and distribute NuGet packages across your development environment. Once you've created a feed in ProGet, integrating it with popular NuGet client tools is straightforward. Using the Feed Endpoint URL, you can connect ProGet to Visual Studio, the NuGet CLI, and other tools like [VS Code](https://code.visualstudio.com/) and [JetBrains Rider](https://www.jetbrains.com/rider/).  This guide will walk you through the integration steps for each tool, ensuring you can manage packages efficiently in your development workflow.
+ProGet's NuGet feeds allow you to manage and distribute NuGet packages across your development environment. Once you've created a feed in ProGet, integrating it with popular NuGet client tools is straightforward. Using the Feed Endpoint URL, you can connect ProGet to Visual Studio, the NuGet CLI, and other tools like [VS Code](https://code.visualstudio.com/) and [JetBrains Rider](https://www.jetbrains.com/rider/).
 
 :::(Info) (⚙ NuGet Feed Endpoint URL)
 
