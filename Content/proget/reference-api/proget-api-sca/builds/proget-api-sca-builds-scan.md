@@ -26,7 +26,7 @@ Supported options:
 | `--project-name=<project-name>` | **Yes** | Name of the component consuming the dependencies | All |
 | `--version=<version>` | **Yes** | Version of the component consuming the dependencies | All |
 | `--input=<input>` | No | Project to scan for dependencies (default=/) | All |
-| `--scanner-type=<scanner-type>` | No | Type of project scanner to use; auto, npm, NuGet, PyPI, or Conda (default=auto) | All |
+| `--scanner-type=<scanner-type>` | No | Type of project scanner to use; auto, npm, NuGet, PyPI, Conda, or Cargo (default=auto) | All |
 | `--noaudit` | No | Do not run audit after scan | All |
 | `--project-type=<project-type>` | No | Type of the consuming project (default=library) | All |
 | `--include-project-reference` | No | Include dependencies from referenced projects in the generated SBOM document. | NuGet |
@@ -104,6 +104,11 @@ pgutil builds scan --input="c:\path\to\solution.sln" --project-name="myProject" 
 ### Example: Specifying a .NET Solution for NuGet and npm dependencies
 ```
 pgutil builds scan --input="c:\path\to\solution.sln" --project-name="myProject" --version=1.2.3
+```
+
+### Example: Scanning a Cargo project using the Working Directory
+```bash
+pgutil builds scan --project-name="myProject" --version=1.2.3 --scanner-type=Cargo
 ```
 
 ### Example: Scanning a PyPI environment using the Working Directory
