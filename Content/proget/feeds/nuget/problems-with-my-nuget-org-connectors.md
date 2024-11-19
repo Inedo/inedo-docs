@@ -1,6 +1,6 @@
 ---
 title: "NuGet ODATA (v2) API"
-order: 3
+order: 5
 ---
 
 NuGet Feeds in ProGet implement an older called the ODATA (v2) API. 

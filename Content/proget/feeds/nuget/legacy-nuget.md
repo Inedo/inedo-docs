@@ -1,6 +1,6 @@
 ---
 title: "Legacy NuGet Feeds and API in ProGet"
-order: 7
+order: 8
 ---
 
 As part of ProGet's package management system, support for older technologies like the NuGet ODATA (v2) API and Legacy NuGet (Quirks) feeds remains for certain use cases. 

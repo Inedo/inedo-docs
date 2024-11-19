@@ -1,6 +1,6 @@
 ---
 title: "HOWTO: Create and Upload Nuget Packages to a Private Repository in ProGet"
-order: 4
+order: 7
 ---
 
 ProGet let's you set up private NuGet repositories that will allow you to publish, store and share your internal NuGet packages within your organization.
@@ -65,9 +65,9 @@ Then run the following to create the package:
 $ dotnet pack --configuration Release 
 ```
 
-## Step 3: Adding the Feed to NuGet CLI { #add-feed }
+## Step 3: Adding the Feed as a Source { #add-feed }
 
-To add your `internal-nuget` feed to either Visual Studio or NuGet CLI, you will need the feed URL. This is found on the top right of the feed page:
+To add your `internal-nuget` feed to Visual Studio, the NuGet CLI, or other clients such as [VS Code](https://code.visualstudio.com/) and [JetBrains Rider](https://www.jetbrains.com/rider/), you will need the feed URL. This is found on the top right of the feed page:
 
 ![](/resources/docs/proget-nuget-internal-url.png){height="" width="50%"}
 
@@ -97,33 +97,7 @@ To confirm the connection in Visual Studio, right-click on a project in the Solu
 
 ### Using Other NuGet Clients { #add-others }
 
-ProGet can be added as a source in a number of other popular clients, including the NuGet CLI, [VS Code](https://code.visualstudio.com/), and [JetBrains Rider](https://www.jetbrains.com/rider/).
-
-#### Using NuGet CLI { #add-cli }
-Then add the feed as a source to your NuGet client by entering:
-
-```bash
-$ dotnet nuget add source https://«proget-server»/nuget/internal-nuget/v3/index.json --name internal-nuget
-```
-
-#### In VS Code
-
-To add your `internal-nuget` feed as a source, add it to a `nuget.config` in your project. The config could look like this:
-
-```xml
-<?xml version="1.0" encoding="utf-8"?>
-<configuration>
-  <packageSources>
-    <add key="internal-nuget" value="https://«proget-server»/nuget/internal-nuget/v3/index.json" />
-  </packageSources>
-</configuration>
-```
-
-#### In JetBrains Rider
-
-To add your `internal-nuget` feed as a source, open "NuGet Settings" by navigating to "File" > "Settings", and then "Build, Execution, Deployment" > "NuGet". Next, under the "Package Sources" tab, click on the + (Add) button to create a new package source.
-
-In the Name field, enter a name for your source (e.g., `internal-nuget`), and then in the URL field, enter the URL of your `internal-nuget` feed. 
+ProGet can be added as a source in a number of other popular clients, including the NuGet CLI, [VS Code](https://code.visualstudio.com/), and [JetBrains Rider](https://www.jetbrains.com/rider/). To learn how to do this, read [Integrating NuGet Client Tools with ProGet](/docs/proget/feeds/nuget/integrate-nuget).
 
 ## Step 4: Setting Up Authentication to Your NuGet Feed.
 
