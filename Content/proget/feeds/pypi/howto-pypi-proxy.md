@@ -7,7 +7,8 @@ ProGet let's you create ["Feeds"](/docs/proget/feeds/feed-overview) to proxy pac
 
 Using ProGet as a proxy will let you [assess vulnerabilities](#scan-feed) in PyPI packages, tell you which packages are being downloaded and used frequently, and cache packages, allowing teams to access them even if PyPI is down.
 
-This article will look at how to set up a feed in ProGet to proxy PyPI packages, as well as how to create a private repository for your internal Python packages. The PyPI CLI commands on this page primarily use [pip](https://pip.pypa.io/), but we've also included information for those using [PipEnv](#add-pipenv) or [Poetry](#add-poetry).
+This article will look at how to set up a feed in ProGet to proxy PyPI packages, as well as how to create a private repository for your internal Python packages. The PyPI commands on this page use [pip](https://pip.pypa.io/), however you can also integrate other tools such as [PipEnv and Poetry](/docs/proget/feeds/pypi/integrate-pypi-others) with your PyPI feeds. 
+
 
 ## Step 1: Create a New Feed { #create-feed }
 
@@ -29,7 +30,7 @@ The next several options will let your feed use ProGet's [Vulnerability Scanning
 
 ## Step 2: Using the Feed in Python Clients { #add-feed }
 
-To let your teams use the `public-pypi` feed when installing packages you can either include it when running the `pip install` command, or set it globally with the `pip config` command. You can also add it if using [PipEnv](#add-pipenv) or [Poetry](#add-poetry).
+To let your teams use the `public-pypi` feed when installing packages you can either include it when running the `pip install` command, or set it globally with the `pip config` command. You can also add it if using [PipEnv or Poetry](/docs/proget/feeds/pypi/integrate-pypi-others#add-source).
 
 ### Using `pip config`
 
@@ -74,46 +75,9 @@ $ pip install flask==2.3.3 --extra-index-url proget.corp.local -i https://proget
 ```
 :::
 
-### Using Pipenv { #add-pipenv }
-
-To configure Pipenv to use your PyPI feed, set the `PIP_INDEX_URL` environment variable in your shell before running `pipenv install`, or include it in your Pipfile:
-
-```bash
-$ export PIP_INDEX_URL=https://«proget-server»/pypi/public-pypi/simple
-```
-
-Alternatively, modify your Pipfile to include:
-
-```bash
-[[source]]
-name = "public-pypi"
-url = "https://«proget-server»/pypi/public-pypi/simple"
-verify_ssl = true
-```
-
-Then install packages with:
-
-```bash
-$ pipenv install «package-name»==«package-version»
-```
-
-### Using Poetry { #add-poetry }
-
-To configure Poetry to use your `public-pypi` feed, you can add the repository to your project using the `poetry config` command:
-
-```bash
-$ poetry config repositories.public-pypi https://«proget-server»/pypi/public-pypi/simple
-```
-
-Then, to install a package from your feed, use the `poetry add` command:
-
-```bash
-poetry add «package-name» --source public-pypi
-```
-
 ## (Optional) Authenticating to Your PyPI Feed
 
-By default your `public-pypi` feed does not need to be authenticated to can be viewed anonymously. However if you've configured your feed to require authentication, you can [authenticate to it](/docs/proget/feeds/pypi#authenticating-to-a-pypi-feed) when using `pip install` or with `pip config`. Alternatively you can authenticate with [PipEnv](/docs/proget/feeds/pypi#authenticate-pipenv) or [Poetry](/docs/proget/feeds/pypi#authenticate-poetry).
+By default your `public-pypi` feed does not need to be authenticated to can be viewed anonymously. However if you've configured your feed to require authentication, you can [authenticate to it](/docs/proget/feeds/pypi#authenticating-to-a-pypi-feed) when using `pip install` or with `pip config`. Alternatively you can authenticate with [PipEnv or Poetry](/docs/proget/feeds/pypi/integrate-pypi-others#authenticate-feed).
 
 ::: (Info) (💡 Best Practices: Use API Keys for Authenticated Feeds)
 Rather than using your ProGet username/password for a NuGet feed, we strongly recommend [Creating a ProGet API Key](/docs/proget/reference-api/proget-apikeys) to authenticate, using `api` as the username and your key as the password.

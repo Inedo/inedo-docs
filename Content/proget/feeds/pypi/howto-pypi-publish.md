@@ -5,7 +5,7 @@ order: 2
 
 With ProGet you can set up private repositories for your Python packages, so you can publish, store, and share them internally.
 
-This article will run through how to create a ["Feed"](/docs/proget/feeds/feed-overview) in ProGet to act as a private Python package repository, as well as covering how to create, publish, and install packages from this feed.
+This article will run through how to create a ["Feed"](/docs/proget/feeds/feed-overview) in ProGet to act as a private Python package repository, as well as covering how to create, publish, and install packages from this feed. This page provides instructions when using pip, however you can also integrate other tools such as [PipEnv and Poetry](/docs/proget/feeds/pypi/integrate-pypi-others) with your PyPI feeds. 
 
 ## Step 1: Create a New Feed
 
@@ -64,7 +64,7 @@ When setting up the API Key, choose "Feeds (Use Certain Feeds)" as the "Feed Typ
 
 To publish your package to your ProGet `internal-pypi` feed, you can use [pgutil](/docs/proget/reference-api/proget-pgutil).
 
-pgutil will require some [minor configuration](/docs/proget/reference-api/proget-pgutil#sources) before use. This includes setting up your ProGet instance and API key as a source by running:
+`pgutil` will require some [minor configuration](/docs/proget/reference-api/proget-pgutil#sources) before use. This includes setting up your ProGet instance and API key as a source by running:
 
 ```bash
 $ pgutil sources add --name=Default --url=«proget-url» --api-key=«api-key»
@@ -101,41 +101,9 @@ Note that the feed endpoint URLs used when pushing packages vary slightly from t
 
 It's also possible to use the `twine upload` command if want to use [twine](https://pypi.org/project/twine/). 
 
-### Using .pypirc to Upload Python Packages
-
-You can also set your PyPI feed globally to publish packages to by editing the `.pypirc` file located in `~\Users\«user»\` as follows:
-
-```bash
-[distutils] 
-index-servers = proget 
-
-[proget] 
-repository = http://«proget-server»/pypi/«feed-name»/legacy
-username = api
-password = «api-key»
-```
-
-For example, globally setting the `internal-pypi` feed, on the ProGet server `proget.corp.local`, with the API Key `abc12345`, the file would look like:
-
-```bash
-[distutils] 
-index-servers = proget 
-
-[proget] 
-repository = http://proget.corp.local/pypi/internal-pypi/legacy
-username = api
-password = abc12345
-```
-
-Once your `.pypirc` file has been configured, install packages using the `twine upload` command:
-
-```bash
-$ twine upload -r proget dist/*
-```
-
 ## Step 5: Using your PyPI Feed as a Source to Install Packages
 
-To use your `internal-pypi` feed when installing packages you can either set it globally with the `pip config` command or run the `pip install` command. You can also install packages using either [PipEnv](/docs/proget/feeds/pypi#authenticate-pipenv) or [Poetry](/docs/proget/feeds/pypi#authenticate-poetry).
+To use your `internal-pypi` feed when installing packages you can either set it globally with the `pip config` command or run the `pip install` command. You can also install packages using either [PipEnv or Poetry](/docs/proget/feeds/pypi/integrate-pypi-others#add-source).
 
 ### Using `pip config`
 
@@ -170,43 +138,6 @@ To install Python packages with the URL in the `pip install` command, you will n
 
 ```bash
 $ pip install my_package==1.0.0 --extra-index-url https://proget.corp.local/pypi/internal-pypi/simple
-```
-
-### Using Pipenv
-
-To configure Pipenv to use your PyPI feed, set the `PIP_INDEX_URL` environment variable in your shell before running `pipenv install`, or include it in your Pipfile. For example if adding your `internal-pypi` feed on the server `proget.corp.local`, you would enter:
-
-```bash
-$ export PIP_INDEX_URL=https://proget.corp.local/pypi/internal-pypi/simple
-```
-
-Alternatively, modify your Pipfile to include:
-
-```bash
-[[source]]
-name = "internal-pypi"
-url = "https://proget.corp.local»/pypi/internal-pypi/simple"
-verify_ssl = true
-```
-
-Then install packages with:
-
-```bash
-$ pipenv install «package-name»==«package-version»
-```
-
-### Using Poetry
-
-To configure Poetry to use your PyPI feed, you can add the repository to your project using the `poetry config` command. For example if adding your `internal-pypi` feed on the server `proget.corp.local` you would enter:
-
-```bash
-$ poetry config repositories.internal-pypi https://proget.corp.local/pypi/internal-pypi/simple
-```
-
-Then, to install a package from your feed, use the `poetry add` command:
-
-```bash
-poetry add «package-name» --source internal-pypi
 ```
 
 ## (Optional) Authenticating to the PyPI Feed
