@@ -1,6 +1,6 @@
 ---
 title: "Symbol and Source Server"
-order: 1
+order: 4
 ---
 
 Debugging in NuGet packages can be tedious, but you can make it easier by configuring your NuGet feeds to work as a Symbol/Source server compatible with debuggers like Visual Studio and WinDbg.
