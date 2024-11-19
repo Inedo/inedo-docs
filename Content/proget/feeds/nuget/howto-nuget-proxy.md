@@ -7,7 +7,7 @@ Connecting ProGet with Visual Studio or integrating it into `dotnet` is a great 
 
 ProGet can create a ["Feed"](/docs/proget/feeds/feed-overview) to proxy NuGet packages from [NuGet.org](https://www.nuget.org/) so that teams can consume them in their projects just as they would if pulling directly from the OSS repository. Using this feed will let you cache packages, which is useful when Nuget.org is experiencing issues. It also lets you easily see which packages are being downloaded and used frequently.
 
-In this article, we'll explain how to proxy NuGet packages from [NuGet.org](https://www.nuget.org/) to a feed in ProGet, and then connect it to Visual Studio or CLI and set up authentication. We’ll also look at how to set up a private repository for using internal NuGet packages, as well as how to establish a package approval process to manage which packages your team can utilize in production.
+In this article, we'll explain how to proxy NuGet packages from [NuGet.org](https://www.nuget.org/) to a feed in ProGet, and then connect it to Visual Studio or other clients such as the NuGet CLI, [VS Code](https://code.visualstudio.com/), and [JetBrains Rider](https://www.jetbrains.com/rider/) and set up authentication. We’ll also look at how to set up a private repository for using internal NuGet packages, as well as how to establish a package approval process to manage which packages your team can utilize in production.
 
 ## Step 1: Create and Name a NuGet Feed
 
@@ -33,21 +33,17 @@ You'll then choose from several vulnerability and license options. More informat
 
 To add your `public-nuget` feed as a source, you will need the feed URL. This is found on the top right of the feed page:
 
-![](/resources/docs/proget-nuget-public-url){height="" width="50%"}
+![](/resources/docs/proget-nuget-public-url.png){height="" width="50%"}
 
 To add your feed as a Package Manager in Visual Studio, navigate to "Tools" > "NuGet Package Manager" > "Package Manager Settings". Then uncheck the box to the left of *nuget.org*
 
-![visualstudio-packagesources-highlightednugetorg.png](/resources/docs/visualstudio-packagesources-highlightednugetorg.png)
+![visualstudio-packagesources-highlightednugetorg.png](/resources/docs/visualstudio-packagesources-highlightednugetorg.png){height="" width="50%"}
 
 This prevents Visual Studio from scanning both NuGet.org and ProGet for packages. If you configure Visual Studio to search only ProGet instead of NuGet.org and ProGet, you avoid problems such as bad licenses, vulnerable packages, and [dependency confusion](https://blog.inedo.com/software-supply-chain-security/three-things) in your packages when you use multiple sources.
 
-Now you will need to create a new package source. Click the green `+` in the top right of the window, and then name the new package source. Then paste in your `public-nuget` feed URL.
+Now you will need to create a new package source. Click the green `+` in the top right of the window, and then name the new package source. Then paste in your `public-nuget` feed URL. Now, click the "Update" button, followed by the "OK" button.
 
-![visualstudio-packagesources-configureproget.png](/resources/docs/visualstudio-packagesources-configureproget.png)
-
-Now, click the "Update" button, followed by the "OK" button.
-
-![visualstudio-packagesources-updateandok.png](/resources/docs/visualstudio-packagesources-updateandok.png)
+![visualstudio-packagesources-configureproget.png](/resources/docs/visualstudio-packagesources-configureproget.png){height="" width="50%"}
 
 Visual Studio and ProGet are now connected.
 
@@ -57,50 +53,11 @@ If you click "OK" without clicking "Update" your package source configuration wi
 
 To confirm the connection in Visual Studio, right-click on a project in the Solution Explorer and select “Manage NuGet Packages…” from the menu. In the Package Manager window under "Browse", your should see a window populated with packages from the `public-nuget` feed.
 
-![visualstudio-connectedprogetfeed.png](/resources/docs/visualstudio-connectedprogetfeed.png)
+![visualstudio-connectedprogetfeed.png](/resources/docs/visualstudio-connectedprogetfeed.png){height="" width="50%"}
 
 ### Adding the Feed to Other NuGet Clients { #add-others }
 
-ProGet can be added as a source in a number of other popular clients, including the NuGet CLI, [VS Code](https://code.visualstudio.com/) and [JetBrains Rider](https://www.jetbrains.com/rider/).
-
-### Adding to The NuGet CLI { #add-cli }
-
-To add the feed as a source to your NuGet client, use the `dotnet nuget add source` command:
-
-```bash
-$ dotnet nuget add source https://«proget-server»/nuget/public-nuget/v3/index.json --name public-nuget
-```
-
-By default, NuGet clients are configured with nuget.org as a source. We recommend removing this to exclusively use your `public-nuget` feed as a source:
-
-```bash
-$ dotnet nuget remove source nuget.org
-```
-
-You can confirm that your have configured your sources correctly by entering:
-
-```bash
-$ dotnet nuget sources list
-```
-
-### Adding to VS Code
-
-To add your `public-nuget` feed as a source, add it to a `nuget.config` in your project. The config could look like this:
-
-```xml
-<?xml version="1.0" encoding="utf-8"?>
-<configuration>
-  <packageSources>
-    <add key="public-nuget" value="https://«proget-server»/nuget/public-nuget/v3/index.json" />
-  </packageSources>
-</configuration>
-```
-
-### Adding to JetBrains Rider
-
-To add your `public-nuget` feed as a source, open "NuGet Settings" by navigating to "File" > "Settings", and then "Build, Execution, Deployment" > "NuGet". Next, under the "Package Sources" tab, click on the + (Add) button to create a new package source.
-
-In the Name field, enter a name for your source (e.g., `internal-nuget`), and then in the URL field, enter the URL of your `internal-nuget` feed. 
+ProGet can be added as a source in a number of other popular clients, including the NuGet CLI, [VS Code](https://code.visualstudio.com/), and [JetBrains Rider](https://www.jetbrains.com/rider/). To learn how to do this, read [Integrating NuGet Client Tools with ProGet](/docs/proget/feeds/nuget/integrate-nuget).
 
 ## Step 3: Installing NuGet Packages
 
@@ -121,7 +78,6 @@ Instead of using your ProGet username/password for a NuGet feed, we recommend [C
 :::
 
 To learn how to authenticate to your NuGet feed, read [Authenticating to NuGet Feeds](/docs/proget/feeds/feed-overview##authenticating-to-feed)
-
 
 ## (Optional) Creating a Package Approval Flow
 
