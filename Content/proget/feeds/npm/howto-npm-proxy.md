@@ -29,7 +29,7 @@ We are then presented with several options. Keeping these checked will allow you
 
 ![](/resources/docs/proget-npm-public.png){height="" width="50%"}
 
-## Step 3: Add the Feed to npm Clients { #add-feed }
+## Step 2: Add the Feed to npm Clients { #add-feed }
 
 For your team to install packages from the `public-npm` feed, you'll need to add it as a source in their npm clients. For this, you will need feed's URL. This can be found at the top right of the feed's page.
 
@@ -51,7 +51,7 @@ $ yarn config set registry http://«proget-url»/npm/«feed-name»
 
 You can confirm that the feed has been set correctly by using `npm get registry` for npm, `yarn config get registry` for Yarn.
 
-## (Optional) Authenticating to Your npm Feed
+## Step 3: (Optional) Authenticating to Your npm Feed
 
 By default your `public-npm` feed does not require authentication and can be viewed anonymously. However, you may want to make your feed private and require authentication to access. Authentication is done by creating an `_auth` token and then [configuring it in your npm client](/docs/proget/feeds/npm#authenticating-to-npm-feeds).
 
