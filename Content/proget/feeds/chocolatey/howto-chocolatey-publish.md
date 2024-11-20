@@ -13,19 +13,15 @@ This guide will walk you through the process of setting up a Chocolatey ["Feed"]
 
 Start by creating a Chocolatey feed to host your internal packages. Navigate to "Feeds" and "Create New Feed". Then select "Chocolatey Packages".
 
-![](){height="" width="50%"}
+![](/resources/docs/proget-chocolatey-newfeed.png){height="" width="50%"}
 
-Now select "No Connectors (Private packages only)" as this feed will be intended to host private packages.
+Now select "No Connectors (Private packages only)" as this feed will be intended to host private packages. From here, name the feed. For this example, we will call it `internal-Chocolatey`, and then click "Create Feed".
 
-![](){height="" width="50%"}
-
-From here, we name our feed. For this example, we will call it `internal-Chocolatey`, and then click "Create Feed".
-
-![](){height="" width="50%"}
+![](/resources/docs/proget-chocolatey-newfeed-internal.png){height="" width="50%"}
 
 You'll then see several options related to ProGet's [Vulnerability Scanning and Blocking](/docs/proget/sca/vulnerabilities) features. These are only for users looking to use third-party packages. Leave these boxes unchecked, and select "Set Feed Features". You will then be directed to the new `internal-chocolatey` feed, currently empty.
 
-![](/resources/docs/proget-Chocolatey-internal-empty.png){height="" width="50%"}
+![](/resources/docs/proget-chocolatey-internal-empty.png){height="" width="50%"}
 
 ## Step 2: Create a Chocolatey Package
 
@@ -68,7 +64,7 @@ We will now create an [API Key](/docs/proget/reference-api/proget-apikeys) allow
 
 When creating an API Key, fill in the fields by selecting "Feeds (Use Certain Feeds)" as the "Feed Type" and selecting the `internal-chocolatey` feed. Then set the API key. You can use any alphanumeric sequence, or just leave it blank to autogenerate one. Ensure that the "View/Download" and "Add/Repackage" boxes are checked, and then select "Save".
 
-![](){height="" width="50%"}
+![](/resources/docs/proget-chocolatey-apikey-internal.png){height="" width="50%"}
 
 ## Step 5: Pushing Your Package to Your Chocolatey Feed
 
@@ -86,11 +82,11 @@ $ choco push C:\chocolatey_packages\MyApplication-1.2.3.nupkg --source=internal-
 
 This will upload it to your `internal-chocolatey` feed:
 
-![](){height="" width="50%"}
+![](/resources/docs/proget-chocolatey-internal-uploaded.png){height="" width="50%"}
 
 ## (Optional) Internalizing Chocolatey Packages
 
 If you want to minimizing reliance on external sources for software installed using Chocolatey Packages, you can [internalize your packages](https://blog.inedo.com/chocolatey/internalization). 
 
-Chocolatey’s [package internalizer](https://docs.chocolatey.org/en-us/features/package-internalizer) can internalize packages automatically or you can do it yourself. To learn more on how to do this you can read [HOWTO: Set Up a Private Chocolatey Repository for Internalized Packagesy](/docs/proget/feeds/chocolatey/howto-chocolatey-internalized)
+Chocolatey’s [package internalizer](https://docs.chocolatey.org/en-us/features/package-internalizer) can internalize packages automatically or you can do it yourself. To learn more on how to do this you can read [HOWTO: Set Up a Private Chocolatey Repository for Internalized Packages](/docs/proget/feeds/chocolatey/howto-chocolatey-internalized)
 

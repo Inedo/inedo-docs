@@ -13,33 +13,31 @@ We'll first create a Chocolatey feed to proxy packages from [Chocolatey.org](htt
 
 In your ProGet instance, select "Feeds" and "Create New Feed", and select "Chocolatey Packages".
 
-![](){height="" width="50%"}
+![](/resources/docs/proget-chocolatey-newfeed.png){height="" width="50%"}
 
-Then select "Connect to Chocolatey.org" which will let you proxy and cache packages from Chocolatey.org.
-
-![](){height="" width="50%"}
+Then select "Connect to Chocolatey.org" which will let you proxy and cache packages from Chocolatey.org. 
 
 Select "No, Create One Feed", as we will only need a single feed to proxy Chocolatey packages. Now you will need to name the feed. For this example, we will name it `public-chocolatey`, and then click "Create Feed".
 
-![](){height="" width="50%"}
+![](/resources/docs/proget-chocolatey-newfeed-public.png){height="" width="50%"}
 
 You'll then choose from several vulnerability and license options. More information on these can be found in the [Vulnerability Scanning and Blocking](/docs/proget/sca/vulnerabilities) and [Licensing Detection and Blocking](https://docs.inedo.com/docs/proget/sca/licenses) documentation. Select "Set Feed Features". ProGet will create The `public-chocolatey` feed, which will now be populated with packages proxied from Chocolatey.org.
 
-![](){height="" width="50%"}
+![](/resources/docs/proget-chocolatey-public-populated.png){height="" width="50%"}
 
 ## Step 2: (Optional) Enable Metadata Caching
 
 Although not required, we recommend enabling metadata caching, which will significantly reduce the number of times ProGet must forward queries to "chocolatey" and avoid rate limiting. To enable metadata caching, navigate to "Feeds" > "Connectors", and select "chocolatey.org".
 
-![Feed Connectors "feed-connectors"](/resources/docs/proget-feed-chocolatey-connectors.png){height="" width="50%"}
+![](/resources/docs/proget-feed-chocolatey-connectors.png){height="" width="50%"}
 
 From here, locate "Metadata Caching" on the right side, and select "edit". This will bring up a dialog box. Click the checkbox next to "Cache metadata queries". Doing so will bring up two options, "Cache period (minutes)" and "Minimum cache entries" that can be set at your discretion. We recommend keeping them to the default values.
 
-![Metadata Caching "metadata-caching"](/resources/docs/proget-configuremetadatacaching.png){height="" width="50%"}
+![](/resources/docs/proget-configuremetadatacaching.png){height="" width="50%"}
 
 Finally, click "Save". The changes will now be reflected on the "Connectors" page.
 
-![Caching Enabled "caching-enabled"](/resources/docs/proget-chocolatey-cachingenabled.png){height="" width="50%"}
+![](/resources/docs/proget-chocolatey-cachingenabled.png){height="" width="50%"}
 
 ## Step 3: Adding ProGet As A Source  { #add-source }
 
@@ -94,4 +92,4 @@ $ choco source add -n="approved-chocolatey" -s="https://«proget-server»/feeds/
 
 If you want to minimizing reliance on external sources for software installed using Chocolatey Packages, you can [internalize your packages](https://blog.inedo.com/chocolatey/internalization). 
 
-Chocolatey’s [package internalizer](https://docs.chocolatey.org/en-us/features/package-internalizer) can internalize packages automatically or you can do it yourself. To learn more on how to do this you can read [HOWTO: Set Up a Private Chocolatey Repository for Internalized Packagesy](/docs/proget/feeds/chocolatey/howto-chocolatey-internalized)
+Chocolatey’s [package internalizer](https://docs.chocolatey.org/en-us/features/package-internalizer) can internalize packages automatically or you can do it yourself. To learn more on how to do this you can read [HOWTO: Set Up a Private Chocolatey Repository for Internalized Packages](/docs/proget/feeds/chocolatey/howto-chocolatey-internalized)

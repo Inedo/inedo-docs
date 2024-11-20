@@ -28,11 +28,11 @@ In your ProGet instance, select "Feeds" and "Create New Feed", and select "Choco
 
 Now select "No Connectors (Private packages only)" as this feed will be intended as a private repository. From here, we name our feed. For this example, we will call it `internalized-chocolatey`, and then click "Create Feed".
 
-![](/resources/docs/proget-chocolatey-newfeed-internal.png){height="" width="50%"}
+![](/resources/docs/proget-chocolatey-newfeed-internalized.png){height="" width="50%"}
 
 You'll then see several options related to ProGet's [Vulnerability Scanning and Blocking](/docs/proget/sca/vulnerabilities) features. These are only for users looking to use third-party packages like those on [Chocolatey.org](https://chocolatey.org). Leave these boxes unchecked, and select "Set Feed Features". You will then be directed to the new `internalized-chocolatey` feed, currently empty.
 
-![](/resources/docs/proget-chocolatey-internal-empty.png){height="" width="50%"}
+![](/resources/docs/proget-chocolatey-internalized-empty.png){height="" width="50%"}
 
 ## Step 3: Create an API Key
 
@@ -78,7 +78,7 @@ $ pgutil packages upload --feed=internalized-chocolatey --input-file=C:\chocolat
 
 Your package will then be uploaded to the `internalized-chocolatey` feed.
 
-![](/resources/docs/proget-chocolatey-internal-uploaded.png){height="" width="50%"}
+![](/resources/docs/proget-chocolatey-internalized-uploaded.png){height="" width="50%"}
 
 ### Uploading with `choco push`
 
