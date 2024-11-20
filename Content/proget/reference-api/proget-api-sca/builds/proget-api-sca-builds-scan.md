@@ -20,25 +20,19 @@ The `--project-name` and `--version` options are always required and will scan t
 
 If you would like to scan a specific file or folder, you can specify it using the `--input` option.  If you have multiple project types within the same folder, you can specify the package type using the `--scanner-type` parameter.  
 
-Supported options:
-| Parameter | Required | Description | Supported Package Type |
-| --------- | -------- | ----------- | ---------------------- |
-| `--project-name=<project-name>` | **Yes** | Name of the component consuming the dependencies | All |
-| `--version=<version>` | **Yes** | Version of the component consuming the dependencies | All |
-| `--input=<input>` | No | Project to scan for dependencies (default=/) | All |
-| `--scanner-type=<scanner-type>` | No | Type of project scanner to use; auto, npm, NuGet, PyPI, Conda, or Cargo (default=auto) | All |
-| `--noaudit` | No | Do not run audit after scan | All |
-| `--project-type=<project-type>` | No | Type of the consuming project (default=library) | All |
-| `--include-project-reference` | No | Include dependencies from referenced projects in the generated SBOM document. | NuGet |
-| `--include-dev-dependencies` | No | Include npm development dependencies from the package-lock.json file in the generated SBOM document. | npm, NuGet |
-| `--do-not-scan-node_modules` | No | Do not scan the node_modules directory when scanning for package-lock.json files. | npm, NuGet |
 
-Global options:
-| Parameter | Description |
-| `--source=<source>` | Named source or URL of ProGet |
-| `--username=<username>` | ProGet user name used to authorize access |
-| `--api-key=<api-key>` | ProGet API key used to authorize access |
-| `--password=<password>` | ProGet user password used to authorize access |
+| Option | Description 
+| --------- | ----------- 
+| <span style="white-space:nowrap">`--project-name=«project-name»`</span> | [Required] Name of the component consuming the dependencies
+| `--version=«version»` | [Required] Version of the component consuming the dependencies
+| `--input=«input»` | Project to scan for dependencies (default=/)
+| `--scanner-type=«scanner-type»` | Type of project scanner to use; auto, npm, NuGet, PyPI, Conda, or Cargo (default=auto)
+| `--noaudit` | Do not run audit after scan
+| `--project-type=«project-type»` | Type of the consuming project (default=library)
+| `--include-project-reference` | For NuGet, Include dependencies from referenced projects in the generated SBOM document.
+| `--include-dev-dependencies` | For NuGet and npm, Include npm development dependencies from the package-lock.json file in the generated SBOM document.
+| `--do-not-scan-node_modules` | For NuGet and npm, Do not scan the node_modules directory when scanning for package-lock.json files.
+
 
 ::: (Info) (Note:)
 When scanning a .NET project or solution or a PyPI environment, if the `--scanner-type` is set to `auto`, it will also scan for npm packages.
