@@ -15,11 +15,7 @@ Start by selecting "Feeds" and "Create New Feed". Next, select "Helm Charts", un
 
 ![](){height="" width="50%"}
 
-Now select "Connect to Artifact Hub".
-
-![](){height="" width="50%"}
-
-Then select "No, Create One Feed", as we will be creating a single feed to proxy Helm charts. From here, name the feed (we will call it `public-helm` for this guide). Then click "Create Feed".
+Now select "Connect to Artifact Hub". Then select "No, Create One Feed", as we will be creating a single feed to proxy Helm charts. From here, name the feed (we will call it `public-helm` for this guide). Then click "Create Feed".
 
 ![](){height="" width="50%"}
 
