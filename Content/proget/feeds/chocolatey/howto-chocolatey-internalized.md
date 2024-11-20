@@ -16,27 +16,23 @@ To internalize Chocolatey Packages, you can use Chocolatey’s [package internal
 3. Edit the installation script to point to the internal software.
 4. Package it back up.
 
-Be sure to change the title or edit the description of your internalized packages before uploading them to ProGet, as internalized packages look externally identical to normal packages. To avoid confusion, we recommend slightly changing the name of the internalized package, for example, change "Firefox" to "Firefox-internalized".
+Be sure to change the title or edit the description of your internalized packages before uploading them to ProGet, as internalized packages look externally identical to normal packages. To avoid confusion, we recommend slightly changing the name of the internalized package, for example, change `Firefox` to `Firefox-internalized`.
 
-## Step 3: Create an Internalized Feed in ProGet
+## Step 2: Create an Internalized Feed in ProGet
 
 Now that your packages are internalized, a separate feed should be created exclusively for approved internalized Chocolatey packages. You can read more on creating feeds by reading [Creating and Managing Feeds](/docs/proget/feeds/feed-overview#creating-and-managing-feeds)
 
-In your ProGet instance, select "Feeds" and "Create New Feed", and select "Chocolatey Packages".
+In your ProGet instance, select "Feeds" and "Create New Feed", and select "Chocolatey Packages" under "System & Software Configuration".
 
-![](){height="" width="50%"}
+![](/resources/docs/proget-chocolatey-newfeed.png){height="" width="50%"}
 
-Now select "No Connectors (Private packages only)" as this feed will be intended as a private repository.
+Now select "No Connectors (Private packages only)" as this feed will be intended as a private repository. From here, we name our feed. For this example, we will call it `internalized-chocolatey`, and then click "Create Feed".
 
-![](){height="" width="50%"}
-
-From here, we name our feed. For this example, we will call it `internalized-chocolatey`, and then click "Create Feed".
-
-![](){height="" width="50%"}
+![](/resources/docs/proget-chocolatey-newfeed-internal.png){height="" width="50%"}
 
 You'll then see several options related to ProGet's [Vulnerability Scanning and Blocking](/docs/proget/sca/vulnerabilities) features. These are only for users looking to use third-party packages like those on [Chocolatey.org](https://chocolatey.org). Leave these boxes unchecked, and select "Set Feed Features". You will then be directed to the new `internalized-chocolatey` feed, currently empty.
 
-![](){height="" width="50%"}
+![](/resources/docs/proget-chocolatey-internal-empty.png){height="" width="50%"}
 
 ## Step 3: Create an API Key
 
@@ -46,7 +42,7 @@ You can read more about creating API keys in ProGet on our [API Key](/docs/proge
 
 When creating an API Key, fill in the fields by selecting "Feeds (Use Certain Feeds)" as the "Feed Type" and selecting the `internalized-chocolatey` feed. Then set the API key. You can use any alphanumeric sequence, or just leave it blank to autogenerate one.
 
-![](){height="" width="50%"}
+![](/resources/docs/proget-chocolatey-apikey.png){height="" width="50%"}
 
 Make sure the "View/Download" and "Add/Repackage" boxes are checked, and then select "Save".
 
@@ -82,7 +78,7 @@ $ pgutil packages upload --feed=internalized-chocolatey --input-file=C:\chocolat
 
 Your package will then be uploaded to the `internalized-chocolatey` feed.
 
-![](){height="" width="50%"}
+![](/resources/docs/proget-chocolatey-internal-uploaded.png){height="" width="50%"}
 
 ### Uploading with `choco push`
 
