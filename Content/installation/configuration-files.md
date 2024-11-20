@@ -28,16 +28,32 @@ The configuration file for your Inedo product is a simple XML format:
 <InedoAppConfig>
   <ConnectionString>SQL Server database connection string</ConnectionString>
   <EncryptionKey>32-character hex key for stored secrets</EncryptionKey>
-  <WebServer Enabled="true/false" Urls="web server listen URLs" />
+  <WebServer Enabled="true/false" Urls="web server listen URLs" ... />
 </InedoAppConfig>
 ```
 
 * The **ConnectionString** element contains the SQL connection string used by your Inedo product.
 * The **EncryptionKey** element is optional and if specified, will be used to encrypt stored credentials for remote resources.
-* The **WebServer** element controls the integrated web server. If you are using IIS, the **Enabled** attribute should be set to **false**. If **Enabled** is set to **true**, then the **Urls** attribute should contain URLs to listen to (for example `http://my.local.BuildMaster:80/;http://localhost:1000/`).
+* The **WebServer** element controls the integrated web server.
 
-::: (Internal) (TODO)
-Add certificate information on the WebServer node doc.
+#### WebServer Attributes
+The `WebServer` element contains multiple attributes that controls how your Inedo product is hosted. 
+
+| Attribute | Type | Description |
+| --------- | ---- | ----------- |
+| **Enabled** | `true/false` | If `true`, the Integrated Web Server is used to host ProGet, else IIS is used to host ProGet. |
+| **Urls** | `string` | A list of URLs for the Integrated Web Server to listen on (ex: `http://my.local.BuildMaster:80/;http://localhost:1000/`) |
+| **CertFile** | `string` | When the URLs contain a URL that starts with `https://`, this certificate file will be used for SSL communication |
+| **KeyFile** | `string` | Path to Key File that contains private keys.  *This should only be used when the `CertFile` does not contain private keys.* | 
+| **Password** | `string` | Password for the `CertFile` and `KeyFile` |
+| **Subject** | `string` | Certificate Subject Name of a certificate stored in the Windows Certificate Store |
+| **Thumbprint** | `string` | Certificate Thumbprint of a certificate stored in the Windows Certificate Store. *(ProGet 2024.19+, BuildMaster 2024.1+, Otter 2024.1+ only)* |
+| **Store** | `string` | The Windows Certificate Store that contains the certificate |
+| **Location** | `CurrentUser/LocalMachine` | The Windows Certificate Store location |
+| **AllowInvalid** | `true/false` | Whether to allow invalid certificates, like self-signed certificates, to be loaded |
+
+:::(Info)(Note:)
+`Thumbprint` and `Subject` cannot be used at the same time.  If both are specified, only `Thumbprint` will be used.
 :::
 
 ## Web.config and other .NET Configuration

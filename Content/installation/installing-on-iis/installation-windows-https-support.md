@@ -79,11 +79,7 @@ There are two ways to configure the Integrated Web Server for HTTPS:
 Move this to a HOWTO article and include screenshots
 :::
 ### Configuring Directly in ProGet
-::: (Warning)
-This is only supported in ProGet 2022.19+, and is considered experimental. This feature will later be brought to all of Inedo's products.
-:::
-
-Starting in ProGet 2022.19, we have added the ability to configure your integrated web server's HTTP/S bindings and a certificate directly in ProGet.
+Starting in ProGet 2022.19, BuildMaster 2024, and Otter 2024, we have added the ability to configure your integrated web server's HTTP/S bindings and a certificate directly in ProGet.
 
 ![buildmaster-https-settings](/resources/docs/buildmaster-https-settings.png){width="50%"}
 

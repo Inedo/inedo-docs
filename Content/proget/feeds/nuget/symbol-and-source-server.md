@@ -1,6 +1,6 @@
 ---
 title: "Symbol and Source Server"
-order: 1
+order: 4
 ---
 
 Debugging in NuGet packages can be tedious, but you can make it easier by configuring your NuGet feeds to work as a Symbol/Source server compatible with debuggers like Visual Studio and WinDbg.
@@ -25,13 +25,13 @@ http://«proget-server»/symbols/«feed-name»
 
 ## Creating Symbol Packages
 
-There are two types of NuGet symbol packages: standard (`.snupkg`) and legacy (`.symbols.nupkg`). As of v2022.20, ProGet supports both package formats, but earlier versions support only the legacy format. See [Symbol Package Formats](/docs/proget/feeds/nuget/proget-nuget-symbol-package-types) for more information about these formats; in general, we recommend using standard symbol packages when possible.
+There are two types of NuGet symbol packages: standard (`.snupkg`) and legacy (`.symbols.nupkg`). As of v2022.20, ProGet supports both package formats, but earlier versions support only the legacy format. See [Symbol Package Formats](https://blog.inedo.com/nuget/symbols-and-symbolpackages/) for more information about these formats; in general, we recommend using standard symbol packages when possible.
 
 #### Pushing Symbol Packages to ProGet
 
 By default, when you use the `nuget push` command and there is a standard format (`.snupkg`) symbol package next to the main NuGet package, the symbol package is transferred by default.
 
-If you are using a legacy NuGet symbol package, your main NuGet package will also be your symbol package. To ensure that you create a legacy symbol package so that it can be processed by ProGet, see [Symbol Package Formats](/docs/proget/feeds/nuget/proget-nuget-symbol-package-types). 
+If you are using a legacy NuGet symbol package, your main NuGet package will also be your symbol package. To ensure that you create a legacy symbol package so that it can be processed by ProGet, see [Symbol Package Formats](https://blog.inedo.com/nuget/symbols-and-symbolpackages/). 
 
 After [configuring ProGet for symbol serving](#configuring-proget), you can push a package and its symbols to ProGet by simply adding the `--source` argument to `dotnet nuget push` with the feed's Endpoint URL.
 
