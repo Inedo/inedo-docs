@@ -11,15 +11,15 @@ This article will guide you through creating a feed in ProGet to serve as a priv
 
 First, we will create a feed to host your Helm charts. Start by selecting "Feeds" and "Create New Feed". Next, select "Helm Charts".
 
-![](){height="" width="50%"}
+![](/resources/docs/proget-helm-newfeed.png){height="" width="50%"}
 
 Then select "No Connectors (Private packages only)" as we will be creating a private feed. From here, we will give our feed a name. In this guide, we will call it `internal-helm`, and then click "Create Feed".
 
-![](){height="" width="50%"}
+![](/resources/docs/proget-helm-newfeed-internal.png){height="" width="50%"}
 
 You will then see several options. These relate to ProGet's [Vulnerability Scanning and Blocking](/docs/proget/sca/vulnerabilities) features, however they are only for users looking to use third party packages. Leave these boxes unchecked, and select [Set Feed Features]. You will then be redirected to your new `internal-helm` feed, currently empty.
 
-![](){height="" width="50%"}
+![](/resources/docs/proget-helm-internal-empty.png){height="" width="50%"}
 
 ## Step 2: Create Your Helm Chart
 
@@ -63,7 +63,7 @@ You can read more about creating API keys in ProGet on our [API Key](/docs/proge
 
 When creating an API Key, fill in the fields by selecting "Feeds (Use Certain Feeds)" as the "Feed Type" and selecting the `internal-helm` feed. Then set the API key. You can use any alphanumeric sequence, or just leave it blank to autogenerate one.
 
-![](){height="" width="50%"}
+![](/resources/docs/proget-helm-api-key.png){height="" width="50%"}
 
 Make sure the "View/Download" and "Add/Repackage" boxes are checked, and then select "Save".
 
