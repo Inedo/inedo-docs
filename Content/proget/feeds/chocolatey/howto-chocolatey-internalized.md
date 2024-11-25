@@ -1,6 +1,6 @@
 ---
 title: "HOWTO: Set Up a Private Chocolatey Repository for Internalized Packages"
-order: 3
+order: 2
 ---
 
 ProGet can be configured as a private Chocolatey repository used to host internalized packages exclusively. 
@@ -53,7 +53,7 @@ The fastest way to create an Asset Directory in ProGet is to navigate to "Assets
 
 You will then be prompted to name your asset directory, which we will call it `chocolatey-assets` for this example. Selecting "Create Feed" will direct you to your new asset directory, currently empty. 
 
-![](/resources/docs/proget-assets-chocolatey-new.png){height="" width="50%"}
+![](/resources/docs/proget-assets-chocolatey-empty.png){height="" width="50%"}
 
 ## Step 4: Create an API Key
 
