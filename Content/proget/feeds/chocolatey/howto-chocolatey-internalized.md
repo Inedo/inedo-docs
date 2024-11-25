@@ -7,7 +7,7 @@ ProGet can be configured as a private Chocolatey repository used to host interna
 
 For more information on how it works, along with an explanation, see [Chocolatey Privatization and Internalization](https://blog.inedo.com/chocolatey/internalization). However, in this article, we will explain how to set up an internalized feed in ProGet to act as a private Chocolatey repository.
 
-## Step 1: Internalizing Your Packages
+## Step 1: Internalizing Your Packages { #internalize-packages }
 
 To internalize Chocolatey Packages, you can use Chocolatey’s [package internalizer](https://docs.chocolatey.org/en-us/features/package-internalizer) to internalize packages automatically or you can do it yourself:
 
@@ -34,7 +34,11 @@ You'll then see several options related to ProGet's [Vulnerability Scanning and 
 
 ![](/resources/docs/proget-chocolatey-internalized-empty.png){height="" width="50%"}
 
-## Step 3: Create an API Key
+## Step 3: Create an Asset Directory
+
+
+
+## Step 4: Create an API Key
 
 Now create an [API Key](/docs/proget/reference-api/proget-apikeys) which will allow you to authenticate to the `internalized-chocolatey` feed to upload your internalized packages to it.
 
@@ -46,47 +50,38 @@ When creating an API Key, fill in the fields by selecting "Feeds (Use Certain Fe
 
 Make sure the "View/Download" and "Add/Repackage" boxes are checked, and then select "Save".
 
-## Step 4: Upload Packages to Internalized Feed
+## Step 4: Upload Internalized Packages and Installation Files
 
-Now that you have a private internalized feed set up, you can upload your internalized packages to it. To do this you can use [pgutil](/docs/proget/reference-api/proget-pgutil).
+Now that you have a private internalized feed and asset directory set up, you can upload your internalized packages and installation files to them. While you can use [`choco push`](https://docs.chocolatey.org/en-us/create/commands/push/) to do this, many users find it easier to use [pgutil](/docs/proget/reference-api/proget-pgutil) as it allows you to more easily specify different feeds.
 
-pgutil will require some [minor configuration](/docs/proget/reference-api/proget-pgutil#sources) before use. This includes setting up your ProGet instance and API key as a source by running:
-
-```bash
-$ pgutil sources add --name=Default --url=«proget-server» --api-key=«api-key»
-```
-
-Now upload your packages by entering:
-
-```bash
-$ pgutil packages upload --feed=internalized-chocolatey --input-file=«path-to-package»
-```
-
-:::(info) (Example:)
-Adding the ProGet instance `https://proget.corp.local/` with the API Key `abc12345` you would enter:
+pgutil will require some [minor configuration](/docs/proget/reference-api/proget-pgutil#sources) before use. This includes setting up your ProGet instance and API key as a source with the [`sources add`](/docs/proget/reference-api/proget-pgutil#sources) command. For example, to add the ProGet instance `https://proget.corp.local/` with the API Key `abc12345` you would enter:
 
 ```bash
 $ pgutil sources add --name=Default --url=https://proget.corp.local/ --api-key=abc12345
 ```
 
-Then, to upload the package `my-package-1.2.3.nupkg` stored at `C:\chocolatey_packages\` to your `internalized-chocolatey` feed you would enter:
+## Uploading Internalized Packages
+To upload your internalized packages to ProGet using pgutil, you can use the [`packages upload`](/docs/proget/reference-api/proget-api-packages/proget-api-packages-upload) command. For example, to upload the package `my-package-1.2.3.nupkg` stored at `C:\chocolatey_packages\` to your `internalized-chocolatey` feed you would enter:
 
 ```bash
 $ pgutil packages upload --feed=internalized-chocolatey --input-file=C:\chocolatey_packages\my-package-1.2.3.nupkg
 ``` 
-:::
 
 Your package will then be uploaded to the `internalized-chocolatey` feed.
 
 ![](/resources/docs/proget-chocolatey-internalized-uploaded.png){height="" width="50%"}
 
-### Uploading with `choco push`
+## Uploading Installation Files
 
-Alternatively you can use the `choco push` command to upload packages. This will require an API Key:  
+To upload your internalized packages to ProGet using pgutil, you can use the [`assets upload`](/docs/proget/reference-api/proget-api-assets/file-endpoints/proget-api-assets-files-upload) command. For example, to upload the installation file `my-package.exe` stored at `C:\installation-files\` to your `chocolatey-assets` feed you would enter:
 
 ```bash
-$ choco push «path-to-package» --source=internalized-chocolatey --api-key=«api-key»
-```
+$ pgutil packages upload --feed=chocolatey-assets --input-file=C:\installation-files\my-package.exe
+``` 
+
+Your package will then be uploaded to the `chocolatey-assets` feed.
+
+![](/resources/docs/proget-assets-chocolatey-upload.png){height="" width="50%"}
 
 ## Step 5: Adding ProGet as a Source { #add-source }
 
