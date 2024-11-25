@@ -1,6 +1,6 @@
 ---
 title: "HOWTO: Create and Push Chocolatey Packages to a Private Repository in ProGet"
-order: 2
+order: 1
 ---
 
 ProGet can be configured as a private [Chocolatey](https://chocolatey.org) repository and host all your Chocolatey packages, allowing you to push, store and share then within your organization.

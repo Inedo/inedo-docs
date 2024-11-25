@@ -1,6 +1,6 @@
 ---
 title: "HOWTO: Set Up a Private Chocolatey Repository for Internalized Packages"
-order: 3
+order: 2
 ---
 
 ProGet can be configured as a private Chocolatey repository used to host internalized packages exclusively. 
