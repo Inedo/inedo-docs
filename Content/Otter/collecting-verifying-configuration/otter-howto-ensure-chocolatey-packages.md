@@ -60,7 +60,7 @@ Note that you can also "Switch to Text Mode" in the bottom right to utilize scri
 ![Text Mode](/resources/docs/Otterscript-texteditor.png)
 
 :::(Info) (Chocolatey Package Source Options)
-If you look at the screenshot from the visual mode of the Otter Script Editor you'll notice that the source is the public Chocolatey repository. You can also pull packages from a private Chocolatey repository (such as a [Chocolatey feed in ProGet](/docs/proget/feeds/chocolatey/howto-chocolatey-repository)) like we did in the screenshot for the text mode. 
+If you look at the screenshot from the visual mode of the Otter Script Editor you'll notice that the source is the public Chocolatey repository. You can also pull packages from a private Chocolatey repository (such as a [Chocolatey feed in ProGet](/docs/proget/feeds/chocolatey/howto-chocolatey-internalized)) like we did in the screenshot for the text mode. 
 :::
 
 ## Step 3: Assign the Server Role to Appropriate Servers
