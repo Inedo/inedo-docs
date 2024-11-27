@@ -33,7 +33,7 @@ We are then presented with several options. More information on these can be fou
 
 ## Step 2: Adding the Feed to Your Local R Environments { #add-feed }
 
-To install packages from the `public-cran` feed, you will first need the URL of the `public-cran` feed. This can be found on the top right of the feed page:
+To install packages from the `public-cran` feed, you will first need the feed's URL. This can be found on the top right of the feed page:
 
 ![](/resources/docs/proget-cran-url.png){height="" width="50%"}
 

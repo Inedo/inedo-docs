@@ -47,17 +47,14 @@ Feel free to submit pull requests for this page or participate in the linked Q&A
 
  [pub (Dart/Flutter) feeds](/docs/proget/feeds/pub) are available as of ProGet 2024.11.
 
-### ⏳ Rust Cargo: coming soon
+### ✔ Terraform: Completed
 
-*We are planning to add this in a maintenance release of ProGet 2024, ahead of ProGet 2025*
+[Terraform Feeds](/docs/proget/feeds/terraform) are available as of ProGet 2024.20.
 
-We don't really know anything about this format, but we're eager to learn! This is currently [in discussion on the forums](https://forums.inedo.com/topic/3246), so please contribute to the discussion if you have an interest!
+### ✔ Cargo (Rust): Completed
 
-### ⏳ Terraform: coming soon
+[Cargo (Rust) Feeds](/docs/proget/feeds/cargo) are available as of ProGet 2024.20.
 
-*We are planning to add this in a maintenance release of ProGet 2024, ahead of ProGet 2025*
-
-We've had some interest in [Terraform Private Registries](https://www.terraform.io/registry/private), and the discussion is ongoing in the community forums. Please join [QA#3570](https://forums.inedo.com/topic/3570) to share your thoughts!
 
 ### ⏳ PHP Composer/Packagist: coming soon
 

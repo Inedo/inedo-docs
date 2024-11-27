@@ -23,7 +23,7 @@ Then select "No Connectors (Private packages only)" as we will be creating a pri
 
 ![](/resources/docs/proget-npm-internal-name.png){height="" width="50%"}
 
-We are then presented with several options. This relate to ProGet's [Vulnerability Scanning and Blocking](/docs/proget/sca/vulnerabilities) features, however they are only for users looking to use third party packages. Leave these boxes unchecked, and select [Set Feed Features]. You will then be redirected to your new `internal-npm` feed, currently empty.
+We are then presented with several options. These relate to ProGet's [Vulnerability Scanning and Blocking](/docs/proget/sca/vulnerabilities) features, however they are only for users looking to use third party packages. Leave these boxes unchecked, and select [Set Feed Features]. You will then be redirected to your new `internal-npm` feed, currently empty.
 
 ![](/resources/docs/proget-npm-internal-empty.png){height="" width="50%"}
 

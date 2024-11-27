@@ -1,9 +1,10 @@
 ---
 title: "Deprecated: Clair and ProGet"
+nav-title: "Clair Integration"
 order: 2
 ---
 
-:::(error) (Clair Has Been Discontinued)
+:::(error) (Clair Integration was Discontinued in ProGet 2024)
 This article is for users who have configured ProGet's Clair integration and wish to learn how to switch to ProGet's built-in container scanning feature. If you haven't configured container scanning and vulnerability scanning in ProGet yet, check out [HOWTO: Scan and Block Packages in ProGet](/docs/proget/sca/vulnerabilities/howto) to learn more.
 :::
 
