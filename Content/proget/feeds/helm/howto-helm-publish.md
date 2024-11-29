@@ -33,7 +33,7 @@ This involves using the [helm create](https://helm.sh/docs/helm/helm_create/) co
 helm create my-chart
 ```
 
-You will then need to modifying the neccessary files in the created directory. Finally run the [`helm package`](https://helm.sh/docs/helm/helm_package/) command to create a package file. For example, creating version `1.15.3` of the package `my-chart` located in `C:/Users/Inedo/projects/helm-charts/` you would enter:
+You will then need to modifying the necessary files in the created directory. Finally run the [`helm package`](https://helm.sh/docs/helm/helm_package/) command to create a package file. For example, creating version `1.15.3` of the package `my-chart` located in `C:/Users/Inedo/projects/helm-charts/` you would enter:
 
 ```bash
 $ helm package C:/Users/Inedo/projects/helm-charts/mychart
@@ -43,9 +43,9 @@ This will create the package (e.g. `my-chart-1.15.3.tgz`) that can be published 
 
 ## Step 3: Create an API Key
 
-Now create an [API Key](/docs/proget/reference-api/proget-apikeys) which will allow youto authenticate to the `internal-helm` feed to publish Helm charts to it. You can read more about creating API keys in ProGet on our [API Key](/docs/proget/reference-api/proget-apikeys) page.
+Now create an [API Key](/docs/proget/reference-api/proget-apikeys) which will allow you to authenticate to the `internal-helm` feed to publish Helm charts to it. You can read more about creating API keys in ProGet on our [API Key](/docs/proget/reference-api/proget-apikeys) page.
 
-When creating an API Key, fill in the fields by selecting "Feeds (Use Certain Feeds)" as the "Feed Type" and selecting the `internal-helm` feed. Then set the API key. You can either use any alphanumeric sequence, or just leave it blank for ProGet to autogenerate one for you.
+When creating an API Key, Select "Feeds (Use Certain Feeds)" as the "Feed Type" and select the `internal-helm` feed. When setting the API key you can either use any alphanumeric sequence, or just leave it blank for ProGet to autogenerate one for you.
 
 ![](/resources/docs/proget-helm-api-key.png){height="" width="50%"}
 
