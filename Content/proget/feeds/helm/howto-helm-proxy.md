@@ -1,11 +1,11 @@
 ---
-title: "HOWTO: Proxy Helm Charts from Public Repositories in ProGet"
+title: "HOWTO: Proxy Helm Charts from ArtifactHub in ProGet"
 order: 1
 ---
 
 In ProGet, [Helm](https://helm.sh/) Charts can be stored and distributed through a Helm ["Feed"](/docs/proget/feeds/feed-overview), functioning as a [Chart Repository](https://helm.sh/docs/topics/chart_repository/) that can proxy third party [Charts](https://helm.sh/docs/topics/charts/) from other sources, including [Artifact Hub](/docs/proget/feeds/helm#artifacthub). This lets you to build a curated list of approved Helm Charts. You can also cache charts, allowing teams to access them if external sources are down, as well as tell which charts are being downloaded and used frequently.
 
-This guide will walk you through setting up a ProGet feed as a Helm repository to proxy third-party charts. Additionally, we’ll cover how to create a private repository for your own internal charts.
+This guide will walk you through setting up a ProGet feed as a Helm repository to proxy third-party charts from ArtifactHub. Additionally, we’ll cover how to create a private repository for your own internal charts.
 
 ## Step 1: Create a New Helm Feed { #create-feed }
 
@@ -23,28 +23,22 @@ We are then presented with several options that will let you configure ProGet's 
 
 ## Step 2: Adding the Helm Feed as a Repository { #add-feed }
 
-To install chart from your `public-helm` feed, it needs to be registered as a repository. You can use the [`helm repo add`](https://helm.sh/docs/helm/helm_repo_add/) command to do this. We recommend using `proget` as the repository name or, if you have multiple Helm feeds configured, you should use `proget-«feed-name»` instead. For example, if adding your `public-helm` feed on the ProGet server `proget.corp.local`, you would enter:
- 
-```bash
-$ helm repo add proget http://proget.corp.local/helm/public-helm
-```
+To install chart from your `public-helm` feed, it needs to be registered as a repository. You can use the [`helm repo add`](https://helm.sh/docs/helm/helm_repo_add/) command to do this. 
 
-### Adding a Helm Feed When Proxying from Artifact Hub { #add-artifact-hub}
-
-If your public-helm feed is set up to proxy Helm charts from ArtifactHub, adding it as a repository in Helm requires slightly different steps. This is because Artifact Hub is not a Helm repository itself, but an aggregator of Helm repositories.
+It's important to note that Artifact Hub is not a Helm repository itself, but an aggregator of Helm repositories. This means that you cannot simply use your public-helm feed URL to add it as a repository. Instead you'll need to add a specific URL based on the repository name. 
 
 Helm charts sourced from Artifact Hub are always labeled with the repository name as a prefix. For instance, the `kube-prometheus-stack` chart will be listed as `prometheus-community/kube-prometheus-stack` in ProGet.
 
 ![](/resources/docs/proget-helm-chart-name.png){height="" width="50%"}
 
-To install Helm packages from these repositories, you’ll need to add a specific URL based on the repository name. Instructions for this can be found on the Helm chart overview page in ProGet and will typically resemble the following:
+To add these repositories, you'll need the URL found on the Helm chart overview page in ProGet, which will typically resemble the following:
 
 ![](/resources/docs/proget-helm-chart-url.png){height="" width="50%"}
-
-For example, to add the `prometheus-community` repository in order to install `kube-prometheus-stack` you would enter:
+ 
+For example, to add the `prometheus-community` repository to let you install the `kube-prometheus-stack` chart you would enter:
 
 ```bash
-helm repo add prometheus-community http://192.168.0.129:8624/helm/public-helm/prometheus-community
+helm repo add prometheus-community http://proget.corp.local/helm/public-helm/prometheus-community
 ```
 
 ## Step 3: (Optional) Authenticating to Your Helm Feed
@@ -53,17 +47,9 @@ By default your `public-helm` feed does not require authentication to install or
 
 ## Step 4: Installing Helm Charts
 
-Once you have configured your `public-helm` feed as a repository, you can install Helm charts using the [`helm install`](https://helm.sh/docs/helm/helm_install/) command. For example, installing the chart `MyChart` from a repository you have configured with the name `proget`, you would enter:
+Once you have configured your `public-helm` feed as a repository, you can install Helm charts using the [`helm install`](https://helm.sh/docs/helm/helm_install/) command. 
 
-```bash
-helm install proget/MyChart
-```
-
-As Helm caches repository information locally, we recommend running the [helm repo update](https://helm.sh/docs/helm/helm_repo_update/) command first to ensure you'll get the latest version of the chart.
-
-### Installing Helm Charts Proxied from Artifact Hub
-
-When installing Helm Charts from Artifact Hub you will need to make sure that the [correct repository has been added](#add-artifact-hub). You will also need to include the version when using the `helm install` command. For example, when installing version `66.3.0` of the `kube-prometheus-stack` Helm Chart you would enter:
+When installing Helm Charts from Artifact Hub you will need to make sure that the [correct repository has been added](#add-artifact-hub). You will also need to include the version when using the `helm install` command. For example, when installing version `66.3.0` of the `kube-prometheus-stack` Helm chart you would enter:
 
 ```bash
 helm install my-kube-prometheus-stack prometheus-community/kube-prometheus-stack --version 66.3.0
@@ -72,6 +58,8 @@ helm install my-kube-prometheus-stack prometheus-community/kube-prometheus-stack
 :::(info)
 Note that `my-kube-prometheus-stack` corresponds to the release name, and can be changed to suit your needs. You can also add [additional flags](https://helm.sh/docs/helm/helm_install/#options) to the `helm install` command if you need to.
 :::
+
+As Helm caches repository information locally, we recommend running the [helm repo update](https://helm.sh/docs/helm/helm_repo_update/) command first to ensure you'll get the latest version of the chart.
 
 ## (Optional) Creating a Package Approval Flow
 
