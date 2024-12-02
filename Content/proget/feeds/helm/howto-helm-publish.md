@@ -33,10 +33,10 @@ This involves using the [helm create](https://helm.sh/docs/helm/helm_create/) co
 helm create my-chart
 ```
 
-You will then need to modifying the necessary files in the created directory. Finally run the [`helm package`](https://helm.sh/docs/helm/helm_package/) command to create a package file. For example, creating version `1.15.3` of the package `my-chart` located in `C:/Users/Inedo/projects/helm-charts/` you would enter:
+You will then need to modifying the necessary files in the created directory. Finally run the [`helm package`](https://helm.sh/docs/helm/helm_package/) command to create a package file. For example, creating version `1.15.3` of the package `my-chart` located in `./projects/helm-charts/mychart` you would enter:
 
 ```bash
-$ helm package C:/Users/Inedo/projects/helm-charts/mychart
+$ helm package ./projects/helm-charts/mychart
 ```
 
 This will create the package (e.g. `my-chart-1.15.3.tgz`) that can be published to your feed. See the official [Chart Template Guide](https://helm.sh/docs/chart_template_guide/getting_started/) to learn how to get started with creating your own Helm Charts.
@@ -62,13 +62,13 @@ $ pgutil sources add --name=Default --url=https://proget.corp.local/ --api-key=a
 Now upload your packages by using the [`pgutil packages upload`](/docs/proget/reference-api/proget-api-packages/proget-api-packages-upload) command:
 
 ```bash
-$ pgutil packages upload --feed=internal-helm --input-file=«path-to-chart-tgz»
+$ pgutil packages upload --feed=internal-helm --input-file=./projects/helm-charts/mychart
 ```
 
 If you're using ProGet 2023 or earlier, you can instead issue a `PUT` request with the package file as the content to the endpoint URL. For example:
 
 ```bash
-curl https://proget.corp.local//helm/internal-helm --user api:abc12345 --upload-file «path-to-chart-tgz»
+curl https://proget.corp.local//helm/internal-helm --user api:abc12345 --upload-file ./projects/helm-charts/mychart
 ```
 
 This method also works in ProGet 2024 and later, should you prefer to use that. Note that neither the `helm push` nor the  `helm-push` are compatible with ProGet feeds.
