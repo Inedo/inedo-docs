@@ -51,11 +51,9 @@ Feel free to submit pull requests for this page or participate in the linked Q&A
 
 [Terraform Feeds](/docs/proget/feeds/terraform) are available as of ProGet 2024.20.
 
-### ⏳ Rust Cargo: coming soon
+### ✔ Cargo (Rust): Completed
 
-*We are planning to add this in a maintenance release of ProGet 2024, ahead of ProGet 2025*
-
-We don't really know anything about this format, but we're eager to learn! This is currently [in discussion on the forums](https://forums.inedo.com/topic/3246), so please contribute to the discussion if you have an interest!
+[Cargo (Rust) Feeds](/docs/proget/feeds/cargo) are available as of ProGet 2024.20.
 
 
 ### ⏳ PHP Composer/Packagist: coming soon
