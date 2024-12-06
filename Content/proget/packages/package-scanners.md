@@ -5,7 +5,7 @@ order: 6
 
 ProGet can connect to our server provisioning and configuration management tool, [Otter](https://inedo.com/otter/), to capture and display how packages are used in your infrastructure. This allows you to see which servers have had packages installed or removed. This way, you can easily ensure that the correct packages are installed, and you can quickly find [vulnerable packages](/docs/proget/sca/vulnerabilities) that have been installed so that you can remove them.
 
-This feature is available in all versions of ProGet, but Free users must add entries manually. The only feed types that currently support live package scans are  [Chocolately](/docs/proget/feeds/chocolatey), [PowerShell](/docs/proget/feeds/powershell), [RPM (yum)](/docs/proget/feeds/rpm), [Debian](/docs/proget/feeds/debian), and [UPack](/docs/proget/upack/upack-overview). This feature is also extensible, so you can create a custom ProGet extension to connect to another server provisioning tool.
+This feature is available in all versions of ProGet, but Free users must add entries manually. The only feed types that currently support live package scans are  [Chocolately](/docs/proget/feeds/chocolatey), [PowerShell](/docs/proget/feeds/powershell), [RPM (yum)](/docs/proget/feeds/rpm), [Debian](/docs/proget/feeds/debian), and [UPack](/docs/proget/feeds/universal). This feature is also extensible, so you can create a custom ProGet extension to connect to another server provisioning tool.
 
 ## Configuring ProGet 
 To start viewing package usage, simply create a feed that supports this feature. Live package scanning is already enabled, but you can confirm this on the Manage Feed page.

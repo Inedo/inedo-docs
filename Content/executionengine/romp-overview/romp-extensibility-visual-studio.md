@@ -54,7 +54,7 @@ This runs the [romp install](/docs/executionengine/romp-overview/romp-cli-refere
 
 ### Push
 
-Similar to the [ProGet Visual Studio Plugin](/docs/proget/upack/upack-tools-and-libraries/upack-tools-and-libraries-push-to-proget).
+Similar to the ProGet Visual Studio Plugin.
 
 ## Other Notes
 
