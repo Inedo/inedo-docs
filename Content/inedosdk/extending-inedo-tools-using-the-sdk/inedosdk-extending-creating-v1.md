@@ -39,7 +39,7 @@ See [Writing a Simple Create File Operation.](/docs/inedosdk/extending-inedo-too
 Once you have added all the components you want and your project is compiled, you can package it as an extension and deploy it to your Inedo product.
 
 ### Direct Deployment 
-An extension can be directly deployed to an Inedo product's extension root as a simple [universal package](/docs/proget/upack/upack-universal-packages){target="_blank"}. 
+An extension can be directly deployed to an Inedo product's extension root as a simple [universal package](/docs/proget/feeds/universal/universal-packages). 
 
 To do this for an extension named `MyExample`, first create a manifest file called `upack.json` with the following contents:
 

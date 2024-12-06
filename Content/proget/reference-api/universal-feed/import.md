@@ -3,7 +3,7 @@ title: "Import Universal Package"
 order: 1
 ---
 
-The *Import Universal Package* is an endpoint in [ProGet's Universal Feed API](/docs/proget/upack/proget-api-universalfeed) that will add a package from an asset directory, file share, or local path on the ProGet server.
+The *Import Universal Package* is an endpoint in [ProGet's Universal Feed API](/docs/proget/reference-api/universal-feed) that will add a package from an asset directory, file share, or local path on the ProGet server.
 
 :::(Info) (🚀 Quick Example: Importing a Universal Package from an asset directory with Curl)
 This example imports version `1.2.3` of a universal package `myUniversalPackage`, from an asset directory `internal-files`, to the feed `myUniversalFeed`, authenticating with the API key `abc12345`:

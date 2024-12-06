@@ -3,7 +3,7 @@ title: "List Universal Packages"
 order: 3
 ---
 
-*List Universal Packages* is an endpoint in [ProGet's Universal Feed API](/docs/proget/upack/proget-api-universalfeed) that will return either [PackageData](/docs/proget/upack/proget-api-universalfeed#package-data) JSON object (if name is specified) or a JSON array of objects, depending on parameters defined.
+*List Universal Packages* is an endpoint in [ProGet's Universal Feed API](/docs/proget/reference-api/universal-feed) that will return either [PackageData](/docs/proget/reference-api/universal-feed#package-data) JSON object (if name is specified) or a JSON array of objects, depending on parameters defined.
 
 :::(Info) (🚀 Quick Example: Listing a package with Curl)
 This example lists a package `myUniversalPackage`, in the group `myGroup`, from the feed `myUniversalFeed`, authenticating with the API key `abc12345`:
@@ -42,7 +42,7 @@ GET /upack/myUniversalFeed/packages?count=50
 Note that the group parameter must be a full match; future versions of this endpoint may allow for a sub-group searching (such as groupName*) if anyone requests.
 
 ## Response Specification
-A successful (`200`) response body will contain either a [PackageData](/docs/proget/upack/proget-api-universalfeed#package-data) JSON object (if name is specified) or a JSON array of objects. For example:
+A successful (`200`) response body will contain either a [PackageData](/docs/proget/reference-api/universal-feed#package-data) JSON object (if name is specified) or a JSON array of objects. For example:
 
 When querying with no parameters, the request would return:
 
@@ -86,6 +86,6 @@ GET /upack/myUniversalFeed/packages?group=myGroup&name=myUniversalPackage
 
 | Response | Details |
 | --- | --- |
-| **200 (Success)** | will return either a [PackageData](/docs/proget/upack/proget-api-universalfeed#package-data) JSON object (if name is specified) or a JSON array of objects|
-| **403 (Unauthorized API Key)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/upack/proget-api-universalfeed#authentication) |
+| **200 (Success)** | will return either a [PackageData](/docs/proget/reference-api/universal-feed#package-data) JSON object (if name is specified) or a JSON array of objects|
+| **403 (Unauthorized API Key)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/reference-api/universal-feed#authentication) |
 | **404 (Package not Found)** | indicates the specified package does not exist, the body will provide some details as text |

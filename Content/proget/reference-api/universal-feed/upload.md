@@ -3,7 +3,7 @@ title: "Upload Universal Package"
 order: 2
 ---
 
-*Upload Universal Package* is an endpoint in [ProGet's Universal Feed API](/docs/proget/upack/proget-api-universalfeed) that will add or replace a package in a feed.
+*Upload Universal Package* is an endpoint in [ProGet's Universal Feed API](/docs/proget/reference-api/universal-feed) that will add or replace a package in a feed.
 
 There are quite a few ways to access this endpoint, but the end result is the same. Because there are so many permutations of how you can use this, it's easiest to specify the various options and behaviors instead.
 
@@ -25,13 +25,13 @@ The Content-Type header can be any of the following:
 * `application/zip` - the request body will treated either as content or a partial package
 
 :::(info) (📄 Note: Using application/zip Content-Type)
-You must send the raw bytes of a ZIP file as the body of your request. If the archive doesn't conform to the [universal package format](/docs/proget/upack/upack-universal-packages/upack-universal-packages-manifest), ProGet will convert it for you, if you supply the required metadata via query string parameters.
+You must send the raw bytes of a ZIP file as the body of your request. If the archive doesn't conform to the [universal package format](/docs/proget/feeds/universal/universal-packages#manifest), ProGet will convert it for you, if you supply the required metadata via query string parameters.
 
 If the archive is already in the .upack format, you can specify additional metadata parameters via the querystring.
 :::
 
 ### Parameter	Description
-Any of the following parameters fields may be specified through querystring or content; the format must follow a valid [metadata format](/docs/proget/upack/upack-universal-packages/upack-universal-packages-manifest) specification.
+Any of the following parameters fields may be specified through querystring or content; the format must follow a valid [metadata format](/docs/proget/feeds/universal/universal-packages#manifest) specification.
 
 | Parameter | Details |
 | --- | --- |
@@ -68,7 +68,7 @@ POST /endpoints/myAssetDirectory/import/myFolder?format=zip&overwrite=true
 | --- | --- |
 | **201 (Success)** | will successfully upload the package
 | **400 (Package Error)** | returned if you specify a different package name in both the query and path |
-|  **403 (Unauthorized API Key)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/upack/proget-api-universalfeed#authentication); the body will be empty |
+|  **403 (Unauthorized API Key)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/reference-api/universal-feed#authentication); the body will be empty |
 
 
 ## Sample Usage Scripts

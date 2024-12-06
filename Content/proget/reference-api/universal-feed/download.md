@@ -3,7 +3,7 @@ title: "Download Universal Package"
 order: 5
 ---
 
-The *Download Universal Package* is an endpoint in [ProGet's Universal Feed API](/docs/proget/upack/proget-api-universalfeed) that will return the contents of a package as either a `zip` or `tgz` archive.
+The *Download Universal Package* is an endpoint in [ProGet's Universal Feed API](/docs/proget/reference-api/universal-feed) that will return the contents of a package as either a `zip` or `tgz` archive.
 
 :::(Info) (🚀 Quick Example: Downloading a Universal Package with Curl)
 This example downloads version `1.2.3` of a universal package `myUniversalPackage`, in the group `MyGroup`, from the feed `myUniversalFeed`, to `C:\ProGet\MyPackage-1.2.3.upack`, authenticating with the API key `abc12345`:
@@ -52,7 +52,7 @@ GET /upack/myNpmFeed/download/MyScope/myNpmPackage?contentOnly=tgz&latest
 | --- | --- |
 | **200 (Success)** | will successfully download the package
 | **400 (Package Version not Found)** | returned if `package-version` is not specified, and latest is not specified in the URL |
-|  **403 (Unauthorized API Key)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/upack/proget-api-universalfeed#authentication) |
+|  **403 (Unauthorized API Key)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/reference-api/universal-feed#authentication) |
 | **404 (Package Not Found)** | indicates the specified package does not exist |
 
 ## Sample Usage Scripts

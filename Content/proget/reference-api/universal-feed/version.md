@@ -3,7 +3,7 @@ title: "List Universal Package Version"
 order: 9
 ---
 
-*List Universal Package Versions* is an endpoint in [ProGet's Universal Feed API](/docs/proget/upack/proget-api-universalfeed) that will return [VersionData](/docs/proget/upack/proget-api-universalfeed#version-data) JSON object (if version is specified) or a JSON array of objects, depending on parameters defined.
+*List Universal Package Versions* is an endpoint in [ProGet's Universal Feed API](/docs/proget/reference-api/universal-feed) that will return [VersionData](/docs/proget/reference-api/universal-feed#version-data) JSON object (if version is specified) or a JSON array of objects, depending on parameters defined.
 
 :::(Info) (🚀 Quick Example: Listing versions of a Universal Package with Curl)
 This example lists the versions of a universal package `myUniversalPackage`, in the group `MyGroup`, from the feed `myUniversalFeed`, authenticating with the API key `abc12345`:
@@ -54,7 +54,7 @@ GET /upack/myUniversalFeed/versions?name=myUniversalPackage&version=1.0.0&includ
 Note that the group parameter must be a full match; future versions of this endpoint may allow for a sub-group searching (such as groupName*), if anyone requests.
 
 ## Response Specification
-A successful (`200`) response body will contain either [VersionData](/docs/proget/upack/proget-api-universalfeed#version-data) JSON object (if version is specified) or a JSON array of objects. For example:
+A successful (`200`) response body will contain either [VersionData](/docs/proget/reference-api/universal-feed#version-data) JSON object (if version is specified) or a JSON array of objects. For example:
 
 To querying a package with the name `myUniversalPackage` with version `1.2.3`, in a feed `myUniversalFeed`, the request would return:
 
@@ -137,6 +137,6 @@ GET /upack/myUniversalFeed/versions?name=myUniversalPackage&version=1.2.3&includ
 
 | Response | Details |
 | --- | --- |
-| **200 (Success)** | will return either a [VersionData](/docs/proget/upack/proget-api-universalfeed#version-data) JSON object (if version is specified) or a JSON array of objects |
-| **403 (Unauthorized API Key)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/upack/proget-api-universalfeed#authentication) |
+| **200 (Success)** | will return either a [VersionData](/docs/proget/reference-api/universal-feed#version-data) JSON object (if version is specified) or a JSON array of objects |
+| **403 (Unauthorized API Key)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/reference-api/universal-feed#authentication) |
 | **404 (Version not Found)** | indicates the specified version does not exist, the body will provide some details as text |

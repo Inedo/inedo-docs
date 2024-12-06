@@ -9,7 +9,7 @@ Romp stores data in two different places, and if they do not exist when Romp run
 
 ### Local Package Registry
 
-Romp uses the standardized [local package registry specification](/docs/proget/upack/upack-universal-package-registry/upack-universal-package-registry-what-is#specification), which allows Romp and other tools to see which packages are installed on the machine. By default, a Machine-level registry is used, which is stored in `%ProgramData%\upack`.
+Romp uses the standardized local package registry specification, which allows Romp and other tools to see which packages are installed on the machine. By default, a Machine-level registry is used, which is stored in `%ProgramData%\upack`.
 
 ### Local Data Store
 
