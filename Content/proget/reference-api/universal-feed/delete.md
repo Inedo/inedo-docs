@@ -3,7 +3,7 @@ title: "Delete Universal Package"
 order: 4
 ---
 
-*Delete Universal Package* is an endpoint in [ProGet's Universal Feed API](/docs/proget/upack/proget-api-universalfeed) that deletes a specified universal package (if `group-name` is omitted, then the empty group is used).
+*Delete Universal Package* is an endpoint in [ProGet's Universal Feed API](/docs/proget/reference-api/universal-feed) that deletes a specified universal package (if `group-name` is omitted, then the empty group is used).
 
 :::(Info) (🚀 Quick Example: Deleting a Universal Package with Curl)
 This example deletes version `1.2.3` of a universal package `myUniversalPackage`, in the group `MyGroup`, from the feed `myUniversalFeed`, authenticating with the API key `abc12345`:
@@ -31,7 +31,7 @@ DELETE /upack/myUniversalFeed/delete/myGroup/myUniversalPackage/1.0.0
 | --- | --- |
 | **200 (Success)** | will successfully delete the package
 | **400 (Invalid Input)** | indicates invalid or missing properties on the package; the body will provide some details as text |
-|  **403 (Unauthorized API Key)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/upack/proget-api-universalfeed#authentication) |
+|  **403 (Unauthorized API Key)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/reference-api/universal-feed#authentication) |
 | **404 (Package Not Found)** | indicates the specified package does not exist |
 
 

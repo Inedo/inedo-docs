@@ -1,6 +1,30 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <redirects>
 
+  <!-- BEGIN UPack Docs Refactoring  -->
+  <redirect from="/docs/proget/upack/upack-overview" to="/docs/proget/feeds/universal/universal-packages#tools" />
+  <redirect from="/docs/proget/upack/upack-downloads-source-code" to="/docs/proget/feeds/universal/universal-packages#tools" />
+  <redirect from="/docs/proget/upack/upack-tools-and-libraries/upack-tools-and-libraries-upe" to="/docs/proget/feeds/universal/universal-packages#tools" />
+  <redirect from="/docs/proget/upack/upack-tools-and-libraries/upack-tools-and-libraries-upack-cli" to="/docs/proget/feeds/universal/universal-packages#tools" />
+  <redirect from="/docs/proget/upack/upack-tools-and-libraries/upack-tools-and-libraries-upacklib-net" to="/docs/proget/feeds/universal/universal-packages#tools" />
+  <redirect from="/docs/proget/upack/upack-tools-and-libraries/upack-tools-and-libraries-push-to-proget" to="/docs/proget/feeds/universal/universal-packages#tools" />
+  
+  <redirect from="/docs/proget/upack/upack-universal-package-registry/upack-universal-package-registry-specifications" to="https://github.com/Inedo/Inedo.UPack/blob/master/registry.md" />
+  <redirect from="/docs/proget/upack/upack-universal-package-registry/upack-universal-package-registry-types-locations" to="https://github.com/Inedo/Inedo.UPack/blob/master/registry.md" />
+  <redirect from="/docs/proget/upack/upack-universal-package-registry/upack-universal-package-registry-what-is" to="https://github.com/Inedo/Inedo.UPack/blob/master/registry.md" />
+  
+  <redirect from="/docs/proget/upack/upack-universal-packages/upack-universal-packages-manifest" to="/docs/proget/feeds/universal/universal-packages" />
+  <redirect from="/docs/proget/upack/upack-universal-packages/upack-universal-packages-example" to="/docs/proget/feeds/universal/universal-packages" />
+  <redirect from="/docs/proget/upack/upack-universal-packages/upack-universal-packages-validation-security" to="/docs/proget/feeds/universal/universal-packages" />
+  <redirect from="/docs/proget/upack/upack-universal-packages/upack-universal-packages-repackaging-auditing" to="/docs/proget/feeds/universal/universal-packages" />
+  
+  <redirect from="/docs/proget/upack/upack-virtual-packages/upack-virtual-packages-assembling" to="/docs/proget/feeds/universal/virtual-packages" />
+  <redirect from="/docs/proget/upack/upack-virtual-packages/upack-virtual-packages-package-format" to="/docs/proget/feeds/universal/virtual-packages" />
+  <redirect from="/docs/proget/upack/upack-virtual-packages/upack-virtual-packages-packages-feeds" to="/docs/proget/feeds/universal/virtual-packages" />
+  <redirect from="/docs/proget/upack/upack-virtual-packages/upack-virtual-packages-what-is" to="/docs/proget/feeds/universal/virtual-packages" />
+  <!-- END UPack Docs Refactoring -->
+
+
   <redirect from="/docs/proget/feeds/nuget/problems-with-my-nuget-org-connectors" to="/docs/proget/feeds/nuget/odata-v2-api" modified="11/21/2024" />
   <redirect from="/docs/proget/administration/proget-installation-diagnostic-center" to="/docs/installation/logging/diagnostic-center" modified="10/24/2024" />
   <redirect from="/docs/buildmaster/administration/buildmaster-installation-and-maintenance-diagnostic-center" to="/docs/installation/logging/diagnostic-center" modified="10/24/2024" />
@@ -477,17 +501,17 @@
   <redirect from="/docs/upack-tools-and-libraries-upack-cli" to="/docs/proget/upack/upack-tools-and-libraries/upack-tools-and-libraries-upack-cli" modified="7/18/2024 2:59:32 PM" />
   <redirect from="/docs/upack-tools-and-libraries-upe" to="/docs/proget/upack/upack-tools-and-libraries/upack-tools-and-libraries-upe" modified="7/18/2024 2:59:32 PM" />
   <redirect from="/docs/upack-tools-and-libraries-upacklib-net" to="/docs/proget/upack/upack-tools-and-libraries/upack-tools-and-libraries-upacklib-net" modified="7/18/2024 2:59:32 PM" />
-  <redirect from="/docs/proget-api-universalfeed" to="/docs/proget/upack/proget-api-universalfeed" modified="7/18/2024 2:59:32 PM" />
-  <redirect from="/docs/proget-api-universalfeed-metadata" to="/docs/proget/upack/proget-api-universalfeed/proget-api-universalfeed-metadata" modified="7/18/2024 2:59:32 PM" />
-  <redirect from="/docs/proget-api-universalfeed-delete" to="/docs/proget/upack/proget-api-universalfeed/proget-api-universalfeed-delete" modified="7/18/2024 2:59:32 PM" />
-  <redirect from="/docs/proget-api-universalfeed-download-vpack" to="/docs/proget/upack/proget-api-universalfeed/proget-api-universalfeed-download-vpack" modified="7/18/2024 2:59:32 PM" />
-  <redirect from="/docs/proget-api-universalfeed-download" to="/docs/proget/upack/proget-api-universalfeed/proget-api-universalfeed-download" modified="7/18/2024 2:59:32 PM" />
-  <redirect from="/docs/proget-api-universalfeed-download-file" to="/docs/proget/upack/proget-api-universalfeed/proget-api-universalfeed-download-file" modified="7/18/2024 2:59:32 PM" />
-  <redirect from="/docs/proget-api-universalfeed-import" to="/docs/proget/upack/proget-api-universalfeed/proget-api-universalfeed-import" modified="7/18/2024 2:59:32 PM" />
-  <redirect from="/docs/proget-api-universalfeed-version" to="/docs/proget/upack/proget-api-universalfeed/proget-api-universalfeed-version" modified="7/18/2024 2:59:32 PM" />
-  <redirect from="/docs/proget-api-universalfeed-list" to="/docs/proget/upack/proget-api-universalfeed/proget-api-universalfeed-list" modified="7/18/2024 2:59:32 PM" />
-  <redirect from="/docs/proget-api-universalfeed-upload" to="/docs/proget/upack/proget-api-universalfeed/proget-api-universalfeed-upload" modified="7/18/2024 2:59:32 PM" />
-  <redirect from="/docs/proget-api-universalfeed-search" to="/docs/proget/upack/proget-api-universalfeed/proget-api-universalfeed-search" modified="7/18/2024 2:59:32 PM" />
+  <redirect from="/docs/proget-api-universalfeed" to="/docs/proget/reference-api/universal-feed" modified="7/18/2024 2:59:32 PM" />
+  <redirect from="/docs/proget-api-universalfeed-metadata" to="/docs/proget/reference-api/universal-feed/metadata" modified="7/18/2024 2:59:32 PM" />
+  <redirect from="/docs/proget-api-universalfeed-delete" to="/docs/proget/reference-api/universal-feed/delete" modified="7/18/2024 2:59:32 PM" />
+  <redirect from="/docs/proget-api-universalfeed-download-vpack" to="/docs/proget/reference-api/universal-feed/download-vpack" modified="7/18/2024 2:59:32 PM" />
+  <redirect from="/docs/proget-api-universalfeed-download" to="/docs/proget/reference-api/universal-feed/download" modified="7/18/2024 2:59:32 PM" />
+  <redirect from="/docs/proget-api-universalfeed-download-file" to="/docs/proget/reference-api/universal-feed/download-file" modified="7/18/2024 2:59:32 PM" />
+  <redirect from="/docs/proget-api-universalfeed-import" to="/docs/proget/reference-api/universal-feed/import" modified="7/18/2024 2:59:32 PM" />
+  <redirect from="/docs/proget-api-universalfeed-version" to="/docs/proget/reference-api/universal-feed/version" modified="7/18/2024 2:59:32 PM" />
+  <redirect from="/docs/proget-api-universalfeed-list" to="/docs/proget/reference-api/universal-feed/list" modified="7/18/2024 2:59:32 PM" />
+  <redirect from="/docs/proget-api-universalfeed-upload" to="/docs/proget/reference-api/universal-feed/upload" modified="7/18/2024 2:59:32 PM" />
+  <redirect from="/docs/proget-api-universalfeed-search" to="/docs/proget/reference-api/universal-feed/search" modified="7/18/2024 2:59:32 PM" />
   <redirect from="/docs/proget-howto-utilize-feed-replication-for-disaster-recovery" to="/docs/proget/replication-feed-mirroring/proget-howto-utilize-feed-replication-for-disaster-recovery" modified="7/18/2024 2:59:32 PM" />
   <redirect from="/docs/proget-howto-federated-development" to="/docs/proget/replication-feed-mirroring/proget-howto-federated-development" modified="7/18/2024 2:59:32 PM" />
   <redirect from="/docs/proget-advanced-feed-replication" to="/docs/proget/replication-feed-mirroring/proget-advanced-feed-replication" modified="7/18/2024 2:59:32 PM" />
@@ -696,7 +720,6 @@
   <redirect from="/docs/proget/feeds/retention" to="/docs/proget/administration/retention-policies" modified="7/18/2024 2:59:32 PM" />
   <redirect from="/docs/proget/feeds/retention/matching-examples" to="/docs/proget/feed-types/universal" modified="7/18/2024 2:59:32 PM" />
   <redirect from="/docs/proget/feeds/symbol-and-source-server" to="/docs/proget/feed-types/nuget/symbol-and-source-server" modified="7/18/2024 2:59:32 PM" />
-  <redirect from="/docs/proget/feeds/universal" to="/docs/proget/packages/what-is-a-package" modified="7/18/2024 2:59:32 PM" />
   <redirect from="/docs/proget/feeds/universal/romp" to="/docs/proget/packages/what-is-a-package" modified="7/18/2024 2:59:32 PM" />
   <redirect from="/docs/proget/feed-types" to="/docs/proget/core-concepts/feeds" modified="7/18/2024 2:59:32 PM" />
   <redirect from="/docs/proget/feed-types/bower" to="/docs/proget/feeds/bower" modified="7/18/2024 2:59:32 PM" />
@@ -982,7 +1005,7 @@
   <redirect from="/docs/proget--docs-various-universal-packages-universal-feed-api" to="/docs/proget/upack/upack-universal-packages" modified="7/12/2024 12:00:00 AM" />
   <redirect from="/docs/proget-api-sca-releases-analyze" to="/docs/proget/reference-api/proget-api-sca/builds/proget-api-sca-builds-analyze" modified="7/11/2024 12:00:00 AM" />
   <redirect from="/docs/proget-api-packages-query-latest" to="/docs/proget/reference-api/proget-api-packages/proget-api-packages-list" modified="6/13/2024 12:00:00 AM" />
-  <redirect from="/docs/proget-universalfeed-api" to="/docs/proget/upack/proget-api-universalfeed" modified="5/17/2024 12:00:00 AM" />
+  <redirect from="/docs/proget-universalfeed-api" to="/docs/proget/reference-api/universal-feed" modified="5/17/2024 12:00:00 AM" />
   <redirect from="/docs/proget-sca-api" to="/docs/proget/reference-api/proget-api-sca" modified="5/17/2024 12:00:00 AM" />
   <redirect from="/docs/proget-licenses-api" to="/docs/proget/reference-api/proget-api-licenses" modified="5/17/2024 12:00:00 AM" />
   <redirect from="/docs/proget-feeds-api" to="/docs/proget/reference-api/feeds/proget-api-feeds" modified="5/17/2024 12:00:00 AM" />
@@ -993,7 +1016,7 @@
   <redirect from="/docs/proget-administration-security-api-keys" to="/docs/proget/reference-api/proget-apikeys" modified="5/10/2024 12:00:00 AM" />
   <redirect from="/docs/proget-sca-projects-get" to="/docs/proget/reference-api/proget-api-sca/projects/proget-api-sca-projects-get" modified="5/3/2024 12:00:00 AM" />
   <redirect from="/docs/proget-feeds-delete" to="/docs/proget-api-feed-delete" modified="5/3/2024 12:00:00 AM" />
-  <redirect from="/docs/proget-universalfeed-uploadpackage" to="/docs/proget/upack/proget-api-universalfeed/proget-api-universalfeed-upload" modified="5/3/2024 12:00:00 AM" />
+  <redirect from="/docs/proget-universalfeed-uploadpackage" to="/docs/proget/reference-api/universal-feed/upload" modified="5/3/2024 12:00:00 AM" />
   <redirect from="/docs/proget-sca-vulnerabilities-howto-2024" to="/docs/proget/sca/vulnerabilities/howto" modified="4/27/2024 12:00:00 AM" />
   <redirect from="/docs/proget-query-package-versions-endpoint" to="/docs/proget-api-packages-query-versions" modified="4/27/2024 12:00:00 AM" />
   <redirect from="/docs/proget-sca" to="/docs/proget/sca/builds" modified="4/22/2024 12:00:00 AM" />
@@ -1135,22 +1158,22 @@
   <redirect from="/docs/otter-global-components-rafts-pipeline-rafts" to="/docs/otter/scripting-in-otter/otter-rafts-and-git-storage" modified="2/25/2022 12:00:00 AM" />
   <redirect from="/docs/otter-global-components-rafts" to="/docs/otter/scripting-in-otter/otter-rafts-and-git-storage" modified="2/25/2022 12:00:00 AM" />
   <redirect from="/docs/upack-universal-packages-metacontent-guidance-manifest-speci" to="/docs/proget/upack/upack-universal-packages/upack-universal-packages-manifest" modified="8/29/2024 13:00:00 PM" />
-  <redirect from="/docs/upack-feed-api-endpoints)." to="/docs/proget/upack/proget-api-universalfeed" modified="8/29/2024 13:00:00 PM" />
+  <redirect from="/docs/upack-feed-api-endpoints)." to="/docs/proget/reference-api/universal-feed" modified="8/29/2024 13:00:00 PM" />
   <redirect from="/docs/proget-reference-api-feed-management" to="/docs/proget/reference-api/feeds/proget-api-feeds" modified="8/29/2024 13:00:00 PM" />
-  <redirect from="/docs/upack-feed-api-endpoints" to="/docs/proget/upack/proget-api-universalfeed" modified="8/29/2024 13:00:00 PM" />
+  <redirect from="/docs/upack-feed-api-endpoints" to="/docs/proget/reference-api/universal-feed" modified="8/29/2024 13:00:00 PM" />
   <redirect from="/docs/upack-universal-packages-metacontent-guidance-manifest-speci-docs-upack-universal-packages-metacontent-guidance-manifest-speci" to="/docs/proget/upack/upack-universal-packages/upack-universal-packages-manifest" modified="8/29/2024 13:00:00 PM" />
   <redirect from="/docs/proget-reference-api-feed-management)." to="/docs/proget/reference-api/feeds/proget-api-feeds" modified="8/29/2024 13:00:00 PM" />
   <redirect from="/docs/proget-reference-api-native-docs-proget-reference-api-proget-api-http" to="/docs/proget/reference-api" modified="8/29/2024 13:00:00 PM" />
   <redirect from="/docs/various-universal-packages-universal-feed-api-docs-proget-upack-upack-overview-docs-various-universal-packages-universal-feed-api-docs-proget-upack-upack-overview" to="/docs/proget/upack/upack-overview" modified="8/29/2024 13:00:00 PM" />
-  <redirect from="/docs/upack-feed-api-endpoints).-docs-upack-feed-api-endpoints).-docs-upack-feed-api-endpoints).-docs-upack-feed-api-endpoints)." to="/docs/proget/upack/proget-api-universalfeed" modified="8/29/2024 13:00:00 PM" />
-  <redirect from="/docs/upack-feed-api-endpoints-docs-upack-feed-api-endpoints" to="/docs/proget/upack/proget-api-universalfeed" modified="8/29/2024 13:00:00 PM" />
+  <redirect from="/docs/upack-feed-api-endpoints).-docs-upack-feed-api-endpoints).-docs-upack-feed-api-endpoints).-docs-upack-feed-api-endpoints)." to="/docs/proget/reference-api/universal-feed" modified="8/29/2024 13:00:00 PM" />
+  <redirect from="/docs/upack-feed-api-endpoints-docs-upack-feed-api-endpoints" to="/docs/proget/reference-api/universal-feed" modified="8/29/2024 13:00:00 PM" />
   <redirect from="/docs/upack-universal-packages-metacontent-guidance-manifest-speci-docs-upack-universal-packages-metacontent-guidance-manifest-speci-docs-upack-universal-packages-metacontent-guidance-manifest-speci-docs-upack-universal-packages-metacontent-guidance-manifest-speci" to="/docs/proget/upack/upack-universal-packages/upack-universal-packages-manifest" modified="8/29/2024 13:00:00 PM" />
   <redirect from="/docs/various-universal-packages-universal-feed-api-docs-proget-upack-upack-overview" to="/docs/proget/upack/upack-overview" modified="8/29/2024 13:00:00 PM" />
   <redirect from="/docs/otter-execution-engine-statements-and-blocks-runtime-variables" to="/docs/executionengine/overview/statements-and-blocks/otter-execution-engine-runtime-variables" modified="8/29/2024 13:00:00 PM" />
-  <redirect from="/docs/upack-feed-api-endpoints).-docs-upack-feed-api-endpoints)." to="/docs/proget/upack/proget-api-universalfeed" modified="8/29/2024 13:00:00 PM" />
-  <redirect from="/docs/upack-feed-api-endpoints).-docs-upack-feed-api-endpoints).-docs-upack-feed-api-endpoints).-docs-upack-feed-api-endpoints).-docs-upack-feed-api-endpoints).-docs-upack-feed-api-endpoints).-docs-upack-feed-api-endpoints).-docs-upack-feed-api-endpoints)." to="/docs/proget/upack/proget-api-universalfeed" modified="8/29/2024 13:00:00 PM" />
-  <redirect from="/docs/upack-feed-api-endpoints-docs-upack-feed-api-endpoints-docs-upack-feed-api-endpoints-docs-upack-feed-api-endpoints" to="/docs/proget/upack/proget-api-universalfeed" modified="8/29/2024 13:00:00 PM" />
-  <redirect from="/docs/upack-feed-api-endpoints-docs-upack-feed-api-endpoints-docs-upack-feed-api-endpoints-docs-upack-feed-api-endpoints-docs-upack-feed-api-endpoints-docs-upack-feed-api-endpoints-docs-upack-feed-api-endpoints-docs-upack-feed-api-endpoints" to="/docs/proget/upack/proget-api-universalfeed" modified="8/29/2024 13:00:00 PM" />
+  <redirect from="/docs/upack-feed-api-endpoints).-docs-upack-feed-api-endpoints)." to="/docs/proget/reference-api/universal-feed" modified="8/29/2024 13:00:00 PM" />
+  <redirect from="/docs/upack-feed-api-endpoints).-docs-upack-feed-api-endpoints).-docs-upack-feed-api-endpoints).-docs-upack-feed-api-endpoints).-docs-upack-feed-api-endpoints).-docs-upack-feed-api-endpoints).-docs-upack-feed-api-endpoints).-docs-upack-feed-api-endpoints)." to="/docs/proget/reference-api/universal-feed" modified="8/29/2024 13:00:00 PM" />
+  <redirect from="/docs/upack-feed-api-endpoints-docs-upack-feed-api-endpoints-docs-upack-feed-api-endpoints-docs-upack-feed-api-endpoints" to="/docs/proget/reference-api/universal-feed" modified="8/29/2024 13:00:00 PM" />
+  <redirect from="/docs/upack-feed-api-endpoints-docs-upack-feed-api-endpoints-docs-upack-feed-api-endpoints-docs-upack-feed-api-endpoints-docs-upack-feed-api-endpoints-docs-upack-feed-api-endpoints-docs-upack-feed-api-endpoints-docs-upack-feed-api-endpoints" to="/docs/proget/reference-api/universal-feed" modified="8/29/2024 13:00:00 PM" />
   <redirect from="/docs/buildmaster-reference-operations-buildmaster-invoke-module" to="/docs/buildmaster/reference/operations" modified="8/29/2024 13:00:00 PM" />
   <redirect from="/docs/buildmaster/installation-maintenance/buildmaster-legacy/buildmaster-howto-application-templates" to="/docs/buildmaster/installation-maintenance/buildmaster-legacy/buildmaster-legacy-application-templates" modified="8/29/2024 13:00:00 PM" />
   <redirect from="/docs/docs" to="/" modified="8/29/2024 13:00:00 PM" />
