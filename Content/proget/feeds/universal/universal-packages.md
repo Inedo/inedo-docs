@@ -3,11 +3,11 @@ title: "Universal Packages"
 order: 2
 ---
 
-A Universal Package is a file that contains other files such as program, configurations, application components, plugins, libraries, or any other kind of content. It also contains a manifest file that uniquely identifies the package with a name/version and optionally describes its contents.
+A Universal Package is a file that contains other files such as programs, configurations, application components, plugins, libraries, or any other kind of content. It also contains a manifest file that uniquely identifies the package with a name/version and optionally describes its contents.
 
-Unlike other packaging formats (NuGet, Rpm, etc.), Universal Packages were not designed for a specific use case (.NET libraries, Linux applications, etc.) and designed to be as simple to use as possible.
+Unlike other packaging formats (NuGet, Rpm, etc.), Universal Packages were not designed for a specific use case (.NET libraries, Linux applications, etc.) and were designed to be as simple to use as possible.
 
-You can create Universal Package manually or using by hand  or use one of the [free and open Universal Packaging Tools](#tools).
+You can create Universal Packages manually by hand or by using one of the [free and open Universal Packaging Tools](#tools).
 
 ## Universal Package Format
 
@@ -38,7 +38,7 @@ packages/my-app.dll
 </pre>
 </td></tr><table>
 
-You could create this package file manually or using one of the free and open source [Universal Packaging Tools](#tools). For example:
+You could create this package file manually or using one of the free and open-source [Universal Packaging Tools](#tools). For example:
 
 ```bash
 $ upack pack .\my-app --name=my-app --version=1.3.9
@@ -200,11 +200,11 @@ Inedo.UPack is a .NET library that makes it easy to create, read, and install pa
 
 ### Deprecated & Older Tools
 
-Over the years, users have gotten more comfortable using Command-line tools. As such, we decided to abandoned some of the earlier Universal Package tools we created.
+Over the years, users have gotten more comfortable using Command-line tools. As such, we decided to abandon some of the earlier Universal Package tools we created.
 
-Although we do not maintain these tools anymore, you may find them useful. If you think we should revive/rebuild them, just [let us know](https://forums.inedo.com/)
+Although we do not maintain these tools anymore, you may find them useful. If you think we should revive/rebuild them, just [let us know](https://forums.inedo.com/).
 
-* **Universal Package Explorer** is a Windows desktop application that allows you to easily create, view, and publish universal packages. You can load an .upack file from disk or directly from a ProGet universal feed.
+* **Universal Package Explorer** is a Windows desktop application that allows you to easily create, view, and publish universal packages. You can load a `.upack` file from disk or directly from a ProGet universal feed.
   * [Download Universal Package Explorer (github.com)](https://github.com/Inedo/UniversalPackageExplorer/releases)
   * [Universal Package Explorer Source Code (github.com)](https://github.com/Inedo/UniversalPackageExplorer)
 * **Push to ProGet Visual Studio Extension** allows you to publish universal packages directly from Visual Studio. 
