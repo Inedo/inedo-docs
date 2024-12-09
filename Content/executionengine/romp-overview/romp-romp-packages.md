@@ -8,7 +8,7 @@ order: 4
 
 At a minimum, a Romp package must contain a `upack.json` file.
 
-See the [Universal Package Metadata Specification](/docs/proget/upack/upack-overview#metadata) for a list of `upack.json` properties.
+See the [Universal Package Metadata Specification](/docs/proget/feeds/universal/universal-packages#metadata) for a list of `upack.json` properties.
 
 A Romp package may also include an additional metadata file, `rompPackage.json`, that defines package behavior.
 

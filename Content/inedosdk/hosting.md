@@ -3,7 +3,7 @@ title: "Hosting a Private Extensions Feed"
 order: 3
 ---
 
-Typical usage of an Inedo product does not require additional configuration to connect with the Inedo Den that serves extensions for our products. What you may not realize is that extensions are served using a [Universal Feed.](/docs/proget/upack/proget-api-universalfeed)
+Typical usage of an Inedo product does not require additional configuration to connect with the Inedo Den that serves extensions for our products. What you may not realize is that extensions are served using a Universal Packages Feed.)
 
 Because of this, Inedo product administrators can host their own "extension gallery" simply by creating a Universal Feed within ProGet, optionally adding a connector to the Extensions Feed https://proget.inedo.com/feeds/Extensions, and updating the Extensions.UpdateFeedUrl setting in the Inedo product as desired.
 
