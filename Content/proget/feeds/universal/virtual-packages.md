@@ -142,7 +142,7 @@ In addition to packages, content from an asset directory or files from a url.
 
 ### Metacontents
 
-By default, ProGet will assemble package contents to the `packages/` folder in the new package file. However, if you specify items in the  `metaContents` folder, they will instead be written to the root folder in the package file.
+By default, ProGet will assemble package contents to the `packages/` folder in the new package file. However, if you specify items in the `metaContents` folder, they will instead be written to the root folder in the package file.
 
 
 ## Usecases for Virtual Packages
@@ -154,10 +154,10 @@ There are two main use cases for virtual packages:
 There are several cases where you may want to bundle a number of packages into a single, logical package.
 
 :::(Info)
-Let us say you have created an application that has been customized for six different clients by overwriting logos, javascript files, or other resources within the application. The "base application" is completely useless on its own, except for testing and quality assurance purposes, and the "resources" are even more useless. They must be combined with a specific version of the "base application" to be tested at all.
+Let us say you have created an application that has been customized for six different clients by overwriting logos, JavaScript files, or other resources within the application. The "base application" is completely useless on its own, except for testing and quality assurance purposes, and the "resources" are even more useless. They must be combined with a specific version of the "base application" to be tested at all.
 :::
 
-This can be easily solved with a virtual package that "bundles" a specific version of the base application (CrmAppBase) and the client customization (InitechApp) into a single, logical package (Initech.Crm).
+This can be easily solved with a virtual package that "bundles" a specific version of the base application (`CrmAppBase`) and the client customization (`InitechApp`) into a single, logical package (`Initech.crm`).
 
 When you deliver the package, it will be exactly what is needed. However, you can easily see from the metadata which versions/components were used to assemble the package.
 
@@ -176,13 +176,13 @@ You can also bundle these files together with your regular package contents by b
 When assembling a virtual package, ProGet uses the following logic:
 
 1. The `contents` array is enumerated, and each resource is assessed as follows:
-    A. If it's a file resource: the contents are downloaded, and verified (if a hash is specified), and written to the target virtual path. A directory is created if it doesn't exist, and a file is ignoring if it already exists.
+    A. If it's a file resource: the contents are downloaded, verified (if a hash is specified), and written to the target virtual path. A directory is created if it doesn't exist, and a file is ignored if it already exists.
     B. If it's a package resource: the current package feed is queried for the specified package (including hash). The contents are then extracted to the target virtual path, ignoring any existing files.
 
 2. The` metaContents` array is enumerated; each resource is assessed as follows:
-    A. If the virtualPath is upack.json or within the packages directory: the operation fails
-    B. If it's a file resource: the contents are downloaded, and verified (if a hash is specified), and written to the target virtual path. A directory is created if it doesn't exist, and a file is ignoring if it already exists.
-    C. If it's a package resource: the current feed is queried for the specified package (including hash). The contents are then extracted to the target virtual path, ignoringing any existing files.
+    A. If the virtualPath is `upack.json` or within the packages directory: the operation fails
+    B. If it's a file resource: the contents are downloaded, verified (if a hash is specified), and written to the target virtual path. A directory is created if it doesn't exist, and a file is ignored if it already exists.
+    C. If it's a package resource: the current feed is queried for the specified package (including hash). The contents are then extracted to the target virtual path, ignoring any existing files.
 
 3. If any error occurs during assembly, then the entire operation fails.
 
