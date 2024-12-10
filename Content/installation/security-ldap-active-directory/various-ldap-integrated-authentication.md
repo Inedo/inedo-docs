@@ -7,9 +7,11 @@ Integrated Authentication is an option that allows transparent user authenticati
 
 :::(Error) (💀  Microsoft is Discontinuing Windows Integrated Authentication)
 
-Microsoft no longer recommends using Windows Integrated Authentication.
+Although Microsoft hasn't formally deprecated Windows Integrated Authentication (WIA) yet, it's been removed from their reference architectures and is no longer mentioned on any technology roadmaps. There's also been Windows/platform bugs that have impacted WIA that show a clear lack of regression testing in this area.
 
+Fundamentally, WIA is not technologically compatible with modern environments that incorporate Linux, mobile, load-balancers, and many other technologies on Azure and other cloud services. 
 
+We will do our best to continue supporting WIA in our products, but it's clearly a dead technology with no future. You should move away from WIA.
 
 :::
 
