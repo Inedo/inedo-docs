@@ -2,12 +2,12 @@
 <redirects>
 
   <!-- BEGIN UPack Docs Refactoring  -->
-  <redirect from="/docs/proget/upack/upack-overview" to="/docs/proget/feeds/universal/universal-packages#tools" />
-  <redirect from="/docs/proget/upack/upack-downloads-source-code" to="/docs/proget/feeds/universal/universal-packages#tools" />
-  <redirect from="/docs/proget/upack/upack-tools-and-libraries/upack-tools-and-libraries-upe" to="/docs/proget/feeds/universal/universal-packages#tools" />
-  <redirect from="/docs/proget/upack/upack-tools-and-libraries/upack-tools-and-libraries-upack-cli" to="/docs/proget/feeds/universal/universal-packages#tools" />
-  <redirect from="/docs/proget/upack/upack-tools-and-libraries/upack-tools-and-libraries-upacklib-net" to="/docs/proget/feeds/universal/universal-packages#tools" />
-  <redirect from="/docs/proget/upack/upack-tools-and-libraries/upack-tools-and-libraries-push-to-proget" to="/docs/proget/feeds/universal/universal-packages#tools" />
+  <redirect from="/docs/proget/upack/upack-overview" to="/docs/proget/feeds/universal/universal-packages" />
+  <redirect from="/docs/proget/upack/upack-downloads-source-code" to="/docs/proget/feeds/universal/universal-packages" />
+  <redirect from="/docs/proget/upack/upack-tools-and-libraries/upack-tools-and-libraries-upe" to="/docs/proget/feeds/universal/universal-packages" />
+  <redirect from="/docs/proget/upack/upack-tools-and-libraries/upack-tools-and-libraries-upack-cli" to="/docs/proget/feeds/universal/universal-packages" />
+  <redirect from="/docs/proget/upack/upack-tools-and-libraries/upack-tools-and-libraries-upacklib-net" to="/docs/proget/feeds/universal/universal-packages" />
+  <redirect from="/docs/proget/upack/upack-tools-and-libraries/upack-tools-and-libraries-push-to-proget" to="/docs/proget/feeds/universal/universal-packages" />
   
   <redirect from="/docs/proget/upack/upack-universal-package-registry/upack-universal-package-registry-specifications" to="https://github.com/Inedo/Inedo.UPack/blob/master/registry.md" />
   <redirect from="/docs/proget/upack/upack-universal-package-registry/upack-universal-package-registry-types-locations" to="https://github.com/Inedo/Inedo.UPack/blob/master/registry.md" />
