@@ -1,6 +1,6 @@
 ---
 title: "Migrating Artifacts to Universal Packages"
-order: 3
+order: 4
 ---
 
 Managing a large number of artifacts is a challenge when trying to maintain some sense of order or accessibility. [Universal Packages](/docs/proget/feeds/universal/universal-packages) offer a solution to organize your varied file formats into a unified system.
@@ -20,7 +20,7 @@ ProGet supports migration by allowing you to import your existing artifacts into
 
 In order to host your Universal Packages, you will need to create a Universal Package feed. Navigate to "Feeds" and select "Create New Feed". From here select "Universal Packages".
 
-![](/resources/docs/proget-upack-createfeed.png)
+![](/resources/docs/proget-upack-createfeed.png){height="" width="50%"}
 
 From here, select "No Connectors", and then name your feed. Finally select "Create Feed".
 
@@ -28,11 +28,11 @@ From here, select "No Connectors", and then name your feed. Finally select "Crea
 
 Navigate to your Universal feed and select "Add Package" from the drop down menu. Then select "Create a Package". From here enter metadata of your package, such as name, version and description, and then select "Add Files".
 
-![](/resources/docs/proget-upack-createpackage-metadata.png)
+![](/resources/docs/proget-upack-createpackage-metadata.png){height="" width="50%"}
 
 Now you can use the UI to either drag and drop or select files. 
 
-![](/resources/docs/proget-upack-createpackage.png)
+![](/resources/docs/proget-upack-createpackage.png){height="" width="50%"}
 
 Selecting "Create Package" will then create the Universal Package and upload it to your Universal feed.
 
