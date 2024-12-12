@@ -57,7 +57,7 @@ If you specify a different package name in both the query and path, you'll get a
 **Uploading a Universal Package** requires the feed name (e.g. `myUniversalFeed`):
 
 ```
-POST /endpoints/myAssetDirectory/import/myFolder?format=zip&overwrite=true
+POST /upack/myUniversalFeed/upload
 
 «contents of myUniversalPackage-1.2.3.upack»
 ```
