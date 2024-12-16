@@ -12,6 +12,35 @@ Such kind of artifacts could include:
 
 Universal Packages in ProGet are designed to standardize and centralize artifact management. They provide a consistent format that simplifies storage, sharing, and deployment across teams.
 
+## Artifacts vs. Packages
+
+To migrate artifacts to Universal Packages effectively, it’s useful to understand the shift from managing artifacts to managing packages.
+
+### Artifacts:
+
+* Individual files or groups of files
+* Stored in arbitrary locations, such as folders on shared drives or archives. 
+* Often lack structure or metadata
+
+While artifacts serve as useful outputs of build processes or deployment tasks, they can become unwieldy over time due to inconsistent naming, duplication, or unclear context.
+
+### Packages:
+
+* Structured, self-contained units of files and metadata. 
+* Designed for distribution and reuse
+* Often include metadata that documents purpose, versioning, and dependencies. 
+
+This standardization not only enhances discoverability but also simplifies storage, deployment, and consumption processes.
+
+### Why Migrate Your Artifacts to Universal Packages?
+
+Universal Packages offer a package-centric approach to managing artifacts, offering several advantages:
+
+* Standardized Structure: Files are bundled together in a clearly-defined format.
+* Metadata: Packages include details like version numbers, descriptions, and other key information.
+* Centralized Management: Stored in feeds, letting teams easily access and share them.
+* Automation-Friendly: Packages can be easily created and deployed in automated workflows.
+
 ## How to Migrate Artifacts to Universal Packages
 
 ProGet supports migration by allowing you to import your existing artifacts into Universal Packages. This can be done either through the ProGet UI or through the ["Upload Universal Packages"](/docs/proget/reference-api/universal-feed/upload)" endpoint, part of the [Universal Feed API](/docs/proget/reference-api/universal-feed).
