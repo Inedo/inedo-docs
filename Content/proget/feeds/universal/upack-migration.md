@@ -47,7 +47,7 @@ ProGet supports migration by allowing you to import your existing artifacts into
 
 ### Creating a Universal Feed
 
-In order to host your Universal Packages, you will need to create a Universal Package feed. Navigate to "Feeds" and select "Create New Feed". From here select "Universal Packages".
+In order to host your Universal Packages, you will need to create a Universal Feed. Navigate to "Feeds" and select "Create New Feed". From here select "Universal Packages".
 
 ![](/resources/docs/proget-upack-createfeed.png){height="" width="50%"}
 
