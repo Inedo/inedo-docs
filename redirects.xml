@@ -22,6 +22,18 @@
   <redirect from="/docs/proget/upack/upack-virtual-packages/upack-virtual-packages-package-format" to="/docs/proget/feeds/universal/virtual-packages" />
   <redirect from="/docs/proget/upack/upack-virtual-packages/upack-virtual-packages-packages-feeds" to="/docs/proget/feeds/universal/virtual-packages" />
   <redirect from="/docs/proget/upack/upack-virtual-packages/upack-virtual-packages-what-is" to="/docs/proget/feeds/universal/virtual-packages" />
+	
+  <redirect from="/docs/proget/upack/proget-api-universalfeed" to="/docs/proget/reference-api/universal-feed" /> 
+  <redirect from="/docs/proget/upack/proget-api-universalfeed/proget-api-universalfeed-delete" to="/docs/proget/reference-api/universal-feed/delete" />
+  <redirect from="/docs/proget/upack/proget-api-universalfeed/proget-api-universalfeed-download-file" to="/docs/proget/reference-api/universal-feed/download-file" />
+  <redirect from="/docs/proget/upack/proget-api-universalfeed/proget-api-universalfeed-download-vpack" to="/docs/proget/reference-api/universal-feed/download-vpack" />
+  <redirect from="/docs/proget/upack/proget-api-universalfeed/proget-api-universalfeed-download" to="/docs/proget/reference-api/universal-feed/download" />
+  <redirect from="/docs/proget/upack/proget-api-universalfeed/proget-api-universalfeed-import" to="/docs/proget/reference-api/universal-feed/import" />
+  <redirect from="/docs/proget/upack/proget-api-universalfeed/proget-api-universalfeed-list" to="/docs/proget/reference-api/universal-feed/list" /> 
+  <redirect from="/docs/proget/upack/proget-api-universalfeed/proget-api-universalfeed-metadata" to="/docs/proget/reference-api/universal-feed/metadata" />
+  <redirect from="/docs/proget/upack/proget-api-universalfeed/proget-api-universalfeed-search" to="/docs/proget/reference-api/universal-feed/search" />
+  <redirect from="/docs/proget/upack/proget-api-universalfeed/proget-api-universalfeed-upload" to="/docs/proget/reference-api/universal-feed/upload" />
+  <redirect from="/docs/proget/upack/proget-api-universalfeed/proget-api-universalfeed-version" to="/docs/proget/reference-api/universal-feed/version" /> 
   <!-- END UPack Docs Refactoring -->
 
 
