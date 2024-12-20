@@ -17,7 +17,7 @@ In your ProGet instance, select "Feeds" and "Create New Feed", and select "Debia
 
 From here, name the feed. In this case, we'll call it `internal-debian`. After entering the name, click "Create Feed".
 
-![](/resources/docs/proget-cran-publicfeed.png){height="" width="50%"}
+![](){height="" width="50%"}
 
 ProGet will create The `internal-debian` and redirect you to the new, empty feed.
 
@@ -65,7 +65,7 @@ And finally build the package by entering:
 $ dpkg-buildpackage -u – s uc
 ```
 
-### Step 4: Upload Your Package to ProGet
+## Step 4: Upload Your Package to ProGet
 
 To upload your package to your `internal-debian` feed using the [pgutil](/docs/proget/reference-api/proget-pgutil) CLI tool. This will require some [minor configuration](/docs/proget/reference-api/proget-pgutil#sources) such as configuring your ProGet instance and API key as a source by running:
 
@@ -141,7 +141,7 @@ In order to actually install packages from a ProGet feed, the package cache must
 sudo apt update
 ```
 
-## Step 4: (Optional) Confirming Connection to your Debian Feed
+## Step 6: (Optional) Confirming Connection to your Debian Feed
 
 You can confirm that your local Debian client is configured with your `internal-debian` feed using the cat command:
 

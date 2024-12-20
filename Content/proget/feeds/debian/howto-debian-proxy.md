@@ -19,7 +19,7 @@ In your ProGet instance, select "Feeds" and "Create New Feed", and select "Debia
 
 From here, name the feed. In this example, we will call our feed `public-debian`. After entering the name, click "Create Feed".
 
-![](/resources/docs/proget-cran-publicfeed.png){height="" width="50%"}
+![](){height="" width="50%"}
 
 ProGet will create The `public-debian` feed and redirect you to it, currently empty.
 
