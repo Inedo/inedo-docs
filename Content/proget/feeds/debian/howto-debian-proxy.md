@@ -23,7 +23,7 @@ From here, name the feed. In this example, we will call our feed `public-debian`
 
 ProGet will create The `public-debian` feed and redirect you to it, currently empty.
 
-![](/resources/docs/proget-cran-feed.png){height="" width="50%"}
+![](){height="" width="50%"}
 
 ## Step 2: Create a Connector
 
@@ -47,7 +47,7 @@ After entering this information, select "Save". Navigating back to your public-d
 
 To add your `public-debian` feed to your local Debian client, you will require the feed URL which can be found on the feed's page:
 
-![](/resources/docs/proget-cran-feed.png){height="" width="50%"}
+![](){height="" width="50%"}
 
 To correctly configure your local client, you will need to perform the following steps:
 
@@ -56,7 +56,7 @@ To correctly configure your local client, you will need to perform the following
 To add the signing key to `apt` on  Ubuntu 22.04, run the following command.
 
 ```sh
-curl -fsSL «proget-server»/public-debian/keys/public-debian.asc | sudo gpg --dearmor  -o /etc/apt/keyrings/$public-debian.gpg
+curl -fsSL «proget-server»/public-debian/keys/public-debian.asc | sudo gpg --dearmor  -o /etc/apt/keyrings/public-debian.gpg
 ```
 
 If you are using an earlier or different distribution, you can use the `apt-key` command instead:
@@ -88,7 +88,7 @@ $ sudo sed -i '/«repository-url»/d' /etc/apt/sources.list
 If the repository is defined in a file under `/etc/apt/sources.list.d/`, delete the corresponding file:
 
 ```bash
-$ sudo rm /etc/apt/sources.list.d/repository-name.list
+$ sudo rm /etc/apt/sources.list.d/«repository-name».list
 ```
 
 Removing the repository will make sure any packages installed will be sourced from your `public-debian` feed.
@@ -113,7 +113,7 @@ This will list the repositories currently configured, which should include your 
 
 ## (Optional) Authenticating to Your Debian Feed
 
-By default your `public-debian` feed does require authentication and can be viewed anonymously. However, you may want to make your repository private and [configure it to require authentication to access](/docs/proget/feeds/debian#authentication). This is recommended when using internal packages in a feed, either on their own or in addition to using packages proxied from OSS repositories. 
+By default your `public-debian` feed doesn't require authentication and can be viewed anonymously. However, you may want to make your repository private and [configure it to require authentication to access](/docs/proget/feeds/debian#authentication). This is recommended when using internal packages in a feed, either on their own or in addition to using packages proxied from OSS repositories. 
 
 ## (Optional) Creating a Package Approval Flow
 
@@ -124,5 +124,5 @@ To set up a package approval flow, refer to [HOWTO: Approve and Promote Open-sou
 After creating your "Unapproved" and "Approved" feeds, follow the steps in ["Adding the Feed to Your Local Debian client"](#add-feed) to add the "Approved" feed (e.g. `approved-debian`) as a source in your local Debian client, entering:
 
 ```bash
-$ echo "deb http://«proget-server»/debian/approved-debian bullseye {component-name}" | sudo tee /etc/apt/sources.list.d/approved-debian.list
+$ echo "deb http://«proget-server»/debian/approved-debian bullseye «component-name»" | sudo tee /etc/apt/sources.list.d/approved-debian.list
 ```
