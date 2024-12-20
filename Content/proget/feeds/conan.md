@@ -12,7 +12,7 @@ A Conan feed in ProGet acts like a private Conan repository where you can store 
 Conan feeds are available in ProGet 2024.22+.
 
 ## Adding a Conan feed as a Remote
-Before installing or publishing a crate to your ProGet Conan feed, you will need to add your feed as a remote:
+Before installing or publishing a recipe to your ProGet Conan feed, you will need to add your feed as a remote:
 
 ```bash
 conan remote add «remote-name» https://«proget-server»/conan/«feed-name»/
