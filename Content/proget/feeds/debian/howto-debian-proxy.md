@@ -27,40 +27,89 @@ ProGet will create The `public-debian` feed and redirect you to it, currently em
 
 ## Step 2: Create a Connector
 
-Configuring a connector in you public-debian feed will allow Debian packages from an OSS repository to be proxied to it. From your public-debian feed, select "Manage Feed" from the drop down menu.
+Configuring a connector in you public-debian feed will allow Debian packages from an OSS repository to be proxied to it. From your `public-debian` feed, select "Manage Feed" from the drop down menu.
 
 ![](){height="" width="50%"}
 
-## Step 3: Adding the Feed to Your Local Debian Environment { #add-feed }
+Then, select the "Connectors" tab and select "add".
 
-To add your `public-debian` feed to your local Debian environment, you will require the feed URL which can be found on the feed's page:
+![](){height="" width="50%"}
+
+From here give your connector a name, and enter the URL and distribution of the OSS repository and packages. In this example we are using the  [http://ftp.debian.org](http://ftp.debian.org) repository, and packages from the `bullseye` distribution. 
+
+![](){height="" width="50%"}
+
+After entering this information, select "Save". Navigating back to your public-debian feed you should now see it populated with packages.
+
+![](){height="" width="50%"}
+
+## Step 3: Adding the Feed to Your Local Debian client { #add-feed }
+
+To add your `public-debian` feed to your local Debian client, you will require the feed URL which can be found on the feed's page:
 
 ![](/resources/docs/proget-cran-feed.png){height="" width="50%"}
 
-Then, run the following command to configure the feed as a source:
+To correctly configure your local client, you will need to perform the following steps:
 
-```
-CLI goes here
-```
+### 1. Add the Signing Key
 
-In the case that the OSS repository you are proxying from is already configured in your Debian environment, you can remove it by entering:
+To add the signing key to `apt` on  Ubuntu 22.04, run the following command.
 
-```dotnetcli
-CLI goes here
+```sh
+curl -fsSL «proget-server»/public-debian/keys/public-debian.asc | sudo gpg --dearmor  -o /etc/apt/keyrings/$public-debian.gpg
 ```
 
-This will make sure any packages installed will be sourced from your `public-debian` feed.
+If you are using an earlier or different distribution, you can use the `apt-key` command instead:
 
+```sh
+wget -qO - http://«proget-server»/debian/public-debian/keys/public-debian.asc | sudo apt-key add -
+```
+
+::: (INFO) 
+If this signing key is not created in ProGet and added to your public key ring bundle, you may see a message similar to:  `N: Updating from such a repository can't be done securely, and is therefore disabled by default.`
+:::
+
+### 2. Add the Repository Information
+
+Then you'll need to add the repository to the system, which can be done with the following command:
+
+```sh
+echo "deb http://«proget-server»/debian/public-debian bullseye «component-name»" | sudo tee /etc/apt/sources.list.d/public-debian.list
+```
+
+### 3. (Optional) Remove OSS Repository from Sources
+
+In the case that the OSS repository you are proxying from is already configured in your Debian client, you can remove it with the `sed` command to delete the specific line referencing the repository:
+
+```bash
+$ sudo sed -i '/«repository-url»/d' /etc/apt/sources.list
+```
+
+If the repository is defined in a file under `/etc/apt/sources.list.d/`, delete the corresponding file:
+
+```bash
+$ sudo rm /etc/apt/sources.list.d/repository-name.list
+```
+
+Removing the repository will make sure any packages installed will be sourced from your `public-debian` feed.
+
+### 4. Update `apt`
+
+In order to actually install packages from a ProGet feed, the package cache must be updated by running:
+
+```sh
+sudo apt update
+```
 
 ## Step 4: (Optional) Confirming Connection to your Debian Feed
 
-You can confirm that your local R environment is configured with your CRAN feed by entering:
+You can confirm that your local Debian client is configured with your `public-debian` feed using the cat command:
 
-```
-CLI goes here
+```bash
+$ cat /etc/apt/sources.list
 ```
 
-This will list the repositories currently configured, which should include your `public-debian` feed.
+This will list the repositories currently configured, which should include your Debian feed.
 
 ## (Optional) Authenticating to Your Debian Feed
 
@@ -68,12 +117,12 @@ By default your `public-debian` feed does require authentication and can be view
 
 ## (Optional) Creating a Package Approval Flow
 
-In this article, we explored how to proxy packages from OSS Debian repositories. However, configuring your Feed this way would let developers to use any OSS package from the a public repository without oversight. To avoid risks associated with potentially vulnerable or poorly maintained packages, you should include some form of oversight of packages used in production, which can be done by introducing a ["Package Approval Flow"](/docs/proget/packages/package-promotion).
+In this article, we configured a feed to proxy packages directly from an OSS Debian repository. However, configuring your Feed this way would let developers to use any OSS package from the a public repository without oversight. To avoid risks associated with potentially vulnerable or poorly maintained packages, you should include some form of oversight of packages used in production, which can be done by introducing a ["Package Approval Flow"](/docs/proget/packages/package-promotion).
 
-To set up a package approval flow, refer to [HOWTO: Approve and Promote Open-source Packages](/docs/proget/packages/package-promotion/proget-howto-promote-packages). This guide uses NuGet feeds as an example, but the steps are identical when creating CRAN feeds.
+To set up a package approval flow, refer to [HOWTO: Approve and Promote Open-source Packages](/docs/proget/packages/package-promotion/proget-howto-promote-packages). This guide uses NuGet feeds as an example, but the steps are identical for a Debian feed.
 
-After creating your "Unapproved" and "Approved" feeds, follow the steps in ["Adding the Feed to Your Local Debian Environment"](#add-feed) to add the "Approved" feed as a source in your local R environments, entering:
+After creating your "Unapproved" and "Approved" feeds, follow the steps in ["Adding the Feed to Your Local Debian client"](#add-feed) to add the "Approved" feed (e.g. `approved-debian`) as a source in your local Debian client, entering:
 
-```
-CLI goes here
+```bash
+$ echo "deb http://«proget-server»/debian/approved-debian bullseye {component-name}" | sudo tee /etc/apt/sources.list.d/approved-debian.list
 ```
