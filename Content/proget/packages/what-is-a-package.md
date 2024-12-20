@@ -48,7 +48,7 @@ Packages have a format defined by standards (e.g. NuGet, PyPi, etc.) and contain
 
 ## What Package Types Does ProGet Support?
 
-In addition to the [Universal Package](/docs/proget/upack/upack-overview) type, ProGet supports a growing number of package types:
+In addition to the [Universal Package](/docs/proget/feeds/universal) type, ProGet supports a growing number of package types:
 
 - [NuGet](/docs/proget/feeds/nuget)
 - [PowerShell](/docs/proget/feeds/powershell)
@@ -84,24 +84,7 @@ After you create a package, there are four ways to publish it to ProGet for use:
 
 For more detailed instructions on how to add a package to a feed while *in ProGet*, click the 'Add Package' button in the ProGet feed for that package type.
 
-If there is a third-party package format designed for your particular case, we recommend that you use it. However, in many cases, [universal packages](/docs/proget/upack/upack-overview) provide the best combination of simplicity, utility, and extensibility.
-
-## Publishing Your Own Applications as Universal Packages 
-
-The Universal Package format is very simple and can be used to package applications and components built with any technology: ASP.NET websites, NodeJS applications, Windows services, plug-ins for your applications, system configuration scripts and so on. It's designed both for general use and as a platform for creating a new proprietary package format. You can also extend the manifest file of a universal package with additional metadata (and then search based on that metadata).
-
-There are many free and open source tools available to help you create and publish packages in ProGet, either from your workstation, a build server, or elsewhere.
-
-You can use any of these tools or libraries:
-
-
-- [upack.exe Command-line Interface](/docs/proget/upack/upack-tools-and-libraries/upack-tools-and-libraries-upack-cli)
-- [UPackLib.NET library](/docs/proget/upack/upack-tools-and-libraries/upack-tools-and-libraries-upacklib-net)
-- [Universal Package Explorer](/docs/proget/upack/upack-tools-and-libraries/upack-tools-and-libraries-upe)
-- [Inedo ProGet Jenkins Plugin](https://plugins.jenkins.io/inedo-proget/)
-- [Push to ProGet Visual Studio Extension](/docs/proget/upack/upack-tools-and-libraries/upack-tools-and-libraries-push-to-proget)
-
-You can also upload hand-crafted package files to the ProGet UI, or simply do an HTTP Post with your own tool/scripts using the [Universal Feed API](/docs/proget/upack/proget-api-universalfeed).
+If there is a third-party package format designed for your particular case, we recommend that you use it. However, in many cases, [universal packages](/docs/proget/feeds/universal) provide the best combination of simplicity, utility, and extensibility.
 
 ## Identifying and Versioning Packages 
 

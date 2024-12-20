@@ -17,7 +17,7 @@ Then select "No Connectors (Private packages only)" as we will be creating a pri
 
 ![](/resources/docs/proget-helm-newfeed-internal.png){height="" width="50%"}
 
-You will then see several options. These relate to ProGet's SCA features, useful for third party packages. As we will be using our own internal packages, we will leave these boxes unchecked, and select "Set Feed Features". You will then be redirected to your new `internal-helm` feed, currently empty.
+You will then see several options. These relate to ProGet's SCA features, useful for third party charts. As we will be using our own internal charts, we will leave these boxes unchecked, and select "Set Feed Features". You will then be redirected to your new `internal-helm` feed, currently empty.
 
 ![](/resources/docs/proget-helm-internal-empty.png){height="" width="50%"}
 
@@ -51,7 +51,7 @@ When creating an API Key, Select "Feeds (Use Certain Feeds)" as the "Feed Type" 
 
 Make sure the "View/Download" and "Add/Repackage" boxes are checked, and then select "Save".
 
-## Step 4: Publish Your Helm Chart Package
+## Step 4: Publish Your Helm Chart
 
 To publish your Helm chart to your `internal-helm` feed, you can use [pgutil](/docs/proget/reference-api/proget-pgutil). This will require some [minor configuration](/docs/proget/reference-api/proget-pgutil#sources) before use. This includes setting up your ProGet instance and API key as a source by running the `sources add` command. For example, adding the ProGet instance `https://proget.corp.local/` with the API Key `abc12345` you would enter:
 
@@ -59,7 +59,7 @@ To publish your Helm chart to your `internal-helm` feed, you can use [pgutil](/d
 $ pgutil sources add --name=Default --url=https://proget.corp.local/ --api-key=abc12345
 ```
 
-Now upload your packages by using the [`pgutil packages upload`](/docs/proget/reference-api/proget-api-packages/proget-api-packages-upload) command:
+Now upload your charts by using the [`pgutil packages upload`](/docs/proget/reference-api/proget-api-packages/proget-api-packages-upload) command:
 
 ```bash
 $ pgutil packages upload --feed=internal-helm --input-file=./projects/helm-charts/mychart

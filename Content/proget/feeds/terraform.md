@@ -85,7 +85,7 @@ Terraform Modules are not distributed using [self-describing package files](/doc
 
 While this makes things simpler for publishers to the free and open-source Hashicorp registry, it's not a good fit for organizations that rely on reliable and repeatable processes. For example, the GitHub repository could be deleted or changed, meaning the module will suddenly no longer be available.
 
-Terraform Feeds in ProGet store modules in self-describing [Universal Packages](/docs/proget/upack/upack-universal-packages). This not only makes the modules portable and independent from external resources, but cryptographically seals them.
+Terraform Feeds in ProGet store modules in self-describing [Universal Packages](/docs/proget/feeds/universal/universal-packages). This not only makes the modules portable and independent from external resources, but cryptographically seals them.
 
 ### Creating Terraform Module Packages
 
@@ -99,7 +99,7 @@ A Terraform Module Package is a specially-formatted ZIP file:
 3. The `/package` directory in the zip file contains the module's content
 
 
-You can create a Terraform Module Packages from the ProGet UI or using the `upack` [commandline client](/docs/proget/upack/upack-tools-and-libraries/upack-tools-and-libraries-upack-cli).
+You can create a Terraform Module Packages from the ProGet UI or using the `upack` [commandline client](/docs/proget/feeds/universal/universal-packages#tools).
 
 #### Example Package Manifest
 For example, a `upack.json` for the `my-company/my-module/aws` module might look like this:
