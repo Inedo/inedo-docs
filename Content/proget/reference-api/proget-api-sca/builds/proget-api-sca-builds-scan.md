@@ -16,7 +16,7 @@ pgutil builds scan --project-name="myProject" --version=1.2.3
 ## Command Specification (CLI)
 The `builds scan` command is used to scan a build of a project and [audits the build](/docs/proget/reference-api/proget-api-sca/builds/proget-api-sca-builds-analyze).
 
-The `--project-name` and `--version` options are always required and will scan the current working directory for .NET solutions or projects, npm `package-lock.json` files, cargo `Cargo.lock` files, or PyPI and Conda `requirements.txt` files.
+The `--project-name` and `--version` options are always required and will scan the current working directory for .NET solutions or projects, npm `package-lock.json` files, cargo `Cargo.lock` files, composer `composer.lock`, or PyPI and Conda `requirements.txt` files.
 
 If you would like to scan a specific file or folder, you can specify it using the `--input` option.  If you have multiple project types within the same folder, you can specify the package type using the `--scanner-type` parameter.  
 
@@ -26,11 +26,11 @@ If you would like to scan a specific file or folder, you can specify it using th
 | <span style="white-space:nowrap">`--project-name=«project-name»`</span> | [Required] Name of the component consuming the dependencies
 | `--version=«version»` | [Required] Version of the component consuming the dependencies
 | `--input=«input»` | Project to scan for dependencies (default=/)
-| `--scanner-type=«scanner-type»` | Type of project scanner to use; auto, npm, NuGet, PyPI, Conda, or Cargo (default=auto)
+| `--scanner-type=«scanner-type»` | Type of project scanner to use; auto, npm, NuGet, PyPI, Conda, Composer, or Cargo (default=auto)
 | `--noaudit` | Do not run audit after scan
 | `--project-type=«project-type»` | Type of the consuming project (default=library)
 | `--include-project-reference` | For NuGet, Include dependencies from referenced projects in the generated SBOM document.
-| `--include-dev-dependencies` | For NuGet and npm, Include npm development dependencies from the package-lock.json file in the generated SBOM document.
+| `--include-dev-dependencies` | For NuGet, Composer, and npm, Include development dependencies for npm or composer in the generated SBOM document.
 | `--do-not-scan-node_modules` | For NuGet and npm, Do not scan the node_modules directory when scanning for package-lock.json files.
 
 
@@ -103,6 +103,10 @@ pgutil builds scan --input="c:\path\to\solution.sln" --project-name="myProject" 
 ### Example: Scanning a Cargo project using the Working Directory
 ```bash
 pgutil builds scan --project-name="myProject" --version=1.2.3 --scanner-type=Cargo
+```
+### Example: Scanning a Composer project using the Working Directory
+```bash
+pgutil builds scan --project-name="myProject" --version=1.2.3 --scanner-type=Composer
 ```
 
 ### Example: Scanning a PyPI environment using the Working Directory
