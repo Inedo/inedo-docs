@@ -74,6 +74,6 @@ The [Upload Universal Packages](/docs/proget/reference-api/universal-feed/upload
 To create a package, simply `POST` to the `/upack/«feed-name»/upload` endpoint. For example, to upload the contents of `home/user/upacks/` as a Universal Package, to the feed `universal-feed`, authenticating with the API key `abc12345`:
 
 ```bash
-$ curl -X POST "http://«proget-url»/upack/«feed-name»/upload?name=NewPack&version=1.0.0" -F upload=«path-to-zip»
+$ curl http://«proget-url»/upack/«feed-name»/upload --user api:proget --upload-file «path-to-zip»
 ```
 :::
