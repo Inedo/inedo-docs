@@ -9,7 +9,7 @@ order: 7
 This example downloads the file `log_data.bin` from version `1.2.3` of a universal package `myUniversalPackage`, in the group `MyGroup`, from the feed `myUniversalFeed`, authenticating with the API key `abc12345`:
 
 ````
-curl -X GET --header "X-ApiKey: abc12345" "https://proget.corp.local/upack/myUniversalFeed/download-file/MyGroup/myUniversalPackage/1.2.3?path=package/log_data.bin"
+curl -X GET -H "X-ApiKey: abc12345" "https://proget.corp.local/upack/myUniversalFeed/download-file/MyGroup/myUniversalPackage/1.2.3?path=package/log_data.bin"
 ````
 :::
 

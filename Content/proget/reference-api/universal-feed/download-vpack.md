@@ -9,7 +9,7 @@ order: 6
 This example downloads version `1.2.3` of a universal package `myUniversalPackage`, in the group `MyGroup`, from the feed `myUniversalFeed`, to `C:\ProGet\MyPackage-1.2.3.vpack`, 
 
 ````
-curl -X GET --header "X-ApiKey: abc12345" "https://proget.corp.local/upack/myUniversalFeed/download-vpack/MyGroup/myUniversalPackage/1.2.3" -o "C:\ProGet\MyPackage-1.2.3.vpack"
+curl -X GET -H "X-ApiKey: abc12345" "https://proget.corp.local/upack/myUniversalFeed/download-vpack/MyGroup/myUniversalPackage/1.2.3" -o "C:\ProGet\MyPackage-1.2.3.vpack"
 ````
 :::
 
