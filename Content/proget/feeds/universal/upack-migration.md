@@ -69,7 +69,9 @@ Selecting "Create Package" will then create the Universal Package and upload it 
 
 The [Upload Universal Packages](/docs/proget/reference-api/universal-feed/upload) endpoint in the [Universal Feed API](/docs/proget/reference-api/universal-feed) let's you create Universal Packages by converting a `.zip` or `.tgz` of artifacts and auto-generating the metadata `upack.json` based on parameters set. To use this, you will need to create an [API Key](/docs/proget/reference-api/proget-apikeys) with appropriate permissions.
 
-To create a Universal Package, first archive your artifacts into either a `.zip` or `.tgz`. Then, simply `POST` to the `/upack/«feed-name»/upload` endpoint with the `application/zip content` type. For example, to upload the contents of `home/user/upacks.zip` as a Universal Package `MyPackage` version `1.2.3`, to the feed `universal-feed`, authenticating with the API key `abc12345`:
+To create a Universal Package, first archive your artifacts into either a `.zip` or `.tgz`. Then, simply `POST` to the `/upack/«feed-name»/upload` endpoint with the `application/zip content` type. 
+
+For example, to upload the contents of `home/user/upacks.zip` as a Universal Package `MyPackage` version `1.2.3`, to the feed `universal-feed`, authenticating with the API key `abc12345`:
 
 ```bash
 $ curl -X POST -H "Content-Type: application/zip" -H "X-ApiKey: abc12345" --data-binary "home/user/upacks.zip" "http://proget.corp.local/upack/universal/upload?name=MyPackage&version=1.2.3"
