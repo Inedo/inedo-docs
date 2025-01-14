@@ -56,17 +56,13 @@ Feel free to submit pull requests for this page or participate in the linked Q&A
 [Cargo (Rust) Feeds](/docs/proget/feeds/cargo) are available as of ProGet 2024.20.
 
 
-### ⏳ PHP Composer/Packagist: coming soon
+### ✔ PHP Composer/Packagist: Completed
 
-*We are planning to add this in a maintenance release of ProGet 2024, ahead of ProGet 2025*
+[Composer (PHP) Feeds](/docs/proget/feeds/composer) are available as of ProGet 2024.22.
 
-Please join add your thoughts to [this forum topic](https://forums.inedo.com/topic/734/composer-packagist-feeds) to share your thoughts!
+### ✔ Conan (C++): Completed
 
-### ⏳ Conan (C++): coming soon
-
-*We are planning to add this in a maintenance release of ProGet 2024, ahead of ProGet 2025*
-
-This is currently [in discussion on the forums](https://forums.inedo.com/topic/2918); it's a relatively new package format, and the use cases or popularity isn't clear. NuGet is already quite popular for C++ packages in Visual Studio, and Universal Packages are used frequently for in-house C++ libraries. 
+[Conan (C++) Feeds](/docs/proget/feeds/conan) are available as of ProGet 2024.22.
 
 ### 📉 WinGet: very limited demand
 
