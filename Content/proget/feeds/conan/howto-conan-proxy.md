@@ -5,7 +5,7 @@ order: 1
 
 ProGet lets you create ["Feeds"](/docs/proget/feeds/feed-overview) to proxy [Conan](https://conan.io) packages from [Conan Center](https://center.conan.io). This feed can then be configured as a remote locally, allowing you to install Conan packages as you would when installing them directly from Conan Center.
 
-Using ProGet as a proxy will let you [assess vulnerabilities](#scan-feed) in Conan packages, provide statistics on which packages are being downloaded and used frequently, and also cache packages to ProGet, allowing your team to access and install them even if Conan Center is experiencing network issues.
+Using ProGet as a proxy will let you [assess vulnerabilities](/docs/proget/sca/vulnerabilities) in Conan packages, provide statistics on which packages are being downloaded and used frequently, and also cache packages to ProGet, allowing your team to access and install them even if Conan Center is experiencing network issues.
 
 This page will explain how to set up a Conan feed in ProGet to proxy packages. It will also cover how to create a private repository for your internal Conan packages.
 
@@ -35,19 +35,62 @@ ProGet feeds configured with a connector will normally list packages proxied fro
 
 To let your teams use the `public-conan` feed when installing packages, you will need to add it as a remote using the conan `remote add` command. 
 
+```bash
+$ conan remote add public-conan https://proget.corp.local/conan/public-conan/
+```
 
-## (Optional) Authenticating to Your PyPI Feed
+If you are using a self-signed certificate with ProGet, you will also need to add the `--insecure` argument:
 
-By default your `public-pypi` feed does not need to be authenticated to can be viewed anonymously. However if you've configured your feed to require authentication, you can [authenticate to it](/docs/proget/feeds/pypi#authenticating-to-a-pypi-feed) when using `pip install` or with `pip config`. Alternatively you can authenticate with [PipEnv or Poetry](/docs/proget/feeds/pypi/integrate-pypi-others#authenticate-feed).
+```bash
+$ conan remote add public-conan https://proget.corp.local/conan/public-conan/ --insecure
+```
+
+### Recommended: Removing Conan Center as a Remote
+
+Even after adding your `public-conan` feed as a remote, the Conan client will still use [Conan Center](https://center.conan.io) unless you explicitly disable it. We recommend disabling Conan Center to make sure all requests are proxied through your ProGet feed. 
+
+```bash
+$ conan remote disable conancenter
+```
+
+## Step 3: Installing Conan Packages
+
+:::(warn)(Build Profile)
+Before installing packages you will need to configure a build profile. You can create a default profile with the `conan profile detect` command or specify your own profile with `--profile:build=«myprofile»`
+:::
+
+To install Conan packages from your `public-conan` feed, use the [`install`](https://docs.conan.io/1/reference/commands/consumer/install.html) command:
+
+```bash
+$ conan install --requires=mypackage/1.2.3 -r=public-conan
+```
+
+### Installing with Conan 1.x
+
+Installing packages with Conan version 1.x requires slightly different syntax when installing packages:
+
+```bash
+$ conan install mypackage/1.2.3@
+```
+
+### Cached Packages in ProGet
+
+Once you have installed a package by proxying through your public-conan feed, it will be cached in ProGet, and can be viewed in the feed
+
+![](){height="" width="50%"}
+
+## (Optional) Authenticating to Your Conan Feed
+
+By default your `public-conan` feed does require authentication, and packages can be proxied and installed anonymously. However if your Conan feed is configured to require authentication, you can [follow these steps to authenticate to it](/docs/proget/feeds/conan##authenticate-to-feed).
 
 ::: (Info) (💡 Best Practices: Use API Keys for Authenticated Feeds)
-Rather than using your ProGet username/password for a NuGet feed, we strongly recommend [Creating a ProGet API Key](/docs/proget/reference-api/proget-apikeys) to authenticate, using `api` as the username and your key as the password.
+You can use a username/password to authenticate to a Conan feed, however we strongly recommend [Creating a ProGet API Key](/docs/proget/reference-api/proget-apikeys) to authenticate, using `api` as the username and your key as the password.
 :::
 
 ## (Optional) Creating a Package Approval Flow
 
-In this guide we looked at proxying packages from PyPI. However, without oversight approval, developers will be able to install any OSS packages from [PyPI](https://pypi.org/) without oversight. We recommend implementing some form package vetting of your PyPI packages, which can be done by creating a ["Package Approval Flow"](/docs/proget/packages/package-promotion).
+In this guide we looked at proxying packages from Conan Center. However, without appropriate oversight, developers will be able to install any OSS packages from the repository, which may risk introducing vulnerabilities or packages with unwanted licenses. We recommend implementing some form of vetting of the packages used in your development, which can be achieved by creating a ["Package Approval Flow"](/docs/proget/packages/package-promotion).
 
-To set up a package approval flow, refer to [HOWTO: Approve and Promote Open-source Packages](/docs/proget/packages/package-promotion/proget-howto-promote-packages). The guide uses NuGet feeds as an example, but the steps are identical when [creating PyPI package feeds](#create-feed).
+To set up a package approval flow, refer to [HOWTO: Approve and Promote Open-source Packages](/docs/proget/packages/package-promotion/proget-howto-promote-packages). The guide uses NuGet feeds as an example, but the steps are identical when [creating Conan package feeds](#create-feed).
 
-After creating your "Unapproved" and "Approved" feeds, follow the steps in ["Using the Feed in Python Clients"](#add-feed) to add the "Approved" feed (e.g. `pypi-approved`) as a source.
+After creating your "Unapproved" and "Approved" feeds, follow the steps in ["Add the Feed as a Remote to Your Conan Client"](#add-feed) to add the "Approved" feed (e.g. `conan-approved`) as a remote.
