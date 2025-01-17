@@ -56,7 +56,7 @@ $ conan remote disable conancenter
 ## Step 3: Installing Conan Packages
 
 :::(warn)(Build Profile)
-Before installing packages you will need to configure a build profile. You can create a default profile with the [`conan profile detect`(https://docs.conan.io/2/reference/commands/profile.html)] command or specify your own profile with `--profile:build=«myprofile»`
+Before installing packages you will need to configure a build profile. You can create a default profile with the [`conan profile detect`](https://docs.conan.io/2/reference/commands/profile.html) command or specify your own profile with `--profile:build=«myprofile»`
 :::
 
 To install Conan packages from your `public-conan` feed, use the [`install`](https://docs.conan.io/1/reference/commands/consumer/install.html) command:
