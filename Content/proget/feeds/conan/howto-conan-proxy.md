@@ -31,9 +31,9 @@ You'll then be given options to configure ProGet's [Vulnerability Scanning and B
 ProGet feeds configured with a connector will normally list packages proxied from an external source. However, Conan connectors do not support listing proxied recipes. Once you configure your Conan client to proxy all requests through this ProGet feed, you will start seeing cached recipes and packages.
 :::
 
-## Step 2: Add the Feed as a Remote to Your Conan Client { #add-feed }
+## Step 2: Configure the Feed as a Remote in Your Conan Client { #add-feed }
 
-To let your teams use the `public-conan` feed when installing packages, you will need to add it as a remote using the conan `remote add` command. 
+To let your teams use the `public-conan` feed when installing packages, you will need to add it as a remote using the [`conan remote add`](https://docs.conan.io/1/reference/commands/misc/remote.html) command. 
 
 ```bash
 $ conan remote add public-conan https://proget.corp.local/conan/public-conan/
@@ -56,7 +56,7 @@ $ conan remote disable conancenter
 ## Step 3: Installing Conan Packages
 
 :::(warn)(Build Profile)
-Before installing packages you will need to configure a build profile. You can create a default profile with the `conan profile detect` command or specify your own profile with `--profile:build=«myprofile»`
+Before installing packages you will need to configure a build profile. You can create a default profile with the [`conan profile detect`(https://docs.conan.io/2/reference/commands/profile.html)] command or specify your own profile with `--profile:build=«myprofile»`
 :::
 
 To install Conan packages from your `public-conan` feed, use the [`install`](https://docs.conan.io/1/reference/commands/consumer/install.html) command:

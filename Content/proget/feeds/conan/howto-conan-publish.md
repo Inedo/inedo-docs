@@ -1,50 +1,63 @@
 ---
-title: "HOWTO: Upload Python Packages to a Private PyPI Repository in ProGet"
+title: "HOWTO: Create a Private Repository for Conan Packages in ProGet"
 order: 2
 ---
 
-With ProGet you can set up private repositories for your Python packages, so you can publish, store, and share them internally.
+ProGet lets you set up private repositories for your [Conan](https://conan.io) packages, allowing you to upload them from a local source, store, and install them internally.
 
-This article will run through how to create a ["Feed"](/docs/proget/feeds/feed-overview) in ProGet to act as a private Python package repository, as well as covering how to create, publish, and install packages from this feed. This page provides instructions when using pip, however you can also integrate other tools such as [PipEnv and Poetry](/docs/proget/feeds/pypi/integrate-pypi-others) with your PyPI feeds. 
+In this article we will cover how to create a ["Feed"](/docs/proget/feeds/feed-overview) in ProGet to act as a private Conan package repository, as well as covering how to create, publish, and install packages from this feed.
 
-## Step 1: Create a New Feed
+## Step 1: Create a New Feed { #create-feed }
 
-To start with, we will create a feed to host your Python packages. In ProGet, select "Feeds" and "Create New Feed". Then, select "Python Packages" under "Developer Libraries".
+First, we will create a feed to host your Conan packages. In ProGet, select "Feeds" and "Create New Feed". Then, select "Conan Packages" under "Developer Libraries".
 
-![](/resources/docs/proget-pypi-createfeed.png){height="" width="50%"}
+![](){height="" width="50%"}
 
-Then select "No Connectors (Private packages only)" as we will be creating a private feed. Now name your feed. For this example we will call it `internal-pypi`.
+Then select "No Connectors (Private packages only)" as we will be creating a private feed. Now name your feed. For this example we will call it `internal-conan`.
 
-![](/resources/docs/proget-pypi-internal-namefeed.png){height="" width="50%"}
+![](){height="" width="50%"}
 
-You are then presented with several options. These relate to ProGet's [Vulnerability Scanning and Blocking](/docs/proget/sca/vulnerabilities) features, however they are only for users looking to use third party packages. Leave these boxes unchecked, and select [Set Feed Features]. You will then be redirected to your new `internal-pypi` feed, currently empty.
+You will then see options that relate to ProGet's [Vulnerability Scanning and Blocking](/docs/proget/sca/vulnerabilities) features, however as they are only for users looking to use third party packages, leave these boxes unchecked and select [Set Feed Features]. You will then be redirected to the newly created, empty `internal-conan` feed.
 
-![](/resources/docs/proget-pypi-internal-empty.png){height="" width="50%"}
+![](){height="" width="50%"}
 
-## Step 2: Create Your Python Package { #create-package }
+## Step 2: Create Your Conan Package { #create-package }
 
-Next, we will create our Python packages. You can follow the [official Python documentation](https://packaging.python.org/en/latest/tutorials/packaging-projects/) to learn more about creating these. Before you create a package you will need to have `setuptools` installed by running `pip install setuptools wheel`
+Next, we will create a Conan package. You can follow the tutorial in the [official Conan documentation](https://docs.conan.io/2/tutorial/consuming_packages/build_simple_cmake_project.html) to learn about creating these in more detail.
 
-To create a Python package you will need a folder with the necessary project files, including `setup.py`, `README.md`, and `__init__.py`. The a project structure will typically look like this:
+Navigate to your project directory, and create a file named `conanfile.py`. This will contain content similar to the following example:
 
-```plaintext
-my_package/
-│
-├── my_package/
-│   ├── __init__.py
-│   ├── python_module.py
+```python
+from conan import ConanFile
+from conan.tools.files import copy
+import os
 
-├── setup.py
-├── README.md
+class MyPackage(ConanFile):
+    name = "my_package"
+    version = "1.0"
+    settings = "os", "arch", "compiler", "build_type"
+    description = "A simple Conan package example"
+    license = "MIT"
+    author = "Your Name <youremail@example.com>"
+    url = "https://example.com"
+    topics = ("example", "conan", "tutorial")
+
+    def package(self):
+        src = os.path.join(self.source_folder, "src")
+        dst = os.path.join(self.package_folder, "include")
+        copy(self, "*", src=src, dst=dst)
+
+    def package_info(self):
+        self.cpp_info.includedirs = ["include"]
 ```
 
-Then build your package by navigating to the directory containing `setup.py` and entering:
+Then create a sub directory named `src` and place your project files here.
+
+Finally, run the following command to export your package to the local cache:
 
 ```bash
-python setup.py sdist bdist_wheel  
+$ conan create . --name=my_package --version=1.0
 ```
-
-This will create two directories: `dist/` and `build/`, with `.tar.gz` (e.g. `my_package-1.0.0.tar.gz`) and `.whl` (e.g. `my_package-1.0.0-py3-none-any.whl`)files inside `dist/`.
 
 ## Step 3: Create an API Key
 
@@ -58,12 +71,34 @@ When creating an API Key, fill in the fields by selecting "Feeds (Use Certain Fe
 
 ![New Key](/resources/docs/proget-pypi-api.png){height="" width="50%"}
 
-## Step 4: Upload Your Package to ProGet { #upload-package }
+## Step 4: Configure Your Conan Feed as a Remote { #add-feed }
+
+To upload packages to `internal-conan` feed (as well as install any packages uploaded to it), you will need to add it as a remote using the [`conan remote add`](https://docs.conan.io/1/reference/commands/misc/remote.html) command. 
+
+```bash
+$ conan remote add internal-conan https://proget.corp.local/conan/internal-conan/
+```
+
+If you are using a self-signed certificate with ProGet, you will also need to add the `--insecure` argument:
+
+```bash
+$ conan remote add internal-conan https://proget.corp.local/conan/internal-conan/ --insecure
+```
+
+### Recommended: Removing Conan Center as a Remote
+
+By default the Conan client will have [Conan Center](https://center.conan.io) configured as a remote unless you explicitly disable it. We recommend disabling Conan Center to make sure all requests are exclusively made to your `internal-conan` feed. 
+
+```bash
+$ conan remote disable conancenter
+```
+
+## Step 5: Upload Your Package to ProGet { #upload-package }
 
 To publish your Conan package to your `internal-conan` ProGet feed, use the [`conan upload`](https://docs.conan.io/1/reference/commands/creator/upload.html) command:
 
 ```bash
-$ conan upload -r «remote-name» «package-name»
+$ conan upload -r internal-conan my_package
 ```
 
 :::(info)(Uploading Packages)
@@ -74,9 +109,25 @@ Your package will then be uploaded to ProGet:
 
 ![](){height="" width="50%"}
 
-## Step 5: Using your Conan Feed as a Source to Install Packages
+## Step 6: Using your Conan Feed as a Remote to Install Packages
 
+:::(warn)(Build Profile)
+Before installing packages you will need to configure a build profile. You can create a default profile with the [`conan profile detect`(https://docs.conan.io/2/reference/commands/profile.html)] command or specify your own profile with `--profile:build=«myprofile»`
+:::
 
+To install Conan packages from your `internal-conan` feed, use the [`install`](https://docs.conan.io/1/reference/commands/consumer/install.html) command:
+
+```bash
+$ conan install --requires=mypackage/1.2.3 -r=internal-conan
+```
+
+### Installing with Conan 1.x
+
+Installing packages with Conan version 1.x requires slightly different syntax when installing packages:
+
+```bash
+$ conan install mypackage/1.2.3@
+```
 
 ## (Optional) Installing Packages from an Authenticated Feed
 By default, your `internal-conan` feed is configured so that packages can be installed from it anonymously. However, if you have set up authentication for your feed, you will need to [authenticate to it](/docs/proget/feeds/pypi#authenticating-to-a-pypi-feed). You can use a ProGet `username` and `password`, however we highly recommend [Creating a ProGet API Key](/docs/proget/reference-api/proget-apikeys) for authentication, using `api` as the username and the API key as the password. 
