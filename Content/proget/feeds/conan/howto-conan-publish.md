@@ -1,5 +1,5 @@
 ---
-title: "HOWTO: Create a Private Repository for Conan Packages in ProGet"
+title: "HOWTO: Create and Publish Conan Packages to a Private Repository in ProGet"
 order: 2
 ---
 
@@ -87,7 +87,7 @@ $ conan remote add internal-conan https://proget.corp.local/conan/internal-conan
 
 ### Recommended: Removing Conan Center as a Remote
 
-By default the Conan client will have [Conan Center](https://center.conan.io) configured as a remote unless you explicitly disable it. We recommend disabling Conan Center to make sure all requests are exclusively made to your `internal-conan` feed. 
+By default the Conan client will have [Conan Center](https://center.conan.io) configured as a remote unless you explicitly disable it. We recommend disabling Conan Center to make sure all requests are exclusively made to your `internal-conan` feed, and developers aren't installing packages directly from Conan Center. 
 
 ```bash
 $ conan remote disable conancenter

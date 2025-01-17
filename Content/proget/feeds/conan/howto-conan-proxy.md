@@ -47,7 +47,7 @@ $ conan remote add public-conan https://proget.corp.local/conan/public-conan/ --
 
 ### Recommended: Removing Conan Center as a Remote
 
-Even after adding your `public-conan` feed as a remote, the Conan client will still use [Conan Center](https://center.conan.io) unless you explicitly disable it. We recommend disabling Conan Center to make sure all requests are proxied through your ProGet feed. 
+Even after adding your `public-conan` feed as a remote, the Conan client will still use [Conan Center](https://center.conan.io) unless you explicitly disable it. This would allow developers to still install packages directly from Conan Center. We recommend disabling Conan Center to make sure all requests are proxied through your ProGet feed. 
 
 ```bash
 $ conan remote disable conancenter
