@@ -1,79 +1,40 @@
 ---
-title: "HOWTO: Proxy Packages from PyPI.org in ProGet"
+title: "HOWTO: Proxy Recipes from Conan Center in ProGet"
 order: 1
 ---
 
-ProGet lets you create ["Feeds"](/docs/proget/feeds/feed-overview) to proxy packages from The Python Package Index ([PyPI](https://pypi.org/)) and install them just as you would when installing them from PyPI directly. 
+ProGet lets you create ["Feeds"](/docs/proget/feeds/feed-overview) to proxy [Conan](https://conan.io) packages from [Conan Center](https://center.conan.io). This feed can then be configured as a remote locally, allowing you to install Conan packages as you would when installing them directly from Conan Center.
 
-Using ProGet as a proxy will let you [assess vulnerabilities](#scan-feed) in PyPI packages, tell you which packages are being downloaded and used frequently, and cache packages, allowing teams to access them even if PyPI is down.
+Using ProGet as a proxy will let you [assess vulnerabilities](#scan-feed) in Conan packages, provide statistics on which packages are being downloaded and used frequently, and also cache packages to ProGet, allowing your team to access and install them even if Conan Center is experiencing network issues.
 
-This article will look at how to set up a feed in ProGet to proxy PyPI packages, as well as how to create a private repository for your internal Python packages. The PyPI commands on this page use [pip](https://pip.pypa.io/), however you can also integrate other tools such as [PipEnv and Poetry](/docs/proget/feeds/pypi/integrate-pypi-others) with your PyPI feeds. 
-
+This page will explain how to set up a Conan feed in ProGet to proxy packages. It will also cover how to create a private repository for your internal Conan packages.
 
 ## Step 1: Create a New Feed { #create-feed }
 
-To begin, we will create a PyPI feed that will proxy Python packages from [PyPI](https://pypi.org/). Select "Feeds" and "Create New Feed". Next, select "Python Packages" under "Developer Libraries".
+First, you will need to create a Conan feed that will proxy Conan packages from [Conan Center](https://center.conan.io). Select "Feeds" and "Create New Feed". Next, select "Conan Packages" under "Developer Libraries".
 
-![](/resources/docs/proget-pypi-createfeed.png){height="" width="50%"}
+![](){height="" width="50%"}
 
-Now select "Connect to PyPI.org" which will allow us to proxy packages from PyPI.
+Now select "Connect to conan.io" which will allow us to proxy packages from Conan Center.
 
-![](/resources/docs/proget-pypi-connectors.png){height="" width="50%"}
+![](){height="" width="50%"}
 
-Then select "No, Create One Feed", as we will be creating a single feed to proxy PyPI packages. From here, name the feed (we will call it `public-pypi` for this example). Then click "Create Feed".
+Then select "No, Create One Feed", as we will be creating a single feed to proxy Conan packages. From here, name the feed (in this example, we've called it `public-conan`). Then click "Create Feed".
 
-![](/resources/docs/proget-pypi-public-namefeed.png){height="" width="50%"}
+![](){height="" width="50%"}
 
-The next several options will let your feed use ProGet's [Vulnerability Scanning and Blocking](/docs/proget/sca/vulnerabilities) amd [Licensing Detection and Blocking](https://docs.inedo.com/docs/proget/sca/licenses) features, letting you assess vulnerabilities and create policies for licenses. Select "Set Feed Features", which will create the feed, and redirect you to the newly created `public-pypi` feed, which will list packages proxied from PyPI.
+You'll then be given options to configure ProGet's [Vulnerability Scanning and Blocking](/docs/proget/sca/vulnerabilities) and [Licensing Detection and Blocking](https://docs.inedo.com/docs/proget/sca/licenses) features, letting you assess vulnerabilities and create policies for licenses. Select "Set Feed Features", which will create the feed, and redirect you to the newly created `public-conan` feed.
 
-![](/resources/docs/proget-pypi-public-feed.png){height="" width="50%"}
+![](){height="" width="50%"}
 
-## Step 2: Using the Feed in Python Clients { #add-feed }
-
-To let your teams use the `public-pypi` feed when installing packages you can either include it when running the `pip install` command, or set it globally with the `pip config` command. You can also add it if using [PipEnv or Poetry](/docs/proget/feeds/pypi/integrate-pypi-others#add-source).
-
-### Using `pip config`
-
-To set your `public-pypi` feed globally as a default source for all installations, you can store it in the [pip config](https://pip.pypa.io/en/stable/topics/configuration/) file. Use the [pip config](https://pip.pypa.io/en/stable/cli/pip_config/) command with a `--global` parameter containing your `public-pypi` endpoint URL.
-
-```bash
-$ pip config --global set global.index-url https://«proget-server»/pypi/public-pypi/simple
-```
-
-:::(info) (💡 Example:)
-If globally setting the `public-pypi` feed on the server `proget.corp.local` you would enter:
-```bash
-$ pip config --global set global.index-url https://proget.corp.local/pypi/public-pypi/simple 
-```
+:::(Info)(Conan Feeds & Connectors)
+ProGet feeds configured with a connector will normally list packages proxied from an external source. However, Conan connectors do not support listing proxied recipes. Once you configure your Conan client to proxy all requests through this ProGet feed, you will start seeing cached recipes and packages.
 :::
 
-This command will generate a `pip config` file that looks like:
+## Step 2: Add the Feed as a Remote to Your Conan Client { #add-feed }
 
-```bash
-[global]
-index-url = https://proget.corp.local/pypi/public-pypi/simple 
-```
+To let your teams use the `public-conan` feed when installing packages, you will need to add it as a remote using the conan `remote add` command. 
 
-::: (Info) (Note: Scoping)
-The `pip config` can be scoped to global (`--global`), user (`--user`), and to the environment (`--site`). The commands above are scoped to the global scope.
-:::
-
-### Using `pip install`
-
-You can also use `pip install` for one-off package installations. However, as it is not persistent, you'll need to enter your `public-pypi` feed URL for every installation. For a more long-term setup, it's better to use a [pip config](https://pip.pypa.io/en/stable/topics/configuration/) file.
-
-To install Python packages with the `pip install` command, you will need to add a `--extra-index-url` parameter containing the endpoint URL of your `public-pypi` feed:
-
-```bash
-$ pip install «package-name»==«package-version» --extra-index-url https://«proget-server»/pypi/public-pypi/simple
-```
-
-:::(info) (Example:)
-If installing `Flask 2.3.3` from a your `public-pypi` feed on the server `proget.corp.local`, your command would look like this:
-```bash
-$ pip install flask==2.3.3 --extra-index-url proget.corp.local -i https://proget.corp.local/pypi/public-pypi/simple
-```
-:::
 
 ## (Optional) Authenticating to Your PyPI Feed
 
