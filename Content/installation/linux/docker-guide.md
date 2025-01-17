@@ -39,8 +39,8 @@ Once you have an SQL Server instance running, you'll need to create an empty dat
 To create a database called `ProGet` on the SQL Server instance running in the **inedo-sql** container:
 
 ```Shell
-docker exec -it inedo-sql /opt/mssql-tools/bin/sqlcmd \
-  -S localhost -U SA -P '«YourStrong!Passw0rd»' \
+docker exec -it inedo-sql /opt/mssql-tools18/bin/sqlcmd \
+  -C -S localhost -U SA -P '«YourStrong!Passw0rd»' \
   -Q 'CREATE DATABASE [ProGet] COLLATE SQL_Latin1_General_CP1_CI_AS'
 ```
 
