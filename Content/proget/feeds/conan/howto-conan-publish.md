@@ -11,15 +11,15 @@ In this article we will cover how to create a ["Feed"](/docs/proget/feeds/feed-o
 
 First, we will create a feed to host your Conan packages. In ProGet, select "Feeds" and "Create New Feed". Then, select "Conan Packages" under "Developer Libraries".
 
-![](){height="" width="50%"}
+![](/resources/docs/proget-conan-selectconan.png){height="" width="50%"}
 
 Then select "No Connectors (Private packages only)" as we will be creating a private feed. Now name your feed. For this example we will call it `internal-conan`.
 
-![](){height="" width="50%"}
+![](/resources/docs/proget-conan-nameinternal.png){height="" width="50%"}
 
 You will then see options that relate to ProGet's [Vulnerability Scanning and Blocking](/docs/proget/sca/vulnerabilities) features, however as they are only for users looking to use third party packages, leave these boxes unchecked and select [Set Feed Features]. You will then be redirected to the newly created, empty `internal-conan` feed.
 
-![](){height="" width="50%"}
+![](/resources/docs/proget-conan-emptyinternal.png){height="" width="50%"}
 
 ## Step 2: Create Your Conan Package { #create-package }
 
@@ -69,7 +69,7 @@ While you _can_ authenticate with a ProGet username and password, we highly reco
 
 When creating an API Key, fill in the fields by selecting "Feeds (Use Certain Feeds)" as the "Feed Type" and selecting the `internal-conan` feed. Then set the API key. You can use any alphanumeric sequence, or just leave it blank to autogenerate one. Ensure that the "View/Download" and "Add/Repackage" boxes are checked, and then select "Save".
 
-![](){height="" width="50%"}
+![](/resources/docs/proget-conan-api-internal.png){height="" width="50%"}
 
 ## Step 4: Configure Your Conan Feed as a Remote { #add-feed }
 
@@ -107,7 +107,7 @@ Packages can only be uploaded to ProGet using the Conan CLI due to the complexit
 
 Your package will then be uploaded to ProGet:
 
-![](){height="" width="50%"}
+![](/resources/docs/proget-conan-internalpackage.png){height="" width="50%"}
 
 ## Step 6: Using your Conan Feed as a Remote to Install Packages
 
