@@ -3,7 +3,7 @@ title: "HOWTO: Create and Publish Conan Packages to a Private Repository in ProG
 order: 2
 ---
 
-ProGet lets you set up private repositories for your [Conan](https://conan.io) packages, allowing you to upload them from a local source, store, and install them internally.
+ProGet lets you set up private repositories for your [Conan](https://conan.io) recipes/packages, allowing you to upload them from a local source, store, and install them internally.
 
 In this article we will cover how to create a ["Feed"](/docs/proget/feeds/feed-overview) in ProGet to act as a private Conan package repository, as well as covering how to create, publish, and install packages from this feed.
 
@@ -73,7 +73,7 @@ When creating an API Key, fill in the fields by selecting "Feeds (Use Certain Fe
 
 ## Step 4: Configure Your Conan Feed as a Remote { #add-feed }
 
-To upload packages to `internal-conan` feed (as well as install any packages uploaded to it), you will need to add it as a remote using the [`conan remote add`](https://docs.conan.io/1/reference/commands/misc/remote.html) command. 
+To upload packages to `internal-conan` feed from your Conan V2 client (as well as install any packages uploaded to it), you will need to add it as a remote using the [`conan remote add`](https://docs.conan.io/1/reference/commands/misc/remote.html) command. 
 
 ```bash
 $ conan remote add internal-conan https://proget.corp.local/conan/internal-conan/
@@ -112,21 +112,13 @@ Your package will then be uploaded to ProGet:
 ## Step 6: Using your Conan Feed as a Remote to Install Packages
 
 :::(warn)(Build Profile)
-Before installing packages you will need to configure a build profile. You can create a default profile with the [`conan profile detect`](https://docs.conan.io/2/reference/commands/profile.html) command or specify your own profile with `--profile:build=«myprofile»`
+Before installing packages you will need to configure a build profile in your Conan V2 client. You can create a default profile with the [`conan profile detect`](https://docs.conan.io/2/reference/commands/profile.html) command or specify your own profile with `--profile:build=«myprofile»`
 :::
 
 To install Conan packages from your `internal-conan` feed, use the [`install`](https://docs.conan.io/1/reference/commands/consumer/install.html) command:
 
 ```bash
 $ conan install --requires=mypackage/1.2.3 -r=internal-conan
-```
-
-### Installing with Conan 1.x
-
-Installing packages with Conan version 1.x requires slightly different syntax when installing packages:
-
-```bash
-$ conan install mypackage/1.2.3@
 ```
 
 ## (Optional) Installing Packages from an Authenticated Feed

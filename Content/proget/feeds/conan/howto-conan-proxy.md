@@ -3,7 +3,7 @@ title: "HOWTO: Proxy Recipes from Conan Center in ProGet"
 order: 1
 ---
 
-ProGet lets you create ["Feeds"](/docs/proget/feeds/feed-overview) to proxy [Conan](https://conan.io) packages from [Conan Center](https://center.conan.io). This feed can then be configured as a remote locally, allowing you to install Conan packages as you would when installing them directly from Conan Center.
+ProGet lets you create ["Feeds"](/docs/proget/feeds/feed-overview) to proxy [Conan](https://conan.io) recipes from [Conan Center](https://center.conan.io). This feed can then be configured as a remote locally, allowing you to install Conan recipes/packages as you would when installing them directly from Conan Center.
 
 Using ProGet as a proxy will let you [assess vulnerabilities](/docs/proget/sca/vulnerabilities) in Conan packages, provide statistics on which packages are being downloaded and used frequently, and also cache packages to ProGet, allowing your team to access and install them even if Conan Center is experiencing network issues.
 
@@ -31,7 +31,7 @@ You'll then be given options to configure ProGet's [Vulnerability Scanning and B
 ProGet feeds configured with a connector will normally list packages proxied from an external source. However, Conan connectors do not support listing proxied recipes. Once you configure your Conan client to proxy all requests through this ProGet feed, you will start seeing cached recipes and packages.
 :::
 
-## Step 2: Configure the Feed as a Remote in Your Conan Client { #add-feed }
+## Step 2: Configure the Feed as a Remote in Your Conan V2 Client { #add-feed }
 
 To let your teams use the `public-conan` feed when installing packages, you will need to add it as a remote using the [`conan remote add`](https://docs.conan.io/1/reference/commands/misc/remote.html) command. 
 
@@ -63,14 +63,6 @@ To install Conan packages from your `public-conan` feed, use the [`install`](htt
 
 ```bash
 $ conan install --requires=mypackage/1.2.3 -r=public-conan
-```
-
-### Installing with Conan 1.x
-
-Installing packages with Conan version 1.x requires slightly different syntax when installing packages:
-
-```bash
-$ conan install mypackage/1.2.3@
 ```
 
 ### Cached Packages in ProGet
