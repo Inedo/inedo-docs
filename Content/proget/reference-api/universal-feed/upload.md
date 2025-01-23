@@ -1,22 +1,34 @@
 ---
-title: "Upload Universal Package"
+title: "Create/Upload Universal Package"
 order: 2
 ---
 
-*Upload Universal Package* is an endpoint in [ProGet's Universal Feed API](/docs/proget/reference-api/universal-feed) that will add or replace a package in a feed.
+*Create/Upload Universal Package* is an endpoint in [ProGet's Universal Feed API](/docs/proget/reference-api/universal-feed) that will add or replace a package in a feed.
 
 There are quite a few ways to access this endpoint, but the end result is the same. Because there are so many permutations of how you can use this, it's easiest to specify the various options and behaviors instead.
 
 First and foremost, consider that a complete package consists of required metadata and content (arbitrary files and directories). This endpoint is designed to allow you to upload a complete, pre-built package, or upload a partial package with content and metadata you specified using path, query, form-encoded, and/or JSON parameters.
 
-:::(Info) (🚀 Quick Example: Uploading a package with Curl)
-This example uploads a package `myUniversalPackage`, to the feed `myUniversalFeed`, authenticating with the API key `abc12345`:
+:::(Info) (🚀 Quick Example: Uploading a Universal Package with Curl)
+This example uploads a Universal Package `myUniversalPackage`, to the feed `myUniversalFeed`, authenticating with the API key `abc12345`:
 
 ````
-curl -X POST -H "Content-Type: application/zip" --header "X-ApiKey: abc12345" --data-binary "@C:\Proget\MyUniversalPackage-1.2.3.upack" "https://proget.corp.local/upack/universal-feed/upload"
+curl -X POST -H "X-ApiKey: abc12345" http://192.168.0.127:8624/upack/universal/upload --upload-file C:\Inedo\TaxCalculator-2401.5.150.upack
 ````
 :::
 
+### Creating a Universal Package from `.zip` or `.tgz`
+
+This endpoint can also be used to take an archive in .zip or .tgz format, convert it to a Universal Package and upload it to ProGet. The metadata for this package will be created based on the parameters set.
+
+:::(Info) (🚀 Quick Example: Creating and Uploading a Universal Package with Curl)
+This example will convert a .zip of artifacts artifacts.zip to a Universal Package `myUniversalPackage 1.2.3` and then upload it to the feed `myUniversalFeed`, authenticating with the API key `abc12345`:
+
+```
+curl -X POST -H "Content-Type: application/zip" -H "X-ApiKey: abc12345" --data-binary "@C:\Proget\artifacts.zip" "https://proget.corp.local/upack/universal-feed/upload?name=myUniversalPackag&version=1.2.3"
+```
+
+:::
 ### Content Type
 The Content-Type header can be any of the following:
 

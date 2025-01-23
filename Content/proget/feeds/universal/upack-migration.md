@@ -65,15 +65,15 @@ Now you can use the UI to either drag and drop or select files.
 
 Selecting "Create Package" will then create the Universal Package and upload it to your Universal feed.
 
-### Creating a Universal Package Through the Universal Package API
+### Creating a Universal Package with the Universal Package API
 
-The [Upload Universal Packages](/docs/proget/reference-api/universal-feed/upload) endpoint in the [Universal Feed API](/docs/proget/reference-api/universal-feed) let's you create Universal Packages by packaging files located in a specified directory. To use this, you will need to create an [API Key](/docs/proget/reference-api/proget-apikeys) with appropriate permissions.
+The [Upload Universal Packages](/docs/proget/reference-api/universal-feed/upload) endpoint in the [Universal Feed API](/docs/proget/reference-api/universal-feed) let's you create Universal Packages by converting a `.zip` or `.tgz` of artifacts and auto-generating the metadata `upack.json` based on parameters set. To use this, you will need to create an [API Key](/docs/proget/reference-api/proget-apikeys) with appropriate permissions.
 
+To create a Universal Package, first archive your artifacts into either a `.zip` or `.tgz`. Then, simply `POST` to the `/upack/«feed-name»/upload` endpoint with the `application/zip content` type. 
 
-:::(internal) (Needs to be fixed)
-To create a package, simply `POST` to the `/upack/«feed-name»/upload` endpoint. For example, to upload the contents of `home/user/upacks/` as a Universal Package, to the feed `universal-feed`, authenticating with the API key `abc12345`:
+For example, to upload the contents of `home/user/upacks.zip` as a Universal Package `MyPackage` version `1.2.3`, to the feed `universal-feed`, authenticating with the API key `abc12345`:
 
 ```bash
-$ curl -X POST "http://«proget-url»/upack/«feed-name»/upload?name=NewPack&version=1.0.0" -F upload=«path-to-zip»
+$ curl -X POST -H "Content-Type: application/zip" -H "X-ApiKey: abc12345" --data-binary "home/user/upacks.zip" "http://proget.corp.local/upack/universal/upload?name=MyPackage&version=1.2.3"
 ```
 :::

@@ -18,6 +18,9 @@ The `packages download` command is used to list files and folders in an asset di
 
 The `--package` and `--version` options are always required. The `--feed` option is required if there is no default feed configured.
 
+You may request the latest stable version by specifying `latest` or `latest-stable` in the `--version` option, or
+the latest version (including unstable) by specifying `latest-unstable`.
+
 Additional options may be required depending on the package type. If a required option is missing, an error will be returned indicating the missing option.
 
 **Downloading a NuGet Package** requires the package (e.g. `myNugetPackage`) and version (e.g. `1.2.3`):
