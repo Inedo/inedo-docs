@@ -36,7 +36,6 @@ class MyPackage(ConanFile):
 
     name = "mypackage"
     version = "1.2.3"
-
     settings = "os", "arch", "compiler", "build_type"
     description = "A simple Conan package example"
     license = "MIT"
