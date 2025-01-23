@@ -33,8 +33,8 @@ from conan.tools.files import copy
 import os
 
 class MyPackage(ConanFile):
-    name = "my_package"
-    version = "1.0"
+    name = "mypackage"
+    version = "1.2.3"
     settings = "os", "arch", "compiler", "build_type"
     description = "A simple Conan package example"
     license = "MIT"
@@ -56,7 +56,7 @@ Then create a sub directory named `src` and place your project files here.
 Finally, run the following command to export your package to the local cache:
 
 ```bash
-$ conan create . --name=my_package --version=1.0
+$ conan create . --name=mypackage --version=1.2.3
 ```
 
 ## Step 3: Create an API Key

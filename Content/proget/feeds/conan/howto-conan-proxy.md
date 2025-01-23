@@ -31,9 +31,9 @@ You'll then be given options to configure ProGet's [Vulnerability Scanning and B
 ProGet feeds configured with a connector will normally list packages proxied from an external source. However, Conan connectors do not support listing proxied recipes. Once you configure your Conan client to proxy all requests through this ProGet feed, you will start seeing cached recipes and packages.
 :::
 
-## Step 2: Configure the Feed as a Remote in Your Conan V2 Client { #add-feed }
+## Step 2: Configure the Feed as a Remote { #add-feed }
 
-To let your teams use the `public-conan` feed when installing packages, you will need to add it as a remote using the [`conan remote add`](https://docs.conan.io/1/reference/commands/misc/remote.html) command. 
+To let your teams use the `public-conan` feed when installing packages from their Conan V2 client, you will need to add it as a remote using the [`conan remote add`](https://docs.conan.io/1/reference/commands/misc/remote.html) command. 
 
 ```bash
 $ conan remote add public-conan https://proget.corp.local/conan/public-conan/
