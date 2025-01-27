@@ -83,3 +83,6 @@ Many clients will never support Integrated Windows Authentication, which means t
 ### TIP: Configure a Service Principal Name
 
 You may need to configure a [Service Principal Name](https://docs.microsoft.com/en-us/windows/win32/ad/service-principal-names); Windows is supposed to do this automatically for you when you set up a DNS name, but you may need to use the [`setspn` tool](https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/cc731241(v%3Dws.11)).
+
+## Integrated Authentication Not Working
+See [Troubleshooting Integrated Authentication](/docs/installation/security-ldap-active-directory/various-ldap-integrated-authentication#troubleshooting)
