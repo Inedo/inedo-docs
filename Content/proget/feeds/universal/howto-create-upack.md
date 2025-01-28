@@ -39,10 +39,12 @@ Your package will now be uploaded to your `internal-universal` feed.
 
 ![](/resources/docs/proget-upack-feed-uploaded.png){height="" width="50%"}
 
-### Alternative: Creating with CLI
 
-Instead of creating a Universal Package through the UI, you can also use one of the following tools:
+### Alternative to Creating Universal Packages
 
+Instead of creating a Universal Package using pgutil, you can also use one of the following methods:
+
+- The ProGet UI: Packages can be created by navigating to your `internal-universal` feed and selecting "Add Package" from the drop-down menu.
 - [`upack`](https://github.com/Inedo/upack/releases): A cross-platform command-line tool to create and install universal packages
 - [`Inedo.UPack`](https://www.nuget.org/packages/Inedo.UPack): A .NET library to create, read, and install packages on a server
 
@@ -70,3 +72,5 @@ When downloading a Universal Package, you have two possible options:
 Both can be performed by navigating to the Universal Package's page and selecting either "Download Package" or "Download Contents as Zip". 
 
 ![](/resources/docs/proget-upack-package-download.png){height="" width="50%"}
+
+## Step 5: Installing a Universal Package
