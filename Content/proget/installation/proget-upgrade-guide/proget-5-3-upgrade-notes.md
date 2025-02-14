@@ -59,7 +59,7 @@ As of ProGet 5.3, PostgreSQL is no longer supported as a database engine. ProGet
 **Impact:** Any installation using PostgreSQL will need to be [migrated to SQL Server](/docs/proget/feeds/feed-overview/proget-administration-migrating-a-proget-feed) prior to the upgrade.
 
 #### Breaking Change: NuGet (Quirks) Feed Removed
-NuGet "Quirks" feeds have been _deprecated_ beginning with ProGet 5.0. In ProGet 5.3, Quirks feeds have been removed. You will need to [migrate your NuGet Quirks feeds](/docs/proget/feeds/nuget#legacy) prior upgrading to 5.3.
+NuGet "Quirks" feeds have been _deprecated_ beginning with ProGet 5.0. In ProGet 5.3, Quirks feeds have been removed. You will need to [migrate your NuGet Quirks feeds](/docs/proget/feeds/nuget/legacy-nuget#legacy-quirks-nuget-feeds) prior upgrading to 5.3.
 
 **Impact:** Any NuGet Quirks feeds that have not been migrated, will cause the upgrade to fail.
 
