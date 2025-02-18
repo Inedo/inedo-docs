@@ -112,14 +112,14 @@ Use a local `dotnet tool` action to run `pgutil` on Windows and Linux build agen
 3. Commit a dotnet tool manifest
    1. At the root of your repository, run `dotnet new tool-manifest` (see [Microsoft's dotnet local tool](https://docs.microsoft.com/en-us/dotnet/core/tools/local-tools-how-to-use#create-a-manifest-file) documentation for more information)
    2. Commit this to your git repository
-4. Add .NET 6.0 in your pipeline
+4. Add .NET 8.0 in your pipeline
    - If you are already using dotnet 6 in your pipeline, go to the next step.
    - Add the following to your workflow:
     ```yaml
     - task: UseDotNet@2
       inputs:
         packageType: 'sdk'
-        version: '6.0.x'
+        version: '8.0.x'
     ```
     - This can be added anywhere before the `pgutil` steps, but is typically added at the beginning
 4. Add the `pgutil` steps after build/publish steps of your code
@@ -141,14 +141,14 @@ Use a local `dotnet tool` action to run `pgutil` on Windows and Linux build agen
 2. Commit a dotnet tool manifest
    1. At the root of your repository, run `dotnet new tool-manifest` (see [Microsoft's local tool](https://docs.microsoft.com/en-us/dotnet/core/tools/local-tools-how-to-use#create-a-manifest-file) documentation for more information)
    2. Commit this to your git repository
-3. Setup .NET 6.0 in your workflow
+3. Setup .NET 8.0 in your workflow
    - If you are already using dotnet 6 in your workflow, go to the next step.
    - Add the following to your workflow:
     ```yaml
         - name: Setup .NET
           uses: actions/setup-dotnet@v2
           with:
-            dotnet-version: 6.0.x
+            dotnet-version: 8.0.x
     ```
     - This can be added anywhere before the `pgutil` steps, but is typically added at the beginning
 4. Add the `pgutil` steps after build/publish steps of your code
