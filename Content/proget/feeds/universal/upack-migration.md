@@ -53,7 +53,7 @@ In order to host your Universal Packages, you will need to create a Universal Fe
 
 From here, select "No Connectors", and then name your feed. Finally select "Create Feed".
 
-### Creating a Universal Package with the Universal Package API
+### Creating a Universal Package from Artifacts
 
 The the [pgutil](https://docs.inedo.com/docs/proget/reference-api/proget-pgutil) CLI tool let's you create Universal Packages by taking artifacts at a specified location, packing them into a `.upack`, and auto-generating the metadata `upack.json` based on parameters set. To use this, you will need to create an [API Key](/docs/proget/reference-api/proget-apikeys) with appropriate permissions. You can then specify this key when [configuring pgutil](/docs/proget/reference-api/proget-pgutil#sources) with a source.
 
