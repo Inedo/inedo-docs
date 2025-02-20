@@ -25,16 +25,16 @@ Now select "Create Feed". You will be directed to your new Universal Feed, curre
 
 To create and upload a Universal Package, you can use the [pgutil](https://docs.inedo.com/docs/proget/reference-api/proget-pgutil) CLI tool in combination with the [Upload Universal Packages](/docs/proget/reference-api/universal-feed/upload) endpoint in the [Universal Feed API](/docs/proget/reference-api/universal-feed). pgutil will require some [minor configuration](/docs/proget/reference-api/proget-pgutil#sources) before use. 
 
-Creating a package can be done using the `upack create` command. For example, if creating the package `myPackage` version `1.2.3` from files located in `C:\Inedo\UniversalPackageFiles\MyPackage`, and creating it in the directory `C:\Inedo\UniversalPackages`, you would enter:
+Creating a package can be done using the `upack create` command. For example, if creating the package `myPackage` version `1.2.3` from files located in `.\package-files\myPackage`, and creating it in the directory `.\universal-packages`, you would enter:
 
 ```bash
-$ pgutil upack create --name=myPackage --version=1.0.1 --source-directory=C:\Inedo\UniversalPackageFiles\myPackage --target-directory=C:\Inedo\UniversalPackages
+$ pgutil upack create --name=myPackage --version=1.0.1 --source-directory=.\package-files\myPackage --target-directory=.\universal-packages
 ```
 
 Once your package is created, use the [Upload Universal Packages](/docs/proget/reference-api/universal-feed/upload) to upload it to your `internal-universal` feed:
 
 ```bash
-$ curl -X POST -H "X-ApiKey: abv12345" http://proget.corp.local/upack/internal-universal/upload --upload-file C:\Inedo\UniversalPackages\myPackage-1.0.1.upack
+$ curl -X POST -H "X-ApiKey: abc12345" http://proget.corp.local/upack/internal-universal/upload --upload-file .\universal-packages\myPackage-1.0.1.upack
 ```
 
 Your package will now be uploaded to your `internal-universal` feed. 
@@ -89,7 +89,7 @@ Both can be performed by navigating to the Universal Package's page and selectin
 You can use [pgutil](https://docs.inedo.com/docs/proget/reference-api/proget-pgutil) to locally install Universal Packages using the `upack install` command. This will install the files to the specified location and create an entry in the Universal Package Registry:
 
 ```bash
-$ pgutil upack install --package=myPackage --version=1.0.1 --feed=internal-universal --target=C:\Inedo\UniversalPackages\MyPackage
+$ pgutil upack install --package=myPackage --version=1.0.1 --feed=internal-universal --target=.\universal-packages\myPackage
 ```
 
 The Universal Package Registry is a local system that will track and manage installed Universal Packages, creating a record of metadata like package name, version, installation date, installation path and the person that installed it. You can read more about the Universal Package Registry it on the [Universal Feeds & Packages](/docs/proget/feeds/universal#upack-registry) page.
