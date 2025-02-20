@@ -23,7 +23,27 @@ Now select "Create Feed". You will be directed to your new Universal Feed, curre
 
 ## Step 2: Create a Universal Package
 
-To create and upload a Universal Package, navigate to your `internal-universal` feed, and select "Add Package" from the drop-down menu.
+To create and upload a Universal Package, you can use the [pgutil](https://docs.inedo.com/docs/proget/reference-api/proget-pgutil) CLI tool in combination with the [Upload Universal Packages](/docs/proget/reference-api/universal-feed/upload) endpoint in the [Universal Feed API](/docs/proget/reference-api/universal-feed). pgutil will require some [minor configuration](/docs/proget/reference-api/proget-pgutil#sources) before use. 
+
+Creating a package can be done using the `upack create` command. For example, if creating the package `myPackage` version `1.2.3` from files located in `.\package-files\myPackage`, and creating it in the directory `.\universal-packages`, you would enter:
+
+```bash
+$ pgutil upack create --name=myPackage --version=1.0.1 --source-directory=.\package-files\myPackage --target-directory=.\universal-packages
+```
+
+Once your package is created, use the [Upload Universal Packages](/docs/proget/reference-api/universal-feed/upload) to upload it to your `internal-universal` feed:
+
+```bash
+$ curl -X POST -H "X-ApiKey: abc12345" http://proget.corp.local/upack/internal-universal/upload --upload-file .\universal-packages\myPackage-1.0.1.upack
+```
+
+Your package will now be uploaded to your `internal-universal` feed. 
+
+![](/resources/docs/proget-upack-feed-uploaded.png){height="" width="50%"}
+
+### Alternative: ProGet UI
+
+Instead of using pgutil, you can use the ProGet UI to create and upload a package. Navigate to your `internal-universal` feed, and select "Add Package" from the drop-down menu.
 
 ![](/resources/docs/proget-upack-feed-addpackage.png){height="" width="50%"}
 
@@ -38,13 +58,6 @@ Now you can select the files you wish to bundle into the Universal Package eithe
 Your package will now be uploaded to your `internal-universal` feed. 
 
 ![](/resources/docs/proget-upack-feed-uploaded.png){height="" width="50%"}
-
-### Alternative: Creating with CLI
-
-Instead of creating a Universal Package through the UI, you can also use one of the following tools:
-
-- [`upack`](https://github.com/Inedo/upack/releases): A cross-platform command-line tool to create and install universal packages
-- [`Inedo.UPack`](https://www.nuget.org/packages/Inedo.UPack): A .NET library to create, read, and install packages on a server
 
 ## Step 3: (Optional) Editing Your Universal Package
 
@@ -70,3 +83,19 @@ When downloading a Universal Package, you have two possible options:
 Both can be performed by navigating to the Universal Package's page and selecting either "Download Package" or "Download Contents as Zip". 
 
 ![](/resources/docs/proget-upack-package-download.png){height="" width="50%"}
+
+## Step 5: Installing a Universal Package
+
+You can use [pgutil](https://docs.inedo.com/docs/proget/reference-api/proget-pgutil) to locally install Universal Packages using the `upack install` command. This will install the files to the specified location and create an entry in the Universal Package Registry:
+
+```bash
+$ pgutil upack install --package=myPackage --version=1.0.1 --feed=internal-universal --target=.\universal-packages\myPackage
+```
+
+The Universal Package Registry is a local system that will track and manage installed Universal Packages, creating a record of metadata like package name, version, installation date, installation path and the person that installed it. You can read more about the Universal Package Registry it on the [Universal Feeds & Packages](/docs/proget/feeds/universal#upack-registry) page.
+
+Once a Universal Package has been installed, pgutil offers several other commands to manage the it:
+
+* `upack list`: Will list all installed Universal Packages
+* `upack update`: Will update the installation with another version from your `internal-universal` feed
+* `upack remove`: Will uninstall the specified Universal Package

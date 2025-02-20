@@ -38,30 +38,36 @@ packages/my-app.dll
 </pre>
 </td></tr><table>
 
-You could create this package file manually or using one of the free and open-source [Universal Packaging Tools](#tools). For example:
+You could create this package file manually or using the [pgutil](https://docs.inedo.com/docs/proget/reference-api/proget-pgutil) CLI tool. For example:
 
 ```bash
-$ upack pack .\my-app --name=my-app --version=1.3.9
+$ pgutil upack create --name=my-app --version=1.3.9 --source-directory=.\package-files\my-app --target-directory=.\universal-packages
 ```
 
-That command will package the `.\my-app` folder into the `my-app-1.3.9.upack` ZIP archive file.  See the [upack CLI documentation](https://github.com/Inedo/upack) to learn more.
+Alternatively, if you have already created a [`upack.json` manifest](#manifest) for your Universal Package, you can specify this instead:
+
+```bash
+$ pgutil upack create --manifest=.\package-files\my-app\upack.json --source-directory=.\package-files\my-app --target-directory=.\universal-packages
+```
+
+That command will package the `.\my-app` folder into the `my-app-1.3.9.upack` ZIP archive file. See the [Universal Feeds & Packages](/docs/proget/feeds/universal#upack-create) page to learn more.
 
 
 ### Package Content and Metacontent
 
 Files contained in the `package/` folder within a Universal Package  ZIP archive are referred to as *content*. When you "install" or "unpackage" a Universal Package to a folder on disk, that folder will only contain the files from the ZIP archive's `package/` folder.
 
-For example:
+You can use the `upack install` pgutil command to install a package from a ProGet feed. For example:
 
 ```bash
-$ upack unpack my-app-1.3.9.upack .\my-app
+$ pgutil upack install --package=my-app --version=1.3.9 --feed=universal --target=.\my-app
 ```
 
-That command will basically do the opposite of the `pack` command and write the content files to the `.\my-app` folder.
+That command will basically do the opposite of the `create` command and write the content files to the `.\my-app` folder.
 
+Installing packages will also create an entry in the [Universal Package Registry](/docs/proget/feeds/universal#upack-registry). This is a local system that tracks and manages installed Universal Packages, creating a record of the packages metadata.
 
 All other files within a Universal Package (including `upack.json`) are referred to as *metacontent*. For most use cases, you will never need to use or access metacontent, but it might come in handy for advanced scenarios like embedding installation scripts, build logs, Software Bill of Material (SBOM) files, etc.
-
 
 ## Manifest (upack.json) Specification { #manifest }
 
@@ -105,11 +111,9 @@ This object may contain additional properties as needed. However, if you need to
 
 ## Example Manifest Files (upack.json) { #examples }
 
-
 ### Using Extended Fields
 
 The following manifest adds a `group` (which is a part of the package's identifier) and two custom properties (`_sourceRoot`, `_deployTarget`). Note how they are prefixed with an underscore as to avoid future naming conflicts.
-
 
 ```
 {
@@ -120,7 +124,6 @@ The following manifest adds a `group` (which is a part of the package's identifi
  "_deployTarget": "/var/vsimdesk/vindex"
 }
 ```
-
 
 ### Full/Complete Manifest
 
@@ -141,7 +144,6 @@ The following manifest uses just about every property available; note how the de
  "createdBy": "THoven"
 }
 ```
-
 
 ### Inedo Extensions (Plugins) Manifest
 
@@ -171,32 +173,17 @@ The following is the manifest for our AWS extension (i.e. Plugin) package which 
 }
 ```
 
-
-
 ## Universal Packaging Tools { #tools} 
 
-:::(Internal)
-### pgutil upack
+The main tool used to create and manage Universal Packages and installations is the [pgutil](https://docs.inedo.com/docs/proget/reference-api/proget-pgutil) CLI tool. This will require some [minor configuration](/docs/proget/reference-api/proget-pgutil#sources) to use, and offers several commands:
 
-Coming soon.
-:::
+* `upack create`: Will create a Universal Package at a specified location
+* `upack install`: Will "Install" or "unpack" a Universal Package to a specified location
+* `upack list`: Will list all installed Universal Packages
+* `upack update`: Will update the installation with another version from a specified Universal Package feed
+* `upack remove`: Will uninstall the specified Universal Package
 
-### UPack Command-line Interface
-
-`upack` is a cross-platform command-line tool for creating and installing universal packages; you can also see which packages are installed on a machine.
-
-
-* [Download upack (github.com)](https://github.com/Inedo/upack/releases)
-* [upack Source Code (github.com)](https://github.com/Inedo/upack)
-
-
-
-### Inedo.UPack
-
-Inedo.UPack is a .NET library that makes it easy to create, read, and install packages on a server, as well as query installed packages or search packages in a remote feed on ProGet.
-
-* [Inedo.UPack NuGet Package (nuget.org)](https://www.nuget.org/packages/Inedo.UPack)
-* [Inedo.UPack Source Code (github.com)](https://github.com/Inedo/Inedo.UPack)
+You can learn more about how to use these commands on the [Universal Feeds & Packages](/docs/proget/feeds/universal#upack-create) page.
 
 ### Deprecated & Older Tools
 
@@ -204,13 +191,33 @@ Over the years, users have gotten more comfortable using Command-line tools. As 
 
 Although we do not maintain these tools anymore, you may find them useful. If you think we should revive/rebuild them, just [let us know](https://forums.inedo.com/).
 
-* **Universal Package Explorer** is a Windows desktop application that allows you to easily create, view, and publish universal packages. You can load a `.upack` file from disk or directly from a ProGet universal feed.
+### UPack Command-line Interface
+
+`upack` is a cross-platform command-line tool for creating and installing universal packages; you can also see which packages are installed on a machine.
+
+* [Download upack (github.com)](https://github.com/Inedo/upack/releases)
+* [upack Source Code (github.com)](https://github.com/Inedo/upack)
+
+### Inedo.UPack
+
+Inedo.UPack is aAremote feed on ProGet.
+
+* [Inedo.UPack NuGet Package (nuget.org)](https://www.nuget.org/packages/Inedo.UPack)
+* [Inedo.UPack Source Code (github.com)](https://github.com/Inedo/Inedo.UPack)
+
+### Universal Package Explorer
+
+A Windows desktop application that allows you to easily create, view, and publish universal packages. You can load a `.upack` file from disk or directly from a ProGet universal feed.
   * [Download Universal Package Explorer (github.com)](https://github.com/Inedo/UniversalPackageExplorer/releases)
   * [Universal Package Explorer Source Code (github.com)](https://github.com/Inedo/UniversalPackageExplorer)
-* **Push to ProGet Visual Studio Extension** allows you to publish universal packages directly from Visual Studio. 
+
+### Push to ProGet Visual Studio Extension 
+Allows you to publish universal packages directly from Visual Studio. 
   * Install in Visual Studio (Tools > Extensions and Updates > Online > Search for "ProGet" > Download, Install, and Restart Visual Studio)
   * [download the extension from the Visual Studio Gallery directly](https://marketplace.visualstudio.com/items?itemName=vs-publisher-1463233.PushtoProGet).
-* **ProGet Jenkins Plugin** integrates ProGet with Jenkins allowing Jenkins jobs to create and upload, or download and extract, universal packages. It still works, but it's no longer actively maintained.
+
+### ProGet Jenkins Plugin
+Integrates ProGet with Jenkins allowing Jenkins jobs to create and upload, or download and extract, universal packages. It still works, but it's no longer actively maintained.
   * See [ProGet Jenkins Plugin](https://plugins.jenkins.io/inedo-proget/) 
   
   

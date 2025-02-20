@@ -12,9 +12,9 @@ First and foremost, consider that a complete package consists of required metada
 :::(Info) (🚀 Quick Example: Uploading a Universal Package with Curl)
 This example uploads a Universal Package `myUniversalPackage`, to the feed `myUniversalFeed`, authenticating with the API key `abc12345`:
 
-````
-curl -X POST -H "X-ApiKey: abc12345" http://192.168.0.127:8624/upack/universal/upload --upload-file C:\Inedo\TaxCalculator-2401.5.150.upack
-````
+```bash
+curl -X POST -H "X-ApiKey: abc12345" http://proget.corp.local/upack/universal/upload --upload-file C:\Inedo\TaxCalculator-2401.5.150.upack
+```
 :::
 
 ### Creating a Universal Package from `.zip` or `.tgz`
