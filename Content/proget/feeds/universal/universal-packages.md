@@ -113,7 +113,7 @@ This object may contain additional properties as needed. However, if you need to
 
 ### Using Extended Fields
 
-The following manifest adds a `group` (which is a part of the package's identifier) and two custom properties (`_sourceRoot`, `_deployTarget`). Note how they are prefixed with an underscore as to avoid future naming conflicts.
+The following manifest adds a `group` (which is a part of the package's identifier) and two custom properties (`_sourceRoot`, `_deployTarget`). Note how they are prefixed with an underscore to avoid future naming conflicts.
 
 ```
 {
@@ -173,7 +173,7 @@ The following is the manifest for our AWS extension (i.e. Plugin) package which 
 }
 ```
 
-## Universal Packaging Tools { #tools} 
+## Universal Package Tools { #tools} 
 
 The main tool used to create and manage Universal Packages and installations is the [pgutil](https://docs.inedo.com/docs/proget/reference-api/proget-pgutil) CLI tool. This will require some [minor configuration](/docs/proget/reference-api/proget-pgutil#sources) to use, and offers several commands:
 
@@ -191,32 +191,32 @@ Over the years, users have gotten more comfortable using Command-line tools. As 
 
 Although we do not maintain these tools anymore, you may find them useful. If you think we should revive/rebuild them, just [let us know](https://forums.inedo.com/).
 
-### UPack Command-line Interface
+#### UPack Command-line Interface
 
 `upack` is a cross-platform command-line tool for creating and installing universal packages; you can also see which packages are installed on a machine.
 
 * [Download upack (github.com)](https://github.com/Inedo/upack/releases)
 * [upack Source Code (github.com)](https://github.com/Inedo/upack)
 
-### Inedo.UPack
+#### Inedo.UPack
 
 Inedo.UPack is aAremote feed on ProGet.
 
 * [Inedo.UPack NuGet Package (nuget.org)](https://www.nuget.org/packages/Inedo.UPack)
 * [Inedo.UPack Source Code (github.com)](https://github.com/Inedo/Inedo.UPack)
 
-### Universal Package Explorer
+#### Universal Package Explorer
 
 A Windows desktop application that allows you to easily create, view, and publish universal packages. You can load a `.upack` file from disk or directly from a ProGet universal feed.
   * [Download Universal Package Explorer (github.com)](https://github.com/Inedo/UniversalPackageExplorer/releases)
   * [Universal Package Explorer Source Code (github.com)](https://github.com/Inedo/UniversalPackageExplorer)
 
-### Push to ProGet Visual Studio Extension 
+#### Push to ProGet Visual Studio Extension 
 Allows you to publish universal packages directly from Visual Studio. 
   * Install in Visual Studio (Tools > Extensions and Updates > Online > Search for "ProGet" > Download, Install, and Restart Visual Studio)
   * [download the extension from the Visual Studio Gallery directly](https://marketplace.visualstudio.com/items?itemName=vs-publisher-1463233.PushtoProGet).
 
-### ProGet Jenkins Plugin
+#### ProGet Jenkins Plugin
 Integrates ProGet with Jenkins allowing Jenkins jobs to create and upload, or download and extract, universal packages. It still works, but it's no longer actively maintained.
   * See [ProGet Jenkins Plugin](https://plugins.jenkins.io/inedo-proget/) 
   
