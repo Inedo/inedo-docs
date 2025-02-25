@@ -200,7 +200,7 @@ Although we do not maintain these tools anymore, you may find them useful. If yo
 
 #### Inedo.UPack
 
-Inedo.UPack is aAremote feed on ProGet.
+Inedo.UPack is a set of utilities for working with Universal Packages and feeds.
 
 * [Inedo.UPack NuGet Package (nuget.org)](https://www.nuget.org/packages/Inedo.UPack)
 * [Inedo.UPack Source Code (github.com)](https://github.com/Inedo/Inedo.UPack)
@@ -208,6 +208,7 @@ Inedo.UPack is aAremote feed on ProGet.
 #### Universal Package Explorer
 
 A Windows desktop application that allows you to easily create, view, and publish universal packages. You can load a `.upack` file from disk or directly from a ProGet universal feed.
+
   * [Download Universal Package Explorer (github.com)](https://github.com/Inedo/UniversalPackageExplorer/releases)
   * [Universal Package Explorer Source Code (github.com)](https://github.com/Inedo/UniversalPackageExplorer)
 
