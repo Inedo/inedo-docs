@@ -11,19 +11,17 @@ First and foremost, consider that a complete package consists of required metada
 
 :::(Info) (Recommended: Using pgutil to Create and Upload Universal Packages)
 
-While this endpoint will allow you create and upload a package to a Universal Feed, we recommend using [pgutil]() commands to do this. this can easily be achieved using a combination of the  
+While this endpoint will allow you create and upload a package to a Universal Feed, we recommend using [pgutil](/docs/proget/reference-api/proget-pgutil) commands to do this. this can easily be achieved using a combination of the `upack create` and `packages upload` commands:
 
+```bash
+$ pgutil upack create --name=myPackage --version=1.0.1 --source-directory=.\package-files\myPackage --target-directory=.\upacks
+
+$ pgutil packages upload --feed=myUniversalFeed --input-file=.\upacks\MyPackage.1.0.1.upack
+
+```
 :::
 
 ### Creating a Universal Package from `.zip` or `.tgz`
-
-:::(Info) (🚀 Quick Example: Uploading a Universal Package with Curl)
-This example uploads a Universal Package `myUniversalPackage`, to the feed `myUniversalFeed`, authenticating with the API key `abc12345`:
-
-```bash
-curl -X POST -H "X-ApiKey: abc12345" http://proget.corp.local/upack/universal/upload --upload-file C:\Inedo\TaxCalculator-2401.5.150.upack
-```
-:::
 
 This endpoint can also be used to take an archive in .zip or .tgz format, convert it to a Universal Package and upload it to ProGet. The metadata for this package will be created based on the parameters set.
 
