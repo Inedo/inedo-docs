@@ -31,6 +31,7 @@ This example will convert a .zip of artifacts artifacts.zip to a Universal Packa
 ```
 curl -X POST -H "Content-Type: application/zip" -H "X-ApiKey: abc12345" --data-binary "@C:\Proget\artifacts.zip" "https://proget.corp.local/upack/universal-feed/upload?name=myUniversalPackag&version=1.2.3"
 ```
+:::
 
 ### Content Type
 The Content-Type header can be any of the following:

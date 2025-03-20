@@ -28,13 +28,13 @@ To create and upload a Universal Package, you can use the [pgutil](https://docs.
 Creating a package can be done using the `upack create` command. For example, if creating the package `myPackage` version `1.2.3` from files located in `.\package-files\myPackage`, and creating it in the directory `.\universal-packages`, you would enter:
 
 ```bash
-$ pgutil upack create --name=myPackage --version=1.0.1 --source-directory=.\package-files\myPackage --target-directory=.\universal-packages
+$ pgutil upack create --name=myPackage --version=1.0.1 --source-directory=.\package-files\myPackage --target-directory=.\upacks
 ```
 
-Once your package is created, use the [Upload Universal Packages](/docs/proget/reference-api/universal-feed/upload) to upload it to your `internal-universal` feed:
+Once your package is created, use the `packages upload` command to upload it to your `internal-universal` feed:
 
 ```bash
-$ curl -X POST -H "X-ApiKey: abc12345" http://proget.corp.local/upack/internal-universal/upload --upload-file .\universal-packages\myPackage-1.0.1.upack
+$ pgutil packages upload --feed=internal-universal --input-file=.\upacks\MyPackage.1.0.1.upack
 ```
 
 Your package will now be uploaded to your `internal-universal` feed. 
