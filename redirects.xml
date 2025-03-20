@@ -1201,9 +1201,7 @@
   <redirect from="/docs/proget/reference-api/proget-apikeys/proget-api-apikeys-create" to="/docs/proget/api/apikeys/create" modified="3/19/2025 12:00:00 AM" />
   <redirect from="/docs/proget/reference-api/proget-apikeys/proget-api-apikeys-list" to="/docs/proget/api/apikeys/list" modified="3/19/2025 12:00:00 AM" />
   <redirect from="/docs/proget/reference-api/proget-apikeys/proget-api-apikeys-delete" to="/docs/proget/api/apikeys/delete" modified="3/19/2025 12:00:00 AM" />
-
-  <redirect from="/docs/proget/reference-api/proget-apikeys/proget-api-apikeys-delete" to="/docs/proget/api/apikeys/delete" modified="3/19/2025 12:00:00 AM" />
-
+  <redirect from="/docs/proget/reference-api/health" to="/docs/proget/api/health" modified="3/20/2025 12:00:00 AM" />
   <redirect from="/docs/proget/reference-api/proget-api-packages" to="/docs/proget/api/packages" modified="3/19/2025 12:00:00 AM" />
   <redirect from="/docs/proget/reference-api/proget-api-packages/proget-api-packages-list" to="/docs/proget/api/packages/list" modified="3/19/2025 12:00:00 AM" />
   <redirect from="/docs/proget/reference-api/proget-api-packages/proget-api-packages-list-versions" to="/docs/proget/api/packages/list-versions" modified="3/19/2025 12:00:00 AM" />
@@ -1247,7 +1245,11 @@
   <redirect from="/docs/proget/reference-api/proget-api-sca/comments/proget-api-sca-comments-delete" to="/docs/proget/api/sca/comments/delete" modified="3/19/2025 02:22:00 PM" />
   <redirect from="/docs/proget/reference-api/proget-api-sca/sbom/proget-api-sca-sbom-export" to="/docs/proget/api/sca/sbom/export" modified="3/19/2025 02:24:00 PM" />
   <redirect from="/docs/proget/reference-api/proget-api-sca/sbom/proget-api-sca-sbom-import" to="/docs/proget/api/sca/sbom/import" modified="3/19/2025 02:24:00 PM" />
-
+  <redirect from="/docs/proget/reference-api/universal-feed" to="/docs/proget/api/universal" modified="3/20/2025 12:00:00 AM" />
+  <redirect from="/docs/proget/reference-api/universal-feed/import" to="/docs/proget/api/universal/import" modified="3/20/2025 12:00:00 AM" />
+  <redirect from="/docs/proget/reference-api/universal-feed/upload" to="/docs/proget/api/universal/upload" modified="3/20/2025 12:00:00 AM" />
+  <redirect from="/docs/proget/reference-api/universal-feed/download-vpack" to="/docs/proget/api/universal/download-vpack" modified="3/20/2025 12:00:00 AM" />
+  <redirect from="/docs/proget/reference-api/universal-feed/download-file" to="/docs/proget/api/universal/download-file" modified="3/20/2025 12:00:00 AM" />
   <redirect from="/docs/proget/reference-api/proget-api-vulnerabilities/proget-api-vulnerabilties-audit" to="/docs/proget/api/vulnerabilities/audit" modified="3/19/2025 02:27:00 PM" />
   <redirect from="/docs/proget/reference-api/proget-api-vulnerabilities/proget-api-vulnerabilties-assess" to="/docs/proget/api/vulnerabilities/assess" modified="3/19/2025 02:27:00 PM" />
   <redirect from="/docs/proget/reference-api/proget-api-licenses" to="/docs/proget/api/licenses" modified="3/19/2025 02:30:00 PM" />
