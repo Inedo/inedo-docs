@@ -9,6 +9,14 @@ There are quite a few ways to access this endpoint, but the end result is the sa
 
 First and foremost, consider that a complete package consists of required metadata and content (arbitrary files and directories). This endpoint is designed to allow you to upload a complete, pre-built package, or upload a partial package with content and metadata you specified using path, query, form-encoded, and/or JSON parameters.
 
+:::(Info) (Recommended: Using pgutil to Create and Upload Universal Packages)
+
+While this endpoint will allow you create and upload a package to a Universal Feed, we recommend using [pgutil]() commands to do this. this can easily be achieved using a combination of the  
+
+:::
+
+### Creating a Universal Package from `.zip` or `.tgz`
+
 :::(Info) (🚀 Quick Example: Uploading a Universal Package with Curl)
 This example uploads a Universal Package `myUniversalPackage`, to the feed `myUniversalFeed`, authenticating with the API key `abc12345`:
 
@@ -16,8 +24,6 @@ This example uploads a Universal Package `myUniversalPackage`, to the feed `myUn
 curl -X POST -H "X-ApiKey: abc12345" http://proget.corp.local/upack/universal/upload --upload-file C:\Inedo\TaxCalculator-2401.5.150.upack
 ```
 :::
-
-### Creating a Universal Package from `.zip` or `.tgz`
 
 This endpoint can also be used to take an archive in .zip or .tgz format, convert it to a Universal Package and upload it to ProGet. The metadata for this package will be created based on the parameters set.
 
@@ -28,7 +34,6 @@ This example will convert a .zip of artifacts artifacts.zip to a Universal Packa
 curl -X POST -H "Content-Type: application/zip" -H "X-ApiKey: abc12345" --data-binary "@C:\Proget\artifacts.zip" "https://proget.corp.local/upack/universal-feed/upload?name=myUniversalPackag&version=1.2.3"
 ```
 
-:::
 ### Content Type
 The Content-Type header can be any of the following:
 
