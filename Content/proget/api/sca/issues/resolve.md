@@ -25,7 +25,7 @@ pgutil builds issues resolve --project=myProject --build=1.2.3 --number=4
 ```
 
 ## HTTP Request Specification
-To resolve an issue, simply `POST` to the URL with an [appropriate API Key](/docs/proget/reference-api/proget-api-sca#authentication).
+To resolve an issue, simply `POST` to the URL with an [appropriate API Key](/docs/proget/api/sca#authentication).
 
 ```plaintext
 POST /api/sca/issues?project=«projectName»&version=«releaseVersion»&number=«issueNumber»&resolve=true
@@ -43,7 +43,7 @@ POST /api/sca/issues?project=myProject&version=1.2.3&number=2&resolve=true
 | --- | --- |
 | **200 (Success)** | indicates issue was resolved |
 | **400 (Invalid Input)** | indicates invalid or missing arguments; the body will provide some details as text |
-| **403 (Unauthorized API Key)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/reference-api/proget-api-sca#authentication); the body will be empty |
+| **403 (Unauthorized API Key)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/sca#authentication); the body will be empty |
 | **500 (Server Error)** | indicates an unexpected error |
 
 ### Resolve all issues (Powershell)

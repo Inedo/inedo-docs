@@ -32,7 +32,7 @@ Image Promotion via the repository's tag page is limited in ProGet Free. When us
 
 #### Promoting Images Using API 
 
-To promote an image via the API you will first need to generate an API key that grants access to Package Promotion. Then visit our [Package Promotion Endpoint](/docs/proget/packages/package-promotion) guide in our [ProGet API Reference](/docs/proget/reference-api) section to familiarize yourself on how to work with ProGet APIs and the Promote Packages endpoint.
+To promote an image via the API you will first need to generate an API key that grants access to Package Promotion. Then visit our [Package Promotion Endpoint](/docs/proget/packages/package-promotion) guide in our [ProGet API Reference](/docs/proget/api) section to familiarize yourself on how to work with ProGet APIs and the Promote Packages endpoint.
 
 ::: (INFO)
 Image promotion via the API is not availabile in ProGet Free.

@@ -62,7 +62,7 @@ $ conan create . --name=mypackage --version=1.2.3
 
 ## Step 3: Create an API Key
 
-Now you will need to create an [API Key](/docs/proget/reference-api/proget-apikeys) to let your Conan client authenticate to the `internal-conan` feed. This will let you publish and install packages from that feed. 
+Now you will need to create an [API Key](/docs/proget/api/apikeys) to let your Conan client authenticate to the `internal-conan` feed. This will let you publish and install packages from that feed. 
 
 :::(info) (Authenticating with an API Key)
 While you _can_ authenticate with a ProGet username and password, we highly recommend using an API Key instead. For that, use `api` as the username and the API Key as the password.
@@ -123,4 +123,4 @@ $ conan install --requires=mypackage/1.2.3 -r=internal-conan
 ```
 
 ## (Optional) Installing Packages from an Authenticated Feed
-By default, your `internal-conan` feed is configured so that packages can be installed from it anonymously. However, if you have set up authentication for your feed, you will need to [authenticate to it](/docs/proget/feeds/conan#authenticate-to-feed). You can use a ProGet `username` and `password`, however we highly recommend [Creating a ProGet API Key](/docs/proget/reference-api/proget-apikeys) for authentication, using `api` as the username and the API key as the password. 
+By default, your `internal-conan` feed is configured so that packages can be installed from it anonymously. However, if you have set up authentication for your feed, you will need to [authenticate to it](/docs/proget/feeds/conan#authenticate-to-feed). You can use a ProGet `username` and `password`, however we highly recommend [Creating a ProGet API Key](/docs/proget/api/apikeys) for authentication, using `api` as the username and the API key as the password. 

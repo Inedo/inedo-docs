@@ -39,11 +39,11 @@ pgutil packages delete --feed=myPypiFeed --package=myPypiPackage --version=7.8.9
 pgutil packages delete --feed=myDebianFeed --package=myDebianPackage --version=2.3.4 --component=main --distro=stable --arch=amd64
 ```
 
-Note source options must also be specified unless you have the "Default" source configured, and that a feed may be instead specified in the source. See [Working with Sources](/docs/proget/reference-api/proget-pgutil#sources) to learn more.
+Note source options must also be specified unless you have the "Default" source configured, and that a feed may be instead specified in the source. See [Working with Sources](/docs/proget/api/pgutil#sources) to learn more.
 
 ## HTTP Request Specification
 
-To delete a package, simply `POST` to the URL with a feed name, [package identifiers](/docs/proget/reference-api/proget-api-packages#using-multiple-parameters), and an [appropriate API Key](/docs/proget/reference-api/proget-api-packages#authentication).
+To delete a package, simply `POST` to the URL with a feed name, [package identifiers](/docs/proget/api/packages#using-multiple-parameters), and an [appropriate API Key](/docs/proget/api/packages#authentication).
 
 ```plaintext
 POST /api/packages/«feed-name»/delete?«package-identifiers»
@@ -57,7 +57,7 @@ Unless you use a `purl`, the parameters required will vary by feedtype.
 | --- | --- |
 | **200 (Success)** | indicates the package was deleted (no body)
 | **400 (Invalid Input)** | indicates invalid or missing properties on the package; the body will provide some details as text
-| **403 (Unauthorized API Key)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/reference-api/proget-api-packages#authentication); the package will not be deleted
+| **403 (Unauthorized API Key)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/packages#authentication); the package will not be deleted
 | **500 (Server Error)** | indicates an unexpected error; the body will contain the message and stack trace, and this will also be logged
 
 ## Sample Usage Scripts

@@ -3,11 +3,11 @@ title: "Getting Started with HTTP Endpoints"
 order: 2
 ---
 
-Although we recommend using [pgutil](/docs/proget/reference-api/proget-pgutil) for programmatic access to ProGet, you can also use the HTTP Endpoints that `pgutil` uses for your own scripts and programs. This may be particularly helpful if you need to work with structured data or wish to create a more advanced integration.
+Although we recommend using [pgutil](/docs/proget/api/pgutil) for programmatic access to ProGet, you can also use the HTTP Endpoints that `pgutil` uses for your own scripts and programs. This may be particularly helpful if you need to work with structured data or wish to create a more advanced integration.
 
 ## Authenticating to HTTP Endpoints
 
-Before using an HTTP endpoint, you should first [Create an API Key](/docs/proget/reference-api/proget-apikeys/proget-api-apikeys-create) with the appropriate permissions.
+Before using an HTTP endpoint, you should first [Create an API Key](/docs/proget/api/apikeys/create) with the appropriate permissions.
 
 ::: (Warning)
 Although most HTTP Endpoints in ProGet can *technically* be used without authentication, this requires giving the `Anonymous` user access to perform those actions. While this may be fine for initial configuration, it's not appropriate for production use.

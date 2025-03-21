@@ -77,7 +77,7 @@ After configuring these permissions, the Tasks page will look like this:
 ![Tasks Overview Page With Assigned Permissions](/resources/docs/progetpermis-srdeveloperspermissionsoverview.png)
 
 ## Step 4: Create API Key
-[API keys](/docs/proget/reference-api/proget-apikeys) allow you to connect your ProGet feeds to other automated tools like a build server, and they work a bit differently than tasks.
+[API keys](/docs/proget/api/apikeys) allow you to connect your ProGet feeds to other automated tools like a build server, and they work a bit differently than tasks.
 
 Our desired access for build servers (from step 1) was to allow the mycompany-nuget feed to be displayed and published. To create an API key for this purpose, navigate to Admin > API Keys, click "create api key", and enter a name, description, and desired access.
 

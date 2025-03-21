@@ -60,7 +60,7 @@ $ choco source list
 
 ## Step 4: Create an API Key
 
-We will now create an [API Key](/docs/proget/reference-api/proget-apikeys) allowing our local client to authenticate to our `internal-chocolatey` feed. This allows us to push packages to the feed.
+We will now create an [API Key](/docs/proget/api/apikeys) allowing our local client to authenticate to our `internal-chocolatey` feed. This allows us to push packages to the feed.
 
 When creating an API Key, fill in the fields by selecting "Feeds (Use Certain Feeds)" as the "Feed Type" and selecting the `internal-chocolatey` feed. Then set the API key. You can use any alphanumeric sequence, or just leave it blank to autogenerate one. Ensure that the "View/Download" and "Add/Repackage" boxes are checked, and then select "Save".
 

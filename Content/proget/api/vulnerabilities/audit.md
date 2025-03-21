@@ -42,7 +42,7 @@ PGV-2245804: 7.5 (High) - Improper Handling of Exceptional Conditions in Newtons
 ## HTTP Request Specification
 
 :::(Info) (🔑 Authentication)
-If you disallow anonymous access to your feed, you will need to create an [API Key](/docs/proget/reference-api/proget-apikeys) that grants access to the Feed API.  You will need to include that key as a header named `X-ApiKey` and set its value to that API key.
+If you disallow anonymous access to your feed, you will need to create an [API Key](/docs/proget/api/apikeys) that grants access to the Feed API.  You will need to include that key as a header named `X-ApiKey` and set its value to that API key.
 
 For example, to authenticate with the API key `abc12345`  to this endpoint, you could specify the API key as follows:
 

@@ -36,7 +36,7 @@ In  [ProGet 2023](/docs/proget-upgrade-2023), in addition to the new packaging i
 
 In [ProGet 2022](/docs/proget-upgrade-2022), the hosting platform changed to .NET6 and users initially reported performance issues, but these should be mostly fixed in maintenance releases. In addition, the [Package Consumers](/docs/proget/installation/proget-old-versions-migration) feature was also replaced in favor of [SCA Projects and Releases](/docs/proget/sca/builds).
     
-In [ProGet 6.0](/docs/proget-6-0-upgrade-notes), due API Keys changes, some users reported that some [API Keys](/docs/proget/reference-api/proget-apikeys) needed to edited or deleted and recreated to fix permissions issues.
+In [ProGet 6.0](/docs/proget-6-0-upgrade-notes), due API Keys changes, some users reported that some [API Keys](/docs/proget/api/apikeys) needed to edited or deleted and recreated to fix permissions issues.
 
 In [ProGet 5.3](/docs/proget-5-3-upgrade-notes), legacy NuGet ("quirks") feeds were removed. You will need to migrate all of these feeds before upgrading.
 
@@ -117,7 +117,7 @@ The Webhooks & Notifiers features were introduced as a preview feature starting 
 
 ### New Command-line Tool pgutil
 
-`pgutil` is a new, cross-platform command line tool that's easy to download and install. See [Getting Started with pgutil](/docs/proget/reference-api/proget-pgutil) to learn more.
+`pgutil` is a new, cross-platform command line tool that's easy to download and install. See [Getting Started with pgutil](/docs/proget/api/pgutil) to learn more.
 
 This will replace `pgscan` and will go beyond SCA to include things like auditing packages, builds, uploading packages, creating feeds, etc. `pgscan` will still work but will no longer be maintained. We recommend upgrading to `pgutil`.
 

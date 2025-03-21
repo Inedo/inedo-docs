@@ -14,7 +14,7 @@ curl -X POST -H "X-ApiKey: abc12345" -H "Content-Type: text/xml" -d "@C:/Users/I
 :::
 
 ## HTTP Request Specification
-To import an SBOM document, simply `POST` to the URL with an [appropriate API Key](/docs/proget/reference-api/proget-api-sca#authentication).
+To import an SBOM document, simply `POST` to the URL with an [appropriate API Key](/docs/proget/api/sca#authentication).
 
 ```plaintext
 POST /api/sca/import
@@ -36,5 +36,5 @@ POST /api/sca/import
 | --- | --- |
 | **200 (Success)** | indicates the SBOM import was successful |
 | **400 (Invalid Input)** | indicates the submitted SBOM document was not valid |
-| **403 (Unauthorized API Key)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/reference-api/proget-api-sca#authentication); the body will be empty |
+| **403 (Unauthorized API Key)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/sca#authentication); the body will be empty |
 | **500 (Server Error)** | indicates an unexpected error; the body will contain the message and stack trace, and this will also be logged |

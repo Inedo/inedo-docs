@@ -27,7 +27,7 @@ We are then presented with several options. These relate to ProGet's [Vulnerabil
 
 ## Step 2: Create an API Key
 
-We will now create an [API Key](/docs/proget/reference-api/proget-apikeys) allowing our local client to authenticate to our `internal-conda` feed. This allows us to publish packages to the feed, as well as consume them once published.
+We will now create an [API Key](/docs/proget/api/apikeys) allowing our local client to authenticate to our `internal-conda` feed. This allows us to publish packages to the feed, as well as consume them once published.
 
 When creating an API Key, fill in the fields by selecting "Feeds (Use Certain Feeds)" as the "Feed Type" and selecting the `internal-conda` feed. Then set the API key. You can use any alphanumeric sequence, or just leave it blank to autogenerate one. Ensure that the "View/Download" and "Add/Repackage" boxes are checked, and then select "Save".
 
@@ -51,9 +51,9 @@ When conda-build is finished, it displays the package filename and location of t
 
 ### Step 4: Publish Your Package to ProGet
 
-To publish your package to your ProGet Conda feed, we can use [pgutil](/docs/proget/reference-api/proget-pgutil).
+To publish your package to your ProGet Conda feed, we can use [pgutil](/docs/proget/api/pgutil).
 
-pgutil will require some [minor configuration](/docs/proget/reference-api/proget-pgutil#sources) before use. This includes setting up your ProGet instance and API key as a source by running:
+pgutil will require some [minor configuration](/docs/proget/api/pgutil#sources) before use. This includes setting up your ProGet instance and API key as a source by running:
 
 ```bash
 $ pgutil sources add --name=Default --url=«proget-url» --api-key=«api-key»

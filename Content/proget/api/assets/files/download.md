@@ -60,7 +60,7 @@ X-ProGet-Version: 23.0.22.6
 | **200 (Success)** | the file is returned as content with `GET`, or just the headers are returned with `HEAD` |
 | **304 (Success, Not Modified)** | indicates that the file is returned, but not modified |
 | **400 (Path Refers to Directory)** | indicates that the path refers to a directory |
-| **401 (Authentication Required)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/reference-api/proget-api-assets#authentication) |
+| **401 (Authentication Required)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/assets#authentication) |
 | **404 (File not Found)** | indicates that the file does not exist |
 
 ## Sample Usage Scripts
@@ -69,7 +69,7 @@ X-ProGet-Version: 23.0.22.6
 This script downloads all files within an asset directory, `internal-files` from a folder, `download-files`, to a local folder, `C:\Proget\DownloadedFiles`:
 
 :::(info)
-This can be used when bulk downloading individual files located in a folder. For a more efficient solution of downloading a batch of files as an archive, use our [Export Folder](/docs/proget/reference-api/proget-api-assets/folder-endpoints/proget-api-assets-folders-export) endpoint.
+This can be used when bulk downloading individual files located in a folder. For a more efficient solution of downloading a batch of files as an archive, use our [Export Folder](/docs/proget/api/assets/folders/export) endpoint.
 :::
 
 ```powershell

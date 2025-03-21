@@ -46,5 +46,5 @@ A successful (`200`) response body will return download details and the contents
 | --- | --- |
 | **200 (Success)** | the body will return download details, the contents of the folder is returned as either `zip` or `tgz` |
 | **400 (Invalid Format)** | indicates that the format is invalid |
-| **401 (Authentication Required)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/reference-api/proget-api-assets#authentication) |
+| **401 (Authentication Required)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/assets#authentication) |
 | **404 (Directory not Found)** | indicates that the directory does not exist |

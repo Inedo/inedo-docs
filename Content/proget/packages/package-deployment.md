@@ -26,9 +26,9 @@ If you are using a tool other than BuildMaster or OctopusDeploy to deploy your p
 
 <h3 id="authentication">Authentication</h3>
 
-If you disallow anonymous access to your feed, you will need to create an [API Key](/docs/proget/reference-api/proget-apikeys) that grants access to the Package Deployment API. This key requires the `Feeds_DownloadPackage` privilage.
+If you disallow anonymous access to your feed, you will need to create an [API Key](/docs/proget/api/apikeys) that grants access to the Package Deployment API. This key requires the `Feeds_DownloadPackage` privilage.
 
-To specify an API Key, use the request header (`X-ApiKey`), querystring (`key`), or `api:«api-key»` as the username. See [API Key Usage](/docs/proget/reference-api/proget-apikeys#using-api-keys) to learn more.
+To specify an API Key, use the request header (`X-ApiKey`), querystring (`key`), or `api:«api-key»` as the username. See [API Key Usage](/docs/proget/api/apikeys#using-api-keys) to learn more.
 
 :::(Info) (🚀 Quick Example: Authenticating with PowerShell)
 For example, to authenticate with the API key `abc12345`  to the query packages endpoint, you could specify the API key as follows:

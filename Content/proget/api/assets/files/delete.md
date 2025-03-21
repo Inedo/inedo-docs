@@ -37,4 +37,4 @@ DELETE /endpoints/«AssetDirectoryName»/content/«path_to_file»
 | --- | --- |
 | **200 (Success)** | the file is deleted from the asset directory |
 | **400 (Path Refers to folder)** | indicates that the path refers to a folder |
-| **401 (Authentication Required)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/reference-api/proget-api-assets#authentication) |
+| **401 (Authentication Required)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/assets#authentication) |
