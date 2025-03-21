@@ -3,7 +3,11 @@ title: "Change Logs"
 order: 9
 ---
 
+<<<<<<< HEAD
  For your convenience, we offer a Detailed Change Log for ProGet, BuildMaster, and Otter. The Detailed Change Log keeps you up to date with the latest fixes and changes to our products. This will support your experience by providing easy access to important updates and improvements.
+=======
+ For your convenience, we offer a Detailed Change Log for ProGet, BuildMaster, and Otter. The Detailed Change Log keeps you up to date with the latest fixes and changes to our products.
+>>>>>>> c5f0bb39cc272cdf6887db4813b756e7d75e0993
 
  This article will explain how to access the Detailed Change Log through MyInedo. 
 
