@@ -46,7 +46,7 @@ Orphaned parts will be deleted during the "Feed Cleanup" scheduled task. Orphane
 | --- | --- |
 | **200 (Success)** | successfully initiates, continues or completes a multipart upload |
 | **400 (Invalid Arguements)** | indicates invalid arguments such as index/offset out of range, overlapping parts or invalid size |
-| **401 (Authentication Required)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/reference-api/proget-api-assets#authentication) |
+| **401 (Authentication Required)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/assets#authentication) |
 
 ## Sample Usage Scripts
 

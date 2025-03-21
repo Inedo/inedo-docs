@@ -71,7 +71,7 @@ Register-PSRepository -Name MyProGetFeed -SourceLocation <ProGetUrl> /nuget/<Fee
 Publish-Module -Path <ModuleFile> -NuGetApiKey <UserName>:<Password>-Repository MyProGetFeed
 ```
 
-ユーザー/パスワード 情報の代わりにAPIキーを使用するには、ProGetでフィード APIキーを作成し、**Publish-Module** を、次のように入力してください。(参照：[API Access and API Keys](/docs/proget/reference-api/proget-apikeys))
+ユーザー/パスワード 情報の代わりにAPIキーを使用するには、ProGetでフィード APIキーを作成し、**Publish-Module** を、次のように入力してください。(参照：[API Access and API Keys](/docs/proget/api/apikeys))
 
 ```powershell
 Publish-Module -Path <ModuleFile> -NuGetApiKey <API Key> -Repository MyProGetFeed

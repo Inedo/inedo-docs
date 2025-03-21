@@ -33,7 +33,7 @@ To create an asset directory, go to Assets > Create Asset Directory.
 
 ## Files in an Asset Directory
 
-Asset Directories are made up of files and [sub-folders](#subfolders) that you can access through your web browser and the RESTful API. You can view file information, caching, metadata, and download information by clicking on a file in ProGet Web UI. Files can also be accessed as if they were hosted on a web server by navigating to the file's URL (see [Asset Directory API](/docs/proget/reference-api/proget-api-assets)). This URL is also displayed on the file information page in the Web UI.
+Asset Directories are made up of files and [sub-folders](#subfolders) that you can access through your web browser and the RESTful API. You can view file information, caching, metadata, and download information by clicking on a file in ProGet Web UI. Files can also be accessed as if they were hosted on a web server by navigating to the file's URL (see [Asset Directory API](/docs/proget/api/assets)). This URL is also displayed on the file information page in the Web UI.
 
 ## Adding Files
 
@@ -70,7 +70,7 @@ Note: If you are using a network path, you must configure read, write, and delet
 
 ### Deleting Files 
 
-You can delete a file in the asset directory by clicking the "X" on the file listings page, the "Delete File" button on the file overview page, or by using the [Asset Directory API](/docs/proget/reference-api/proget-api-assets).
+You can delete a file in the asset directory by clicking the "X" on the file listings page, the "Delete File" button on the file overview page, or by using the [Asset Directory API](/docs/proget/api/assets).
 
 ### Media Types
 
@@ -81,7 +81,7 @@ You can change the file's media type by:
 1. Click _set_ to the right of _Type_
 1. Enter the [content type](https://en.wikipedia.org/wiki/Media_type) you would like to return
 
-You can also set the content-type by using the [Asset Directory API](/docs/proget/reference-api/proget-api-assets).
+You can also set the content-type by using the [Asset Directory API](/docs/proget/api/assets).
 
 ## Sub-folders
 
@@ -110,7 +110,7 @@ You can add metadata to files by:
 1. Entering the name and value of the metadata record
 1. Optionally, you can select _Include as HTTP response header_ to send that record as an HTTP header value
 
-Metadata can also be managed using the [Asset Directory Metadata API](/docs/proget/reference-api/proget-api-assets/metadata-endpoints/proget-api-assets-metadata-set).
+Metadata can also be managed using the [Asset Directory Metadata API](/docs/proget/api/assets/metadata-endpoints/proget-api-assets-metadata-set).
 
 ### Sub-folder Metadata
 
@@ -121,7 +121,7 @@ You can add metadata to a sub-folder by:
 1. Clicking _Add_ under the _Additional Metadata_ section
 1. Entering the name and value of the metadata record
 
-Metadata can also be managed using the [Asset Directory Metadata API](/docs/proget/reference-api/proget-api-assets/metadata-endpoints/proget-api-assets-metadata-set).
+Metadata can also be managed using the [Asset Directory Metadata API](/docs/proget/api/assets/metadata-endpoints/proget-api-assets-metadata-set).
 
 ## Client-side Caching 
 *Client-side Caching is available starting in ProGet v6.0.*

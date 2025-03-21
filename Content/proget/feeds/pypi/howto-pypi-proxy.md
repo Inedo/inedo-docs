@@ -80,7 +80,7 @@ $ pip install flask==2.3.3 --extra-index-url proget.corp.local -i https://proget
 By default your `public-pypi` feed does not need to be authenticated to can be viewed anonymously. However if you've configured your feed to require authentication, you can [authenticate to it](/docs/proget/feeds/pypi#authenticating-to-a-pypi-feed) when using `pip install` or with `pip config`. Alternatively you can authenticate with [PipEnv or Poetry](/docs/proget/feeds/pypi/integrate-pypi-others#authenticate-feed).
 
 ::: (Info) (💡 Best Practices: Use API Keys for Authenticated Feeds)
-Rather than using your ProGet username/password for a NuGet feed, we strongly recommend [Creating a ProGet API Key](/docs/proget/reference-api/proget-apikeys) to authenticate, using `api` as the username and your key as the password.
+Rather than using your ProGet username/password for a NuGet feed, we strongly recommend [Creating a ProGet API Key](/docs/proget/api/apikeys) to authenticate, using `api` as the username and your key as the password.
 :::
 
 ## (Optional) Creating a Package Approval Flow

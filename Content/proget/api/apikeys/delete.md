@@ -15,10 +15,10 @@ pgutil apikeys delete --id=1000
 This API requires ProGet 2024.3 or later. 
 
 ## Command Specification (CLI)
-The `apikeys delete` command requires an `--id` option and has an optional `--source` and related authentication options (i.e. `--api-key` or `--username` / `--password`). See [Working with Sources in pgutil](/docs/proget/reference-api/proget-pgutil#working-with-sources) to learn more.
+The `apikeys delete` command requires an `--id` option and has an optional `--source` and related authentication options (i.e. `--api-key` or `--username` / `--password`). See [Working with Sources in pgutil](/docs/proget/api/pgutil#working-with-sources) to learn more.
 
 ### Example: Finding then Deleting an API Key
-You can find the Id of an ApiKey using the `apikeys list` command. See [List ApiKeys](/docs/proget/reference-api/proget-apikeys/proget-api-apikeys-list) to learn more.
+You can find the Id of an ApiKey using the `apikeys list` command. See [List ApiKeys](/docs/proget/api/apikeys/proget-api-apikeys-list) to learn more.
 
 ```bash
 $> pgutil apikeys list
@@ -35,7 +35,7 @@ Deleting API key (id=1000)...
 API key deleted.
 ```
 
-Note source options must also be specified unless you have the "Default" source configured, and that a feed may be instead specified in the source. See [Working with Sources](/docs/proget/reference-api/proget-pgutil#sources) to learn more.
+Note source options must also be specified unless you have the "Default" source configured, and that a feed may be instead specified in the source. See [Working with Sources](/docs/proget/api/pgutil#sources) to learn more.
 
 ## HTTP Request Specification
 
@@ -46,7 +46,7 @@ To delete an API key, simply `POST` to `/api/api-keys/delete?id=«apikey-id»`.
 | --- | --- |
 | **200 (Success)** | indicates the API key was deleted; the body will contain the text of the api key created
 | **400 (Invalid Input)** | indicates a missing or non-integer value for `id`
-|  **403 (Unauthorized API Key)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/reference-api/proget-api-packages#authentication); the package status will not be updated
+|  **403 (Unauthorized API Key)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/packages#authentication); the package status will not be updated
 | **404 (API Key Not Found)** | indicates the specified key was not found
 | **500 (Server Error)** | indicates an unexpected error; the body will contain the message and stack trace, and this will also be logged
 

@@ -54,7 +54,7 @@ After your tests are complete and your package is ready for the next environment
 Now that we have verified our -ci package, we can repackage it into a release candidate (-rc). This step is often automated as part of the CI/CD pipeline, but for this example we will do it manually.
 
 :::(Info)
-This step *may* be automated by a CI/CD tool. See the [Repackaging API](/docs/proget/reference-api/proget-api-packages/proget-api-packages-repackage) for more details.
+This step *may* be automated by a CI/CD tool. See the [Repackaging API](/docs/proget/api/packages/proget-api-packages-repackage) for more details.
 :::
 
 To repackage, simply navigate to the package and click "repackage"
@@ -79,7 +79,7 @@ After the package passes your regression tests, scenario tests, etc., it's ready
 Now that we’ve confirmed our -rc package is ready for production, we need to repackage it one more time to remove the pre-release tag. 
 
 :::(Info)
-This step *may* be automated by a CI/CD tool. See the [Repackaging API](/docs/proget/reference-api/proget-api-packages/proget-api-packages-repackage) for more details.
+This step *may* be automated by a CI/CD tool. See the [Repackaging API](/docs/proget/api/packages/proget-api-packages-repackage) for more details.
 :::
 
 After successfully repackaging `TkyConvert 1.0.0-rc.8` in the exact same way as step 4, you'll have a stable version of the package. 

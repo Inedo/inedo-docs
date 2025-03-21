@@ -3,7 +3,7 @@ title: "Get Build"
 order: 2
 ---
 
-*Get Build* is available as both a `pgutil` command and an HTTP Request, and will get a specified project build, and return a [BuildInfo Object](/docs/proget/reference-api/proget-api-sca#buildinfo-object) object describing the build.
+*Get Build* is available as both a `pgutil` command and an HTTP Request, and will get a specified project build, and return a [BuildInfo Object](/docs/proget/api/sca#buildinfo-object) object describing the build.
 
 :::(Info) (🚀 Quick Example: Getting information of a build with pgutil)
 This example gets information on build `1.2.3` of the project `myProject`
@@ -38,7 +38,7 @@ Comments:
 
 
 ## HTTP Request Specification
-To get a build, simply `GET` to the URL with an [appropriate API Key](/docs/proget/reference-api/proget-api-sca#authentication).
+To get a build, simply `GET` to the URL with an [appropriate API Key](/docs/proget/api/sca#authentication).
 
 ```plaintext
 GET /api/sca/releases?name=«projectName»&version=«versionNumber»
@@ -46,7 +46,7 @@ GET /api/sca/releases?name=«projectName»&version=«versionNumber»
 
 ## HTTP Response Specification
 
-A successful (`200`) response body will contain a [BuildInfo Object](/docs/proget/reference-api/proget-api-sca#buildinfo-object) object. For example, to getting build version `1.2.3` of a project named `myProject`, the request would return this:
+A successful (`200`) response body will contain a [BuildInfo Object](/docs/proget/api/sca#buildinfo-object) object. For example, to getting build version `1.2.3` of a project named `myProject`, the request would return this:
 
 ```json
 GET /api/sca/releases?project=myProject&version=1.2.3
@@ -99,8 +99,8 @@ GET /api/sca/releases?project=myProject&version=1.2.3
 
 | Response | Details |
 | --- | --- |
-| **200 (Success)** | body will contain a [BuildInfo](/docs/proget/reference-api/proget-api-sca#buildinfo-object) object |
+| **200 (Success)** | body will contain a [BuildInfo](/docs/proget/api/sca#buildinfo-object) object |
 | **400 (Invalid Input)** | indicates invalid or missing properties |
-| **403 (Unauthorized API Key)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/reference-api/proget-api-sca#authentication); the body will be empty |
+| **403 (Unauthorized API Key)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/sca#authentication); the body will be empty |
 | **404 (Project Not Found)** | indicates that the specified project does not exist | 
 | **500 (Server Error)** | indicates an unexpected error; the body will contain the message and stack trace, and this will also be logged |

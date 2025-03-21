@@ -55,7 +55,7 @@ The `universal vpackage download` command is coming soon. Similar to the HTTP Re
 | --- | --- |
 | **200 (Success)** | will successfully download the virtual package
 | **400 (Virtual Package Version not Found)** | returned if `package-version` is not specified, and latest is not specified in the URL |
-|  **403 (Unauthorized API Key)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/reference-api/universal-feed#authentication) |
+|  **403 (Unauthorized API Key)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/universal-feed#authentication) |
 | **404 (Virtual Package Not Found)** | indicates the specified virtual package does not exist |
 
 ## Sample Usage Scripts

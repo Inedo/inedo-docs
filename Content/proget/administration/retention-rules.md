@@ -131,4 +131,4 @@ This will delete all package versions that have "CI" in its prerelease version c
 
 ## API
 
-Retention rules may be configured via the [Feed Management API](/docs/proget/reference-api/feeds/proget-api-feeds). See the [Retention Rule data model specification](/docs/proget/reference-api/feeds/proget-api-feeds#retention-rule-object) for more information.
+Retention rules may be configured via the [Feed API](/docs/proget/api/feeds). See the [Retention Rule data model specification](/docs/proget/api/feeds#retention-rule-object) for more information.

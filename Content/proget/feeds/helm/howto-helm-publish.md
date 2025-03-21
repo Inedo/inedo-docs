@@ -43,7 +43,7 @@ This will create the package (e.g. `my-chart-1.15.3.tgz`) that can be published 
 
 ## Step 3: Create an API Key
 
-Now create an [API Key](/docs/proget/reference-api/proget-apikeys) which will allow you to authenticate to the `internal-helm` feed to publish Helm charts to it. You can read more about creating API keys in ProGet on our [API Key](/docs/proget/reference-api/proget-apikeys) page.
+Now create an [API Key](/docs/proget/api/apikeys) which will allow you to authenticate to the `internal-helm` feed to publish Helm charts to it. You can read more about creating API keys in ProGet on our [API Key](/docs/proget/api/apikeys) page.
 
 When creating an API Key, Select "Feeds (Use Certain Feeds)" as the "Feed Type" and select the `internal-helm` feed. When setting the API key you can either use any alphanumeric sequence, or just leave it blank for ProGet to autogenerate one for you.
 
@@ -53,13 +53,13 @@ Make sure the "View/Download" and "Add/Repackage" boxes are checked, and then se
 
 ## Step 4: Publish Your Helm Chart
 
-To publish your Helm chart to your `internal-helm` feed, you can use [pgutil](/docs/proget/reference-api/proget-pgutil). This will require some [minor configuration](/docs/proget/reference-api/proget-pgutil#sources) before use. This includes setting up your ProGet instance and API key as a source by running the `sources add` command. For example, adding the ProGet instance `https://proget.corp.local/` with the API Key `abc12345` you would enter:
+To publish your Helm chart to your `internal-helm` feed, you can use [pgutil](/docs/proget/api/pgutil). This will require some [minor configuration](/docs/proget/api/pgutil#sources) before use. This includes setting up your ProGet instance and API key as a source by running the `sources add` command. For example, adding the ProGet instance `https://proget.corp.local/` with the API Key `abc12345` you would enter:
 
 ```bash
 $ pgutil sources add --name=Default --url=https://proget.corp.local/ --api-key=abc12345
 ```
 
-Now upload your charts by using the [`pgutil packages upload`](/docs/proget/reference-api/proget-api-packages/proget-api-packages-upload) command:
+Now upload your charts by using the [`pgutil packages upload`](/docs/proget/api/packages/proget-api-packages-upload) command:
 
 ```bash
 $ pgutil packages upload --feed=internal-helm --input-file=./projects/helm-charts/mychart

@@ -3,7 +3,7 @@ title: "Set Asset Metadata"
 order: 1
 ---
 
-*Update Asset Metadata* is available as both a `pgutil` command and an HTTP Request, and will set or update the `Content-Type` or the user-defined metadata of an "item" (file or folder). The request body must have a `Content-Type` of application/json, and must contain a [AssetItemMetadataUpdate](/docs/proget/reference-api/proget-api-assets#metadata-update) JSON object.
+*Update Asset Metadata* is available as both a `pgutil` command and an HTTP Request, and will set or update the `Content-Type` or the user-defined metadata of an "item" (file or folder). The request body must have a `Content-Type` of application/json, and must contain a [AssetItemMetadataUpdate](/docs/proget/api/assets#metadata-update) JSON object.
 
 :::(Info) (🚀 Quick Example: Setting asset custom metadata with pgutil)
 This example will set custom metadata for the file `data.bin` in the `data-files` folder of the asset directory `myAssetDirectory`, with the key `myKey` and value `myValue`:
@@ -40,7 +40,7 @@ pgutil assets metadata set cache --path=data-files/data.bin --feed=myAssetDirect
 ```
 
 ## HTTP Request Specification
-To update an item's metadata, simply `POST` to the URL with the `AssetDirectoryName`, path to the item and a a [AssetItemMetadataUpdate](/docs/proget/reference-api/proget-api-assets#metadata-update) object as the body.
+To update an item's metadata, simply `POST` to the URL with the `AssetDirectoryName`, path to the item and a a [AssetItemMetadataUpdate](/docs/proget/api/assets#metadata-update) object as the body.
 
 ```plaintext
 GET /endpoints/«AssetDirectoryName»/metadata/«path_to_file»
@@ -51,5 +51,5 @@ GET /endpoints/«AssetDirectoryName»/metadata/«path_to_file»
 | Response | Details |
 | --- | --- |
 | **200 (Success)** | the file or folder's metadata will be updated |
-| **401 (Authentication Required)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/reference-api/proget-api-assets#authentication) |
+| **401 (Authentication Required)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/assets#authentication) |
 | **404 (Item not Found)** | indicates that the file or folder does not exist |

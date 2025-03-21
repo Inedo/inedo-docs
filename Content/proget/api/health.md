@@ -15,7 +15,7 @@ pgutil health --source=http://progets.corp.local/
 An API key is not required for ProGet Health.
 
 ## Command Specification (CLI)
-The `health` command has a single optional argument (`--source`), which can be a URL or the name of a source. See [Working with Sources](/docs/proget/reference-api/proget-pgutil#working-with-sources) to learn more.
+The `health` command has a single optional argument (`--source`), which can be a URL or the name of a source. See [Working with Sources](/docs/proget/api/pgutil#working-with-sources) to learn more.
 
 ```bash
 $> pgutil health --source=http://progets.corp.local/

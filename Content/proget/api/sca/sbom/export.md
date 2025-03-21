@@ -25,7 +25,7 @@ pgutil builds sbom --input=myApplication.csproj --output=C:\mySboms\sbom.xml --p
 ```
 
 ## HTTP Request Specification
-To export an SBOM document, simply `GET` to the URL with an [appropriate API Key](/docs/proget/reference-api/proget-api-sca#authentication).
+To export an SBOM document, simply `GET` to the URL with an [appropriate API Key](/docs/proget/api/sca#authentication).
 
 ```plaintext
 GET /api/sca/export?project=«projectName»&version=«versionNumber»&format=«xml/json»
@@ -132,5 +132,5 @@ In XML, the request would return:
 | --- | --- |
 | **200 (Success)** | body will contain the exported SBOM document in the specified format |
 | **404 (Project or Release Not Found)** | indicates that the specified project or release was not found |
-|  **403 (Unauthorized API Key)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/reference-api/proget-api-sca#authentication); the body will be empty |
+|  **403 (Unauthorized API Key)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/sca#authentication); the body will be empty |
 | **500 (Server Error)** | indicates an unexpected error; the body will contain the message and stack trace, and this will also be logged |

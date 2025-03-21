@@ -3,7 +3,7 @@ title: "Update Feed"
 order: 4
 ---
 
-*Update Feed* is available as both a `pgutil` command and an HTTP Request, and will update a specified feed using the [Feed](/docs/proget/reference-api/feeds/proget-api-feeds#feed-object) object properties defined in the request body. This endpoint supports partial updating by only updating the properties that are supplied in the request. 
+*Update Feed* is available as both a `pgutil` command and an HTTP Request, and will update a specified feed using the [Feed](/docs/proget/api/feeds#feed-object) object properties defined in the request body. This endpoint supports partial updating by only updating the properties that are supplied in the request. 
 
 :::(Info) (🚀 Quick Example: Updating a feed's drop path with pgutil)
 This example adds a drop path `c:\bulk-import` to a feed `myNugetFeed`:
@@ -173,12 +173,12 @@ pgutil feeds retention delete --feed=myNpmFeed --rule=4
 ```
 
 ## HTTP Request Specification
-To update a feed, simply `POST` to the URL with the `feed` name, an [appropriate API Key](/docs/proget/reference-api/feeds/proget-api-feeds#authentication) and a [Feed](/docs/proget/reference-api/feeds/proget-api-feeds#feed-object) object as the request body.
+To update a feed, simply `POST` to the URL with the `feed` name, an [appropriate API Key](/docs/proget/api/feeds#authentication) and a [Feed](/docs/proget/api/feeds#feed-object) object as the request body.
 
 :::(info)
 When updating, any properties omitted will keep their existing values. Updating a property with an array value will overwrite the existing value. For example, if a feed has `connectors: ["A", "B"]`, updating with `connectors: ["C"]` will remove connectors "A" and "B" from the feed, keeping only "C". 
 
-To append values, perform a [Get Feed](/docs/proget/reference-api/feeds/proget-api-feeds/proget-api-feeds-get) first, then append the existing values returned in the "Update Feed" request. For example, GET the values of connectors "A" and "B", and add them along with "C", supplying `connectors: ["A", "B", "C"]`in the update request.
+To append values, perform a [Get Feed](/docs/proget/api/feeds/proget-api-feeds-get) first, then append the existing values returned in the "Update Feed" request. For example, GET the values of connectors "A" and "B", and add them along with "C", supplying `connectors: ["A", "B", "C"]`in the update request.
 :::
 
 ```plaintext
@@ -186,7 +186,7 @@ POST /api/management/feeds/update/«feed-name»
 ```
 
 ## HTTP Response Specification
-A successful (`200`) response body will contain an updated [Feed](/docs/proget/reference-api/feeds/proget-api-feeds#feed-object) object. For example, when updating a NuGet feed `myNugetFeed` with a new description, this returns:
+A successful (`200`) response body will contain an updated [Feed](/docs/proget/api/feeds#feed-object) object. For example, when updating a NuGet feed `myNugetFeed` with a new description, this returns:
 
 ```json
 {
@@ -222,9 +222,9 @@ A successful (`200`) response body will contain an updated [Feed](/docs/proget/r
 
 | Response | Details |
 |---|---|
-| **200 (Success)** | response body contains an updated [Feed](/docs/proget/reference-api/feeds/proget-api-feeds#feed-object) object|
+| **200 (Success)** | response body contains an updated [Feed](/docs/proget/api/feeds#feed-object) object|
 | **400 (Invalid Input)** | indicates invalid or missing properties in the request; the body will provide some details as text |
-| **403 (Unauthorized API Key)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/reference-api/feeds/proget-api-feeds#authentication); the body will be empty |
+| **403 (Unauthorized API Key)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/feeds#authentication); the body will be empty |
 | **404 (Feed Not Found)** | indicates that the specified `feed` does not exist |
 
 
@@ -233,9 +233,9 @@ A successful (`200`) response body will contain an updated [Feed](/docs/proget/r
 ### Add a connector to a feed (Powershell)
 This script will add a connector `nuget.org`, to a feed `nuget-unapproved`. If the specified connector already exists, no changes will be made.
 
-Only connectors that already exist in the ProGet instance may be added. See the [Create Connector](/docs/proget/reference-api/feeds/proget-api-connectors/proget-api-connectors-create) endpoint to add a new connector. 
+Only connectors that already exist in the ProGet instance may be added. See the [Create Connector](/docs/proget/api/connectors/create) endpoint to add a new connector. 
 
-This script can be edited to work with other [Feed](/docs/proget/reference-api/feeds/proget-api-feeds#feed-object) object properties that are array types.
+This script can be edited to work with other [Feed](/docs/proget/api/feeds#feed-object) object properties that are array types.
 
 ```powershell
 $baseUrl = "https://proget.corp.local"
@@ -276,7 +276,7 @@ Update-FeedInfo -feedName $feedName -newValue $newFeedValue
 
 This script will delete a connector `nuget.org`, from a feed `nuget-unapproved`. If the specified connector does not exist, no changes will be made.
 
-This script can be edited to work with other [Feed](/docs/proget/reference-api/feeds/proget-api-feeds#feed-object) object properties that are array types.
+This script can be edited to work with other [Feed](/docs/proget/api/feeds#feed-object) object properties that are array types.
 
 ```powershell
 $baseUrl = "https://proget.corp.local"

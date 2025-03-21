@@ -45,7 +45,7 @@ This will then tell cargo to use your ProGet Cargo feed for all requests that wo
 
 ### Authenticated Feeds
 
-If your feed is not configured for anonymous access, then you will need to specify an authentication token for your Cargo feed.  The easiest was to do this is using an API key.  Once you [create a API key](/docs/proget/reference-api/proget-apikeys#creating-and-managing-api-keys), you will need to run the following command:
+If your feed is not configured for anonymous access, then you will need to specify an authentication token for your Cargo feed.  The easiest was to do this is using an API key.  Once you [create a API key](/docs/proget/api/apikeys#creating-and-managing-api-keys), you will need to run the following command:
 
 ```bash
 cargo login --registry proget «your-api-key»
@@ -90,7 +90,7 @@ cargo publish --registry=proget
 
 
 
-**To publish packages using `pgutil`**, you'll need to first [configure a source](/docs/proget/reference-api/proget-pgutil#sources). Then you can run the `cargo package` and `pgutil packages upload` command while specifying the crate file:
+**To publish packages using `pgutil`**, you'll need to first [configure a source](/docs/proget/api/pgutil#sources). Then you can run the `cargo package` and `pgutil packages upload` command while specifying the crate file:
 ```bash
 cargo package
 pgutil packages upload --feed=«feed-name» --input-file=./target/package/«package-name»-«package-version».crate

@@ -58,7 +58,7 @@ We're sorry for the confusing terminology, but we wanted to align ProGet's termi
 By default, `ProGet::Scan` will use `$ApplicationName` for the ProGet Project name,  and `$ReleaseNumber.$BuildNumber` for the Release Number. You can change these settings with the `ProjectName` and `Release` operation parameters.
 
 #### ProGet Connection
-`ProGet::Scan` will use the default ProGet connection that you've configured under Administration > ProGet Integration. The ProGet connection should us a [ProGet API Key](/docs/proget/reference-api/proget-apikeys) with "Upload SBOM" permissions.
+`ProGet::Scan` will use the default ProGet connection that you've configured under Administration > ProGet Integration. The ProGet connection should us a [ProGet API Key](/docs/proget/api/apikeys) with "Upload SBOM" permissions.
 
 If you have multiple ProGet connections, you can specify a different connection with the `To` parameter. You can also connect to a ProGet server by specifying an `ApiKey` and `ProGetUrl`.
 

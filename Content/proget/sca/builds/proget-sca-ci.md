@@ -3,7 +3,7 @@ title: "SCA and Continuous Integration (CI)"
 order: 1
 ---
 
-The easiest way to perform a Software Composition Analysis (SCA) on your applications is to run a command line tool called [pgutil](/docs/proget/reference-api/proget-pgutil) during your Build/Continuous Integration (CI) process.  For SCA integration with Java, see our [ProGet SCA Integration with Java](/docs/proget/feeds/maven/proget-sca-java) guide.
+The easiest way to perform a Software Composition Analysis (SCA) on your applications is to run a command line tool called [pgutil](/docs/proget/api/pgutil) during your Build/Continuous Integration (CI) process.  For SCA integration with Java, see our [ProGet SCA Integration with Java](/docs/proget/feeds/maven/proget-sca-java) guide.
 
 Running the `pgutil builds scan` command will scan the code you just built, identify the open-source components used, and publish this information to the ProGet server for further analysis.
 
@@ -14,14 +14,14 @@ BuildMaster makes it easy to integrate SCA into your CI process. See this [HOWTO
 :::
 
 ## Identifying Components with pgutil
-[pgutil](/docs/proget/reference-api/proget-pgutil) is a free and open-source tool with a number of commands designed to automate and interact with ProGet. The `pgutil builds scan` command is designed to run immediately after building your application, generally as part of the Continuous Integration (CI) process.
+[pgutil](/docs/proget/api/pgutil) is a free and open-source tool with a number of commands designed to automate and interact with ProGet. The `pgutil builds scan` command is designed to run immediately after building your application, generally as part of the Continuous Integration (CI) process.
 
-When the `pgutil builds scan` command is run, it will scan the build outputs; identify open-source components in .NET, npm, and Python projects; and publish that information to your ProGet server. See [Getting Started with pgutil](/docs/proget/reference-api/proget-pgutil) to learn how to download and install.
+When the `pgutil builds scan` command is run, it will scan the build outputs; identify open-source components in .NET, npm, and Python projects; and publish that information to your ProGet server. See [Getting Started with pgutil](/docs/proget/api/pgutil) to learn how to download and install.
 
 ### HOWTO: Use pgutil Command-line Interface (CLI)
-Before installing `pgutil` on your build server, we recommend [creating an API Key](/docs/proget/reference-api/proget-apikeys) with "Upload SBOM" permissions for `pgutil` to use.
+Before installing `pgutil` on your build server, we recommend [creating an API Key](/docs/proget/api/apikeys) with "Upload SBOM" permissions for `pgutil` to use.
 
-The easiest way to install `pgutil` on your server is to follow the instructions in the [Getting Started with pgutil](/docs/proget/reference-api/proget-pgutil) guide.
+The easiest way to install `pgutil` on your server is to follow the instructions in the [Getting Started with pgutil](/docs/proget/api/pgutil) guide.
 
 Once `pgutil` is installed, simply invoke the `pgutil builds scan` command after building your application. For example:
 
@@ -42,7 +42,7 @@ Note that the `project-name` and `version` command-line arguments will generally
 See the [pgutil GitHub Repository](https://github.com/Inedo/pgutil) for more details on command-line arguments.
 
 ## Using CycloneDX Instead of pgutil
-If you're already using a tool like [CycloneDX](https://cyclonedx.org/) in your CI/CD pipeline to generate SBOM documents, you can simply upload those SBOMs to ProGet using the [SCA API](/docs/proget/reference-api/proget-api-sca).
+If you're already using a tool like [CycloneDX](https://cyclonedx.org/) in your CI/CD pipeline to generate SBOM documents, you can simply upload those SBOMs to ProGet using the [SCA API](/docs/proget/api/sca).
 ```
 curl 
   -X POST
@@ -101,7 +101,7 @@ pgutil builds scan
 ### Azure DevOps
 Use a local `dotnet tool` action to run `pgutil` on Windows and Linux build agents.
 
-1. Create a [ProGet API key](/docs/proget/reference-api/proget-apikeys)
+1. Create a [ProGet API key](/docs/proget/api/apikeys)
 2. Once the API Key is created in ProGet, you will need to add it as a secret variable on your pipeline.
    1. Navigate to your pipeline in Azure DevOps
    2. Click Edit
@@ -131,7 +131,7 @@ Use a local `dotnet tool` action to run `pgutil` on Windows and Linux build agen
 ### GitHub Actions
 Use a local `dotnet tool` action to run `pgutil` on Windows and Linux build agents.
 
-1. Create a [ProGet API key](/docs/proget/reference-api/proget-apikeys)
+1. Create a [ProGet API key](/docs/proget/api/apikeys)
    1. Once the API Key is created in ProGet, you will need to add it as a secret on your GitHub project
    2. Navigate to your project in GitHub
    3. Click "Settings"

@@ -3,7 +3,7 @@ title: "List Comments"
 order: 2
 ---
 
-*List Comments* is available as both a `pgutil` command and an HTTP Request, and will return an array of [CommentInfo Object](/docs/proget/reference-api/proget-api-sca#commentinfo-object) objects describing all comments in a project release.
+*List Comments* is available as both a `pgutil` command and an HTTP Request, and will return an array of [CommentInfo Object](/docs/proget/api/sca#commentinfo-object) objects describing all comments in a project release.
 
 Note, that if there are no comments in a release, an empty array is returned.
 
@@ -32,7 +32,7 @@ Example output:
 ```
 
 ## HTTP Request Specification
-To list all comments of a release, simply `GET` to the URL with an [appropriate API Key](/docs/proget/reference-api/proget-api-sca#authentication).
+To list all comments of a release, simply `GET` to the URL with an [appropriate API Key](/docs/proget/api/sca#authentication).
 
 ```plaintext
 GET /api/sca/comments?project=«projectName»&version=«releaseVersion»
@@ -40,7 +40,7 @@ GET /api/sca/comments?project=«projectName»&version=«releaseVersion»
 
 ## HTTP Response Specification
 
-A successful (`200`) response body will contain an array of [BuildComment Object](/docs/proget/reference-api/proget-api-sca#commentinfo-object) objects. For example, to listing all comments in release version `1.2.3` of a project `myProject`, the request would return this:
+A successful (`200`) response body will contain an array of [BuildComment Object](/docs/proget/api/sca#commentinfo-object) objects. For example, to listing all comments in release version `1.2.3` of a project `myProject`, the request would return this:
 
 ```json
 GET /api/sca/comments?project=myProject&version=1.2.3
@@ -69,8 +69,8 @@ GET /api/sca/comments?project=myProject&version=1.2.3
 
 | Response | Details |
 | --- | --- |
-| **200 (Success)** | body will contain an array of [BuildComment](/docs/proget/reference-api/proget-api-sca#commentinfo-object) objects |
+| **200 (Success)** | body will contain an array of [BuildComment](/docs/proget/api/sca#commentinfo-object) objects |
 | **400 (Invalid Input)** | indicates invalid or missing properties |
-| **403 (Unauthorized API Key)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/reference-api/proget-api-sca#authentication); the body will be empty |
+| **403 (Unauthorized API Key)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/sca#authentication); the body will be empty |
 | **404 (Project or Build Not Found)** | indicates that the specified project or build does not exist |
 | **500 (Server Error)** | indicates an unexpected error; the body will contain the message and stack trace, and this will also be logged |

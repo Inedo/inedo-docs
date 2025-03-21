@@ -24,7 +24,7 @@ pgutil builds issues delete --project=myProject --build=1.2.3 --number=4
 ```
 
 ## HTTP Request Specification
-To delete an issue, simply `DELETE` to the URL with an [appropriate API Key](/docs/proget/reference-api/proget-api-sca#authentication).
+To delete an issue, simply `DELETE` to the URL with an [appropriate API Key](/docs/proget/api/sca#authentication).
 
 ```plaintext
 DELETE /api/sca/issues?project=«projectName»&version=«releaseVersion»&number=«issueNumber»
@@ -42,7 +42,7 @@ DELETE /api/sca/issues?project=myProject&version=1.2.3&number=4
 | --- | --- |
 | **200 (Success)** | indicates issue was deleted |
 | **400 (Invalid Input)** | indicates invalid or missing arguments; the body will provide some details as text |
-| **403 (Unauthorized API Key)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/reference-api/proget-api-sca#authentication); the body will be empty |
+| **403 (Unauthorized API Key)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/sca#authentication); the body will be empty |
 | **500 (Server Error)** | indicates an unexpected error; the body will contain the message and stack trace, and this will also be logged |
 
 ## Sample Usage Scripts

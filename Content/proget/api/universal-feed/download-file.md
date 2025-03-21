@@ -3,7 +3,7 @@ title: "Download Universal Package File"
 order: 7
 ---
 
-*Download Universal Package File* is an endpoint in [ProGet's Universal Feed API](/docs/proget/reference-api/universal-feed) that will download a specific file within a package, so that you don't need to download the entire package.
+*Download Universal Package File* is an endpoint in [ProGet's Universal Feed API](/docs/proget/api/universal-feed) that will download a specific file within a package, so that you don't need to download the entire package.
 
 :::(Info) (🚀 Quick Example: Downloading a file from a Universal Package with Curl)
 This example downloads the file `log_data.bin` from version `1.2.3` of a universal package `myUniversalPackage`, in the group `MyGroup`, from the feed `myUniversalFeed`, authenticating with the API key `abc12345`:
@@ -52,5 +52,5 @@ GET /upack/myUniversalFeed/download-file/MyGroup/myUniversalPackage?latest&path=
 | --- | --- |
 | **200 (Success)** | will successfully download the file
 | **400 (Package Version not Found)** | returned if `package-version` is not specified, and latest is not specified in the URL |
-|  **403 (Unauthorized API Key)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/reference-api/universal-feed#authentication) |
+|  **403 (Unauthorized API Key)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/universal-feed#authentication) |
 | **404 (Package/File Not Found)** | indicates the specified package or file does not exist |

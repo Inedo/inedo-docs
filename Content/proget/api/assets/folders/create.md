@@ -36,4 +36,4 @@ POST /endpoints/«AssetDirectoryName»/dir/«path_to_folder»
 | Response | Details |
 | --- | --- |
 | **201 (Success)** | the folder is created |
-| **401 (Authentication Required)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/reference-api/proget-api-assets#authentication) |
+| **401 (Authentication Required)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/assets#authentication) |

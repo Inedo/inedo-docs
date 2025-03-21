@@ -3,7 +3,7 @@ title: "Get Feed"
 order: 2
 ---
 
-*Get Feed* is available as both a `pgutil` command and an HTTP Request, and will return a single [ProgetFeed](/docs/proget/reference-api/feeds/proget-api-feeds#feed-object) object or a list of properties for the specified feed.
+*Get Feed* is available as both a `pgutil` command and an HTTP Request, and will return a single [ProgetFeed](/docs/proget/api/feeds#feed-object) object or a list of properties for the specified feed.
 
 :::(Info) (🚀 Quick Example: Getting a feed with pgutil)
 This example returns properties of the feed `myNugetFeed`:
@@ -38,14 +38,14 @@ vulnerabilitiesEnabled=true
 ```
 
 ## HTTP Request Specification
-To return a specified feed, simply `GET` to the URL with the name of the `feed` and an [appropriate API Key](/docs/proget/reference-api/feeds/proget-api-feeds#authentication).
+To return a specified feed, simply `GET` to the URL with the name of the `feed` and an [appropriate API Key](/docs/proget/api/feeds#authentication).
 
 ```plaintext
 GET /api/management/feeds/get/«feed-name»
 ```
 
 ## HTTP Response Specification
-A successful (`200`) response body will contain a single [ProgetFeed](/docs/proget/reference-api/feeds/proget-api-feeds#feed-object) object. For example, to requesting a feed with the name `myNugetFeed`, the request would return:
+A successful (`200`) response body will contain a single [ProgetFeed](/docs/proget/api/feeds#feed-object) object. For example, to requesting a feed with the name `myNugetFeed`, the request would return:
 
 ```json
 GET /api/management/feeds/get/myNugetFeed
@@ -76,8 +76,8 @@ GET /api/management/feeds/get/myNugetFeed
 
 | Response | Details |
 |---|---|
-| **200 (Success)** | body will contain a [ProgetFeed](/docs/proget/reference-api/feeds/proget-api-feeds#feed-object) object |
+| **200 (Success)** | body will contain a [ProgetFeed](/docs/proget/api/feeds#feed-object) object |
 | **400 (Invalid Input)** | indicates invalid or missing properties in the request; the body will provide some details as text |
-| **403 (Unauthorized API Key)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/reference-api/feeds/proget-api-feeds#authentication); the body will be empty |
+| **403 (Unauthorized API Key)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/feeds#authentication); the body will be empty |
 | **404 (Feed Not Found)** | indicates that the specified `feed` does not exist |
 
