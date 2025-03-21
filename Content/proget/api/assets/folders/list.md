@@ -178,7 +178,7 @@ GET /endpoints/internal-files/dir/does/not/exist
 []
 ```
 
-To check if a folder exists, you could either use the [Get Metadata](/docs/proget/api/assets/metadata-endpoints/proget-api-assets-metadata-get) endpoint or inspect the array returned in `/endpoints/internal-files/dir/does/not` to see if the desired folder exists.
+To check if a folder exists, you could either use the [Get Metadata](/docs/proget/api/assets/metadata/get) endpoint or inspect the array returned in `/endpoints/internal-files/dir/does/not` to see if the desired folder exists.
 
 | Response | Details |
 | --- | --- |

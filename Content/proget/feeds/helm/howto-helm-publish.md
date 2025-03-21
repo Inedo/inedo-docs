@@ -59,7 +59,7 @@ To publish your Helm chart to your `internal-helm` feed, you can use [pgutil](/d
 $ pgutil sources add --name=Default --url=https://proget.corp.local/ --api-key=abc12345
 ```
 
-Now upload your charts by using the [`pgutil packages upload`](/docs/proget/api/packages/proget-api-packages-upload) command:
+Now upload your charts by using the [`pgutil packages upload`](/docs/proget/api/packages/upload) command:
 
 ```bash
 $ pgutil packages upload --feed=internal-helm --input-file=./projects/helm-charts/mychart

@@ -7,7 +7,7 @@ Although we recommend using [pgutil](/docs/proget/api/pgutil) for programmatic a
 
 ## Authenticating to HTTP Endpoints
 
-Before using an HTTP endpoint, you should first [Create an API Key](/docs/proget/api/apikeys/proget-api-apikeys-create) with the appropriate permissions.
+Before using an HTTP endpoint, you should first [Create an API Key](/docs/proget/api/apikeys/create) with the appropriate permissions.
 
 ::: (Warning)
 Although most HTTP Endpoints in ProGet can *technically* be used without authentication, this requires giving the `Anonymous` user access to perform those actions. While this may be fine for initial configuration, it's not appropriate for production use.

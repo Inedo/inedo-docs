@@ -69,7 +69,7 @@ X-ProGet-Version: 23.0.22.6
 This script downloads all files within an asset directory, `internal-files` from a folder, `download-files`, to a local folder, `C:\Proget\DownloadedFiles`:
 
 :::(info)
-This can be used when bulk downloading individual files located in a folder. For a more efficient solution of downloading a batch of files as an archive, use our [Export Folder](/docs/proget/api/assets/folder-endpoints/proget-api-assets-folders-export) endpoint.
+This can be used when bulk downloading individual files located in a folder. For a more efficient solution of downloading a batch of files as an archive, use our [Export Folder](/docs/proget/api/assets/folders/export) endpoint.
 :::
 
 ```powershell

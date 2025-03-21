@@ -78,7 +78,7 @@ $ pgutil sources add --name=Default --url=https://proget.corp.local/ --api-key=a
 ```
 
 ### Uploading Internalized Packages
-To upload your internalized packages to ProGet using pgutil, you can use the [`packages upload`](/docs/proget/api/packages/proget-api-packages-upload) command. For example, to upload the package `my-package-1.2.3.nupkg` stored at `C:\chocolatey_packages\` to your `internalized-chocolatey` feed you would enter:
+To upload your internalized packages to ProGet using pgutil, you can use the [`packages upload`](/docs/proget/api/packages/upload) command. For example, to upload the package `my-package-1.2.3.nupkg` stored at `C:\chocolatey_packages\` to your `internalized-chocolatey` feed you would enter:
 
 ```bash
 $ pgutil packages upload --feed=internalized-chocolatey --input-file=C:\chocolatey_packages\my-package-1.2.3.nupkg
@@ -90,7 +90,7 @@ Your package will then be uploaded to the `internalized-chocolatey` feed.
 
 ### Uploading Installer Files
 
-To upload your internalized packages to ProGet using pgutil, you can use the [`assets upload`](/docs/proget/api/assets/file-endpoints/proget-api-assets-files-upload) command. For example, to upload the installer file `my-package.exe` stored at `C:\installer-files\` to your `chocolatey-assets` feed you would enter:
+To upload your internalized packages to ProGet using pgutil, you can use the [`assets upload`](/docs/proget/api/assets/files/upload) command. For example, to upload the installer file `my-package.exe` stored at `C:\installer-files\` to your `chocolatey-assets` feed you would enter:
 
 ```bash
 $ pgutil packages upload --feed=chocolatey-assets --input-file=C:\installer-files\my-package.exe

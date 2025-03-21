@@ -110,7 +110,7 @@ You can add metadata to files by:
 1. Entering the name and value of the metadata record
 1. Optionally, you can select _Include as HTTP response header_ to send that record as an HTTP header value
 
-Metadata can also be managed using the [Asset Directory Metadata API](/docs/proget/api/assets/metadata-endpoints/proget-api-assets-metadata-set).
+Metadata can also be managed using the [Asset Directory Metadata API](/docs/proget/api/assets/metadata/set).
 
 ### Sub-folder Metadata
 
@@ -121,7 +121,7 @@ You can add metadata to a sub-folder by:
 1. Clicking _Add_ under the _Additional Metadata_ section
 1. Entering the name and value of the metadata record
 
-Metadata can also be managed using the [Asset Directory Metadata API](/docs/proget/api/assets/metadata-endpoints/proget-api-assets-metadata-set).
+Metadata can also be managed using the [Asset Directory Metadata API](/docs/proget/api/assets/metadata/set).
 
 ## Client-side Caching 
 *Client-side Caching is available starting in ProGet v6.0.*

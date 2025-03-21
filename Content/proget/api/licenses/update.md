@@ -67,7 +67,7 @@ This endpoint supports partial updating by only updating the properties that are
 :::(info) (📄 Note)
 When updating, any properties omitted will keep their existing values. Updating a property with an array value will overwrite the existing value. For example, if a license has `allowedFeeds: ["A", "B"]`, updating with `allowedFeeds: ["C"]` will remove allowedFeeds "A" and "B" from the license, keeping only "C". 
 
-To append values, perform a [List License](/docs/proget/api/licenses/proget-api-licenses-list) first, then append the existing values returned in the "Update License" request. For example, GET the values of allowedFeeds "A" and "B", and add them along with "C", supplying `allowedFeeds: ["A", "B", "C"]`in the update request.
+To append values, perform a [List License](/docs/proget/api/licenses/list) first, then append the existing values returned in the "Update License" request. For example, GET the values of allowedFeeds "A" and "B", and add them along with "C", supplying `allowedFeeds: ["A", "B", "C"]`in the update request.
 :::
 
 ```plaintext

@@ -178,7 +178,7 @@ To update a feed, simply `POST` to the URL with the `feed` name, an [appropriate
 :::(info)
 When updating, any properties omitted will keep their existing values. Updating a property with an array value will overwrite the existing value. For example, if a feed has `connectors: ["A", "B"]`, updating with `connectors: ["C"]` will remove connectors "A" and "B" from the feed, keeping only "C". 
 
-To append values, perform a [Get Feed](/docs/proget/api/feeds/proget-api-feeds-get) first, then append the existing values returned in the "Update Feed" request. For example, GET the values of connectors "A" and "B", and add them along with "C", supplying `connectors: ["A", "B", "C"]`in the update request.
+To append values, perform a [Get Feed](/docs/proget/api/feeds/get) first, then append the existing values returned in the "Update Feed" request. For example, GET the values of connectors "A" and "B", and add them along with "C", supplying `connectors: ["A", "B", "C"]`in the update request.
 :::
 
 ```plaintext

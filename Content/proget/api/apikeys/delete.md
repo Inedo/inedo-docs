@@ -18,7 +18,7 @@ This API requires ProGet 2024.3 or later.
 The `apikeys delete` command requires an `--id` option and has an optional `--source` and related authentication options (i.e. `--api-key` or `--username` / `--password`). See [Working with Sources in pgutil](/docs/proget/api/pgutil#working-with-sources) to learn more.
 
 ### Example: Finding then Deleting an API Key
-You can find the Id of an ApiKey using the `apikeys list` command. See [List ApiKeys](/docs/proget/api/apikeys/proget-api-apikeys-list) to learn more.
+You can find the Id of an ApiKey using the `apikeys list` command. See [List ApiKeys](/docs/proget/api/apikeys/list) to learn more.
 
 ```bash
 $> pgutil apikeys list
