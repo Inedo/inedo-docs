@@ -31,7 +31,7 @@ You can also rollback to ProGet 6.0 if there are issues without restoring your d
 If you're upgrading from ProGet 5.3, upgrading to ProGet 2022 should be relatively easy.
 :::
 
-There were some API Keys changes in ProGet 6.0, and some users reported that some [API Key](/docs/proget/reference-api/proget-apikeys) needing to edited or deleted/recreated to fix permissions issues. Otherwise, no major features were removed or changed, and the upgrade should be relatively easy.
+There were some API Keys changes in ProGet 6.0, and some users reported that some [API Key](/docs/proget/api/apikeys) needing to edited or deleted/recreated to fix permissions issues. Otherwise, no major features were removed or changed, and the upgrade should be relatively easy.
 
 ### Upgrading from ProGet 5.2
 :::(Warning)

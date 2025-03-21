@@ -9,7 +9,7 @@ NuGet Feeds in ProGet implement an older called the ODATA (v2) API.
 The ODATA (v2) API is complex, undocumented, and can be very resource-intensive. NuGet.org officially deprecated this API in 2021 and ProGet NuGet Feeds only support an undocumented subset API queries.
 :::
 
-If you are looking to programmaticaly query NuGet packages in ProGet, we strongly recommend using the [Packages API](/docs/proget/reference-api/proget-api-packages). NuGet feeds in ProGet do implement the NuGet Server API, but it's a lot harder to use.
+If you are looking to programmaticaly query NuGet packages in ProGet, we strongly recommend using the [Packages API](/docs/proget/api/packages). NuGet feeds in ProGet do implement the NuGet Server API, but it's a lot harder to use.
 
 
 ## NuGet.org and the ODATA (v2) API

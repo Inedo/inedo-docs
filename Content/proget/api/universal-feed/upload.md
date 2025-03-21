@@ -3,7 +3,7 @@ title: "Create/Upload Universal Package"
 order: 2
 ---
 
-*Create/Upload Universal Package* is an endpoint in [ProGet's Universal Feed API](/docs/proget/reference-api/universal-feed) that will add or replace a package in a feed.
+*Create/Upload Universal Package* is an endpoint in [ProGet's Universal Feed API](/docs/proget/api/universal-feed) that will add or replace a package in a feed.
 
 There are quite a few ways to access this endpoint, but the end result is the same. Because there are so many permutations of how you can use this, it's easiest to specify the various options and behaviors instead.
 
@@ -11,7 +11,7 @@ First and foremost, consider that a complete package consists of required metada
 
 :::(Info) (Recommended: Using pgutil to Create and Upload Universal Packages)
 
-While this endpoint will allow you create and upload a package to a Universal Feed, we recommend using [pgutil](/docs/proget/reference-api/proget-pgutil) commands to do this. this can easily be achieved using a combination of the `upack create` and `packages upload` commands:
+While this endpoint will allow you create and upload a package to a Universal Feed, we recommend using [pgutil](/docs/proget/api/pgutil) commands to do this. this can easily be achieved using a combination of the `upack create` and `packages upload` commands:
 
 ```bash
 $ pgutil upack create --name=myPackage --version=1.0.1 --source-directory=.\package-files\myPackage --target-directory=.\upacks
@@ -84,7 +84,7 @@ POST /upack/myUniversalFeed/upload
 | --- | --- |
 | **201 (Success)** | will successfully upload the package
 | **400 (Package Error)** | returned if you specify a different package name in both the query and path |
-|  **403 (Unauthorized API Key)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/reference-api/universal-feed#authentication); the body will be empty |
+|  **403 (Unauthorized API Key)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/universal-feed#authentication); the body will be empty |
 
 
 ## Sample Usage Scripts

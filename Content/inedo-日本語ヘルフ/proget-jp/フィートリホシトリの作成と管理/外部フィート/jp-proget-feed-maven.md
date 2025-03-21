@@ -73,4 +73,4 @@ Mavenリポジトリの追加に関する詳細は、Maven ガイドの（複数
 
 Maven クライアントの認証設定は、 settings.xlm ファイルにあります。（参照：[Settings Reference](https://maven.apache.org/settings.html)）
 
-スタンダードな<username>エレメントと<password>エレメントを使用して、ProGetのユーザー名/パスワードを保存するか、またはユーザー名としてapiを指定し、パスワードとしてAPIキーを指定することもできます。（参照：[API Access and API Keys](/docs/proget/reference-api/proget-apikeys)）
+スタンダードな<username>エレメントと<password>エレメントを使用して、ProGetのユーザー名/パスワードを保存するか、またはユーザー名としてapiを指定し、パスワードとしてAPIキーを指定することもできます。（参照：[API Access and API Keys](/docs/proget/api/apikeys)）

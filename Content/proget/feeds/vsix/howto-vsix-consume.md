@@ -53,10 +53,10 @@ Visual Studio does not support authenticated feeds, and will be unable to connec
 
 Now we will populate our Visual Studio Extensions feed `private-vsix` with extensions. These can be downloaded from the [Visual Studio Marketplace](https://marketplace.visualstudio.com/). 
 
-ProGet allows you to upload packages from a local source through various means. This guide will offer three options; using [pgutil](/docs/proget/reference-api/proget-pgutil), through the UI, or by bulk uploading.
+ProGet allows you to upload packages from a local source through various means. This guide will offer three options; using [pgutil](/docs/proget/api/pgutil), through the UI, or by bulk uploading.
 
 ### Option 1: Using Pgutil
-You can use [pgutil](/docs/proget/reference-api/proget-pgutil) to upload packages by running this command:
+You can use [pgutil](/docs/proget/api/pgutil) to upload packages by running this command:
 
 ```bash
 pgutil packages upload --feed=«vsix-feed-name» --input-file=«path-to-extension»
@@ -68,7 +68,7 @@ For example, to upload the package `myExtension.vsix` located in `C:\visualstudi
 pgutil packages upload --feed=private-vsix --input-file=C:\visualstudio\extensions\myExtension.vsix
 ```
 
-pgutil will require some [minor configuration](/docs/proget/reference-api/proget-pgutil#sources) before use.
+pgutil will require some [minor configuration](/docs/proget/api/pgutil#sources) before use.
 
 ### Option 2: Through the UI
 You can use the ProGet UI to upload packages. Navigate to "Feeds" > the `private-vsix` feed and select "Add Package" from the drop-down menu.

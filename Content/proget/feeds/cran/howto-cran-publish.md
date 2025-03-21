@@ -27,7 +27,7 @@ You'll then see several options related to ProGet's [Vulnerability Scanning and 
 
 ## Step 2: Create an API Key { #api-key }
 
-Next, we'll create an [API Key](/docs/proget/reference-api/proget-apikeys) allowing our local client to authenticate to our `internal-cran` feed. This allows us to upload and install packages from the feed.
+Next, we'll create an [API Key](/docs/proget/api/apikeys) allowing our local client to authenticate to our `internal-cran` feed. This allows us to upload and install packages from the feed.
 
 When creating the API key, fill in the fields by selecting "Feeds (Use Certain Feeds)" as the "Feed Type" and selecting the `internal-cran` feed. Then set the API key. You can use any alphanumeric sequence, or just leave it blank to autogenerate one. Make sure the "View/Download" and "Add/Repackage" boxes are checked, and then select "Save".
 
@@ -67,9 +67,9 @@ Your `.tar.gz` R package is then built, and saved to the same location as your p
 
 ### Step 4: Upload Your Package to ProGet
 
-To upload your package to your `internal-cran` CRAN feed, you can use [pgutil](/docs/proget/reference-api/proget-pgutil).
+To upload your package to your `internal-cran` CRAN feed, you can use [pgutil](/docs/proget/api/pgutil).
 
-pgutil will require some [minor configuration](/docs/proget/reference-api/proget-pgutil#sources) before use. This includes configuring your ProGet instance and API key as a source by running:
+pgutil will require some [minor configuration](/docs/proget/api/pgutil#sources) before use. This includes configuring your ProGet instance and API key as a source by running:
 
 ```bash
 $ pgutil sources add --name=Default --url=«proget-url» --api-key=«api-key»

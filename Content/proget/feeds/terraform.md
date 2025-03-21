@@ -76,7 +76,7 @@ credentials "«proget-hostname»" {
 }
 ```
 
-Note that the Terraform CLI limits authentication by host name, which means that only one API Key per host name is possible. See the [Terraform's CLI Configuration documentation](https://developer.hashicorp.com/terraform/cli/config/config-file#credentials-1) and/or [Creating and Managing API Keys in ProGet](/docs/proget/reference-api/proget-apikeys#creating-and-managing-api-keys) to learn more.
+Note that the Terraform CLI limits authentication by host name, which means that only one API Key per host name is possible. See the [Terraform's CLI Configuration documentation](https://developer.hashicorp.com/terraform/cli/config/config-file#credentials-1) and/or [Creating and Managing API Keys in ProGet](/docs/proget/api/apikeys#creating-and-managing-api-keys) to learn more.
 
 
 ## Terraform Module Packages

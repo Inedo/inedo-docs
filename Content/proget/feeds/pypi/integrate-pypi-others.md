@@ -51,7 +51,7 @@ poetry add «package-name» --source «feed-name»
 If you've configured your feed to require authentication, you can use either PipEnv or Poetry to authenticate to it.
 
 ::: (Info) (💡 Best Practices: Use API Keys for Authenticated Feeds)
-Instead of using your ProGet username/password for a PyPI feed, we recommend [Creating a ProGet API Key](/docs/proget/reference-api/proget-apikeys) to authenticate. You can enter `api` as the username and your key as the password.
+Instead of using your ProGet username/password for a PyPI feed, we recommend [Creating a ProGet API Key](/docs/proget/api/apikeys) to authenticate. You can enter `api` as the username and your key as the password.
 :::
 
 ### Using PipEnv
