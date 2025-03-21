@@ -33,50 +33,48 @@ Here you can view information on our recommended route for upgrading to your des
 
 ### Change Logs
 
-View our change logs for information on each version release, so that you can identify what additions/fixes may be relevant and evaluate risk. Select an Issue number to view detailed information on our [Public Issue Tracker](https://issues.inedo.com/dashboard?id=87c77108-8027-4453-aa65-15e83cf8782e) about previous and upcoming releases.
+View our change logs for information on each version, helping you identify any key changes or fixes related to a specific release. Select an issue number to view detailed information on our [Public Issue Tracker](https://issues.inedo.com/dashboard?id=87c77108-8027-4453-aa65-15e83cf8782e) about the fixes or changes of that issue.
 
 ![Change Logs](/resources/docs/myinedo-viewingupgradeguidance-changelogs.png){height="" width="50%"}
 
 ## Upgrade Guidance
 
-We provide several types of upgrade guidance depending on which versions of Inedo software you are transitioning between. A direct upgrade path is sometimes possible but read our guidance carefully if your upgrade requires extra steps.
+We provide several types of upgrade guidance depending on which versions of Inedo software you are upgrading to and from. A direct upgrade path is usually possible, however upgrades between more distant versions may require extra steps.
 
-### Latest Release
+### Recommended Upgrade (Latest Release)
 
-For example, when upgrading from **ProGet version 2024.25** to **version 2024.29**, in this case, the most recent version, you are recommended to directly upgrade to the latest release. 
+When upgrading from more recent versions (e.g. from **ProGet version 2024.25** to **version 2024.29**) you will likely be recommended to directly upgrade to the latest release. 
 
 ![Direct Upgrade](/resources/docs/myinedo-viewingupgradeguidance-directupgrade.png){height="" width="50%"}
 
-Since updating is low risk select “Upgrading your Inedo Product” for instructional documentation on how to upgrade. Read the change logs to view the patch notes for each release spanning from your current version to your intended version.
+From here, select “Upgrading your Inedo Product” for instructions on how to upgrade. Read the change logs to view the notes for each release spanning from your current version to your intended upgrade version.
 
-Note that, in the case of upgrading from **ProGet version 5.3.44** to **version 2024.29,** the latest version is still recommended, but you should carefully evaluate the upgrade risks via the provided documentation and change notes.
+### Recommended Upgrade
+
+In some cases (e.g. upgrading from **ProGet version 5.3.44** to **version 2024.29,**) the latest version will still be recommended but notice or documentation will be offered when there are significant changes between versions.
 
 ![Upgrade Recommended](/resources/docs/myinedo-viewingupgradeguidance-upgraderecommended.png){height="" width="50%"}
-
-### Prior Release
-
-When upgrading between two prior software versions, here from **ProGet version 3.8.5** to **version 3.8.6**, you may be advised to read our documentation for guidance on upgrading to a later release e.g., in the interest of maintaining security and stability.
 
 ![Latest Release Recommended](/resources/docs/myinedo-viewingupgradeguidance-latestversionrecommended.png){height="" width="50%"}
 
 ### Direct Upgrade Not Possible
 
-If a direct upgrade is not possible, like as when upgrading from ProGet **version 3.8.5** to **version 2024.9**, we still provide an upgrade path. In such a case it is highly recommended that you read the provided documentation and change notes to mitigate any potential issues.
+If a direct upgrade is not possible (e.g upgrading from **version 3.8.5** to **version 2024.9**) we still provide an upgrade path. In such a case it is highly recommended that you read the provided documentation and change notes to mitigate any potential issues.
 
 ![Direct Upgrade Not Possible](/resources/docs/myinedo-viewingupgradeguidance-directupgradenotpossible.png){height="" width="50%"}
 
 ## Public Issue Tracker
 
-Browse the change log and Inedo YouTrack page to determine if breaking changes or compatibility issues pose a risk when upgrading your software.
+Browse the change log and Inedo YouTrack page to determine any breaking changes or compatibility issues when upgrading your software.
 
 ### Public Issues Dashboard
 
-Select the link to our Public Issue Tracker in the Upgrade Guidance page preamble to view information on upcoming changes for ProGet, BuildMaster, and Otter. You can also compare the maintenance frequency of each software version at a glance, and select a specific version for further detail.
+Select the link to our Public Issue Tracker in the Upgrade Guidance page to view information on changes or fixes for your Inedo product. You can also compare the maintenance frequency of each software version at a glance, and select a specific version for further detail.
 
 ![YouTrack Dashboard](/resources/docs/myinedo-viewingupgradeguidance-youtrackdashboard.png){height="" width="50%"}
 
 ### Individual Issues
 
-Select an issue number in the change log to directly access patch notes for the corresponding issue, e.g., the status of planned releases and any fixes you want to check the progress of.
+Select an issue number in the change log to directly access patch notes for the corresponding issue, e.g., the status of any releases or fixes.
 
 ![YouTrack Issues](/resources/docs/myinedo-viewingupgradeguidance-youtrackissues.png){height="" width="50%"}
