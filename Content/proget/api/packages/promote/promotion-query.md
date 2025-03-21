@@ -1,5 +1,5 @@
 ---
-title: "Query Package Promotions Endpoint"
+title: "Query Package Promotions"
 order: 1
 ---
 
