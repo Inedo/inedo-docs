@@ -74,7 +74,7 @@ $ dotnet nuget install «package-name» -Source public-nuget
 By default your `public-nuget` feed does not need to be authenticated to. However, you may want to make your repository private and authenticate to it, in which case you'll need to configure an *authenticated* source when adding the feed. 
 
 ::: (Info) (💡 Best Practices: Use API Keys for Authenticated Feeds)
-Instead of using your ProGet username/password for a NuGet feed, we recommend [Creating a ProGet API Key](/docs/proget/reference-api/proget-apikeys) to authenticate. You can enter `api` as the username and your key as the password.
+Instead of using your ProGet username/password for a NuGet feed, we recommend [Creating a ProGet API Key](/docs/proget/api/apikeys) to authenticate. You can enter `api` as the username and your key as the password.
 :::
 
 To learn how to authenticate to your NuGet feed, read [Authenticating to NuGet Feeds](/docs/proget/feeds/feed-overview##authenticating-to-feed)

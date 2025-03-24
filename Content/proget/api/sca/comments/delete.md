@@ -25,7 +25,7 @@ pgutil builds comments delete --project=myProject --build=1.2.3 --number=2
 ```
 
 ## HTTP Request Specification
-To delete a comment, simply `DELETE` to the URL with an [appropriate API Key](/docs/proget/reference-api/proget-api-sca#authentication).
+To delete a comment, simply `DELETE` to the URL with an [appropriate API Key](/docs/proget/api/sca#authentication).
 
 ```plaintext
 DELETE /api/sca/comments?project=«projectName»&version=«releaseVersion»&number=«commentNumber»
@@ -36,7 +36,7 @@ DELETE /api/sca/comments?project=«projectName»&version=«releaseVersion»&numb
 | --- | --- |
 | **200 (Success)** | indicates the comment was successfully deleted |
 | **400 (Invalid Input)** | indicates invalid or missing properties in the request |
-| **403 (Unauthorized API Key)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/reference-api/proget-api-sca#authentication); the body will be empty |
+| **403 (Unauthorized API Key)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/sca#authentication); the body will be empty |
 | **500 (Server Error)** | indicates an unexpected error; the body will contain the message and stack trace, and this will also be logged |
 
 ### Delete all comments (Powershell)

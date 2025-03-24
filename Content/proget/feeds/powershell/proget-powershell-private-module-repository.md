@@ -80,7 +80,7 @@ Once you have a PowerShell module set up, you can add it to your ProGet feed to 
 
 ### Create an API key in ProGet
 
-You will need to [create an API Key](/docs/proget/reference-api/proget-apikeys) that allows your PowerShell module to connect to your ProGet instance. To do this navigate to "Administration Overview" > "Integrations & Extensibility" > "API Keys" > "Create API Key". 
+You will need to [create an API Key](/docs/proget/api/apikeys) that allows your PowerShell module to connect to your ProGet instance. To do this navigate to "Administration Overview" > "Integrations & Extensibility" > "API Keys" > "Create API Key". 
 
 ![Create an API Key in ProGet](/resources/docs/powershellmodulesproget-createapikey%282%29.jpg)
 
@@ -90,7 +90,7 @@ ProGet uses three types of API keys, but since we created a PowerShell feed in S
 username:password
 ``` 
 
-For more information on how API Keys function in ProGet, see [our documentation](/docs/proget/reference-api/proget-apikeys)
+For more information on how API Keys function in ProGet, see [our documentation](/docs/proget/api/apikeys)
 
 ### Import PowerShellGet Module
 

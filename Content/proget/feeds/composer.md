@@ -90,7 +90,7 @@ This will output the package as a zip file that can then be published to ProGet.
 
 ### Publishing Packages to ProGet
 
-Once you have created a package, you can publish it to ProGet using [pgutil](/docs/proget/reference-api/proget-pgutil) the `packages upload` command.
+Once you have created a package, you can publish it to ProGet using [pgutil](/docs/proget/api/pgutil) the `packages upload` command.
 
 ```bash
 pgutil packages upload --input-file="../dist/mycompany/mypackage-1.0.0.zip" --feed="«feed-name»"

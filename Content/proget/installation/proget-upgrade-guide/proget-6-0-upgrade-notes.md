@@ -19,7 +19,7 @@ ProGet 6.0 is a major upgrade, and the majority of changes from ProGet 5.3 were 
 :::(Warning) (Potential Bugs/Regressions: API Keys & Management)
 The API Keys changes involved changing some of the authentication code; this may lead to bugs/regressions where a connected systems (build/CI server) reports authentication errors. You should be prepared to...
 
-1. Edit/fix the appropriate [API Key](/docs/proget/reference-api/proget-apikeys) and adjust permissions
+1. Edit/fix the appropriate [API Key](/docs/proget/api/apikeys) and adjust permissions
 2. Or, rollback to the latest 5.3 if it doesn't work still
 
 In either case, please [contact support](https://inedo.com/support) with issues so we can investigate and fix them in a maintenance release.

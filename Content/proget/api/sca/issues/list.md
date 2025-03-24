@@ -3,7 +3,7 @@ title: "List Issues"
 order: 1
 ---
 
-*List Issues* is available as both a `pgutil` command and an HTTP Request, and will return an array of [IssueInfo Object](/docs/proget/reference-api/proget-api-sca#issueinfo-object) objects describing all issues in a project release.
+*List Issues* is available as both a `pgutil` command and an HTTP Request, and will return an array of [IssueInfo Object](/docs/proget/api/sca#issueinfo-object) objects describing all issues in a project release.
 
 Note, that if there are no issues in a release, an empty array is returned.
 
@@ -32,7 +32,7 @@ Example output:
 ```
 
 ## HTTP Request Specification
-To list all issues of a release, simply `GET` to the URL with an [appropriate API Key](/docs/proget/reference-api/proget-api-sca#authentication).
+To list all issues of a release, simply `GET` to the URL with an [appropriate API Key](/docs/proget/api/sca#authentication).
 
 ```plaintext
 GET /api/sca/issues?project=«projectName»&version=«releaseVersion»
@@ -46,7 +46,7 @@ GET /api/sca/issues?project=myProject&version=1.2.3
 
 ## HTTP Response Specification
 
-A successful (`200`) response body will contain an array of [IssueInfo Object](/docs/proget/reference-api/proget-api-sca#issueinfo-object) objects. For example, to listing all issues in release version `1.2.3` of a project `myProject`, the request would return this:
+A successful (`200`) response body will contain an array of [IssueInfo Object](/docs/proget/api/sca#issueinfo-object) objects. For example, to listing all issues in release version `1.2.3` of a project `myProject`, the request would return this:
 
 ```json
 GET /api/sca/issues?project=myProject&version=1.2.3
@@ -71,8 +71,8 @@ GET /api/sca/issues?project=myProject&version=1.2.3
 
 | Response | Details |
 | --- | --- |
-| **200 (Success)** | body will contain an array of [IssueInfo](/docs/proget/reference-api/proget-api-sca#issueinfo-object) objects |
+| **200 (Success)** | body will contain an array of [IssueInfo](/docs/proget/api/sca#issueinfo-object) objects |
 | **400 (Invalid Input)** | indicates invalid or missing properties |
-| **403 (Unauthorized API Key)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/reference-api/proget-api-sca#authentication); the body will be empty |
+| **403 (Unauthorized API Key)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/sca#authentication); the body will be empty |
 |  **404 (Project Not Found)** | indicates that the specified project does not exist | 
 | **500 (Server Error)** | indicates an unexpected error; the body will contain the message and stack trace, and this will also be logged |

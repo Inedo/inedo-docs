@@ -3,7 +3,7 @@ title: "List Packages"
 order: 1
 ---
 
-*List Packages* is available as both a `pgutil` command and an HTTP Request, and will return a JSON array of [PackageVersionInfo](/docs/proget/reference-api/proget-api-packages#package-version) objects describing the packages in a feed that match the specified query arguments.
+*List Packages* is available as both a `pgutil` command and an HTTP Request, and will return a JSON array of [PackageVersionInfo](/docs/proget/api/packages#package-version) objects describing the packages in a feed that match the specified query arguments.
 
 :::(Info) (🚀 Quick Example: Listing packages with pgutil)
 This example will list the packages in the feed `myNugetFeed`
@@ -33,7 +33,7 @@ pgutil packages list --package=@myScope/myNpmPackage --feed=myNpmFeed --stable=t
 ```
 
 ## HTTP Request Specification
-To list packages, simply `GET` to the URL with a feed name, and `stableOnly` parameters, and an [appropriate API Key](/docs/proget/reference-api/proget-api-packages#authentication).
+To list packages, simply `GET` to the URL with a feed name, and `stableOnly` parameters, and an [appropriate API Key](/docs/proget/api/packages#authentication).
 
 ```plaintext
 GET /api/packages/«feed-name»/latest[?group=«group»][&name=«name»][&stableOnly=«true/false»]
@@ -42,7 +42,7 @@ GET /api/packages/«feed-name»/latest[?group=«group»][&name=«name»][&stable
 Note that all parameters are optional. The `group name`and `package name` parameters can be used to filter the results. The `stableOnly` parameter defaults to `false`, but when set true, latest stable versions of packages are returned instead of absolute latest versions
 
 ## HTTP Response Specification
-A successful (`200`) response body will contain an array of [PackageVersionInfo](/docs/proget/reference-api/proget-api-packages#package-version) objects. For example, to querying the latest stable packages in a feed, the request would return this:
+A successful (`200`) response body will contain an array of [PackageVersionInfo](/docs/proget/api/packages#package-version) objects. For example, to querying the latest stable packages in a feed, the request would return this:
 
 ```json
 GET /api/packages/MyNuGetFeed/latest&stableOnly=true
@@ -69,8 +69,8 @@ Note that, if an API call is made on a package that does not exist, an empty obj
 
 | Response | Details |
 | --- | --- |
-| **200 (Success)** | body will contain an array of [PackageVersionInfo](/docs/proget/reference-api/proget-api-packages#package-version) objects
-|  **403 (Unauthorized API Key)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/reference-api/proget-api-packages#authentication); the body will be empty
+| **200 (Success)** | body will contain an array of [PackageVersionInfo](/docs/proget/api/packages#package-version) objects
+|  **403 (Unauthorized API Key)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/packages#authentication); the body will be empty
 | **500 (Server Error)** | indicates an unexpected error; the body will contain the messsage and stack trace, and this will also be logged
 
 ## Sample Usage Scripts

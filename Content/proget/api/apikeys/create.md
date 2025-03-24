@@ -19,7 +19,7 @@ The `apikeys create` command set is used to create an ApiKey in a ProGet instanc
 
 There are three commands available (`system`, `personal`, and `feed`), and each command has options that correspond to fields in the web UI, including `--description`, `--expiration`, `--logging`, `--name`, and `--key`. See [Creating API Keys in ProGet](/docs/buildmaster/reference/api/buildmaster-administration-security-api-keys) to learn more.
 
-These commands also have optional `--source` and related authentication options (i.e. `--api-key` or `--username` / `--password`). See [Working with Sources in pgutil](/docs/proget/reference-api/proget-pgutil#working-with-sources) to learn more.
+These commands also have optional `--source` and related authentication options (i.e. `--api-key` or `--username` / `--password`). See [Working with Sources in pgutil](/docs/proget/api/pgutil#working-with-sources) to learn more.
 
 | Command | Additional Options |  |
 | --- | --- | --- |
@@ -53,7 +53,7 @@ pgutil apikeys create feed --group=MyFeedGroup
 pgutil apikeys create personal --user=johnsmith
 ```
 
-Note source options must also be specified unless you have the "Default" source configured, and that a feed may be instead specified in the source. See [Working with Sources](/docs/proget/reference-api/proget-pgutil#sources) to learn more.
+Note source options must also be specified unless you have the "Default" source configured, and that a feed may be instead specified in the source. See [Working with Sources](/docs/proget/api/pgutil#sources) to learn more.
 
 ## HTTP Request Specification
 To create an API key, simply `POST` a `ApiKeyInfo` JSON object (see [ApiKeyInfo.cs](https://github.com/Inedo/pgutil/blob/thousand/Inedo.ProGet/ApiKeyInfo.cs)) as the request body to `/api/api-keys/create`. 
@@ -65,5 +65,5 @@ A successful response body will contain the text of the API key created.
 | --- | --- |
 | **200 (Success)** | indicates the ApiKey was created; the body will contain the text of the ApiKey created
 | **400 (Invalid Input)** | indicates invalid or missing properties on the input; the body will provide some details as text
-|  **403 (Unauthorized API Key)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/reference-api/proget-apikeys); the ApiKey will not be created
+|  **403 (Unauthorized API Key)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/apikeys); the ApiKey will not be created
 | **500 (Server Error)** | indicates an unexpected error; the body will contain the message and stack trace, and this will also be logged

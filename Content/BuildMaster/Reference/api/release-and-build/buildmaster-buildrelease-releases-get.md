@@ -87,4 +87,4 @@ A successful (`200`) response body will contain an array of [ReleaseInfo](/docs/
 |---|---|
 | **200 (Success)** | an array of [ReleaseInfo](/docs/buildmaster/reference/api/release-and-build#releaseinfo-object) objects will be returned |
 | **400 (Invalid Input)** | indicates invalid or missing properties in the request; the body will provide some details as text |
-| **403 (Unauthorized API Key)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/reference-api/proget-api-licenses#authentication); the body will be empty |
+| **403 (Unauthorized API Key)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/licenses#authentication); the body will be empty |

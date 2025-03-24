@@ -15,7 +15,7 @@ For this guide, you will need to have the following:
 :::
 
 ## Step 1: Connect to ProGet
-To connect your BuildMaster instance to ProGet you will need to generate an [API key](/docs/proget/reference-api/proget-apikeys#creating-and-managing-api-keys?#creating-and-managing-api-keys) in ProGet first. 
+To connect your BuildMaster instance to ProGet you will need to generate an [API key](/docs/proget/api/apikeys#creating-and-managing-api-keys?#creating-and-managing-api-keys) in ProGet first. 
 
 In your ProGet instance, navigate to "Administration" > "API Keys & Access Logs" under "Security & Authentication" and select "create api key". You will need at least "Manage Projects & Releases" selected, although you may wish to have "Upload SBOM documents" selected if you intend to upload these.
 

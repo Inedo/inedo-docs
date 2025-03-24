@@ -7,7 +7,7 @@ order: 4
 Not working as of ProGet version 2023.22
 :::
 
-*Update License* is available as both a `pgutil` command and an HTTP Request, and will update a specified license using the [License](/docs/proget/reference-api/proget-api-licenses#license-object) object properties defined in the request body. 
+*Update License* is available as both a `pgutil` command and an HTTP Request, and will update a specified license using the [License](/docs/proget/api/licenses#license-object) object properties defined in the request body. 
 
 :::(Info) (🚀 Quick Example: Updating a license with pgutil)
 This example updates a nuget license with the id `XYZ-1.0`, adding version `1.2.3` of the nuget package `myNugetPackage` as a `PUrl`
@@ -60,14 +60,14 @@ pgutil licenses files delete --hash=00462de3d7b6f3e5551a69ae84344bc69d23c02e1353
 ```
 
 ## HTTP Request Specification
-To update a license, simply `POST` to the URL with the `license` id, an [appropriate API Key](/docs/proget/reference-api/proget-api-licenses#authentication) and a [License](/docs/proget/reference-api/proget-api-licenses#license-object) object as the request body.
+To update a license, simply `POST` to the URL with the `license` id, an [appropriate API Key](/docs/proget/api/licenses#authentication) and a [License](/docs/proget/api/licenses#license-object) object as the request body.
 
 This endpoint supports partial updating by only updating the properties that are supplied in the request. 
 
 :::(info) (📄 Note)
 When updating, any properties omitted will keep their existing values. Updating a property with an array value will overwrite the existing value. For example, if a license has `allowedFeeds: ["A", "B"]`, updating with `allowedFeeds: ["C"]` will remove allowedFeeds "A" and "B" from the license, keeping only "C". 
 
-To append values, perform a [List License](/docs/proget/reference-api/proget-api-licenses/proget-api-licenses-list) first, then append the existing values returned in the "Update License" request. For example, GET the values of allowedFeeds "A" and "B", and add them along with "C", supplying `allowedFeeds: ["A", "B", "C"]`in the update request.
+To append values, perform a [List License](/docs/proget/api/licenses/list) first, then append the existing values returned in the "Update License" request. For example, GET the values of allowedFeeds "A" and "B", and add them along with "C", supplying `allowedFeeds: ["A", "B", "C"]`in the update request.
 :::
 
 ```plaintext
@@ -81,5 +81,5 @@ A successful (`200`) response body will be empty.
 |---|---|
 | **200 (Success)** | update succeeded |
 | **400 (Invalid Input)** | indicates invalid or missing properties in the request; the body will provide some details as text |
-| **403 (Unauthorized API Key)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/reference-api/proget-api-licenses#authentication); the body will be empty |
+| **403 (Unauthorized API Key)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/licenses#authentication); the body will be empty |
 | **404 (License Not Found)** | indicates that the specified `license` does not exist |

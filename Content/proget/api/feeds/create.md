@@ -3,7 +3,7 @@ title: "Create Feed"
 order: 1
 ---
 
-*Create Feed* is available as both a `pgutil` command and an HTTP Request, and will create a feed, with the properties defined by a [ProgetFeed](/docs/proget/reference-api/feeds/proget-api-feeds#feed-object) object in the body of the request.
+*Create Feed* is available as both a `pgutil` command and an HTTP Request, and will create a feed, with the properties defined by a [ProgetFeed](/docs/proget/api/feeds#feed-object) object in the body of the request.
 
 :::(Info) (🚀 Quick Example: Creating a feed with pgutil)
 This example will create a `NuGet` feed `myNugetFeed`:
@@ -25,14 +25,14 @@ pgutil feeds create --name=myNugetFeed --type=NuGet
 ```
 
 ## HTTP Request Specification
-To create a feed, simply `POST` to the URL with an [appropriate API Key](/docs/proget/reference-api/feeds/proget-api-feeds#authentication) and a [ProgetFeed](/docs/proget/reference-api/feeds/proget-api-feeds#feed-object) object as the request body.
+To create a feed, simply `POST` to the URL with an [appropriate API Key](/docs/proget/api/feeds#authentication) and a [ProgetFeed](/docs/proget/api/feeds#feed-object) object as the request body.
 
 ```plaintext
 POST/PUT /api/management/feeds/create
 ```
 
 ## HTTP Response Specification
-A successful (`200`) response body will contain a single [ProgetFeed](/docs/proget/reference-api/feeds/proget-api-feeds#feed-object) object. For example, creating a new `nuget` feed, with the name `myNugetFeed` returns:
+A successful (`200`) response body will contain a single [ProgetFeed](/docs/proget/api/feeds#feed-object) object. For example, creating a new `nuget` feed, with the name `myNugetFeed` returns:
 
 ```json
 POST /api/management/feeds/create
@@ -63,6 +63,6 @@ POST /api/management/feeds/create
 
 | Response | Details |
 |---|---|
-| **200 (Success)** | a `feed` will be created, the body will contain a [ProgetFeed](/docs/proget/reference-api/feeds/proget-api-feeds#feed-object) object |
+| **200 (Success)** | a `feed` will be created, the body will contain a [ProgetFeed](/docs/proget/api/feeds#feed-object) object |
 | **400 (Invalid Input)** | indicates invalid or missing properties in the request; the body will provide some details as text |
-| **403 (Unauthorized API Key)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/reference-api/feeds/proget-api-feeds#authentication); the body will be empty |
+| **403 (Unauthorized API Key)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/feeds#authentication); the body will be empty |

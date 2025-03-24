@@ -3,7 +3,7 @@ title: "List Feeds"
 order: 3
 ---
 
-*List Feeds* is available as both a `pgutil` command and an HTTP Request, and will return an array of [ProgetFeed](/docs/proget/reference-api/feeds/proget-api-feeds#feed-object) objects, describing all existing feeds.
+*List Feeds* is available as both a `pgutil` command and an HTTP Request, and will return an array of [ProgetFeed](/docs/proget/api/feeds#feed-object) objects, describing all existing feeds.
 
 :::(Info) (🚀 Quick Example: Listing feeds with pgutil)
 This example lists all existing feeds:
@@ -35,14 +35,14 @@ unapproved-pypi (pypi)
 ```
 
 ## HTTP Request Specification
-To list all existing feeds, simply `GET` to the URL with an [appropriate API Key](/docs/proget/reference-api/feeds/proget-api-feeds#authentication).
+To list all existing feeds, simply `GET` to the URL with an [appropriate API Key](/docs/proget/api/feeds#authentication).
 
 ```plaintext
 GET /api/management/feeds/list
 ```
 
 ## HTTP Response Specification
-A successful (`200`) response body will contain an array of [ProgetFeed](/docs/proget/reference-api/feeds/proget-api-feeds#feed-object) objects. For example:
+A successful (`200`) response body will contain an array of [ProgetFeed](/docs/proget/api/feeds#feed-object) objects. For example:
 
 ```json
 GET /api/management/feeds/list
@@ -76,8 +76,8 @@ GET /api/management/feeds/list
 
 | Response | Details |
 |---|---|
-| **200 (Success)** | body will contain an array of [ProgetFeed](/docs/proget/reference-api/feeds/proget-api-feeds#feed-object) objects |
-| **403 (Unauthorized API Key)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/reference-api/feeds/proget-api-feeds#authentication); the body will be empty |
+| **200 (Success)** | body will contain an array of [ProgetFeed](/docs/proget/api/feeds#feed-object) objects |
+| **403 (Unauthorized API Key)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/feeds#authentication); the body will be empty |
 
 ## Sample Usage Scripts
 

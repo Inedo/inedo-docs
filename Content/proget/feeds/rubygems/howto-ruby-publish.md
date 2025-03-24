@@ -27,9 +27,9 @@ You'll then see several options related to ProGet's [Vulnerability Scanning and 
 
 ## Step 2: Create an API Key { #api-key }
 
-Next, we'll create an [API Key](/docs/proget/reference-api/proget-apikeys) allowing our local environment to authenticate to our `internal-gems` feed. This allows us to push and install packages from the feed.
+Next, we'll create an [API Key](/docs/proget/api/apikeys) allowing our local environment to authenticate to our `internal-gems` feed. This allows us to push and install packages from the feed.
 
-You can read more about creating API keys in ProGet on our [API Key](/docs/proget/reference-api/proget-apikeys) page. 
+You can read more about creating API keys in ProGet on our [API Key](/docs/proget/api/apikeys) page. 
 
 When creating an API Key, fill in the fields by selecting "Feeds (Use Certain Feeds)" as the "Feed Type" and selecting the `internal-gems` feed. Then set the API key. You can use any alphanumeric sequence, or just leave it blank to autogenerate one. Make sure the "View/Download" and "Add/Repackage" boxes are checked, and then select "Save".
 

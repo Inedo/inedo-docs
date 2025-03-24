@@ -34,7 +34,7 @@ When an API Key isn't specified, and the Anonymous user doesn't have "Feeds: Vie
 | Personal API Key | `Feeds_ViewFeed`
 | No API Key | anonymous or authenticated user must have at least `Feeds_ViewFeed`
 
-To specify an API Key, use the request header (`X-ApiKey`), querystring (`key`), or `api:«api-key»` as the username. See [API Key Usage](/docs/proget/reference-api/proget-apikeys#using-api-keys) to learn more.
+To specify an API Key, use the request header (`X-ApiKey`), querystring (`key`), or `api:«api-key»` as the username. See [API Key Usage](/docs/proget/api/apikeys#using-api-keys) to learn more.
 
 ## Request Specification
 To query the status of promoted packages, simply `GET` to the URL with querystring parameters and an [appropriate API Key](/docs/proget/packages/package-promotion#authentication).

@@ -48,7 +48,7 @@ This will create two directories: `dist/` and `build/`, with `.tar.gz` (e.g. `my
 
 ## Step 3: Create an API Key
 
-Now you will need to create an [API Key](/docs/proget/reference-api/proget-apikeys) to let local Python clients authenticate to the `internal-pypi` feed. This will let you publish and access packages from that feed. 
+Now you will need to create an [API Key](/docs/proget/api/apikeys) to let local Python clients authenticate to the `internal-pypi` feed. This will let you publish and access packages from that feed. 
 
 :::(info) (Authenticating with an API Key)
 While you _can_ authenticate with a ProGet username and password, we highly recommend using an API Key instead. For that, use `api` as the username and the API Key as the password.
@@ -60,9 +60,9 @@ When creating an API Key, fill in the fields by selecting "Feeds (Use Certain Fe
 
 ## Step 4: Upload Your Package to ProGet { #upload-package }
 
-To publish your package to your ProGet `internal-pypi` feed, you can use [pgutil](/docs/proget/reference-api/proget-pgutil).
+To publish your package to your ProGet `internal-pypi` feed, you can use [pgutil](/docs/proget/api/pgutil).
 
-`pgutil` will require some [minor configuration](/docs/proget/reference-api/proget-pgutil#sources) before use. This includes setting up your ProGet instance and API key as a source by running:
+`pgutil` will require some [minor configuration](/docs/proget/api/pgutil#sources) before use. This includes setting up your ProGet instance and API key as a source by running:
 
 ```bash
 $ pgutil sources add --name=Default --url=«proget-url» --api-key=«api-key»
@@ -140,4 +140,4 @@ $ pip install my_package==1.0.0 --extra-index-url https://proget.corp.local/pypi
 
 ## (Optional) Authenticating to the PyPI Feed
 
-By default, your `internal-pypi` feed can be viewed and installed from anonymously. However, if you have set up authentication for your feed, you [authenticate to it](/docs/proget/feeds/pypi#authenticating-to-a-pypi-feed) by configuring your [pip config](https://pip.pypa.io/en/stable/topics/configuration/) file with `pip config`, or by using the `pip install` command. You also have the option to authenticate using [PipEnv or Poetry](/docs/proget/feeds/pypi/integrate-pypi-others#authenticate-feed). As with authenticating when publishing to a feed, we highly recommend [Creating a ProGet API Key](/docs/proget/reference-api/proget-apikeys) for authentication, where `api` is the username and the API key is the password. 
+By default, your `internal-pypi` feed can be viewed and installed from anonymously. However, if you have set up authentication for your feed, you [authenticate to it](/docs/proget/feeds/pypi#authenticating-to-a-pypi-feed) by configuring your [pip config](https://pip.pypa.io/en/stable/topics/configuration/) file with `pip config`, or by using the `pip install` command. You also have the option to authenticate using [PipEnv or Poetry](/docs/proget/feeds/pypi/integrate-pypi-others#authenticate-feed). As with authenticating when publishing to a feed, we highly recommend [Creating a ProGet API Key](/docs/proget/api/apikeys) for authentication, where `api` is the username and the API key is the password. 

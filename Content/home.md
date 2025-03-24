@@ -292,7 +292,7 @@ BuildMaster 2023 is a major update, and this article provides information about 
 Otter 2023 is a major upgrade, and this article provides information about what changed, the impact to your instance, and how to mitigate risk during upgrade.
 
 </a>
-<a href="/docs/proget/reference-api/proget-pgutil" class="item">
+<a href="/docs/proget/api/pgutil" class="item">
 
 ##### Getting Started with pgutil
 `pgutil` is an open-source (github.com), cross-platform command line tool that provides a variety of commands to upload/download packages, manage feeds, audit package compliance, assess vulnerabilities, etc. 

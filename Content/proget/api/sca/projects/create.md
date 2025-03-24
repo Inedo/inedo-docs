@@ -3,7 +3,7 @@ title: "Create/Update Project"
 order: 1
 ---
 
-*Create/Update Project* is available as both a `pgutil` command and an HTTP Request, and will create a new project or update properties on an existing project, and return a [ProjectInfo Object](/docs/proget/reference-api/proget-api-sca#projectinfo-object) object describing the new or updated project.
+*Create/Update Project* is available as both a `pgutil` command and an HTTP Request, and will create a new project or update properties on an existing project, and return a [ProjectInfo Object](/docs/proget/api/sca#projectinfo-object) object describing the new or updated project.
 
 Note: this API endpoint functions by creating a new project when the one specified in the API request does not exist, else it updates an existing project.
 
@@ -32,14 +32,14 @@ pgutil builds projects create --project=myApplication --url=proget.corp.local
 ```
 
 ## HTTP Request Specification
-To create or update a project, simply `POST` to the URL with an [appropriate API Key](/docs/proget/reference-api/proget-api-sca#authentication) and a [ProjectInfo Object](/docs/proget/reference-api/proget-api-sca#projectinfo-object) object as the request body.
+To create or update a project, simply `POST` to the URL with an [appropriate API Key](/docs/proget/api/sca#authentication) and a [ProjectInfo Object](/docs/proget/api/sca#projectinfo-object) object as the request body.
 
 ```plaintext
 POST /api/sca/projects
 ```
 
 ## HTTP Response Specification
-A successful (`200`) response body will contain a [ProjectInfo Object](/docs/proget/reference-api/proget-api-sca#projectinfo-object) object. For example, to creating a new project `myProject`, the request would return this:
+A successful (`200`) response body will contain a [ProjectInfo Object](/docs/proget/api/sca#projectinfo-object) object. For example, to creating a new project `myProject`, the request would return this:
 
 ```json
 POST /api/sca/projects
@@ -51,7 +51,7 @@ POST /api/sca/projects
 
 | Response | Details |
 | --- | --- |
-| **200 (Success)** | body will contain a [ProjectInfo](/docs/proget/reference-api/proget-api-sca#projectinfo-object) object |
-| **400 (Invalid Input)** | indicates invalid or missing properties on the [ProjectInfo](/docs/proget/reference-api/proget-api-sca#projectinfo-object) object; the body will provide some details as text |
-| **403 (Unauthorized API Key)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/reference-api/proget-api-sca#authentication); the body will be empty |
+| **200 (Success)** | body will contain a [ProjectInfo](/docs/proget/api/sca#projectinfo-object) object |
+| **400 (Invalid Input)** | indicates invalid or missing properties on the [ProjectInfo](/docs/proget/api/sca#projectinfo-object) object; the body will provide some details as text |
+| **403 (Unauthorized API Key)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/sca#authentication); the body will be empty |
 | **500 (Server Error)** | indicates an unexpected error; the body will contain the message and stack trace, and this will also be logged |

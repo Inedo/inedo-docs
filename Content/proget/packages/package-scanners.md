@@ -13,7 +13,7 @@ To start viewing package usage, simply create a feed that supports this feature.
 ## Configuring Otter 
 Otter can be used to collect package usage from your servers. See [server packages in the Otter documentation](/docs/otter/connecting-to-your-servers-with-otter/otter-servers-in-otter#packagess) for instructions on configuring this feature.
 
-Once Otter is configured to collect package data, you must [create an API key](/docs/proget/reference-api/proget-apikeys) that allows access to the *Package/Container Usage API*. 
+Once Otter is configured to collect package data, you must [create an API key](/docs/proget/api/apikeys) that allows access to the *Package/Container Usage API*. 
 
 ![create_API_key_pckguse.png](/resources/docs/create_API_key_pckguse.png){height="" width=""}
 

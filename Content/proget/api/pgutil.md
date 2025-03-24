@@ -76,7 +76,7 @@ To return a detailed list of options for any command, you can use the `--help` o
 pgutil packages download --help
 ```
 
-The [API documentation](/docs/proget/reference-api) is organized around these command sets, allowing easier navigation and understanding of the available functions.
+The [API documentation](/docs/proget/api) is organized around these command sets, allowing easier navigation and understanding of the available functions.
 
 ### Feature Requests for new Commands
 
