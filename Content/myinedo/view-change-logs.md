@@ -1,34 +1,32 @@
 ---
-title: "Change Logs"
+title: "Viewing Detailed Change Logs"
 order: 9
 ---
 
- For your convenience, we offer a Detailed Change Log for ProGet, BuildMaster, and Otter. The Detailed Change Log will support your experience by providing easy access to important updates and improvements to our products.
+On MyInedo you can find Detailed Change Logs for Inedo Product, providing quick access to information on important updates and improvements.
 
- This article will explain how to access the Detailed Change Log through MyInedo. 
+This article will explain how to access the Detailed Change Logs through MyInedo. 
 
- ## Viewing Change Logs
-To access the Detailed Change Log through MyInedo, click on “Downloads” on the top of the MyInedo webpage.
+## Viewing Change Logs
+From the MyInedo page, click on “Downloads” at the top to navigate to the Inedo Product Downloads page.
 
 ![MyInedo](/resources/docs/myinedo-viewingchangelogs-myinedo.png){height="" width="50%"}
 
-You will then be redirected to the Inedo Product Downloads page. Select “Upgrade Guidance & Change Notes”.
+Select “Upgrade Guidance & Change Notes”.
 
 ![Downloads](/resources/docs/myinedo-viewingchangelogs-downloads.png){height="" width="50%"}
 
-Click on “Explore Detailed Change Logs” on the Upgrade Guidance window to view the Detailed Change Logs page.
+Click on “Explore Detailed Change Logs” on "Upgrade Guidance" to view the Detailed Change Logs page.
 
 ![Upgrade Guidance](/resources/docs/myinedo-viewingchangelogs-upgradeguidance.png){height="" width="50%"}
 
-You will see a list of our products change logs with their issue number and version.
-
-![Detailed Change Log](/resources/docs/myinedo-viewingchangelogs-detailedchangelog.png){height="" width="50%"}
-
-You can select and filter the change logs by product or version.
+You will see a list of our product change logs by issue number and version. You can select and filter the change logs by Inedo product or version.
 
 ![Detailed Change Log Filters](/resources/docs/myinedo-viewingchangelogs-detailedchangelogfilters.png){height="" width="50%"}
 
-To view a change log and its update in more detail, click on an issue which will redirect you to its corresponding YouTrack page.
+## Viewing Issues on YouTrack
+
+To view an update or fix in more detail, click on an issue to navigate to its corresponding YouTrack page.
 
 ![Detailed Change Log Issue](/resources/docs/myinedo-viewingchangelogs-detailedchangelogissue.png){height="" width="50%"}
 
