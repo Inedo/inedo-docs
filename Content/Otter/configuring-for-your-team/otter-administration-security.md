@@ -98,4 +98,4 @@ As of Otter v2.2.3, privileges may be granted or restricted to the following "ca
 
 As of Otter v2.2.3, a hybrid user directory may be used to combine multiple user directories together, resolving principals from one or more existing user directories. This allows Otter administrators to configure the system such that, for example, user accounts can be defined in Otter with a fallback to Active Directory.
 
-Visit the [Hybrid User Directories](/docs/installation/security-ldap-active-directory/various-ldap-combining-with-built-in) documentation for more information.
+Visit the [Hybrid User Directories](/docs/installation/security-ldap-active-directory/legacyconfigurations/various-ldap-combining-with-built-in) documentation for more information.

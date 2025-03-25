@@ -1,6 +1,6 @@
 ---
 title: "Advanced Configuration (v4)"
-order: 3
+order: 2
 ---
 
 
@@ -60,25 +60,7 @@ Users and groups configured in tasks and permissions are compatible with both v3
 ## Multiple Domains
 Unlike Active Directory / LDAP V3, V4 is connected to a single domain.  To connect to two or more domains, you will need to add multiple user directories.  To add a new user directory, navigate to Adminstration > Manage Security and click the "add new directory / domain" link to the right of User Directories / Domains.
 
-## Multiple Instances
+## Multiple Instances (Windows Integrate Authentication)
 In some cases your organization might need to have a second instance of ProGet running with different authentication types. For this you will need to add a second website in IIS that points to the same physical path as your original ProGet instance and adjust your authentication settings as needed.
 
 The most typical reason for implementing this would be for companies using Windows Authentication along with Forms authentication at the same time.
-
-## Testing User Directories
-Testing your configured user directories can be useful when you have advanced configurations or are encountering LDAP connection issues. When using an advanced configuration, it is best practice to test your user directory prior enabling it.
-
-To test your user directories, follow these steps:
-
-1. Go to Administration > Manage Security.
-2. Click "Test User Directories" in the upper right corner.
-3. Select either "All Active User Directories" (tests all enabled user directories) or the specific user directory (enabled or disabled) that you want to test.
-
-The test options are:
-- Test Login: Tests logging in as a specific user.
-- Load User by User Name: Loads a user by their username and, optionally, tests if they are a member of a specific group.
-- Load Group by Group Name: Loads a group by name.
-- Search for Users: Searches for users starting with the entered text.
-- Search for Groups: Searches for groups starting with the entered text.
-
-The results of the tests and a debug output from the query will be displayed after running the tests.

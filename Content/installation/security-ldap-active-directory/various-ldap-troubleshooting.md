@@ -1,6 +1,6 @@
 ---
 title: "Troubleshooting LDAP/AD Integration"
-order: 5
+order: 6
 ---
 
 ## Locked out: Restoring Default Admin Account
@@ -34,7 +34,7 @@ docker restart PROGET_CONTAINER_NAME
 
 The *Active Directory (New)* user directory is loaded from the InedoCore extension. Visit the extensions page (Administration &rsaquo; Extensions) to verify that the InedoCore extension is loaded on that page.
 
-An instance of the user directory should be visible on the *Manage User Directories* page (Administration &rsaquo; Change User Directory &rsaquo; Advanced). If there isn't one (e.g. after a reset), click the *Add User Directory* button and select *Active Directory (New)*. Configure the user directory as detailed in the [Advanced Configuration](/docs/installation/security-ldap-active-directory/various-ldap-v3-advanced){target="_blank"} section, and then click Save. This will restore the user directory on the *Change User Directory* page.
+An instance of the user directory should be visible on the *Manage User Directories* page (Administration &rsaquo; Change User Directory &rsaquo; Advanced). If there isn't one (e.g. after a reset), click the *Add User Directory* button and select *Active Directory (New)*. Configure the user directory as detailed in the [Advanced Configuration](/docs/installation/security-ldap-active-directory/legacyconfigurations/various-ldap-v3-advanced){target="_blank"} section, and then click Save. This will restore the user directory on the *Change User Directory* page.
 
 ## Privileges assigned to the Domain Users group not working 
 
@@ -45,7 +45,7 @@ We have had many support inquiries related to the assignment of privileges to th
 ## Privileges assigned to a group are not working
 The *Active Directory (New)* directory only considers a user's *direct* group membership, not indirect membership (i.e. a group's groups). This is done for performance reasons, as such queries are recursive in nature and may have severe performance issues (particularly with multiple domains). 
 
-You can enable recursive group search in [Active Directory / LDAP v3](/docs/installation/security-ldap-active-directory/various-ldap-v3-advanced), but lots of recursive groups can cause performance issues and circular group dependencies will cause errors.  In v4, we have added support for a special Active Directory only query that allows these recursive groups to be queried much more efficiently. To configure this, see the [V4: Advanced Configuration](/docs/installation/security-ldap-active-directory/various-ldap-v4-advanced) documentation.
+You can enable recursive group search in [Active Directory / LDAP v3](/docs/installation/security-ldap-active-directory/legacyconfigurations/various-ldap-v3-advanced), but lots of recursive groups can cause performance issues and circular group dependencies will cause errors.  In v4, we have added support for a special Active Directory only query that allows these recursive groups to be queried much more efficiently. To configure this, see the [V4: Advanced Configuration](/docs/installation/security-ldap-active-directory/various-ldap-v4-advanced) documentation.
 
 ## Integrated Authentication Not Working
 

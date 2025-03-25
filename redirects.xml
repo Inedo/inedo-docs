@@ -36,6 +36,10 @@
   <redirect from="/docs/proget/upack/proget-api-universalfeed/proget-api-universalfeed-version" to="/docs/proget/reference-api/universal-feed/version" /> 
   <!-- END UPack Docs Refactoring -->
 
+  <!-- BEGIN LDAP/AD Docs Refactoring  -->
+  <redirect from="/docs/installation/security-ldap-active-directory/various-ldap-v3-advanced" to="/docs/installation/security-ldap-active-directory/legacyconfigurations/various-ldap-v3-advanced" modified="3/25/2025" />
+  <redirect from="/docs/installation/security-ldap-active-directory/various-ldap-combining-with-built-in" to="/docs/installation/security-ldap-active-directory/legacyconfigurations/various-ldap-combining-with-built-in" modified="3/25/2025" />
+  <!-- END LDAP/AD Docs Refactoring -->
 
   <redirect from="/docs/proget/feeds/nuget/problems-with-my-nuget-org-connectors" to="/docs/proget/feeds/nuget/odata-v2-api" modified="11/21/2024" />
   <redirect from="/docs/proget/administration/proget-installation-diagnostic-center" to="/docs/installation/logging/diagnostic-center" modified="10/24/2024" />

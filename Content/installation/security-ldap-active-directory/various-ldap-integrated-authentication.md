@@ -1,6 +1,6 @@
 ---
 title: "Windows Integrated Authentication"
-order: 2
+order: 4
 ---
 
 Integrated Authentication is an option that allows transparent user authentication, removing the web-based login prompt. When this option is enabled and working, whatever account you signed on to Windows with, will be used as your login.
