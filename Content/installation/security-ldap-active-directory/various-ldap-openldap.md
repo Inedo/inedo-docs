@@ -3,7 +3,7 @@ title: "OpenLDAP/Generic LDAP Configuration"
 order: 3
 ---
 
-In ProGet 2024, BuildMaster 2025, and Otter 2025, we have added a new User Directory *OpenLDAP/Generic LDAP* to better handle connections to OpenLDAP and other LDAP providers that are not Microsoft's Active Directory.  This differs from "Active Directory v4 (New)" because it does not do any domain network discovery, it requires the *distinguished name* for an LDAP User and its password, and it uses the specified LDAP queries instead of an Active Directory first approach.
+In ProGet 2024, BuildMaster 2024, and Otter 2024, we have added a new User Directory *OpenLDAP/Generic LDAP* to better handle connections to OpenLDAP and other LDAP providers that are not Microsoft's Active Directory.  This differs from "Active Directory v4 (New)" because it does not do any domain network discovery, it requires the *distinguished name* for an LDAP User and its password, and it uses the specified LDAP queries instead of an Active Directory first approach.
 
 In most installations of OpenLDAP, the default configuration for the *OpenLDAP/Generic LDAP* user directory will *just work* with only needing to supply the host address and the distinguished name for an LDAP user and its password.  For other LDAP based directories, you may need to modify the attributes and LDAP queries, specifically the object class.
 
