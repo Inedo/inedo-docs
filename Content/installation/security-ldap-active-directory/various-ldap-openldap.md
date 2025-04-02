@@ -1,5 +1,5 @@
 ---
-title: "OpenLDAP/Generic LDAP Configuration"
+title: "OpenLDAP/Generic LDAP"
 order: 3
 ---
 

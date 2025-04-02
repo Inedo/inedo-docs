@@ -1,5 +1,5 @@
 ---
-title: "Advanced Configuration (v4)"
+title: "Active Directory/LDAP (v4)"
 order: 2
 ---
 
