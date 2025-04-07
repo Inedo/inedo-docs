@@ -1,37 +1,37 @@
 ---
-title: "Change Logs"
+title: "Viewing Change Logs"
 order: 9
 ---
 
- For your convenience, we offer a Detailed Change Log for ProGet, BuildMaster, and Otter. The Detailed Change Log will support your experience by providing easy access to important updates and improvements to our products.
+ The Detailed Change Log is a tool that gives you visibility and control over your Inedo products. Viewing change logs helps you make informed decisions about how, when, and why to upgrade. Checking the change logs lets you stay ahead of potential issues and ensures a smoother workflow.
 
- This article will explain how to access the Detailed Change Log through MyInedo. 
+ In this article we'll cover how you can track your product changes with the Detailed Change Log.
 
- ## Viewing Change Logs
-To access the Detailed Change Log through MyInedo, click on “Downloads” on the top of the MyInedo webpage.
+ ## Using the Detailed Change Log to Track Changes
+The Detailed Change Log can be accessed through <a href="https://my.inedo.com/downloads/issues">MyInedo</a>.
 
 ![MyInedo](/resources/docs/myinedo-viewingchangelogs-myinedo.png){height="" width="50%"}
 
-You will then be redirected to the Inedo Product Downloads page. Select “Upgrade Guidance & Change Notes”.
+### Assess the Changes and Prioritize Accordingly
+Words such as <b>fix</b> assist in quickly pinpointing changes that resolve any issues you might be experiencing. If your ProGet feed has been experiencing replication issues, you can prioritize updates that specifically address these bugs.
 
-![Downloads](/resources/docs/myinedo-viewingchangelogs-downloads.png){height="" width="50%"}
+<b>Add</b> and similar words help you easily spot changes that could improve your workflow. If a new feature in BuildMaster could help you streamline your deployment process, you might want to upgrade sooner than later.
 
-Click on “Explore Detailed Change Logs” on the Upgrade Guidance window to view the Detailed Change Logs page.
+### Understanding the Scope of Change
+When upgrading any of your Inedo products to the latest version, we recommend reading the upgrade notes, as they usually come with significant changes in several areas. If you're updating BuildMaster to the latest release, SDK modifications may require rebuilding custom extensions to maintain your current setup.
 
-![Upgrade Guidance](/resources/docs/myinedo-viewingchangelogs-upgradeguidance.png){height="" width="50%"}
-
-You will see a list of our products change logs with their issue number and version.
-
-![Detailed Change Log](/resources/docs/myinedo-viewingchangelogs-detailedchangelog.png){height="" width="50%"}
-
-You can select and filter the change logs by product or version.
+### Filter the Changes
+You can filter the change logs by count, product, and version to quickly locate any issues with your product.
 
 ![Detailed Change Log Filters](/resources/docs/myinedo-viewingchangelogs-detailedchangelogfilters.png){height="" width="50%"}
 
-To view a change log and its update in more detail, click on an issue which will redirect you to its corresponding YouTrack page.
-
-![Detailed Change Log Issue](/resources/docs/myinedo-viewingchangelogs-detailedchangelogissue.png){height="" width="50%"}
-
-From here you can see the timeline and details of the added feature or issue fix.
+## Using our Public Issue Tracker to View Changes in Detail
+Each update links to our <a href="https://issues.inedo.com/dashboard?id=87c77108-8027-4453-aa65-15e83cf8782e&_gl=1*m68oqx*_gcl_au*NTUyMjMzOTM0LjE3NDE1ODEzMzM.">Public Issue Tracker</a> with more detailed information on the change.
 
 ![YouTrack](/resources/docs/myinedo-viewingchangelogs-youtrack.png){height="" width="50%"}
+
+You can view the complete timeline of the issue, including when it started, when it was resolved, and the release version it was addressed. This information allows you to determine if an immediate upgrade is necessary to fix the issue or if it can wait until your next scheduled update.
+
+You can see the issue's status. If the log shows the state as "completed", this lets you know the change has been implemented in the latest release, helping you decide the best time to schedule an update for your system.
+
+See [Upgrading your Inedo Product](/docs/installation/upgrading) documentation for information on product upgrades.
