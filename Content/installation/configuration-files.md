@@ -51,9 +51,15 @@ The `WebServer` element contains multiple attributes that controls how your Ined
 | **Store** | `string` | The Windows Certificate Store that contains the certificate |
 | **Location** | `CurrentUser/LocalMachine` | The Windows Certificate Store location |
 | **AllowInvalid** | `true/false` | Whether to allow invalid certificates, like self-signed certificates, to be loaded |
+| **IntegratedAuthenticationEnabled** | `true/false` | Enables integrated windows authentication *(ProGet 2024.30+ only)* |
+| **UseHttpsRedirection** | `true/false` | When HTTPS is enabled, redirect HTTP port to HTTPS port *(ProGet 2024.30+ only)* |
 
 :::(Info)(Note:)
 `Thumbprint` and `Subject` cannot be used at the same time.  If both are specified, only `Thumbprint` will be used.
+:::
+
+:::(Info)(Note:)
+In ProGet 2024.30+, `IntegratedAuthenticationEnabled` and `UseHttpsRedirection` will be set automatically from the database configuration settings when [Enhanced Database Monitoring](/docs/installation/sql-server#enhanced-database-monitoring) is enabled.
 :::
 
 ## Web.config and other .NET Configuration

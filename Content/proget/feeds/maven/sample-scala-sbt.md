@@ -64,7 +64,7 @@ You will first need to build your project, then run the following:
 ```sh
 sbt '-Dversion=0.1.0' '-Dhost=http://localhost:81' '-Dfeed=public-maven' '-Dkey=myApiKey' clean compile makeBom
 ```
-Once the SBOM file has been generated, it can be pushed to ProGet using `curl` with the import endpoint on the [SCA API](/docs/proget/reference-api/proget-api-sca).
+Once the SBOM file has been generated, it can be pushed to ProGet using `curl` with the import endpoint on the [SCA API](/docs/proget/api/sca).
 
 
 ### Publish Your Project

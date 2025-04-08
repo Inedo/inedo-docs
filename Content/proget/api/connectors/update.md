@@ -3,7 +3,7 @@ title: "Update Connector"
 order: 4
 ---
 
-*Update Connector* is available as both a `pgutil` command and an HTTP Request, and will update a specified [connector](/docs/proget/feeds/connector-overview) using the [Connector](/docs/proget/reference-api/feeds/proget-api-connectors#connector-object) object properties defined in the request body. This endpoint supports partial updating by only updating the properties that are supplied in the request. 
+*Update Connector* is available as both a `pgutil` command and an HTTP Request, and will update a specified [connector](/docs/proget/feeds/connector-overview) using the [Connector](/docs/proget/api/connectors#connector-object) object properties defined in the request body. This endpoint supports partial updating by only updating the properties that are supplied in the request. 
 
 :::(Info) (🚀 Quick Example: Enabling a connector's metadata caching with pgutil)
 This example will enable metadata caching for the connector `nuget.org`:
@@ -81,12 +81,12 @@ pgutil connectors filters remove --connector=pypi.org --filter=!simplejson
 ```
 
 ## HTTP Request Specification
-To update a [connector](/docs/proget/feeds/connector-overview), simply `POST` to the URL with the `connector` name, an [appropriate API Key](/docs/proget/reference-api/feeds/proget-api-connectors#authentication) and a [Connector](/docs/proget/reference-api/feeds/proget-api-connectors#connector-object) object as the request body.
+To update a [connector](/docs/proget/feeds/connector-overview), simply `POST` to the URL with the `connector` name, an [appropriate API Key](/docs/proget/api/connectors#authentication) and a [Connector](/docs/proget/api/connectors#connector-object) object as the request body.
 
 :::(info)
 When updating, any properties omitted will keep their existing values. Updating a property with an array value will overwrite the existing value. For example, if a connector has `filters: ["A", "B"]`, updating with `filters: ["C"]` will remove filters "A" and "B" from the connector, keeping only "C". 
 
-To append values, perform a [Get Connector](/docs/proget/reference-api/feeds/proget-api-connectors/proget-api-connectors-get) first, then append the existing values returned in the "Update Connector" request. For example, GET the values of filters "A" and "B", and add them along with "C", supplying `filters: ["A", "B", "C"]`in the update request.
+To append values, perform a [Get Connector](/docs/proget/api/connectors/get) first, then append the existing values returned in the "Update Connector" request. For example, GET the values of filters "A" and "B", and add them along with "C", supplying `filters: ["A", "B", "C"]`in the update request.
 :::
 
 ```plaintext
@@ -94,7 +94,7 @@ POST /api/management/connectors/update/«connector-name»
 ```
 
 ## HTTP Response Specification
-A successful (`200`) response body will contain an updated [Connector](/docs/proget/reference-api/feeds/proget-api-connectors#connector-object) object. For example, when updating the timeout on a NuGet connector `myNugetConnector`, this returns:
+A successful (`200`) response body will contain an updated [Connector](/docs/proget/api/connectors#connector-object) object. For example, when updating the timeout on a NuGet connector `myNugetConnector`, this returns:
 
 ```bash
 {
@@ -111,9 +111,9 @@ A successful (`200`) response body will contain an updated [Connector](/docs/pro
 
 | Response | Details |
 |---|---|
-| **200 (Success)** | response body contains an updated [Connector](/docs/proget/reference-api/feeds/proget-api-connectors#connector-object) object|
+| **200 (Success)** | response body contains an updated [Connector](/docs/proget/api/connectors#connector-object) object|
 | **400 (Invalid Input)** | indicates invalid or missing properties in the request; the body will provide some details as text |
-| **403 (Unauthorized API Key)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/reference-api/feeds/proget-api-connectors#authentication); the body will be empty |
+| **403 (Unauthorized API Key)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/connectors#authentication); the body will be empty |
 | **404 (Connector Not Found)** | indicates that the specified `connector` does not exist |
 
 ## Sample Usage Scripts
@@ -123,7 +123,7 @@ This script will add a filter `!beta`, to a connector `nuget.org`. If the specif
 
 Note the `!` pre-fix indicates that it will be added with a "Block" behavior.
 
-This script can be edited to work with other [Connector](/docs/proget/reference-api/feeds/proget-api-connectors#connector-object) object properties that are array types.
+This script can be edited to work with other [Connector](/docs/proget/api/connectors#connector-object) object properties that are array types.
 
 ```powershell
 $baseUrl = "https://proget.corp.local"
@@ -164,7 +164,7 @@ Update-FeedInfo -connectorName $connectorName -newValue $newFeedValue
 
 This script will delete a filter `alpha`, from a feed `nuget-unapproved`. If the specified filter does not exist, no changes will be made.
 
-This script can be edited to work with other [Connector](/docs/proget/reference-api/feeds/proget-api-connectors#connector-object) object properties that are array types.
+This script can be edited to work with other [Connector](/docs/proget/api/connectors#connector-object) object properties that are array types.
 
 ```powershell
 $baseUrl = "https://proget.corp.local"

@@ -3,7 +3,7 @@ title: "Get Connector"
 order: 2
 ---
 
-*Get Connector* is available as both a `pgutil` command and an HTTP Request, and will return a single [ProgetConnector](/docs/proget/reference-api/feeds/proget-api-connectors#connector-object) object or a list of properties for the specified [connector](/docs/proget/feeds/connector-overview).
+*Get Connector* is available as both a `pgutil` command and an HTTP Request, and will return a single [ProgetConnector](/docs/proget/api/connectors#connector-object) object or a list of properties for the specified [connector](/docs/proget/feeds/connector-overview).
 
 :::(Info) (🚀 Quick Example: Getting a connector with pgutil)
 This example returns properties of the connector `myNugetConnector`:
@@ -35,14 +35,14 @@ metadataCacheMinutes=*not set*
 ```
 
 ## HTTP Request Specification
-To return a specified [connector](/docs/proget/feeds/connector-overview), simply `GET` to the URL with the name of the `connector` and an [appropriate API Key](/docs/proget/reference-api/feeds/proget-api-connectors#authentication).
+To return a specified [connector](/docs/proget/feeds/connector-overview), simply `GET` to the URL with the name of the `connector` and an [appropriate API Key](/docs/proget/api/connectors#authentication).
 
 ```plaintext
 GET /api/management/connectors/get/«connector-name»
 ```
 
 ## HTTP Response Specification
-A successful (`200`) response body will contain a single [ProGetConnector](/docs/proget/reference-api/feeds/proget-api-connectors#connector-object) object. For example, to requesting a `nuget` connector with the name `myConnector`, the request would return:
+A successful (`200`) response body will contain a single [ProGetConnector](/docs/proget/api/connectors#connector-object) object. For example, to requesting a `nuget` connector with the name `myConnector`, the request would return:
 
 ```json
 GET /api/management/connectors/get/nuget.org
@@ -63,7 +63,7 @@ GET /api/management/connectors/get/nuget.org
 
 | Response | Details |
 |---|---|
-| **200 (Success)** | body will contain a [ProGetConnector](/docs/proget/reference-api/feeds/proget-api-connectors#connector-object) object |
+| **200 (Success)** | body will contain a [ProGetConnector](/docs/proget/api/connectors#connector-object) object |
 | **400 (Invalid Input)** | indicates invalid or missing properties in the request; the body will provide some details as text |
-|  **403 (Unauthorized API Key)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/reference-api/feeds/proget-api-connectors#authentication); the body will be empty |
+|  **403 (Unauthorized API Key)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/connectors#authentication); the body will be empty |
 | **404 (Connector Not Found)** | indicates that the specified `connector` does not exist |

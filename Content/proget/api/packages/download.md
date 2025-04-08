@@ -47,7 +47,7 @@ pgutil packages download --feed=myDebianFeed --package=myDebianPackage --version
 ```
 
 ## HTTP Request Specification
-To download a package, simply `GET` to the URL with a feed name, [package identifiers](/docs/proget/reference-api/proget-api-packages#using-multiple-parameters), and an [appropriate API Key](/docs/proget/reference-api/proget-api-packages#authentication).
+To download a package, simply `GET` to the URL with a feed name, [package identifiers](/docs/proget/api/packages#using-multiple-parameters), and an [appropriate API Key](/docs/proget/api/packages#authentication).
 
 ```plaintext
 GET /api/packages/«feed-name»/download?«package-identifiers»
@@ -62,7 +62,7 @@ The package identifier you use must resolve to a single package, otherwise a `40
 | Response | Details |
 | --- | --- |
 | **200 (Success)** | the package file is returned as content
-| **403 (Unauthorized API Key)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/reference-api/proget-api-packages#authentication); the package file will not download
+| **403 (Unauthorized API Key)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/packages#authentication); the package file will not download
 | **404 (Package Not Found)** | indicates that the specified package does not exist
 | **500 (Server Error)** | indicates an unexpected error; the body will contain the message and stack trace, and this will also be logged
 

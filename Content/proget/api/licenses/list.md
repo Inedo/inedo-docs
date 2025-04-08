@@ -3,7 +3,7 @@ title: "List Licenses"
 order: 3
 ---
 
-*List Licenses* is available as both a `pgutil` command and an HTTP Request, and will return an array of [License](/docs/proget/reference-api/proget-api-licenses#license-object) objects, describing all existing licenses.
+*List Licenses* is available as both a `pgutil` command and an HTTP Request, and will return an array of [License](/docs/proget/api/licenses#license-object) objects, describing all existing licenses.
 
 :::(Info) (🚀 Quick Example: Listing all licenses with pgutil)
 This example will list all existing licences:
@@ -71,14 +71,14 @@ Adobe-Utopia 1e55fcd0120578420962bb39ec22ebdcb8e879c14c04f7c08892fbd33f4c906a
 ```
 
 ## HTTP Request Specification
-To list all existing licenses, simply `GET` to the URL with an [appropriate API Key](/docs/proget/reference-api/proget-api-licenses#authentication).
+To list all existing licenses, simply `GET` to the URL with an [appropriate API Key](/docs/proget/api/licenses#authentication).
 
 ```plaintext
 GET /api/licenses/list
 ```
 
 ## HTTP Response Specification
-A successful (`200`) response body will contain an array of [License](/docs/proget/reference-api/proget-api-licenses#license-object) objects. For example:
+A successful (`200`) response body will contain an array of [License](/docs/proget/api/licenses#license-object) objects. For example:
 
 ```json
 GET /api/management/licenses/list
@@ -112,8 +112,8 @@ GET /api/management/licenses/list
 
 | Response | Details |
 |---|---|
-| **200 (Success)** | body will contain an array of [License](/docs/proget/reference-api/proget-api-licenses#license-object) objects |
-|  **403 (Unauthorized API Key)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/reference-api/proget-api-licenses#authentication); the body will be empty |
+| **200 (Success)** | body will contain an array of [License](/docs/proget/api/licenses#license-object) objects |
+|  **403 (Unauthorized API Key)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/licenses#authentication); the body will be empty |
 
 ## Sample Usage Scripts
 

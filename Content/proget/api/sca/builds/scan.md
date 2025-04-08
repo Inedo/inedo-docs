@@ -14,7 +14,7 @@ pgutil builds scan --project-name="myProject" --version=1.2.3
 :::
 
 ## Command Specification (CLI)
-The `builds scan` command is used to scan a build of a project and [audits the build](/docs/proget/reference-api/proget-api-sca/builds/proget-api-sca-builds-analyze).
+The `builds scan` command is used to scan a build of a project and [audits the build](/docs/proget/api/sca/builds/analyze).
 
 The `--project-name` and `--version` options are always required and will scan the current working directory for .NET solutions or projects, npm `package-lock.json` files, cargo `Cargo.lock` files, composer `composer.lock`, or PyPI and Conda `requirements.txt` files.
 

@@ -1,5 +1,5 @@
 ---
-title: "HOWTO: Integrate Inedo Products with LDAP/AD"
+title: "HOWTO: Integrate Inedo Products with Active Directory"
 order: 1
 ---
 
@@ -9,7 +9,7 @@ Inedo products come with their own built-in user module, but they also allow int
 This article will walk through how to configure an Inedo product to reference active directory, add users, and customize user permissions.
 
 :::(Info) (Advanced Active Directory Domain Integration)
-This tutorial is for a single domain and your server should be joined to that domain. If you are using more than one domain or your domain is not joined to your server, read our docs on [advanced active directory configuration](/docs/installation/security-ldap-active-directory/various-ldap-v3-advanced) instead.
+This tutorial is for a single domain and your server should be joined to that domain. If you are using more than one domain or your domain is not joined to your server, read our docs on [advanced active directory configuration](/docs/installation/security-ldap-active-directory/various-ldap-v4-advanced) instead.
 :::
 
 ## Step 1: Plan out Groups and Permissions

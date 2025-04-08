@@ -61,7 +61,7 @@ SNAPSHOT dependencies will be recorded as a snapshot version, not the actual ver
 
 Once you have configured Maven to generate your SBOM file, you will need to configure the [Exec Maven Plugin](https://www.mojohaus.org/exec-maven-plugin/index.html) to execute curl to import it into your [project in ProGet](/docs/proget/sca/builds).
 
-To do this, we recommend first [creating an API key](/docs/proget/reference-api/proget-apikeys) that has the appropriate permissions to upload SBOM documents. Once you have that, you can edit the `plugins` node of your `pom.xml` file as follows.
+To do this, we recommend first [creating an API key](/docs/proget/api/apikeys) that has the appropriate permissions to upload SBOM documents. Once you have that, you can edit the `plugins` node of your `pom.xml` file as follows.
 
 ```xml
 <plugin>

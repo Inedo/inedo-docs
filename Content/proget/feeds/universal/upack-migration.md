@@ -43,7 +43,7 @@ Universal Packages offer a package-centric approach to managing artifacts, offer
 
 ## How to Migrate Artifacts to Universal Packages
 
-ProGet supports migration by allowing you to import your existing artifacts into Universal Packages. This can be done either through the ProGet UI or through the ["Upload Universal Packages"](/docs/proget/reference-api/universal-feed/upload)" endpoint, part of the [Universal Feed API](/docs/proget/reference-api/universal-feed).
+ProGet supports migration by allowing you to import your existing artifacts into Universal Packages. This can be done either through the ProGet UI or through the ["Upload Universal Packages"](/docs/proget/api/universal-feed/upload)" endpoint, part of the [Universal Feed API](/docs/proget/api/universal-feed).
 
 ### Creating a Universal Feed
 
@@ -55,7 +55,7 @@ From here, select "No Connectors", and then name your feed. Finally select "Crea
 
 ### Creating a Universal Package from Artifacts
 
-The the [pgutil](https://docs.inedo.com/docs/proget/reference-api/proget-pgutil) CLI tool let's you create Universal Packages by taking artifacts at a specified location, packing them into a `.upack`, and auto-generating the metadata `upack.json` based on parameters set. To use this, you will need to create an [API Key](/docs/proget/reference-api/proget-apikeys) with appropriate permissions. You can then specify this key when [configuring pgutil](/docs/proget/reference-api/proget-pgutil#sources) with a source.
+The the [pgutil](https://docs.inedo.com/docs/proget/api/pgutil) CLI tool let's you create Universal Packages by taking artifacts at a specified location, packing them into a `.upack`, and auto-generating the metadata `upack.json` based on parameters set. To use this, you will need to create an [API Key](/docs/proget/api/apikeys) with appropriate permissions. You can then specify this key when [configuring pgutil](/docs/proget/api/pgutil#sources) with a source.
 
 Creating a package can be done using the `upack create` command:
 
@@ -70,7 +70,7 @@ Alternatively you can include the API key as part of the command:
 $ pgutil upack create --name=«package-name» --version=«package-version» --source-directory=«artifact-location» --target-directory=«target-directory» --api-key=«api-key»
 ```
 
-Once your package is created, you can use the [Upload Universal Packages](/docs/proget/reference-api/universal-feed/upload) endpoint in the [Universal Feed API](/docs/proget/reference-api/universal-feed) to upload it to your Universal Package feed:
+Once your package is created, you can use the [Upload Universal Packages](/docs/proget/api/universal-feed/upload) endpoint in the [Universal Feed API](/docs/proget/api/universal-feed) to upload it to your Universal Package feed:
 
 ```bash
 $ curl -X POST -H "X-ApiKey: «api-key»" https://«proget-url»/upack/«feed-name»/upload --upload-file «universal-package»

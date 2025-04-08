@@ -12,19 +12,31 @@ ProGet Teams Notifications are not available in ProGet Basic Edition, but custom
 :::
 
 
-## Step 1: Create a Webhook in Teams
+## Step 1: Create a Webhook Workflow in Teams
 
-Microsoft Teams makes creating webhooks very easy. Inside Teams, navigate to the desired channel, and click the three-dots button. Select "Connectors" and "Incoming Webhook."
+::: (Warn) (ProGet 2024.0 to 2024.31)
+Microsoft is in the process of [deprecating webhooks via connectors](https://learn.microsoft.com/en-us/microsoftteams/platform/webhooks-and-connectors/how-to/add-incoming-webhook?tabs=newteams%2Cdotnet) and replacing it with a [webhooks via workflows method](https://support.microsoft.com/en-us/office/create-incoming-webhooks-with-workflows-for-microsoft-teams-8ae491c7-0394-4861-ba59-055e33f75498).  
 
-![TeamsConnectorAdd.png](/resources/docs/TeamsConnectorAdd.png){height="" width=""}
+In ProGet 2024.0 to 2024.31, when creating a Teams notifier, ProGet leveraged the Teams' connectors for sending Webhooks.  To use the workflow method in these versions, you will need to create a Custom Webhook and use the [new webhook body](https://learn.microsoft.com/en-us/connectors/teams/?tabs=text1%2Cdotnet#microsoft-teams-webhook) for the notifier content.
 
-Name your webhook, and optionally give it a custom image.
+Starting in ProGet 2024.32, existing teams notifiers will be considered custom webhooks and new Teams notifiers will leverage the new [webhooks via workflows method](https://support.microsoft.com/en-us/office/create-incoming-webhooks-with-workflows-for-microsoft-teams-8ae491c7-0394-4861-ba59-055e33f75498).  To convert these to use the new workflow method, you will need to delete your old Teams notifier and create new teams notifiers using the following guide.
+:::
 
-![TeamsConnectorConfig1.png](/resources/docs/TeamsConnectorConfig1.png){height="" width=""}
+Microsoft Teams makes creating webhooks very easy. Inside Teams, navigate to the desired channel, click the three-dots button, select "Workflows," and then search for "`webhook`".
+
+![teams-webhook-template-search.png](/resources/docs/TeamsWebHooksImages/teams-webhook-template-search.png){height="" width=""}
+
+Select the "Post to a channel when a webhook request is received" and then name your webhook.
+
+![teams-webhook-template-name.png](/resources/docs/TeamsWebHooksImages/teams-webhook-template-name.png){height="" width=""}
+
+Select which Team and Channel you want notifications to be sent to.
+
+![teams-webhook-template-channel.png](/resources/docs/TeamsWebHooksImages/teams-webhook-template-channel.png){height="" width=""}
 
 Teams will create a URL that you must copy and bring it over to ProGet.
 
-![TeamsConnectorConfig2.png](/resources/docs/TeamsConnectorConfig2.png){height="" width=""}
+![teams-webhook-template-url.png](/resources/docs/TeamsWebHooksImages/teams-webhook-template-url.png){height="" width=""}
 
 ## Step 2: Create a Teams Message in ProGet
 
@@ -36,7 +48,7 @@ From here select "Create Notifier".
 
 ![](/resources/docs/proget-notifier-create.png){height="" width="50%"}
 
-Select the "Event" for the notifier, select "Teams Message", and then enter your Slack URL.
+Select the "Event" for the notifier, select "Teams Message", and then enter your Teams URL.
 
 ![](/resources/docs/proget-webhook-teams-new.png){height="" width="50%"}
 

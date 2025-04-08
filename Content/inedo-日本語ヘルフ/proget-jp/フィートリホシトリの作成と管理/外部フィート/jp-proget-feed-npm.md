@@ -62,7 +62,7 @@ npm adduser コマンドを使用せずにプライベートレジストリを
 
 ###  **APIキーの作成**
 
-[Feed Access (フィードアクセス)] を使用して、（ [Admin (管理)] > [API Key & Access Logs (APIキーとアクセスログ)] ）で ProGet の API キーを作成します。このキーを、特定のアクセス許可をしたユーザに関連付けることで、さらに制限できます。 （参照：[API Access and API Keys](/docs/proget/reference-api/proget-apikeys)）
+[Feed Access (フィードアクセス)] を使用して、（ [Admin (管理)] > [API Key & Access Logs (APIキーとアクセスログ)] ）で ProGet の API キーを作成します。このキーを、特定のアクセス許可をしたユーザに関連付けることで、さらに制限できます。 （参照：[API Access and API Keys](/docs/proget/api/apikeys)）
 
 ### **APIキーの暗号化**
 

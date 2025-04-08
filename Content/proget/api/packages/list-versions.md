@@ -3,7 +3,7 @@ title: "List Package Versions"
 order: 2
 ---
 
-*List Package Versions* is is available as both a `pgutil` command and an HTTP Request and will return a JSON array of [PackageVersionInfo](/docs/proget/reference-api/proget-api-packages#package-version) objects describing the versions of packages in a feed, optionally filtered by group, name, and version.
+*List Package Versions* is is available as both a `pgutil` command and an HTTP Request and will return a JSON array of [PackageVersionInfo](/docs/proget/api/packages#package-version) objects describing the versions of packages in a feed, optionally filtered by group, name, and version.
 
 :::(Info) (🚀 Quick Example: Listing package versions with pgutil)
 This example will list versions of the package `myNugetPackage` in the feed `myNugetFeed`
@@ -42,7 +42,7 @@ pgutil packages versions --package=@myScope/myNpmPackage --version=2.0.0 --feed=
 ```
 
 ## HTTP Request Specification
-To list a package version, simply `GET` to the URL with a feed name, [package identifiers](/docs/proget/reference-api/proget-api-packages#using-multiple-parameters), and an [appropriate API Key](/docs/proget/reference-api/proget-api-packages#authentication).
+To list a package version, simply `GET` to the URL with a feed name, [package identifiers](/docs/proget/api/packages#using-multiple-parameters), and an [appropriate API Key](/docs/proget/api/packages#authentication).
 
 ```plaintext
 GET /api/packages/«feed-name»/versions?«package-identifiers»
@@ -51,7 +51,7 @@ GET /api/packages/«feed-name»/versions?«package-identifiers»
 Unless you use a `purl`, the parameters required will vary by feedtype. When the package identifiers you use may resolve to multiple packages (e.g. specifying `name` only), multiple package versions will be returned.
 
 ## HTTP Response Specification
-A successful (`200`) response body will contain an array of [PackageVersionInfo](/docs/proget/reference-api/proget-api-packages#package-version) objects. For example, querying version `1.0.0` of `myNuGetPackage`, the request would return a single object:
+A successful (`200`) response body will contain an array of [PackageVersionInfo](/docs/proget/api/packages#package-version) objects. For example, querying version `1.0.0` of `myNuGetPackage`, the request would return a single object:
 
 ```json
 GET /api/packages/MyNuGetFeed/versions?purl=pkg:nuget/myNugetPackage@1.0.0
@@ -74,7 +74,7 @@ GET /api/packages/MyNuGetFeed/versions?purl=pkg:nuget/myNugetPackage@1.0.0
  }]
 ```
 
-You can also return multiple [PackageVersion](/docs/proget/reference-api/proget-api-packages#package-version) objects versions by just querying the package name:
+You can also return multiple [PackageVersion](/docs/proget/api/packages#package-version) objects versions by just querying the package name:
 
 ```json
 GET /api/packages/MyNuGetFeed/versions?name=myNugetPackage
@@ -121,8 +121,8 @@ The response will always be an array, even if only one version is requested. For
 
 | Response | Details |
 | --- | --- |
-| **200 (Success)** | body will contain an array of [PackageVersionInfo](/docs/proget/reference-api/proget-api-packages#package-version) objects
-|  **403 (Unauthorised API Key)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/reference-api/proget-api-packages#authentication); the body will be empty
+| **200 (Success)** | body will contain an array of [PackageVersionInfo](/docs/proget/api/packages#package-version) objects
+|  **403 (Unauthorised API Key)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/packages#authentication); the body will be empty
 | **500 (Server Error)** | indicates an unexpected error; the body will contain the messsage and stack trace, and this will also be logged
 
 ## Sample Usage Scripts

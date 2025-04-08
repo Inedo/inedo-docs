@@ -3,7 +3,7 @@ title: "List Feed Storage Types"
 order: 8
 ---
 
-*List Feed Storage Types* is available as both a `pgutil` command and an HTTP Request, and will return an array of [FeedStorageType](/docs/proget/reference-api/feeds/proget-api-feeds#type-object) objects, describing all feed storage types.
+*List Feed Storage Types* is available as both a `pgutil` command and an HTTP Request, and will return an array of [FeedStorageType](/docs/proget/api/feeds#type-object) objects, describing all feed storage types.
 
 :::(Info) (🚀 Quick Example: Listing feed storage types with pgutil)
 This example lists all feed storage types:
@@ -66,14 +66,14 @@ Options:
 ```
 
 ## HTTP Request Specification
-To list all feed storage types, simply `GET` to the URL with an [appropriate API Key](/docs/proget/reference-api/feeds/proget-api-feeds#authentication).
+To list all feed storage types, simply `GET` to the URL with an [appropriate API Key](/docs/proget/api/feeds#authentication).
 
 ```plaintext
 GET /api/storage
 ```
 
 ## HTTP Response Specification
-A successful (`200`) response body will contain an array of [FeedStorageType](/docs/proget/reference-api/feeds/proget-api-feeds#type-object) objects. For example:
+A successful (`200`) response body will contain an array of [FeedStorageType](/docs/proget/api/feeds#type-object) objects. For example:
 
 ```json
 GET /api/storage
@@ -106,5 +106,5 @@ GET /api/storage
 
 | Response | Details |
 |---|---|
-| **200 (Success)** | body will contain an array of [FeedStorageType](/docs/proget/reference-api/feeds/proget-api-feeds#type-object) objects |
-| **403 (Unauthorized API Key)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/reference-api/feeds/proget-api-feeds#authentication); the body will be empty |
+| **200 (Success)** | body will contain an array of [FeedStorageType](/docs/proget/api/feeds#type-object) objects |
+| **403 (Unauthorized API Key)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/feeds#authentication); the body will be empty |

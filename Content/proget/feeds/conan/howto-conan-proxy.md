@@ -76,7 +76,7 @@ Once you have installed a package by proxying through your public-conan feed, it
 By default your `public-conan` feed does require authentication, and packages can be proxied and installed anonymously. However if your Conan feed is configured to require authentication, you can [follow these steps to authenticate to it](/docs/proget/feeds/conan##authenticate-to-feed).
 
 ::: (Info) (💡 Best Practices: Use API Keys for Authenticated Feeds)
-You can use a username/password to authenticate to a Conan feed, however we strongly recommend [Creating a ProGet API Key](/docs/proget/reference-api/proget-apikeys) to authenticate, using `api` as the username and your key as the password.
+You can use a username/password to authenticate to a Conan feed, however we strongly recommend [Creating a ProGet API Key](/docs/proget/api/apikeys) to authenticate, using `api` as the username and your key as the password.
 :::
 
 ## (Optional) Creating a Package Approval Flow

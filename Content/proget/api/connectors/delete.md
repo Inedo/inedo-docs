@@ -25,7 +25,7 @@ pgutil connectors delete --connector=myNugetConnector
 ```
 
 ## HTTP Request Specification
-To delete a specified [connector](/docs/proget/feeds/connector-overview) simply `DELETE` to the URL with the `connector` name and an [appropriate API Key](/docs/proget/reference-api/feeds/proget-api-connectors#authentication).
+To delete a specified [connector](/docs/proget/feeds/connector-overview) simply `DELETE` to the URL with the `connector` name and an [appropriate API Key](/docs/proget/api/connectors#authentication).
 
 ```plaintext
 DELETE /api/management/connectors/delete/«connector-name»
@@ -37,5 +37,5 @@ DELETE /api/management/connectors/delete/«connector-name»
 |---|---|
 | **200 (Success)** | will delete the specified `connector` |
 | **400 (Invalid Input)** | indicates invalid or missing properties in the request; the body will provide some details as text |
-| **403 (Unauthorized API Key)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/reference-api/feeds/proget-api-connectors#authentication); the body will be empty |
+| **403 (Unauthorized API Key)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/connectors#authentication); the body will be empty |
 | **404 (Connector Not Found)** | indicates that the specified `connector` does not exist |

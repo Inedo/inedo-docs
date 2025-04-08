@@ -39,7 +39,7 @@ The `format` argument may be either `zip` (for a zip file) or `tgz` (for a GZipp
 | --- | --- |
 | **200 (Success)** | the contents of the archive is uploaded to the asset directory |
 | **400 (Invalid Format)** | indicates that the format is invalid |
-| **401 (Authentication Required)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/reference-api/proget-api-assets#authentication) |
+| **401 (Authentication Required)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/assets#authentication) |
 
 ## Sample Usage Scripts
 

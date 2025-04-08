@@ -109,7 +109,7 @@ If you want to use parameters instead of the `gradle.properties` file, run the f
 ./gradlew build cyclonedxBom "-PprogetApiKey=MyApiKey" "-PprogetRepository=http://my.proget.server/maven2/feed-name/" "-Dorg.gradle.project.version=1.0"
 ```
 
-Once the SBOM file has been generated, it can be pushed to ProGet using `curl` with the import endpoint on the [SCA API](/docs/proget/reference-api/proget-api-sca).
+Once the SBOM file has been generated, it can be pushed to ProGet using `curl` with the import endpoint on the [SCA API](/docs/proget/api/sca).
 
 ### Publish Your Project
 To publish your project, you will need to build, optionally generate the SBOM, and then publish.  To do this:

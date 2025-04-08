@@ -3,7 +3,7 @@ title: "Get Asset Metadata"
 order: 2
 ---
 
-*Get Asset Metadata* is available as both a `pgutil` command and an HTTP Request, and will return metadata for the specified asset "item" (file or folder) as a JSON [AssetDirectoryItem](/docs/proget/reference-api/proget-api-assets#item-data) object 
+*Get Asset Metadata* is available as both a `pgutil` command and an HTTP Request, and will return metadata for the specified asset "item" (file or folder) as a JSON [AssetDirectoryItem](/docs/proget/api/assets#item-data) object 
 
 :::(Info) (🚀 Quick Example: Getting asset metadata with pgutil)
 This example will return the metadata for the file `data.bin` in the `data-files` folder of the asset directory `myAssetDirectory`:
@@ -53,7 +53,7 @@ GET /endpoints/«AssetDirectoryName»/metadata/«path»
 ```
 
 ## HTTP Response Specification
-A successful (`200`) response body will contain a [AssetDirectoryItem](/docs/proget/reference-api/proget-api-assets#item-data) object describing a file or folder in the specified path. For example, querying `example.txt`, the request would return a single object:
+A successful (`200`) response body will contain a [AssetDirectoryItem](/docs/proget/api/assets#item-data) object describing a file or folder in the specified path. For example, querying `example.txt`, the request would return a single object:
 
 ```json
 {
@@ -80,6 +80,6 @@ A successful (`200`) response body will contain a [AssetDirectoryItem](/docs/pro
 
 | Response | Details |
 | --- | --- |
-| **200 (Success)** | the body will contain a [AssetDirectoryItem](/docs/proget/reference-api/proget-api-assets#item-data) object |
-| **401 (Authentication Required)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/reference-api/proget-api-assets#authentication) |
+| **200 (Success)** | the body will contain a [AssetDirectoryItem](/docs/proget/api/assets#item-data) object |
+| **401 (Authentication Required)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/assets#authentication) |
 | **404 (Item not Found)** | indicates that the file or folder does not exist |

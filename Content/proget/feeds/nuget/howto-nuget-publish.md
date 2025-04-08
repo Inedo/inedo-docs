@@ -104,7 +104,7 @@ ProGet can be added as a source in a number of other popular clients, including 
 To push packages to a feed you will need to configure authentication using a "NuGet API Key". 
 
 ::: (Info) (💡 Best Practices: Use API Keys for Authenticated Feeds)
-Instead of using your ProGet username/password for a NuGet feed, we recommend [Creating a ProGet API Key](/docs/proget/reference-api/proget-apikeys) to authenticate. You can enter `api` as the username and your key as the password.
+Instead of using your ProGet username/password for a NuGet feed, we recommend [Creating a ProGet API Key](/docs/proget/api/apikeys) to authenticate. You can enter `api` as the username and your key as the password.
 :::
 
 To learn how to authenticate to your NuGet feed to push packages to it, read [Authentication for Publishing Packages](/docs/proget/feeds/feed-overview#authenticate-cli)

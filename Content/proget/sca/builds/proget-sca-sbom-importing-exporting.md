@@ -17,7 +17,7 @@ To learn more about the technical details of SBOM documents and different specif
 
 
 ## Importing SBOM Documents
-You can import SBOM documents for a release from the web UI, or using the [SCA API](/docs/proget/reference-api/proget-api-sca). 
+You can import SBOM documents for a release from the web UI, or using the [SCA API](/docs/proget/api/sca). 
 
 Behind the scenes, this is how `pgscan` functions (i.e. it generates a document and the imports it). But you may wish to import SBOM documents if you're already using a tool like [CycloneDX](https://cyclonedx.org/) in your CI/CD pipeline.
 
@@ -39,7 +39,7 @@ If you need to track SBOM documents for third-party applications that you do not
 
 
 ## Exporting SBOM Documents
-You can export an SBOM document for a release from the web UI, or using the [SCA API](/docs/proget/reference-api/proget-api-sca). This may be required by internal or external auditors, customers, or other users of your software.
+You can export an SBOM document for a release from the web UI, or using the [SCA API](/docs/proget/api/sca). This may be required by internal or external auditors, customers, or other users of your software.
 
 When exporting an SBOM document, ProGet will merge metadata from the information stored in ProGet (such as the project name, release number, package licenses, etc.) as well as any additional component metadata found in the imported SBOM documents.
 

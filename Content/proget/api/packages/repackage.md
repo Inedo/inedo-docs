@@ -36,11 +36,11 @@ pgutil packages repackage --feed=myNugetFeed --package=myNugetPackage --version=
 pgutil packages repackage --feed=MyNpmFeed --package=@myScope/myNpmPackage --version=2.0.0-rc.1 --new-version=2.0.0
 ```
 
-Note source options must also be specified unless you have the "Default" source configured, and that a feed may be instead specified in the source. See [Working with Sources](/docs/proget/reference-api/proget-pgutil#sources) to learn more.
+Note source options must also be specified unless you have the "Default" source configured, and that a feed may be instead specified in the source. See [Working with Sources](/docs/proget/api/pgutil#sources) to learn more.
 
 ## HTTP Request Specification
 
-To promote a package, simply `POST` to the URL with an [appropriate API Key](/docs/proget/reference-api/proget-api-packages#authentication) and JSON object as the body with the following properties:
+To promote a package, simply `POST` to the URL with an [appropriate API Key](/docs/proget/api/packages#authentication) and JSON object as the body with the following properties:
 
 | Property |  Description
 | --- | ---
@@ -88,7 +88,7 @@ feed=myFeed&packageName=myPackage&version=4.3.2-rc.1&newVersion=4.3.2&comments=T
 | --- | --- |
 | **200 (Success)** | creates a new package in the same feed, or`toFeed` when specified. |
 | **400 (Invalid Input)** | indicates invalid or missing properties on the package; the body will provide some details as text |
-|  **403 (Unauthorized API Key)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/reference-api/proget-api-packages#authentication) |
+|  **403 (Unauthorized API Key)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/packages#authentication) |
 | **500 (Server Error)** | indicates an unexpected error; the body will contain the message and stack trace, and this will also be logged |
 
 
