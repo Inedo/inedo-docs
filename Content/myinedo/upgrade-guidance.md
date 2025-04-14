@@ -5,7 +5,7 @@ order: 9
 
 When updating your current software version, you'll often need to seek upgrade guidance, information on the risks involved, and if the in-software notification of a new release means that upgrading your Inedo product is required.
 
-Upgrading your Inedo product is an easy process, and our upgrade guidance can help get you started. You can ***view upgrade guidance** on [MyInedo](https://my.inedo.com/log-in) to help you determine the recommended route for your intended product version, which is useful when upgrading from a much older version where the upgrade path may not be as clear.
+Upgrading your Inedo product is an easy process, and our upgrade guidance can help get you started. You can **view upgrade guidance** on [MyInedo](https://my.inedo.com/log-in) to help you determine the recommended route for your intended product version, which is useful when upgrading from a much older version where the upgrade path may not be as clear.
 
 ## Remaining on Older Product Versions
 
@@ -13,12 +13,16 @@ Inedo products do not update themselves automatically, so it's common to still b
 
 * To maintain the stability of your builds and system compatibility.
 * Resource, testing, and time constraints preventing your upgrade.
-* Potential of breaking changes being introduced e.g., log-in issues documented after upgrading to **ProGet version 22.0.2** when using a reserve proxy.
+* Potential of breaking changes being introduced (e.g., [log-in issues documented after upgrading to **ProGet version 22.0.2** when using a reserve proxy](https://forums.inedo.com/topic/3577/proget-login-not-working-anymore-after-upgrading-to-22-0-2)).
 * Simply being unaware of new version / patch releases and the benefits of upgrading.
 
 ## Offline Inedo Products
 
 If you're using an offline version of an Inedo product you will not be notified of the latest version releases. Instead, visit your MyInedo page and select **Upgrade Guidance and Change Notes** in the [**Downloads**](https://my.inedo.com/downloads) tab to view our recommended upgrade process.
+
+![Downloads](/resources/docs/myinedo-viewingupgradeguidance-downloads.png){height="" width="50%"}
+
+![Upgrade_Guidance_Changle_Notes](/resources/docs/myinedo-viewingupgradeguidance-upgradeguidanceandchangenotes.png){height="" width="50%"}
 
 Since offline versions of Inedo products don’t receive notifications on new version releases it means that bug fixes and important security patches may go unnoticed. We recommend visiting your MyInedo page regularly and viewing our upgrade guidance and change logs to make sure that your software is secure and optimized.
 
@@ -52,7 +56,7 @@ Before upgrading your Inedo Product, we recommend creating a backup so you can e
 
 On your MyInedo page, choose your Inedo product, current version, and chosen upgrade version, then select **Get Upgrade Guidance**.
 
-![Upgrade_Guidance_and_Change_Notes](/resources/docs/myinedo-viewingupgradeguidance-getupgradeguidance.png){height="" width="50%"}
+![Upgrade_Guidance](/resources/docs/myinedo-viewingupgradeguidance-getupgradeguidance.png){height="" width="50%"}
 
 ## Recommended Upgrade Path
 
@@ -62,17 +66,17 @@ Upgrading can be a straightforward process, such as moving from **ProGet version
 
 ![Upgrade_Recommended](/resources/docs/myinedo-viewingupgradeguidance-upgraderecommended.png){height="" width="50%"}
 
-In this case, follow the steps on the **Upgrading your Inedo Product** page to upgrade.
+In this case, follow the steps on the [**Upgrading your Inedo Product**](/docs.inedo.com/docs/installation/upgrading) page to upgrade.
 
 However, direct upgrades are not always possible, especially when upgrading from older versions. In these cases, multiple steps may be required. Refer to our guidance for detailed instructions:
 
-![Upgrade_Recommended](/resources/docs/myinedo-viewingupgradeguidance-directupgradenotpossible.png){height="" width="50%"}
+![Upgrade_Not_Possible](/resources/docs/myinedo-viewingupgradeguidance-directupgradenotpossible.png){height="" width="50%"}
 
-In this case, the first step requires upgrading to a different version of ProGet. Visit the **Upgrading to ProGet 5.2** page for detailed instructions on upgrading. 
+In this case, the first step requires upgrading to a different version of ProGet. Visit the [**Upgrading to ProGet 5.2**](/docs.inedo.com/docs/proget/installation/proget-upgrade-guide/proget-installation-and-maintenance-and-upgrade-notes-upgrading-to-proget-5-2) page for detailed instructions on upgrading. 
 
 We may recommend upgrading to the latest version, for security and stability reasons, particularly when transitioning between two older versions of software:
 
-![Upgrade_Recommended](/resources/docs/myinedo-viewingupgradeguidance-upgradenotrecommended.png){height="" width="50%"}
+![Upgrade_Not_Recommended](/resources/docs/myinedo-viewingupgradeguidance-upgradenotrecommended.png){height="" width="50%"}
 
 Keeping your software up to date is important for security and compatibility. Always review our guidance and change notes to assess potential risks before upgrading. 
 
@@ -88,6 +92,6 @@ Use these change notes to determine if there are any fixes, implemented features
 
 Visit an issue number page on our public issue tracker for further insight into how these changes may conflict with your current operating environment and needs after an upgrade, and to see the progress of impending fix releases.
 
-### Viewing the Change Logs
+### Viewing Change Logs
 
-There may be situations where you want to view change notes in detail, to identify where an issue is stemming from after an upgrade, or to search for the version in which a patch or feature you were anticipating was released. The easiest way to do so would be to visit our **Detailed Change Logs page**.
+There may be situations where you want to view change notes in detail, to identify where an issue is stemming from after an upgrade, or to search for the version in which a patch or feature you were anticipating was released. The easiest way to do so would be to visit our [**Detailed Change Logs page**](/docs.inedo.com/docs/myinedo/viewing-change-logs)
