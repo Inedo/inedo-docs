@@ -118,3 +118,9 @@ Despite a risk assessment being provided alongside your recommended upgrade path
 ![Change_Notes](/resources/docs/myinedo-viewingupgradeguidance-changelogsredbox.png){height="" width="50%"}
 
 Use these change notes to determine if there are any fixes, implemented features, or compatibility issues, that could result in a rollback.
+
+Visit an issue number page on our public issue tracker for further insight into how these changes may conflict with your current operating environment and needs after an upgrade, and to see the progress of impending fix releases.
+
+There may be situations where you want to view change notes in detail, to identify where an issue is stemming from after an upgrade, or to search for the version in which a patch or feature you were anticipating was released. The easiest way to do so would be to visit our [**Detailed Change Logs page**](/docs.inedo.com/docs/myinedo/viewing-change-logs)
+
+
