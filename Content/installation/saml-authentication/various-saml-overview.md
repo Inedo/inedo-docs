@@ -30,7 +30,7 @@ If you are using ProGet 5.2, visit the *Administration* > *Advanced Settings* pa
 In general, configuring an identity provider requires the following steps to enable SAML authentication:
 
  - Create an entity or application
- - Configure a SSO login callback/redirect URL in that application
+ - Configure a SSO login callback/redirect URL in that application to `https://«PROGET_HOST»/saml-acs-callback`
  - Obtain SAML metadata XML file contents
 
 Instructions for the following specific identity providers can be found here:
