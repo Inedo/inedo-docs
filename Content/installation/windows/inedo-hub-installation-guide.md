@@ -56,4 +56,7 @@ The Inedo Hub will now automatically download and install your desired Inedo pro
 That's it! Follow these 3 easy steps to quickly install any Inedo product. You can also launch, uninstall, and upgrade or downgrade your installed Inedo product from the Inedo Hub.
 
 ## Upgrading from the Inedo Hub
+
 The "Upgrade" button will appear if an update is available. See [HOWTO: Upgrade or Downgrade](/docs/installation/windows/inedo-hub-upgrade-downgrade) to learn more.
+
+In offline Inedo Hub instances you won't be notified about updates so we recommend viewing our [Change Logs](/docs.inedo.com/docs/myinedo/viewing-change-logs) and [Upgrade Guidance](/docs/installation/upgrading#viewing-upgrade-guidance) on MyInedo regularly to stay informed about new releases.

@@ -40,7 +40,6 @@ If you prefer to install BuildMaster yourself, that's also an option.
 
 See: [Manual installation](/docs/installation/manual-installation)
 
-
 ## Installing on Linux Servers
 
 BuildMaster can run on a Linux server via Docker. We may support additional installation options in the future, if there's any interest.
@@ -72,11 +71,10 @@ Regardless of which port you use to access the BuildMaster web application, you 
 
 BuildMaster is used to orchestrate and deploy files to servers, and requires the appropriate network access (inbound or outbound) to communicate with the servers. This is all configurable, and which access is required depends on how you have configured your servers and BuildMaster to access those servers.
 
-
 ## Maintaining your BuildMaster Installation
 
-Once your BuildMaster instance is up and running, there isn't much you will need to manage or maintain. 
+Once your BuildMaster instance is up and running, there isn't much you will need to manage or maintain.
  
-* **[Update BuildMaster](/docs/buildmaster-upgrading) at least quarterly**; we deliver a maintenance release of BuildMaster at least twice a month with low-risk bug fixes and changes. However, many small, low-risk changes add up over time, so we recommend updating BuildMaster at least once per quarter to minimize the risk of regression.
+* **[Update BuildMaster](/docs/buildmaster-upgrading) at least quarterly**; we deliver a maintenance release of BuildMaster at least twice a month with low-risk bug fixes and changes. However, many small, low-risk changes add up over time, so we recommend updating BuildMaster at least once per quarter to minimize the risk of regression. View our [Change Logs](/docs.inedo.com/docs/myinedo/viewing-change-logs) and [Upgrade Guidance](/docs/installation/upgrading#viewing-upgrade-guidance) on MyInedo to learn more.
 
 * **Routinely [back-up your instance](/docs/installation/backing-up-restoring)** to mitigate the risk of sudden hardware/server issues and to facilitate rollback to previous BuildMaster versions.

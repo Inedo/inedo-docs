@@ -52,7 +52,7 @@ In most cases, you should schedule a specific time slot away from crucial deploy
 
 Your Inedo product will notify you of new version releases, but if you're using an offline version then you will not be notified of the latest version releases. This means that bug fixes and important security patches may go unnoticed.
 
-Instead, visit your MyInedo page and select **Upgrade Guidance & Change Notes** in the [Downloads](https://my.inedo.com/downloads) tab or visit our [Public Isue Tracker](https://issues.inedo.com/dashboard?id=87c77108-8027-4453-aa65-15e83cf8782e) to view information on new releases and fixes.
+Instead, visit your MyInedo page and select "Upgrade Guidance & Change Notes" in the [Downloads](https://my.inedo.com/downloads) tab or visit our [Public Isue Tracker](https://issues.inedo.com/dashboard?id=87c77108-8027-4453-aa65-15e83cf8782e) to view information on new releases and fixes.
 
 ![Downloads](/resources/docs/myinedo-viewingupgradeguidance-downloads.png){height="" width="50%"}
 
@@ -85,7 +85,7 @@ If you're having difficulties upgrading your Inedo product, or don't know where 
 
 ### How to View Upgrade Guidance
 
-On your MyInedo page, choose your Inedo product, current version, and chosen upgrade version, then select **Get Upgrade Guidance**.
+On your MyInedo page, choose your Inedo product, current version, and chosen upgrade version, then select "Get Upgrade Guidance".
 
 ![Upgrade_Guidance](/resources/docs/myinedo-viewingupgradeguidance-getupgradeguidance.png){height="" width="50%"}
 
@@ -93,17 +93,17 @@ On your MyInedo page, choose your Inedo product, current version, and chosen upg
 
 You can see our recommended steps for upgrading, tailored specifically to your version transition, providing you with a careful assessment of risk, and linking to Inedo Documentation pages with further instructional detail on upgrading in your situation.
 
-Upgrading can be a straightforward process, such as moving from **ProGet version 2024.25** to **2024.9**:
+Upgrading can be a straightforward process, such as moving from `ProGet version 2024.25` to `version 2024.9`:
 
 ![Upgrade_Recommended](/resources/docs/myinedo-viewingupgradeguidance-upgraderecommended.png){height="" width="50%"}
 
-In this case, follow the steps on the [**Upgrading your Inedo Product**](/docs.inedo.com/docs/installation/upgrading) page to upgrade.
+In this case, follow the steps on the [Upgrading your Inedo Product](/docs.inedo.com/docs/installation/upgrading) page to upgrade.
 
 In some cases, multiple steps may be required. Refer to our guidance for detailed instructions:
 
 ![Upgrade_Not_Possible](/resources/docs/myinedo-viewingupgradeguidance-directupgradenotpossible.png){height="" width="50%"}
 
-In this case, the first step requires upgrading to a different version of ProGet. Visit the [**Upgrading to ProGet 5.2**](/docs.inedo.com/docs/proget/installation/proget-upgrade-guide/proget-installation-and-maintenance-and-upgrade-notes-upgrading-to-proget-5-2) page for detailed instructions on upgrading.
+In this case, the first step requires upgrading to a different version of ProGet. Visit the [Upgrading to ProGet 5.2](/docs.inedo.com/docs/proget/installation/proget-upgrade-guide/proget-installation-and-maintenance-and-upgrade-notes-upgrading-to-proget-5-2) page for detailed instructions on upgrading.
 
 We may recommend upgrading to the latest version, for security and stability reasons, particularly when transitioning between two older versions of software:
 
@@ -121,6 +121,6 @@ Use these change notes to determine if there are any fixes, implemented features
 
 Visit an issue number page on our public issue tracker for further insight into how these changes may conflict with your current operating environment and needs after an upgrade, and to see the progress of impending fix releases.
 
-There may be situations where you want to view change notes in detail, to identify where an issue is stemming from after an upgrade, or to search for the version in which a patch or feature you were anticipating was released. The easiest way to do so would be to visit our [**Detailed Change Logs page**](/docs.inedo.com/docs/myinedo/viewing-change-logs)
+There may be situations where you want to view change notes in detail, to identify where an issue is stemming from after an upgrade, or to search for the version in which a patch or feature you were anticipating was released. The easiest way to do so would be to visit our [Detailed Change Logs page](/docs.inedo.com/docs/myinedo/viewing-change-logs)
 
 

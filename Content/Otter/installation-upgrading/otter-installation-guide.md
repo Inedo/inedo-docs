@@ -71,6 +71,6 @@ Otter is used to orchestrate and deploy files to servers, and will need the appr
 
 Once your Otter instance is up and running, there isn't a whole lot that you will need to manage or maintain. 
  
- * **Update Otter at least quarterly**; we ship a maintenance release of Otter at least twice a month with bugfixes and low-risk changes. However, lots of small, low-risk changes add up over time, so we recommend updating at least once per quarter to minimize the risk of a regression.
+ * **Update Otter at least quarterly**; we ship a maintenance release of Otter at least twice a month with bugfixes and low-risk changes. However, lots of small, low-risk changes add up over time, so we recommend updating at least once per quarter to minimize the risk of a regression. View our [Change Logs](/docs.inedo.com/docs/myinedo/viewing-change-logs) and [Upgrade Guidance](/docs/installation/upgrading#viewing-upgrade-guidance) on MyInedo to learn more.
 
 * **Routinely [back-up your instance](/docs/installation/backing-up-restoring)** to mitigate the risk of sudden hardware/server problems, as well as to make rolling back to previous versions of Otter easy.

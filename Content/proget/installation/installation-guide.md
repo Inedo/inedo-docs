@@ -76,7 +76,7 @@ ProGet doesn't require Internet access. However, since ProGet is often used as a
 
 Once your ProGet instance is up and running, there is not much you need to manage or maintain.
  
- * **Update ProGet at least quarterly**; we deliver a maintenance release of ProGet at least twice a month with bug fixes and low-risk changes. However, many small, low-risk changes add up over time, so we recommend updating at least once per quarter to minimize the risk of regression.
+ * **Update ProGet at least quarterly**; we deliver a maintenance release of ProGet at least twice a month with bug fixes and low-risk changes. However, many small, low-risk changes add up over time, so we recommend updating at least once per quarter to minimize the risk of regression. View our [Change Logs](/docs.inedo.com/docs/myinedo/viewing-change-logs) and [Upgrade Guidance](/docs/installation/upgrading#viewing-upgrade-guidance) on MyInedo to learn more.
 
 * **Routinely [back-up your instance](/docs/installation/backing-up-restoring)** to mitigate the risk of sudden hardware/server issues and to allow easy rollback to previous versions of ProGet.
 
