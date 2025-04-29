@@ -7,110 +7,111 @@ In addition to structured code blocks like For Each, Try-Catch, and If-Else,
 OtterScript offers several standalone statements that give you fine-grained control over your deployment plans.
 
 These "Other" blocks and statements help you:
+* Manage variables
+* Write to logs
+* Control execution status
+* Pause execution for asynchronous operations
+* Raise manual errors
 
-    Manage variables
+## Set Variable Statement
 
-    Write to logs
+The `Set Variable` statement declares or updates a variable inside the current scope.
 
-    Control execution status
+In these examples:
+* If the variable doesn't exist yet, it is declared and assigned.
+* If it already exists in the current scope, its value is updated.
 
-    Pause execution for asynchronous operations
+### In Text Mode
 
-    Raise manual errors
-
-Set Variable Statement
-
-The Set Variable statement declares or updates a variable inside the current scope.
-
-Example:
-
+```bash
 set $EnvironmentName = Production;
+```
 
-    If the variable doesn't exist yet, it is declared and assigned.
+### In Visual Mode
 
-    If it already exists in the current scope, its value is updated.
+<image>
 
-Important:
+:::(info)
 Changing a variable inside a plan does not modify the variable globally (e.g., on a server or environment asset) — it only affects the current execution scope.
-Log Statement
+:::
 
-The Log statement writes messages to the execution log at a specified level:
+## Log Statement
 
-    Debug
+The `Log` statement writes messages to the execution log at a specified level:
+* Debug
+* Information
+* Warn
+* Fail
 
-    Information
-
-    Warn
-
-    Fail
-
-Example:
-
+```bash
 log-information "Deployment started.";
+```
 
 Logging at the Fail or Warn level can also change the execution status.
-Log Level	Behavior
-Debug	Only shown in verbose logs
-Information	Standard logs
-Warn	Changes status to Warning (unless already Fail)
-Fail	Changes status to Fail
-Set Status
 
-You can manually adjust the execution status using the Set-Status statement.
+| Log Level  | Behavior |
+|---|---|
+| Debug      | Only shown in verbose logs |
+| Information| Standard logs |
+| Warn       | Changes status to Warning (unless already Fail) |
+| Fail       | Changes status to Fail |
 
-Example:
+## Set Status
 
+You can manually adjust the execution status using the `Set-Status` statement:
+
+```bash
 set-status Fail;
+```
 
 Use cases:
+* After catching an error and deciding that it should escalate to a failure.
+* After detecting a condition that should warn without stopping execution.
 
-    After catching an error and deciding that it should escalate to a failure.
+## Raise Error
 
-    After detecting a condition that should warn without stopping execution.
+Use the `Raise-Error` statement to immediately halt execution (unless caught in a Try-Catch block):
 
-Raise Error
+In this example:
+* Without Try-Catch, the plan fails immediately.
+* Inside Try-Catch, control jumps to the Catch section.
 
-Use the Raise-Error statement to immediately halt execution (unless caught in a Try-Catch block).
-
-Example:
-
+```bash
 raise-error "Critical file not found.";
+```
 
-Behavior:
+## Await
 
-    Without Try-Catch, the plan fails immediately.
+The `Await` statement pauses the current plan execution until asynchronous blocks finish running.
 
-    Inside Try-Catch, control jumps to the Catch section.
+#### Basic Usage:
 
-Await
-
-The Await statement pauses the current plan execution until asynchronous blocks finish running.
-
-Basic Usage:
-
+```bash
 await;
+```
 
-With a Token:
+#### With a Token:
 
+```bash
 await TokenName;
+```
 
-    If a token is provided, it will wait only for asynchronous blocks tagged with that token.
+* If a token is provided, it will wait only for asynchronous blocks tagged with that token.
+* Useful when you want to selectively wait for certain background operations.
 
-    Useful when you want to selectively wait for certain background operations.
+If you don't insert an `await`, OtterScript automatically adds an implicit `await` at the end of the plan if background tasks are still running.
 
-Note:
-If you don't insert an await, OtterScript automatically adds an implicit await at the end of the plan if background tasks are still running.
-Summary Table
-Statement	Purpose
-set	Declare or update a variable
-log	Write a message to the execution log
-set-status	Change execution status (Fail or Warn)
-raise-error	Stop execution immediately
-await	Wait for background asynchronous blocks
-Best Practices
+## Summary Table
 
-    Use log and set-status inside Catch blocks for better error reporting.
+| Statement| Purpose |
+|---|---|
+| `set` | Declare or update a variable |
+| `log` | Write a message to the execution log |
+| `set-status` | Change execution status (Fail or Warn) |
+| `raise-error` | Stop execution immediately |
+| `await` | Wait for background asynchronous blocks |
 
-    Raise errors intentionally — don't overuse raise-error if standard error handling suffices.
-
-    Await selectively if some async blocks can continue independently.
+## Best Practices
+* Use log and set-status inside Catch blocks for better error reporting.
+* Raise errors intentionally — don't overuse raise-error if standard error handling suffices.
+* Await selectively if some async blocks can continue independently.
