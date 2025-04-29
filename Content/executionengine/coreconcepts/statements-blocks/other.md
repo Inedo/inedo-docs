@@ -3,8 +3,6 @@ title: "Other Blocks"
 order: 6
 ---
 
-Other Code Blocks
-
 In addition to structured code blocks like For Each, Try-Catch, and If-Else,
 OtterScript offers several standalone statements that give you fine-grained control over your deployment plans.
 
