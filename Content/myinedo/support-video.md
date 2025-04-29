@@ -7,9 +7,31 @@ In some cases, using a screen recording tool can be a helpful way to provide vis
 
 This article covers recommended screen recording tools and how to set them up and use them. It’ll also provide guidelines for recording and submitting with support tickets. To see how to submit a ticket, see [Support Tickets](/docs/myinedo/support-tickets).
 
-## VokoscreenNG (Windows and Linux)
-We recommend using [VokoscreenNG](https://linuxecke.volkoh.de/vokoscreen/vokoscreen-download.html) to capture your screen when submitting tickets for issues. It's lightweight, open-source, runs on both Windows and Linux, and requires only minimal setup. 
+## Guidelines for Recording and Submitting Videos
+Following these guidelines will help us in understanding and resolving your issue:
+* Keep it short and focused by highlighting the key actions instead of capturing an entire workflow.  
+* If needed, narrate the issue for added context. This could provide clarity by capturing the steps that lead to the issue. 
+* Edit and trim the footage to remove any unnecessary length. 
+* Customize the recording area to exclude excess space, ensuring privacy by avoiding the display of sensitive information.
+* Keep file sizes to a minimum. High-resolution or lengthy videos are typically not needed, as videos of lower quality are perfectly fine.
 
+For submitting recordings with tickets or emails, share with the file-sharing service of your choice or use one of the following:
+* [file.io](https://www.file.io/)
+* [SendGB](https://www.sendgb.com/)
+* [Smash](https://fromsmash.com/)
+* [WeTransfer](https://wetransfer.com/)
+
+These services support secure and anonymous sharing, but if you prefer to use a password-protected zip file, you can upload it to one of the above services and include the password in your [support ticket](https://my.inedo.com/tickets/new).
+
+## Recording a Video with VokoscreenNG (Windows and Linux)
+We recommend using VokoscreenNG to capture your screen when submitting tickets for issues. It's lightweight, open-source, runs on both Windows and Linux, and requires only minimal setup. 
+
+### Download and Install
+Go to [VokoscreenNG](https://linuxecke.volkoh.de/vokoscreen/vokoscreen-download.html), then choose the version for your operating system to download.
+
+Then just run the setup file (e.g. `vokoscreenNG-4.5.0-win64.exe`) to install it locally on your machine.
+
+### How to Screen Record
 Before you start recording, you’ll need to configure a few simple settings like the recording area (fullscreen, window, or area), audio (microphone, system audio, or both), and video preferences such as framerate, format, and codec.
 
 ![VokoscreenNG Configuring](/resources/docs/create-support-video-VokoscreenNG-1.png){width=50%}
@@ -39,18 +61,3 @@ From there, use the toolbar to set the recording area and configure audio settin
 
 ![Quicktime Player Recording](/resources/docs/create-support-video-QuicktimePlayer-2.png){width=50%} 
 
-## Guidelines for Recording and Submitting
-Following these guidelines will help us in understanding and resolving your issue:
-* Keep it short and focused by highlighting the key actions instead of capturing an entire workflow.  
-* If needed, narrate the issue for added context. This could provide clarity by capturing the steps that lead to the issue. 
-* Edit and trim the footage to remove any unnecessary length. 
-* Customize the recording area to exclude excess space, ensuring privacy by avoiding the display of sensitive information.
-* Keep file sizes to a minimum. High-resolution or lengthy videos are typically not needed, as videos of lower quality are perfectly fine.
-
-For submitting recordings with tickets or emails, share with the file-sharing service of your choice or use one of the following:
-* [file.io](https://www.file.io/)
-* [SendGB](https://www.sendgb.com/)
-* [Smash](https://fromsmash.com/)
-* [WeTransfer](https://wetransfer.com/)
-
-These services support secure and anonymous sharing, but if you prefer to use a password-protected zip file, you can upload it to one of the above services and include the password in your [support ticket](https://my.inedo.com/tickets/new).
