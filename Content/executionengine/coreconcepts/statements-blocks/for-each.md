@@ -13,7 +13,7 @@ In the following examples:
 * `@ServiceNames` is a list of service names.
 * The `Ensure-Service` operation is run once for each service.
 
-### In Text Editor
+### In Text Mode
 
 ```bash
 foreach $ServiceName in @ServiceNames
@@ -26,7 +26,7 @@ foreach $ServiceName in @ServiceNames
 }
 ```
 
-### In Visual Editor:
+### In Visual Mode:
 
 * Add a For Each block.
 * Specify the Loop Variable and Collection.

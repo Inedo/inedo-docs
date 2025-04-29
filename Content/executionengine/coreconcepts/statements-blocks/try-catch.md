@@ -118,3 +118,15 @@ catch
 {
     Log-Information "Main block error handling.";
 }
+
+### Retry on Error { #retry }
+
+You can configure certain statements or operations to automatically retry on failure. This is especially useful for transient issues like temporary network glitches.
+
+**Example (Text Mode):**
+
+```bash
+retry 3
+{
+    Run-DeploymentStep;
+}

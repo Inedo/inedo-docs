@@ -11,7 +11,7 @@ General Blocks are flexible, powerful, and critical for building robust, organiz
 
 A General Block groups statements together:
 
-### In Text Editor
+### In Text Mode
 
 ```bash
 {
@@ -31,7 +31,7 @@ A General Block groups statements together:
 }
 ```
 
-### In Visual Editor
+### In Visual Mode
 
 
 <image>
@@ -68,7 +68,7 @@ General Blocks also support advanced execution controls:
 
 ## Advanced Usage
 
-### Asynchronous Execution
+### Asynchronous Execution { #asynchronous }
 
 Running a block asynchronously allows your plan to continue executing without waiting for the block to finish:
 
@@ -89,7 +89,7 @@ log-debug All async blocks finished!;
 Use an await statement to wait for asynchronous blocks to finish when needed.
 You can also assign and filter by tokens for more granular control.
 
-### Exclusive Execution (Locking)
+### Exclusive Execution (Locking) { #exclusive }
 
 You can prevent multiple blocks from executing simultaneously by assigning a lock token:
 
@@ -105,7 +105,7 @@ for server localhost
 
 Only one block with the same lock token (`abc123`) can run at a time.
 
-### Running as a Different User
+### Running as a Different User { #different }
 
 You can execute operations inside a block under different credentials:
 
@@ -119,7 +119,7 @@ for server remote-server
 }
 ```
 
-### Isolation: New Process Execution
+### Isolation: New Process Execution { #isolation }
 
 Using Isolation ensures that remote operations inside the block are executed in a separate, disposable process:
 
@@ -135,7 +135,7 @@ for server remote-server
 
 This improves security and prevents environment contamination between operations.
 
-### Log Scoping
+### Log Scoping { #logscoping }
 
 General Blocks automatically create log scopes, which make plan execution much easier to follow:
 * Blocks appear as collapsible sections in the execution log.
