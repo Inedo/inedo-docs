@@ -22,16 +22,15 @@ In these examples:
 ```bash
 if $EnvironmentName == "Production"
 {
-    Install-Certificate
-    (
-        Path: $PathCombine($CertificateRoot,"prod-cert.pfx")
-    );
+    PSExec Import-Certificate Filepath "C:\files\intermediate.cert";
 }
 else
 {
-    Log-Information "Certificate installation not required in non-production environments.";
+    Log-Information Certificate not needed in $EnvironmentName;
 }
 ```
+
+If this is run on any non-production server, it will simply log that a certificate isn't needed.
 
 ### Visual Mode
 

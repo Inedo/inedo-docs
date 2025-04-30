@@ -21,7 +21,11 @@ foreach $ServiceName in @ServiceNames
     Ensure-Service $ServiceName
     (
         StartupType: Automatic,
-        EnsureRunning: true
+        EnsureRunning: true,
+        Name: script,
+        Exists: true,
+        DelayedStart: false,
+        Path: C:\Program Files\Hdars\Hdars.Service.exe" -arg1 -arg2
     );
 }
 ```

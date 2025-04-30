@@ -142,11 +142,4 @@ General Blocks automatically create log scopes, which make plan execution much e
 * Short Descriptions label log scopes.
 * Sensitive log data (e.g., operation arguments) can be protected by permission settings.
 
-Example of scoped logs:
-
-```bash
-> Ensure Accounts App (General Block)
-    > Ensure-Directory
-    > Ensure-Asset
-    > Extract-ZipFile
-```
+<image>

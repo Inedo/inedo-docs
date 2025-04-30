@@ -21,13 +21,13 @@ In these examples:
 ```bash
 try
 {
-    Start-Service Accounts
+    Start-Service Accounts;
 }
 catch
 {
     Ensure-Service Accounts
     (
-        StartupType: Automatic,
+        Name: Accounts,
         EnsureRunning: true
     );
 }
@@ -58,7 +58,7 @@ You can use the Set-Status statement inside Catch:
 ```bash
 try
 {
-    Run-Tests
+    Delete;
 }
 catch
 {
