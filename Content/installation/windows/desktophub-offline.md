@@ -7,6 +7,8 @@ By default, when you install ProGet, BuildMaster, or Otter using [the Inedo Hub]
 
 However, the Inedo hub can also operate in a completely offline/disconnected state. This is useful if you need to update an Inedo product on a server that does not have Internet access. You can also [set up your own Inedo products feed](#setting-up-your-own-inedo-products-feed) for use on your intranet.
 
+When using Inedo products offline you won't receive notifications about new releases. We recommend visiting your MyInedo page regularly and viewing our [Detailed Change Log](/docs/installation/upgrading#viewing-change-logs) and [Upgrade Guidance](/docs/installation/upgrading#viewing-upgrade-guidance), to make sure that your software is secure and optimized.
+
 ## Downloading the Offline Installer
 Starting from BuildMaster v7, Otter v3, and ProGet v6, you can download an offline installer from the [downloads page at my.inedo.com](https://my.inedo.com/downloads). These installers contain a single version of a single Inedo product, and can be run with no internet access.
 
