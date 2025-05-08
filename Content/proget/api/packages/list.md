@@ -70,7 +70,7 @@ Note that, if an API call is made on a package that does not exist, an empty obj
 | Response | Details |
 | --- | --- |
 | **200 (Success)** | body will contain an array of [PackageVersionInfo](/docs/proget/api/packages#package-version) objects
-|  **403 (Unauthorized API Key)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/packages#authentication); the body will be empty
+| **403 (Unauthorized API Key)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/packages#authentication); the body will be empty
 | **500 (Server Error)** | indicates an unexpected error; the body will contain the messsage and stack trace, and this will also be logged
 
 ## Sample Usage Scripts
