@@ -48,13 +48,11 @@ To list a package version, simply `GET` to the URL with a feed name, [package id
 GET /api/packages/«feed-name»/versions?«package-identifiers»
 ```
 
-Unless you use a `purl`, the parameters required will vary by feedtype. When the package identifiers you use may resolve to multiple packages (e.g. specifying `name` only), multiple package versions will be returned.
-
 ## HTTP Response Specification
 A successful (`200`) response body will contain an array of [PackageVersionInfo](/docs/proget/api/packages#package-version) objects. For example, querying version `1.0.0` of `myNuGetPackage`, the request would return a single object:
 
 ```json
-GET /api/packages/MyNuGetFeed/versions?purl=pkg:nuget/myNugetPackage@1.0.0
+GET /api/packages/MyNuGetFeed/versions?name=myNugetPackage&version=1.0.0
 
 [{
     "purl":"pkg:nuget/myNugetPackage@1.0.0",
