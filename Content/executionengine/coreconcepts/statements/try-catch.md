@@ -16,15 +16,12 @@ A typical `try/catch` statement in OtterScript:
 ```bash
 try
 {
-    Start-Service Accounts;
+    Log-Information "Trying to start service...";
+    throw "Simulated failure";
 }
 catch
 {
-    Ensure-Service Accounts
-    (
-        Name: Accounts,
-        EnsureRunning: true
-    );
+    Log-Information "Service failed to start. Attempting recovery steps...";
 }
 ```
 :::
