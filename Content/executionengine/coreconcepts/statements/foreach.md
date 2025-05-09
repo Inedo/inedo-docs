@@ -14,17 +14,9 @@ order: 4
 A typical `foreach` statement in OtterScript:
 
 ```bash
-foreach $ServiceName in @ServiceNames
+foreach $item in @myList
 {
-    Ensure-Service $ServiceName
-    (
-        StartupType: Automatic,
-        EnsureRunning: true,
-        Name: script,
-        Exists: true,
-        DelayedStart: false,
-        Path: "C:\Program Files\Hdars\Hdars.Service.exe" -arg1 -arg2
-    );
+    Log-Information "$item";
 }
 ```
 :::
@@ -52,34 +44,22 @@ foreach $i in @Range(1,3)
 
 This will output:
 
-```bash
+```plaintext
 Loop iteration: 1
 Loop iteration: 2
 Loop iteration: 3
 ```
 
-## Real-World Examples
+## `for` Statements in OtterScript
 
-### Deploy to Multiple Servers
+OtterScript includes a `for` statement, but it is not a looping construct. For example:
 
 ```bash
-foreach server in @ServersInGroup(web-nodes)
-{
-    Deploy-App
-    (
-        AppName: MyApp
-    );
-}
+for i = 1 to 100
 ```
 
-### Configure Multiple Applications
+Although this looks like a loop in other languages, it does not perform iteration in OtterScript. It's typically used for declarative bindings, not flow control. To iterate over a range of numbers, always use:
 
 ```bash
-foreach $App in @(Accounts, Inventory, Billing)
-{
-    Configure-App
-    (
-        Name: $App
-    );
-}
+foreach $i in @Range(1, 100)
 ```
