@@ -1,17 +1,17 @@
 ---
-title: "Try-Catch Blocks"
+title: "Try/Catch Blocks"
 order: 5
 ---
 
-`try-catch` Statements in OtterScript function like typical "try-catch" statements found in other languages, offering a way to manage runtime errors, letting you catch exceptions, run fixes, tweak the flow, or log issues without halting the whole deployment.
+`try/catch` Statements in OtterScript function like typical "try/catch" statements found in other languages, offering a way to manage runtime errors, letting you catch exceptions, run fixes, tweak the flow, or log issues without halting the whole deployment.
 
-#### Common `try-catch` Usage
+#### Common `try/catch` Usage
 * Recoverable Failures: If a primary operation fails, run an alternative or corrective action.
 * Changing Severity: Convert a failure into a warning when failure isn't critical.
 * Custom Error Logging: Log specific error details to help with troubleshooting.
 
-:::(info) (`try-catch` Example:)
-A typical `try-catch` statement in OtterScript:
+:::(info) (`try/catch` Example:)
+A typical `try/catch` statement in OtterScript:
 
 ```bash
 try
@@ -33,14 +33,14 @@ catch
 
 By default:
 * Any error inside `try` stops execution and marks the job as failing.
-* With a `try-catch` statement:
+* With a `try/catch` statement:
     * The error is caught.
     * Execution continues with `catch` instead of halting.
 
 After `catch`:
-    * Execution resumes with the next statement after the `try-catch` statement.
+    * Execution resumes with the next statement after the `try/catch` statement.
 
-## Changing Execution Status in Catch 
+## Changing Execution Status in `catch` 
 
 Sometimes you don't want an error to count as a total failure — maybe just a warning.
 
@@ -66,9 +66,9 @@ In this case:
 Use Set-Status cautiously. Overriding status can hide serious problems if used improperly.
 :::
 
-## Nested Try-Catch Statements
+## Nested `try/catch` Statements
 
-OtterScript lets you nest `try-catch` statements if needed:
+OtterScript lets you nest `try/catch` statements if needed:
 
 ```bash
 try

@@ -1,71 +1,131 @@
 ---
-title: "If-Else Statements"
+title: "If/Else Statements"
 order: 3
 ---
 
-`if-else` Statements in OtterScript function like typical "if-else" statements found in other languages, allowing your plans to execute different sets of statements based on conditional logic.
+`if/else` Statements in OtterScript function like typical "if/else" statements found in other languages, allowing your plans to execute different sets of statements based on conditional logic.
 
-#### Common `if-else` Usage
+#### Common `if/else` Usage
 * Environment-specific configurations: Deploy different assets, apply settings, or run checks depending on the environment (Production, QA, Development).
 * Server-specific behavior: Perform actions based on server roles or operating systems.
 * Feature toggles: Enable or disable features based on runtime flags.
 
-:::(info) (`if-else` Example:)
-A typical `if-else` statement in OtterScript:
+:::(info) (`if/else` Example:)
+A typical `if/else` statement in OtterScript:
 
 ```bash
-if $EnvironmentName == "Production"
+if $myEnvironment == "Production"
 {
-    PSExec Import-Certificate Filepath "C:\files\intermediate.cert";
+    Log-Information "Environment is Production.";
 }
 else
 {
-    Log-Information Certificate not needed in $EnvironmentName;
+    Log-Information "Environment is not Production.";
 }
 ```
 :::
 
 ## Writing Conditions
 
-Conditions inside `if` statements must be Boolean expressions — they should evaluate to either `true` or `false`.
+Conditions inside `if` statements must be Boolean expressions —that evaluate to either `true` or `false`.
 
-Common expressions:
+OtterScript uses strict Boolean logic. Unlike languages like JavaScript or PowerShell, it does not use truthy or falsy values — expressions like if `"hello"` or `if 0` are invalid. Only `true` or `false` (or variables that explicitly hold Boolean values) are allowed in conditions.
+
+✅ Valid: `if $isEnabled`
+❌ Invalid: `if $someString` or `if $count` (where `$count` is a number)
+
+### Common expressions:
 
 | Example | Description |
 |---|---|
-| `$EnvironmentName == "Production"` | Check if an environment name matches |
-| `$ServerRole == "WebServer"` | Verify a server role |
-| `$IsWindows == true` | Check operating system type |
-| `@FeatureFlags.Contains("EnablePayments")` | Check if a list contains a value |
+| `$foo == "bar"` | Equality check |
+| `$myFlag == true` | Boolean comparison |
+| `$myList.Contains("abc")` | Membership test |
+| `$count > 3` | Numerical comparison |
+	
+### Logical Operators	
+	
+You can combine conditions using:
 
-You can combine conditions using logical operators:
-
-```bash
-if $EnvironmentName == "Production" && $IsWindows
-{
-    // Only runs on production Windows servers
-}
-```
-
-Supported logical operators in OtterScript include:
 * `&&` (AND)
 * `||` (OR)
 * `!` (NOT)
 
-## Nesting if-else Blocks
-
-OtterScript lets you nest `if-else` statement blocks inside each other for complex decision trees:
+Example: 
 
 ```bash
-if $EnvironmentName == "Production"
+if ($myEnvironment == "Production" && $isEnabled)
 {
-    if $ServerRole == "Database"
+    Log-Information "Environment is Production and the feature is enabled.";
+}
+```
+
+You can wrap expressions in parentheses for clarity and precedence:
+
+```bash
+if (($myEnvironment == "Staging") || ($myRole == "WebServer"))
+{
+    Log-Information "Either the environment is Staging or the role is WebServer.";
+}
+```
+
+## Booleans in OtterScript
+
+Boolean variables are commonly used in conditionals. You can write:
+
+```bash
+if $isEnabled
+```
+
+Which is equivalent to:
+
+```bash
+if $isEnabled == true
+```
+
+OtterScript emphasizes **declarative logic**, so conditionals often reflect current environment state (e.g., `$Environment == "Production"`), rather than being procedural logic blocks.
+
+## Nesting if/else Blocks
+
+OtterScript lets you nest `if/else` statement blocks inside each other for complex decision trees:
+
+```bash
+if $myEnvironment == "Production"
+{
+    if $myRole == "Database"
     {
-        Log-Information "Running Production Database Configuration...";
+        Log-Information "Environment is Production and role is Database.";
+    }
+    else
+    {
+        Log-Information "Environment is Production but role is not Database.";
     }
 }
 else
 {
-    Log-Information "Non-production environment setup.";
+    Log-Information "Environment is not Production.";
 }
 ```
+
+## if/elseif/else Behavior in OtterScript
+
+OtterScript does not have a native `elseif`. To write `if/elseif/else` logic, you simply nest if statements inside else blocks:
+
+```bash
+if $myEnvironment == "Production"
+{
+    Log-Information "Environment is Production.";
+}
+else
+{
+    if $myEnvironment == "Staging"
+    {
+        Log-Information "Environment is Staging.";
+    }
+    else
+    {
+        Log-Information "Environment is neither Production nor Staging.";
+    }
+}
+```
+
