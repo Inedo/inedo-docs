@@ -7,7 +7,7 @@ url-slug: "proget-upgrade-2022"
 :::(Error) (ProGet 2022 Upgrade Not Recommended)
 If you're currently using ProGet 5.2 ProGet 5.3, or or ProGet 6.0 we do not recommend upgrading to ProGet 2022. 
 
-Instead, **directly upgrade to ProGet 2024** ([see notes](/docs/proget-upgrade-2024)). This article is kept as-is to help show what changed in ProGet 2022.
+Instead, **directly upgrade to ProGet 2025** ([see notes](/docs/proget-upgrade-2025)). This article is kept as-is to help show what changed in ProGet 2022.
 :::
 
 ProGet 2022 is a major update, and this article provides information about what will change, the impact to your instance, and how to mitigate risk during upgrade.

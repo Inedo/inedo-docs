@@ -1,13 +1,13 @@
 ---
 title: "Upgrading to ProGet 2023"
-order: 2
+order: 3
 url-slug: "proget-upgrade-2023"
 ---
 
 :::(Error) (ProGet 2023 Upgrade Not Recommended)
-If you're currently using ProGet 5.2 ProGet 5.3, or or ProGet 6.0 we do not recommend upgrading to ProGet 2023. 
+If you're currently using ProGet 5.2 ProGet 5.3, ProGet 6.0, or ProGet 2022 we do not recommend upgrading to ProGet 2023.
 
-Instead, **directly upgrade to ProGet 2024** ([see notes](/docs/proget-upgrade-2024)). This article is kept as-is to help show what changed in ProGet 2023.
+Instead, **directly upgrade to ProGet 2025** ([see notes](/docs/proget-upgrade-2025)). This article is kept as-is to help show what changed in ProGet 2023.
 :::
 
 ProGet 2023 is a major update, and this article provides information about what will change, the impact to your instance, and how to mitigate risk during upgrade.

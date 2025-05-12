@@ -1,13 +1,13 @@
 ---
 title: "Upgrading to ProGet 5.3 (2020)"
-order: 5
+order: 6
 url-slug: "proget-5-3-upgrade-notes"
 ---
 
 :::(Error) (ProGet 5.3 Upgrade Not Recommended)
 If you're currently using ProGet 5.2 we do not recommend upgrading to ProGet 5.3. 
 
-Instead, **directly upgrade to ProGet 2024** ([see notes](/docs/proget-upgrade-2024)). This article is kept as-is to help show what changed in ProGet 5.3.
+Instead, **directly upgrade to ProGet 2025** ([see notes](/docs/proget-upgrade-2025)). This article is kept as-is to help show what changed in ProGet 5.3.
 :::
 
 ProGet 5.3 is a major upgrade, with a number of breaking changes and significant new features. Review this article carefully before deciding when and how to upgrade.
