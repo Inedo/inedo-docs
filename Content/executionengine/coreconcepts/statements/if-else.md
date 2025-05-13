@@ -76,6 +76,7 @@ Boolean variables are commonly used in conditionals. You can write:
 ```bash
 if $isEnabled
 ```
+or
 
 Which is equivalent to:
 
@@ -84,6 +85,20 @@ if $isEnabled == true
 ```
 
 OtterScript emphasizes **declarative logic**, so conditionals often reflect current environment state (e.g., `$Environment == "Production"`), rather than being procedural logic blocks.
+
+:::(info) (Variable Case Sensitivity)
+Variables in OtterScript are not case sensitive, therefore:
+
+```bash
+if $IsEnaBled
+```
+
+Is equivalent to:
+
+```bash
+if $isEnabled
+```
+:::
 
 ## Nesting if/else Blocks
 

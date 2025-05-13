@@ -14,10 +14,20 @@ order: 4
 A typical `foreach` statement in OtterScript:
 
 ```bash
+set @myList = @(A, B, C);
+
 foreach $item in @myList
 {
-    Log-Information "$item";
+    Log-Information "Item: $item";
 }
+```
+
+Output:
+
+```plaintext
+Item: A
+Item: B
+Item: C
 ```
 :::
 
@@ -38,16 +48,16 @@ Use the built-in `@Range(start,end)` function to create numeric loops:
 ```bash
 foreach $i in @Range(1,3)
 {
-    Log-Information "Loop iteration: $i";
+    Log-Information "Number: $i";
 }
 ```
 
 This will output:
 
 ```plaintext
-Loop iteration: 1
-Loop iteration: 2
-Loop iteration: 3
+Number: 1
+Number: 2
+Number: 3
 ```
 
 ## `for` Statements in OtterScript
@@ -58,7 +68,7 @@ OtterScript includes a `for` statement, but it is not a looping construct. For e
 for i = 1 to 100
 ```
 
-Although this looks like a loop in other languages, it does not perform iteration in OtterScript. It's typically used for declarative bindings, not flow control. To iterate over a range of numbers, always use:
+Although this looks like a loop in other languages, it does not perform iteration in OtterScript. It's typically used for declarative bindings, not flow control. To iterate over a range of numbers, use:
 
 ```bash
 foreach $i in @Range(1, 100)
