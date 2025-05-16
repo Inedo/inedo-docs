@@ -5,7 +5,7 @@ order: 2
 
 ProGet's Software Composition Analysis (SCA) can leverage Software Bill of Materials (SBOM) documents that identify the open-source and third-party software components (i.e. packages) that your applications use. 
 
-This article will explain what an SBOM document is, and how importing and exporting these documents work in ProGet.
+This article will explain what an SBOM document is, and how importing and exporting these documents works in ProGet.
 
 ## What is a "Software Bill of Materials" (SBOM)?
 

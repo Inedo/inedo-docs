@@ -24,7 +24,7 @@ Once download statistics are enabled, ProGet records the following information e
 
 On the Package page, you can view this download data by clicking the Usage & Statistics tab on a package's overview page.
 
-![UsageAndStatistics](/resources/docs/UsageAndStatistics.png){height="" width="50%"}
+![UsageAndStatistics](/resources/docs/proget-packages-statistics.png){height="" width="50%"}
 
 ### Limitations in Free 
 
