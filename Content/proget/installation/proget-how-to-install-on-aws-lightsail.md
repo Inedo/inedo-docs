@@ -20,7 +20,7 @@ To begin, create a free Amazon Web Services (AWS) account using the “Sign in t
 
 Once you have created your account, go to [https://lightsail.aws.amazon.com/](https://lightsail.aws.amazon.com/ls/webapp/home/instances){target="_blank"}, and click “Create Instance” to start setting up a Windows Server with SQL Server hosted on AWS.
 
-![Create Instance](/resources/docs/proget-awslightsail-createinstance.png)
+![Create Instance](/resources/docs/proget-awslightsail-createinstance.png){height="" width="50%"}
 
 On the “Create an Instance” page, you will be prompted to configure various settings:
 
@@ -43,7 +43,7 @@ Expand-Archive -Path InedoHub.zip -DestinationPath C:\InedoHub
 * **Identify your instance**: Especially if you are running multiple instances and need to keep track of which one is which, give your instance a unique name.
 * **Tags**: This allows you to enter additional tags to help you organize your instances, but it is unnecessary for this setup.
 
-![Instance Plan](/resources/docs/proget-awslightsail-instanceplan.png)
+![Instance Plan](/resources/docs/proget-awslightsail-instanceplan.png){height="" width="50%"}
 
 Once you added these settings, click “Create Instance.” It will only take a few seconds for AWS to create the instance, but it may take up to 30 minutes for it to be fully available. You'll know it's ready when clicking on "Retrieve default password" (under the "password" heading in the "connect" category) results in showing you a password instead of stating it's not ready yet. 
 
@@ -51,14 +51,14 @@ Once Lightsail has finished creating your instance, select your newly created in
 
 Ensure that the service has started by checking for a “Running” Status message on the right of the page. If it isn’t “Running,” click the “Connect” button.
 
-![Instance is running](/resources/docs/proget-awslightsail-instancerunning.png)
+![Instance is running](/resources/docs/proget-awslightsail-instancerunning.png){height="" width="50%"}
 
 ## Open Port 8624 on Lightsail to Access ProGet
 To access your ProGet installation from any machine, you will need to open port 8624 to connect to your Lightsail instance. Port 8624 is the default firewall port ProGet uses for communication. As only one application can use a port at any time, there is no security risk.
 
 To open this port, select your instance and go to the “Networking” tab.
 
-![Click Add rule](/resources/docs/proget-awslightsail-addrule.png)
+![Click Add rule](/resources/docs/proget-awslightsail-addrule.png){height="" width="50%"}
 
 Under “IPv4 Firewall,” click “+ Add rule”, which will prompt you to configure several options:
 
@@ -69,7 +69,7 @@ Under “IPv4 Firewall,” click “+ Add rule”, which will prompt you to conf
 
 Once you have entered your desired options, click “Create.”
 
-![Click Create](/resources/docs/proget-awslightsail-create.png)
+![Click Create](/resources/docs/proget-awslightsail-create.png){height="" width="50%"}
 
 Write down or copy the “Public IP” of your server. You will use this later to access ProGet from any machine.
 
@@ -78,7 +78,7 @@ Open your preferred browser, and enter "http://" and the public IP address for y
 
 If ProGet opens, everything is configured correctly. It may take up to 30 minutes for Lightsail to finish creating the instance and installing ProGet. If you cannot connect to ProGet from your browser, please wait a few minutes and refresh the page.
 
-![ProGet welcome page](/resources/docs/proget-awslightsail-welcome.png)
+![ProGet welcome page](/resources/docs/proget-awslightsail-welcome.png){height="" width="50%"}
 
 **Congratulations, you are now ready to access your ProGet feeds directly from any machine**.
 
