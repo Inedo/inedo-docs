@@ -15,43 +15,43 @@ This article will explain how to configure [policies](/docs/proget/sca/policies)
 
 Start by navigating to "Administration Overview" and selecting "OSS Metadata Updating & Caching".
 
-![](/resources/docs/proget-admin-osscaching.jpg){height="" width="50%"}
+![](/resources/docs/proget-admin-osscaching.png){height="" width="50%"}
 
 Next select "Enable"
 
-![](/resources/docs/proget-osscaching-enable.jpg){height="" width="50%"}
+![](/resources/docs/proget-osscaching-enable.png){height="" width="50%"}
 
 ## Step 2: Configure Policies for Deprecated Packages
 
 Return to "Administration Overview" and select "Package Policies & Rules".
 
-![](/resources/docs/proget-admin-policies.jpg){height="" width="50%"}
+![](/resources/docs/proget-admin-policies.png){height="" width="50%"}
 
 Then select "edit" under the "Global" policy.
 
-![](/resources/docs/proget-policies-edit.jpg){height="" width="50%"}
+![](/resources/docs/proget-policies-edit.png){height="" width="50%"}
 
 Next, select "edit" under "Other Rules".
 
-![](/resources/docs/proget-policies-edit-other.jpg){height="" width="50%"}
+![](/resources/docs/proget-policies-edit-other.png){height="" width="50%"}
 
 From here, set "Deprecation Rule" as "Noncompliant" and select "Save".
 
-![](/resources/docs/proget-policies-other-deprecated.jpg){height="" width="50%"}
+![](/resources/docs/proget-policies-other-deprecated.png){height="" width="50%"}
 
 ## Step 3: Set Up Alerts
 
 Return to the "Administration Overview" once more and select "Notifiers and Webhooks".
 
-![](/resources/docs/proget-admin-notifiers.jpg){height="" width="50%"}
+![](/resources/docs/proget-admin-notifiers.png){height="" width="50%"}
 
 From here select "Create Notifier".
 
-![](/resources/docs/proget-notifiers-create.jpg){height="" width="50%"}
+![](/resources/docs/proget-notifiers-create-notifier.png){height="" width="50%"}
 
 Now set "Event Type" as "Package Status Changed", and set "Action" to your preferred notifier (email, Slack or Teams message, etc.), along with the relevant email or URL.
 
-![](/resources/docs/proget-notifiers-new-slack.jpg){height="" width="50%"}
+![](/resources/docs/proget-notifiers-new-slack.png){height="" width="50%"}
 
 Finally, select "Save" to create this notifier, which will now be sent when a deprecated package is in use.
 
@@ -62,14 +62,14 @@ When creating the notifier in Step 3, you have the choice of setting some additi
 ### Conditions
 On this tab you can set the notifier to run on specific feeds only, or for packages that match specific criteria.
 
-![](/resources/docs/proget-notifiers-new-conditions.jpg){height="" width="50%"}
+![](/resources/docs/proget-notifiers-new-conditions.png){height="" width="50%"}
 
 This includes using advanced conditions like triggering notifications only for packages with a vulnerability score above a certain threshold (e.g., $Compare($VulnerabilityScore,>=,7.5)) or based on patterns in package names (e.g., $MatchesRegex($PackageName, "^MyPackage\.*$")). These conditions give you more control over when notifications are sent.
 
 ### Custom Message
 You can create a customized text to be sent, be it email, slack or teams message, or customized webhook:
 
-![](/resources/docs/proget-notifiers-new-message.jpg){height="" width="50%"}
+![](/resources/docs/proget-notifiers-new-message.png){height="" width="50%"}
 
 You can personalize these messages using [variables and expressions](/docs/proget/administration/proget-notifications-webhooks/proget-notifications-custom-webhook#variables-expressions). Your notifications can include dynamic content such as package details, user actions, or data from third-party APIs. Additionally, custom webhooks can be configured to integrate with external tools, enabling automated workflows or audits. 
 
