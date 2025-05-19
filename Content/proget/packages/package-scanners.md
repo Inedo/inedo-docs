@@ -15,9 +15,8 @@ Otter can be used to collect package usage from your servers. See [server packag
 
 Once Otter is configured to collect package data, you must [create an API key](/docs/proget/api/apikeys) that allows access to the *Package/Container Usage API*. 
 
-![Otter Create API Key.png](/resources/docs/otter-apikeys-create.png){height="" width=""}
+![Otter Create API Key](/resources/docs/otter-apikeys-create.png){height="" width="50%"}
 
 ## Viewing Live Package Usage Data
 
 After data collection, the data for the packages will be displayed in ProGet on the "Usage & Statistics" tab. On the individual package's Overview page, click this tab to see a list of all servers using that package, along with other information such as name, status, time, and so on.
-

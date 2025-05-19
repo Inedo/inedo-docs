@@ -94,7 +94,7 @@ ProGet Annual and Enterprise users are able to see a package history that outlin
 
 To view this history, navigate to the "History" tab on the package:
 
-![ProGet TkyConvert1.0.0 Repackage History](/resources/docs/package%20history.png){height="" width="50%"}
+![ProGet TkyConvert1.0.0 Repackage History](/resources/docs/proget-packages-packagehistory.png){height="" width="50%"}
 
 :::(Warning)
 Free users can only see the action performed and the date, NOT the user and the place to/from which the package was promoted to/from.

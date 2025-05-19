@@ -28,21 +28,21 @@ Or find S3 in the "All Services" drop-down menu under "Storage"
 
 For this tutorial, you **must** create a new S3 Bucket. There will be another tutorial describing how to bulk import from an S3 Bucket *(currently not available)*. 
 
-On the bucket page, click [Create bucket]
+On the bucket page, click "Create bucket."
 
-![The AWS S3 Bucket top page](/resources/docs/progetass3interface-aws-createbucket.png)
+![The AWS S3 Bucket top page](/resources/docs/amazons3-createbucket.png){height="" width="50%"}
 
 ## Step 3: Input the new bucket information
 
-Name your bucket. For this demonstration, we will use "progetconnected"
+Name your bucket. For this demonstration, we will use "progetconnectedbucket"
 
 Choose an appropriate AWS region. A region that is geographically closest to you optimizes latecy and minimizes cost.
 
-![The AWS S3 page to configure the S3 options, displaying bucket name and bucket region.](/resources/docs/progetass3interface-aws-createbucket-generalconfig.png)
+![The AWS S3 page to configure the S3 options, displaying bucket name and bucket region.](/resources/docs/amazons3-configurebucket.png){height="" width="50%"}
 
 Fill in the remaining S3 fields to your organization’s preferences.
 
-When you’re ready, click [Create bucket] at the bottom of the page. 
+When you’re ready, click "Create bucket." at the bottom of the page. 
 
 ## Step 4: Check your new bucket information
 
@@ -50,31 +50,31 @@ Once the bucket is created, you’ll need the AWS Region for Step 8 of the tutor
 
 Confirm your AWS region on the main bucket page.
 
-![The AWS S3 Bucket page, with a bucket listed.](/resources/docs/progetass3interface-aws-bucketlist.png)
+![The AWS S3 Bucket page, with a bucket listed.](/resources/docs/amazons3-bucketregion.png){height="" width="50%"}
 
 ## Step 5: Create an access key and secret access key
 
 Navigate to the [Identity and Access Management (IAM)](https://console.aws.amazon.com/iam/home#/security_credentials) in AWS to find the access keys drop-down menu.
 
-![The AWS Security Credentials page displaying access key options.](/resources/docs/progetass3interface-aws-accesskeypage.png)
+![AWS Security Credentials Page Displaying Access Key Options](/resources/docs/amazsons3-createaccesskey.png){height="" width="50%"}
 
-Click [Create New Access Key]
+Click "Create New Access Key."
 
 In the pop-up under Hide Access Key, copy the Access Key ID and Secret Access Key for Step 8.
 
-![The AWS access keys window displaying a blurred access key and secret access key.](/resources/docs/progetass3interface-aws-accesskeys.png)
+![AWS Access Keys Window Displaying Blurred Access Key and Blurred Secret Access Key.](/resources/docs/amazons3-secretaccesskey.png){height="" width="50%"}
 
 ## Step 6: Create a new asset directory in ProGet
 
-In ProGet, navigate to the Assets tab on the top ribbon and click [Create New Asset Directory]
+In ProGet, navigate to the Assets tab on the top ribbon and click "Create New Asset Directory."
 
-![The ProGet Asset Directory page displaying a "create new" button.](/resources/docs/progetass3interface-assetdirectorypage.png)
+![The ProGet Asset Directory Page Displaying a "Create New" Button.](/resources/docs/proget-assets-createdirectory.png){height="" width="50%"}
 
 In the pop-up, name the new asset directory and, optionally, provide a description of it.
 
-Click [Create New Feed]
+Click "Create New Feed."
 
-![The "Create New Asset Directory" window with options to type in a name and description.](/resources/docs/progetass3interface-assetdirectory-createnewwindow.png)
+![Create New Asset Directory Window](/resources/docs/proget-assets-createfeed.png){height="" width="50%"}
 
 ## Step 7: Navigate *Manage Feed > Storage and Retention*
 
@@ -82,7 +82,7 @@ Once the asset directory is made, navigate to its Storage and Retention page.
 
 On the "Storage" line item, click "change" at the far right.
 
-![The "Manage Feed" page of an asset directory with an arrow pointing toward the "change" button of the storage line item.](/resources/docs/progetass3interface-manageassetdirectory-storage.png)
+![Manage Feed Page](/resources/docs/proget-assets-changestorage.png){height="" width="50%"}
 
 ## Step 8: Configure a S3 Bucket
 
@@ -90,7 +90,7 @@ A pop-up with two pages will appear.
 
 On the first page, select “Amazon S3”
 
-![A window displaying three storage options.](/resources/docs/progetass3interface-configurestorage-3options.png)
+![Assets Picklist](/resources/docs/proget-assets-picklist.png){height="" width="50%"}
 
 On the second page, input your S3 bucket information collected in steps 4 and 5.
 
@@ -100,7 +100,7 @@ Select the Region endpoint.
 
 Type the bucket name.
 
-![The "Configure Feed Package Store" window of a ProGet asset directory, populated, with blurred S3 keys.](/resources/docs/progetass3interface-configurestorage-accesskeys.png)
+![Configure Feed Package Store](/resources/docs/proget-assets-configurestorage.png){height="" width="50%"}
 
 :::(Info) (Prefix)
 By default, ProGet uses the root folder of the bucket. The prefix field allows you to use a subdirectory.
@@ -108,7 +108,7 @@ By default, ProGet uses the root folder of the bucket. The prefix field allows y
 Prefix is ideal if you have multiple asset directories or feeds that use the same S3 bucket for storage
 :::
 
-Click [Save]
+Click "Save."
 
 Your bucket is now configured to S3.
 
@@ -119,15 +119,15 @@ You can verify that you have successfully connected ProGet to your S3 bucket by 
 Navigate to the asset directory and add some files to it
 Perform the upload using your preferred method: Upload via browser, via zip file, etc.
 
-![A window in ProGet displaying options for uploading files to an asset directory.](/resources/docs/progetass3interface-addassetfiles-options.png)
+![Add Assets](/resources/docs/proget-assets-addfiles.png){height="" width="50%"}
 
 Depending on the size of the file and the server, this may take a few minutes.
 
+![ProGet Asset Directory](/resources/docs/proget-assets-populatedamazons3assetdirectory.png){height="" width="50%"}
+
 After uploading to ProGet, go to your S3 bucket and you'll see that the files have been populated.
 
-![A ProGet asset directory with uploaded files. ](/resources/docs/progetass3interface-proget-uploadedfiles.png){height="" width=""}
-
-![An Amazon S3 bucket displaying the same uploaded files as seen in ProGet.](/resources/docs/progetass3interface-aws-populatedbucket.png)
+![AmazonS3 Bucket Displaying ProGet Asset Directory Files](/resources/docs/amazons3-populatedbucket.png){height="" width="50%"}
 
 ## Troubleshooting
 ### Issue: Amazon S3 is not a storage option
@@ -145,7 +145,7 @@ Click [Install]
 
 You may come across an error that says “(500) Server Error” and “specified bucket does not exist,” “the AWS access key id you provided does not exist,” etc. 
 
-![A ProGet page showing an unexpected error about the S3 bucket.](/resources/docs/progetass3interface-assetdirectory-unexpectederror.png){height="" width=""}
+![ProGet (500) Sever Error](/resources/docs/progetass3interface-assetdirectory-unexpectederror.png){height="" width="50%"}
 
 It’s possible there was an error when inputting the S3 bucket information during steps 7 and 8. 
 

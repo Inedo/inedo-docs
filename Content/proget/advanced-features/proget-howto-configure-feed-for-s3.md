@@ -15,51 +15,50 @@ This guide will walk you through creating a new feed. If you have an existing fe
 ## Step 1: Login or Create an Amazon AWS Account.
 Sign up or login your [Amazon AWS account](https://aws.amazon.com/).
 
-![Log into Amazon AWS](/resources/docs/amazons3-signin%281%29.jpg)
+![Log into Amazon AWS](/resources/docs/amazons3-signin.png){height="" width="50%"}
 
 ## Step 2: Create an S3 Bucket
 **If you have already set up an S3 Bucket, you can skip this step**.
 
 Navigate to the Buckets tab within Amazon S3. If you have trouble finding it, search "Bucket" in the search bar above.
 	
-![Amazon S3 Buckets Tab](/resources/docs/amazons3-bucketstab.jpg)
+![Amazon S3 Buckets Tab](/resources/docs/amazons3-bucketstab.png){height="" width="50%"}
 
 Click on "Create Bucket" and fill in the appropriate fields. When you are done, you should see the name of your bucket, region, and access. In this example, we named our bucket "kramerica" and set the region to US East (Ohio) us-east-2.
 
-![Amazon S3 Bucket Info](/resources/docs/amazons3-bucketinfo%282%29.jpg)
+![Amazon S3 Bucket Info](/resources/docs/amazons3-bucketinfo.png){height="" width="50%"}
 
 ## Step 3: Create Access Key/ Secret Access Key
 After you have set up your bucket, you will need to create an access and secret access key that will be used in ProGet later. Navigate to the Identity and Access Management (IAM) in AWS or simply [click here](https://console.aws.amazon.com/iam/home?#/security_credentials) to go straight to your access keys. 
 
-![AWS Access key](/resources/docs/amazsons3-accesskey.jpg)
+![AWS Access key](/resources/docs/amazsons3-createaccesskey.png){height="" width="50%"}
 
-Click the blue "Create new access key" button and select the blue arrow that says "View access key" to view your access key and secret access key.
+Click the blue "Create new access key" button and check the "Continue to create access key?" box to view your access key and secret access key.
 
-![Amazon S3 Secret Access Key](/resources/docs/amazons3-secretaccesskey.jpg)
+![Amazon S3 Secret Access Key](/resources/docs/amazons3-secretaccesskey.png){height="" width="50%"}
 
 Copy or write down both your access key and your secret access key, as you will need to enter them into ProGet in step 5.
 
 ## Step 4: Create a New Feed 
 To create a new feed, navigate to the banner at the top of the page and click Feeds. Then select Create new feed.
 
-![Create New Feed in ProGet](/resources/docs/amazons3-createnewfeed.jpg)
+![Create New Feed "create-feed"](/resources/docs/proget-feeds-createnewfeed.png){height="" width="50%"}
     
 Next, you need to select the type of feed you want to set up. In this tutorial we will set up a NuGet feed, but the steps should be nearly identical for each feed. Select the feed you want to set up and fill in the appropriate fields.
 
-![Create NuGet Feed](/resources/docs/amazons3-createnugetfeed.jpg)
-
+![Create NuGet Feed](/resources/docs/proget-nuget-newfeed.png){height="" width="50%"}
     
 ## Step 5: Change Your Feed’s Package Store Location
 By default, ProGet stores package files on disk, so your feed must be configured to store packages on Amazon S3 instead. In your feed, click Manage Feed > Storage & Retention, and then select Change next to Storage.
 
-![Change Storage Location](/resources/docs/amazons3-changestorage.jpg)
+![Change Storage Location](/resources/docs/proget-nuget-changestorage.png){height="" width="50%"}
     
 After clicking Change, you will be prompted to configure your feed package store. Choose Amazon S3 when prompted.
 
 ## Step 6: Configure Package Store Location to Use Your Amazon S3 Bucket
 After you select Amazon S3 as the storage location for your package, you will be presented with the following configuration options:
 
-![AWS S3 Configuration Options](/resources/docs/amazons3-configures3options.jpg)
+![AWS S3 Configuration Options](/resources/docs/proget-nuget-configureamazons3.png){height="" width="50%"}
 
 Since we are setting up a NuGet feed to use an Amazon S3 bucket, we are configuring only the options required for it.
 
