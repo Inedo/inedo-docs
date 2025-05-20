@@ -13,11 +13,11 @@ This article explains how to create a PowerShell module repository in ProGet and
 
 Create a new feed by navigating to "Feeds" > "Create New Feed"
 
-![Create a New Feed in ProGet](/resources/docs/amazons3-createfeed%281%29.jpg)
+![Create New Feed](/resources/docs/proget-feeds-createnewfeed){height="" width="50%"}
 
 Choose "PowerShell Modules" from the options presented and give it a name and optional description. We’ll be using “internal-powershell”.
 
-![PowerShell Feed Creation](/resources/docs/powershellmodulesproget-powershellfeedcreation.jpg)
+![Create Powershell Feed](/resources/docs/proget-powershell-internalfeed.png){height="" width="50%"}
 
 After clicking on "Create New Feed", you now have your own private PowerShell module repository!
 
@@ -82,7 +82,7 @@ Once you have a PowerShell module set up, you can add it to your ProGet feed to 
 
 You will need to [create an API Key](/docs/proget/api/apikeys) that allows your PowerShell module to connect to your ProGet instance. To do this navigate to "Administration Overview" > "Integrations & Extensibility" > "API Keys" > "Create API Key". 
 
-![Create an API Key in ProGet](/resources/docs/powershellmodulesproget-createapikey%282%29.jpg)
+![Create Feed API Key](/resources/docs/proget-powershell-createapikey){height="" width="50%"}
 
 ProGet uses three types of API keys, but since we created a PowerShell feed in Step 1, we'll use a feed API key. If you need a temporary API key, you can specify the following as the API key instead:
 
@@ -107,7 +107,7 @@ By default, PowerShell attempts to publish modules to and obtain them from the P
 
 To do this, you'll first need to find the API Endpoint URL of your feed:
 
-![ProGet API endpoint URL](/resources/docs/powershellmodulesproget-apiendpoint.jpg)
+![ProGet API Endpoint URL](/resources/docs/proget-powershell-internalfeedendpoint){height="" width="50%"}
 
 Then, you can use the cmdlet [Register-PSRepository](https://docs.microsoft.com/en-us/powershell/module/powershellget/register-psrepository) to designate a new target repository.
 
@@ -144,7 +144,7 @@ Publish-Module -Path c:\Foobar -NuGetApiKey http://54.250.56.60:8624/nuget/inter
 
 At this point "Foobar" will now appear in your ProGet feed.
 
-![Foobar Package in ProGet](/resources/docs/powershellmodulesproget-foobarpackage.jpg)
+![Foobar Package](/resources/docs/proget-powershell-foobarpackageoverview.png){height="" width="50%"}
 
 
 ## Step 4: Install Modules from your ProGet Feed
@@ -164,7 +164,7 @@ Use [Register-PSRepository](https://docs.microsoft.com/en-us/powershell/module/p
 
 ProGet will display the command to use under Usage Instruction in: Feeds > feed-name > module-name > Repository.
 
-![Register ProGet Feed](/resources/docs/powershellmodulesproget-registerprogetfeed.jpg)
+![Register Feed](/resources/docs/proget-powershell-registerfeed.png){height="" width="50%"}
 
 Using our “Foobar.psm1” example we would type:
 
@@ -192,7 +192,7 @@ Use [Install-Module](https://docs.microsoft.com/en-us/powershell/module/powershe
 
 ProGet will display the command to use under Usage Instruction in: Feeds > feed-name > module-name > Repository.
 
-![Download and Install Modules from Your Feed](/resources/docs/powershellmodulesproget-downloadmodulesfromfeed.jpg)
+![Register Feed CMD](/resources/docs/proget-powershell-downloadmodules.png){height="" width="50%"}
 
 Using our “Foobar.psm1” example we would type:
 

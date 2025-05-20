@@ -11,7 +11,7 @@ This guide will walk you through the process of setting up a NuGet ["Feed"](/doc
 
 Start by creating a NuGet feed to host your internal packages. Navigate to "Feeds" and "Create New Feed". Then select "NuGet (.NET) Packages".
 
-![](/resources/docs/proget-newfeed-nugetselect.png){height="" width="50%"}
+![](/resources/docs/proget-feeds-nugetselect.png){height="" width="50%"}
 
 Now select "No Connectors (Private packages only)" as this feed will be intended to host private packages.
 

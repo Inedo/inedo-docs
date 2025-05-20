@@ -22,7 +22,7 @@ We start by selecting "Feed" and [Create New Feed].
 
 As we will be using packages from [Nuget.org](https://nuget.org), we select "NuGet (.NET) Packages".
 
-![Create NuGet Feed "create-nuget-feed"](/resources/docs/proget-newfeed-nugetselect.png){height="" width="50%"}
+![Create NuGet Feed "create-nuget-feed"](/resources/docs/proget-feeds-nugetselect.png){height="" width="50%"}
 
 ## Step 2: Configure feeds
 
@@ -34,7 +34,7 @@ We will then select "Yes, Create Two Feeds", as for a package to be promoted fro
 
 In this example, we will create an `unapproved-nuget` feed where unverified packages from "NuGet.org" will be stored, and an `approved-nuget` feed for our packages to be promoted to.
 
-![Two Feeds "two-feeds"](/resources/docs/proget-nuget-twofeeds.png){height="" width="50%"}
+![Two Feeds "two-feeds"](/resources/docs/proget-feeds-twofeeds.png){height="" width="50%"}
 
 ## Step 3: Naming feeds
 

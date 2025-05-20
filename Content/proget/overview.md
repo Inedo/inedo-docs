@@ -32,7 +32,7 @@ We will start by navigating to "Feeds" and selecting "Create New Feed".
 
 As we will be using packages from [Nuget.org](https://www.nuget.org), we select "NuGet (.NET) Packages". 
 
-![Create NuGet Feed](/resources/docs/proget-newfeed-nugetselect.png){height="" width="50%"}
+![Create NuGet Feed](/resources/docs/proget-feeds-nugetselect.png){height="" width="50%"}
 
 ## Step 3: Set Up Your Feed 
 

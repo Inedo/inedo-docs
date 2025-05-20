@@ -32,7 +32,7 @@ To begin we'll create a new feed that we will import our existing packages to. S
 
 Then select the package type. In this case, we will select "NuGet (.NET) Packages".
 
-![Create NuGet Feed](/resources/docs/proget-newfeed-nugetselect.png){height="" width="50%"}
+![Create NuGet Feed](/resources/docs/proget-feeds-nugetselect.png){height="" width="50%"}
 
 ### Step 2: Connect to Azure DevOps
 As we will be connecting to our Azure DevOps repository, select "Connect to Another Feed".

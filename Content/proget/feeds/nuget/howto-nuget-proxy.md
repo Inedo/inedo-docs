@@ -15,7 +15,7 @@ We'll first create a NuGet feed to proxy packages from [NuGet.org](https://www.n
 
 In your ProGet instance, select "Feeds" and "Create New Feed", and select "NuGet (.NET) Packages".
 
-![](/resources/docs/proget-newfeed-nugetselect.png){height="" width="50%"}
+![](/resources/docs/proget-feeds-nugetselect.png){height="" width="50%"}
 
 Then select "Connect to NuGet.org" which will allow us to proxy and cache packages from NuGet.org.
 
