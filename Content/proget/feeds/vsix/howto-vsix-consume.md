@@ -29,11 +29,11 @@ There are many ways to [configure security access controls for uses and groups](
 
 To start, we navigate to "Settings"> "Manage Security".
 
-![Manage Security](/resources/docs/proget-settings-managesecurity.png){height="" width="50%"}
+![Manage Security](/resources/docs/proget-admin-managesecurity.png){height="" width="50%"}
 
 We then navigate to the "Tasks / Permissions" tab, listing the currently configured permissions, and select "add permission".
 
-![Tasks/Permissions](/resources/docs/proget-taskspermissions-add.png){height="" width="50%"}
+![Tasks/Permissions](/resources/docs/proget-admin-taskspermissions-add.png){height="" width="50%"}
 
 Next, we will fill out the following dialog to give the "Network Engineers" user group permission to "Manage Feed" for the `private-vsix` feed.
 
