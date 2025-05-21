@@ -16,39 +16,39 @@ This article will walk you through a [common scenario of promoting open-source N
 
 The first thing we'll be doing is creating two "NuGet" feeds, one for unapproved packages, and the other for approved packages that have been promoted.
 
-We start by selecting "Feed" and [Create New Feed].
+We start by selecting "Feed" and "Create New Feed."
 
-![Create New Feed "create-feed"](/resources/docs/proget-feeds-createnewfeed.png){height="" width="50%"}
+![Create New Feed](/resources/docs/proget-feeds-createnewfeed.png){height="" width="50%"}
 
 As we will be using packages from [Nuget.org](https://nuget.org), we select "NuGet (.NET) Packages".
 
-![Create NuGet Feed "create-nuget-feed"](/resources/docs/proget-newfeed-nugetselect.png){height="" width="50%"}
+![Create NuGet Feed](/resources/docs/proget-feeds-nugetselect.png){height="" width="50%"}
 
 ## Step 2: Configure feeds
 
 After selecting the feed type, we’ll specify that the feed will connect directly to "NuGet.org".
 
-![Connect Nuget "connect-nuget"](/resources/docs/proget-nuget-connecttoorg.png){height="" width="50%"}
+![Nuget Connector](/resources/docs/proget-nuget-connecttoorg.png){height="" width="50%"}
 
 We will then select "Yes, Create Two Feeds", as for a package to be promoted from one feed to another, there must be multiple feeds.
 
 In this example, we will create an `unapproved-nuget` feed where unverified packages from "NuGet.org" will be stored, and an `approved-nuget` feed for our packages to be promoted to.
 
-![Two Feeds "two-feeds"](/resources/docs/proget-nuget-twofeeds.png){height="" width="50%"}
+![Create Two Feeds](/resources/docs/proget-feeds-twofeeds.png){height="" width="50%"}
 
 ## Step 3: Naming feeds
 
-We then name our feeds as we specified above, and then click [Create Feeds].
+We then name our feeds as we specified above, and then click "Create Feeds."
 
-![Name Feeds "name-feeds"](/resources/docs/proget-nuget-namefeeds.png){height="" width="50%"}
+![Name Feeds](/resources/docs/proget-nuget-namefeeds.png){height="" width="50%"}
 
 We are then presented with several options. More information on these can be found in the [Vulnerability Scanning and Blocking](/docs/proget/sca/vulnerabilities) and [SCA and Continuous Integration (CI)](/docs/proget/sca/builds/proget-sca-ci) documentation.
 
-![Option Select "option-select"](/resources/docs/proget-nuget-newfeedoptions.png){height="" width="50%"}
+![Feed Options](/resources/docs/proget-nuget-newfeedoptions.png){height="" width="50%"}
 
 Finally, we select [Set Feed Features], which will create the feeds and redirect us to our `unapproved-nuget` feed, populated with packages from "NuGet.org".
 
-![Feed Detail "feed-detail"](/resources/docs/proget-nuget-unapprovedfeed.png){height="" width="50%"}
+![Feed Details](/resources/docs/proget-nuget-unapprovedfeed.png){height="" width="50%"}
 
 ## Step 4: Set Permissions
 
@@ -56,23 +56,23 @@ There are many ways to configure [security access controls for uses and groups](
 
 To start, we navigate to "Settings" > "Manage Security".
 
-![Manage Security "manage-security"](/resources/docs/proget-settings-managesecurity.png){height="" width="50%"}
+![Manage Security](/resources/docs/proget-admin-managesecurity.png){height="" width="50%"}
 
 We then navigate to the "Tasks / Permissions" tab, listing the currently configured permissions, and select "add permission".
 
-![Tasks/Permissions "tasks-permissions"](/resources/docs/proget-taskspermissions-add.png){height="" width="50%"}
+![Tasks / Permissions](/resources/docs/proget-admin-taskspermissions-add.png){height="" width="50%"}
 
 Next, we will fill out the following dialog to give the "Senior Developers" user group permission to "Promote Packages" from the `unapproved-nuget` feed.
 
-![Permit Seniors "permit-seniors"](/resources/docs/proget-nugetunapproved-permitseniordevs.png){height="" width="50%"}
+![Permit Senior Developers](/resources/docs/proget-nuget-permitseniordevs.png){height="" width="50%"}
 
 Following the same steps, we will also give the "Developers" user group permission to "View and Download" packages from the `approved-nuget` feed.
 
-![Permit Developers "permit-developers"](/resources/docs/proget-nugetapproved-permitdevs.png){height="" width="50%"}
+![Permit Developers](/resources/docs/proget-nuget-permitdevs.png){height="" width="50%"}
 
 After saving these two privileges, our task overview page looks like this:
 
-![Overview "overview"](/resources/docs/proget-taskspermissions-nugetadded.png){height="" width="50%"}
+![Overview](/resources/docs/proget-admin-taskspermissions-nugetadded.png){height="" width="50%"}
 
 
 * * *
@@ -89,24 +89,24 @@ Most organizations would find the [Newtonsoft.Json](https://www.nuget.org/packag
 
 We start by clicking the "version number" (in this case 13.0.3) to direct us to the package page, and then simply select "Promote Package" from the drop-down menu on the right side.
 
-![Promote Package "promote-package"](/resources/docs/proget-nugetunapproved-promoteselect.png){height="" width="50%"}
+![Select Promote Package](/resources/docs/proget-nuget-promoteselect.png){height="" width="50%"}
 
 From here, we fill out the dialog box with any comments, and finally select [Promote]:
 
-![Promote Package in ProGet](/resources/docs/proget-nugetunapproved-promote.png){height="" width="50%"}
+![Promote Package in ProGet](/resources/docs/proget-nuget-promotepackage.png){height="" width="50%"}
 
 Since we configured a package approval workflow earlier, this package can only be promoted to the `approved-nuget` feed. Without that configured, there would be a choice of feeds to promote to.
 
 After clicking promote, the package will now be available in the `approved-nuget` feed for all "Developers" to view and download.
 
-![Approved "approved"](/resources/docs/proget-nugetapproved-feed.png){height="" width="50%"}
+![Approved Feed](/resources/docs/proget-nuget-approvedfeed.png){height="" width="50%"}
 
 Package promotion can also be done using the [Package Promotion API](/docs/proget/packages/package-promotion). The API usage is limited to paid users, however.
 
 ## Viewing Promotion History
 ProGet keeps a package history that outlines what actions were taken by whom. For example, to view the history of the "Newtonsoft.Json" package, we navigate to the package page and click the "History" tab.
 
-![History "history"](/resources/docs/proget-newtonsoft-promotionhistory.png){height="" width="50%"}
+![Promotion History](/resources/docs/proget-nuget-newtonsoft-promotionhistory.png){height="" width="50%"}
 
 The history tracks over both feeds, and shows us that we promoted this package from `unapproved-nuget` to `approved-nuget`.
 
