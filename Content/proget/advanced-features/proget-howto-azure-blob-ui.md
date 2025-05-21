@@ -14,7 +14,7 @@ This tutorial explains how to configure an Asset Directory to use an Azure Blob 
 
 Sign up for or login to an Azure Account. 
 
-![azurecloudstorage-signin](/resources/docs/azurecloudstorage-signin.jpg)
+![Azure Login](/resources/docs/azure-signin.png){height="" width="50%"}
 
 ## Step 2: Configure an Azure Storage Account
 
@@ -22,30 +22,30 @@ An Azure storage account is needed for this guide. If you already have one, skip
 
 In the Azure search bar, type “storage account” and select “Storage accounts.” On the following page, click [Create storage account]
 
-![azurecloudstorage-createstorageaccount](/resources/docs/azurecloudstorage-createstorageaccount.jpg)
+![Azure Storage Accounts](/resources/docs/azure-storageaccounts-mainpage.png){height="" width="50%"}
 
 On the Create Storage Account page, fill in the appropriate fields on the Basics tab as desired: Storage Account Name; Region; Performance; Redundancy.
 
 Only the Basics tab is required for configuration, but feel free to fill in the other tabs as well.
 
-![azurecloudstorage-storageaccountsettings](/resources/docs/azurecloudstorage-storageaccountsettings.jpg)
+![Create Storage Account](/resources/docs/azure-storageaccounts-create.png){height="" width="50%"}
 
-Once you’re ready, click [Review+create]
+Once you’re ready, click "Review+create"
 
 ## Step 3: Create a Container
 
 Once your deployment is complete, click [Go to resource] at the bottom of the page.
 
-![azurecloudstorage-gotoresource](/resources/docs/azurecloudstorage-gotoresource.jpg)
+![Go To Resource Button](/resources/docs/azure-storageaccounts-gotoresource.png){height="" width="50%"}
 
-In the menu on the left side of the container page, click on [Containers] under “Data Storage.”
+In the menu on the left side of the container page, click on "Containers" under “Data Storage.”
 
-Then, click [+Container] to create a new container. 
+Then, click "Add container" to create a new container. 
 On the right side of the page, name the new container and choose an appropriate Public access level.
 
-Click [Create] at the bottom right of the screen.
+Click "Create" at the bottom right of the screen.
 
-![azurecloudstorage-createnewcontainer](/resources/docs/azurecloudstorage-createnewcontainer.jpg)
+![Create Container](/resources/docs/azure-containers-create.png){height="" width="50%"}
 
 Once your container has been made, save the name for step 7.
 
@@ -54,17 +54,17 @@ Once your container has been made, save the name for step 7.
 To connect the Azure Blob storage container to ProGet, you’ll need the the connection string of the container.
 Navigate to the access keys tab on the left side of the screen. 
 
-Click [Show keys] and copy your connection string for step 7.
+Click "Show keys" and copy your connection string for step 7.
 
-![azurecloudstorage-connectionstring](/resources/docs/azurecloudstorage-connectionstring.jpg)
+![Copy Connection String](/resources/docs/azure-storageaccounts-connectionstring.png){height="" width="50%"}
 
 ## Step 5: Create a new Asset Directory
 
 In ProGet, navigate to the Assets page from the top ribbon. 
 
-Click [Create New Asset Directory]
+Click "Create New Asset Directory"
 
-![configurePGasS3UI_assetdirectory_createnew](/resources/docs/configurePGasS3UI_assetdirectory_createnew.png)
+![Create Asset Directory](/resources/docs/proget-assets-createdirectory.png){height="" width="50%"}
 
 In the pop-up, name the Asset directory and, optionally, give a description. 
 
@@ -74,7 +74,7 @@ Once the asset directory is made, navigate to its Storage and Retention page.
 
 On the “Storage” line item, click “change” at the far right.
 
-![configurePGasS3UI_manageAD_storage_witharrow](/resources/docs/configurePGasS3UI_manageAD_storage_witharrow.png)
+![Change Storage Location](/resources/docs/proget-assets-changestorage.png){height="" width="50%"}
 
 ## Step 7: Configure the Azure Storage Container
 
@@ -82,17 +82,17 @@ A pop-up with two pages will appear.
 
 On the first page, select “Microsoft Azure”.
 
-![configurePGasS3UI_configurestorage](/resources/docs/configurePGasS3UI_configurestorage.png)
+![Storage Options](/resources/docs/proget-assets-picklist.png){height="" width="50%"}
 
 On the second page, paste your connection string from step 4 and your container name from step 3. 
 
-![configurePGasAzureUI-configurestorage-connectionstring.png](/resources/docs/configurePGasAzureUI-configurestorage-connectionstring.png)
+![Configure Azure Connection](/resources/docs/proget-assets-connecttoazure.png){height="" width="50%"}
 
 :::(Info)
 The destination path can be left blank; by default, the files are placed in the root directory of your storage container.
 :::
 
-When complete, click [Save]
+When complete, click "Save"
 
 Your Azure Blob is now configured to ProGet.
 
@@ -103,15 +103,15 @@ You can verify that you have successfully connected ProGet to your Blob containe
 Navigate to the asset directory and add some files to it
 Upload the files using your preferred method: via the browser, as a zip file, etc.
 
-![configurePGasS3UI_addassets](/resources/docs/configurePGasS3UI_addassets.png)
+![Upload Files](/resources/docs/proget-assets-addfiles.png){height="" width="50%"}
 
 Depending on the file size and the server, it may take a few minutes. 
 
-![configurePGasS3UI_uploadedfiles](/resources/docs/configurePGasS3UI_uploadedfiles.png)
+![Populated Asset Directory](/resources/docs/proget-assets-populatedazureassetdirectory.png){height="" width="50%"}
 
 Once uploaded in ProGet, go to your Azure container and you’ll see the files have been populated. 
 
-![configurePGasAzureUI-azurecontainer-list.png](/resources/docs/configurePGasAzureUI-azurecontainer-list.png)
+![Populated Azure Container](/resources/docs/azure-populatedcontainer.png){height="" width="50%"}
 
 ## Troubleshooting
 
