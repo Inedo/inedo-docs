@@ -20,11 +20,11 @@ This step should be automated by your build/CI server.
 
 Once we have the Package Explorer open, we select "Create New Package", add our content, and enter any applicable or appropriate details and metadata.
 
-![NuGet Package Explorer Create TkyConvert-ci](/resources/docs/tkyconvert-ci.png)
+![NuGet Package Explorer Create TkyConvert-ci.8](/resources/docs/proget-packages-tkyconvertci8.png)
  
 Note that the version has `-ci.8` at the end. The `-` signifies the package is a "pre-release package", `-ci` means it's from a CI server, and `-ci.8` means it's the 8th CI build. The `8` could just as easily be a timestamp, or whatever is easiest for your build server to generate.
 
-To finish creating our package, we'll click on `File` > `Export` 
+To finish creating our package, we'll click on `File` > `Save` 
 
 ## Step 2: Upload/Push
 
@@ -36,7 +36,7 @@ This step should be automated by your build/CI server.
 
 To upload your package, navigate to your feed and click "Add a Package". A popup window will appear where you can select how you want to add the package. In this example, we'll upload the files via the browser, as this is the easiest method.
 
-![ProGet Popup TkyConvert Upload](/resources/docs/TkyConvert%20Upload.png)
+![Upload TkyConvert](/resources/docs/proget-packages-tkyconvert-upload.png){height="" width="50%"}
  
 ## Step 3: Test and Verify Your `-ci` Package
 Now that we’ve uploaded our -ci package, [it needs to go through testing](https://blog.inedo.com/nuget/package-approval-workflow). Testing will vary from team to team. In general, however, this round of testing will focus solely on the package in question and ensure that the package meets specifications.
@@ -59,11 +59,11 @@ This step *may* be automated by a CI/CD tool. See the [Repackaging API](/docs/pr
 
 To repackage, simply navigate to the package and click "repackage"
 
-![ProGet TkyConvert 1.0.0-ci Pre-Release Package Page](/resources/docs/Repackage1.png)
+![Repackage TkyConvert](/resources/docs/proget-packages-tkyconvert-repackage.png){height="" width="50%"}
 
 In the popup, we can select our target feed. While it’s possible to repackage to a separate feed ([promoting your package at the same time](/docs/proget/packages/package-promotion)), for this example, we’ll repackage to the same feed and simply change the version to: `1.0.0-rc.8`.
 
-![ProGet Repackage Popup -ci to -rc](/resources/docs/proget-repackage-popup-ci-to-rc.png)
+![Pre-Release to Release Candidate](/resources/docs/proget-packages-tkyconvert-releasecandidate.png){height="" width="50%"}
 
 
 ## Step 5: Test and Verify -rc
@@ -84,18 +84,18 @@ This step *may* be automated by a CI/CD tool. See the [Repackaging API](/docs/pr
 
 After successfully repackaging `TkyConvert 1.0.0-rc.8` in the exact same way as step 4, you'll have a stable version of the package. 
 
-![ProGet Repackage Popup -rc to Stable](/resources/docs/proget-repackage-popup-rc-to-stable.png)
+![Release Candidate to Stable](/resources/docs/proget-packages-tkyconvert-stable.png){height="" width="50%"}
 
 This stable package is ready for use in your production environments! Reviewing the package overview page will reveal that the package is no longer considered a pre-release.
 
-![Tky Convert ci to rc to Stable Overview](/resources/docs/stable.png)
+![TkyConvert Overview](/resources/docs/proget-packages-tkyconvert-overview.png){height="" width="50%"}
 
 ## (Optional) Step 7: Review History
 ProGet Annual and Enterprise users are able to see a package history that outlines what actions were taken by whom. 
 
 To view this history, navigate to the "History" tab on the package:
 
-![ProGet TkyConvert1.0.0 Repackage History](/resources/docs/package%20history.png)
+![TkyConvert Repackaging History](/resources/docs/proget-packages-tkyconvert-history.png){height="" width="50%"}g
 
 :::(Warning)
 Free users can only see the action performed and the date, NOT the user and the place to/from which the package was promoted to/from.

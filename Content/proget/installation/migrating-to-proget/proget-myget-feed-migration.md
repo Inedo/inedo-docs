@@ -33,7 +33,7 @@ To create a new feed, navigate to the banner at the top of the page and click on
     
 You will then need to select the type of feed you would like to setup. In this guide we will be setting up a NuGet feed for a fictious company called Kramerica, but the steps should be nearly the same for any feed. Select the feed you wish to setup and fill in the relevant fields.
 
-![NuGet Feed Creation](/resources/docs/mygetfeedmigration-createnewfeed%283%29.jpg)
+![NuGet Feed Creation](/resources/docs/proget-nuget-newfeed.png)
 
 ## Step 3: Connect ProGet Feed to MyGet Feed
 Now that your feed is created, a connector to your imported feed will need to be added. Click on add connector and fill in the relevant information.

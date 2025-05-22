@@ -62,3 +62,11 @@ In some cases, it may be easier for users or programs to simply copy package fil
 [You can configure a feed to use a "drop path,"](/docs/proget/feeds/feed-overview/proget-bulk-import-with-droppath) which is a local or network path that ProGet will scan for files periodically. If that directory contains a package with a valid format for the feed type, it will be imported to ProGet.
 
 By default, existing packages will not be overwritten, but you can change this by going to "Administration Overview" > "Advanced Settings", and changing `Feeds.AllowDropPathImportOverwrite` to `true`.
+
+## Feed Integrity Checks
+
+ProGet 2024.36 and later can routinely perform an integrity check on feeds to prevent errors or unexpected behaviors when accessing content. 
+
+This involves inspecting each package file on disk at the end of each feed's FeedCleanup Scheduled Job and, if any issues are discovered, a notice will be displayed to administrators that the feed failed an integrity check. Administrators can then re-index the problematic feed to resolve these issues.
+
+In ProGet 2025, these may be disabled on a feed-by-feed basis to reduce resource usage (CPU and/or disk I/O).

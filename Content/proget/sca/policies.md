@@ -19,7 +19,7 @@ A set of rules is called a Policy, and you create additional Policies and use th
 
 The easiest way to view or change the Policies that apply to a feed is by navigating to Feeds > Manage Feeds > Policies and Blocking.
 
-![](/resources/docs/proget-policies-sharedpolicy-blocked.png){height="" width=""}
+![](/resources/docs/proget-policies-sharedpolicy-blocked.png){height="" width="50%"}
 
 This page combines the feed's Policies into a single view, so you can easily see which rules will apply to packages in the feed. You can also see and edit an individual policy under Admin > Policies.
 
@@ -27,7 +27,7 @@ This page combines the feed's Policies into a single view, so you can easily see
 
 Based on the feed's policies, packages will display a banner that indicates compliant, noncompliant, or warn.
 
-![](/resources/docs/proget-accord-licence-blocked.png){height="" width=""}
+![](/resources/docs/proget-accord-licence-blocked.png){height="" width="50%"}
 
 
 This status is the result of a *package analysis*, which occurs:
@@ -37,7 +37,7 @@ This status is the result of a *package analysis*, which occurs:
 
 You can also manually perform a package analysis by navigating to a package and selecting Reanalyze Package from the top-right drop-down button menu.
 
-![](/resources/docs/proget-policies-renalyze-package.png){height="" width=""}
+![](/resources/docs/proget-policies-renalyze-package.png){height="" width="50%"}
 
 A re-analysis will provide a detailed log that can help troubleshoot rules across multiple policies.
 
@@ -72,7 +72,7 @@ There are two types of vulnerability rules you can configure:
 
 Defining vulnerability rules may be particularly useful when you use custom assessment types. For example, you may wish to have ProGet's auto-assess feature "temporarily" assess a vulnerability until you can manually review/reassess.
 
-![](/resources/docs/proget-policies-vulnerability-rules.png){height="" width=""}
+![](/resources/docs/proget-policies-vulnerability-rules.png){height="" width="50%"}
 
 If multiple vulnerabilities were detected on a package, they will each be evaluated against the rules separately. For example, if one vulnerability was assessed as Ignore, but another is Severe, the package would still be considered noncompliant.
 
@@ -92,7 +92,7 @@ There are three types of license rules you can configure:
 
 Although ProGet does not include any default rules for Specified Licenses, the Global policy created on new installations of ProGet includes rules that warn about commonly unwanted licenses (GPL, etc).
 
-![](/resources/docs/policies-default-license-rules.png){height="" width=""}
+![](/resources/docs/policies-default-license-rules.png){height="" width="50%"}
 
 
 #### Creating Whitelist, Greylist, and Blacklist Policies
@@ -151,11 +151,11 @@ Although you configure complex sets of rules using [Shared & Multiple Policies](
 
 For example, private packages that you create won't really have a license agreement, which means ProGet may consider them unlicensed and thus noncompliant. Although you could create a "fake" license definition for your own packages, it's clearer to exempt your own packages (i.e. `MyCorp.*` ) from license rule analysis:
 
-![](/resources/docs/proget-exception-name-wildcard.png){height="" width=""}
+![](/resources/docs/proget-exception-name-wildcard.png){height="" width="50%"}
 
 An example of a temporary exemption is a deprecated third-party package. If the author deprecates a package that you have no intention of upgrading for at least a year, an expiring exemption would allow you to effectively "ignore" those compliance warnings.
 
-![](/resources/docs/proget-exception-version-range.png){height="" width=""}
+![](/resources/docs/proget-exception-version-range.png){height="" width="50%"}
 
 When using multiple policies, note that exemptions are not "overridden" like rules. This means that if you define an exception in the Global policy, it cannot be "undone" at a feed-level.
 

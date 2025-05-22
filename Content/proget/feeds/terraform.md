@@ -11,7 +11,7 @@ Terraform feeds are available in ProGet ProGet 2024.20+.
 
 ## Using Terraform Feeds as a Private Registry
 
-Before using a Terraform Feed as a Private Module Registry, you'll need to package your modules. This is as simple as zipping the content and uploading it to the ProGet UI or using the `upack` CLI; see [Terraform Module Packages](#terraform-module-packages) to learn more.
+Before using a Terraform Feed as a Private Module Registry, you'll need to package your modules. This is as simple as zipping the content and uploading it to the ProGet UI or using the [`pgutil`](/docs/proget/api/pgutil) CLI; see [Terraform Module Packages](#terraform-module-packages) to learn more.
 
 Once you've uploaded a package to your feed, you can add the module to your Terraform configuration using the following format:
 
@@ -99,7 +99,7 @@ A Terraform Module Package is a specially-formatted ZIP file:
 3. The `/package` directory in the zip file contains the module's content
 
 
-You can create a Terraform Module Packages from the ProGet UI or using the `upack` [commandline client](/docs/proget/feeds/universal/universal-packages#tools).
+You can create a Terraform Module Packages from the ProGet UI or using the [`pgutil`](/docs/proget/api/pgutil) commandline tool to [create and upload](/docs/proget/api/universal-feed/upload) them to your ProGet instance.
 
 #### Example Package Manifest
 For example, a `upack.json` for the `my-company/my-module/aws` module might look like this:

@@ -53,7 +53,7 @@ After switching to an external directory, you won't be able to edit users and gr
 ## Step 2: Enable Active Directory Integration
 Now that we have planned our users, groups and permissions, we will need to enable our Active Directory. To do this, we navigate to "Settings" > "Manage Security" > "Domains/User Directories".
 
-![Manage Security "manage-security"](/resources/docs/proget-settings-managesecurity.png){height="" width="50%"}
+![Manage Security "manage-security"](/resources/docs/proget-admin-managesecurity.png){height="" width="50%"}
 
 From here, we select "enable" next to our Active Directory.
 
@@ -63,7 +63,7 @@ From here, we select "enable" next to our Active Directory.
 
 To add groups and privileges from our Active Directory, we navigate to "Manage Security" as with step 2, select the "Tasks/Permissions" tab, and then click on "add permission".
 
-![Add Permission "add-permission"](/resources/docs/proget-settings-managesecurity.png){height="" width="50%"}
+![Add Permission "add-permission"](/resources/docs/proget-admin-managesecurity.png){height="" width="50%"}
 
 Depending on the product we're using, we will need to fill out the following boxes:
 

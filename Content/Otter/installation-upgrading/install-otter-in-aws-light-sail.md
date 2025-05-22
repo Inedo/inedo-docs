@@ -14,7 +14,7 @@ See how quick and easy it is to install Otter in this 3-minute video. The video 
 
 ![Video](https://www.youtube.com/watch?v=Ftqt9XJhgv8){height="480" width="640"}
 
-## **Setting Up Windows Server 2019 and SQL Server 2016 Using Lightsail**
+## **Setting Up Windows Server and SQL Server 2019 Express Using Lightsail**
 
 To begin, create a free Amazon Web Services (AWS) account using the “Sign in to the Console” on [https://aws.amazon.com/account/](https://aws.amazon.com/account/){target="_blank"}.
 
@@ -43,13 +43,13 @@ $shortcut.Save()
 </powershell>
 ```
 
-* **Choose your instance plan**: Otter will run on any configuration, but we suggest picking one with at least 8GB of RAM to ensure that Microsoft’s services run smoothly
+* **Choose your instance plan**: Otter will run on any configuration, but we suggest selecting "Dual-Stack" and picking a plan with at least 8GB of RAM to ensure that Microsoft’s services run smoothly.
 * **Identify your instance**: Especially if you are running multiple instances and need to keep track of which one is which, give your instance a unique name
 * **Tags**: This allows you to enter additional tags to help you organize your instances, but it is unnecessary for this setup.
 
-Once you added these settings, click “Create Instance.” It will only take a few seconds for AWS to create the instance, but it may take up to 30 minutes for it to be fully available. You'll know it's ready when clicking on "show default password" (under connect category) results in showing you a password instead of stating it's not ready yet. 
-
 ![Instance Plan](/resources/docs/proget-awslightsail-instanceplan.png)
+
+Once you added these settings, click “Create Instance.” It will only take a few seconds for AWS to create the instance, but it may take up to 30 minutes for it to be fully available. You'll know it's ready when clicking on "Retrieve default password" (under the "password" heading in the "connect" category) results in showing you a password instead of stating it's not ready yet. 
 
 Once Lightsail has finished creating your instance, select your newly created instance for Otter to use.
 
@@ -60,15 +60,15 @@ Ensure that the service has started by checking for a “Running” Status messa
 ## Open Port 8626 on Lightsail to Access Otter
 To access your Otter installation from any machine, you will need to open port 8626 to connect to your Lightsail instance. Port 8626 is the default firewall port Otter uses for communication. As only one application can use a port at any time, there is no security risk.
 
-To open this port, go to the “Networking” tab.
+To open this port, select your instance and go to the “Networking” tab.
 
-![Click Add rule](/resources/docs/proget-awslightsail-addrule%281%29.png)
+![Click Add rule](/resources/docs/proget-awslightsail-addrule.png)
 
-Under “Firewall,” click “+Add rule,” which will prompt you to configure several options:
+Under “IPv4 Firewall,” click “+ Add rule”, which will prompt you to configure several options:
 
 * **Application**: Default is “Custom”—do not change
 * **Protocol**: Default is “TCP”—do not change
-* **Port or range**: Enter the port you would like to open. For this tutorial, enter 8626.
+* **Port or range**: Enter the port you would like to open. For this tutorial, enter `8626`.
 * **Restrict to IP address**: Specify which IP addresses can connect to your instance. This provides additional security, though it isn’t strictly necessary.
 
 Once you have entered your desired options, click “Create.”
@@ -78,7 +78,7 @@ Once you have entered your desired options, click “Create.”
 Write down or copy the “Public IP” of your server. You will use this later to access Otter from any machine.
 
 ## Access Otter from Your Browser
-Open your preferred browser, and enter "http://" and the public IP address for your instance followed by “:8626” (e.g., 12.345.567.89:8626).
+Open your preferred browser, and enter "http://" and the public IP address for your instance followed by “`:8626`” (e.g., `12.345.567.89:8626`).
 
 If Otter opens, everything is configured correctly. It may take up to 30 minutes for Lightsail to finish creating the instance and installing Otter. If you cannot connect to Otter from your browser, please wait a few minutes and refresh the page.
 
@@ -86,3 +86,5 @@ If Otter opens, everything is configured correctly. It may take up to 30 minutes
 
 **Congratulations, you are now ready to access your Otter directly from any machine**.
 
+## What’s Next?
+Once you’ve set up an Otter instance, it’s time to learn some of Otter’s basic features. [Our documentation will teach you everything you need to get started.](/docs/otter/overview)
