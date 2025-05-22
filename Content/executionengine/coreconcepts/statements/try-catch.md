@@ -5,24 +5,19 @@ order: 5
 
 `try/catch` Statements in OtterScript function like typical "try/catch" statements found in other languages, offering a way to manage runtime errors, letting you catch exceptions, run fixes, tweak the flow, or log issues without halting the whole deployment.
 
-#### Common `try/catch` Usage
-* Recoverable Failures: If a primary operation fails, run an alternative or corrective action.
-* Changing Severity: Convert a failure into a warning when failure isn't critical.
-* Custom Error Logging: Log specific error details to help with troubleshooting.
-
 :::(info) (`try/catch` Example:)
 A typical `try/catch` statement in OtterScript:
 
 ```bash
 try
 {
-    Log-Information "Trying to start service...";
-    throw "Simulated failure";
+    throw Something failed;
 }
 catch
 {
-    Log-Information "Service failed to start. Attempting recovery steps...";
+    Log-Information Something went wrong, but continuing;
 }
+Log-Information Script continued;
 ```
 :::
 
@@ -41,26 +36,58 @@ After `catch`:
 
 Sometimes you don't want an error to count as a total failure — maybe just a warning.
 
-You can use the `set-status` statement inside `catch`:
+You can use the `force warn` statement inside `catch`:
 
 ```bash
 try
 {
-    Delete;
+    throw Something failed;
 }
 catch
 {
-    Log-Warning "Tests failed, but continuing.";
-    set-status Warn;
+    force warn;
 }
+Log-Information Script continued;
+```
+
+Example Output:
+
+```bash
+DEBUG: 2025-05-22 03:30:13Z - Beginning execution run...
+ERROR: 2025-05-22 03:30:13Z - Something failed
+INFO : 2025-05-22 03:30:13Z - Script continued
+WARN : 2025-05-22 03:30:13Z - Execution run succeeded with warnings.
 ```
 
 In this case:
 * The overall execution status becomes Warn instead of Fail.
 * Execution proceeds normally after the block.
 
+You can also use `force normal` to suppresses the error, treating the execution as fully successful.
+
+```bash
+try
+{
+    throw an error occurred;
+}
+catch
+{
+    force normal;
+}
+Log-Information Script continued;
+```
+
+Example Output:
+
+```bash
+DEBUG: 2025-05-22 03:34:13Z - Beginning execution run...
+ERROR: 2025-05-22 03:34:13Z - an error occurred
+INFO : 2025-05-22 03:34:13Z - Script continued
+INFO : 2025-05-22 03:34:13Z - Execution run succeeded.
+```
+
 :::(warn)
-Use Set-Status cautiously. Overriding status can hide serious problems if used improperly.
+Use `force` cautiously. Overriding status can hide serious problems if used improperly.
 :::
 
 ## Nested `try/catch` Statements
@@ -72,18 +99,31 @@ try
 {
     try
     {
-        Critical-Setup;
+        throw Inner error occurred;
     }
     catch
     {
-        Log-Error "Critical setup failed.";
-        set-status Fail;
+        Log-Information Inner error caught;
+        throw Outer error occurred;
     }
+    Log-Information After inner try/catch;
 }
 catch
 {
-    Log-Information "Main block error handling.";
+    Log-Information Outer error caught;
 }
+Log-Information Script continued;
+```
+
+Example Output:
+
+```bash
+DEBUG: 2025-05-22 13:07:00Z - Beginning execution run...
+ERROR: 2025-05-22 13:07:00Z - Inner error occurred
+INFO : 2025-05-22 13:07:00Z - Inner error caught
+ERROR: 2025-05-22 13:07:00Z - Outer error occurred
+INFO : 2025-05-22 13:07:00Z - Outer error caught
+INFO : 2025-05-22 13:07:00Z - Script continued
 ```
 
 ## Retry on Error { #retry }
@@ -93,6 +133,6 @@ You can configure certain statements or operations to automatically retry on fai
 ```bash
 retry 3
 {
-    Run-DeploymentStep;
+    Log-Information script running;
 }
 ```
