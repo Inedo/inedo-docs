@@ -3,34 +3,51 @@ title: "Backing Up & Restoring"
 order: 11
 ---
 
-Your Inedo products should be backed up frequently.
+Your Inedo products should be backed up frequently. 
+
+For smaller, single-server installations, you may find it easiest to simply take a snapshot of the Virtual Machine the product is running on. As long as all components are hosted on a single virtual machine, this will sufficiently backup the product.
+
+However, this isn't possible or practical for many installations, and this article will give advice on how to create a back-up plan. 
+
+### Components to Backup
 
 These items are critical data you should back up for each product:
 
 | Item | Note |
 | - | - |
-| [Configuration&nbsp;File](#installation-configuration-file-backup) | the installation configuration file that contains your database connection string and the encryption key that is used to encrypt secrets such as passwords |
-| [Database](#database-backup) | the SQL Server database that contains all of your Inedo product's configuration data |
+| [Configuration&nbsp;File](#installation-configuration-file-backup) <br/>*(Windows&nbsp;only)*  | the installation configuration file that contains your database connection string and the encryption key that is used to encrypt secrets such as passwords |
+| [Database](#database-backup) | contains all of your Inedo product's configuration data and requires special consideration |
 | [Package&nbsp;Files](#package-files-backup) <br/>*(ProGet&nbsp;only)* | the disk paths that contain all the files for packages stored in ProGet |
 | [Artifact&nbsp;Files](#artifact-files-backup)<br />*(BuildMaster&nbsp;only)* | a path on disk that contains all the files for artifacts you created within BuildMaster |
 
-You can also back up your extensions folder (plug-ins), which is stored in the path defined in the Extensions.ExtensionsPath advanced configuration setting. This makes restoring to a new server as easy as possible, since you only need to copy the backup files to the same location on the new server.
+You can also back up your extensions folder (plug-ins), which is stored in the path defined in the `Extensions.ExtensionsPath` advanced configuration setting. This makes restoring to a new server as easy as possible, since you only need to copy the backup files to the same location on the new server.
 
 
-## Installation Configuration File Backup
+##  Configuration File Backup {#installation-configuration-file-backup}
 
-The [installation configuration file](/docs/installation/configuration-files) contains sensitive information, so it's important to consider how (or even *if*) you want to back this file up.
+On Windows-based installations, the [installation configuration file](/docs/installation/configuration-files) contains sensitive information, so it's important to consider how (or even *if*) you want to back this file up.
 
 The most important piece of information in this file is the `EncryptionKey` setting. This is used to decrypt secrets stored in the database, such as passwords for connectors in ProGet or agent credentials in BuildMaster and Otter. Without the encryption key, your Inedo product will not be able to decrypt these secrets and unexpected errors may occur.
 
 Also, someone who has access to the database and the encryption key could decrypt the secrets, so you should be careful where you back up the file. This file also contains your database connection string, which may include a password to connect to the database.
 
 
-## Database Backup 
+## Database Backup
+
+Inedo products are constantly reading/writing from the database, which means that you can't simply copy the database files. Instead, you'll need to follow a special process, depending on the database engine in use.
+
+### SQL Server
 If you installed your Inedo product with the built-in database, then the installer also installed Microsoft SQL Server Express Edition with an instance named `INEDO`. The database is relatively easy to back-up using <code>osql.exe</code> or SQL Server Management Studio (SSMS). 
 
 To learn more about how to use these tools, see our guide on [Backing Up and Restoring Databases](/docs/installation/sql-server/installation-database-backup).
 
+### PostgreSQL (ProGet 2025+ Only)
+
+<div style="background-color:#FEECE5;padding:4px;border:solid 1px #0FECA1;">
+
+ProGet 2025+ can use PostgreSQL instead of SQL Server. The database is relatively easy to back-up using the built-in `inedodb backup` CLI command. See [PostgreSQL Database Backup and Restore](/docs/installation/postgresql#backup) to learn more.
+
+</div>
 
 ## Package Files Backup
 ::: (warning)
@@ -81,5 +98,3 @@ This isn't really much harder, but it does require some knowledge of Microsoft S
 If you're using your own SQL server, you just need to make sure that your Inedo product's database has been restored before running the installer for the version you want. The installer will make sure that the restored database is up-to-date as part of the installation.
 
 If you want to use the built-in database, run the installer first. It'll install the files and create a new Inedo product database for you. From here, restore your database backup (you can use the command above) and then run the database tool (available at inedo.com) for the version you're installing. This will ensure that the database is up to date.
-
-
