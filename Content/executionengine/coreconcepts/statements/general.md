@@ -3,130 +3,109 @@ title: "General Statements"
 order: 2
 ---
 
-General Statements are the foundational statement type in OtterScript. They allow you to define shared execution settings such as server targeting, working directories, error handling, and parallelism. General Statements are flexible, powerful, and critical for building robust, organized deployment plans.
+In addition to structured statements like [`foreach`](/docs/executionengine/coreconcepts/statements/foreach), [`try/catch`](/docs/executionengine/coreconcepts/statements/try-catch), and [`if/else`](/docs/executionengine/coreconcepts/statements/if-else), OtterScript offers several standalone statements that give you fine-grained control over your deployment plans.
 
-## Basic Usage
+These statements help you:
+* Manage variables
+* Write to logs
+* Control execution status
+* Pause execution for asynchronous operations
+* Raise manual errors
 
-A General Statement block groups statements together:
+| Statement| Purpose |
+|---|---|
+| `set` | Declare or update a variable |
+| `log` | Write a message to the execution log |
+| `warn`, `fail`, `force normal` | Change execution status |
+| `await` | Wait for background asynchronous blocks |
 
-:::(info) (General Statement Example:)
-A typical General Statement in OtterScript:
+## `set` Variable Statement
+
+The `set` variable statement declares or updates a variable inside the current scope.
+
+In these examples:
+* If the variable doesn't exist yet, it is declared and assigned.
+* If it already exists in the current scope, its value is updated.
 
 ```bash
-{
-    Ensure-Directory $WebsitesRoot;
+set $EnvironmentName = Production;
+```
 
-    Ensure-Asset
-    (
-        Name: Accounts.zip,
-        Directory: $PackagesRoot
-    );
+:::(info)
+Changing a variable inside a plan does not modify the variable globally (e.g., on a server or environment asset) — it only affects the current execution scope.
+:::
 
-    Extract-ZipFile $PathCombine($PackagesRoot,Accounts.zip)
-    (
-        Directory: $WebsitesRoot,
-        Overwrite: True
-    );
-}
+## `log` Statement
+
+The `log` statement writes messages to the execution log at a specified level:
+
+| Log Level  | Behavior |
+|---|---|
+| `-debug` | Only shown in verbose logs |
+| `-information` | Standard logs |
+| `-warning` | Writes a warning message to Standard logs |
+| `-error` | Writes an error message to Standard Logs |
+
+* Logging a `-warning` message will set the execution status to `warn`
+* Logging an `-error` message will set the execution status to `fail`
+
+Example:
+
+```bash
+log-information "Deployment started.";
+```
+
+## `warn`, `fail` and `force normal` Statements
+
+You can manually adjust the execution status using the `warn`, `fail` and `force normal` Statements
+
+| Execution Status  | Behavior |
+|---|---|
+| `warn `| Executions will complete with a warning |
+| `fail` | Executions will fail |
+| `force normal` | Executions will complete as successful |
+
+Examples:
+
+```bash
+force warn;
+```
+
+```bash
+fail;
+```
+
+:::(internal)(Removed?)
+## Raise-Error Statement
+
+Use the `raise-error` statement to immediately halt execution (unless caught in a `try-catch` statement block):
+
+In this example:
+* Without `try-catch`, the plan fails immediately.
+* Inside `try-catch`, control jumps to the `catch` section.
+
+```bash
+raise-error "Critical file not found.";
 ```
 :::
 
-When configuring a General Statement, you can control how and where the statement runs:
+## Await Statement
 
-| Property | Description |
-|-------------------------|-----------------------------------------------------------------------|
-| Short Description | Sets the label that appears in the execution log. |
-| Run on Server | Specifies which server the operations inside the statement run on. |
-| Run if Server has Role  | Restricts statement execution to servers with a specific role. |
-| Run for Deployable | Executes the statement only if a specific deployable is included in the release. |
-| Set Working Directory | Changes the working directory for file-based operations. |
+The `await` statement pauses the current plan execution until asynchronous blocks finish running.
 
-## Execution Options
-
-General Statements also support advanced execution controls:
-
-| Option | Behavior |
-|---|---|
-| Execute Asynchronously (with optional token) | Runs the statement in the background without waiting for completion. |
-| Execute Exclusively (Locked with token) | Prevents simultaneous execution of statements sharing the same lock token. |
-| Specify Execution Timeout | Fails the statement if it doesn’t complete within a set number of seconds. |
-| Retry on Error | Retries the statement a specified number of times if an error occurs. |
-| Disable this Statement Block | Ignores the statement block during execution. |
-| Isolation | Runs all remote operations in a temporary process that terminates when the statement ends (available in BuildMaster 6.1.11+, Otter 2.2.5+). |
-
-## Advanced Usage
-
-### Asynchronous Execution { #asynchronous }
-
-Running a statement asynchronously allows your plan to continue executing without waiting for the statement to finish:
+#### Basic Usage:
 
 ```bash
-for server @ServersInGroup(database-nodes)
-{
-    with async
-    {
-        PSExec >> Run-LongScript >>;
-    }
-}
-
-# Later in the plan
 await;
-log-debug All async statements finished!;
 ```
 
-Use an await statement to wait for asynchronous statement blocks to finish when needed. You can also assign and filter by tokens for more granular control.
-
-### Exclusive Execution (Locking) { #exclusive }
-
-You can prevent multiple statement blocks from executing simultaneously by assigning a lock token:
+#### With a Token:
 
 ```bash
-for server localhost
-{
-    with lock=abc123
-    {
-        Log-Information "This block is locked with token: abc123";
-    }
-}
+await TokenName;
 ```
 
-Only one statement block with the same lock token (`abc123`) can run at a time.
+* If a token is provided, it will wait only for asynchronous statement blocks tagged with that token.
+* Useful when you want to selectively wait for certain background operations.
 
-### Running as a Different User { #different }
-
-You can execute operations inside a statement block under different credentials:
-
-```bash
-for server remote-server
-{
-    with credentials=remote-server-credentials
-    {
-        // Operations here run under the specified user
-    }
-}
-```
-
-### Isolation: New Process Execution { #isolation }
-
-Using Isolation ensures that remote operations inside the statement block are executed in a separate, disposable process:
-
-```bash
-for server remote-server
-{
-    with isolation
-    {
-        // Operations run in isolated process
-    }
-}
-```
-
-This improves security and prevents environment contamination between operations.
-
-### Log Scoping { #logscoping }
-
-General Statements automatically create log scopes, which make plan execution much easier to follow:
-* Statement blocks appear as collapsible sections in the execution log.
-* Short Descriptions label log scopes.
-* Sensitive log data (e.g., operation arguments) can be protected by permission settings.
-
-<image>
+If you don't insert an `await`, OtterScript automatically adds an implicit `await` at the end of the plan if background tasks are still running.

@@ -36,7 +36,7 @@ After `catch`:
 
 Sometimes you don't want an error to count as a total failure — maybe just a warning.
 
-You can use the `force warn` statement inside `catch`:
+You can use the `warn` statement inside `catch`:
 
 ```bash
 try
@@ -45,7 +45,7 @@ try
 }
 catch
 {
-    force warn;
+    warn;
 }
 Log-Information Script continued;
 ```
@@ -60,7 +60,7 @@ WARN : 2025-05-22 03:30:13Z - Execution run succeeded with warnings.
 ```
 
 In this case:
-* The overall execution status becomes Warn instead of Fail.
+* The overall execution status becomes "Warn" instead of "Fail".
 * Execution proceeds normally after the block.
 
 You can also use `force normal` to suppresses the error, treating the execution as fully successful.
