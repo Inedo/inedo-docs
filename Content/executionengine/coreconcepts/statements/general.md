@@ -19,7 +19,7 @@ These statements help you:
 | `warn`, `fail`, `force normal` | Change execution status |
 | `await` | Wait for background asynchronous blocks |
 
-## `set` Variable Statement
+## Set Variable Statement
 
 The `set` variable statement declares or updates a variable inside the current scope.
 
@@ -35,7 +35,7 @@ set $EnvironmentName = Production;
 Changing a variable inside a plan does not modify the variable globally (e.g., on a server or environment asset) — it only affects the current execution scope.
 :::
 
-## `log` Statement ( #log-statement )
+## Log Statement { #log-statement }
 
 The `log` statement writes messages to the execution log at a specified level:
 
@@ -55,7 +55,7 @@ Example:
 log-information "Deployment started.";
 ```
 
-## `warn`, `fail` and `force normal` Statements
+## Warn, Fail and Force Normal Statements
 
 You can manually adjust the execution status using the `warn`, `fail` and `force normal` Statements
 

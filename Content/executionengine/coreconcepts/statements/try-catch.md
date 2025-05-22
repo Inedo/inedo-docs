@@ -32,7 +32,7 @@ By default:
 After `catch`:
     * Execution resumes with the next statement after the `try/catch` statement.
 
-## Changing Execution Status in `catch` 
+## Changing Execution Status in Catch 
 
 Sometimes you don't want an error to count as a total failure — maybe just a warning.
 
@@ -90,7 +90,7 @@ INFO : 2025-05-22 03:34:13Z - Execution run succeeded.
 Use `force` cautiously. Overriding status can hide serious problems if used improperly.
 :::
 
-## Nested `try/catch` Statements
+## Nested Try/Catch Statements
 
 OtterScript lets you nest `try/catch` statements if needed:
 

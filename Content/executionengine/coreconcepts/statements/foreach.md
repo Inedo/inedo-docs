@@ -60,7 +60,7 @@ Number: 2
 Number: 3
 ```
 
-## `for` Statements in OtterScript { #for-statement }
+## For Statements in OtterScript { #for-statement }
 
 OtterScript includes a `for` statement, but it is not a looping construct. For example:
 
