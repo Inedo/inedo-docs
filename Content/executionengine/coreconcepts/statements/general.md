@@ -35,7 +35,7 @@ set $EnvironmentName = Production;
 Changing a variable inside a plan does not modify the variable globally (e.g., on a server or environment asset) — it only affects the current execution scope.
 :::
 
-## `log` Statement
+## `log` Statement ( #log-statement )
 
 The `log` statement writes messages to the execution log at a specified level:
 
