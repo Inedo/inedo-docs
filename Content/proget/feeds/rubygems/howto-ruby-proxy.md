@@ -20,25 +20,25 @@ First we will create a RubyGems feed that will proxy packages from [RubyGems.org
 
 In your ProGet instance, select "Feeds" and "Create New Feed", and select "RubyGems".
 
-![](/resources/docs/proget-ruby-newfeed.png){height="" width="50%"}
+![Create RubyGems Feed](/resources/docs/proget-feeds-rubygemsselect.png){height="" width="50%"}
 
 Then select "Connect to RubyGems.org" which will allow us to proxy and cache packages from the RubyGems.org.
 
-![](/resources/docs/proget-ruby-connector.png){height="" width="50%"}
+![RubyGems Connector](/resources/docs/proget-ruby-connectoorg.png){height="" width="50%"}
 
 Select "No, Create One Feed", as we will only need a single feed to proxy gems. Now we'll name the feed, which we will call `public-gems`, and then click "Create Feed".
 
-![](/resources/docs/proget-ruby-onefeed.png){height="" width="50%"}
+![Create One Feed](/resources/docs/proget-ruby-onefeed.png){height="" width="50%"}
 
 We are then presented with several options. More information on these can be found in the [Vulnerability Scanning and Blocking](/docs/proget/sca/vulnerabilities) documentation. Select "Set Feed Features". ProGet will create The `public-gems` feed and redirect you to it. This feed will now be populated with packages proxied from RubyGems.org
 
-![](/resources/docs/proget-ruby-packagesfeed.png){height="" width="50%"}
+![RubyGems Feed Overview](/resources/docs/proget-ruby-feedoverview.png){height="" width="50%"}
 
 ## Step 2: Add the Feed to Your Local Ruby Environments { #add-feed }
 
 To install packages from the `public-gems` feed, you will first need the feed's URL. This can be found on the top right of the feed page:
 
-![](/resources/docs/proget-ruby-publicurl.png){height="" width="50%"}
+![RubyGems URL](/resources/docs/proget-ruby-url.png){height="" width="50%"}
 
 Then, you will need to add it as a source by entering:
 
