@@ -19,7 +19,7 @@ This is where ProGet's Container Versioning feature comes in. Instead of allowin
 ## How to Enable Semantic Versioning for Containers
 Container Versioning may be enabled on a registry-by-registry basis on the Manage feed page.
 
-![ProGet Container Versioning](/resources/docs/proget-configure-container-versioning.png)
+![Configure Versioning](/resources/docs/proget-docker-configureversioning.png){height="" width="50%"}
 
 After activation, ProGet only allows tags that conform to the three-part SemVer format (e.g. 3.4.1, 4.0.1, 2.4.1-beta.1, etc.) or are listed in the "Permitted tags" list. Note that existing tags in the repository are not affected by this, nor are tags coming via feed replication.
 
