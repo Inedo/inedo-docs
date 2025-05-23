@@ -62,19 +62,19 @@ Click "Create New Access Key"
 
 In the pop-up under Hide Access Key, copy the Access Key ID and Secret Access Key for Step 8.
 
-![Amazon S3 Secret Access Key](/resources/docs/amazons3-secretaccesskey){height="" width="50%"}
+![Amazon S3 Secret Access Key](/resources/docs/amazons3-secretaccesskey.png){height="" width="50%"}
 
 ## Step 6: Create a new asset directory in ProGet
 
 In ProGet, navigate to the Assets tab on the top ribbon and click "Create New Asset Directory"
 
-![Create Asset Directory](/resources/docs/proget-assets-createdirectory){height="" width="50%"}
+![Create Asset Directory](/resources/docs/proget-assets-createdirectory.png){height="" width="50%"}
 
 In the pop-up, name the new asset directory and, optionally, provide a description of it.
 
 Click "Create New Feed"
 
-![Name Asset Directory](/resources/docs/proget-assets-namedirectory){height="" width="50%"}
+![Name Asset Directory](/resources/docs/proget-assets-namedirectory.png){height="" width="50%"}
 
 ## Step 7: Navigate *Manage Feed > Storage and Retention*
 
@@ -125,7 +125,7 @@ Depending on the size of the file and the server, this may take a few minutes.
 
 After uploading to ProGet, go to your S3 bucket and you'll see that the files have been populated.
 
-![Populated Asset Directory](/resources/docs/proget-assets-populatedamazons3directory.png){height="" width="50%"}
+![Populated Asset Directory](/resources/docs/proget-assets-populatedamazons3assetdirectory.png){height="" width="50%"}
 
 After uploading to ProGet, go to your S3 bucket and you'll see that the files have been populated.
 
