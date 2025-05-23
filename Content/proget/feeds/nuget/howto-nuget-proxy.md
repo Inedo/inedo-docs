@@ -23,11 +23,11 @@ Then select "Connect to NuGet.org" which will allow us to proxy and cache packag
 
 Select "No, Create One Feed", as we will only need a single feed to proxy NuGet packages. Now you will need to name the feed. For this example, we will name it `public-nuget`, and then click "Create Feed".
 
-![](/resources/docs/proget-nuget-onefeedname.png){height="" width="50%"}
+![](/resources/docs/proget-nuget-nameonefeed.png){height="" width="50%"}
 
 You'll then choose from several vulnerability and license options. More information on these can be found in the [Vulnerability Scanning and Blocking](/docs/proget/sca/vulnerabilities) and [Licensing Detection and Blocking](https://docs.inedo.com/docs/proget/sca/licenses) documentation. Select "Set Feed Features". ProGet will create The `public-nuget` feed, which will now be populated with packages proxied from NuGet.org.
 
-![](/resources/docs/proget-publicnuget-feed.png){height="" width="50%"}
+![](/resources/docs/proget-nuget-publicfeed.png){height="" width="50%"}
 
 ## Step 2: Adding ProGet As A Source  { #add-source }
 
