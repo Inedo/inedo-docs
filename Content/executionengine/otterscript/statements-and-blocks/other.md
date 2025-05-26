@@ -13,7 +13,7 @@ In addition to running [operations](/docs/otter/reference/operations) and other 
 * Raise Error – explicitly trigger an error
 * Await – pause execution to wait for asynchronous processes
 
-### Set Variable Statement
+### Set Variable Statement { #set-variable } 
 This will both declare and set the value of a variable for the current and all nested blocks. If a variable was already set, and declared in a parent block, then the variable's value will be set.
 
 :::(Info)
