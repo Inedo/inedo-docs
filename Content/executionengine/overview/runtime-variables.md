@@ -5,7 +5,7 @@ order: 4
 
 Variables allow for extreme flexibility when modeling your [deployment plans](/docs/buildmaster/deployment-continuous-delivery/buildmaster-deployment-scripts). There are many uses for variables, some of the most common are:
 
-*   Arguments/properties of [Operations](/docs/executionengine/overview/executionengine-components-operations-functions)
+*   Arguments/properties of [Operations](/docs/executionengine/overview/operations-functions)
 *   Conditional execution using an [If/Else Block](/docs/executionengine/otterscript/statements-and-blocks/if-else)
 *   Iteration/enumeration using a [ForEach Block](/docs/executionengine/otterscript/statements-and-blocks/foreach)
 
@@ -25,44 +25,38 @@ There are three types of runtime variables, and each is denoted by a prefix.
 String variables are the most common, and are used just about anywhere. Whenever you reference a string variable within another block or statement, it is automatically replaced with the value. You can escape this with the grave apostrophe (`` ` ``) character.
 
 ### Visual Editor
-![variable-pic.png](/resources/docs/variable-pic%281%29.png){height="" width=""}
+![](/resources/docs/otterscript-variable-editor.png){height="" width=""}
 
 ### Text Editor (OtterScript)
-![variable-text.png](/resources/docs/variable-text.png){height="" width=""}
+![](/resources/docs/otterscript-variable-text.png){height="" width=""}
 
 ### Execution Log
-![variable-log.png](/resources/docs/variable-log.png){height="" width=""}
+![](/resources/docs/otterscript-variable-log.png){height="" width=""}
 
-
-ForEach variables are used much less frequently, primarily as the source of a [ForEach Block](/docs/executionengine/otterscript/statements-and-blocks/foreach).
+`foreach` variables are used much less frequently, primarily as the source of a [ForEach Block](/docs/executionengine/otterscript/statements-and-blocks/foreach).
 
 Map variables are pretty rare, and are only used in operations needing an arbitrary list of key/value pairs (like the `HTTP::Post`) or in other really advanced scenarios.
 
-Runtime Variable Scoping
-------------------------
+### Runtime Variable Scoping
 
 When you create a runtime variable with the [**Set Variable Value**](/docs/executionengine/otterscript/statements-and-blocks/other) statement, that variable will be accessible in the current and nested blocks. For example:
 
 ### Visual Mode
-![variable-nested-pic \(1\).png](/resources/docs/variable-nested-pic%20%281%29.png){height="" width=""}
+![](/resources/docs/otterscript-variable-nested.png){height="" width=""}
 
 ### Text Mode (OtterScript)
-![variable-nested-text.png](/resources/docs/variable-nested-text.png){height="" width=""}
+![](/resources/docs/otterscript-variable-nested-text.png){height="" width=""}
 
 ### Execution Log
-![variable-nested-log.png](/resources/docs/variable-nested-log.png){height="" width=""}
-
-
+![](/resources/docs/otterscript-variable-nested-log.png){height="" width=""}
 
 While setting both runtime and [Configuration Variables](/docs/buildmaster/otterscript-execution-engine/buildmaster-variables) may lead to confusion if overused, it does allow for greater reuse of [plans](/docs/buildmaster/deployment-continuous-delivery/buildmaster-deployment-scripts) and templates by allowing the same plan or template to used at different development environments where things like certificates, keys, and data might _need_ to be different for testing.
 
-Relation to Configuration Variables
------------------------------------
+## Relation to Configuration Variables
 
 When a string variable is referenced in your plan, the execution engine first checks to see if a runtime variable with that name exists in the current scope. If not, a configuration variable with that name is retrieved. We generally do not recommend doing this, as it can get quite confusing when others try to understand your plan.
 
-Variable Functions
-------------------
+## Variable Functions { #variable-functions }
 
 You may have seen expressions like `$PathCombine($RootPath,Accounts)` [used in examples](https://inedo.com/support/tutorials); these are variable functions, which take in a number of parameters and return a value. All of the "built-in variables" like `$WorkingDirectory`, `$EnvironmentName`, and `@AllServers` are implemented as variable functions.
 

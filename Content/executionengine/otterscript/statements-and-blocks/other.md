@@ -3,7 +3,7 @@ title: "Other Statements"
 order: 5
 ---
 
-In addition to running [operations](/docs/executionengine/overview/executionengine-components-operations-functions) and other plans as templates, the following statements are available:
+In addition to running [operations](/docs/executionengine/overview/operations-functions) and other plans as templates, the following statements are available:
 
 In addition to running [operations](/docs/otter/reference/operations) and other plans as templates, the following statements are available:
 

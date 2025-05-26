@@ -60,7 +60,7 @@ This option requires a ProGet connection, which you can add under Administration
 When selected, you'll be prompted to select a Dependencies Feed and a Plugins Feed from a list of Maven feeds in ProGet. Prior to executing maven, BuildMaster will generate a `settings.xml` file with URLS and credentials (i.e. API Key) that may be required to access these feeds.
 
 ### Use a Text Template Script Asset
-This option allows you to store a `settings.xml` file inside of BuildMaster as a [text template script asset](/docs/executionengine/overview/executionengine-components-text-templating) so that you can do variable replacement or advanced conditional logic.
+This option allows you to store a `settings.xml` file inside of BuildMaster as a [text template script asset](/docs/executionengine/overview/text-templating) so that you can do variable replacement or advanced conditional logic.
 
 When selected, you'll be prompted to enter the name of a text template that you've added to BuildMaster. Prior to executing Maven, BuildMaster will write that file to disk and instruct Maven to use it.
 

@@ -84,7 +84,7 @@ BuildMaster expands upon PowerShell's `.SYNOPSIS` and `.PARAMETER` keywords with
 
 ### Evaluating PowerShell Literals
 
-OtterScript is not a general-purpose programming language, so it has no built-in support for things like arithmetic. You could, of course, write a [custom variable function](/docs/executionengine/overview/executionengine-components-runtime-variables#variable-functions) to support this, but using the [$PSEval() Variable Function](/docs/buildmaster/reference/functions/powershell/pseval) is much easier. 
+OtterScript is not a general-purpose programming language, so it has no built-in support for things like arithmetic. You could, of course, write a [custom variable function](/docs/executionengine/overview/runtime-variables#variable-functions) to support this, but using the [$PSEval() Variable Function](/docs/buildmaster/reference/functions/powershell/pseval) is much easier. 
 
 For example, if you wanted to convert the value stored in one variable (`$minutes`) to milliseconds, you could `$PSEval` the simple expression `$minutes * 60 * 1000`:
 
