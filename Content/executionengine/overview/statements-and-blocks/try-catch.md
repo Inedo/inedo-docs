@@ -1,16 +1,16 @@
 ---
 title: "Try / Catch Blocks"
-order: 3
+order: 8
 ---
 
-Try/Catch Blocks are helpful when you need to change the default handling of errors, perhaps to run an error handler, or to change the status shown to viewers of the execution.
+Try/Catch Blocks are helpful when you need to change the default handling of errors, perhaps to run an error handler, or to change the status shown to viewers of the execution. Try/Catch Blocks are most commonly found in orchestration plan.
 
-By default, when an errors occur during the execution of a plan:
+By default, when an error occurs during the execution of a plan:
 
 1. the execution status is changed to failing
 2. the execution halts
 
-With a Try/Catch block, if an error occurs in the main ("try") body, then the error handler ("catch") statements are run instead.
+With a Try/Catch block, if an error occurs in the main ("try") body, then the error handler ("catch") statements are run instead. 
 
 :::(info) (`try/catch` Example:)
 A typical `try/catch` statement in OtterScript:

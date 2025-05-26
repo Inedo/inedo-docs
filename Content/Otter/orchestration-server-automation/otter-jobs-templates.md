@@ -42,12 +42,12 @@ Before running a job, Otter can prompt the user for input using textboxes, check
 ![](/resources/docs/Template-Variables-Prompts.png){height="" width=""}
 
 #### Name and Description
-The name is added to the script as a [runtime variable](/docs/executionengine/overview/statements-and-blocks/otter-execution-engine-runtime-variables) and needs to follow the normal [variable-naming rules](/docs/otter/scripting-in-otter/otter-configuration-variables). The description is displayed to the user running the job as help text. The name is required, but the description is optional. Template variables can be required and have a default value. 
+The name is added to the script as a [runtime variable](/docs/executionengine/overview/runtime-variables) and needs to follow the normal [variable-naming rules](/docs/otter/scripting-in-otter/otter-configuration-variables). The description is displayed to the user running the job as help text. The name is required, but the description is optional. Template variables can be required and have a default value. 
 
 #### Variable Types
 A template variable can be text, a checkbox, or a list. 
 
-When you select a list type, you’ll need to enter the list values (one per line). You can select “Restrict value to items in list,” which will require the user to select one of the list values. You can also select “allow multiple items” in a List Template Variable. This will allow the user to select multiple values in the list, and the value will be added to the script as a [list runtime variable](/docs/executionengine/overview/statements-and-blocks/otter-execution-engine-runtime-variables). 
+When you select a list type, you’ll need to enter the list values (one per line). You can select “Restrict value to items in list,” which will require the user to select one of the list values. You can also select “allow multiple items” in a List Template Variable. This will allow the user to select multiple values in the list, and the value will be added to the script as a [list runtime variable](/docs/executionengine/overview/runtime-variables). 
 
 #### Dynamic Lists
 Template variables can also be a dynamic list. These use a data source for list items instead of manually entering values into the template. The built-in dynamic lists include environments, servers, universal packages, etc., but they are also extensible ([you can create your own using the SDK](/docs/inedosdk/extending-inedo-tools-using-the-sdk/inedosdk-extending-creating)).
@@ -82,5 +82,5 @@ To find failed jobs, go to “Job History.”
 ![](/resources/docs/Troubleshooting-Failed-Jobs.png){height="" width=""}
 
 
-You can filter on failed status, then drill down to see exactly where the failure occurred. There’s also [try/catch](/docs/executionengine/otterscript/statements-and-blocks/try-catch) and [retry](/docs/executionengine/overview/statements-and-blocks/otter-execution-engine-statements-and-blocks-general-blocks) that you can use with OtterScript.
+You can filter on failed status, then drill down to see exactly where the failure occurred. There’s also [try/catch](/docs/executionengine/otterscript/statements-and-blocks/try-catch) and [retry](/docs/executionengine/overview/statements-and-blocks/try-catch#retry) that you can use with OtterScript.
 
