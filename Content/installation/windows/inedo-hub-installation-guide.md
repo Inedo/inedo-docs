@@ -25,7 +25,7 @@ You may get a security warning message depending on your Windows UAC Settings. S
 
 After the Inedo Hub installer downloads all necessary files to install itself, you will see the main screen of the Inedo Hub.
 
-![Inedo Hub](/resources/docs/windowsinstall-inedohubinstall.png)
+![Inedo Hub](/resources/docs/inedohub-install.png)
 
 ## Step 3: Install a Product with the Inedo Hub
 Any version of an Inedo product can be installed from the main screen of the Inedo Hub (pictured above). For the purposes of this tutorial, we will install ProGet via the Inedo Hub, but the instructions are identical for any Inedo product. 
