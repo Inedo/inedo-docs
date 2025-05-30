@@ -82,6 +82,12 @@ ProGet 2025 will allow you disable integrity checks on a feed-by-feed basis.
 
 We made some minor style changes, most notably the background colors and fonts.
 
+### Reduced Features for Legacy Maven & Legacy Debian Feeds
+
+As part of modernization and reducing technical debt in ProGet, it is no longer makes sense to support certain features for Legacy Maven and Legacy Debian feeds: replication, retention, license detection, vulnerability scanning, policies/compliance, and download blocking. They will also have a reduced browsing experience in the UI, but will operate as they did before from the API.
+
+Normal (i.e. non-legacy) Maven and Debian feeds do not have these limitations and support all of these features. You will be able to migrate in ProGet 2025, but we recommend doing so earlier.
+
 ### Configuration Change: Windows Service Architecture
 
 In ProGet 2025, there will just be a single Windows service (`INEDOPROGETSVC`) that will be used to manage the Web Server and background jobs. ProGet 2024 and earlier versions used two Windows Services (`INEDOPROGETWEBSVC` and `INEDOPROGETSVC`).
@@ -106,6 +112,10 @@ Prior to upgrading to ProGet 2025, we recommend [switching to the Integrated Web
 
 ### Configuration Change: InedoHub Installation/Upgrade
 
+<div title="instructions are coming soon." style="background-color:yellow;text-decoration:underline;text-decoration-style: dotted;" >
+* Databse upgrades will no longer be performed by InedoHub, but by ProGet
+* IIS will not be available
+</div>
 
 ### Various Changes & Improvements
 * **SCA tweaks** including CSS/UI changes, adding license text field in SBOM exports for custom license, linking build URL back to system and more, deprecation warnings, and SBOM 1.6 support
@@ -114,6 +124,8 @@ Prior to upgrading to ProGet 2025, we recommend [switching to the Integrated Web
 * **Withdrawn Vulnerability Handling**; these will no longer be displayed in the ProGet UI unless you've assessed them
 * **Pause/disable individual replication tasks**; this will likely not add any risk
 * **Add Certificates folder to Package/Data Directory**; minor change to Docker image
+* **Deleting Users Deletes Personal API Keys**; when Deleting a User, any Personal API keys associated with that username will also be deleted
+* Debian Feeds now Return empty InRelease file for Empty Feed
 
 ## Upgrade Process
 You should generally perform the upgrade using the same method you used to install.
