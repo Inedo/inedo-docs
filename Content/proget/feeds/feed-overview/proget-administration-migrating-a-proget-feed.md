@@ -36,7 +36,7 @@ Using bulk upload is simple but requires packages to be manually copied to the t
 Before migrating via drop path we recommend clearing your [Feed Connector cache](/docs/proget/feeds/connector-overview#connector-caching?#connector-caching). Otherwise, you'll import all of your cached packages.
 :::
 
-See the [Uploading via Bulk Upload](/docs/proget/installation/migrating-to-proget/proget-other-feed-migration#uploading-via-bulk-upload) section of our guide on [Migrating From Other Repositories to ProGet](/docs/proget/installation/migrating-to-proget/proget-other-feed-migration) to learn more.
+See the [Uploading via Bulk Upload](/docs/proget/installation/migrating-to-proget/other-migration#uploading-via-bulk-upload) section of our guide on [Migrating From Other Repositories to ProGet](/docs/proget/installation/migrating-to-proget/other-migration) to learn more.
 
 ## Using Feed Replication
 *This method requires at least two instances of ProGet with Enterprise Edition licenses. If you do not have ProGet Enterprise or your instances are isolated, you must use an alternative method.*
@@ -59,7 +59,7 @@ Users of older versions of ProGet may not be able to use the methods listed abov
 
 This involves setting up a Feed Connector to directly connect to a ProGet feed, and then importing packages from it. The feature will likely be removed in ProGet 2024, in favor of Feed-to-Feed migrations.
 
-See the [Configuring a Connector](/docs/proget/installation/migrating-to-proget/proget-other-feed-migration#configuring-a-connector) section of our guide on [Migrating from other repositories](/docs/proget/installation/migrating-to-proget/proget-other-feed-migration) to learn more on how to set this up.
+See the [Configuring a Connector](/docs/proget/installation/migrating-to-proget/other-migration#configuring-a-connector) section of our guide on [Migrating from other repositories](/docs/proget/installation/migrating-to-proget/other-migration) to learn more on how to set this up.
 
 By selecting "Manage Feed" in any feed and navigating to "Connectors", you can then import your packages by clicking the "Import Icon" to the left of the delete icon.
 

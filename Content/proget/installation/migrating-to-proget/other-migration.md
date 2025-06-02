@@ -9,7 +9,7 @@ Migrating a repository to ProGet can be done in a matter of minutes using ProGet
 ProGet has some extra features to help migrate from these services. See
 * [Azure DevOps Artifacts Migration Guide](/docs/proget/installation/migrating-to-proget/azure-devops-migration)
 * [Jfrog Artifactory Migration Guide](/docs/proget/installation/migrating-to-proget/artifactory-migration)
-* [MyGet Migration Guide](/docs/proget/installation/migrating-to-proget/other-feed-migration)
+* [MyGet Migration Guide](/docs/proget/installation/migrating-to-proget/myget-migration)
 :::
 
 
