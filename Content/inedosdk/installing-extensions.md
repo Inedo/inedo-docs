@@ -1,11 +1,9 @@
 ---
-title: "Manual Extensions Installation"
+title: "Manually Installing Extensions"
 order: 4
 ---
 
-For installations that are restricted from accessing the internet, or if you with to install a version other than the latest, extensions can also be installed manually:
-
-## Installation
+When developing your own extnesions, or for installations that are restricted from accessing the internet, extensions can also be installed manually:
 
  1. Download the desired version of the extension from the [public ProGet feed](https://proget.inedo.com/feeds/Extensions)
 Copy the extension file (e.g. Windows.upack) to the extensions path.
