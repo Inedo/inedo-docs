@@ -19,7 +19,9 @@ MyGet allows you to have multiple package types per feed and comes with unique U
 Users in MyGet only need read-only access to view the package type URL and authentication information.
 :::
 
-However, ProGet requires a different feed for each package type, so we recommend using the URL for each package type in your MyGet feed, in comnination with a simple PowerShell script to download your packages by feed and type. For demonstration purposes we will be migrating a NuGet feed to ProGet:
+### Bulk Package Download (PowerShell)
+As ProGet requires a different feed for each package type, we recommend a simple PowerShell script to download your packages by feed and type. This will download them to a local directory, separated by feed name into separate folders. This will also make it easier to bulk upload by feed later.
+
 
 ```powershell
 $nugetPath = <Path to nuget.exe>
@@ -54,16 +56,16 @@ Now that your feed is created, you will need to import your downloaded MyGet pac
 
 In your feed, navigate to "Import Packages".
 
-![Select Import Packages](proget-nuget-importpackagesselect.png){height="" width="50%"}
+![Select Import Packages](/resources/docs/proget-nuget-importpackagesselect.png){height="" width="50%"}
 
 Since you packages are downloaded, select "Import/Copy Package Files on Disk".
 
-![Import From Disk](proget-feeds-importpackagesfromdisk.png){height="" width="50%"}
+![Import From Disk](/resources/docs/proget-feeds-importpackagesfromdisk.png){height="" width="50%"}
 
 Next, specify the source of your packages, and select "Import".
 
-![Bulk Import](proget-nuget-bulkpackageimport.png){height="" width="50%"}
+![Bulk Import](/resources/docs/proget-nuget-bulkpackageimport.png){height="" width="50%"}
 
 Navigating back to the feed, we can see all packages have been uploaded:
 
-![Imported Packages](proget-nuget-bulkimportedfeed.png){height="" width="50%"}
+![Imported Packages](/resources/docs/proget-nuget-bulkimportedfeed.png){height="" width="50%"}
