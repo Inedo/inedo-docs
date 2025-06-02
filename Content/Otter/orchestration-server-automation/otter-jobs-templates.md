@@ -82,5 +82,5 @@ To find failed jobs, go to “Job History.”
 ![](/resources/docs/Troubleshooting-Failed-Jobs.png){height="" width=""}
 
 
-You can filter on failed status, then drill down to see exactly where the failure occurred. There’s also [try/catch](/docs/executionengine/otterscript/statements-and-blocks/try-catch) and [retry](/docs/executionengine/overview/statements-and-blocks/try-catch#retry) that you can use with OtterScript.
+You can filter on failed status, then drill down to see exactly where the failure occurred. There’s also [try/catch](/docs/executionengine/otterscript/statements-and-blocks/try-catch) and [retry](/docs/executionengine/otterscript/statements-and-blocks/try-catch#retry) that you can use with OtterScript.
 

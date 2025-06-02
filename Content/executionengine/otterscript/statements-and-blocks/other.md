@@ -46,7 +46,7 @@ log-information "Deployment started.";
 * Logging an `-error` message will set the execution status to `fail`
 
 ### Set Status
-The execution status is generally set by the success or failure of operations in a plan, but you can also change the status to `Fail` or `Warn` as needed. This is commonly used inside of the Catch (On Error) portion of a [Try/Catch](/docs/executionengine/overview/statements-and-blocks/try-catch) block to set the status to the desired level.
+The execution status is generally set by the success or failure of operations in a plan, but you can also change the status to `Fail` or `Warn` as needed. This is commonly used inside of the Catch (On Error) portion of a [Try/Catch](/docs/executionengine/otterscript/statements-and-blocks/try-catch) block to set the status to the desired level.
 
 | Execution Status  | Behavior |
 |---|---|
