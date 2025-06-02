@@ -119,3 +119,13 @@ Once the user directory and Admin account are reset, the web application must be
 If your Inedo product is installed to run on IIS, use the *Restart-WebAppPool* command or recycle it directly in the IIS management UI. By default, the application pool is named ProGetAppPool, BuildMasterAppPool, or OtterAppPool, but may have been changed by a system administrator during installation.
 
 The next time you visit after running these commands, there may be stale authentication cookies that can be cleared from the corresponding error page, (if they are automatically detected) or by simply clearing web browser cookies manually. When testing access, make sure to visit the root URL (for example: `https://proget-server/`).
+
+### ProGet throws an error after redirecting from the SAML login page
+
+If you have configured SAML in ProGet, but ProGet throws an error after logging in, you can configure your SAML provider to use our SAML Debug callback to help troubleshoot SAML issue.  This will allow you to see the contents of the SAML response, what claims are included, how ProGet parses that response, and what values we extract.  Typically, this can help you to identify what configuration changes are needed.  If you cannot identify the issue, create a [support ticket](/docs/myinedo/support-tickets) with the output from the debug page and we can help you identify your configuration issues.
+
+To configure your SAML provider to use the debug endpoint, change the callback URL in your SAML provider to `https://«PROGET_HOST»/saml-acs-callback-debug` and then attempt to login to ProGet using your SAML provider from the ProGet log in page. You will then be redirected to a debug page that shows you the SAML response details.
+
+::: (Warn) (Note:)
+When using the Debug callback URL, this will not log that user into ProGet.  It will **only** redirect you to a page that shows the DEBUG output of the SAML response.  That page cannot be refreshed.  To test changes, you will need to click the SAML login button on the ProGet log in page to log into your SAML provider again and be redirected to the DEBUG page.
+:::
