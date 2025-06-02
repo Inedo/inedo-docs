@@ -33,13 +33,13 @@ Otter can be set to monitor configuration drift and detect when the desired conf
 
 To check your server for installed Chocolatey packages, configuration drift can be set at Verify/report only.
 
-Navigate to "Servers" > "Server" > "Overview" > "Details" > "Configuration Drift"
+Navigate to "Servers" > "Server" > "Overview" > "Details" > "Configuration Drift".
 
-![Configuration Drift Settings](/resources/docs/chocoscanning-configurationdrift%282%29.jpg)
+![Configuration Drift Settings](/resources/docs/chocoscanning-configurationdrift%282%29.png){height="" width="50%"}
 
 Check the box next to Configuration drift and select Do not remediate (report only). These are the minimum settings Otter needs to detect your Chocolatey packages,  however, the [other Drift remediation options](/docs/otter/drift-remediation-configuration-as-code/otter-automatically-remediate-configuration-drift) will work as well.
 
-![Server Configuration Drift](/resources/docs/chocoscanning-configurationdriftserversetting.jpg)
+![Server Configuration Drift](/resources/docs/chocoscanning-configurationdriftserversetting.png){height="" width="50%"}
 
 Under the Overview tab, you can view and update your configuration drift settings. 
 
@@ -49,11 +49,11 @@ Next, the package check must be configured to tell Otter which packages to look 
 
 Navigate to "Servers" > "Server" > "Installed Packages & Containers" > "Configure" and check the box next to "Collect Chocolatey Packages".
 
-![Chocolatey Package Scanning](/resources/docs/chocoscanning-collectchocolateypackages.jpg)
+![Chocolatey Package Scanning](/resources/docs/chocoscanning-collectchocolateypackages.png){height="" width="50%"}
 
 After saving, you should see your installed Chocolatey packages.
 
-![Chocolatey Packages](/resources/docs/chocoscanning-chocolateypackages.jpg)
+![Chocolatey Packages](/resources/docs/chocoscanning-chocolateypackages.png){height="" width="50%"}
 
 If you do not see your Chocolatey packages at this point, skip to the troubleshooting section. 
 
@@ -63,7 +63,7 @@ To integrate Otter with ProGet, you need to create an API key in Otter.
 
 In Otter, navigate to Administration Overview > Security & Authentication > API Keys & Access Logs. Click Create API Key and enter the appropriate information.
 
-![Create API Key](/resources/docs/chocoscanning-createapikey%281%29.jpg)
+![Create API Key](/resources/docs/chocoscanning-createapikey%281%29.png){height="" width="50%"}
 
 For the purpose of this guide, the only required setting for the API key is to grant access to the Package/Container Usage API.
 
@@ -73,35 +73,43 @@ Now that Otter is set up, it can be integrated with ProGet to show which Chocola
 
 ## Step 1: Create a Chocolatey Feed in ProGet
 
-You will need to create a Chocolatey feed in ProGet if you do not already have one. To create a new feed, navigate to the banner at the top of the page and click Feeds. Then select Create New Feed.
+You will need to create a Chocolatey feed in ProGet if you do not already have one. To create a new feed, navigate to "Feeds" and "Create New Feed". Then select "Chocolatey Packages".
 
-![Create a New Feed in ProGet](/resources/docs/amazons3-createfeed%281%29.jpg)
+![](/resources/docs/proget-chocolatey-newfeed.png){height="" width="50%"}
 
-Since this feed will be used for Chocolatey packages, create a Chocolatey feed.
+Now select "Connect to Chocolatey.org" which will allow us to proxy packages from the Chocolatey Registry.
 
-![Chocolatey Feed](/resources/docs/chocolateyrepository-createnewfeedpublic.jpg)
+![](/resources/docs/proget-chocolatey-connectors.png){height="" width="50%"}
 
-Now that your feed is created it will need to be connected to chocolatey.org. Click on "add connector" and fill in the relevant information.
+Then select "No, Create One Feed", as we will be creating a single feed to proxy Chocolatey packages. From here, name the feed (we will call it `public-chocolatey` for this guide). Then click "Create Feed".
 
-![Create Connector](/resources/docs/chocolateyrepository-createconnector.jpg)
+![](/resources/docs/proget-chocolatey-public-name.png){height="" width="50%"}
+
+The next several options will let your feed use ProGet's [Vulnerability Scanning and Blocking](/docs/proget/sca/vulnerabilities) amd [Licensing Detection and Blocking](https://docs.inedo.com/docs/proget/sca/licenses) features, letting you assess vulnerabilities and create policies for licenses. Select "Set Feed Features", which will create the feed, and redirect you to the newly created `public-chocolatey` feed, which will list packages proxied from Chocolatey.
+
+![](/resources/docs/proget-chocolatey-public-feed.png){height="" width="50%"}
 
 ## Step 2: Connect Chocolatey Feed to Otter
 
-In ProGet, navigate to "Feeds" > (The Chocolatey feed) > "Manage Feed" > "Detection & Blocking" > “Configure Package Usage Scanning”.  
+In your ProGet instance, navigate to "Administration" > "Package/Container" under "Global Components". 
 
-![Configure Package Usage Scanning](/resources/docs/chocoscanning-configurepackagescanning.jpg)
+![](/resources/docs/proget-administration-scanner.png){height="" width="50%"}
 
-Enter in the API key you created in Otter and your Otter base URL.
+From here select "Create Scanner".
 
-![Create Package Scanner](/resources/docs/chocoscanning-createscanner.jpg)
+![](/resources/docs/proget-scanner-create.png){height="" width="50%"}
+
+Select "Otter" and enter in the API key you created in Otter and your Otter base URL.
+
+![Create Package Scanner](/resources/docs/proget-scanner-save.png){height="" width="50%"}
 
 ## Step 3: Run Package/Container Scanning
 
 To see your scanned Chocolatey packages immediately, you need to run the package/container scanner manually.
 
-Navigate to "Administration Overview" > "ProGet Server Status" > "Manage Service" > "Service Statu"s > "Package/Container Scanner" > "Run"
+Navigate to "Administration Overview" > "ProGet Server Status" > "Manage Service" > "Service Status" > "Package/Container Scanner" > "Run".
 
-![Package Scanner](/resources/docs/chocoscanning-packagescanner.jpg)
+![Package Scanner](/resources/docs/proget-servicestatus-run.png){height="" width="50%"}
 
 ## Step 4: Check Package Usage Scanning
 
@@ -109,7 +117,7 @@ Now that everything is set up, the Package Usage Scanning feature can be used!
 
 First, navigate to your preferred package in ProGet. Once you have selected the package, navigate to Usage & Statistics and you can see the package usage details under Package Usage.
 
-![Package Usage](/resources/docs/chocoscanning-packageusage.jpg)
+![Package Usage](/resources/docs/proget-packageusage.png){height="" width="50%"}
 
 ## Troubleshooting
 
@@ -119,6 +127,6 @@ If you have configured the package scan to collect Chocolatey packages, but you 
 
 Navigate to Administration Overview > "Otter Service Status" > "Manage Service" > "Restart".
 
-![Restart Web](/resources/docs/chocoscanning-restartweb.jpg)
+![Restart Web](/resources/docs/chocoscanning-restartweb.png){height="" width="50%"}
 
 After the reboot is complete, navigate back to Installed Packages & Containers on your server and you should see your installed Chocolatey packages.

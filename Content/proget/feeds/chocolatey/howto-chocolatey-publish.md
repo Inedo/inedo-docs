@@ -15,7 +15,7 @@ Start by creating a Chocolatey feed to host your internal packages. Navigate to 
 
 ![](/resources/docs/proget-chocolatey-newfeed.png){height="" width="50%"}
 
-Now select "No Connectors (Private packages only)" as this feed will be intended to host private packages. From here, name the feed. For this example, we will call it `internal-Chocolatey`, and then click "Create Feed".
+Now select "No Connectors (Private packages only)" as this feed will be intended to host private packages. From here, name the feed. For this example, we will call it `internal-chocolatey`, and then click "Create Feed".
 
 ![](/resources/docs/proget-chocolatey-newfeed-internal.png){height="" width="50%"}
 
@@ -62,7 +62,7 @@ $ choco source list
 
 We will now create an [API Key](/docs/proget/api/apikeys) allowing our local client to authenticate to our `internal-chocolatey` feed. This allows us to push packages to the feed.
 
-When creating an API Key, fill in the fields by selecting "Feeds (Use Certain Feeds)" as the "Feed Type" and selecting the `internal-chocolatey` feed. Then set the API key. You can use any alphanumeric sequence, or just leave it blank to autogenerate one. Ensure that the "View/Download" and "Add/Repackage" boxes are checked, and then select "Save".
+When creating an API Key, fill in the fields by selecting "Feeds (Use Certain Feeds)" as the "Feed Type" and selecting the `internal-chocolatey` feed. Then set the API key. You can use any alphanumeric sequence, or just leave it blank to autogenerate one. Ensure that the "View/Download" and "Add/Repackage" boxes are checked, and then select "Create API Key".
 
 ![](/resources/docs/proget-chocolatey-apikey-internal.png){height="" width="50%"}
 
