@@ -11,15 +11,15 @@ This guide will walk you through setting up a ProGet feed as a Helm repository t
 
 First, we will create a Helm feed that will be used to proxy Helm charts. Start by selecting "Feeds" and "Create New Feed". Next, select "Helm Charts", under "Container-based Applications & Images"
 
-![](/resources/docs/proget-helm-newfeed.png){height="" width="50%"}
+![Create Helm Feed](/resources/docs/proget-helm-newfeed.png){height="" width="50%"}
 
 Now select "Connect to Artifact Hub" followed by "No, Create One Feed", as we will be creating a single feed to proxy Helm charts. From here, name the feed (we will call it `public-helm` for this guide). Then click "Create Feed".
 
-![](/resources/docs/proget-helm-newfeed-public.png){height="" width="50%"}
+![Name Helm Feed](/resources/docs/proget-helm-namepublicfeed.png){height="" width="50%"}
 
 We are then presented with several options that will let you configure ProGet's [Vulnerability Scanning and Blocking](/docs/proget/sca/vulnerabilities) and [Licensing Detection and Blocking](https://docs.inedo.com/docs/proget/sca/licenses) features. Select "Set Feed Features", which will create and redirect you to the newly created `public-helm` feed, now listing Helm Charts that can be proxied through the Artifact Hub.
 
-![](/resources/docs/proget-helm-public-populated.png){height="" width="50%"}
+![Public Helm Feed](/resources/docs/proget-helm-publicfeed.png){height="" width="50%"}
 
 ## Step 2: (Optional) Authenticating to Your Helm Feed
 
@@ -33,11 +33,11 @@ To install chart from your `public-helm` feed, you will need to add it's corresp
 
 Helm charts sourced from Artifact Hub are always labeled with the repository name as a prefix. For instance, the `kube-prometheus-stack` chart will be listed as `prometheus-community/kube-prometheus-stack` in ProGet.
 
-![](/resources/docs/proget-helm-chart-name.png){height="" width="50%"}
+![Chart Name](/resources/docs/proget-helm-chartname.png){height="" width="50%"}
 
 To add these repositories, you'll need the URL found on the Helm chart overview page in ProGet, which will typically resemble the following:
 
-![](/resources/docs/proget-helm-chart-url.png){height="" width="50%"}
+![Chart URL](/resources/docs/proget-helm-charturl.png){height="" width="50%"}
  
 To add a repository, you can use the [`helm repo add`](https://helm.sh/docs/helm/helm_repo_add/) command. For example, to add the `prometheus-community` repository to let you install the `kube-prometheus-stack` chart you would enter:
 
