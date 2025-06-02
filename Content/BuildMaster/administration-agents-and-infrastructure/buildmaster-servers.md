@@ -73,7 +73,7 @@ You can specify a list of servers as a stage target in a [pipeline stage](/docs/
 
 ### Servers and OtterScript
 
-You can deploy to a server using a [general block](/docs/executionengine/otterscript/statements-and-blocks/general-blocks)
+You can deploy to a server using a [general block](/docs/executionengine/otterscript/statements-and-blocks/general)
 
 ```
 for server prod-hdars-sv1
@@ -102,4 +102,4 @@ You can associate one server with multiple environments, but [this is not recomm
 
 A resource pool is a set of servers used as a single, balanced resource. You can acquire an unused server from a resource pool, then return it to the pool once the tasks you need are completed.
 
-Visit the [Resource Pools](/docs/executionengine/overview/executionengine-components-resource-pools) documentation of the Inedo Execution Engine for more information on how to configure a resource pool.
+Visit the [Resource Pools](/docs/executionengine/overview/resource-pools) documentation of the Inedo Execution Engine for more information on how to configure a resource pool.

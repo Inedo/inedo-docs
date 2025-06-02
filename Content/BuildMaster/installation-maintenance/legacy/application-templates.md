@@ -10,7 +10,7 @@ This feature was mainly used in BuildMaster 6.2 and BuildMaster 7.0 to display t
 With the introduction of improved application creation in BuildMaster 2022, this feature is obsolete and was removed in BuildMaster 2024; see [Legacy (Deprecated) Features](/docs/buildmaster/installation-maintenance/buildmaster-legacy) to learn more.
 :::
 
-An application template (not to be confused with an [setup template](/docs/buildmaster/installation-maintenance/buildmaster-legacy/buildmaster-applications-concepts-setup-templates) or a [text template](/docs/executionengine/overview/executionengine-components-text-templating)) is an [exported application](/docs/buildmaster/modeling-your-applications/buildmaster-applications-concepts/buildmaster-applications-concepts-backup-restore) that you can use to create new applications.
+An application template (not to be confused with an [setup template](/docs/buildmaster/installation-maintenance/buildmaster-legacy/buildmaster-applications-concepts-setup-templates) or a [text template](/docs/executionengine/overview/text-templating)) is an [exported application](/docs/buildmaster/modeling-your-applications/buildmaster-applications-concepts/buildmaster-applications-concepts-backup-restore) that you can use to create new applications.
 
 ### Inedo-provided Templates
 

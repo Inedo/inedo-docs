@@ -116,7 +116,7 @@ Although a tag expression (`<%`) is much less likely to occur in a configuration
 
 <div>To escape a tag expression, prefix the percent-sign character (<code>%</code>) with a grave apostrophe (<code>`</code>). For example, <code>apiKey =  a~n!f3&lt;%vs3a</code> would need to be escaped as <code>apiKey =  a~n!f3&lt;`%vs3a</code>.</div>
 
-See [OtterScript Text Templating](/docs/executionengine/overview/executionengine-components-text-templating) to learn more.
+See [OtterScript Text Templating](/docs/executionengine/overview/text-templating) to learn more.
 
 ## Advanced: Use Key/Value Pairs and a Template
 :::(Info) (💡 Best Practice: Simplify Your Configuration Files Instead)
