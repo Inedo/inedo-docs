@@ -61,7 +61,7 @@ Next, select the repository of your NuGet packages. ProGet will automatically fi
 
 ![Select Repository](/resources/docs/proget-migrate-jfrog-feed.png){height="" width="50%"}
 
-Finally, select "Begin Import". ProGet will now migrate all of your Azure DevOps packages. Navigate to "Feeds" and the `internal-nuget` feed you created, where it will list all migrated packages.
+Finally, select "Begin Import". ProGet will now migrate all of your Artifactory packages. Navigate to "Feeds" and the `internal-nuget` feed you created, where it will list all migrated packages.
 
 ![Migrated Packages](/resources/docs/proget-nugetfeed-fakepackages.png){height="" width="50%"}
 
