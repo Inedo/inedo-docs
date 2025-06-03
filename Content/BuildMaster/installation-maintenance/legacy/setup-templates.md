@@ -18,7 +18,7 @@ Consistent use of features across similar application types reduces the tedious 
 Application Setup Templates are only available in BuildMaster 6.2 (or BuildMaster 6.1.12+ with preview features enabled). [View a step-by-step tutorial to using our Application Templates](https://www.inedo.com/buildmaster/getting-started-with-application-templates-in-buildmaster).
 :::
 
-An application setup template (not to be confused with an [application template](/docs/buildmaster/installation-maintenance/buildmaster-legacy/buildmaster-legacy-application-templates) or a [text template](/docs/executionengine/overview/executionengine-components-text-templating)) gives a quick overview of important settings in your application and shows whether the application is configured correctly. And if it's not, or you need to change a setting, you can do so directly from this page instead of navigating elsewhere to change something.
+An application setup template (not to be confused with an [application template](/docs/buildmaster/installation-maintenance/buildmaster-legacy/buildmaster-legacy-application-templates) or a [text template](/docs/executionengine/overview/text-templating)) gives a quick overview of important settings in your application and shows whether the application is configured correctly. And if it's not, or you need to change a setting, you can do so directly from this page instead of navigating elsewhere to change something.
 
 ### Built-in Setup Templates
 Inedo offers many setup templates, including:

@@ -123,7 +123,7 @@ Scripts are run against a server, and there are three ways a job can target serv
 * **Custom (most complex but most flexible):** perform complex orchestration that can run different commands or scripts on different servers. These servers can be targeted sequentially, in parallel, and with branching and iterating (looping) logic.
 
 :::(Info) (Note)
-When using direct or indirect targeting, you can use variables names. See [variables](/docs/executionengine/overview/statements-and-blocks/otter-execution-engine-runtime-variables) to learn more.
+When using direct or indirect targeting, you can use variables names. See [variables](/docs/executionengine/overview/runtime-variables) to learn more.
 :::
 
 ## Using Variables to Define Custom Server Targeting
@@ -132,25 +132,30 @@ By using template variables, it’s possible to create custom server targeting p
 For example: You want user to be able to select which server to run a job on. However, you want to limit which servers they can choose from, e.g., limit to testsv1, 2, or 3 instead of the hundreds you have configured.
 
 **1. After creating a new job template, click on “edit”**
-![](/resources/docs/Using-Variables-to-Define-Custom-Server-Targeting-01%282%29.png){height="" width=""}
+
+![](/resources/docs/otterscript-customservertargeting-edit.png){height="" width=""}
 
 **2. On the “Edit Job Template” page, navigate to “Template Variables (Prompts)” and click “add”**
-![](/resources/docs/Using-Variables-to-Define-Custom-Server-Targeting-02%282%29.png){height="" width=""}
+
+![](/resources/docs/otterscript-customservertargeting-add.png){height="" width=""}
  
 **3. Create a template variable with the following parameters:**
 * **Name: TargetServer**
 * **Type: List Variable**
 * **List values: testsv1, testsv2, testsv3**
 
-![](/resources/docs/Using-Variables-to-Define-Custom-Server-Targeting-03%281%29.png){height="" width=""}
+![](/resources/docs/otterscript-customservertargeting-template.png){height="" width=""}
  
 **4. Ensure that Server Targeting is set to "Custom server targeting"**
-![](/resources/docs/Using-Variables-to-Define-Custom-Server-Targeting-05%281%29.png){height="" width=""}
+
+![](/resources/docs/otterscript-customservertargeting-set.png){height="" width=""}
 
 **5. Click on “Commit Changes”**
-![](/resources/docs/Using-Variables-to-Define-Custom-Server-Targeting-06%281%29.png){height="" width=""}
+
+![](/resources/docs/otterscript-customservertargeting-commit.png){height="" width=""}
 
 **6. When you create a job from the template, you’ll be asked to select the server you want to run job on**
-![Using-Variables-to-Define-Custom-Server-Targeting-07](/resources/docs/Using-Variables-to-Define-Custom-Server-Targeting-07.png){height="" width=""}
+
+![](/resources/docs/otterscript-customservertargeting-select.png){height="" width=""}
 
 

@@ -77,4 +77,4 @@ Otherwise, the configuration jobs will run as if all roles were added to the ser
 
 A resource pool is a set of servers (defined by a role) that are used as a single, load-balanced resource. You may acquire an unused server from a resource pool, and then release it back into the pool once the needed tasks have been performed.
 
-Visit the [Resource Pools documentation of the Inedo Execution Engine](/docs/executionengine/overview/executionengine-components-resource-pools) for more information on how to configure a resource pool.
+Visit the [Resource Pools documentation of the Inedo Execution Engine](/docs/executionengine/overview/resource-pools) for more information on how to configure a resource pool.

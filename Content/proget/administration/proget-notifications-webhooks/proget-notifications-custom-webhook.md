@@ -12,7 +12,7 @@ ProGet Notifiers and Webhooks are not available in ProGet Free Edition, and ProG
 
 ## Customizing Email & Webhook Content
 
-Notifiers use [OtterScript Text Templating](/docs/executionengine/overview/executionengine-components-text-templating), which allows you to combine plain text, variables, and code to render the output you'd like.
+Notifiers use [OtterScript Text Templating](/docs/executionengine/overview/text-templating), which allows you to combine plain text, variables, and code to render the output you'd like.
 
 As a simplistic example, if you wanted to spice up the default Package Event email body, you could customize the text with something like this:
 

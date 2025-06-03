@@ -6,6 +6,7 @@ order: 1
 Using General Blocks in OtterScript allows users to define certain properties that operations within that block will use. This will determine how contained statements and blocks actually run.
     
   **Visual Mode**
+
 ![general blocks](/resources/docs/general%20blocks.PNG){height="" width=""}
    
  **Text Mode (OtterScript)**
@@ -77,7 +78,7 @@ Using General Blocks in OtterScript allows users to define certain properties th
 - **Timeout** the number of seconds to wait for the contained items to run; if they don't run in this time, an error will be raised
 - **Retry count** if any of the contained items raise an error, then the entire block (and all nested blocks) will be run as many times specified; if a retry succeeds, then the execution status will not change.
 
-## Asynchronous Blocks
+## Asynchronous Blocks { #asynchronous }
 An *asynchronous* block works just like a general block, except that execution will continue with the statement/block immediately following the asynchronous block while the asynchronous block runs in the background. In this way, multiple long-running blocks can execute in parallel.
 
 An *await asynchronous operation* statement will suspend the current execution until all asynchronous blocks have been completed. The execution engine adds an implicit await to the end of any plan if there are background blocks running, but you can always await sooner if part of your plan depends on the asynchronous blocks completing.

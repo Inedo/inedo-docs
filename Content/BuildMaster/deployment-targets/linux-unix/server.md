@@ -15,7 +15,7 @@ There are two primary ways to deploy an application to a Linux or Unix server:
 
 ### Servers and OtterScript 
 
-You can target a server in a build or deployment plan directly by using a [general block](/docs/executionengine/otterscript/statements-and-blocks/general-blocks), using the OtterScript `for server <server-name>` statement. This will execute all OtterScript operations in the context of the specified server. In other words, it's equivalent to using SSH to run commands remotely on the server. 
+You can target a server in a build or deployment plan directly by using a [general block](/docs/executionengine/otterscript/statements-and-blocks/general), using the OtterScript `for server <server-name>` statement. This will execute all OtterScript operations in the context of the specified server. In other words, it's equivalent to using SSH to run commands remotely on the server. 
 
 The following command deploys an example website artifact on an Ubuntu server:
 
