@@ -87,7 +87,7 @@ There are many differing statement types; the only common element between statem
 
 #### Action Statement
 
-This invokes an [operation](/docs/executionengine/overview/executionengine-components-operations-functions), and is comprised of:
+This invokes an [operation](/docs/executionengine/overview/operations-functions), and is comprised of:
 
 *   Action Name – a qualified name of the operation's namespace and script alias
 *   Arguments – a string-keyed dictionary of string values

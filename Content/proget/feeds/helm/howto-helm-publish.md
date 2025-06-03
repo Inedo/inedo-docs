@@ -11,15 +11,15 @@ This page will take you through creating a feed in ProGet to serve as a private 
 
 First, we will create a feed to host your Helm charts. Start by selecting "Feeds" and "Create New Feed". Next, select "Helm Charts".
 
-![](/resources/docs/proget-helm-newfeed.png){height="" width="50%"}
+![Create Helm Feed](/resources/docs/proget-helm-newfeed.png){height="" width="50%"}
 
-Then select "No Connectors (Private packages only)" as we will be creating a private feed. From here, we will give our feed a name. In this guide, we will call it `internal-helm`, and then click "Create Feed".
+Then select "No Connectors (Private charts only)" as we will be creating a private feed. From here, we will give our feed a name. In this guide, we will call it `internal-helm`, and then click "Create Feed".
 
-![](/resources/docs/proget-helm-newfeed-internal.png){height="" width="50%"}
+![Name Helm Feed](/resources/docs/proget-helm-nameinternalfeed.png){height="" width="50%"}
 
 You will then see several options. These relate to ProGet's SCA features, useful for third party charts. As we will be using our own internal charts, we will leave these boxes unchecked, and select "Set Feed Features". You will then be redirected to your new `internal-helm` feed, currently empty.
 
-![](/resources/docs/proget-helm-internal-empty.png){height="" width="50%"}
+![Internal Helm Feed](/resources/docs/proget-helm-internalfeed.png){height="" width="50%"}
 
 ## Step 2: Create Your Helm Chart
 

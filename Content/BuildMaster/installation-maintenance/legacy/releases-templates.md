@@ -28,7 +28,7 @@ Release template variables are configurable at any of three levels:
 
 1. **Release creation** - when a new share is created, inputs for the specified variables appear, and once the share is created, the corresponding [Release Variables](/docs/buildmaster/reference/functions/releases/releasevariable) are created. These variable values can be edited later on the Release Details page.
 2. **Build creation** - when creating a new build of a release with an assigned template, inputs for the specified variables are displayed, and once the build is created, the corresponding _Build Variables_ will be created. These variable values can be edited later on the Build Details page.
-3. **Deployment to a pipeline stage** - when deploying a build of a release with an assigned template, inputs are displayed on the Deploy to Stage page, and once the deployment starts, the corresponding _Execution Variables_ will be injected into the deployment and are not editable (but they can be overridden within a deployment plan using the [Set Variable statement](/docs/executionengine/otterscript/statements-and-blocks/other-statments)).
+3. **Deployment to a pipeline stage** - when deploying a build of a release with an assigned template, inputs are displayed on the Deploy to Stage page, and once the deployment starts, the corresponding _Execution Variables_ will be injected into the deployment and are not editable (but they can be overridden within a deployment plan using the [Set Variable statement](/docs/executionengine/otterscript/statements-and-blocks/other#set-variable)).
 
 #### Types
 

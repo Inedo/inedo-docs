@@ -22,7 +22,7 @@ You can specify a role name instead of a list of servers as a stage target in a 
 
 ### Server Roles and OtterScript
 
-You can deploy to servers in a role using the `@ServersInRole` function within a [loop block](/docs/executionengine/otterscript/statements-and-blocks/loop).
+You can deploy to servers in a role using the `@ServersInRole` function within a [foreach block](/docs/executionengine/otterscript/statements-and-blocks/foreach).
 
         foreach server in @ServersInRole(hdars-api-host)
         {
