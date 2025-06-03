@@ -67,13 +67,11 @@ For these reasons, we recommend using Portable PDB files whenever possible. ProG
 
 To enable Symbol Server support for a NuGet feed, navigate to the Symbol Server tab on the Manage Feed page. This page also provides the URL that you can use to configure Visual Studio.
 
-![symbol-server-config.png](/resources/docs/symbol-server-config.png){height="" width="50%"}
+![NuGet Symbol Server](/resources/docs/proget-nuget-symbols-configuration.png){height="" width="50%"}
 
 Clicking on the Configure Symbol Server button will present a few options for configuring the symbol server.
 
-![symbol-server-config-dialog.png](/resources/docs/symbol-server-config-dialogbox.png){height="" width="50%"}
-
-
+![Configure Symbol Server](/resources/docs/proget-nuget-symbols-dialogbox.png){height="" width="50%"}
 
 There are four Symbol Server modes for a NuGet feed:
 
@@ -94,7 +92,7 @@ Note that these settings have no effect on standard (.snupkg) files.
 ### Verifying Indexed Symbols
 When Symbol Server is enabled for a NuGet feed and a package has symbols indexed in ProGet, the Symbols tab is available on the package details page:
 
-![symbol-list.png](/resources/docs/symbol-list.png){height="" width=""}
+![Symbol List](/resources/docs/proget-nuget-symbols-list.png){height="" width="50%"}
 
 This page can be used to verify that ProGet has detected all of the symbols associated with the package, whether they are stored in the package itself (in the case of a legacy symbol package) or in a separate .snupkg file.
 
@@ -105,7 +103,7 @@ The `Id` and `Age` fields are used only to uniquely identify the PDB file by the
 ### Enable Symbol Server Support
 To debug in NuGet package libraries, Visual Studio must be configured to use ProGet as the symbol server. Select **Debug > Options...** from the menu bar, then navigate to **Debugging > Symbols** from the tree menu. Add the symbol server URL you found earlier on the Manage Feed page and specify a Symbol Cache Directory. By default Visual Studio will use `%LOCALAPPDATA%\Temp\SymbolCache`, but you may specify any path.
 
-![enable-symbol-server.png](/resources/docs/enable-symbol-server.png){height="" width=""}
+![Enable](/resources/docs/enable-symbol-server.png){height="" width="50%"}
 
 ### Enable Source Server Support
 
@@ -126,29 +124,31 @@ Additionally, you may have to uncheck:
 
 The settings should look like the following:
 
-![debug-settings.png](/resources/docs/debug-settings.png){height="" width=""}
+![Debug Settings](/resources/docs/debug-settings.png){height="" width="50%"}
 
 ## Testing the Configuration
 
 An easy way to test the configuration is to create a console application that consumes the NuGet package with symbols, write some throwaway code that you know will throw an exception, and then click the Start button in Visual Studio to begin debugging:
-![code1.png](/resources/docs/code1.png){height="" width=""}
+
+![Internal Class](/resources/docs/code1.png){height="" width="50%"}
 
 If everything is configured correctly, Visual Studio tries to load the symbols locally, then queries the ProGet symbol server if they cannot be found, and the exact line that throws the exception is highlighted:
-![code2.png](/resources/docs/code2.png){height="" width="50%"}
+
+![Public Class](/resources/docs/code2.png){height="" width="50%"}
 
 ## Troubleshooting
 
 In some cases, the symbol server fails for various reasons, the most common being misconfiguration. To display the PDBs that Visual Studio has loaded, select the **Debug > Windows > Modules** menu option during debugging and locate the desired DLL in the list. The symbol status is displayed, along with the version and path to the DLL and the downloaded symbols.
 
-![modules.png](/resources/docs/modules.png){height="" width="50%"}
+![Modules](/resources/docs/modules.png){height="" width="50%"}
 
 Whether or not the symbols have been loaded, you can right-click on the DLL and select "Symbol Load Information..." to view the diagnostic messages associated with the symbol server for that library.
 
-![symbol-load-info.png](/resources/docs/symbol-load-info.png){height="" width="50%"}
+![Load Information](/resources/docs/symbol-load-info.png){height="" width="50%"}
 
 The hex string in the file path should also start with the GUID listed in ProGet:
 
-![hex.png](/resources/docs/hex.png)
+![Hex String](/resources/docs/hex.png){height="" width="50%"}
 
 The GUID will be found under the "Symbols" tab on the NuGet package.
 
