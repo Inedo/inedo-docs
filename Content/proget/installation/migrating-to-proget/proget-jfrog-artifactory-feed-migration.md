@@ -25,7 +25,7 @@ Migrating your packages can be done quickly and easily, in only a few clicks. Al
 
 ### Step 1: Create a New Feed
 
-To begin, we'll create a new feed that we will import our existing packages to. Start by navigating to "Feeds" and slecting "New Feed".
+To begin, we'll create a new feed that we will import our existing packages to. Start by navigating to "Feeds" and selecting "New Feed".
 
 ![Create New Feed](/resources/docs/proget-feeds-createnewfeed.png){height="" width="50%"}
 
