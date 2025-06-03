@@ -19,14 +19,14 @@ MyGet allows you to have multiple package types per feed and comes with unique U
 Users in MyGet only need read-only access to view the package type URL and authentication information.
 :::
 
-### Bulk Package Download (PowerShell)
-As ProGet requires a different feed for each package type, we recommend a simple PowerShell script to download your packages by feed and type. This will download them to a local directory, separated by feed name into separate folders. This will also make it easier to bulk upload by feed later.
-
+### Optional: Bulk NuGet Package Download (PowerShell)
+As ProGet requires a different feed for each package type, we recommend a simple PowerShell script to download your NuGet packages to local directory, separated by feed name into separate folders. This will also make it easier to bulk upload by feed later. You'll need to specify the path of `nuget.exe`, as well as the names of your MyGet feeds.
 
 ```powershell
-$nugetPath = <Path to nuget.exe>
-$feeds = @(<Feed One Name>, <Feed Two Name>, <Feed Three Name>)
-$outputRoot = <Choose Output Folder Location>
+$nugetPath = C:\Program Files\Nuget\nuget.exe # specify the path to nuget.exe
+$feeds = @(public-nuget, nuget-unapproved, nuget-approved)  # enter your feed names here
+$outputRoot = C:\nuget-packages\ # specify the path to download your NuGet packages to
+
 New-Item -ItemType Directory -Path $outputRoot -Force | Out-Null
 foreach ($feedURL in $feeds) {
     Write-Host "Fetching packages from: $feedURL"
@@ -46,7 +46,7 @@ To create a new feed, navigate to the banner at the top of the page and click on
 
 ![Create New Feed](/resources/docs/proget-feeds-createnewfeed.png){height="" width="50%"}
     
-You will then need to select the type of feed you would like to setup. In this guide we will be setting up a NuGet feed for a fictious company called Kramerica, but the steps should be nearly the same for any feed. Select the feed you wish to setup and fill in the relevant fields.
+You will then need to select the type of feed you would like to setup. In this guide, we will be setting up a NuGet feed for a fictitious company called Kramerica, but the steps should be nearly the same for any feed. Select the feed you wish to set up and fill in the relevant fields.
 
 ![New NuGet Feed](/resources/docs/proget-nuget-newfeed.png){height="" width="50%"}
 
@@ -58,7 +58,7 @@ In your feed, navigate to "Import Packages".
 
 ![Select Import Packages](/resources/docs/proget-nuget-importpackagesselect.png){height="" width="50%"}
 
-Since you packages are downloaded, select "Import/Copy Package Files on Disk".
+Then, select "Import/Copy Package Files on Disk".
 
 ![Import From Disk](/resources/docs/proget-feeds-importpackagesfromdisk.png){height="" width="50%"}
 
