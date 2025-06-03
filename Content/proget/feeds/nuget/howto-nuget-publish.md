@@ -11,19 +11,19 @@ This guide will walk you through the process of setting up a NuGet ["Feed"](/doc
 
 Start by creating a NuGet feed to host your internal packages. Navigate to "Feeds" and "Create New Feed". Then select "NuGet (.NET) Packages".
 
-![](/resources/docs/proget-newfeed-nugetselect.png){height="" width="50%"}
+![Create NuGet Feed](/resources/docs/proget-newfeed-nugetselect.png){height="" width="50%"}
 
 Now select "No Connectors (Private packages only)" as this feed will be intended to host private packages.
 
-![](/resources/docs/proget-nuget-noconnectors.png){height="" width="50%"}
+![Private Packages](/resources/docs/proget-nuget-noconnectors.png){height="" width="50%"}
 
 From here, we name our feed. For this example, we will call it `internal-nuget`, and then click "Create Feed".
 
-![](/resources/docs/proget-nuget-internal-name.png){height="" width="50%"}
+![Name Feed](/resources/docs/proget-nuget-internal-name.png){height="" width="50%"}
 
 You'll then see several options related to ProGet's [Vulnerability Scanning and Blocking](/docs/proget/sca/vulnerabilities) features. These are only for users looking to use third-party OSS packages. Leave these boxes unchecked, and select "Set Feed Features". You will then be directed to the new `internal-proget` feed, currently empty.
 
-![](/resources/docs/proget-nuget-internal-empty.png){height="" width="50%"}
+![Internal NuGet Feed](/resources/docs/proget-nuget-internal-empty.png){height="" width="50%"}
 
 ## Step 2: Create a NuGet Package
 
@@ -69,21 +69,21 @@ $ dotnet pack --configuration Release
 
 To add your `internal-nuget` feed to Visual Studio, the NuGet CLI, or other clients such as [VS Code](https://code.visualstudio.com/) and [JetBrains Rider](https://www.jetbrains.com/rider/), you will need the feed URL. This is found on the top right of the feed page:
 
-![](/resources/docs/proget-nuget-internal-url.png){height="" width="50%"}
+![Feed URL](/resources/docs/proget-nuget-internal-url.png){height="" width="50%"}
 
 To add your feed as a Package Manager in Visual Studio, navigate to "Tools" > "NuGet Package Manager" > "Package Manager Settings". Then uncheck the box to the left of *nuget.org*
 
-![visualstudio-packagesources-highlightednugetorg.png](/resources/docs/visualstudio-packagesources-highlightednugetorg.png)
+![Package Sources](/resources/docs/visualstudio-packagesources-highlightednugetorg.png)
 
 This prevents Visual Studio from scanning both NuGet.org and ProGet for packages. If you configure Visual Studio to search only ProGet instead of NuGet.org and ProGet, you avoid problems such as bad licenses, vulnerable packages, and [dependency confusion](https://blog.inedo.com/software-supply-chain-security/three-things) in your packages when you use multiple sources.
 
 Now you will need to create a new package source. Click the green `+` in the top right of the window, and then name the new package source. Then paste in your `internal-nuget` feed URL.
 
-![visualstudio-packagesources-configureproget.png](/resources/docs/visualstudio-packagesources-configureproget.png)
+![Configure Sources](/resources/docs/visualstudio-packagesources-configureproget.png)
 
 Now, click the "Update" button, followed by the "OK" button.
 
-![visualstudio-packagesources-updateandok.png](/resources/docs/visualstudio-packagesources-updateandok.png)
+![Update Button](/resources/docs/visualstudio-packagesources-updateandok.png)
 
 Visual Studio and ProGet are now connected.
 
@@ -93,7 +93,7 @@ If you click "OK" without clicking "Update" your package source configuration wi
 
 To confirm the connection in Visual Studio, right-click on a project in the Solution Explorer and select “Manage NuGet Packages…” from the menu. In the Package Manager window under "Browse", your should see a window populated with packages from the `internal-nuget` feed.
 
-![visualstudio-connectedprogetfeed.png](/resources/docs/visualstudio-connectedprogetfeed.png)
+![Visual Studio Connection](/resources/docs/visualstudio-connectedprogetfeed.png)
 
 ### Using Other NuGet Clients { #add-others }
 
@@ -129,7 +129,7 @@ $ nuget push bin\Release\MyPackage.1.0.0.nupkg -Source internal-nuget -ApiKey ap
 
 Your package will then be uploaded and appear in your NuGet feed.
 
-![](/resources/docs/proget-nuget-internal-uploaded.png){height="" width="50%"}
+![Internal Feed Packages](/resources/docs/proget-nuget-internal-uploaded.png){height="" width="50%"}
 
 ### Pushing a Package with NuGet CLI
 
