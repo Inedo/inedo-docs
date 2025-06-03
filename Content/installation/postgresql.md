@@ -10,9 +10,9 @@ In its place, we will be switching to an embedded distribution of PostgreSQL wit
 :::
 -->
 
-ProGet 2025+ uses a custom build of PostgreSQL that's been security-hardened, stripped of unneeded features, and optimized for Inedo products. This database server can be hosted in two different ways.
+Inedo Products (starting with ProGet 2025) uses a custom build of PostgreSQL that's been security-hardened, stripped of unneeded features, and optimized for Inedo products. This database server can be hosted in two different ways.
 
-* **Embedded**: For single-server ProGet installations, the database server instance is fully-managed by ProGet and will require no additional configuration or maintenance
+* **Embedded**: For single-server installations, the database server instance is fully-managed by the Inedo product and will require no additional configuration or maintenance
 * **InedoDB**: For clustered (multi-server) installations, the same custom build of PostgreSQL is packaged as InedoDB and installable on Windows or run as Docker container
 
 Although most users will not need to interact with the database server, maintenance or troubleshooting may be required. This article will provide guidance on how to do that as well as describe advanced scenarios.
@@ -23,11 +23,10 @@ Although most users will not need to interact with the database server, maintena
 The database is only a component of your Inedo product; see [Backing Up and Restoring](/docs/installation/backing-up-restoring) to learn how to Backup the entire installation.
 :::
 
-<div style="background-color:#FEECE5;padding:4px;border:solid 1px #0FECA1;">
 
 Backing up and restoring the database can be done using the `inedodb` CLI utility that's included in both distributions of InedoDB.
 
-To backup, simply run `inedodb dump «product-name»` to create a time stamped archive in the current working directory. You can also specify the filename with the `outfile` argument 
+To backup, simply run `inedodb dump «product-name»` to create a time stamped archive in the current working directory, optionally with the `outfile` argument. For example, to backup ProGet:
 
 ```bash
 $ inedodb dump proget --outfile=/var/backups/proget-20250812-1308.ahpak
@@ -41,13 +40,17 @@ $ inedodb restore proget --infile=/var/backups/proget-20250812-1308.ahpak
 
 Note that these commands are light wrappers for `pg_dump -Fc` and `pg_restore` that use information from the connection string stored in the [Installation Configuration File](/docs/installation/configuration-files) (Windows) or [Environment Variable](/docs/installation/linux/supported-environment-variables) (Linux).
 
-</div>
-
 
 
 ## InedoDB Installation & Upgrade {#inedodb}
 
 InedoDB is a custom build of PostgreSQL that's been security-hardened, stripped of unneeded features, and optimized for Inedo products. It's required for clustered (multi-server) installations.
+
+:::(Warning) (🚧 InedoDB is Coming Soon 🚧)
+We are planning on releasing the first version of InedoDB in 2025/Q4. This documentation is preliminary.
+
+If you wish to use a clustered installation with PostgreSQL without an [external PostgreSQL servers](#external-postgres), you'll need to wait until then.
+:::
 
 ### Releases & Downloads {#inedodb-releases}
 
@@ -67,25 +70,37 @@ Note that the first two digits of InedoDB's version correspond to the [PostgreSQ
 
 ### Installation on Linux (Docker)
 
-<div style="background-color:#FEECE5;padding:4px;border:solid 1px #0FECA1;">
-InedodB is available in the repository
-Use a specific tag `17.4.0` from {#inedodb-releases}
-Change the ports if you want
-</div>
+InedoDB is available from the `proget.inedo.com/productimages/inedo/inedodb` repository.
 
-```
+:::(Error)
+**Do not use the `latest` tag**. Instead, use the most recent version under [Releases & Downloads](#inedodb-releases}).
+
+Upgrading InedoDB requires special consideration, and suddenly changing the version of your container may cause the database to become inoperable.
+:::
+
+To start an InedoDB container, use this command:
+
+```bash
 docker run --name inedodb \
   -p 5432:5432 -e POSTGRES_PASSWORD=«YourStrong!Passw0rd» \
   --restart=unless-stopped \
   -d proget.inedo.com/productimages/inedo/inedodb:17.4.0
 ```
 
+Once you have an SQL Server instance running, you'll need to initialize a product database using `inedodb initdb «product-name»` command.
+
+### Example: ProGet SQL Server Database
+To initialize a database for ProGet on the InedoDB instance running in the `inedodb` container:
+
+```bash
+docker exec -it inedodb /opt/tools/inedodb initdb ProGet
+```
+
 ### Installation on Windows
 
-<div style="background-color:#FEECE5;padding:4px;border:solid 1px #0FECA1;">
-Download the installer
-You can the ports by XXX
-</div>
+InedoDB is available from the links under [Releases & Downloads](#inedodb-releases}).
+
+Simply download and run the installer. You'll be prompted for a port number to use and a password.
 
 ### Upgrading InedoDB
 
@@ -140,3 +155,8 @@ You can export the contents of a database from the web application, whether usin
  * Sharing a database with Inedo for support purposes
 
 The **only** use for a database exported in this manner is to be immediately imported on another server for migration purposes, or to submit to Inedo for a support ticket. The ProGet version of the importing server must match the version which exported this file exactly.
+
+
+## Migrating from SQL Server { #migrating-from-sqlserver }
+
+To migrate from SQL Server,  navigate to Administration > Database Overview and follow the prompts.

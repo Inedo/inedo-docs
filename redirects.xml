@@ -1,6 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <redirects>
 
+	<!-- BEGIN ProGet2025 Docs Refactoring  -->
+	<redirect from="/docs/installation/sql-server/installation-database-backup" to="/docs/installation/sql-server/backup" />	
+	<!-- END ProGet2025 Docs Refactoring  -->
+	
   <!-- BEGIN UPack Docs Refactoring  -->
   <redirect from="/docs/proget/upack/upack-overview" to="/docs/proget/feeds/universal/universal-packages" />
   <redirect from="/docs/proget/upack/upack-downloads-source-code" to="/docs/proget/feeds/universal/universal-packages" />

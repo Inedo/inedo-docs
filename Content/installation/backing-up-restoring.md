@@ -39,7 +39,7 @@ Inedo products are constantly reading/writing from the database, which means tha
 ### SQL Server
 If you installed your Inedo product with the built-in database, then the installer also installed Microsoft SQL Server Express Edition with an instance named `INEDO`. The database is relatively easy to back-up using <code>osql.exe</code> or SQL Server Management Studio (SSMS). 
 
-To learn more about how to use these tools, see our guide on [Backing Up and Restoring Databases](/docs/installation/sql-server/installation-database-backup).
+To learn more about how to use these tools, see our guide on [Backing Up and Restoring Databases](/docs/installation/sql-server/backup).
 
 ### PostgreSQL (ProGet 2025+ Only)
 
