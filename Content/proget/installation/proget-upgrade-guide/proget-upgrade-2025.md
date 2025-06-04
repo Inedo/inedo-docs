@@ -121,7 +121,7 @@ Prior to upgrading to ProGet 2025, we recommend [switching to the Integrated Web
 * **SCA tweaks** including CSS/UI changes, adding license text field in SBOM exports for custom license, linking build URL back to system and more, deprecation warnings, and SBOM 1.6 support
 * **npm Repackage changes**; very minor, but the `latest` tag will now be moved to the newer package
 * **Rename Marvin "Classic" to "Legacy"** and update the `Maven` type in the API to create the newer Maven feeds
-* **Withdrawn Vulnerability Handling**; these will no longer be displayed in the ProGet UI unless you've assessed them
+* **Withdrawn Vulnerabilities**; unless they've been assessed, these will be deleted from the local database after each update of the vulnerability database (default nightly)
 * **Pause/disable individual replication tasks**; this will likely not add any risk
 * **Add Certificates folder to Package/Data Directory**; minor change to Docker image
 * **Deleting Users Deletes Personal API Keys**; when Deleting a User, any Personal API keys associated with that username will also be deleted
