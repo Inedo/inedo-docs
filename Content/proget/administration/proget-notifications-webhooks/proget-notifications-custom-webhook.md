@@ -21,7 +21,7 @@ Great news, $PackageId $PackageVersion has just been promoted to $FeedName!!
 Thanks to $UserName for pressing the Promote button.
 ```
 
-More practically, you can use these Custom Webhooks to integrate into just about any tool that can receive webhooks or has an HTTP-based API. Simply format the Custom Webhook's header/content to match that tool's specification and let ProGet
+More practically, you can use these Custom Webhooks to integrate into just about any tool that can receive webhooks or has an HTTP-based API. Simply format the Custom Webhook's header/content to match that tool's specification.
 
 See the [Defaults and Examples](#examples) to learn how you can customize content. Also, keep in mind that you may need to escape certain characters (see [Escaping and Unresolvable Variables](#escaping)).
 
@@ -66,15 +66,16 @@ You probably won't find these very useful in ProGet, but some are used behind-th
 
 You'll see `$ToJson(Data)` used extensively to convert a "map expression" into JSON, mostly because it means less `{` and `"` characters and is easier to expand lists. You'll also see `<% foreach %>` used to  iterate over vulnerability and issue lists.
 
-Examples and Default Content <a name="examples"></a>  
-<!--
+Examples and Default Content:  
+
+```
 * default-email-new-vulnerability-detected
 * default-email-package-events
 * default-email-issues-opened-on-build
 * default-webhook-new-vulnerability-detected
 * default-webhook-package-events
 * default-webhook-issues-opened-on-build
--->
+```
 
 <h3 id="default-conditional-expressions">Sample Advanced Expressions (Conditions)</h3>
 
@@ -231,7 +232,6 @@ In Zapier, automation workflows are called Zaps. When you create a new Zap with 
 
 ```
 https://zapier.com/hooks/catch/n/Lx2RH/
-
 ```
 
 Zappier prides itself on making things "just work" when it comes to webhooks, and since ProGet's [default payload](#default-payload) is a simple JSON-based key/value pair, you can use that to get started.
