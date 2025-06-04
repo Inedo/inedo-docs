@@ -35,59 +35,56 @@ In our example, Kramerica plans to transfer 2 folders:
 ## Step 2: (Optional) Integrate ProGet with Active Directory
 This step is optional, but recommended.
 
-Organizations can integrate AD with ProGet and use preset groups and permissions in the following steps.
-Kramerica integrated navigate to Settings > "Security & Authentication" > "Change User Directory (LDAP)"
+Organizations can integrate AD with ProGet and use preset groups and permissions. To do this, navigate to Settings > "Security & Authentication" > "Manage Security" > "Domains/User Directories" > "Active Directory v4 (New)" > "enable".
 
-After successfully completing the following popup, LDAP will be integrated with ProGet so we can use all previously configured users and groups from Kramerica.
-
-![Switch to Active Directory in ProGet](/resources/docs/progetassetdir-intergratead.png)
+![Switch to Active Directory in ProGet](/resources/docs/progetassetdir-intergratead.png){height="" width="50%"}
  
 ## Step 3: Create `HR-Guides` Asset Directory
 We’ll now create our first asset directory: `HR-Guides` 
 
-To do this, navigate to “Assets” > “Create New Asset Directory” > and fill in the popup with a name and, optionally, a description.
+To do this, navigate to “Assets” > “Create New Asset Directory” > and fill in the popup with a name.
  
-![Create HR-Guides Asset Directory in ProGet](/resources/docs/progetassetdir-createnewfeed-hrguides.png)
+![Create HR-Guides Asset Directory in ProGet](/resources/docs/progetassetdir-createnewfeed-hrguides.png){height="" width="50%"}
  
-Now that our feed is created, we want to enable versioning. To do this, navigate to “Manage Directory” > "Properties" > "Asset Directory Settings" > "Versioning" 
+Now that our feed is created, we want to enable versioning. To do this, navigate to “Manage Directory” > "Overview & Properties" > "Asset Directory Settings" > "Versioning"  > "configure".
 
 Once versioning is enabled, old versions of files will be retained after they are overwritten.
 
-![ProGet Manage Feed of HR Guide](/resources/docs/progetassetdir-managefeed-versioning.png)
+![ProGet Manage Feed of HR Guide](/resources/docs/progetassetdir-managefeed-versioning.png){height="" width="50%"}
  
 Now that our asset directory is configured, we can begin uploading HR files and folders. Simply navigate to the asset directory and click on "Add/Upload Files". A popup window will allow you to select how you want to add an asset.
 
 In this example, we'll choose "Upload Files" via the browser, as this is the easiest way.
 
-![ProGet Add Assets](/resources/docs/progetassetdir-addassets.png)
+![ProGet Add Assets](/resources/docs/progetassetdir-addassets.png){height="" width="50%"}
  
 After locating the desired folder, we will drag and drop files into the asset directory.
 
-![Asset Directory Upload Files Drag-and-Drop](/resources/docs/progetassetdir-uploadfiles.png)
+![Asset Directory Upload Files Drag-and-Drop](/resources/docs/progetassetdir-uploadfiles.png){height="" width="50%"}
  
 ## Step 4: Grant Permissions
 Now that our “HR-Guide” asset directory is created, we must make sure that users have access to it. By default, all groups in ProGet have zero permissions. 
 
 [Tasks and permissions can get very granular](/docs/proget/administration-security/proget-howto-configure-permissions-and-restrictions-on-feeds) and organizations with complex team structures might take longer to set up than others. Fortunately, the permissions for the asset directory in ProGet are simple. Users have either read permissions, write permissions, or no permissions.
 
-Kramerica wants the pseudo-group "Everyone" (all users) built into ProGet to have access to "View & Download Packages" from the asset directory "HR -Guide".
+Kramerica wants the pseudo-group "Everyone" (all users) built into ProGet to have access to "View & Download Packages" from the asset directory "HR -Guides".
 
-To do this, we navigate to Settings > "Security & Authentication" > Users & Tasks > "Tasks" > "Add Permissions".
+To do this, we navigate to Settings > "Security & Authentication" > "Manage Security" > "Tasks/Permissions" > "add permission".
 
-![Add Privilege to HR Guides Directory](/resources/docs/progetassetdir-addpriv-hrguides-everyone.png)
+![Add Privilege to HR Guides Directory](/resources/docs/progetassetdir-addpriv-hrguides-everyone.png){height="" width="50%"}
  
 Now all Kramerica’s ProGet users can view and download all “HR-Guides” documents. 
 
 ## Step 5: Create `Sales-Assets` Active Directory
-Next, we’ll create another active directory `sales-assets`.
+Next, we’ll create another active directory: `Sales-Assets`.
 
 We’ll do this by repeating the same thing we did in Step 3.
 
-![Create New Sales Assets Active Directory](/resources/docs/progetassetdir-createnewfeed-salesassets.png)
+![Create New Sales Assets Active Directory](/resources/docs/progetassetdir-createnewfeed-salesassets.png){height="" width="50%"}
  
 ## Step 6: Give Sales Group Permission 
 In ProGet, it is easy to restrict Active Directory permissions to individual groups. In our example, only members of the sales team should have access to the active directory "sales-assets".
 
-To set this up, navigate to Settings > Security & Authentication > Users & Tasks > "Tasks" > "Add Permissions" and grant Kramerica's "Sales Team" permission to "View & Download Packages" from "sales-assets". After we set this up, our task overview page looks like this:
+To set this up, navigate to Settings > "Security & Authentication" > "Manage Security" > "Tasks/Permissions" > "add permission" and grant Kramerica's "Sales Team" permission to "View & Download Packages" from "Sales-Assets". After we set this up, our task overview page looks like this:
  
-![Tasks and Feeds Configured](/resources/docs/progetassetdir-tasksoverview-complete.png)
+![Tasks and Feeds Configured](/resources/docs/progetassetdir-tasksoverview-complete.png){height="" width="50%"}
