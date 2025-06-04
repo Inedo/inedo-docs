@@ -9,7 +9,6 @@ order: 1
 ProGet Notifiers and Webhooks are not available in ProGet Free Edition, and ProGet Basic Edition supports only custom webhooks (not emails). See [License Restrictions](/docs/proget/administration/license) to learn more.
 :::
 
-
 ## Customizing Email & Webhook Content
 
 Notifiers use [OtterScript Text Templating](/docs/executionengine/overview/text-templating), which allows you to combine plain text, variables, and code to render the output you'd like.
@@ -77,7 +76,7 @@ Examples and Default Content:
 * default-webhook-issues-opened-on-build
 ```
 
-<h3 id="default-conditional-expressions">Sample Advanced Expressions (Conditions)</h3>
+### Sample Advanced Expressions (Conditions) { #default-conditional-expressions }
 
 Behind-the-scenes, the Conditions you can select for a notifier are implemented with OtterScript. Following are examples that would be generated based on data entered in the fields.
 
@@ -85,21 +84,19 @@ Behind-the-scenes, the Conditions you can select for a notifier are implemented 
 * `$MatchesRegex($PackageName, "^MyPackage\.*$")`
 * `$MatchesRegex($PackageName, "^MyPackage\.*$") && $MatchesRegex($PackageVersion, "^3\.0\.*$")`
 
-<h3 id="default-email-new-vulnerability-detected">Default Email Content: New Vulnerability Detected</h3>
+### Default Email Content: New Vulnerability Detected { #default-email-new-vulnerability-detected }
 
 <table><tr><th>Subject</th><td><pre>
 $PackageId $PackageVersion: Vulnerability $VulnerabilityId
 </pre></td></tr><tr><th>Body</th><td><pre>
 A new vulnerability has been published: $VulnerabilityId $VulnerabilitySummary
-
 Affected packages:
-
 <% foreach %p in @AffectedPackages { %>
   \* $(%p.Name) $(%p.AffectedVersions)
 <% } %>
 </pre></td></tr></table>
 
-<h3 id="default-email-package-events">Default Email Content: Package Events</h3>
+### Default Email Content: Package Events { #default-email-package-events }
 
 <table><tr><th>Subject</th><td><pre>
 $PackageId $PackageVersion $PackageEvent to $FeedName by $UserName
@@ -107,31 +104,28 @@ $PackageId $PackageVersion $PackageEvent to $FeedName by $UserName
 $PackageId $PackageVersion $PackageEvent to $FeedName by $UserName
 </pre></td></tr></table>
 
-<h3 id="default-email-noncompliant-package">Default Email Content: Noncomplaint Package Detected</h3>
+### Default Email Content: Noncomplaint Package Detected { #default-email-noncompliant-package }
 
 <table><tr><th>Subject</th><td><pre>
 $PackageId $PackageVersion is $PackageComplianceResult
 </pre></td></tr><tr><th>Body</th><td><pre>
 $PackageId $PackageVersion is $PackageComplianceResult in $FeedName.
-
 Reason: $PackageComplianceDetails
 </pre></td></tr></table>
 
-<h3 id="default-email-issues-opened-on-build">Default Email Content: Issues Opened on Build</h3>
+### Default Email Content: Issues Opened on Build { #default-email-issues-opened-on-build }
 
 <table><tr><th>Subject</th><td><pre>
 Issues detected in $ProjectName $BuildNumber
 </pre></td></tr><tr><th>Body</th><td><pre>
 Issues were detected in $ProjectName $BuildNumber
-
 <% foreach %i in @BuildIssues { %>
  \* $(%i.Sequence) $(%i.Detail)
 <% } %>
-
 To view issues, see $WebBaseUrl/projects/build/issues?projectBuildId=$BuildId&resolved=Unresolved
 </pre></td></tr></table>
     
-<h3 id="default-webhook-new-vulnerability-detected">Default Webhook Content: New Vulnerability Detected</h3>
+### Default Webhook Content: New Vulnerability Detected { #default-webhook-new-vulnerability-detected }
 
 <table><tr><th>OtterScript</th><th>Example Output</th></tr>
 <tr><td><pre>
@@ -152,7 +146,7 @@ $ToJson(%(
 }
 </pre></td></tr></table>
 
-<h3 id="default-webhook-package-events">Default Webhook Content: Package Events</h3>
+### Default Webhook Content: Package Events { #default-webhook-package-events }
 
 <table><tr><th>OtterScript</th><th>Example Output</th></tr>
 <tr><td><pre>
@@ -173,7 +167,7 @@ $ToJson(%(
 }
 </pre></td></tr></table>
     
-<h3 id="default-webhook-noncompliant-package">Default Webhook Content: Noncompliant Package Detected</h3>
+### Default Webhook Content: Noncompliant Package Detected { #default-webhook-noncompliant-package }
     
 <table><tr><th>OtterScript</th><th>Example Output</th></tr>
 <tr><td><pre>
@@ -194,7 +188,7 @@ $ToJson(%(
 }
 </pre></td></tr></table>
 
-<h3 id="default-webhook-issues-opened-on-build">Default Webhook Content: Issues Opened on Build</h3>
+### Default Webhook Content: Issues Opened on Build { #default-webhook-issues-opened-on-build }
 
 <table><tr><th>OtterScript</th><th>Example Output</th></tr>
 <tr><td><pre>
@@ -216,7 +210,7 @@ $ToJson(%(
 }
 </pre></td></tr></table>
 
-## TIP: Workflow Automation & Orchestration <a name="workflows"></a>      
+## TIP: Workflow Automation & Orchestration { #workflows }      
 
 When a basic HTTP request isn't enough to perform a particular task, you can use third-party workflow automation services to act as a sort of bridge between ProGet and the tools you want to automate.
 
@@ -241,7 +235,7 @@ After entering the Zap URL on a webhook for a feed, ProGet will start sending da
 From there, you can use those values for outbound integrations. See [Zapier's Webhook Documentation](https://zapier.com/help/webhooks/) for more details and troubleshooting.
 
 
-## TIP: Handling Authentication to Other Services <a name="authentication"></a>  
+## TIP: Handling Authentication to Other Services { #authentication }    
 
 While all APIs manage authentication a bit differently, you're usually provided with at least one of two options: using an API key, or basic access authentication. Both of these authentication methods can be done within a custom webhook, though you might need to use a custom payload.
 
@@ -255,7 +249,7 @@ Authorization: Basic $EncodeBasicAuth(username,password)
 
 In both cases, it's a good practice to use [variables](#variables) to store keys, names, and passwords. Although this doesn't secure them (they are always sent as plain text over HTTP/S), it will often obscure them from causal viewing and make it easier to reuse in different webhooks.
 
-## TIP: Reading Package Metadata <a name="package-metadata"></a>     
+## TIP: Reading Package Metadata { #package-metadata }  
 
 One of the most powerful built-ins is the `$PackageProperty()` function. This allows you to read any arbitrary metadata from the package in context.
 
@@ -263,7 +257,7 @@ For example, when `$PackageProperty(_sourceTarget)` is used on a universal packa
 
 However, if you specify the second argument `(defaultText)` to the `PackageProperty` function, then it will succeed. That is, `$PackageProperty(_sourceTarget, unspecified)` will return the value of *_sourceTarget* or *unspecified*.
 
-## TIP: Escaping and Unresolvable Variables <a name="escaping"></a>
+## TIP: Escaping and Unresolvable Variables { #escaping }  
     
 Anything that "looks" like a variable – i.e. text that starts with a `$`, then a character – will be parsed as a variable expression, and evaluated. If a custom or built-in variable cannot be found, then an error will be logged and the notification will not be dispatched complete. This is usually what you'd want, and will help you track down a typo like `$PackagName`.
 
