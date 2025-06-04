@@ -43,7 +43,7 @@ $ yarn init --scope=@my-organization
 
 Note: if you do not want to scope your package, omit `--scope=@my-organization`.
 
-You will be asked for details of the project name, version, etc. After this you will need the URL of your `internal-npm` feed, which can be found on the feed page:
+You will be asked for details of the project name, version, etc. After this you will need the URL of your `internal-npm` feed, which can be found on the feed page.
 
 ![](/resources/docs/proget-npm-internal-url.png){height="" width="50%"}
 
@@ -97,7 +97,7 @@ Or in Yarn using the `yarn publish` command:
 $ yarn publish --registry=https://«proget-url»/npm/internal-npm/ 
 ```
 
-Your package should then be uploaded to your `internal-npm` feed:
+Your package should then be uploaded to your `internal-npm` feed.
 
 ![](/resources/docs/proget-npm-internal-uploaded.png){height="" width="50%"}
 
