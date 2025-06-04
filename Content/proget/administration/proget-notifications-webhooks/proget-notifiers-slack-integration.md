@@ -49,7 +49,7 @@ After you've created your notifier, take the configured action in ProGet, and yo
 
 ## Additional Notes
 
-Creating a global notifier requires selecting "always run / all feeds" for "Run on feed" under the "Conditions" tab, but for Docker feeds, you will not be able to select this due to different Docker URLs. You can also set it to run on specific feeds only by selecting the feed:
+Creating a global notifier requires selecting "always run / all feeds" for "Run on feed" under the "Conditions" tab, but for Docker feeds, you will not be able to select this due to different Docker URLs. You can also set it to run on specific feeds only by selecting the feed.
 
 ![](/resources/docs/proget-create-notifier-feed-slack.png){height="" width="50%"}
 

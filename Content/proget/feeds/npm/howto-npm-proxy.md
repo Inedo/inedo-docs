@@ -25,7 +25,7 @@ Then select "No, Create One Feed", as we will be creating a single feed to proxy
 
 ![](/resources/docs/proget-npm-public-name.png){height="" width="50%"}
 
-We are then presented with several options. Keeping these checked will allow your feed to use ProGet's [Vulnerability Scanning and Blocking](/docs/proget/sca/vulnerabilities) amd [Licensing Detection and Blocking](https://docs.inedo.com/docs/proget/sca/licenses) features. This will allow you to [use `npm audit` to scan packages](#scan-feed) for vulnerabilities. Select "Set Feed Features", which will create the feed, and redirect you to the newly created `public-npm` feed, now populated with packages proxied from the npm Registry.
+We are then presented with several options. Keeping these checked will allow your feed to use ProGet's [Vulnerability Scanning and Blocking](/docs/proget/sca/vulnerabilities) and [Licensing Detection and Blocking](https://docs.inedo.com/docs/proget/sca/licenses) features. This will allow you to [use `npm audit` to scan packages](#scan-feed) for vulnerabilities. Select "Set Feed Features", which will create the feed, and redirect you to the newly created `public-npm` feed. Currently, npm needs a search term to return package results, so you will need to search for specific packages you need.
 
 ![](/resources/docs/proget-npm-public.png){height="" width="50%"}
 
@@ -37,13 +37,11 @@ For your team to install packages from the `public-npm` feed, you'll need to add
 
 Now configure your npm client with your `public-npm` feed with `npm config`: 
 
-### Using npm
-
 ```bash
 $ npm config set registry http://«proget-url»/npm/«feed-name»
 ```
 
-Or in Yarn with `yarn config`:
+Or using yarn with `yarn config`:
 
 ```bash
 $ yarn config set registry http://«proget-url»/npm/«feed-name»
