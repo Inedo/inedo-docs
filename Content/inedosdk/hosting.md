@@ -20,22 +20,22 @@ There are a few benefits to hosting your own extension gallery:
 
 To create a private extensions feed in ProGet, select *Feeds* > *Create New Feed*, enter whatever feed name you would like, we used **CustomExtensions**, and click *Create:*
 
-![creating-custom-feed.png](/resources/docs/creating-custom-feed.png){height="" width=""}
+![Name Feed](/resources/docs/inedosdk-feeds-namefeed.png){height="" width="50%"}
 
 ## Adding a Connector to the Extensions Feed
 
 Once the feed is created, we will add a connector. From the Manage Feed page, select *Feed Connectors* > *Add Connector* >  *Create Connector* to establish a connection to the Extensions Feed:
 
-![den-connector.png](/resources/docs/den-connector.png){height="" width=""}
+![Create Connector](/resources/docs/inedosdk-connectors-configure.png){height="" width="50%"}
 
 Click *Save* on the following screen to associate the newly created connector to inedo.com with the **CustomExtensions** feed.
 
 At this point, we can see the extension packages on the feed page:
 
-![extension-feed.png](/resources/docs/extension-feed.png){height="" width=""}
+![Extension Feed](/resources/docs/inedosdk-feeds-extensionfeed.png){height="" width="50%"}
 
 ## Configuring an Inedo Product to use the Private Feed 
 
 To point to the custom extension feed, we must set the **Extensions.UpdateFeedUrl** advanced configuration value to the endpoint URL of the feed:
 
-![endpoint-url.png](/resources/docs/endpoint-url.png){height="" width=""}
+![Endpoint URL](/resources/docs/inedosdk-feeds-url.png){height="" width="50%"}
