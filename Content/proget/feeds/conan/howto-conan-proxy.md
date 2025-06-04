@@ -13,19 +13,19 @@ This page will explain how to set up a Conan feed in ProGet to proxy packages. I
 
 First, you will need to create a Conan feed that will proxy Conan packages from [Conan Center](https://center.conan.io). Select "Feeds" and "Create New Feed". Next, select "Conan Packages" under "Developer Libraries".
 
-![](/resources/docs/proget-conan-selectconan.png){height="" width="50%"}
+![Create New Feed](/resources/docs/proget-feeds-conanselect.png){height="" width="50%"}
 
 Now select "Connect to conan.io" which will allow us to proxy packages from Conan Center.
 
-![](/resources/docs/proget-conan-createconnector.png){height="" width="50%"}
+![Configure Connector](/resources/docs/proget-conan-createconnector.png){height="" width="50%"}
 
 Then select "No, Create One Feed", as we will be creating a single feed to proxy Conan packages. From here, name the feed (in this example, we've called it `public-conan`). Then click "Create Feed".
 
-![](/resources/docs/proget-conan-namepublic.png){height="" width="50%"}
+![Name Feed](/resources/docs/proget-conan-namepublic.png){height="" width="50%"}
 
 You'll then be given options to configure ProGet's [Vulnerability Scanning and Blocking](/docs/proget/sca/vulnerabilities) and [Licensing Detection and Blocking](https://docs.inedo.com/docs/proget/sca/licenses) features, letting you assess vulnerabilities and create policies for licenses. Select "Set Feed Features", which will create the feed, and redirect you to the newly created `public-conan` feed.
 
-![](/resources/docs/proget-conan-emptypublic.png){height="" width="50%"}
+![Public Conan Feed](/resources/docs/proget-conan-emptypublic.png){height="" width="50%"}
 
 :::(Info)(Conan Feeds & Connectors)
 ProGet feeds configured with a connector will normally list packages proxied from an external source. However, Conan connectors do not support listing proxied recipes. Once you configure your Conan client to proxy all requests through this ProGet feed, you will start seeing cached recipes and packages.
@@ -69,7 +69,7 @@ $ conan install --requires=mypackage/1.2.3 -r=public-conan
 
 Once you have installed a package by proxying through your public-conan feed, it will be cached in ProGet, and can be viewed in the feed
 
-![](/resources/docs/proget-conan-publicpackage.png){height="" width="50%"}
+![Uploaded Package](/resources/docs/proget-conan-publicpackage.png){height="" width="50%"}
 
 ## (Optional) Authenticating to Your Conan Feed
 
