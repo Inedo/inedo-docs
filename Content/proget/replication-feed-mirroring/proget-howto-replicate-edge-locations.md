@@ -10,7 +10,7 @@ Organizations with edge computing architectures need to constantly transfer cont
 
 This guide explains how to use the replication feature to create a default "hub and spoke" configuration in ProGet to easily distribute content to other servers.
 
-![progetenterprise-hubspoke-diagram.png](/resources/docs/progetenterprise-hubspoke-diagram%283%29.png)
+![Hub and Spoke](/resources/docs/proget-enterprise-hubspoke.png){height="" width="50%"}
 
 ## Feed Replication
 
@@ -40,7 +40,7 @@ In ProGet of your Hub server, navigate to the Replication page via the top ribbo
 
 Once there, click [Configure New Replication].
 
-![proget_replicationoverview.png](/resources/docs/proget_replicationoverview%281%29.png)
+![Replication Overview](/resources/docs/proget_replication-overview.png){height="" width="50%"}
 
 A pop-up will appear with “Configuration Replication" options. 
 
@@ -48,7 +48,7 @@ A pop-up will appear with “Configuration Replication" options.
 
 In the pop-up, select the Feed you want to replicate from the drop-down selection, then click [Communication Mode].
 
-![proget_replicationconfig_feeds.png](/resources/docs/proget_replicationconfig_feeds%281%29.png)
+![Add Feed](/resources/docs/proget-replication-addpublicfeed.png){height="" width="50%"}
 
 On the Communication Mode tab, select the communication type "Incoming (other ProGet instance may connect to this instance)"
 
@@ -56,7 +56,7 @@ On the Communication Mode tab, select the communication type "Incoming (other Pr
 
 Set the "Authentication Mode" to "Requires a specific sync token".
 
-![proget_replicationconfig_communication.png](/resources/docs/proget_replicationconfig_communication%281%29.png)
+![Configure Replication](/resources/docs/proget-replication-configurepublicfeed.png){height="" width="50%"}
 
 :::(Info)
 The Hub server should be set to Incoming Replication, as it's easier to configure our Spoke servers.
@@ -70,7 +70,7 @@ Once the Communication and Authentication options are selected, the “Sync toke
 
 Click [generate] and copy this token for Step 8. 
 
-![proget_replicationconfig_communication_synctoken.png](/resources/docs/proget_replicationconfig_communication_synctoken%281%29.png)
+![Generate Token](/resources/docs/proget-replication-generatetoken.png){height="" width="50%"}
 
 
 Click [Replication Mode] to continue. 
@@ -83,7 +83,7 @@ In this tutorial, the hub server should be read-only so that it does not poll th
 
 Set the mode to "Push Content to Other Instance".
 
-![proget_replicationconfig_replication.png](/resources/docs/proget_replicationconfig_replication%281%29.png)
+![Replication Mode](/resources/docs/proget-replication-productionfeedmode.png){height="" width="50%"}
 
 Click [Summary].
 
@@ -105,7 +105,7 @@ Once there, click [Configure New Replication].
 ## Step 8: Configure the Spoke server for Outgoing Replication
 
 In the pop-up window, select the feed you want to replicate from the Hub server.
-![proget_replicationconfig_spokefeeds.png](/resources/docs/proget_replicationconfig_spokefeeds%281%29.png)
+![Add Feed](/resources/docs/proget-replication-addspokefeed.png){height="" width="50%"}
 
 Continue by clicking [Communication Mode].
 
@@ -113,7 +113,7 @@ On the next page, select "Outgoing (routine connection to another ProGet instanc
 
 The page will populate with more options. 
 
-![proget_replicationconfig_spokecommunication.png](/resources/docs/proget_replicationconfig_spokecommunication%281%29.png)
+![Configure Replication](/resources/docs/proget-replication-configurespokefeed.png){height="" width="50%"}
 
 Once the Outgoing optionis selected, paste the base URL of the hub server and the sync token generated in step 4.
 
@@ -133,7 +133,7 @@ In this tutorial, we want the Spoke server to query the Hub feed for changes and
 
 Set the mode to "Pull Content from Other Instance"
 
-![proget_replicationconfig_spokereplication.png](/resources/docs/proget_replicationconfig_spokereplication%281%29.png)
+![Replication Mode](/resources/docs/proget-replication-recoveryfeedmode.png){height="" width="50%"}
 
 Click [Summary].
 
@@ -149,7 +149,7 @@ On the Spoke server, switch to the Replication tab.
 
 Click [run] at the top right of the Replication Summary page.
 
-![proget_replicationconfig_spokeconfirm.png](/resources/docs/proget_replicationconfig_spokeconfirm%281%29.png)
+![Overview](/resources/docs/proget-replication-overview-configuration.png){height="" width="50%"}
 
 This manually runs a replication. 
 
@@ -173,7 +173,7 @@ A multi-hub configuration has two Source feeds (e.g., a USA and a ASIA Source fe
 
 A Secondary Source feed would need to be configured for both Incoming ** and** Outgoing Replication, such that it can, for example, both replicate the Main Source Feed (Outgoing) and allow Target Feeds to replicate it (Incoming).
 
-![progetenterprise-multihub-diagram.png](/resources/docs/progetenterprise-multihub-diagram%283%29.png)
+![Multi-Hub](/resources/docs/proget-enterprise-multihub.png){height="" width="50%"}
 
 There are many possible configurations using the Feed Replciation feature in ProGet, like complete mirroring of a single feed across multiple ProGet instances. Check out our [Feed Replication documentation](/docs/proget/replication-feed-mirroring/proget-advanced-feed-replication#architecture-examples) to learn about other possible configuration set-ups. It's also possible to [set up a feed exclusively for disaster recovery](/docs/proget/replication-feed-mirroring/proget-howto-utilize-feed-replication-for-disaster-recovery) purposes. 
 
@@ -184,6 +184,6 @@ Despite following the steps above, it is possible that the Spoke server does not
 
 You will need to navigate to the settings to confirm this: Feed Replication Failed error is displayed in the diagnostic center.
 
-![proget-feedreplicationerror-feedreplicationfailed.png](/resources/docs/proget-feedreplicationerror-feedreplicationfailed.png)
+![Replication Error](/resources/docs/proget-replication-error.png){height="" width="50%"}
 
 It's possible that there was an error entering the Sync token or the source URL. Make sure that both were copied correctly from the Hub server to the Spoke by repeating steps 4 - 8.

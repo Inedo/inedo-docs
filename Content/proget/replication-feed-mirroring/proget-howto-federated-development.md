@@ -12,7 +12,7 @@ In this article, we will describe three different scenarios for federated develo
 
 In this scenario Kramerica's [package approval workflow](/docs/proget/packages/package-promotion/proget-howto-promote-packages) takes place at its headquarters in New York. London and Tokyo need to have the packages on-site so that they can be used by the development team, but Kramerica only wants them to use the approved packages published by New York. 
 
-![Central Publishing Diagram](/resources/docs/federateddevelopment-centralpushdiagram%282%29.png)
+![Central Publishing](/resources/docs/proget-enterprise-centralpush.png){height="" width="50%"}
 
 Since the London and Tokyo sites are to initiate communication with New York for their packages, the New York feed is set up as the "incoming" replication feed and the branch sites as the "outgoing" feed.
 
@@ -28,7 +28,7 @@ In this scenario, Kramerica teams work on similar projects and develop their own
 
 In this example, developers in London and Tokyo are both working on Kramerica libraries, but want to use their own ProGet instance for bandwidth and security reasons. To achieve this, the feeds are configured to allow both sites to publish packages, which are then automatically replicated to/from the other site.
 
-![Coequal Development Diagram](/resources/docs/federateddevelopment-coequaldiagram%282%29.png)
+![Coequal Development](/resources/docs/proget-enterprise-coequal.png){height="" width="50%"}
 
 Also, if we want Tokyo and London to mirror each other, one must be configured as the "incoming" replication feed and the other as the "outgoing". In this scenario, either feed can be configured as an incoming feed, but we will use Tokyo.
 
@@ -41,7 +41,7 @@ Also, if we want Tokyo and London to mirror each other, one must be configured a
 
 In this scenario, one of Kramerica's sites (Los Angeles) develops packages that all other sites must access. Instead of connecting all sites to Los Angeles, the New York branch can distribute packages from Los Angeles to other sites in Tokyo, London, and Berlin. In this way, all sites remain aligned to one central source.
 
-![Global Package Distribution Diagram](/resources/docs/federateddevelopment-collaborativediagram%284%29.png)
+![Global Distribution](/resources/docs/proget-enterprise-globaldistribution.png){height="" width="50%"}
 
 This scenario is unique in that the New York location must be set up as both an incoming and outgoing feed. It goes to Los Angeles to replicate packets from there, and goes to the branch offices so they can replicate from New York. This means that you need to configure two separate replications in the New York feed. One replication is set up as incoming ( pushing to the branch offices) and the other is set up as outgoing ( pulling from the Los Angeles feed).
 
@@ -75,12 +75,12 @@ First, your incoming replication feed must be set up in ProGet. In most cases, t
 
 Navigate to Replication> Configure New Replication.
 
-![Configuration Replication](/resources/docs/replication-configurationrelication.png)
+![Add Feed](/resources/docs/proget-replication-addnewyorkfeed.png){height="" width="50%"}
 
 
 Choose the feeds you wish to setup for incoming replication. 
 
-![Feed Communication Mode](/resources/docs/replication-communicationmode%281%29.png)
+![Configure Replication](/resources/docs/proget-replication-configurenewyorkfeed.png){height="" width="50%"}
 
 **Communication type**:
 Select Incoming to allow other ProGet instances to connect to this instance.
@@ -93,7 +93,7 @@ Click the "Generate" button to generate a sync token and copy it, as you will ne
 * **API key**
 Navigate to Settings > Integration & Extensibility > API Key > and create an API key for the feed layer. Copy it as you will need to paste it into the outgoing feeds you want to connect.
 
-![Replication Mode Options](/resources/docs/replication-replicationmode.png)
+![Replication Mode](/resources/docs/proget-replication-recoveryfeedmode.png){height="" width="50%"}
 
 **Replication Mode Options**:
 **Mirror content**: Push and pull packets so that the feed is synchronized. The other instance should be configured to mirror content.
@@ -103,14 +103,14 @@ Navigate to Settings > Integration & Extensibility > API Key > and create an API
 
 Select the desired replication mode and proceed to the summary.
 
-![Incoming Feed Summary](/resources/docs/replication-summary%281%29.png)
+![Replication Summary](/resources/docs/proget-replication-newyorkfeedsummary.png){height="" width="50%"}
 
 ## Step 2: Setup Outgoing Replication Feed
 Once you have set up an incoming feed, you need to configure the outgoing feed that will be associated with your incoming feed. The outgoing feeds are usually the sites that do not publish their own packages but replicate from an approved package promoting feed.
 
 Navigate to Replication > Configure New Replication. Under Feeds, select the feeds you want to set up for outgoing replication feed and proceed to the Communication Mode tab.
 
-![Outgoing Feed Communication Mode](/resources/docs/replication-outgoingconfiguration.png)
+![Configure Replication](/resources/docs/proget-replication-configuretokyofeed.png){height="" width="50%"}
 
 **Communication type**:
 Select Outgoing to allow ProGet to routinely connect to another instance.
@@ -123,18 +123,18 @@ Paste here the sync token or API key you generated in step 1.
 
 **Other Feed Names**: Leave the box checked if your feed names are the same on both instances. Otherwise, uncheck the box and enter the name of the incoming feed you are connecting to next to Name for "Feed Name".
 
-![Replication Mode Options](/resources/docs/replication-replicationmodeoutgoing.png)
+![Replication Mode](/resources/docs/proget-replication-recoveryfeedmode.png){height="" width="50%"}
 
 Select the desired replication mode and proceed to the summary (see Step 1 for a detailed summary of options).
 
-![Outgoing Feed Summary](/resources/docs/replication-summaryoutgoing.png)
+![Outgoing Feed Summary](/resources/docs/proget-replication-tokyofeedsummary.png){height="" width="50%"}
 
 ## Step 3: Replicate Packages 
 After your incoming and outgoing feeds are connected, packets are automatically replicated at regular intervals. However, you can also manually replicate packages immediately.
 
 Navigate to Replication > Replication Overview in your outgoing feed and select Run.
 
-![Run Replication](/resources/docs/federated-runreplication.png)
+![Run Replication](/resources/docs/proget-replication-run-newyorktotokyo.png){height="" width="50%"}
 
 After execution, the packages from the incoming feed are replicated to the outgoing feeds based on the configuration you set up.
 
