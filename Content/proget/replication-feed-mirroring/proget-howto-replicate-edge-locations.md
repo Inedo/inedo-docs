@@ -40,7 +40,7 @@ In ProGet of your Hub server, navigate to the Replication page via the top ribbo
 
 Once there, click [Configure New Replication].
 
-![Replication Overview](/resources/docs/proget_replication-overview.png){height="" width="50%"}
+![Replication Overview](/resources/docs/proget-replication-overview.png){height="" width="50%"}
 
 A pop-up will appear with “Configuration Replication" options. 
 
