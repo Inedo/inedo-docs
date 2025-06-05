@@ -15,7 +15,7 @@ Start by creating a Chocolatey feed to host your internal packages. Navigate to 
 
 ![](/resources/docs/proget-chocolatey-newfeed.png){height="" width="50%"}
 
-Now select "No Connectors (Private packages only)" as this feed will be intended to host private packages. From here, name the feed. For this example, we will call it `internal-Chocolatey`, and then click "Create Feed".
+Now select "No Connectors (private packages only)" as this feed will be intended to host private packages. From here, name the feed. For this example, we will call it `internal-chocolatey`, and then click "Create Feed".
 
 ![](/resources/docs/proget-chocolatey-newfeed-internal.png){height="" width="50%"}
 
@@ -47,7 +47,7 @@ To add your `internal-chocolatey` feed as a source in your client, use the `choc
 $ choco source add -n="internal-chocolatey" -s="http://proget.corp.local/feeds/internal-chocolatey" --priority=1 
 ```
 
-To make sure that your client only installs Chocolatey Packages from ProGet, we recommend removing any default sources already configured using the `choco source remove` command:
+To make sure that your client only installs Chocolatey packages from ProGet, we recommend removing any default sources already configured using the `choco source remove` command:
 
 ```bash
 $ choco source remove -n="chocolatey"
@@ -62,7 +62,7 @@ $ choco source list
 
 We will now create an [API Key](/docs/proget/api/apikeys) allowing our local client to authenticate to our `internal-chocolatey` feed. This allows us to push packages to the feed.
 
-When creating an API Key, fill in the fields by selecting "Feeds (Use Certain Feeds)" as the "Feed Type" and selecting the `internal-chocolatey` feed. Then set the API key. You can use any alphanumeric sequence, or just leave it blank to autogenerate one. Ensure that the "View/Download" and "Add/Repackage" boxes are checked, and then select "Save".
+When creating an API Key, fill in the fields by selecting "Feed (use certain feeds)" as the "Key type" and selecting the `internal-chocolatey` feed. Then set the API key. You can use any alphanumeric sequence, or just leave it blank to autogenerate one. Ensure that the "View/Download" and "Add/Repackage" boxes are checked, and then select "Create API Key".
 
 ![](/resources/docs/proget-chocolatey-apikey-internal.png){height="" width="50%"}
 
@@ -80,13 +80,13 @@ For example, if pushing the Chocolatey package MyApplication-1.2.3.nupkg stored 
 $ choco push C:\chocolatey_packages\MyApplication-1.2.3.nupkg --source=internal-chocolatey --api-key=abc12345
 ```
 
-This will upload it to your `internal-chocolatey` feed:
+This will upload it to your `internal-chocolatey` feed.
 
 ![](/resources/docs/proget-chocolatey-internal-uploaded.png){height="" width="50%"}
 
 ## (Optional) Internalizing Chocolatey Packages
 
-If you want to minimizing reliance on external sources for software installed using Chocolatey Packages, you can [internalize your packages](https://blog.inedo.com/chocolatey/internalization). 
+If you want to minimize reliance on external sources for software installed using Chocolatey packages, you can [internalize your packages](https://blog.inedo.com/chocolatey/internalization). 
 
-Chocolatey’s [package internalizer](https://docs.chocolatey.org/en-us/features/package-internalizer) can internalize packages automatically or you can do it yourself. To learn more on how to do this you can read [HOWTO: Set Up a Private Chocolatey Repository for Internalized Packages](/docs/proget/feeds/chocolatey/howto-chocolatey-internalized)
+Chocolatey’s [package internalizer](https://docs.chocolatey.org/en-us/features/package-internalizer) can internalize packages automatically or you can do it yourself. To learn more on how to do this you can read [HOWTO: Set Up a Private Chocolatey Repository for Internalized Packages](/docs/proget/feeds/chocolatey/howto-chocolatey-internalized).
 
