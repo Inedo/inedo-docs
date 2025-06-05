@@ -29,7 +29,7 @@ Internally, asset directories are represented as feeds, which means:
 Note: [Connectors](/docs/proget/feeds/connector-overview) are not currently supported for asset directories, but may be added in a future release. Please [contact us](https://inedo.com/contact) if you are interested in these additions.
 :::
 
-To create an asset directory, go to Assets > Create Asset Directory.
+To create an asset directory, go to Assets > Create New Asset Directory.
 
 ## Files in an Asset Directory
 
@@ -41,13 +41,13 @@ Files can be added to an asset directory in a number of ways. You can:
 
 #### Add/Upload Files
 
-These options can be found by clicking on the _Add/Upload Files_ button in the upper right corner.
+These options can be found by clicking on the _Add/Upload Files_ button in the upper right corner:
 
-- Upload files; upload a single file or multiple files through your browser.
+- Upload files: Upload a single file or multiple files through your browser.
 - Upload via API: Use the asset directory API to upload one or more files to the asset directory.
 - Import from a zip file: Upload a .zip or .tgz file using your browser and expand its contents into the asset directory.
-- Import from Amazon AWS; download files stored in the cloud to this asset directory (**Requires ProGet v6.0+ and the Amazon AWS Extension**).
-- Import from Azure; Download files stored in the cloud to this asset directory (**Requires ProGet v6.0+ and the Azure Extension**).
+- Import from Amazon AWS: Download files stored in the cloud to this asset directory (**Requires ProGet v6.0+ and the Amazon AWS Extension**).
+- Import from Azure: Download files stored in the cloud to this asset directory (**Requires ProGet v6.0+ and the Azure Extension**).
 
 :::(Info) 
 Read how to use ProGet as a User-Interface for [Amazon S3](/docs/proget/advanced-features/proget-howto-amazon-s3-ui) and [Azure Blog Storage](/docs/proget/advanced-features/proget-howto-azure-blob-ui) in our step-by-step guides.
@@ -77,9 +77,9 @@ You can delete a file in the asset directory by clicking the "X" on the file lis
 When you upload a file to an asset directory, ProGet attempts to determine the file's [media type](https://en.wikipedia.org/wiki/Media_type). The media type is sent as a content-type response header when the file is downloaded, which may be used by the downloading application or script.  For example, if the content-type is `application/msword`, then a web browser may open Microsoft Word to display the file. 
 
 You can change the file's media type by:
-1. Navigate to the file in the web UI
-1. Click _set_ to the right of _Type_
-1. Enter the [content type](https://en.wikipedia.org/wiki/Media_type) you would like to return
+1. Navigating to the file in the web UI
+1. Clicking _set_ to the right of _Type_
+1. Entering the [content type](https://en.wikipedia.org/wiki/Media_type) you would like to return
 
 You can also set the content-type by using the [Asset Directory API](/docs/proget/api/assets).
 
@@ -91,7 +91,7 @@ You can view or edit sub-folder properties by clicking the pencil to the right o
 
 ### Adding Sub-folders
 
-You can add a sub-folder by navigating to that asset directory or a sub-folder, and then clicking Create Sub-folder" in the multiple button in the upper-right corner, or by using the Asset Directory API.
+You can add a sub-folder by navigating to that asset directory or a sub-folder, and then clicking "Create Subfolder" in the multiple button in the upper-right corner, or by using the Asset Directory API.
 
 ### Deleting Sub-folders
 
@@ -129,7 +129,7 @@ Metadata can also be managed using the [Asset Directory Metadata API](/docs/prog
 ProGet can instruct a user's browser or client tool to cache asset files in their local storage, reducing the number of requests to your ProGet server. Custom client-side caching can be set at the file or sub-folder level, which then returns the correct cache headers with the HTTP download request. When a cache value is set for a sub-folder, all files and sub-folders contained in that folder inherit that cache setting by default. You can override this setting for any child file or sub-folder. For example, you can set a folder to cache files for 30 minutes, but override a specific file in that folder so that it is not cached at all, while the remaining files use the inherited 30-minute cache setting.
 
 To configure caching:
-1. Navigate to a sub-folder's properties or to a file in the Web UI.
+1. Navigate to a sub-folder's properties or to a file in the Web UI
 2. Click _set_ to the right of _Cache Header_
 3. Select and configure the cache type:
     1. (inherited); inherit the cache header from its parent sub-folder

@@ -31,14 +31,14 @@ Of course, these feeds could be replicated—but that would mean that every time
 
 Duplicating the environment would mean Kramerica would have to pay for a bigger, faster,  [load-balanced](/docs/installation/high-availability-load-balancing/high-availability-load-balancing) server. Something that isn't in their budget. Instead, Kramerica only plans to replicate a feed to their ProGet disaster recovery instance: kramerica-internal-nuget.
 
-![Kramerica's business-critical packages found in their main server feed](/resources/docs/progetreplication-dr-kramericainternalnuget-listbusinesscriticalpackages.png)
+![Internal Feed](/resources/docs/proget-replication-internalfeed.png){height="" width="50%"}
 
 ## Step 2: Create Disaster Recover Feed
 First, connect to your ProGet instance on a disaster recovery server, ideally located elsewhere.
 
 In our example, we create a NuGet feed and name it `kramerica-internal-nuget` just like the production server. That way, when it comes time to use the disaster recovery feed, we can simply change the DNS to point to the disaster recovery server.
 
-![Create a Disaster Recovery Feed in ProGet](/resources/docs/progetreplication-createdrfeed.png)
+![Create Disaster Recovery Feed](/resources/docs/proget-replication-namerecoveryfeed.png){height="" width="50%"}
 
 Note that we created a "private/internal" feed because we don't want this feed to connect to a public repository like [NuGet.org](https://www.nuget.org/){target="_blank"}. 
 
@@ -50,22 +50,22 @@ Here teams can set up retention rules that fit their current disaster recovery p
 
 In this example, we'll create rules that instruct ProGet to delete pre-release versions, any versions older than the last 10, and any unused versions that haven't been requested in the last 30 days.
 
-![Create Feed Retention Rules in  Your Disaster Recovery Feed](/resources/docs/progetreplication-createdrfeedretentionrules.png)
+![Configure Retention Rules](/resources/docs/proget-replication-retentionrules.png){height="" width="50%"}
 
 ## Step 3: Configure Production Feed for Replication
 Now that our disaster recovery feed is set up, we can configure our production feed for replication.
 
 To do this, access your production server, click on "Replication" > "Configure New Replication" and select the feed you want to replicate.
 
-![Configure Feed Replication Feed](/resources/docs/proget-disasterrecovery-configurereplication.png)
+![Add Production Feed](/resources/docs/proget-replication-addproductionfeed.png){height="" width="50%"}
 
 We want our production feed to be replicated and want to make sure it's not inadvertently altered by other feeds. To do this, we select "Incoming" and create a special sync token that is shared only with the disaster recovery feed.
 
-![Configure Feed Replication on Production Server](/resources/docs/proget-disasterrecovery-configurereplication-synctoken.png)
+![Configure Replication](/resources/docs/proget-replication-configureproductionfeed.png){height="" width="50%"}
 
 Feed replication can be used for many use cases like [Edge Computing](/docs/proget/replication-feed-mirroring/proget-howto-replicate-edge-locations) or [Federated Architecture](/docs/proget/replication-feed-mirroring/proget-howto-federated-development). However, to properly configure a feed for Disaster Recovery, we will set the Replication mode to "Push Content to Other Instances." 
 
-![Configure Feed Replication on Production Server: Push](/resources/docs/proget-disasterrecovery-configurereplication-mode.png)
+![Replication Mode](/resources/docs/proget-replication-productionfeedmode.png){height="" width="50%"}
 
 To complete the configuration, confirm your configuration settings and click on "Add New Replication" Finally, click on the ProGet logo to navigate to your home page and copy your URL. We will use this URL in the next step to establish communication with our disaster recovery feed.
 
@@ -76,15 +76,15 @@ The disaster recovery feed must now be configured to replicate the production se
 
 To do this, access your disaster recovery server, click Replication > Configure New Replication, and select the feed that will replicate the production feed. 
 
-![Configure Feed Replication on Disaster Recovery Server](/resources/docs/proget-disasterrecovery-configurereplication-dr.png)
+![Add Recovery Feed](/resources/docs/proget-replication-addproductionfeed.png){height="" width="50%"}
 
 Next, we configure this feed for outbound communication and enter the URL from our production server and the sync token generated in the previous step. Since our two feeds are named `kramerica-internal-nuget`, we check the Other feed names checkbox.
 
-![Configure Disaster Recovery Communication](/resources/docs/proget-disasterrecovery-communicationtype-dr2.png)
+![Configure Replication](/resources/docs/proget-replication-configure-recoveryfeed.png){height="" width="50%"}
 
 To ensure that packages are properly replicated from our production feed to the disaster recovery feed, we select "Pull content from other instances"
 
-![Configure Disaster Recovery Replication Type](/resources/docs/proget-disasterrecovery-replicationmode-dr.png)
+![Replication Mode](/resources/docs/proget-replication-recoveryfeedmode.png){height="" width="50%"}
 
 After reviewing the configurations, click "Add New Replication" and your disaster recovery feed is fully configured.
 
@@ -94,7 +94,7 @@ After configuring your disaster recovery feed, you'll be redirected to the Repli
 
 By default, replication runs every 60 seconds. We could simply wait for replication to run automatically. However, in this example, Kramerica wants replication to run immediately to verify success. For this purpose we click on "Run" button
 
-![Disaster Recovery Replication Overview Run Replication](/resources/docs/proget-disasterrecovery-configurereplication-outgoing-run2.png)
+![Run Replication](/resources/docs/proget-replication-run.png){height="" width="50%"}
 
 Click "Run all replications now" to start replication immediately.
 
@@ -106,18 +106,13 @@ After you perform replication, you should also test whether the retention rules 
 To do this, go to "Admin" > "Additional Logs & Events"
  "Scheduled Jobs" and press the green "Play" button next to the feed you want to play.
 
-![Run Feed Cleanup Now](/resources/docs/progetreplication-feedcleanup-runnow.png)
+![Run Feed Cleanup](/resources/docs/proget-replication-feedcleanup.png){height="" width="50%"}
 
 ## Verify Successful Replication
-There are many ways to check if the replication in ProGet was successful.
 
-To get a quick overview of your replication history, connect to your disaster recovery feed > "Replication" Overview" > "Replication" > "History"
+For detailed history, including the names of replicated packages, click on "View last run". Here you can view the full run details, including the names of the packages.
 
-![ProGet Disaster Recovery Replication History](/resources/docs/progetreplication-drreplication-history.png)
-
-For a more detailed history, including the names of replicated packages, click on "View last run". Here you can view the full run details, including the names of the packages.
-
-![Disaster Recovery Feed Replication Execution Details](/resources/docs/progetreplication-drexecutiondetails.png)
+![Execution Details](/resources/docs/proget-replication-executiondetails.png){height="" width="50%"}
 
 ## Step 7: Test Disaster Recovery Plan
 Of course, this varies from team to team. But in general, you should test your disaster recovery plan by migrating an existing ProGet installation to a new server and deploying from there.
