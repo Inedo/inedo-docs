@@ -57,3 +57,5 @@ docker run -d --name=otter --restart=unless-stopped \
   proget.inedo.com/productimages/inedo/otter:latest
 ```
 
+## Cannot connect to services that use a self-signed or an internal certificate authority
+By default, all SSL based services that ProGet connects to requires a valid certificate.  On Windows, this is pretty simple to solve by just trusting the certificate in the Windows Certificate Manager.  On Linux/Docker, you need to mount the `/usr/local/share/ca-certificates` volume (ex: `-v self-signed-ca:/usr/local/share/ca-certificates`) and then place all your self-signed certificates or internal CA certificates and then restart your container.  Upon start of the container, ProGet will execute `update-ca-certificates` before starting ProGet which will include those certificates as a Trusted Authority.
