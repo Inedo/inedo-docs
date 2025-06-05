@@ -80,7 +80,7 @@ To do this, access your disaster recovery server, click Replication > Configure 
 
 Next, we configure this feed for outbound communication and enter the URL from our production server and the sync token generated in the previous step. Since our two feeds are named `kramerica-internal-nuget`, we check the Other feed names checkbox.
 
-![Configure Replication](/resources/docs/proget-replication-configure-recoveryfeed.png){height="" width="50%"}
+![Configure Replication](/resources/docs/proget-replication-configurerecoveryfeed.png){height="" width="50%"}
 
 To ensure that packages are properly replicated from our production feed to the disaster recovery feed, we select "Pull content from other instances"
 
