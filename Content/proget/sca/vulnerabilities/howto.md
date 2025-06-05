@@ -16,15 +16,15 @@ This step is enabled by default. Unless this feature is disabled on your instanc
 
 To configure vulnerability blocking on a feed, first navigate to the feed and click the "Manage Feed" button.
 
-![Manage Feed](/resources/docs/proget-managefeed.png){height="" width="50%"}
+![Manage Feed](/resources/docs/proget-feeds-managefeed.png){height="" width="50%"}
 
 Then click "change" in the Feed Features section under "Other Settings".
 
-![Change Feed Features](/resources/docs/proget-managefeed-changefeatures.png){height="" width="50%"}
+![Feed Features](/resources/docs/proget-feeds-managefeed-changefeatures.png){height="" width="50%"}
 
 Enable "Display vulnerability information and enforce download blocking rules" and click "Save".
 
-![Change Feed Features](/resources/docs/proget-configurefeedfeatures.png){height="" width="50%"}
+![Configure Features](/resources/docs/proget-feeds-managefeed-configurefeatures.png){height="" width="50%"}
 
 :::(warning) (⚠ Container Feeds)
 For container feeds such as Docker, you also need to make sure "Layer Scanning" is enabled. This is found under the container settings (e.g. "Docker Settings) when navigating to "Manage Feed" following the instructions above. As with the other settings in this step, this is enabled by default.
@@ -34,11 +34,11 @@ For container feeds such as Docker, you also need to make sure "Layer Scanning" 
 
 Now, you can navigate to your package of interest and click on the "Vulnerabilities" tab.
 
-![Package Vulnerabilities](/resources/docs/proget-nuget-vulnerability.png){height="" width="50%"}
+![Vulnerabilities](/resources/docs/proget-vulnerabilities-newtonsoft.png){height="" width="50%"}
 
 From here you can click on the vulnerabilities found in your package to get more details and a description of the vulnerability, as well as a link to it's page on [Inedo Security Labs](https://security.inedo.com)
 
-![proget-package-vulnerability-details](/resources/docs/proget-package-vulnerability-details.png){height="" width="50%"}
+![Vulnerability Details](/resources/docs/proget-vulnerabilities-details.png){height="" width="50%"}
 
 When a package, such as [Newtonsoft.Json 12.0.3](https://www.nuget.org/packages/newtonsoft.json/12.0.3), has a vulnerability, you’ll see this message on the overview page:
 
@@ -48,7 +48,7 @@ When a package, such as [Newtonsoft.Json 12.0.3](https://www.nuget.org/packages/
 
 Vulnerabilities can be viewed by navigating to a package in your feed and selecting "Vulnerabilities", such as this vulnerability on the [Newtonsoft.Json 12.0.3](https://www.nuget.org/packages/newtonsoft.json/12.0.3) package: *Improper Handling of Exceptional Conditions in Newtonsoft.Json*.
 
-![proget-vulnerabilities-assessbutton](/resources/docs/proget-package-vulnerabilities-2024.png){height="" width="50%"}
+![Assessment Button](/resources/docs/proget-vulnerabilities-assessbutton.png){height="" width="50%"}
 
 To assess a vulnerability, either navigate to the package's vulnerability tab or to "Reporting & SCA" > "Vulnerabilities", find the vulnerability you would like to assess, and click the assessment.
 
@@ -58,17 +58,17 @@ ProGet comes with three built-in assessment types:
 * **Caution** tells developers to be careful to avoid the vulnerability; packages can be downloaded, but a warning is issued on the web UI
 * **Blocked** means that a vulnerability is too severe to allow use and packages cannot be downloaded
 
-![Assess Package Vulnerability](/resources/docs/proget-vulnerability-assessvulnerability-2024.png){height="" width="50%"}
+![Assess Vulnerability](/resources/docs/proget-vulnerabilties-configureassessment.png){height="" width="50%"}
 
 Select the assessment type, enter a comment, and click the "Save" button.
 
 You can also set an expiry date by navigating to the advanced tab and entering a date in the "Expires" field using the format "mm/dd/yyyy".
 
-![Vulnerability Advanced](/resources/docs/proget-vulnerability-advanced.png){height="" width="50%"}
+![Vulnerability Advanced](/resources/docs/proget-vulnerabilities-advanced.png){height="" width="50%"}
 
 When choosing "Blocked", attempts to download the package from the API will now result in a "404" error, and a successfully blocked package will be shown on your feed "Overview" as shown below:
 
-![Package Blocked](/resources/docs/proget-vulnerabilities-package-blocked.png){height="" width="50%"}
+![Package Blocked](/resources/docs/proget-vulnerabilities-blocked.png){height="" width="50%"}
 
 ## Step 4: (Optional) Edit Package Policy Rules
 
@@ -80,15 +80,15 @@ Navigate to "Administration Overview" and select "Policies (ProGet 2024 Preview 
 
 Then select "edit" on the right of "Global" policies.
 
-![Edit Policies](/resources/docs/proget-policies-global-edit.png){height="" width="50%"}
+![Edit Policies](/resources/docs/proget-policies-edit.png){height="" width="50%"}
 
 Under the "Vulnerability Rules" category, select "edit". Now select the "General" tab and under "unassessed vulnerabilities" select "Non-Compliant". Then select "Save".
 
-![Unassessed Rule](/resources/docs/proget-policies-unassessed-edit.png){height="" width="50%"}
+![Unassessed Rule](/resources/docs/proget-policies-noncompliant.png){height="" width="50%"}
 
 Now the compliance rules have been configured, any packages that are assessed to have unassessed vulnerabilities will be categorized as "Blocked" and will not be downloaded, with any attempt to download the package from the API resulting in a "404" error.
 
-![Package Blocked](/resources/docs/proget-vulnerabilities-package-blocked.png){height="" width="50%"}
+![Package Blocked](/resources/docs/proget-vulnerabilities-blocked.png){height="" width="50%"}
 
 ## Step 5: (Optional) Add Custom Assessment Types
 
@@ -96,15 +96,15 @@ We recommend using auto assessment in combination with a [package approval workf
 
 You can edit or create your own assessment type and set up auto-assessment by navigating to "Administration Overview" > "Assessment Types" under "Vulnerability Management".
 
-![ProGet Assessment Type Setting](/resources/docs/nugetvulnerability-assessmenttypessetting.jpg){height="" width="50%"}
+![Assessment Settings](/resources/docs/proget-vulnerabilities-assessmentsettings.png){height="" width="50%"}
 
 From here you can create an assessment type by clicking "Create Assessment Type".
 
-![Manage Assessment Types](/resources/docs/proget-manageassessment.png){height="" width="50%"}
+![Assessment Types](/resources/docs/proget-vulnerabilities-manageassessment.png){height="" width="50%"}
 
 By default, the assessment types of Caution, Blocked, and Ignore will be presented but they will not become automated unless the Auto Assess (CVS) is changed from Do Not Auto Assess to a specified range.
 
-![Create Assessment Type](/resources/docs/nugetvulnerability-createassessmenttype.jpg){height="" width="50%"}
+![Custom Type](/resources/docs/proget-vulnerabilities-customassessment.png){height="" width="50%"}
 
 Auto assessment can be customized to your preferences. However, if you’re unsure of what the best option is; we recommend reading our page on [Vulnerability Scanning & Blocking](/docs/proget/sca/vulnerabilities#assessing-vulnerabilities).
 
