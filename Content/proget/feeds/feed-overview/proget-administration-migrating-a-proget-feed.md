@@ -45,7 +45,7 @@ This is another recommended alternative for users on ProGet versions earlier tha
 
 Replication syncs two ProGet feeds together allowing you to create a feed on a new ProGet server instance and synch it with a currently existing one. This also means that any additions or changes to packages on the existing feed will be reflected in the new one.
 
-To replicate a feed navigate to "Feeds" and select the navigation tab.
+To replicate a feed navigate to "Feeds" and select the Replication tab.
 
 ![Replication](/resources/docs/proget-feed-replication.png){height="" width="50%"}
 
@@ -73,19 +73,19 @@ This method is complicated, and the samples provided only work on ProGet 2022 an
 
 #### Step 1: Find Feed ID and Storage Path
 
-Determine the feed ID of the source feed by visiting the "Admin" > "Manage Feed" page and looking at the ?feedId= part of the URL in the browser. Then locate the package storage path from the source feed.
+Determine the feed ID of the source feed by navigating to it's "Manage Feed" page and looking at the "?feedId=" part of the URL in the browser. Then locate the package storage path from the source feed.
 
 #### Step 2: Execute Export Script
 
-Connect to the source instance's database using SSMS (for SQL Server). Next, Execute an [export script](https://gist.github.com/inedo-builds/3bfdf846fb78fdf5ecd03d736682679f) against your ProGet database, substituting the feed ID determined in step 1.
+Connect to the source instance's database using SSMS (for SQL Server). Next, execute an [export script](https://gist.github.com/inedo-builds/3bfdf846fb78fdf5ecd03d736682679f) against your ProGet database, substituting the feed ID determined in Step 1.
 
 #### Step 3: Create a Feed
 
-Save the XML output from step 3 into a file, and copy the file to the server hosting the target's database. Then, create a new feed of the same type in the target instance.
+Save the XML output from Step 3 into a file, and copy the file to the server hosting the target's database. Then, create a new feed of the same type in the target instance.
 
 #### Step 4: Copy Contents
 
-Locate the package storage path of the target feed by visiting the "Admin" > "Manage Feed" page and copy all contents recursively from the path determined in Step 1 to this path.
+Locate the package storage path of the target feed by navigating to it's "Manage Feed" page and copy all contents recursively from the path determined in Step 1 to this path.
 
 #### Step 5: Execute Import Script
 
