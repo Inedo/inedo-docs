@@ -11,14 +11,16 @@ This tutorial describes **how to use ProGet's Feed Groups feature** to configure
 
 You can immediately start making feed groups assuming you have have administrator control in ProGet. We recommend [connecting your company’s LDAP directory or Active Directory domain](/docs/installation/security-ldap-active-directory/various-ldap-integrated-authentication), but this feature can function normally with ProGet’s built-in user directory. We also recommend setting up user groups ahead of time.
 
-## Step 1: Navigate to Settings > Manage Feed Groups
+## Step 1: Create a Feed Group
+To create a feed group, navigate to "Administration Overview" > "Manage Feed Groups".
 
 ![ProGet settings page pointing out Users and Tasks ](/resources/docs/howtoselfservice_managefeedgroups.png){height="" width="50%"}
 
-## Step 2: Click “Create Feed Group”
-On the Manage Feed Groups page, click "Create Feed Group" at the bottom right of the page and a pop-up will open. 
+On the Manage Feed Groups page, click "Create Feed Group" at the bottom right of the page and a pop-up will open.
 
-## Step 3: Input Feed Group Information
+![ProGet settings page pointing out Users and Tasks ](/resources/docs/howtoselfservice_createfeedgroup.png){height="" width="50%"}
+
+## Step 2: Input Feed Group Information
 In the pop-up window, based on the information you enter, a feed group is created in which users can trade.
 
 For Name: enter the name of the team you want. For this demonstration, we will use "Devs-Chicago".
@@ -33,7 +35,7 @@ Feeds on the Feeds page are now divided between groups and “Ungrouped”.
 
 ![The ProGet feeds page displaying the Devs Chicago feed group has been separated into its own seciton.](/resources/docs/selfservicefeedgroups-feedpage-devschicagoandungrouped.png){height="" width="50%"}
 
-## Step 4: Add Feed Group Permissions
+## Step 3: Add Feed Group Permissions
 Navigate to "Administration Overview" > "Manage Security" > "Tasks/Permissions" and click "add permission".
 
 In the pop-up, select the desired user or user group ("Principals"), their feed group ("Feed or group"), and the "Manage Feed" task.
