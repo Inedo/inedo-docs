@@ -10,12 +10,12 @@ To start, if you haven't already, [download ProGet](https://inedo.com/proget/dow
 
 ## Step 1: Plan out Desired Access & Restrictions
 
-Permissions and restrictions vary from organization to organization and team to team. In this article, we use three different NuGet feeds (unapproved-nuget, approved-nuget, and mycompany-nuget) configured for a [package approval workflow](https://blog.inedo.com/nuget/package-approval-workflow). 
+Permissions and restrictions vary from organization to organization and team to team. In this article, we use three different NuGet feeds (`unapproved-nuget`, `approved-nuget`, and `mycompany-nuget`) configured for a [package approval workflow](https://blog.inedo.com/nuget/package-approval-workflow). 
 
 This means that we need the following rules:
-- **anyone can view and download packages** from the mycompany-nuget feed
-- **Senior developers can promote** from the unapproved-nuget to the approved-nuget feed
-- **Build servers can view and publish** from the mycompany-nuget feed
+- **anyone can view and download packages** from the `mycompany-nuget` feed
+- **Senior developers can promote** from the `unapproved-nuget` to the `approved-nuget` feed
+- **Build servers can view and publish** from the `mycompany-nuget` feed
 
 These three basic rules are relatively easy to implement.
 
@@ -24,7 +24,7 @@ Later in the article we'll add new access controls to be more granular using cus
 
 - **Anyone can view packages** from all feeds
 - **Developers can view and download packages** from all feeds
-- **Developers cannot download packages** from the "Unapproved Nuget" feed
+- **Developers cannot download packages** from the `unapproved-nuget` feed
 
 ## Step 2: Ensure Users and Groups are Configured
 You can create users and groups in ProGet, but it's much easier to [integrate LDAP/Active Directory and ProGet](/docs/installation/security-ldap-active-directory/various-ldap-ldap-active-directory) so that you don't have to manage users/groups for everyone who needs to login.
@@ -44,29 +44,30 @@ Although you can configure permissions for individual users, we recommend using 
 
 By default, only administrators have permissions in ProGet. This means that you must add permissions to allow other users to access ProGet.
 
-This is done with tasks that essentially describe what users can do. For example, the built-in Manage Feed task allows "access to manage feed settings, delete packages, and overwrite packages"
+This is done with tasks that essentially describe what users can do. For example, the built-in Manage Feed task allows "access to manage feed settings, delete packages, and overwrite packages".
 
-To see which users and groups have which permissions, navigate to Admin (the gear icon) > Manage Security > Tasks/Permissions:
+To see which users and groups have which permissions, navigate to "Administration Overview" (the gear icon) > "Manage Security" > "Tasks/Permissions".
 
-![Tasks Overview Page](/resources/docs/progetpermis-tasksoverview-unassigned.png)
+![Tasks Overview Page](/resources/docs/progetpermis-tasksoverview-unassigned.png){height="" width="50%"}
  
 On this page, permissions and restrictions are grouped according to task and scope.
-* There are five built-in tasks (Administer, Manage Feed, Promote Packages, Publish Packages, and View & Download Packages), and you can add more as needed
+* There are six built-in tasks (Administer, Manage Feed, Manage Projects, Promote Packages, Publish Packages, and View & Download Packages), and you can add more as needed
 * Scope refers to the feed or feed group to which the task applies
 
 ### Add Permissions for "Everyone"
 
-Based on the desired access we defined in step 1, we need to create a permission that allows anyone to view and download packages from the mycompany-nuget feed.
+Based on the desired access we defined in Step 1, we need to create a permission that allows anyone to view and download packages from the `mycompany-nuget` feed.
 
-To do this, click on "Add Permission" and enter the desired permission.
+To do this, click on "add permission" and enter the desired permission.
 
-![Add Privileges for "Everyone"](/resources/docs/progetpermis-addprivilege-everyone.png)
+![Add Privileges for "Everyone"](/resources/docs/progetpermis-addprivilege-everyone.png){height="" width="50%"}
 
-Once this is added, anyone - whether they have signed up or not - can view and download packages in the mycompany-nuget. However, they can no longer access the "unapproved-nuget" or "approved-nuget" feeds.
+Once this is added, anyone - whether they have signed up or not - can view and download packages in the `mycompany-nuget` feed. However, they can no longer access the `unapproved-nuget` or `approved-nuget` feeds.
 
 ### Add Permission for "Senior Developers"
 
-We would also like to allow senior developers to move packages from the unapproved Nuget feed to the approved Nuget feed. This requires adding two permissions:
+We would also like to allow senior developers to move packages from the `unapproved-nuget` feed to the `approved-nuget` feed. This requires adding two permissions:
+
 |Principal|Feed or Group|Task
 |-|-|-
 |Senior Developers|unapproved-nuget|View & Download Packages
@@ -74,35 +75,37 @@ We would also like to allow senior developers to move packages from the unapprov
 
 After configuring these permissions, the Tasks page will look like this:
 
-![Tasks Overview Page With Assigned Permissions](/resources/docs/progetpermis-srdeveloperspermissionsoverview.png)
+![Tasks Overview Page With Assigned Permissions](/resources/docs/progetpermis-srdeveloperspermissionsoverview.png){height="" width="50%"}
 
 ## Step 4: Create API Key
 [API keys](/docs/proget/api/apikeys) allow you to connect your ProGet feeds to other automated tools like a build server, and they work a bit differently than tasks.
 
-Our desired access for build servers (from step 1) was to allow the mycompany-nuget feed to be displayed and published. To create an API key for this purpose, navigate to Admin > API Keys, click "create api key", and enter a name, description, and desired access.
+Our desired access for build servers (from Step 1) was to allow the `mycompany-nuget` feed to be displayed and published. To create an API key for this purpose, navigate to "Administration Overview" > "API Keys & Access Logs" > click "create api key" and enter a display name, description, and package permissions.
 
-![Create API Key for Build Server](/resources/docs/progetpermis-createapikey.png)
+![Create API Key for Build Server](/resources/docs/progetpermis-createapikey.png){height="" width="50%"}
 
 Although not required for the sample configuration, you can create several types of API keys:
 * **System API keys** help automate the management and configuration of ProGet
 * **Feed API keys** can be restricted to a single feed or a group and can only use feed-related APIs
 * **Personal API keys** can be managed by ProGet users and embody each user's access to ProGet
 
-After clicking Save API Key, the newly created API key is displayed on the API Key List page:
+After clicking "Create API Key", the newly created API key is displayed on the API Keys page.
 
-![API Key Generated](/resources/docs/progetpermis-apikey-generated.png)
+![API Key Generated](/resources/docs/progetpermis-apikey-generated.png){height="" width="50%"}
 
 ### Viewing & Using API Keys
 
-If you do not specify a value for the API Key field, ProGet will automatically generate a value for you after you click Save API Key.
+If you do not specify a value for the API Key field, ProGet will automatically generate a value for you after you click "Create API Key".
 
-To view an API key, click the Edit link. From there, you can copy and paste the key into your build server to give it access to ProGet and the mycompany-nuget feed.
+To view an API key, click the edit link. From there, you can copy and paste the key into your build server to give it access to ProGet and the `mycompany-nuget` feed.
+
+![API Key Edit](/resources/docs/progetpermis-apikey-edit.png){height="" width="50%"}
 
 ## Step 5: Customizing Tasks (Advanced)
 
-To enable more granular permissions to better model governance and compliance policies, you can [customize the tasks available in ProGet](/docs/proget/administration-security/creating-tasks) by navigating to Admin > Manage Security > Tasks / Permissions > select [Customize Tasks] from the "Test Privileges" dropdown menu.
+To enable more granular permissions to better model governance and compliance policies, you can [customize the tasks available in ProGet](/docs/proget/administration-security/creating-tasks) by navigating to "Administration Overview" > "Manage Security" > "Tasks/Permissions" > select "Customize Tasks" from the Test Privileges dropdown menu.
 
-![ProGet Built in Tasks](/resources/docs/progetpermis-builtintasks.png)
+![ProGet Built in Tasks](/resources/docs/progetpermis-builtintasks.png){height="" width="50%"}
 
 On this page, you can add, edit, and delete tasks.
 
@@ -110,19 +113,19 @@ On this page, you can add, edit, and delete tasks.
 You can change ProGet's built-in tasks. However, future updates may change your description or add additional attributes as new features are added.
 :::
 
-Our example of desired access can be implemented with two new tasks: "View Packages" and "Download Packages. We can then grant permission and restrict who can perform these tasks.
+Our example of desired access can be implemented with two new tasks: "View Packages" and "Download Packages". We can then grant permission and restrict who can perform these tasks.
 
 ### Create "View Packages" Task
 
 To create a custom task, click "Add Task" and enter the name, description, and desired attributes.
 
-![Create View Packages Task](/resources/docs/progetpermis-createviewpackagestask%281%29.png)
+![Create View Packages Task](/resources/docs/progetpermis-createviewpackagestask.png){height="" width="50%"}
 
 ### Create "Download Packages" Task
 
-This task will be similar identical to the View Packages task, and contain only a single task.
+This task will be similar identical to the "View Packages" task, and contain only a single task.
 
-![Create Download Packages Task](/resources/docs/progetpermis-createdownloadpackagestask.png)
+![Create Download Packages Task](/resources/docs/progetpermis-createdownloadpackagestask.png){height="" width="50%"}
 
 However, instead of using this task to give permissions, we will use it to restrict access.
 
@@ -132,13 +135,13 @@ However, instead of using this task to give permissions, we will use it to restr
 The additional desired access rules we want to create are:
 - **Everyone can View Packages** from all feeds
 - **Developers can View & Download Packages** from all feeds
-- **Developers cannot Download Packages** from the 'unapproved-nuget' feed
+- **Developers cannot Download Packages** from the `unapproved-nuget` feed
 
 The last access control rule is a bit tricky: if we were to use permissions only, we would have to add "View & Download Packages" to all feeds except one. Instead, we can use a combination of a permission and a restriction to accomplish this.
 
-You can add a restriction by clicking "Add Restriction" on the Tasks/Permissions page.
+You can add a restriction by clicking "add restriction" on the Tasks/Permissions page.
 
-![Add Restriction for "Developers"](/resources/docs/progetpermis-adddeveloperrestriction.png)
+![Add Restriction for "Developers"](/resources/docs/progetpermis-adddeveloperrestriction.png){height="" width="50%"}
 
 In addition to this restriction, we'll need to add two new permissions:
 
@@ -148,9 +151,9 @@ In addition to this restriction, we'll need to add two new permissions:
 |Developers|all feeds|View & Download Packages
 
 
-After configuring these, the Tasks page will show all of access control rules.
+After configuring these, the Tasks/Permissions page will show all of access control rules.
 
-![Tasks Overview After Configuration](/resources/docs/progetpermis-finalpermissions.png)
+![Tasks Overview After Configuration](/resources/docs/progetpermis-finalpermissions.png){height="" width="50%"}
 
 These access control rules are complicated, but so are the desired access requirements.
 
@@ -161,9 +164,9 @@ To determine if a user has access to something in ProGet, all permissions from a
 
 A restriction takes precedence over a permission unless that permission is more detailed. For example, although developers are not allowed to download packages via the `unapproved-nuget` feed, you can add a user-based permission to allow an individual user to download packages. A user is more granular than a group, so the permission would override the restriction. The same is true for permissions and restrictions at the system, feed group, and feed level.
 
-Since access control rules can get complicated, you can test access using the Test Permissions button.
+Since access control rules can get complicated, you can test access using the Test Privileges button.
 
-![Test Task Privileges](/resources/docs/progetpermis-testprivileges.png)
+![Test Task Privileges](/resources/docs/progetpermis-testprivileges.png){height="" width="50%"}
 
 This will show you what permissions a specific user has for any given feed.
 
