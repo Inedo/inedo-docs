@@ -15,7 +15,7 @@ If you are looking to migrate packages between two ProGet feeds, please see our 
 
 ## Step 1: Create a bulk import folder on your server
 
-In this guide, we will be importing from a folder named `bulk-import`, and importing it to a feed we have created named `nuget`.
+In this guide, we will be importing from a folder named "bulk-import", and importing it to a feed we have created named `Nuget`.
 
 On our server, we need to start by navigating to our drive and selecting a folder for the bulk import process. This can be an existing folder, or a new one.
 
@@ -31,17 +31,17 @@ We will copy this folder path for later use.
 
 ## Step 2: Navigate to Add Packages
 
-In ProGet, we start by navigating to "Feeds", and selecting our "NuGet" feed.
+In ProGet, we start by navigating to "Feeds" and selecting our `Nuget` feed.
 
 ![Feed Select "feed-select"](/resources/docs/proget-feed-nugetselect.png){height="" width="50%"}
 
-From here, we will select "Add Package" from the drop-down menu on the right of the page.
+From here, we will select "Import Packages" from the drop-down menu on the right of the page.
 
 ![Add Package "feed-select"](/resources/docs/proget-nuget-feed-addpackage.png){height="" width="50%"}
 
 ## Step 3: Select the package source<a id="step-3"></a>
 
-For this example in which we stored our packages in a folder on our server, we will select "Bulk Import/File Copy":
+For this example in which we stored our packages in a folder on our server, we will select "Import/Copy Package Files on Disk".
 
 ![Bulk Import "bulk-import"](/resources/docs/proget-nuget-addpackage-bulkimport.png){height="" width="50%"}
 
@@ -57,13 +57,13 @@ Note that the appropriate permissions must be set for them to function.
 
 ![Bulk Import "bulk-import"](/resources/docs/proget-nuget-bulkpackageimport.png){height="" width="50%"}
 
-Finally, we select "Import". The packages are imported successfully, and are now visible on our "NuGet" feed’s page.
+Finally, we select "Import". The packages are imported successfully, and are now visible on our `Nuget` feed’s page.
 
 ![Imported "imported"](/resources/docs/proget-nuget-feed.png){height="" width="50%"}
 
 ## Troubleshooting
 
-Some warnings or errors may occur during bulk import. You can view these by navigating to the "Settings" page of ProGet (you must be logged in as an administrator to view the settings).
+Some warnings or errors may occur during bulk import. You can view these by navigating to the Administration Overview page of ProGet (you must be logged in as an administrator to view the settings).
 
 From here, navigate to the "Additional Logs & Events" section located in the bottom right, and select "Executions".
 
@@ -85,17 +85,17 @@ This warning means that the package already exists in the ProGet feed, so it wil
 
 There are several common reasons for this issue:
 
-* The user is attempting to import a package that already exists in the feed
+* The user is attempting to import a package that already exists in the feed.
 * Two identical packages exist in the import path with different file names, and one is attempting to overwrite the other during the same bulk import.
 * The package file exists within two different folder locations, and one is attempting to overwrite the other during the same bulk import.
 
-There are two ways to fix this warning.
+There are two ways to fix this warning:
 
 #### Option 1: Delete the file from the import path
 
 Deleting the file from the import path folder does not delete it from ProGet. ProGet has already imported the data and files to its server, so the information will not be lost.
 
-You can check if a file is still accessible by navigating to Feed > Package > Package Version > Files
+You can check if a file is still accessible by navigating to the feed, selecting the package and version, and clicking the "Files" tab. 
 
 ![ProGet CSharp Package](/resources/docs/proget-csharp-packagefilesview.png){height="" width="50%"}
 
@@ -103,13 +103,13 @@ You can check if a file is still accessible by navigating to Feed > Package > Pa
 
 In general, we don't recommend this method, since most developers don't want to overwrite packages and instead version their packages.
 
-However, if your organization is comfortable with overwriting packages, you can fix this warning by checking the box "Overwrite packages in feed" when importing packages (see [Step 3](#step-3))
+However, if your organization is comfortable with overwriting packages, you can fix this warning by checking the box "Overwrite packages in feed" when importing packages (see [Step 3](#step-3)).
 
 ### Issue: “An error occurred in the web application: Could not find file …”
 
 This warning may occur if the package was deleted from the drive for some reason.
 
-You will see this page when you navigate to the Files tab of the deleted package:
+You will see this page when you navigate to the "Files" tab of the deleted package:
 
 ![ProGet could not find a file.](/resources/docs/bulkimportviadroppath-unexpectederror-missingfile.png){height="" width="50%"}
 
@@ -135,7 +135,7 @@ WARN: Error deleting imported package C:\bulk-import\microsoft.extensions.depend
 
 This warning occurs when ProGet does not have permission to read/delete from the Drop Path folder on the server or network share.
 
-You can resolve this warning by opening the properties of the import path on the server or locally, and navigating to the Security tab in the pop-up window. Then configure your security settings so that ProGet has full control over this folder.
+You can resolve this warning by opening the properties of the import path on the server or locally, and navigating to the "Security" tab in the pop-up window. Then configure your security settings so that ProGet has full control over this folder.
 
 After configuration, ProGet is now able to properly delete a package both in ProGet and on the server.
 
@@ -151,4 +151,4 @@ WARN: Error installing package: End of Central Directory record could not be fou
 
 This is usually because either the file is corrupt, or is not a genuine package file, such as being a foreign file type with the wrong extension.
 
-To solve this problem, delete the file from the import path source, and reacquire it from a verified resource, such as [nuget.org](https://nuget.org)
+To solve this problem, delete the file from the import path source, and reacquire it from a verified resource, such as [nuget.org](https://nuget.org).
