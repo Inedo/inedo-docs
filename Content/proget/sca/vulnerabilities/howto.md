@@ -42,7 +42,7 @@ From here you can click on the vulnerabilities found in your package to get more
 
 When a package, such as [Newtonsoft.Json 12.0.3](https://www.nuget.org/packages/newtonsoft.json/12.0.3), has a vulnerability, you’ll see this message on the overview page:
 
-![Vulnerability Detected](/resources/docs/proget-vulnerabilities-package-unassessed.png){height="" width="50%"}
+![Vulnerability Detected](/resources/docs/proget-vulnerabilities-detected.png){height="" width="50%"}
 
 ## Step 3: Assess Vulnerability
 
@@ -58,7 +58,7 @@ ProGet comes with three built-in assessment types:
 * **Caution** tells developers to be careful to avoid the vulnerability; packages can be downloaded, but a warning is issued on the web UI
 * **Blocked** means that a vulnerability is too severe to allow use and packages cannot be downloaded
 
-![Assess Vulnerability](/resources/docs/proget-vulnerabilties-configureassessment.png){height="" width="50%"}
+![Assess Vulnerability](/resources/docs/proget-vulnerabilities-configureassessment.png){height="" width="50%"}
 
 Select the assessment type, enter a comment, and click the "Save" button.
 
@@ -117,7 +117,7 @@ Note that expiration days will set the expiry date on "auto-assess" only.
 ## Step 6: (Optional) Scan Container Vulnerabilities
 To scan containers for vulnerabilities, ProGet [extracts and inspects the files within each container image layer](/docs/proget/docker/private-registries) and looks for vulnerable packages that are installed. The "Packages" and "Vulnerabilities" tab of a container image will show these:
 
-![proget-container-vulnerability-packages](/resources/docs/proget-container-vulnerability-packages.png){width="50%"}
+![Container Vulnerabilities](/resources/docs/proget-vulnerabilities-container.png){width="50%"}
 
 ## ProGet 2023 and Earlier
 Vulnerabilities had an overhaul in ProGet 2024. This was available as a preview feature in ProGet 2023.29+, which could be enabled by navigating to "Reporting & SCA" > "Vulnerabilities" and select "Enable Vulnerabilities Feature Preview..."
