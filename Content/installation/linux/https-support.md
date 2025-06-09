@@ -5,7 +5,7 @@ order: 5
 
 HTTPS is increasingly becoming a requirement inside of many organizations, even for internal-only web applications. It's also required by several third-party client tools, such as NuGet and Docker.  
 
-In this article, we'll provide two options for enabing HTTPS for ProGet, BuildMaster, and Otter when installed on Linux. For Windows-based installations, see [HTTPS Support on Windows](/docs/installation/installing-on-iis/installation-windows-https-support).
+In this article, we'll provide two options for enabing HTTPS for ProGet, BuildMaster, and Otter when installed on Linux. For Windows-based installations, see [HTTPS Support on Windows](/docs/installation/windows/web/installation-windows-https-support).
 
 ## Configuring HTTPS with a Reverse Proxy (Recommended)
 The simplest way to configure HTTPS is by using a reverse proxy to terminate TLS and forward requests to your Inedo product. This has the added benefit of allowing multiple websites and applications to be hosted on the same IP address.

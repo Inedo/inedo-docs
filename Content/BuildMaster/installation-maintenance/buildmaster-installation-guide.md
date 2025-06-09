@@ -28,12 +28,12 @@ The easiest way to install BuildMaster on your Windows Servers is with [Inedo Hu
 
 <a href="/docs/installation/windows/inedo-hub-installation-guide" style=" background:#025291;color:#ffffff;padding: 6px 20px;  border-radius: 3px;font-size: 14pt;text-decoration:none">Install BuildMaster using the Inedo Hub</a>
 
-The Inedo Hub also supports [Offline Installation](/docs/installation/windows/desktophub-offline) for severs with limited or no Internet access.
+The Inedo Hub also supports [Offline Installation](/docs/installation/windows/desktophub-overview/desktophub-offline) for severs with limited or no Internet access.
 
 ### Silent Installation for Automation
 You can also perform a silent (non-interactive) installation of BuildMaster via Inedo Hub. In this case, no user interface is displayed and no questions are asked. This can be useful for scripts or other automations.
 
-See: [Silent/Automated Installation Guide](/docs/installation/windows/silent)
+See: [Silent/Automated Installation Guide](/docs/installation/windows/desktophub-overview/silent)
 
 ### Fully Customizable: Manual Installation
 If you prefer to install BuildMaster yourself, that's also an option. 

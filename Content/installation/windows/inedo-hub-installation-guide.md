@@ -1,6 +1,6 @@
 ---
 title: "HOWTO: Install on Windows"
-order: 4
+order: 2
 ---
 
 The easiest way to install ProGet, BuildMaster, or Otter on Windows is with the [Inedo Hub](/docs/installation/windows/desktophub-overview), a lightweight installer that acts as a one-stop shop for downloading, installing, upgrading/downgrading, and maintaining your Inedo products.

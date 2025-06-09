@@ -22,12 +22,12 @@ The easiest way to install Otter on your Windows Servers is with [Inedo Hub](/do
 
 <a href="/docs/installation/windows/inedo-hub-installation-guide" style=" background:#025291;color:#ffffff;padding: 6px 20px;  border-radius: 3px;font-size: 14pt;text-decoration:none">Install Otter using the Inedo Hub</a>
 
-The Inedo Hub also supports [Offline Installation](/docs/installation/windows/desktophub-offline) for severs with limited or no Internet access.
+The Inedo Hub also supports [Offline Installation](/docs/installation/windows/desktophub-overview/desktophub-offline) for severs with limited or no Internet access.
 
 ### Silent Installation for Automation
 You can also perform a silent (non-interactive) installation of Otter using the Inedo Hub. This won't display a user interface or ask any questions. This can be useful for scripts or other automations.
 
-See: [Silent/Automated Installation Guide](/docs/installation/windows/silent)
+See: [Silent/Automated Installation Guide](/docs/installation/windows/desktophub-overview/silent)
 
 ### Fully Customizable: Manual Installation
 If you prefer to install every component of Otter yourself, that's also an option. 

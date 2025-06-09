@@ -1,6 +1,6 @@
 ---
 title: "HOWTO: Install Pre-release Product Versions"
-order: 6
+order: 4
 ---
 
 The [Inedo Hub](/docs/installation/windows/desktophub-overview) may be configured to install pre-release product versions of any Inedo product, including CI and public beta versions. However, these versions are hidden by default. 

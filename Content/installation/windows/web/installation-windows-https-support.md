@@ -117,7 +117,7 @@ To add an HTTPS binding using the HTTP/S Settings page:
 The confirmation page may display a warning if any commands need to be run directly on the server. If you are binding to a port below 1024, you will see a command that needs to be run on your server to allow the integrated web server to bind to that port. Additionally, when using a hostname with your HTTPS binding, you will also see a command to bind your certificate to your hostname and port.
 :::
 
-Once configured, the integrated web server will restart.  If any binding errors occur during startup, they will be logged in the Windows Event Log.  See our [troubleshooting documentation](/docs/installation/installing-on-iis/installation-windows-web-server-troubleshooting) for more information.
+Once configured, the integrated web server will restart.  If any binding errors occur during startup, they will be logged in the Windows Event Log.  See our [troubleshooting documentation](/docs/installation/windows/web/installation-windows-web-server-troubleshooting) for more information.
 
 ### HTTPS Binding to a Hostname 
 
@@ -281,4 +281,4 @@ As of ProGet v2022.17 HTTPS bindings can be used with either configuration, but 
 
 ### Automated / Silent Configuring HTTPS on the Integrated Web Server
 
-The Inedo Hub's [silent installation process](/docs/installation/windows/silent) will not configure HTTPS in this manner. However, it's possible to automate this after installation with scripting; user Stephen Valdinger (steviecoaster) wrote a script ([Set-ProGetSslConfig.ps1](https://gist.github.com/steviecoaster/0a2c0d4b09988dedf8e1df1844ec6b8a)) that serves as an excellent starting point.
+The Inedo Hub's [silent installation process](/docs/installation/windows/desktophub-overview/silent) will not configure HTTPS in this manner. However, it's possible to automate this after installation with scripting; user Stephen Valdinger (steviecoaster) wrote a script ([Set-ProGetSslConfig.ps1](https://gist.github.com/steviecoaster/0a2c0d4b09988dedf8e1df1844ec6b8a)) that serves as an excellent starting point.

@@ -6,7 +6,7 @@ order: 9
 The Legacy (Traditional) Installer is a Windows-based desktop application that installs or upgrades a single version of an Inedo product on a server. It has been discontinued in favor of [the Inedo Hub](/docs/installation/windows/desktophub-overview).
 
 ::: (ERROR)
-The Legacy (Traditional) Installer has been discontinued as of ProGet 6.0, BuildMaster 7.0, and Otter 3.0. If you require offline installation, see the [Offline Installation Options](/docs/installation/windows/desktophub-offline) available with the Inedo Hub.
+The Legacy (Traditional) Installer has been discontinued as of ProGet 6.0, BuildMaster 7.0, and Otter 3.0. If you require offline installation, see the [Offline Installation Options](/docs/installation/windows/desktophub-overview/desktophub-offline) available with the Inedo Hub.
 :::
 
 The legacy (traditional) installer Inedo products are available on the "All Version page" of each product ([BuildMaster](https://my.inedo.com/buildmaster/versions), [ProGet](https://my.inedo.com/proget/versions), and [Otter](https://my.inedo.com/otter/versions)), if you click on the “Traditional Installer” for the version you want.

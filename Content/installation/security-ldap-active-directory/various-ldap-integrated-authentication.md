@@ -61,7 +61,7 @@ If you *absolutely must* use port sharing, and you *absolutely must* use Windows
 ## How to Configure WIA in IIS
 
 ::: (Warning)
-Microsoft no longer recommends using IIS for modern .NET applications; see [HOWTO: Switch to Integrated Web Server from IIS](/docs/installation/installing-on-iis/howto-switch-to-integrated-web-server-from-iis) to learn more.
+Microsoft no longer recommends using IIS for modern .NET applications; see [HOWTO: Switch to Integrated Web Server from IIS](/docs/installation/windows/web/howto-switch-to-integrated-web-server-from-iis) to learn more.
 :::
 
 If you wish to use Windows Integrated Authentication and you are hosting ProGet in IIS, then you'll first need to configure the ProGet site in the IIS manager with the following Authentication settings:

@@ -1,6 +1,6 @@
 ---
 title: "HOWTO: Configure Your Inedo Product to Run As a Windows Domain Account"
-order: 7
+order: 5
 ---
 
 Inedo's products can be configured to run as a Windows Domain Account to ensure secure management of your infrastructure and applications. 

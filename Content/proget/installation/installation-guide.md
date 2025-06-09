@@ -24,12 +24,12 @@ The easiest way to install ProGet on your Windows servers is to use [Inedo Hub](
 
 <a href="/docs/installation/windows/inedo-hub-installation-guide" style=" background:#025291;color:#ffffff;padding: 6px 20px;  border-radius: 3px;font-size: 14pt;text-decoration:none">Install ProGet using the Inedo Hub</a>
 
-The Inedo Hub also supports [Offline Installation](/docs/installation/windows/desktophub-offline) for servers with limited or no Internet access.
+The Inedo Hub also supports [Offline Installation](/docs/installation/windows/desktophub-overview/desktophub-offline) for servers with limited or no Internet access.
 
 ### Silent Installation for Automation
 You can also perform a silent (non-interactive) installation of ProGet via Inedo Hub. In this case, no user interface is displayed and no questions are asked. This can be useful for scripts or other automations.
 
-See: [Silent/Automated Installation Guide](/docs/installation/windows/silent)
+See: [Silent/Automated Installation Guide](/docs/installation/windows/desktophub-overview/silent)
 
 ### Fully Customizable: Manual Installation
 ::: (WARNING) (Note)

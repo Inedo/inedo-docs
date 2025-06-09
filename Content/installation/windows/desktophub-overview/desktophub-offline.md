@@ -1,6 +1,6 @@
 ---
 title: "Offline Installation (no Internet access)"
-order: 3
+order: 2
 ---
 
 By default, when you install ProGet, BuildMaster, or Otter using [the Inedo Hub](/docs/installation/windows/desktophub-overview) internet access is required. This is because the Inedo Hub will connect to Inedo's servers to upgrade itself and show you what Inedo products and versions are available to install.

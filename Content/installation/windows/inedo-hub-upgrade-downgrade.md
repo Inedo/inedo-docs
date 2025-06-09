@@ -1,6 +1,6 @@
 ---
 title: "HOWTO: Upgrade or Downgrade with the Inedo Hub"
-order: 5
+order: 3
 ---
 
 ProGet, BuildMaster, and Otter are self-managed, which means that you are in complete control of when, and how often to upgrade. This lets you eliminate the risk of being "surprised" by unwanted new features or undetected bugs.
@@ -30,7 +30,7 @@ Before upgrading your Inedo product, we recommend [performing a back-up](/docs/i
 :::
 
 
-Click on "Upgrade" next to the Inedo product you wish to upgrade, select the desired version, and click on "Upgrade" below the Connection String. You can also [upgrade to a pre-release version](/docs/installation/windows/howto-install-prerelease-product-versions) of an Inedo product! 
+Click on "Upgrade" next to the Inedo product you wish to upgrade, select the desired version, and click on "Upgrade" below the Connection String. You can also [upgrade to a pre-release version](/docs/installation/windows/desktophub-overview/howto-install-prerelease-product-versions) of an Inedo product! 
 
 ![Version Selection](/resources/docs/updatinginedohub-updatebutton%281%29.png)
 

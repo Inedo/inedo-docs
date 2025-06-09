@@ -2,7 +2,17 @@
 <redirects>
 
 	<!-- BEGIN ProGet2025 Docs Refactoring  -->
-	<redirect from="/docs/installation/sql-server/installation-database-backup" to="/docs/installation/sql-server/backup" />	
+	<redirect from="/docs/installation/sql-server/installation-database-backup" to="/docs/installation/sql-server/backup" modified="6/6/2025" />
+	<redirect from="/docs/installation/installing-on-iis/various-iis-configuring-iis-roles-and-features" to="/docs/installation/windows/web/hosting-on-iis" modified="6/6/2025" />
+	<redirect from="/docs/installation/installing-on-iis/various-iis-disabling-webdav" to="/docs/installation/windows/web/hosting-on-iis" modified="6/6/2025" />
+	<redirect from="/docs/installation/installing-on-iis/installation-windows-https-support" to="/docs/installation/windows/web/installation-windows-https-support" modified="6/6/2025" />
+	<redirect from="/docs/installation/installing-on-iis/howto-switch-to-integrated-web-server-from-iis" to="/docs/installation/windows/web/howto-switch-to-integrated-web-server-from-iis" modified="6/6/2025" />
+	<redirect from="/docs/installation/installing-on-iis/installation-windows-web-server-troubleshooting" to="/docs/installation/windows/web/installation-windows-web-server-troubleshooting" modified="6/6/2025" />
+  <redirect from="/docs/installation/windows/desktophub-offline" to="/docs/installation/windows/desktophub-overview/desktophub-offline" modified="6/6/2025" />
+  <redirect from="/docs/installation/windows/howto-install-prerelease-product-versions" to="/docs/installation/windows/desktophub-overview/howto-install-prerelease-product-versions" modified="6/6/2025" />
+  <redirect from="/docs/installation/windows/inedo-hub-installation-guide" to="/docs/installation/windows/inedo-hub-installation-guide" modified="6/6/2025" />
+  <redirect from="/docs/installation/windows/silent" to="/docs/installation/windows/desktophub-overview/silent" modified="6/6/2025" />
+
 	<!-- END ProGet2025 Docs Refactoring  -->
 	
   <!-- BEGIN UPack Docs Refactoring  -->

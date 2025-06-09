@@ -1,6 +1,6 @@
 ---
 title: "Configuring & Maintaining Inedo Products"
-order: 2
+order: 4
 ---
 
 The [Inedo Hub](/docs/installation/windows/desktophub-overview) allows you to configure certain settings and see the status of your Inedo products. This document explains how to configure and maintain your Inedo product through the Inedo Hub. 
@@ -43,4 +43,4 @@ The Logs tab in the Inedo Hub provides a history of installations done in the In
 These can be useful to send to our support team, or trace when a version of a product was installed.
 
 ## Offline Installer
-The easiest way to install Inedo products is to use the Inedo Hub, however we do also have instructions on how to [create an offline installer](/docs/installation/windows/desktophub-offline) in the case you have no internet access. 
+The easiest way to install Inedo products is to use the Inedo Hub, however we do also have instructions on how to [create an offline installer](/docs/installation/windows/desktophub-overview/desktophub-offline) in the case you have no internet access. 
