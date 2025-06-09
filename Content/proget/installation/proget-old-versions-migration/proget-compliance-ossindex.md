@@ -10,7 +10,7 @@ This article is for users who have configured an OSS Index Vulnerability Source 
 
 After a steady decline in service and data quality, ProGet no longer relies on the free, third-party OSS Index. Instead, ProGet uses industry-leading vulnerability and malicious package detection from our own [Inedo Security Labs](https://security.inedo.com).
 
-This article is for users who have configured an OSS Index Vulnerability Source and wish to switch to ProGet's new and improved vulnerability detection. If you're using ProGet 2022 and earlier, you're welcome to follow the [archived guide for OSS Index integration](https://web.archive.org/web/20230927161336/https://docs.inedo.com/docs/proget-compliance-ossindex), but we recommend upgrading ProGet and using new features instead
+This article is for users who have configured an OSS Index Vulnerability Source and wish to switch to ProGet's new and improved vulnerability detection. If you're using ProGet 2022 and earlier, you're welcome to follow the [archived guide for OSS Index integration](https://web.archive.org/web/20230927161336/https://docs.inedo.com/docs/proget-compliance-ossindex), but we recommend upgrading ProGet and using new features instead.
 
 ## OSS Index vs ProGet's Vulnerability Database
 
@@ -41,9 +41,9 @@ This will open a dialog. This will explain the migration process and confirm the
 ![Migrate OSS Index](/resources/docs/proget-oss-migrate.png){height="" width="50%"}
 
 :::(info) (💡 Optional: Dry Run)
-You may also initially opt to perform a dry run. This will log the migration, but not perform any changes, allowing you to view the migration before committing to it. 
+You may also initially opt to perform a dry run. This will log the migration, but not perform any changes, allowing you to view the migration before committing to it.
 
-![Migration Dryrun](/resources/docs/proget-oss-dryrun.png){height="" width="50%"}
+![Migration Dry Run](/resources/docs/proget-oss-dryrun.png){height="" width="50%"}
 :::
 
 Next, confirm the details of the migration and select "Migrate". The migration will perform the following actions:
@@ -55,7 +55,7 @@ Next, confirm the details of the migration and select "Migrate". The migration w
 
 After migration any blocking rules and vulnerability assessments that were made while using OSS Index will be automatically applied.
 
-![After Migration](/resources/docs/proget-oss-after.png){height="" width="50%"}
+![After Migration](/resources/docs/proget-oss-aftermigration.png){height="" width="50%"}
 
 <h3 id="option2">Option 2: Delete OSS Index & Enable PGVC</h3>
 
