@@ -54,4 +54,4 @@ If Layer Scanning is disabled, check "Enable layer scanning". ProGet will warn t
 
 To scan containers for vulnerabilities, ProGet [extracts and inspects the files within each container image layer](/docs/proget/docker/private-registries) and looks for vulnerable packages that are installed. After the scan, the "Packages" and "Vulnerabilities" tab of a container image will show these:
 
-![proget-container-vulnerability-packages](/resources/docs/proget-container-vulnerability-packages.png){width="50%"}
+![Container Vulnerabilities](/resources/docs/proget-vulnerabilities-container.png){height="" width="50%"}
