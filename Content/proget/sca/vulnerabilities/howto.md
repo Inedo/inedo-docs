@@ -117,7 +117,7 @@ Note that expiration days will set the expiry date on "auto-assess" only.
 ## Step 6: (Optional) Scan Container Vulnerabilities
 To scan containers for vulnerabilities, ProGet [extracts and inspects the files within each container image layer](/docs/proget/docker/private-registries) and looks for vulnerable packages that are installed. The "Packages" and "Vulnerabilities" tab of a container image will show these:
 
-![Container Vulnerabilities](/resources/docs/proget-vulnerabilities-container.png){width="50%"}
+![Container Vulnerabilities](/resources/docs/proget-vulnerabilities-container.png){height="" width="50%"}
 
 ## ProGet 2023 and Earlier
 Vulnerabilities had an overhaul in ProGet 2024. This was available as a preview feature in ProGet 2023.29+, which could be enabled by navigating to "Reporting & SCA" > "Vulnerabilities" and select "Enable Vulnerabilities Feature Preview..."
