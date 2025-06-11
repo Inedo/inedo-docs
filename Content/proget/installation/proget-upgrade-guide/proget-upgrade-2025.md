@@ -6,10 +6,6 @@ url-slug: "proget-upgrade-2025"
 
 ProGet 2025 is a major update, and this article provides information about what will change, the impact to your instance, and how to mitigate risk during upgrade.
 
-:::(Warning) (🚧Preview Documentation🚧)
-ProGet 2025 is scheduled for release in late May 2025 or early June 2025.
-:::
-
 
 ## Planning for Your Upgrade
 
@@ -107,7 +103,7 @@ ProGet 2025 can no longer be run as an IIS-managed Site and Application Pool. Fo
 ProGet 2025 will not work in IIS without manual configuration changes.
 :::
 
-Prior to upgrading to ProGet 2025, we recommend [switching to the Integrated Web Server](/docs/installation/windows/web/howto-switch-to-integrated-web-server-from-iis). If you still want to use IIS, then you will need to <span title="instructions are coming soon." style="background-color:yellow;text-decoration:underline;text-decoration-style: dotted;" >reconfigure IIS to act as a reverse-proxy</span>. 
+Prior to upgrading to ProGet 2025, we recommend [switching to the Integrated Web Server](/docs/installation/windows/web/howto-switch-to-integrated-web-server-from-iis). If you still want to use IIS, then you will need to [reconfigure IIS to act as a reverse-proxy](/docs/installation/windows/web/howto-use-iis-as-reverse-proxy). 
 
 
 ### Configuration Change: InedoHub Installation/Upgrade
@@ -130,12 +126,12 @@ Prior to upgrading to ProGet 2025, we recommend [switching to the Integrated Web
 ## Upgrade Process
 You should generally perform the upgrade using the same method you used to install.
 
-* On Windows, the most common installation method is using the internet-connected [Inedo Hub](/docs/installation/windows/desktophub-overview); see  [HOWTO: Upgrade or Downgrade with the Inedo Hub](/docs/installation/windows/inedo-hub-upgrade-downgrade) for more details on how to upgrade.
+* On Windows, the most common installation method is using the internet-connected [Inedo Hub](/docs/installation/windows/inedo-hub); see  [HOWTO: Upgrade or Downgrade with the Inedo Hub](/docs/installation/windows/howto-upgrade-downgrade) for more details on how to upgrade.
 * On Linux, the most common installation method is using our Docker container; see [Upgrading Docker Containers](/docs/installation/linux/installation-upgrading-docker-containers) for more details.
 
-However, there are other installation options available, including [offline installation](/docs/installation/windows/desktophub-overview/desktophub-offline), [cluster installation](/docs/installation/high-availability-load-balancing/high-availability-load-balancing), and even [manual installation](/docs/installation/manual-installation). If you want to change installation methods, the easiest way is to simply uninstall (by following the process in reverse) and install using the new method.
+However, there are other installation options available, including [offline installation](/docs/installation/windows/inedo-hub/offline), [cluster installation](/docs/installation/high-availability-load-balancing/high-availability-load-balancing), and even [manual installation](/docs/installation/windows/manual-installation). If you want to change installation methods, the easiest way is to simply uninstall (by following the process in reverse) and install using the new method.
 
-If you're upgrading from ProGet 5.3 or earlier, it's possible ProGet was installed with the [legacy installer](/docs/installation/windows/installation-legacy-traditional-installer), The Inedo Hub should be able to upgrade these installations, but you may need to uninstall and then reinstall using the Inedo Hub. 
+If you're upgrading from ProGet 5.3 or earlier, it's possible ProGet was installed with the [legacy installer (github.com)](https://github.com/Inedo/inedo-docs/blob/c82fd2881e2f1d0c36e77bc8b8b48e2a2c7b75a9/Content/installation/windows/installation-legacy-traditional-installer.md), The Inedo Hub should be able to upgrade these installations, but you may need to uninstall and then reinstall using the Inedo Hub. 
 
 :::(Warning) (Backup Before Upgrading)
 You should make sure your [installation is backed-up](/docs/installation/backing-up-restoring).

@@ -15,24 +15,24 @@ The recommended Windows server requirements are:
 * Recommended Average/Typical - 2 Core CPU, 4 GB RAM, 10 GB storage
 * Recommended Large - 4 Core CPU, 8 GB RAM, 16 GB Storage
 
-There are three supported options; there is also [Legacy (Traditional) Installer](/docs/installation/windows/installation-legacy-traditional-installer) available for Otter v2.1 and earlier.
+There are three supported options; there is also [Legacy (Traditional) Installer](https://github.com/Inedo/inedo-docs/blob/c82fd2881e2f1d0c36e77bc8b8b48e2a2c7b75a9/Content/installation/windows/installation-legacy-traditional-installer.md) available for Otter v2.1 and earlier.
 
 ### Easiest: Inedo Hub
-The easiest way to install Otter on your Windows Servers is with [Inedo Hub](/docs/installation/windows/desktophub-overview), which is a lightweight Windows application. The Inedo Hub is used to install, update, and otherwise service your Otter installation, as well as other Inedo products installed on your server.
+The easiest way to install Otter on your Windows Servers is with [Inedo Hub](/docs/installation/windows/inedo-hub), which is a lightweight Windows application. The Inedo Hub is used to install, update, and otherwise service your Otter installation, as well as other Inedo products installed on your server.
 
-<a href="/docs/installation/windows/inedo-hub-installation-guide" style=" background:#025291;color:#ffffff;padding: 6px 20px;  border-radius: 3px;font-size: 14pt;text-decoration:none">Install Otter using the Inedo Hub</a>
+<a href="/docs/installation/windows/howto-install" style=" background:#025291;color:#ffffff;padding: 6px 20px;  border-radius: 3px;font-size: 14pt;text-decoration:none">Install Otter using the Inedo Hub</a>
 
-The Inedo Hub also supports [Offline Installation](/docs/installation/windows/desktophub-overview/desktophub-offline) for severs with limited or no Internet access.
+The Inedo Hub also supports [Offline Installation](/docs/installation/windows/inedo-hub/offline) for severs with limited or no Internet access.
 
 ### Silent Installation for Automation
 You can also perform a silent (non-interactive) installation of Otter using the Inedo Hub. This won't display a user interface or ask any questions. This can be useful for scripts or other automations.
 
-See: [Silent/Automated Installation Guide](/docs/installation/windows/desktophub-overview/silent)
+See: [Silent/Automated Installation Guide](/docs/installation/windows/inedo-hub/silent)
 
 ### Fully Customizable: Manual Installation
 If you prefer to install every component of Otter yourself, that's also an option. 
 
-See: [Manual installation](/docs/installation/manual-installation)
+See: [Manual installation](/docs/installation/windows/manual-installation)
 
 
 ## Installing on Linux Servers

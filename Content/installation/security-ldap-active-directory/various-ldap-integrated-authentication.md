@@ -51,7 +51,7 @@ However, depending on the URLs you've configured for ProGet, the Integrated Web 
 :::
 
 
-By default, ProGet is bound to a port using a wildcard hostname syntax (e.g. `https://*:8625/;http://*:8624`). However, the Integrated Web Server can be configured to share ports with other Windows applications by specifying a hostname in the [Web Server Urls](/docs/installation/windows/inedohub-configure-products#configuration-tab)  such as `https://proget.corp.local:443/`.
+By default, ProGet is bound to a port using a wildcard hostname syntax (e.g. `https://*:8625/;http://*:8624`). However, the Integrated Web Server can be configured to share ports with other Windows applications by specifying a hostname in the [Web Server Urls](/docs/installation/windows/inedo-hub#configuring)  such as `https://proget.corp.local:443/`.
 
 When configuring ProGet to share ports, every request coming to the configured URL will be authenticated by Windows. This means that non-supported feeds (i.e. most of them) cannot be used.
 

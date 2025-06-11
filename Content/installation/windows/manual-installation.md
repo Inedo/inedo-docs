@@ -1,6 +1,6 @@
 ---
 title: "Manual Installation"
-order: 3
+order: 9
 ---
 
 :::(Error) (💀 Manual Installations are Not Supported 💀)

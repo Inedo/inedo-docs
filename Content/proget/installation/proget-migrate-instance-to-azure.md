@@ -36,7 +36,6 @@ There are three ways to migrate ProGet to a VM on Azure:
  In all cases, you will first need to setup ProGet on a VM.  To do this:
 - Setup a new windows based Azure VM
    - See our [install guide](/docs/proget/installation/installation-guide) for the minimum requirements.
-   - Make sure IIS is installed and configured with the [required roles and features](/docs/installation/manual-installation#website-installation-iis)
 - Create a new database named `ProGet` on Azure SQL
 - Install ProGet on the new VM pointing to the database you created in the previous step.  **Make sure to install the same version that is installed on your local server**
 

@@ -1,6 +1,7 @@
 ---
 title: "Inedo Hub CLI Reference"
-order: 1
+nav-title: "CLI Reference"
+order: 4
 ---
 
 

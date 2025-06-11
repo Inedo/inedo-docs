@@ -20,7 +20,7 @@ However, if a failed install/upgrade causes the software to appear already insta
 ## Troubleshooting Inedo Hub Installation
 If Inedo Hub itself fails to install, it most likely is not able to download the installation package. The Inedo Hub installer attempts to download the latest Inedo Hub from our servers on startup, so if there are connectivity or proxy issues, it will fail.
 ::: (INFO) 
-If you need to install an Inedo product in an offline environment with no Internet connectivity, see the [offline installation guide](/docs/installation/windows/desktophub-overview/desktophub-offline).
+If you need to install an Inedo product in an offline environment with no Internet connectivity, see the [offline installation guide](/docs/installation/windows/inedo-hub/offline).
 :::
 To troubleshoot Inedo Hub installation, first verify basic Internet connectivity on your server. If you can connect to [proget.inedo.com](https://proget.inedo.com){target="_blank"} using your browser and you are using a proxy server, you may need to manually specify proxy settings.
 

@@ -1,6 +1,6 @@
 ---
 title: "HOWTO: Configure IIS as a Reverse Proxy for the Integrated Web Server"
-order: 7
+order: 2
 ---
 
 :::(Error) (💀 IIS is Not Recommended 💀)

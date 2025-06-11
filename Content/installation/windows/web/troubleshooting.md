@@ -1,6 +1,7 @@
 ---
 title: "Troubleshooting the Web Server Configuration"
-order: 8
+nav-title: "Troubleshooting"
+order: 4
 ---
 
 ::: (Internal) (TODO)

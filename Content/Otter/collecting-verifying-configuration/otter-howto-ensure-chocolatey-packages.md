@@ -10,7 +10,7 @@ Otter can "ensure" a Chocolatey package by making sure that it is installed or u
 ## Prerequisites
 In order to ensure Chocolatey packages, your servers will need to be added to Otter. 
 
-If you haven't done so already, we recommend using the [Inedo Hub](/docs/installation/windows/desktophub-overview) to install Otter and the [Inedo Agent](/docs/inedo-agent/inedoagent-overview) to add your server to Otter. 
+If you haven't done so already, we recommend using the [Inedo Hub](/docs/installation/windows/inedo-hub) to install Otter and the [Inedo Agent](/docs/inedo-agent/inedoagent-overview) to add your server to Otter. 
 
 After the Inedo agent is installed, click the Create Server button on the Servers page, and enter the host name of the server, the port you installed the agent on, and the encryption key if you chose one. 
 

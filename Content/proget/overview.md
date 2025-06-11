@@ -13,7 +13,7 @@ ProGet supports just about all of the third-party package types you'll need (e.g
 
 ## Step 1: Install ProGet
 
-You can install ProGet [quickly and easily from InedoHub](/docs/installation/windows/inedo-hub-installation-guide).
+You can install ProGet [quickly and easily from InedoHub](/docs/installation/windows/howto-install).
 
 ![InedoHub](/resources/docs/windowsinstall-inedohubinstall.png){height="" width="50%"}
 
@@ -60,7 +60,7 @@ Finally, we select "Set Feed Features", which will create the feeds and redirect
 
 ## Step 5 (Optional): Configure HTTPS/SSL
 
-Another recommended step when setting up ProGet for the first time is to  configure HTTPS on your server. For those who haven't done it before it  may sound daunting, but our page on [configuring HTTPS](/docs/installation/windows/web/installation-windows-https-support) not only explains it clearly but makes it painlessly easy to do so.
+Another recommended step when setting up ProGet for the first time is to  configure HTTPS on your server. For those who haven't done it before it  may sound daunting, but our page on [configuring HTTPS](/docs/installation/windows/web/https-support) not only explains it clearly but makes it painlessly easy to do so.
 
 ![HTTPS Security](/resources/docs/proget-https-settings.png){height="" width="50%"}
 
