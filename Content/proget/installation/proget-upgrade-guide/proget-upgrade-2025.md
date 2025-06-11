@@ -105,13 +105,17 @@ ProGet 2025 will not work in IIS without manual configuration changes.
 
 Prior to upgrading to ProGet 2025, we recommend [switching to the Integrated Web Server](/docs/installation/windows/web/howto-switch-to-integrated-web-server-from-iis). If you still want to use IIS, then you will need to [reconfigure IIS to act as a reverse-proxy](/docs/installation/windows/web/howto-use-iis-as-reverse-proxy). 
 
+### Configuration Change: SQL Server Permissions on Windows
 
-### Configuration Change: InedoHub Installation/Upgrade
+ProGet 2025 will now perform database schema updates when the Windows service starts, making it easier to detect errors. In earlier versions of ProGet, these updates were performed during the upgrade/downgrade process, in the context of the user running the upgrade.
 
-<div title="instructions are coming soon." style="background-color:yellow;text-decoration:underline;text-decoration-style: dotted;" >
-* Databse upgrades will no longer be performed by InedoHub, but by ProGet
-* IIS will not be available
-</div>
+:::(Error)
+ProGet 2025 requires that the `db_owner` role is granted to application user
+:::
+
+If you installed ProGet 2024.30 or later, the Inedo Hub installer automatically attempted to grant all users with the `ProGetUser_Role` the `db_owner role`. 
+
+To ensure the application user has the appropriate permissions before upgrading, [enable Enhanced Database Monitoring in ProGet 2024](/docs/installation/sql-server#enhanced-database-monitoring) prior to upgrading.
 
 ### Various Changes & Improvements
 * **SCA tweaks** including CSS/UI changes, adding license text field in SBOM exports for custom license, linking build URL back to system and more, deprecation warnings, and SBOM 1.6 support
