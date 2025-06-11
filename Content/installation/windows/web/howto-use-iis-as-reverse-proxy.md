@@ -9,11 +9,11 @@ Following Microsoft's guidance to [no longer use IIS for modern .NET application
 
 To configure IIS as a reverse proxy, you will need to have ProGet configured to use the Integrated Web Server and install the following:
 1. IIS 7 or Above with the ASP.NET role service enabled
-2. URL Rewrite version 2.1 or higher (https://www.iis.net/downloads/microsoft/url-rewrite)
-3. Application Request Routing (ARR) version 3.0 or higher (https://www.iis.net/downloads/microsoft/application-request-routing)
+2. [URL Rewrite version 2.1 or higher ](https://www.iis.net/downloads/microsoft/url-rewrite)
+3. [Application Request Routing (ARR) version 3.0 or higher](https://www.iis.net/downloads/microsoft/application-request-routing)
 
 :::(Warning)
-If you just installed URL Rewrite or ARR, neither URL Rewrite or ARR is available until the server is restarted.
+TIP: Installing URL Rewrite or ARR require restarting the entire server before they're available for use
 :::
 
 ## Create a new Web Site in IIS
