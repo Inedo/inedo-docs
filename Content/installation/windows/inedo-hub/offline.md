@@ -1,9 +1,10 @@
 ---
-title: "Offline Installation (no Internet access)"
-order: 3
+title: "Offline Installation on Windows (no Internet access)"
+nav-title: "Offline Installation"
+order: 2
 ---
 
-By default, when you install ProGet, BuildMaster, or Otter using [the Inedo Hub](/docs/installation/windows/desktophub-overview) internet access is required. This is because the Inedo Hub will connect to Inedo's servers to upgrade itself and show you what Inedo products and versions are available to install.
+By default, when you install ProGet, BuildMaster, or Otter using [the Inedo Hub](/docs/installation/windows/inedo-hub) internet access is required. This is because the Inedo Hub will connect to Inedo's servers to upgrade itself and show you what Inedo products and versions are available to install.
 
 However, the Inedo hub can also operate in a completely offline/disconnected state. This is useful if you need to update an Inedo product on a server that does not have Internet access. You can also [set up your own Inedo products feed](#setting-up-your-own-inedo-products-feed) for use on your intranet.
 
@@ -17,7 +18,10 @@ Single-exe offline installers are *not* suitable for silent or automated install
 :::
 
 ## Creating a Custom Offline Installer
-To create an offline Inedo Hub, follow these steps:
+
+:::(Warning)
+**Not Recommended**. We do not recommend creating a custom offline installer. It's complex and a lot of work to maintain; you should really just download our offline installers.
+:::
 
 1. Install Inedo Hub on a workstation/server that has access to the Internet.
 2. Click the "Create Offline Installer" button on the main page of the Inedo Hub application.
@@ -58,7 +62,7 @@ copy /b 7zS.sfx + config.txt + pack.7z OfflineInstaller.exe
 
 The file `OfflineInstaller.exe` will be a self-extracting executable that runs the `InedoHub.exe` upon extraction. 
 
-Note that you *could* modify this process to run `hub.exe` instead (i.e. [Inedo Hub CLI](/docs/installation/windows/desktophub-overview/desktophub-inedo-hub-cli)) and then pass in arguments as you would in a silent installation. However, this is more complicated and we wouldn't recommend it. Once you're scripting an install, you can simply download a .zip file and extract it with two one or two commands.
+Note that you *could* modify this process to run `hub.exe` instead (i.e. [Inedo Hub CLI](/docs/installation/windows/inedo-hub/cli-reference)) and then pass in arguments as you would in a silent installation. However, this is more complicated and we wouldn't recommend it. Once you're scripting an install, you can simply download a .zip file and extract it with two one or two commands.
 
 ## Setting up your own Inedo products feed
 By default, the Inedo Hub will connect to [a Universal Package Feed](/docs/proget/feeds/feed-overview) our [public ProGet instance](https://proget.inedo.com/) to upgrade itself and show you what Inedo products and versions are available to install.

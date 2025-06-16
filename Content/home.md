@@ -261,11 +261,11 @@ Inedo Docs is the documentation portal for our software products (ProGet, BuildM
 - [ProGet Installation Guide](/docs/proget/installation/installation-guide)
 - [BuildMaster Installation Guide](/docs/buildmaster/installation-maintenance/buildmaster-installation-guide)
 - [Otter Installation Guide](/docs/otter/installation-upgrading/otter-installation-guide)
-- [Windows Installation (Inedo Hub)](/docs/installation/windows/inedo-hub-installation-guide)
+- [Windows Installation (Inedo Hub)](/docs/installation/windows/howto-install)
 - [Linux Installation (Docker)](/docs/installation/linux/docker-guide)
-- [Configuring IIS Roles & Features](/docs/installation/installing-on-iis/various-iis-configuring-iis-roles-and-features)
+- [Upgrading your Inedo Product](/docs/installation/upgrading)
 - [SQL Server & Inedo Products](/docs/installation/sql-server)
-- [HTTPS Support on Windows](/docs/installation/installing-on-iis/installation-windows-https-support)
+- [HTTPS Support on Windows](/docs/installation/windows/web/https-support)
 - [HTTPS Support on Linux](/docs/installation/linux/https-support)
 
 </div>
@@ -329,12 +329,12 @@ Your Inedo products should be backed up frequently.
 
 ### **Inedo Hub** {.icon .inedo-hub}
 
-- [What is the Inedo Hub?](/docs/installation/windows/desktophub-overview)
-- [Configuring & Maintaining Inedo Products](/docs/installation/windows/inedohub-configure-products)
-- [Offline Installation](/docs/installation/windows/desktophub-offline)
-- [HOWTO: Install on Windows](/docs/installation/windows/inedo-hub-installation-guide)
-- [HOWTO: Upgrade or Downgrade with the Inedo Hub](/docs/installation/windows/inedo-hub-upgrade-downgrade)
-- [HOWTO: Install Pre-release Product Versions](/docs/installation/windows/howto-install-prerelease-product-versions)
+- [What is the Inedo Hub?](/docs/installation/windows/inedo-hub)
+- [Configuring & Maintaining Inedo Products](/docs/installation/windows/inedo-hub#configuring)
+- [Offline Installation](/docs/installation/windows/inedo-hub/offline)
+- [HOWTO: Install on Windows](/docs/installation/windows/howto-install)
+- [HOWTO: Upgrade or Downgrade with the Inedo Hub](/docs/installation/windows/howto-upgrade-downgrade)
+- [HOWTO: Install Pre-release Product Versions](/docs/installation/windows/inedo-hub/howto-install-prerelease-product-versions)
 
 </div>
 

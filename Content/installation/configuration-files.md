@@ -3,7 +3,7 @@ title: "Installation Configuration Files"
 order: 12
 ---
 
-We generally recommend using the [Inedo Hub](/docs/installation/windows/desktophub-overview) to manage the installation configuration for your Inedo products. However, you can also edit the configuration files directly.
+We generally recommend using the [Inedo Hub](/docs/installation/windows/inedo-hub) to manage the installation configuration for your Inedo products. However, you can also edit the configuration files directly.
 
 :::(info)
 This applies to **BuildMaster 6.0.7+, ProGet 5.1.0+, and Otter 2.0.9+.** See [Legacy Configuration Files](#legacy-configuration-files) if you're using an older version.

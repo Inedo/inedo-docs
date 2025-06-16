@@ -1,5 +1,5 @@
 ---
-title: "Upgrading your Inedo Product"
+title: "When to Upgrade your Inedo Product"
 order: 9
 ---
 ProGet, BuildMaster, and Otter will never automatically update themselves. You are in complete control of when and how often you upgrade, and you can just as easily downgrade if needed. This lets you eliminate the "surprise" from unwanted new features and drastically reduce the impact of changes or bugs (regressions).
@@ -57,9 +57,9 @@ Before upgrading your Inedo product, we recommend [performing a back-up](/docs/i
 Performing the upgrade itself is generally very easy.
 
 ### Upgrading on Windows Servers
-The easiest way to manage your product installation on Windows is with [Inedo Hub](/docs/installation/windows/desktophub-overview). This is a lightweight Windows application that's used to install, update, and otherwise service the Inedo products on your server.
+The easiest way to manage your product installation on Windows is with [Inedo Hub](/docs/installation/windows/inedo-hub). This is a lightweight Windows application that's used to install, update, and otherwise service the Inedo products on your server.
 
-<a href="/docs/installation/windows/inedo-hub-upgrade-downgrade" style=" background:#025291;color:#ffffff;padding: 6px 20px;  border-radius: 3px;font-size: 14pt;text-decoration:none">HOWTO: Upgrade using the Inedo Hub</a>
+<a href="/docs/installation/windows/howto-upgrade-downgrade" style=" background:#025291;color:#ffffff;padding: 6px 20px;  border-radius: 3px;font-size: 14pt;text-decoration:none">HOWTO: Upgrade using the Inedo Hub</a>
 ### Upgrading on Linux Servers
 Inedo products running on Linux using Docker containers, and can be upgraded by installing and running a new version of the container image.
 

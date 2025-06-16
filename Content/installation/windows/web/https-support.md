@@ -1,13 +1,14 @@
 ---
-title: "HTTPS Support on Windows"
-order: 2
+title: "Configuring HTTPS on Windows"
+nav-title: "Configuring HTTPS"
+order: 1
 ---
 
 HTTPS is increasingly becoming a requirement inside of many organizations, even for internal-only web applications. It's also required by several third-party client tools, such as NuGet and Docker.  
 
 If you haven't configured HTTPS on a web server before, it may seem unintuitive and complex. Because of this, many users will instead configure a load balancer that terminates SSL connections and forward the requests over HTTP, or use a reverse proxy like [Stunnel](https://www.stunnel.org).
 
-In this article, we'll briefly explain how HTTPS works, and show you how to enable HTTPS for ProGet, BuildMaster, and Otter when installed on Windows (IIS or the Integrated Web Server). For Linux-based installations, see [HTTPS Support on Linux](/docs/installation/linux/https-support).
+In this article, we'll briefly explain how HTTPS works, and show you how to enable HTTPS for ProGet, BuildMaster, and Otter when installed on Windows. For Linux-based installations, see [HTTPS Support on Linux](/docs/installation/linux/https-support).
 
 
 ## How does HTTPS (SSL/TLS) Work?
@@ -44,40 +45,15 @@ New-SelfSignedCertificate -Subject "ProGetSelfSigned" -DnsName "proget.myserver.
 
 If you export and then install this certificate as a Trusted Root to the client machines, then the browsers and command-line tools will trust the server and be able to communicate over HTTPS.
 
-## Configuring HTTPS on IIS
-IIS has built-in support for [SSL connections](https://learn.microsoft.com/en-us/iis/manage/configuring-security/how-to-set-up-ssl-on-iis) and most system administrators already know how to configure it.  You can even use tools like [win-acme](https://www.win-acme.com/) to add free certificates to your IIS web site.
 
-::: (Internal) (TODO)
-Link to the win-acme HOWTO once completed
-:::
-
-### Add an HTTPS Binding To Your Website
-To add an HTTPS binding to IIS:
-1. Open Internet Information Services (IIS) Manager
-2. Select your Website
-3. On the right, click "Bindings..." under *Edit Site* 
-4. Click "Add..."
-5. Change the Type:  to "https"
-6. Enter a Host name (ex: "proget.kramerica.com")
-7. Select the SSL certificate you have setup for your site
-8. *(Optional)* Check "Require Server Name Indication"
-
-Although Server Name Indication (SNI) is not required, we strongly recommend checking this option.  SNI is a feature in the Transport Layer Security (TLS) protocol that allows a client to indicate the hostname that it is trying to connect to at the start of the handshaking process. This allows you to bind a certificate to specific hostname using a shared IP address.  This will help to simplify server setups and ensure that you do not affect other sites hosted in IIS.
-
-::: (Internal) (TODO)
-Move this to a HOWTO article and include screenshots
-:::
-
-## Configuring HTTPS on the Integrated Web Server
-The Integrated Web Server (IWS) also supports HTTPS, but can be more complicated to configure due to Windows operating system restrictions.
+## How to Configure HTTPS
+The Integrated Web Server (IWS) supports HTTPS, but can be a little complicated due to Windows operating system restrictions.
 
 There are two ways to configure the Integrated Web Server for HTTPS:
 * Bind to Port (e.g. listen to all requests to port 443)
 * Bind to Hostname (e.g. `https://proget.kramerica.com/`)
 
-::: (Internal) (TODO)
-Move this to a HOWTO article and include screenshots
-:::
+
 ### Configuring Directly in ProGet
 Starting in ProGet 2022.19, BuildMaster 2024, and Otter 2024, we have added the ability to configure your integrated web server's HTTP/S bindings and a certificate directly in ProGet.
 
@@ -117,7 +93,7 @@ To add an HTTPS binding using the HTTP/S Settings page:
 The confirmation page may display a warning if any commands need to be run directly on the server. If you are binding to a port below 1024, you will see a command that needs to be run on your server to allow the integrated web server to bind to that port. Additionally, when using a hostname with your HTTPS binding, you will also see a command to bind your certificate to your hostname and port.
 :::
 
-Once configured, the integrated web server will restart.  If any binding errors occur during startup, they will be logged in the Windows Event Log.  See our [troubleshooting documentation](/docs/installation/installing-on-iis/installation-windows-web-server-troubleshooting) for more information.
+Once configured, the integrated web server will restart.  If any binding errors occur during startup, they will be logged in the Windows Event Log.  See our [troubleshooting documentation](/docs/installation/windows/web/troubleshooting) for more information.
 
 ### HTTPS Binding to a Hostname 
 
@@ -166,7 +142,7 @@ For example, the following command would bind `proget.kramerica.com`
 netsh http add sslcert hostnameport=proget.kramerica.com:443 certhash=b1647f08924633cdf749856abc44c59379cfcaa1 certstorename=My appid="{E7FD8489-4931-45D9-8D42-427367B12584}"
 ```
 
-#### 4. Restart the Integrated Web Server
+#### 4. Restart the Web Server
 Finally, you can restart the ProGet, BuildMaster, or Otter services. If the services can successfully restart, then the binding will be successful and you can visit the server on the new url.
 
 #### How to Unregister a Binding
@@ -281,4 +257,4 @@ As of ProGet v2022.17 HTTPS bindings can be used with either configuration, but 
 
 ### Automated / Silent Configuring HTTPS on the Integrated Web Server
 
-The Inedo Hub's [silent installation process](/docs/installation/windows/silent) will not configure HTTPS in this manner. However, it's possible to automate this after installation with scripting; user Stephen Valdinger (steviecoaster) wrote a script ([Set-ProGetSslConfig.ps1](https://gist.github.com/steviecoaster/0a2c0d4b09988dedf8e1df1844ec6b8a)) that serves as an excellent starting point.
+The Inedo Hub's [silent installation process](/docs/installation/windows/inedo-hub/silent) will not configure HTTPS in this manner. However, it's possible to automate this after installation with scripting; user Stephen Valdinger (steviecoaster) wrote a script ([Set-ProGetSslConfig.ps1](https://gist.github.com/steviecoaster/0a2c0d4b09988dedf8e1df1844ec6b8a)) that serves as an excellent starting point.

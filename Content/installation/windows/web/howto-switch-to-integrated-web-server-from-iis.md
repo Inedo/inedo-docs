@@ -8,7 +8,7 @@ When you install any of our products using the installer, you're presented with 
 :::(Error) (💀 IIS is Not Recommended 💀)
 Following Microsoft's guidance to [no longer use IIS for modern .NET applications](https://learn.microsoft.com/en-us/aspnet/core/fundamentals/servers/kestrel), we no longer recommend using IIS to host modern versions (2022+) of our products.  
 
-Instead, you should use the Integrated Web Server, which is our (and Microsoft's) recommended web server. Although IIS is still supported, there are no benefits aside from a more familiar user interface.
+Instead, you should use the Integrated Web Server, which is our (and Microsoft's) recommended web server. Beginning in version 2025.0+ of our products IIS is no longer supported installation option.  Instead, see our [HOWTO: Use IIS a Reverse-Proxy](/docs/installation/windows/web/howto-use-iis-as-reverse-proxy).
 :::
 
 In this guide, we’ll look at how to switch your Inedo Product (such as ProGet) from IIS to the Integrated Web Server. Going from IWS to IIS is not recommended; however, if you need to do so see [Hosting Through IIS Instead of the Integrated Web Server (archive.org)](https://web.archive.org/web/20231209233952/https://docs.inedo.com/docs/various-iis-switching-to-iis).
@@ -16,7 +16,7 @@ In this guide, we’ll look at how to switch your Inedo Product (such as ProGet)
 ## Prerequisites: Gather Information 
 
 #### 1. Connection String & Encryption Key 
-You should note your connection string and encryption key. These can be found in [InedoHub](/docs/installation/windows/desktophub-overview) by navigating to “Configuration” > “Change settings...” 
+You should note your connection string and encryption key. These can be found in [InedoHub](/docs/installation/windows/inedo-hub) by navigating to “Configuration” > “Change settings...” 
 
 ![](/resources/docs/proget-install-config.png){height="" width="50%"}
 
@@ -59,7 +59,7 @@ Note that services may fail to start, especially if they require a domain to acc
 
 ### Step 4 (Optional): Configure Your Windows Domain Account 
 
-If you previously configured your Inedo product to run as a Windows Domain Account you will need to reconfigure it. See our guide on [HOWTO: Configure Your Inedo Product to Run As a Windows Domain Account](/docs/installation/windows/howto-configure-windows-domain-account). 
+If you previously configured your Inedo product to run as a Windows Domain Account you will need to reconfigure it. See our guide on [HOWTO: Configure Your Inedo Product to Run As a Windows Domain Account (github.com)](https://github.com/Inedo/inedo-docs/blob/c82fd2881e2f1d0c36e77bc8b8b48e2a2c7b75a9/Content/installation/windows/howto-configure-windows-domain-account.md). 
 
 ### Step 5: Load Your Web Application on the Server 
 
@@ -71,7 +71,7 @@ Next, navigate to “Administration Overview” > “HTTP/S & Certificate Settin
 
 ![](/resources/docs/proget-admin-https.png){height="" width="50%"}
 
-From here you can [Configure HTTPS on the Integrated Web Server](/docs/installation/installing-on-iis/installation-windows-https-support#configuring-https-on-the-integrated-web-server). 
+From here you can [Configure HTTPS on the Integrated Web Server](/docs/installation/windows/web/https-support#how-to-configure-https). 
 
 ### Step 7: Test and Verify that Old URLs Work 
 

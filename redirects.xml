@@ -1,6 +1,27 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <redirects>
 
+	<!-- BEGIN ProGet2025 Docs Refactoring  -->
+	<redirect from="/docs/installation/windows/desktophub-overview" to="/docs/installation/windows/inedo-hub" />
+	<redirect from="/docs/installation/windows/desktophub-overview/desktophub-inedo-hub-cli" to="/docs/installation/windows/inedo-hub/cli-reference" />
+	<redirect from="/docs/installation/windows/desktophub-overview/desktophub-troubleshooting" to="/docs/installation/windows/inedo-hub/troubleshooting" />
+	<redirect from="/docs/installation/windows/inedohub-configure-products" to="/docs/installation/windows/inedo-hub" />
+	<redirect from="/docs/installation/windows/desktophub-offline" to="/docs/installation/windows/inedo-hub/offline" />
+	<redirect from="/docs/installation/windows/inedo-hub-installation-guide" to="/docs/installation/windows/howto-install" />
+	<redirect from="/docs/installation/windows/inedo-hub-upgrade-downgrade" to="/docs/installation/windows/howto-upgrade-downgrade" />
+	<redirect from="/docs/installation/windows/howto-install-prerelease-product-versions" to="/docs/installation/windows/inedo-hub/howto-install-prerelease-product-versions" />
+	<redirect from="/docs/installation/windows/howto-configure-windows-domain-account" to="https://github.com/Inedo/inedo-docs/blob/c82fd2881e2f1d0c36e77bc8b8b48e2a2c7b75a9/Content/installation/windows/howto-configure-windows-domain-account.md" />
+	<redirect from="/docs/installation/windows/silent" to="/docs/installation/windows/inedo-hub/silent" />
+	<redirect from="/docs/installation/windows/installation-legacy-traditional-installer" to="https://github.com/Inedo/inedo-docs/blob/c82fd2881e2f1d0c36e77bc8b8b48e2a2c7b75a9/Content/installation/windows/installation-legacy-traditional-installer.md" />
+	<redirect from="/docs/installation/manual-installation" to="/docs/installation/windows/manual-installation" />
+	<redirect from="/docs/installation/installing-on-iis/various-iis-configuring-iis-roles-and-features" to="/docs/installation/windows/web#iis" />
+	<redirect from="/docs/installation/installing-on-iis/various-iis-disabling-webdav" to="/docs/installation/windows/web#iis" />
+	<redirect from="/docs/installation/installing-on-iis/installation-windows-https-support" to="/docs/installation/windows/web/https-support" />
+	<redirect from="/docs/installation/installing-on-iis/howto-switch-to-integrated-web-server-from-iis" to="/docs/installation/windows/web/howto-switch-to-integrated-web-server-from-iis" />
+	<redirect from="/docs/installation/installing-on-iis/installation-windows-web-server-troubleshooting" to="/docs/installation/windows/web/troubleshooting" />
+	<redirect from="/docs/installation/sql-server/installation-database-backup" to="/docs/installation/sql-server/backup" />
+	<!-- END ProGet2025 Docs Refactoring  -->
+	
   <!-- BEGIN UPack Docs Refactoring  -->
   <redirect from="/docs/proget/upack/upack-overview" to="/docs/proget/feeds/universal/universal-packages" />
   <redirect from="/docs/proget/upack/upack-downloads-source-code" to="/docs/proget/feeds/universal/universal-packages" />

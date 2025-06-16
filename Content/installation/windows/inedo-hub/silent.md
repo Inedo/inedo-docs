@@ -1,11 +1,12 @@
 ---
 title: "Silent/Automated Installation Guide"
-order: 8
+nav-title: "Silent Installation"
+order: 3
 ---
 
 This guide will show you how to perform a silent (non-interactive) installation of ProGet, BuildMaster, or Otter that won't display a user interface or prompt for input. This can be useful for automating your installation and upgrades.
 
-Silent installations use the [Inedo Hub's Command Line Interface (CLI)](/docs/installation/windows/desktophub-overview/desktophub-inedo-hub-cli), which means that the Inedo Hub must be downloaded and installed first. However, you can perform a [silent/scripted installation of the Inedo Hub](#scripted-installation-of-inedo-hub) or even [create an offline installation bundle](/docs/installation/windows/desktophub-offline) that you can then distribute.
+Silent installations use the [Inedo Hub's Command Line Interface (CLI)](/docs/installation/windows/inedo-hub/cli-reference), which means that the Inedo Hub must be downloaded and installed first. However, you can perform a [silent/scripted installation of the Inedo Hub](#scripted-installation-of-inedo-hub) or even [create an offline installation bundle](/docs/installation/windows/inedo-hub/offline) that you can then distribute.
 
 ## How to Perform a Silent Installation
 
@@ -69,7 +70,7 @@ hub.exe install ProGet:5.2.3 --IsUpgrade=true
 
 Other common customization options include the ability to use IIS (`--UseIIS`), and specifying a custom path for Inedo extensions (`--ExtensionsPath=«custom-extensions-path»`)
 
-A full list of features that can be customized during a silent instalation is available on our [Inedo Hub CLI guide](/docs/installation/windows/desktophub-overview/desktophub-inedo-hub-cli).
+A full list of features that can be customized during a silent instalation is available on our [Inedo Hub CLI guide](/docs/installation/windows/inedo-hub/cli-reference).
 
 ## Scripted Installation of Inedo Hub
 

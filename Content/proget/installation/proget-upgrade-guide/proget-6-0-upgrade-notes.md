@@ -1,13 +1,13 @@
 ---
 title: "Upgrading to ProGet 6.0 (2021)"
-order: 4
+order: 5
 url-slug: "proget-6-0-upgrade-notes"
 ---
 
 :::(Error) (ProGet 6.0 Upgrade Not Recommended)
 If you're currently using ProGet 5.2 or ProGet 5.3, we do not recommend upgrading to ProGet 6.0. 
 
-Instead, **directly upgrade to ProGet 2024** ([see notes](/docs/proget-upgrade-2024)). This article is kept as-is to help show what changed in ProGet 6.0.
+Instead, **directly upgrade to ProGet 2025** ([see notes](/docs/proget-upgrade-2025)). This article is kept as-is to help show what changed in ProGet 6.0.
 :::
 
 ProGet 6.0 is a major upgrade, and this article provides information about what changed, the impact to your instance, and how to mitigate risk during upgrade.

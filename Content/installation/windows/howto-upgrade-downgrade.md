@@ -1,11 +1,12 @@
 ---
-title: "HOWTO: Upgrade or Downgrade with the Inedo Hub"
-order: 5
+title: "HOWTO: Upgrade or Downgrade on Windows"
+nav-title: "HOWTO: Upgrade or Downgrade"
+order: 2
 ---
 
 ProGet, BuildMaster, and Otter are self-managed, which means that you are in complete control of when, and how often to upgrade. This lets you eliminate the risk of being "surprised" by unwanted new features or undetected bugs.
 
-This article provides step-by-step instructions for how to upgrade of downgrade an Inedo product with the [Inedo Hub](/docs/installation/windows/desktophub-overview). 
+This article provides step-by-step instructions for how to upgrade of downgrade an Inedo product with the [Inedo Hub](/docs/installation/windows/inedo-hub). 
 
 ## Step 1: Decide If You Should Upgrade Your Inedo Product
 Before updating to a newer version, you should weigh the costs associated with the update process against the value and benefits of the new features or bug fixes added. 
@@ -30,7 +31,7 @@ Before upgrading your Inedo product, we recommend [performing a back-up](/docs/i
 :::
 
 
-Click on "Upgrade" next to the Inedo product you wish to upgrade, select the desired version, and click on "Upgrade" below the Connection String. You can also [upgrade to a pre-release version](/docs/installation/windows/howto-install-prerelease-product-versions) of an Inedo product! 
+Click on "Upgrade" next to the Inedo product you wish to upgrade, select the desired version, and click on "Upgrade" below the Connection String. You can also [upgrade to a pre-release version](/docs/installation/windows/inedo-hub/howto-install-prerelease-product-versions) of an Inedo product! 
 
 ![Version Selection](/resources/docs/inedohub-upgrade-chooseversion.png){height="" width="50%"}
 

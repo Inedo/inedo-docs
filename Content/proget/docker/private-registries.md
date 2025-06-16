@@ -20,7 +20,7 @@ ProGet lets you define as many Docker registries as you want. This allows you to
 To create a Docker registry in ProGet, go to Containers > Create New Docker Registry, then enter a registry name.
 
 :::(ERROR)
-By default, Docker requires an SSL connection. You will either need to configure a valid SSL certificate (see [HTTPS Support on Windows](/docs/installation/installing-on-iis/installation-windows-https-support) and [HTTPS Support on Linux](/docs/installation/linux/https-support)) or configure your Docker client to use an [insecure registry](#insecure).
+By default, Docker requires an SSL connection. You will either need to configure a valid SSL certificate (see [HTTPS Support on Windows](/docs/installation/windows/web/https-support) and [HTTPS Support on Linux](/docs/installation/linux/https-support)) or configure your Docker client to use an [insecure registry](#insecure).
 :::
 
 <h3 id="http-registries">Using an Insecure Registry (HTTP not HTTPS or Self-signed Certificates)</h3>
