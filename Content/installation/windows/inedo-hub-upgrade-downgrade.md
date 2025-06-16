@@ -22,7 +22,7 @@ For major releases, we'll make a document detailing what is included in the upda
 ## Step 2: Decide Which Version to Upgrade To
 When an upgrade is available the "Downgrade" button will be replaced with "Upgrade". Note that you can still click on "Upgrade" and select an older version to downgrade to. 
 
-![Inedo Hub Main Screen](/resources/docs/updatinginedohub-mainscreen.png)
+![Inedo Hub Main Screen](/resources/docs/updatinginedohub-mainscreen.png){height="" width="50%"}
 
 ## Step 3: Perform the Upgrade
 :::(Info) (Backing Up Your Data)
@@ -32,13 +32,13 @@ Before upgrading your Inedo product, we recommend [performing a back-up](/docs/i
 
 Click on "Upgrade" next to the Inedo product you wish to upgrade, select the desired version, and click on "Upgrade" below the Connection String. You can also [upgrade to a pre-release version](/docs/installation/windows/howto-install-prerelease-product-versions) of an Inedo product! 
 
-![Version Selection](/resources/docs/updatinginedohub-updatebutton%281%29.png)
+![Version Selection](/resources/docs/inedohub-upgrade-chooseversion.png){height="" width="50%"}
 
-## Step 3: Launch your Upgraded Inedo Product
+## Step 4: Launch your Upgraded Inedo Product
 
 After clicking "Upgrade" at the end of step 2 the Inedo Hub will take care of the rest. When the Inedo product is finished upgrading you will be brought back to the main Inedo Hub where your Inedo product will be displayed with the new version number.
 
-![Inedo Hub After Upgrading BuildMaster](/resources/docs/updatinginedohub-buildmasterdownloaded.png)
+![Inedo Hub After Upgrading BuildMaster](/resources/docs/updatinginedohub-buildmasterdownloaded.png){height="" width="50%"}
 
 Click "Launch" to begin using the new version of your Inedo Product!
 

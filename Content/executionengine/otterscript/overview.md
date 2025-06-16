@@ -3,7 +3,7 @@ title: "OtterScript Overview"
 order: 1
 ---
 
-![otterscript.png](/resources/docs/otterscript.png){height="" width=""}
+![Otter Script](/resources/docs/otterscript.png){height="" width="50%"}
 
 _OtterScript_ is a Domain-Specific Language that was designed in tandem with the execution engine to represent [configuration plans](/docs/otter/scripting-in-otter/otter-otterscript-and-operations#configuration) and [orchestration plans](/docs/otter/scripting-in-otter/otter-otterscript-and-operations#orchestration) in Otter, and [deployment plans](/docs/buildmaster/deployment-continuous-delivery/buildmaster-deployment-scripts) in BuildMaster. Because a DSL is inherently limited in functionality, a key feature of OtterScript is the ability to "drop down" to a [lower-level scripting language](/docs/otter/scripting-in-otter/otter-scripting-powershell) as needed.
 
@@ -19,4 +19,4 @@ In addition to implementing the _actual_ requirements for an advanced execution 
 
 By using the Visual Mode in the plan editor, many users won't even realize that they're creating plans with _OtterScript_.
 
-![otter-text.gif](/resources/docs/otter-text.gif){height="" width=""}
+![Visual Mode](/resources/docs/otter-text.gif){height="" width="50%"}

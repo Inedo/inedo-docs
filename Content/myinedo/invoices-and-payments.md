@@ -9,7 +9,7 @@ This article will cover how to access your quotes & invoices through MyInedo as 
 
 To access your quote or invoice through MyInedo, simply click on "My Invoices" at the top of the MyInedo webpage. You will then be shown all your existing quotes and invoices. To pay a quote and have an invoice generated click "pay now" next to the relevant quote.
 
-![Pay Invoice](/resources/docs/myinedo-purchasingandrenewinglicense-invoice%281%29.png)
+![Pay Invoice](/resources/docs/myinedo-payments-accessinvoice.png){height="" width="50%"}
 After selecting your payment method and filling out the appropriate fields, an invoice will be generated.
 
 ## Payment Methods
@@ -18,14 +18,14 @@ MyInedo accepts most standard payment methods including credit card, purchase or
 ## Credit Card
 Credit card payments are processed securely through [Stripe Checkout](https://stripe.com/en-gb-jp/payments/checkout){target="_blank"}, our third-party credit-card payment service. 
 
-![Credit Card Popup](/resources/docs/myinedo-purchasingandrenewing-creditcard.png)
+![Credit Card Popup](/resources/docs/myinedo-purchasingandrenewing-creditcard.png){height="" width="50%"}
 
 Customers paying via credit card will instantly receive their license key and invoice after submitting payment. 
 
 ## Purchase Order
 To pay via purchase order, simply fill out the required fields and upload a PDF version of your purchase order.
 
-![Submit Purchase Order](/resources/docs/myinedo-purchasingandrenewinglicense-purchaseorder.png)
+![Submit Purchase Order](/resources/docs/myinedo-purchasingandrenewinglicense-purchaseorder.png){height="" width="50%"}
 
 After submitting a PO order, accounts receivable will verify your order and send an invoice along with all license keys to the provided email address within 2 business days. That invoice can then be paid using credit card, bank transfer, or check.
 

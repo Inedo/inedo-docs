@@ -17,8 +17,7 @@ The import function allows you to quickly configure or make massive changes to O
 
 By using the "dry run" option you can see the changes that would be made before actively making the changes.
 
-![import-config](/resources/docs/import-config.png){height="" width=""}
-
+![import-config](/resources/docs/import-config.png){height="" width="50%"}
 
 ## Infrastructure Synchronization
 It's quite common to use Otter to manage server configuration, and [BuildMaster](/docs/buildmaster/overview) for deploying applications to servers using CI/CD; because they both use the same set of servers, you can synchronize the infrastructure between multiple instances.
@@ -29,4 +28,4 @@ When synchronization is enabled, the other instance should be treated as the sou
 
 To have another instance of BuildMaster or Otter synchronize with your instance, simply create an API key with view infrastructure permissions.
 
-![Otter Synchronization Settings](/resources/docs/Otter%20Synchronization%20Settings.png){height="" width=""}
+![Otter Synchronization Settings](/resources/docs/otter-servers-syncsettings.png){height="" width="50%"}

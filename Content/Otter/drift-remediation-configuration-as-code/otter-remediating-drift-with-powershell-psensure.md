@@ -92,7 +92,7 @@ If you've configured the server to allow for remediation, you can automatically 
 ## Using parameters in your PSEnsure scripts
 You probably would never create a role or script named `ensure-KB4532938`; instead, you'd want to add parameters that allow it to operate differently, depending on the input provided.
 
-![](/resources/docs/using-parameters-in%20your-PSEnsure-scripts.png)
+![Add Parameters](/resources/docs/otter-remediation-addparameters.png){height="" width="50%"}
 
 This works exactly the same as other PowerShell scripts; see [Compliance as Code with PowerShell & PSVerify](/docs/otter/collecting-verifying-configuration/otter-compliance-as-code-with-powershell-psverify) to learn how Otter can read the Help-Based Comments for PARAMETER names.
 

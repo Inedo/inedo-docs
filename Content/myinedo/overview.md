@@ -5,7 +5,7 @@ order: 1
 
 [MyInedo Portal Homepage](https://my.inedo.com/){target="_blank"} is a central hub that contains all your license information, quotes, invoices, support tickets, and [users associated with your user/organization](/docs/myinedo/creating-and-accessing-your-account). 
 
-![MyInedo Portal Homepage](/resources/docs/myinedo-whatismyinedo-homepage%283%29.png)
+![Homepage](/resources/docs/myinedo-homepage.png){height="" width="50%"}
 
 
 Through MyInedo you can:

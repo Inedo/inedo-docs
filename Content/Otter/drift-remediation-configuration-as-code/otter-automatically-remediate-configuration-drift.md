@@ -33,7 +33,7 @@ When remediating a single server, if Otter has detected drift, you'll see the "R
 
 Clicking this causes Otter to run a remediation job that targets that one server, which can be run immediately or at a certain start time.
 
-![Remediating Configuration on a Single Server.png](/resources/docs/Remediating%20Configuration%20on%20a%20Single%20Server.png){height="" width=""}
+![Single Server Configuration](/resources/docs/Remediating%20Configuration%20on%20a%20Single%20Server.png){height="" width="50%"}
 
 When the job runs, Otter will assemble the configuration plans of both the servers and their roles into a single plan and then execute it. 
 •	Dependencies run first to ensure required configuration happens before the rest. Circular dependencies result in runtime errors
@@ -56,7 +56,7 @@ For security and simplicity, these endpoints require that you first create an AP
 ## Simulating Remediation
 If you want to dry-run a remediation, run it in [simulation mode](/docs/otter/orchestration-server-automation/otter-jobs-templates). 
 
-![Simulating Remediation.png](/resources/docs/Simulating%20Remediation.png)
+![Simulating Remediation](/resources/docs/Simulating%20Remediation.png){height="" width="50%"}
 
 Simulation jobs will not perform any action on the target server. They just demonstrate how the remediation job would be carried out as configured based on the entered variables.
 
@@ -72,7 +72,7 @@ Remediating drift on a recurring basis strikes a balance between “immediate”
 
 Select "recurring drift remediation" by navigating to Jobs and select Remediate Drift on a Recurring Basis. 
 
-![Remediate Drift on a Recurring Basis.png](/resources/docs/Remediate%20Drift%20on%20a%20Recurring%20Basis%282%29.png)
+![Recurring Basis](/resources/docs/otter-remediation-recurringbasis.png){height="" width="50%"}
 
 You must select the schedule and server targeting for this job.
 

@@ -7,7 +7,7 @@ Using General Blocks in OtterScript allows users to define certain properties th
     
   **Visual Mode**
 
-![general blocks](/resources/docs/general%20blocks.PNG){height="" width=""}
+![General Blocks](/resources/docs/general-blocks.png){height="" width="50%"}
    
  **Text Mode (OtterScript)**
  
