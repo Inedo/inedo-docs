@@ -10,7 +10,7 @@ Badges are commonly used by open-source software because it typically relies on 
 ### Generating CI Badges 
 
 BuildMaster allows external tools to query build status in order to generate a CI Badge, such as:
-![success.svg](/resources/docs/success.svg){height="200" width="200"}
+![Success Badge](/resources/docs/buildmaster-badges-successs.svg){height="" width="50%"}
 
 To access the CI Badge API, an API key with access to the API must be added. Then, the following URLs can be used to generate either the badge image or a link to the appropriate build/execution:
 
@@ -81,7 +81,7 @@ If successful, returns the 200 status with the content of an SVG image (content 
 
 | Badge | Conditions |
 | --- | --- |
-| ![success.svg](/resources/docs/success%281%29.svg){height="" width=""} | Latest matching build execution completed successfully |
+| ![success.svg](/resources/docs/buildmaster-badges-success.svg){height="" width=""} | Latest matching build execution completed successfully |
 | ![pending.svg](/resources/docs/pending.svg){height="" width=""} | Latest matching build execution created but hasn't started yet |
 | ![running.svg](/resources/docs/running.svg){height="" width=""} | Latest matching build execution is in progress |
 | ![warning.svg](/resources/docs/warning.svg){height="" width=""} | Latest matching build execution completed with at least one warning |

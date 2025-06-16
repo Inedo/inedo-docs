@@ -1,10 +1,16 @@
 ---
 title: "Upgrading to ProGet 2024"
-order: 1
+order: 2
 url-slug: "proget-upgrade-2024"
 ---
 
 ProGet 2024 is a major update, and this article provides information about what will change, the impact to your instance, and how to mitigate risk during upgrade.
+
+:::(Error) (ProGet 2024 Upgrade Not Recommended)
+If you're currently using ProGet 5.2 ProGet 5.3, ProGet 6.0, ProGet 2022, or ProGet 2023 we do not recommend upgrading to ProGet 2024.
+
+Instead, **directly upgrade to ProGet 2025** ([see notes](/docs/proget-upgrade-2025)). This article is kept as-is to help show what changed in ProGet 2023.
+:::
 
 ## Planning for Your Upgrade
 
@@ -204,12 +210,12 @@ The `PackageAccessRule` and `VulnerabilitySource` were designed for and used by 
 ## Upgrade Process
 You should generally perform the upgrade using the same method you used to install.
 
-* On Windows, the most common installation method is using the internet-connected [Inedo Hub](/docs/installation/windows/desktophub-overview); see  [HOWTO: Upgrade or Downgrade with the Inedo Hub](/docs/installation/windows/inedo-hub-upgrade-downgrade) for more details on how to upgrade.
+* On Windows, the most common installation method is using the internet-connected [Inedo Hub](/docs/installation/windows/inedo-hub); see  [HOWTO: Upgrade or Downgrade with the Inedo Hub](/docs/installation/windows/howto-upgrade-downgrade) for more details on how to upgrade.
 * On Linux, the most common installation method is using our Docker container; see [Upgrading Docker Containers](/docs/installation/linux/installation-upgrading-docker-containers) for more details.
 
-However, there are other installation options available, including [offline installation](/docs/installation/windows/desktophub-offline), [cluster installation](/docs/installation/high-availability-load-balancing/high-availability-load-balancing), and even [manual installation](/docs/installation/manual-installation). If you want to change installation methods, the easiest way is to simply uninstall (by following the process in reverse) and install using the new method.
+However, there are other installation options available, including [offline installation](/docs/installation/windows/inedo-hub/offline), [cluster installation](/docs/installation/high-availability-load-balancing/high-availability-load-balancing), and even [manual installation](/docs/installation/windows/manual-installation). If you want to change installation methods, the easiest way is to simply uninstall (by following the process in reverse) and install using the new method.
 
-If you're upgrading from ProGet 5.3 or earlier, it's possible ProGet was installed with the [legacy installer](/docs/installation/windows/installation-legacy-traditional-installer), The Inedo Hub should be able to upgrade these installations, but you may need to uninstall and then reinstall using the Inedo Hub. 
+If you're upgrading from ProGet 5.3 or earlier, it's possible ProGet was installed with the [legacy installer (github.com)](https://github.com/Inedo/inedo-docs/blob/c82fd2881e2f1d0c36e77bc8b8b48e2a2c7b75a9/Content/installation/windows/installation-legacy-traditional-installer.md), The Inedo Hub should be able to upgrade these installations, but you may need to uninstall and then reinstall using the Inedo Hub. 
 
 :::(Warning) (Backup Before Upgrading)
 You should make sure your [installation is backed-up](/docs/installation/backing-up-restoring).

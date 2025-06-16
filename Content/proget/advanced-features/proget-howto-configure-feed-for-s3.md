@@ -59,7 +59,7 @@ After clicking Change, you will be prompted to configure your feed package store
 ## Step 6: Configure Package Store Location to Use Your Amazon S3 Bucket
 After you select Amazon S3 as the storage location for your package, you will be presented with the following configuration options:
 
-![Amazon S3 Configuration](/resources/docs/proget-feeds-configureamazons3){height="" width="50%"}
+![Amazon S3 Configuration](/resources/docs/proget-feeds-configureamazons3.png){height="" width="50%"}
 
 Since we are setting up a NuGet feed to use an Amazon S3 bucket, we are configuring only the options required for it.
 

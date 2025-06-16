@@ -39,7 +39,7 @@ Once a new blank script has been created in Otter. You will then need to edit th
 ### Step 2: Run the AddUser.sh Script
 Once the script has been added, you can now run the script by clicking the green play button to the right of the script name and then select "Run as ad-hoc job".  When you run the script, you will be prompted to select a server to run this on, the "user_name" to add, and the "password" to be set.  Since the password parameter was defined as "sensitive" in the augmented help, Otter will mask the password input field.
 
-![image.png](/resources/docs/image%2821%29.png){height="" width=""}
+![Ad-Hoc Job](/resources/docs/otter-bash-runjob.png){height="" width="50%"}
 
 ## Create a Job Template
 You can also create a [Job Template](/docs/otter/orchestration-server-automation/otter-jobs-templates) based on this script.  This allows you to specify more detail in a customized GUI and allows you to control which servers and environments this script can target.

@@ -15,13 +15,13 @@ However if you are having any difficulties, please don't hesitate to <a href="ma
 ## Step 1 : Create a Quote
 From the MyInedo Home screen click on "Purchase License or Create Quote" and select the product, license term (listed under price option), and pricing option (such as how many instances you'd like, users licensed, etc.). 
 
-![Create a Quote](/resources/docs/myinedo-purchasingandrenewinglicense-createquote%283%29.png)
+![Create a Quote](/resources/docs/myinedo-purchaselicense-createquote.png){height="" width="50%"}
 
 
 ## Step 2: Purchase a License Key
 Now that a quote is created, you can conveniently save it as a PDF to send to your purchasing team or you can submit payment to receive your license key instantly. 
 
-![Quote](/resources/docs/myinedo-purchasingandrenewinglicense-quote%281%29.png)
+![Quote](/resources/docs/myinedo-purchaselicense-quote.png){height="" width="50%"}
 
 To view all your quotes and invoices, simply navigate to "My Invoices" on the top banner. 
 

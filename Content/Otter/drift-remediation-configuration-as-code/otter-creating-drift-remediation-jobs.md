@@ -12,16 +12,16 @@ When server roles are assigned to a server, Otter can use the server role's Desi
 
 To configure a server to allow for Drift Remediation, first navigate to the server under “Servers”. Then, click on “Change” under Configuration drift.
 
-![](/resources/docs/Configuring-Drift-Remediation-on-Servers-01.png){height="" width=""}
+![Configuration Drift Settings](/resources/docs/Configuring-Drift-Remediation-on-Servers-01.png){height="" width="50%"}
  
 ## Scheduling Remediation in the Future
 When your server is configured to use “On-demand or scheduled remediation” and drift occurs, the following will be shown on the server page:
 
-![](/resources/docs/Scheduling-Remediation-in-the-Future-01.png){height="" width=""}
+![Scheduling](/resources/docs/Scheduling-Remediation-in-the-Future-01.png){height="" width="50%"}
 
 Clicking on “Remediate Drift” will display a page, allowing you to either immediately remediate drift or schedule it for later:
 
-![](/resources/docs/Scheduling-Remediation-in-the-Future-02a.png){height="" width=""}
+![Remediate Drift](/resources/docs/Scheduling-Remediation-in-the-Future-02a.png){height="" width="50%"}
  
 ## Remediating All or Partial Drift
 Sometimes you may not want to remediate all the roles on a server or remediate all the servers in a role. You can perform “partial remediation” by targeting only specified servers or roles.
@@ -29,30 +29,30 @@ Sometimes you may not want to remediate all the roles on a server or remediate a
 ### Partial Remediation by Environment
 1.	On the “Roles” page, click the "green play button" next to drifted role.
  
-![](/resources/docs/Partial-Remediation-by-Environment-01.png){height="" width=""}
+![Partial Remediation](/resources/docs/Partial-Remediation-by-Environment-01.png){height="" width="50%"}
  
 2.	Use the “Environment filter” option to only remediate servers in a specified environment, instead of all drifted servers.
  
-![](/resources/docs/Partial-Remediation-by-Environment-02.png){height="" width=""}
+![Remediate Drift](/resources/docs/Partial-Remediation-by-Environment-02.png){height="" width="50%"}
 
 ### Partial Remediation by Role
 Instead of remediating the configuration drift for all roles on a single server, you can specify to only remediate the drift for specified roles.
 
 1.	First, navigate to the server with configuration drift. You can find this on the “Servers” page.
 
-![](/resources/docs/Partial-Remediation-by-Role-01.png){height="" width=""}
+![Remediation by Role](/resources/docs/Partial-Remediation-by-Role-01.png){height="" width="50%"}
  
 2.	On the Server Overview page, click on the green play button next to the drifted role you want to remediate.
 
-![](/resources/docs/Partial-Remediation-by-Role-02a.png){height="" width=""}
+![Remediation by Role](/resources/docs/Partial-Remediation-by-Role-02a.png){height="" width="50%"}
 
 3. This will pop-up a window where you can remediate the drift now or in the future."
 
-![](/resources/docs/Scheduling-Remediation-in-the-Future-02a.png){height="" width=""}
+![Remediate Drift](/resources/docs/Scheduling-Remediation-in-the-Future-02a.png){height="" width="50%"}
  
 4.	Once the Remediation Job runs, you’ll see that only the selected role will show up as “Current; any other roles that were drifted will remain in a drifted state.
 
-![](/resources/docs/Partial-Remediation-by-Role-03.png){height="" width=""}
+![Sever Roles](/resources/docs/Partial-Remediation-by-Role-03.png){height="" width="50%"}
 
 ## Remediate on a Recurring Basis
 You can also use a "Recurring Job" to remediate configuration drift on regular basis, such as nightly or weekly. This allows you to automatically ensure that your servers are in their desired configuration state, without having Otter immediately remediate drifted configuration the moment it is detected.
@@ -62,10 +62,10 @@ The main benefit to this is knowing that drift is remediated at specified, predi
 ### Creating Recurring Remediation Jobs
 You can create a recurring job by navigating to Jobs > Upcoming & Recurring > Remediate Drift on a Recurring Basis.
 
-![Remediate-on a-Recurring-Basis-02](/resources/docs/Remediate-on%20a-Recurring-Basis-02.png){height="" width=""}
+![Recurring Job](/resources/docs/otter-remediation-recurringjob.png){height="" width="50%"}
 
 See [Scheduled & Recurring Jobs](/docs/otter/orchestration-server-automation/otter-orchestration-scheduled-recurring-jobs) to learn more details about how recurring jobs work in Otter.
 
 :::(Internal) (Delete This Image)
-![](/resources/docs/Remediate-on%20a-Recurring-Basis.png){height="" width=""}
+![](/resources/docs/Remediate-on%20a-Recurring-Basis.png){height="" width="50%"}
 :::

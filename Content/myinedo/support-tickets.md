@@ -12,8 +12,8 @@ We appreciate users of our free software. Our engineers and other users are on t
 
 Submitting a new ticket is easily done through your MyInedo account by navigating to "Submit Ticket" on the top banner. 
 
-![Submit Ticket Form](/resources/docs/SubmitTicket%281%29.png)
-Fill out the relevant fields and provide as much detail as possible. 
+![Submit Ticket Form](/resources/docs/myinedo-supporttickets-submit.png){height="" width="50%"}
+Fill out the relevant fields and provide as much detail as possible.
 
 Pay special attention to the **severity type**. When you submit a support ticket to us, you choose the severity. This makes sure “critical” (serious problem) and “blocker” (major malfunction) get resolved ASAP. Carefully read each severity type and choose the one most relevant to your issue:
 
@@ -26,7 +26,7 @@ Pay special attention to the **severity type**. When you submit a support ticket
 ## Ticket Statuses
 A ticket starts in a “Submitted” status. From there, after one of our support engineers assess it, you will receive an automatic email that looks like this:
 
-![Ticket Assigned](/resources/docs/1159-ticket-assigned.png)
+![Ticket Assigned](/resources/docs/1159-ticket-assigned.png){height="" width="50%"}
 
 The ticket status will then be changed to one of the following:
 * **In Progress**- Some form of action is being taken, but there is no resolution yet. 
@@ -37,9 +37,9 @@ The ticket status will then be changed to one of the following:
 
 Once the issue is resolved and the ticket enters a “Closed” status, an email will automatically be dispatched. 
 
-![1159-ticket-manually-closed](/resources/docs/1159-ticket-manually-closed.png)
+![1159 Ticket Manually Closed](/resources/docs/1159-ticket-manually-closed.png){height="" width="50%"}
 
 ## Reviewing & Managing Tickets
 Navigate to "My Tickets" to view and manage all current and closed tickets. From here you can update tickets with comments and attachments, review the status of open tickets, and review support for closed tickets. 
 
-![ReviewTickets](/resources/docs/ReviewTickets.png)
+![Review Tickets](/resources/docs/ReviewTickets.png){height="" width="50%"}

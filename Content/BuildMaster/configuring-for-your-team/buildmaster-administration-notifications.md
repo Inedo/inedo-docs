@@ -13,16 +13,16 @@ Event listeners are useful for monitoring the actions and operations that occur 
 
 BuildMaster has a handful of common built-in event listeners.
 
-![event-listeners.png](/resources/docs/event-listeners.png){height="" width=""}
+![Event Listeners](/resources/docs/event-listeners.png){height="" width="50%"}
 
 Event listeners can be added either as a post deployment step in a [pipeline](/docs/buildmaster/deployment-continuous-delivery/buildmaster-pipelines){target="_blank"} or specific to user via the <em>My Event Listener</em> user drop down.
 
-![myevent-listeners.png](/resources/docs/myevent-listeners%281%29.png){height="" width=""}
+![My Event Listeners](/resources/docs/event-listeners-myevents.png){height="" width="50%"}
 
 ## Real-world Example
 Organizations often use event listeners when a particular person owns an application or a group of applications. In this scenario, the application owner would receive an email when a build has been successfully deployed to production.
   
-![listener-deployed.png](/resources/docs/listener-deployed.png){height="" width=""}
+![Listener Deployed](/resources/docs/listener-deployed.png){height="" width="50%"}
 
 :::(Info)
 The **Email Notification: Approval Required** event listener triggers on pipeline stage *completion*, not the start of a new pipeline stage. Because of this, when filtering to a specific pipeline stage, the name of the stage *before* the approval gate should be used, not the stage that is blocked by the gate.

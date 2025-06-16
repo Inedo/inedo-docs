@@ -6,10 +6,6 @@ url-slug: "proget-upgrade-2025"
 
 ProGet 2025 is a major update, and this article provides information about what will change, the impact to your instance, and how to mitigate risk during upgrade.
 
-:::(Warning) (🚧Preview Documentation🚧)
-ProGet 2025 is scheduled for release in late May 2025 or early June 2025.
-:::
-
 
 ## Planning for Your Upgrade
 
@@ -82,6 +78,12 @@ ProGet 2025 will allow you disable integrity checks on a feed-by-feed basis.
 
 We made some minor style changes, most notably the background colors and fonts.
 
+### Reduced Features for Legacy Maven & Legacy Debian Feeds
+
+As part of modernization and reducing technical debt in ProGet, it is no longer makes sense to support certain features for Legacy Maven and Legacy Debian feeds: replication, retention, license detection, vulnerability scanning, policies/compliance, and download blocking. They will also have a reduced browsing experience in the UI, but will operate as they did before from the API.
+
+Normal (i.e. non-legacy) Maven and Debian feeds do not have these limitations and support all of these features. You will be able to migrate in ProGet 2025, but we recommend doing so earlier.
+
 ### Configuration Change: Windows Service Architecture
 
 In ProGet 2025, there will just be a single Windows service (`INEDOPROGETSVC`) that will be used to manage the Web Server and background jobs. ProGet 2024 and earlier versions used two Windows Services (`INEDOPROGETWEBSVC` and `INEDOPROGETSVC`).
@@ -101,29 +103,39 @@ ProGet 2025 can no longer be run as an IIS-managed Site and Application Pool. Fo
 ProGet 2025 will not work in IIS without manual configuration changes.
 :::
 
-Prior to upgrading to ProGet 2025, we recommend [switching to the Integrated Web Server](/docs/installation/installing-on-iis/howto-switch-to-integrated-web-server-from-iis). If you still want to use IIS, then you will need to <span title="instructions are coming soon." style="background-color:yellow;text-decoration:underline;text-decoration-style: dotted;" >reconfigure IIS to act as a reverse-proxy</span>. 
+Prior to upgrading to ProGet 2025, we recommend [switching to the Integrated Web Server](/docs/installation/windows/web/howto-switch-to-integrated-web-server-from-iis). If you still want to use IIS, then you will need to [reconfigure IIS to act as a reverse-proxy](/docs/installation/windows/web/howto-use-iis-as-reverse-proxy). 
 
+### Configuration Change: SQL Server Permissions on Windows
 
-### Configuration Change: InedoHub Installation/Upgrade
+ProGet 2025 will now perform database schema updates when the Windows service starts, making it easier to detect errors. In earlier versions of ProGet, these updates were performed during the upgrade/downgrade process, in the context of the user running the upgrade.
 
+:::(Error)
+ProGet 2025 requires that the `db_owner` role is granted to application user
+:::
+
+If you installed ProGet 2024.30 or later, the Inedo Hub installer automatically attempted to grant all users with the `ProGetUser_Role` the `db_owner role`. 
+
+To ensure the application user has the appropriate permissions before upgrading, [enable Enhanced Database Monitoring in ProGet 2024](/docs/installation/sql-server#enhanced-database-monitoring) prior to upgrading.
 
 ### Various Changes & Improvements
 * **SCA tweaks** including CSS/UI changes, adding license text field in SBOM exports for custom license, linking build URL back to system and more, deprecation warnings, and SBOM 1.6 support
 * **npm Repackage changes**; very minor, but the `latest` tag will now be moved to the newer package
 * **Rename Marvin "Classic" to "Legacy"** and update the `Maven` type in the API to create the newer Maven feeds
-* **Withdrawn Vulnerability Handling**; these will no longer be displayed in the ProGet UI unless you've assessed them
+* **Withdrawn Vulnerabilities**; unless they've been assessed, these will be deleted from the local database after each update of the vulnerability database (default nightly)
 * **Pause/disable individual replication tasks**; this will likely not add any risk
 * **Add Certificates folder to Package/Data Directory**; minor change to Docker image
+* **Deleting Users Deletes Personal API Keys**; when Deleting a User, any Personal API keys associated with that username will also be deleted
+* Debian Feeds now Return empty InRelease file for Empty Feed
 
 ## Upgrade Process
 You should generally perform the upgrade using the same method you used to install.
 
-* On Windows, the most common installation method is using the internet-connected [Inedo Hub](/docs/installation/windows/desktophub-overview); see  [HOWTO: Upgrade or Downgrade with the Inedo Hub](/docs/installation/windows/inedo-hub-upgrade-downgrade) for more details on how to upgrade.
+* On Windows, the most common installation method is using the internet-connected [Inedo Hub](/docs/installation/windows/inedo-hub); see  [HOWTO: Upgrade or Downgrade with the Inedo Hub](/docs/installation/windows/howto-upgrade-downgrade) for more details on how to upgrade.
 * On Linux, the most common installation method is using our Docker container; see [Upgrading Docker Containers](/docs/installation/linux/installation-upgrading-docker-containers) for more details.
 
-However, there are other installation options available, including [offline installation](/docs/installation/windows/desktophub-offline), [cluster installation](/docs/installation/high-availability-load-balancing/high-availability-load-balancing), and even [manual installation](/docs/installation/manual-installation). If you want to change installation methods, the easiest way is to simply uninstall (by following the process in reverse) and install using the new method.
+However, there are other installation options available, including [offline installation](/docs/installation/windows/inedo-hub/offline), [cluster installation](/docs/installation/high-availability-load-balancing/high-availability-load-balancing), and even [manual installation](/docs/installation/windows/manual-installation). If you want to change installation methods, the easiest way is to simply uninstall (by following the process in reverse) and install using the new method.
 
-If you're upgrading from ProGet 5.3 or earlier, it's possible ProGet was installed with the [legacy installer](/docs/installation/windows/installation-legacy-traditional-installer), The Inedo Hub should be able to upgrade these installations, but you may need to uninstall and then reinstall using the Inedo Hub. 
+If you're upgrading from ProGet 5.3 or earlier, it's possible ProGet was installed with the [legacy installer (github.com)](https://github.com/Inedo/inedo-docs/blob/c82fd2881e2f1d0c36e77bc8b8b48e2a2c7b75a9/Content/installation/windows/installation-legacy-traditional-installer.md), The Inedo Hub should be able to upgrade these installations, but you may need to uninstall and then reinstall using the Inedo Hub. 
 
 :::(Warning) (Backup Before Upgrading)
 You should make sure your [installation is backed-up](/docs/installation/backing-up-restoring).
