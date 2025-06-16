@@ -77,7 +77,7 @@ return $true;
 ```
 When you use Comment-based help, Otter will automatically detect these parameters when you build your OtterScript Configurations.
 
-![](/resources/docs/Using-parameters-in-your-PSVerify-scripts.png){height="" width=""}
+![](/resources/docs/otter-compliance-parameters.png){height="" width=""}
 
 Otter uses PowerShell's Comment-based help and will pass the inputs as variables to your scripts.
 
