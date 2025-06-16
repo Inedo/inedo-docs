@@ -49,11 +49,11 @@ Then name your feed. In this case, we will call it `internal-nuget`.
 
 Now select "JFrog Artifactory", which will configure ProGet to migrate your packages from JFrog Artifactory.
 
-![JFrog](/resources/docs/proget-createfeed-migrate-jfrog){height="" width="50%"}
+![JFrog](/resources/docs/proget-createfeed-migrate-jfrog.png){height="" width="50%"}
 
 ### Step 3: Migrate Your Packages
 
-Now enter your JFrog Artifactory URL and access token you generated [here](#generating-your-personal-access-token-pat). 
+Now enter your JFrog Artifactory URL and access token you generated [here](#generating-your-personal-access-token-pat).
 
 ![Configure Migration](/resources/docs/proget-migrate-jfrog.png){height="" width="50%"}
 

@@ -51,7 +51,7 @@ Once your Inedo product is set up to match your desired configuration, click "In
 
 The Inedo Hub will now automatically download and install your desired Inedo product. Once the installation is complete, you'll be returned to the home screen where your product will now display as Installed.
 
-![Inedo Hub After Installing ProGet](/resources/docs/windowsinstall-postprogetinstall%281%29.png)
+![Inedo Hub After Installing ProGet](/resources/docs/inedohub-installation-installed.png){height="" width="50%"}
 
 That's it! Follow these 3 easy steps to quickly install any Inedo product. You can also launch, uninstall, and upgrade or downgrade your installed Inedo product from the Inedo Hub.
 

@@ -14,13 +14,13 @@ If you haven't done so already, we recommend using the [Inedo Hub](/docs/install
 
 After the Inedo agent is installed, click the Create Server button on the Servers page, and enter the host name of the server, the port you installed the agent on, and the encryption key if you chose one. 
 
-![Add Server to Otter](/resources/docs/Ensurechocolatey-addserver.png)
+![Add Server to Otter](/resources/docs/Ensurechocolatey-addserver.png){height="" width="50%"}
 
 Next your server will need to be configured to detect configuration drift so that Otter can automate your server management. 
 
 This can be done by navigating to Servers> Servername> Overview> Details> Configuration Drift> Change and checking the box for Detect configuration drift as well as selecting your preferred Drift remediation method. 
 
-![Edit Configuration Drift](/resources/docs/Ensurechocolatey-editconfigurationdrift%281%29.png)
+![Edit Configuration Drift](/resources/docs/ensurechocolatey-configurationdrift.png){height="" width="50%"}
 
 That's it! Your server is now connected to Otter. Simply repeat this process for any additional servers you wish to add to Otter.
 
@@ -45,19 +45,19 @@ In other words, we want our server role to tell Otter to check that the above Ch
 
 To create a server role, navigate to Roles> Create Server Role. Enter an appropriate name like "common-windows-packages" and a description if desired. 
 
-![Create Server Role](/resources/docs/ensurechocolatey-createrole.png)
+![Create Server Role](/resources/docs/ensurechocolatey-createrole.png){height="" width="50%"}
 
 Next you will need to create a configuration plan for the role by navigating to Roles>Role Name> Overview> Edit Desired Configuration. This will take you to the Otter Script Editor pictured below.
 
-![Otter Script Editor](/resources/docs/Otterscript-editor.png)
+![Otter Script Editor](/resources/docs/Otterscript-editor.png){height="" width="50%"}
 
 Use the search bar in the top left to find the statement titled "Ensure Chocolatey Package", then drag-and-drop into the container to the right. You will then be prompted to enter the details of the Chocolatey package you want to ensure.
 
-![Ensure Chocolatey Package](/resources/docs/Otterscript-ensurechocolatey%20package.png)
+![Ensure Chocolatey Package](/resources/docs/otter-chocolatey-ensurepackage.png){height="" width="50%"}
 
 Note that you can also "Switch to Text Mode" in the bottom right to utilize scripts. This can be very useful for quickly setting up roles rather than drag-and-dropping the info for each Chocolatey package. 
 
-![Text Mode](/resources/docs/Otterscript-texteditor.png)
+![Text Mode](/resources/docs/Otterscript-texteditor.png){height="" width="50%"}
 
 :::(Info) (Chocolatey Package Source Options)
 If you look at the screenshot from the visual mode of the Otter Script Editor you'll notice that the source is the public Chocolatey repository. You can also pull packages from a private Chocolatey repository (such as a [Chocolatey feed in ProGet](/docs/proget/feeds/chocolatey/howto-chocolatey-internalized)) like we did in the screenshot for the text mode. 
@@ -68,7 +68,7 @@ Now that your server role is configured it needs to be assigned to the appropria
 
 Navigate to Servers> Servername> Assigned Server Roles> Assign roles and select the role you created. 
 
-![Assign Server Roles](/resources/docs/Ensurechocolatey-assignserverroles.png)
+![Assign Server Roles](/resources/docs/Ensurechocolatey-assignserverroles.png){height="" width="50%"}
 
 
 ## Step 4: Check Configuration Drift
@@ -78,29 +78,29 @@ Since we have assigned a role to our server to ensure the Chocolatey packages in
 
 To check your configuration, navigate to Servers> Servername> Check Configuration. 
 
-![Check configuration](/resources/docs/ensurechocolatey-checkconfig.png)
+![Check configuration](/resources/docs/ensurechocolatey-checkconfig.png){height="" width="50%"}
 
 As the Chocolatey packages have not yet been installed, Otter will detect that your server configurations have drifted. 
 
-![Drifted Servers](/resources/docs/Ensurechocolatey-serversdrifted.png){height="" width=""}
+![Drifted Servers](/resources/docs/Ensurechocolatey-serversdrifted.png){height="" width="50%"}
 
  ## Step 5: Remediate Configuration
  Once a configuration drift is detected, remediation can be utilized to automatically fix your server according to the server roles you have assigned it. Since we set a server role to ensure Chocolatey packages in step 2, remediating configuration would mean installing the Chocolatey packages specified in the server role. 
  
 Navigate to Servers> Server Name> Remediate drift to automatically reconfigure your server to follow the assigned roles.
 
-![Remediate Drift](/resources/docs/EnsureChocolatey-Remediate%20Drift.png)
+![Remediate Drift](/resources/docs/ensurechocolatey-remediatedrift.png){height="" width="50%"}
 
 That's it! When remediating the configuration drift of your servers, Otter recognized that they have the role “common-windows-package” assigned to them and automatically installed the Chocolatey packages at the push of a button. 
 
-![Remediated Servers](/resources/docs/ensurechocolatey-servers%281%29.png)
+![Remediated Servers](/resources/docs/ensurechocolatey-servers.png){height="" width="50%"}
 
 Remember that configuration drift can be setup to be remediated "immediately upon detecting drift" preventing you from having to even push a button!
 
 ## Troubleshooting
 
 ### I got an error message in the server status
-![Error message](/resources/docs/ensurechocolatey-errormessage.png)
+![Error message](/resources/docs/ensurechocolatey-errormessage.png){height="" width="50%"}
 
 If your server status says "error", click on the underlined "had an error" to view the execution log. If the error says "There was an error executing chocolatey" it's likely that Chocolatey is not installed on the server.  
 

@@ -12,15 +12,15 @@ In this page, we will show you how BuildMaster can post messages to Teams by usi
 
 Microsoft Teams makes creating webhooks very easy. Within Teams, navigate to the channel you want and click the button with the three dots. Select Connectors and Incoming Webhook.
 
-![TeamsConnectorAdd\(1\).png](/resources/docs/TeamsConnectorAdd%281%29.png){height="" width=""}
+![Add Connector](/resources/docs/buildmaster-connectors-teams-add.png){height="" width="50%"}
 
 Name your webhook, optionally give it a custom image.
 
-![TeamsConnectorConfig\(1\).png](/resources/docs/TeamsConnectorConfig%281%29.png){height="" width=""}
+![Name Webhook](/resources/docs/buildmaster-connectors-teams-name.png){height="" width="50%"}
 
 Teams will create a URL that you will need to copy and paste into your OtterScript.
 
-![TeamsConnectorConfig2 \(1\).png](/resources/docs/TeamsConnectorConfig2%20%281%29.png){height="" width=""}
+![URL](/resources/docs/buildmaster-connectors-teams-url.png){height="" width="50%"}
 
 In **BuildMaster**, locate the OtterScript plan, module, pre-deployment script, or post-deployment script you want to send the message from. Then, add a new `Post-Http` operation that will be sent to the above URL. For the `TextData` property, you will need to include the [Teams message JSON](#teams-message-json). Your JSON message can leverage BuildMaster's variables and variable functions in the message.  See the [OtterScript example](#otter-script-example) below.
 

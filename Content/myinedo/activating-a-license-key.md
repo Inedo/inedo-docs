@@ -28,26 +28,26 @@ When you receive a license key from purchasing or requesting a trial of an Inedo
 ### Step 1:  Navigate to License Key & Activation
 Navigate to `Administration > License Key & Activation` by clicking on the Gear Icon in the top-right corner, then clicking on "License Key & Activation" under "Software Configuration".
 
-![click license key and activation button](/resources/docs/myinedo-licensekeysandactivation-softwareconfiguration.png)
+![License Key and Activation](/resources/docs/myinedo-licensekeysandactivation-softwareconfiguration.png){height="" width="50%"}
 
 ### Step 2: Click [change]
 
-![click change button](/resources/docs/myinedo-licensekeysandactivation-change.png)
+![Change Button](/resources/docs/myinedo-licensekeysandactivation-change.png){height="" width="50%"}
 
 ### Step 3: Enter License Key
 This will change the license key or allow you to add one for the first time.
 
-![change license key](/resources/docs/myinedo-licensekeysandactivation-changelicensekey%285%29.png)
+![Change License Key](/resources/docs/myinedo-licensekeys-changekey.png){height="" width="50%"}
 
 ### Step 4: Click [activate]
 After saving the License Key, click [activate] under Activation Status.
 
-![click activate button](/resources/docs/myinedo-licensekeysandactivation-activate.png)
+![Activate Button](/resources/docs/myinedo-licensekeysandactivation-activate.png){height="" width="50%"}
 
 ### Step 5: Verify Activation
 License is now Active
 
-![license is active](/resources/docs/myinedo-licensekeysandactivation-licenseactive.png)
+![License Active](/resources/docs/myinedo-licensekeysandactivation-licenseactive.png){height="" width="50%"}
 
 :::(Warning)
 If this does not take effect immediately, you may need to restart the web application. You can do this by stopping/starting the Application Pool (IIS Hosted), or stopping/starting the Windows Service for the web application.
@@ -62,28 +62,28 @@ The instructions needed to manually activate are as follows:
 ### Step 1:  Navigate to License Key & Activation
 Navigate to `Administration > License Key & Activation` by clicking on the Gear Icon in the top-right corner, then clicking on "License Key & Activation" under "Software Configuration".
 
-![click license key and activation button](/resources/docs/myinedo-licensekeysandactivation-softwareconfiguration.png)
+![License Key and Activation](/resources/docs/myinedo-licensekeysandactivation-softwareconfiguration.png){height="" width="50%"}
 
 ### Step 2: Click [change]
 
-![click change button](/resources/docs/myinedo-licensekeysandactivation-change.png)
+![Change Button](/resources/docs/myinedo-licensekeysandactivation-change.png){height="" width="50%"}
 
 ### Step 3: Enter License Key
 This will change the license key or allow you to add one for the first time.
 
-![change license key](/resources/docs/myinedo-licensekeysandactivation-changelicensekey%285%29.png)
+![change license key](/resources/docs/myinedo-licensekeys-changekey.png){height="" width="50%"}
 
 ### Step 4: Recieve your Machine UID
 
 ProGet will be unable to activate automatically, and present you with the following dialog box. You will need both your license key and the machine UID from this screen later, so make sure to copy it to the clipboard.
 
-![manual activation popup](/resources/docs/myinedo-licensekeysandactivation-manualactivation%283%29.png)
+![Manual Activation](/resources/docs/myinedo-licensekeys-manualactivation.png){height="" width="50%"}
 
 ### Step 5: Click Manually Activate on MyInedo
 
 Log in to [MyInedo](http://my.inedo.com){target="_blank"} and click the *Manually Activate License Key* button:
 
-![click manually activate license key](/resources/docs/myinedo-licensekeysandactivation-manuallyactivatelicensekey%281%29.png)
+![Manually Activate License Key](/resources/docs/myinedo-licensekeys-manuallyactivatekey.png){height="" width="50%"}
 
 ### Step 6: Enter License Key & Machine UID in MyInedo
 :::(Warning)
@@ -91,12 +91,12 @@ Note that you will need the machine UID from your Inedo product to perform this 
 :::
 Enter the license key and the machine UID on the manual activation page.
 
-![enter the license key and the machine UID](/resources/docs/myinedo-licensekeysandactivation-activatelicensekey%281%29.png)
+![Enter License Key / Machine UID](/resources/docs/myinedo-licensekeys-enterkey.png){height="" width="50%"}
 
 ### Step 7: Enter Activation Code in Product
 Copy and paste the resulting activation code into the software and click save:
 
-![Enter activation code](/resources/docs/myinedo-licensekeysandactivation-activationcode2.png)
+![Enter Activation Code](/resources/docs/myinedo-licensekeysandactivation-activationcode2.png){height="" width="50%"}
 
 If you cant find where to  paste the activation code, try activating your license key again and it will prompt you to enter the activation code.
 

@@ -103,7 +103,7 @@ The `Id` and `Age` fields are used only to uniquely identify the PDB file by the
 ### Enable Symbol Server Support
 To debug in NuGet package libraries, Visual Studio must be configured to use ProGet as the symbol server. Select **Debug > Options...** from the menu bar, then navigate to **Debugging > Symbols** from the tree menu. Add the symbol server URL you found earlier on the Manage Feed page and specify a Symbol Cache Directory. By default Visual Studio will use `%LOCALAPPDATA%\Temp\SymbolCache`, but you may specify any path.
 
-![Enable](/resources/docs/enable-symbol-server.png){height="" width="50%"}
+![Enable](/resources/docs/proget-nuget-symbols-enableserver.png){height="" width="50%"}
 
 ### Enable Source Server Support
 
@@ -124,7 +124,7 @@ Additionally, you may have to uncheck:
 
 The settings should look like the following:
 
-![Debug Settings](/resources/docs/debug-settings.png){height="" width="50%"}
+![Debug Settings](/resources/docs/proget-nuget-symbols-debugsettings.png){height="" width="50%"}
 
 ## Testing the Configuration
 
@@ -140,11 +140,11 @@ If everything is configured correctly, Visual Studio tries to load the symbols l
 
 In some cases, the symbol server fails for various reasons, the most common being misconfiguration. To display the PDBs that Visual Studio has loaded, select the **Debug > Windows > Modules** menu option during debugging and locate the desired DLL in the list. The symbol status is displayed, along with the version and path to the DLL and the downloaded symbols.
 
-![Modules](/resources/docs/modules.png){height="" width="50%"}
+![Modules](/resources/docs/proget-nuget-symbols-modules.png){height="" width="50%"}
 
 Whether or not the symbols have been loaded, you can right-click on the DLL and select "Symbol Load Information..." to view the diagnostic messages associated with the symbol server for that library.
 
-![Load Information](/resources/docs/symbol-load-info.png){height="" width="50%"}
+![Load Information](/resources/docs/proget-nuget-symbols-loadinfo.png){height="" width="50%"}
 
 The hex string in the file path should also start with the GUID listed in ProGet:
 

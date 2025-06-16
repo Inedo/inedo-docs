@@ -35,7 +35,7 @@ The primary benefit to using blue-green deployments is zero downtime, but there 
 
 We created a blue-green sample application that you can create in your own instance of BuildMaster. This application lets you visualize which release are Blue and Green (or undecided) as well as shows you what's in Blue and Green:
 
-![application-overview.png](/resources/docs/application-overview.png){height="" width=""}
+![Application Overview](/resources/docs/application-overview.png){height="" width="50%"}
 
 These steps will be based off of this application, but BuildMaster is very flexible, so you can customize the approach however your environments require.
 
@@ -81,7 +81,7 @@ If anything goes wrong after deploying, blue-green deployments make it very easy
 
 Because the last stage of both the Blue and the Green pipelines simply swaps environments, you can just navigate to the build that was deployed in the opposite environment and redeploy it.
 
-![application-overview \(1\).png](/resources/docs/application-overview%20%281%29.png){height="" width=""}
+![Application Overview](/resources/docs/application-overview.png){height="" width="50%"}
 
 For example, in the above image, a Green-targeted build was just deployed. To roll back, simply navigate to the build in Production-Blue (1.0.1 - Build 1) and redeploy. This will execute the environment swap and immediately restore the previous release.
 
