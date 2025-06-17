@@ -55,7 +55,7 @@ Inedo product's Docker images contain a web server and a background service. To 
 
 | Product | Image Name | Required Volumes |
 | - | - | - |
-| ProGet | `proget.inedo.com/productimages/inedo/proget` | `proget-artifacts` |
+| ProGet | `proget.inedo.com/productimages/inedo/proget` | `proget-packages` |
 | BuildMaster | `proget.inedo.com/productimages/inedo/buildmaster` | `buildmaster-artifacts` |
 | Otter | `proget.inedo.com/productimages/inedo/otter` | *none* |
 
