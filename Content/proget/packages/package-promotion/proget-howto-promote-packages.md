@@ -12,9 +12,9 @@ This article will walk you through a [common scenario of promoting open-source N
 <iframe width="600" height="337" src="https://www.youtube.com/embed/emAWUzrweSg" frameborder="0" allowfullscreen="true"></iframe>
 :::
 
-## Step 1: Create new feeds
+## Step 1: Create a new feed
 
-The first thing we'll be doing is creating two "NuGet" feeds, one for unapproved packages, and the other for approved packages that have been promoted.
+The first thing we'll be doing is creating a "NuGet" feed where unverified packages from "NuGet.org" will be stored. If you already have an existing unapproved NuGet package feed, you can skip to [Step 3](#step-3-create-a-second-feed) to create a second feed for promoting your approved packages.
 
 We start by selecting "Feed" and "Create New Feed."
 
@@ -24,41 +24,47 @@ As we will be using packages from [Nuget.org](https://nuget.org), we select "NuG
 
 ![Create NuGet Feed](/resources/docs/proget-feeds-nugetselect.png){height="" width="50%"}
 
-## Step 2: Configure feeds
+## Step 2: Configure and name feed
 
 After selecting the feed type, we’ll specify that the feed will connect directly to "NuGet.org".
 
-![Nuget Connector](/resources/docs/proget-nuget-connecttoorg.png){height="" width="50%"}
+![Nuget Connector](/resources/docs/proget-opensource-nuget.png){height="" width="50%"}
 
-We will then select "Yes, Create Two Feeds", as for a package to be promoted from one feed to another, there must be multiple feeds.
+We then name our feed. In this example, we will create an `unapproved-nuget` feed.
 
-In this example, we will create an `unapproved-nuget` feed where unverified packages from "NuGet.org" will be stored, and an `approved-nuget` feed for our packages to be promoted to.
+![Name Unapproved Feed](/resources/docs/proget-nuget-namefeed-unapproved.png){height="" width="50%"}
 
-![Create Two Feeds](/resources/docs/proget-feeds-twofeeds.png){height="" width="50%"}
+Finally, we select "Create New Feed", which will create and redirect us to our `unapproved-nuget` feed, populated with packages from "NuGet.org".
 
-## Step 3: Naming feeds
+![Unapproved Feed Details](/resources/docs/proget-nuget-unapprovedfeed.png){height="" width="50%"}
 
-We then name our feeds as we specified above, and then click "Create Feeds."
+## Step 3: Create a second feed
 
-![Name Feeds](/resources/docs/proget-nuget-namefeeds.png){height="" width="50%"}
+Now that our `unapproved-nuget` feed has been created, we'll create a second feed for approved packages that have been promoted.
 
-We are then presented with several options. More information on these can be found in the [Vulnerability Scanning and Blocking](/docs/proget/sca/vulnerabilities) and [SCA and Continuous Integration (CI)](/docs/proget/sca/builds/proget-sca-ci) documentation.
+Just like in [Step 1](#step-1-create-a-new-feed), start by selecting "Feed" and then "Create New Feed". Since we'll be promoting packages from our `unapproved-nuget` feed, choose "NuGet (.NET) Packages".
 
-![Feed Options](/resources/docs/proget-nuget-newfeedoptions.png){height="" width="50%"}
+Next, we'll indicate that this feed is for promoted packages by selecting "Validated/promoted NuGet (.NET) Packages".
 
-Finally, we select [Set Feed Features], which will create the feeds and redirect us to our `unapproved-nuget` feed, populated with packages from "NuGet.org".
+![Nuget Promoted](/resources/docs/proget-promoted-nuget.png){height="" width="50%"}
 
-![Feed Details](/resources/docs/proget-nuget-unapprovedfeed.png){height="" width="50%"}
+Again, we name our feed. This time, we'll name it `approved-nuget`.
+
+![Name Approved Feed](/resources/docs/proget-nuget-namefeed-approved.png){height="" width="50%"}
+
+Select "Create New Feed" to create the `approved-nuget` feed and be redirected to it, ready to receive promoted packages.
+
+![Approved Feed Details](/resources/docs/proget-nuget-approvedfeed-empty.png){height="" width="50%"}
 
 ## Step 4: Set Permissions
 
-There are many ways to configure [security access controls for uses and groups](/docs/proget/administration-security) in ProGet. For this example, we want to permit only senior developers to promote packages to `approved-nuget` feed since they're trained to verify the quality, licenses, and vulnerabilities of open-source packages. To ensure this rule, we'll set up a new permission. By default, only administrators have assigned permissions.
+There are many ways to configure [security access controls for uses and groups](/docs/proget/administration-security) in ProGet. For this example, we want to permit only "Senior Developers" to promote packages to `approved-nuget` feed since they're trained to verify the quality, licenses, and vulnerabilities of open-source packages. To ensure this rule, we'll set up a new permission. By default, only "Administrators" have assigned permissions.
 
-To start, we navigate to "Settings" > "Manage Security".
+To start, we navigate to "Administration Overview" > "Manage Security".
 
 ![Manage Security](/resources/docs/proget-admin-managesecurity.png){height="" width="50%"}
 
-We then navigate to the "Tasks / Permissions" tab, listing the currently configured permissions, and select "add permission".
+We then navigate to the "Tasks/Permissions" tab, listing the currently configured permissions, and select "add permission".
 
 ![Tasks / Permissions](/resources/docs/proget-admin-taskspermissions-add.png){height="" width="50%"}
 
@@ -91,13 +97,11 @@ We start by clicking the "version number" (in this case 13.0.3) to direct us to 
 
 ![Select Promote Package](/resources/docs/proget-nuget-promoteselect.png){height="" width="50%"}
 
-From here, we fill out the dialog box with any comments, and finally select [Promote]:
+From here, we'll select our `approved-nuget` feed and fill out the dialog box with any comments, and finally select "Promote".
 
 ![Promote Package in ProGet](/resources/docs/proget-nuget-promotepackage.png){height="" width="50%"}
 
-Since we configured a package approval workflow earlier, this package can only be promoted to the `approved-nuget` feed. Without that configured, there would be a choice of feeds to promote to.
-
-After clicking promote, the package will now be available in the `approved-nuget` feed for all "Developers" to view and download.
+After clicking "Promote", the package will now be available in the `approved-nuget` feed for all "Developers" to view and download.
 
 ![Approved Feed](/resources/docs/proget-nuget-approvedfeed.png){height="" width="50%"}
 
