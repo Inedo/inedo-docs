@@ -6,7 +6,7 @@ order: 1
 
 In ProGet, [package promotion](/docs/proget/packages/package-promotion) is simply a process of copying a package from one feed into another, and keeping a record of that promotion. This is a reliable way to ensure that only approved and verified packages are used in the right environments.
 
-This article will walk you through a [common scenario of promoting open-source NuGet packages](https://blog.inedo.com/nuget/package-approval-workflow). We'll use [NuGet packages](/docs/proget/feeds/nuget) from [NuGet.org](https://nuget.org/packages), along with an `unapproved-nuget` and `approved-nuget` feed, but these steps can apply to any type of package.
+This article will walk you through a [common scenario of promoting open-source NuGet packages](https://blog.inedo.com/nuget/package-approval-workflow). We'll use a feed proxing packages from [NuGet.org](https://nuget.org/packages) for "unapproved" packages, and another feed for "approved" packages. We'll use NuGet packages in this example, but these steps can apply to any type of package.
 
 :::(Info) (📺 3-minute Video:  Package Promotion with ProGet)
 <iframe width="600" height="337" src="https://www.youtube.com/embed/emAWUzrweSg" frameborder="0" allowfullscreen="true"></iframe>
@@ -14,7 +14,7 @@ This article will walk you through a [common scenario of promoting open-source N
 
 ## Step 1: Create a new feed
 
-The first thing we'll be doing is creating a "NuGet" feed where unverified packages from "NuGet.org" will be stored. If you already have an existing unapproved NuGet package feed, you can skip to [Step 3](#step-3-create-a-second-feed) to create a second feed for promoting your approved packages.
+The first thing we'll be doing is creating a NuGet feed where unapproved packages from "NuGet.org" are proxied using a [connector](/docs/proget/feeds/connector-overview). If you already have an existing NuGet package feed like this set up, you can skip to [Step 3](#step-3-create-a-second-feed) to create a second feed for promoting your approved packages.
 
 We start by selecting "Feed" and "Create New Feed."
 
@@ -26,23 +26,23 @@ As we will be using packages from [Nuget.org](https://nuget.org), we select "NuG
 
 ## Step 2: Configure and name feed
 
-After selecting the feed type, we’ll specify that the feed will connect directly to "NuGet.org".
+After selecting the feed type, we’ll specify that the feed will connect directly to NuGet.org.
 
 ![Nuget Connector](/resources/docs/proget-opensource-nuget.png){height="" width="50%"}
 
-We then name our feed. In this example, we will create an `unapproved-nuget` feed.
+We then name our feed. In this example, we will name it `public-nuget`, as it will proxy OSS NuGet packages. 
 
 ![Name Unapproved Feed](/resources/docs/proget-nuget-namefeed-unapproved.png){height="" width="50%"}
 
-Finally, we select "Create New Feed", which will create and redirect us to our `unapproved-nuget` feed, populated with packages from "NuGet.org".
+Finally, we select "Create New Feed", which will create and redirect us to our `public-nuget` feed, populated with OSS packages.
 
 ![Unapproved Feed Details](/resources/docs/proget-nuget-unapprovedfeed.png){height="" width="50%"}
 
 ## Step 3: Create a second feed
 
-Now that our `unapproved-nuget` feed has been created, we'll create a second feed for approved packages that have been promoted.
+Now that our `public-nuget` feed has been created, we'll create a second feed for approved packages that have been promoted.
 
-Just like in [Step 1](#step-1-create-a-new-feed), start by selecting "Feed" and then "Create New Feed". Since we'll be promoting packages from our `unapproved-nuget` feed, choose "NuGet (.NET) Packages".
+Just like in [Step 1](#step-1-create-a-new-feed), start by selecting "Feed" and then "Create New Feed". Since we'll be promoting packages from our `public-nuget` feed, choose "NuGet (.NET) Packages".
 
 Next, we'll indicate that this feed is for promoted packages by selecting "Validated/promoted NuGet (.NET) Packages".
 
@@ -68,7 +68,7 @@ We then navigate to the "Tasks/Permissions" tab, listing the currently configure
 
 ![Tasks / Permissions](/resources/docs/proget-admin-taskspermissions-add.png){height="" width="50%"}
 
-Next, we will fill out the following dialog to give the "Senior Developers" user group permission to "Promote Packages" from the `unapproved-nuget` feed.
+Next, we will fill out the following dialog to give the "Senior Developers" user group permission to "Promote Packages" from the `public-nuget` feed.
 
 ![Permit Senior Developers](/resources/docs/proget-nuget-permitseniordevs.png){height="" width="50%"}
 
@@ -112,7 +112,7 @@ ProGet keeps a package history that outlines what actions were taken by whom. Fo
 
 ![Promotion History](/resources/docs/proget-nuget-newtonsoft-promotionhistory.png){height="" width="50%"}
 
-The history tracks over both feeds, and shows us that we promoted this package from `unapproved-nuget` to `approved-nuget`.
+The history tracks over both feeds, and shows us that we promoted this package from `public-nuget` to `approved-nuget`.
 
 :::(Info)
 Free users will only be able to see the action taken and the date, and  NOT the user and where the package was promoted to/from.
