@@ -8,10 +8,9 @@ Using ProGet’s Feed Importer feature, migrating a Sonatype Nexus repository to
 
 In this article, you’ll learn how to use ProGet’s Feed Importer feature to move packages from your Sonatype Nexus repositories to ProGet. 
 
-## Migrating Packages from Sonatype Nexus to ProGet
 Package migration is fast and straightforward, requiring only a few clicks and your Nexus URL and credentials.
 
-### Step 1: Create a New Feed
+## Step 1: Create a New Feed
 First, let’s set up a new feed where your packages will be imported. Go to “Feeds” and choose “Create New Feed” to begin.
 
 ![Create New Feed](/resources/docs/proget-feeds-createnewfeed.png){height="" width="50%"}
@@ -28,7 +27,7 @@ Then, enter a name for your feed. For this example, we’ll use “internal-nuge
 
 ![Name Feed](/resources/docs/proget-createfeed-name.png){height="" width="50%"}
 
-### Step 2: Connect to Sonatype Nexus
+## Step 2: Connect to Sonatype Nexus
 With the feed created, it’s time to connect to your Sonatype Nexus repository. In the `internal-nuget` feed, click the dropdown and select “Import Packages”.
 
 ![Sonatype Import](/resources/docs/proget-importpackages.png){height="" width="50%"}
@@ -41,7 +40,7 @@ Then, choose “Sonatype Nexus” to have ProGet configured to migrate your pack
 
 ![Sonatype](/resources/docs/proget-connectfeed-migrate-sonatype.png){height="" width="50%"}
 
-### Step 3: Migrate Your Packages
+## Step 3: Migrate Your Packages
 Now, enter your Nexus URL along with your credentials. 
 
 ![Sonatype Migrate](/resources/docs/proget-migrate-sonatype.png){height="" width="50%"}
