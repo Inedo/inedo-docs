@@ -1,6 +1,6 @@
 ---
 title: "HOWTO: Migrate from Another Repository to ProGet"
-order: 4
+order: 5
 ---
 
 Migrating a repository to ProGet can be done in a matter of minutes using ProGet’s Feed Importer feature. This feature allows packages from a remote feed to be downloaded to a local feed. 
