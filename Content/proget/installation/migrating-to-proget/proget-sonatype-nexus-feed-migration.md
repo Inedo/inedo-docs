@@ -1,6 +1,7 @@
 ---
 title: "HOWTO: Migrate from Sonatype Nexus to ProGet"
 order: 4
+max-header-level: 3
 ---
 
 Using ProGet’s Feed Importer feature, migrating a Sonatype Nexus repository to ProGet takes just minutes. This feature enables you to download packages from a remote feed directly into a local feed. 
