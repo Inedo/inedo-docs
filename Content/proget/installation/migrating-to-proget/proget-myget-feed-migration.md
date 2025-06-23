@@ -25,7 +25,7 @@ Each package type in your MyGet feeds will require a different feed URL to be do
 
 Here is a list of simple PowerShell scripts for downloading common MyGet package types:
 
-**NuGet**
+### NuGet Packages
 
 ```powershell
 $nugetPath = "<Path to nuget.exe>"
@@ -44,7 +44,7 @@ foreach ($feedURL in $feeds) {
 }
 ```
 
-**npm**
+### npm Packages
 
 ```powershell
 $packages = @("<Packge One Name>", "<Package Two Name>")
@@ -60,27 +60,7 @@ foreach ($package in $packages) {
 }
 ```
 
-**RubyGems**
-
-```powershell
-$gemExe = "gem"
-$gems = @("<Packge One Name>", "<Package Two Name>")
-$feed_url = "<Feed URL>"
-$outputRoot = "<Choose Output Folder Location>"
-New-Item -ItemType Directory -Path $outputRoot -Force | Out-Null
-foreach ($gemName in $gems) {
-    Write-Host "Fetching Gem: $gemName"
-    Set-Location $outputRoot
-    & $gemExe fetch $gemName --source $feed_url
-    if ($LASTEXITCODE -ne 0) {
-        Write-Warning "Failed to fetch $gemName"
-    } else {
-        Write-Host "$gemName downloaded successfully."
-    }
-}
-```
-
-**PyPi**
+### PyPi Packages
 
 ```powershell
 $pipExe = "pip"
