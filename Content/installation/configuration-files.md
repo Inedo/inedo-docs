@@ -27,12 +27,14 @@ The configuration file for your Inedo product is a simple XML format:
 ```XML
 <InedoAppConfig>
   <ConnectionString>SQL Server database connection string</ConnectionString>
+  <PostgresConnectionString>PostgreSQL database connection string</PostgresConnectionString>
   <EncryptionKey>32-character hex key for stored secrets</EncryptionKey>
   <WebServer Enabled="true/false" Urls="web server listen URLs" ... />
 </InedoAppConfig>
 ```
 
-* The **ConnectionString** element contains the SQL connection string used by your Inedo product.
+* The **ConnectionString** element contains the SQL Server connection string used by your Inedo product. For ProGet 2025+ this is not specified if using the embedded database or PostgreSQL.
+* The **PostgresConnectionString** element contains the PostgreSQL/InedoDB connection string used by your Inedo product. Currently requires ProGet 2025+.
 * The **EncryptionKey** element is optional and if specified, will be used to encrypt stored credentials for remote resources.
 * The **WebServer** element controls the integrated web server.
 
