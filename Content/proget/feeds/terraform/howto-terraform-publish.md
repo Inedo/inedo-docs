@@ -138,3 +138,33 @@ By default, repositories will already be configured, depending on the distributi
 ```bash
 $ sudo rm /etc/yum.repos.d/«repo-name».repo
 ```
+
+
+
+
+
+
+
+
+
+## Using Terraform Feeds as a Private Registry
+
+Before using a Terraform Feed as a Private Module Registry, you'll need to package your modules. This is as simple as zipping the content and uploading it to the ProGet UI or using the [`pgutil`](/docs/proget/api/pgutil) CLI; see [Terraform Module Packages](#terraform-module-packages) to learn more.
+
+Once you've uploaded a package to your feed, you can add the module to your Terraform configuration using the following format:
+
+```
+module "«module-name»" {
+  source  = "«proget-host-name»/«feed-name»__«namespace»/«module-name»/«provider»"
+  version = "«version»"
+}
+```
+
+For example the `my-company/my-module` module that uses `aws` might look like this:
+
+```
+module "example_module" {
+  source = "proget.corp/internal-terraform__my-company/my-module/aws"
+  version = "4.20.0"
+}
+```
