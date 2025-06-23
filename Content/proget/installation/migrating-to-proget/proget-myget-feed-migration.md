@@ -3,87 +3,120 @@ title: "HOWTO: Migrate from MyGet to ProGet"
 order: 1
 ---
 
-Migrating your existing MyGet feeds to ProGet is a straightforward and simple process. By using ProGet’s Feed Importer feature, packages from a remote feed can be downloaded to a local feed. This article will walk through how to use the Feed Importer feature to migrate a MyGet feed to ProGet. 
+Migrating your existing MyGet feeds to ProGet is a straightforward process. By bulk downloading your packages from your feeds via MyGet you can then import them into your ProGet feeds. This article will walk through how to use the Bulk Package Import feature to migrate a MyGet feed to ProGet.
 
-## Step 1: Prepare MyGet for Migration and Gather Information 
-With the exception of PHP composer packages, all other supported package types in MyGet are also supported in ProGet. MyGet allows you to have multiple package types per feed and comes with unique URLs for each package type. However, ProGet requires a different feed for each package type, so you will need the URL for each type of package in your MyGet feed. 
+## Step 1: Download Your MyGet Packages
 
-The MyGet feed URL can be found under Feed Name>Feed Details>Package Type. In the screenshot below, a feed with NuGet packages is being migrated so we need to copy the NuGet feed URL. If you are migrating a feed with a different package type, such as Npm or Maven, then you will need to navigate to that package type and copy its feed URL. 
+MyGet allows you to have multiple package types per feed and comes with unique URLs for each package type. However, ProGet requires a different feed for each package type, so you will need to download your packages for each feed type separately.
 
-![MyGet Feed URL](/resources/docs/mygetfeedmigration-nugetfeedurl.jpg){height="" width="50%"} 
+Your MyGet packages can be easily downloaded by navigating to your MyGet feed and selecting "Download".
 
-:::(Info) (User Access)
-Users in MyGet only need read-only access to view the feed URL and authentication information.
-:::
+![MyGet Download](/resources/docs/myget-migration-download.png){height="" width="50%"}
 
-Now that you have gathered the feed URLs for each package type you wish to migrate, any active upstream sources will also need to be disabled.
+This option will provide you with a `.zip` file which will automatically organize your packages by type, if your MyGet feed contains multiple package types.
 
-To disable upstream sources in MyGet navigate to Feed> Upstream Sources and delete any active upstream sources.
+![Downloaded Packages](/resources/docs/myget-migration-packages.png){height="" width="50%"}
 
-![MyGet Upstream Sources](/resources/docs/mygetfeedmigration-upstreamsources.jpg){height="" width="50%"}
+An alternative option is to download your MyGet packages by package type using an automated script. This option will require using your MyGet feed URLs.
 
+Each package type in your MyGet feeds will require a different feed URL to be downloaded, available in the Feed Details tab.
+
+![MyGet Feed URL](/resources/docs/myget-migration-url.png){height="" width="50%"}
+
+Here is a list of simple PowerShell scripts for downloading common MyGet package types:
+
+### NuGet Packages
+
+```powershell
+$nugetPath = "<Path to nuget.exe>"
+$feeds = @("<Feed One Name>, <Feed Two Name>, <Feed Three Name>")
+$outputRoot = "<Choose Output Folder Location>"
+New-Item -ItemType Directory -Path $outputRoot -Force | Out-Null
+foreach ($feedURL in $feeds) {
+    Write-Host "Fetching packages from: $feedURL"
+    $packages = & $nugetPath list -Source "https://www.myget.org/F/$feedURL/api/v2" -NonInteractive | ForEach-Object {
+        ($_ -split ' ')[0]
+    }
+    foreach ($packageID in $packages) {
+        Write-Host "Downloading $packageID..."
+        & $nugetPath install $packageID -Source "https://www.myget.org/F/$feedURL/api/v2" -OutputDirectory "$outputRoot\$feedURL\$packageID" -NonInteractive -DependencyVersion Ignore -Prerelease
+    }
+}
+```
+
+### npm Packages
+
+```powershell
+$packages = @("<Packge One Name>", "<Package Two Name>")
+$feed_url = "<Feed URL>"
+$outputRoot = "<Choose Output Folder Location>"
+New-Item -ItemType Directory -Path $outputRoot -Force | Out-Null
+foreach ($package in $packages) {
+    Write-Host "Packing $package from $feed_url"
+    Set-Location $outputRoot
+    cmd /c npm pack $package --registry $feed_url | ForEach-Object {
+        Write-Host "Downloaded: $_"
+    }
+}
+```
+
+### PyPi Packages
+
+```powershell
+$pipExe = "pip"
+$packages = @("<Packge One Name>", "<Package Two Name>")
+$feed_url = "https://www.myget.org/F/<Feed Name>/simple/"
+$outputRoot = "<Choose Output Folder Location>"
+New-Item -ItemType Directory -Path $outputRoot -Force | Out-Null
+foreach ($pkg in $packages) {
+    Write-Host "Downloading: $pkg from $feed_url"
+    & $pipExe download $pkg --no-deps --index-url $feed_url --dest $outputRoot    
+    if ($LASTEXITCODE -ne 0) {
+        Write-Warning "Failed to download $pkg"
+    } else {
+        Write-Host "$pkg downloaded successfully."
+    }
+}
+```
 
 ## Step 2: Create a Feed in ProGet
 
-ProGet supports the creation of multiple types of feeds, but for demonstration purposes we will be migrating a feed with NuGet packages from MyGet to ProGet. 
+ProGet supports the creation of multiple feed types, but for demonstration purposes we will be migrating a NuGet feed from from MyGet to ProGet. 
 
-To create a new feed, navigate to the banner at the top of the page and click on feeds. Next select Create New Feed.
+To create a new feed, navigate to the banner at the top of the page and click on "Feeds". Next select "New Feed".
 
-![Create a New Feed in ProGet](/resources/docs/amazons3-createfeed%281%29.jpg){height="" width="50%"}
+![Create Feed](/resources/docs/proget-feeds-createnewfeed.png){height="" width="50%"}
     
-You will then need to select the type of feed you would like to setup. In this guide we will be setting up a NuGet feed for a fictious company called Kramerica, but the steps should be nearly the same for any feed. Select the feed you wish to setup and fill in the relevant fields.
+Then select the package type. In this case, we will select "NuGet (.NET) Packages".
 
-![NuGet Feed Creation](/resources/docs/proget-nuget-newfeed.png){height="" width="50%"}
+![Create NuGet Feed](/resources/docs/proget-newfeed-nugetselect.png){height="" width="50%"}
 
-## Step 3: Connect ProGet Feed to MyGet Feed
-Now that your feed is created, a connector to your imported feed will need to be added. Click on add connector and fill in the relevant information.
+As we will be uploading packages from our MyGet feed, here we will select "Private/Internal NuGet (.NET) Packages".
 
-![MyGet Feed Connector](/resources/docs/mygetfeedmigration-connector.jpg){height="" width="50%"}
+![Create Private Feed](/resources/docs/proget-createfeed-privatefeed.png){height="" width="50%"}
 
-If your connector is setup correctly you will see your packages shown as remote packages in your ProGet feed. If you do not see your packages at this point, skip ahead to the troubleshooting section.
+Now name your feed. We will call ours `internal-nuget`.
 
-![MyGet Imported Packages](/resources/docs/mygetfeedmigration-importedpackages.jpg){height="" width="50%"}
+![Name Feed](/resources/docs/proget-createfeed-name.png){height="" width="50%"}
 
-While your feed is connected you will still need to complete step 4 in order to import and have access to the packages.
+You'll be taken to your new NuGet feed, currently empty.
 
-## Step 4: Import packages to ProGet
-Now that your imported MyGet feed is connected to ProGet you will need to import the packages.
+![Empty NuGet Feed](/resources/docs/proget-nuget-internal-empty.png){height="" width="50%"}
 
-Navigate to Feeds> Feed Name> Manage Feed> Connectors & Replication> Connectors Used By This Feed.
+## Step 3: Import Packages to ProGet
 
-![Import Packages](/resources/docs/mygetfeedmigration-importfeedbutton.jpg){height="" width="50%"}
+Now we have created a NuGet feed, we can import our MyGet packages. From the "View Packages" tab, navigate to the dropdown menu and select "Import Packages".
 
-After clicking on the import button, you will have to fill in some information about your imported packages.
+![Import Packages](/resources/docs/proget-importpackages.png){height="" width="50%"}
 
-![Import Package Details](/resources/docs/mygetfeedmigration-importpackagesfromconnector.jpg){height="" width="50%"}
+To upload your packages, select "Import/Copy Package Files on Disk".
 
-After clicking on Import, you will see a Live Action Log Output displaying the packages that have been imported. 
+![Import From Disk](/resources/docs/proget-feeds-importpackagesfromdisk.png){height="" width="50%"}
 
-![Live Action Log Output](/resources/docs/mygetfeedmigration-execution.jpg){height="" width="50%"}
+Next, enter the file path of the downloaded packages from your MyGet feed and select import.
 
-Your feed and its packages have successfully been imported!
+![Disk Path](/resources/docs/proget-feeds-diskpath.png){height="" width="50%"}
 
-## Step 5: Delete Connector from ProGet
-With your feed fully imported, we recommend deleting the connector from ProGet. 
+The `internal-nuget` you created is now populated with your imported MyGet packages.
 
-Navigate to Feeds> Connectors> Connector Name and click on the red x to delete the connector. 
-
-![Delete Connector](/resources/docs/mygetfeedmigration-deleteconnector.jpg){height="" width="50%"}
- 
-
-## Step 6: Repeat steps 1-5 for each feed.
-To migrate your various feeds from MyGet to ProGet simply repeat steps 1-5 for each feed until you’re fully migrated!  
-
-## Troubleshooting
-### Issue: Why don't I see all my packages imported?
-![Import Package Details](/resources/docs/mygetfeedmigration-importfeed.jpg){height="" width="50%"}
-
-If you run into this issue, ensure that your Maximum Package Count is not lower than the number of packages you are importing. 
-
-### Issue: Why don't I have an import button?
-
-If you have followed the steps in this guide and are not seeing the import button mentioned in step 4 than it is likely that you are either operating on an older version of ProGet or using a public repository. You must be operating on ProGet v6.0.7 or newer and using a private repository to import packages.  
-
-### Issue: Why don't I see any packages after adding my connector?
-
-This is likely because your MyGet feed requires credentials to be accessed. Your credentials can be added in the boxes for Username and Password when creating a connector in step 3. Be sure to use a MyGet username that has at least read-only access to the MyGet feed you wish to migrate. The password will be the same as the one used by the choosen user when logging into MyGet.
+![Imported Packages](/resources/docs/proget-nugetfeed-fakepackages.png){height="" width="50%"}
