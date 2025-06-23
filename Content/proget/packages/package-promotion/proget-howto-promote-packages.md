@@ -32,11 +32,11 @@ After selecting the feed type, we’ll specify that the feed will connect direct
 
 We then name our feed. In this example, we will name it `public-nuget`, as it will proxy OSS NuGet packages. 
 
-![Name Unapproved Feed](/resources/docs/proget-nuget-namefeed-unapproved.png){height="" width="50%"}
+![Name Public Feed](/resources/docs/proget-nuget-namefeed-public.png){height="" width="50%"}
 
 Finally, we select "Create New Feed", which will create and redirect us to our `public-nuget` feed, populated with OSS packages.
 
-![Unapproved Feed Details](/resources/docs/proget-nuget-unapprovedfeed.png){height="" width="50%"}
+![Public Feed Details](/resources/docs/proget-nuget-public-unapprovedfeed.png){height="" width="50%"}
 
 ## Step 3: Create a second feed
 
@@ -56,7 +56,31 @@ Select "Create New Feed" to create the `approved-nuget` feed and be redirected t
 
 ![Approved Feed Details](/resources/docs/proget-nuget-approvedfeed-empty.png){height="" width="50%"}
 
-## Step 4: Set Permissions
+## Step 4: Promote Packages
+
+Promoting packages implies that someone approves a package, often after following an internal process that involves checking the license, vulnerabilities, and quality.
+
+ProGet's integrated license and vulnerability scanning can help by automating the scanning and verification, but there's usually human judgment involved.
+
+### Example: Newtonsoft.Json
+
+Most organizations would find the [Newtonsoft.Json](https://www.nuget.org/packages/Newtonsoft.Json) NuGet package to be acceptable in terms of license, vulnerabilities, and quality. This guide will demonstrate how we would promote this package.
+
+We start by clicking the "version number" (in this case 13.0.3) to direct us to the package page, and then simply select "Promote Package" from the drop-down menu on the right side.
+
+![Select Promote Package](/resources/docs/proget-nuget-promoteselect.png){height="" width="50%"}
+
+From here, we'll select our `approved-nuget` feed and fill out the dialog box with any comments, and finally select "Promote".
+
+![Promote Package in ProGet](/resources/docs/proget-nuget-promotepackage.png){height="" width="50%"}
+
+After clicking "Promote", the package will now be available in the `approved-nuget` feed for all "Developers" to view and download.
+
+![Approved Feed](/resources/docs/proget-nuget-approvedfeed.png){height="" width="50%"}
+
+Package promotion can also be done using the [Package Promotion API](/docs/proget/packages/package-promotion). The API usage is limited to paid users, however.
+
+## Step 5: Set Permissions
 
 There are many ways to configure [security access controls for uses and groups](/docs/proget/administration-security) in ProGet. For this example, we want to permit only "Senior Developers" to promote packages to `approved-nuget` feed since they're trained to verify the quality, licenses, and vulnerabilities of open-source packages. To ensure this rule, we'll set up a new permission. By default, only "Administrators" have assigned permissions.
 
@@ -82,30 +106,6 @@ After saving these two privileges, our task overview page looks like this:
 
 
 * * *
-
-## How to Promote Packages
-
-Promoting packages implies that someone approves a package, often after following an internal process that involves checking the license, vulnerabilities, and quality.
-
-ProGet's integrated license and vulnerability scanning can help by automating the scanning and verification, but there's usually human judgment involved.
-
-### Example: Newtonsoft.Json
-
-Most organizations would find the [Newtonsoft.Json](https://www.nuget.org/packages/Newtonsoft.Json) NuGet package to be acceptable in terms of license, vulnerabilities, and quality. This guide will demonstrate how we would promote this package.
-
-We start by clicking the "version number" (in this case 13.0.3) to direct us to the package page, and then simply select "Promote Package" from the drop-down menu on the right side.
-
-![Select Promote Package](/resources/docs/proget-nuget-promoteselect.png){height="" width="50%"}
-
-From here, we'll select our `approved-nuget` feed and fill out the dialog box with any comments, and finally select "Promote".
-
-![Promote Package in ProGet](/resources/docs/proget-nuget-promotepackage.png){height="" width="50%"}
-
-After clicking "Promote", the package will now be available in the `approved-nuget` feed for all "Developers" to view and download.
-
-![Approved Feed](/resources/docs/proget-nuget-approvedfeed.png){height="" width="50%"}
-
-Package promotion can also be done using the [Package Promotion API](/docs/proget/packages/package-promotion). The API usage is limited to paid users, however.
 
 ## Viewing Promotion History
 ProGet keeps a package history that outlines what actions were taken by whom. For example, to view the history of the "Newtonsoft.Json" package, we navigate to the package page and click the "History" tab.
