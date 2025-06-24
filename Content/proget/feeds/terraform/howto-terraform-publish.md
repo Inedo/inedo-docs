@@ -168,3 +168,67 @@ module "example_module" {
   version = "4.20.0"
 }
 ```
+
+
+
+
+
+### Creating Terraform Module Packages
+
+A Terraform Module Package is a specially-formatted ZIP file:
+
+1. the file has a .upack file extension (not .zip)
+2. there is a manifest file in the root directory named `upack.json` with the following properties
+   a. `group` is used for the module's namespace
+   b. `name` is formatted with 2-parts (`«module-name».«provider»`)
+   c. `version` is a valid, [3-part semantic version number](https://semver.org/)
+3. The `/package` directory in the zip file contains the module's content
+
+
+You can create a Terraform Module Packages from the ProGet UI or using the [`pgutil`](/docs/proget/api/pgutil) commandline tool to [create and upload](/docs/proget/api/universal-feed/upload) them to your ProGet instance.
+
+#### Example Package Manifest
+For example, a `upack.json` for the `my-company/my-module/aws` module might look like this:
+
+```
+{
+  "group": "my-company",
+  "name": "my-module.aws",
+  "version": "4.20.0"
+}
+```
+
+You can also use additional Universal Package properties like `summary` and `description` to provide additional metadata for users in ProGet.
+
+### Automatically-Created Module Packages
+
+When a module is downloaded or pulled into a Terraform Feed, a universal package will be automatically created from the contents. The `upack.json` manifest files in these packages will contain some additional metadata.
+
+```
+"modulePackaging": {
+   "packagedDate": "2024-11-06T22:37:41.2253568Z",
+   "using": "ProGet/24.0.0.0",
+   "registry": "https://registry.terraform.io/",
+   "registryMetadata": {
+      "id": "terraform-aws-modules/vpc/aws/3.14.1",
+      ...
+   }
+}
+```
+
+This data is only provided for auditing purposes and as a "snapshot" of what was used to create the package.
+
+## Uploading Packages to ProGet
+
+Before using a Terraform Feed as a Private Module Registry, you'll need to package your modules. This is as simple as zipping the content and uploading it to the ProGet UI or using the [`pgutil`](/docs/proget/api/pgutil) CLI; see [Terraform Module Packages](#terraform-module-packages) to learn more.
+
+Once you've uploaded a package to your feed, you can add the module to your Terraform configuration using the following format:
+
+```
+module "«module-name»" {
+  source  = "«proget-host-name»/«feed-name»__«namespace»/«module-name»/«provider»"
+  version = "«version»"
+}
+```
+
+Once you add the module to your configuration, you can add in additional variables and then run `terraform init`.
