@@ -1,124 +1,69 @@
 ---
-title: "HOWTO: Aggregate RPM Repositories in ProGet"
+title: "HOWTO: Proxy Packages from the Terraform Registry in ProGet"
 order: 1
 ---
 
-With ProGet teams can create ["Feeds"](/docs/proget/feeds/feed-overview) to aggregate multiple [RPM](https://rpm.org/) repositories from a single source by setting up different ["Connectors"](/docs/proget/feeds/connector-overview). They can then proxy RPM packages from these repositories and install them as they would if accessing a repository directly.
+With ProGet, teams can set up ["Feeds"](/docs/proget/feeds/feed-overview) to use as private repositories for [Terraform](https://developer.hashicorp.com/terraform) modules, proxied from external registries like the [Terraform Registry](https://registry.terraform.io/) using ["Connectors"](/docs/proget/feeds/connector-overview).
 
-Feeds will also cache RPM packages allowing teams to access them even when repositories they are proxying from are down, and show which packages are being downloaded and used frequently.
+These feeds also cache modules locally, so if an external registry goes offline, your team can still access the versions they've used before. ProGet also provides visibility into which modules are being consumed, helping teams identify popular or potentially risky dependencies.
 
-In this guide, we'll start by looking at how to create a feed in ProGet and add connectors to proxy packages through one or more RPM repositories. We'll then add this feed to your local RPM environment so that these proxied packages can be accessed and installed.
-
-We'll also look at creating a private repository for when you also want to use internal packages, and how to create a package approval flow if you need to control which packages your team are using in production.
+On this page, we’ll cover how to create a Terraform feed in ProGet, set up connectors to pull in modules from one or more upstream sources, and configure your local Terraform setup to use the feed as a module registry. 
 
 ## Step 1: Create a New Feed
 
-First, we will create an RPM feed that will proxy packages from several RPM repositories.
+We'll start by creating a Terraform feed that will proxy packages from the [Terraform Registry](https://registry.terraform.io/).
 
-Start by selecting "Feeds" and "Create New Feed". Then select "RPM Packages", which will be listed under the "System & Software Configuration" section.
+Navigate to "Feeds" and select "Create New Feed". Then select "Terraform Modules", listed under "System & Software Configuration".
 
-![Create RPM Feed](/resources/docs/proget-rpm-newfeed.png){height="" width="50%"}
+![](/resources/docs/proget-terraform-createfeed.png){height="" width="50%"}
 
-From here, name your feed. For the example in this guide we will call our feed `centos9-packages`. Then click "Create Feed".
+Then select "Free/Open Source Terraform Modules".
 
-![Name RPM Feed](/resources/docs/proget-rpm-namepublicfeed.png){height="" width="50%"}
+![](/resources/docs/proget-terraform-connect.png){height="" width="50%"}
 
-You'll then be redirected us to your RPM feed, which will appear empty for now.
+## Step 2: Connect to the Terraform Registry
 
-![Public RPM Feed](/resources/docs/proget-rpm-publicfeed.png){height="" width="50%"}
+Next, name your feed. For the example in this guide we will call our feed `public-terraform`. Make sure that the "Create a connector to registry.terraform.io" checkbox is selected, and select "Create New Feed".
 
-## Step 2: Create a Connector
+![](/resources/docs/proget-terraform-namefeed.png){height="" width="50%"}
 
-Now we'll add connectors to our `centos9-packages` feed to aggregate several RPM repositories. To add a connector, navigate to "Feeds" > "Connectors" and select "Create Connector".
+Your `public-terraform` feed will then be created, populated with proxied Terraform Modules from the Terraform Registry.
 
-![Create Connector](/resources/docs/proget-connectors-createconnector.png){height="" width="50%"}
+![](/resources/docs/proget-terraform-publicfeed.png){height="" width="50%"}
 
-Then select "Other Connectors" and find "RPM Connector" in the list.
+## Step 3: Update Terraform Configurations { #update-configuration }
 
-![Choose Connector](/resources/docs/proget-connectors-rpmselect.png){height="" width="50%"}
-
-Give your connector a name, and then enter the URL of the repository in the "Connector URL" field. Add your `centos9-packages` feed in the "Associated Feeds" field and then select "Save".
-
-When creating a connector to an official repository, we recommend using a name that follows the URL conventions. For example, for the repository URL `https://mirror.stream.centos.org/9-stream/BaseOS/x86_64/os/`, we'll call the connector `centos-9-stream-baseos-x86_64-os`
-
-![Configure Connector](/resources/docs/proget-rpm-configureconnector.png){height="" width="50%"}
-
-:::(info)(📄 Note: OSS Repository URL)
-The exact URL will vary from repository to repository, however you want to enter a URL that links to a directory containing a `repodata` folder which contains the files needed to index the RPM packages within the repository.
-:::
-
-Repeat as necessary to create connectors to additional repositories you want to proxy from.
-
-![RPM Connector](/resources/docs/proget-rpm-connector.png){height="" width="50%"}
-
-Navigating back to your `centos9-packages` feed, it should now be populated with packages proxied from the configured OSS repository.
-
-![RPM Packages](/resources/docs/proget-rpm-packages.png){height="" width="50%"}
-
-## Step 3: Add the Feed to Your Local RPM Environment { #add-feed }
-
-For your team to install packages proxied to the `centos9-packages` feed, you'll need to add it as a source in their local environment. For this, you will need feed's URL. This can be found at the top right of the feed's page.
-
-![RPM URL](/resources/docs/proget-rpm-url.png){height="" width="50%"}
-
-To add the feed, you'll need to create a `.repo` file locally. Create the file by entering:
+Now, you'll need to update your Terraform `.tf` files to specify module sources and versions, directing Terraform to fetch the module from your `public-terraform` feed instead of the public Terraform Registry.
 
 ```bash
-$ sudo vi /etc/yum.repos.d/centos9-packages.repo
+module "«module-name»" {
+  source  = "«proget-host-name»/«feed-name»__«namespace»/«module-name»/«provider»"
+  version = "«version»"
+}
 ```
 
-In this case we used the `vi` text editor, but you can use any other such as `nano`. With the `.repo ` file open, enter the following:
+This example uses the vpc module for the aws provider.
+
+:::(info) (Example:)
+To fetch the the `vpc` module for the `aws` provider you would enter:
 
 ```bash
-[centos9-packages]
-name=centos9-packages
-baseurl=http://proget.corp.local/rpm/centos9-packages/ # your RPM feed URL
-enabled=1
-gpgcheck=0
+module "my_vpc" {
+  source  = "proget.corp.local/public-terraform/vpc/aws"
+  version = "1.0.0"
+}
 ```
 
-Then save and exit (`:wq` in the case of `vi`). You can confirm the feed has been set by listing the configured repositories:
+You'll then need to run `terraform init` in your project directory to authenticate your ProGet feed and download the specified module. You can also run `terraform plan` to make sure the module is correctly referenced.
 
-```bash
-$ yum repolist all
-```
+## (Optional) Authenticating to Your Terraform Feed
 
-Or listing packages by entering:
-
-```bash
-$ yum list available --disablerepo="*" --enablerepo=public-rpm
-```
-
-By default, repositories will already be configured, depending on the distribution of your local environment. We recommend removing these to install packages exclusively from your `centos9-packages` feed. You can remove a repository by entering:
-
-```bash
-$ sudo rm /etc/yum.repos.d/«repo-name».repo
-```
-
-## (Optional) Authenticating to Your RPM Feed
-
-By default your `centos9-packages` feed does not require authentication and can be viewed anonymously. However, you may want to make your feed private and [configure it to require authentication to access](/docs/proget/feeds/rpm#authenticating-to-rpm-yum-feeds). For example, when also hosting your own internal packages.
+By default your `public-terraform` feed does not require authentication and can be viewed anonymously by anyone. However, you may want to make your feed private and [configure it to require authentication to access](/docs/proget/feeds/terraform#authentication). For example, when also hosting your own internal packages.
 
 ## (Optional) Creating a Package Approval Flow
 
-This guide covered how to proxy packages from the various RPM public repositories. However, this allows developers to install any OSS packages without oversight. In many cases, it's important to include some form of approval in development or production, which can be done by introducing a ["Package Approval Flow"](/docs/proget/packages/package-promotion).
+In the steps on this page we looked how to proxy packages from the Terraform Registry. However, this will allow developers to pull any OSS module without oversight for quality or compliance. It's generally a good idea to include some kind of approval in development or production, which you can achieve by implementing a ["Package Approval Flow"](/docs/proget/packages/package-promotion).
 
-To set up a package approval flow, refer to [HOWTO: Approve and Promote Open-source Packages](/docs/proget/packages/package-promotion/proget-howto-promote-packages). This guide uses NuGet feeds as an example, but the steps are identical when creating RPM package feeds.
+To set up a package approval flow, take a look at [HOWTO: Approve and Promote Open-source Packages](/docs/proget/packages/package-promotion/proget-howto-promote-packages). This guide uses NuGet feeds as an example, but the steps are identical when creating Terraform package feeds.
 
-After creating your "Unapproved" and "Approved" feeds, follow the steps in ["Add the Feed to Your Local RPM Environment"](#add-feed) to add the "Approved" feed as a source in your local rpm environments, entering:
-
-```bash
-baseurl=http://«feed-url»
-```
-
-And then confirm that the feed was configured by entering:
-
-```bash
-$ yum repolist all
-```
-
-Or listing packages in a configured repository named `internal-npm` by entering:
-
-```bash
-$ yum list available --disablerepo="*" --enablerepo=internal-npm
-```
+After creating the "approved" feed used to promote your Terraform modules, follow the steps in ["Add the Feed to Your Local Terraform Environment"](#add-feed) to add this "Approved" feed as a source in your local Terraform environments.
