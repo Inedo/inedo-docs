@@ -1,9 +1,9 @@
 ---
-title: "HOWTO: Proxy Packages from the Terraform Registry in ProGet"
+title: "HOWTO: Proxy Packages from the Hashicorp Registry in ProGet"
 order: 1
 ---
 
-With ProGet, teams can set up ["Feeds"](/docs/proget/feeds/feed-overview) to use as private repositories for [Terraform](https://developer.hashicorp.com/terraform) modules, proxied from external registries like the [Terraform Registry](https://registry.terraform.io/) using ["Connectors"](/docs/proget/feeds/connector-overview).
+With ProGet, teams can set up ["Feeds"](/docs/proget/feeds/feed-overview) to use as private repositories for [Terraform](https://developer.hashicorp.com/terraform) modules, proxied from external registries like the [Hashicorp registry](https://registry.terraform.io/) using ["Connectors"](/docs/proget/feeds/connector-overview).
 
 These feeds also cache modules locally, so if an external registry goes offline, your team can still access the versions they've used before. ProGet also provides visibility into which modules are being consumed, helping teams identify popular or potentially risky dependencies.
 
@@ -11,7 +11,7 @@ On this page, we’ll cover how to create a Terraform feed in ProGet, set up con
 
 ## Step 1: Create a New Feed
 
-We'll start by creating a Terraform feed that will proxy packages from the [Terraform Registry](https://registry.terraform.io/).
+We'll start by creating a Terraform feed that will proxy packages from the [Hashicorp registry](https://registry.terraform.io/).
 
 Navigate to "Feeds" and select "Create New Feed". Then select "Terraform Modules", listed under "System & Software Configuration".
 
@@ -21,19 +21,19 @@ Then select "Free/Open Source Terraform Modules".
 
 ![](/resources/docs/proget-terraform-connect.png){height="" width="50%"}
 
-## Step 2: Connect to the Terraform Registry
+## Step 2: Connect to the Hashicorp Registry
 
 Next, name your feed. For the example in this guide we will call our feed `public-terraform`. Make sure that the "Create a connector to registry.terraform.io" checkbox is selected, and select "Create New Feed".
 
 ![](/resources/docs/proget-terraform-namefeed.png){height="" width="50%"}
 
-Your `public-terraform` feed will then be created, populated with proxied Terraform Modules from the Terraform Registry.
+Your `public-terraform` feed will then be created, populated with proxied Terraform Modules from the Hashicorp Registry.
 
 ![](/resources/docs/proget-terraform-publicfeed.png){height="" width="50%"}
 
 ## Step 3: Update Terraform Configurations { #update-configuration }
 
-Now, you'll need to update your Terraform `.tf` files to specify module sources and versions, directing Terraform to fetch the module from your `public-terraform` feed instead of the public Terraform Registry.
+Now, you'll need to update your Terraform `.tf` files to specify module sources and versions, directing Terraform to fetch the module from your `public-terraform` feed instead of the public Hashicorp Registry.
 
 ```bash
 module "«module-name»" {
@@ -41,8 +41,6 @@ module "«module-name»" {
   version = "«version»"
 }
 ```
-
-This example uses the vpc module for the aws provider.
 
 :::(info) (Example:)
 To fetch the the `vpc` module for the `aws` provider you would enter:
@@ -62,7 +60,7 @@ By default your `public-terraform` feed does not require authentication and can 
 
 ## (Optional) Creating a Package Approval Flow
 
-In the steps on this page we looked how to proxy packages from the Terraform Registry. However, this will allow developers to pull any OSS module without oversight for quality or compliance. It's generally a good idea to include some kind of approval in development or production, which you can achieve by implementing a ["Package Approval Flow"](/docs/proget/packages/package-promotion).
+In the steps on this page we looked how to proxy packages from the Hashicorp Registry. However, this will allow developers to pull any OSS module without oversight for quality or compliance. It's generally a good idea to include some kind of approval in development or production, which you can achieve by implementing a ["Package Approval Flow"](/docs/proget/packages/package-promotion).
 
 To set up a package approval flow, take a look at [HOWTO: Approve and Promote Open-source Packages](/docs/proget/packages/package-promotion/proget-howto-promote-packages). This guide uses NuGet feeds as an example, but the steps are identical when creating Terraform package feeds.
 
