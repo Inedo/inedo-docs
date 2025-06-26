@@ -108,7 +108,7 @@ networks:
 
 <h3 id="quick-start-proget">Quick Start: ProGet</h3>
 
-This is an example ProGet node that can be inserted into the [base Docker Compose file](#example-docker-compose-configuration-file).  See the [supported environment variables guide](/docs/installation/linux/supported-environment-variables) for other configuration options.
+This is an example ProGet node that can be inserted into the [base Docker Compose file](#example-docker-compose-configuration-file).  See the [supported environment variables guide](/docs/installation/linux/docker-guide#supported-environment-variables) for other configuration options.
 
 ```yaml
   pg:
@@ -132,7 +132,7 @@ This is an example ProGet node that can be inserted into the [base Docker Compos
 
 <h3 id="quick-start-buildmaster">Quick Start: BuildMaster</h3>
 
-This is an example BuildMaster node that can be inserted into the [base Docker Compose file](#example-docker-compose-configuration-file). See the [supported environment variables guide](/docs/installation/linux/supported-environment-variables) for other configuration options.
+This is an example BuildMaster node that can be inserted into the [base Docker Compose file](#example-docker-compose-configuration-file). See the [supported environment variables guide](/docs/installation/linux/docker-guide#supported-environment-variables) for other configuration options.
 
 ```yaml
   bm:
@@ -156,7 +156,7 @@ This is an example BuildMaster node that can be inserted into the [base Docker C
 
 <h3 id="quick-start-otter">Quick Start: Otter</h3>
 
-This is an example Otter node that can be inserted into the [base Docker Compose file](#example-docker-compose-configuration-file). See the [supported environment variables guide](/docs/installation/linux/supported-environment-variables) for other configuration options.
+This is an example Otter node that can be inserted into the [base Docker Compose file](#example-docker-compose-configuration-file). See the [supported environment variables guide](/docs/installation/linux/docker-guide#supported-environment-variables) for other configuration options.
 
 ```yaml
   ot:
