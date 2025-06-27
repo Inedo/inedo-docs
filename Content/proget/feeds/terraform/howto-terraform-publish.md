@@ -9,95 +9,84 @@ This guide will show you how to set up a ["Feed"](/docs/proget/feeds/feed-overvi
 
 ## Step 1: Create a New Feed
 
-Start by creating an RPM feed to host your packages. Select "Feeds" and "Create New Feed". Next, select "RPM Packages".
+We'll start by creating a Terraform feed that we will be used to host our internal terraform packages. 
 
-![Create RPM Feed](/resources/docs/proget-rpm-newfeed.png){height="" width="50%"}
+Navigate to "Feeds" and select "Create New Feed". Then select "Terraform Modules", listed under "System & Software Configuration".
 
-Now name your feed. For this guide, we will call it `internal-rpm`. Then select "Create Feed".
+![](/resources/docs/proget-terraform-createfeed.png){height="" width="50%"}
 
-![Name RPM Feed](/resources/docs/proget-rpm-nameinternalfeed.png){height="" width="50%"}
+Then select "Private/Internal Terraform Modules" and name the feed, which we will call `internal-terraform`. Then select "Create New Feed"
 
-You will then be redirected to your new `internal-rpm` feed, currently empty.
+![](/resources/docs/proget-terraform-createprivate.png){height="" width="50%"}
 
-![Internal RPM Feed](/resources/docs/proget-rpm-internafeed.png){height="" width="50%"}
+You will then be redirected to your new `internal-terraform` feed, currently empty.
 
-## Step 2: Create an API Key
+![](/resources/docs/proget-terraform-emptyprivate.png.png){height="" width="50%"}
 
-Now create an [API Key](/docs/proget/api/apikeys) which will allow your local RPM environment to authenticate to the `internal-rpm` feed to publish packages to it, as well as install them once published.
 
-You can read more about creating API keys in ProGet on our [API Key](/docs/proget/api/apikeys) page.
+## Step 2: Package Your Modules
 
-When creating an API Key, fill in the fields by selecting "Feeds (Use Certain Feeds)" as the "Feed Type" and selecting the `internal-rpm` feed. Then set the API key. You can use any alphanumeric sequence, or just leave it blank to autogenerate one.
+Before using a Terraform Feed as a Private Module Registry, you'll need to package your modules. This is as simple as zipping the content and uploading it to the ProGet UI or using the [`pgutil`](/docs/proget/api/pgutil) CLI; see [Terraform Module Packages](#terraform-module-packages) to learn more.
 
-![Create RPM API Key](/resources/docs/proget-rpm-apikey.png){height="" width="50%"}
+Once you've uploaded a package to your feed, you can add the module to your Terraform configuration using the following format:
 
-Make sure the "View/Download" and "Add/Repackage" boxes are checked, and then select "Save".
-
-## Step 3: Build Your Package
-
-Next, we will build and publish our packages. You can follow the [official Red Hat documentation](https://www.redhat.com/sysadmin/create-rpm-package) to learn more about creating packages. To build your package you will need to install `rpmdevtools` if you haven't already by entering:
-
-```bash
-$ sudo dnf install rpm-build rpmdevtools
+```
+module "«module-name»" {
+  source  = "«proget-host-name»/«feed-name»__«namespace»/«module-name»/«provider»"
+  version = "«version»"
+}
 ```
 
-And then set up the build environment by entering:
+For example the `my-company/my-module` module that uses `aws` might look like this:
 
-```bash
-$ rpmdev-setuptree
+```
+module "example_module" {
+  source = "proget.corp/internal-terraform__my-company/my-module/aws"
+  version = "4.20.0"
+}
 ```
 
-Once you have the tarball (`.tar.gz`) and `.spec` file needed for the build, run the build command by entering:
+### Creating Terraform Module Packages
 
-```bash
-$ rpmbuild -ba ~/rpmbuild/SPECS/«spec-file».spec
+A Terraform Module Package is a specially-formatted ZIP file:
+
+1. the file has a .upack file extension (not .zip)
+2. there is a manifest file in the root directory named `upack.json` with the following properties
+   a. `group` is used for the module's namespace
+   b. `name` is formatted with 2-parts (`«module-name».«provider»`)
+   c. `version` is a valid, [3-part semantic version number](https://semver.org/)
+3. The `/package` directory in the zip file contains the module's content
+
+
+You can create a Terraform Module Packages from the ProGet UI or using the [`pgutil`](/docs/proget/api/pgutil) commandline tool to [create and upload](/docs/proget/api/universal-feed/upload) them to your ProGet instance.
+
+#### Example Package Manifest
+For example, a `upack.json` for the `my-company/my-module/aws` module might look like this:
+
 ```
-
-When the build is finished, the `.rpm` file will be located in the `rpmbuild/RPMS` folder, for example:
-
-`~/rpmbuild/RPMS/x86_64/my-package-1.0-1.el9.x86_64.rpm`
-
-## Step 4: Publish Your Package to ProGet
-
-To publish your package to your ProGet RPM feed, you can use [pgutil](/docs/proget/api/pgutil).
-
-pgutil will require some [minor configuration](/docs/proget/api/pgutil#sources) before use. This includes setting up your ProGet instance and API key as a source by running:
-
-```bash
-$ pgutil sources add --name=Default --url=«proget-url» --api-key=«api-key»
+{
+  "group": "my-company",
+  "name": "my-module.aws",
+  "version": "4.20.0"
+}
 ```
+You can also use additional Universal Package properties like `summary` and `description` to provide additional metadata for users in ProGet.
 
-For example, adding the ProGet instance `https://proget.corp.local/` with the API Key `abc12345` you would enter:
 
-```bash
-$ pgutil sources add --name=Default --url=https://proget.corp.local/ --api-key=abc12345
-```
 
-Now upload your packages by entering:
 
-```bash
-$ pgutil packages upload --feed=«feed-name» --input-file=«path-to-package»
-```
 
-For example, uploading the package `my-package-1.0-1.el9.x86_64.rpm` stored at `/home/user/rpmbuild/RPMS/x86_64/my-package-1.0-1.el9.x86_64.rpm` to your `internal-rpm` feed you would enter:
 
-```bash
-$ pgutil packages upload --feed=internal-rpm --input-file=/home/user/rpmbuild/RPMS/x86_64/my-package-1.0-1.el9.x86_64.rpm
-```
 
-Your package will then be uploaded to the `internal-rpm` feed.
 
-![Uploaded RPM Package](/resources/docs/proget-rpm-upload.png){height="" width="50%"}
 
-### ProGet 2023 and Earlier
 
-To push an RPM package via HTTP, issue a `PUT` or `POST` request with the package file as the content to: `http://«proget-url»/rpm/feed-name»/`
 
-For example, to upload the RPM package `mypackage-1.0.0.rpm` to the feed `internal-rpm` with the API key `abc12345`:
 
-```bash
-$ curl http://proget.corp.local/rpm/internal-rpm/ --user api:abc12345 --upload-file mypackage-1.0.0.rpm
-```
+
+
+
+
 
 ## Step 5: Add the Feed to Your Local RPM Environment
 
@@ -147,76 +136,7 @@ $ sudo rm /etc/yum.repos.d/«repo-name».repo
 
 
 
-## Using Terraform Feeds as a Private Registry
 
-Before using a Terraform Feed as a Private Module Registry, you'll need to package your modules. This is as simple as zipping the content and uploading it to the ProGet UI or using the [`pgutil`](/docs/proget/api/pgutil) CLI; see [Terraform Module Packages](#terraform-module-packages) to learn more.
-
-Once you've uploaded a package to your feed, you can add the module to your Terraform configuration using the following format:
-
-```
-module "«module-name»" {
-  source  = "«proget-host-name»/«feed-name»__«namespace»/«module-name»/«provider»"
-  version = "«version»"
-}
-```
-
-For example the `my-company/my-module` module that uses `aws` might look like this:
-
-```
-module "example_module" {
-  source = "proget.corp/internal-terraform__my-company/my-module/aws"
-  version = "4.20.0"
-}
-```
-
-
-
-
-
-### Creating Terraform Module Packages
-
-A Terraform Module Package is a specially-formatted ZIP file:
-
-1. the file has a .upack file extension (not .zip)
-2. there is a manifest file in the root directory named `upack.json` with the following properties
-   a. `group` is used for the module's namespace
-   b. `name` is formatted with 2-parts (`«module-name».«provider»`)
-   c. `version` is a valid, [3-part semantic version number](https://semver.org/)
-3. The `/package` directory in the zip file contains the module's content
-
-
-You can create a Terraform Module Packages from the ProGet UI or using the [`pgutil`](/docs/proget/api/pgutil) commandline tool to [create and upload](/docs/proget/api/universal-feed/upload) them to your ProGet instance.
-
-#### Example Package Manifest
-For example, a `upack.json` for the `my-company/my-module/aws` module might look like this:
-
-```
-{
-  "group": "my-company",
-  "name": "my-module.aws",
-  "version": "4.20.0"
-}
-```
-
-You can also use additional Universal Package properties like `summary` and `description` to provide additional metadata for users in ProGet.
-
-### Automatically-Created Module Packages
-
-When a module is downloaded or pulled into a Terraform Feed, a universal package will be automatically created from the contents. The `upack.json` manifest files in these packages will contain some additional metadata.
-
-```
-"modulePackaging": {
-   "packagedDate": "2024-11-06T22:37:41.2253568Z",
-   "using": "ProGet/24.0.0.0",
-   "registry": "https://registry.terraform.io/",
-   "registryMetadata": {
-      "id": "terraform-aws-modules/vpc/aws/3.14.1",
-      ...
-   }
-}
-```
-
-This data is only provided for auditing purposes and as a "snapshot" of what was used to create the package.
 
 ## Uploading Packages to ProGet
 
@@ -232,3 +152,25 @@ module "«module-name»" {
 ```
 
 Once you add the module to your configuration, you can add in additional variables and then run `terraform init`.
+
+
+
+
+
+
+
+
+
+## Step 2: Create an API Key
+
+Now create an [API Key](/docs/proget/api/apikeys) which will allow your local RPM environment to authenticate to the `internal-rpm` feed to publish packages to it, as well as install them once published.
+
+You can read more about creating API keys in ProGet on our [API Key](/docs/proget/api/apikeys) page.
+
+When creating an API Key, fill in the fields by selecting "Feeds (Use Certain Feeds)" as the "Feed Type" and selecting the `internal-rpm` feed. Then set the API key. You can use any alphanumeric sequence, or just leave it blank to autogenerate one.
+
+![Create RPM API Key](/resources/docs/proget-rpm-apikey.png){height="" width="50%"}
+
+Make sure the "View/Download" and "Add/Repackage" boxes are checked, and then select "Save".
+
+
