@@ -60,8 +60,8 @@ By default your `public-terraform` feed does not require authentication and can 
 
 ## (Optional) Creating a Package Approval Flow
 
-In the steps on this page we looked how to proxy packages from the Hashicorp Registry. However, this will allow developers to pull any OSS module without oversight for quality or compliance. It's generally a good idea to include some kind of approval in development or production, which you can achieve by implementing a ["Package Approval Flow"](/docs/proget/packages/package-promotion).
+On this page, we discussed how to proxy packages from the Hashicorp Registry. However, this approach allows developers to fetch any OSS module without oversight for quality or compliance. It's advisable to integrate an approval process in both development and production environments. You can establish this by implementing a ["Package Approval Flow"](/docs/proget/packages/package-promotion).
 
-To set up a package approval flow, take a look at [HOWTO: Approve and Promote Open-source Packages](/docs/proget/packages/package-promotion/proget-howto-promote-packages). This guide uses NuGet feeds as an example, but the steps are identical when creating Terraform package feeds.
+For instructions on setting up a package approval flow, refer to [HOWTO: Approve and Promote Open-source Packages](/docs/proget/packages/package-promotion/proget-howto-promote-packages). While this guide focuses on NuGet feeds, the steps are identical for creating Terraform package feeds.
 
-After creating the "approved" feed used to promote your Terraform modules, follow the steps in ["Add the Feed to Your Local Terraform Environment"](#add-feed) to add this "Approved" feed as a source in your local Terraform environments.
+Once you've created the "approved" feed for promoting your Terraform modules, proceed to integrate it into your local Terraform environments by following the steps in ["Update Terraform Configurations"](#update-configuration).
