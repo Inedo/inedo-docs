@@ -15,9 +15,28 @@ Docker Compose must also be installed. If you don't already have Docker Compose 
 Docker and Docker Compose commands generally have to be issued by members of the Docker group or with root/sudo privileges. If you encounter errors with these commands, make sure your account is in the Docker group (`adduser myusername docker` and then log out and back in) or you are issuing them with the appropriate sudo/su privilege.
 :::
 
-## Installing Using Docker Compose 
+## Running ProGet 2025+ with the Embedded Database (PostgreSQL) { #postgres }
 
-To install using Docker Compose:
+ProGet 2025 and later include an embedded database (PostgreSQL) in the same container as ProGet, which means ProGet only needs a single container to operate.  Unless you need to run another container, like nginx, you should host ProGet in a container [using the Docker run command](/docs/installation/linux/docker-guide#running-a-proget-2025-container).
+
+In order to include ProGet 2025+ with the embedded database, add the following to the `services` section of your docker-compose.yml.
+
+```yaml
+  pg:
+    image: proget.inedo.com/productimages/inedo/proget:latest
+    container_name: proget
+    restart: unless-stopped
+    ports:
+      - "8624:80"
+    volumes:
+      - ./proget-packages:/var/proget/packages
+      - ./proget-database:/var/proget/database
+      - ./proget-backups:/var/proget/backups
+```
+
+## Using the SQL Server Backend { #sql-server}
+
+With the exception of ProGet 2025, Inedo products require a SQL Server database. This guide includes running SQL Server in a container.  To install using Docker Compose:
 
 1.  Create and save your `docker-compose.yml` (see our [example compose file](#example-docker-compose-configuration-file))
 2.  In a terminal, navigate to the folder you saved your `docker-compose.yml`

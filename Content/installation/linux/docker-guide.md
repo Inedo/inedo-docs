@@ -129,7 +129,7 @@ These should be backed up regularly.
 ### Artifacts Volume (BuildMaster Only)
 BuildMaster requires a `/var/buildmaster/artifacts` volume to be specified, which will be used to store all build artifacts you create and intend to deploy. This should be backed up regularly.
 
-### Other Environment Variables
+### Other Volumes
 
 These volumes are not required or commonly used.
 
