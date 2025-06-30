@@ -95,67 +95,7 @@ The confirmation page may display a warning if any commands need to be run direc
 
 Once configured, the integrated web server will restart.  If any binding errors occur during startup, they will be logged in the Windows Event Log.  See our [troubleshooting documentation](/docs/installation/windows/web/troubleshooting) for more information.
 
-### HTTPS Binding to a Hostname 
-
-If you want your Inedo product to bind to a specific hostname (i.e. respond to requests issued only to a hostname like `proget.kramerica.com`), you will need to perform the following steps.
-
-#### 1. Update Configuration File
-Update the `WebServer` node's `Urls` attribute in the [shared configuration file](/docs/installation/configuration-files) to include a hostname-specified URL and the port.
-
-:::(Warning) 
-Make sure to include a port when editing the `Urls` node, even if you want to use the default port (443) for HTTPS. Do not add a trailing slash.
-:::
-
-For example, if you wanted to add an HTTPS binding to the `proget.kramerica.com` host name, in addition to the default HTTP binding to port 8624, the node would look like this:
-```xml
-<WebServer Enabled="true" Urls="http://*:8624;https://proget.kramerica.com:443" />
-```
-
-#### 2. Permit the Binding with `netsh http`
-:::(Info)
-This step is only required if you're binding to the default HTTPS port (443), or any port lower than 1024
-:::
-
-Windows requires that an application has administrative access to bind to a port lower than 1024. By default, Inedo products are installed to run as `NETWORK SERVICE`, which means they cannot bind to this port. 
-
-You'll need to allow this binding by running `netsh http add urlacl` as an administrator. This command has two important parameters:
-* `url` is the URL specified in config but requires a trailing slash
-* `user` is  the account that your site's service is running as
-
-For example, if you wanted to add allow `proget.kramerica.com` for `NETWORK SERVICE`, you'd run this command:
-```
-netsh http add urlacl url=https://proget.kramerica.com:443/ user="NETWORK SERVICE"
-```
-
-#### 3. Register the Certificate with `netsh http`
-Windows also requires that the certificate is bound to that URL. 
-
-You can do this by running the `netsh http add sslcert` command as an administrator. This command has two important parameters:
-* `hostnameport` is the URL specified in config minus the `https://`
-* `cerhash` is the thumbprint of you SSL certificate
-* `certstorname` is the location of your certificate in the Windows certificate store.  This will typically `MY` or `ROOT`.  See [Microsoft's documentation](https://learn.microsoft.com/en-us/windows-server/networking/technologies/netsh/netsh-http#add-sslcert) for more information.
-* `appid` is a just unique GUID; you can generate one by running the PowerShell command `New-Guid`
-
-For example, the following command would bind `proget.kramerica.com`
-
-```
-netsh http add sslcert hostnameport=proget.kramerica.com:443 certhash=b1647f08924633cdf749856abc44c59379cfcaa1 certstorename=My appid="{E7FD8489-4931-45D9-8D42-427367B12584}"
-```
-
-#### 4. Restart the Web Server
-Finally, you can restart the ProGet, BuildMaster, or Otter services. If the services can successfully restart, then the binding will be successful and you can visit the server on the new url.
-
-#### How to Unregister a Binding
-A binding may need to be removed for various reasons such as a certificate, hostname, or port update, a configuration problem, or you are migrating to IIS. 
-
-For example, to remove the certificate and hostname binding, you would run the following commands:
-
-```PowerShell
-netsh http delete sslcert hostnameport=proget.kramerica.com:443
-netsh http delete urlacl url=https://proget.kramerica.com:443/
-```
-
-### HTTPS Binding to a Port (Advanced) (Experimental)
+### HTTPS Binding to a Port (Recommended) 
 If you want your Inedo product to bind to a port (i.e. respond to all requests issued to a port like 443), you will need to perform the following steps.
 
 ::: (Warning)
@@ -254,6 +194,66 @@ When specifying the URL with an `*` (ex: `https://*:443`) the IWS will use Kestr
 
 As of ProGet v2022.17 HTTPS bindings can be used with either configuration, but prior to ProGet v2022.17 and in BuildMaster and Otter only the HTTP.sys configuration supports it.
 :::
+
+### HTTPS Binding to a Hostname (Not Recommended)
+
+If you want your Inedo product to bind to a specific hostname (i.e. respond to requests issued only to a hostname like `proget.kramerica.com`), you will need to perform the following steps.
+
+#### 1. Update Configuration File
+Update the `WebServer` node's `Urls` attribute in the [shared configuration file](/docs/installation/configuration-files) to include a hostname-specified URL and the port.
+
+:::(Warning) 
+Make sure to include a port when editing the `Urls` node, even if you want to use the default port (443) for HTTPS. Do not add a trailing slash.
+:::
+
+For example, if you wanted to add an HTTPS binding to the `proget.kramerica.com` host name, in addition to the default HTTP binding to port 8624, the node would look like this:
+```xml
+<WebServer Enabled="true" Urls="http://*:8624;https://proget.kramerica.com:443" />
+```
+
+#### 2. Permit the Binding with `netsh http`
+:::(Info)
+This step is only required if you're binding to the default HTTPS port (443), or any port lower than 1024
+:::
+
+Windows requires that an application has administrative access to bind to a port lower than 1024. By default, Inedo products are installed to run as `NETWORK SERVICE`, which means they cannot bind to this port. 
+
+You'll need to allow this binding by running `netsh http add urlacl` as an administrator. This command has two important parameters:
+* `url` is the URL specified in config but requires a trailing slash
+* `user` is  the account that your site's service is running as
+
+For example, if you wanted to add allow `proget.kramerica.com` for `NETWORK SERVICE`, you'd run this command:
+```
+netsh http add urlacl url=https://proget.kramerica.com:443/ user="NETWORK SERVICE"
+```
+
+#### 3. Register the Certificate with `netsh http`
+Windows also requires that the certificate is bound to that URL. 
+
+You can do this by running the `netsh http add sslcert` command as an administrator. This command has two important parameters:
+* `hostnameport` is the URL specified in config minus the `https://`
+* `cerhash` is the thumbprint of you SSL certificate
+* `certstorname` is the location of your certificate in the Windows certificate store.  This will typically `MY` or `ROOT`.  See [Microsoft's documentation](https://learn.microsoft.com/en-us/windows-server/networking/technologies/netsh/netsh-http#add-sslcert) for more information.
+* `appid` is a just unique GUID; you can generate one by running the PowerShell command `New-Guid`
+
+For example, the following command would bind `proget.kramerica.com`
+
+```
+netsh http add sslcert hostnameport=proget.kramerica.com:443 certhash=b1647f08924633cdf749856abc44c59379cfcaa1 certstorename=My appid="{E7FD8489-4931-45D9-8D42-427367B12584}"
+```
+
+#### 4. Restart the Web Server
+Finally, you can restart the ProGet, BuildMaster, or Otter services. If the services can successfully restart, then the binding will be successful and you can visit the server on the new url.
+
+#### How to Unregister a Binding
+A binding may need to be removed for various reasons such as a certificate, hostname, or port update, a configuration problem, or you are migrating to IIS. 
+
+For example, to remove the certificate and hostname binding, you would run the following commands:
+
+```PowerShell
+netsh http delete sslcert hostnameport=proget.kramerica.com:443
+netsh http delete urlacl url=https://proget.kramerica.com:443/
+```
 
 ### Automated / Silent Configuring HTTPS on the Integrated Web Server
 
