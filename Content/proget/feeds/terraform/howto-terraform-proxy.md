@@ -1,5 +1,5 @@
 ---
-title: "HOWTO: Proxy Packages from the Hashicorp Registry in ProGet"
+title: "HOWTO: Proxy Terraform Modules from the Hashicorp Registry in ProGet"
 order: 1
 ---
 
@@ -23,7 +23,7 @@ Then select "Free/Open Source Terraform Modules".
 
 ## Step 2: Connect to the Hashicorp Registry
 
-Next, name your feed. For the example in this guide we will call our feed `public-terraform`. Make sure that the "Create a connector to registry.terraform.io" checkbox is selected, and select "Create New Feed".
+Next, name your feed. For the example, in this guide we will call our feed `public-terraform`. Make sure that the "Create a connector to registry.terraform.io" checkbox is selected, and select "Create New Feed".
 
 ![](/resources/docs/proget-terraform-namefeed.png){height="" width="50%"}
 
@@ -51,6 +51,7 @@ module "my_vpc" {
   version = "1.0.0"
 }
 ```
+:::
 
 You'll then need to run `terraform init` in your project directory to authenticate your ProGet feed and download the specified module. You can also run `terraform plan` to make sure the module is correctly referenced.
 
