@@ -1,11 +1,11 @@
 ---
-title: "HOWTO: Package and Upload Terraform Modules to a Private Repository in ProGet"
+title: "HOWTO: Package and Upload Terraform Modules to a Private Registry in ProGet"
 order: 2
 ---
 
-Using ProGet, you can easily set up a private repository to create and upload your internal terraform modules.
+Using ProGet, you can easily set up a private registry to create and upload your internal terraform modules.
 
-This guide will show you how to set up a ["Feed"](/docs/proget/feeds/feed-overview) in ProGet as a private terraform module repository. We will also walk you through packaging your modules and uploading them to this feed.
+This guide will show you how to set up a ["Feed"](/docs/proget/feeds/feed-overview) in ProGet as a private terraform module registry. We will also walk you through packaging your modules and uploading them to this feed.
 
 ## Step 1: Create a New Feed
 

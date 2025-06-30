@@ -3,7 +3,7 @@ title: "HOWTO: Proxy Terraform Modules from the Hashicorp Registry in ProGet"
 order: 1
 ---
 
-With ProGet, teams can set up ["Feeds"](/docs/proget/feeds/feed-overview) to use as private repositories for [Terraform](https://developer.hashicorp.com/terraform) modules, proxied from external registries like the [Hashicorp registry](https://registry.terraform.io/) using ["Connectors"](/docs/proget/feeds/connector-overview).
+With ProGet, teams can set up ["Feeds"](/docs/proget/feeds/feed-overview) to use as private registries for [Terraform](https://developer.hashicorp.com/terraform) modules, proxied from external registries like the [Hashicorp registry](https://registry.terraform.io/) using ["Connectors"](/docs/proget/feeds/connector-overview).
 
 These feeds also cache modules locally, so if an external registry goes offline, your team can still access the versions they've used before. ProGet also provides visibility into which modules are being consumed, helping teams identify popular or potentially risky dependencies.
 
