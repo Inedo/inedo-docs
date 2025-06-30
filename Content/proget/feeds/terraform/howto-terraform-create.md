@@ -1,5 +1,5 @@
 ---
-title: "HOWTO: Package and Upload Terraform Modules to a Private Registry in ProGet"
+title: "HOWTO: Create and Upload Terraform Modules to a Private Registry in ProGet"
 order: 2
 ---
 
