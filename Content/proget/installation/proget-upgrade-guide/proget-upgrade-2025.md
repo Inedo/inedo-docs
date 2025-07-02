@@ -124,7 +124,6 @@ To ensure the application user has the appropriate permissions before upgrading,
 * **Withdrawn Vulnerabilities**; unless they've been assessed, these will be deleted from the local database after each update of the vulnerability database (default nightly)
 * **Pause/disable individual replication tasks**; this will likely not add any risk
 * **Add Certificates folder to Package/Data Directory**; minor change to Docker image
-* **Deleting Users Deletes Personal API Keys**; when Deleting a User, any Personal API keys associated with that username will also be deleted
 * Debian Feeds now Return empty InRelease file for Empty Feed
 
 ## Upgrade Process
