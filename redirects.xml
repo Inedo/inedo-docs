@@ -20,6 +20,7 @@
 	<redirect from="/docs/installation/installing-on-iis/howto-switch-to-integrated-web-server-from-iis" to="/docs/installation/windows/web/howto-switch-to-integrated-web-server-from-iis" />
 	<redirect from="/docs/installation/installing-on-iis/installation-windows-web-server-troubleshooting" to="/docs/installation/windows/web/troubleshooting" />
 	<redirect from="/docs/installation/sql-server/installation-database-backup" to="/docs/installation/sql-server/backup" />
+	<redirect from="/docs/installation/linux/supported-environment-variables" to="/docs/installation/linux/docker-guide#supported-environment-variables" />
 	<!-- END ProGet2025 Docs Refactoring  -->
 	
   <!-- BEGIN UPack Docs Refactoring  -->
@@ -629,7 +630,7 @@
   <redirect from="/docs/installation-linux-docker-guide" to="/docs/installation/linux/docker-guide" modified="7/18/2024 2:59:32 PM" />
   <redirect from="/docs/docker-compose-installation-guide" to="/docs/installation/linux/docker-compose-installation-guide" modified="7/18/2024 2:59:32 PM" />
   <redirect from="/docs/installation-upgrading-docker-containers" to="/docs/installation/linux/installation-upgrading-docker-containers" modified="7/18/2024 2:59:32 PM" />
-  <redirect from="/docs/installation-linux-supported-environment-variables" to="/docs/installation/linux/supported-environment-variables" modified="7/18/2024 2:59:32 PM" />
+  <redirect from="/docs/installation-linux-supported-environment-variables" to="/docs/installation/linux/docker-guide#supported-environment-variables" modified="7/18/2024 2:59:32 PM" />
   <redirect from="/docs/installation-linux-https-support" to="/docs/installation/linux/https-support" modified="7/18/2024 2:59:32 PM" />
   <redirect from="/docs/installation-troubleshooting-docker-installations" to="/docs/installation/linux/installation-troubleshooting-docker-installations" modified="7/18/2024 2:59:32 PM" />
   <redirect from="/docs/installation-manual-installation" to="/docs/installation/manual-installation" modified="7/18/2024 2:59:32 PM" />
@@ -1169,7 +1170,7 @@
   <redirect from="/docs/proget-installation-installation-guide-silent-installation" to="/docs/installation/windows/silent" modified="2/25/2022 12:00:00 AM" />
   <redirect from="/docs/proget-installation-installation-guide-traditional-installer" to="/docs/installation/windows/installation-legacy-traditional-installer" modified="2/25/2022 12:00:00 AM" />
   <redirect from="/docs/proget-installation-installation-guide-manual" to="/docs/installation/manual-installation" modified="2/25/2022 12:00:00 AM" />
-  <redirect from="/docs/installation-linux-supported-environmental-variables" to="/docs/installation/linux/supported-environment-variables" modified="2/25/2022 12:00:00 AM" />
+  <redirect from="/docs/installation-linux-supported-environmental-variables" to="/docs/installation/linux/docker-guide#supported-environment-variables" modified="2/25/2022 12:00:00 AM" />
   <redirect from="/docs/desktop-hub-overview" to="/docs/installation/windows/desktophub-overview" modified="2/25/2022 12:00:00 AM" />
   <redirect from="/docs/buildmaster-installation-and-maintenance-legacy-features-62-migration" to="/docs/buildmaster-upgrading-to-6-2" modified="2/25/2022 12:00:00 AM" />
   <redirect from="/docs/buildmaster-installation-and-maintenance-legacy-features-overview" to="/docs/buildmaster/installation-maintenance/buildmaster-legacy/buildmaster-legacy-features" modified="2/25/2022 12:00:00 AM" />

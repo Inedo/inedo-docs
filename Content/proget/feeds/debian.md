@@ -136,7 +136,7 @@ When connecting to an official Debian (Apt) repository, ProGet will periodically
 When creating a connector to an official repository, we recommend a name based on the distribution and components (if specified). For example:
 
 <table>
-    <tr><td>URL:</td><td><code>http://ftp.debian.org/debian/</code></td></tr>
+    <tr><td>URL:</td><td><code>https://ftp.debian.org/debian/</code></td></tr>
     <tr><td>Distribution:</td><td><code>buster</code></td></tr>
     <tr><td>Components:</td><td><em>all</em></td></tr>
     <tr><td>Connector name:</td><td><code>debian-buster</code></td></tr>

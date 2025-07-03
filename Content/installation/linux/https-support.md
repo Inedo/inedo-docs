@@ -7,17 +7,10 @@ HTTPS is increasingly becoming a requirement inside of many organizations, even 
 
 In this article, we'll provide two options for enabing HTTPS for ProGet, BuildMaster, and Otter when installed on Linux. For Windows-based installations, see [HTTPS Support on Windows](/docs/installation/windows/web/https-support).
 
-## Configuring HTTPS with a Reverse Proxy (Recommended)
-The simplest way to configure HTTPS is by using a reverse proxy to terminate TLS and forward requests to your Inedo product. This has the added benefit of allowing multiple websites and applications to be hosted on the same IP address.
+## Configuring HTTPS with a Reverse Proxy { #reverse-proxy }
+The simplest and recommended way to configure HTTPS is by using a reverse proxy to terminate TLS and forward requests to your Inedo product. This has the added benefit of allowing multiple websites and applications to be hosted on the same IP address.
 
-Any HTTP reverse proxy can work, but four specific examples are provided below:
-
-| Name: | Proxy Link: | TLS: |
-| --- | --- | --- |
-| Caddy | [Proxy](https://github.com/caddyserver/caddy/wiki/v2:-Documentation#reverse_proxy) | [TLS](https://github.com/caddyserver/caddy/wiki/v2:-Documentation#tls) |
-| NGINX | [Proxy](https://docs.nginx.com/nginx/admin-guide/web-server/reverse-proxy/) | [TLS](https://docs.nginx.com/nginx/admin-guide/security-controls/terminating-ssl-http/) |
-| Apache | [Proxy](https://httpd.apache.org/docs/2.4/mod/mod_proxy.html) | [TLS](https://httpd.apache.org/docs/2.4/mod/mod_ssl.html) |
-| HAProxy | [Proxy](https://www.haproxy.com/blog/the-four-essential-sections-of-an-haproxy-configuration/) | [TLS](https://www.haproxy.com/blog/haproxy-ssl-termination/) |
+Any HTTP reverse proxy can work, but most users find [NGINX](https://docs.nginx.com/nginx/admin-guide/web-server/reverse-proxy/) to be the easiest. Other options include [Cady](https://caddyserver.com/), [Apache Mod_Proxy](https://httpd.apache.org/docs/2.4/mod/mod_proxy.html), and [HAProxy](https://www.haproxy.com/blog/the-four-essential-sections-of-an-haproxy-configuration/).
 
 ### Example: ProGet NGINX Config
 
@@ -57,7 +50,7 @@ server
 
        proxy_set_header Upgrade $http_upgrade;
        proxy_set_header Connection "upgrade";
-	   proxy_set_header Host $http_host;
+       proxy_set_header Host $http_host;
        proxy_set_header X-Real-IP $remote_addr;
        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
        proxy_set_header X-Forwarded-Proto $scheme;
@@ -67,19 +60,21 @@ server
 }
 ```
 
-## Configuring HTTPS without a Reverse Proxy
-::: (Warning)
-This is only supported in ProGet 2022.17+, and is considered experimental. 
+## Configuring HTTPS without a Reverse Proxy  { #native-ssl }
+Instead of using a reverse proxy, you can configure HTTPS bindings directly in your Inedo Product. 
+
+::: (Warning) (⚠️ This Configuration is Not Recommmended )
+Configuring HTTPS without a reverse proxy is more complicated to configure, troubleshoot, and maintain. You should use a reverse proxy as described above.
 :::
 
-Instead of using a reverse proxy, you can configure HTTPS bindings directly in your Inedo Product.  This allows you to mount a volume that contains your certificate files and specify your ".pem" file and ".key" file as environment variables in your Docker container.  
+This requires you to mount a volume that contains your certificate files and specify your ".pem" file and ".key" file as environment variables in your Docker container. 
 
-::: (INFO) (NOTE:)
+::: (INFO)
 You will need to ensure that the ".pem" file also includes your certificate validation path.
 :::
 
 To enable an HTTPS binding on your Docker container, you will need the following parameters added to your `docker run` command:
-- Mount the volume containing your certificates to `/var/proget/ssl` (ex: `-v /path/to/pem/proget-ssl:/var/proget/ssl`)
+- Mount the volume containing your certificates (ex: `-v /path/to/pem/proget-ssl:/var/proget/ssl`)
 - Expose the SSL port 443 externally (ex: `-p 8625:443`)
 - Change your binding URLs to include an HTTPS binding (ex: `-e ASPNETCORE_URLS='http://*:80;https://*:443' `)
 - Specify your certificate file using the SSL_CERT_FILE environment variable  (ex: `-e SSL_CERT_FILE='ProGetCertificate.pem'`)

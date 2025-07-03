@@ -38,7 +38,7 @@ To restore, you can use the `restore` command while specifying an `infile`. For 
 $ inedodb restore proget --infile=/var/backups/proget-20250812-1308.ahpak
 ```
 
-Note that these commands are light wrappers for `pg_dump -Fc` and `pg_restore` that use information from the connection string stored in the [Installation Configuration File](/docs/installation/configuration-files) (Windows) or [Environment Variable](/docs/installation/linux/supported-environment-variables) (Linux).
+Note that these commands are light wrappers for `pg_dump -Fc` and `pg_restore` that use information from the connection string stored in the [Installation Configuration File](/docs/installation/configuration-files) (Windows) or [Environment Variable](/docs/installation/linux/docker-guide#supported-environment-variables) (Linux).
 
 
 
@@ -127,7 +127,7 @@ To use an external PostgreSQL Server, first create the a database for ProGet usi
 
 Note that the user specified in `-U` will be used in the connections string and must have Database Owner Permission. 
 
-Then, set the connection string in the [Installation Configuration File](/docs/installation/configuration-files) (Windows) or [Environment Variable](/docs/installation/linux/supported-environment-variables) (Linux) based on this template
+Then, set the connection string in the [Installation Configuration File](/docs/installation/configuration-files) (Windows) or [Environment Variable](/docs/installation/linux/docker-guide#supported-environment-variables) (Linux) based on this template
 
 ```
 Server=myserver.corp;Port=5432;Database=myDataBase;User Id=myUsername;Password=myPassword;
