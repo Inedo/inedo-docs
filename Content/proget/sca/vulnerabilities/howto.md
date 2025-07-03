@@ -14,7 +14,7 @@ This guide will explain how to scan and assess vulnerabilities, and how you can 
 This step is enabled by default. Unless this feature is disabled on your instance, you can skip to step 2.
 :::
 
-To configure vulnerability blocking on a feed, first navigate to the feed and click the "Manage Feed" button.
+To configure vulnerability blocking on a feed, first navigate to the feed and click the "Feed Properties" tab.
 
 ![Manage Feed](/resources/docs/proget-feeds-managefeed.png){height="" width="50%"}
 
@@ -22,7 +22,7 @@ Then click "change" in the Feed Features section under "Other Settings".
 
 ![Feed Features](/resources/docs/proget-feeds-managefeed-changefeatures.png){height="" width="50%"}
 
-Enable "Display vulnerability information and enforce download blocking rules" and click "Save".
+Enable "Display vulnerability information and enforce vulnerability compliance rules" and click "Save".
 
 ![Configure Features](/resources/docs/proget-feeds-managefeed-configurefeatures.png){height="" width="50%"}
 
@@ -36,7 +36,7 @@ Now, you can navigate to your package of interest and click on the "Vulnerabilit
 
 ![Vulnerabilities](/resources/docs/proget-vulnerabilities-newtonsoft.png){height="" width="50%"}
 
-From here you can click on the vulnerabilities found in your package to get more details and a description of the vulnerability, as well as a link to it's page on [Inedo Security Labs](https://security.inedo.com)
+From here you can click on the vulnerabilities found in your package to get more details and a description of the vulnerability, as well as a link to it's page on [Inedo Security Labs](https://security.inedo.com).
 
 ![Vulnerability Details](/resources/docs/proget-vulnerabilities-details.png){height="" width="50%"}
 
@@ -76,13 +76,13 @@ Package compliance policies, available with paid ProGet, is configured on a feed
 
 However, you can also set global compliance rules allowing you to block any package with unassessed vulnerabilities.
 
-Navigate to "Administration Overview" and select "Policies (ProGet 2024 Preview Feature) under "Global Components".
+Navigate to "Administration Overview" and select "Package Policies & Rules" under "Global Components".
 
 Then select "edit" on the right of "Global" policies.
 
 ![Edit Policies](/resources/docs/proget-policies-edit.png){height="" width="50%"}
 
-Under the "Vulnerability Rules" category, select "edit". Now select the "General" tab and under "unassessed vulnerabilities" select "Non-Compliant". Then select "Save".
+Under the "Vulnerabilities Rules" category, select "edit". Now select the "General" tab and under "Unassessed vulnerability" select "Noncompliant". Then select "Save".
 
 ![Unassessed Rule](/resources/docs/proget-policies-noncompliant.png){height="" width="50%"}
 
@@ -94,19 +94,17 @@ Now the compliance rules have been configured, any packages that are assessed to
 
 We recommend using auto assessment in combination with a [package approval workflow](https://blog.inedo.com/nuget/package-approval-workflow).
 
-You can edit or create your own assessment type and set up auto-assessment by navigating to "Administration Overview" > "Assessment Types" under "Vulnerability Management".
+You can edit or create your own assessment type and set up auto-assessment by navigating to "Administration Overview" > "Vulnerability Assessment Types" under "Global Components".
 
 ![Assessment Settings](/resources/docs/proget-vulnerabilities-assessmentsettings.png){height="" width="50%"}
 
-From here you can create an assessment type by clicking "Create Assessment Type".
+From here you can create an assessment type by clicking "Create Custom Assessment Type". By default, the assessment types of Caution, Blocked, and Ignore will be presented and automated.
 
 ![Assessment Types](/resources/docs/proget-vulnerabilities-manageassessment.png){height="" width="50%"}
 
-By default, the assessment types of Caution, Blocked, and Ignore will be presented but they will not become automated unless the Auto Assess (CVS) is changed from Do Not Auto Assess to a specified range.
+Auto assessment can be customized to your preferences. However, if you’re unsure of what the best option is; we recommend reading our page on [Vulnerability Scanning & Blocking](/docs/proget/sca/vulnerabilities#assessing-vulnerabilities).
 
 ![Custom Type](/resources/docs/proget-vulnerabilities-customassessment.png){height="" width="50%"}
-
-Auto assessment can be customized to your preferences. However, if you’re unsure of what the best option is; we recommend reading our page on [Vulnerability Scanning & Blocking](/docs/proget/sca/vulnerabilities#assessing-vulnerabilities).
 
 Once you have entered the details of your Assessment Type, click "Save".
 
@@ -120,7 +118,7 @@ To scan containers for vulnerabilities, ProGet [extracts and inspects the files 
 ![Container Vulnerabilities](/resources/docs/proget-vulnerabilities-container.png){width="50%"}
 
 ## ProGet 2023 and Earlier
-Vulnerabilities had an overhaul in ProGet 2024. This was available as a preview feature in ProGet 2023.29+, which could be enabled by navigating to "Reporting & SCA" > "Vulnerabilities" and select "Enable Vulnerabilities Feature Preview..."
+Vulnerabilities had an overhaul in ProGet 2024. This was available as a preview feature in ProGet 2023.29+, which could be enabled by navigating to "Reporting & SCA" > "Vulnerabilities" and selecting "Enable Vulnerabilities Feature Preview..."
 
 To see how to scan and block packages in earlier versions of ProGet 2023, see  [HOWTO: Scan and Block Packages in ProGet 2023 (archive.org)](https://web.archive.org/web/20231210004603/https://docs.inedo.com/docs/proget-sca-vulnerabilities-howto).
 
