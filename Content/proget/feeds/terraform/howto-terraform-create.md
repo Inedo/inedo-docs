@@ -23,11 +23,9 @@ You will then be redirected to your new `internal-terraform` feed, currently emp
 
 ![](/resources/docs/proget-terraform-emptyprivate.png){height="" width="50%"}
 
-## Step 2: Package and Upload Your Module
+## Step 2: Create a Metadata File
 
-Before using a Terraform Feed as a Private Module Registry, you'll need to package your modules. This is as simple as zipping the content and uploading it to the ProGet UI or using the [`pgutil`](/docs/proget/api/pgutil) command line tool to [create and upload](/docs/proget/api/universal-feed/upload) them to your ProGet instance. You can read more about what goes into a module package on the [Terraform Modules](#terraform-module-packages#terraform-modules) page. 
-
-When packaging your module, you'll need to create a Universal Package JSON metadata file. This file, named `upack.json`, provides essential information about your module. The format includes:
+To upload your module to your `internal-terraform` feed, you'll need to package it. You can read more about what goes into a module package on the [Terraform Modules](#terraform-module-packages#terraform-modules) page. To package a module you'll first need to create a Universal Package JSON metadata file. This file, named `upack.json`, provides essential information about your module. The format includes:
 
 ```bash
 {
@@ -51,9 +49,14 @@ A `upack.json` for the `my-company/my-module/aws` module might look like this:
 
 You can also use additional Universal Package properties like `summary` and `description` to provide additional metadata for users in ProGet.
 
-## Step 3: Use the Module in Terraform
+### Step 3: Package and Upload your Module
 
-Once you've uploaded a package to your feed, you can add the module to your Terraform configuration using the following format:
+Once you have created the metadata file for your module, you'll need to package it. You can do this through ProGet's UI but we recommend using the [`pgutil`](/docs/proget/api/pgutil) command line tool. This will package the module, and also upload it to your `internal-terraform` feed.   
+
+
+## Step 4: Edit your .tf File
+
+Once you've uploaded a package to your feed, you can add the module to your Terraform configuration by adding this block in your `.tf` file (e.g., `main.tf`):
 
 ```
 module "«module-name»" {
@@ -73,4 +76,4 @@ module "example_module" {
 ```
 :::
 
-Once you add the module to your configuration, you can add in additional variables and then run `terraform init`.
+Once you add this to your `.tf` file, you can add in additional variables and then run `terraform init`.
