@@ -51,7 +51,37 @@ You can also use additional Universal Package properties like `summary` and `des
 
 ### Step 3: Package and Upload your Module
 
-Once you have created the metadata file for your module, you'll need to package it. You can do this through ProGet's UI but we recommend using the [`pgutil`](/docs/proget/api/pgutil) command line tool. This will package the module, and also upload it to your `internal-terraform` feed.   
+Once you have created the metadata file for your module, you'll need to package it. You can do this through ProGet's UI but we recommend using the [`pgutil`](/docs/proget/api/pgutil) command line tool. This will package the module, and also upload it to your `internal-terraform` feed. `pgutil` needs a bit of [minor configuration](/docs/proget/api/pgutil#sources) before use such as setting up your ProGet instance and API key as a source by running:
+
+```bash
+$ pgutil sources add --name=Default --url=«proget-url» --api-key=«api-key»
+```
+
+:::(info) (pgutil Example)
+Adding the ProGet instance `https://proget.corp.local/` with the API Key `abc12345` you would enter:
+
+```bash
+$ pgutil sources add --name=Default --url=https://proget.corp.local/ --api-key=abc12345
+```
+:::
+
+Now package upload your module by entering:
+
+```bash
+$ pgutil packages upload --feed=«feed-name» --input-file=«path-to-package»
+```
+
+:::(info) (Packaging Example)
+Packagng and uploading the module `my-package-1.0-1.el9.x86_64.rpm` stored at `/home/user/rpmbuild/RPMS/x86_64/my-package-1.0-1.el9.x86_64.rpm` to your `internal-rpm` feed you would enter:
+
+```bash
+$ pgutil packages upload --feed=internal-rpm --input-file=/home/user/rpmbuild/RPMS/x86_64/my-package-1.0-1.el9.x86_64.rpm
+```
+:::
+
+Your module will then be uploaded to the `internal-terraform` feed.
+
+![](/resources/docs/proget-rpm-upload.png){height="" width="50%"}
 
 
 ## Step 4: Edit your .tf File
