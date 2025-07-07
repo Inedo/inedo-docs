@@ -49,9 +49,9 @@ A `upack.json` for the `my-company/my-module/aws` module might look like this:
 
 You can also use additional Universal Package properties like `summary` and `description` to provide additional metadata for users in ProGet.
 
-### Step 3: Package and Upload your Module
+### Step 3: Package your Module
 
-Once you have created the metadata file for your module, you'll need to package it. You can do this through ProGet's UI but we recommend using the [`pgutil`](/docs/proget/api/pgutil) command line tool. This will package the module, and also upload it to your `internal-terraform` feed. `pgutil` needs a bit of [minor configuration](/docs/proget/api/pgutil#sources) before use such as setting up your ProGet instance and API key as a source by running:
+Once you have created the metadata file for your module, you'll need to package it. You can do this through ProGet's UI but we recommend using the [`pgutil`](/docs/proget/api/pgutil) command line tool. This needs a bit of [minor configuration](/docs/proget/api/pgutil#sources) before use such as setting up your ProGet instance and API key as a source by running:
 
 ```bash
 $ pgutil sources add --name=Default --url=«proget-url» --api-key=«api-key»
@@ -65,26 +65,33 @@ $ pgutil sources add --name=Default --url=https://proget.corp.local/ --api-key=a
 ```
 :::
 
-Now package upload your module by entering:
+Now package your module using the `upack create` command:
 
 ```bash
-$ pgutil packages upload --feed=«feed-name» --input-file=«path-to-package»
+$ pgutil upack create --source-directory=«path-to-module» --manifest=«path-to-upack»
 ```
 
 :::(info) (Packaging Example)
-Packagng and uploading the module `my-package-1.0-1.el9.x86_64.rpm` stored at `/home/user/rpmbuild/RPMS/x86_64/my-package-1.0-1.el9.x86_64.rpm` to your `internal-rpm` feed you would enter:
+Packaging and uploading the module `my-module` stored at `/home/user/my-company/my-module/aws` to your `internal-terraform` feed you would enter:
 
 ```bash
-$ pgutil packages upload --feed=internal-rpm --input-file=/home/user/rpmbuild/RPMS/x86_64/my-package-1.0-1.el9.x86_64.rpm
+$ pgutil upack create --source-directory=/home/user/my-company/my-module/aws --manifest=/home/user/my-company/my-module/aws/upack.json
 ```
 :::
 
+## Step 4: Upload your Packaged Module
+
+Once packaged, you cam use pgutil to upload your module to your internal-terraform feed using the `packages upload` command:
+
+```bash
+pgutil packages upload --feed=internal-terraform --input-file=«path-to-module»
+```
+
 Your module will then be uploaded to the `internal-terraform` feed.
 
-![](/resources/docs/proget-rpm-upload.png){height="" width="50%"}
+![](/resources/docs/proget-terraform-uploaded.png){height="" width="50%"}
 
-
-## Step 4: Edit your .tf File
+## Step 5: Edit your .tf File
 
 Once you've uploaded a package to your feed, you can add the module to your Terraform configuration by adding this block in your `.tf` file (e.g., `main.tf`):
 

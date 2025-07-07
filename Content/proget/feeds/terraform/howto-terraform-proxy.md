@@ -31,9 +31,9 @@ Your `public-terraform` feed will then be created, populated with proxied Terraf
 
 ![](/resources/docs/proget-terraform-publicfeed.png){height="" width="50%"}
 
-## Step 3: Update Terraform Configurations { #update-configuration }
+## Step 3: Edit your Terraform .tf File { #update-configuration }
 
-Now, you'll need to update your Terraform `.tf` files to specify module sources and versions, directing Terraform to fetch the module from your `public-terraform` feed instead of the public Hashicorp Registry.
+Now, you'll need to update your Terraform `.tf` file to specify module sources and versions, directing Terraform to fetch the module from your `public-terraform` feed instead of the public Hashicorp Registry. Edit this block in your `.tf` file (e.g., `main.tf`):
 
 ```bash
 module "«module-name»" {
