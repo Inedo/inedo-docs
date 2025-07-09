@@ -17,7 +17,10 @@ You can install ProGet [quickly and easily from InedoHub](/docs/installation/win
 
 ![Install ProGet](/resources/docs/inedohub-install.png){height="" width="50%"}
 
+Once successfully installed, there will be a "Launch" button - it just loads `http://localhost:8624`, which is the default port for ProGet.
+
 You also have the option of installing it using [Docker](/docs/installation/linux/docker-guide) or onto a [Lightsail instance](/docs/proget/installation/proget-how-to-install-on-aws-lightsail), both of which are just as quick and easy. 
+
 
 
 ## Step 2: Create Your First Feed in ProGet
