@@ -12,7 +12,18 @@ order: 6
 4. Closing open browser windows or clearing cookies
 5. Navigate to root URL of product (e.g. `https://myproget.company.local/`)
 
-#### HOWTO: Restore ProGet Default Admin Account
+#### HOWTO: Restore ProGet Default Admin Account ProGet 2025+
+This Script will reset the account on Windows, so you can just copy/paste as needed.
+
+```(PowerShell)
+"%progamfiles%\ProGet\Service\ProGet.exe resetadminpassword
+try { Restart-WebAppPool ProGetAppPool } 
+catch { Restart-Service INEDOPROGETWEBSVC } 
+```
+Note that the try/catch statement is there to make this work for both IIS Hosted and Integrated Web Server.
+
+
+#### HOWTO: Restore ProGet Default Admin Account ProGet 2024 and below
 This Script will reset the account on Windows, so you can just copy/paste as needed.
 
 ```(PowerShell)
