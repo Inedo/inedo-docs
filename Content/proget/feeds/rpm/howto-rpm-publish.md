@@ -59,9 +59,7 @@ When the build is finished, the `.rpm` file will be located in the `rpmbuild/RPM
 
 ## Step 4: Publish Your Package to ProGet
 
-To publish your package to your ProGet RPM feed, you can use [pgutil](/docs/proget/api/pgutil).
-
-pgutil will require some [minor configuration](/docs/proget/api/pgutil#sources) before use. This includes setting up your ProGet instance and API key as a source by running:
+To publish your package to your ProGet RPM feed, you can use [pgutil](/docs/proget/api/pgutil). This will require some [minor configuration](/docs/proget/api/pgutil#sources) before use. This includes setting up your ProGet instance and API key as a source by running:
 
 ```bash
 $ pgutil sources add --name=Default --url=«proget-url» --api-key=«api-key»
