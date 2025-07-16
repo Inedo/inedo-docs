@@ -30,6 +30,7 @@ Installs/upgrades the specified product (ProGet, BuildMaster, or Otter). If `[:v
 | UserAccount             | The name of the user account which will be used to run your Inedo product's services and/or IIS AppPool. It may be LocalSystem, NetworkService, or any domain/local account.<br/><br/>*default value:* NetworkService |
 | UserPassword      | The password of the user account specified with the `UserAccount` argument. Ignored if using LocalSystem or NetworkService. <br/><br/>*no default value* |
 | IsUpgrade               | When true, services and IIS settings will not be created.<br/><br/>*default value:* false |
+| UsePostgres             | When true, the ConnectionString option is a PostgreSQL connection string; otherwise it is a SQL Server connection string.<br/><br/>*default value:* true for ProGet 2025+ |
 
 ### Installation Examples
 

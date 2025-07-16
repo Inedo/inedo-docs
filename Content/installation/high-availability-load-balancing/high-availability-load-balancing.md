@@ -58,7 +58,7 @@ After installation, make sure the `EncryptionKey` value is the same across all s
 
 For Windows, see see [Installation Configuration Files](/docs/installation/configuration-files) to find the configuration file and where to set the `EncryptionKey` value.
 
-For Linux/Docker, this involves setting a `PROGET_ENCRYPTION_KEY`environment variable; see [Supported Environment Variables](/docs/installation/linux/supported-environment-variables).
+For Linux/Docker, this involves setting a `PROGET_ENCRYPTION_KEY`environment variable; see [Supported Environment Variables](/docs/installation/linux/docker-guide#supported-environment-variables).
 
 ### Step 3: Configure Shared Storage 
 Your Inedo product is compatible with any type of common storage that all services can access, whether software-based (e.g., SAMBA share, Windows Server Storage Spaces, etc.) or appliance-based (e.g., dedicated NAS). The only requirement is that the storage is readable and writeable by all servers.

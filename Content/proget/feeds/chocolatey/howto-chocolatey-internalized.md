@@ -31,15 +31,15 @@ Be sure to change the title or edit the description of your internalized package
 
 Now that your packages are internalized, a separate feed should be created exclusively for approved internalized Chocolatey packages. You can read more on creating feeds by reading [Creating and Managing Feeds](/docs/proget/feeds/feed-overview#creating-and-managing-feeds)
 
-In your ProGet instance, select "Feeds" and "Create New Feed", and select "Chocolatey Packages" under "System & Software Configuration".
+In your ProGet instance, select "Feeds" and "Create New Feed", and select "Chocolatey Packages".
 
 ![Create Feed](/resources/docs/proget-chocolatey-newfeed.png){height="" width="50%"}
 
-Now select "No Connectors (Private packages only)" as this feed will be intended as a private repository. From here, we name our feed. For this example, we will call it `internalized-chocolatey`, and then click "Create Feed".
+Now select "Private/Internal Chocolatey Packages" as this feed will be intended as a private repository. From here, we name our feed. For this example, we will call it `internalized-chocolatey`, and then click "Create Feed".
 
 ![Name Feed](/resources/docs/proget-chocolatey-newfeed-internalized.png){height="" width="50%"}
 
-You'll then see several options related to ProGet's [Vulnerability Scanning and Blocking](/docs/proget/sca/vulnerabilities) features. These are only for users looking to use third-party packages like those on [Chocolatey.org](https://chocolatey.org). Leave these boxes unchecked, and select "Set Feed Features". You will then be directed to the new `internalized-chocolatey` feed, currently empty.
+You will then be directed to the new `internalized-chocolatey` feed, currently empty.
 
 ![Internalized Feed](/resources/docs/proget-chocolatey-internalized-empty.png){height="" width="50%"}
 
@@ -65,7 +65,7 @@ When creating an API Key, fill in the fields by selecting "Feeds (Use Certain Fe
 
 ![Create API Key](/resources/docs/proget-chocolatey-apikey.png){height="" width="50%"}
 
-Make sure the "View/Download" and "Add/Repackage" boxes are checked, and then select "Save".
+Make sure the "View/Download" and "Add/Repackage" boxes are checked, and then select "Create API Key".
 
 ## Step 5: Upload Internalized Packages and Installer Files
 
@@ -98,7 +98,7 @@ $ pgutil packages upload --feed=chocolatey-assets --input-file=C:\installer-file
 
 Your package will then be uploaded to the `chocolatey-assets` feed.
 
-![Uploaded Asset](/resources/docs/proget-assets-chocolatey-upload.png){height="" width="50%"}
+![Uploaded Asset](/resources/docs/proget-assets-chocolatey-uploaded.png){height="" width="50%"}
 
 ## Step 6: Adding ProGet as a Source { #add-source }
 

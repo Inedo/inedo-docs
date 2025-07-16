@@ -35,4 +35,4 @@ Select the trial edition to get a key that will last 30 days; unlike the Free Ed
 
 ![View License Key](/resources/docs/myinedo-licensekeys-viewkey.png){height="" width="50%"}
 
-Then, [enter and activate your license key](/docs/myinedo/activating-a-license-key) to restore functionality immediately. Note that your Inedo product will display a banner stating that it is only meant for trial purposes; this is merely a cosmetic reminder and your Inedo product will function as a normal license.git 
+Then, [enter and activate your license key](/docs/myinedo/activating-a-license-key) to restore functionality immediately. Note that your Inedo product will display a banner stating that it is only meant for trial purposes; this is merely a cosmetic reminder and your Inedo product will function as a normal license.

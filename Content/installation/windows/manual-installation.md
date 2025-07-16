@@ -32,7 +32,7 @@ There are two supported database backends.
 
 ### PostgreSQL Database
 
-<div style="background-color:yellow;">Instructions go here.</div>
+When there is no connection string specified, ProGet will automatically create a database and add the connection string to the configuration file.
 
 ### SQL Server
 

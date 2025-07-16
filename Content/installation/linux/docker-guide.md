@@ -10,15 +10,40 @@ Docker must be installed and the Docker daemon must be running on your server. I
 
 Once Docker is running, you are ready to continue. Note that Docker commands usually need to be executed by members of the Docker group or with root/sudo privileges. So if you encounter errors with these commands, make sure your account is in the Docker group (`adduser myusername docker` and then log out and log back in), or issue them with sudo/su depending on your distro.
 
-## Create a Network
+## Running a ProGet 2025+ Container { #postgres }
+
+ProGet 2025+ can be run as a single Docker container on your server using the following command:
+
+```bash
+docker run -d --name=proget --restart=unless-stopped \
+  -v ./proget-packages:/var/proget/packages \
+  -v ./proget-database:/var/proget/database  \
+  -v ./proget-backups:/var/proget/backups \
+  -p 8624:80  \
+  proget.inedo.com/productimages/inedo/proget:latest
+```
+
+That command uses common default values and will create three directories (`proget-packages`, `proget-database`, `proget-backups`) in the current working directory for the [specified volumes](#supported-volumes).
+
+You can then access ProGet in your web browser with `http://«your-server»:8624/`. Note that this is *not* an HTTPS url, and many client tools (npm, NuGet, etc) will issues warnings or simply refuse to connect. See [HTTPS Support on Linux](/docs/installation/linux/https-support) to learn more.
+
+
+## Using the SQL Server Backend { #sql-server }
+
+With the exception of ProGet 2025, Inedo products require a SQL Server database. You can either host this database externally or simply run a SQL Server container; it doesn't matter how it's hosted, as long as your instance can access it. 
+
+### Running a SQL Server Docker Container
+
+If you don't have an external SQL Server, you will need to run a container from the [SQL Server Docker image](https://docs.microsoft.com/en-us/sql/linux/sql-server-linux-configure-docker)
+
+#### 1. Create a Network
 First, you'll need to create a network for the SQL Server and Inedo Product containers to communicate. 
 
 ```Shell
 docker network create inedo
 ```
 
-## Create the Database
-Inedo products requires an SQL Server database. You can either host this database externally or simply [use an SQL Server Docker image](https://docs.microsoft.com/en-us/sql/linux/sql-server-linux-configure-docker); it doesn't matter how it's hosted, as long as your instance can access it. 
+#### 2. Create the Database
 
 To start an SQL Server container on the `inedo` network you created, use this command:
 
@@ -35,7 +60,7 @@ In this example, the free SQL Express edition is specified. This is sufficient f
 
 Once you have an SQL Server instance running, you'll need to create an empty database. 
 
-#### Example: ProGet SQL Server Database
+##### Example: ProGet SQL Server Database
 To create a database called `ProGet` on the SQL Server instance running in the **inedo-sql** container:
 
 ```Shell
@@ -46,20 +71,21 @@ docker exec -it inedo-sql /opt/mssql-tools18/bin/sqlcmd \
 
 <br>
 
-::: (Info)( )
+::: (Info)
 You can create the database however you want, but to avoid issues make sure you specify its collation as **SQL_Latin1_General_CP1_CI_AS**.
 :::
 
-## Starting your Inedo product' Docker Image 
+### Running the Inedo Product Container with SQL Server
+
 Inedo product's Docker images contain a web server and a background service. To start your chosen image, use the `docker run` command. 
 
 | Product | Image Name | Required Volumes |
 | - | - | - |
-| ProGet | `proget.inedo.com/productimages/inedo/proget` | `proget-artifacts` |
+| ProGet | `proget.inedo.com/productimages/inedo/proget` | `proget-packages` |
 | BuildMaster | `proget.inedo.com/productimages/inedo/buildmaster` | `buildmaster-artifacts` |
 | Otter | `proget.inedo.com/productimages/inedo/otter` | *none* |
 
-If you'd like to get started right away with our defaults, you can just use the commands below, or continue reading for an explanation on the arguments and how to provide additional configuration values.  For root-less containers, check our our [Troublshooting Guide for root-less containers](/docs/installation/linux/installation-troubleshooting-docker-installations#root-less-containers).
+If you'd like to get started right away with our defaults, you can just use the commands below, or continue reading for an explanation on the arguments and how to provide additional configuration values.  For root-less containers, check our our [Troubleshooting Guide for root-less containers](/docs/installation/linux/installation-troubleshooting-docker-installations#root-less-containers).
 
 ### Quick Start: ProGet
 ```Shell
@@ -85,22 +111,80 @@ docker run -d --name=otter --restart=unless-stopped \
   -e OTTER_SQL_CONNECTION_STRING ='Data Source=inedo-sql; Initial Catalog=Otter; User ID=sa; Password=«YourStrong!Passw0rd»' \
   proget.inedo.com/productimages/inedo/otter:latest
   ```
-### Configuration Parameters
 
-|Parameter | Description |
-| --- | --- |
-| `-d` | Starts the container in detached mode. Without this argument, Docker will block your current terminal session and output the logs to your terminal. |
-|`--name=«inedo-product»` | Names the container `«inedo-product»` so it can be easily referenced using other Docker commands. If you don't specify a name, Docker will generate one for you. |
-| `--restart=unless-stopped` | Tells Docker to restart the container unless it is explicitly topped using Docker stop. This makes the container automatically restart after the host reboots. |
-| `-p 80:80` | Exposes TCP port 80 of the container to port 80 of the host, so that browsers can access the web application. If you don't want to use port 80, you can change the first port number to whatever you would like; make sure to change the `BasedUrl` in Admin > Advanced Settings if the ports aren't the same. If you need to use a different port for the internal port (second port number), you will need to add the [ASPNETCORE_URLS](/docs/installation/linux/supported-environment-variables) environment variable. |
-| `-p 443:443` | **ProGet v2022.18+ Only:** Exposes TCP port 443 of the container to port 443 of the host, so that browsers can access the web application using an HTTPS binding. If you don't want to use port 443, you can change the first port number to whatever you would like; make sure to change the `BasedUrl` in Admin > Advanced Settings if the ports aren't the same. You will need to add the [ASPNETCORE_URLS](/docs/installation/linux/supported-environment-variables) environment variable with an HTTPS binding like `https://*:443`. |
-| `--net=inedo` | Putting the containers into a Docker network lets them see each other and prevents other Docker containers from accessing them. |
-| `-v proget-packages:/var/proget/packages` | **ProGet Only:** Persists ProGet's packages in the proget-packages Docker volume. Note that a Docker volume is essentially a persistent, data-only container, and is the preferred mechanism for persisting data generated by a running Docker container. If you would prefer to mount a host file system directory directly instead, you may replace proget-packages with a host path, such as /var/proget/packages.|
-| `-v /var/proget-ssl:/var/proget/ssl ` | **ProGet v2022.18+ Only:** Persists a host directory containing the certificates used in HTTPS bindings. Since these certificates are passed from the host to the container, a mount from the host file system directory directly should be used. |
-| `-v self-signed-ca:/usr/local/share/ca-certificates` | **ProGet v2024.38+ Only:** Persists a host directory containing the certificates to be included in the containers certificate authority. |
-| `-v buildmaster-artifacts:/var/buildmaster/artifacts` | **BuildMaster Only:** Persists the BuildMaster artifacts in the Docker volume buildmaster-artifacts. Note that a Docker volume is essentially just a persistent, data-only container and is the preferred mechanism for persisting data created by a running Docker container. If you prefer to directly mount a host file system directory instead, you can replace buildmaster-artifacts with a host path, such as /var/buildmaster/artifacts.|
-| `-e` | This tells Docker to pass the proceding environment variables to the container. See the full list of [supported environment variables](/docs/installation/linux/supported-environment-variables). |
-| `proget.inedo.com/productimages/inedo/«inedo-product»:latest` | This is the repository and tag for the Docker image. If you want to install a specific version, you can replace `latest` with that version number. Note that downgrades will only work if there have been no database schema changes. |
 
- ## Acquire a License Key
-You'll need to have a valid license key once you get your Inedo product running. You can request a license key within the software itself, or use a license key that you already have, or request one from [my.inedo.com](https://my.inedo.com).
+## Supported Volumes
+
+Volumes are used to store data outside of the running container that will persist after the container is stopped or removed.
+
+### Package Store Volume  (ProGet Only)
+ProGet requires a `/var/proget/packages` volume to specified, which will be the default storage location for all content (packages, container images, assets) in ProGet. This should be backed up regularly.
+
+### Embedded Database Volumes (ProGet 2025+ Only)
+
+When using the default, [embedded PostgreSQL database backend](/docs/installation/postgresql), you will need to specify a `/var/proget/database` volume to store the database itself and a `/var/proget/backups` volume to specify backups of the database.
+
+These should be backed up regularly.
+
+### Artifacts Volume (BuildMaster Only)
+BuildMaster requires a `/var/buildmaster/artifacts` volume to be specified, which will be used to store all build artifacts you create and intend to deploy. This should be backed up regularly.
+
+### Other Volumes
+
+These volumes are not required or commonly used.
+
+* `/var/«inedo-product»/extensions` stores [custom extensions](/docs/inedosdk)
+* `/usr/local/share/ca-certificates` store the certificates to be included in the container's certificate authority, which may be required when your Inedo product needs to connect to a server with self-signed certificates 
+* `/var/«inedo-product»/ssl` store the certificates used in [native SSL bindings](/docs/installation/linux/https-support), which is not a recommended configuration
+
+
+## Supported Environment Variables
+
+Environment variables are key-value pairs that are specified when running the container and allow you to supply configuration settings for your Inedo product.
+
+### Database Connection String
+
+If you use a [SQL Server Backend](#sql-server), you will need to specify a connection string with the `«inedo-product»_SQL_CONNECTION_STRING` environment variable. For example:
+
+```bash
+-e PROGET_SQL_CONNECTION_STRING='Data Source=inedo-sql; Initial Catalog=ProGet; User ID=sa; Password=«YourStrong!Passw0rd»'
+```
+
+For the [non-embedded PostgreSQL database backend](/docs/installation/postgresql), you will need to specify a `«inedo-product»_POSTGRES_CONNECTION_STRING` environment variable instead.
+
+Either connection string may also be specified as a [Docker secret file](https://docs.docker.com/engine/swarm/secrets/), by appending `_FILE` to the variable name. For example:
+
+```
+-e PROGET_SQL_CONNECTION_STRING_FILE='/home/proget/secrets/proget_connection_string'
+```
+
+Note that the Docker secret must be set first and "called" within the stack file. 
+
+### Encryption Key
+
+Inedo products can use a 32-character hex encryption key specified in the `«inedo-product»_ENCRYPTION_KEY` variable to store some secrets in the database and encrypt session cookies. For example:
+
+```
+-e PROGET_ENCRYPTION_KEY='37D27A670394F7D82CE57F1F07D69747'
+```
+
+You can generate a random 32-character key using `head -c16 /dev/urandom | xxd -p -c32`. 
+
+You can also specify the encryption key as a Docker secret using the `«inedo-product»_ENCRYPTION_KEY_FILE` variable instead.
+
+### Other Environment Variables
+
+The `TZ` environment variable can be used to specify the timezone of the container and set to any [TZ database name](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones) 
+```
+-e TZ='America/Denver'
+```
+
+The `SSL_CERT_FILE`, `SSL_KEY_FILE`, `SSL_PASSWORD`, and `SSL_ALLOW_INVALID` environment variables are used to configure [native SSL support](/docs/installation/linux/https-support), which is not a recommend configuration.
+
+The `ASPNETCORE_URLS` variable can override the default listening ports (80, 443) in the container, which may be useful working with rootless containers. For example:
+```
+-e ASPNETCORE_URLS='http://*:8181;https://*:4443'
+```
+
+See our [Troubleshooting Guide for rootless containers](/docs/installation/linux/installation-troubleshooting-docker-installations#root-less-containers) to learn more. 
+
