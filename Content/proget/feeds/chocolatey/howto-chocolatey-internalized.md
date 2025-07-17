@@ -11,6 +11,10 @@ For more information on how it works, along with an explanation, see [Chocolatey
 This guide explains how to internalize Chocolatey packages, where all resources are hosted internally. This is different from privatizing packages, where packages hosted on a private feed still rely on external resources. Privatizing alone is not recommended, as it doesn’t fully control the installer files, which may become unavailable or insecure.
 :::
 
+:::(Info) (📺 3-minute Video:  Setting Up a Private Chocolatey Repository for Internalized Packages in ProGet)
+<iframe width="600" height="337" src="https://www.youtube.com/embed/EdX1CAskm8k?si=jAGl6082719aNaaY" frameborder="0" allowfullscreen="true"></iframe>
+:::
+
 ## Step 1: Internalizing Your Packages { #internalize-packages }
 
 To internalize Chocolatey Packages, you can use Chocolatey’s [package internalizer](https://docs.chocolatey.org/en-us/features/package-internalizer) to internalize packages automatically or you can do it yourself:

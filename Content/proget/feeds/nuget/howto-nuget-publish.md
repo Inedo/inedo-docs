@@ -73,13 +73,13 @@ To add your `internal-nuget` feed to Visual Studio, the NuGet CLI, or other clie
 
 To add your feed as a Package Manager in Visual Studio, navigate to "Tools" > "NuGet Package Manager" > "Package Manager Settings". Then uncheck the box to the left of *nuget.org*
 
-![Package Sources](/resources/docs/visualstudio-packagesources-highlightednugetorg.png)
+![Disable NuGet Source](/resources/docs/visualstudio-disablenuget.png){height="" width="50%"}
 
 This prevents Visual Studio from scanning both NuGet.org and ProGet for packages. If you configure Visual Studio to search only ProGet instead of NuGet.org and ProGet, you avoid problems such as bad licenses, vulnerable packages, and [dependency confusion](https://blog.inedo.com/software-supply-chain-security/three-things) in your packages when you use multiple sources.
 
 Now you will need to create a new package source. Click the green `+` in the top right of the window, and then name the new package source. Then paste in your `internal-nuget` feed URL.
 
-![Configure Sources](/resources/docs/visualstudio-packagesources-configureproget.png)
+![Configure ProGet Source](/resources/docs/visualstudio-configureresource.png){height="" width="50%"}
 
 Now, click the "Update" button, followed by the "OK" button.
 
@@ -129,7 +129,7 @@ $ nuget push bin\Release\MyPackage.1.0.0.nupkg -Source internal-nuget -ApiKey ap
 
 Your package will then be uploaded and appear in your NuGet feed.
 
-![Internal Feed Packages](/resources/docs/proget-nuget-internal-uploaded.png){height="" width="50%"}
+![Uploaded Packages](/resources/docs/proget-nuget-internal-uploaded.png){height="" width="50%"}
 
 ### Pushing a Package with NuGet CLI
 
