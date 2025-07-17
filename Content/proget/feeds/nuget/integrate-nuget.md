@@ -16,7 +16,7 @@ https://«proget-server»/nuget/«feed-name»/v3/index.json
 
 To use the Feed Endpoint URL in Visual Studio, navigate to  "Tools" > "NuGet Package Manager" > "Package Manager Settings". Then click the green `+` in the top right of the window, and then name the new package source and paste in your URL:
 
-![visualstudio-packagesources-configureproget.png](/resources/docs/visualstudio-packagesources-configureproget.png)
+![Configure ProGet Source](/resources/docs/visualstudio-configureresource.png){height="" width="50%"}
 
 :::(Warning) (Be sure to click "Update" prior to clicking "OK")
 If you click "OK" without clicking "Update" your package source configuration will not be saved in Visual Studio.
@@ -26,7 +26,7 @@ Visual Studio and ProGet will now be connected.
 
 To confirm the connection in Visual Studio, right-click on a project in the Solution Explorer and select “Manage NuGet Packages…” from the menu. In the Package Manager window under "Browse", your should see a window populated with packages from your ProGet NuGet feed.
 
-![visualstudio-connectedprogetfeed.png](/resources/docs/visualstudio-connectedprogetfeed.png)
+![Connect to Feed](/resources/docs/visualstudio-connectedprogetfeed.png)
 
 ### Integrating the NuGet CLI
 

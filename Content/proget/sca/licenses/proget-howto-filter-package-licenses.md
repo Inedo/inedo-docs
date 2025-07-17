@@ -11,8 +11,8 @@ Nearly all open-source packages that you'll find on NuGet.org, npmjs.org, etc. h
 
 In this article we will look at controlling open-source license usage in ProGet, and how you can block or allow licenses depending on your situational needs.
 
-:::(Info) (📺 3-minute Video:  Filtering Packages by License)
-<iframe width="600" height="337" src="https://www.youtube.com/embed/UDdOQxuu0b0" frameborder="0" allowfullscreen="true"></iframe>
+:::(Info) (📺 4-minute Video:  Filtering Packages by License in ProGet)
+<iframe width="600" height="337" src="https://www.youtube.com/embed/BN4O8JyLDhY?si=0Q6plwenyGRV_EG8" frameborder="0" allowfullscreen="true"></iframe>
 :::
 
 ## Controlling Open-Source Package License Use
