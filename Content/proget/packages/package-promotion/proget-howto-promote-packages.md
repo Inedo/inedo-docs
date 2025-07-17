@@ -8,8 +8,8 @@ In ProGet, [package promotion](/docs/proget/packages/package-promotion) is simpl
 
 This article will walk you through a [common scenario of promoting open-source NuGet packages](https://blog.inedo.com/nuget/package-approval-workflow). We'll use a feed proxing packages from [NuGet.org](https://nuget.org/packages) for "unapproved" packages, and another feed for "approved" packages. We'll use NuGet packages in this example, but these steps can apply to any type of package.
 
-:::(Info) (📺 3-minute Video:  Package Promotion with ProGet)
-<iframe width="600" height="337" src="https://www.youtube.com/embed/emAWUzrweSg" frameborder="0" allowfullscreen="true"></iframe>
+:::(Info) (📺 3-minute Video:  HOWTO: Approve and Promote Open-source Packages with ProGet)
+<iframe width="600" height="337" src="https://www.youtube.com/embed/mguuItCfICo?si=qW1_YrOG7J5nZPnj" frameborder="0" allowfullscreen="true"></iframe>
 :::
 
 ## Step 1: Create a new feed
