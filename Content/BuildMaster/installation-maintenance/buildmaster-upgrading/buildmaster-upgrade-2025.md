@@ -132,7 +132,7 @@ While you can upgrade from BuildMaster 6.1 and later to BuildMaster 2025 (i.e. t
 ## Rolling Back
 
 :::(Error) (Database Restore may be required)
-If you want to rollback to BuildMaster 2022 or earlier, you will need to restore the instance to the previous state. See the [Backing Up & Restoring](/docs/installation/backing-up-restoring) documentation to learn more.
+If you want to rollback to BuildMaster 2023 or earlier, you will need to restore the instance to the previous state. See the [Backing Up & Restoring](/docs/installation/backing-up-restoring) documentation to learn more.
 :::
 
-However, if you need to rollback to BuildMaster 2023 you can do so without restoring the database by simply using the Inedo Hub. While there are database schema changes, they are all backwards-compatible with BuildMaster 2023, which means you can safely rollback your BuildMaster installation if there's a showstopper bug, and then upgrade later.
+However, if you need to rollback to BuildMaster 2025 you can do so without restoring the database by simply using the Inedo Hub. While there are database schema changes, they are all backwards-compatible with BuildMaster 2023, which means you can safely rollback your BuildMaster installation if there's a showstopper bug, and then upgrade later.
