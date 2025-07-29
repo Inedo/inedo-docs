@@ -9,6 +9,10 @@ ProGet can create a ["Feed"](/docs/proget/feeds/feed-overview) to proxy NuGet pa
 
 In this article, we'll explain how to proxy NuGet packages from [NuGet.org](https://www.nuget.org/) to a feed in ProGet, and then connect it to Visual Studio or other clients such as the NuGet CLI, [VS Code](https://code.visualstudio.com/), and [JetBrains Rider](https://www.jetbrains.com/rider/) and set up authentication. We’ll also look at how to set up a private repository for using internal NuGet packages, as well as how to establish a package approval process to manage which packages your team can utilize in production.
 
+:::(Info) (📺 2-minute Video:  Proxying Packages from NuGet.org in Visual Studio or CLI with ProGet)
+<iframe width="600" height="337" src="https://www.youtube.com/embed/nF0MO1xZ4fY?si=WlJ070vc4dKOkY_L" frameborder="0" allowfullscreen="true"></iframe>
+:::
+
 ## Step 1: Create and Name a NuGet Feed
 
 We'll first create a NuGet feed to proxy packages from [NuGet.org](https://www.nuget.org/). You can read more on creating feeds by reading [Creating and Managing Feeds](/docs/proget/feeds/feed-overview#creating-and-managing-feeds)
