@@ -4,8 +4,8 @@ order: 7
 url-slug: "buildmaster/installation-maintenance/buildmaster-legacy/buildmaster-applications-releases-templates"
 ---
 
-:::(Error) (Release Templates are Deprecated)
-With the introduction of [variable prompts](/docs/buildmaster/otterscript-execution-engine/buildmaster-variables/buildmaster-variable-prompts) to Pipelines in BuildMaster 2022, and the planned removal of Deployables, Release Templates have become redundant, so we've deprecated them.
+:::(Error) (Release Templates were Removed in BuildMaster 2025)
+With the introduction of [variable prompts](/docs/buildmaster/otterscript-execution-engine/buildmaster-variables/buildmaster-variable-prompts) to Pipelines in BuildMaster 2022, and the planned removal of Deployables, Release Templates have become redundant, so they were removed in BuildMaster 2025.
 :::
 
 Release templates serve to add a layer of consistency to the release creation process by assigning default properties (e.g., pipeline selection, initial included deployables ), prompting for variables at various points in the release lifecycle, and simplifying Release & Deployment API usage.

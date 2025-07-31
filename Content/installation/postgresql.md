@@ -10,10 +10,14 @@ In its place, we will be switching to an embedded distribution of PostgreSQL wit
 :::
 -->
 
-Inedo Products (starting with ProGet 2025) uses a custom build of PostgreSQL that's been security-hardened, stripped of unneeded features, and optimized for Inedo products. This database server can be hosted in two different ways.
+Inedo Products (starting with ProGet 2025) uses a custom build of PostgreSQL that's been security-hardened, stripped of unneeded features, and optimized for Inedo products. We are currently planning to include this database backend in BuildMaster 2026 and Otter 2026.
+
+Our custom PostgreSQL server can be hosted in two different ways.
 
 * **Embedded**: For single-server installations, the database server instance is fully-managed by the Inedo product and will require no additional configuration or maintenance
 * **InedoDB**: For clustered (multi-server) installations, the same custom build of PostgreSQL is packaged as InedoDB and installable on Windows or run as Docker container
+
+
 
 Although most users will not need to interact with the database server, maintenance or troubleshooting may be required. This article will provide guidance on how to do that as well as describe advanced scenarios.
 

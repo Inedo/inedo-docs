@@ -4,15 +4,15 @@ order: 9
 ---
 
 :::(Error) (💀 Manual Installations are Not Supported 💀)
-This documentation serves only as a reference to how our products our configured on Windows. and may help you troubleshoot problems that you couldn't fix by reinstalling with InedoHub.
+This documentation serves only as a reference to how our products our configured on Windows and may help you troubleshoot problems that you couldn't fix by reinstalling with InedoHub.
 
 Please do not attempt to install our products manually.
 :::
 
-This documentation is based the installation script run by the Inedo Hub when installing ProGet 2025. For earlier versions (i.e. ProGet 2024, BuildMaster 2024, and Otter 2024), see [manual-installation (github.com)](https://github.com/Inedo/inedo-docs/blob/c93d4de19b15f9dc8bad878e81d014ff8a71be32/Content/installation/manual-installation/%23.md).
+This documentation is based the installation script run by the Inedo Hub when installing ProGet 2025 and BuildMaster 2025. For earlier versions (i.e. ProGet 2024, BuildMaster 2024, and Otter 2024), see the [old version of this article (github.com)](https://github.com/Inedo/inedo-docs/blob/c93d4de19b15f9dc8bad878e81d014ff8a71be32/Content/installation/manual-installation/%23.md).
 
 
-## Extract Installation Package
+## 1. Extract Installation Package
 
 The installation package can be downloaded from our [Products Release Feed](https://proget.inedo.com/feeds/Products). 
 
@@ -26,13 +26,9 @@ It will contain two sub-packages that you need to extract the installation direc
 Any other files/directories you find in the installation package are not needed and should not be extracted to the installation directory.
 
 
-## Create Database
+## 2. Create Database
 
-There are two supported database backends. 
-
-### PostgreSQL Database
-
-When there is no connection string specified, ProGet will automatically create a database and add the connection string to the configuration file.
+If you will be using the integrated PostgreSQL database with ProGet 2025, this step is not required. Instead, if there is no connection string specified, ProGet will automatically create a database and add the connection string to the configuration file.
 
 ### SQL Server
 
@@ -58,7 +54,7 @@ ALTER ROLE [db_owner] ADD MEMBER [NT AUTHORITY\NETWORK SERVICE]
 
 Finally, make sure to set the [database recovery model](https://learn.microsoft.com/en-us/sql/relational-databases/backup-restore/recovery-models-sql-server) to Simple; this will significantly improve performance. The default (Full) model does not offer any benefit to Inedo product usage.
 
-## Create Configuration File
+## 3. Create Configuration File
 
 You will need to create an [Installation Configuration File](https://docs.inedo.com/docs/installation/configuration-files) in the `%ProgramData%\Inedo\SharedConfig\`.
 
@@ -75,9 +71,9 @@ For example, ProGet's configuration file would be `C:\ProgramData\Inedo\SharedCo
 
 Note that you can simply use`New-Guid` to create an Encryption Key.
 
-## Register Windows Service
+## 4. Register Windows Service
 
-The `%ProgramFiles\«inedo-product»\Service` directory will contain the main service executable `«inedo-product».exe`. You can run this program from an elevated command prompt or PowerShell window to install the Windows Service using the `install` command.
+The `%ProgramFiles\«inedo-product»\Service` directory will contain the main service executable (`proget.exe` or `BuildMaster.Service.exe`). You can run this program from an elevated command prompt or PowerShell window to install the Windows Service using the `install` command.
 
 For example, to install ProGet, you would run:
 ```
@@ -89,7 +85,7 @@ This will create a service named `INEDOPROGETSVC` that runs under `NT AUTHORITY\
 The service can then be run via the Windows Service Controller or with the `Start-Service` PowerShell CmdLet.
 
 
-## First Run Configuration
+## 5. First Run Configuration
 Once the service is started, your Inedo product should be accessible through the binding you specified in the configuration file.  The first time you access your Inedo product through the site, some additional settings will need to be configured.
 
 Once you log-in to your Inedo product for the first time, you can visit the *Administration* > *Advanced Settings* page to finalize the configuration stored in the database.
@@ -127,7 +123,9 @@ There are several other packages path settings (e.g., `Storage.NpmPackagesLibrar
 
 ## Troubleshooting 
 
-We don't maintain any troubleshooting documentation anymore, but we used to have some guides that are probably irrelevant now.
+We don't maintain any troubleshooting documentation anymore; you can find the old documentation here:
 
 * [manual-installation-troubleshooting-guide.md (github.com)](https://github.com/Inedo/inedo-docs/blob/c82fd2881e2f1d0c36e77bc8b8b48e2a2c7b75a9/Content/installation/manual-installation/manual-installation-troubleshooting-guide.md)
 * [installation-manually-upgrade.md (github.com)](https://github.com/Inedo/inedo-docs/blob/c82fd2881e2f1d0c36e77bc8b8b48e2a2c7b75a9/Content/installation/manual-installation/installation-manually-upgrade.md)
+
+It's likely outdated.

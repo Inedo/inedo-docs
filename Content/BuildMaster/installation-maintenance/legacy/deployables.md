@@ -4,8 +4,8 @@ order: 3
 url-slug: "buildmaster/installation-maintenance/buildmaster-legacy/buildmaster-applications-concepts-deployables"
 ---
 
-:::(Error) (Deployables are Deprecated)
-With the introduction of OtterScript and the Inedo Execution Engine in BuildMaster v5, this feature is redundant and will be removed in a future version of BuildMaster. See [Legacy (Deprecated) Features](/docs/buildmaster/installation-maintenance/buildmaster-legacy) to learn more.
+:::(Error) (Deployables were Removed in BuildMaster 2025)
+With the introduction of OtterScript and the Inedo Execution Engine in BuildMaster v5, this feature was redundant and eventually removed in BuildMaster 2025. See [Legacy (Deprecated) Features](/docs/buildmaster/installation-maintenance/buildmaster-legacy) to learn more.
 :::
 
 A deployable is meant to represent a deployable component of an application. For example, if you have a multi-tier application called HDARS, it might have an HDARS web, an HDARS service, and an HDARS-API deployable to represent each of the corresponding tiers.

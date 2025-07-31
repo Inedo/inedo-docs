@@ -1,11 +1,11 @@
 ---
 title: "Upgrading to Otter 2023"
-order: 2
+order: 3
 url-slug: "otter-upgrade-2023"
 ---
 
 :::(Error) (Outdated Documentation: Upgrade to Otter 2023 Not Recommended)
-We strongly recommend directly [Upgrading to Otter 2024](/docs/otter-upgrade-2024). This document is only kept around for historic purposes.
+We strongly recommend directly [Upgrading to Otter 2025](/docs/otter-upgrade-2025). This document is only kept around for historic purposes.
 :::
 
 Otter 2023 is a major upgrade, and this article provides information about what changed, the impact to your instance, and how to mitigate risk during upgrade.
