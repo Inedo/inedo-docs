@@ -21,41 +21,13 @@ Run `docker restart «inedo-product»` to stop the container and then restart it
 
 When running a root-less container tool like [Podman](https://podman.io/) or [Heroku](https://www.heroku.com/) you may experience an error similar to `Unable to start Kestrel. System.Net.Sockets.SocketException (13): Permission denied while running alpine as non root user`.  
 
-This happens because the internal port of the container uses port 80 and most root-less containers do not allow ports less than 1024 even though it is internal to the container.  In order to fix this, you will need change the internal port that ProGet/BuildMaster/Otter is running on.  Here is an example to change it to port 8080.
+This happens because the internal port of the container uses ports 80 and 443 and most root-less containers do not allow ports less than 1024 even though it is internal to the container.  In order to fix this, you will need change the internal port that ProGet/BuildMaster/Otter is running on.  You can do this by setting the `ASPNETCORE_URLS` environment variable to map it to a new internal port:
 
-#### For ProGet:
-1. Create a custom config and map the container to that folder:
 ```shell
-echo '<?xml version="1.0" encoding="utf-8"?><InedoAppConfig><ConnectionString Type="SqlServer">'"`$SQL_CONNECTION_STRING"'</ConnectionString><WebServer Enabled="true" Urls="http://*:8080/"/></InedoAppConfig>' > /usr/share/Inedo/SharedConfig/ProGet.config
-```
-2. Run the container with the binding to the new internal port
-```shell
-docker run -d --name=proget --restart=unless-stopped \
-  -v proget-packages:/var/proget/packages -p 8080:8080 --net=proget \
-  -e SQL_CONNECTION_STRING='Data Source=proget-sql; Initial Catalog=ProGet; User ID=sa; Password=«YourStrong!Passw0rd»'' \
-  proget.inedo.com/productimages/inedo/proget:latest
+  -e ASPNETCORE_URLS='http://*:8080;https://*:4343'
 ```
 
-#### For Otter and BuildMaster:
-Otter and BuildMaster have an environment variable to specify the internal URL.  You simply need to run add an environment variable and map the new internal port:
+The above example will bind the internal ports to 8080 (HTTP) and 4343 (HTTPS). You will still need to map those ports externally, for example using `-p 8624:8080` and `-p 8625:4343` to expose 8624 (HTTP) and 8625 (HTTPS).
 
-BuildMaster:
-```shell
-docker run -d --name=buildmaster --restart=unless-stopped \
-  -v buildmaster-artifacts:/var/buildmaster/artifacts \
-  -p 8080:8080 --net=inedo \
-  -e BUILDMASTER_SQL_CONNECTION_STRING='Data Source=inedo-sql; Initial Catalog=BuildMaster; User ID=sa; Password=«YourStrong!Passw0rd»' \
-  -e ASPNETCORE_URLS="http://*:8080" \
-  proget.inedo.com/productimages/inedo/buildmaster:latest
-```
-Otter
-```shell
-docker run -d --name=otter --restart=unless-stopped \
-  -p 8080:8080 --net=inedo \
-  -e BUILDMASTER_SQL_CONNECTION_STRING='Data Source=inedo-sql; Initial Catalog=Otter; User ID=sa; Password=«YourStrong!Passw0rd»' \
-  -e ASPNETCORE_URLS="http://*:8080" \
-  proget.inedo.com/productimages/inedo/otter:latest
-```
-
-## Cannot connect to services that use a self-signed or an internal certificate authority
+### Cannot connect to services that use a self-signed or an internal certificate authority
 By default, all SSL based services that ProGet connects to requires a valid certificate.  On Windows, this is pretty simple to solve by just trusting the certificate in the Windows Certificate Manager.  On Linux/Docker, you need to mount the `/usr/local/share/ca-certificates` volume (ex: `-v self-signed-ca:/usr/local/share/ca-certificates`) and then place all your self-signed certificates or internal CA certificates and then restart your container.  Upon start of the container, ProGet will execute `update-ca-certificates` before starting ProGet which will include those certificates as a Trusted Authority.
