@@ -6,6 +6,10 @@ order: 2
 
 To mitigate the risk of authentication errors after we make major changes to our Active Directory / LDAP integration code, we create a new "user directory" type that can be configured side-by-side with the existing types. This article documents the advanced configuration of the **Active Directory / LDAP (v4)** user directory, which is available in 2023 versions.
 
+::: (Warning) (Active Directory / LDAP (v3) is Deprecated)
+In the 2025 versions of our products, this user directory type is considered legacy. We recommend switching to v5 at some point, as it offers performance improvements and will be actively maintained. See [Active Directory (v5)](/docs/installation/security-ldap-active-directory/various-activedirectory-v5-advanced) to learn about this version.
+:::
+
 In most installations, the default configuration for the *Active Directory v4 (New)* user directory will *just work*; usually this is the case when the product's server is already joined to the domain associated with the users of the software. There are other cases when a more advanced configuration is required, common examples include:
 
 - Your Inedo product is not installed on the domain, or users are located in a different domain altogether
@@ -16,7 +20,7 @@ In most installations, the default configuration for the *Active Directory v4 (N
 - Your users use nested groups
 
 ## Configuring your User Directory
-For advanced configuration, navigate to Administration > Manage Security and click "edit" to the right of "Active Directory v4 (New)".  If you do not see this user directory, you will need to add a new "V4: Active Directory/LDAP (Preview)" directory.
+For advanced configuration, navigate to Administration > Manage Security and click "edit" to the right of "Active Directory v4 (New)".  If you do not see this user directory, you will need to add a new "V4: Active Directory/LDAP" directory.
 
 ::: (Info) (Note:)
 Users and groups configured in tasks and permissions are compatible with both v3 and v4, allowing easy switch-over between user directories.
