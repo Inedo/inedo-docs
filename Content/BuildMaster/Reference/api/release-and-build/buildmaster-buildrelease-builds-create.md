@@ -21,15 +21,17 @@ To create a build, simply `PUT` or `POST` to the URL with an [appropriate API Ke
 
 | Input | Parameter Specification |
 | --- | --- |
-| Release | Required. Either a key named `releaseId` with an integer value, or a key named `releaseNumber` with any value. |
+| Release | Required when the application uses releases. Either a key named `releaseId` with an integer value, or a key named `releaseNumber` with any value. |
 | Application | Required if `releaseNumber` is specified, otherwise must not be set. Either a key named `applicationId` with an integer value, or a key named `applicationName` with any value. |
 | Build Number | Optional. A key named `buildNumber` with any value; if not specified, the build number will be automatically generated. |
+| Pipeline | Required when Release is not specified. A key named `pipelineName`.
 | Variables | Optional. Any number of parameters with a key name consisting of a valid variable name prefixed with `$`, and with any value. |
 
 **Creating a build** requires parameters defined in the request body.
 
 ```json
 POST /api/releases/builds/create
+Content-Type: application/json
 
 {
   "releaseNumber": "1.0.1",
