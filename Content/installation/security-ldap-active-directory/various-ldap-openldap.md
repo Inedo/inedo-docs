@@ -8,7 +8,7 @@ In ProGet 2024, BuildMaster 2024, and Otter 2024, we have added a new User Direc
 In most installations of OpenLDAP, the default configuration for the *OpenLDAP/Generic LDAP* user directory will *just work* with only needing to supply the host address and the distinguished name for an LDAP user and its password.  For other LDAP based directories, you may need to modify the attributes and LDAP queries, specifically the object class.
 
 ## Configuring your User Directory
-To add a new *OpenLDAP/Generic LDAP* user directory, navigate to Administration > Manage Security, click "add new directory / domain", click "Other Types", and Select "OpenLDAP/Generic LDAP".
+To add a new *OpenLDAP/Generic LDAP* user directory, navigate to Administration > Manage Security, click "add new directory / domain", and Select "OpenLDAP/Generic LDAP".
 
 ### General
 - **Name**: A simple name to identify the user directory in the UI

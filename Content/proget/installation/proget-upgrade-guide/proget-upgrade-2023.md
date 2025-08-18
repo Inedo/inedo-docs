@@ -112,7 +112,7 @@ There is no risk mitigation required, as trying to run `dotnet nuget push --symb
 
 ### Improved Feature: Active Directory Integration
 
-ProGet 2023 supports the latest version (v4) of [our Active Directory / LDAP integration](/docs/installation/security-ldap-active-directory). This version is a rewrite of the previous version (v3), and has added optimizations, advanced LDAP filtering, and is tied to a single domain, which simplifies LDAP queries. It also includes a new Microsoft Active Directory Group Search Type for improved performance and customization of LDAP queries, supporting large forests and other LDAP providers. See [Active Directory / LDAP (v4)](/docs/installation/security-ldap-active-directory/various-ldap-v4-advanced) to learn more.
+ProGet 2023 supports the latest version (v4) of [our Active Directory / LDAP integration](/docs/installation/security-ldap-active-directory). This version is a rewrite of the previous version (v3), and has added optimizations, advanced LDAP filtering, and is tied to a single domain, which simplifies LDAP queries. It also includes a new Microsoft Active Directory Group Search Type for improved performance and customization of LDAP queries, supporting large forests and other LDAP providers. See [Active Directory / LDAP (v4)](/docs/installation/security-ldap-active-directory/legacyconfigurations/various-ldap-v4-advanced) to learn more.
 
 There is no risk mitigation required, as this is a separate user directory and will not be enabled by default. Support was introduced as a preview feature in ProGet 2022.20.
     

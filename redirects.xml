@@ -1,6 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <redirects>
 
+  <redirect from="/docs/installation/security-ldap-active-directory/various-ldap-v4-advanced" to="/docs/installation/security-ldap-active-directory/legacyconfigurations/various-ldap-v4-advanced" modified="8/7/2025 09:35:00 AM" />  
+
 	<!-- BEGIN ProGet2025 Docs Refactoring  -->
 	<redirect from="/docs/installation/windows/desktophub-overview" to="/docs/installation/windows/inedo-hub" />
 	<redirect from="/docs/installation/windows/desktophub-overview/desktophub-inedo-hub-cli" to="/docs/installation/windows/inedo-hub/cli-reference" />
