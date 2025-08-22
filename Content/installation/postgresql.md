@@ -10,7 +10,7 @@ In its place, we will be switching to an embedded distribution of PostgreSQL wit
 :::
 -->
 
-Inedo Products (starting with ProGet 2025) uses a custom build of PostgreSQL that's been security-hardened, stripped of unneeded features, and optimized for Inedo products. We are currently planning to include this database backend in BuildMaster 2026 and Otter 2026.
+Inedo Products (starting with ProGet 2025) use a custom distribution of PostgreSQL that's been security-hardened, stripped of unneeded features, and optimized for Inedo products. We are currently planning to include this database backend in BuildMaster 2026 and Otter 2026.
 
 Our custom PostgreSQL server can be hosted in two different ways.
 
@@ -48,13 +48,8 @@ Note that these commands are light wrappers for `pg_dump -Fc` and `pg_restore` t
 
 ## InedoDB Installation & Upgrade {#inedodb}
 
-InedoDB is a custom build of PostgreSQL that's been security-hardened, stripped of unneeded features, and optimized for Inedo products. It's required for clustered (multi-server) installations.
+InedoDB is a custom PostgreSQL distribution that's been security-hardened, stripped of unneeded features, and optimized for Inedo products. It's required for clustered (multi-server) installations.
 
-:::(Warning) (🚧 InedoDB is Coming Soon 🚧)
-We are planning on releasing the first version of InedoDB in 2025/Q4. This documentation is preliminary.
-
-If you wish to use a clustered installation with PostgreSQL without an [external PostgreSQL servers](#external-postgres), you'll need to wait until then.
-:::
 
 ### Releases & Downloads {#inedodb-releases}
 
@@ -62,14 +57,13 @@ The following versions of the InedoDB are available:
 
 | Version | Released | Downloads | Notes
 | -- | -- | --
-| 17.4.0 | TBD XX, 2025 | [installer exe](#) | Initial Release
+| 17.6.0 | Aug 22, 2025 | [installer exe](https://cdn.inedo.com/downloads/inedodb/InedoDBInstaller17.6.0.exe) | Initial Release
 
-For new installations, you should use the latest version unless you plan to restore a database backup. In that case, use the same version of InedoDB that was used to create that backup.
+For new installations, you should use the latest version unless you plan to restore a database backup. In that case, use the same major version of InedoDB that was used to create that backup.
 
-<!--
-#inedodb-releases}
-Note that the first two digits of InedoDB's version correspond to the [PostgreSQL version number](https://www.postgresql.org/support/versioning/) used.
--->
+InedoDB follows PostgreSQL's versioning scheme for its Major.Minor release numbers. You can upgrade or downgrade among minor releases, and InedoDB releases closely follow PostgreSQL's minor release schedule.
+
+Support for upgrading from one major release to another will be added in a future release of InedoDB. Currently, it is always based on PostgreSQL 17.
 
 
 ### Installation on Linux (Docker)
@@ -86,33 +80,32 @@ To start an InedoDB container, use this command:
 
 ```bash
 docker run --name inedodb \
-  -p 5432:5432 -e POSTGRES_PASSWORD=«YourStrong!Passw0rd» \
   --restart=unless-stopped \
-  -d proget.inedo.com/productimages/inedo/inedodb:17.4.0
+  -d proget.inedo.com/productimages/inedo/inedodb:17.6
 ```
 
-Once you have an SQL Server instance running, you'll need to initialize a product database using `inedodb initdb «product-name»` command.
+Once you have an instance running, you'll need to initialize a product database using the `docker exec inedodb inedodb create «product-name»` command.
 
-### Example: ProGet SQL Server Database
+### Example: ProGet InedoDB Database
 To initialize a database for ProGet on the InedoDB instance running in the `inedodb` container:
 
 ```bash
-docker exec -it inedodb /opt/tools/inedodb initdb ProGet
+docker exec inedodb inedodb create proget
 ```
 
 ### Installation on Windows
 
 InedoDB is available from the links under [Releases & Downloads](#inedodb-releases}).
 
-Simply download and run the installer. You'll be prompted for a port number to use and a password.
+Simply download and run the installer. You'll be prompted for a data directory to store the database files.
+
 
 ### Upgrading InedoDB
 
-We don't recommend upgrading unless you were prompted to by a newer version of an Inedo product or directed to by a support engineer.
+Currently, InedoDB only uses PostgreSQL 17. You may upgrade to any other 17.X.Y version without backing up your database, as the data files are not modified by this upgrade process.
 
-Before upgrading to a new major version of InedoDB (e.g., from 17.4.1 to 18.0.0), you will need to [backup the databases](#backup). After installing the new version, you will need to restore them.
+In the future, we will provide an InedoDB that uses a newer major PostgreSQL version; check back here for guidance on when to install it.
 
-When upgrading to a new, non-major version of InedoDB (e.g., from 17.4.1 to 17.5.0), backing up and restoring is not necessary.
 
 ## External PostgreSQL Servers { #external-postgres }
 
@@ -122,7 +115,7 @@ When upgrading to a new, non-major version of InedoDB (e.g., from 17.4.1 to 17.5
 
 It's also possible to connect to an external PostgreSQL, but we don't recommend it unless you have sufficient expertise in managing PostgreSQL servers and databases.
 
-If you wish to use an external PostgreSQL Server, note that the only supported versions are indicated by the first two digits of the [InedoDB releases numbers](#inedodb-releases) (e.g. InedoDB 17.4.0 means that PostgreSQL 17.4 is supported). Other versions of PostgreSQL may work, but we have not tested them nor will we support any PostgreSQL-related issues.
+If you wish to use an external PostgreSQL Server, note that the only supported versions are indicated by the first digit of the [InedoDB releases numbers](#inedodb-releases) (e.g. InedoDB 17.4.0 means that PostgreSQL 17 is supported). Other versions of PostgreSQL may work, but we have not tested them, nor will we support any PostgreSQL-related issues when an insupported version is used.
 
 To use an external PostgreSQL Server, first create the a database for ProGet using the `initdb` command with the desired data directory (`-D`), desired credentials (e.g. `-U` and `--pwfile`), and the following arguments:
 ```
