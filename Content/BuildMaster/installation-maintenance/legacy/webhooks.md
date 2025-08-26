@@ -4,8 +4,8 @@ order: 2
 url-slug: "buildmaster/installation-maintenance/buildmaster-legacy/buildmaster-legacy-webhooks"
 ---
 
-:::(Error) (Webhook Monitors are Deprecated)
-With the introduction of expanded [Git & Source Control](/docs/buildmaster/builds-continuous-integration/buildmaster-git-source-control) features in BuildMaster 2022, this feature is redundant and will be removed in a future version of BuildMaster; see [Legacy (Deprecated) Features](/docs/buildmaster/installation-maintenance/buildmaster-legacy) to learn more.
+:::(Error) (Webhook Monitors were Removed in BuildMaster 2025)
+With the introduction of expanded [Git & Source Control](/docs/buildmaster/builds-continuous-integration/buildmaster-git-source-control) features in BuildMaster 2022, this feature is redundant and was removed in BuildMaster 2025; see [Legacy (Deprecated) Features](/docs/buildmaster/installation-maintenance/buildmaster-legacy) to learn more.
 :::
 
 BuildMaster can receive custom webhook events triggered by GitHub and GitLab. Once a webhook event is triggered, BuildMaster can use the received payload to create a new build in one or more applications or perform other tasks as described in OtterScript.

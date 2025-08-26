@@ -12,6 +12,10 @@ Depending on the version of ProGet you're using and the feed type, there are sev
 * [Using Feed Replication](#using-feed-replication)
 * [Additional Migration Methods](#additional-migration-methods)
 
+:::(warning) (⚠ Migration vs Backup & Restore)
+These methods only migrate package content, not configuration data like download counts or custom licenses. This makes them a good fit for fresh installations with new feed names or settings. If you want to bring over everything, including metadata and configuation data, and can accommodate a brief maintenance window (typically about an hour), a full [backup and restore](/docs/installation/backing-up-restoring) is a better option.
+:::
+
 ##  ProGet Feed-to-Feed Migration (Recommended)
 *This method requires ProGet 2023.22+ and works with all feed types except Docker and Bower.*
 

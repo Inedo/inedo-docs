@@ -7,7 +7,7 @@ order: 4
 To mitigate the risk of authentication errors after we make major changes to our Active Directory / LDAP integration code, we create a new "user directory" type that can be configured side-by-side with the existing types. This article documents the advanced configuration of the **Active Directory / LDAP (v3)** user directory.
 
 ::: (Warning) (Active Directory / LDAP (v3) is Deprecated)
-In the 2023 versions of our products, this user directory type is considered legacy. We recommend switching to v4 at some point, as it offers performance improvements and will be actively maintained. See [Active Directory / LDAP(v4)](/docs/installation/security-ldap-active-directory/various-ldap-v4-advanced) to learn about this version.
+In the 2023 versions of our products, this user directory type is considered legacy. We recommend switching to v4 or v5 at some point, as it offers performance improvements and will be actively maintained. See [Active Directory / LDAP(v4)](/docs/installation/security-ldap-active-directory/legacyconfigurations/various-ldap-v4-advanced) and [Active Directory (v5)](/docs/installation/security-ldap-active-directory/various-activedirectory-v5-advanced) to learn about this version.
 :::
 
 In most installations, the default configuration for the *Active Directory (New)* user directory will *just work*; usually this is the case when the product's server is already joined to the domain associated with the users of the software. There are other cases when a more advanced configuration is required, common examples include:

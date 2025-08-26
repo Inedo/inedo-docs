@@ -1,12 +1,12 @@
 ---
 title: "Upgrading to BuildMaster 7.0"
 nav-title: "BuildMaster 7.0 (2021)"
-order: 4
+order: 5
 url-slug: "buildmaster-upgrading-to-v7"
 ---
 
-:::(Error) (Skip BuildMaster 7.0: Upgrade Directly to BuildMaster 2024)
-If you are using BuildMaster 6.1 or BuildMaster 6.2, we recommend directly [Upgrading to BuildMaster 2024](/docs/buildmaster-upgrade-2024). If you using an earlier version, you will first need to [Upgrade to BuildMaster 6.1](/docs/buildmaster-upgrading-to-6-1).
+:::(Error) (Skip BuildMaster 7.0: Upgrade Directly to BuildMaster 2025)
+If you are using BuildMaster 6.1 or BuildMaster 6.2, we recommend directly [Upgrading to BuildMaster 2025](/docs/buildmaster-upgrade-2025). If you using an earlier version, you will first need to [Upgrade to BuildMaster 6.1](/docs/buildmaster-upgrading-to-6-1).
 :::
 BuildMaster 7.0 is a major upgrade. This article contains information about the changes, the impact on your instance, and how to minimize risk during the upgrade.
 

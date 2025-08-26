@@ -5,8 +5,8 @@ order: 88
 url-slug: "buildmaster-upgrading-to-6-2"
 ---
 
-:::(Error) (Skip BuildMaster 6.2: Upgrade Directly to BuildMaster 2023)
-If you are using BuildMaster 6.1, we recommend directly [Upgrading to BuildMaster 2023](/docs/buildmaster-upgrade-2023). If you using an earlier version, you will first need to [Upgrade to BuildMaster 6.1](/docs/buildmaster-upgrading-to-6-1).
+:::(Error) (Skip BuildMaster 6.2: Upgrade Directly to BuildMaster 2025)
+If you are using BuildMaster 6.1, we recommend directly [Upgrading to BuildMaster 2025](/docs/buildmaster-upgrade-2025). If you using an earlier version, you will first need to [Upgrade to BuildMaster 6.1](/docs/buildmaster-upgrading-to-6-1).
 :::
 
 BuildMaster 6.2 is a major transformative release that removes all legacy features from the product. We no longer recommend upgrading from BuildMaster 6.1 to this version, and this article is for informational purposes only.
