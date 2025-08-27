@@ -3,7 +3,7 @@ title: "License Restrictions"
 order: 5
 ---
 
-ProGet is licensed *per instance* (i.e. installation) on an annual basis. There are multiple editions of ProGet available, and depending on which edition you are using there will be different features and license restrictions.
+ProGet is licensed *per instance* (i.e. installation) on an annual basis. There are multiple editions of ProGet available, and depending on which edition you are using there will be different features and license restrictions. To find the edition that’s right for you, visit the [ProGet Pricing & Editions page](https://inedo.com/proget/pricing).
 
 ## ProGet Editions & License Keys 
 
