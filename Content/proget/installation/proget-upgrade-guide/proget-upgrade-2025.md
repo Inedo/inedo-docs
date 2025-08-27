@@ -4,7 +4,7 @@ order: 0
 url-slug: "proget-upgrade-2025"
 ---
 
-ProGet 2025 is a major update, and this article provides information about what will change, the impact to your instance, and how to mitigate risk during upgrade.
+ProGet 2025 is a major update, and this article provides information about what will change, the impact to your instance, and how to mitigate risk during upgrade. To get started—whether you’re upgrading or installing ProGet for the first time—visit the [ProGet downloads page](https://inedo.com/proget/download).
 
 
 ## Planning for Your Upgrade
