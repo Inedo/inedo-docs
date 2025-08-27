@@ -61,8 +61,8 @@ Note that some clients such as NuGet and Visual Studio may warn about HTTPS prim
 
 ## Step 5: Connect to Tools (e.g. Visual Studio)
 
-Now that you've created a feed, you can use other ProGet features such as license detection or vulnerability scanning. 
+Now that you've created a feed, you can use other ProGet features such as [license detection](/docs/proget/sca/licenses) or [vulnerability scanning](/docs/proget/sca/vulnerabilities). You can read more about the importance of both [vulnerability scanning](https://blog.inedo.com/nuget/vulnerabilities/) and [license detection](https://blog.inedo.com/nuget/avoid-nuget-license-lawsuits/) on the Inedo Blog. 
 
-You can also connect ProGet to Visual Studio as a Package Manager by following the on-screen instructions or reading ["HOWTO: Proxy Packages from NuGet.org in Visual Studio or CLI](/docs/proget/feeds/nuget/howto-nuget-publish). 
+You can also connect ProGet to Visual Studio as a Package Manager by following the on-screen instructions or reading [HOWTO: Proxy Packages from NuGet.org in Visual Studio or CLI](/docs/proget/feeds/nuget/howto-nuget-publish). 
 
 ![Visual Studio Setup](/resources/docs/proget-nuget-visualstudio.png){height="" width="50%"}
