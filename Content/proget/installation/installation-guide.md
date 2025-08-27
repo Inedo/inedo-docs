@@ -3,7 +3,7 @@ title: "ProGet Installation Guide"
 order: 1
 ---
 
-ProGet is self-managed, meaning you have the option to run ProGet on-premises or in your private/public cloud. Both Windows and Linux are supported. To get started, download the installer from our [ProGet downloads page](https://inedo.com/proget/download).
+ProGet is self-managed, meaning you have the option to run ProGet on-premises or in your private/public cloud. Both [Windows and Linux](https://inedo.com/proget/download) are supported.
 
 ## Installing on Windows Servers
 
