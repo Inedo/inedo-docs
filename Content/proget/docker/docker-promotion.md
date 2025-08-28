@@ -22,6 +22,8 @@ Currently, images that use ["fat" manifests](https://docs.docker.com/registry/sp
 
 Any registry can be used as a validated/promoted Docker registry, but best practice is to create a separate registry that contains only promoted internal images and verified external images. When creating your new Docker registry, select the _validated/promoted_ feed usage type.
 
+For additional guidance—especially if you’re using Artifactory—see [How to Manage Docker Repositories in ProGet for Artifactory Users](https://blog.inedo.com/proget-migration/how-to-manage-docker-repositories-in-proget-for-artifactory-users/) on the Inedo Blog.
+
 #### Promoting Images Using The Repository's Tag Page 
 
 To promote an image using the repository's tag page, first navigate to the registry, repository, and tag you would like to promote. Hover over the _▼-button_ in the upper right corner, and click the _Promote_ button.
