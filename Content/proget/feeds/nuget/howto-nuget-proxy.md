@@ -85,7 +85,7 @@ To learn how to authenticate to your NuGet feed, read [Authenticating to NuGet F
 
 ## (Optional) Creating a Package Approval Flow
 
-In this guide, we covered how to proxy packages from [NuGet.org](https://www.nuget.org/). However, this lets developers to use any OSS package from this OSS repository without oversight. In organizations, it's recommended that you include some form of approval to make sure only compliant packages are used in production. 
+In this guide, we covered how to proxy packages from [NuGet.org](https://www.nuget.org/). However, this lets developers to use any OSS package from this OSS repository without oversight. In organizations, it's [recommended that you include some form of approval](https://blog.inedo.com/nuget/nuget-package-approval-workflow/) to make sure only compliant packages are used in production. 
 
 This can be achieved by introducing a ["Package Approval Flow"](/docs/proget/packages/package-promotion). To set up a package approval flow, refer to [HOWTO: Approve and Promote Open-source Packages](/docs/proget/packages/package-promotion/proget-howto-promote-packages). 
 
