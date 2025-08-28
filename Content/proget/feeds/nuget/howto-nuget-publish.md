@@ -7,6 +7,8 @@ ProGet let's you set up private NuGet repositories that will allow you to publis
 
 This guide will walk you through the process of setting up a NuGet ["Feed"](/docs/proget/feeds/feed-overview) in ProGet as a private, custom repository. We'll also cover how to create, push, and install NuGet packages from this repository.
 
+For guidance on scaling your internal NuGet packages, see [Best Practices for Authoring Private NuGet Packages at Scale](https://blog.inedo.com/nuget/best-practices-internal-nuget-packages/) on the Inedo blog.
+
 ## Step 1: Create and Name a NuGet Feed { #create-feed }
 
 Start by creating a NuGet feed to host your internal packages. Navigate to "Feeds" and "Create New Feed". Then select "NuGet (.NET) Packages".
@@ -141,4 +143,4 @@ $ dotnet nuget push «package-name» -Source «source-name»
 
 ## (Optional) Repackaging NuGet Packages in CI/CD
 
-After publishing your NuGet packages, you might want to improve your CI/CD workflow by [repackaging](/docs/proget/packages/repackaging) pre-release versions into production-ready packages. This step allows you to create stable versions while maintaining an audit trail of the original pre-release versions, including details on who performed the operation and when. To learn more about repackaging your NuGet packages you can read [Repackaging NuGet Packages](/docs/proget/feeds/nuget#repackaging-packages)
+After publishing your NuGet packages, you might want to improve your CI/CD workflow by [repackaging](/docs/proget/packages/repackaging) pre-release versions into production-ready packages. This step allows you to create stable versions while maintaining an audit trail of the original pre-release versions, including details on who performed the operation and when. To learn more about repackaging your NuGet packages you can read [Repackaging NuGet Packages](/docs/proget/feeds/nuget#repackaging-packages).
