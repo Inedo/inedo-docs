@@ -5,7 +5,7 @@ order: 1
 
 This feature is available in paid and trial ProGet editions. 
 
-Retention rules help you reclaim disk space by automatically deleting old or unused packages that meet a set of criteria that you define, while allowing you to identify specific packages to exclude from these rules.
+Retention rules help you reclaim disk space by automatically deleting old or unused packages that meet a set of criteria that you define, while allowing you to identify specific packages to exclude from these rules. If you're coming from Artifactory and want additional guidance, see [How Retention and Data Storage Work in ProGet for Artifactory Users](https://blog.inedo.com/proget-migration/how-retention-and-data-storage-work-in-proget-for-artifactory-users/) on the Inedo blog.
 
 A ProGet Basic or Enterprise license is currently required to use feed retention. Although rules can still be configured in the free edition, they are always executed in [dry run mode](/docs/proget/administration/retention-rules#dry-run-mode) in ProGet Free.
 
