@@ -41,6 +41,8 @@ pgutil packages versions --package=@myScope/myNpmPackage --feed=myNpmFeed
 pgutil packages versions --package=@myScope/myNpmPackage --version=2.0.0 --feed=myNpmFeed
 ```
 
+For guidance on managing package versions at scale, see [Best Practices for Versioning NuGet Packages at Scale](https://blog.inedo.com/nuget/package-versioning/) on the Inedo blog.
+
 ## HTTP Request Specification
 To list a package version, simply `GET` to the URL with a feed name, [package identifiers](/docs/proget/api/packages#using-multiple-parameters), and an [appropriate API Key](/docs/proget/api/packages#authentication).
 
