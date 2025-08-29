@@ -208,7 +208,7 @@ The `PackageAccessRule` and `VulnerabilitySource` were designed for and used by 
 
 
 ## Upgrade Process
-You should generally perform the upgrade using the same method you used to install.
+You should generally perform the upgrade using the same method you used to [install](https://inedo.com/proget/download).
 
 * On Windows, the most common installation method is using the internet-connected [Inedo Hub](/docs/installation/windows/inedo-hub); see  [HOWTO: Upgrade or Downgrade with the Inedo Hub](/docs/installation/windows/howto-upgrade-downgrade) for more details on how to upgrade.
 * On Linux, the most common installation method is using our Docker container; see [Upgrading Docker Containers](/docs/installation/linux/installation-upgrading-docker-containers) for more details.
