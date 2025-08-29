@@ -76,6 +76,7 @@ Defining vulnerability rules may be particularly useful when you use custom asse
 
 If multiple vulnerabilities were detected on a package, they will each be evaluated against the rules separately. For example, if one vulnerability was assessed as Ignore, but another is Severe, the package would still be considered noncompliant.
 
+For more context on [what package vulnerabilities are and how to handle them](https://blog.inedo.com/nuget/vulnerabilities/), see our article on the Inedo blog.
 
 ### License Rules
 
