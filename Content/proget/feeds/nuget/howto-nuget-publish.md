@@ -64,6 +64,7 @@ Then run the following to create the package:
 ```bash
 $ dotnet pack --configuration Release 
 ```
+For more on best practices for [managing your internal NuGet packages](https://blog.inedo.com/nuget/best-practices-internal-nuget-packages/) you can read our article on the Inedo blog.
 
 ## Step 3: Adding the Feed as a Source { #add-feed }
 
@@ -141,4 +142,4 @@ $ dotnet nuget push «package-name» -Source «source-name»
 
 ## (Optional) Repackaging NuGet Packages in CI/CD
 
-After publishing your NuGet packages, you might want to improve your CI/CD workflow by [repackaging](/docs/proget/packages/repackaging) pre-release versions into production-ready packages. This step allows you to create stable versions while maintaining an audit trail of the original pre-release versions, including details on who performed the operation and when. To learn more about repackaging your NuGet packages you can read [Repackaging NuGet Packages](/docs/proget/feeds/nuget#repackaging-packages)
+After publishing your NuGet packages, you might want to improve your CI/CD workflow by [repackaging](/docs/proget/packages/repackaging) pre-release versions into production-ready packages. This step allows you to create stable versions while maintaining an audit trail of the original pre-release versions, including details on who performed the operation and when. To learn more about repackaging your NuGet packages you can read [Repackaging NuGet Packages](/docs/proget/feeds/nuget#repackaging-packages).
