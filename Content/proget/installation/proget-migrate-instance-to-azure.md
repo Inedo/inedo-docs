@@ -3,7 +3,9 @@ title: "Migrate an On-Premise ProGet Installation to Azure"
 order: 6
 ---
 
-As the cloud popularity grows, many users have began to migrate their infrastructure to different cloud providers.  Microsoft Azure is one of the most, if not the most, popular cloud provider today.  Microsoft has invested a lot into their platform and they have added great integration built directly into their Windows products.  This allows users to have an easier time migrating their internal infrastructure to the cloud or building a hybrid Windows-based architecture leveraging both on-premise and cloud-based architectures.   
+As the cloud popularity grows, many users have began to migrate their infrastructure to different cloud providers.  Microsoft Azure is one of the most, if not the most, popular cloud provider today.  Microsoft has invested a lot into their platform and they have added great integration built directly into their Windows products.  This allows users to have an easier time migrating their internal infrastructure to the cloud or building a hybrid Windows-based architecture leveraging both on-premise and cloud-based architectures.
+
+If you’re evaluating which platform is right for your organization, see [ProGet vs. Azure Artifacts](https://inedo.com/proget/vs-azure-artifacts) for a feature and management comparison that can help guide migration decisions.
 
 This guide helps to direct users on how to migrate an on-premise ProGet installation to Microsoft Azure.
 
