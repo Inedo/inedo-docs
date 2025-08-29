@@ -15,6 +15,8 @@ Internally, Docker registrations are represented as feeds, which means:
 
 ProGet lets you define as many Docker registries as you want. This allows you to manage each project in its own registry and exercise better access control over your Docker images.
 
+If you are an Artifactory user, visit the Inedo blog for [tips on managing Docker registries in ProGet](https://blog.inedo.com/proget-migration/how-to-manage-docker-repositories-in-proget-for-artifactory-users/).
+
 ## Creating and using a Docker Registries in ProGet 
 
 To create a Docker registry in ProGet, go to Containers > Create New Docker Registry, then enter a registry name.
