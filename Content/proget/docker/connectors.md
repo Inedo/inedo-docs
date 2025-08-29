@@ -20,3 +20,5 @@ When caching is enabled and a connector image is requested by a client, ProGet a
 ## Limitations
 
 Many external registries such as Docker Hub do not provide an API for searching and discovering images, so ProGet-Web UI cannot be used to search for images stored in one of these registries through the Connector.
+
+See [How to Manage Docker Repositories in ProGet for Artifactory Users](https://blog.inedo.com/proget-migration/how-to-manage-docker-repositories-in-proget-for-artifactory-users/) on the Inedo blog for additional guidance.
