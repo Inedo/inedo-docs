@@ -56,8 +56,6 @@ The analysis logic gets a little more complicated with [rule exemptions](#rule-e
 
 Vulnerability rules determine compliance based on the vulnerabilities that were detected in a package, and more specifically, how you assessed those vulnerabilities.
 
-For more context on what package vulnerabilities are and how to handle them, see [What are NuGet Package Vulnerabilities and How to Manage Them](https://blog.inedo.com/nuget/vulnerabilities/) on the Inedo blog.
-
 ::: (Info) (👨‍🏫 Refresher on Vulnerability Assessments)
 When ProGet first detects a vulnerability in a package, the vulnerability will be considered "Unassessed", and you can select "Severe", "Warn", "Ignore", or a custom assessment type you've added to ProGet.  ProGet can automatically assess newly-detected vulnerabilities for you based Inedo Security Lab's severity score.
 
@@ -78,6 +76,7 @@ Defining vulnerability rules may be particularly useful when you use custom asse
 
 If multiple vulnerabilities were detected on a package, they will each be evaluated against the rules separately. For example, if one vulnerability was assessed as Ignore, but another is Severe, the package would still be considered noncompliant.
 
+For more context on [what package vulnerabilities are and how to handle them](https://blog.inedo.com/nuget/vulnerabilities/), see our article on the Inedo blog.
 
 ### License Rules
 
