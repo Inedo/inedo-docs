@@ -23,7 +23,7 @@ You are then presented with several options. These relate to ProGet's [Vulnerabi
 
 ## Step 2: Create Your Python Package { #create-package }
 
-Next, we will create our Python packages. You can follow the [official Python documentation](https://packaging.python.org/en/latest/tutorials/packaging-projects/) to learn more about creating these. Before you create a package you will need to have `setuptools` installed by running `pip install setuptools wheel`
+Next, we will create our Python packages. You can follow the [official Python documentation](https://packaging.python.org/en/latest/tutorials/packaging-projects/) to learn more about creating these. For additional guidance, see [Best Authoring Practices for Creating Python Packages](https://blog.inedo.com/python/packages-authoring-best-practices/) on the Inedo Blog. Before you create a package you will need to have `setuptools` installed by running `pip install setuptools wheel`.
 
 To create a Python package you will need a folder with the necessary project files, including `setup.py`, `README.md`, and `__init__.py`. The a project structure will typically look like this:
 
