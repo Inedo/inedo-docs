@@ -13,23 +13,23 @@ We’ll also discuss how to set up a private repository for using internal R pac
 
 ## Step 1: Create and Name a CRAN Feed
 
-We'll start by creating a CRAN feed that will proxy packages from the [CRAN](https://cran.r-project.org/web/packages/available_packages_by_name.html) repository. You can read more on creating feeds by reading [Creating and Managing Feeds](/docs/proget/feeds/feed-overview#creating-and-managing-feeds)
+We'll start by creating a CRAN feed that will proxy packages from the [CRAN](https://cran.r-project.org/web/packages/available_packages_by_name.html) repository. You can read more on creating feeds by reading [Creating and Managing Feeds](/docs/proget/feeds/feed-overview#creating-and-managing-feeds).
 
 In your ProGet instance, select "Feeds" and "Create New Feed", and select "CRAN Packages".
 
-![](/resources/docs/proget-cran-newfeed.png){height="" width="50%"}
+![CRAN Packages](/resources/docs/proget-cran-newfeed.png){height="" width="50%"}
 
-Then select "Connect to Official CRAN Repository" which will allow us to proxy and cache packages from the [CRAN](https://cran.r-project.org/web/packages/available_packages_by_name.html) repository.
+Then select "Free/Open Source CRAN Packages" which will allow us to proxy and cache packages from the [CRAN](https://cran.r-project.org/web/packages/available_packages_by_name.html) repository.
 
-![](/resources/docs/proget-cran-connector.png){height="" width="50%"}
+![CRAN Connector](/resources/docs/proget-cran-connector.png){height="" width="50%"}
 
-Select "No, Create One Feed", as we will only need a single feed to proxy CRAN packages. You'll then need to name the feed. For this example, we will name it `public-cran`, and then click "Create Feed".
+You'll then need to name the feed. For this example, we will name it `public-cran`, and then select "Create Feed".
 
-![](/resources/docs/proget-cran-publicfeed.png){height="" width="50%"}
+![CRAN Name Public Feed](/resources/docs/proget-cran-publicfeed.png){height="" width="50%"}
 
-We are then presented with several options. More information on these can be found in the [Vulnerability Scanning and Blocking](/docs/proget/sca/vulnerabilities) documentation. Select "Set Feed Features". ProGet will create The `public-cran` feed and redirect you to it. This feed will now be populated with packages proxied from the CRAN public repository.
+ProGet will then create your `public-cran` feed and redirect you to it. This feed will be populated with packages proxied from the CRAN public repository.
 
-![](/resources/docs/proget-cran-feed.png){height="" width="50%"}
+![CRAN Public Feed](/resources/docs/proget-cran-feed.png){height="" width="50%"}
 
 ## Step 2: Adding the Feed to Your Local R Environments { #add-feed }
 
