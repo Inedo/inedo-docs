@@ -6,8 +6,8 @@ order: 1
 With ProGet teams can proxy packages from public repositories such as [Anaconda Packages](https://repo.anaconda.com/) or [Conda Forge](https://conda.anaconda.org/conda-forge) and consume them in their projects as they would if they were pulling from the OSS package repository directly. 
 
 The advantages of using ProGet for this are:
-* ProGet will cache packages allowing teams to access them even when the Anaconda Packages repository is down
-* ProGet will show which packages are being downloaded and used frequently
+* ProGet will cache packages allowing teams to access them even when the Anaconda Packages repository is down.
+* ProGet will show which packages are being downloaded and used frequently.
 
 In this article, we'll explain how to create a ["Feed"](/docs/proget/feeds/feed-overview) in ProGet that will proxy Conda packages from the public OSS Repository. 
 
@@ -19,19 +19,19 @@ First, we will create a Conda feed that will proxy packages from [Anaconda OSS P
 
 Start by selecting "Feeds" and "Create New Feed". Next, select "Conda Packages", as we will be creating feeds to proxy and host Conda packages.
 
-![Select Conda](/resources/docs/proget-conda-newfeed.png){height="" width="50%"}
+![Select Conda Packages](/resources/docs/proget-conda-newfeed.png){height="" width="50%"}
 
-Now select "Connect to Anaconda Packages" which will allow us to proxy packages from the [Anaconda OSS Package Repository](https://repo.anaconda.com/)
+Now select "Free/Open Source Conda Packages" which will allow us to proxy packages from the [Anaconda OSS Package Repository](https://repo.anaconda.com/).
 
-![Connector](/resources/docs/proget-conda-newfeed-connector.png){height="" width="50%"}
+![Create Connector](/resources/docs/proget-conda-newfeed-connector.png){height="" width="50%"}
 
-Then select "No, Create One Feed", as we will be creating a single feed to proxy Conda packages. From here, we name our feed, which in this example we will call `public-conda`. Then click "Create Feed".
+From here, we can name our feed, which in this example we will call `public-conda`. Then select "Create Feed".
 
-![Name Feed](/resources/docs/proget-conda-onefeed-name.png){height="" width="50%"}
+![Name Conda Feed](/resources/docs/proget-conda-ossfeed-name.png){height="" width="50%"}
 
-We are then presented with several options. More information on these can be found in the [Vulnerability Scanning and Blocking](/docs/proget/sca/vulnerabilities) documentation Finally, we select "Set Feed Features", which will create the feed, and redirect us to our `public-conda` feed, now populated with packages proxied from the public OSS Conda repository.
+ProGet will then redirect us to our `public-conda` feed, now populated with packages proxied from the public OSS Conda repository.
 
-![Feed](/resources/docs/proget-conda-publicfeed.png){height="" width="50%"}
+![Public Conda Feed](/resources/docs/proget-conda-publicfeed.png){height="" width="50%"}
 
 ### Step 2: (Optional) Changing your Connector to Conda-Forge
 
