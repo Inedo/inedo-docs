@@ -11,8 +11,6 @@ You could package these files, but they are not versioned by nature, do not requ
 Example: An installer can be used by a configuration script to set up a workstation. The installer is already a self-contained package, so further packaging would be unnecessary; it just needs to be downloaded and run. It could simply be stored in an asset directory and referenced by URL.
 ::: 
 
-
-
 ## Asset Directory
 
 An asset directory is like a [feed](/docs/proget/feeds/feed-overview), except that it contains arbitrary files instead of package files. You can access these files through your web browser and the RESTful API.
