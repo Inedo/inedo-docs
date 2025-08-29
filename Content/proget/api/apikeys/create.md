@@ -19,7 +19,7 @@ The `apikeys create` command set is used to create an ApiKey in a ProGet instanc
 
 There are three commands available (`system`, `personal`, and `feed`), and each command has options that correspond to fields in the web UI, including `--description`, `--expiration`, `--logging`, `--name`, and `--key`. See [Creating API Keys in ProGet](/docs/buildmaster/reference/api/buildmaster-administration-security-api-keys) to learn more.
 
-These commands also have optional `--source` and related authentication options (i.e. `--api-key` or `--username` / `--password`). See [Working with Sources in pgutil](/docs/proget/api/pgutil#working-with-sources) to learn more.
+These commands also have optional `--source` and related authentication options (i.e. `--api-key` or `--username` / `--password`). See [Working with Sources in pgutil](/docs/proget/api/pgutil#working-with-sources) to learn more. For detailed guidance on managing API keys—including tips for Artifactory users—see [How to Manage API Keys in ProGet for Artifactory Users](https://blog.inedo.com/proget-migration/how-to-manage-api-keys-in-proget-for-artifactory-users/) on the Inedo blog.
 
 | Command | Additional Options |  |
 | --- | --- | --- |
