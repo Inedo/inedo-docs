@@ -14,19 +14,19 @@ This article will look at how to set up a feed in ProGet to proxy PyPI packages,
 
 To begin, we will create a PyPI feed that will proxy Python packages from [PyPI](https://pypi.org/). Select "Feeds" and "Create New Feed". Next, select "Python Packages" under "Developer Libraries".
 
-![](/resources/docs/proget-pypi-createfeed.png){height="" width="50%"}
+![PyPI Packages](/resources/docs/proget-pypi-createfeed.png){height="" width="50%"}
 
-Now select "Connect to PyPI.org" which will allow us to proxy packages from PyPI.
+Now select "Free/Open Source Python Packages" which will allow us to proxy packages from PyPI.
 
-![](/resources/docs/proget-pypi-connectors.png){height="" width="50%"}
+![PyPI Connector](/resources/docs/proget-pypi-connectors.png){height="" width="50%"}
 
-Then select "No, Create One Feed", as we will be creating a single feed to proxy PyPI packages. From here, name the feed (we will call it `public-pypi` for this example). Then click "Create Feed".
+From here, name the feed (we will call it `public-pypi` in this example). Then click "Create Feed".
 
-![](/resources/docs/proget-pypi-public-namefeed.png){height="" width="50%"}
+![Name PyPI Feed](/resources/docs/proget-pypi-public-namefeed.png){height="" width="50%"}
 
-The next several options will let your feed use ProGet's [Vulnerability Scanning and Blocking](/docs/proget/sca/vulnerabilities) amd [Licensing Detection and Blocking](https://docs.inedo.com/docs/proget/sca/licenses) features, letting you assess vulnerabilities and create policies for licenses. Select "Set Feed Features", which will create the feed, and redirect you to the newly created `public-pypi` feed, which will list packages proxied from PyPI.
+You will then be redirected to the newly created `public-pypi` feed, which will list packages proxied from PyPI.org
 
-![](/resources/docs/proget-pypi-public-feed.png){height="" width="50%"}
+![Public PyPI Feed](/resources/docs/proget-pypi-public-feed.png){height="" width="50%"}
 
 ## Step 2: Using the Feed in Python Clients { #add-feed }
 
