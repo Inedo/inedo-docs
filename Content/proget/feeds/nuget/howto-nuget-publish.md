@@ -7,8 +7,6 @@ ProGet let's you set up private NuGet repositories that will allow you to publis
 
 This guide will walk you through the process of setting up a NuGet ["Feed"](/docs/proget/feeds/feed-overview) in ProGet as a private, custom repository. We'll also cover how to create, push, and install NuGet packages from this repository.
 
-For guidance on scaling your internal NuGet packages, see [Best Practices for Authoring Private NuGet Packages at Scale](https://blog.inedo.com/nuget/best-practices-internal-nuget-packages/) on the Inedo blog.
-
 ## Step 1: Create and Name a NuGet Feed { #create-feed }
 
 Start by creating a NuGet feed to host your internal packages. Navigate to "Feeds" and "Create New Feed". Then select "NuGet (.NET) Packages".
@@ -66,6 +64,7 @@ Then run the following to create the package:
 ```bash
 $ dotnet pack --configuration Release 
 ```
+For more on best practices for [managing your internal NuGet packages](https://blog.inedo.com/nuget/best-practices-internal-nuget-packages/) you can read our article on the Inedo blog.
 
 ## Step 3: Adding the Feed as a Source { #add-feed }
 
