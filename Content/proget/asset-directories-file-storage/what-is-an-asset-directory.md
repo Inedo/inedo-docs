@@ -3,7 +3,7 @@ title: "What is an Asset Directory?"
 order: 1
 ---
 
-ProGet provides a robust infrastructure for hosting and distributing your application and component packages, and often it can be useful to distribute assets associated with those packages (such as certificate files, third-party installers, license key files, and so on) in ProGet as well.
+ProGet provides a [robust infrastructure for hosting and distributing your application and component packages](https://inedo.com/proget/features), and often it can be useful to distribute assets associated with those packages (such as certificate files, third-party installers, license key files, and so on) in ProGet as well.
 
 You could package these files, but they are not versioned by nature, do not require additional metadata, and packing and unpacking them would cause additional and unnecessary steps. Sometimes a file is just a file, and ProGet asset directories provide the versatility of a file share with the added benefit of security and stability features such as [scoped privileges](/docs/proget/administration-security), retention policies, automatic failover, and feed replication. Setting up an asset directory in ProGet and [migrating from a network share](/docs/proget/asset-directories-file-storage/proget-howto-migrating-from-a-network-share-to-hosted-files) is straightforward. 
 
