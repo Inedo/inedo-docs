@@ -20,7 +20,7 @@ When migrating a full ProGet installation, you should migrate to the same versio
         - You can find these by looking in the _Advanced Settings_ for the key `Storage.PackagesRootPath`.
     4. If you want your exact extensions and versions, then also back up your extensions directory.
         - You can find this in the _Advanced Settings_ and looking for the key `Extensions.ExtensionsPath`.
-2. Install ProGet on the new server. We recommend installing the same version as the one installed on your old server.
+2. [Install ProGet](https://inedo.com/proget/download) on the new server. We recommend installing the same version as the one installed on your old server.
 3. If you are changing to a new database server, restore the database to your new database server.
     - If your database name or SQL server name is different from what you installed with on the new server, you will need to update your connection string to point to that database in the  [shared config](/docs/installation/configuration-files).
     - You may need to re-add the user to the database that your website and service use to access the database.
