@@ -23,6 +23,8 @@ Container Versioning may be enabled on a registry-by-registry basis on the Manag
 
 After activation, ProGet only allows tags that conform to the three-part SemVer format (e.g. 3.4.1, 4.0.1, 2.4.1-beta.1, etc.) or are listed in the "Permitted tags" list. Note that existing tags in the repository are not affected by this, nor are tags coming via feed replication.
 
+For additional guidance on organizing Docker repositories in ProGet, see [How to Manage Docker Repositories in ProGet for Artifactory Users](https://blog.inedo.com/proget-migration/how-to-manage-docker-repositories-in-proget-for-artifactory-users/) on the Inedo blog.
+
 ## Virtual Release Number Tags
 
 When Container Versioning is enabled, ProGet automatically manages certain tags for you.
