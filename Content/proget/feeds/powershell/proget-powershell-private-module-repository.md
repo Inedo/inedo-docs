@@ -73,6 +73,7 @@ Using our `Foobar.psm1` example we would type:
 ```powershell
 New-ModuleManifest -Path "C:\Foobar\Foobar.psd1" -Author Inedo -Description "Contains functions that will write Foobar to the console and debug" -PassThru
 ```
+While building modules, consider how your team can adopt and leverage them. You can read more about [making modules more effective across your organization](https://blog.inedo.com/powershell/level-up/) on the Inedo blog.
 
 ## Step 3: Publish Your Module to ProGet
 
