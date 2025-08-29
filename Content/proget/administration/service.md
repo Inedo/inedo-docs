@@ -4,7 +4,7 @@ nav-title: "Service Executable"
 order: 3
 ---
 
-The ProGet Service runs the [Integrated Web Server](/docs/installation/windows/web) and performs a variety of background tasks such as health checks, replication, vulnerability scanning, and package cleanup. 
+The ProGet Service runs the [Integrated Web Server](/docs/installation/windows/web) and performs a variety of background tasks such as health checks, replication, vulnerability scanning, and package cleanup, among many other [features in ProGet](https://inedo.com/proget/features).
 
 On Linux, this ProGet Service is the entrypoint for the container image and requires no specialized configuration.
 
