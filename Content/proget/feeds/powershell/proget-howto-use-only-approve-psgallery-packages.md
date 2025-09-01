@@ -10,45 +10,77 @@ By default, PowerShell attempts to pull and publish from `powershellgallery.com`
 
 This article will run through a standard example scenario of a company, Kramerica, configuring ProGet to create a [package approval workflow](https://blog.inedo.com/nuget/package-approval-workflow) to ensure only approved packages from the PowerShell Gallery are available for all the operation team to use. This configuration would also allow the feed to be used offline.
 
-## Step 1: Create new feeds
+## Step 1: Create an Unapproved Package Feed.
 
-The first thing we need to do is create two "PowerShell" feeds, one for unapproved packages, and the other for approved packages that have been promoted.
-
-We start by selecting "Feeds" and "Create New Feed".
+In this guide we'll need to create two "PowerShell" feeds, one for unapproved packages, and the other for approved packages that have been promoted. We'll start by creating the "unapproved" feed to proxy open source packages from PowerShell Gallery. Start by selecting "Feeds" and "Create New Feed".
 
 ![Create New Feed](/resources/docs/proget-feeds-createnewfeed.png){height="" width="50%"}
 
 Next, we need to select "PowerShell Modules" as we will be using packages from "PowerShell Gallery".
 
-![Create Powershell Feeds](/resources/docs/proget-feeds-powershellselect.png){height="" width="50%"}
+![Create Powershell Feed](/resources/docs/proget-feeds-powershellselect.png){height="" width="50%"}
 
-## Step 2: Configure the feeds
-
-After selecting the feed type, we’ll specify that the feed will connect directly to "PowerShell Gallery".
+After selecting the feed type, select "Free/Open Source PowerShell Modules" to connect directly to PowerShell Gallery.
 
 ![PowerShell Gallery](/resources/docs/proget-powershell-connecttoorg.png){height="" width="50%"}
 
-We then select "Yes, Create Two Feeds", as for a package to be promoted from one feed to another, there must be multiple feeds.
+From here, name the feed. In this case we'll call it `unapproved-powershell`.
 
-In this example, we will create an `unapproved-powershell` feed where unverified packages from "PowerShell Gallery" will be stored, and an `approved-powershell` feed for our packages to be promoted to.
+![Name Unapproved Feed](/resources/docs/proget-powershell-nameunapproved.png){height="" width="50%"}
 
-![Create Two Feeds](/resources/docs/proget-feeds-twofeeds.png){height="" width="50%"}
+Select "Create New Feed" to be redirected to your empty `unapproved-powershell` feed, now populated with packages from PowerShell Gallery.
 
-## Step 3: Naming our feeds
+![Unapproved Feed](/resources/docs/proget-powershell-unapprovedfeed.png){height="" width="50%"}
 
-From here, we name our feeds as specified above, and then click "Create Feeds".
+### Step 2: Create an Approved Package Feed
 
-![Name Feeds](/resources/docs/proget-powershell-namefeeds.png){height="" width="50%"}
+Next, we'll create a feed to promote package that have been assessed and approved. Once again, select "Feeds", "Create New Feed", and "PowerShell Modules". Now you will be able to select "Validated/promoted PowerShell Modules".
 
-We are then presented with several options. More information on these can be found in the [Vulnerability Scanning and Blocking](/docs/proget/sca/vulnerabilities) documentation.
+![Approved Packages](/resources/docs/proget-powershell-validated.png){height="" width="50%"}
 
-![Feed Options](/resources/docs/proget-powershell-newfeedoptions.png){height="" width="50%"}
+Once again, name the feed. Here, we'll call it `approved-powershell`.
 
-Finally, we select [Set Feed Features], which will create the feeds, and redirect us to our `unapproved-powershell` feed, now populated with packages from "PowerShell Gallery".
+![Name Approved Feed](/resources/docs/proget-powershell-nameapproved.png){height="" width="50%"}
 
-![Feed Details](/resources/docs/proget-powershellunapproved-feed.png){height="" width="50%"}
+Select "Create New Feed" to be redirected to your empty `approved-powershell` feed.
 
-## Step 4: Set Permissions
+![Approved Feed](/resources/docs/proget-powershell-approvedfeed.png){height="" width="50%"}
+
+## Step 3: Promoting Packages
+
+Now both your unapproved and approved PowerShell feeds are created, you can promote verified modules to your approved feed.
+
+First, locate the module and version you wish to promote in your `unapproved-powershell` feed. On the module overview page access the drop-down menu, and select "Promote Package".
+
+![Promote Module](/resources/docs/proget-powershell-promotemodule.png){height="" width="50%"}
+
+You will then be presented with your existing PowerShell feeds and can choose which one to promote the module to. You can also add a comment to provide a reason for promoting the module.
+
+In this case, we'll choose our `approved-powershell` feed, and select "promote".
+
+![Choose Approved Feed](/resources/docs/proget-powershell-choosefeed.png){height="" width="50%"}
+
+Navigating to our `approved-powershell` feed, we can see that the module has been successfully promoted to the feed.
+
+![Approved Module](/resources/docs/proget-powershell-approvedmodule.png){height="" width="50%"}
+
+### Optional: Configure 'approved-powershell` as the Promotion Target
+
+An alternative option is to configure `approved-powershell` as specific target to promote to. This way, modules from the `unapproved-powershell` feed can only be promoted to a singular approved feed that you have specified.
+
+To do this, navigate to the "Feed Properties" tab in `unapproved-powershell`. In the "Other settings" menu navigate to "Promote To Feed" and select "change".
+
+![Promote To Feed](/resources/docs/proget-powershell-feedproperties-promotetofeed.png){height="" width="50%"}
+
+Choose your `approved-powershell` feed from the drop-down menu and select "Save".
+
+![Set Feed](/resources/docs/proget-powershell-feedproperties-setfeed.png){height="" width="50%"}
+
+Now when promoting packages from your `unapproved-powershell` feed, you'll only have the option to promote to the specified approved feed.
+
+![Approved Feed Options](/resources/docs/proget-powershell-singlefeed.png){height="" width="50%"}
+
+## Step 3: Set Permissions
 
 There are many ways to [configure security access controls for uses and groups](/docs/proget/administration-security) in ProGet. In this example, we want to permit only network engineers to promote packages in the `approved-powershell` feed, since they're trained to check the quality, licenses, and vulnerabilities of open-source packages. To ensure this rule, we'll set up a new permission. By default, only administrators have assigned permissions.
 
@@ -72,9 +104,9 @@ After saving these two privileges, the task overview page looks like this:
 
 ![Permissions Overview](/resources/docs/proget-admin-taskspermissions-powershelladded.png){height="" width="50%"}
 
-## How to Use Your PowerShell Feed
+## Step 4: Configure Your Feeds with PowerShell
 
-To use this newly created feed, we first need to find the endpoint URL on the Feed Overview page and register it as a source.
+To use this newly created feed with PowerShell, we first need to find the endpoint URL on the Feed Overview page and register it as a source.
 
 ![PowerShell Endpoint](/resources/docs/proget-powershell-endpoint.png){height="" width="50%"}
 
@@ -91,14 +123,13 @@ We can find the required line already set for us by selecting "Set Up PowerShell
 
 However, PowerShell will try to pull modules from the PowerShell Gallery, so we need to unregister it using the `Unregister-PSRepository` cmdlet. That only requires one parameter (`Name`), which is `PSGallery` by default.
 
-### Example
-
-For example, using the feed names we created earlier:
+:::(Info)(Example: Configuring your Feeds with PowerShell
 
 ```powershell
 Register-PSRepository -Name approved-powershell -SourceLocation https://«host-name»/nuget/approved-powershell
 Unregister-PSRepository -Name PSGallery
 ```
+:::
 
 After that, PowerShell will only use the approved packages feed for modules, without needing to access the public PowerShell Gallery.
 
