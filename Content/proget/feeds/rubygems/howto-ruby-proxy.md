@@ -8,7 +8,7 @@ ProGet lets you create ["Feeds"](/docs/proget/feeds/feed-overview) that can be c
 The advantages of using ProGet as a source to proxy gems are:
 * ProGet will cache gems, allowing teams to access them even when RubyGems.org is down.
 * ProGet will show which gems are being downloaded and used frequently.
-* You can view and assess the licenses, vulnerabilities and the quality of the gems in your projects.
+* You can view and assess licenses, vulnerabilities and quality of the gems in your projects.
 
 In this article, we'll explain how to create a feed in ProGet that will proxy packages from RubyGems.org and then configure it as a source in your local Ruby environment, or add it as a source in a `Gemfile`.
 
