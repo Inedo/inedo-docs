@@ -22,7 +22,7 @@ In your ProGet instance, select "Feeds" and "Create New Feed", and select "RubyG
 
 ![Create RubyGems Feed](/resources/docs/proget-feeds-rubygemsselect.png){height="" width="50%"}
 
-Then select "Free/Open SOurce RubyGems" which will allow us to proxy and cache packages from the RubyGems.org.
+Then select "Free/Open Source RubyGems" which will allow us to proxy and cache packages from the RubyGems.org.
 
 ![RubyGems Connector](/resources/docs/proget-ruby-connectoorg.png){height="" width="50%"}
 
