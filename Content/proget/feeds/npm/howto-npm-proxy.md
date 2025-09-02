@@ -31,24 +31,38 @@ ProGet will then redirect you to the newly created `public-npm` feed. Currently,
 For your team to install packages from the `public-npm` feed, you'll need to add it as a source in their npm clients. For this, you will need feed's URL. This can be found at the top right of the feed's page.
 ![](/resources/docs/proget-npm-public-url.png){height="" width="50%"}
 Now configure your npm client with your `public-npm` feed with `npm config`: 
+
 ```bash
 $ npm config set registry http://«proget-url»/npm/«feed-name»
 ```
+
 Or using yarn with `yarn config`:
+
 ```bash
 $ yarn config set registry http://«proget-url»/npm/«feed-name»
 ```
+
 You can confirm that the feed has been set correctly by using `npm get registry` for npm, `yarn config get registry` for Yarn.
+
 ## Step 3: (Optional) Authenticating to Your npm Feed
+
 By default your `public-npm` feed does not require authentication and can be viewed anonymously. However, you may want to make your feed private and require authentication to access. Authentication is done by creating an `_auth` token and then [configuring it in your npm client](/docs/proget/feeds/npm#authenticating-to-npm-feeds).
+
 ## (Optional) Auditing npm Packages { #scan-feed }
+
 If you enabled "Scan for Security Vulnerabilities" when you [created a feed](#create-feed) you can use npm-audit to scan for vulnerabilities in packages by simply running either `npm audit` or `yarn audit`.
+
 Using `npm audit` with [Vulnerability Scanning and Blocking](/docs/proget/sca/vulnerabilities), lets you assess vulnerabilities in packages, and how they impact your organization.
+
 You can also set up [Policies & Compliance Rules](https://docs.inedo.com/docs/proget/sca/policies) to create rules for vulnerabilities, licenses, deprecated packages, etc. Setting these up lets you block any packages that are considered "noncompliant".
+
 ## (Optional) Creating a Package Approval Flow
+
 In this guide we looked at proxying packages from the npm Registry. However, with no form of approval, developers will be able to install any OSS packages without oversight. In many cases, it's important to include some form of oversight in development or production, which can be done by creating a ["Package Approval Flow"](/docs/proget/packages/package-promotion).
+
 To set up a package approval flow, refer to [HOWTO: Approve and Promote Open-source Packages](/docs/proget/packages/package-promotion/proget-howto-promote-packages). This guide uses NuGet feeds as an example, but the steps are identical when creating npm package feeds.
 After creating your "Unapproved" and "Approved" feeds, follow the steps in ["Add the Feed to npm Cients"](#add-feed) to add the "Approved" feed (e.g. `npm-approved`) as a source in your npm client using `npm config`:
+
 ```bash
 $ npm config set registry http://«proget-url»/npm/npm-approved
 ```
