@@ -32,6 +32,7 @@ ProGet will then redirect you to the newly created `public-npm` feed. Currently,
 ## Step 2: Add the Feed to npm Clients { #add-feed }
 
 For your team to install packages from the `public-npm` feed, you'll need to add it as a source in their npm clients. For this, you will need feed's URL. This can be found at the top right of the feed's page.
+
 ![](/resources/docs/proget-npm-public-url.png){height="" width="50%"}
 
 Now configure your npm client with your `public-npm` feed with `npm config`: 
@@ -65,6 +66,7 @@ You can also set up [Policies & Compliance Rules](https://docs.inedo.com/docs/pr
 In this guide we looked at proxying packages from the npm Registry. However, with no form of approval, developers will be able to install any OSS packages without oversight. In many cases, it's important to include some form of oversight in development or production, which can be done by creating a ["Package Approval Flow"](/docs/proget/packages/package-promotion).
 
 To set up a package approval flow, refer to [HOWTO: Approve and Promote Open-source Packages](/docs/proget/packages/package-promotion/proget-howto-promote-packages). This guide uses NuGet feeds as an example, but the steps are identical when creating npm package feeds.
+
 After creating your "Unapproved" and "Approved" feeds, follow the steps in ["Add the Feed to npm Cients"](#add-feed) to add the "Approved" feed (e.g. `npm-approved`) as a source in your npm client using `npm config`:
 
 ```bash
