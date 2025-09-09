@@ -136,6 +136,7 @@ These volumes are not required or commonly used.
 * `/var/«inedo-product»/extensions` stores [custom extensions](/docs/inedosdk)
 * `/usr/local/share/ca-certificates` store the certificates to be included in the container's certificate authority, which may be required when your Inedo product needs to connect to a server with self-signed certificates 
 * `/var/«inedo-product»/ssl` store the certificates used in [native SSL bindings](/docs/installation/linux/https-support), which is not a recommended configuration
+* `/var/«inedo-product»/logs` stores the [HTTP request log](/docs/installation/logging/http-request-logging) files
 
 
 ## Supported Environment Variables
