@@ -95,7 +95,7 @@ We've also heard /pəˈɡʌtəl/ ("puh-guh-tuhl") and /piːˈɡjuːtɪl/ ("pee-G
 
 ## Working with Sources { #sources }
 
-To help manage urls, feeds, and credentials (API keys), you can register one or more "sources" with `pgutil`. These sources are stored in the configuration file located at `%appdata%\pgutil\pgutil.config` (Windows) and `~/.config/pgutil/pgutil.config` (Mac/Linux).
+To help manage urls, feeds, and credentials (API keys), you can register one or more "sources" with `pgutil`. These sources are stored in the configuration file located at `%appdata%\pgutil\pgutil.config` (Windows) and `~/pgutil/pgutil.config` (Mac/Linux).
 
 ### Adding Sources to pgutil { #sources-add }
 
