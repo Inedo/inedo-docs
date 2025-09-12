@@ -43,7 +43,7 @@ To learn more about how to use these tools, see our guide on [Backing Up and Res
 
 ### PostgreSQL (ProGet 2025+ Only)
 
-ProGet 2025+ can use PostgreSQL instead of SQL Server. The database is relatively easy to back-up using the built-in backup job (Admin > Databae Overview) or with the `inedodb backup` CLI command. See [PostgreSQL Database Backup and Restore](/docs/installation/postgresql#backup) to learn more.
+ProGet 2025+ can use PostgreSQL instead of SQL Server. The database is relatively easy to back-up using the built-in backup job (Admin > Database Overview) or with the `inedodb backup` CLI command. See [PostgreSQL Database Backup and Restore](/docs/installation/postgresql#backup) to learn more.
 
 ## Package Files Backup
 ::: (warning)
