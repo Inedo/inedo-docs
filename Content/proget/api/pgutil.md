@@ -117,7 +117,7 @@ A source named "Default" has special behavior. When a source name is not specifi
 
 #### Passwords and Encryption
 
-Unless you specify the `--plain-text` option, Passwords and API Keys will not be stored in plain text. Instead, they will be  obscured from casual consumption using a Data Protection scheme . However, note that anyone with `pgutil` will be able to read and decode the password or API key.
+Unless you specify the `--plain-text` option, Passwords and API Keys will not be stored in plain text. Instead, they will be obscured from casual consumption using a data protection scheme. However, note that anyone with `pgutil` will be able to read and decode the password or API key.
 
 ### Listing Sources { #sources-list }
 
