@@ -189,3 +189,7 @@ The `ASPNETCORE_URLS` variable can override the default listening ports (80, 443
 
 See our [Troubleshooting Guide for rootless containers](/docs/installation/linux/installation-troubleshooting-docker-installations#root-less-containers) to learn more. 
 
+The `ENABLE_REQUEST_LOGGING` environment variable can be set to `true` to enable [HTTP request logging](/docs/installation/logging/http-request-logging). For example:
+```
+-e ENABLE_REQUEST_LOGGING='true'
+```

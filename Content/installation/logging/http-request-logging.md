@@ -3,7 +3,7 @@ title: "HTTP Request Logging"
 order: 1
 ---
 
-Beginning with ProGet 2025.10, the Integrated Web Server now supports W3C HTTP Request logging. By enabling HTTP Request logging, ProGet will log all HTTP request information to a log file in the W3C Extended Log File Format. This log file can be used for auditing, monitoring, and troubleshooting purposes.
+Beginning with ProGet 2025.11, the Integrated Web Server now supports W3C HTTP Request logging. By enabling HTTP Request logging, ProGet will log all HTTP request information to a log file in the W3C Extended Log File Format. This log file can be used for auditing, monitoring, and troubleshooting purposes.
 
 ## Enabling HTTP Request Logging
 
@@ -17,7 +17,7 @@ It is not recommended to change the log file path when running on Linux.  The Li
 
 ## Log File Management
 
-Log files will grow to a maximum size of 512MB and ProGet will retain up to 6 log files.  When the maximum size is reached, ProGet will create a new log file and delete the oldest log file if there are more than 6 log files.
+Log files will grow to a maximum size of 5MB and ProGet will retain up to 60 log files.  When the maximum size is reached, ProGet will create a new log file and delete the oldest log file if there are more than 60 log files.
 
 ## Log File Format
 The log files are stored in the W3C Extended Log File Format, which is a standard format for logging HTTP requests. Each log file contains a header section that describes the fields in the log file, followed by a series of log entries, one per line. Each log entry contains the following fields.  If a value is not available, a hyphen (-) will be used.
