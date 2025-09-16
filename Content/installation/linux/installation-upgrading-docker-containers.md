@@ -79,13 +79,13 @@ The ProGet container will automatically upgrade the database when starting up; t
 If you  run the following command in the ProGet container instead of the normal starting process, the database will be updated, and then the process will exit.
 
 ```
-ProGet.Service.exe upgradedb
+proget.exe upgradedb
 ```
 
 Or the following in the docker image:
 
 ```
-/usr/local/proget/service/ProGet.Service upgradedb
+/usr/local/proget/service/proget upgradedb
 ```
 
 There's some examples on [QA#3410](https://forums.inedo.com/topic/3140/proget-manual-database-upgrade-docker-kubernetes) for how to use this with Kubernetes.
