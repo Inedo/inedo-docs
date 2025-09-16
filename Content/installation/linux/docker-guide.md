@@ -136,6 +136,7 @@ These volumes are not required or commonly used.
 * `/var/«inedo-product»/extensions` stores [custom extensions](/docs/inedosdk)
 * `/usr/local/share/ca-certificates` store the certificates to be included in the container's certificate authority, which may be required when your Inedo product needs to connect to a server with self-signed certificates 
 * `/var/«inedo-product»/ssl` store the certificates used in [native SSL bindings](/docs/installation/linux/https-support), which is not a recommended configuration
+* `/var/«inedo-product»/logs` stores the [HTTP request log](/docs/installation/logging/http-request-logging) files
 
 
 ## Supported Environment Variables
@@ -188,3 +189,7 @@ The `ASPNETCORE_URLS` variable can override the default listening ports (80, 443
 
 See our [Troubleshooting Guide for rootless containers](/docs/installation/linux/installation-troubleshooting-docker-installations#root-less-containers) to learn more. 
 
+The `ENABLE_REQUEST_LOGGING` environment variable can be set to `true` to enable [HTTP request logging](/docs/installation/logging/http-request-logging). For example:
+```
+-e ENABLE_REQUEST_LOGGING='true'
+```

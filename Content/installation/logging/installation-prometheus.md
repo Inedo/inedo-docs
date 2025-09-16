@@ -1,6 +1,6 @@
 ---
 title: "Prometheus - Installation & Integration"
-order: 1
+order: 3
 ---
 
 Prometheus, an open-source monitoring and alerting system, can be used to provide  insights and observability into Inedo products' performance and health. By integrating Prometheus with Inedo products, users can gain real-time visibility into metrics, detect anomalies, and address issues.

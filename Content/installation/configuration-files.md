@@ -55,6 +55,8 @@ The `WebServer` element contains multiple attributes that controls how your Ined
 | **AllowInvalid** | `true/false` | Whether to allow invalid certificates, like self-signed certificates, to be loaded |
 | **IntegratedAuthenticationEnabled** | `true/false` | Enables integrated windows authentication *(ProGet 2024.30+ only)* |
 | **UseHttpsRedirection** | `true/false` | When HTTPS is enabled, redirect HTTP port to HTTPS port *(ProGet 2024.30+ only)* |
+| **EnableRequestLogging** | `true/false` | Enables HTTP request logging *(ProGet 2025.10+ only)* |
+| **RequestLoggingDirectory** | `string` | The directory where request logs will be stored *(ProGet 2025.10+ only)* |
 
 :::(Info)(Note:)
 `Thumbprint` and `Subject` cannot be used at the same time.  If both are specified, only `Thumbprint` will be used.

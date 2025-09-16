@@ -1,5 +1,6 @@
 ---
 title: "Diagnostic Center"
+order: 1
 ---
 
 The Diagnostic Center can be found under the Administration section in BuildMaster, ProGet, and Otter. It displays system messages that may help you troubleshoot a recent problem that you've encountered in the product, such as a "500 Server Error" or other unexpected messages.
