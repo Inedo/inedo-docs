@@ -16,8 +16,6 @@ This feature is limited in ProGet Free. Compare [features by edition](/docs/prog
 ## How to Promote an Image
 There are two ways to promote an image, using the _Promote_ button on the repository's tag page in ProGet or an API call. Any images that are promoted to a target registry are __not__ deleted from the source registry.  
 
-Currently, images that use ["fat" manifests](https://docs.docker.com/registry/spec/manifest-v2-2/) cannot be promoted. You will need to recreate and push those images through the docker CLI to your target registry.
-
 ### Creating a Validated/Promoted Docker Registry 
 
 Any registry can be used as a validated/promoted Docker registry, but best practice is to create a separate registry that contains only promoted internal images and verified external images. When creating your new Docker registry, select the _validated/promoted_ feed usage type.
