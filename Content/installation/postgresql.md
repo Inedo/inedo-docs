@@ -35,13 +35,13 @@ For Embedded databases, these commands are run using the product's main executab
 To backup, simply run `«product-cli» database dump ` to create a time stamped archive in the current working directory, optionally with the `outfile` argument. For example, to backup ProGet:
 
 ```bash
-$ proget database dump --outfile=/var/backups/proget-20250812-1308.ahpak
+$ proget database dump --file=/var/backups/proget-20250812-1308.ahbak
 ```
 
 To restore, you can use the `restore` command while specifying an `file`. For example:
 
 ```bash
-$ proget database restore --file=/var/backups/proget-20250812-1308.ahpak
+$ proget database restore --file=/var/backups/proget-20250812-1308.ahbak
 ```
 
 ### InedoDB Commands
@@ -51,13 +51,13 @@ InedoDB includes a `inedodb` CLI utility to run these commands.
 To backup, simply run `inedodb dump «product-name»` to create a time stamped archive in the current working directory, optionally with the `outfile` argument. For example, to backup ProGet:
 
 ```bash
-$ inedodb dump proget --outfile=/var/backups/proget-20250812-1308.ahpak
+$ inedodb dump proget --outfile=/var/backups/proget-20250812-1308.ahbak
 ```
 
 To restore, you can use the `restore` command while specifying an `infile`. For example:
 
 ```bash
-$ inedodb restore proget --infile=/var/backups/proget-20250812-1308.ahpak
+$ inedodb restore proget --infile=/var/backups/proget-20250812-1308.ahbak
 ```
 
 ### PostgreSQL Commands
