@@ -160,6 +160,48 @@ We support querying databases but we do not offer support for writing to them. T
 
 If you wish to gain a better understanding of the structure or seek other support, we welcome you to contact our engineers through our [Support Page](https://inedo.com/support) for any assistance or inquiries you may have.
 
+### Querying The Database Using the CLI
+
+You can query the PostgreSQL database using the `query` operation in the product's main executable (e.g. `proget` or `proget.exe`) in the program directory.  The `query` operation takes a `--file` argument that points to a `.sql` file containing the SQL query and will print the results in CSV format to the standard output.  It uses the product's configured PostgreSQL connection string to execute **read-only** queries against the PostgreSQL database.  Example: `proget query --file=myquery.sql`
+
+:::(Info)(Note:)
+The `query` operation is typically only used for troubleshooting or support purposes. It is not intended to be a general-purpose SQL query tool.
+:::
+
+#### Example: Query for a list of feeds to a file on Windows
+
+1. Create a file named `list-feeds.sql` with the following contents:
+
+    ```sql
+    SELECT "Feed_Id","Feed_Name", "Feed_Description", "Active_Indicator", "FeedType_Name"
+    FROM Feeds
+    ORDER BY Name;
+    ```
+2. Run the following command from a command prompt in the ProGet program directory:
+
+    ```bash
+    proget query --file=list-feeds.sql > list-feeds.csv
+    ```
+
+#### Example: Query for a list of feeds to a file on Docker
+
+1. Connect to the ProGet container interactively
+
+    ```bash
+    docker exec -it «NAME_OF_PROGET_CONTAINER» bash
+    ```
+1. Create a file named `/home/list-feeds.sql` with the following contents:
+
+    ```sql
+    SELECT "Feed_Id","Feed_Name", "Feed_Description", "Active_Indicator", "FeedType_Name"
+    FROM Feeds
+    ORDER BY Name;
+    ```
+3. Run the following command from a command prompt in the ProGet program directory:
+
+    ```bash
+    ./usr/local/proget/service/proget query --file="/home/list-feeds.sql" > "/home/list-feeds.csv"
+    ```
 
 ## Database Import & Export
 
