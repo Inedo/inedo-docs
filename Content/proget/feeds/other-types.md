@@ -103,6 +103,11 @@ We've had a few requests for these, but there doesn't seem to be a package manag
 
 A few of our users simply use universal packages for Go libraries.
 
+### 🔎 MCP Registry
+
+This is currently [in discussion on the forums](https://forums.inedo.com/topic/5561); with GitHub Copilot we can provide and url for a MCP registry to use a [white list](https://docs.github.com/en/copilot/how-tos/administer-copilot/configure-mcp-server-access)
+Exemple of the [A community driven registry service for Model Context Protocol (MCP) servers](https://github.com/modelcontextprotocol/registry)
+
 ### Other types?
 
 These are the third-party that we know about but there are certainly more. Let us know by posting something in our [forums](https://forums.inedo.com/); we can link to it from this page, and track it fairly easily. 
