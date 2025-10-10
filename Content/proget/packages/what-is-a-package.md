@@ -31,7 +31,7 @@ With ProGet, you get much more than just a place to store packages:
 - [Policies and Compliance Rules](/docs/proget/sca/policies)
 - [Vulnerability Scanning](/docs/proget/sca/vulnerabilities)
 - [License Detection](/docs/proget/sca/licenses)
-- [Cloud Storage](/docs/proget/advanced-features/proget-advanced-cloud-storage)
+- [Cloud Storage](/docs/proget/cloud-storage)
 - And much more
 
 In the rest of this page, you will learn more about what packages are, how to use them, and common questions. Looking for a specific package type? You can find the documentation for the different package types in the menu on the left side under "Feeds Types & Third-Party Packages"

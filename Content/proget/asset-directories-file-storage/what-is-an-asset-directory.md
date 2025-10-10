@@ -20,7 +20,7 @@ An asset directory is like a [feed](/docs/proget/feeds/feed-overview), except th
 Internally, asset directories are represented as feeds, which means:
 
 - feed-scoped privileges can be applied on asset directories
-- you can configure [cloud package storage](/docs/proget/advanced-features/proget-advanced-cloud-storage) for [Amazon S3](/docs/proget/advanced-features/proget-howto-amazon-s3-ui) and [Azure Blob storage](/docs/proget/advanced-features/proget-howto-azure-blob-ui)
+- you can configure [cloud package storage](/docs/proget/cloud-storage) for [Amazon S3](/docs/proget/cloud-storage/howto-configure-feed-for-s3), [Google Cloud](/docs/proget/cloud-storage/howto-configure-feed-for-google-cloud) and [Azure Blob storage](/docs/proget/cloud-storage/howto-configure-feed-for-azure-blob)
 - you can use [feed replication](/docs/proget/replication-feed-mirroring/proget-advanced-feed-replication) just like regular feeds
 - [retention policies](/docs/proget/administration/retention-rules) work just like regular feeds, except version number-based policies do not apply
 - the asset directory name cannot be the same as another feed name
@@ -50,7 +50,7 @@ These options can be found by clicking on the _Add/Upload Files_ button in the u
 - Import from Azure: Download files stored in the cloud to this asset directory (**Requires ProGet v6.0+ and the Azure Extension**).
 
 :::(Info) 
-Read how to use ProGet as a User-Interface for [Amazon S3](/docs/proget/advanced-features/proget-howto-amazon-s3-ui) and [Azure Blog Storage](/docs/proget/advanced-features/proget-howto-azure-blob-ui) in our step-by-step guides.
+Read how to use ProGet as a User-Interface for [Amazon S3](/docs/proget/cloud-storage/proget-howto-amazon-s3-ui) and [Azure Blog Storage](/docs/proget/cloud-storage/proget-howto-azure-blob-ui) in our step-by-step guides.
 :::
 
 #### Import from a Drop Path

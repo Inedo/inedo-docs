@@ -15,7 +15,7 @@ Using ProGet as the front end of an S3 bucket reduces security risks because you
 This tutorial explains how to configure an asset directory to use S3 buckets as storage, allowing ProGet to act as a user interface for AWS S3.
 
 :::(Info) (Configure A ProGet Feed to Use Amazon S3)
-To use Amazon S3 in a ProGet **Feed** (not an asset directory) check out our tutorial f[or configuring a new Feed with an S3 Bucket](/docs/proget/advanced-features/proget-howto-configure-feed-for-s3). 
+To use Amazon S3 in a ProGet **Feed** (not an asset directory) check out our tutorial f[or configuring a new Feed with an S3 Bucket](/docs/proget/cloud-storage/howto-configure-feed-for-s3). 
 :::
 
 ## Step 1: Login to your AWS Management Console

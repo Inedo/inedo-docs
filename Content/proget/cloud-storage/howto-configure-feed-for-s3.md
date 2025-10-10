@@ -9,7 +9,7 @@ ProGet can use Amazon's S3 Cloud to store your package files instead of using yo
 In this article, you will learn how to create an S3 bucket and then use it to store packages in a new feed in ProGet.
 
 :::(Info) (Migrating an Existing Feed?)
-This guide will walk you through creating a new feed. If you have an existing feed that you want to migrate to Amazon S3, read our [migrating an existing feed docs](/docs/proget/advanced-features/proget-advanced-cloud-storage#migrating-an-existing-feed).
+This guide will walk you through creating a new feed. If you have an existing feed that you want to migrate to Amazon S3, read our [migrating an existing feed docs](/docs/proget/cloud-storage#migrating-an-existing-feed).
 :::
 
 ## Step 1: Login or Create an Amazon AWS Account.
@@ -67,7 +67,7 @@ Since we are setting up a NuGet feed to use an Amazon S3 bucket, we are configur
 * **Region Endpoint**: Enter the region endpoint you set up in step 2. In our example, the region endpoint is us-east-2.
 * **Bucket**: Enter the name of the bucket you created. In our example, we named the bucket kramerica.
 
-Thats all you need to configure a new feed to use an Amazon S3 bucket! For details on all of the configuration options, check out our docs on [Cloud Package Stores](/docs/proget/advanced-features/proget-advanced-cloud-storage).
+Thats all you need to configure a new feed to use an Amazon S3 bucket! For details on all of the configuration options, check out our docs on [Cloud Package Stores](/docs/proget/cloud-storage).
 
 
 :::(Info) (Can't find the needed information to fill out a tab?)

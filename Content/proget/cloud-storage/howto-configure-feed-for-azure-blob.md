@@ -9,7 +9,7 @@ ProGet can use Azure Blob Storage to store your package files instead of your se
 In this article, you'll learn how to set up Azure Blob Storage and then use it to store packages in a new feed in ProGet.
 
 :::(Info) (Migrating An Existing Feed?)
-This guide will walk you through creating a new feed. If you have an existing feed that you want to migrate to Azure Blob Storage, check out our [migrating an existing feed docs](/docs/proget/advanced-features/proget-advanced-cloud-storage#migrating-an-existing-feed).
+This guide will walk you through creating a new feed. If you have an existing feed that you want to migrate to Azure Blob Storage, check out our [migrating an existing feed docs](/docs/proget/cloud-storage#migrating-an-existing-feed).
 :::
 ## Step 1: Login or Create an Azure Account
 Sign up or login your [Azure Account](https://azure.microsoft.com/en-us/).

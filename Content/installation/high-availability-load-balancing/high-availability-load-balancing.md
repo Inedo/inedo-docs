@@ -73,7 +73,7 @@ To configure server level shared storage, update the following:
 | Otter | *No configuration is required* |
 
 #### (ProGet) Feed-level Shared Storage
-To configure storage at a feed level, first, navigate to the _Manage Feed_ page for each feed. Click _change_ on the right side of the _Disk Path_ property. For cloud storage options, see [Cloud Storage](/docs/proget/advanced-features/proget-advanced-cloud-storage).
+To configure storage at a feed level, first, navigate to the _Manage Feed_ page for each feed. Click _change_ on the right side of the _Disk Path_ property. For cloud storage options, see [Cloud Storage](/docs/proget/cloud-storage).
 
 ### Step 4: Enable in Product
 Once complete, from any web server, navigate to Administration, and click "More Info" under the "Cluster Overview" section. Clicking the "configure" link will open a dialog that allows you to check "Enable High-Availability (Automatic Fail-over)". 
