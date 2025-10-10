@@ -1,6 +1,6 @@
 ---
 title: "HOWTO: ProGet as a UI for Amazon S3"
-order: 4
+order: 5
 ---
 
 

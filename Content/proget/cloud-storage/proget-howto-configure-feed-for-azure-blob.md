@@ -1,6 +1,6 @@
 ---
 title: "HOWTO: Configure Feeds for Azure Blob Storage"
-order: 3
+order: 4
 ---
 
 
