@@ -6,7 +6,7 @@ order: 3
 By default, a feed's package files are stored on disk in a directory managed by ProGet. You can change this directory by either editing the default directory or setting the Disk Path property for a feed.
 
 :::(Info)
-To use [Amazon S3 and Azure Blob Package Storage](/docs/proget/advanced-features/proget-advanced-cloud-storage) for cloud storage, you need to configure a different package store. This feature is not available in free versions of ProGet.
+To use [Amazon S3, Google Cloud and Azure Blob Package Storage](/docs/proget/cloud-storage) for cloud storage, you need to configure a different package store. This feature is not available in free versions of ProGet.
 :::
 
 ## Package Storage 

@@ -51,7 +51,7 @@ There are three ways to migrate ProGet to a VM on Azure:
 		- If you are not using the shared config on the old server, the new server will install using the shared config.  You can copy your encryption key into the shared config on the new server.
 		- Your database connection string is also stored in these files if you need to find it. 
 3. Copy your packages
-   - If you are planning to use Azure Blob storage, you will first need to [migrate your existing feeds to use Azure blob storage](/docs/proget/advanced-features/proget-advanced-cloud-storage).
+   - If you are planning to use Azure Blob storage, you will first need to [migrate your existing feeds to use Azure blob storage](/docs/proget/cloud-storage).
       - Migrating your feeds to Azure Blob Storage can take a significant amount of time based on your Feed size and your Blob storage tier.
    - If you are planning to just use the local storage on the VM, you will need to copy your existing packages to the VM at the **same folder path as your existing server**
 	  - Please note, this may take some time to transfer all these files up.

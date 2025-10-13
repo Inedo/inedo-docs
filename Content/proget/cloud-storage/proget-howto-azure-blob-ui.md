@@ -1,6 +1,6 @@
 ---
 title: "HOWTO: ProGet as a UI for Azure Blob Storage"
-order: 5
+order: 6
 ---
 
 
