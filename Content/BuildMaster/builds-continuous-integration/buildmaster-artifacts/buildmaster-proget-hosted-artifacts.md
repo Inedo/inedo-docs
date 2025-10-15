@@ -5,7 +5,7 @@ order: 2
 
 As of BuildMaster v7.0.17, artifacts can be hosted in a [ProGet Asset Directory](/docs/proget/asset-directories-file-storage/what-is-an-asset-directory). 
 * Allow for artifacts to be directly downloaded outside of BuildMaster
-* Use [ProGet's Cloud Storage Feature](/docs/proget/cloud-storage) to store artifacts on Amazon S3 or Azure Blob
+* Use [ProGet's Cloud Storage Feature](/docs/proget/cloud-storage) to store artifacts on Amazon S3, Google Cloud or Azure Blob
 * Simplify [replication/distribution to nodes](/docs/proget/replication-feed-mirroring/proget-howto-replicate-edge-locations) in edge-computing scenarios
 
 ## How to Use ProGet-hosted Artifacts

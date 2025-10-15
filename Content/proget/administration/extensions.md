@@ -7,7 +7,7 @@ Some of ProGet's functionality is provided by extensions, a kind of pluggable co
 
 ## Built-in and Required Extensions
 
-ProGet ships with the following extensions: [Inedo.SDK](/docs/inedosdk), [InedoCore](https://proget.inedo.com/feeds/Extensions/inedox/InedoCore), [Amazon AWS](https://proget.inedo.com/feeds/Extensions/inedox/AWS), and [Azure](https://proget.inedo.com/feeds/Extensions/inedox/Azure).
+ProGet ships with the following extensions: [Inedo.SDK](/docs/inedosdk), [InedoCore](https://proget.inedo.com/feeds/Extensions/inedox/InedoCore), Amazon AWS, Google Cloud, and Azure.
 
 Although we recommend installing all of these built-in extensions, Inedo.SDK and InedoCore are the only ones required. If they are not installed, you will receive warnings at UI, and the software will lack core functionality. If you have configured cloud storage, these feeds are not functional.
 
