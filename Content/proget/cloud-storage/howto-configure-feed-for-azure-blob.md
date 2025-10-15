@@ -58,7 +58,9 @@ By default, ProGet stores package files on disk, so your feed must be configured
 
 ![Change Storage Location](/resources/docs/proget-nuget-changestorage.png){height="" width="50%"}
     
-After clicking Change, you will be prompted to configure your feed package store. Select Microsft Azure when prompted.
+After clicking Change, you will be prompted to configure your feed package store. Select Microsoft Azure.
+
+![](/resources/docs/proget-cloudstorage-select-azure.png){height="" width="50%"}
 
 ## Step 7: Configure Package Store Location to Use Your Azure Blob Storage
 After you select Microsoft Azure as the location for your package, you will be presented with the following configuration options:
@@ -67,12 +69,12 @@ After you select Microsoft Azure as the location for your package, you will be p
 
 Use the connection string copied in step 4 and the container name from step 3 and fill in the appropriate fields. If Target Path is left blank, the files will be stored in the root directory of your storage container by default. After you have entered all the information, click Save and you are ready to go!
 
+After saving the configuration, you'll be given the chance to test your configuration. You can also do this any time by selecting "test" to the right of "Storage" under "Storage Configuration" on the feed's "Manage Feed" page. For more details on all of the configuration options, you can read our [Cloud Storage Overview](/docs/proget/cloud-storage).
+
+![](/resources/docs/proget-cloudstorage-azure-test.png){height="" width="50%"}
+
 ## Troubleshooting:
 ### Issue:  Microsoft Azure is not a storage option
-If you have reached step 6 and notice that there is no option to select Microsoft Azure, most likely the Azure extension is not installed.
+If you have reached step 6 and can't see an option to select Azure, the related extension probably isn't installed. This is normally installed by default, but to confirm, you can navigate to "Administration" > "Extensions". Check if "Azure" appears in the list under "Installed Extensions".
 
-Here's how to install the Azure extension:
-1. Please click on the gear icon in the banner
-2. Navigate to _Integrations & Extensibility > Extensions_
-3. Click on the Azure extension under _Available Extensions_
-4. Click on the "Install" button
+If it isn't installed, it should appears as an option under "Available Extensions". Selecting this will let you install Azure to ProGet.

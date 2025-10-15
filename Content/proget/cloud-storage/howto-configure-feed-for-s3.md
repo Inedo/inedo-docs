@@ -48,13 +48,14 @@ Next, you need to select the type of feed you want to set up. In this tutorial w
 
 ![Create NuGet Feed](/resources/docs/proget-nuget-newfeed.png){height="" width="50%"}
 
-    
 ## Step 5: Change Your Feed’s Package Store Location
 By default, ProGet stores package files on disk, so your feed must be configured to store packages on Amazon S3 instead. In your feed, click Manage Feed > Storage & Retention, and then select Change next to Storage.
 
 ![Change Storage Location](/resources/docs/proget-nuget-changestorage.png){height="" width="50%"}
     
-After clicking Change, you will be prompted to configure your feed package store. Choose Amazon S3 when prompted.
+After clicking Change, you will be prompted to configure your feed package store. Select "Amazon S3".
+
+![](/resources/docs/proget-cloudstorage-select-s3.png){height="" width="50%"}
 
 ## Step 6: Configure Package Store Location to Use Your Amazon S3 Bucket
 After you select Amazon S3 as the storage location for your package, you will be presented with the following configuration options:
@@ -67,8 +68,11 @@ Since we are setting up a NuGet feed to use an Amazon S3 bucket, we are configur
 * **Region Endpoint**: Enter the region endpoint you set up in step 2. In our example, the region endpoint is us-east-2.
 * **Bucket**: Enter the name of the bucket you created. In our example, we named the bucket kramerica.
 
-Thats all you need to configure a new feed to use an Amazon S3 bucket! For details on all of the configuration options, check out our docs on [Cloud Package Stores](/docs/proget/cloud-storage).
+Once configured you'll be given the option to test your configuration. You can also do this any time by selecting "test" to the right of "Storage" under "Storage Configuration" on the feed's "Manage Feed" page. 
 
+![](/resources/docs/proget-cloudstorage-s3-test.png){height="" width="50%"}
+
+Thats all you need to configure a new feed to use an Amazon S3 bucket! For details on all of the configuration options, check out our docs on [Cloud Package Stores](/docs/proget/cloud-storage).
 
 :::(Info) (Can't find the needed information to fill out a tab?)
 If you are having trouble finding something, a quick Google search will usually suffice, but in case you can not find something, here are some references to commonly used terms:
@@ -79,14 +83,10 @@ If you are having trouble finding something, a quick Google search will usually 
 
 ## Troubleshooting:
 
-### Issue:  Amazon S3 is not a storage option
-If you have reached step 5 and only notice that there is no option to select Amazon S3, the Amazon AWS extension is probably not installed.
+### Issue: Amazon S3 is not a storage option
+If you have reached step 5 and only notice that there is no option to select Amazon S3, the Amazon AWS extension is probably not installed. This should be installed by default, but to confirm, you can navigate to "Administration" > "Extensions". Check if "Amazon AWS" appears in the list under "Installed Extensions".
 
-To install the Amazon AWS extension:
-1. Please click on the gear icon in the banner
-2. Navigate to _Integrations & Extensibility > Extensions_
-3. Click on the Amazon extension under _Available Extensions_
-4. Click on the "Install" button
+If it isn't installed, it should appears as an option under "Available Extensions". Selecting this will let you install Amazon AWS to ProGet.
 
 ### Error: The package could not be installed
 If you receive the error message "The package could not be installed." when adding/pushing a package, it usually means that ProGet received an error while connecting to the Amazon S3 bucket. Please check the following:
