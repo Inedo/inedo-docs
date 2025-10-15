@@ -1,5 +1,5 @@
 ---
-title: "HOWTO: Bulk Import Packages using Drop Paths"
+title: "HOWTO: Bulk Import Packages to a ProGet Feed"
 order: 6
 ---
 
@@ -21,7 +21,7 @@ On our server, we need to start by navigating to our drive and selecting a folde
 
 Note: If you are using a folder on a server other than the one on which ProGet is installed, you must use the UNC path of your shared network folder.
 
-:::(Warning) (Note about Drop Path Folder)
+:::(Warning) (Note about Import Folder)
 The ProGet service account must have full control (read and delete files) over this folder. This step is a good opportunity to configure this permission.
 :::
 
@@ -111,19 +111,15 @@ This warning may occur if the package was deleted from the drive for some reason
 
 You will see this page when you navigate to the "Files" tab of the deleted package:
 
-![ProGet could not find a file.](/resources/docs/bulkimportviadroppath-unexpectederror-missingfile.png){height="" width="50%"}
+![ProGet could not find a file.](/resources/docs/proget-bulkimport-unexpectederror-missingfile.png){height="" width="50%"}
 
 The error will display in the Diagnostic Center like so:
 
-!["could not find file" error](/resources/docs/bulkimportviadroppath-serviceoutput-couldnotfinderror.png){height="" width="50%"}
+!["could not find file" error](/resources/docs/proget-bulkimport-serviceoutput-couldnotfinderror.png){height="" width="50%"}
 
-ProGet stores package **data** on ProGet, but package **files** on disk. Since ProGet saved the package data, it might think that the package is still there, even though it's not; therefore, it won't import the package to reinstall it.
+ProGet stores package **data** on ProGet, but package **files** on disk. Since ProGet saved the package data, it might think that the package is still there, even though it's not; therefore, it won't import the package to reinstall it. This situation is very unlikely, as it means that internal (possibly hidden) files on the hard disk have been deleted.
 
-This situation is very unlikely, as it means that internal (possibly hidden) files on the hard disk have been deleted.
-
-To solve the problem, delete the package in ProGet.
-
-The Drop Path configuration will then re-import and install the package.
+To solve the problem, delete the package in ProGet. The import configuration will then re-import and install the package.
 
 ### Issue: "Error deleting imported package..."
 
@@ -133,7 +129,7 @@ This warning will display as such in the Execution Logs window:
 WARN: Error deleting imported package C:\bulk-import\microsoft.extensions.dependencyinjection.8.0.0-preview.3.23174.8.nupkg from bulk import path.
 ```
 
-This warning occurs when ProGet does not have permission to read/delete from the Drop Path folder on the server or network share.
+This warning occurs when ProGet does not have permission to read/delete from the import folder on the server or network share.
 
 You can resolve this warning by opening the properties of the import path on the server or locally, and navigating to the "Security" tab in the pop-up window. Then configure your security settings so that ProGet has full control over this folder.
 

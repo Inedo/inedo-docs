@@ -55,11 +55,9 @@ Both the ProGet web application (either the login user for the `INEDOPROGETWEBSV
 
 If you are using network storage, you should use the path UNC (for example, `\\\filesv1\packages`) rather than the mapped drive (`P:\packages`). The reason for this is the way mapped drives work in Windows; they can be somewhat difficult to configure and remain functional for service accounts.
 
-## Drop Path and Bulk Package Importing 
+## Drop Paths
 
-In some cases, it may be easier for users or programs to simply copy package files to a network drive rather than using the API of this feed type to publish them to ProGet. A common scenario for this is a bulk import of packages.
-
-[You can configure a feed to use a "drop path,"](/docs/proget/feeds/feed-overview/proget-bulk-import-with-droppath) which is a local or network path that ProGet will scan for files periodically. If that directory contains a package with a valid format for the feed type, it will be imported to ProGet.
+In some cases, it may be easier for users or programs to simply copy package files to a network drive rather than using the API of this feed type to publish them to ProGet. If this is the case [you can configure a feed to use a "drop path,"](/docs/proget/feeds/feed-overview/proget-bulk-import-with-droppath) which is a local or network path that ProGet will scan for files periodically. If that directory contains a package with a valid format for the feed type, it will be imported to ProGet.
 
 By default, existing packages will not be overwritten, but you can change this by going to "Administration Overview" > "Advanced Settings", and changing `Feeds.AllowDropPathImportOverwrite` to `true`.
 
