@@ -3,9 +3,7 @@ title: "HOWTO: Bulk Import Packages to a ProGet Feed"
 order: 6
 ---
 
-ProGet users come into the software with several packages to import—whether from their local drive, a package hosting service, or an alternative private repository.
-
-It's entirely possible to write a script to publish your package via the feed's API endpoints, but it's often easier to import these packages from a local disk or network. This ProGet feature configures a feed to use a local or network path that ProGet periodically scans for files to import.
+ProGet users come into the software with several packages to import—whether from their local drive, a package hosting service, or an alternative private repository. It's entirely possible to write a script to publish your package via the feed's API endpoints, but it's often easier to import these packages from a local disk or network. 
 
 In this guide, we will look at how to import packages in bulk into your ProGet feeds through a local or network path and how to troubleshoot common errors that can occur during the import process.
 
