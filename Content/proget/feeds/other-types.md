@@ -88,25 +88,24 @@ ProGet already has rich Docker and Helm chart support, and lets you see what cha
 
 Of course, we could be wrong, so please contribute to the above-linked discussion to help us understand better!
 
-### 🚫 CocoaPods: not possible
+### 🚫 CocoaPods: not currently possible?
 
 This is currently [in discussion on the forms](https://forums.inedo.com/topic/4224). Based on our initial technical assessment, it appears that a "CocoaPod" is not a package, but a convention for a Git repository.  In addition, there is no Server API or Repository API. It's all just Git repositories - and that would mean we'd not only need to develop a Git Server API, but implement the loosely-documented conventions.
 
 Seems that just using a private Git repository to act as a CocoaPod repo is the only option.
 
-### 🚫 Homebrew (MacOS): not possible
+### 🚫 Homebrew (MacOS): not currently possible?
 This is currently [in discussion on the forums](https://forums.inedo.com/topic/3306); technically this seems as impossible to do as CocoaPods, as Homebrew looks like it's just GitHub repositories. But moreover, there is no market.
 
-### 🔎Go: package manager not found
+### 🔎Go: package manager not found?
 
 We've had a few requests for these, but there doesn't seem to be a package management API. Behind the scenes, Go seems to use GitHub repositories as "packages", and if you want to privatize them, then you proxy github.org. We're not Go developers, so we could be wrong—let us know!
 
 A few of our users simply use universal packages for Go libraries.
 
-### 🔎 MCP Registry
+### 🔎 MCP Registry: package manager not found?
 
-This is currently [in discussion on the forums](https://forums.inedo.com/topic/5561); with GitHub Copilot we can provide and url for a MCP registry to use a [white list](https://docs.github.com/en/copilot/how-tos/administer-copilot/configure-mcp-server-access)
-Exemple of the [A community driven registry service for Model Context Protocol (MCP) servers](https://github.com/modelcontextprotocol/registry)
+This is currently [in discussion on the forums](https://forums.inedo.com/topic/5561), but from a quick read of the documentation, it looks like an "MCP Registry" is mostly just a JSON document that lists "MCP Servers". There don't seem to be "Packages" (i.e. an archive file with a manifest file) nor a "Central Repository" (i.e. a canonical location where OSS Models are stored), which means it's not a great fit for ProGet.
 
 ### Other types?
 
