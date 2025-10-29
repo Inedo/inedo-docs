@@ -13,7 +13,7 @@ A "replication" requires at least two instances of [ProGet Enterprise Edition](h
 At least one instance is configured for "outgoing" communication (similar to how a web browser accesses a web server), the other for "incoming" communication (like a web server responds to a web browser).
 
 ::: (INFO)
-System replication is available in ProGet 2025.12 and later.
+System replication is available in ProGet 2025.13 and later.
 :::
 
 Behind the scenes, incoming communication is handled by the System Replication API endpoint hosted on the ProGet Web Application, just like all other API endpoints. This means that access via HTTP/S occurs in the same way that your browser and other client tools interact with ProGet.
