@@ -23,7 +23,7 @@ To view information about your feed's signing key or to make changes to it, navi
 
 Regardless of whether you generate the secret key with ProGet or upload your own, you will need to add its matching public key to apt.
 
-To add a feed's public key for Apt to use, first you need to download and dearmor the public key file:
+To add a feed's public key for Apt to use, first you need to download the public key file:
 
 ```sh
 sudo curl -fsSL -o /etc/apt/keyrings/{feed-name}.gpg https://{proget-server}/debian/keys/{feed-name}.gpg
