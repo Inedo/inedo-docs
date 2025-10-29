@@ -3,49 +3,61 @@ title: "Debian (Apt)"
 order: 11
 ---
 
-[Debian](https://www.debian.org/) is a free operating system whose programs are distributed via packages that can be installed with APT.
+[Debian](https://www.debian.org/) packages are used by any Linux distribution that uses Apt, such as Debian and Ubuntu.
 
-:::(Warning)
-This documentation refers to the "new" type of Debian feeds added in ProGet 2023.22. If you're using an older version of ProGet, see [Debian (Legacy) Feed Types](#debian-legacy-feed-types) to learn how to configure the "older" type of Debian feed.
+:::(INFO)
+Debian feeds have had a significant update in ProGet 2025.14, especially with regard to signing and connector performance, and some
+of the information here may not fully match the behavior of previous versions. If possible, we recommend upgrading to 2025.14 or later.
+If you are unable to upgrade at this time, refer to the [archived documentation](https://github.com/Inedo/inedo-docs/blob/9239bd43f4b31c41ef99cb4e9a019c1eb5af6e23/Content/proget/feeds/debian.md).
 :::
 
-## Prerequisite Configuration
 
-In order to install packages from ProGet, each client must perform the following steps:
+## PGP Keys and Repository Signing
 
-### 1. Add the signing key
+Debian repositories typically use PGP public/private keys to verify server identity. By default, ProGet will generate a key pair for a
+Debian feed when the feed is created, but you may generate a new one, delete the key entirely, or upload your own secret key to use instead.
 
-To add the signing key to `apt` on  Ubuntu 22.04, run the following command.
+If you are using PGP signing for your feed, you can download the public key from: `https://{proget-server}/debian/{feed-name}/keys/{feed-name}.asc`
+
+To view information about your feed's signing key or to make changes to it, navigate to the *Feed Properties* page and click the *configure* link
+under Debian Settings >> Signing Key. From here you can download the public key, generate a new secret key, delete your secret key, update its
+expiration date, or upload your own secret key. Note that to use your own secret key in ProGet it must be RSA 2048-4096 bit. Passphrase protection
+is optional, but if your key file uses it, you must also supply ProGet with the passphrase. Passphrase or not, ProGet will securely store your
+key encrypted in its database.
+
+
+### Adding a Public Key to Apt
+
+Regardless of whether you generate the secret key with ProGet or upload your own, you will need to add its matching public key to apt.
+
+To add a feed's public key for Apt to use, first you need to download and dearmor the public key file:
 
 ```sh
-curl -fsSL {proget-server}/${feed-name}/keys/${feed-name}.asc | sudo gpg --dearmor  -o /etc/apt/keyrings/${feed-name}.gpg
-```
-
-If you are using an earlier or different distribution, you can use the `apt-key` command instead:
-
-```sh
-wget -qO - http://{proget-server}/debian/{feed-name}/keys/{feed-name}.asc | sudo apt-key add -
+sudo curl -fsSL -o /etc/apt/keyrings/{feed-name}.gpg https://{proget-server}/debian/keys/{feed-name}.gpg
 ```
 
 ::: (INFO) 
-If this signing key is not created in ProGet and added to your public key ring bundle, you may see a message similar to:  `N: Updating from such a repository can't be done securely, and is therefore disabled by default.`
+For convenience, ProGet allows the key to be downloaded in either binary format as above or ASCII-armored. To download the ASCII-armored
+format instead, replace the `.gpg` extension in the URL with `.asc`.
 :::
 
-### 2. Add the  repository information
 
-Then you'll need to add the repository to the system, which can be done with the following command:
+Next, you need to tell Apt that the key is trusted:
 
 ```sh
-echo "deb http://{proget-server}/debian/{feed-name} {distro-name} {component-name}" | sudo tee /etc/apt/sources.list.d/{feed-name}.list
+echo "deb [signed-by=/etc/apt/keyrings/{feed-name}.gpg] https://{proget-server}/debian/{feed-name}/ {distribution} [components]" | sudo tee "/etc/apt/sources.list.d/{feed-name}.list"
 ```
 
-### 3. Update `apt`
-
-In order to actually install packages from a ProGet feed, the package cache must be updated by running:
+Test the key configuration by updating your local index:
 
 ```sh
 sudo apt update
 ```
+
+::: (INFO) 
+If there was an error adding the key or you don't have a key configured in ProGet, you may see a message similar to:  `N: Updating from such a repository can't be done securely, and is therefore disabled by default.`
+:::
+
 
 ## Common Tasks
 
@@ -93,45 +105,38 @@ wget http://{proget-server}/debian/{feed-name}/upload/{distro-name}/{component-n
 Invoke-WebRequest http://{proget-server}/debian/{feed-name}/upload/{distro-name}/{component-name} -Credential [System.Net.NetworkCredential]::new('<user>', '<password>') -Method PUT -InFile {my-package}.deb
 ```
 
-### Source Packages
+## Debian Feed Index File Generation
 
-ProGet does not currently support [Debian source packages](https://wiki.debian.org/Packaging/SourcePackage), and attempting to upload a source package (i.e. if the extension does not equal `*.deb`) will fail. 
+Debian feeds act like standard Debian repositories and tools such as Apt can request a `Release` file and all associated indexes. ProGet has two modes for creating these index/Release files:
 
-A user has asked us to add support for source packages for the following reasons:
+ * **On-demand**: This is the only mode used for versions of ProGet before 2025.14, and remains the default for compatibility reasons. However, it is only appropriate for feeds with few packages. With this mode, your indexes will almost never be stale, but clients will often be kept waiting for ProGet to regenerate its data.
+ * **Background**: ProGet will monitor the feed for changes and proactively generate updated indexes in the background as needed. Indexes could be slightly out of date based on the user-defined maximum age setting, but users will never be kept waiting when requesting an updated index.
 
-*Source packages can often be useful when using the Debian packaging tools (apt, apt-get, aptitude) to download the source package, especially for debugging purposes. Without the source package, one can only get the stack trace, but not really inspect the code. Also, when upgrading from one Debian release (Ubuntu 19.10) to the next version (Ubuntu 20.04), the recommended method is to download all source packages from the previous repository and then rebuild them in the new operating system. This is the standard best practice for seeding a new apt repository
+**We recommend using the background mode for almost all feeds**, and this will likely become the default in ProGet 2026. The only reason on-demand remains the default is that we did not want to introduce an automatic behavior change as part of a maintenance release.
 
-If Source Packages are a feature that would be of interest to you, please [contribute in the forums](https://forums.inedo.com/); users with paid versions of our software can also [submit a ticket](https://inedo.com/support/ticket).
+### Enabling Background Index File Generation
 
-## Debian (Legacy) Feed Types
+To enable background index generation for a feed, navigate to the *Feed Properties* page and click the *configure* link for the *Index File Generation* setting. Check the box and optionally
+change the default max age value.
 
-In ProGet 2023.22, we [created a new Debian feed type](https://blog.inedo.com/inedo/new-debian-feeds) called "Debian (New)" feeds, and called the old feeds to "Debian (Classic)". In ProGet 2024, the old feeds are called "Debian (Legacy)" and the new are simply "Debian".
+::: (INFO) 
+Connectors **also** have their own background index generation setting that is independent of the feed setting. We also strongly recommend enabling this - especially for connectors to large repositories.
+See the section below for more information.
+:::
 
-The key differences between the feed types are that Debian (Legacy) feeds tie distribution to feeds and do not support connectors. 
 
-### Migration from Debian (Legacy) Feeds
+## Connectors for Debian Feeds
 
-You can migrate packages in this (and other) Debian feeds to the new  feed type. Debian (Legacy) feeds will be considered a legacy feature in ProGet 2024 and likely removed in a future version.
+Debian feeds support connectors to other ProGet Debian (Apt) feeds, official repositories, and other third-party repositories.
 
-### Signing Keys in Debian (Legacy) Feeds
+### Connector Index File Generation
 
-In order to serve packages from a Debian (Legacy) feed, a signing key must be created in ProGet. Once a feed is created, visit the Manage Feed page and select "manage keys" in the Properties panel. Enter a description (just use something like "proget" or "default" if you are creating a single feed) and click "Generate Key". After a short delay, the key is generated and its fingerprint is displayed in the Manage Keys window.
+ProGet has to download the index file for any connector repositories. For official repositories (or any that are very large), we strongly recommending enabling background index updating for the connector.
+You can enable this by clicking the *edit* link on the *Basic Properties* section of the connector page and specifying a value (in minutes) for the *Index poll frequency* field. When a value is specified
+for that field, ProGet will check the remote index for changes with this frequency and keep its local indexes up to date with minimal impact to users. If this field is left blank, ProGet will continue to
+use its old behavior of only updating this index on demand, which could result in very slow response times for large, frequently updated repositories.
 
-### Distributions & Feed Names 
-
-In Debian (Legacy) feeds, the feed name served as the distribution name. Therefore, to add the repository to your  system, you would need to run the following command:
-
-```sh
-echo "deb http://{proget-server}/ {feed-name} {component-name}" | sudo tee /etc/apt/sources.list.d/{feed-name}.list
-```
-
-## Connectors for Debian (Apt) Feeds
-
-Starting in ProGet 2023.22, Debian (Apt) feeds support connectors to other ProGet Debian (Apt) feeds, official RPM repositories, and other third-party repositories.
-
-### Official  Repositories
-
-When connecting to an official Debian (Apt) repository, ProGet will periodically download the index file. This can take 30-60+ seconds, and the page will only report "Loading Packages..."; you may get a database lock error if you refresh, but it should eventually work. We will improve this experience in a future version of ProGet!
+### Official Repositories
 
 When creating a connector to an official repository, we recommend a name based on the distribution and components (if specified). For example:
 
@@ -143,14 +148,7 @@ When creating a connector to an official repository, we recommend a name based o
 </table>
 
 
-### Snapshot Repositories
+### Limitations
 
-Although "Debian repository snapshots" are a feature in other products like Aptly, ProGet does not support them. 
+ - ProGet cannot create a Debian repository snapshot
 
-Snapshots seem relatively easy to support (basically, we would just disable periodic updates on "snapshot" connectors), but we don't really understand the use case and how users would want to use them.
-
-We surveyed several Debian feed users, and felt this comment captured the general sentiment.
-
-> "repository snapshots are archaic; they made sense a long time ago, but Docker changed all that. It's so much simpler to use container images like FROM debian:buster-20230919. That's effectively our snapshot, and when we need to main old releases (which happens more often than I'd like), we just rebuild the image from that. The other big advantage is that build time is easily 10x faster if not more."
-
-If snapshot repositories are a feature that would be of interest to you, please [contribute in the forums](https://forums.inedo.com/); users with paid versions of our software can also [submit a ticket](https://inedo.com/support/ticket).
