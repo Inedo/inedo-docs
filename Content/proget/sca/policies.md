@@ -242,7 +242,7 @@ Although metadata providers are designed to work with the official public reposi
 
 We're not entirely sure what the use case would be (which is why creating them is a bit convoluted), but you may find it helpful to get deprecated, unlisted, or outdated package status from another repository.  Please [let us know](https://forums.inedo.com/) if you find this feature useful, so that we can properly document and support it, as well as add authentication and other options.
 
-:::(Info) (📺 Video:  Protecting Your Software Supply Chain from Vulnerabilities | Demo)
+:::(Info) (📺 Video:  Protecting Your Software Supply Chain from Vulnerabilities)
 <iframe width="600" height="337" src="https://www.youtube.com/embed/LOzqpLZc5Zk?si=4eNH7Q4k5GKKrIBT" frameborder="0" allowfullscreen="true"></iframe>
 :::
 
