@@ -6,11 +6,11 @@ order: 1
 ProGet lets you create ["Feeds"](/docs/proget/feeds/feed-overview) that can be configured to proxy Ruby Gems from [RubyGems.org](https://rubygems.org/), the Ruby community's gem hosting service. This will let teams install gems directly or add as a source in a project's `Gemfile`.  
 
 The advantages of using ProGet as a source to proxy gems are:
-* ProGet will cache gems, allowing teams to access them even when RubyGems.org is down
-* ProGet will show which gems are being downloaded and used frequently
-* You can view and assess licenses, vulnerabilities and quality of the gems in your projects
+* ProGet will cache gems, allowing teams to access them even when RubyGems.org is down.
+* ProGet will show which gems are being downloaded and used frequently.
+* You can view and assess licenses, vulnerabilities and quality of the gems in your projects.
 
-In this article, we'll explain how to create a feed in ProGet that will proxy packages from RubyGems.org and then configure it as a source in your local Ruby environment, or add it as a source in a `Gemfile`. 
+In this article, we'll explain how to create a feed in ProGet that will proxy packages from RubyGems.org and then configure it as a source in your local Ruby environment, or add it as a source in a `Gemfile`.
 
 We’ll also explain how to set up a private source for using internal gems, as well as how to establish a package approval process to manage which packages your team can utilize in production.
 
@@ -22,15 +22,15 @@ In your ProGet instance, select "Feeds" and "Create New Feed", and select "RubyG
 
 ![Create RubyGems Feed](/resources/docs/proget-feeds-rubygemsselect.png){height="" width="50%"}
 
-Then select "Connect to RubyGems.org" which will allow us to proxy and cache packages from the RubyGems.org.
+Then select "Free/Open Source RubyGems" which will allow us to proxy and cache packages from the RubyGems.org.
 
 ![RubyGems Connector](/resources/docs/proget-ruby-connectoorg.png){height="" width="50%"}
 
-Select "No, Create One Feed", as we will only need a single feed to proxy gems. Now we'll name the feed, which we will call `public-gems`, and then click "Create Feed".
+Now we'll name the feed, which we will call `public-gems`, and then click "Create Feed".
 
-![Create One Feed](/resources/docs/proget-ruby-onefeed.png){height="" width="50%"}
+![Name Public Feed](/resources/docs/proget-ruby-namepublicfeed.png){height="" width="50%"}
 
-We are then presented with several options. More information on these can be found in the [Vulnerability Scanning and Blocking](/docs/proget/sca/vulnerabilities) documentation. Select "Set Feed Features". ProGet will create The `public-gems` feed and redirect you to it. This feed will now be populated with packages proxied from RubyGems.org
+ProGet will then redirect us to our `public-gems` feed. This feed will now be populated with packages proxied from RubyGems.org.
 
 ![RubyGems Feed Overview](/resources/docs/proget-ruby-feedoverview.png){height="" width="50%"}
 

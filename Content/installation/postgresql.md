@@ -17,8 +17,6 @@ Our custom PostgreSQL server can be hosted in two different ways.
 * **Embedded**: For single-server installations, the database server instance is fully-managed by the Inedo product and will require no additional configuration or maintenance
 * **InedoDB**: For clustered (multi-server) installations, the same custom build of PostgreSQL is packaged as InedoDB and installable on Windows or run as Docker container
 
-
-
 Although most users will not need to interact with the database server, maintenance or troubleshooting may be required. This article will provide guidance on how to do that as well as describe advanced scenarios.
 
 ## Database Backup and Restore {#backup}
@@ -28,23 +26,43 @@ The database is only a component of your Inedo product; see [Backing Up and Rest
 :::
 
 
-Backing up and restoring the database can be done using the `inedodb` CLI utility that's included in both distributions of InedoDB.
+Backing up and restoring the database can be done with a simple `dump` and `restore` command.
+
+### Embedded Database Commands
+
+For Embedded databases, these commands are run using the product's main executable (e.g. `proget` or `proget.exe`), in the program directory.
+
+To backup, simply run `«product-cli» database dump ` to create a time stamped archive in the current working directory, optionally with the `outfile` argument. For example, to backup ProGet:
+
+```bash
+$ proget database dump --file=/var/backups/proget-20250812-1308.ahbak
+```
+
+To restore, you can use the `restore` command while specifying an `file`. For example:
+
+```bash
+$ proget database restore --file=/var/backups/proget-20250812-1308.ahbak
+```
+
+### InedoDB Commands
+
+InedoDB includes a `inedodb` CLI utility to run these commands.
 
 To backup, simply run `inedodb dump «product-name»` to create a time stamped archive in the current working directory, optionally with the `outfile` argument. For example, to backup ProGet:
 
 ```bash
-$ inedodb dump proget --outfile=/var/backups/proget-20250812-1308.ahpak
+$ inedodb dump proget --outfile=/var/backups/proget-20250812-1308.ahbak
 ```
 
 To restore, you can use the `restore` command while specifying an `infile`. For example:
 
 ```bash
-$ inedodb restore proget --infile=/var/backups/proget-20250812-1308.ahpak
+$ inedodb restore proget --infile=/var/backups/proget-20250812-1308.ahbak
 ```
 
-Note that these commands are light wrappers for `pg_dump -Fc` and `pg_restore` that use information from the connection string stored in the [Installation Configuration File](/docs/installation/configuration-files) (Windows) or [Environment Variable](/docs/installation/linux/docker-guide#supported-environment-variables) (Linux).
+### PostgreSQL Commands
 
-
+Note that these `dump` and `restore` commands are light wrappers for `pg_dump -Fc` and `pg_restore` that use information from the connection string stored in the [Installation Configuration File](/docs/installation/configuration-files) (Windows) or [Environment Variable](/docs/installation/linux/docker-guide#supported-environment-variables) (Linux).
 
 ## InedoDB Installation & Upgrade {#inedodb}
 
@@ -142,6 +160,48 @@ We support querying databases but we do not offer support for writing to them. T
 
 If you wish to gain a better understanding of the structure or seek other support, we welcome you to contact our engineers through our [Support Page](https://inedo.com/support) for any assistance or inquiries you may have.
 
+### Querying The Database Using the CLI
+
+You can query the PostgreSQL database using the `query` operation in the product's main executable (e.g. `proget` or `proget.exe`) in the program directory.  The `query` operation takes a `--file` argument that points to a `.sql` file containing the SQL query and will print the results in CSV format to the standard output.  It uses the product's configured PostgreSQL connection string to execute **read-only** queries against the PostgreSQL database.  Example: `proget query --file=myquery.sql`
+
+:::(Info)(Note:)
+The `query` operation is typically only used for troubleshooting or support purposes. It is not intended to be a general-purpose SQL query tool.
+:::
+
+#### Example: Query for a list of feeds to a file on Windows
+
+1. Create a file named `list-feeds.sql` with the following contents:
+
+    ```sql
+    SELECT "Feed_Id","Feed_Name", "Feed_Description", "Active_Indicator", "FeedType_Name"
+    FROM Feeds
+    ORDER BY Name;
+    ```
+2. Run the following command from a command prompt in the ProGet program directory:
+
+    ```bash
+    proget query --file=list-feeds.sql > list-feeds.csv
+    ```
+
+#### Example: Query for a list of feeds to a file on Docker
+
+1. Connect to the ProGet container interactively
+
+    ```bash
+    docker exec -it «NAME_OF_PROGET_CONTAINER» bash
+    ```
+1. Create a file named `/home/list-feeds.sql` with the following contents:
+
+    ```sql
+    SELECT "Feed_Id","Feed_Name", "Feed_Description", "Active_Indicator", "FeedType_Name"
+    FROM Feeds
+    ORDER BY Name;
+    ```
+3. Run the following command from a command prompt in the ProGet program directory:
+
+    ```bash
+    ./usr/local/proget/service/proget query --file="/home/list-feeds.sql" > "/home/list-feeds.csv"
+    ```
 
 ## Database Import & Export
 
@@ -156,4 +216,20 @@ The **only** use for a database exported in this manner is to be immediately imp
 
 ## Migrating from SQL Server { #migrating-from-sqlserver }
 
-To migrate from SQL Server,  navigate to Administration > Database Overview and follow the prompts.
+To migrate from SQL Server, navigate to Administration > Database Overview and follow the prompts and guidance to have ProGet create a PostgreSQL database and then copy data from SQL Server.
+
+ProGet's API will be disabled during the migration, which may take anywhere from a few minutes to an hour or more. If there are any issues, you can revert to SQL Server.
+
+### InedoDB / Clustered Installations
+
+For clustered installations, simply configure InedoDB as if you were setting up a new installation, including creating a blank product database.
+
+Then, you can migrate by:
+1. Disabling access to your cluster at the load balancer
+2. Exporting the database to a file
+3. Connecting the ProGet cluster to the new InedoDB instance
+4. Importing the database file
+5. Reenable access to the cluster
+
+
+If there are issues using InedoDB, you can simply change the cluster to point to SQL Server again.

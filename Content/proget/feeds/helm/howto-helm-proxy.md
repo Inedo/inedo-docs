@@ -13,11 +13,15 @@ First, we will create a Helm feed that will be used to proxy Helm charts. Start 
 
 ![Create Helm Feed](/resources/docs/proget-helm-newfeed.png){height="" width="50%"}
 
-Now select "Connect to Artifact Hub" followed by "No, Create One Feed", as we will be creating a single feed to proxy Helm charts. From here, name the feed (we will call it `public-helm` for this guide). Then click "Create Feed".
+Now select "Free/Open Source Helm Charts" to cache and filter charts from Artifact Hub.
+
+![Create Helm Connector](/resources/docs/proget-helm-connecttoorg.png){height="" width="50%"}
+
+From here, we can name our feed. In this example, we'll call ours `public-helm`. Then select "Create New Feed".
 
 ![Name Helm Feed](/resources/docs/proget-helm-namepublicfeed.png){height="" width="50%"}
 
-We are then presented with several options that will let you configure ProGet's [Vulnerability Scanning and Blocking](/docs/proget/sca/vulnerabilities) and [Licensing Detection and Blocking](https://docs.inedo.com/docs/proget/sca/licenses) features. Select "Set Feed Features", which will create and redirect you to the newly created `public-helm` feed, now listing Helm Charts that can be proxied through the Artifact Hub.
+Then ProGet will redirect you to your newly created `public-helm` feed, now listing Helm Charts that can be proxied through the Artifact Hub.
 
 ![Public Helm Feed](/resources/docs/proget-helm-publicfeed.png){height="" width="50%"}
 

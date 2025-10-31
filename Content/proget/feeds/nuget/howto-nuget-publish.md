@@ -117,14 +117,14 @@ You can push your NuGet package to your NuGet feed in either Visual Studio or Nu
 To push your NuGet package using Visual Studio, open the Package Manager Console by navigating to "Tools" > "NuGet Package Manager" > "Package Manager Console". Then. run the following Push command:
 
 ```bash
-$ nuget push «path-to-package» -Source «source-name» -ApiKey api:«apikey»
+$ nuget push «path-to-package» --api-key «api-key» --source «source-name»
 ```
 
 :::(info) (Example:)
 Pushing the package `MyPackage` to a configured source named `internal-nuget`, you would enter:
 
 ```bash
-$ nuget push bin\Release\MyPackage.1.0.0.nupkg -Source internal-nuget -ApiKey api:abc12345
+$ nuget push bin\Release\MyPackage.1.0.0.nupkg --api-key abc12345 --source internal-nuget
 ```
 ::::
 
@@ -137,7 +137,13 @@ Your package will then be uploaded and appear in your NuGet feed.
 To push a NuGet package to ProGet in NuGet CLI, use the `dotnet nuget push` command:
 
 ```bash
-$ dotnet nuget push «package-name» -Source «source-name»
+$ dotnet nuget push «package-name» --api-key «api-key» --source «source-name»
+```
+
+For example, to push the `MyNuGetPackage.nupkg` to our ProGet instance we would use:
+
+```bash
+$ dotnet nuget push MyNuGetPackage.nupkg --api-key 70f875c2593ef93d0b21400d5f94ea1d8ed519d0 --source https://proget.corp.local/nuget/MyNuGetFeed
 ```
 
 ## (Optional) Repackaging NuGet Packages in CI/CD

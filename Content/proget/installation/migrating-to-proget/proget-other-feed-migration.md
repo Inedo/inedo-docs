@@ -26,6 +26,8 @@ The method to obtain this will vary from service to service. Please consult the 
 ## Migrating NuGet Packages from Another Repository to ProGet
 Migrating your NuGet can be done quickly and easily, in only a few clicks. All you will need is the Endpoint URL, your username and password or API token.
 
+Artifactory users can follow our [Artifactory Migration guide](https://inedo.com/support/resources/migrate-from-artifactory) for specific guidance on migrating from an Artifactory instance. 
+
 ### Step 1: Create a New Feed
 To begin we'll create a new feed that we will import our existing packages to. Start by navigating to "Feeds" and selecting "New Feed".
 

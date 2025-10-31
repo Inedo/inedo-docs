@@ -9,7 +9,7 @@ ProGet's replication capabilities allow you to synchronize packages, containers,
 * [Multisite development & federated development teams](/docs/proget/replication-feed-mirroring/proget-howto-federated-development)
 
 ## Configuration
-A "replication" requires at least two instances of ProGet Enterprise Edition and at least one feed of the same type between those instances. However, you can configure replication with multiple feeds, and you can also configure multiple replications on a single instance. In this way, you can design complex content distribution schemes, such as [multi-hub private content delivery network](/docs/proget/replication-feed-mirroring/proget-howto-replicate-edge-locations)
+A "replication" requires at least two instances of [ProGet Enterprise Edition](https://inedo.com/proget/enterprise) and at least one feed of the same type between those instances. However, you can configure replication with multiple feeds, and you can also configure multiple replications on a single instance. In this way, you can design complex content distribution schemes, such as [multi-hub private content delivery network](/docs/proget/replication-feed-mirroring/proget-howto-replicate-edge-locations).
 
 ### Communication Mode
 At least one instance is configured for "outgoing" communication (similar to how a web browser accesses a web server), the other for "incoming" communication (like a web server responds to a web browser).
@@ -55,7 +55,7 @@ Based on usage and support tickets we have encountered in the past, we recommend
  - <span style="color: green;">DO</span>: ensure all ProGet installations involved in the replication use the exact same version of ProGet, or at the very least, the same minor version (e.g. 5.2.x)
 - <span class="info-block error">DO NOT</span>: configure replication to a different feed in the same instance of ProGet
  - <span class="info-block error">DO NOT</span>: configure two instances to be both incoming and outgoing replication feeds that reference each other
-- <span class="info-block error">DO NOT</span>: use replication for availability purposes if you are already using a package store that provides its *own* replication, for example if you are using the [AWS package store](/docs/proget/advanced-features/proget-advanced-cloud-storage#configure) with [cross-region replication](https://docs.aws.amazon.com/AmazonS3/latest/dev/crr.html)
+- <span class="info-block error">DO NOT</span>: use replication for availability purposes if you are already using a package store that provides its *own* replication, for example if you are using the [AWS package store](/docs/proget/cloud-storage#configure) with [cross-region replication](https://docs.aws.amazon.com/AmazonS3/latest/dev/crr.html)
  - <span class="info-block error">DO NOT</span>: configure an incoming replication feed to pull changes and then distribute the sync token to untrusted parties, as this effectively grants full access to the contents of the feed, which could contain poisoned packages, malware, etc.
 
 ## Troubleshooting 

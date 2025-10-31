@@ -129,22 +129,17 @@ The Deprecated Rule is applied to packages that are marked as "deprecated", and 
 
 #### Latest Patch Version Rule
 
-*Latest Patch Version Rule is a ProGet 2025 preview feature that's available in ProGet 2024.12.*
-
 Packages may have a newer patch version available, which means they generally should be upgraded to fix bugs or performance problems. For example, if you're currently using 1.3.0 or 1.3.1, then 1.3.2 would be considered a new patch version. Some clients (Visual Studio, `npm`, etc.) will also advise to update to newer patch versions.
 
 To determine if a package is compliant with the Latest Patch Version Rule, ProGet will either inspect local packages in the feed or utilize the [OSS Metadata Cache](#oss-metadata-updating-caching) if the package originated from a public repository like nuget.org or npmjs.org.
 
 This rule is only evaluated in ProGet Enterprise and defaults to *Compliant*.
 
-
 ### Other & Custom Rules
 
 These rules are just the starting point, and we'd love to get your feedback on what else we could add. Perhaps we could even allow users to create their own rules using a plug-in?
 
 Just reach out to us via our [support channel](https://inedo.com/support), preferably using the [Inedo Forums](https://forums.inedo.com), so everyone can benefit from the discussion.
-
-Our current ideas include a "Latest Patch Version" rule, which would make sure that a package is the latest version. So if you were to use Newtonsoft.Json 13.0.2, you could be warned that it's not the latest "patch" version (13.0.3 is current, as of this writing).
 
 ## Rule Exceptions
 

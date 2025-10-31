@@ -1,6 +1,6 @@
 ---
 title: "HOWTO: Disaster Recovery with Replication"
-order: 2
+order: 3
 ---
 
 

@@ -15,19 +15,19 @@ First, we will create an npm feed that will proxy packages from the [www.npmjs.c
 
 Start by selecting "Feeds" and "Create New Feed". Next, select "npm Packages", as we will be creating feeds to proxy and host npm packages.
 
-![](/resources/docs/proget-npm-createfeed.png){height="" width="50%"}
+![npm Packages](/resources/docs/proget-npm-createfeed.png){height="" width="50%"}
 
-Now select "Connect to npmJS.org" which will allow us to proxy packages from the npm Registry.
+Now select "Free/Open Source npm Packages" which will allow us to proxy packages from the npm Registry.
 
-![](/resources/docs/proget-npm-connectors.png){height="" width="50%"}
+![npm Connector](/resources/docs/proget-npm-connectors.png){height="" width="50%"}
 
-Then select "No, Create One Feed", as we will be creating a single feed to proxy npm packages. From here, name the feed (we will call it `public-npm` for this guide). Then click "Create Feed".
+From here, name your feed. In this case, we'll call ours `public-npm`. Then select "Create New Feed".
 
-![](/resources/docs/proget-npm-public-name.png){height="" width="50%"}
+![Name npm Feed](/resources/docs/proget-npm-public-name.png){height="" width="50%"}
 
-We are then presented with several options. Keeping these checked will allow your feed to use ProGet's [Vulnerability Scanning and Blocking](/docs/proget/sca/vulnerabilities) and [Licensing Detection and Blocking](https://docs.inedo.com/docs/proget/sca/licenses) features. This will allow you to [use `npm audit` to scan packages](#scan-feed) for vulnerabilities. Select "Set Feed Features", which will create the feed, and redirect you to the newly created `public-npm` feed. Currently, npm needs a search term to return package results, so you will need to search for specific packages you need.
+ProGet will then redirect you to the newly created `public-npm` feed. Currently, npm needs a search term to return package results, so you will need to search for specific packages you need.
 
-![](/resources/docs/proget-npm-public.png){height="" width="50%"}
+![Public npm Feed](/resources/docs/proget-npm-public.png){height="" width="50%"}
 
 ## Step 2: Add the Feed to npm Clients { #add-feed }
 
