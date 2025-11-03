@@ -38,7 +38,7 @@ Once you've added all the desired components, and your project compiles, it is n
 The easiest way to package your extension is to use the `inedo.extensionpackager` dotnet tool. Install it locally or globally using `dotnet tool install inedo.extensionpackager`. This is a command line tool that will build your extension with all required dependencies and create a .upack file with all required metadata. It will also do some basic validation and warn you if there is anything that might prevent the extension from loading. For example, if your extension `.csproj` file is in the `C:\MyExtensionSrc` directory:
 ````
 C:\MyExtensionSrc> dotnet tool install inedo.extensionpackager
-C:\MyExtensionSrc> dotnet inedoxpack pack --build Release
+C:\MyExtensionSrc> dotnet inedoxpack pack --build=Release
 ````
 This will create `<ExtensionName>.upack` in the `C:\MyExtensionSrc` directory. This package can be copied into a product's extensions path directly, or it can be uploaded to a Universal Package Feed in ProGet.
 
