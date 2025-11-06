@@ -67,3 +67,7 @@ GET /api/security/groups/list
 | **200 (Success)** | body will contain an array of [SecurityGroup](/docs/proget/api/security#securitygroup-object) objects |
 | **403 (Unauthorized API Key)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/sca#authentication); the body will be empty |
 | **500 (Server Error)** | indicates an unexpected error; the body will contain the message and stack trace, and this will also be logged |
+
+:::(Internal) (TODO)
+**ADD "LIST ALL GROUPS AND GROUP MEMBERS SCRIPT***
+:::

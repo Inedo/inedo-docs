@@ -1,36 +1,40 @@
 ---
-title: "List Builds"
-order: 3
+title: "List Group Members"
+order: 6
 ---
 
-*List Builds* is available as both a `pgutil` command and an HTTP Request, and will return an array of [BuildInfo Object](/docs/proget/api/sca#buildinfo-object) objects describing the builds of a specified project.
+*List Group Members* is available as a `pgutil` command, and will return the list of group members assigned to a specified group.
 
-:::(Info) (🚀 Quick Example: Listing build of a project with pgutil)
-This example lists all builds of the project `myProject`
+:::(Info) (🚀 Quick Example: Listing members in a group with pgutil)
+This example lists all group members assigned to the group `Developers`
 
 ```bash
-pgutil builds list --project=myProject 
+pgutil security groups members list --name=Developers
 ```
 :::
 
 ## Command Specification (CLI)
-The `builds list` command is used to list all builds of a project.
+The `security groups members list` command is used to list all group members assigned to a specified group. 
 
-The `--project` option is always required.
+The `--name` option is always required.
 
-**Listing builds of a project** requires the project name (e.g. `myProject`)
+**Listing group members in a group** requires the group name (e.g. `Developers`)
 
 ```bash
-pgutil builds list --project=myProject 
+pgutil security groups members list --name=Developers
 ```
 
 Example output:
 
 ```plaintext
-1.0.0
-1.1.0
-1.2.3
+John Smith
+David Jones
+James Brown
 ```
+
+:::(Internal) (TODO)
+***NEED TO CONFIRM IF POSSIBLE VIA HTTP REQUEST***
+:::
 
 ## HTTP Request Specification
 To list all builds of a project, simply `GET` to the URL with an [appropriate API Key](/docs/proget/api/sca#authentication).
@@ -76,3 +80,7 @@ GET /api/sca/releases?project=myProject
 | **403 (Unauthorized API Key)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/sca#authentication); the body will be empty |
 | **404 (Project Not Found)** | indicates that the specified project does not exist | 
 | **500 (Server Error)** | indicates an unexpected error; the body will contain the message and stack trace, and this will also be logged |
+
+:::(Internal) (TODO)
+**ADD "LIST ALL GROUPS AND GROUP MEMBERS SCRIPT***
+:::
