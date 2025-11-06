@@ -1,40 +1,40 @@
 ---
-title: "Delete Asset File"
+title: "Delete User"
 order: 3
 ---
 
-*Delete Asset File* is available as both a `pgutil` command and an HTTP Request, and will delete a file at the specified path. Note that the path must refer to an individual file (not a folder), and it's *not* considered an error to delete a file that does not exist. 
+*Delete User* is available as both a `pgutil` command and an HTTP Request, and will delete a specified user account from ProGet. Note that it's *not* considered an error to delete a user that does not exist. 
 
-:::(Info) (🚀 Quick Example: Deleting a file with pgutil)
-This example will delete a file `old-file.txt` located in the folder `test-files` of the asset directory `myAssetDirectory`:
+:::(Info) (🚀 Quick Example: Deleting a user with pgutil)
+This example will delete a user account `John Smith`:
 
 ```bash
-pgutil assets rm --feed=myAssetDirectory --path=test-files/old-file.txt
+pgutil security users delete --username="John Smith"
 ```
 :::
 
 ## Command Specification (CLI)
-The `assets delete` command is used to delete a file in the asset directory.
+The `security users delete` command is used to delete a user account from ProGet.
 
-The `--path` options is always required. The `--feed` option is required if there is no default feed configured.
+The `--username` options is always required. 
 
-**Deleting a file** requires the asset directory (e.g. `MyAssetDirectory`) and the path of the file (e.g. `test-files/old-file.txt`):
+**Deleting a user** requires the user name (e.g. `"John Smith"`):
 
 ```bash
-pgutil assets delete --feed=myAssetDirectory --path=test-files/old-file.txt
+pgutil security users delete --username="John Smith"
 ```
 
 ## HTTP Request Specification
-To delete file, simply `DELETE` to the URL with the `AssetDirectoryName` and path to the file.
 
-```plaintext
-DELETE /endpoints/«AssetDirectoryName»/content/«path_to_file»
+To delete a user, simply `DELETE` to the URL with the `user` query argument specifying the username:
+
+```bash
+DELETE /api/security/users/delete?user=«username»
 ```
 
 ## HTTP Response Specification
 
 | Response | Details |
 | --- | --- |
-| **200 (Success)** | the file is deleted from the asset directory |
-| **400 (Path Refers to folder)** | indicates that the path refers to a folder |
+| **200 (Success)** | the user is deleted from ProGet |
 | **401 (Authentication Required)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/assets#authentication) |

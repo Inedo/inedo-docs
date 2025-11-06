@@ -9,7 +9,7 @@ order: 1
 This example creates the user `jsmith` with accompanying `username`, `email` and `password`
 
 ```bash
-pgutil security users create --displayname=jsmith --username="John Smith" --email=john@smith.com  --password=abc12345
+pgutil security users create --displayname=jsmith --username="John Smith" --email=john@smith.com  --password=password123
 ```
 :::
 
@@ -23,7 +23,7 @@ If `--password` is not specified, the user will be prompted to manually input a 
 **Creating a user** requires the display name (e.g. `jsmith`), the username (e.g. `"John Smith"`) and the email address (e.g `john@kramerica.com`). You can also include a password (e.g. `abc12345`).
 
 ```bash
-pgutil security users create --displayname=jsmith --username="John Smith" --email=john@kramerica.com  --password=abc12345
+pgutil security users create --displayname=jsmith --username="John Smith" --email=john@kramerica.com  --password=password123
 ```
 
 ## HTTP Request Specification
