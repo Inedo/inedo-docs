@@ -1,40 +1,50 @@
 ---
-title: "Delete Asset File"
-order: 3
+title: "Remove Group Member"
+order: 5
 ---
 
-*Delete Asset File* is available as both a `pgutil` command and an HTTP Request, and will delete a file at the specified path. Note that the path must refer to an individual file (not a folder), and it's *not* considered an error to delete a file that does not exist. 
+*Remove Group Member* is available as both a `pgutil` command and an HTTP Request, and will remove a specified group member from a group in ProGet.
 
-:::(Info) (🚀 Quick Example: Deleting a file with pgutil)
-This example will delete a file `old-file.txt` located in the folder `test-files` of the asset directory `myAssetDirectory`:
+:::(Info) (🚀 Quick Example: Removing a group member from a group with pgutil)
+This example will remove the group member `"John Smith"` from the group `Developers`:
 
 ```bash
-pgutil assets rm --feed=myAssetDirectory --path=test-files/old-file.txt
+pgutil security groups members delete --name=Developers --member="John Smith"
 ```
 :::
 
 ## Command Specification (CLI)
-The `assets delete` command is used to delete a file in the asset directory.
+The `security groups members delete` command is used to remove a group member from a group in ProGet.
 
-The `--path` options is always required. The `--feed` option is required if there is no default feed configured.
+The `--name` and `--member` options are always required. 
 
-**Deleting a file** requires the asset directory (e.g. `MyAssetDirectory`) and the path of the file (e.g. `test-files/old-file.txt`):
+**Removing a group member from a group** requires the group name (e.g. `Developers`) and the group member name (e.g. `"John Smith"`):
 
 ```bash
-pgutil assets delete --feed=myAssetDirectory --path=test-files/old-file.txt
+pgutil security groups members delete --name=Developers --member="John Smith"
 ```
 
+
+:::(Internal) (TODO)
+***TRY REMOVING WHEN NOT ADDED***
+:::
+
+
 ## HTTP Request Specification
-To delete file, simply `DELETE` to the URL with the `AssetDirectoryName` and path to the file.
+
+To delete a group, simply `DELETE` to the URL with the `group` query argument specifying the username:
 
 ```plaintext
-DELETE /endpoints/«AssetDirectoryName»/content/«path_to_file»
+DELETE /api/security/groups/delete?group=«groupname»
 ```
 
 ## HTTP Response Specification
 
 | Response | Details |
 | --- | --- |
-| **200 (Success)** | the file is deleted from the asset directory |
-| **400 (Path Refers to folder)** | indicates that the path refers to a folder |
+| **200 (Success)** | the user is deleted from ProGet |
 | **401 (Authentication Required)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/assets#authentication) |
+
+:::(Internal) (TODO)
+***BULK DELETE***
+:::

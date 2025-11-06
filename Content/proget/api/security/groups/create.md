@@ -18,7 +18,7 @@ The `security groups create` command is used to create a new group.
 
 The `--name` option is always required.
 
-**Creating a group** requires the group name (e.g. `Deveopers`):
+**Creating a group** requires the group name (e.g. `Developers`):
 
 ```bash
 pgutil security groups create --name=Developers

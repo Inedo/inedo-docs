@@ -16,7 +16,7 @@ pgutil security groups delete --name=Developers
 ## Command Specification (CLI)
 The `security groups delete` command is used to delete a group from ProGet.
 
-The `--name` options is always required. 
+The `--name` option is always required. 
 
 **Deleting a group** requires the group name (e.g. `Developers`):
 
