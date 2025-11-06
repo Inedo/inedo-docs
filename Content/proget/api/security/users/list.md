@@ -79,7 +79,7 @@ GET /api/security/users/list?search-term=John
    "displayName":"jbarnes",
    "email":"jbarnes@kramerica.com",
    "groups":["SREs"]
- }
+  }
   {...}
 ]
 ```
@@ -87,6 +87,5 @@ GET /api/security/users/list?search-term=John
 | Response | Details |
 | --- | --- |
 | **200 (Success)** | body will contain an array of [SecurityUser](/docs/proget/api/security#securityuser-object) objects |
-| **400 (Invalid Input)** | indicates invalid or missing properties |
 | **403 (Unauthorized API Key)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/sca#authentication); the body will be empty |
 | **500 (Server Error)** | indicates an unexpected error; the body will contain the message and stack trace, and this will also be logged |

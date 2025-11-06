@@ -1,6 +1,6 @@
 ---
 title: "Delete Group"
-order: 3
+order: 2
 ---
 
 *Delete Group* is available as both a `pgutil` command and an HTTP Request, and will delete a specified group from ProGet. Note that it's *not* considered an error to delete a group that does not exist. 
