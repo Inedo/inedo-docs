@@ -3,10 +3,10 @@ title: "Create User"
 order: 1
 ---
 
-*Create User* is available as both a `pgutil` command and an HTTP Request. It will create a new user account in ProGet, and return a [SecurityUser](/docs/proget/api/security#securityuser-object) object describing the new user created.
+*Create User* is available as both a `pgutil` command and an HTTP Request. It will create a new User account in ProGet, and return a [SecurityUser](/docs/proget/api/security#securityuser-object) object describing the new User created.
 
-:::(Info) (🚀 Quick Example: Creating a new user account with pgutil)
-This example creates the user `"John Smith"` with accompanying `displayname`, `email` and `password`
+:::(Info) (🚀 Quick Example: Creating a new User account with pgutil)
+This example creates the User `"John Smith"` with accompanying `displayname`, `email` and `password`
 
 ```bash
 pgutil security users create --username="John Smith" --displayname=jsmith --email=jsmith@kramerica.com  --password=password123
@@ -14,11 +14,11 @@ pgutil security users create --username="John Smith" --displayname=jsmith --emai
 :::
 
 ## Command Specification (CLI)
-The `security users create` command is used to create a new user.
+The `security users create` command is used to create a new User.
 
 The `--username`, `--displayname`, and `--email` options are always required.
 
-If `--password` is not specified, the user will be prompted to manually input a password and retype it to confirm. 
+If `--password` is not specified, the User will be prompted to manually input a password and retype it to confirm. 
 
 **Creating a user** requires the the username (e.g. `"John Smith"`), display name (e.g. `jsmith`), and the email address (e.g `john@kramerica.com`). You can also include a password (e.g. `abc12345`).
 
@@ -27,7 +27,7 @@ pgutil security users create --username="John Smith" --displayname=jsmith --emai
 ```
 
 ## HTTP Request Specification
-To create a new user account, simply `POST` to the URL with an [appropriate API Key](/docs/proget/api/security#authentication) and a [SecurityUser](/docs/proget/api/security#securityuser-object) object as the request body.
+To create a new User account, simply `POST` to the URL with an [appropriate API Key](/docs/proget/api/security#authentication) and a [SecurityUser](/docs/proget/api/security#securityuser-object) object as the request body.
 
 ```plaintext
 POST /api/security/users/add
@@ -35,7 +35,7 @@ POST /api/security/users/add
 
 ## HTTP Response Specification
 
-A successful (`200`) response body will contain a [SecurityUser](/docs/proget/api/security#securityuser-object) object. For example, to creating a new user account with the user name `"John Smith"`, the request would return this:
+A successful (`200`) response body will contain a [SecurityUser](/docs/proget/api/security#securityuser-object) object. For example, to creating a new User account with the user name `"John Smith"`, the request would return this:
 
 ```json
 POST /api/security/users/add
