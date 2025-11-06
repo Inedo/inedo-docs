@@ -48,9 +48,11 @@ POST /api/security/users/add
 }
 ```
 
+Note: When returned, the JSON object will hide the `password` field on output.
+
 | Response | Details |
 | --- | --- |
-| **200 (Success)** | body will contain a [SecurityUser](/docs/proget/api/security#securityuser-object) object |
+| **200 (Success)** | body will contain a [SecurityUser](/docs/proget/api/security#securityuser-object) object (with `password` hidden) |
 | **400 (Invalid Input)** | indicates invalid or missing properties on the [SecurityUser](/docs/proget/api/security#securityuser-object) object; the body will provide some details as text |
 | **403 (Unauthorized API Key)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/sca#authentication); the body will be empty |
 | **500 (Server Error)** | indicates an unexpected error; the body will contain the message and stack trace, and this will also be logged |

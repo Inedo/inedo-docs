@@ -20,7 +20,7 @@ The `--username` option is always required.
 
 One or more of the `--displayname`, `--email`, and `--password` options may be included, and will overwrite the existing value(s).
 
-**Editing a user** requires the the username (e.g. `"John Smith"`) and may include the `--displayname`, `--email`, and or `--password`. The example below will only edit the user's display name:
+**Editing a user** requires the the username (e.g. `"John Smith"`) and may include the `--displayname`, `--email`, and or `--password`. The example below edits the user's display name:
 
 ```bash
 pgutil security users edit --username="John Smith" --displayname=johnsmith
