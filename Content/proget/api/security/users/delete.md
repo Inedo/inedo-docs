@@ -28,7 +28,7 @@ pgutil security users delete --username="John Smith"
 
 To delete a user, simply `DELETE` to the URL with the `user` query argument specifying the username:
 
-```bash
+```plaintext
 DELETE /api/security/users/delete?user=«username»
 ```
 
