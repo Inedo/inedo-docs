@@ -34,7 +34,7 @@ John Barnes
 Michael Bankson
 ```
 
-**Listing users with a filter** requires requires a search term (e.g. `"John"`)
+**Listing users with a filter** requires a search term (e.g. `"John"`)
 
 ```bash
 pgutil security users list --search-term="John"
