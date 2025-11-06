@@ -1,6 +1,6 @@
 ---
 title: "List Users"
-order: 4
+order: 5
 ---
 
 *List Users* is available as both a `pgutil` command and an HTTP Request, and will return an array of [SecurityUser](/docs/proget/api/security#securityuser-object) objects describing the user accounts in ProGet.
