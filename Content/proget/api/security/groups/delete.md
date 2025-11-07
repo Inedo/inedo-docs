@@ -36,6 +36,7 @@ DELETE /api/security/groups/delete?group=«groupname»
 
 | Response | Details |
 | --- | --- |
-| **200 (Success)** | the Group is deleted from ProGet |
+| **200 (Success)** | the group is deleted from ProGet |
+| **400 (Invalid Input)** | indicates invalid or missing properties; the body will provide some details as text |
 | **401 (Authentication Required)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/assets#authentication) |
 | **500 (Server Error)** | indicates an unexpected error; the body will contain the message and stack trace, and this will also be logged |

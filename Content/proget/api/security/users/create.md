@@ -20,7 +20,7 @@ The `--username`, `--displayname`, and `--email` options are always required.
 
 If `--password` is not specified, the User will be prompted to manually input a password and retype it to confirm. 
 
-**Creating a user** requires the the username (e.g. `"John Smith"`), display name (e.g. `jsmith`), and the email address (e.g `john@kramerica.com`). You can also include a password (e.g. `abc12345`).
+**Creating a user** requires the the user name (e.g. `"John Smith"`), display name (e.g. `jsmith`), and the email address (e.g `john@kramerica.com`). You can also include a password (e.g. `abc12345`).
 
 ```bash
 pgutil security users create --username="John Smith" --displayname=jsmith --email=john@kramerica.com  --password=password123
@@ -52,7 +52,7 @@ Note: When returned, the JSON object will hide the `password` field on output.
 
 | Response | Details |
 | --- | --- |
-| **200 (Success)** | body will contain a [SecurityUser](/docs/proget/api/security#securityuser-object) object (with `password` hidden) |
+| **200 (Success)** | the user is created and the body will contain a [SecurityUser](/docs/proget/api/security#securityuser-object) object (with `password` hidden) |
 | **400 (Invalid Input)** | indicates invalid or missing properties on the [SecurityUser](/docs/proget/api/security#securityuser-object) object; the body will provide some details as text |
 | **403 (Unauthorized API Key)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/sca#authentication); the body will be empty |
 | **500 (Server Error)** | indicates an unexpected error; the body will contain the message and stack trace, and this will also be logged |

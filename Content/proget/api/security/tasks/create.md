@@ -53,7 +53,7 @@ POST /api/security/tasks/add
 
 | Response | Details |
 | --- | --- |
-| **200 (Success)** | body will contain a [SecurityTask](/docs/proget/api/security#securitytask-object) object |
+| **200 (Success)** | the task is created and the body will contain a [SecurityTask](/docs/proget/api/security#securitytask-object) object |
 | **400 (Invalid Input)** | indicates invalid or missing properties on the [SecurityTask](/docs/proget/api/security#securitytask-object) object; the body will provide some details as text |
 | **403 (Unauthorized API Key)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/sca#authentication); the body will be empty |
 | **500 (Server Error)** | indicates an unexpected error; the body will contain the message and stack trace, and this will also be logged |

@@ -45,7 +45,7 @@ POST /api/security/groups/add
 
 | Response | Details |
 | --- | --- |
-| **200 (Success)** | the group is created. The body will contain a [SecurityGroup](/docs/proget/api/security#securitygroup-object) object |
+| **200 (Success)** | the group is created and the body will contain a [SecurityGroup](/docs/proget/api/security#securitygroup-object) object |
 | **400 (Invalid Input)** | indicates invalid or missing properties on the [SecurityGroup](/docs/proget/api/security#securitygroup-object)  object; the body will provide some details as text |
 | **403 (Unauthorized API Key)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/sca#authentication); the body will be empty |
 | **500 (Server Error)** | indicates an unexpected error; the body will contain the message and stack trace, and this will also be logged |

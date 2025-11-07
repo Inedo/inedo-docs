@@ -3,10 +3,10 @@ title: "List Groups"
 order: 3
 ---
 
-*List Groups* is available as both a `pgutil` command and an HTTP Request, and will return an array of [SecurityGroup](/docs/proget/api/security#securitygroup-object) objects listing the groups in ProGet and number of members in each.
+*List Groups* is available as both a `pgutil` command and an HTTP Request, and will return an array of [SecurityGroup](/docs/proget/api/security#securitygroup-object) objects listing the Groups in ProGet and number of group members in each.
 
-:::(Info) (🚀 Quick Example: Listing groups with pgutil)
-This example lists all existing groups:
+:::(Info) (🚀 Quick Example: Listing Groups with pgutil)
+This example lists all existing Groups:
 
 ```bash
 pgutil security groups list
@@ -14,9 +14,9 @@ pgutil security groups list
 :::
 
 ## Command Specification (CLI)
-The `security groups list` command is used to list all group in ProGet and return the number of members in each.
+The `security groups list` command is used to list all Groups in ProGet and return the number of group members in each.
 
-**Listing all existing groups** requires no additional options:
+**Listing all existing Groups** requires no additional options:
 
 ```bash
 pgutil security groups list
@@ -32,7 +32,7 @@ SREs (members: 13)
 ```
 
 ## HTTP Request Specification
-To list all groups in ProGet, simply `GET` to the URL with an [appropriate API Key](/docs/proget/api/sca#authentication).
+To list all Groups in ProGet, simply `GET` to the URL with an [appropriate API Key](/docs/proget/api/sca#authentication).
 
 ```plaintext
 GET /api/security/groups/list

@@ -3,7 +3,7 @@ title: "Add Group Member"
 order: 4
 ---
 
-*Add Group Member* is available as both a `pgutil` command and an HTTP Request, and will assign an existing User to an existing Group.
+*Add Group Member* is available as a `pgutil` command, and will assign an existing User to an existing Group.
 
 :::(Info) (🚀 Quick Example: Adding a user to a group with pgutil)
 This example adds the user `"John Smith"` to the group `Developers`:
@@ -26,7 +26,6 @@ pgutil security groups members add --member="John Smith" --name=Developers
 
 :::(Internal) (TODO)
 ***TRY TESTING ADDING WHEN ALREADY ADDED***
-:::
 
 ## HTTP Request Specification
 To add a User to a Group, simply `POST` to the URL with an [appropriate API Key](/docs/proget/api/sca#authentication) and a [SecurityGroup](/docs/proget/api/security#securitygroup-object) object as the request body.
@@ -53,7 +52,7 @@ POST /api/security/groups/add
 | **400 (Invalid Input)** | indicates invalid or missing properties on the [SecurityGroup](/docs/proget/api/security#securitygroup-object)  object; the body will provide some details as text |
 | **403 (Unauthorized API Key)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/sca#authentication); the body will be empty |
 | **500 (Server Error)** | indicates an unexpected error; the body will contain the message and stack trace, and this will also be logged |
-
+:::
 
 :::(Internal) (TODO)
 ***BULK ADD***

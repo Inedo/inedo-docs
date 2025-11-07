@@ -3,10 +3,10 @@ title: "List Users"
 order: 5
 ---
 
-*List Users* is available as both a `pgutil` command and an HTTP Request, and will return an array of [SecurityUser](/docs/proget/api/security#securityuser-object) objects describing the user accounts in ProGet.
+*List Users* is available as both a `pgutil` command and an HTTP Request, and will return an array of [SecurityUser](/docs/proget/api/security#securityuser-object) objects describing the User accounts in ProGet.
 
-:::(Info) (🚀 Quick Example: Listing user accounts with pgutil)
-This example lists all existing users:
+:::(Info) (🚀 Quick Example: Listing User accounts with pgutil)
+This example lists all existing Users:
 
 ```bash
 pgutil security users list
@@ -14,9 +14,9 @@ pgutil security users list
 :::
 
 ## Command Specification (CLI)
-The `security users list` command is used to list all user accounts in ProGet.
+The `security users list` command is used to list all User accounts in ProGet.
 
-The `--search-term` option is optional, and can be used to filter users.
+The `--search-term` option is optional, and can be used to filter Users.
 
 **Listing all existing users** requires no additional options:
 
@@ -48,7 +48,7 @@ John Barnes
 ```
 
 ## HTTP Request Specification
-To list all user accounts in ProGet, simply `GET` to the URL with an [appropriate API Key](/docs/proget/api/sca#authentication).
+To list all User accounts in ProGet, simply `GET` to the URL with an [appropriate API Key](/docs/proget/api/sca#authentication).
 
 ```plaintext
 GET /api/security/users/list
