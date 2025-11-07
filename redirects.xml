@@ -1,7 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <redirects>
 
-  <redirect from="/docs/installation/security-ldap-active-directory/various-ldap-v4-advanced" to="/docs/installation/security-ldap-active-directory/legacyconfigurations/various-ldap-v4-advanced" modified="8/7/2025 09:35:00 AM" />  
+	<redirect from="/docs/proget/cloud-storage/proget-howto-amazon-s3-ui" to="https://blog.inedo.com/proget/proget-as-cloud-storage-ui" />
+	<redirect from="/docs/proget/cloud-storage/proget-howto-azure-blob-ui" to="https://blog.inedo.com/proget/proget-as-cloud-storage-ui" />
+
+	<redirect from="/docs/installation/security-ldap-active-directory/various-ldap-v4-advanced" to="/docs/installation/security-ldap-active-directory/legacyconfigurations/various-ldap-v4-advanced" modified="8/7/2025 09:35:00 AM" />  
 
 	<!-- BEGIN ProGet2025 Docs Refactoring  -->
 	<redirect from="/docs/installation/windows/desktophub-overview" to="/docs/installation/windows/inedo-hub" />

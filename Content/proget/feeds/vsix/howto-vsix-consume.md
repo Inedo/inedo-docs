@@ -85,7 +85,7 @@ Finally, use the file browser to select the package and click "Upload File".
 
 ### Option 3: Bulk Package Upload
 
-ProGet allows you to [bulk upload](/docs/proget/feeds/feed-overview/proget-bulk-import-with-droppath) extensions to your Visual Studio Extension feed. 
+ProGet allows you to [bulk upload](/docs/proget/feeds/feed-overview/proget-bulk-import) extensions to your Visual Studio Extension feed. 
 
 ## Step 4.1: Adding the Feed to Visual Studio
 
