@@ -3,7 +3,7 @@ title: "List Permissions"
 order: 3
 ---
 
-*List Permissions* is available as both a `pgutil` command and an HTTP Request, and will return an array of [SecurityPermission](/docs/proget/api/security#securitypermission-object) objects describing all configured permissions.
+*List Permissions* is available as both a `pgutil` command and an HTTP Request, and will return an array of [SecurityPermission](/docs/proget/api/security#securitypermission-object) objects describing all configured Permissions.
 
 :::(Info) (🚀 Quick Example: Listing permissions with pgutil)
 This example lists all existing permissions:
@@ -14,9 +14,9 @@ pgutil security permissions list
 :::
 
 ## Command Specification (CLI)
-The `security permissions list` command is used to list all existing permissions.
+The `security permissions list` command is used to list all existing Permissions.
 
-**Listing all permissions** requires no additional options:
+**Listing all Permissions** requires no additional options:
 
 ```bash
 pgutil security permissions list
@@ -32,7 +32,7 @@ Example output:
 ```
 
 ## HTTP Request Specification
-To list all permissions, simply `GET` to the URL with an [appropriate API Key](/docs/proget/api/sca#authentication).
+To list all Permissions, simply `GET` to the URL with an [appropriate API Key](/docs/proget/api/sca#authentication).
 
 ```plaintext
 GET /api/security/permissions/list
@@ -40,7 +40,7 @@ GET /api/security/permissions/list
 
 ## HTTP Response Specification
 
-A successful (`200`) response body will contain an array of [SecurityPermission](/docs/proget/api/security#securitypermission-object) objects. For example, to listing all permissions, the request would return this:
+A successful (`200`) response body will contain an array of [SecurityPermission](/docs/proget/api/security#securitypermission-object) objects. For example, to listing all Permissions, the request would return this:
 
 ```json
 GET /api/security/permissions/list

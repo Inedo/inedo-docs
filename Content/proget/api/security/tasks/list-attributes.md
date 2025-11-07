@@ -3,10 +3,10 @@ title: "List Task Attributes"
 order: 4
 ---
 
-*List Task Attributes* is available as both a `pgutil` command and an HTTP Request, and will return an array of [SecurityTaskAttribute](/docs/proget/api/security#securitytaskattribute-object) objects describing all existing task attributes.
+*List Task Attributes* is available as both a `pgutil` command and an HTTP Request, and will return an array of [SecurityTaskAttribute](/docs/proget/api/security#securitytaskattribute-object) objects describing all existing Task attributes.
 
-:::(Info) (🚀 Quick Example: Listing task attributes with pgutil)
-This example lists all existing task attributes:
+:::(Info) (🚀 Quick Example: Listing Task attributes with pgutil)
+This example lists all existing Task attributes:
 
 ```bash
 pgutil security attributes list
@@ -14,7 +14,7 @@ pgutil security attributes list
 :::
 
 ## Command Specification (CLI)
-The `security attributes list` command is used to list all task attributes.
+The `security attributes list` command is used to list all Task attributes.
 
 **Listing all task attributes** requires no additional options:
 
@@ -35,7 +35,7 @@ Example output:
 ```
 
 ## HTTP Request Specification
-To list all task attributes, simply `GET` to the URL with an [appropriate API Key](/docs/proget/api/sca#authentication).
+To list all Task attributes, simply `GET` to the URL with an [appropriate API Key](/docs/proget/api/sca#authentication).
 
 ```plaintext
 GET /api/security/attributes/list
@@ -43,7 +43,7 @@ GET /api/security/attributes/list
 
 ## HTTP Response Specification
 
-A successful (`200`) response body will contain an array of [SecurityTaskAttribute](/docs/proget/api/security#securitytaskattribute-object) objects. For example, to listing all task attributes, the request would return this:
+A successful (`200`) response body will contain an array of [SecurityTaskAttribute](/docs/proget/api/security#securitytaskattribute-object) objects. For example, to listing all Task attributes, the request would return this:
 
 ```json
 GET /api/security/attributes/list

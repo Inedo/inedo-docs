@@ -3,10 +3,10 @@ title: "List Tasks"
 order: 3
 ---
 
-*List Tasks* is available as both a `pgutil` command and an HTTP Request, and will return an array of [SecurityTask](/docs/proget/api/security#securitytask-object) objects describing all existing tasks.
+*List Tasks* is available as both a `pgutil` command and an HTTP Request, and will return an array of [SecurityTask](/docs/proget/api/security#securitytask-object) objects describing all existing Tasks.
 
-:::(Info) (🚀 Quick Example: Listing tasks with pgutil)
-This example lists all existing task attributes:
+:::(Info) (🚀 Quick Example: Listing Tasks with pgutil)
+This example lists all existing Task attributes:
 
 ```bash
 pgutil security tasks list
@@ -14,9 +14,9 @@ pgutil security tasks list
 :::
 
 ## Command Specification (CLI)
-The `security tasks list` command is used to list all existing tasks.
+The `security tasks list` command is used to list all existing Tasks.
 
-**Listing all tasks** requires no additional options:
+**Listing all Tasks** requires no additional options:
 
 ```bash
 pgutil security tasks list
@@ -59,7 +59,7 @@ Attributes:
 ```
 
 ## HTTP Request Specification
-To list all tasks, simply `GET` to the URL with an [appropriate API Key](/docs/proget/api/sca#authentication).
+To list all Tasks, simply `GET` to the URL with an [appropriate API Key](/docs/proget/api/sca#authentication).
 
 ```plaintext
 GET /api/security/tasks/list
@@ -67,7 +67,7 @@ GET /api/security/tasks/list
 
 ## HTTP Response Specification
 
-A successful (`200`) response body will contain an array of [SecurityTask](/docs/proget/api/security#securitytask-object) objects. For example, to listing all tasks, the request would return this:
+A successful (`200`) response body will contain an array of [SecurityTask](/docs/proget/api/security#securitytask-object) objects. For example, to listing all Tasks, the request would return this:
 
 ```json
 GET /api/security/attributes/list
