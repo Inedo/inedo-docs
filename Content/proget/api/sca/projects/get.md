@@ -3,7 +3,7 @@ title: "Get Project"
 order: 2
 ---
 
-*Get Project* is available as an HTTP Request, and will return information on a specified project, and return a [ProjectInfo Object](/docs/proget/api/sca#projectinfo-object) object describing the project.
+*Get Project* is available as an HTTP Request, and will return information on a specified project, and return a [ProjectInfo](/docs/proget/api/sca#projectinfo-object) object describing the project.
 
 :::(Info) (🚀 Quick Example: Getting a Project with Curl)
 This example gets a project `myProject`, authenticating with the API key `abc12345`:
@@ -28,7 +28,7 @@ GET /api/sca/projects?project=myProject
 
 ## HTTP Response Specification
 
-A successful (`200`) response body will contain a [ProjectInfo Object](/docs/proget/api/sca#projectinfo-object) object. For example, to getting project `myProject`, the request would return this:
+A successful (`200`) response body will contain a [ProjectInfo](/docs/proget/api/sca#projectinfo-object) object. For example, to getting project `myProject`, the request would return this:
 
 ```json
 GET /api/sca/projects?project=myProject

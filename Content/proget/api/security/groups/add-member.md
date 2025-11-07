@@ -3,7 +3,7 @@ title: "Add Group Member"
 order: 4
 ---
 
-*Add Group Member* is available as both a `pgutil` command and an HTTP Request, and will assign an existing user to an existing group.
+*Add Group Member* is available as both a `pgutil` command and an HTTP Request, and will assign an existing User to an existing Group.
 
 :::(Info) (🚀 Quick Example: Adding a user to a group with pgutil)
 This example adds the user `"John Smith"` to the group `Developers`:
@@ -14,7 +14,7 @@ pgutil security groups members add --member="John Smith" --name=Developers
 :::
 
 ## Command Specification (CLI)
-The `security groups members add` command is used to add an existing user to an existing group.
+The `security groups members add` command is used to add an existing User to an existing Group.
 
 The `--member` and `--name` options are always required.
 
@@ -29,7 +29,7 @@ pgutil security groups members add --member="John Smith" --name=Developers
 :::
 
 ## HTTP Request Specification
-To add a user to a group, simply `POST` to the URL with an [appropriate API Key](/docs/proget/api/sca#authentication) and a [SecurityGroup](/docs/proget/api/security#securitygroup-object) object as the request body.
+To add a User to a Group, simply `POST` to the URL with an [appropriate API Key](/docs/proget/api/sca#authentication) and a [SecurityGroup](/docs/proget/api/security#securitygroup-object) object as the request body.
 
 ```plaintext
 POST /api/security/groups/add
@@ -37,7 +37,7 @@ POST /api/security/groups/add
 
 ## HTTP Response Specification
 
-A successful (`200`) response body will contain a [SecurityGroup](/docs/proget/api/security#securitygroup-object) object. For example, to creating a new group `Developers`, the request would return this:
+A successful (`200`) response body will contain a [SecurityGroup](/docs/proget/api/security#securitygroup-object) object. For example, to creating a new Group `Developers`, the request would return this:
 
 ```json
 POST /api/security/groups/add
