@@ -47,22 +47,24 @@ GET /api/security/permissions/list
 
 [
   {
-    "id": 2,
+    "id": 1,
     "group": "Administrators",
     "task": "Administer",
     "deny": false
   },
   {
     "id": 3,
-    "user": "Anonymous",
-    "task": "Administer",
-    "deny": false
+    "user": "David Smith",
+    "task": "View & Download Packages",
+    "feed": "unapproved-nuget",
+    "deny": true
   },
   {
-    "id": 1,
-    "user": "Anonymous",
+    "id": 4,
+    "group": "developers",
     "task": "View & Download Packages",
-    "deny": false
+    "feedGroup": "production-packages",
+    "deny": false,
   },
   {...}
 ]
