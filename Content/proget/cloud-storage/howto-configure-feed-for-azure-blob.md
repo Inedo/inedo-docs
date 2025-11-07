@@ -3,7 +3,6 @@ title: "HOWTO: Configure Feeds for Azure Blob Storage"
 order: 4
 ---
 
-
 ProGet can use Azure Blob Storage to store your package files instead of your server's disk drive. This simplifies disaster recovery by storing everything in the cloud, and ensures you never run out of storage.
 
 In this article, you'll learn how to set up Azure Blob Storage and then use it to store packages in a new feed in ProGet.
@@ -72,6 +71,10 @@ Use the connection string copied in step 4 and the container name from step 3 an
 After saving the configuration, you'll be given the chance to test your configuration. You can also do this any time by selecting "test" to the right of "Storage" under "Storage Configuration" on the feed's "Manage Feed" page. For more details on all of the configuration options, you can read our [Cloud Storage Overview](/docs/proget/cloud-storage).
 
 ![](/resources/docs/proget-cloudstorage-azure-test.png){height="" width="50%"}
+
+## (Optional) Setting up ProGet as a UI for Azure Blog Storage
+
+In addition to configuring your feed to store packages in Azure Blog Storage, you can use ProGet as a UI for managing other assets you may be using it to store. This gives users a way to browse, upload, and organize files without navigating Azure’s console, while admins can maintain full control over access. To learn how to set this up, see [HowTo: Set Up ProGet as a UI for Cloud Storage](https://blog.inedo.com/proget/proget-as-cloud-storage-ui).
 
 ## Troubleshooting:
 ### Issue:  Microsoft Azure is not a storage option
