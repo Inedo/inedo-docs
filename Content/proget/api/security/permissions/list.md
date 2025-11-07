@@ -40,10 +40,10 @@ GET /api/security/permissions/list
 
 ## HTTP Response Specification
 
-A successful (`200`) response body will contain an array of [SecurityPermission](/docs/proget/api/security#securitypermission-object) objects. For example, to listing all tasks, the request would return this:
+A successful (`200`) response body will contain an array of [SecurityPermission](/docs/proget/api/security#securitypermission-object) objects. For example, to listing all permissions, the request would return this:
 
 ```json
-GET /api/security/attributes/list
+GET /api/security/permissions/list
 
 [
   {
