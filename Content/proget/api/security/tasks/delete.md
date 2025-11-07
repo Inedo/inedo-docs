@@ -36,5 +36,5 @@ DELETE /api/security/tasks/delete?task=«taskname»
 
 | Response | Details |
 | --- | --- |
-| **200 (Success)** | the user is deleted from ProGet |
+| **200 (Success)** | the task is deleted from ProGet |
 | **401 (Authentication Required)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/assets#authentication) |
