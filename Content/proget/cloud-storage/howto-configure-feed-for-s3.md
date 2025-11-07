@@ -81,6 +81,10 @@ If you are having trouble finding something, a quick Google search will usually 
 * Region Endpoint: Using the navigation pane on the left side of your screen in Amazon S3, go to Buckets > Bucket Overview > AWS Region. 
 :::
 
+## (Optional) Setting up ProGet as a UI for Amazon S3
+
+Once your feed is connected to Amazon S3, consider using ProGet as UI for managing any other assets you're using it to store. This makes it easier for users to handle uploads and file organization without relying on the S3 console, while administrators retain oversight of access control and permissions. To learn more, see [HowTo: Set Up ProGet as a UI for Cloud Storage](https://blog.inedo.com/proget/proget-as-cloud-storage-ui).
+
 ## Troubleshooting:
 
 ### Issue: Amazon S3 is not a storage option
