@@ -1,9 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <redirects>
 
-	<redirect from="/docs/proget/cloud-storage/proget-howto-amazon-s3-ui" to="https://blog.inedo.com/proget/proget-as-cloud-storage-ui" />
-	<redirect from="/docs/proget/cloud-storage/proget-howto-azure-blob-ui" to="https://blog.inedo.com/proget/proget-as-cloud-storage-ui" />
-
 	<redirect from="/docs/installation/security-ldap-active-directory/various-ldap-v4-advanced" to="/docs/installation/security-ldap-active-directory/legacyconfigurations/various-ldap-v4-advanced" modified="8/7/2025 09:35:00 AM" />  
 
 	<!-- BEGIN ProGet2025 Docs Refactoring  -->
@@ -1301,5 +1298,11 @@
   <redirect from="/docs/proget/reference-api/proget-api-assets/folder-endpoints/proget-api-assets-folders-import" to="/docs/proget/api/assets/folders/import" modified="3/19/2025 02:59:00 PM" />
   <redirect from="/docs/proget/reference-api/proget-api-assets/metadata-endpoints/proget-api-assets-metadata-set" to="/docs/proget/api/assets/metadata/set" modified="3/19/2025 03:00:00 PM" />
   <redirect from="/docs/proget/reference-api/proget-api-assets/metadata-endpoints/proget-api-assets-metadata-get" to="/docs/proget/api/assets/metadata/get" modified="3/19/2025 03:00:00 PM" />
-  <!--Begin of Universal Packages Redirects-->
+  <!--End of Universal Packages Redirects-->
+  <!--Begin of Cloud Storage Redirects-->
+  <redirect from="/docs/proget/cloud-storage/proget-howto-amazon-s3-ui" to="https://blog.inedo.com/proget/proget-as-cloud-storage-ui" />
+	<redirect from="/docs/proget/cloud-storage/proget-howto-azure-blob-ui" to="https://blog.inedo.com/proget/proget-as-cloud-storage-ui" />
+  <redirect from="/docs/proget/advanced-features/proget-howto-configure-feed-for-s3" to="/docs/proget/cloud-storage/howto-configure-feed-for-s3" />
+  <redirect from="/docs/proget/advanced-features/proget-howto-configure-feed-for-azure-blob" to="/docs/proget/cloud-storage/howto-configure-feed-for-azure-blob" />
+  <!--End of Cloud Storage Redirects-->
 </redirects>
