@@ -61,7 +61,7 @@ Note: When returned, the JSON object will hide the `password` field on output.
 
 The following scripts will import a CSV of user information and create users in the specified ProGet instance in bulk. The CSV needs to formatted with the correct headers shown in this example:
 
-```csv
+```sql
 Name,DisplayName,Email,Password
 Alice Johnson,ajohnson,alice.johnson@example.com,Sunflower92!
 Brian Lee,blee,brian.lee@example.com,MapleLeaf47#
@@ -79,7 +79,7 @@ $hostname = "proget.corp.local"
 $apiKey = "abc12345"
 
 Import-Csv $csvPath | ForEach-Object {
-    $body = $_ | Select-Object @{n='name';e={$_.Name}}, @{n='displayName';e={$_.DisplayName}}, @{n='mail';e={$_.Email}}, @{n='password';e={$_.Password}} | ConvertTo-Json
+    $body = $_ | Select-Object @{n='name';e={$_.Name}}, @{n='displayName';e={$_.DisplayName}}, @{n='email';e={$_.Email}}, @{n='password';e={$_.Password}} | ConvertTo-Json
     try {
         Invoke-RestMethod -Uri "https://$hostname/api/security/users/add" -Method Post -Headers @{ "X-ApiKey" = $apiKey; "Content-Type" = "application/json" } -Body $body
         Write-Host "Added: $($_.Name)"
@@ -123,7 +123,7 @@ with open(csv_file_path, newline='', encoding='utf-8') as csvfile:
         payload = {
             "name": row["Name"],
             "displayName": row["DisplayName"],
-            "mail": row["Email"],
+            "email": row["Email"],
             "password": row["Password"]
         }
 
