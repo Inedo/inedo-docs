@@ -71,7 +71,7 @@ Emily Torres,etorres,emily.torres@example.com,RiverStone31%
 ```
 
 ### Create Users (Powershell)
-This PowerShell script create users in bulk based off the input `.csv` file located at `C:\Users\YourUser\Documents\users.csv` to a ProGet instance located at `proget.corp.local` with an API key `abc12345`:
+This PowerShell script create users from a `.csv` file located at `C:\Users\YourUser\Documents\users.csv` to a ProGet instance located at `proget.corp.local` with an API key `abc12345`:
 
 ```powershell
 $csvPath = "C:\Users\YourUser\Documents\users.csv"
@@ -101,7 +101,7 @@ Done.
 ```
 
 ### Create Users in Bulk (Python)
-This Python script create users in bulk based off the input `.csv` file located at `C:\Users\YourUser\Documents\users.csv` to a ProGet instance located at `proget.corp.local` with an API key `abc12345`:
+This Python script create users from a `.csv` file located at `C:\Users\YourUser\Documents\users.csv` to a ProGet instance located at `proget.corp.local` with an API key `abc12345`:
 
 ```python
 import csv
