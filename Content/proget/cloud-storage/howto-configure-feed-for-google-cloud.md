@@ -95,6 +95,10 @@ Once configured you'll be given the option to test your configuration. You can a
 
 ![](/resources/docs/proget-cloudstorage-google-test.png){height="" width="50%"}
 
+## (Optional) Setting up ProGet as a UI for Google Cloud
+
+In addition to configuring your feed to store packages in Google Cloud, you can use ProGet as a UI for managing other assets you may be using it to store. This gives users a simple way to browse, upload, and organize files without navigating Google Cloud’s console, while administrators maintain full control over access and permissions. To learn more, see [HowTo: Set Up ProGet as a UI for Cloud Storage](https://blog.inedo.com/proget/proget-as-cloud-storage-ui).
+
 ## Troubleshooting:
 
 ### Issue: Google Cloud is not a storage option
