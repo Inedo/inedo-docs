@@ -76,3 +76,99 @@ POST /api/security/permissions/add
 | **400 (Invalid Input)** | indicates invalid or missing properties on the [SecurityPermission](/docs/proget/api/security#securitypermission-object) object; the body will provide some details as text |
 | **403 (Unauthorized API Key)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/sca#authentication); the body will be empty |
 | **500 (Server Error)** | indicates an unexpected error; the body will contain the message and stack trace, and this will also be logged |
+
+
+## Sample Usage Scripts
+
+### Assign Feed-Level Permissions to a Group (PowerShell)
+This PowerShell script will add task permissions selected by the user to a group `Developers`for a feed `approved-nuget` to a ProGet instance `proget.corp.local` with the API key `abc12345`. You can select one or more task permissions:
+
+```powershell
+$hostname = "proget.corp.local"
+$apiKey   = "abc12345"
+$group = "Developers"
+$feed  = "approved-nuget"
+
+# To set a permission, remove the # symbol from the start of that line.
+$tasks = @(
+    # "Administer"
+    # "Manage Feed"
+    # "Manage Projects"
+    # "Promote Packages"
+    # "Publish Packages"
+    # "View & Download Packages"
+)
+
+if (-not $tasks -or $tasks.Count -eq 0) {
+    Write-Warning "No tasks selected. Please uncomment one or more tasks before running the script."
+    return
+}
+
+$apiUrl = "https://$hostname/api/security/permissions/add"
+
+foreach ($task in $tasks) {
+    Write-Host "Adding permission: $task for group '$group' on feed '$feed'..."
+
+    $body = @{
+        task  = $task
+        group = $group
+        feed  = $feed
+    } | ConvertTo-Json
+
+    try {
+        Invoke-RestMethod -Uri $apiUrl -Method Post -Headers @{
+            "X-ApiKey" = $apiKey
+            "Content-Type" = "application/json"
+        } -Body $body
+
+        Write-Host "✅ Successfully added: $task"
+    } catch {
+        Write-Warning "❌ Failed to add: $task - $_"
+    }
+}
+
+Write-Host "`nAll selected permissions processed."
+```
+
+### Assign Feed Group-Level Permissions to a User (Python)
+This PowerShell script will add task permissions selected by the user to a user `John Smith` for a feed group `nuget-feeds` to a ProGet instance `proget.corp.local` with the API key `abc12345`. You can select one or more task permissions:
+
+```python
+import requests
+
+hostname = "proget.corp.local"
+api_key = "abc12345"
+user = "John Smith"
+feedGroup = "nuget-feeds"
+
+# To set a permission, remove the # symbol from the start of that line.
+tasks = [
+    # "Administer",
+    # "Manage Feed",
+    # "Manage Projects",
+    # "Promote Packages",
+    # "Publish Packages",
+    # "View & Download Packages"
+]
+
+if not tasks:
+    print("⚠️  No tasks selected. Please uncomment one or more tasks before running the script.")
+    exit()
+
+api_url = f"https://{hostname}/api/security/permissions/add"
+headers = {"X-ApiKey": api_key, "Content-Type": "application/json"}
+
+for task in tasks:
+    print(f"Adding permission: {task} for user '{user}' on feedGroup '{feedGroup}'...")
+
+    payload = {"task": task, "user": user, "feedGroup": feedGroup}
+
+    try:
+        response = requests.post(api_url, headers=headers, json=payload)
+        response.raise_for_status()
+        print(f"✅ Successfully added: {task}")
+    except requests.exceptions.RequestException as e:
+        print(f"❌ Failed to add: {task} - {e}")
+
+print("\nAll selected permissions processed.")
+```

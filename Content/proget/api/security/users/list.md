@@ -103,7 +103,7 @@ David Patel,dpatel,david.patel@example.com,StarryNight55@
 Emily Torres,etorres,emily.torres@example.com,RiverStone31%
 ```
 
-### Create Users (PowerShell)
+### Export Users (PowerShell)
 This PowerShell script will export a `.csv` file located at `C:\Users\YourUser\Documents\users_export.csv` from a ProGet instance located at `proget.corp.local` with an API key `abc12345`:
 
 ```powershell
@@ -141,7 +141,7 @@ try {
 Users exported successfully to C:\Users\YourUser\Documents\users_export.csv
 ```
 
-### Create Users in Bulk (Python)
+### Export Users (Python)
 This Python script will export a `.csv` file located at `C:\Users\YourUser\Documents\users_export.csv` from a ProGet instance located at `proget.corp.local` with an API key `abc12345`:
 
 ```python
