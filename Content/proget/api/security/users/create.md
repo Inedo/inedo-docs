@@ -56,3 +56,94 @@ Note: When returned, the JSON object will hide the `password` field on output.
 | **400 (Invalid Input)** | indicates invalid or missing properties on the [SecurityUser](/docs/proget/api/security#securityuser-object) object; the body will provide some details as text |
 | **403 (Unauthorized API Key)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/sca#authentication); the body will be empty |
 | **500 (Server Error)** | indicates an unexpected error; the body will contain the message and stack trace, and this will also be logged |
+
+## Sample Usage Scripts
+
+The following scripts will import a CSV of user information and create users in the specified ProGet instance in bulk. The CSV needs to formatted with the correct headers shown in this example:
+
+```csv
+Name,DisplayName,Email,Password
+Alice Johnson,ajohnson,alice.johnson@example.com,Sunflower92!
+Brian Lee,blee,brian.lee@example.com,MapleLeaf47#
+Catherine Wu,cwu,catherine.wu@example.com,OceanWave88$
+David Patel,dpatel,david.patel@example.com,StarryNight55@
+Emily Torres,etorres,emily.torres@example.com,RiverStone31%
+```
+
+### Create Users (Powershell)
+This PowerShell script create users in bulk based off the input `.csv` file located at `C:\Users\YourUser\Documents\users.csv` to a ProGet instance located at `proget.corp.local` with an API key `abc12345`:
+
+```powershell
+$csvPath = "C:\Users\YourUser\Documents\users.csv"
+$hostname = "proget.corp.local"
+$apiKey = "abc12345"
+
+Import-Csv $csvPath | ForEach-Object {
+    $body = $_ | Select-Object @{n='name';e={$_.Name}}, @{n='displayName';e={$_.DisplayName}}, @{n='mail';e={$_.Email}}, @{n='password';e={$_.Password}} | ConvertTo-Json
+    try {
+        Invoke-RestMethod -Uri "https://$hostname/api/security/users/add" -Method Post -Headers @{ "X-ApiKey" = $apiKey; "Content-Type" = "application/json" } -Body $body
+        Write-Host "Added: $($_.Name)"
+    } catch { Write-Warning "Failed: $($_.Name) - $_" }
+}
+
+Write-Host "Done."
+```
+
+#### Example Output:
+
+```powershell
+Added: Alice Johnson
+Added: Brian Lee
+Added: Catherine Wu
+Added: David Patel
+Added: Emily Torres
+Done.
+```
+
+### Create Users in Bulk (Python)
+This Python script create users in bulk based off the input `.csv` file located at `C:\Users\YourUser\Documents\users.csv` to a ProGet instance located at `proget.corp.local` with an API key `abc12345`:
+
+```python
+import csv
+import requests
+
+csv_file_path = r"C:\Users\YourUser\Documents\users.csv"
+hostname = "proget.corp.local"
+api_key = "abc12345"
+
+api_url = f"https://{hostname}/api/security/users/add"
+headers = {
+    "X-ApiKey": api_key,
+    "Content-Type": "application/json"
+}
+
+with open(csv_file_path, newline='', encoding='utf-8') as csvfile:
+    reader = csv.DictReader(csvfile)
+    for row in reader:
+        payload = {
+            "name": row["Name"],
+            "displayName": row["DisplayName"],
+            "mail": row["Email"],
+            "password": row["Password"]
+        }
+
+        try:
+            response = requests.post(api_url, headers=headers, json=payload)
+            response.raise_for_status()
+            print(f"Added: {row['Name']}")
+        except requests.exceptions.RequestException as e:
+            print(f"Failed: {row['Name']} - {e}")
+
+print("Done.")
+```
+
+#### Example Output:
+
+```python
+Added: Alice Johnson
+Added: Brian Lee
+Added: Catherine Wu
+Added: David Patel
+Added: Emily Torres
+Done.
+```
