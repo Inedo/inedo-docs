@@ -19,7 +19,7 @@ Now name your feed. For this guide, we will call it `internal-rpm`. Then select 
 
 You will then be redirected to your new `internal-rpm` feed, currently empty.
 
-![Internal RPM Feed](/resources/docs/proget-rpm-internafeed.png){height="" width="50%"}
+![Internal RPM Feed](/resources/docs/proget-rpm-internalfeed.png){height="" width="50%"}
 
 ## Step 2: Create an API Key
 
