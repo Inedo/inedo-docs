@@ -3,7 +3,7 @@ title: "HOWTO: Receive Alerts for Deprecated Packages in Use"
 order: 5
 ---
 
-ProGet 2025 will introduce [OSS Metadata Updating & Caching](/docs/proget/sca/policies#oss-metadata-updating-caching) for open-source packages you're using from public repositories, helping you ensure the packages you're using haven't been deprecated, unlisted, or are outdated. This is currently available in ProGet 2024.12 as a preview feature supporting NuGet and npm feeds.
+The [OSS Metadata Updating & Caching](/docs/proget/sca/policies#oss-metadata-updating-caching) feature helps you ensure the  open-source packages you're using from public repositories haven't been deprecated, unlisted, or are outdated.
 
 Deprecated packages are those no longer recommended for use due to being replaced by newer versions, containing security vulnerabilities, or no longer being actively maintained. Continuing to use deprecated packages can lead to security risks and compatibility issues that can impact the stability and functionality of your software. 
 
