@@ -31,11 +31,11 @@ Click on "Create Bucket" and fill in the appropriate fields. When you are done, 
 ## Step 3: Create Access Key/ Secret Access Key
 After you have set up your bucket, you will need to create an access and secret access key that will be used in ProGet later. Navigate to the Identity and Access Management (IAM) in AWS or simply [click here](https://console.aws.amazon.com/iam/home?#/security_credentials) to go straight to your access keys. 
 
-![Amazon S3 Access key](/resources/docs/amazsons3-createaccesskey.png){height="" width="50%"}
+![Amazon S3 Access key](/resources/docs/amazons3-createaccesskey.png){height="" width="50%"}
 
 Click the blue "Create new access key" button and select the blue arrow that says "View access key" to view your access key and secret access key.
 
-![Amazon S3 Secret Access Key](/resources/docs/amazons3-secretaccesskey.jpg){height="" width="50%"}
+![Amazon S3 Secret Access Key](/resources/docs/amazons3-secretaccesskey.png){height="" width="50%"}
 
 Copy or write down both your access key and your secret access key, as you will need to enter them into ProGet in step 5.
 
