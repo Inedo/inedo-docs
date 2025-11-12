@@ -139,7 +139,7 @@ We can now see that it is allowed as a result of our actions.
 
 In the same way as detecting and blocking above, overriding at feel level is possible when allowing approved licenses. In this case, it will allow us to prohibit the downloading and use of packages using licenses that have otherwise been allowed globally. 
 
-In this scenario, MIT licenses are globally approved. However, for "Project XYZ," which uses a `nuget-project-xyz` NuGet feed, is explicitly prohibited from using these licenses. Therefore, the "MIT" license must be blocked for this particular project.
+In this scenario, GPL licenses are globally approved. However, for "Project XYZ," which uses a `nuget-project-xyz` NuGet feed, is explicitly prohibited from using these licenses. Therefore, the "GPL 3.0" license must be blocked for this particular project.
 
 Navigate to the Polices & Blocking tab of the feed, in this case `nuget-project-xyz`, and select "edit License Rules".
 
@@ -149,15 +149,15 @@ Change the rule scope to the feed in question:
 
 ![proget-licenses-scope.png](/resources/docs/proget-licenses-scope.png){height="" width="50%"}
 
-In the Noncompliant tab search for the "MIT" license, and select "Save". This will block downloading and use of packages that use the MIT license in this feed.
+In the Noncompliant tab search for the "GPL 3.0" license, and select "Save". This will block downloading and use of packages that use the GPL 3.0 license in this feed.
 
-![proget-licence-override-block-MIT.png](/resources/docs/proget-licence-override-block-MIT.png){height="" width="50%"}
+![proget-licence-override-block-MIT.png](/resources/docs/proget-licence-override-block-GPL3.png){height="" width="50%"}
 
-We can confirm this by navigating to the `nuget-project-xyz` feed and selecting the "Newtonsoft.json 13.0.4" package. 
+We can confirm this by navigating to the `nuget-project-xyz` feed and selecting the "Accord.MachineLearning" package.
 
 We can now see that it is blocked as a result of our actions. 
 
-![proget-package-blocked-override-MIT.png](/resources/docs/proget-package-blocked-override-MIT.png){height="" width="50%"}
+![proget-package-blocked-override-MIT.png](/resources/docs/proget-package-blocked-override-GPL3.png){height="" width="50%"}
 
 ## Section 3: Troubleshooting 
 
