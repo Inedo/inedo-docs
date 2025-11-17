@@ -24,25 +24,18 @@ The `--name` and `--member` options are always required.
 pgutil security groups members delete --name=Developers --member="John Smith"
 ```
 
-:::(Internal) (TODO)
-***TRY REMOVING WHEN NOT ADDED***
+## HTTP Requests
 
-## HTTP Request Specification
+This command does not have an HTTP endpoint. To remove members from a group, `POST` to the [Create Group](/docs/proget/api/security/groups/create) URL `/api/security/groups/add` with an [appropriate API Key](/docs/proget/api/sca#authentication) and a [SecurityGroup](/docs/proget/api/security#securitygroup-object) object as the request, containing the group members excluding the members you wish to add. For example, to removing David Jones from the group `Developers` that contains `John Smith` and `David Jones`:
 
-To delete a group, simply `DELETE` to the URL with the `group` query argument specifying the username:
-
-```plaintext
-DELETE /api/security/groups/delete?group=«groupname»
+```json
+POST /api/security/groups/add
+{
+    "name": "Developers",
+    "user": ["John Smith"]
+}
 ```
 
-## HTTP Response Specification
-
-| Response | Details |
-| --- | --- |
-| **200 (Success)** | the user is deleted from ProGet |
-| **401 (Authentication Required)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/assets#authentication) |
-:::
-
-:::(Internal) (TODO)
-***BULK DELETE***
+:::(info)(Create Group Endpoint)
+The [Create Group](/docs/proget/api/security/groups/create) endpoint normally creates a new group. If the group already exists, the request will overwrite the existing member list. To remove members, include all current members in the request with the exception of those you wish to remove.
 :::
