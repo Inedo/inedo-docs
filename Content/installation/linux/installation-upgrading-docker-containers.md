@@ -4,69 +4,50 @@ order: 2
 ---
 
 ::: (INFO)
-Before performing an upgrade to a new Major or Minor version, we strongly recommend [backing up your Inedo product's database](/docs/installation/backing-up-restoring).
+Before performing an upgrade to a new major version, we strongly recommend [backing up your Inedo product's database](/docs/installation/backing-up-restoring).
 ::: 
 
 Upgrading to a new version of your Inedo product using Docker is easy. The container is designed to automatically upgrade your database as necessary when it is first started, so generally all you need to do is stop the old container, delete or rename it, and pull and start the new image's version.
 
-This is the procedure for upgrading an Inedo product, with example scripts to follow:
+This is the general procedure for upgrading an Inedo product.
 
-1. Stop the Inedo product's container
-2. Rename the container to `<product>-old`
-3. Pull the new version of the container image
-4. Run the new version with `--volumes-from=<product>-old`
+1. Pull the desired version of the container image
+2. Stop the current running container
+3. Rename the container to `*-old`
+4. Run the new version using the same arguments as before (see [Docker Installation Guide](http://localhost:5099/docs/installation/linux/docker-guide))
 5. Remove the `*-old` container
 
-### ProGet Upgrade Script
+### Example: ProGet 2025 Upgrade Script
 
-```Shell
+In general, you should avoid using the `latest` tag, and simply enter the latest version. For example, to upgrade to ProGet 2025.13 you'd want to enter `25.0.13`.
+
+```shell
+docker pull proget.inedo.com/productimages/inedo/proget:25.0.13
+
 docker stop proget
 
 docker rename proget proget-old
 
-docker pull proget.inedo.com/productimages/inedo/proget:«new-version»
-
-docker run -d --volumes-from=proget-old \
-    -p 80:80 --net=inedo \
-    --name=proget --restart=unless-stopped \
-    -e SQL_CONNECTION_STRING='Data Source=inedo-sql; Initial Catalog=ProGet; User ID=sa; Password=«YourStrong!Passw0rd»' \
-    proget.inedo.com/productimages/inedo/proget:«new-version»
+docker run -d --name=proget --restart=unless-stopped \
+  -v ./proget-packages:/var/proget/packages \
+  -v ./proget-database:/var/proget/database  \
+  -v ./proget-backups:/var/proget/backups \
+  -p 8624:80  \
+  proget.inedo.com/productimages/inedo/proget:25.0.13
 
 docker rm proget-old
 ```
 
-### BuildMaster Upgrade Script
-```Shell
-docker stop buildmaster
+Note that, if the container fails to start due to incorrect arguments or other issues, you can simply rollback use these commands:
 
-docker rename buildmaster buildmaster-old
+```shell
+docker stop proget
 
-docker pull buildmaster.inedo.com/productimages/inedo/buildmaster:«new-version»
+docker rm proget
 
-docker run -d --volumes-from=buildmaster-old \
-    -p 80:80 --net=inedo \
-    --name=buildmaster --restart=unless-stopped \
-    -e SQL_CONNECTION_STRING='Data Source=inedo-sql; Initial Catalog=BuildMaster; User ID=sa; Password=«YourStrong!Passw0rd»' \
-    buildmaster.inedo.com/productimages/inedo/buildmaster:«new-version»
+docker rename proget-old proget
 
-docker rm buildmaster-old
-```
-
-### Otter Upgrade Script
-```Shell
-docker stop otter
-
-docker rename otter otter-old
-
-docker pull otter.inedo.com/productimages/inedo/otter:«new-version»
-
-docker run 
-    -p 80:80 --net=inedo \
-    --name=otter --restart=unless-stopped \
-    -e SQL_CONNECTION_STRING='Data Source=inedo-sql; Initial Catalog=Otter; User ID=sa; Password=«YourStrong!Passw0rd»' \
-    otter.inedo.com/productimages/inedo/otter:«new-version»
-
-docker rm otter-old
+docker start proget
 ```
 
 ## Upgrading the Database Only (Optional)

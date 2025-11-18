@@ -7,17 +7,30 @@ It may be necessary to migrate all the packages you have stored in a ProGet feed
 
 Depending on the version of ProGet you're using and the feed type, there are several ways to do this, and this document describes the different approaches:
 
-* [ProGet Feed-to-Feed Migration](#proget-feed-to-feed-migration-recommended)
-* [Migrating Using a Bulk Upload](#migrating-using-a-bulk-upload)
 * [Using Feed Replication](#using-feed-replication)
+* [ProGet Feed-to-Feed Migration](#proget-feed-to-feed-migration)
+* [Migrating Using a Bulk Upload](#migrating-using-a-bulk-upload)
 * [Additional Migration Methods](#additional-migration-methods)
 
 :::(warning) (⚠ Migration vs Backup & Restore)
 These methods only migrate package content, not configuration data like download counts or custom licenses. This makes them a good fit for fresh installations with new feed names or settings. If you want to bring over everything, including metadata and configuation data, and can accommodate a brief maintenance window (typically about an hour), a full [backup and restore](/docs/installation/backing-up-restoring) is a better option.
 :::
 
-##  ProGet Feed-to-Feed Migration (Recommended)
-*This method requires ProGet 2023.22+ and works with all feed types except Docker and Bower.*
+## Using Feed Replication
+*This method requires at least two instances of ProGet with Enterprise Edition licenses. If you do not have ProGet Enterprise or your instances are isolated, you must use an alternative method.*
+
+This is another recommended alternative for users on ProGet versions earlier than 2023.22, or users with a very large number of packages they need to migrate. 
+
+Replication syncs two ProGet feeds together allowing you to create a feed on a new ProGet server instance and synch it with a currently existing one. This also means that any additions or changes to packages on the existing feed will be reflected in the new one.
+
+To replicate a feed navigate to "Feeds" and select the Replication tab.
+
+![Replication](/resources/docs/proget-feed-replication.png){height="" width="50%"}
+
+See our page on [Feed Replication](/docs/proget/replication-feed-mirroring/proget-advanced-feed-replication) to learn more.
+
+##  ProGet Feed-to-Feed Migration
+*This method requires versions of ProGet earlier than 2025.14 and works with all feed types except Docker and Bower.*
 
 The built-in Feed-to-Feed is the preferred method for migration and involves using ProGet's step-by-step instructions to migrate all packages from an existing feed to a newly created one.
 
@@ -41,19 +54,6 @@ Before migrating via drop path we recommend clearing your [Feed Connector cache]
 :::
 
 See the [Uploading via Bulk Upload](/docs/proget/installation/migrating-to-proget/proget-other-feed-migration#uploading-via-bulk-upload) section of our guide on [Migrating From Other Repositories to ProGet](/docs/proget/installation/migrating-to-proget/proget-other-feed-migration) to learn more.
-
-## Using Feed Replication
-*This method requires at least two instances of ProGet with Enterprise Edition licenses. If you do not have ProGet Enterprise or your instances are isolated, you must use an alternative method.*
-
-This is another recommended alternative for users on ProGet versions earlier than 2023.22, or users with a very large number of packages they need to migrate. 
-
-Replication syncs two ProGet feeds together allowing you to create a feed on a new ProGet server instance and synch it with a currently existing one. This also means that any additions or changes to packages on the existing feed will be reflected in the new one.
-
-To replicate a feed navigate to "Feeds" and select the Replication tab.
-
-![Replication](/resources/docs/proget-feed-replication.png){height="" width="50%"}
-
-See our page on [Feed Replication](/docs/proget/replication-feed-mirroring/proget-advanced-feed-replication) to learn more.
 
 ## Additional Migration Methods
 

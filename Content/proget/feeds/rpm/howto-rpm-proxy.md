@@ -23,7 +23,7 @@ From here, name your feed. For the example in this guide we will call our feed `
 
 ![Name RPM Feed](/resources/docs/proget-rpm-namepublicfeed.png){height="" width="50%"}
 
-You'll then be redirected us to your RPM feed, which will appear empty for now.
+You'll then be redirected to your RPM feed, which will appear empty for now.
 
 ![Public RPM Feed](/resources/docs/proget-rpm-publicfeed.png){height="" width="50%"}
 

@@ -7,13 +7,15 @@ Beginning with ProGet 2025.11, the Integrated Web Server now supports W3C HTTP R
 
 ## Enabling HTTP Request Logging
 
-To enable HTTP Request logging in ProGet, navigate to **Administration -> HTTP/S & Certificate Settings** and then click the "edit" button in the "Web Server Configuration" section.  In the dialog that appears, check the "Enable HTTP Request Logging" checkbox and then click "Save".  By default, the log files will be stored in `C:\ProgramData\ProGet\Logs` on Windows and `/var/proget/logs` on Linux, but you can change this by modifying the HTTP Log File Path field.
+### Enabling on Windows
+
+To enable HTTP Request logging in Inedo products on Windows, navigate to **Administration -> HTTP/S & Certificate Settings** and then click the "edit" button in the "Web Server Configuration" section.  In the dialog that appears, check the "Enable HTTP Request Logging" checkbox and then click "Save".  By default, the log files will be stored in `C:\ProgramData\ProGet\Logs` on Windows, but you can change this by modifying the HTTP Log File Path field.
 
 ![](/resources/docs/httprequestlogging/edit-web-server-settings.png){height="" width="50%"}
 
-::: (Warn)
-It is not recommended to change the log file path when running on Linux.  The Linux folder path is configured as a volume in the docker image, and changing the path may result in loss of log data when the container is restarted.
-:::
+### Enabling on Docker
+
+To enable HTTP Request logging in Inedo products on Docker, you will need to add the `ENABLE_REQUEST_LOGGING` environment variable and set it to true (ex: `-e ENABLE_REQUEST_LOGGING='true'`).  Once enabled, HTTP Request logs will be saved to `/var/«inedo-product»/logs` within the container.  For these logs to persist through container restarts, you will also need to mount that volume to your host (ex: `-v ./proget-logs:/var/proget/logs`).
 
 ## Log File Management
 

@@ -97,7 +97,7 @@ For other configurations, see [Microsoft's Entra ID documentation for more infor
 To reset the configured user directory to the *built-in* directory, and reset the *Admin* account to the password *Admin*, a server administrator must run the following command on the Inedo product's server:
 
 #### ProGet
-`(proget-installation-directory)\Service> .\ProGet.Service.exe resetadminpassword`
+`(proget-installation-directory)\Service> .\proget.exe resetadminpassword`
 
 #### BuildMaster
 `(buildmaster-installation-directory)\Service> .\BuildMaster.Service.exe resetadminpassword`

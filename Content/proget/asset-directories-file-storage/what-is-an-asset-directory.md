@@ -50,7 +50,7 @@ These options can be found by clicking on the _Add/Upload Files_ button in the u
 - Import from Azure: Download files stored in the cloud to this asset directory (**Requires ProGet v6.0+ and the Azure Extension**).
 
 :::(Info) 
-Read how to use ProGet as a User-Interface for [Amazon S3](/docs/proget/cloud-storage/proget-howto-amazon-s3-ui) and [Azure Blog Storage](/docs/proget/cloud-storage/proget-howto-azure-blob-ui) in our step-by-step guides.
+Read [How to use ProGet as a User-Interface for Cloud Storage](https://blog.inedo.com/proget/proget-as-cloud-storage-ui) in our step-by-step guides.
 :::
 
 #### Import from a Drop Path

@@ -31,11 +31,11 @@ Click on "Create Bucket" and fill in the appropriate fields. When you are done, 
 ## Step 3: Create Access Key/ Secret Access Key
 After you have set up your bucket, you will need to create an access and secret access key that will be used in ProGet later. Navigate to the Identity and Access Management (IAM) in AWS or simply [click here](https://console.aws.amazon.com/iam/home?#/security_credentials) to go straight to your access keys. 
 
-![Amazon S3 Access key](/resources/docs/amazsons3-createaccesskey.png){height="" width="50%"}
+![Amazon S3 Access key](/resources/docs/amazons3-createaccesskey.png){height="" width="50%"}
 
 Click the blue "Create new access key" button and select the blue arrow that says "View access key" to view your access key and secret access key.
 
-![Amazon S3 Secret Access Key](/resources/docs/amazons3-secretaccesskey.jpg){height="" width="50%"}
+![Amazon S3 Secret Access Key](/resources/docs/amazons3-secretaccesskey.png){height="" width="50%"}
 
 Copy or write down both your access key and your secret access key, as you will need to enter them into ProGet in step 5.
 
@@ -80,6 +80,10 @@ If you are having trouble finding something, a quick Google search will usually 
 * Access Key: Your access keys can be found [here](https://console.aws.amazon.com/iam/home?#/security_credentials). 
 * Region Endpoint: Using the navigation pane on the left side of your screen in Amazon S3, go to Buckets > Bucket Overview > AWS Region. 
 :::
+
+## (Optional) Setting up ProGet as a UI for Amazon S3
+
+Once your feed is connected to Amazon S3, consider using ProGet as UI for managing any other assets you're using it to store. This makes it easier for users to handle uploads and file organization without relying on the S3 console, while administrators retain oversight of access control and permissions. To learn more, see [HowTo: Set Up ProGet as a UI for Cloud Storage](https://blog.inedo.com/proget/proget-as-cloud-storage-ui).
 
 ## Troubleshooting:
 

@@ -51,7 +51,6 @@ ProGet Basic only supports basic vulnerability assessments (i.e. not scoped to a
 | Identify vulnerabilities in projects  |❌|✔|✔
 | Generate SBOM for builds |❌|✔|✔
 | Track dependencies across builds |❌|☑|✔
-| Generate license attribution reports  |❌|❌|✔
 | Advanced project compliance  |❌|❌|✔
 | OSS Metadata Updating & Caching  |❌|❌|✔
 

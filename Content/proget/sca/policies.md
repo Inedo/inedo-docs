@@ -107,9 +107,9 @@ For example:
 #### Packages with Multiple Licenses
 If a package has multiple licenses detected, this means that the consumer can choose which license they'd like to use. When this is the case, ProGet will use the *more compliant* license for evaluation purposes. For example, if a package is dual-licensed with GPL and MIT, it would still be considered compliant if GPL licenses were noncompliant and MIT licenses were compliant.
 
-### Other Rules (Listed, Deprecated, Latest Patch)
+### Other Rules (Listed, Deprecated, Latest Patch, Newly-Published, Aged)
 
-ProGet includes three additional rules that can help determine compliance.
+ProGet includes five additional rules that can help determine compliance.
 
 #### Unlisted Rule
 
@@ -135,6 +135,24 @@ To determine if a package is compliant with the Latest Patch Version Rule, ProGe
 
 This rule is only evaluated in ProGet Enterprise and defaults to *Compliant*.
 
+### Recently Published & Aged Rules (ProGet 2026 Preview)
+
+*These rules are available starting in ProGet 2025.14 as a preview feature.*
+
+Newly-published packages on NuGet.org and npmjs.org can be risky. Even new versions from trusted authors may contain vulnerabilities, and in rare cases, an author's account can be compromised and used to distribute malware.
+
+Likewise, packages that haven't been updated in years can also be risky. Even if they contain no vulnerabilities, they may rely on outdated and unmaintained dependencies which may be vulnerable.
+
+The Recently Published and Aged Package Rules evaluates whether a package's publish date is within a configurable window (default 30 days for new, and 3 years for aged).  These rules are only evaluated in ProGet Enterprise and defaults to *Compliant*. 
+
+::: (Info) (📅 Publish Dates in ProGet 2025 and Earlier)
+The "publish date" in ProGet 2025 and earlier is *whenever a package is added to a feed*. This means that, even if a package was published to NuGet.org 3 years ago, the "publish date" will be whenever it was first cached.
+
+This behavior obviously makes these rules effectively meaningless. As such, in ProGet 2025.14 and later, you can change this beahvior under "Admin > Advanced Settings > Use Connector Publish Date". 
+
+This will be the default behavior in ProGet 2026, and you may need to clear your connector cache if you wish this rule will apply to existing packages.
+:::
+
 ### Other & Custom Rules
 
 These rules are just the starting point, and we'd love to get your feedback on what else we could add. Perhaps we could even allow users to create their own rules using a plug-in?
@@ -143,7 +161,7 @@ Just reach out to us via our [support channel](https://inedo.com/support), prefe
 
 ## Rule Exceptions
 
-Although you configure complex sets of rules using [Shared & Multiple Policies](#), you can also create exceptions to those rules for certain packages. These can be permanent or temporary, and apply to a range of packages and versions.
+Although you configure complex sets of rules using [Shared & Multiple Policies](#shared-multiple-policies-advanced), you can also create exceptions to those rules for certain packages. These can be permanent or temporary, and apply to a range of packages and versions.
 
 For example, private packages that you create won't really have a license agreement, which means ProGet may consider them unlicensed and thus noncompliant. Although you could create a "fake" license definition for your own packages, it's clearer to exempt your own packages (i.e. `MyCorp.*` ) from license rule analysis:
 
@@ -208,8 +226,6 @@ When importing a policy backup, ProGet will overwrite existing policies or creat
 
 ## OSS Metadata Updating & Caching
 
-*OSS Metadata Updating & Caching is a ProGet 2025 preview feature that's available in ProGet 2024.12. Only NuGet and npm packages are currently supported, but we'd be happy to add another feed type if you're interested in trying this feature.*
-
 ProGet can cache and update metadata for open-source packages you're using from public repositories like NuGet.org and npmjs.org. This helps you ensure the packages you're using haven't been deprecated, unlisted, or are outdated. 
 
 This is a ProGet Enterprise feature, but you can still configure and use OSS metadata caches for evaluation purposes. 
@@ -241,6 +257,10 @@ For packages in [active builds](/docs/proget/sca/builds), ProGet will only query
 Although metadata providers are designed to work with the official public repositories, (NuGet.org, npmjs.org, etc.), they can also be configured to connect to another repository. To create a custom metadata provider, first enable the default provider, edit it, and then click "create custom provider".
 
 We're not entirely sure what the use case would be (which is why creating them is a bit convoluted), but you may find it helpful to get deprecated, unlisted, or outdated package status from another repository.  Please [let us know](https://forums.inedo.com/) if you find this feature useful, so that we can properly document and support it, as well as add authentication and other options.
+
+:::(Info) (📺 Video:  Protecting Your Software Supply Chain from Vulnerabilities)
+<iframe width="600" height="337" src="https://www.youtube.com/embed/LOzqpLZc5Zk?si=4eNH7Q4k5GKKrIBT" frameborder="0" allowfullscreen="true"></iframe>
+:::
 
 ## ProGet 2023 and Earlier
 Policies & Compliance Rules are a new feature for ProGet 2024, replacing the download blocking rules for [licenses (archive.org)](https://web.archive.org/web/20231210172007/https://docs.inedo.com/docs/proget-sca-licenses) and [vulnerabilities (archive.org)](https://web.archive.org/web/20230927141932/https://docs.inedo.com/docs/proget-sca-vulnerabilities) in which you could implement similar functionality. 
