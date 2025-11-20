@@ -49,7 +49,7 @@ Next, you need to select the type of feed you want to set up. In this tutorial w
 ![Create NuGet Feed](/resources/docs/proget-nuget-newfeed.png){height="" width="50%"}
 
 ## Step 5: Change Your Feed’s Package Store Location
-By default, ProGet stores package files on disk, so your feed must be configured to store packages on Amazon S3 instead. In your feed, click Manage Feed > Storage & Retention, and then select Change next to Storage.
+By default, ProGet stores package files on disk, so your feed must be configured to store packages on Amazon S3 instead. In your feed, click Storage & Retention, and then select Change next to Storage.
 
 ![Change Storage Location](/resources/docs/proget-nuget-changestorage.png){height="" width="50%"}
     
