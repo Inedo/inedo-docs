@@ -55,7 +55,7 @@ When the build status is "Noncompliant (Unresolved)", this command will return a
 To analyze a build, simply `POST` to the URL with an [appropriate API Key](/docs/proget/api/sca#authentication)
 
 ```plaintext
-POST /api/sca/audit-build?project=«projectName»&version=«releaseVersion»
+POST /api/sca/audit-build?project=«projectName»&build=«buildNumber»
 ```
 
 ## HTTP Response Specification
