@@ -53,14 +53,14 @@ When the build status is "Noncompliant (Unresolved)", this command will return a
 To analyze a build, simply `POST` to the URL with an [appropriate API Key](/docs/proget/api/sca#authentication)
 
 ```plaintext
-POST /api/sca/analyze-release?project=«projectName»&version=«releaseVersion»
+POST /api/sca/audit-build?project=«projectName»&build=«buildNumber»
 ```
 
 ## HTTP Response Specification
 
 | Response | Details |
 | --- | --- |
-| **200 (Success)** |  body will contain an `AuditPackageResults` JSON object (see [AuditPackageResults.cs](https://github.com/Inedo/pgutil/blob/thousand/Inedo.ProGet/AuditPackageResults.cs)) |
+| **200 (Success)** | an `BuildAnalysisResults` JSON object (see [BuildAnalysisResults.cs](https://github.com/Inedo/pgutil/blob/thousand/Inedo.ProGet/BuildAnalysisResults.cs)) |
 | **400 (Invalid Input)** | indicates invalid or missing arguments; the body will provide some details as text |
 | **403 (Unauthorized API Key)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/sca#authentication); the body will be empty |
 | **500 (Server Error)** | indicates an unexpected error; the body will contain the message and stack trace, and this will also be logged |
