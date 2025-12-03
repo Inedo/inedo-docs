@@ -9,17 +9,17 @@ order: 5
 This example will remove the group member `"John Smith"` from the Group `Developers`:
 
 ```bash
-pgutil security groups members delete --name=Developers --member="John Smith"
+pgutil security groups members remove --name=Developers --member="John Smith"
 ```
 :::
 
 ## Command Specification (CLI)
-The `security groups members delete` command is used to remove a group member from a Group in ProGet.
+The `security groups members remove` command is used to remove a group member from a Group in ProGet.
 
 The `--name` and `--member` options are always required. 
 
 **Removing a group member from a group** requires the Group name (e.g. `Developers`) and the Group member name (e.g. `"John Smith"`):
 
 ```bash
-pgutil security groups members delete --name=Developers --member="John Smith"
+pgutil security groups members remove --name=Developers --member="John Smith"
 ```

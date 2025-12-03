@@ -9,17 +9,17 @@ order: 4
 This example lists all existing Task attributes:
 
 ```bash
-pgutil security attributes list
+pgutil security tasks attributes list
 ```
 :::
 
 ## Command Specification (CLI)
-The `security attributes list` command is used to list all Task attributes.
+The `security tasks attributes list` command is used to list all Task attributes.
 
 **Listing all Task attributes** requires no additional options:
 
 ```bash
-pgutil security attributes list
+pgutil security tasks attributes list
 ```
 
 Example output:
