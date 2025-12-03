@@ -33,4 +33,4 @@ POST /api/security/groups/add
 
 ## HTTP Response Specification
 
-A `SecurityGroup` object will be returned on a successful `200` response. A `403` response indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/security#authentication).
+A `SecurityGroup` object will be returned on a successful `200` response and indicate the Group has been created. A `403` response indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/security#authentication).

@@ -3,7 +3,7 @@ title: "List Users"
 order: 5
 ---
 
-*List Users* is available as both a `pgutil` command and an HTTP Request, and will return an array of [SecurityUser](/docs/proget/api/security#securityuser-object) objects describing the User accounts in ProGet.
+*List Users* is available as both a `pgutil` command and an HTTP Request, and will return a list of User accounts in ProGet.
 
 :::(Info) (🚀 Quick Example: Listing User accounts with pgutil)
 This example lists all existing Users:
@@ -48,7 +48,7 @@ John Barnes
 ```
 
 ## HTTP Request Specification
-To list all User accounts in ProGet, simply `GET` to the URL with an [appropriate API Key](/docs/proget/api/sca#authentication).
+To list all User accounts in ProGet, simply `GET` to the following URL with an [appropriate API Key](/docs/proget/api/security#authentication):
 
 ```plaintext
 GET /api/security/users/list
@@ -62,33 +62,7 @@ GET /api/security/users/list?search-term=John
 
 ## HTTP Response Specification
 
-A successful (`200`) response body will contain an array of [SecurityUser](/docs/proget/api/security#securityuser-object) objects. For example, to listing users filtered by the name `John`, the request would return this:
-
-```json
-GET /api/security/users/list?search-term=John
-
-[
-  {
-   "name":"John Smith",
-   "displayName":"jsmith",
-   "email":"jsmith@kramerica.com",
-   "groups":["Developers"]
-  },
-  {
-   "name":"John Barnes",
-   "displayName":"jbarnes",
-   "email":"jbarnes@kramerica.com",
-   "groups":["SREs"]
-  }
-  {...}
-]
-```
-
-| Response | Details |
-| --- | --- |
-| **200 (Success)** | body will contain an array of [SecurityUser](/docs/proget/api/security#securityuser-object) objects |
-| **403 (Unauthorized API Key)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/sca#authentication); the body will be empty |
-| **500 (Server Error)** | indicates an unexpected error; the body will contain the message and stack trace, and this will also be logged |
+An array of `SecurityUser` (see [SecurityUser.cs](https://github.com/Inedo/pgutil/blob/thousand/Inedo.ProGet/SecurityUser.cs)) objects will be returned on a successful `200` response. A `403` response indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/security#authentication).
 
 ## Sample Usage Scripts
 

@@ -55,7 +55,7 @@ POST /api/security/permissions/add
 
 ## HTTP Response Specification
 
-A `SecurityPermission` object will be returned on a successful `200` response. A `403` response indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/security#authentication).
+A `SecurityPermission` object will be returned on a successful `200` response and indicates the Permission has been added. A `403` response indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/security#authentication).
 
 ## Sample Usage Scripts
 

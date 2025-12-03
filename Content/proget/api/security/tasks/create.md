@@ -27,7 +27,7 @@ pgutil security tasks create --name="Basic Feed Access" --attributes=Feeds_ViewF
 ```
 
 ## HTTP Request Specification
-To create a new Task account, simply `POST` to the URL with an [appropriate API Key](/docs/proget/api/security#authentication) and a `SecurityTask` (see [SecurityTask.cs](https://github.com/Inedo/pgutil/blob/thousand/Inedo.ProGet/SecurityTask.cs)) object as the request body.
+To create a new Task account, simply `POST` to the following URL with an [appropriate API Key](/docs/proget/api/security#authentication) and a `SecurityTask` (see [SecurityTask.cs](https://github.com/Inedo/pgutil/blob/thousand/Inedo.ProGet/SecurityTask.cs)) object as the request body.
 
 ```plaintext
 POST /api/security/tasks/add
@@ -35,4 +35,4 @@ POST /api/security/tasks/add
 
 ## HTTP Response Specification
 
-A `SecurityTask` object will be returned on a successful `200` response. A `403` response indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/security#authentication).
+A `SecurityTask` object will be returned on a successful `200` response and indicates the task has been created. A `403` response indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/security#authentication).

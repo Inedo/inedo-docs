@@ -40,7 +40,7 @@ GET /api/security/permissions/list
 
 ## HTTP Response Specification
 
-An array of `SecurityPermission` (see [SecurityPermission.cs](https://github.com/Inedo/pgutil/blob/thousand/Inedo.ProGet/SecurityPermission.cs)) objects will be returned on a successful `200` response. A `403` response indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/securityu#authentication).
+An array of `SecurityPermission` (see [SecurityPermission.cs](https://github.com/Inedo/pgutil/blob/thousand/Inedo.ProGet/SecurityPermission.cs)) objects will be returned on a successful `200` response. A `403` response indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/security#authentication).
 
 ## Sample Usage Scripts
 
