@@ -26,7 +26,7 @@ pgutil security groups delete --name=Developers
 
 ## HTTP Request Specification
 
-To delete a Group, simply `DELETE` to the URL with the `group` query argument specifying the username:
+To delete a Group, simply `DELETE` to the following URL with the `group` query argument specifying the username:
 
 ```plaintext
 DELETE /api/security/groups/delete?group=«groupname»
@@ -34,9 +34,4 @@ DELETE /api/security/groups/delete?group=«groupname»
 
 ## HTTP Response Specification
 
-| Response | Details |
-| --- | --- |
-| **200 (Success)** | the group is deleted from ProGet |
-| **400 (Invalid Input)** | indicates invalid or missing properties; the body will provide some details as text |
-| **401 (Authentication Required)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/assets#authentication) |
-| **500 (Server Error)** | indicates an unexpected error; the body will contain the message and stack trace, and this will also be logged |
+A `200` response will indicate the Group has been deleted from ProGet. a `403` response indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/security#authentication).

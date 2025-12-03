@@ -3,7 +3,7 @@ title: "List Permissions"
 order: 3
 ---
 
-*List Permissions* is available as both a `pgutil` command and an HTTP Request, and will return an array of [SecurityPermission](/docs/proget/api/security#securitypermission-object) objects describing all configured Permissions.
+*List Permissions* is available as both a `pgutil` command and an HTTP Request, and will return list describing all configured Permissions.
 
 :::(Info) (🚀 Quick Example: Listing permissions with pgutil)
 This example lists all existing permissions:
@@ -32,7 +32,7 @@ Example output:
 ```
 
 ## HTTP Request Specification
-To list all Permissions, simply `GET` to the URL with an [appropriate API Key](/docs/proget/api/sca#authentication).
+To list all Permissions, simply `GET` to the following URL with an [appropriate API Key](/docs/proget/api/security#authentication):
 
 ```plaintext
 GET /api/security/permissions/list
@@ -40,41 +40,7 @@ GET /api/security/permissions/list
 
 ## HTTP Response Specification
 
-A successful (`200`) response body will contain an array of [SecurityPermission](/docs/proget/api/security#securitypermission-object) objects. For example, to listing all Permissions, the request would return this:
-
-```json
-GET /api/security/permissions/list
-
-[
-  {
-    "id": 1,
-    "group": "Administrators",
-    "task": "Administer",
-    "deny": false
-  },
-  {
-    "id": 3,
-    "user": "David Smith",
-    "task": "View & Download Packages",
-    "feed": "unapproved-nuget",
-    "deny": true
-  },
-  {
-    "id": 4,
-    "group": "developers",
-    "task": "View & Download Packages",
-    "feedGroup": "production-packages",
-    "deny": false,
-  },
-  {...}
-]
-```
-
-| Response | Details |
-| --- | --- |
-| **200 (Success)** | body will contain an array of [SecurityPermission](/docs/proget/api/security#securitypermission-object) objects |
-| **403 (Unauthorized API Key)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/sca#authentication); the body will be empty |
-| **500 (Server Error)** | indicates an unexpected error; the body will contain the message and stack trace, and this will also be logged |
+An array of `SecurityPermission` (see [SecurityPermission.cs](https://github.com/Inedo/pgutil/blob/thousand/Inedo.ProGet/SecurityPermission.cs)) objects will be returned on a successful `200` response. A `403` response indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/securityu#authentication).
 
 ## Sample Usage Scripts
 

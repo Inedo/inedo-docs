@@ -3,7 +3,7 @@ title: "Add Permission"
 order: 1
 ---
 
-*Add Permission* is available as both a `pgutil` command and an HTTP Request. It will either grant or deny a Task/Permission to a User or Group, and return a [SecurityPermission](/docs/proget/api/security#securitypermission-object) object describing the Permission configured.
+*Add Permission* is available as both a `pgutil` command and an HTTP Request, and will either grant or deny a Task/Permission to a User or Group.
 
 :::(Info) (🚀 Quick Example: Adding a Permission with pgutil)
 This example grants the `Developers` Group Permission to `view and download packages` from Feeds in the `Approved Package Feeds` Feed group:
@@ -47,7 +47,7 @@ pgutil security permissions add --task="Manage Feed" --name-"David Jones" --feed
 ```
 
 ## HTTP Request Specification
-To add a Permission, simply `POST` to the URL with an [appropriate API Key](/docs/proget/api/security#authentication) and a [SecurityPermission](/docs/proget/api/security#securitypermission-object) object as the request body.
+To add a Permission, simply `POST` to the following URL with an [appropriate API Key](/docs/proget/api/security#authentication) and a `SecurityPermission` (See [SecurityPermission.cs](https://github.com/Inedo/pgutil/blob/thousand/Inedo.ProGet/SecurityPermission.cs)) object as the request body:
 
 ```plaintext
 POST /api/security/permissions/add
@@ -55,28 +55,7 @@ POST /api/security/permissions/add
 
 ## HTTP Response Specification
 
-A successful (`200`) response body will contain a [SecurityPermission](/docs/proget/api/security#securitypermission-object) object. For example, to granting the User `"John Smith"` permission to `view and download packages` from the Feed `approved-nuget`, the request would return this:
-
-```json
-POST /api/security/permissions/add
-
-{
-  {
-    "user": "John Smith",
-    "task": "View & Download Packages",
-    "feed": "approved-nuget",
-    "deny": false
-  },
-}
-```
-
-| Response | Details |
-| --- | --- |
-| **200 (Success)** | the Permission is added and the body will contain a [SecurityPermission](/docs/proget/api/security#securitypermission-object) object |
-| **400 (Invalid Input)** | indicates invalid or missing properties on the [SecurityPermission](/docs/proget/api/security#securitypermission-object) object; the body will provide some details as text |
-| **403 (Unauthorized API Key)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/sca#authentication); the body will be empty |
-| **500 (Server Error)** | indicates an unexpected error; the body will contain the message and stack trace, and this will also be logged |
-
+A `SecurityPermission` object will be returned on a successful `200` response. A `403` response indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/security#authentication).
 
 ## Sample Usage Scripts
 

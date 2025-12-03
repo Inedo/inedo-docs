@@ -3,7 +3,7 @@ title: "List Groups"
 order: 3
 ---
 
-*List Groups* is available as both a `pgutil` command and an HTTP Request, and will return an array of [SecurityGroup](/docs/proget/api/security#securitygroup-object) objects listing the Groups in ProGet and number of group members in each.
+*List Groups* is available as both a `pgutil` command and an HTTP Request, and will return a list of Groups in ProGet and number of group members in each.
 
 :::(Info) (🚀 Quick Example: Listing Groups with pgutil)
 This example lists all existing Groups:
@@ -32,7 +32,7 @@ SREs (members: 13)
 ```
 
 ## HTTP Request Specification
-To list all Groups in ProGet, simply `GET` to the URL with an [appropriate API Key](/docs/proget/api/sca#authentication).
+To list all Groups in ProGet, simply `GET` to the following URL with an [appropriate API Key](/docs/proget/api/security#authentication):
 
 ```plaintext
 GET /api/security/groups/list
@@ -40,34 +40,4 @@ GET /api/security/groups/list
 
 ## HTTP Response Specification
 
-A successful (`200`) response body will contain an array of [SecurityGroup](/docs/proget/api/security#securitygroup-object) objects. For example, to listing all existing groups, the request would return this:
-
-```json
-GET /api/security/groups/list
-
-[
-  {
-   "name":"Administrators",
-  },
-  {
-   "name":"Lead Developers",
-  }
-  {
-   "name":"Developers",
-  },
-  {
-   "name":"SREs",
-  }
-  {...}
-]
-```
-
-| Response | Details |
-| --- | --- |
-| **200 (Success)** | body will contain an array of [SecurityGroup](/docs/proget/api/security#securitygroup-object) objects |
-| **403 (Unauthorized API Key)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/sca#authentication); the body will be empty |
-| **500 (Server Error)** | indicates an unexpected error; the body will contain the message and stack trace, and this will also be logged |
-
-:::(Internal) (TODO)
-**ADD "LIST ALL GROUPS AND GROUP MEMBERS SCRIPT***
-:::
+An array of `SecurityGroup` (see [SecurityGroup.cs](https://github.com/Inedo/pgutil/blob/thousand/Inedo.ProGet/SecurityGroup.cs)) objects will be returned on a successful `200` response. A `403` response indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/securityu#authentication).
