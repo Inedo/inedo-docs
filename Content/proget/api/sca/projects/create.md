@@ -3,7 +3,7 @@ title: "Create/Update Project"
 order: 1
 ---
 
-*Create/Update Project* is available as both a `pgutil` command and an HTTP Request, and will create a new project or update properties on an existing project, and return a [ProjectInfo Object](/docs/proget/api/sca#projectinfo-object) object describing the new or updated project.
+*Create/Update Project* is available as both a `pgutil` command and an HTTP Request, and will create a new project or update properties on an existing project, and return a [ProjectInfo](/docs/proget/api/sca#projectinfo-object) object describing the new or updated project.
 
 Note: this API endpoint functions by creating a new project when the one specified in the API request does not exist, else it updates an existing project.
 
@@ -39,7 +39,7 @@ POST /api/sca/projects
 ```
 
 ## HTTP Response Specification
-A successful (`200`) response body will contain a [ProjectInfo Object](/docs/proget/api/sca#projectinfo-object) object. For example, to creating a new project `myProject`, the request would return this:
+A successful (`200`) response body will contain a [ProjectInfo](/docs/proget/api/sca#projectinfo-object) object. For example, to creating a new project `myProject`, the request would return this:
 
 ```json
 POST /api/sca/projects

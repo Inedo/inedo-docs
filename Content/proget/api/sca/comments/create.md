@@ -3,7 +3,7 @@ title: "Create/Update Comment"
 order: 1
 ---
 
-*Create/Update Comment* is available as both a `pgutil` command and an HTTP Request, and will create a new comment or update properties on an existing comment, and return a [BuildComment Object](/docs/proget/api/sca#commentinfo-object) object describing the new or updated comment.
+*Create/Update Comment* is available as both a `pgutil` command and an HTTP Request, and will create a new comment or update properties on an existing comment, and return a [BuildComment](/docs/proget/api/sca#commentinfo-object) object describing the new or updated comment.
 
 :::(Info) (🚀 Quick Example: Creating a New Comment with pgutil)
 This example creates a comment (`Checked for errors on 01/01`) in version `1.2.3` of a project named `myProject`:
@@ -25,7 +25,7 @@ pgutil builds comments create --project=myProject --build=1.2.3 --comment="This 
 ```
 
 ## HTTP Request Specification
-To create or update a comment, simply `POST` to the URL with an [appropriate API Key](/docs/proget/api/sca#authentication) and a [BuildComment Object](/docs/proget/api/sca#commentinfo-object) object as the request body.
+To create or update a comment, simply `POST` to the URL with an [appropriate API Key](/docs/proget/api/sca#authentication) and a [BuildComment](/docs/proget/api/sca#commentinfo-object) object as the request body.
 
 ```plaintext
 POST /api/sca/comments

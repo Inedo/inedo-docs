@@ -3,7 +3,6 @@ title: "Jira"
 order: 6
 ---
 
-
 By integrating BuildMaster with [Atlassian Jira](https://www.atlassian.com/software/jira), you can help developers, testers, and business analysts work closely together by providing shared visibility into changes they're working on and using automation to facilitate immediate feedback. Ultimately this will help to:
 
 - Reduce production errors by preventing deployments without fully tested issues
@@ -23,7 +22,7 @@ After selecting Jira, you'll be promoted to enter your Jira Server URL, Username
 
 ## Associating Issues with BuildMaster Releases
 
-To associate issues with your Jira [issue source](/docs/buildmaster/modeling-your-applications/buildmaster-applications-issue-tracking#issues-sources), the following fields need to be configured:
+To associate issues with your Jira issue source, the following fields need to be configured:
 
  - **Project name** - should be the key (e.g., PG for ProGet)
  - **Fix for version** - used to associate Fix Versions in Jira with release numbers in BuildMaster (typically `$ReleaseNumber`)

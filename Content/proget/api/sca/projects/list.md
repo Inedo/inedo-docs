@@ -3,7 +3,7 @@ title: "List Projects"
 order: 3
 ---
 
-*List Projects* is available as both a `pgutil` command and an HTTP Request, and will return an array of [ProjectInfo Object](/docs/proget/api/sca#projectinfo-object) objects describing all projects.
+*List Projects* is available as both a `pgutil` command and an HTTP Request, and will return an array of [ProjectInfo](/docs/proget/api/sca#projectinfo-object) objects describing all projects.
 
 :::(Info) (🚀 Quick Example: Listing Projects with pgutil)
 This example lists all existing projects:
@@ -34,7 +34,7 @@ GET /api/sca/projects
 
 ## HTTP Response Specification
 
-A successful (`200`) response body will contain an array of [ProjectInfo Object](/docs/proget/api/sca#projectinfo-object) objects. For example, to listing all projects, the request would return this:
+A successful (`200`) response body will contain an array of [ProjectInfo](/docs/proget/api/sca#projectinfo-object) objects. For example, to listing all projects, the request would return this:
 
 ```json
 GET /api/sca/projects

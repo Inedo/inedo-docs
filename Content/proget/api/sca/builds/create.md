@@ -3,7 +3,7 @@ title: "Create/Update Build"
 order: 1
 ---
 
-*Create Build* is available as both a `pgutil` command and an HTTP Request, and will create a new build or update properties on an existing build, and return a [BuildInfo Object](/docs/proget/api/sca#buildinfo-object) object describing the new or updated build.
+*Create Build* is available as both a `pgutil` command and an HTTP Request, and will create a new build or update properties on an existing build, and return a [BuildInfo](/docs/proget/api/sca#buildinfo-object) object describing the new or updated build.
 
 Note: this API endpoint functions by creating a new build when the version specified in the API request does not exist, else it updates an existing build.
 
