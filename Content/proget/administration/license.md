@@ -32,6 +32,8 @@ Instead of showing all features available in all additions (including ProGet Fre
 | Secure API Configuration |❌|❌|✔
 | SAML Authentication |❌|❌|✔
 
+ProGet Free is also limited to UI-based security configuration (i.e. the security API is restricted).
+
 ### Vulnerability Restrictions
 | Feature | Free | Basic | Enterprise
 | -- | -- | -- | --
