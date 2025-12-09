@@ -54,9 +54,9 @@ id,user,group,task,feedGroup,deny
 15,,Lead Developers,Publish Packages,,False
 13,,Lead Developers,View & Download Packages,nugets,False
 14,,Lead Developers,Promote Packages,nuget-feed,False
-11,Liam Carter,,View & Download Packages,nugets,False
-10,Liam Carter,,Manage Feed,nuget-feeds,False
-12,Noah Davis,,View & Download Packages,nuget-feed,False
+11,lcarter,,View & Download Packages,nugets,False
+10,lcarter,,Manage Feed,nuget-feeds,False
+12,jsmith,,View & Download Packages,nuget-feed,False
 
 ```
 

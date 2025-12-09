@@ -6,10 +6,10 @@ order: 2
 *Edit User* is available as both a `pgutil` command and an HTTP Request, and will edit an existing User account in ProGet. The `username` must exist to edit the user. 
 
 :::(Info) (🚀 Quick Example: Editing an existing User account with pgutil)
-This example edits the User `"John Smith` with a new email `johnsmith@kramerica.com`:
+This example edits the User `jsmith` with a new email `johnsmith@kramerica.com`:
 
 ```bash
-pgutil security users edit --username="John Smith" --email=johnsmith@kramerica.com
+pgutil security users edit --username=jsmith --email=johnsmith@kramerica.com
 ```
 :::
 
@@ -20,10 +20,10 @@ The `--username` option is always required.
 
 One or more of the `--displayname`, `--email`, and `--password` options may be included, and will overwrite the existing value(s).
 
-**Editing a user** requires the the user name (e.g. `"John Smith"`) and may include the `--displayname`, `--email`, and or `--password`. The example below edits the User's display name:
+**Editing a user** requires the the user name (e.g. `jsmith"`) and may include the `--displayname`, `--email`, and or `--password`. The example below edits the User's display name:
 
 ```bash
-pgutil security users edit --username="John Smith" --displayname=johnsmith
+pgutil security users edit --username=jsmith --displayname="John Smith"
 ```
 
 ## HTTP Request Specification

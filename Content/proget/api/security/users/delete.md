@@ -6,10 +6,10 @@ order: 3
 *Delete User* is available as both a `pgutil` command and an HTTP Request, and will delete a specified User account from ProGet. Note that it's *not* considered an error to delete a User that does not exist. 
 
 :::(Info) (🚀 Quick Example: Deleting a User with pgutil)
-This example will delete a User account `John Smith`:
+This example will delete a User account `jsmith`:
 
 ```bash
-pgutil security users delete --username="John Smith"
+pgutil security users delete --username="jsmith"
 ```
 :::
 
@@ -18,10 +18,10 @@ The `security users delete` command is used to delete a User account from ProGet
 
 The `--username` options is always required. 
 
-**Deleting a User** requires the user name (e.g. `"John Smith"`):
+**Deleting a User** requires the user name (e.g. `"jsmith"`):
 
 ```bash
-pgutil security users delete --username="John Smith"
+pgutil security users delete --username="jsmith"
 ```
 
 ## HTTP Request Specification

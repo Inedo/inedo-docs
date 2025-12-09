@@ -27,11 +27,10 @@ pgutil security users list
 Example output:
 
 ```plaintext
-Administrator
-John Smith
-David Jones
-John Barnes
-Michael Bankson
+Admin (Administrator)
+djones (David Jones)
+jsmith (John Smith)
+jbarnes (John Barnes)
 ```
 
 **Listing users with a filter** requires a search term (e.g. `"John"`)
@@ -43,8 +42,8 @@ pgutil security users list --search-term="John"
 Example output:
 
 ```plaintext
-John Smith
-John Barnes
+jsmith (John Smith)
+jbarnes (John Barnes)
 ```
 
 ## HTTP Request Specification
