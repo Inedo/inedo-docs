@@ -6,10 +6,10 @@ order: 1
 *Create User* is available as both a `pgutil` command and an HTTP Request, and will create a new User account in ProGet.
 
 :::(Info) (🚀 Quick Example: Creating a new User account with pgutil)
-This example creates the User `"John Smith"` with accompanying `displayname`, `email` and `password`
+This example creates the User `"djones"` with accompanying `displayname`, `email` and `password`
 
 ```bash
-pgutil security users create --username="John Smith" --displayname=jsmith --email=jsmith@kramerica.com  --password=password123
+pgutil security users create --username="djones" --displayname="David Jones" --email=djones@kramerica.com  --password=password123
 ```
 :::
 
@@ -20,10 +20,10 @@ The `--username`, `--displayname`, and `--email` options are always required.
 
 If `--password` is not specified, the User will be prompted to manually input a password and retype it to confirm. 
 
-**Creating a user** requires the the user name (e.g. `"John Smith"`), display name (e.g. `jsmith`), and the email address (e.g `john@kramerica.com`). You can also include a password (e.g. `abc12345`).
+**Creating a user** requires the the user name (e.g. `"djones"`), display name (e.g. `"David Jones""`), and the email address (e.g `djones@kramerica.com`). You can also include a password (e.g. `abc12345`).
 
 ```bash
-pgutil security users create --username="John Smith" --displayname=jsmith --email=john@kramerica.com  --password=password123
+pgutil security users create --username="djones" --displayname="David Jones" --email=djones@kramerica.com  --password=password123
 ```
 
 ## HTTP Request Specification
@@ -43,11 +43,11 @@ The following scripts will import a CSV of user information and create users in 
 
 ```sql
 Name,DisplayName,Email,Password
-Alice Johnson,ajohnson,alice.johnson@example.com,Sunflower92!
-Brian Lee,blee,brian.lee@example.com,MapleLeaf47#
-Catherine Wu,cwu,catherine.wu@example.com,OceanWave88$
-David Patel,dpatel,david.patel@example.com,StarryNight55@
-Emily Torres,etorres,emily.torres@example.com,RiverStone31%
+ajohnson,Alice Johnson,alice.johnson@example.com,Sunflower92!
+blee,Brian Lee,brian.lee@example.com,MapleLeaf47#
+cwu,Catherine Wu,catherine.wu@example.com,OceanWave88$
+dpatel,David Patel,david.patel@example.com,StarryNight55@
+etorres,Emily Torres,emily.torres@example.com,RiverStone31%
 ```
 
 ### Create Users (Powershell)
@@ -62,8 +62,8 @@ Import-Csv $csvPath | ForEach-Object {
     $body = $_ | Select-Object @{n='name';e={$_.Name}}, @{n='displayName';e={$_.DisplayName}}, @{n='email';e={$_.Email}}, @{n='password';e={$_.Password}} | ConvertTo-Json
     try {
         Invoke-RestMethod -Uri "https://$hostname/api/security/users/add" -Method Post -Headers @{ "X-ApiKey" = $apiKey; "Content-Type" = "application/json" } -Body $body
-        Write-Host "Added: $($_.Name)"
-    } catch { Write-Warning "Failed: $($_.Name) - $_" }
+        Write-Host "Added: $($_.DisplayName)"
+    } catch { Write-Warning "Failed: $($_.DisplayName) - $_" }
 }
 
 Write-Host "Done."
@@ -110,9 +110,9 @@ with open(csv_file_path, newline='', encoding='utf-8') as csvfile:
         try:
             response = requests.post(api_url, headers=headers, json=payload)
             response.raise_for_status()
-            print(f"Added: {row['Name']}")
+            print(f"Added: {row['DisplayName']}")
         except requests.exceptions.RequestException as e:
-            print(f"Failed: {row['Name']} - {e}")
+            print(f"Failed: {row['DisplayName']} - {e}")
 
 print("Done.")
 ```

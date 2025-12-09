@@ -22,10 +22,10 @@ The `--feed` and `--feed-group` options are optional, and will scope the permiss
 
 The `--deny` option is optional, and is used to set a "deny" Permission instead of a grant.
 
-**Granting global Permission to a User** requires the the Task name (e.g.`"View & Download Packages"`), and the User name (e.g. `"John Smith"`):
+**Granting global Permission to a User** requires the the Task name (e.g.`"View & Download Packages"`), and the User name (e.g. `"jsmith"`):
 
 ```bash
-pgutil security permissions add --task="View & Download Packages" --user="John Smith"
+pgutil security permissions add --task="View & Download Packages" --user="jsmith"
 ```
 
 **Granting feed level Permission to a Group** requires the the Task name (e.g.`"Promote Packages"`), the Group name (e.g. `Developers`) and the Feed name (e.g. `approved-nuget`):
@@ -40,10 +40,10 @@ pgutil security permissions add --task="Promote Packages" --group=Developers --f
 pgutil security permissions add --task="View & Download Packages" --group=Developers --feed=unapproved-nuget --deny
 ```
 
-**Denying feed group level permission to a user** requires the the Task name (e.g.`"Manage Feed"`), the User name (e.g. `"David Jones`), the Feed group name (e.g. `production-packages`) and the `--deny` option:
+**Denying feed group level permission to a user** requires the the Task name (e.g.`"Manage Feed"`), the User name (e.g. `"djones`), the Feed group name (e.g. `production-packages`) and the `--deny` option:
 
 ```bash
-pgutil security permissions add --task="Manage Feed" --name-"David Jones" --feed-group=production-packages
+pgutil security permissions add --task="Manage Feed" --name-"djones" --feed-group=production-packages
 ```
 
 ## HTTP Request Specification
@@ -110,14 +110,14 @@ Write-Host "`nAll selected permissions processed."
 ```
 
 ### Assign Feed Group-Level Permissions to a User (Python)
-This PowerShell script will add task permissions selected by the user to a user `John Smith` for a feed group `nuget-feeds` to a ProGet instance `proget.corp.local` with the API key `abc12345`. You can select one or more task permissions:
+This PowerShell script will add task permissions selected by the user to a user `jsmith` for a feed group `nuget-feeds` to a ProGet instance `proget.corp.local` with the API key `abc12345`. You can select one or more task permissions:
 
 ```python
 import requests
 
 hostname = "proget.corp.local"
 api_key = "abc12345"
-user = "John Smith"
+user = "jsmith"
 feedGroup = "nuget-feeds"
 
 # To set a permission, remove the # symbol from the start of that line.
