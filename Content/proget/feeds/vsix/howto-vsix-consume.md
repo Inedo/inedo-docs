@@ -71,7 +71,7 @@ pgutil packages upload --feed=private-vsix --input-file=C:\visualstudio\extensio
 pgutil will require some [minor configuration](/docs/proget/api/pgutil#sources) before use.
 
 ### Option 2: Through the UI
-You can use the ProGet UI to upload packages. Navigate to "Feeds" > the `private-vsix` feed and select "Add Package" from the drop-down menu.
+You can use the ProGet UI to upload packages. Navigate to "Feeds" > the `private-vsix` feed and select "Add Extension" from the drop-down menu.
 
 ![Add Package](/resources/docs/proget-vsix-addpackage.png){height="" width="50%"}
 
@@ -105,7 +105,7 @@ To [manage multiple machines or control access to extension galleries in Visual 
 
 Currently, Visual Studio Code does not support private galleries, despite there being a [request](https://github.com/microsoft/vscode/issues/21839) for it that has been open since 2017. You can still upload extensions to a VSIX feed, but users will need to manually download them and then import them into their Visual Studio Code.
 
-To download, navigate to a version of the package and select "Download Package"
+To download, navigate to a version of the package and select "Download Extension".
 
 ![download](/resources/docs/proget-vsix-downloadpackage.png){height="" width="50%"}
 
@@ -117,7 +117,7 @@ Once the file is downloaded, in VS Code navigate to "Extensions" > "..." > "Inst
 
 To provide developers using VS Code with the above guidance when using VS Code, you can add [Custom Feed Instructions](/docs/proget/feeds/feed-overview/proget-usage-instructions)
 
-To create custom feed instructions, navigate to your Visual Studio Extensions feed and select "Manage Feed".
+To create custom feed instructions, navigate to your Visual Studio Extensions feed and select "Feed Properties".
 
 ![manage feed](/resources/docs/proget-vsix-managefeed.png){height="" width="50%"}
 
@@ -130,7 +130,7 @@ Give the instructions a title and then enter them using MarkDown syntax. For the
 Currently, Visual Studio Code does not support private galleries. To install extensions users will need to manually download them and then import them into their Visual Studio Code by following these steps:
 
 1. Navigate to a version of a package
-2. Select "Download Package"
+2. Select "Download Extension"
 3. In VS Code, navigate to "Extensions" > "..." > "Install from VSIX"
 4. Using the file browser, locate the `.vsix` VS Code extension and select it.
 
