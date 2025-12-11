@@ -3,7 +3,7 @@ title: "List Builds"
 order: 3
 ---
 
-*List Builds* is available as both a `pgutil` command and an HTTP Request, and will return an array of [BuildInfo Object](/docs/proget/api/sca#buildinfo-object) objects describing the builds of a specified project.
+*List Builds* is available as both a `pgutil` command and an HTTP Request, and will return an array of [BuildInfo](/docs/proget/api/sca#buildinfo-object) objects describing the builds of a specified project.
 
 :::(Info) (🚀 Quick Example: Listing build of a project with pgutil)
 This example lists all builds of the project `myProject`
@@ -41,7 +41,7 @@ GET /api/sca/releases?name=«projectName»
 
 ## HTTP Response Specification
 
-A successful (`200`) response body will contain an array of [BuildInfo Object](/docs/proget/api/sca#buildinfo-object) objects. For example, to listing release versions of a project named `myProject`, the request would return this:
+A successful (`200`) response body will contain an array of [BuildInfo](/docs/proget/api/sca#buildinfo-object) objects. For example, to listing release versions of a project named `myProject`, the request would return this:
 
 ```json
 GET /api/sca/releases?project=myProject

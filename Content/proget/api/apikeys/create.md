@@ -3,7 +3,7 @@ title: "Create ApiKey"
 order: 1
 ---
 
-*Create ApiKey* is available as both a `pgutil` command and an HTTP Request, and will create a system, personal, or feed API key in ProGet.
+*Create ApiKey* is available as both a `pgutil` command and an HTTP Request, and will create a System, Personal, or Feed API key in ProGet.
 
 :::(Info) (🚀 Quick Example: Create a Personal API Key with pgutil)
 
@@ -23,7 +23,7 @@ These commands also have optional `--source` and related authentication options 
 
 | Command | Additional Options |  |
 | --- | --- | --- |
-| `system` | `apis` | `full-control` or a comma-separated list with a combination  `feeds`, `sca`, and  `sbom-upload`; defaults to `full-control` }
+| `system` | `apis` | `full-control` or a comma-separated list with a combination  `feeds`, `sca`, and  `sbom-upload`; defaults to `full-control` |
 | `feed`  | `feed`,  `group` | name of a feed or feed group in ProGet; exactly one must be specified |
 | `personal` | `user` | defaults to the user specified in the  `--username` option or source
 

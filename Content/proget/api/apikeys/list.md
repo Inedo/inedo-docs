@@ -3,7 +3,7 @@ title: "List ApiKeys"
 order: 2
 ---
 
-*List ApiKeys* is available as both a `pgutil` command and an HTTP Request, and will list the  API keys in ProGet.
+*List ApiKeys* is available as both a `pgutil` command and an HTTP Request, and will list the API keys in ProGet.
 
 :::(Info) (🚀 Quick Example: List API Keys with pgutil)
 
@@ -34,12 +34,12 @@ Note source options must also be specified unless you have the "Default" source 
 
 ## HTTP Request Specification
 
-To get a list of ApiKeys, simply `GET` to `/api/api-keys/list` and an array of `ApiKeyInfo` JSON object (see [ApiKeyInfo.cs](https://github.com/Inedo/pgutil/blob/thousand/Inedo.ProGet/ApiKeyInfo.cs)) will be returned.
+To get a list of ApiKeys, simply `GET` to `/api/api-keys/list` and an array of `ApiKeyInfo` JSON object (see [`ApiKeyInfo.cs`](https://github.com/Inedo/pgutil/blob/thousand/Inedo.ProGet/ApiKeyInfo.cs)) will be returned.
 
 ## HTTP Response Specification
 | Response | Details |
 | --- | --- |
-| **200 (Success)** | the body will contain an array of `ApiKeyInfo` objects
-|  **403 (Unauthorized API Key)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/packages#authentication)
+| **200 (Success)** | the body will contain an array of [`ApiKeyInfo.cs`](https://github.com/Inedo/pgutil/blob/thousand/Inedo.ProGet/ApiKeyInfo.cs) objects |
+|  **403 (Unauthorized API Key)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/packages#authentication) |
 | **500 (Server Error)** | indicates an unexpected error; the body will contain the message and stack trace, and this will also be logged
 

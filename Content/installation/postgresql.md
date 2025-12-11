@@ -226,9 +226,9 @@ For clustered installations, simply configure InedoDB as if you were setting up 
 
 Then, you can migrate by:
 1. Disabling access to your cluster at the load balancer
-2. Exporting the database to a file
-3. Connecting the ProGet cluster to the new InedoDB instance
-4. Importing the database file
+2. Exporting the database to a file under Admin > Database Overview or by running `proget database export` at the commandline
+3. Connecting the ProGet cluster to the new InedoDB instance by editing the connection string
+4. Importing the database file under Admin > Database Overview or by running `proget database import` at the commandline
 5. Reenable access to the cluster
 
 

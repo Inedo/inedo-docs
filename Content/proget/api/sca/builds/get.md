@@ -3,7 +3,7 @@ title: "Get Build"
 order: 2
 ---
 
-*Get Build* is available as both a `pgutil` command and an HTTP Request, and will get a specified project build, and return a [BuildInfo Object](/docs/proget/api/sca#buildinfo-object) object describing the build.
+*Get Build* is available as both a `pgutil` command and an HTTP Request, and will get a specified project build, and return a [BuildInfo](/docs/proget/api/sca#buildinfo-object) object describing the build.
 
 :::(Info) (🚀 Quick Example: Getting information of a build with pgutil)
 This example gets information on build `1.2.3` of the project `myProject`
@@ -46,7 +46,7 @@ GET /api/sca/releases?name=«projectName»&version=«versionNumber»
 
 ## HTTP Response Specification
 
-A successful (`200`) response body will contain a [BuildInfo Object](/docs/proget/api/sca#buildinfo-object) object. For example, to getting build version `1.2.3` of a project named `myProject`, the request would return this:
+A successful (`200`) response body will contain a [BuildInfo](/docs/proget/api/sca#buildinfo-object) object. For example, to getting build version `1.2.3` of a project named `myProject`, the request would return this:
 
 ```json
 GET /api/sca/releases?project=myProject&version=1.2.3
@@ -83,7 +83,7 @@ GET /api/sca/releases?project=myProject&version=1.2.3
         {
           "id": "PGV-2245804",
           "title": "Improper Handling of Exceptional Conditions in Newtonsoft.Json",
-          "description": "Description in markdown,
+          "description": "Description in markdown",
           "score": 7.5,
           "assessment": "Blocked"
         },
@@ -95,6 +95,7 @@ GET /api/sca/releases?project=myProject&version=1.2.3
       ]
     }
   ]
+}
 ```
 
 | Response | Details |

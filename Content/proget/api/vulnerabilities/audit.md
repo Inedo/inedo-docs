@@ -101,6 +101,6 @@ A successful (`200`) response body will contain an array of [VulnerabilityInfo](
 
 | Response | Details |
 |---|---|
-| **200 (Success)** | the body will contain an array of [VulnerabilityInfo](https://github.com/Inedo/pgutil/blob/thousand/Inedo.ProGet/VulnerabilityInfo.cs) objects |
+| **200 (Success)** | the body will contain an array of [VulnerabilityInfo] objects (See: [VulnerabilityInfo.cs](https://github.com/Inedo/pgutil/blob/thousand/Inedo.ProGet/VulnerabilityInfo.cs)) |
 | **400 (Invalid Input)** | indicates invalid or missing properties in the request; the body will provide some details as text |
 | **403 (Unauthorized API Key)** | indicates a missing, unknown, or unauthorized API Key; the body will be empty |
