@@ -40,39 +40,13 @@ Note source options must also be specified unless you have the "Default" source 
 
 ## HTTP Request Specification
 
-To promote a package, simply `POST` to the URL with an [appropriate API Key](/docs/proget/api/packages#authentication) and JSON object as the body with the following properties:
-
-| Property |  Description
-| --- | ---
-| `feed`* | Name of the feed where the target package is located
-| `group` | Group-portion of the package's name; this is only applicable for Universal Packages
-| `name`* | Name of the target package
-| `version`* | Version of the target package
-| `newVersion`* | Version of the new package to create
-| `comments` | Comments to append to repackaging audit history
-| `toFeed` | When specified, promotes the package to the specified feed instead of keeping it in `feed`.
-
-*\* required property.*
-
-Previous versions of ProGet used `groupName` and `packageName` instead of `group` and `name`; these may still be used, but aren't recommended.
-
-As JSON-encoded data:
+To repackage a package, simply `POST` to the following URL with an [appropriate API Key](/docs/proget/api/security#authentication) and a `RepackageInput` object (see [RepackageInput.cs](https://github.com/Inedo/pgutil/blob/thousand/Inedo.ProGet/RepackageInput.cs)) object as the request body.
 
 ```json
 POST /api/repackaging/repackage
-
-Content-Type: application/json
-
-{
-  "feed": "myFeed",
-  "name": "myPackage",
-  "version": "4.3.2-rc.1",
-  "newVersion": "4.3.2",
-  "comments": "This package was repackaged by an automated process."
-}
 ```
 
-As Form-encoded data:
+You can also POST to the URL with Form-encoded data:
 
 ```
 POST /api/repackaging/repackage
@@ -84,12 +58,4 @@ feed=myFeed&packageName=myPackage&version=4.3.2-rc.1&newVersion=4.3.2&comments=T
 
 ## HTTP Response Specification
 
-| Response | Details |
-| --- | --- |
-| **200 (Success)** | creates a new package in the same feed, or`toFeed` when specified. |
-| **400 (Invalid Input)** | indicates invalid or missing properties on the package; the body will provide some details as text |
-|  **403 (Unauthorized API Key)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/packages#authentication) |
-| **500 (Server Error)** | indicates an unexpected error; the body will contain the message and stack trace, and this will also be logged |
-
-
-
+A successful `200` creates a new "repackaged" package in the same feed, or`toFeed` when specified. A `403` response indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/packages#authentication).

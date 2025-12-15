@@ -7,13 +7,13 @@ order: 1
 May not recognize/return existing grouped packages (e.g. npm packages with a @scope)
 :::
 
-The *Query Package Promotions* returns a JSON array of [PromotedPackage](#promoted-package) objects describing the status of promoted packages.
+The *Query Package Promotions* API is available as an HTTP Request, and returns a list describing the status of promoted packages.
 
 :::(Info) (🚀 Quick Example: Querying with Curl)
 This example queries a promoted package (`myNugetPackage`, version `1.2.3`) from one feed (`nuget-unapproved`) to another (`nuget-approved`), authenticating with the API key `abc12345`:
 
 ```bash
-curl -X GET --header "X-ApiKey: abc12345" "http://54.168.224.223:8624/api/promotions/list?package=Newtonsoft.Json&version=13.0.2"
+curl -X GET --header "X-ApiKey: abc12345" "http://proget.corp.local/api/promotions/list?package=Newtonsoft.Json&version=13.0.2"
 ```
 :::
 
@@ -60,29 +60,7 @@ GET /api/promotions/list?fromFeed=npm-development&toFeed=npm-production&group=my
 ```
 
 ## Response Specification
-A successful (`200`) response body will contain an array of [PromotedPackage](#promoted-package) objects. For example, querying version `1.2.3` of `myNugetPackage`, promoted from feed `nuget-unapproved` to feed `nuget-approved` return a single object:
-
-```bash
-GET /api/promotions/list?fromFeed=nuget-unapproved&toFeed=nuget-unapproved&package=myNugetPackage&version=1.2.3
-
-[
-  {
-    "packageName": "myNugetPackage",
-    "packageType": "nuget",
-    "version": "1.2.3",
-    "promotions": [
-          {
-          "fromFeed": "nuget-unapproved",
-          "toFeed": "nuget-approved",
-          "date": "2023-11-28T06:23:46.92Z",
-          "user": "Anonymous",
-          "comments": "",
-          "id": 4
-          }
-  ]
-  },
-]
-```
+A successful (`200`) response body will contain an array of PromotePackage (see [PromotedPackage](#promoted-package)) objects. A `403` response indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/security#authentication).
 
 | Response | Details |
 | --- | --- |

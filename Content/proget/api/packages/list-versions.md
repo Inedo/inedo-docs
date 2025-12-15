@@ -3,7 +3,7 @@ title: "List Package Versions"
 order: 2
 ---
 
-*List Package Versions* is is available as both a `pgutil` command and an HTTP Request and will return a JSON array of [PackageVersionInfo](/docs/proget/api/packages#package-version) objects describing the versions of packages in a feed, optionally filtered by group, name, and version.
+*List Package Versions* is is available as both a `pgutil` command and an HTTP Request and will return a list of objects describing the versions of packages in a feed, optionally filtered by group, name, and version.
 
 :::(Info) (🚀 Quick Example: Listing package versions with pgutil)
 This example will list versions of the package `myNugetPackage` in the feed `myNugetFeed`
@@ -41,6 +41,8 @@ pgutil packages versions --package=@myScope/myNpmPackage --feed=myNpmFeed
 pgutil packages versions --package=@myScope/myNpmPackage --version=2.0.0 --feed=myNpmFeed
 ```
 
+Note source options must also be specified unless you have the "Default" source configured, and that a feed may be instead specified in the source. See [Working with Sources](/docs/proget/api/pgutil#sources) to learn more.
+
 ## HTTP Request Specification
 To list a package version, simply `GET` to the URL with a feed name, [package identifiers](/docs/proget/api/packages#using-multiple-parameters), and an [appropriate API Key](/docs/proget/api/packages#authentication).
 
@@ -48,80 +50,18 @@ To list a package version, simply `GET` to the URL with a feed name, [package id
 GET /api/packages/«feed-name»/versions?«package-identifiers»
 ```
 
-## HTTP Response Specification
-A successful (`200`) response body will contain an array of [PackageVersionInfo](/docs/proget/api/packages#package-version) objects. For example, querying version `1.0.0` of `myNuGetPackage`, the request would return a single object:
-
-```json
-GET /api/packages/MyNuGetFeed/versions?name=myNugetPackage&version=1.0.0
-
-[{
-    "purl":"pkg:nuget/myNugetPackage@1.0.0",
-    "group":null,
-    "name":"MyNugetPackage",
-    "version":"1.0.0",
-    "totalDownloads":0,
-    "downloads":0,
-    "published":"2023-10-17T02:43:00.717Z",
-    "publishedBy":"Anonymous",
-    "size":2441966,
-    "md5":"94d7f4cce0663c6a30340fe6fec831da",
-    "sha1":"f418efd4238eb069cf38d1c86f4edc34444777dd",
-    "sha256":"872fc189e638ab1056555b03aaa38f68bcb54286e221aa646eb1129babf63c77",
-    "sha512":"99b252bc77d1c5f5f7b51fd4ea7d5653e9961d7b3061cf9207f8643a9c
-    7cc9965eebc84d6467f2989bb4723b1a244915cc232a78f894e8b748ca882a7c89fb92"
- }]
-```
-
-You can also return multiple [PackageVersion](/docs/proget/api/packages#package-version) objects versions by just querying the package name:
+You can also return multiple `PackageVersionInfo` (see [PackageVersionInfo.cs](https://github.com/Inedo/pgutil/blob/thousand/Inedo.ProGet/PackageVersion.cs)) objects by just querying the package name:
 
 ```json
 GET /api/packages/MyNuGetFeed/versions?name=myNugetPackage
-
-[{
-    "purl":"pkg:nuget/myNugetPackage@3.0.1",
-    "group":null,
-    "name":"myNugetPackage",
-    "version":"3.0.1",
-    "totalDownloads":0,
-    "downloads":0,
-    "published":"2023-10-17T02:43:00.717Z",
-    "publishedBy":"Anonymous",
-    "size":2441966,
-    "md5":"94d7f4cce0663c6a30340fe6fec831da",
-    "sha1":"f418efd4238eb069cf38d1c86f4edc34444777dd",
-    "sha256":"872fc189e638ab1056555b03aaa38f68bcb54286e221aa646eb1129babf63c77",
-    "sha512":"99b252bc77d1c5f5f7b51fd4ea7d5653e9961d7b3061cf9207f8643a9c
-    7cc9965eebc84d6467f2989bb4723b1a244915cc232a78f894e8b748ca882a7c89fb92"
- },
- {
-    "purl":"pkg:nuget/myNugetPackage@2.0.3",
-    "group":null,
-    "name":"myNugetPackage",
-    "version":"2.0.3",
-    "totalDownloads":0,
-    "downloads":0,
-    "published":"2023-10-17T02:43:07.993Z",
-    "publishedBy":"Anonymous",
-    "size":2442133,
-    "md5":"df5d702d4c4e174965a2c1cdf405e69b",
-    "sha1":"6a6fc524ede4d2ba3005f31b1c76191fd8cbad06",
-    "sha256":"e4e8e86fd0a12df300e57c6cc2c1643b378cd91b254507eb092630d87257e218",
-    "sha512":"3102da9daa37f47aa9ebb8757ca687a193a8cfd34b203c0f09978469502
-    88c919885d1dd8986aa5e26ae92c820df8138cdd27421261fb90846caad68b98e100f"
- },
- ...
-]
 ```
+
+## HTTP Response Specification
+A successful (`200`) response body will contain an array of 1 `PackageVersionInfo` object. A `403` response indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/security#authentication).
 
 Note that, if an API call is made on a package that does not exist, an empty object is returned. In addition,  Package hash values may not be present for all packages because earlier versions of ProGet would typically only generate some of the hash types.
 
 The response will always be an array, even if only one version is requested. For feed types that can have multiple files associated with a version, the array may contain more than one item (such as PyPI, Conda, Ruby, etc).
-
-| Response | Details |
-| --- | --- |
-| **200 (Success)** | body will contain an array of [PackageVersionInfo](/docs/proget/api/packages#package-version) objects
-|  **403 (Unauthorised API Key)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/packages#authentication); the body will be empty
-| **500 (Server Error)** | indicates an unexpected error; the body will contain the messsage and stack trace, and this will also be logged
 
 ## Sample Usage Scripts
 
