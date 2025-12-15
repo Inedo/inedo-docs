@@ -3,7 +3,7 @@ title: "Update Feed Storage"
 order: 7
 ---
 
-*Update Feed Storage* is available as both a `pgutil` command and an HTTP Request, and will update a specified feed's storage configuration using the [FeedStorageConfiguration](/docs/proget/api/feeds#storage-object) object properties defined in the request body.
+*Update Feed Storage* is available as both a `pgutil` command and an HTTP Request, and will update a specified feed's storage configuration.
 
 :::(Info) (🚀 Quick Example: Updating a feed's storage configuration with pgutil)
 This example updates the storage of the feed `myNugetFeed` to `azure`:
@@ -49,21 +49,11 @@ pgutil feeds storage change --feed=myNpmFeed --type=azure --ConnectionString=Def
 ```
 
 ## HTTP Request Specification
-To update a feed, simply `POST` to the URL with the `feed` name, an [appropriate API Key](/docs/proget/api/feeds#authentication) and a [FeedStorageConfiguration](/docs/proget/api/feeds#storage-object) object as the request body.
-
-:::(internal)
-Need to test what happens when you post with incomplete values, then write about it
-:::
+To update a feed's storage properties, simply `POST` to the URL with with an [appropriate API Key](/docs/proget/api/feeds#authentication) and a [ProgetFeed](/docs/proget/api/feeds#feed-object) object (see [ProGetFeed.cs](https://github.com/Inedo/pgutil/blob/thousand/Inedo.ProGet/ProGetFeed.cs)) as the request body.
 
 ```plaintext
 POST /api/storage?feed=«feed-name»
 ```
 
 ## HTTP Response Specification
-
-| Response | Details |
-|---|---|
-| **200 (Success)** | indicates the feed's storage configuration was updated |
-| **400 (Invalid Input)** | indicates invalid or missing properties in the request; the body will provide some details as text |
-| **403 (Unauthorized API Key)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/feeds#authentication); the body will be empty |
-| **404 (Feed Not Found)** | indicates that the specified `feed` does not exist |
+A [FeedStorageConfiguration](/docs/proget/api/feeds#storage-object) object (see [FeedStorageConfiguration.cs](https://github.com/Inedo/pgutil/blob/thousand/Inedo.ProGet/FeedStorageConfiguration.cs)) will be returned on a successful `200` response. A `403` response indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/security#authentication).
