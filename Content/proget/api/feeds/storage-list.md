@@ -3,7 +3,7 @@ title: "List Feed Storage Types"
 order: 8
 ---
 
-*List Feed Storage Types* is available as both a `pgutil` command and an HTTP Request, and will return an array of [FeedStorageType](/docs/proget/api/feeds#type-object) objects, describing all feed storage types.
+*List Feed Storage Types* is available as both a `pgutil` command and an HTTP Request, and will return a list describing all feed storage types.
 
 :::(Info) (🚀 Quick Example: Listing feed storage types with pgutil)
 This example lists all feed storage types:
@@ -73,4 +73,4 @@ GET /api/storage
 ```
 
 ## HTTP Response Specification
-A successful (`200`) response body will contain an array of [FeedStorageType](/docs/proget/api/feeds#type-object) objects (see [FeedStorageType.cs](https://github.com/Inedo/pgutil/blob/thousand/Inedo.ProGet/FeedStorageType.cs)). A `403` response indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/security#authentication).
+A successful (`200`) response body will contain an array of `FeedStorageType` (see [FeedStorageType.cs](https://github.com/Inedo/pgutil/blob/thousand/Inedo.ProGet/FeedStorageType.cs)) objects. A `403` response indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/security#authentication).
