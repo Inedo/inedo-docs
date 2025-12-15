@@ -3,7 +3,7 @@ title: "Update Feed"
 order: 4
 ---
 
-*Update Feed* is available as both a `pgutil` command and an HTTP Request, and will update a specified feed using the [Feed](/docs/proget/api/feeds#feed-object) object properties defined in the request body. This endpoint supports partial updating by only updating the properties that are supplied in the request. 
+*Update Feed* is available as both a `pgutil` command and an HTTP Request, and will update a specified feed. This endpoint supports partial updating by only updating the properties that are supplied in the request. 
 
 :::(Info) (🚀 Quick Example: Updating a feed's drop path with pgutil)
 This example adds a drop path `c:\bulk-import` to a feed `myNugetFeed`:
@@ -173,7 +173,7 @@ pgutil feeds retention delete --feed=myNpmFeed --rule=4
 ```
 
 ## HTTP Request Specification
-To update a feed, simply `POST` to the URL with the `feed` name, an [appropriate API Key](/docs/proget/api/feeds#authentication) and a [Feed](/docs/proget/api/feeds#feed-object) object (see [ProGetFeed.cs](https://github.com/Inedo/pgutil/blob/thousand/Inedo.ProGet/ProGetFeed.cs)) as the request body.
+To update a feed, simply `POST` to the URL with the feed name, an [appropriate API Key](/docs/proget/api/feeds#authentication) and a `Feed` object (see [ProGetFeed.cs](https://github.com/Inedo/pgutil/blob/thousand/Inedo.ProGet/ProGetFeed.cs)) as the request body.
 
 :::(info)
 When updating, any properties omitted will keep their existing values. Updating a property with an array value will overwrite the existing value. For example, if a feed has `connectors: ["A", "B"]`, updating with `connectors: ["C"]` will remove connectors "A" and "B" from the feed, keeping only "C". 
@@ -186,7 +186,7 @@ POST /api/management/feeds/update/«feed-name»
 ```
 
 ## HTTP Response Specification
-A successful (`200`) response body will contain an updated [Feed](/docs/proget/api/feeds#feed-object) object. A `403` response indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/security#authentication).
+A successful (`200`) response body will contain an updated `ProGetFeed` object. A `403` response indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/security#authentication).
 
 ## Sample Usage Scripts
 
