@@ -53,12 +53,7 @@ Unless you use a `purl`, the parameters required will vary by feedtype.
 
 ## HTTP Response Specification
 
-| Response | Details |
-| --- | --- |
-| **200 (Success)** | indicates the package was deleted (no body)
-| **400 (Invalid Input)** | indicates invalid or missing properties on the package; the body will provide some details as text
-| **403 (Unauthorized API Key)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/packages#authentication); the package will not be deleted
-| **500 (Server Error)** | indicates an unexpected error; the body will contain the message and stack trace, and this will also be logged
+A successful `200` response indicates that the package was deleted. A `403` response indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/packages#authentication).
 
 ## Sample Usage Scripts
 
