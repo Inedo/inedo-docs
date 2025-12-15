@@ -3,7 +3,7 @@ title: "Update Connector"
 order: 4
 ---
 
-*Update Connector* is available as both a `pgutil` command and an HTTP Request, and will update a specified [connector](/docs/proget/feeds/connector-overview) using the [Connector](/docs/proget/api/connectors#connector-object) object properties defined in the request body. This endpoint supports partial updating by only updating the properties that are supplied in the request. 
+*Update Connector* is available as both a `pgutil` command and an HTTP Request, and will update a specified [connector](/docs/proget/feeds/connector-overview). This endpoint supports partial updating by only updating the properties that are supplied in the request. 
 
 :::(Info) (🚀 Quick Example: Enabling a connector's metadata caching with pgutil)
 This example will enable metadata caching for the connector `nuget.org`:
@@ -81,7 +81,7 @@ pgutil connectors filters remove --connector=pypi.org --filter=!simplejson
 ```
 
 ## HTTP Request Specification
-To update a [connector](/docs/proget/feeds/connector-overview), simply `POST` to the URL with the `connector` name, an [appropriate API Key](/docs/proget/api/connectors#authentication) and a [Connector](/docs/proget/api/connectors#connector-object) object (see [ProGetConnector.cs](https://github.com/Inedo/pgutil/blob/thousand/Inedo.ProGet/ProGetConnector.cs)) as the request body.
+To update a connector, simply `POST` to the following URL with the `connector` name, an [appropriate API Key](/docs/proget/api/connectors#authentication) and a `Connector` (see [ProGetConnector.cs](https://github.com/Inedo/pgutil/blob/thousand/Inedo.ProGet/ProGetConnector.cs)) object as the request body.
 
 :::(info)
 When updating, any properties omitted will keep their existing values. Updating a property with an array value will overwrite the existing value. For example, if a connector has `filters: ["A", "B"]`, updating with `filters: ["C"]` will remove filters "A" and "B" from the connector, keeping only "C". 
@@ -94,7 +94,7 @@ POST /api/management/connectors/update/«connector-name»
 ```
 
 ## HTTP Response Specification
-An updated [Connector](/docs/proget/api/connectors#connector-object) object will be returned on a successful `200` response. A `403` response indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/connectors#authentication).
+An updated `Connector` object will be returned on a successful `200` response. A `403` response indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/connectors#authentication).
 
 ## Sample Usage Scripts
 
