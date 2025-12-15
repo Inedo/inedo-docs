@@ -44,7 +44,7 @@ pgutil packages status deprecated --feed MyNpmFeed --package=@myScope/myNpmPacka
 Note source options must also be specified unless you have the "Default" source configured, and that a feed may be instead specified in the soruce. See [Working with Sources](/docs/proget/api/pgutil#sources) to learn more.
 
 ## HTTP Request Specification
-To set a package's status, simply `POST` or `PUT` to the URL with a feed name, [package identifiers](/docs/proget/api/packages#using-multiple-parameters), an [appropriate API Key](/docs/proget/api/packages#authentication) and a [PackageStatus](/docs/proget/api/packages#package-status) object as the request body.
+To set a package's status, simply `POST` or `PUT` to the URL with a feed name, [package identifiers](/docs/proget/api/packages#using-multiple-parameters), an [appropriate API Key](/docs/proget/api/packages#authentication) and a `PackageStatus` (see [PackageStatus.cs](https://github.com/Inedo/pgutil/blob/thousand/Inedo.ProGet/PackageStatus.cs)) object as the request body.
 
 ```plaintext
 POST /api/packages/«feed-name»/status?«package-identifiers»
@@ -53,12 +53,8 @@ POST /api/packages/«feed-name»/status?«package-identifiers»
 Unless you use a `purl`, the parameters required will vary by feedtype. 
 
 ## HTTP Response Specification
-| Response | Details |
-| --- | --- |
-| **200 (Success)** | indicates the package status was set
-| **400 (Invalid Input)** | indicates invalid or missing properties on the input; the body will provide some details as text
-|  **403 (Unauthorized API Key)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/packages#authentication); the package status will not be updated
-| **500 (Server Error)** | indicates an unexpected error; the body will contain the message and stack trace, and this will also be logged
+
+A successful `200` response and indicates the package status has been set. A `403` response indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/packages#authentication).
 
 ## Sample Usage Scripts
 
