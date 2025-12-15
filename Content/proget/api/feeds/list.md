@@ -42,42 +42,7 @@ GET /api/management/feeds/list
 ```
 
 ## HTTP Response Specification
-A successful (`200`) response body will contain an array of [ProgetFeed](/docs/proget/api/feeds#feed-object) objects. For example:
-
-```json
-GET /api/management/feeds/list
-
-[
-    {
-       "name":"myNugetFeed",
-       "alternateNames":[],
-       "feedType":"nuget",
-       "active":true,
-       "cacheConnectors":true,
-       "symbolServerEnabled":false,
-       "stripSymbols":false,
-       "stripSource":false,
-       "endpointUrl":"https://proget.corp.local/nuget/public-nuget/v3/index.json",
-       "connectors":["nuget.org"],
-       "retentionRules":[],
-       "variables":{},
-       "canPublish":true,
-       "packageStatisticsEnabled":false,
-       "restrictPackageStatistics":false,
-       "deploymentRecordsEnabled":true,
-       "usageRecordsEnabled":true,
-       "vulnerabilitiesEnabled":true,
-       "licensesEnabled":true,
-       "useWithProjects":true
-    },
-    { ... } // remaining feeds
-]
-```
-
-| Response | Details |
-|---|---|
-| **200 (Success)** | body will contain an array of [ProgetFeed](/docs/proget/api/feeds#feed-object) objects |
-| **403 (Unauthorized API Key)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/feeds#authentication); the body will be empty |
+A successful (`200`) response body will contain an array of [ProgetFeed](/docs/proget/api/feeds#feed-object) objects (see [ProGetFeed.cs](https://github.com/Inedo/pgutil/blob/thousand/Inedo.ProGet/ProGetFeed.cs)). A `403` response indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/security#authentication).
 
 ## Sample Usage Scripts
 

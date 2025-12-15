@@ -173,7 +173,7 @@ pgutil feeds retention delete --feed=myNpmFeed --rule=4
 ```
 
 ## HTTP Request Specification
-To update a feed, simply `POST` to the URL with the `feed` name, an [appropriate API Key](/docs/proget/api/feeds#authentication) and a [Feed](/docs/proget/api/feeds#feed-object) object as the request body.
+To update a feed, simply `POST` to the URL with the `feed` name, an [appropriate API Key](/docs/proget/api/feeds#authentication) and a [Feed](/docs/proget/api/feeds#feed-object) object (see [ProGetFeed.cs](https://github.com/Inedo/pgutil/blob/thousand/Inedo.ProGet/ProGetFeed.cs)) as the request body.
 
 :::(info)
 When updating, any properties omitted will keep their existing values. Updating a property with an array value will overwrite the existing value. For example, if a feed has `connectors: ["A", "B"]`, updating with `connectors: ["C"]` will remove connectors "A" and "B" from the feed, keeping only "C". 
@@ -186,54 +186,14 @@ POST /api/management/feeds/update/«feed-name»
 ```
 
 ## HTTP Response Specification
-A successful (`200`) response body will contain an updated [Feed](/docs/proget/api/feeds#feed-object) object. For example, when updating a NuGet feed `myNugetFeed` with a new description, this returns:
-
-```json
-{
-  "name": "myNugetFeed",
-  "alternateNames": [],
-  "feedType": "nuget",
-  "description": "This feed serves as a proxy for Inedo SDK extensions.",
-  "active": true,
-  "cacheConnectors": true,
-  "allowUnknownLicenses": true,
-  "allowedLicenses": [],
-  "blockedLicenses": [],
-  "symbolServerEnabled": false,
-  "stripSymbols": false,
-  "stripSource": false,
-  "endpointUrl": "http://proget.corp.local/nuget/nuget/v3/index.json",
-  "connectors": ["nuget.org", "proget.connector.local"],
-  "vulnerabilitySources": [],
-  "retentionRules": [],
-  "packageFilters": {},
-  "packageAccessRules": {},
-  "variables": {},
-  "canPublish": true,
-  "packageStatisticsEnabled": false,
-  "restrictPackageStatistics": false,
-  "deploymentRecordsEnabled": true,
-  "usageRecordsEnabled": true,
-  "vulnerabilitiesEnabled": false,
-  "licensesEnabled": false,
-  "useWithProjects": true
-}
-```
-
-| Response | Details |
-|---|---|
-| **200 (Success)** | response body contains an updated [Feed](/docs/proget/api/feeds#feed-object) object|
-| **400 (Invalid Input)** | indicates invalid or missing properties in the request; the body will provide some details as text |
-| **403 (Unauthorized API Key)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/feeds#authentication); the body will be empty |
-| **404 (Feed Not Found)** | indicates that the specified `feed` does not exist |
-
+A successful (`200`) response body will contain an updated [Feed](/docs/proget/api/feeds#feed-object) object. A `403` response indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/security#authentication).
 
 ## Sample Usage Scripts
 
 ### Add a connector to a feed (Powershell)
 This script will add a connector `nuget.org`, to a feed `nuget-unapproved`. If the specified connector already exists, no changes will be made.
 
-Only connectors that already exist in the ProGet instance may be added. See the [Create Connector](/docs/proget/api/connectors/create) endpoint to add a new connector. 
+Only connectors that already exist in the ProGet instance may be added. See the [Create Connector](/docs/proget/api/connectors/create) endpoint to add a new connector.
 
 This script can be edited to work with other [Feed](/docs/proget/api/feeds#feed-object) object properties that are array types.
 

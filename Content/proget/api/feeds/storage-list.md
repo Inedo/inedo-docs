@@ -73,38 +73,4 @@ GET /api/storage
 ```
 
 ## HTTP Response Specification
-A successful (`200`) response body will contain an array of [FeedStorageType](/docs/proget/api/feeds#type-object) objects. For example:
-
-```json
-GET /api/storage
-
-[
-    {
-    "id": "azure",
-    "name": "Microsoft Azure",
-    "description": "A file system backed by Microsoft Azure Blob Storage.",
-    "properties": {
-        "ConnectionString": {
-        "required": true,
-        "name": "Connection string",
-        "description": "A Microsoft Azure connection string"
-        },
-        "ContainerName": {
-        "required": true,
-        "name": "Container",
-        "description": "The name of the Azure Blob Container"
-        },
-        "TargetPath": {
-        "name": "Target path",
-        "description": "The path in the specified Azure Blob Container"
-        }
-      }
-    },
-    { ... } // remaining feed storage options
-]
-```
-
-| Response | Details |
-|---|---|
-| **200 (Success)** | body will contain an array of [FeedStorageType](/docs/proget/api/feeds#type-object) objects |
-| **403 (Unauthorized API Key)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/feeds#authentication); the body will be empty |
+A successful (`200`) response body will contain an array of [FeedStorageType](/docs/proget/api/feeds#type-object) objects (see [FeedStorageType.cs](https://github.com/Inedo/pgutil/blob/thousand/Inedo.ProGet/FeedStorageType.cs)). A `403` response indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/security#authentication).
