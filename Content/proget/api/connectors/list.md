@@ -39,42 +39,7 @@ GET /api/management/connectors/list
 ```
 
 ## HTTP Response Specification
-A successful (`200`) response body will contain an array of [ProgetConnector](/docs/proget/api/connectors#connector-object) objects. For example:
-
-```json
-GET /api/management/connectors/list
-
-[
-  {
-      "name": "nuget.org",
-      "url": "https://api.nuget.org/v3/index.json",
-      "feedType": "nuget",
-      "username": "jsmith",
-      "password": "pass123",
-      "timeout": 60,
-      "filters": ["filter1", "filter2"],
-      "metadataCacheEnabled": true,
-      "metadataCacheMinutes": 30,
-      "metadataCacheCount": 100
-  },
-  {
-      "name": "registry.npmjs.org",
-      "url": "https://registry.npmjs.org",
-      "feedType": "npm",
-      "timeout": 10,
-      "metadataCacheEnabled": false,
-      "metadataCacheMinutes": null,
-      "metadataCacheCount": null,
-      "filters": []
-  },
-  { ... } // other connectors
-]
-```
-
-| Response | Details |
-|---|---|
-| **200 (Success)** | body will contain an array of [ProgetConnector](/docs/proget/api/connectors#connector-object) objects |
-|  **403 (Unauthorized API Key)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/connectors#authentication); the body will be empty |
+An array of [Connector](/docs/proget/api/connectors#connector-object) (see [ProGetConnector.cs](https://github.com/Inedo/pgutil/blob/thousand/Inedo.ProGet/ProGetConnector.cs)) objects will be returned on a successful `200` response. A `403` response indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/connectors#authentication).
 
 ## Sample Usage Scripts
 

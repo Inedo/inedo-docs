@@ -33,9 +33,4 @@ DELETE /api/management/connectors/delete/«connector-name»
 
 ## HTTP Response Specification
 
-| Response | Details |
-|---|---|
-| **200 (Success)** | will delete the specified `connector` |
-| **400 (Invalid Input)** | indicates invalid or missing properties in the request; the body will provide some details as text |
-| **403 (Unauthorized API Key)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/connectors#authentication); the body will be empty |
-| **404 (Connector Not Found)** | indicates that the specified `connector` does not exist |
+A `200` response will indicate the Connector has been deleted from ProGet. A `403` response indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/connectors#authentication).

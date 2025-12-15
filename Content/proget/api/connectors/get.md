@@ -42,28 +42,4 @@ GET /api/management/connectors/get/«connector-name»
 ```
 
 ## HTTP Response Specification
-A successful (`200`) response body will contain a single [ProGetConnector](/docs/proget/api/connectors#connector-object) object. For example, to requesting a `nuget` connector with the name `myConnector`, the request would return:
-
-```json
-GET /api/management/connectors/get/nuget.org
-
-{
-  "name": "myNugetConnector",
-  "url": "https://proget.connector.local",
-  "feedType": "nuget",
-  "username": "jsmith",
-  "password": "pass123",
-  "timeout": 60,
-  "filters": ["filter1", "filter2"],
-  "metadataCacheEnabled": true,
-  "metadataCacheMinutes": 30,
-  "metadataCacheCount": 100
-}
-```
-
-| Response | Details |
-|---|---|
-| **200 (Success)** | body will contain a [ProGetConnector](/docs/proget/api/connectors#connector-object) object |
-| **400 (Invalid Input)** | indicates invalid or missing properties in the request; the body will provide some details as text |
-|  **403 (Unauthorized API Key)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/connectors#authentication); the body will be empty |
-| **404 (Connector Not Found)** | indicates that the specified `connector` does not exist |
+A [Connector](/docs/proget/api/connectors#connector-object) (see [ProGetConnector.cs](https://github.com/Inedo/pgutil/blob/thousand/Inedo.ProGet/ProGetConnector.cs)) object will be returned on a successful `200` response. A `403` response indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/connectors#authentication).
