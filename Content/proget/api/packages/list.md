@@ -3,7 +3,7 @@ title: "List Packages"
 order: 1
 ---
 
-*List Packages* is available as both a `pgutil` command and an HTTP Request, and will return a JSON array of [PackageVersionInfo](/docs/proget/api/packages#package-version) objects describing the packages in a feed that match the specified query arguments.
+*List Packages* is available as both a `pgutil` command and an HTTP Request, and will return a list describing the packages in a feed that match the specified query arguments.
 
 :::(Info) (🚀 Quick Example: Listing packages with pgutil)
 This example will list the packages in the feed `myNugetFeed`
@@ -32,6 +32,8 @@ The `--package` option is optional, and can be used in the event that the user w
 pgutil packages list --package=@myScope/myNpmPackage --feed=myNpmFeed --stable=true
 ```
 
+Note source options must also be specified unless you have the "Default" source configured, and that a feed may be instead specified in the source. See [Working with Sources](/docs/proget/api/pgutil#sources) to learn more.
+
 ## HTTP Request Specification
 To list packages, simply `GET` to the URL with a feed name, and `stableOnly` parameters, and an [appropriate API Key](/docs/proget/api/packages#authentication).
 
@@ -42,36 +44,9 @@ GET /api/packages/«feed-name»/latest[?group=«group»][&name=«name»][&stable
 Note that all parameters are optional. The `group name`and `package name` parameters can be used to filter the results. The `stableOnly` parameter defaults to `false`, but when set true, latest stable versions of packages are returned instead of absolute latest versions
 
 ## HTTP Response Specification
-A successful (`200`) response body will contain an array of [PackageVersionInfo](/docs/proget/api/packages#package-version) objects. For example, to querying the latest stable packages in a feed, the request would return this:
+A successful (`200`) response body will contain an array of `PackageVersionInfo` (see [PackageVersionInfo.cs](https://github.com/Inedo/pgutil/blob/thousand/Inedo.ProGet/PackageVersionInfo.cs)) objects. A `403` response indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/packages#authentication).
 
-```json
-GET /api/packages/MyNuGetFeed/latest&stableOnly=true
-[
-    {
-        "purl": "pkg:nuget/myNugetPackage@1.2.3",
-        "name": "myNugetPackage",
-        "version": "1.2.3",
-        "totalDownloads": 0,
-        "downloads": 0,
-        "published": "2024-05-28T09:14:31.313Z",
-        "publishedBy": "j.smith",
-        "size": 2596051,
-        "md5": "a80c7fb0a5437ce4fa16a664bcc95c60",
-        "sha1": "50d8ccef2efbc9b5bfc38f7ae41c989de2011b55",
-        "sha256": "3d21caf909f9db2b5d13249d6728c2506c55e72e2123fbe2af65a056c0a0bf9d",
-        "sha512": "6934665f0479c58bbe996c44f2bf16d435a72f4d92795f0bc1d40cb0b234jh3jc...",
-    },
-    { ... } // remaining packages
-]
-```
-
-Note that, if an API call is made on a package that does not exist, an empty object is returned. In addition,  Package hash values may not be present for all packages because earlier versions of ProGet would typically only generate some of the hash types.
-
-| Response | Details |
-| --- | --- |
-| **200 (Success)** | body will contain an array of [PackageVersionInfo](/docs/proget/api/packages#package-version) objects
-| **403 (Unauthorized API Key)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/packages#authentication); the body will be empty
-| **500 (Server Error)** | indicates an unexpected error; the body will contain the messsage and stack trace, and this will also be logged
+Note that, if an API call is made on a package that does not exist, an empty object is returned. In addition, Package hash values may not be present for all packages because earlier versions of ProGet would typically only generate some of the hash types.
 
 ## Sample Usage Scripts
 

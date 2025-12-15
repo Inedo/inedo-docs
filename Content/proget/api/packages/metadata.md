@@ -3,7 +3,7 @@ title: "Show Package Metadata"
 order: 1
 ---
 
-*Show Package Metadata* is available as a `pgutil` command, and will display the Metadata of a specified package. 
+*Show Package Metadata* is available as a `pgutil` command and an HTTP Request, and will display the Metadata of a specified package. 
 
 :::(Info) (🚀 Quick Example: Showing package metadata with pgutil)
 This example will display the metadata of the package `Newtonsoft.Json` version `13.0.3` in the feed `public-nuget`
