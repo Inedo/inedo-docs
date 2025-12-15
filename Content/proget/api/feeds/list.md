@@ -3,7 +3,7 @@ title: "List Feeds"
 order: 3
 ---
 
-*List Feeds* is available as both a `pgutil` command and an HTTP Request, and will return an array of [ProgetFeed](/docs/proget/api/feeds#feed-object) objects, describing all existing feeds.
+*List Feeds* is available as both a `pgutil` command and an HTTP Request, and will return a list describing all existing feeds.
 
 :::(Info) (🚀 Quick Example: Listing feeds with pgutil)
 This example lists all existing feeds:
@@ -42,7 +42,7 @@ GET /api/management/feeds/list
 ```
 
 ## HTTP Response Specification
-A successful (`200`) response body will contain an array of [ProgetFeed](/docs/proget/api/feeds#feed-object) objects (see [ProGetFeed.cs](https://github.com/Inedo/pgutil/blob/thousand/Inedo.ProGet/ProGetFeed.cs)). A `403` response indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/security#authentication).
+A successful (`200`) response body will contain an array of `ProgetFeed` (see [ProGetFeed.cs](https://github.com/Inedo/pgutil/blob/thousand/Inedo.ProGet/ProGetFeed.cs)) objects. A `403` response indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/security#authentication).
 
 ## Sample Usage Scripts
 
