@@ -35,15 +35,13 @@ If any of the displayed statuses are not OK, a nonzero exit code will be reporte
 
 To create an API key, simply perform a `GET` request to `/health`.
 
-A response body will contain a `ProGetHealthInfo` JSON object (see [ProGetHealthInfo.cs](https://github.com/Inedo/pgutil/blob/thousand/Inedo.ProGet/ProGetHealthInfo.cs)).
+```plaintext
+GET /health
+```
 
 ## HTTP Response Specification
 
-| Response | Details |
-| --- | --- | 
-| **200 (Success)** | body will contain a `ProGetHealthInfo` JSON object
-| **500 (Health Problem)** | indicates a health problem (such as service not running); the body will contain a `ProGetHealthInfo` object
-| **500 (Server Error)** | indicates an unexpected error; the body will contain an error message and stack trace
+A response body will contain a `ProGetHealthInfo` JSON object (see [ProGetHealthInfo.cs](https://github.com/Inedo/pgutil/blob/thousand/Inedo.ProGet/ProGetHealthInfo.cs)). A `500` response indicates a health problem (such as service not running); the body will contain a `ProGetHealthInfo` object.
 
 ## ProGet 2023 and Earlier
 
