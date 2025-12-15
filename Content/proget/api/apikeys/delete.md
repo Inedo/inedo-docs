@@ -42,11 +42,11 @@ Note source options must also be specified unless you have the "Default" source 
 To delete an API key, simply `POST` to `/api/api-keys/delete?id=«apikey-id»`. 
 
 ## HTTP Response Specification
+
 | Response | Details |
 | --- | --- |
-| **200 (Success)** | indicates the API key was deleted; the body will contain the text of the api key created
-| **400 (Invalid Input)** | indicates a missing or non-integer value for `id`
-|  **403 (Unauthorized API Key)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/packages#authentication); the package status will not be updated
-| **404 (API Key Not Found)** | indicates the specified key was not found
-| **500 (Server Error)** | indicates an unexpected error; the body will contain the message and stack trace, and this will also be logged
+| **200 (Success)** | indicates the API key was deleted; the body will contain the text of the api key created |
+| **400 (Invalid Input)** | indicates a missing or non-integer value for `id` |
+| **403 (Unauthorized API Key)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/apikeys) |
+| **404 (API Key Not Found)** | indicates the specified key was not found |
 
