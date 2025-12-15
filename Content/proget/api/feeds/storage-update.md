@@ -3,7 +3,7 @@ title: "Update Feed Storage"
 order: 7
 ---
 
-*Update Feed Storage* is available as both a `pgutil` command and an HTTP Request, and will update a specified feed's storage configuration using the [FeedStorageConfiguration](/docs/proget/api/feeds#storage-object) object properties defined in the request body.
+*Update Feed Storage* is available as both a `pgutil` command and an HTTP Request, and will update a specified feed's storage configuration.
 
 :::(Info) (🚀 Quick Example: Updating a feed's storage configuration with pgutil)
 This example updates the storage of the feed `myNugetFeed` to `azure`:
