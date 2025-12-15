@@ -25,11 +25,11 @@ pgutil feed delete --feed=myNugetFeed
 ```
 
 ## HTTP Request Specification
-To delete a specified feed simply `DELETE` to the URL with an [appropriate API Key](/docs/proget/api/feeds#authentication) and a [ProgetFeed](/docs/proget/api/feeds#feed-object) object (see [ProGetFeed.cs](https://github.com/Inedo/pgutil/blob/thousand/Inedo.ProGet/ProGetFeed.cs)) as the request body.
+To delete a specified feed simply `DELETE` to the following URL with the feed name and an [appropriate API Key](/docs/proget/api/feeds#authentication).
 
 ```plaintext
 DELETE /api/management/feeds/delete/«feed-name»
 ```
 
 ## HTTP Response Specification
-A `ProGetFeed` object will be deleted on a successful `200` response. A `403` response indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/security#authentication).
+A successful `200` response indicates that the specified feed has been deleted. A `403` response indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/security#authentication).
