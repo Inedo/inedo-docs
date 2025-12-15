@@ -3,9 +3,9 @@ title: "Delete Connector"
 order: 5
 ---
 
-*Delete Connector* is available as both a `pgutil` command and an HTTP Request, and will delete a specified [connector](/docs/proget/feeds/connector-overview).
+*Delete Connector* is available as both a `pgutil` command and an HTTP Request, and will delete a specified [Connector](/docs/proget/feeds/connector-overview).
 
-:::(Info) (🚀 Quick Example: Deleting a connector with pgutil)
+:::(Info) (🚀 Quick Example: Deleting a Connector with pgutil)
 This example deletes the connector `myNugetConnector`:
 
 ```bash
@@ -14,7 +14,7 @@ pgutil connectors delete --connector=myNugetConnector
 :::
 
 ## Command Specification (CLI)
-The `connectors delete` command is used to delete a [connector](/docs/proget/feeds/connector-overview).
+The `connectors delete` command is used to delete a Connector.
 
 The `--connector` option is always required.
 
@@ -25,7 +25,7 @@ pgutil connectors delete --connector=myNugetConnector
 ```
 
 ## HTTP Request Specification
-To delete a specified [connector](/docs/proget/feeds/connector-overview) simply `DELETE` to the URL with the `connector` name and an [appropriate API Key](/docs/proget/api/connectors#authentication).
+To delete a specified Connector, simply `DELETE` to the following URL with the Connector name and an [appropriate API Key](/docs/proget/api/connectors#authentication).
 
 ```plaintext
 DELETE /api/management/connectors/delete/«connector-name»
@@ -33,9 +33,4 @@ DELETE /api/management/connectors/delete/«connector-name»
 
 ## HTTP Response Specification
 
-| Response | Details |
-|---|---|
-| **200 (Success)** | will delete the specified `connector` |
-| **400 (Invalid Input)** | indicates invalid or missing properties in the request; the body will provide some details as text |
-| **403 (Unauthorized API Key)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/connectors#authentication); the body will be empty |
-| **404 (Connector Not Found)** | indicates that the specified `connector` does not exist |
+A successful `200` response will indicate the Connector has been deleted from ProGet. A `403` response indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/connectors#authentication).
