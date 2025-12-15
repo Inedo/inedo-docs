@@ -3,9 +3,9 @@ title: "Get Feed"
 order: 2
 ---
 
-*Get Feed* is available as both a `pgutil` command and an HTTP Request, and will return a single [ProgetFeed](/docs/proget/api/feeds#feed-object) object or a list of properties for the specified feed.
+*Get Feed* is available as both a `pgutil` command and an HTTP Request, and will return properties of a specified feed.
 
-:::(Info) (🚀 Quick Example: Getting a feed with pgutil)
+:::(Info) (🚀 Quick Example: Returning properties of a feed with pgutil)
 This example returns properties of the feed `myNugetFeed`:
 
 ```bash
@@ -38,11 +38,11 @@ vulnerabilitiesEnabled=true
 ```
 
 ## HTTP Request Specification
-To return a specified feed, simply `GET` to the URL with the name of the `feed` and an [appropriate API Key](/docs/proget/api/feeds#authentication).
+To return properties of a specified feed, simply `GET` to the URL with the name of the `feed` and an [appropriate API Key](/docs/proget/api/feeds#authentication).
 
 ```plaintext
 GET /api/management/feeds/get/«feed-name»
 ```
 
 ## HTTP Response Specification
-A [ProgetFeed](/docs/proget/api/feeds#feed-object) object (see [ProGetFeed.cs](https://github.com/Inedo/pgutil/blob/thousand/Inedo.ProGet/ProGetFeed.cs)) will be returned on a successful `200` response. A `403` response indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/security#authentication).
+A `ProgetFeed` (see [ProGetFeed.cs](https://github.com/Inedo/pgutil/blob/thousand/Inedo.ProGet/ProGetFeed.cs)) object will be returned on a successful `200` response. A `403` response indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/security#authentication).
