@@ -28,7 +28,6 @@ However, this is not the only way to use an API Key. An API key may be passed to
 |Form value| `key` | only `applications/x-www-form-urlencoded` content type |
 |JSON property | `API_Key` | on root object, only `application/json` content type |
 
-
 Note that [Feed Endpoints](#feed-endpoints) do not use this convention. 
 
 ## Feed Endpoints
@@ -59,7 +58,7 @@ We do not document changes to these methods nor do we provide details on how to 
 We don't recommend using the Native API unless absolutely necessary; we do not document usage and the methods are subject to removal or change, even in maintenance versions.
 :::
 
-All of these methods require that an API Key with Native API Access is passed into each request; see _Using API Keys_ for more information.
+All of these methods require that an API Key with Native API Access is passed into each request; see [API Keys & Access](/docs/proget/api/apikeys) for more information.
 
 ```plaintext
 URL:
