@@ -51,7 +51,7 @@ curl -X POST -H "X-ApiKey: abc12345" https://proget.corp.local/api/sca/audit-pac
 ```
 :::
 
-To audit packages via the API, simply `POST` to the URL with an appropriate API Key and an array of [PackageVersionIdentifier](https://github.com/Inedo/pgutil/blob/thousand/Inedo.ProGet/PackageVersionIdentifier.cs) objects as the request body.
+To audit packages, simply `POST` to the URL with an appropriate API Key and an array of `PackageVersionIdentifier` (see [PackageVersionIdentifier.cs](https://github.com/Inedo/pgutil/blob/thousand/Inedo.ProGet/PackageVersionIdentifier.cs)) objects as the request body.
 
 ```bash
 POST /api/sca/audit-package-vulns
@@ -70,37 +70,4 @@ POST /api/sca/audit-package-vulns
 ```
 
 ## HTTP Response Specification
-A successful (`200`) response body will contain an array of [VulnerabilityInfo](https://github.com/Inedo/pgutil/blob/thousand/Inedo.ProGet/VulnerabilityInfo.cs) objects. For example, auditing version `1.2.3` of the package `myPackage` returns:
-
-```bash
-[
-    {
-        "id": "PGV-12345678",
-        "affectedPackages": [0],
-        "summary": "Improper Handling of Exceptional Conditions",
-        "published": "2022-06-22T15:08:47Z",
-        "details": "This is a vulnerability",
-        "cve": "CVE-1234-56789",
-        "cvss": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
-        "numericCvss": 7.5,
-        "severity": "High"
-    },
-    {
-        "id": "PGV-8765432",
-        "affectedPackages": [0,1],
-        "summary": "Improper Input Validation",
-        "published": "2022-06-22T15:08:47Z",
-        "details": "This is another vulnerability",
-        "cve": "CVE-9876-5432",
-        "cvss": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
-        "numericCvss": 7.5,
-        "severity": "High"
-    }
-]
-```
-
-| Response | Details |
-|---|---|
-| **200 (Success)** | the body will contain an array of [VulnerabilityInfo] objects (See: [VulnerabilityInfo.cs](https://github.com/Inedo/pgutil/blob/thousand/Inedo.ProGet/VulnerabilityInfo.cs)) |
-| **400 (Invalid Input)** | indicates invalid or missing properties in the request; the body will provide some details as text |
-| **403 (Unauthorized API Key)** | indicates a missing, unknown, or unauthorized API Key; the body will be empty |
+An array of `VulnerabilityInfo` (see [VulnerabilityInfo.cs](https://github.com/Inedo/pgutil/blob/thousand/Inedo.ProGet/VulnerabilityInfo.cs)) objects will be returned on a successful `200` response. A `403` response indicates a missing, unknown, or unauthorized API Key.
