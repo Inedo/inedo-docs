@@ -3,11 +3,10 @@ title: "Create Connector"
 order: 1
 ---
 
-*Create Connector* is available as both a `pgutil` command and an HTTP Request, and will
- create a [connector](/docs/proget/feeds/connector-overview), with the properties defined by a [ProgetConnector](/docs/proget/api/connectors#connector-object) object in the body of the request.
+*Create Connector* is available as both a `pgutil` command and an HTTP Request, and will create a [Connector](/docs/proget/feeds/connector-overview).
 
-:::(Info) (🚀 Quick Example: Creating a connector with pgutil)
-This example will create a `NuGet` connector `myNugetConnector`, connecting to `https://proget.connector.local`:
+:::(Info) (🚀 Quick Example: Creating a Connector with pgutil)
+This example will create a `NuGet` Connector `myNugetConnector`, connecting to `https://proget.connector.local`:
 
 ```bash
 pgutil connectors create --name=myNugetConnector --type=NuGet --url=https://proget.connector.local
@@ -15,43 +14,22 @@ pgutil connectors create --name=myNugetConnector --type=NuGet --url=https://prog
 :::
 
 ## Command Specification (CLI)
-The `connectors create` command is used to create a [connector](/docs/proget/feeds/connector-overview).
+The `connectors create` command is used to create a Connector.
 
 The `--name`, `--type` and `--url` options are always required. 
 
-**Creating a connector** requires the connector name (e.g. `myNugetConnector`), type (e.g. `NuGet`) and the URL (e.g. `https://proget.connector.local`):
+**Creating a connector** requires the Connector name (e.g. `myNugetConnector`), type (e.g. `NuGet`) and the URL (e.g. `https://proget.connector.local`):
 
 ```bash
 pgutil connectors create --name=myNugetConnector --type=NuGet --url=https://proget.connector.local
 ```
 
 ## HTTP Request Specification
-To create a [connector](/docs/proget/feeds/connector-overview), simply `POST` to the URL with an [appropriate API Key](/docs/proget/api/connectors#authentication) and a [ProgetConnector](/docs/proget/api/connectors#connector-object) object as the request body.
+To create a Connector, simply `POST` to the URL with an [appropriate API Key](/docs/proget/api/connectors#authentication) and a `ProgetConnector` (see [ProGetConnector.cs](https://github.com/Inedo/pgutil/blob/thousand/Inedo.ProGet/ProGetConnector.cs)) object as the request body.
 
 ```plaintext
 POST/PUT /api/management/connectors/create
 ```
 
 ## HTTP Response Specification
-A successful (`200`) response body will contain a single [Connector](/docs/proget/api/connectors#connector-object) object. For example, creating a new `nuget` connector, with the name `myConnector` returns:
-
-```json
-POST /api/management/connectors/create
-
-{
-  "name": "myNugetConnector",
-  "url": "https://proget.connector.local",
-  "feedType": "nuget",
-  "timeout": 10,
-  "metadataCacheEnabled": false,
-  "metadataCacheMinutes": null,
-  "metadataCacheCount": null,
-  "filters": []
-}
-```
-
-| Response | Details |
-|---|---|
-| **200 (Success)** | a `connector` will be created, the body will contain a [ProgetConnector](/docs/proget/api/connectors#connector-object) object |
-| **400 (Invalid Input)** | indicates invalid or missing properties in the request; the body will provide some details as text |
-|  **403 (Unauthorized API Key)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/connectors#authentication); the body will be empty |
+A `Connector` object will be returned on a successful `200` response. A `403` response indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/connectors#authentication).

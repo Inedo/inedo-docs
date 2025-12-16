@@ -49,17 +49,14 @@ PUT /api/packages/«feed-name»/upload?«package-identifiers»
 ```
 
 Unless you use a `purl`, the parameters required will vary by feedtype. 
+
 :::(info) (📄 Note)
 The `«package-file-name»` part of the URL is only required for the PyPI and RPM feed types.
 :::
 
 ## HTTP Response Specification
-| Response | Details |
-| --- | --- |
-| **200 (Success)** | indicates the package was uploaded
-| **400 (Invalid Input)** | indicates invalid or missing properties on the package; the body will provide some details as text
-|  **403 (Unauthorized API Key)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/packages#authentication); the package will not upload
-| **500 (Server Error)** | indicates an unexpected error; the body will contain the message and stack trace, and this will also be logged
+
+A successful `200` response indicates the package was uploaded. A `403` response indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/security#authentication).
 
 :::(warning) (⚠ Error Messages)
 If you receive errors like following, it generally means that an invalid package (i.e. zip file) was uploaded and could not be read by ProGet. This endpoint does not support `multipart/form-data`-encoded content, but instead should be `PUT` with `application/octet-stream`.

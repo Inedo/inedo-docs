@@ -3,7 +3,7 @@ title: "Update Connector"
 order: 4
 ---
 
-*Update Connector* is available as both a `pgutil` command and an HTTP Request, and will update a specified [connector](/docs/proget/feeds/connector-overview) using the [Connector](/docs/proget/api/connectors#connector-object) object properties defined in the request body. This endpoint supports partial updating by only updating the properties that are supplied in the request. 
+*Update Connector* is available as both a `pgutil` command and an HTTP Request, and will update a specified [connector](/docs/proget/feeds/connector-overview). This endpoint supports partial updating by only updating the properties that are supplied in the request. 
 
 :::(Info) (🚀 Quick Example: Enabling a connector's metadata caching with pgutil)
 This example will enable metadata caching for the connector `nuget.org`:
@@ -81,7 +81,7 @@ pgutil connectors filters remove --connector=pypi.org --filter=!simplejson
 ```
 
 ## HTTP Request Specification
-To update a [connector](/docs/proget/feeds/connector-overview), simply `POST` to the URL with the `connector` name, an [appropriate API Key](/docs/proget/api/connectors#authentication) and a [Connector](/docs/proget/api/connectors#connector-object) object as the request body.
+To update a connector, simply `POST` to the following URL with the `connector` name, an [appropriate API Key](/docs/proget/api/connectors#authentication) and a `Connector` (see [ProGetConnector.cs](https://github.com/Inedo/pgutil/blob/thousand/Inedo.ProGet/ProGetConnector.cs)) object as the request body.
 
 :::(info)
 When updating, any properties omitted will keep their existing values. Updating a property with an array value will overwrite the existing value. For example, if a connector has `filters: ["A", "B"]`, updating with `filters: ["C"]` will remove filters "A" and "B" from the connector, keeping only "C". 
@@ -94,27 +94,7 @@ POST /api/management/connectors/update/«connector-name»
 ```
 
 ## HTTP Response Specification
-A successful (`200`) response body will contain an updated [Connector](/docs/proget/api/connectors#connector-object) object. For example, when updating the timeout on a NuGet connector `myNugetConnector`, this returns:
-
-```bash
-{
-  "name": "MyNugetConnector",
-  "url": "http://proget.corp.local",
-  "feedType": "nuget",
-  "timeout": 30,
-  "metadataCacheEnabled": false,
-  "metadataCacheMinutes": null,
-  "metadataCacheCount": null,
-  "filters": []
-}
-```
-
-| Response | Details |
-|---|---|
-| **200 (Success)** | response body contains an updated [Connector](/docs/proget/api/connectors#connector-object) object|
-| **400 (Invalid Input)** | indicates invalid or missing properties in the request; the body will provide some details as text |
-| **403 (Unauthorized API Key)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/connectors#authentication); the body will be empty |
-| **404 (Connector Not Found)** | indicates that the specified `connector` does not exist |
+An updated `Connector` object will be returned on a successful `200` response. A `403` response indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/connectors#authentication).
 
 ## Sample Usage Scripts
 

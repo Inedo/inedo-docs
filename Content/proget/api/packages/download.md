@@ -46,6 +46,9 @@ pgutil packages download --feed=myPypiFeed --package=myPypiPackage --version=7.8
 pgutil packages download --feed=myDebianFeed --package=myDebianPackage --version=2.3.4 --component=main --distro=stable --arch=amd64 --output-file=C:\debian-packages\myDebianPackage_2.3.4_amd64.deb
 ```
 
+Note source options must also be specified unless you have the "Default" source configured, and that a feed may be instead specified in the source. See [Working with Sources](/docs/proget/api/pgutil#sources) to learn more.
+
+
 ## HTTP Request Specification
 To download a package, simply `GET` to the URL with a feed name, [package identifiers](/docs/proget/api/packages#using-multiple-parameters), and an [appropriate API Key](/docs/proget/api/packages#authentication).
 
@@ -54,17 +57,14 @@ GET /api/packages/«feed-name»/download?«package-identifiers»
 ```
 
 Unless you use a `purl`, the parameters required will vary by feedtype. 
+
 :::(info) (📄 Note)
 The package identifier you use must resolve to a single package, otherwise a `400` will be returned.
 :::
 
 ## HTTP Response Specification
-| Response | Details |
-| --- | --- |
-| **200 (Success)** | the package file is returned as content
-| **403 (Unauthorized API Key)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/packages#authentication); the package file will not download
-| **404 (Package Not Found)** | indicates that the specified package does not exist
-| **500 (Server Error)** | indicates an unexpected error; the body will contain the message and stack trace, and this will also be logged
+
+A successful `200` response will return the package file as content. A `403` response indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/packages#authentication). A `404` response indicates that the specified package does not exist.
 
 ## Sample Usage Scripts
 

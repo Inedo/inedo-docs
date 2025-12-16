@@ -21,8 +21,10 @@ The easiest way to explore the available commands is by running `pgutil`, which 
 ```plaintext
 $> pgutil
     .--. --. ..- - .. .-..
-        pgutil v2.0.0.0
+        pgutil v2.2.0
     .--. --. ..- - .. .-..
+
+pgutil v2.2.3 is now available.
 
 Description:
   Perform operations against a ProGet server.
@@ -32,17 +34,19 @@ Usage:
 
 Commands:
   sources     Manages the list of sources located in the configuration file located at
-              C:\Users\Vasse\AppData\Roaming\pgutil\pgutil.config
+              C:\Users\User\AppData\Roaming\pgutil\pgutil.config
+  apikeys     Manages ProGet API keys
   health      Displays health and status information
   packages    Works with packages on a ProGet server
-  vulns       Audits packages and assesses vulnerabilities
-  builds      Manages SCA builds and SBOM documents
-  licenses    Manages license definitions and audits package licenses
-  apikeys     Manages ProGet API keys
-  assets      Works with a ProGet asset directory
-  settings    Manages ProGet Settings
   feeds       Views and manages ProGet feeds
   connectors  Views and manages ProGet connectors
+  builds      Manages SCA builds and SBOM documents
+  vulns       Audits packages and assesses vulnerabilities
+  licenses    Manages license definitions and audits package licenses
+  assets      Works with a ProGet asset directory
+  upack       Work with ProGet universal packages
+  settings    Manages ProGet Settings
+  security    Manage security permissions, users, and groups on ProGet
 ```
 
 ### pgutil Commands
@@ -59,6 +63,8 @@ Usage:
   pgutil packages [command] [options]
 
 Commands:
+  list       Displays latest versions of packages in a feed
+  versions   Displays all versions of packages in a feed
   download   Downloads a package file from ProGet
   upload     Uploads a package file to ProGet.
   delete     Deletes a package from ProGet
@@ -66,8 +72,7 @@ Commands:
   repackage  Repackages a package in ProGet to a package with a different version
   promote    Promotes a package from one feed to another
   audit      Analyzes a package for compliance issues
-  list       Displays latest versions of packages in a feed
-  versions   Displays all versions of packages in a feed
+  metadata   Display metadata about a package
 ```
 
 To return a detailed list of options for any command, you can use the `--help` option with the respective command. For example, to view all available options for the command `pgutil packages download`, run:
@@ -159,6 +164,6 @@ $: pgutil sources test
 [MyBadSource] Error contacting ProGet: invalid host name
 ```
 
- If you specify the `--name` option, then only that source will be tested. 
+If you specify the `--name` option, then only that source will be tested. 
  
- Note that any non-successful test will report a nonzero exit code.
+Note that any non-successful test will report a nonzero exit code.

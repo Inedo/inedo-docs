@@ -3,7 +3,7 @@ title: "List Connectors"
 order: 3
 ---
 
-*List Connectors* is available as both a `pgutil` command and an HTTP Request, and will return an array of [ProGetConnector](/docs/proget/api/connectors#connector-object) objects, describing all existing [connectors](/docs/proget/feeds/connector-overview).
+*List Connectors* is available as both a `pgutil` command and an HTTP Request, and will list all existing [connectors](/docs/proget/feeds/connector-overview).
 
 :::(Info) (🚀 Quick Example: Listing connectors with pgutil)
 This example lists all existing connectors:
@@ -32,49 +32,14 @@ rubygems.org (rubygems) https://api.rubygems.org/
 ```
 
 ## HTTP Request Specification
-To list all existing [connectors](/docs/proget/feeds/connector-overview), simply `GET` to the URL with an [appropriate API Key](/docs/proget/api/connectors#authentication).
+To list all existing connectors, simply `GET` to the URL with an [appropriate API Key](/docs/proget/api/connectors#authentication).
 
 ```plaintext
 GET /api/management/connectors/list
 ```
 
 ## HTTP Response Specification
-A successful (`200`) response body will contain an array of [ProgetConnector](/docs/proget/api/connectors#connector-object) objects. For example:
-
-```json
-GET /api/management/connectors/list
-
-[
-  {
-      "name": "nuget.org",
-      "url": "https://api.nuget.org/v3/index.json",
-      "feedType": "nuget",
-      "username": "jsmith",
-      "password": "pass123",
-      "timeout": 60,
-      "filters": ["filter1", "filter2"],
-      "metadataCacheEnabled": true,
-      "metadataCacheMinutes": 30,
-      "metadataCacheCount": 100
-  },
-  {
-      "name": "registry.npmjs.org",
-      "url": "https://registry.npmjs.org",
-      "feedType": "npm",
-      "timeout": 10,
-      "metadataCacheEnabled": false,
-      "metadataCacheMinutes": null,
-      "metadataCacheCount": null,
-      "filters": []
-  },
-  { ... } // other connectors
-]
-```
-
-| Response | Details |
-|---|---|
-| **200 (Success)** | body will contain an array of [ProgetConnector](/docs/proget/api/connectors#connector-object) objects |
-|  **403 (Unauthorized API Key)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/connectors#authentication); the body will be empty |
+An array of `Connector1 (see [ProGetConnector.cs](https://github.com/Inedo/pgutil/blob/thousand/Inedo.ProGet/ProGetConnector.cs)) objects will be returned on a successful `200` response. A `403` response indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/connectors#authentication).
 
 ## Sample Usage Scripts
 
