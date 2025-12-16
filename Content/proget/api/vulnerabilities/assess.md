@@ -44,4 +44,4 @@ POST api/sca/assess[?id=«vulnerability-id»][&type=«assessment-type»][&commen
 Note that the `comment` and `policy` parameters are optional.
 
 ## HTTP Response Specification
-The vulnerability was assessed on a successful `200` response. A `403` response indicates a missing, unknown, or unauthorized API Key.
+The vulnerability will be assessed on a successful `200` response. A `403` response indicates a missing, unknown, or unauthorized [API Key](/docs/proget/api/apikeys).
