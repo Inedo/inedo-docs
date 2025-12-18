@@ -15,7 +15,7 @@ The recommended Windows server requirements are:
 * Recommended Average/Typical - 2 Core CPU, 8 GB RAM
 * Recommended Large - 4 Core CPU, 16 GB RAM
 
-ProGet itself does not require much disk space (less than 1GB); however, the content (package, container images, and asset files) you store in ProGet will determine how much space you'll need. We recommend reserving at least 10GB to store this content at first and be prepared to expand it.
+ProGet itself does not require much disk space (less than 1GB); however, the content (package, container images, and asset files) you store in ProGet will determine how much space you'll need. We recommend reserving at least 10GB to store this content at first and be prepared to expand it. We also encourage using data deduplication (e.g. [Windows Data Deduplication](https://learn.microsoft.com/en-us/windows-server/storage/data-deduplication/overview) or ZFS Deduplication) for this content and have seen reductions upwards of 95% in many cases without any noticeable performance impact.
 
 There are two supported options; there is also [Legacy (Traditional) Installer (github.com)](https://github.com/Inedo/inedo-docs/blob/c82fd2881e2f1d0c36e77bc8b8b48e2a2c7b75a9/Content/installation/windows/installation-legacy-traditional-installer.md) available for ProGet v5.3 and earlier.
 
