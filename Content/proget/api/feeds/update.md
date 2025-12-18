@@ -23,7 +23,7 @@ The `--property` and `--value` options are always required. The `--feed` option 
 | `alternateNames` | Provide multiple endpoint URLs for a feed, useful when renaming feeds to keep backwards compatibility with old names. | 
 | `dropPath`  | Disk path accessible to ProGet's service where packages may be added to the feed | 
 | `active` | Indicates whether the feed is active (`true`) or disabled (`false`) | 
-| `connectors`  | Connectors used by the feed. Add multiple connectors by separating them with a comma (e.g. `nuget.org,pypyi.org`) | 
+| `connectors`  | Connectors used by the feed. Add multiple connectors by separating them with a comma (e.g. `nuget.org,internal-nuget`) | 
 | `vulnerabilitiesEnabled` | Indicates whether vulnerability detection is enabled (`true`) or disabled (`false`) | 
 
 **Updating a feed's drop path** requires the feed name (e.g. `myNugetFeed`), the property to be updated (e.g. `dropPath`), and the value to update this with (e.g. `c:\bulk-import`):
@@ -32,10 +32,10 @@ The `--property` and `--value` options are always required. The `--feed` option 
 pgutil feeds properties set --feed=myNugetFeed --property=dropPath --value=c:\bulk-import
 ```
 
-**Adding multiple connectors to a feed** requires the feed name (e.g. `myFeed`), the property to be updated (e.g. `connectors`), and the name of the connectors (e.g. `registry.npmjs.org` and `nuget.org`):
+**Adding multiple connectors to a feed** requires the feed name (e.g. `myFeed`), the property to be updated (e.g. `connectors`), and the name of the connectors (e.g. `nuget.org` and `internal-dev-nuget` and `internal-prod-nuget`):
 
 ```bash
-pgutil feeds properties set --feed=myFeed --property=connectors --value=registry.npmjs.org,nuget.org
+pgutil feeds properties set --feed=myFeed --property=connectors --value=nuget.org,internal-dev-nuget,internal-prod-nuget
 ```
 
 **Disabling a feed** requires the feed name (e.g. `myPypiFeed`), the property to be updated (e.g. `active`), and the value to update this with (e.g. `false`):
