@@ -3,7 +3,7 @@ title: "List Packages"
 order: 1
 ---
 
-*List Packages* is available as both a `pgutil` command and an HTTP Request, and will return a list describing the packages in a feed that match the specified query arguments.
+*List Packages* is available as both a `pgutil` command and an HTTP Request, and will return a list describing the packages in a specified feed that match the given query arguments.
 
 :::(Info) (🚀 Quick Example: Listing packages with pgutil)
 This example will list the packages in the feed `myNugetFeed`

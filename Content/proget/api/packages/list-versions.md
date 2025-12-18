@@ -3,7 +3,7 @@ title: "List Package Versions"
 order: 2
 ---
 
-*List Package Versions* is is available as both a `pgutil` command and an HTTP Request and will return a list of objects describing the versions of packages in a feed, optionally filtered by group, name, and version.
+*List Package Versions* is is available as both a `pgutil` command and an HTTP Request and will return a list describing all versions of a specified package in a feed. This can optionally be filtered by group, name, and version.
 
 :::(Info) (🚀 Quick Example: Listing package versions with pgutil)
 This example will list versions of the package `myNugetPackage` in the feed `myNugetFeed`
