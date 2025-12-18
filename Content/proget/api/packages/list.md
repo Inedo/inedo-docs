@@ -64,7 +64,7 @@ $queryParams = @{
 }
 
 $headers = @{
-    "X-API-Key" = $apiKey
+    "X-ApiKey" = $apiKey
 }
 
 $response = Invoke-RestMethod -Uri $apiUrl -Headers $headers -Method Get -Body $queryParams
@@ -79,13 +79,13 @@ foreach ($package in $response) {
 Running this script will output something like this:
 
 ```
-Package Name: core
-Latest Version: 16.2.6
+Package Name: MyPackage
+Latest Version: 6.2.6
 --------------------
-Package Name: material
-Latest Version: 16.2.9
+Package Name: AnotherPackage
+Latest Version: 6.2.9
 --------------------
-Package Name: cdk
+Package Name: NpmPackage
 Latest Version: 16.2.9
 --------------------
 ```
@@ -97,9 +97,9 @@ This function checks to see if `4.2.1` is the latest version of the `GeneralUtil
 import requests
 
 base_url = "https://proget.corp.local.org"
-feed_name = "MyNuGetFeed"
-package_name = "MyPackage"
-desired_version = "13.0.3"
+feed_name = "private-nuget"
+package_name = "GeneralUtils.NET"
+desired_version = "4.2.1"
 stable_only = True 
 api_key = "a1b2c3d4e5"
 
@@ -108,7 +108,7 @@ api_url = f"{base_url}/api/packages/{feed_name}/latest?name={package_name}&stabl
 def is_latest_version(desired_version, latest_version):
     return latest_version == desired_version
 
-response = requests.get(api_url, headers={"Authorization": f"Bearer {api_key}"})
+response = requests.get(api_url, headers={"X-ApiKey": api_key})
 
 if response.status_code == 200:
     data = response.json()

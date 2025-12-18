@@ -76,7 +76,7 @@ $apiEndpoint = "https://proget.corp.local/api/packages/$feedName/versions"
 
 $queryString = "name=$packageName"
 
-$response = Invoke-RestMethod -Uri "${apiEndpoint}?${queryString}" -Headers @{ "X-Api-Key" = $apiKey }
+$response = Invoke-RestMethod -Uri "${apiEndpoint}?${queryString}" -Headers @{ "X-ApiKey" = $apiKey }
 
 $stableVersions = $response | Where-Object { $_.version -notmatch "[-.]\d*[A-Za-z]+" }
 $stableVersions | ForEach-Object {
@@ -109,9 +109,7 @@ publisher = "jsmith"
 base_url = "https://proget.corp.local.org"
 
 api_url = f"{base_url}/api/packages/{feed_name}/versions?name={package_name}"
-headers = {
-    "Authorization": f"Bearer {api_key}"
-}
+headers = {"X-ApiKey": api_key}
 
 response = requests.get(api_url, headers=headers)
 response_data = response.json()
