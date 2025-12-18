@@ -44,7 +44,7 @@ You can read more about creating a Chocolatey package in [Chocolatey's Official 
 To add your `internal-chocolatey` feed as a source in your client, use the `choco source add` command. We recommend giving the source the same name as your feed. For example, if adding the ProGet server `proget.corp.local` as a source, you would enter:
 
 ```bash
-$ choco source add -n="internal-chocolatey" -s="http://proget.corp.local/feeds/internal-chocolatey" --priority=1 
+$ choco source add -n="internal-chocolatey" -s="http://proget.corp.local/feeds/internal-chocolatey" --priority=0
 ```
 
 To make sure that your client only installs Chocolatey packages from ProGet, we recommend removing any default sources already configured using the `choco source remove` command:
@@ -71,18 +71,20 @@ When creating an API Key, fill in the fields by selecting "Feed (use certain fee
 To push a package use the `choco push` command:  
 
 ```bash
-$ choco push «path-to-package» --source=internal-chocolatey --api-key=«api-key»
+$ choco push «path-to-package» --source=«feed-URL» --api-key=«api-key»
 ```
 
 For example, if pushing the Chocolatey package MyApplication-1.2.3.nupkg stored at `C:\chocolatey_packages\` to your `internal-chocolatey` feed with the API key `abc12345` you would enter:
 
 ```bash
-$ choco push C:\chocolatey_packages\MyApplication-1.2.3.nupkg --source=internal-chocolatey --api-key=abc12345
+$ choco push C:\chocolatey_packages\MyApplication-1.2.3.nupkg --source=http://proget.corp.local/feeds/internal-chocolatey --api-key=abc12345
 ```
 
 This will upload it to your `internal-chocolatey` feed.
 
 ![](/resources/docs/proget-chocolatey-internal-uploaded.png){height="" width="50%"}
+
+Note that Chocolatey intstall commands can use saved sources, but upload commands require the full source URL to be specified.
 
 ## (Optional) Internalizing Chocolatey Packages
 
