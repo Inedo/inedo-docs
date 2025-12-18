@@ -57,7 +57,7 @@ GET /api/packages/MyNuGetFeed/versions?name=myNugetPackage
 ```
 
 ## HTTP Response Specification
-A successful (`200`) response body will contain an array of 1 `PackageVersionInfo` object. A `403` response indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/security#authentication).
+A successful (`200`) response body will contain an array of `PackageVersionInfo` objects for each version of a specified package. A `403` response indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/security#authentication).
 
 Note that, if an API call is made on a package that does not exist, an empty object is returned. In addition,  Package hash values may not be present for all packages because earlier versions of ProGet would typically only generate some of the hash types.
 

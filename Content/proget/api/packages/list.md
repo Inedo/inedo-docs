@@ -35,13 +35,13 @@ pgutil packages list --package=@myScope/myNpmPackage --feed=myNpmFeed --stable=t
 Note source options must also be specified unless you have the "Default" source configured, and that a feed may be instead specified in the source. See [Working with Sources](/docs/proget/api/pgutil#sources) to learn more.
 
 ## HTTP Request Specification
-To list packages, simply `GET` to the URL with a feed name, and `stableOnly` parameters, and an [appropriate API Key](/docs/proget/api/packages#authentication).
+To list packages, simply `GET` to the URL with a feed name and an [appropriate API Key](/docs/proget/api/packages#authentication). This will return all packages, listed by their latest version.
 
 ```plaintext
-GET /api/packages/«feed-name»/latest[?group=«group»][&name=«name»][&stableOnly=«true/false»]
+GET /api/packages/«feed-name»/latest
 ```
 
-Note that all parameters are optional. The `group name`and `package name` parameters can be used to filter the results. The `stableOnly` parameter defaults to `false`, but when set true, latest stable versions of packages are returned instead of absolute latest versions
+Note that [package identifiers](/docs/proget/api/packages#using-multiple-parameters) can also be used, but are optional. Parameters like `name` and `group` can be used to filter the results, returning the latest version of only the packages specified. The `stableOnly` parameter defaults to `false`, but when set true, latest stable versions of packages are returned instead of absolute latest versions.
 
 ## HTTP Response Specification
 A successful (`200`) response body will contain an array of `PackageVersionInfo` (see [PackageVersionInfo.cs](https://github.com/Inedo/pgutil/blob/thousand/Inedo.ProGet/PackageVersionInfo.cs)) objects. A `403` response indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/packages#authentication).

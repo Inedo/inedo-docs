@@ -92,7 +92,6 @@ curl -X POST -H "X-ApiKey: %api_key%" -T "%package_file_path%" "%api_endpoint%"
 This script will upload all `.nupkg` packages stored in the local `C:\MyOrganizationFolder\Packages` folder  to the `private-nuget` feed.
 
 ```powershell
-# Set the base API endpoint
 $apiUrl = "https://proget.corp.local"
 $feedName = "private-nuget"
 $apiKey = "a1b2c3d4e5"  
