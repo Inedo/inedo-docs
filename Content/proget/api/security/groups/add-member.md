@@ -5,7 +5,7 @@ order: 4
 
 *Add Group Member* is available as a `pgutil` command, and will assign an existing User to an existing Group.
 
-:::(Info) (🚀 Quick Example: Adding a user to a group with pgutil)
+:::(Info) (🚀 Quick Example: Adding a User to a Group with pgutil)
 This example adds the user `"jsmith"` to the group `Developers`:
 
 ```bash

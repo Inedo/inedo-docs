@@ -5,8 +5,8 @@ order: 3
 
 *List Permissions* is available as both a `pgutil` command and an HTTP Request, and will return list describing all configured Permissions.
 
-:::(Info) (🚀 Quick Example: Listing permissions with pgutil)
-This example lists all existing permissions:
+:::(Info) (🚀 Quick Example: Listing Permissions with pgutil)
+This example lists all existing Permissions:
 
 ```bash
 pgutil security permissions list

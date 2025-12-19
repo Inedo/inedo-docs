@@ -6,7 +6,7 @@ order: 1
 *Add Permission* is available as both a `pgutil` command and an HTTP Request, and will either grant or deny a Task/Permission to a User or Group.
 
 :::(Info) (🚀 Quick Example: Adding a Permission with pgutil)
-This example grants the `Developers` Group Permission to `view and download packages` from Feeds in the `Approved Package Feeds` Feed group:
+This example grants the `Developers` Group Permission to `View & Download Packages` from Feeds in the `Approved Package Feeds` Feed group:
 
 ```bash
 pgutil security permissions add --task="View & Download Packages" --group=developers --feed-group="Approved Package Feeds"

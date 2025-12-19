@@ -18,7 +18,7 @@ The `security permissions remove` command is used to remove a granted or denied 
 The `--id` options is always required. 
 
 :::(Info) (💡 Permission IDs)
-This command requires the ID of the configured permission. This can be found by running the `pgutil` command [`security permissions list`](/docs/proget/api/security/permissions/list) which will return all existing permissions, for example: 
+This command requires the ID of the configured Permission. This can be found by running the `pgutil` command [`security permissions list`](/docs/proget/api/security/permissions/list) which will return all existing permissions, for example: 
 
 ```yaml
 1: allow View & Download Packages globally for user Anonymous

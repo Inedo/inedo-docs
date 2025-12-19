@@ -67,7 +67,7 @@ An array of `SecurityUser` (see [SecurityUser.cs](https://github.com/Inedo/pguti
 
 ## Sample Usage Scripts
 
-The following scripts will export a complete list user information as a `.csv` file. The `.csv` will be formatted with the headers shown in this example:
+The following scripts will export a complete list User information as a `.csv` file. The `.csv` will be formatted with the headers shown in this example:
 
 ```sql
 Name,DisplayName,Email,Password

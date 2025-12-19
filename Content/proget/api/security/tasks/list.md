@@ -54,7 +54,6 @@ Attributes:
  * Feeds_DownloadPackage
  * Feeds_AddPackage
  * Feeds_AcceptPackagePromotions
-
 ...
 ```
 
