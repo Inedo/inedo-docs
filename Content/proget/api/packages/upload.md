@@ -101,11 +101,18 @@ $nupkgFiles = Get-ChildItem -Path $folderPath -Filter *.nupkg
 
 foreach ($nupkgFile in $nupkgFiles) {
     $fileFullPath = $nupkgFile.FullName
-    $packageName = $nupkgFile.BaseName
 
-    $fullApiUrl = "$apiUrl/api/packages/$feedName/upload/$packageName.nupkg"
+    $fullApiUrl = "$apiUrl/api/packages/$feedName/upload"
 
-    $result = Invoke-WebRequest -Uri $fullApiUrl -Headers @{"X-ApiKey" = $apiKey} -Method POST -InFile $fileFullPath
+    $result = Invoke-WebRequest `
+    -Uri $fullApiUrl `
+    -Method PUT `
+    -Headers @{
+        "X-ApiKey"     = $apiKey
+        "Content-Type" = "application/octet-stream"
+    } `
+    -InFile $fileFullPath `
+    -UseBasicParsing
 
     if ($result.StatusCode -eq 200) {
         Write-Host "Package '$packageName' uploaded successfully."
@@ -141,13 +148,18 @@ for root, _, files in os.walk(folder_path):
     for file_name in files:
         feed_name = os.path.relpath(root, folder_path).replace("\\", "/")
         package_name = file_name
-        upload_url = f"{api_url}/api/packages/{feed_name}/upload/{package_name}"
+        upload_url = f"{api_url}/api/packages/{feed_name}/upload"
 
         try:
             with open(os.path.join(root, file_name), "rb") as package_file:
-                response = requests.post(
-                    upload_url, headers={"X-ApiKey": api_key}, files={"file": package_file}
-                )
+                response = requests.put(
+    			upload_url,
+    			headers={
+        			"X-ApiKey": api_key,
+        			"Content-Type": "application/octet-stream"
+    			},
+    			data=package_file
+		)
                 response.raise_for_status()
                 print(f'Uploading "{package_name}" to "{feed_name}" feed... Success')
         except requests.exceptions.RequestException as e:
