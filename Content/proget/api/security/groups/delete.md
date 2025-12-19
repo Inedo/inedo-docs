@@ -24,6 +24,8 @@ The `--name` option is always required.
 pgutil security groups delete --name=Developers
 ```
 
+Note source options must also be specified unless you have the "Default" source configured. See [Working with Sources](/docs/proget/api/pgutil#sources) to learn more.
+
 ## HTTP Request Specification
 
 To delete a Group, simply `DELETE` to the following URL with the `group` query argument specifying the username:

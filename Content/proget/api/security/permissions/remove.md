@@ -34,6 +34,8 @@ This command requires the ID of the configured permission. This can be found by 
 pgutil security permission remove --id=3
 ```
 
+Note source options must also be specified unless you have the "Default" source configured. See [Working with Sources](/docs/proget/api/pgutil#sources) to learn more.
+
 ## HTTP Request Specification
 
 To remove a Permission, simply `DELETE` to the following URL with the `permissionId` query argument specifying the Permission id:

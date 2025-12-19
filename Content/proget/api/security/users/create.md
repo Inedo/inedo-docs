@@ -33,6 +33,8 @@ To create a new User account, simply `POST` to the following URL with an [approp
 POST /api/security/users/add
 ```
 
+Note source options must also be specified unless you have the "Default" source configured. See [Working with Sources](/docs/proget/api/pgutil#sources) to learn more.
+
 ## HTTP Response Specification
 
 A `SecurityUser` object will be returned on a successful `200` response. A `403` response indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/security#authentication).

@@ -23,3 +23,5 @@ The `--member` and `--name` options are always required.
 ```bash
 pgutil security groups members add --member="jsmith" --name=Developers
 ```
+
+Note source options must also be specified unless you have the "Default" source configured. See [Working with Sources](/docs/proget/api/pgutil#sources) to learn more.

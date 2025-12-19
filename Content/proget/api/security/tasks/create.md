@@ -26,6 +26,8 @@ Note: The list of existing attributes can be quickly returned using the [`pgutil
 pgutil security tasks create --name="Basic Feed Access" --attributes=Feeds_ViewFeed,Feeds_DownloadPackage,Feeds_PullPackage
 ```
 
+Note source options must also be specified unless you have the "Default" source configured. See [Working with Sources](/docs/proget/api/pgutil#sources) to learn more.
+
 ## HTTP Request Specification
 To create a new Task account, simply `POST` to the following URL with an [appropriate API Key](/docs/proget/api/security#authentication) and a `SecurityTask` (see [SecurityTask.cs](https://github.com/Inedo/pgutil/blob/thousand/Inedo.ProGet/SecurityTask.cs)) object as the request body.
 

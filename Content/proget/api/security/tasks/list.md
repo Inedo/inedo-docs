@@ -65,6 +65,8 @@ To list all Tasks, simply `GET` to the following URL with an [appropriate API Ke
 GET /api/security/tasks/list
 ```
 
+Note source options must also be specified unless you have the "Default" source configured. See [Working with Sources](/docs/proget/api/pgutil#sources) to learn more.
+
 ## HTTP Response Specification
 
 An array of `SecurityTask` (see [SecurityTask.cs](https://github.com/Inedo/pgutil/blob/thousand/Inedo.ProGet/SecurityTask.cs)) objects will be returned on a successful `200` response. A `403` response indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/security#authentication).

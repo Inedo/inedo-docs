@@ -31,6 +31,8 @@ Example output:
 ...
 ```
 
+Note source options must also be specified unless you have the "Default" source configured. See [Working with Sources](/docs/proget/api/pgutil#sources) to learn more.
+
 ## HTTP Request Specification
 To list all Permissions, simply `GET` to the following URL with an [appropriate API Key](/docs/proget/api/security#authentication):
 
