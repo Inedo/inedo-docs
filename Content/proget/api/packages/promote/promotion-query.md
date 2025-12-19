@@ -50,7 +50,7 @@ You may filter the results by specifying one or more parameters:
 |`version`| the version of the promoted package
 
 ```plaintext
-GET /api/promotions/list/fromFeed=«feed-name»&toFeed=«feed-name»&group=«group-name»&package=«package-name»&version=«version»
+GET /api/promotions/list?fromFeed=«feed-name»&toFeed=«feed-name»&group=«group-name»&package=«package-name»&version=«version»
 ```
 
 **Querying a specific promoted NuGet package** requires the package name (e.g. `myNugetPackage`), the version (e.g. `1.2.3`), the feed promoted from (e.g. `nuget-unapproved`) and the feed promoted to (e.g. `nuget-approved`)
@@ -84,7 +84,7 @@ A successful (`200`) response body will contain an array of PromotePackage (see 
 
 #### JSON Object:
 
-```
+```json
 {
   "group": "myScope",
   "package": "myPackage",
@@ -92,12 +92,7 @@ A successful (`200`) response body will contain an array of PromotePackage (see 
   "version": "1.0.0",
   "promotions": [
     {
-      "fromFeed": "npm-unapproved",
-      "toFeed": "npm-approved",
-      "date": "2023-11-29T12:00:00",
-      "user": "jsmith",
-      "comments": "Package approved for production use",
-      "id": 12345
+      // PromotionData Object
     }
   ]
 }
@@ -118,7 +113,7 @@ A successful (`200`) response body will contain an array of PromotePackage (see 
 
 #### JSON Object:
 
-```
+```json
 {
   "fromFeed": "npm-unapproved",
   "toFeed": "npm-approved",

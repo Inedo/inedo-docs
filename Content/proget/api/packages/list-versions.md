@@ -3,7 +3,7 @@ title: "List Package Versions"
 order: 2
 ---
 
-*List Package Versions* is is available as both a `pgutil` command and an HTTP Request and will return a list of objects describing the versions of packages in a feed, optionally filtered by group, name, and version.
+*List Package Versions* is is available as both a `pgutil` command and an HTTP Request and will return a list describing all versions of a specified package in a feed. This can optionally be filtered by group, name, and version.
 
 :::(Info) (🚀 Quick Example: Listing package versions with pgutil)
 This example will list versions of the package `myNugetPackage` in the feed `myNugetFeed`
@@ -57,7 +57,7 @@ GET /api/packages/MyNuGetFeed/versions?name=myNugetPackage
 ```
 
 ## HTTP Response Specification
-A successful (`200`) response body will contain an array of 1 `PackageVersionInfo` object. A `403` response indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/security#authentication).
+A successful (`200`) response body will contain an array of `PackageVersionInfo` objects for each version of a specified package. A `403` response indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/security#authentication).
 
 Note that, if an API call is made on a package that does not exist, an empty object is returned. In addition,  Package hash values may not be present for all packages because earlier versions of ProGet would typically only generate some of the hash types.
 
@@ -76,7 +76,7 @@ $apiEndpoint = "https://proget.corp.local/api/packages/$feedName/versions"
 
 $queryString = "name=$packageName"
 
-$response = Invoke-RestMethod -Uri "${apiEndpoint}?${queryString}" -Headers @{ "X-Api-Key" = $apiKey }
+$response = Invoke-RestMethod -Uri "${apiEndpoint}?${queryString}" -Headers @{ "X-ApiKey" = $apiKey }
 
 $stableVersions = $response | Where-Object { $_.version -notmatch "[-.]\d*[A-Za-z]+" }
 $stableVersions | ForEach-Object {
@@ -109,9 +109,7 @@ publisher = "jsmith"
 base_url = "https://proget.corp.local.org"
 
 api_url = f"{base_url}/api/packages/{feed_name}/versions?name={package_name}"
-headers = {
-    "Authorization": f"Bearer {api_key}"
-}
+headers = {"X-ApiKey": api_key}
 
 response = requests.get(api_url, headers=headers)
 response_data = response.json()

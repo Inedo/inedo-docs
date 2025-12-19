@@ -72,7 +72,7 @@ A successful `200` response will return the package file as content. A `403` res
 This script will download version 3.0.3 of the `GeneralUtils.NET` package in the `private-nuget` feed.
 ```bash
 api_key="a1b2c3d4e5"
-output_file="C:/MyFiles/GeneralUtils.NET-3.0.3.nupkg"
+output_file="C:/MyFiles/GeneralUtils.NET.3.0.3.nupkg"
 base_url="https://proget.corp.local"
 nuget_feed="private-nuget"
 nuget_package="GeneralUtils.NET"
@@ -94,7 +94,7 @@ $queryUrl = "$apiUrl/api/packages/$feedName/latest?name=$packageName&stableOnly=
 
 $overwritePrompt = $true # Set to $false if you don't want to prompt for overwriting
 
-$response = Invoke-RestMethod -Uri $queryUrl -Method Get -Headers @{ "X-APIKey" = $apiKey }
+$response = Invoke-RestMethod -Uri $queryUrl -Method Get -Headers @{ "X-ApiKey" = $apiKey }
 
 if ($response -eq $null) {
     Write-Host "No package information found. Please check the feed and package name."
@@ -137,34 +137,36 @@ package_name = "GeneralUtils.NET"
 base_url = "https://proget.corp.local"
 target_directory = r"C:\MyOrganizationFolder\GeneralUtilsPackages"
 
-if not os.path.exists(target_directory):
-    os.makedirs(target_directory)
+headers = {"X-ApiKey": api_key}
 
-package_versions_url = f"{base_url}/api/packages/{feed_name}/versions?name={package_name}&apikey={api_key}"
-package_versions_response = requests.get(package_versions_url)
-package_versions = package_versions_response.json()
+os.makedirs(target_directory, exist_ok=True)
+
+versions_url = f"{base_url}/api/packages/{feed_name}/versions?name={package_name}"
+versions_response = requests.get(versions_url, headers=headers)
+versions_response.raise_for_status()
+package_versions = versions_response.json()
 
 for version in package_versions:
     version_name = version["version"]
-    download_url = f"{base_url}/api/packages/{feed_name}/download?name={package_name}&version={version_name}&apikey={api_key}"
-    target_file = os.path.join(target_directory, f"{package_name}.{version_name}.nupkg")
 
-    if os.path.exists(target_file):
-        print(f"File '{target_file}' already exists.")
-        user_input = input("Do you want to overwrite the existing file? (Y/N): ").strip().upper()
-        if user_input != "Y":
-            print(f"Skipping download of {package_name} version {version_name}.")
-            continue
+    download_url = (
+        f"{base_url}/api/packages/{feed_name}/download"
+        f"?purl=pkg:nuget/{package_name}@{version_name}"
+    )
 
-    response = requests.get(download_url)
-    if response.status_code == 200:
-        with open(target_file, 'wb') as file:
-            file.write(response.content)
-        print(f"Downloaded {package_name} version {version_name} to {target_file}")
-    else:
-        print(f"Failed to download {package_name} version {version_name}")
+    target_file = os.path.join(
+        target_directory, f"{package_name}.{version_name}.nupkg"
+    )
 
-print(f"All versions of {package_name} have been downloaded to {target_directory}.")
+    response = requests.get(download_url, headers=headers)
+    response.raise_for_status()
+
+    with open(target_file, "wb") as f:
+        f.write(response.content)
+
+    print(f"Downloaded {package_name} {version_name}")
+
+print("Done.")
 ```
 
 This will download the all packages to the folder `C:\MyOrganizationFolder\GeneralUtilsPackages`. If the file already exists the user will be prompted to overwrite the existing file or not.
