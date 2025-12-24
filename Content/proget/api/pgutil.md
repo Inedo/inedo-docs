@@ -83,21 +83,6 @@ pgutil packages download --help
 
 The [API documentation](/docs/proget/api) is organized around these command sets, allowing easier navigation and understanding of the available functions.
 
-### Feature Requests for new Commands
-
-We're very open to developing and enhancing `pgutil`, and working closely with users to do that. You're welcome to simply post a request to the [Inedo Forums](https://forums.inedo.com/), but may also be able to show us exactly how you'd like a command to work by prototyping something in the [pgutil GitHub repository](https://github.com/inedo/pgutil).
-
-We are unlikely to remove any commands once they're added, except during a major version update, and we'll make sure to notify users beforehand.
-
-### How is pgutil Pronounced?
-
-In addition to a growing number of commands options, `pgutil` offers multiple pronunciation options for maximum flexibility. 
-
-The most popular option -- and our absolute favorite -- is /pəˈɡuːtəl/ ("puh-goo-tuhl"), which uses a soft "puh" sound, followed by a stressed "goo" sound, and another soft "tuhl." 
-
-We've also heard /pəˈɡʌtəl/ ("puh-guh-tuhl") and /piːˈɡjuːtɪl/ ("pee-GYOO-till"). Every now and then, we'll hear /piːdʒiːʌtɪl/ ("pee-gee-utt-il").
-
-
 ## Working with Sources { #sources }
 
 To help manage urls, feeds, and credentials (API keys), you can register one or more "sources" with `pgutil`. These sources are stored in the configuration file located at `%appdata%\pgutil\pgutil.config` (Windows) and `~/pgutil/pgutil.config` (Mac/Linux).
@@ -167,3 +152,59 @@ $: pgutil sources test
 If you specify the `--name` option, then only that source will be tested. 
  
 Note that any non-successful test will report a nonzero exit code.
+
+## Configure Settings in pgutil
+
+pgutil can be used to configure the settings shown under "Admin" > "Advanced Settings" in ProGet using the `pgutil settings` command. Examples of this include your ProGet license key, the base URL used for external access, package storage locations, and diagnostic logging levels.
+
+### Listing ProGet Settings
+
+The `pgutil settings list` command is used to list all current settings:
+
+```plaintext
+ $> ppgutil settings list
+
+Api.DisablePersonalKeyExpiresNotification=False
+Diagnostics.MinimumLogLevel=20
+Diagnostics.FeedErrorLogging=
+Extensions.ExtensionsPath=/var/proget/extensions
+Extensions.BuiltInExtensionsPath=/usr/local/proget/extensions
+Extensions.UpdateFeedUrl=https://proget.inedo.com/upack/Extensions/
+...
+...
+...
+```
+
+### Configuring ProGet Settings
+
+The `pgutil settings set` command is used to configure settings. 
+
+The `--name` and `--value` options are always required. The specified value will be created if it does not already exist, or overwritten if a value is already defined.
+
+Examples:
+
+**Registering a License Key** requires the the setting name `Licensing.Key`, and the license key (e.g. `ABCDEFGH-1234-1JKLM-N0PQR-12345678`):
+
+```bash
+pgutil settings set --name=Licensing.Key --value=ABCDEFGH-1234-1JKLM-N0PQR-12345678
+```
+
+**Configuring the Packages Storage Location** requires the the setting name `Storage.PackagesRootPath`, and the license key (e.g. `/data/proget/package`):
+
+```bash
+pgutil settings set --name=Storage.PackagesRootPath --value=/data/proget/packages
+```
+
+### Feature Requests for new Commands
+
+We're very open to developing and enhancing `pgutil`, and working closely with users to do that. You're welcome to simply post a request to the [Inedo Forums](https://forums.inedo.com/), but may also be able to show us exactly how you'd like a command to work by prototyping something in the [pgutil GitHub repository](https://github.com/inedo/pgutil).
+
+We are unlikely to remove any commands once they're added, except during a major version update, and we'll make sure to notify users beforehand.
+
+### How is pgutil Pronounced?
+
+In addition to a growing number of commands options, `pgutil` offers multiple pronunciation options for maximum flexibility. 
+
+The most popular option -- and our absolute favorite -- is /pəˈɡuːtəl/ ("puh-goo-tuhl"), which uses a soft "puh" sound, followed by a stressed "goo" sound, and another soft "tuhl." 
+
+We've also heard /pəˈɡʌtəl/ ("puh-guh-tuhl") and /piːˈɡjuːtɪl/ ("pee-GYOO-till"). Every now and then, we'll hear /piːdʒiːʌtɪl/ ("pee-gee-utt-il").
