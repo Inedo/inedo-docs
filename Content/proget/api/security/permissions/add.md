@@ -6,7 +6,7 @@ order: 1
 *Add Permission* is available as both a `pgutil` command and an HTTP Request, and will either grant or deny a Task/Permission to a User or Group.
 
 :::(Info) (🚀 Quick Example: Adding a Permission with pgutil)
-This example grants the `Developers` Group Permission to `view and download packages` from Feeds in the `Approved Package Feeds` Feed group:
+This example grants the `Developers` Group Permission to `View & Download Packages` from Feeds in the `Approved Package Feeds` Feed group:
 
 ```bash
 pgutil security permissions add --task="View & Download Packages" --group=developers --feed-group="Approved Package Feeds"
@@ -45,6 +45,8 @@ pgutil security permissions add --task="View & Download Packages" --group=Develo
 ```bash
 pgutil security permissions add --task="Manage Feed" --name-"djones" --feed-group=production-packages
 ```
+
+Note source options must also be specified unless you have the "Default" source configured. See [Working with Sources](/docs/proget/api/pgutil#sources) to learn more.
 
 ## HTTP Request Specification
 To add a Permission, simply `POST` to the following URL with an [appropriate API Key](/docs/proget/api/security#authentication) and a `SecurityPermission` (See [SecurityPermission.cs](https://github.com/Inedo/pgutil/blob/thousand/Inedo.ProGet/SecurityPermission.cs)) object as the request body:

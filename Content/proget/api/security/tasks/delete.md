@@ -24,6 +24,8 @@ The `--name` options is always required.
 pgutil security tasks delete --name="Basic Access"
 ```
 
+Note source options must also be specified unless you have the "Default" source configured. See [Working with Sources](/docs/proget/api/pgutil#sources) to learn more.
+
 ## HTTP Request Specification
 
 To delete a Task, simply `DELETE` to the following URL with the `task` query argument specifying the Task:

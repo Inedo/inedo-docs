@@ -23,3 +23,5 @@ The `--name` and `--member` options are always required.
 ```bash
 pgutil security groups members remove --name=Developers --member="jsmith"
 ```
+
+Note source options must also be specified unless you have the "Default" source configured. See [Working with Sources](/docs/proget/api/pgutil#sources) to learn more.

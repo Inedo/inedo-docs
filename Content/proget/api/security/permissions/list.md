@@ -5,8 +5,8 @@ order: 3
 
 *List Permissions* is available as both a `pgutil` command and an HTTP Request, and will return list describing all configured Permissions.
 
-:::(Info) (🚀 Quick Example: Listing permissions with pgutil)
-This example lists all existing permissions:
+:::(Info) (🚀 Quick Example: Listing Permissions with pgutil)
+This example lists all existing Permissions:
 
 ```bash
 pgutil security permissions list
@@ -30,6 +30,8 @@ Example output:
 3: allow Administer globally for user Anonymous
 ...
 ```
+
+Note source options must also be specified unless you have the "Default" source configured. See [Working with Sources](/docs/proget/api/pgutil#sources) to learn more.
 
 ## HTTP Request Specification
 To list all Permissions, simply `GET` to the following URL with an [appropriate API Key](/docs/proget/api/security#authentication):

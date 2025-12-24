@@ -33,13 +33,15 @@ To create a new User account, simply `POST` to the following URL with an [approp
 POST /api/security/users/add
 ```
 
+Note source options must also be specified unless you have the "Default" source configured. See [Working with Sources](/docs/proget/api/pgutil#sources) to learn more.
+
 ## HTTP Response Specification
 
 A `SecurityUser` object will be returned on a successful `200` response. A `403` response indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/security#authentication).
 
 ## Sample Usage Scripts
 
-The following scripts will import a CSV of user information and create users in the specified ProGet instance in bulk. The CSV needs to formatted with the correct headers shown in this example:
+The following scripts will import a CSV of user information and create Users in the specified ProGet instance in bulk. The CSV needs to formatted with the correct headers shown in this example:
 
 ```sql
 Name,DisplayName,Email,Password
@@ -51,7 +53,7 @@ etorres,Emily Torres,emily.torres@example.com,RiverStone31%
 ```
 
 ### Create Users (Powershell)
-This PowerShell script create users from a `.csv` file located at `C:\Users\YourUser\Documents\users.csv` to a ProGet instance located at `proget.corp.local` with an API key `abc12345`:
+This PowerShell script create Users from a `.csv` file located at `C:\Users\YourUser\Documents\users.csv` to a ProGet instance located at `proget.corp.local` with an API key `abc12345`:
 
 ```powershell
 $csvPath = "C:\Users\YourUser\Documents\users.csv"
@@ -81,7 +83,7 @@ Done.
 ```
 
 ### Create Users in Bulk (Python)
-This Python script create users from a `.csv` file located at `C:\Users\YourUser\Documents\users.csv` to a ProGet instance located at `proget.corp.local` with an API key `abc12345`:
+This Python script create Users from a `.csv` file located at `C:\Users\YourUser\Documents\users.csv` to a ProGet instance located at `proget.corp.local` with an API key `abc12345`:
 
 ```python
 import csv

@@ -35,6 +35,8 @@ Group membership: Developers
 
 Note: The User's password details will be omitted from the output.
 
+Also note that source options must also be specified unless you have the "Default" source configured. See [Working with Sources](/docs/proget/api/pgutil#sources) to learn more.
+
 :::(Info) (💡 Showing a user via HTTP Request)
 "Show Users" is only available as a `pgutil` command, but returning the details of a user via HTTP request can be performed using the "[List Users](/docs/proget/api/security/users/list)" endpoint and filtering by the specified user. For example, to return account details of a user `jsmith`:
 
