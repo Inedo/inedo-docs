@@ -142,7 +142,7 @@ Note that you must specify the `--name` when removing a source, even for the "De
 The `sources test` command is used to test the connections to your sources. 
 
 ```plaintext
-$: pgutil sources test
+$> pgutil sources test
 
 [Default] Successfully contacted ProGet 24.0.0
 [MyOtherServer] Successfully contacted ProGet 23.0.32
@@ -159,10 +159,10 @@ pgutil can be used to configure the settings shown under "Admin" > "Advanced Set
 
 ### Listing ProGet Settings
 
-The `pgutil settings list` command is used to list all current settings:
+The `settings list` command is used to list all current settings:
 
 ```plaintext
- $> ppgutil settings list
+ $> pgutil settings list
 
 Api.DisablePersonalKeyExpiresNotification=False
 Diagnostics.MinimumLogLevel=20
@@ -177,11 +177,11 @@ Extensions.UpdateFeedUrl=https://proget.inedo.com/upack/Extensions/
 
 ### Configuring ProGet Settings
 
-The `pgutil settings set` command is used to configure settings. 
+The `settings set` command is used to configure settings. 
 
 The `--name` and `--value` options are always required. The specified value will be created if it does not already exist, or overwritten if a value is already defined.
 
-Examples:
+#### Examples:
 
 **Registering a License Key** requires the the setting name `Licensing.Key`, and the license key (e.g. `ABCDEFGH-1234-1JKLM-N0PQR-12345678`):
 
