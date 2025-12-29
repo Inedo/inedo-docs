@@ -47,11 +47,7 @@ POST /upack/MyFeed/import "Content-Type: application/json"
 ```
 
 ## Response Specification
-
-| Response | Details |
-| --- | --- |
-| **200 (Success)** | successfully imports the package
-| **404 (Package Not Found)** | indicates the specified package does not exist |
+The package will be imported on a successful `200` response. A `404` response indicates the specified package does not exist.
 
 ### Bulk Import of Packages (Powershell)
 This script will import all `.upack` and `.vpack` packages from the folder `universal-packages` in the asset directory `internal-files`, to the universal-feed `asset-directory-imports`:

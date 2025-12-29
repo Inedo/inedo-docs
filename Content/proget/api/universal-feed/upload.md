@@ -11,7 +11,7 @@ First and foremost, consider that a complete package consists of required metada
 
 :::(Info) (Recommended: Using pgutil to Create and Upload Universal Packages)
 
-While this endpoint will allow you create and upload a package to a Universal Feed, we recommend using [pgutil](/docs/proget/api/pgutil) commands to do this. this can easily be achieved using a combination of the `upack create` and `packages upload` commands:
+While this endpoint will allow you create and upload a package to a Universal Feed, we recommend using [pgutil](/docs/proget/api/pgutil) commands to do this. This can easily be achieved using a combination of the `upack create` and `packages upload` commands:
 
 ```bash
 $ pgutil upack create --name=myPackage --version=1.0.1 --source-directory=.\package-files\myPackage --target-directory=.\upacks
@@ -26,7 +26,7 @@ $ pgutil packages upload --feed=myUniversalFeed --input-file=.\upacks\MyPackage.
 This endpoint can also be used to take an archive in .zip or .tgz format, convert it to a Universal Package and upload it to ProGet. The metadata for this package will be created based on the parameters set.
 
 :::(Info) (🚀 Quick Example: Creating and Uploading a Universal Package with Curl)
-This example will convert a .zip of artifacts artifacts.zip to a Universal Package `myUniversalPackage 1.2.3` and then upload it to the feed `myUniversalFeed`, authenticating with the API key `abc12345`:
+This example will convert a .zip of artifacts `artifacts.zip` to a Universal Package `myUniversalPackage 1.2.3` and then upload it to the feed `myUniversalFeed`, authenticating with the API key `abc12345`:
 
 ```
 curl -X POST -H "Content-Type: application/zip" -H "X-ApiKey: abc12345" --data-binary "@C:\Proget\artifacts.zip" "https://proget.corp.local/upack/universal-feed/upload?name=myUniversalPackag&version=1.2.3"
@@ -79,13 +79,7 @@ POST /upack/myUniversalFeed/upload
 ```
 
 ## Response Specification
-
-| Response | Details |
-| --- | --- |
-| **201 (Success)** | will successfully upload the package
-| **400 (Package Error)** | returned if you specify a different package name in both the query and path |
-|  **403 (Unauthorized API Key)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/universal-feed#authentication); the body will be empty |
-
+The package will be uploaded on a successful `200` response. A `403` response indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/universal-feed#authentication).
 
 ## Sample Usage Scripts
 
