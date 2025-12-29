@@ -40,7 +40,7 @@ GET /api/sca/comments?project=«projectName»&version=«releaseVersion»
 
 ## HTTP Response Specification
 
-A successful (`200`) response body will contain an array of [BuildComment](/docs/proget/api/sca#buildcomment-object) objects. For example, to listing all comments in release version `1.2.3` of a project `myProject`, the request would return this:
+An array of `BuildComment` (see [BuildComment.cs](https://github.com/Inedo/pgutil/blob/thousand/Inedo.ProGet/BuildComment.cs)) objects will be returned on a successful `200` response. For example, listing all comments in release version `1.2.3` of a project `myProject`, the request would return this:
 
 ```json
 GET /api/sca/comments?project=myProject&version=1.2.3
@@ -67,10 +67,4 @@ GET /api/sca/comments?project=myProject&version=1.2.3
 ]
 ```
 
-| Response | Details |
-| --- | --- |
-| **200 (Success)** | body will contain an array of [BuildComment](/docs/proget/api/sca#buildcomment-object) objects |
-| **400 (Invalid Input)** | indicates invalid or missing properties |
-| **403 (Unauthorized API Key)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/sca#authentication); the body will be empty |
-| **404 (Project or Build Not Found)** | indicates that the specified project or build does not exist |
-| **500 (Server Error)** | indicates an unexpected error; the body will contain the message and stack trace, and this will also be logged |
+A `403` response indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/sca#authentication).

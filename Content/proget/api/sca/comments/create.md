@@ -25,7 +25,7 @@ pgutil builds comments create --project=myProject --build=1.2.3 --comment="This 
 ```
 
 ## HTTP Request Specification
-To create or update a comment, simply `POST` to the URL with an [appropriate API Key](/docs/proget/api/sca#authentication) and a [BuildComment](/docs/proget/api/sca#commentinfo-object) object as the request body.
+To create or update a comment, simply `POST` to the URL with an [appropriate API Key](/docs/proget/api/sca#authentication) and a `BuildComment` (see [BuildComment.cs](https://github.com/Inedo/pgutil/blob/thousand/Inedo.ProGet/BuildComment.cs)) object as the request body.
 
 ```plaintext
 POST /api/sca/comments
@@ -33,9 +33,4 @@ POST /api/sca/comments
 
 ## HTTP Response Specification
 
-| Response | Details |
-| --- | --- |
-| **200 (Success)** | indicates the comment was successfully entered |
-| **400 (Invalid Input)** | indicates invalid or missing properties on the [BuildComment](/docs/proget/api/sca#commentinfo-object) object; the body will provide some details as text |
-| **403 (Unauthorized API Key)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/sca#authentication); the body will be empty |
-| **500 (Server Error)** | indicates an unexpected error; the body will contain the message and stack trace, and this will also be logged |
+A successful `200` response will indicate the comment was successfully entered. A `403` response indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/sca#authentication).
