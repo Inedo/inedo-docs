@@ -54,7 +54,6 @@ Attributes:
  * Feeds_DownloadPackage
  * Feeds_AddPackage
  * Feeds_AcceptPackagePromotions
-
 ...
 ```
 
@@ -64,6 +63,8 @@ To list all Tasks, simply `GET` to the following URL with an [appropriate API Ke
 ```plaintext
 GET /api/security/tasks/list
 ```
+
+Note source options must also be specified unless you have the "Default" source configured. See [Working with Sources](/docs/proget/api/pgutil#sources) to learn more.
 
 ## HTTP Response Specification
 

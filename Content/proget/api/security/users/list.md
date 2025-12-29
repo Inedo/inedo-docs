@@ -46,6 +46,8 @@ jsmith (John Smith)
 jbarnes (John Barnes)
 ```
 
+Note source options must also be specified unless you have the "Default" source configured. See [Working with Sources](/docs/proget/api/pgutil#sources) to learn more.
+
 ## HTTP Request Specification
 To list all User accounts in ProGet, simply `GET` to the following URL with an [appropriate API Key](/docs/proget/api/security#authentication):
 
@@ -65,7 +67,7 @@ An array of `SecurityUser` (see [SecurityUser.cs](https://github.com/Inedo/pguti
 
 ## Sample Usage Scripts
 
-The following scripts will export a complete list user information as a `.csv` file. The `.csv` will be formatted with the headers shown in this example:
+The following scripts will export a complete list User information as a `.csv` file. The `.csv` will be formatted with the headers shown in this example:
 
 ```sql
 Name,DisplayName,Email,Password

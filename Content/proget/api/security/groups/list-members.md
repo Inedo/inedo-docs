@@ -31,3 +31,5 @@ John Smith
 David Jones
 James Brown
 ```
+
+Note source options must also be specified unless you have the "Default" source configured. See [Working with Sources](/docs/proget/api/pgutil#sources) to learn more.

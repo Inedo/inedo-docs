@@ -77,7 +77,7 @@ foreach ($version in $allVersions)
         if ($version.Version -ne $latestVersion.Version) 
             {
                 $deleteVersionUrl = "$baseUrl/$feedName/delete?name=$packageName&version=$($version.Version)"
-            Invoke-RestMethod -Uri $deleteVersionUrl -Headers @{"X-ApiKey" = $apiKey} -Method POST
+            Invoke-RestMethod -Uri $deleteVersionUrl -Headers @{"X-ApiKey" = $apiKey} -Method DELETE
             Write-Host "Deleted version $($version.Version)"
         }
     }
@@ -99,10 +99,11 @@ The following script will delete all "alpha" and "beta" versions of the `General
 import requests
 
 packageName = "GeneralUtils.NET"
-baseUrl = "https://proget.corp.local/api/packages/private-nuget"
+baseUrl = "https://proget.corp.local"
+feedUrl = "private-nuget"
 apiKey = "a1b2c3d4e5"
 
-package_info_url = f"{baseUrl}/versions?name={packageName}"
+package_info_url = f"{baseUrl}/api/packages/{feedUrl}/versions?name={packageName}"
 
 headers = {"X-ApiKey": apiKey}
 
@@ -112,12 +113,12 @@ if response.status_code == 200:
     package_info = response.json()
 
     for version in package_info:
-        package_name = version["Name"]
-        package_version = version["Version"]
+        package_name = version["name"]
+        package_version = version["version"]
 
         if "beta" in package_version or "alpha" in package_version:
-            delete_url = f"{baseUrl}/delete?name={package_name}&version={package_version}"
-            response = requests.post(delete_url, headers=headers)
+            delete_url = f"{baseUrl}/api/packages/{feedUrl}/delete?name={package_name}&version={package_version}"
+            response = requests.delete(delete_url, headers=headers)
 
             if response.status_code == 200:
                 print(f"{package_name} version {package_version} deleted.")

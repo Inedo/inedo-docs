@@ -76,16 +76,10 @@ $packageVersions = $versionsResponse | Where-Object { $_.version -lt $targetVers
 foreach ($packageVersion in $packageVersions) {
     $uri = "$proGetBaseUrl/api/packages/$feedName/status?name=$packageName&version=$($packageVersion.version)"
     
-    $deprecationInfo = @{
-        reason = $deprecatedReason
-        alternateName = $packageName
-        alternateVersions = $packageVersion.version
-    }
-    
-    $requestBody = @{
-        listed = $false
-        deprecation = $deprecationInfo
-    } | ConvertTo-Json
+$requestBody = @{
+    deprecated = $true
+    deprecationReason = $deprecatedReason[0]
+} | ConvertTo-Json
     
     Invoke-RestMethod -Uri $uri -Method Post -Headers @{"X-ApiKey" = $apiKey} -Body $requestBody
 }
@@ -108,41 +102,32 @@ This script will delist all versions of the `GeneralUtils.NET` package in the `p
 
 ```powershell
 $proGetBaseUrl = "https://proget.corp.local"
-$apiKey = "a1b2c3d4e5"
+$apiKey = "abc12345"
 $feedName = "private-nuget"
 $packageName = "GeneralUtils.NET"
-$deprecatedReason = @("Legacy (no longer maintained)") 
-$targetVersion = "3.0.0"
 
-# Define a function to compare version numbers as numbers
-function Compare-Versions ($a, $b) {
-    $aVersion = [System.Version]::new($a)
-    $bVersion = [System.Version]::new($b)
-    return $aVersion.CompareTo($bVersion)
-}
+$headers = @{ "X-ApiKey" = $apiKey }
 
-$uri = "$proGetBaseUrl/api/packages/$feedName/versions?name=$packageName"
-$versionsResponse = Invoke-RestMethod -Uri $uri -Headers @{"X-ApiKey" = $apiKey}
-$packageVersions = $versionsResponse | Where-Object { (Compare-Versions $_.version $targetVersion) -lt 0 }
+$latestUri = "$proGetBaseUrl/api/packages/$feedName/latest?name=$packageName"
+$latest = Invoke-RestMethod -Uri $latestUri -Headers $headers
+$latestVersion = $latest.version
 
-foreach ($packageVersion in $packageVersions) {
-    $uri = "$proGetBaseUrl/api/packages/$feedName/status?name=$packageName&version=$($packageVersion.version)"
-    
-    $deprecationInfo = @{
-        reason = $deprecatedReason
-        alternateName = $packageName
-        alternateVersions = $packageVersion.version
+$versionsUri = "$proGetBaseUrl/api/packages/$feedName/versions?name=$packageName"
+$versions = Invoke-RestMethod -Uri $versionsUri -Headers $headers
+
+foreach ($v in $versions) {
+    if ($v.version -ne $latestVersion) {
+        $statusUri = "$proGetBaseUrl/api/packages/$feedName/status?name=$packageName&version=$($v.version)"
+
+        $body = @{
+            listed = $false
+        } | ConvertTo-Json
+
+        Invoke-RestMethod -Uri $statusUri -Method Post -Headers $headers -ContentType "application/json" -Body $body
+
+        Write-Host "Delisted $($v.version)"
     }
-    
-    $requestBody = @{
-        listed = $false
-        deprecation = $deprecationInfo
-    } | ConvertTo-Json
-    
-    Invoke-RestMethod -Uri $uri -Method Post -Headers @{"X-ApiKey" = $apiKey} -Body $requestBody
 }
-
-Write-Host "Deprecation completed for versions of $packageName below $targetVersion in $feedName feed."
 ```
 
 Running this script will output something like this:
@@ -151,7 +136,6 @@ Running this script will output something like this:
 Delisted 12.0.3 of GeneralUtils.NET
 Delisted 12.0.3-beta2 of GeneralUtils.NET
 Delisted 12.0.2-beta2 of GeneralUtils.NET
-Delisting completed for all versions below version (13.0.3) in private-nuget.
 ```
 
 

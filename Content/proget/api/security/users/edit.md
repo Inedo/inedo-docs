@@ -26,6 +26,8 @@ One or more of the `--displayname`, `--email`, and `--password` options may be i
 pgutil security users edit --username=jsmith --displayname="John Smith"
 ```
 
+Note source options must also be specified unless you have the "Default" source configured. See [Working with Sources](/docs/proget/api/pgutil#sources) to learn more.
+
 ## HTTP Request Specification
 
 To edit an existing User account, simply `POST` to the URL with an [appropriate API Key](/docs/proget/api/security#authentication) and a `SecurityUser` object (see [SecurityUser.cs](https://github.com/Inedo/pgutil/blob/thousand/Inedo.ProGet/SecurityUser.cs)) object as the request body. The `Name` property's value must already exist in ProGet.
