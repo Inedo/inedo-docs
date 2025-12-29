@@ -31,10 +31,4 @@ POST /api/sca/import
 ```
 
 ## HTTP Response Specification
-
-| Response | Details |
-| --- | --- |
-| **200 (Success)** | indicates the SBOM import was successful |
-| **400 (Invalid Input)** | indicates the submitted SBOM document was not valid |
-| **403 (Unauthorized API Key)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/sca#authentication); the body will be empty |
-| **500 (Server Error)** | indicates an unexpected error; the body will contain the message and stack trace, and this will also be logged |
+An SBOM will be imported on a successful `200` response. A `403` response indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/sca#authentication). A `500` response indicates an unexpected error; the body will contain the message and stack trace, and this will also be logged.
