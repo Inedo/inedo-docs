@@ -42,7 +42,7 @@ GET /endpoints/«AssetDirectoryName»/dir/«path-to-folder»[?recursive=«true/f
 * Omitting the `«path_to_folder»` will return items located in the root folder of the asset directory.
 
 ## HTTP Response Specification
-A successful (`200`) response body will contain a JSON array of [AssetDirectoryItem](/docs/proget/api/assets#item-data) objects describing files and folders in the specified path.
+A JSON array of `AssetDirectoryItem` (see [AssetDirectoryItem.cs](https://github.com/Inedo/pgutil/blob/thousand/Inedo.ProGet/AssetDirectories/AssetDirectoryItem.cs)) objects will be returned on a successful `200` response.
 
 When listing the `internal-files` directory and omitting the `«path-to-folder»` and `recursive` argument, only the items in the root folder of the asset directory will be returned:
 
@@ -180,8 +180,4 @@ GET /endpoints/internal-files/dir/does/not/exist
 
 To check if a folder exists, you could either use the [Get Metadata](/docs/proget/api/assets/metadata/get) endpoint or inspect the array returned in `/endpoints/internal-files/dir/does/not` to see if the desired folder exists.
 
-| Response | Details |
-| --- | --- |
-| **201 (Success)** | the body will contain a JSON array of [AssetDirectoryItem](/docs/proget/api/assets#item-data) objects |
-| **401 (Authentication Required)** |  indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/assets#authentication) |
-| **404 (Asset Directory Not Found)** | indicates that the asset directory does not exist |
+A `401` response indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/assets#authentication).
