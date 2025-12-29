@@ -18,7 +18,7 @@ The `builds issues resolve` command is used to resolve an issue in a project's b
 
 The `--project`, `--build` and `--number` options are always required.
 
-**Resolving an issue** requires the project (e.g. `myProject`), the build version number (e.g. `1.2.3`), and the issue number (e.g. `4`)
+**Resolving an issue** requires the project (e.g. `myProject`), the build version number (e.g. `1.2.3`), and the issue number (e.g. `4`):
 
 ```bash
 pgutil builds issues resolve --project=myProject --build=1.2.3 --number=4
@@ -39,12 +39,7 @@ POST /api/sca/issues?project=myProject&version=1.2.3&number=2&resolve=true
 
 ## HTTP Response Specification
 
-| Response | Details |
-| --- | --- |
-| **200 (Success)** | indicates issue was resolved |
-| **400 (Invalid Input)** | indicates invalid or missing arguments; the body will provide some details as text |
-| **403 (Unauthorized API Key)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/sca#authentication); the body will be empty |
-| **500 (Server Error)** | indicates an unexpected error |
+A successful `200` response will indicate the issue was resolved. A `403` response indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/sca#authentication).
 
 ### Resolve all issues (Powershell)
 This script resolves all issues of version `1.2.3` of project `myProject`:

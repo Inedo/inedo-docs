@@ -45,8 +45,7 @@ GET /api/sca/issues?project=myProject&version=1.2.3
 ```
 
 ## HTTP Response Specification
-
-A successful (`200`) response body will contain an array of [BuildIssue](/docs/proget/api/sca#buildissue-object) objects. For example, to listing all issues in release version `1.2.3` of a project `myProject`, the request would return this:
+An array of `BuildIssue` (see [BuildIssue.cs](https://github.com/Inedo/pgutil/blob/thousand/Inedo.ProGet/BuildIssue.cs)) objects will be returned on a successful `200` response. For example, listing all issues in release version `1.2.3` of a project `myProject`, the request would return this:
 
 ```json
 GET /api/sca/issues?project=myProject&version=1.2.3
@@ -68,11 +67,4 @@ GET /api/sca/issues?project=myProject&version=1.2.3
   {...}
 ]
 ```
-
-| Response | Details |
-| --- | --- |
-| **200 (Success)** | body will contain an array of [BuildIssue](/docs/proget/api/sca#buildissue-object) objects |
-| **400 (Invalid Input)** | indicates invalid or missing properties |
-| **403 (Unauthorized API Key)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/sca#authentication); the body will be empty |
-|  **404 (Project Not Found)** | indicates that the specified project does not exist | 
-| **500 (Server Error)** | indicates an unexpected error; the body will contain the message and stack trace, and this will also be logged |
+A `403` response indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/sca#authentication).
