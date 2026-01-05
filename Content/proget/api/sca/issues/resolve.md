@@ -18,33 +18,22 @@ The `builds issues resolve` command is used to resolve an issue in a project's b
 
 The `--project`, `--build` and `--number` options are always required.
 
-**Resolving an issue** requires the project (e.g. `myProject`), the build version number (e.g. `1.2.3`), and the issue number (e.g. `4`)
+**Resolving an issue** requires the project (e.g. `myProject`), the build version number (e.g. `1.2.3`), and the issue number (e.g. `4`):
 
 ```bash
 pgutil builds issues resolve --project=myProject --build=1.2.3 --number=4
 ```
 
 ## HTTP Request Specification
-To resolve an issue, simply `POST` to the URL with an [appropriate API Key](/docs/proget/api/sca#authentication).
+To resolve an issue, simply `POST` to the URL with an [appropriate API Key](/docs/proget/api/sca#authentication), the project `name`, `version`, and issue `number`:
 
 ```plaintext
 POST /api/sca/issues?project=«projectName»&version=«releaseVersion»&number=«issueNumber»&resolve=true
 ```
 
-**Setting an issue to resolved** requires the project `name` (e.g. `myProject`), `version` (e.g. `1.2.3`), and issue `number` (e.g. `2`):
-
-```json
-POST /api/sca/issues?project=myProject&version=1.2.3&number=2&resolve=true
-```
-
 ## HTTP Response Specification
 
-| Response | Details |
-| --- | --- |
-| **200 (Success)** | indicates issue was resolved |
-| **400 (Invalid Input)** | indicates invalid or missing arguments; the body will provide some details as text |
-| **403 (Unauthorized API Key)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/sca#authentication); the body will be empty |
-| **500 (Server Error)** | indicates an unexpected error |
+A successful `200` response will indicate the issue was resolved. A `403` response indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/sca#authentication).
 
 ### Resolve all issues (Powershell)
 This script resolves all issues of version `1.2.3` of project `myProject`:

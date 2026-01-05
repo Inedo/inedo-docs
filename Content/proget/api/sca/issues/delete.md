@@ -17,7 +17,7 @@ The `builds issues delete` command is used to delete an issue in a project's bui
 
 The `--project`, `--build` and `--number` options are always required.
 
-**Deleting an issue** requires the project (e.g. `myProject`), the build version number (e.g. `1.2.3`), and the issue number (e.g. `4`)
+**Deleting an issue** requires the project (e.g. `myProject`), the build version number (e.g. `1.2.3`), and the issue number (e.g. `4`):
 
 ```bash
 pgutil builds issues delete --project=myProject --build=1.2.3 --number=4
@@ -38,12 +38,7 @@ DELETE /api/sca/issues?project=myProject&version=1.2.3&number=4
 
 ## HTTP Response Specification
 
-| Response | Details |
-| --- | --- |
-| **200 (Success)** | indicates issue was deleted |
-| **400 (Invalid Input)** | indicates invalid or missing arguments; the body will provide some details as text |
-| **403 (Unauthorized API Key)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/sca#authentication); the body will be empty |
-| **500 (Server Error)** | indicates an unexpected error; the body will contain the message and stack trace, and this will also be logged |
+A successful `200` response will indicate the issue was deleted. A `403` response indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/sca#authentication).
 
 ## Sample Usage Scripts
 
