@@ -40,11 +40,4 @@ GET /endpoints/«AssetDirectoryName»/export/«path_to_folder»?format=«zip/tgz
 The `format` argument may be either `zip` (for a zip file) or `tgz` (for a GZipped tar file). When `recursive` is `false` or not specified, only items contained directly in the specified path are included. When `recursive` is `true`, the archive will contain all subfolders as well. 
 
 ## HTTP Response Specification
-A successful (`200`) response body will return download details and the contents of the asset directory or folder as either `zip` or `tgz`. 
-
-| Response | Details |
-| --- | --- |
-| **200 (Success)** | the body will return download details, the contents of the folder is returned as either `zip` or `tgz` |
-| **400 (Invalid Format)** | indicates that the format is invalid |
-| **401 (Authentication Required)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/assets#authentication) |
-| **404 (Directory not Found)** | indicates that the directory does not exist |
+A successful `200` response body will return download details and the contents of the asset directory or folder as either `zip` or `tgz`. A `403` response indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/assets#authentication).
