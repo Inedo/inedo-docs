@@ -25,16 +25,10 @@ pgutil builds issues resolve --project=myProject --build=1.2.3 --number=4
 ```
 
 ## HTTP Request Specification
-To resolve an issue, simply `POST` to the URL with an [appropriate API Key](/docs/proget/api/sca#authentication).
+To resolve an issue, simply `POST` to the URL with an [appropriate API Key](/docs/proget/api/sca#authentication), the project `name`, `version`, and issue `number`:
 
 ```plaintext
 POST /api/sca/issues?project=«projectName»&version=«releaseVersion»&number=«issueNumber»&resolve=true
-```
-
-**Setting an issue to resolved** requires the project `name` (e.g. `myProject`), `version` (e.g. `1.2.3`), and issue `number` (e.g. `2`):
-
-```json
-POST /api/sca/issues?project=myProject&version=1.2.3&number=2&resolve=true
 ```
 
 ## HTTP Response Specification
