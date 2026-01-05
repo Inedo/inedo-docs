@@ -35,7 +35,7 @@ The `format` argument may be either `zip` (for a zip file) or `tgz` (for a GZipp
 
 ## HTTP Response Specification
 
-A successful `200` response will indicate the contents of the archive have been uploaded to the asset directory. A `401` response indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/assets#authentication).
+A successful `200` response will indicate the contents of the archive have been uploaded to the asset directory. A `403` response indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/assets#authentication).
 
 ## Sample Usage Scripts
 
