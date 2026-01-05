@@ -3,7 +3,7 @@ title: "Download Universal Package File"
 order: 7
 ---
 
-*Download Universal Package File* is an endpoint in [ProGet's Universal Feed API](/docs/proget/api/universal-feed) that will download a specific file within a package, so that you don't need to download the entire package.
+*Download Universal Package File* is available as an HTTP endpoint in the [Universal Feed API](/docs/proget/api/universal-feed) that will download a specific file within a package, so that you don't need to download the entire package.
 
 :::(Info) (🚀 Quick Example: Downloading a file from a Universal Package with Curl)
 This example downloads the file `log_data.bin` from version `1.2.3` of a universal package `myUniversalPackage`, in the group `MyGroup`, from the feed `myUniversalFeed`, authenticating with the API key `abc12345`:
@@ -21,7 +21,7 @@ curl -X GET -H "X-ApiKey: abc12345" "https://proget.corp.local/upack/myUniversal
 | `package-version` | Optional. |
 | `path` | Required. Relative path to the file within the package. Note, package contents are contained within the "package" directory of the package, so most request paths should start with "package" unless files in the package root are desired, such as the upack.json file. If the file is not found within the package, a 404 is returned. |
 
-## Request Specification
+## HTTP Request Specification
 To download a file from a **specific** package version, simply `GET` to the URL with a feed name, group name, package name, package version and file path:
 
 ```
@@ -46,11 +46,5 @@ GET /upack/myUniversalFeed/download-file/MyGroup/myUniversalPackage/1.0.0?path=p
 GET /upack/myUniversalFeed/download-file/MyGroup/myUniversalPackage?latest&path=package/mycontent.bin
 ```
 
-## Response Specification
-
-| Response | Details |
-| --- | --- |
-| **200 (Success)** | will successfully download the file
-| **400 (Package Version not Found)** | returned if `package-version` is not specified, and latest is not specified in the URL |
-|  **403 (Unauthorized API Key)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/universal-feed#authentication) |
-| **404 (Package/File Not Found)** | indicates the specified package or file does not exist |
+## HTTP Response Specification
+The file will be downloaded on a successful `200` response. A `403` response indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/universal-feed#authentication). A `404` response indicates that the specified package or file does not exist.
