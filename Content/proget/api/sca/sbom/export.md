@@ -38,8 +38,7 @@ GET /api/sca/export?project=myProject&version=1.2.3&format=json
 ```
 
 ## HTTP Response Specification
-
-A successful (`200`) response body will contain an SBOM in either XML or JSON. For example, to exporting an SBOM of version `1.2.3` of `myProject`:
+A response body will contain an SBOM in either XML or JSON on a successful `200` response. For example, exporting an SBOM of version `1.2.3` of `myProject`:
 
 In JSON, the request would return:
 
@@ -128,9 +127,4 @@ In XML, the request would return:
 </bom>
 ```
 
-| Response | Details |
-| --- | --- |
-| **200 (Success)** | body will contain the exported SBOM document in the specified format |
-| **404 (Project or Release Not Found)** | indicates that the specified project or release was not found |
-|  **403 (Unauthorized API Key)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/sca#authentication); the body will be empty |
-| **500 (Server Error)** | indicates an unexpected error; the body will contain the message and stack trace, and this will also be logged |
+A `403` response indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/sca#authentication). A `500` response indicates an unexpected error; the body will contain the message and stack trace, and this will also be logged.
