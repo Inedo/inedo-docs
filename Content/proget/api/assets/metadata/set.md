@@ -40,7 +40,7 @@ pgutil assets metadata set cache --path=data-files/data.bin --feed=myAssetDirect
 ```
 
 ## HTTP Request Specification
-To update an item's metadata, simply `POST` to the URL with the `AssetDirectoryName`, path to the item and a a [AssetItemMetadataUpdate](/docs/proget/api/assets#metadata-update) object as the body.
+To update an item's metadata, simply `POST` to the URL with the `AssetDirectoryName`, path to the item and an `AssetItemMetadataUpdate` (see [AssetItemMetadataUpdate.cs](https://github.com/Inedo/pgutil/blob/thousand/Inedo.ProGet/AssetDirectories/AssetItemMetadataUpdate.cs)) object as the body.
 
 ```plaintext
 GET /endpoints/«AssetDirectoryName»/metadata/«path_to_file»
@@ -48,8 +48,4 @@ GET /endpoints/«AssetDirectoryName»/metadata/«path_to_file»
 
 ## HTTP Response Specification
 
-| Response | Details |
-| --- | --- |
-| **200 (Success)** | the file or folder's metadata will be updated |
-| **401 (Authentication Required)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/assets#authentication) |
-| **404 (Item not Found)** | indicates that the file or folder does not exist |
+A successful `200` response will indicate the file or folder's metadata has been updated. A `403` response indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/assets#authentication).
