@@ -48,4 +48,4 @@ GET /endpoints/«AssetDirectoryName»/metadata/«path_to_file»
 
 ## HTTP Response Specification
 
-A successful `200` response will indicate the file or folder's metadata has been updated. A `401` response indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/assets#authentication).
+A successful `200` response will indicate the file or folder's metadata has been updated. A `403` response indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/assets#authentication).
