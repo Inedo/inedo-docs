@@ -32,12 +32,7 @@ DELETE /api/sca/comments?project=«projectName»&version=«releaseVersion»&numb
 ```
 ## HTTP Response Specification
 
-| Response | Details |
-| --- | --- |
-| **200 (Success)** | indicates the comment was successfully deleted |
-| **400 (Invalid Input)** | indicates invalid or missing properties in the request |
-| **403 (Unauthorized API Key)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/sca#authentication); the body will be empty |
-| **500 (Server Error)** | indicates an unexpected error; the body will contain the message and stack trace, and this will also be logged |
+A successful `200` response will indicate the comment was successfully deleted. A `403` response indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/sca#authentication).
 
 ### Delete all comments (Powershell)
 This script deletes all comments in version `1.2.3` of project `myProject`:
