@@ -1,6 +1,6 @@
 ---
 title: "Set Package Status"
-order: 6
+order: 7
 ---
 
 *Set Package Status* is available as both a `pgutil` command and an HTTP Request, and will set the  unlisted, deprecated, or blocked status for a package. 
