@@ -110,7 +110,7 @@ try {
 }
 ```
 
-#### Example Output:
+Example Output:
 
 ```powershell
 Users exported successfully to C:\Users\YourUser\Documents\users_export.csv
@@ -154,7 +154,7 @@ with open(output_csv, mode='w', newline='', encoding='utf-8') as csvfile:
 print(f"Users exported successfully to {output_csv}")
 ```
 
-#### Example Output:
+Example Output:
 
 ```python
 Users exported successfully to C:\Users\YourUser\Documents\users_export.csv
