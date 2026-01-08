@@ -43,7 +43,7 @@ A `SecurityUser` object will be returned on a successful `200` response. A `403`
 
 The following scripts will import a CSV of user information and create Users in the specified ProGet instance in bulk. The CSV needs to formatted with the correct headers shown in this example:
 
-```sql
+```plaintext
 Name,DisplayName,Email,Password
 ajohnson,Alice Johnson,alice.johnson@example.com,Sunflower92!
 blee,Brian Lee,brian.lee@example.com,MapleLeaf47#
