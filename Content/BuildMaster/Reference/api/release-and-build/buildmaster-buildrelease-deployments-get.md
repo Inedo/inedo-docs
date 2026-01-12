@@ -9,7 +9,7 @@ The *Get Deployment* is an endpoint in [BuildMaster's Release & Build Deployment
 This example lists all successful deployments, authenticating with the API key `abc12345`:
 
 ````
-curl -X POST -H "X-ApiKey: abc12345" -H "Content-Type: application/json" -d "{\"status\": \"succeeded\"}" "https://proget.corp.local/api/releases/builds/deployments"
+curl -X POST -H "X-ApiKey: abc12345" -H "Content-Type: application/json" -d "{\"status\": \"succeeded\"}" "https://buildmaster.corp.local/api/releases/builds/deployments"
 ````
 :::
 
@@ -93,4 +93,4 @@ A successful (`200`) response body will contain an array of [DeploymentInfo](/do
 |---|---|
 | **200 (Success)** | an array of [DeploymentInfo](/docs/buildmaster/reference/api/release-and-build#deploymentinfo-object) objects will be returned |
 | **400 (Invalid Input)** | indicates invalid or missing properties in the request; the body will provide some details as text |
-| **403 (Unauthorized API Key)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/licenses#authentication); the body will be empty |
+| **403 (Unauthorized API Key)** | indicates a [missing, unknown, or unauthorized API Key](/docs/buildmaster/reference/api/release-and-build#authorization); the body will be empty |
