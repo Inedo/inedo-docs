@@ -9,7 +9,7 @@ The *Clone Application* is an endpoint in [BuildMaster's Application Management 
 This example clones an existing application named `originalApp` and creates a clone `clonedApp`, authenticating with the API key `abc12345`:
 
 ```
-curl -X POST --header "X-ApiKey: abc12345" https://proget.corp.local/api/applications/clone?name=clonedApp&from=originalApp
+curl -X POST --header "X-ApiKey: abc12345" https://buildmaster.corp.local/api/applications/clone?name=clonedApp&from=originalApp
 ```
 :::
 

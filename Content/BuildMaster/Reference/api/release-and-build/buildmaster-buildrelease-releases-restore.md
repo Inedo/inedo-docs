@@ -9,7 +9,7 @@ The *Restore Release* is an endpoint in [BuildMaster's Release & Build Deploymen
 This example rejects a build with a `releaseId` of `1` and the `applicationName` `TaxCalculator`, authenticating with the API key `abc12345`:
 
 ````
-curl -X POST -H "X-ApiKey: abc12345" -H "Content-Type: application/json" -d "{\"releaseId\": \"1\", \"applicationName\": \"TaxCalculator\"}" "https://proget.corp.local/api/releases/restore"
+curl -X POST -H "X-ApiKey: abc12345" -H "Content-Type: application/json" -d "{\"releaseId\": \"1\", \"applicationName\": \"TaxCalculator\"}" "https://buildmaster.corp.local/api/releases/restore"
 ````
 :::
 
@@ -42,4 +42,4 @@ POST /api/releases/restore
 |---|---|
 | **200 (Success)** | the specified release was restored |
 | **400 (Invalid Input)** | indicates invalid or missing properties in the request; the body will provide some details as text |
-| **403 (Unauthorized API Key)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/licenses#authentication); the body will be empty |
+| **403 (Unauthorized API Key)** | indicates a [missing, unknown, or unauthorized API Key](/docs/buildmaster/reference/api/release-and-build#authorization); the body will be empty |

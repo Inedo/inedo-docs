@@ -5,13 +5,13 @@ order: 5
 
 The *Get BuildMaster Health* is an endpoint that will return a [BuildMasterHealth](#buildmasterhealth-object) object describing the health of a BuildMaster instance.
 
-Using this endpoint does not require an API key and can be accessed by simply adding `/health` to your BuildMaster URL (e.g. `https://proget.corp.local/health`)
+Using this endpoint does not require an API key and can be accessed by simply adding `/health` to your BuildMaster URL (e.g. `https://buildmaster.corp.local/health`)
 
 :::(Info) (🚀 Quick Example: Get the Health of a BuildMaster Instance with Curl)
-This example will get the health of a BuildMaster instance with the URL `proget.corp.local`:
+This example will get the health of a BuildMaster instance with the URL `buildmaster.corp.local`:
 
 ```
-curl -H "Content-Type: application/json" -X GET https://proget.corp.local/health
+curl -H "Content-Type: application/json" -X GET https://buildmaster.corp.local/health
 ```
 :::
 
@@ -72,7 +72,7 @@ GET /health
 
 <h3 id="buildmasterhealth-object">BuildMasterHealth Object Attributes</h3>
 
-`BuildMasterHealth` is a set of key/value pairs that describe the health status of a ProGet instance. It's used as output data for the [Get BuildMaster Health](#buildmaster-health-endpoint) endpoint as a JSON-formatted object.
+`BuildMasterHealth` is a set of key/value pairs that describe the health status of a BuildMaster instance. It's used as output data for the [Get BuildMaster Health](#buildmaster-health-endpoint) endpoint as a JSON-formatted object.
 
 | Property | Format | Notes
 | --- | --- | ---

@@ -9,7 +9,7 @@ The *Create Release* is an endpoint in [BuildMaster's Release & Build Deployment
 This example creates a release with a `releaseNumber` of `2.0.1` and the `applicationName` `TaxCalculator`, and the `pipelineName` `Release`, authenticating with the API key `abc12345`:
 
 ````
-curl -X POST -H "X-ApiKey: abc12345" -H "Content-Type: application/json" -d "{\"releaseNumber\": \"2.0.1\", \"applicationName\": \"TaxCalculator\",  \"pipelineName\": \"Release\"}" "https://proget.corp.local/api/releases/create"
+curl -X POST -H "X-ApiKey: abc12345" -H "Content-Type: application/json" -d "{\"releaseNumber\": \"2.0.1\", \"applicationName\": \"TaxCalculator\",  \"pipelineName\": \"Release\"}" "https://buildmaster.corp.local/api/releases/create"
 ````
 :::
 
@@ -64,4 +64,4 @@ A successful (`200`) response body will contain a single [ReleaseInfo](/docs/bui
 |---|---|
 | **200 (Success)** | a `release` will be created, the body will contain a [ReleaseInfo](/docs/buildmaster/reference/api/release-and-build#releaseinfo-object) object |
 | **400 (Invalid Input)** | indicates invalid or missing properties in the request; the body will provide some details as text |
-| **403 (Unauthorized API Key)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/licenses#authentication); the body will be empty |
+| **403 (Unauthorized API Key)** | indicates a [missing, unknown, or unauthorized API Key](/docs/buildmaster/reference/api/release-and-build#authorization); the body will be empty |
