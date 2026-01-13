@@ -3,7 +3,7 @@ title: "Get License"
 order: 2
 ---
 
-*Get License* is available as both a `pgutil` command and an HTTP Request, and will return information or a single [LicenseInfo.cs](https://github.com/Inedo/pgutil/blob/thousand/Inedo.ProGet/LicenseInfo.cs) object in the body of the request.
+*Get License* is available as both a `pgutil` command and an HTTP Request, and will return information on a single license.
 
 :::(Info) (🚀 Quick Example: Getting a license with pgutil)
 This example returns information on a license with the ID `ABC-1.0`:
@@ -78,4 +78,4 @@ GET /api/licenses/files/download?code=«license-id»&hash=«file-hash»
 ```
 
 ## HTTP Response Specification
-A [LicenseInfo.cs](https://github.com/Inedo/pgutil/blob/thousand/Inedo.ProGet/LicenseInfo.cs) object will be returned on a successful `200` response. A `403` response indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/security#authentication).
+A [LicenseInfo.cs](https://github.com/Inedo/pgutil/blob/thousand/Inedo.ProGet/LicenseInfo.cs) object will be returned on a successful `200` response. A `403` response indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/licenses#authentication).
