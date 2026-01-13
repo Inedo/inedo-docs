@@ -7,7 +7,7 @@ order: 1
 Not working as of ProGet version 2023.22
 :::
 
-*Create License* is available as both a `pgutil` command and an HTTP Request, and will create a license, with the properties defined by a [LicenseInfo.cs](https://github.com/Inedo/pgutil/blob/thousand/Inedo.ProGet/LicenseInfo.cs) object in the body of the request.
+*Create License* is available as both a `pgutil` command and an HTTP Request, and will create a license.
 
 :::(Info) (🚀 Quick Example: Creating a license with pgutil)
 This example will create the license `ABC License 1.0` with the ID `ABC-1.0`:
@@ -36,4 +36,4 @@ POST/PUT /api/licenses/add
 ```
 
 ## HTTP Response Specification
-A `LicenseInfo` object will be returned on a successful `200` response. A '403' response indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/security#authentication).
+A `LicenseInfo` object will be returned on a successful `200` response. A '403' response indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/licenses#authentication).
