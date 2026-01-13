@@ -3,7 +3,7 @@ title: "List Licenses"
 order: 3
 ---
 
-*List Licenses* is available as both a `pgutil` command and an HTTP Request, and will return an array of [LicenseInfo.cs](https://github.com/Inedo/pgutil/blob/thousand/Inedo.ProGet/LicenseInfo.cs) objects, describing all existing licenses.
+*List Licenses* is available as both a `pgutil` command and an HTTP Request, and will return a list of all existing licenses.
 
 :::(Info) (🚀 Quick Example: Listing all licenses with pgutil)
 This example will list all existing licences:
@@ -78,7 +78,7 @@ GET /api/licenses/list
 ```
 
 ## HTTP Response Specification
-A successful (`200`) response body will contain an array of [LicenseInfo.cs](https://github.com/Inedo/pgutil/blob/thousand/Inedo.ProGet/LicenseInfo.cs) objects. A `403` response indicates a missing, unknown, or unauthorized API Key.
+A successful (`200`) response body will contain an array of [LicenseInfo.cs](https://github.com/Inedo/pgutil/blob/thousand/Inedo.ProGet/LicenseInfo.cs) objects. A `403` response indicates a missing, unknown, or unauthorized [API Key](/docs/proget/api/licenses#authentication.
 
 ## Sample Usage Scripts
 
