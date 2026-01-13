@@ -7,7 +7,7 @@ order: 4
 Not working as of ProGet version 2023.22
 :::
 
-*Update License* is available as both a `pgutil` command and an HTTP Request, and will update a specified license using the [LicenseInfo.cs](https://github.com/Inedo/pgutil/blob/thousand/Inedo.ProGet/LicenseInfo.cs) object properties defined in the request body.
+*Update License* is available as both a `pgutil` command and an HTTP Request, and will update a specified license.
 
 :::(Info) (🚀 Quick Example: Updating a license with pgutil)
 This example updates a nuget license with the id `XYZ-1.0`, adding version `1.2.3` of the nuget package `myNugetPackage` as a `PUrl`
@@ -75,4 +75,4 @@ POST /api/licenses/update
 ```
 
 ## HTTP Response Specification
-A successful `200` response body will contain an updated [LicenseInfo.cs](https://github.com/Inedo/pgutil/blob/thousand/Inedo.ProGet/LicenseInfo.cs) object. A `403` response indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/security#authentication). A `404` response indicates that the specified `license` does not exist.
+A successful `200` response body will contain an updated [LicenseInfo.cs](https://github.com/Inedo/pgutil/blob/thousand/Inedo.ProGet/LicenseInfo.cs) object. A `403` response indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/licenses#authentication). A `404` response indicates that the specified `license` does not exist.
