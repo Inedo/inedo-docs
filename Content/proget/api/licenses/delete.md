@@ -25,17 +25,11 @@ pgutil licenses delete --code=ABC-1.0
 ```
 
 ## HTTP Request Specification
-To delete a specified license simply `DELETE` to the URL with the `license` id and an [appropriate API Key](/docs/proget/api/licenses#authentication). This request supports partial updating by only updating the properties that are supplied in the request.
+To delete a specified license simply `DELETE` to the URL with the `license` id and an [appropriate API Key](/docs/proget/api/licenses#authentication).
 
 ```bash
 POST /api/licenses/delete?code=«license-id»
 ```
 
 ## HTTP Response Specification
-
-| Response | Details |
-|---|---|
-| **200 (Success)** | will delete the specified `license` |
-| **400 (Invalid Input)** | indicates invalid or missing properties in the request; the body will provide some details as text |
-| **403 (Unauthorized API Key)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/licenses#authentication); the body will be empty |
-| **404 (License Not Found)** | indicates that the specified `license` does not exist |
+A successful `200` response indicates that the specified license has been deleted. A `403` response indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/licenses#authentication). A `404` response indicates that the specified `license` does not exist.
