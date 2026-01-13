@@ -3,7 +3,7 @@ title: "Delete License"
 order: 5
 ---
 
-*Delete License* is available as both a pgutil command and an HTTP Request, and will delete a specified [LicenseInfo.cs](https://github.com/Inedo/pgutil/blob/thousand/Inedo.ProGet/LicenseInfo.cs) object.
+*Delete License* is available as both a pgutil command and an HTTP Request, and will delete a specified license.
 
 :::(Info) (🚀 Quick Example: Deleting a license with pgutil)
 This example will Delete the license `ABC License 1.0` with the ID `ABC-1.0`:
@@ -32,4 +32,4 @@ POST /api/licenses/delete?code=«license-id»
 ```
 
 ## HTTP Response Specification
-A successful `200` response indicates that the specified license has been deleted. A `403` response indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/security#authentication). A `404` response indicates that the specified `license` does not exist.
+A successful `200` response indicates that the specified license has been deleted. A `403` response indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/licenses#authentication). A `404` response indicates that the specified `license` does not exist.
