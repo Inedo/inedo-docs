@@ -46,10 +46,4 @@ GET /upack/myUniversalFeed/download-vpack/myGroup/myVirtualPackage?latest
 ```
 
 ## HTTP Response Specification
-
-| Response | Details |
-| --- | --- |
-| **200 (Success)** | will successfully download the virtual package
-| **400 (Virtual Package Version not Found)** | returned if `package-version` is not specified, and latest is not specified in the URL |
-|  **403 (Unauthorized API Key)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/universal-feed#authentication) |
-| **404 (Virtual Package Not Found)** | indicates the specified virtual package does not exist |
+The virtual package will be downloaded on a successful `200` response. A `403` response indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/universal-feed#authentication). A `404` response indicates that the specified virtual package does not exist.

@@ -1,6 +1,6 @@
 ---
 title: "Show Package Metadata"
-order: 1
+order: 10
 ---
 
 *Show Package Metadata* is available as a `pgutil` command and an HTTP Request, and will display the Metadata of a specified package. 

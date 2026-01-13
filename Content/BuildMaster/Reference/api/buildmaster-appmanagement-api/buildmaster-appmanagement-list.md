@@ -9,7 +9,7 @@ The *List Application* is an endpoint in [BuildMaster's Application Management A
 This example lists all applications, authenticating with the API key `abc12345`:
 
 ```
-curl -X POST --header "X-ApiKey: abc12345" https://proget.corp.local/api/applications/list
+curl -X POST --header "X-ApiKey: abc12345" https://buildmaster.corp.local/api/applications/list
 ```
 :::
 

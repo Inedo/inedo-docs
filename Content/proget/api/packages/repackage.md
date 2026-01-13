@@ -1,6 +1,6 @@
 ---
 title: "Repackage Package"
-order: 7
+order: 8
 ---
 
 The Repackaging API is available as both a `pgutil` command and an HTTP Request, and provides the programmatic ability to [repackage prerelease packages](/docs/proget/packages/repackaging) by posting JSON-encoded or Form-encoded data.

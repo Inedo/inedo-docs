@@ -9,7 +9,7 @@ The *Import Application* is an endpoint in [BuildMaster's Application Management
 This example creates an application `ImportedApp` by importing version `1.0.0` of an application `MyApp`, authenticating with the API key `abc12345`:
 
 ```
-curl -X POST -H "Content-Type: application/json" -H "X-ApiKey: abc12345" -d "{\"name\": \"ImportedApp\",\"packageSource\": \"BackupResource\",\"packageId\": \"MyApp\",\"packageVersion\": \"1.0.0\",\"importHistory\": true,\"overwrite\": false,\"raft\": null}" https://proget.corp.local/api/applications/import
+curl -X POST -H "Content-Type: application/json" -H "X-ApiKey: abc12345" -d "{\"name\": \"ImportedApp\",\"packageSource\": \"BackupResource\",\"packageId\": \"MyApp\",\"packageVersion\": \"1.0.0\",\"importHistory\": true,\"overwrite\": false,\"raft\": null}" https://buildmaster.corp.local/api/applications/import
 ```
 :::
 

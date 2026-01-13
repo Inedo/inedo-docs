@@ -9,7 +9,7 @@ The *Update Application* is an endpoint in [BuildMaster's Application Management
 This example updates an application named `myApp` changing the value of `allowIssues` to `true`, authenticating with the API key `abc12345`:
 
 ```
-curl -X POST --header "X-ApiKey: abc12345" https://proget.corp.local/api/applications/update?name=myApp&allowIssues=true
+curl -X POST --header "X-ApiKey: abc12345" https://buildmaster.corp.local/api/applications/update?name=myApp&allowIssues=true
 ```
 :::
 
@@ -95,7 +95,7 @@ POST /api/applications/update
 This script will move all applications in the group `DevelopmentGroup` to the group `ProductionGroup`. 
 
 ```powershell
-$baseUrl = "https://proget.corp.local"
+$baseUrl = "https://buildmaster.corp.local"
 $apiKey = "a1b2c3d4e5"
 $sourceGroup = "DevelopmentGroup"
 $targetGroup = "ProductionGroup"

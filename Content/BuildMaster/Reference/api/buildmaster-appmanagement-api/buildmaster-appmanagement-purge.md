@@ -9,7 +9,7 @@ The *Purge Application* is an endpoint in [BuildMaster's Application Management 
 This example purges an application `myApp`, authenticating with the API key `abc12345`:
 
 ```
-curl -X POST --header "X-ApiKey: abc12345" https://proget.corp.local/api/purge?application=myApp
+curl -X POST --header "X-ApiKey: abc12345" https://buildmaster.corp.local/api/purge?application=myApp
 ```
 :::
 :::(info) (Deactivating an Application)

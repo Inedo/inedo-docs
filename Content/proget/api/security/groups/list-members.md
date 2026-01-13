@@ -33,3 +33,18 @@ James Brown
 ```
 
 Note source options must also be specified unless you have the "Default" source configured. See [Working with Sources](/docs/proget/api/pgutil#sources) to learn more.
+
+## HTTP Request Specification
+This command is not available as an HTTP endpoint, however you can use the [List Group Members](/docs/proget/api/security/groups/list-members) HTTP endpoint `GET /api/security/groups/list` to return a list of all groups and their assigned members.
+
+Alternatively, to return a single group you can run the following PowerShell script:
+
+```powershell
+(Invoke-RestMethod -Headers @{"X-ApiKey"="abc12345"} "https://proget.corp.local/api/security/groups/list") |
+    Where-Object { $_.name -ieq "«group-name" } |
+    ConvertTo-Json -Depth 2
+```
+
+This will return a `SecurityGroup` (see [SecurityGroup.cs](https://github.com/Inedo/pgutil/blob/thousand/Inedo.ProGet/SecurityGroup.cs)) object of the Group specified.
+
+

@@ -28,7 +28,7 @@ Note source options must also be specified unless you have the "Default" source 
 
 ## HTTP Request Specification
 
-To delete a Group, simply `DELETE` to the following URL with the `group` query argument specifying the username:
+To delete a Group, simply `DELETE` to the following URL with the `group` query argument specifying the username and an [appropriate API Key](/docs/proget/api/security#authentication):
 
 ```plaintext
 DELETE /api/security/groups/delete?group=«groupname»
@@ -36,4 +36,4 @@ DELETE /api/security/groups/delete?group=«groupname»
 
 ## HTTP Response Specification
 
-A `200` response will indicate the Group has been deleted from ProGet. a `403` response indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/security#authentication).
+A `200` response will indicate the Group has been deleted from ProGet. A `403` response indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/security#authentication).

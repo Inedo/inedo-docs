@@ -3,7 +3,7 @@ title: "Get Asset Metadata"
 order: 2
 ---
 
-*Get Asset Metadata* is available as both a `pgutil` command and an HTTP Request, and will return metadata for the specified asset "item" (file or folder) as a JSON [AssetDirectoryItem](/docs/proget/api/assets#item-data) object 
+*Get Asset Metadata* is available as both a `pgutil` command and an HTTP Request, and will return metadata for the specified asset "item" (file or folder) as a JSON [AssetDirectoryItem](/docs/proget/api/assets#item-data) object.
 
 :::(Info) (🚀 Quick Example: Getting asset metadata with pgutil)
 This example will return the metadata for the file `data.bin` in the `data-files` folder of the asset directory `myAssetDirectory`:
@@ -53,33 +53,4 @@ GET /endpoints/«AssetDirectoryName»/metadata/«path»
 ```
 
 ## HTTP Response Specification
-A successful (`200`) response body will contain a [AssetDirectoryItem](/docs/proget/api/assets#item-data) object describing a file or folder in the specified path. For example, querying `example.txt`, the request would return a single object:
-
-```json
-{
-  "name": "example.txt",
-  "parent": "folder",
-  "size": 4,
-  "type": "text/plain",
-  "content": "http://proget.corp.local/endpoints/myAssetDirectory/content/data-files/example.txt",
-  "md5": "098f6bcd4621d373cade4e832627b4f6",
-  "sha1": "a94a8fe5ccb19ba61c4c0873d391e987982fbbd3",
-  "sha256": "9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08",
-  "sha512": "ee26b0dd4af7e749aa1a8ee3c10ae9923f618980772e473f8819a5d4940e0db27ac185f8a0e1d5f84f88bc887fd67b143732c304cc5fa9ad8e6f57f50028a8ff",
-  "created": "2024-06-05T06:29:14.277Z",
-  "modified": "2024-06-10T02:20:53.87Z",
-  "userMetadata": {
-    "myKey": "myValue"
-  },
-  "cacheHeader": {
-    "type": "TTL",
-    "value": 60
-  }
-}
-```
-
-| Response | Details |
-| --- | --- |
-| **200 (Success)** | the body will contain a [AssetDirectoryItem](/docs/proget/api/assets#item-data) object |
-| **401 (Authentication Required)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/assets#authentication) |
-| **404 (Item not Found)** | indicates that the file or folder does not exist |
+An `AssetDirectoryItem` (see [AssetDirectoryItem.cs](https://github.com/Inedo/pgutil/blob/thousand/Inedo.ProGet/AssetDirectories/AssetDirectoryItem.cs)) object will be returned on a successful `200` response. A `403` response indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/assets#authentication).

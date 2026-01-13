@@ -6,9 +6,10 @@ order: 5
 *Delete Package* is available as both a `pgutil` command and an HTTP Request, and will delete a single package from the specified feed. 
 
 :::(Info) (🚀 Quick Example: Deleting a NuGet package with pgutil)
+This example deletes version `1.2.3` of the package `myNugetPackage` from the feed `myNugetFeed`:
 
 ```bash
-pgutil packages delete --feed=myNugetFeed --package=myNugetPackage --version=1.0.0
+pgutil packages delete --feed=myNugetFeed --package=myNugetPackage --version=1.2.3
 ```
 :::
 
@@ -21,7 +22,7 @@ The `--package` and `--version` options are always required. The `--feed` option
 
 Additional options may be required depending on the package type. If a required option is missing, an error will be returned indicating the missing option.
 
-**Deleting an npm Package** requires the scope (e.g. `myscope`), name (e.g. `@myscope/my-npm-package`) and version (e.g. `2.0.0`):
+**Deleting an npm Package** requires the scope (e.g. `myscope`), name (e.g. `my-npm-package`) and version (e.g. `2.0.0`):
 
 ```bash
 pgutil packages delete --feed=MyNpmFeed --package=@my-scope/my-npm-package --version=2.0.0

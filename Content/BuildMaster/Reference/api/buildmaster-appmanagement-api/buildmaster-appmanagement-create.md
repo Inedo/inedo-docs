@@ -9,7 +9,7 @@ The *Create Application* is an endpoint in [BuildMaster's Application Management
 This example creates an application `newApp`, authenticating with the API key `abc12345`:
 
 ```
-curl -X POST --header "X-ApiKey: abc12345" https://proget.corp.local/api/applications/create?name=myNewApp
+curl -X POST --header "X-ApiKey: abc12345" https://buildmaster.corp.local/api/applications/create?name=myNewApp
 ```
 :::
 
