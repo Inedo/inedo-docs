@@ -41,7 +41,7 @@ You can read more about creating a Chocolatey package in [Chocolatey's Official 
 
 ## Step 3: Adding ProGet As A Source  { #add-source }
 
-To add your `internal-chocolatey` feed as a source in your client, use the `choco source add` command. We recommend giving the source the same name as your feed. For example, if adding the ProGet server `proget.corp.local` as a source, you would enter:
+To add your `internal-chocolatey` feed as a source in your client in order to install your packages, use the `choco source add` command. We recommend giving the source the same name as your feed. For example, if adding the ProGet server `proget.corp.local` as a source, you would enter:
 
 ```bash
 $ choco source add -n="internal-chocolatey" -s="http://proget.corp.local/feeds/internal-chocolatey" --priority=1 
@@ -58,6 +58,10 @@ You can confirm your client is properly connected to ProGet using the `choco sou
 $ choco source list
 ```
 
+:::(info) (Note: Uploading Packages vs Installing Packages)
+Installing your Chocolatey packages can be done in the Chocolocatey CLI via your configured ProGet source. This is different from uploading packages to your private repository, which will still require specifying the full feed URL in the CLI.
+:::
+
 ## Step 4: Create an API Key
 
 We will now create an [API Key](/docs/proget/api/apikeys) allowing our local client to authenticate to our `internal-chocolatey` feed. This allows us to push packages to the feed.
@@ -68,16 +72,20 @@ When creating an API Key, fill in the fields by selecting "Feed (use certain fee
 
 ## Step 5: Pushing Your Package to Your Chocolatey Feed
 
-To push a package use the `choco push` command:  
+To push a package you will need the feed URL. This is found on the top right of the feed page:
+
+![Chocolatey Feed URL](/resources/docs/proget-chocolatey-url.png){height="" width="50%"}
+
+Then use the `choco push` command along with your ProGet feed URL and API key:
 
 ```bash
-$ choco push «path-to-package» --source=internal-chocolatey --api-key=«api-key»
+$ choco push «path-to-package» --source=«feed-url» --api-key=«api-key»
 ```
 
-For example, if pushing the Chocolatey package MyApplication-1.2.3.nupkg stored at `C:\chocolatey_packages\` to your `internal-chocolatey` feed with the API key `abc12345` you would enter:
+For example, if pushing the Chocolatey package MyApplication-1.2.3.nupkg stored at `C:\chocolatey_packages\` to your `internal-chocolatey` feed on the instance `proget.corp.local`, with the API key `abc12345` you would enter:
 
 ```bash
-$ choco push C:\chocolatey_packages\MyApplication-1.2.3.nupkg --source=internal-chocolatey --api-key=abc12345
+$ choco push C:\chocolatey_packages\MyApplication-1.2.3.nupkg --source=https://proget.corp.local/nuget/internal-nuget --api-key=abc12345
 ```
 
 This will upload it to your `internal-chocolatey` feed.
@@ -89,4 +97,3 @@ This will upload it to your `internal-chocolatey` feed.
 If you want to minimize reliance on external sources for software installed using Chocolatey packages, you can [internalize your packages](https://blog.inedo.com/chocolatey/internalization). 
 
 Chocolatey’s [package internalizer](https://docs.chocolatey.org/en-us/features/package-internalizer) can internalize packages automatically or you can do it yourself. To learn more on how to do this you can read [HOWTO: Set Up a Private Chocolatey Repository for Internalized Packages](/docs/proget/feeds/chocolatey/howto-chocolatey-internalized).
-
