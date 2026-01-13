@@ -9,7 +9,7 @@ order: 1
 This example will create a folder `new-folder` in the asset directory `myAssetDirectory`:
 
 ```bash
-pgutil assets folder create --feed=myAssetDirectory --path=new-folder
+pgutil assets folders create --feed=myAssetDirectory --path=new-folder
 ```
 :::
 
@@ -21,7 +21,7 @@ The `--path` option is always required. The `--feed` option is required if there
 **Creating a folder** requires the asset directory (e.g. `MyAssetDirectory`) and new folder name (e.g. `new-folder`):
 
 ```bash
-pgutil assets folder create --feed=myAssetDirectory --path=new-folder
+pgutil assets foldersgit  create --feed=myAssetDirectory --path=new-folder
 ```
 
 ## HTTP Request Specification
@@ -32,8 +32,4 @@ POST /endpoints/«AssetDirectoryName»/dir/«path_to_folder»
 ```
 
 ## HTTP Response Specification
-
-| Response | Details |
-| --- | --- |
-| **201 (Success)** | the folder is created |
-| **401 (Authentication Required)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/assets#authentication) |
+A successful `201` response will create folder in the specified asset directory. A `401` response indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/security#authentication).

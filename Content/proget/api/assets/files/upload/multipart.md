@@ -42,11 +42,7 @@ Orphaned parts will be deleted during the "Feed Cleanup" scheduled task. Orphane
 
 ## HTTP Response Specification
 
-| Response | Details |
-| --- | --- |
-| **200 (Success)** | successfully initiates, continues or completes a multipart upload |
-| **400 (Invalid Arguements)** | indicates invalid arguments such as index/offset out of range, overlapping parts or invalid size |
-| **401 (Authentication Required)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/assets#authentication) |
+A successful `201` response indicates a an initiated, continued, or completed multipart upload. A `401` response indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/security#authentication).
 
 ## Sample Usage Scripts
 
