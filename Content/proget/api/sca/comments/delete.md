@@ -44,33 +44,41 @@ $projectName = "myProject"
 $releaseVersion = "1.2.3"
 
 $listEndpoint = "/api/sca/comments?project=$projectName&version=$releaseVersion"
-$deleteEndpoint = "/api/sca/comments?project=$projectName&version=$releaseVersion&number=$commentNumber"
 
 function ListComments {
     $headers = @{
         "X-ApiKey" = $apiKey
     }
-    $response = Invoke-RestMethod -Uri ($baseURL + $listEndpoint) -Headers $headers -Method Get
-    return $response
+
+    Invoke-RestMethod `
+        -Uri ($baseURL + $listEndpoint) `
+        -Headers $headers `
+        -Method Get
 }
 
 function DeleteComment($commentNumber) {
     $headers = @{
         "X-ApiKey" = $apiKey
     }
-    $response = Invoke-RestMethod -Uri ($baseURL + $deleteEndpoint) -Headers $headers -Method Delete
-    return $response
+
+    $deleteEndpoint = "/api/sca/comments?project=$projectName&version=$releaseVersion&number=$commentNumber"
+
+    Invoke-RestMethod `
+        -Uri ($baseURL + $deleteEndpoint) `
+        -Headers $headers `
+        -Method Delete
 }
 
 $comments = ListComments
 
 if ($comments.Count -gt 0) {
     Write-Host "Deleting all comments..."
-    $comments | ForEach-Object {
-        DeleteComment $_.number
-        Write-Host "Comment number $($_.number) deleted."
+    foreach ($comment in $comments) {
+        DeleteComment $comment.number
+        Write-Host "Comment number $($comment.number) deleted."
     }
-} else {
+}
+else {
     Write-Host "No comments to delete."
 }
 ```
