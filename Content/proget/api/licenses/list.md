@@ -3,7 +3,7 @@ title: "List Licenses"
 order: 3
 ---
 
-*List Licenses* is available as both a `pgutil` command and an HTTP Request, and will return an array of [License](/docs/proget/api/licenses#license-object) objects, describing all existing licenses.
+*List Licenses* is available as both a `pgutil` command and an HTTP Request, and will return a list of all existing licenses.
 
 :::(Info) (🚀 Quick Example: Listing all licenses with pgutil)
 This example will list all existing licences:
@@ -78,42 +78,7 @@ GET /api/licenses/list
 ```
 
 ## HTTP Response Specification
-A successful (`200`) response body will contain an array of [License](/docs/proget/api/licenses#license-object) objects. For example:
-
-```json
-GET /api/management/licenses/list
-
-[
-  {
-    "licenseId": "0BSD",
-    "title": "BSD Zero Clause License",
-    "urls": [
-      "landley.net/toybox/license.html",
-      "spdx.org/licenses/0BSD.html"
-    ],
-    "allowed": true,
-    "allowedLicenses": ["OpenLicenses"],
-    "blockedLicenses": []
-  },
-  {
-    "licenseId": "AAL",
-    "title": "Attribution Assurance License",
-    "urls": [
-      "spdx.org/licenses/AAL.html",
-      "www.opensource.org/licenses/attribution"
-    ],
-    "allowed": true,
-    "allowedLicenses": [],
-    "blockedLicenses": []
-  },
-  { ... } // other licenses
-]
-```
-
-| Response | Details |
-|---|---|
-| **200 (Success)** | body will contain an array of [License](/docs/proget/api/licenses#license-object) objects |
-|  **403 (Unauthorized API Key)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/licenses#authentication); the body will be empty |
+A successful (`200`) response body will contain an array of [LicenseInfo.cs](https://github.com/Inedo/pgutil/blob/thousand/Inedo.ProGet/LicenseInfo.cs) objects. A `403` response indicates a missing, unknown, or unauthorized [API Key](/docs/proget/api/licenses#authentication.
 
 ## Sample Usage Scripts
 
