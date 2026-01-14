@@ -9,19 +9,19 @@ order: 5
 This example will import an archive `data-import.zip` from the local path `C:\Inedo\data-files` in to the `data-files` folder in the asset directory `myAssetDirectory`
 
 ```bash
-pgutil assets folder import --file=C:\Inedo\data-files\data-import.zip --path=data-files --feed=myAssetDirectory
+pgutil assets folders import --file=C:\Inedo\data-files\data-import.zip --path=data-files --feed=myAssetDirectory
 ```
 :::
 
 ## Command Specification (CLI)
-The `assets folder import` command is used to import the contents of the specified `zip` or a `.tar.gz` archive as a folder in an asset directory. 
+The `assets folders import` command is used to import the contents of the specified `zip` or a `.tar.gz` archive as a folder in an asset directory. 
 
 The `--file` and `--path` options are always required. The `--feed` option is required if there is no default feed configured.
 
 **Importing an archive** requires the path of the archive (e.g. `C:\Inedo\myArchive.zip`), the asset directory (e.g. `myAssetDirectory`) and folder name (e.g. `myFolder`):
 
 ```plaintext
-pgutil assets folder import  --file=C:\Inedo\data-files\myArchive.zip --path=myFolder --feed=myAssetDirectory
+pgutil assets folders import  --file=C:\Inedo\data-files\myArchive.zip --path=myFolder --feed=myAssetDirectory
 ```
 
 ## HTTP Request Specification

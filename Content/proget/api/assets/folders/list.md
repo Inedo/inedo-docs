@@ -34,7 +34,7 @@ pgutil assets list --feed=myAssetDirectory --path=test-files
 To list item data, simply `GET` to the URL with the `AssetDirectoryName` and path to the folder. 
 
 ```plaintext
-GET /endpoints/«AssetDirectoryName»/dir/«path-to-folder»[?recursive=«true/false»]
+GET /endpoints/«AssetDirectoryName»/dir/«path-to-folder»?recursive=«true/false»
 ```
 
 * When `recursive` is `false` or not specified, only data of items directly contained in the specified path are returned. When `recursive` is `true`, data of all items within the folders of the specified path are also returned. 
