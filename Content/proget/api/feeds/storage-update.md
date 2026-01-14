@@ -49,7 +49,7 @@ pgutil feeds storage change --feed=myNpmFeed --type=azure --ConnectionString=Def
 ```
 
 ## HTTP Request Specification
-To update a feed's storage properties, simply `POST` to the URL with with an [appropriate API Key](/docs/proget/api/feeds#authentication) and a [ProgetFeed](/docs/proget/api/feeds#feed-object) object (see [ProGetFeed.cs](https://github.com/Inedo/pgutil/blob/thousand/Inedo.ProGet/ProGetFeed.cs)) as the request body.
+To update a feed's storage properties, simply `POST` to the URL with with an [appropriate API Key](/docs/proget/api/feeds#authentication) and a [FeedStorageConfiguration](/docs/proget/api/feeds#feed-object) object (see [FeedStorageConfiguration.cs](https://github.com/Inedo/pgutil/blob/thousand/Inedo.ProGet/FeedStorageConfiguration.cs)) as the request body.
 
 ```plaintext
 POST /api/storage?feed=«feed-name»
