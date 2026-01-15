@@ -25,18 +25,15 @@ pgutil builds promote --project=myProject --build=1.2.3 --stage=Production
 ```
 
 ## HTTP Request Specification
-To promote a build of a project, simply `POST` to the URL with an [appropriate API Key](/docs/proget/api/sca#authentication).
+To promote a build, simply `POST` to the URL with both the name of the `project` and the `build` number, and an [appropriate API Key](/docs/proget/api/sca#authentication):
 
 ```plaintext
-POST /api/sca/promote-build?project=«project»&version=«version»&stage=«stage»
+POST /api/sca/promote-build?project=«project»&build=«build»&stage=«stage»
 ```
 
 ## HTTP Response Specification
+A successful `200` response indicates that the build was promoted. A `403` response indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/security#authentication).
 
-| Response | Details |
-| --- | --- |
-| **200 (Success)** | The build was promoted to the specified stage |
-| **400 (Invalid Input)** | indicates invalid or missing properties |
-| **403 (Unauthorized API Key)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/sca#authentication); the body will be empty |
-| **404 (Project or Build Not Found)** | indicates that the specified project or build does not exist | 
-| **500 (Server Error)** | indicates an unexpected error; the body will contain the message and stack trace, and this will also be logged |
+:::(internal) (⚠ Not Working)
+There is an object returned but it does not match anything in GitHub exactly.
+:::
