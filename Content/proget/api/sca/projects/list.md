@@ -3,7 +3,7 @@ title: "List Projects"
 order: 3
 ---
 
-*List Projects* is available as both a `pgutil` command and an HTTP Request, and will return an array of all existing projects.
+*List Projects* is available as both a `pgutil` command and an HTTP Request, and will return a list of all existing projects.
 
 :::(Info) (🚀 Quick Example: Listing Projects with pgutil)
 This example lists all existing projects:
@@ -33,4 +33,4 @@ GET /api/sca/projects
 ```
 
 ## HTTP Response Specification
-A successful `200` response body will contain an array of [ProjectInfo.cs](https://github.com/Inedo/pgutil/blob/thousand/Inedo.ProGet/ProjectInfo.cs) objects. A `403` response indicates a [missing, unknown, or unauthorized API Key](https://docs.inedo.com/docs/proget/api/licenses#authentication).
+A successful `200` response body will contain an array of [ProjectInfo.cs](https://github.com/Inedo/pgutil/blob/thousand/Inedo.ProGet/ProjectInfo.cs) objects. A `403` response indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/sca#authentication).
