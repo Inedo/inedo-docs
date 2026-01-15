@@ -21,4 +21,4 @@ GET /api/sca/projects?name=«projectName»
 ```
 
 ## HTTP Response Specification
-A successful `200` response body will contain a `ProjectInfo` object (see [ProjectInfo.cs](https://github.com/Inedo/pgutil/blob/thousand/Inedo.ProGet/ProjectInfo.cs)). A `403` response indicates a [missing, unknown, or unauthorized API Key](https://docs.inedo.com/docs/proget/api/licenses#authentication).
+A successful `200` response body will contain a `ProjectInfo` object (see [ProjectInfo.cs](https://github.com/Inedo/pgutil/blob/thousand/Inedo.ProGet/ProjectInfo.cs)). A `403` response indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/sca#authentication).
