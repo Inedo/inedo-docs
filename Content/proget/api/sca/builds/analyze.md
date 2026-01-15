@@ -56,4 +56,4 @@ POST /api/sca/audit-build?project=«projectName»&build=«buildNumber»
 ```
 
 ## HTTP Response Specification
-A `BuildAnalysisResults` object (see [BuildAnalysisResults.cs](https://github.com/Inedo/pgutil/blob/thousand/Inedo.ProGet/BuildAnalysisResults.cs)) will be returned on a successful `200` response. A `403` response indicates a [missing, unknown, or unauthorized API Key](https://docs.inedo.com/docs/proget/api/licenses#authentication).
+A `BuildAnalysisResults` object (see [BuildAnalysisResults.cs](https://github.com/Inedo/pgutil/blob/thousand/Inedo.ProGet/BuildAnalysisResults.cs)) will be returned on a successful `200` response. A `403` response indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/sca#authentication).
