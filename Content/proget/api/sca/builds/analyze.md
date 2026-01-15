@@ -3,7 +3,7 @@ title: "Audit Build"
 order: 4
 ---
 
-*Audit Build* is available as both a `pgutil` command and an HTTP Request, will provide information about the packages in a given build.
+*Audit Build* is available as both a `pgutil` command and an HTTP Request, will provide information about the packages in a given build, running an analysis of the specified build (similar to clicking the "analyze" button in the user interface) and providing a build overview and package information. 
 
 :::(Info) (🚀 Quick Example: Analyzing a build with pgutil)
 This example analyzes build `1.2.3` of the project `myProject`
