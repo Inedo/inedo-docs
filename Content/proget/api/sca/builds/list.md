@@ -3,7 +3,7 @@ title: "List Builds"
 order: 3
 ---
 
-*List Builds* is available as both a `pgutil` command and an HTTP Request, and will return information on an array of all existing builds within a specified project.
+*List Builds* is available as both a `pgutil` command and an HTTP Request, and will list all existing builds within a specified project.
 
 :::(Info) (🚀 Quick Example: Listing build of a project with pgutil)
 This example lists all builds of the project `myProject`
@@ -41,4 +41,4 @@ GET /api/sca/releases?name=«projectName»
 
 ## HTTP Response Specification
 
-A successful `200` response body will contain an array of [BuildInfo.cs](https://github.com/Inedo/pgutil/blob/thousand/Inedo.ProGet/BuildInfo.cs) objects. A `403` response indicates a [missing, unknown, or unauthorized API Key](https://docs.inedo.com/docs/proget/api/licenses#authentication).
+A successful `200` response body will contain an array of [BuildInfo.cs](https://github.com/Inedo/pgutil/blob/thousand/Inedo.ProGet/BuildInfo.cs) objects. A `403` response indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/sca#authentication).
