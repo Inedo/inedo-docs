@@ -3,7 +3,7 @@ title: "Delete Asset File"
 order: 3
 ---
 
-*Delete Asset File* is available as both a `pgutil` command and an HTTP Request, and will delete a file at the specified path.
+*Delete Asset File* is available as both a `pgutil` command and an HTTP Request, and will delete a file at the specified path. 
 
 :::(Info) (🚀 Quick Example: Deleting a file with pgutil)
 This example will delete a file `old-file.txt` located in the folder `test-files` of the asset directory `myAssetDirectory`:
@@ -13,7 +13,7 @@ pgutil assets rm --feed=myAssetDirectory --path=test-files/old-file.txt
 ```
 :::
 
-**Note:** that the path must refer to an individual file (not a folder), and it's *not* considered an error to delete a file that does not exist. 
+Note: that the path must refer to an individual file (not a folder), and it's *not* considered an error to delete a file that does not exist. 
 
 ## Command Specification (CLI)
 The `assets delete` command is used to delete a file in the asset directory.
