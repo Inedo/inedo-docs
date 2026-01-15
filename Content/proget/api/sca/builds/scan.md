@@ -3,7 +3,7 @@ title: "Scan Build"
 order: 6
 ---
 
-*Scan Build* is available as a `pgutil` command, and will generate a minimal SBOM from project dependencies, uploads it to ProGet, then audits the build.
+*Scan Build* is available as a `pgutil` command, and will generate a minimal SBOM from project dependencies, upload it to ProGet, then audit the build.
 
 :::(Info) (🚀 Quick Example: Scanning a build with pgutil)
 This example scans build version `1.2.3` of the project `myProject` from the current working directory.

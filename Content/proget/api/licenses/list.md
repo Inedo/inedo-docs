@@ -78,7 +78,7 @@ GET /api/licenses/list
 ```
 
 ## HTTP Response Specification
-A successful (`200`) response body will contain an array of [LicenseInfo.cs](https://github.com/Inedo/pgutil/blob/thousand/Inedo.ProGet/LicenseInfo.cs) objects. A `403` response indicates a missing, unknown, or unauthorized [API Key](/docs/proget/api/licenses#authentication.
+A successful (`200`) response body will contain an array of [LicenseInfo.cs](https://github.com/Inedo/pgutil/blob/thousand/Inedo.ProGet/LicenseInfo.cs) objects. A `403` response indicates a [missing, unknown, or unauthorized API Key](https://docs.inedo.com/docs/proget/api/licenses#authentication).
 
 ## Sample Usage Scripts
 
