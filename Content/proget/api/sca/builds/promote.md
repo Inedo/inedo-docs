@@ -33,4 +33,4 @@ POST /api/sca/promote-build?project=«project»&version=«version»&stage=«stag
 
 ## HTTP Response Specification
 
-A successful `200` response body will promote the target build to the specified stage. A `403` response indicates a [missing, unknown, or unauthorized API Key](https://docs.inedo.com/docs/proget/api/licenses#authentication).
+A successful `200` response body will promote the target build to the specified stage. A `403` response indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/sca#authentication).
