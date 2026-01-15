@@ -9,7 +9,7 @@ order: 3
 This example will delete a file `old-file.txt` located in the folder `test-files` of the asset directory `myAssetDirectory`:
 
 ```bash
-pgutil assets rm --feed=myAssetDirectory --path=test-files/old-file.txt
+pgutil assets delete --feed=myAssetDirectory --path=test-files/old-file.txt
 ```
 :::
 
@@ -25,7 +25,7 @@ pgutil assets delete --feed=myAssetDirectory --path=test-files/old-file.txt
 ```
 
 ## HTTP Request Specification
-To delete file, simply `DELETE` to the URL with the `AssetDirectoryName` and path to the file.
+To delete a file, simply `DELETE` to the URL with the `AssetDirectoryName` and path to the file.
 
 ```plaintext
 DELETE /endpoints/«AssetDirectoryName»/content/«path_to_file»
@@ -33,8 +33,4 @@ DELETE /endpoints/«AssetDirectoryName»/content/«path_to_file»
 
 ## HTTP Response Specification
 
-| Response | Details |
-| --- | --- |
-| **200 (Success)** | the file is deleted from the asset directory |
-| **400 (Path Refers to folder)** | indicates that the path refers to a folder |
-| **401 (Authentication Required)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/assets#authentication) |
+A successful `200` response will delete the file from the asset directory. A `401` response indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/security#authentication).
