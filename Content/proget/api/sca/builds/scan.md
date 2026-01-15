@@ -3,7 +3,7 @@ title: "Scan Build"
 order: 6
 ---
 
-*Scan Build* is available as a `pgutil` command, and will generate a minimal SBOM from project dependencies, uploads it to ProGet, then audits the build.
+*Scan Build* is available as a `pgutil` command, and will generate a minimal SBOM from project dependencies, upload it to ProGet, then audit the build.
 
 :::(Info) (🚀 Quick Example: Scanning a build with pgutil)
 This example scans build version `1.2.3` of the project `myProject` from the current working directory.
@@ -70,51 +70,52 @@ When the build status is "Noncompliant (Unresolved)", this command will return a
 
 ## Example Commands
 
-### Example: Scanning the working directory for an npm project
+#### Example: Scanning the working directory for an npm project
 ```
 pgutil builds scan --project-name="myProject" --version=1.2.3 --scanner-type=npm
 ```
 
-### Example: Specifying package-lock.json file for npm
+#### Example: Specifying package-lock.json file for npm
 ```
 pgutil builds scan --input="c:\path\to\npm\project\package-lock.json" --project-name="myProject" --version=1.2.3 --scanner-type=npm
 ```
 
-### Example: Scanning a .NET Solution using the Working Directory
+#### Example: Scanning a .NET Solution using the Working Directory
 ```
 pgutil builds scan --project-name="myProject" --version=1.2.3 --scanner-type=NuGet
 ```
 
-### Example: Specifying a C# Project
+#### Example: Specifying a C# Project
 ```
 pgutil builds scan --input="c:\path\to\project.csproj" --project-name="myProject" --version=1.2.3 --scanner-type=NuGet
 ```
 
-### Example: Specifying a .NET Solution
+#### Example: Specifying a .NET Solution
 ```
 pgutil builds scan --input="c:\path\to\solution.sln" --project-name="myProject" --version=1.2.3 --scanner-type=NuGet
 ```
 
-### Example: Specifying a .NET Solution for NuGet and npm dependencies
+#### Example: Specifying a .NET Solution for NuGet and npm dependencies
 ```
 pgutil builds scan --input="c:\path\to\solution.sln" --project-name="myProject" --version=1.2.3
 ```
 
-### Example: Scanning a Cargo project using the Working Directory
+#### Example: Scanning a Cargo project using the Working Directory
 ```bash
 pgutil builds scan --project-name="myProject" --version=1.2.3 --scanner-type=Cargo
 ```
-### Example: Scanning a Composer project using the Working Directory
+
+#### Example: Scanning a Composer project using the Working Directory
 ```bash
 pgutil builds scan --project-name="myProject" --version=1.2.3 --scanner-type=Composer
 ```
 
-### Example: Scanning a PyPI environment using the Working Directory
+#### Example: Scanning a PyPI environment using the Working Directory
 ```bash
 pgutil builds scan --project-name="myProject" --version=1.2.3 --scanner-type=PyPI
 ```
 
-## Example: Scanning Conda Projects
+#### Example: Scanning Conda Projects
 To use pgutil to scan dependencies in Conda applications and libraries, you will need to create a Conda environment file.  To create a Conda environment file, you will need to run either:
 
 ```bash
