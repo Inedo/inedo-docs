@@ -14,9 +14,9 @@ First and foremost, consider that a complete package consists of required metada
 While this endpoint will allow you create and upload a package to a Universal Feed, we recommend using [pgutil](/docs/proget/api/pgutil) commands to do this. This can easily be achieved using a combination of the `upack create` and `packages upload` commands:
 
 ```bash
-$ pgutil upack create --name=myPackage --version=1.0.1 --source-directory=.\package-files\myPackage --target-directory=.\upacks
+pgutil upack create --name=myPackage --version=1.0.1 --source-directory=.\package-files\myPackage --target-directory=.\upacks
 
-$ pgutil packages upload --feed=myUniversalFeed --input-file=.\upacks\MyPackage.1.0.1.upack
+pgutil packages upload --feed=myUniversalFeed --input-file=.\upacks\myPackage-1.0.1.upack
 
 ```
 :::
@@ -29,7 +29,7 @@ This endpoint can also be used to take an archive in .zip or .tgz format, conver
 This example will convert a .zip of artifacts `artifacts.zip` to a Universal Package `myUniversalPackage 1.2.3` and then upload it to the feed `myUniversalFeed`, authenticating with the API key `abc12345`:
 
 ```
-curl -X POST -H "Content-Type: application/zip" -H "X-ApiKey: abc12345" --data-binary "@C:\Proget\artifacts.zip" "https://proget.corp.local/upack/universal-feed/upload?name=myUniversalPackag&version=1.2.3"
+curl -X POST -H "Content-Type: application/zip" -H "X-ApiKey: abc12345" --data-binary "@C:\Proget\artifacts.zip" "https://proget.corp.local/upack/myUniversalFeed/upload?name=myUniversalPackage&version=1.2.3"
 ```
 :::
 
