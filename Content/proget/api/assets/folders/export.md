@@ -5,27 +5,23 @@ order: 4
 
 *Export Asset Folder* is available as both a `pgutil` command and an HTTP Request, and will export the contents of the specified folder as either a `ZIP` or a `TGZ` archive.
 
-:::(internal) (confirmation needed)
-It's not considered an error to export a folder that does not exist, and will return an empty archive.
-:::
-
 :::(Info) (🚀 Quick Example: Exporting a folder with pgutil)
 This example will export a folder `project-data` in the asset directory `myAssetDirectory` to the local path and archive file `C:\Inedo\data-export.zip`
 
 ```bash
-pgutil assets folder export --file=C:\Inedo\data-export.zip --feed=myAssetDirectory --path=project-data
+pgutil assets folders export --file=C:\Inedo\data-export.zip --feed=myAssetDirectory --path=project-data
 ```
 :::
 
 ## Command Specification (CLI)
-The `assets folder export` command is used to export the contents of the specified folder as either a `ZIP` or a `TGZ` archive.
+The `assets folders export` command is used to export the contents of the specified folder as either a `ZIP` or a `TGZ` archive.
 
 The `--file` and `--path` options are always required. The `--feed` option is required if there is no default feed configured.
 
 **Exporting a folder** requires the asset directory (e.g. `MyAssetDirectory`), the folder to be exported (e.g. `MyFolder`) and the output archive file (e.g. `C:\Inedo\MyArchive.zip`):
 
 ```plaintext
-pgutil assets folder export --file=C:\Inedo\MyArchive.zip --feed=myAssetDirectory --path=MyFolder
+pgutil assets folders export --file=C:\Inedo\MyArchive.zip --feed=myAssetDirectory --path=MyFolder
 ```
 
 * The option `--overwrite` can be used to overwrite the output archive file if it already exists

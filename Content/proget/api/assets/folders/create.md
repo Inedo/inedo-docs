@@ -25,7 +25,7 @@ pgutil assets folder create --feed=myAssetDirectory --path=new-folder
 ```
 
 ## HTTP Request Specification
-To create a folder simply `POST` to the URL with the `AssetDirectoryName` and path to the folder.
+To create a folder, simply `POST` to the URL with the `AssetDirectoryName`, the `folder path`, and [appropriate API key](/docs/proget/api/assets#authentication).
 
 ```plaintext
 POST /endpoints/«AssetDirectoryName»/dir/«path_to_folder»
@@ -33,7 +33,4 @@ POST /endpoints/«AssetDirectoryName»/dir/«path_to_folder»
 
 ## HTTP Response Specification
 
-| Response | Details |
-| --- | --- |
-| **201 (Success)** | the folder is created |
-| **401 (Authentication Required)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/assets#authentication) |
+A successful `201` response will create the folder at the specified path. A `401` response indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/assets#authentication).

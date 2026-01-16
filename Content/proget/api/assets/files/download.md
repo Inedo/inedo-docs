@@ -25,43 +25,20 @@ pgutil assets download --feed=myAssetDirectory --path=test-files/info.txt --outp
 ```
 
 ## HTTP Request Specification
-To return the content a file, `GET` to the URL with the `AssetDirectoryName` and path to the file.
+To return the content a file, `GET` to the URL with the `AssetDirectoryName`, the `file path`, and an [appropriate API key](/docs/proget/api/assets#authentication).
 
 ```plaintext
 GET /endpoints/«AssetDirectoryName»/content/«path_to_file»
 ```
 
-To return only the headers of an file, `HEAD` to the URL with the `AssetDirectoryName` and path to the file.
+To return only the headers of a file, simply `HEAD` to the URL with the `AssetDirectoryName`, the `file path`, and an [appropriate API key](/docs/proget/api/assets#authentication).
 
 ```plaintext
 HEAD /endpoints/«AssetDirectoryName»/content/«path_to_file»
 ```
 
 ## HTTP Response Specification
-A successful (`200`) response to a `GET` or `HEAD` request will contain the file headers, for example, to a request of a file, `mycontent.bin`:
-
-```plaintext
-HEAD/GET /endpoints/myAssetDirectory/content/mycontent.bin
-
-HTTP/1.1 200 OK
-Content-Length: 5
-Content-Type: application/octet-stream
-Date: Fri, 08 Dec 2023 04:05:38 GMT
-Server: Kestrel
-Cache-Control: public
-ETag: f7ff9e8b7bb2e09b70935a5d785e0cc5d9d0abf0
-Last-Modified: Fri, 08 Dec 2023 03:58:11 GMT
-Vary: Accept-Encoding, Authorization
-X-ProGet-Version: 23.0.22.6
-```
-
-| Response | Details |
-| --- | --- |
-| **200 (Success)** | the file is returned as content with `GET`, or just the headers are returned with `HEAD` |
-| **304 (Success, Not Modified)** | indicates that the file is returned, but not modified |
-| **400 (Path Refers to Directory)** | indicates that the path refers to a directory |
-| **401 (Authentication Required)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/assets#authentication) |
-| **404 (File not Found)** | indicates that the file does not exist |
+A successful `200` response to a `GET` or `HEAD` request will contain the file headers. A `401` response indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/assets#authentication).
 
 ## Sample Usage Scripts
 

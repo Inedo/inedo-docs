@@ -43,7 +43,7 @@ pgutil assets metadata set cache --path=data-files/data.bin --feed=myAssetDirect
 To update an item's metadata, simply `POST` to the URL with the `AssetDirectoryName`, path to the item and an `AssetItemMetadataUpdate` (see [AssetItemMetadataUpdate.cs](https://github.com/Inedo/pgutil/blob/thousand/Inedo.ProGet/AssetDirectories/AssetItemMetadataUpdate.cs)) object as the body.
 
 ```plaintext
-GET /endpoints/«AssetDirectoryName»/metadata/«path_to_file»
+POST /endpoints/«AssetDirectoryName»/metadata/«path_to_file»
 ```
 
 ## HTTP Response Specification

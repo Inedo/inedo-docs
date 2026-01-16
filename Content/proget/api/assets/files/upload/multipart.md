@@ -3,7 +3,7 @@ title: "Multipart Asset File Upload"
 order: 1
 ---
 
-The *Multipart Asset File Upload* is an HTTP Request specifically for multipart uploads of very large (2GB+) files. 
+*Multipart Asset File Upload* is an HTTP Request specifically for multipart uploads of very large (2GB+) files. 
 
 The HTTP request can be used to initiate, continue or complete a multipart upload. The file will not be added to the asset directory until the upload has been marked as complete with this endpoint.
 
@@ -23,14 +23,13 @@ All arguments are required to initiate or continue a multipart upload. Only `id`
 | `partSize` | Size of the part being uploaded. |
 | `totalParts` | Total number of parts that will be uploaded for the entire file. |
 
-
 ```plaintext
 POST /endpoints/«AssetDirectoryName»/content/«path»?multipart=upload&id=«uuid»&index=«partIndex»&offset=«byteOffset»&totalSize=«byteSize»&partSize=«partSize»&totalParts=«partCount»
 ```
 
 ### Complete Multipart Upload
 
-To complete a multi-part upload, simply `POST` to the URL with the `AssetDirectoryName` and the unique identifier `id`.
+To complete a multipart upload, simply `POST` to the URL with the `AssetDirectoryName`, the unique identifier `id`, and an [appropriate API key](/docs/proget/api/assets#authentication).
 
 ```plaintext
 POST /endpoints/«AssetDirectoryName»/content/«path»?multipart=complete&id=«uuid»
@@ -42,14 +41,9 @@ Orphaned parts will be deleted during the "Feed Cleanup" scheduled task. Orphane
 
 ## HTTP Response Specification
 
-| Response | Details |
-| --- | --- |
-| **200 (Success)** | successfully initiates, continues or completes a multipart upload |
-| **400 (Invalid Arguements)** | indicates invalid arguments such as index/offset out of range, overlapping parts or invalid size |
-| **401 (Authentication Required)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/assets#authentication) |
+A successful `200` response will save the file to the specified asset directory. A `401` response indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/assets#authentication).
 
 ## Sample Usage Scripts
-
 
 ### Multipart Upload (Powershell - Single Script)
 
