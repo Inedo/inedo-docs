@@ -37,13 +37,13 @@ GET /upack/«feed-name»/download-file/«group-name»/«package-name»?latest&pa
 **Downloading a file within a specific version of a universal package** requires the feed (e.g. `myUniversalFeed`),  group name (e.g. `myGroup`), package name (e.g. `myUniversalPackage`), version (e.g. `1.0.0`) and path of the file (e.g.`package/mycontent.bin`):
 
 ```
-GET /upack/myUniversalFeed/download-file/MyGroup/myUniversalPackage/1.0.0?path=package/mycontent.bin
+GET /upack/myUniversalFeed/download-file/myGroup/myUniversalPackage/1.0.0?path=package/mycontent.bin
 ```
 
 **Downloading a file within the latest version of a universal package** requires the feed (e.g. `myUniversalFeed`),  group name (e.g. `myGroup`), package name (e.g. `myUniversalPackage`), and path of the file (e.g.`package/mycontent.bin`):
 
 ```
-GET /upack/myUniversalFeed/download-file/MyGroup/myUniversalPackage?latest&path=package/mycontent.bin
+GET /upack/myUniversalFeed/download-file/myGroup/myUniversalPackage?latest&path=package/mycontent.bin
 ```
 
 ## HTTP Response Specification
