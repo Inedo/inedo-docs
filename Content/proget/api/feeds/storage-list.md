@@ -16,6 +16,10 @@ pgutil feeds storage types
 ## Command Specification (CLI)
 The `feeds storage types` command is used to list all feed storage types.
 
+:::(info)(📄 Note: pgutil Sources)
+Source options must also be specified unless you have the "Default" source configured, and that a feed may be instead specified in the source. See [Working with Sources](/docs/proget/api/pgutil#sources) to learn more.
+:::
+
 **Listing all feed storage types** does not require any additional options:
 
 ```bash

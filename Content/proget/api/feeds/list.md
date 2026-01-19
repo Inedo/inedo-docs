@@ -16,6 +16,10 @@ pgutil feeds list
 ## Command Specification (CLI)
 The `feeds list` command is used to list all existing feeds.
 
+:::(info)(📄 Note: pgutil Sources)
+Source options must also be specified unless you have the "Default" source configured, and that a feed may be instead specified in the source. See [Working with Sources](/docs/proget/api/pgutil#sources) to learn more.
+:::
+
 **Listing all feeds** does not require any additional options:
 
 ```bash
