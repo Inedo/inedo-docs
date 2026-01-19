@@ -3,9 +3,9 @@ title: "Export SBOM"
 order: 1
 ---
 
-*Export SBOM* is available as an HTTP Request, and will export an [SBOM](/docs/proget/sca/builds/proget-sca-sbom-importing-exporting#what-is-a-software-bill-of-materials-sbom) document of a project and its build information in ProGet.
+*Export SBOM* is available as an HTTP Request, and will generate an [SBOM](/docs/proget/sca/builds/proget-sca-sbom-importing-exporting#what-is-a-software-bill-of-materials-sbom) document of a project and its build information in ProGet.
 
-:::(Info) (🚀 Quick Example: Exporting an SBOM with Curl)
+:::(Info) (🚀 Quick Example: Generating an SBOM with curl)
 This example exports an SBOM of version `1.2.3` of a project `myProject` as an `XML`, authenticating with the API key `abc12345`:
 
 ```bash
@@ -14,13 +14,13 @@ curl -X GET -H "X-ApiKey: abc12345" "https://pg02.phs.inedo.com/api/sca/export?p
 :::
 
 ## HTTP Request Specification
-To export an SBOM document, simply `GET` to the URL with an [appropriate API Key](/docs/proget/api/sca#authentication).
+To generate an SBOM document, simply `GET` to the URL with an [appropriate API Key](/docs/proget/api/sca#authentication).
 
 ```plaintext
 GET /api/sca/export?project=«projectName»&version=«versionNumber»&format=«xml/json»
 ```
 
-**Exporting an SBOM** requires the `project` name (e.g. `myProject`), the `version` (e.g. `1.2.3`), and either an `XML` or `JSON` as the format (e.g. `json`):
+**Generating an SBOM** requires the `project` name (e.g. `myProject`), the `version` (e.g. `1.2.3`), and either an `XML` or `JSON` as the format (e.g. `json`):
 
 ```json
 GET /api/sca/export?project=myProject&version=1.2.3&format=json
