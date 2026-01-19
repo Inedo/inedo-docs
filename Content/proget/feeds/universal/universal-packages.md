@@ -38,7 +38,7 @@ packages/my-app.dll
 </pre>
 </td></tr><table>
 
-You could create this package file manually or using the [pgutil](https://docs.inedo.com/docs/proget/api/pgutil) CLI tool. For example:
+You could create this package file manually or using the [pgutil](/docs/proget/api/pgutil) CLI tool. For example:
 
 ```bash
 $ pgutil upack create --name=my-app --version=1.3.9 --source-directory=.\package-files\my-app --target-directory=.\universal-packages
@@ -175,7 +175,7 @@ The following is the manifest for our AWS extension (i.e. Plugin) package which 
 
 ## Universal Package Tools { #tools} 
 
-The main tool used to create and manage Universal Packages and installations is the [pgutil](https://docs.inedo.com/docs/proget/api/pgutil) CLI tool. This will require some [minor configuration](/docs/proget/api/pgutil#sources) to use, and offers several commands:
+The main tool used to create and manage Universal Packages and installations is the [pgutil](/docs/proget/api/pgutil) CLI tool. This will require some [minor configuration](/docs/proget/api/pgutil#sources) to use, and offers several commands:
 
 * `upack create`: Will create a Universal Package at a specified location
 * `upack install`: Will "Install" or "unpack" a Universal Package to a specified location

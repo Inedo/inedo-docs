@@ -36,7 +36,7 @@ Example output:
 To list the builds of a project, simply `GET` to the URL with the `project name` and an [appropriate API Key](/docs/proget/api/sca#authentication).
 
 ```plaintext
-GET /api/sca/releases?name=«projectName»
+GET /api/sca/releases?project=«projectName»
 ```
 
 ## HTTP Response Specification

@@ -23,7 +23,7 @@ Now select "Create Feed". You will be directed to your new Universal Feed, curre
 
 ## Step 2: Create a Universal Package
 
-To create and upload a Universal Package, you can use the [pgutil](https://docs.inedo.com/docs/proget/api/pgutil) CLI tool in combination with the [Upload Universal Packages](/docs/proget/api/universal-feed/upload) endpoint in the [Universal Feed API](/docs/proget/api/universal-feed). pgutil will require some [minor configuration](/docs/proget/api/pgutil#sources) before use. 
+To create and upload a Universal Package, you can use the [pgutil](/docs/proget/api/pgutil) CLI tool in combination with the [Upload Universal Packages](/docs/proget/api/universal-feed/upload) endpoint in the [Universal Feed API](/docs/proget/api/universal-feed). pgutil will require some [minor configuration](/docs/proget/api/pgutil#sources) before use. 
 
 Creating a package can be done using the `upack create` command. For example, if creating the package `myPackage` version `1.2.3` from files located in `.\package-files\myPackage`, and creating it in the directory `.\universal-packages`, you would enter:
 
@@ -86,7 +86,7 @@ Both can be performed by navigating to the Universal Package's page and selectin
 
 ## Step 5: (Optional) Installing a Universal Package
 
-You can use [pgutil](https://docs.inedo.com/docs/proget/api/pgutil) to locally "install" or "unpack" Universal Packages using the `upack install` command. This will unpack the files to the specified location and create an entry in the Universal Package Registry:
+You can use [pgutil](/docs/proget/api/pgutil) to locally "install" or "unpack" Universal Packages using the `upack install` command. This will unpack the files to the specified location and create an entry in the Universal Package Registry:
 
 ```bash
 $ pgutil upack install --package=myPackage --version=1.0.1 --feed=internal-universal --target=.\universal-packages\myPackage

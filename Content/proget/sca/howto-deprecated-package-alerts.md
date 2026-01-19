@@ -9,7 +9,7 @@ Deprecated packages are those no longer recommended for use due to being replace
 
 Receiving alerts when a package becomes deprecated allows you to quickly address these issues, ensuring your application remains secure, reliable, and up-to-date.
 
-This article will explain how to configure [policies](/docs/proget/sca/policies) for deprecated packages, and set up [alerts](https://docs.inedo.com/docs/proget/administration/proget-notifications-webhooks) for when deprecated packages are in use.
+This article will explain how to configure [policies](/docs/proget/sca/policies) for deprecated packages, and set up [alerts](/docs/proget/administration/proget-notifications-webhooks) for when deprecated packages are in use.
 
 ## Step 1: Enable OSS caching
 

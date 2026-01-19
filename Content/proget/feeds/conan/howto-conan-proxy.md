@@ -23,7 +23,7 @@ Then select "No, Create One Feed", as we will be creating a single feed to proxy
 
 ![Name Feed](/resources/docs/proget-conan-namepublic.png){height="" width="50%"}
 
-You'll then be given options to configure ProGet's [Vulnerability Scanning and Blocking](/docs/proget/sca/vulnerabilities) and [Licensing Detection and Blocking](https://docs.inedo.com/docs/proget/sca/licenses) features, letting you assess vulnerabilities and create policies for licenses. Select "Set Feed Features", which will create the feed, and redirect you to the newly created `public-conan` feed.
+You'll then be given options to configure ProGet's [Vulnerability Scanning and Blocking](/docs/proget/sca/vulnerabilities) and [Licensing Detection and Blocking](/docs/proget/sca/licenses) features, letting you assess vulnerabilities and create policies for licenses. Select "Set Feed Features", which will create the feed, and redirect you to the newly created `public-conan` feed.
 
 ![Public Conan Feed](/resources/docs/proget-conan-emptypublic.png){height="" width="50%"}
 

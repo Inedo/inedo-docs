@@ -55,7 +55,7 @@ From here, select "No Connectors", and then name your feed. Finally select "Crea
 
 ### Creating a Universal Package from Artifacts
 
-The the [pgutil](https://docs.inedo.com/docs/proget/api/pgutil) CLI tool let's you create Universal Packages by taking artifacts at a specified location, packing them into a `.upack`, and auto-generating the metadata `upack.json` based on parameters set. To use this, you will need to create an [API Key](/docs/proget/api/apikeys) with appropriate permissions. You can then specify this key when [configuring pgutil](/docs/proget/api/pgutil#sources) with a source.
+The the [pgutil](/docs/proget/api/pgutil) CLI tool let's you create Universal Packages by taking artifacts at a specified location, packing them into a `.upack`, and auto-generating the metadata `upack.json` based on parameters set. To use this, you will need to create an [API Key](/docs/proget/api/apikeys) with appropriate permissions. You can then specify this key when [configuring pgutil](/docs/proget/api/pgutil#sources) with a source.
 
 Creating a package can be done using the `upack create` command:
 
