@@ -5,11 +5,11 @@ order: 2
 
 *Import SBOM* is available as an HTTP Request, and will import an existing [SBOM](/docs/proget/sca/builds/proget-sca-sbom-importing-exporting#what-is-a-software-bill-of-materials-sbom) document into ProGet and create corresponding project and release information from it.
 
-:::(Info) (🚀 Quick Example: Importing SBOM with Curl)
+:::(Info) (🚀 Quick Example: Importing an SBOM with Curl)
 This example imports a locally stored SBOM of version `1.2.3` of a project `myProject` as an `XML`, authenticating with the API key `abc12345`:
 
 ```bash
-curl -X POST -H "X-ApiKey: abc12345" -H "Content-Type: text/xml" -d "@C:/Users/Inedo/myProject-1.2.3-bom.xml" https://proget.corp.local/api/sca/import
+curl -X POST -H "X-ApiKey: abc12345" -H "Content-Type: text/xml" -d "@C:/Users/Inedo/myProject-1.2.3.xml" https://proget.corp.local/api/sca/import
 ```
 :::
 
@@ -32,9 +32,4 @@ POST /api/sca/import
 
 ## HTTP Response Specification
 
-| Response | Details |
-| --- | --- |
-| **200 (Success)** | indicates the SBOM import was successful |
-| **400 (Invalid Input)** | indicates the submitted SBOM document was not valid |
-| **403 (Unauthorized API Key)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/sca#authentication); the body will be empty |
-| **500 (Server Error)** | indicates an unexpected error; the body will contain the message and stack trace, and this will also be logged |
+A successful `200` response will indicate the SBOM was successfully imported. A `403` response indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/sca#authentication).
