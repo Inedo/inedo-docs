@@ -9,7 +9,7 @@ The *Import Universal Package* is an endpoint in [ProGet's Universal Feed API](/
 This example imports version `1.2.3` of a universal package `myUniversalPackage`, from an asset directory `internal-files`, to the feed `myUniversalFeed`, authenticating with the API key `abc12345`:
 
 ````
-curl -X POST -H "X-ApiKey: abc12345" -H "Content-Type: application/json" -d "{\"assetDirectory\": \"internal-files\", \"from\": \"MyUniversalPackage-1.0.0.upack\"}" "https://proget.corp.local/upack/myUniversalFeed/import"
+curl -X POST -H "X-ApiKey: abc12345" -H "Content-Type: application/json" -d "{\"assetDirectory\": \"internal-files\", \"from\": \"myUniversalPackage-1.2.3.upack\"}" "https://proget.corp.local/upack/myUniversalFeed/import"
 ````
 :::
 
@@ -38,7 +38,7 @@ POST /upack/«feed-name»/import
 **Importing a universal package from an asset directory** requires the feed (e.g. `myUniversalFeed`) and a JSON object as the request body:
 
 ```
-POST /upack/MyFeed/import "Content-Type: application/json"
+POST /upack/myUniversalFeed/import "Content-Type: application/json"
 
 {
   assetDirectory: "myAssetDirectory"
