@@ -5,7 +5,7 @@ order: 2
 
 *Import SBOM* is available as an HTTP Request, and will import an existing [SBOM](/docs/proget/sca/builds/proget-sca-sbom-importing-exporting#what-is-a-software-bill-of-materials-sbom) document into ProGet and create corresponding project and release information from it.
 
-:::(Info) (🚀 Quick Example: Importing an SBOM with cCurl)
+:::(Info) (🚀 Quick Example: Importing an SBOM with curl)
 This example imports a locally stored SBOM of version `1.2.3` of a project `myProject` as an `XML`, authenticating with the API key `abc12345`:
 
 ```bash
