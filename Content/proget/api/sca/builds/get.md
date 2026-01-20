@@ -41,7 +41,7 @@ Comments:
 To return a specified build, simply `GET` to the URL with the `project name`, `build version`, and an [appropriate API Key](/docs/proget/api/sca#authentication).
 
 ```plaintext
-GET /api/sca/releases?name=«projectName»&version=«versionNumber»
+GET /api/sca/releases?project=«projectName»&version=«versionNumber»
 ```
 
 ## HTTP Response Specification

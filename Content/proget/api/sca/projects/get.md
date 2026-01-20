@@ -17,7 +17,7 @@ curl -X GET -H "X-ApiKey: abc12345" "https://proget.corp.local/api/sca/projects?
 To return a specified project, simply `GET` to the URL with the `project name` and an [appropiate API Key](/docs/proget/api/sca#authentication).
 
 ```plaintext
-GET /api/sca/projects?name=«projectName»
+GET /api/sca/projects?project=«projectName»
 ```
 
 ## HTTP Response Specification

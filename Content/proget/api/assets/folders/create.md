@@ -9,7 +9,7 @@ order: 1
 This example will create a folder `new-folder` in the asset directory `myAssetDirectory`:
 
 ```bash
-pgutil assets folder create --feed=myAssetDirectory --path=new-folder
+pgutil assets folders create --feed=myAssetDirectory --path=new-folder
 ```
 :::
 
@@ -25,7 +25,7 @@ Source options must also be specified unless you have the "Default" source confi
 **Creating a folder** requires the asset directory (e.g. `MyAssetDirectory`) and new folder name (e.g. `new-folder`):
 
 ```bash
-pgutil assets folder create --feed=myAssetDirectory --path=new-folder
+pgutil assets folders create --feed=myAssetDirectory --path=new-folder
 ```
 
 ## HTTP Request Specification
