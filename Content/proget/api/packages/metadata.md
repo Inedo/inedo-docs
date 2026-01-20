@@ -18,6 +18,10 @@ The `packages metadata` command is used to list the packages in a feed.
 
 The `--package` and `--version` options are always required. The `--feed` option is required if there is no default feed configured.
 
+:::(info)(📄 Note: pgutil Sources)
+Source options must also be specified unless you have the "Default" source configured, and that a feed may be instead specified in the source. See [Working with Sources](/docs/proget/api/pgutil#sources) to learn more.
+:::
+
 **Displaying a package's metadata** requires the package (e.g. `Newtonsoft.Json`) and version (e.g. `13.0.3`):
 
 ```bash

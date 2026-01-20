@@ -18,6 +18,10 @@ The `feeds properties set` command is used to update properties of a single feed
 
 The `--property` and `--value` options are always required. The `--feed` option is required if there is no default feed configured. The following properties can be set with this command:
 
+:::(info)(📄 Note: pgutil Sources)
+Source options must also be specified unless you have the "Default" source configured, and that a feed may be instead specified in the source. See [Working with Sources](/docs/proget/api/pgutil#sources) to learn more.
+:::
+
 | Property | Description | 
 | --- | --- | 
 | `alternateNames` | Provide multiple endpoint URLs for a feed, useful when renaming feeds to keep backwards compatibility with old names. | 

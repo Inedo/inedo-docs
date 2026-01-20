@@ -16,6 +16,10 @@ pgutil licenses list
 ## Command Specification (CLI)
 The `licenses list` command is used to list all existing licenses.
 
+:::(info)(📄 Note: pgutil Sources)
+Source options must also be specified unless you have the "Default" source configured. See [Working with Sources](/docs/proget/api/pgutil#sources) to learn more.
+:::
+
 **Listing all licenses** does not require any options beyond the basic command:
 
 ```bash

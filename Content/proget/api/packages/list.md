@@ -20,6 +20,10 @@ The `--feed` option is required if there is no default feed configured. The `--s
 
 **Listing packages in a feed** requires the `--feed` option (e.g. `myNugetFeed`) if there is no default feed configured:
 
+:::(info)(📄 Note: pgutil Sources)
+Source options must also be specified unless you have the "Default" source configured, and that a feed may be instead specified in the source. See [Working with Sources](/docs/proget/api/pgutil#sources) to learn more.
+:::
+
 ```bash
 pgutil packages list  --feed=myNugetFeed
 ```
@@ -31,8 +35,6 @@ The `--package` option is optional, and can be used in the event that the user w
 ```bash
 pgutil packages list --package=@myScope/myNpmPackage --feed=myNpmFeed --stable=true
 ```
-
-Note source options must also be specified unless you have the "Default" source configured, and that a feed may be instead specified in the source. See [Working with Sources](/docs/proget/api/pgutil#sources) to learn more.
 
 ## HTTP Request Specification
 To list packages, simply `GET` to the URL with a feed name and an [appropriate API Key](/docs/proget/api/packages#authentication). This will return all packages, listed by their latest version.

@@ -20,6 +20,10 @@ The `packages upload` command is used to upload a package to a feed.
 
 The `--input` option is always required. The `--feed` option is required if a default feed is not configured, and the `--distribution` option is required for Debian packages. 
 
+:::(info)(📄 Note: pgutil Sources)
+Source options must also be specified unless you have the "Default" source configured, and that a feed may be instead specified in the source. See [Working with Sources](/docs/proget/api/pgutil#sources) to learn more.
+:::
+
 **Uploading an npm Package** requires the feed (e.g. `MyNpmFeed`) and input file path (e.g. `C:\inedo\packages\myNpmPackage.tgz`):
 
 ```bash
@@ -37,8 +41,6 @@ pgutil packages upload --feed=approved-debian --input-file=C:\inedo\packages\myD
 ```bash
 pgutil packages upload --feed=internal-maven --input-file=c:\apps\my-app-1.1\my-app-1.1.jar --artifactPath=/com/my-company/my-app/1.1
 ```
-
-Note source options must also be specified unless you have the "Default" source configured, and that a feed may be instead specified in the source. See [Working with Sources](/docs/proget/api/pgutil#sources) to learn more.
 
 ## HTTP Request Specification
 

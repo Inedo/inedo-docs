@@ -16,6 +16,10 @@ pgutil connectors list
 ## Command Specification (CLI)
 The `connectors list` command is used to list all existing [connectors](/docs/proget/feeds/connector-overview).
 
+:::(info)(📄 Note: pgutil Sources)
+Source options must also be specified unless you have the "Default" source configured. See [Working with Sources](/docs/proget/api/pgutil#sources) to learn more.
+:::
+
 **Listing all connectors** does not require any additional options:
 
 ```bash

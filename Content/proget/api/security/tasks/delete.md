@@ -18,13 +18,15 @@ The `security tasks delete` command is used to delete a Task from ProGet.
 
 The `--name` options is always required. 
 
+:::(info)(📄 Note: pgutil Sources)
+Source options must also be specified unless you have the "Default" source configured. See [Working with Sources](/docs/proget/api/pgutil#sources) to learn more.
+:::
+
 **Deleting a Task** requires the user name (e.g. `"Basic Access"`):
 
 ```bash
 pgutil security tasks delete --name="Basic Access"
 ```
-
-Note source options must also be specified unless you have the "Default" source configured. See [Working with Sources](/docs/proget/api/pgutil#sources) to learn more.
 
 ## HTTP Request Specification
 

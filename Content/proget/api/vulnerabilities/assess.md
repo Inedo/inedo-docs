@@ -18,6 +18,10 @@ The `vulns assess` command is used to assess a vulnerability.
 
 The `--id` and `--type` options are always required.
 
+:::(info)(📄 Note: pgutil Sources)
+Source options must also be specified unless you have the "Default" source configured. See [Working with Sources](/docs/proget/api/pgutil#sources) to learn more.
+:::
+
 **Assessing a vulnerability** requires the vulnerability id (e.g. `PGV-1234567`) and assessment type (e.g. `blocked`):
 
 ```bash

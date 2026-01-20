@@ -20,6 +20,10 @@ The `--username`, `--displayname`, and `--email` options are always required.
 
 If `--password` is not specified, the User will be prompted to manually input a password and retype it to confirm. 
 
+:::(info)(📄 Note: pgutil Sources)
+Source options must also be specified unless you have the "Default" source configured. See [Working with Sources](/docs/proget/api/pgutil#sources) to learn more.
+:::
+
 **Creating a user** requires the the user name (e.g. `"djones"`), display name (e.g. `"David Jones""`), and the email address (e.g `djones@kramerica.com`). You can also include a password (e.g. `abc12345`).
 
 ```bash
@@ -32,8 +36,6 @@ To create a new User account, simply `POST` to the following URL with an [approp
 ```plaintext
 POST /api/security/users/add
 ```
-
-Note source options must also be specified unless you have the "Default" source configured. See [Working with Sources](/docs/proget/api/pgutil#sources) to learn more.
 
 ## HTTP Response Specification
 

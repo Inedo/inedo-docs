@@ -18,6 +18,10 @@ The `connectors properties list` command is used return the properties of a sing
 
 The `--connector` option is always required. 
 
+:::(info)(📄 Note: pgutil Sources)
+Source options must also be specified unless you have the "Default" source configured. See [Working with Sources](/docs/proget/api/pgutil#sources) to learn more.
+:::
+
 **Getting a connector** requires the connector name (e.g. `MyNugetConnector`):
 
 ```bash
