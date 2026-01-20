@@ -3,35 +3,24 @@ title: "Export SBOM"
 order: 1
 ---
 
-*Export SBOM* is available as both a `pgutil` command and an HTTP Request, and will generate an [SBOM](/docs/proget/sca/builds/proget-sca-sbom-importing-exporting#what-is-a-software-bill-of-materials-sbom) of project and build information of a project in ProGet.
+*Export SBOM* is available as an HTTP Request, and will generate an [SBOM](/docs/proget/sca/builds/proget-sca-sbom-importing-exporting#what-is-a-software-bill-of-materials-sbom) document of a project and its build information in ProGet.
 
-:::(Info) (🚀 Quick Example: Generating an SBOM with pgutil)
-This example generates an SBOM of version `1.2.3` of a project `myProject` to `C:\mySboms\sbom.xml`, authenticating with the API key `abc12345`:
+:::(Info) (🚀 Quick Example: Generating an SBOM with curl)
+This example exports an SBOM of version `1.2.3` of a project `myProject` as an `XML`, authenticating with the API key `abc12345`:
 
 ```bash
-pgutil builds sbom --input=myApplication.csproj --output=C:\mySboms\sbom.xml --project-name="myProject" --version=1.2.3  
+curl -X GET -H "X-ApiKey: abc12345" "https://pg02.phs.inedo.com/api/sca/export?project=myProject&version=1.2.3&format=xml"
 ```
 :::
 
-## Command Specification (CLI)
-The `builds sbom` command is used to generate a minimal SBOM document
-
-The `--input`, `--project-name`, `--output` and `--version` options are always required. 
-
-**Generating an SBOM** requires the input (e.g. `myApplication.csproj` ), the project name (e.g. `myProject`), the output (e.g. `C:\mySboms\sbom.xml` ), and the version (e.g. `1.2.3` )
-
-```bash
-pgutil builds sbom --input=myApplication.csproj --output=C:\mySboms\sbom.xml --project-name="myProject" --version=1.2.3  
-```
-
 ## HTTP Request Specification
-To export an SBOM document, simply `GET` to the URL with an [appropriate API Key](/docs/proget/api/sca#authentication).
+To generate an SBOM document, simply `GET` to the URL with an [appropriate API Key](/docs/proget/api/sca#authentication).
 
 ```plaintext
 GET /api/sca/export?project=«projectName»&version=«versionNumber»&format=«xml/json»
 ```
 
-**Exporting an SBOM** requires the `project` name (e.g. `myProject`) and the `version` (e.g. `1.2.3`):
+**Generating an SBOM** requires the `project` name (e.g. `myProject`), the `version` (e.g. `1.2.3`), and either an `XML` or `JSON` as the format (e.g. `json`):
 
 ```json
 GET /api/sca/export?project=myProject&version=1.2.3&format=json
@@ -39,9 +28,9 @@ GET /api/sca/export?project=myProject&version=1.2.3&format=json
 
 ## HTTP Response Specification
 
-A successful (`200`) response body will contain an SBOM in either XML or JSON. For example, to exporting an SBOM of version `1.2.3` of `myProject`:
+A successful `200` response body will contain an SBOM in either `XML` or `JSON`. For example, to export an SBOM of version `1.2.3` of `myProject`:
 
-In JSON, the request would return:
+In `JSON`, the request would return:
 
 ```json
 {
@@ -88,7 +77,7 @@ In JSON, the request would return:
 }
 ```
 
-In XML, the request would return:
+In `XML`, the request would return:
 
 ```xml
 ﻿<?xml version="1.0" encoding="utf-8"?>
@@ -128,9 +117,4 @@ In XML, the request would return:
 </bom>
 ```
 
-| Response | Details |
-| --- | --- |
-| **200 (Success)** | body will contain the exported SBOM document in the specified format |
-| **404 (Project or Release Not Found)** | indicates that the specified project or release was not found |
-|  **403 (Unauthorized API Key)** | indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/sca#authentication); the body will be empty |
-| **500 (Server Error)** | indicates an unexpected error; the body will contain the message and stack trace, and this will also be logged |
+A `403` response indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/sca#authentication).

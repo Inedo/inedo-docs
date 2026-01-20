@@ -9,19 +9,19 @@ order: 2
 This example will assess the vulnerability `PGV-1234567` as `blocked`:
 
 ```bash
-pgutil vulns assess --id=PGV-1234567  --type=blocked  
+pgutil vulns assess --id=PGV-1234567 --type=blocked  
 ```
 :::
 
 ## Command Specification (CLI)
 The `vulns assess` command is used to assess a vulnerability.
 
-The  `--id`, and `--type` options are always required.
+The `--id` and `--type` options are always required.
 
 **Assessing a vulnerability** requires the vulnerability id (e.g. `PGV-1234567`) and assessment type (e.g. `blocked`):
 
 ```bash
-pgutil vulns assess --id=PGV-1234567  --type=blocked  --comment="Package non-compliant" --policy=myPolicy
+pgutil vulns assess --id=PGV-1234567 --type=blocked --comment="Package non-compliant" --policy=myPolicy
 ```
 
 ## HTTP Request Specification
@@ -36,7 +36,7 @@ curl -X POST -H "X-ApiKey: abc12345" https://proget.corp.local/api/sca/assess
 ```
 :::
 
-To assess a vulnerability, simply `POST` to the URL with a `vulnerability id`, `assessment type`, `comment` and `policy` parameters, and an appropriate API Key. 
+To assess a vulnerability, simply `POST` to the URL with a `vulnerability id`, `assessment type`, `comment` and `policy` parameters, and an appropriate API Key with `Manage SCA (Projects & Builds)` or `Manage Projects` permissions. 
 
 ```
 POST api/sca/assess[?id=«vulnerability-id»][&type=«assessment-type»][&comment=«comment»][&policy=«policy-name»]

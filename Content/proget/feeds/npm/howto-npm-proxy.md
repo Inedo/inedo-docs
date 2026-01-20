@@ -59,7 +59,7 @@ If you enabled "Scan for Security Vulnerabilities" when you [created a feed](#cr
 
 Using `npm audit` with [Vulnerability Scanning and Blocking](/docs/proget/sca/vulnerabilities), lets you assess vulnerabilities in packages, and how they impact your organization.
 
-You can also set up [Policies & Compliance Rules](https://docs.inedo.com/docs/proget/sca/policies) to create rules for vulnerabilities, licenses, deprecated packages, etc. Setting these up lets you block any packages that are considered "noncompliant".
+You can also set up [Policies & Compliance Rules](/docs/proget/sca/policies) to create rules for vulnerabilities, licenses, deprecated packages, etc. Setting these up lets you block any packages that are considered "noncompliant".
 
 ## (Optional) Creating a Package Approval Flow
 

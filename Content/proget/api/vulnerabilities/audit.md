@@ -6,10 +6,10 @@ order: 1
 *Audit Vulnerabilities* is available as both a `pgutil` command and an HTTP Request, and will audit packages individually or associated with a project file.
 
 :::(Info) (🚀 Quick Example: Auditing vulnerabilities in a project with pgutil)
-This example will audit vulnerabilities in the project `MyProject.csproj` located locally in `c:\projects\`:
+This example will audit vulnerabilities in the project `myProject.csproj` located locally in `c:\projects\`:
 
 ```plaintext
-pgutil vulns audit --project=c:\projects\MyProject.csproj
+pgutil vulns audit --project=c:\projects\myProject.csproj
 ```
 :::
 
@@ -24,19 +24,19 @@ The  `--project` option is always required. The `--type` option is optional and 
 **Auditing project vulnerabilities** requires the project file name (e.g. `myProject`).
 
 ```plaintext
-pgutil vulns audit --project=c:\projects\MyProject.csproj
+pgutil vulns audit --project=c:\projects\myProject.csproj
 ```
 
 Running this command will asses the specified project and output the results:
 
 ```plaintext
-Scanning for dependencies in projects/MyProject.csproj...
+Scanning for dependencies in projects/myProject.csproj...
 Found 2 package dependencies. Performing audit...
 1 vulnerable package detected.
 
 PGV-2245804: 7.5 (High) - Improper Handling of Exceptional Conditions in Newtonsoft.Json
  * Packages: Newtonsoft.Json 12.0.3
- * Projects: MyProject
+ * Projects: myProject
 ```
 
 ## HTTP Request Specification
@@ -51,7 +51,7 @@ curl -X POST -H "X-ApiKey: abc12345" https://proget.corp.local/api/sca/audit-pac
 ```
 :::
 
-To audit packages, simply `POST` to the URL with an appropriate API Key and an array of `PackageVersionIdentifier` (see [PackageVersionIdentifier.cs](https://github.com/Inedo/pgutil/blob/thousand/Inedo.ProGet/PackageVersionIdentifier.cs)) objects as the request body.
+To audit packages, simply `POST` to the URL with an appropriate API Key with `Manage SCA (Projects & Builds)` or `Manage Projects` permissions, and an array of `PackageVersionIdentifier` (see [PackageVersionIdentifier.cs](https://github.com/Inedo/pgutil/blob/thousand/Inedo.ProGet/PackageVersionIdentifier.cs)) objects as the request body.
 
 ```bash
 POST /api/sca/audit-package-vulns
