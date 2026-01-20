@@ -18,6 +18,10 @@ The `assets folders export` command is used to export the contents of the specif
 
 The `--file` and `--path` options are always required. The `--feed` option is required if there is no default feed configured.
 
+:::(info)(📄 Note: pgutil Sources)
+Source options must also be specified unless you have the "Default" source configured, and that a feed may be instead specified in the source. See [Working with Sources](/docs/proget/api/pgutil#sources) to learn more.
+:::
+
 **Exporting a folder** requires the asset directory (e.g. `MyAssetDirectory`), the folder to be exported (e.g. `MyFolder`) and the output archive file (e.g. `C:\Inedo\MyArchive.zip`):
 
 ```plaintext

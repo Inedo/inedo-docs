@@ -20,6 +20,10 @@ The `assets delete` command is used to delete a file in the asset directory.
 
 The `--path` options is always required. The `--feed` option is required if there is no default feed configured.
 
+:::(info)(📄 Note: pgutil Sources)
+Source options must also be specified unless you have the "Default" source configured, and that a feed may be instead specified in the source. See [Working with Sources](/docs/proget/api/pgutil#sources) to learn more.
+:::
+
 **Deleting a file** requires the asset directory (e.g. `MyAssetDirectory`) and the path of the file (e.g. `test-files/old-file.txt`):
 
 ```bash

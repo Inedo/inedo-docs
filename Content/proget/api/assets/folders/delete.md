@@ -20,6 +20,10 @@ The `--path` options is always required. The `--feed` option is required if ther
 
 **Deleting a folder** requires the asset directory (e.g. `MyAssetDirectory`) and folder name (e.g. `old-folder`):
 
+:::(info)(📄 Note: pgutil Sources)
+Source options must also be specified unless you have the "Default" source configured, and that a feed may be instead specified in the source. See [Working with Sources](/docs/proget/api/pgutil#sources) to learn more.
+:::
+
 ```bash
 pgutil assets delete --feed=myAssetDirectory --path=old-folder --force
 ```

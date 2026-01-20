@@ -20,6 +20,10 @@ The `--feed` option is always required, and the `--path` option is required for 
 
 **Listing the contents of the root folder of the asset directory** requires the asset directory (e.g. `myAssetDirectory`):
 
+:::(info)(📄 Note: pgutil Sources)
+Source options must also be specified unless you have the "Default" source configured, and that a feed may be instead specified in the source. See [Working with Sources](/docs/proget/api/pgutil#sources) to learn more.
+:::
+
 ```bash
 pgutil assets list --feed=myAssetDirectory
 ```

@@ -18,6 +18,10 @@ The `assets download` command is used to download a file from the asset director
 
 The`--path` and `--output` options are always required. The `--feed` option is required if there is no default feed configured.
 
+:::(info)(📄 Note: pgutil Sources)
+Source options must also be specified unless you have the "Default" source configured, and that a feed may be instead specified in the source. See [Working with Sources](/docs/proget/api/pgutil#sources) to learn more.
+:::
+
 **Downloading a file** requires the asset directory (e.g. `MyAssetDirectory`), the path of the file (e.g. `test-files/info.txt`) and the output path to download to (e.g. `C:\Inedo\test-files`):
 
 ```bash
