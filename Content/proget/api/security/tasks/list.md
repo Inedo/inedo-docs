@@ -16,6 +16,10 @@ pgutil security tasks list
 ## Command Specification (CLI)
 The `security tasks list` command is used to list all existing Tasks.
 
+:::(info)(📄 Note: pgutil Sources)
+Source options must also be specified unless you have the "Default" source configured. See [Working with Sources](/docs/proget/api/pgutil#sources) to learn more.
+:::
+
 **Listing all Tasks** requires no additional options:
 
 ```bash
@@ -63,8 +67,6 @@ To list all Tasks, simply `GET` to the following URL with an [appropriate API Ke
 ```plaintext
 GET /api/security/tasks/list
 ```
-
-Note source options must also be specified unless you have the "Default" source configured. See [Working with Sources](/docs/proget/api/pgutil#sources) to learn more.
 
 ## HTTP Response Specification
 

@@ -18,13 +18,15 @@ The `security users delete` command is used to delete a User account from ProGet
 
 The `--username` options is always required. 
 
+:::(info)(📄 Note: pgutil Sources)
+Source options must also be specified unless you have the "Default" source configured. See [Working with Sources](/docs/proget/api/pgutil#sources) to learn more.
+:::
+
 **Deleting a User** requires the user name (e.g. `"jsmith"`):
 
 ```bash
 pgutil security users delete --username="jsmith"
 ```
-
-Note source options must also be specified unless you have the "Default" source configured. See [Working with Sources](/docs/proget/api/pgutil#sources) to learn more.
 
 ## HTTP Request Specification
 
