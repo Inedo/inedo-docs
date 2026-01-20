@@ -16,6 +16,10 @@ pgutil security permissions list
 ## Command Specification (CLI)
 The `security permissions list` command is used to list all existing Permissions.
 
+:::(info)(📄 Note: pgutil Sources)
+Source options must also be specified unless you have the "Default" source configured. See [Working with Sources](/docs/proget/api/pgutil#sources) to learn more.
+:::
+
 **Listing all Permissions** requires no additional options:
 
 ```bash
@@ -30,8 +34,6 @@ Example output:
 3: allow Administer globally for user Anonymous
 ...
 ```
-
-Note source options must also be specified unless you have the "Default" source configured. See [Working with Sources](/docs/proget/api/pgutil#sources) to learn more.
 
 ## HTTP Request Specification
 To list all Permissions, simply `GET` to the following URL with an [appropriate API Key](/docs/proget/api/security#authentication):

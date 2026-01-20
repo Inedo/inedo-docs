@@ -18,13 +18,15 @@ The `security groups members remove` command is used to remove a group member fr
 
 The `--name` and `--member` options are always required. 
 
+:::(info)(📄 Note: pgutil Sources)
+Source options must also be specified unless you have the "Default" source configured. See [Working with Sources](/docs/proget/api/pgutil#sources) to learn more.
+:::
+
 **Removing a group member from a group** requires the Group name (e.g. `Developers`) and the Group member name (e.g. `"jsmith"`):
 
 ```bash
 pgutil security groups members remove --name=Developers --member="jsmith"
 ```
-
-Note source options must also be specified unless you have the "Default" source configured. See [Working with Sources](/docs/proget/api/pgutil#sources) to learn more.
 
 ## HTTP Request Specification
 

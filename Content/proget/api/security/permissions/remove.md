@@ -28,13 +28,15 @@ This command requires the ID of the configured Permission. This can be found by 
 ```
 :::
 
+:::(info)(📄 Note: pgutil Sources)
+Source options must also be specified unless you have the "Default" source configured. See [Working with Sources](/docs/proget/api/pgutil#sources) to learn more.
+:::
+
 **Removing a permission** requires the Permission id (e.g. `3`):
 
 ```bash
 pgutil security permission remove --id=3
 ```
-
-Note source options must also be specified unless you have the "Default" source configured. See [Working with Sources](/docs/proget/api/pgutil#sources) to learn more.
 
 ## HTTP Request Specification
 

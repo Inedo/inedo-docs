@@ -22,6 +22,10 @@ The `licenses create` command is used to create a license by name and code.
 
 The `--title` and `--code` options are always required.
 
+:::(info)(📄 Note: pgutil Sources)
+Source options must also be specified unless you have the "Default" source configured. See [Working with Sources](/docs/proget/api/pgutil#sources) to learn more.
+:::
+
 **Adding a license** requires the license name (e.g. `ABC License 1.0`) and license code (e.g. `ABC-1.0`):
 
 ```bash

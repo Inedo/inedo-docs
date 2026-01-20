@@ -18,6 +18,10 @@ The `feeds create` command is used to create a feed.
 
 The `--name` and `--type` options are always required. 
 
+:::(info)(📄 Note: pgutil Sources)
+Source options must also be specified unless you have the "Default" source configured, and that a feed may be instead specified in the source. See [Working with Sources](/docs/proget/api/pgutil#sources) to learn more.
+:::
+
 **Creating a feed** requires the feed name (e.g. `MyNugetFeed`) and type (e.g. `NuGet`):
 
 ```bash

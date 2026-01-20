@@ -18,6 +18,10 @@ The `assets metadata get` command is used to return metadata for the specified a
 
 The `--path` option is always required. The `--feed` option is required if there is no default feed configured.
 
+:::(info)(📄 Note: pgutil Sources)
+Source options must also be specified unless you have the "Default" source configured, and that a feed may be instead specified in the source. See [Working with Sources](/docs/proget/api/pgutil#sources) to learn more.
+:::
+
 **Getting asset metadata** requires the asset directory (e.g. `MyAssetDirectory`) and asset path (e.g. `data-files/data.bin`):
 
 ```bash

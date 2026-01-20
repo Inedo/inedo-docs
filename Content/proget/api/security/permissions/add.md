@@ -22,6 +22,10 @@ The `--feed` and `--feed-group` options are optional, and will scope the permiss
 
 The `--deny` option is optional, and is used to set a "deny" Permission instead of a grant.
 
+:::(info)(📄 Note: pgutil Sources)
+Source options must also be specified unless you have the "Default" source configured. See [Working with Sources](/docs/proget/api/pgutil#sources) to learn more.
+:::
+
 **Granting global Permission to a User** requires the the Task name (e.g.`"View & Download Packages"`), and the User name (e.g. `"jsmith"`):
 
 ```bash
@@ -45,8 +49,6 @@ pgutil security permissions add --task="View & Download Packages" --group=Develo
 ```bash
 pgutil security permissions add --task="Manage Feed" --name-"djones" --feed-group=production-packages
 ```
-
-Note source options must also be specified unless you have the "Default" source configured. See [Working with Sources](/docs/proget/api/pgutil#sources) to learn more.
 
 ## HTTP Request Specification
 To add a Permission, simply `POST` to the following URL with an [appropriate API Key](/docs/proget/api/security#authentication) and a `SecurityPermission` (See [SecurityPermission.cs](https://github.com/Inedo/pgutil/blob/thousand/Inedo.ProGet/SecurityPermission.cs)) object as the request body:

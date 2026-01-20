@@ -20,13 +20,15 @@ The `--username` option is always required.
 
 One or more of the `--displayname`, `--email`, and `--password` options may be included, and will overwrite the existing value(s).
 
+:::(info)(📄 Note: pgutil Sources)
+Source options must also be specified unless you have the "Default" source configured. See [Working with Sources](/docs/proget/api/pgutil#sources) to learn more.
+:::
+
 **Editing a user** requires the the user name (e.g. `jsmith"`) and may include the `--displayname`, `--email`, and or `--password`. The example below edits the User's display name:
 
 ```bash
 pgutil security users edit --username=jsmith --displayname="John Smith"
 ```
-
-Note source options must also be specified unless you have the "Default" source configured. See [Working with Sources](/docs/proget/api/pgutil#sources) to learn more.
 
 ## HTTP Request Specification
 

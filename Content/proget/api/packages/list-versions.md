@@ -18,6 +18,10 @@ The `packages versions` command is used to list versions of the specified packag
 
 The `--package` option is always required, and the `--feed` option is required if there is no default feed configured.  The `--version` option is optional and will filter the package by version.
 
+:::(info)(📄 Note: pgutil Sources)
+Source options must also be specified unless you have the "Default" source configured, and that a feed may be instead specified in the source. See [Working with Sources](/docs/proget/api/pgutil#sources) to learn more.
+:::
+
 **Listing all NuGet packages** requires the package name (e.g. `myNugetPackage`):
 
 ```bash
@@ -40,8 +44,6 @@ pgutil packages versions --package=@myScope/myNpmPackage --feed=myNpmFeed
 ```bash
 pgutil packages versions --package=@myScope/myNpmPackage --version=2.0.0 --feed=myNpmFeed
 ```
-
-Note source options must also be specified unless you have the "Default" source configured, and that a feed may be instead specified in the source. See [Working with Sources](/docs/proget/api/pgutil#sources) to learn more.
 
 ## HTTP Request Specification
 To list a package version, simply `GET` to the URL with a feed name, [package identifiers](/docs/proget/api/packages#using-multiple-parameters), and an [appropriate API Key](/docs/proget/api/packages#authentication).

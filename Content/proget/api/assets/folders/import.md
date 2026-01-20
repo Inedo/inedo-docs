@@ -20,6 +20,10 @@ The `--file` and `--path` options are always required. The `--feed` option is re
 
 **Importing an archive** requires the path of the archive (e.g. `C:\Inedo\myArchive.zip`), the asset directory (e.g. `myAssetDirectory`) and folder name (e.g. `myFolder`):
 
+:::(info)(📄 Note: pgutil Sources)
+Source options must also be specified unless you have the "Default" source configured, and that a feed may be instead specified in the source. See [Working with Sources](/docs/proget/api/pgutil#sources) to learn more.
+:::
+
 ```plaintext
 pgutil assets folders import  --file=C:\Inedo\data-files\myArchive.zip --path=myFolder --feed=myAssetDirectory
 ```

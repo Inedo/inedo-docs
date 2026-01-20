@@ -3,7 +3,7 @@ title: "Download Virtual Package Manifest"
 order: 6
 ---
 
-*Download Virtual Package Manifest* is available as both a `pgutil` command and an HTTP Request, and will download the `package.version.vpack` manifest file for a virtual package, or throw error if not a virtual package.
+*Download Virtual Package Manifest* is available as an HTTP Request, and will download the `package.version.vpack` manifest file for a virtual package, or throw error if not a virtual package.
 
 :::(Info) (🚀 Quick Example: Downloading a Virtual Package with Curl)
 This example downloads version `1.2.3` of a universal package `myUniversalPackage` manifest, in the group `MyGroup`, from the feed `myUniversalFeed`, to `C:\ProGet\MyPackage-1.2.3.vpack`, 

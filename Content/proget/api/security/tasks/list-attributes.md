@@ -16,6 +16,10 @@ pgutil security tasks attributes list
 ## Command Specification (CLI)
 The `security tasks attributes list` command is used to list all Task attributes.
 
+:::(info)(📄 Note: pgutil Sources)
+Source options must also be specified unless you have the "Default" source configured. See [Working with Sources](/docs/proget/api/pgutil#sources) to learn more.
+:::
+
 **Listing all Task attributes** requires no additional options:
 
 ```bash
@@ -33,8 +37,6 @@ Example output:
  - Admin_ManageConnectors*
 ...
 ```
-
-Note source options must also be specified unless you have the "Default" source configured. See [Working with Sources](/docs/proget/api/pgutil#sources) to learn more.
 
 ## HTTP Request Specification
 To list all Task attributes, simply `GET` to the following URL with an [appropriate API Key](/docs/proget/api/sca#authentication):

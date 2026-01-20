@@ -27,6 +27,10 @@ For both commands `--path` option is always required. The `--feed` option is req
 
 The `--key` and `--value` options are required for the `custom` command. The `--value` option is required for the `cache` command.
 
+:::(info)(📄 Note: pgutil Sources)
+Source options must also be specified unless you have the "Default" source configured, and that a feed may be instead specified in the source. See [Working with Sources](/docs/proget/api/pgutil#sources) to learn more.
+:::
+
 **Updating an asset's custom metadata** requires the asset directory (e.g. `MyAssetDirectory`), asset path (e.g. `data-files/data.bin`), the metadata key (e.g. `myKey`) and metadata value (e.g. `myValue`):
 
 ```bash

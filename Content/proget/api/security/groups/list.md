@@ -16,6 +16,10 @@ pgutil security groups list
 ## Command Specification (CLI)
 The `security groups list` command is used to list all Groups in ProGet and return the number of group members in each.
 
+:::(info)(📄 Note: pgutil Sources)
+Source options must also be specified unless you have the "Default" source configured. See [Working with Sources](/docs/proget/api/pgutil#sources) to learn more.
+:::
+
 **Listing all existing Groups** requires no additional options:
 
 ```bash
@@ -30,8 +34,6 @@ Developers (members: 20)
 Lead Developers (members: 2)
 SREs (members: 13)
 ```
-
-Note source options must also be specified unless you have the "Default" source configured. See [Working with Sources](/docs/proget/api/pgutil#sources) to learn more.
 
 ## HTTP Request Specification
 To list all Groups in ProGet, simply `GET` to the following URL with an [appropriate API Key](/docs/proget/api/security#authentication):

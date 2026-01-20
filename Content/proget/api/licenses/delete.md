@@ -18,6 +18,10 @@ The `licenses delete` command is used to delete a license.
 
 The `--code` option is always required.
 
+:::(info)(📄 Note: pgutil Sources)
+Source options must also be specified unless you have the "Default" source configured. See [Working with Sources](/docs/proget/api/pgutil#sources) to learn more.
+:::
+
 **Deleting a license** requires the license code (e.g. `ABC-1.0`):
 
 ```bash

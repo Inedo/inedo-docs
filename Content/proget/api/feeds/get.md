@@ -18,6 +18,10 @@ The `feeds properties list` command is used to return properties of a single fee
 
 The `--feed` option is always required. 
 
+:::(info)(📄 Note: pgutil Sources)
+Source options must also be specified unless you have the "Default" source configured, and that a feed may be instead specified in the source. See [Working with Sources](/docs/proget/api/pgutil#sources) to learn more.
+:::
+
 **Getting a feed** requires the feed name (e.g. `myNugetFeed`):
 
 ```bash

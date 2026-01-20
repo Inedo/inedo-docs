@@ -18,6 +18,10 @@ The `feeds storage change` command is used to update a feed's storage configurat
 
 The `--feed` and `--type` options are always required. Additional options are required, depending on the storage type.
 
+:::(info)(📄 Note: pgutil Sources)
+Source options must also be specified unless you have the "Default" source configured, and that a feed may be instead specified in the source. See [Working with Sources](/docs/proget/api/pgutil#sources) to learn more.
+:::
+
 **Updating a feed's storage type to `disk`** requires the feed name (e.g. `myNugetFeed`), the storage type (e.g. `disk`) and the storage path (e.g. `C:\ProgramData\Proget\Packages`):
 
 ```bash

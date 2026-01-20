@@ -18,6 +18,10 @@ The `security groups members list` command is used to list all group members ass
 
 The `--name` option is always required.
 
+:::(info)(📄 Note: pgutil Sources)
+Source options must also be specified unless you have the "Default" source configured. See [Working with Sources](/docs/proget/api/pgutil#sources) to learn more.
+:::
+
 **Listing group members in a group** requires the Group name (e.g. `Developers`)
 
 ```bash
@@ -31,8 +35,6 @@ John Smith
 David Jones
 James Brown
 ```
-
-Note source options must also be specified unless you have the "Default" source configured. See [Working with Sources](/docs/proget/api/pgutil#sources) to learn more.
 
 ## HTTP Request Specification
 This command is not available as an HTTP endpoint, however you can use the [List Group Members](/docs/proget/api/security/groups/list-members) HTTP endpoint `GET /api/security/groups/list` to return a list of all groups and their assigned members.

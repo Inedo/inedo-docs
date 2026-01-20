@@ -18,6 +18,10 @@ The `connectors create` command is used to create a Connector.
 
 The `--name`, `--type` and `--url` options are always required. 
 
+:::(info)(📄 Note: pgutil Sources)
+Source options must also be specified unless you have the "Default" source configured. See [Working with Sources](/docs/proget/api/pgutil#sources) to learn more.
+:::
+
 **Creating a connector** requires the Connector name (e.g. `myNugetConnector`), type (e.g. `NuGet`) and the URL (e.g. `https://proget.connector.local`):
 
 ```bash

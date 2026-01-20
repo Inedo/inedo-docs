@@ -18,13 +18,15 @@ The `security groups delete` command is used to delete a Group from ProGet.
 
 The `--name` option is always required. 
 
+:::(info)(📄 Note: pgutil Sources)
+Source options must also be specified unless you have the "Default" source configured. See [Working with Sources](/docs/proget/api/pgutil#sources) to learn more.
+:::
+
 **Deleting a Group** requires the Group name (e.g. `Developers`):
 
 ```bash
 pgutil security groups delete --name=Developers
 ```
-
-Note source options must also be specified unless you have the "Default" source configured. See [Working with Sources](/docs/proget/api/pgutil#sources) to learn more.
 
 ## HTTP Request Specification
 
