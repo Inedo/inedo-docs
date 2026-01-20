@@ -21,6 +21,10 @@ The `vulns audit` command is used audit a project file. This command is intended
 
 The  `--project` option is always required. The `--type` option is optional and will filter by package type.
 
+:::(info)(📄 Note: pgutil Sources)
+Source options must also be specified unless you have the "Default" source configured. See [Working with Sources](/docs/proget/api/pgutil#sources) to learn more.
+:::
+
 **Auditing project vulnerabilities** requires the project file name (e.g. `myProject`).
 
 ```plaintext
