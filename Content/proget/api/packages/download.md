@@ -50,9 +50,6 @@ pgutil packages download --feed=myPypiFeed --package=myPypiPackage --version=7.8
 pgutil packages download --feed=myDebianFeed --package=myDebianPackage --version=2.3.4 --component=main --distro=stable --arch=amd64 --output-file=C:\debian-packages\myDebianPackage_2.3.4_amd64.deb
 ```
 
-Note source options must also be specified unless you have the "Default" source configured, and that a feed may be instead specified in the source. See [Working with Sources](/docs/proget/api/pgutil#sources) to learn more.
-
-
 ## HTTP Request Specification
 To download a package, simply `GET` to the URL with a feed name, [package identifiers](/docs/proget/api/packages#using-multiple-parameters), and an [appropriate API Key](/docs/proget/api/packages#authentication).
 

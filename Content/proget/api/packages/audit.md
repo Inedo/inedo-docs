@@ -50,8 +50,6 @@ Checking Newtonsoft.Json 12.0.3...
 Noncompliant
 ```
 
-Note source options must also be specified unless you have the "Default" source configured, and that a feed may be instead specified in the source. See [Working with Sources](/docs/proget/api/pgutil#sources) to learn more.
-
 ## HTTP Request Specification
 
 To audit a package, simply `POST` to the URL with a feed name, [package identifiers](/docs/proget/api/packages#using-multiple-parameters), and an [appropriate API Key](/docs/proget/api/packages#authentication).

@@ -42,8 +42,6 @@ pgutil packages upload --feed=approved-debian --input-file=C:\inedo\packages\myD
 pgutil packages upload --feed=internal-maven --input-file=c:\apps\my-app-1.1\my-app-1.1.jar --artifactPath=/com/my-company/my-app/1.1
 ```
 
-Note source options must also be specified unless you have the "Default" source configured, and that a feed may be instead specified in the source. See [Working with Sources](/docs/proget/api/pgutil#sources) to learn more.
-
 ## HTTP Request Specification
 
 To upload a package, simply `PUT` to the URL with a feed name, [package identifiers](/docs/proget/api/packages#using-multiple-parameters), an [appropriate API Key](/docs/proget/api/packages#authentication) and a package in either `ZIP`, `JAR` or `TAR` format depending on the value of the `Content-Type` header.

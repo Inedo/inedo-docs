@@ -40,8 +40,6 @@ pgutil packages repackage --feed=myNugetFeed --package=myNugetPackage --version=
 pgutil packages repackage --feed=MyNpmFeed --package=@myScope/myNpmPackage --version=2.0.0-rc.1 --new-version=2.0.0
 ```
 
-Note source options must also be specified unless you have the "Default" source configured, and that a feed may be instead specified in the source. See [Working with Sources](/docs/proget/api/pgutil#sources) to learn more.
-
 ## HTTP Request Specification
 
 To repackage a package, simply `POST` to the following URL with an [appropriate API Key](/docs/proget/api/security#authentication) and a `RepackageInput` object (see [RepackageInput.cs](https://github.com/Inedo/pgutil/blob/thousand/Inedo.ProGet/RepackageInput.cs)) object as the request body.

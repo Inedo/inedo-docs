@@ -53,8 +53,6 @@ pgutil apikeys create feed --group=MyFeedGroup
 pgutil apikeys create personal --user=johnsmith
 ```
 
-Note source options must also be specified unless you have the "Default" source configured, and that a feed may be instead specified in the source. See [Working with Sources](/docs/proget/api/pgutil#sources) to learn more.
-
 ## HTTP Request Specification
 To create an API key, simply `POST` a `ApiKeyInfo` JSON object (see [ApiKeyInfo.cs](https://github.com/Inedo/pgutil/blob/thousand/Inedo.ProGet/ApiKeyInfo.cs)) as the request body to `/api/api-keys/create`. 
 

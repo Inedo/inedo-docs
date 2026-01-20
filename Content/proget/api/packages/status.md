@@ -45,8 +45,6 @@ pgutil packages status unlisted --feed=myNugetFeed --package=myNugetPackage --ve
 pgutil packages status deprecated --feed MyNpmFeed --package=@myScope/myNpmPackage --version=2.0.0 --reason=CriticalBugs
 ```
 
-Note source options must also be specified unless you have the "Default" source configured, and that a feed may be instead specified in the soruce. See [Working with Sources](/docs/proget/api/pgutil#sources) to learn more.
-
 ## HTTP Request Specification
 To set a package's status, simply `POST` or `PUT` to the URL with a feed name, [package identifiers](/docs/proget/api/packages#using-multiple-parameters), an [appropriate API Key](/docs/proget/api/packages#authentication) and a `PackageStatus` (see [PackageStatus.cs](https://github.com/Inedo/pgutil/blob/thousand/Inedo.ProGet/PackageStatus.cs)) object as the request body.
 
