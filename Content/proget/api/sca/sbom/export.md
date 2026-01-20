@@ -9,7 +9,7 @@ order: 1
 This example exports an SBOM of version `1.2.3` of a project `myProject` as an `XML`, authenticating with the API key `abc12345`:
 
 ```bash
-curl -X GET -H "X-ApiKey: abc12345" "https://pg02.phs.inedo.com/api/sca/export?project=myProject&version=1.2.3&format=xml"
+curl -X GET -H "X-ApiKey: abc12345" "https://proget.corp.local/api/sca/export?project=myProject&version=1.2.3&format=xml"
 ```
 :::
 
