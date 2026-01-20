@@ -18,6 +18,10 @@ The `packages versions` command is used to list versions of the specified packag
 
 The `--package` option is always required, and the `--feed` option is required if there is no default feed configured.  The `--version` option is optional and will filter the package by version.
 
+:::(info)(📄 Note: pgutil Sources)
+Source options must also be specified unless you have the "Default" source configured, and that a feed may be instead specified in the source. See [Working with Sources](/docs/proget/api/pgutil#sources) to learn more.
+:::
+
 **Listing all NuGet packages** requires the package name (e.g. `myNugetPackage`):
 
 ```bash

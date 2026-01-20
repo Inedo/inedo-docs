@@ -29,6 +29,10 @@ The `deprecated` command also has a `--reason` option that can be used to provid
 
 The `--package` and `--version` options are always required, and the `--feed` option is required if a default feed is not configured.
 
+:::(info)(📄 Note: pgutil Sources)
+Source options must also be specified unless you have the "Default" source configured, and that a feed may be instead specified in the source. See [Working with Sources](/docs/proget/api/pgutil#sources) to learn more.
+:::
+
 **Example: Re-Listing  a NuGet package** requires a feed (e.g. `MyNugetFeed`), package name (e.g. `myNugetPackage`),  version (e.g. `1.0.0`), and state (`listed`):
 
 ```bash

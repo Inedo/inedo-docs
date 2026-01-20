@@ -24,6 +24,10 @@ The `--property` and `--value` options are always required. The `--feed` option 
 | `metadataCacheEnabled`  | Indicates whether metadata caching is enabled (`true`) or disabled (`false`) | 
 | `metadataCacheCount` | The number of URL-specific metadata requests cached by ProGet | 
 | `metadataCacheMinutes`  | The number of minutes a connector metadata request to a specific URL is cached by ProGet  | 
+
+:::(info)(📄 Note: pgutil Sources)
+Source options must also be specified unless you have the "Default" source configured. See [Working with Sources](/docs/proget/api/pgutil#sources) to learn more.
+:::
                                       
 **Enabling a connector's Metadata Caching** requires the connector name (e.g. `nuget.org`), the property to be updated (e.g. `metadataCacheEnabled`), and the value to update this with (e.g. `true`):
 

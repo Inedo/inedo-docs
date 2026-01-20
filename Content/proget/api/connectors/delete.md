@@ -18,6 +18,10 @@ The `connectors delete` command is used to delete a Connector.
 
 The `--connector` option is always required.
 
+:::(info)(📄 Note: pgutil Sources)
+Source options must also be specified unless you have the "Default" source configured. See [Working with Sources](/docs/proget/api/pgutil#sources) to learn more.
+:::
+
 **Deleting a connector** requires the connector name (e.g. `myNugetConnector`):
 
 ```bash

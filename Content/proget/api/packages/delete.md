@@ -22,6 +22,10 @@ The `--package` and `--version` options are always required. The `--feed` option
 
 Additional options may be required depending on the package type. If a required option is missing, an error will be returned indicating the missing option.
 
+:::(info)(📄 Note: pgutil Sources)
+Source options must also be specified unless you have the "Default" source configured, and that a feed may be instead specified in the source. See [Working with Sources](/docs/proget/api/pgutil#sources) to learn more.
+:::
+
 **Deleting an npm Package** requires the scope (e.g. `myscope`), name (e.g. `my-npm-package`) and version (e.g. `2.0.0`):
 
 ```bash

@@ -22,7 +22,11 @@ This API requires ProGet 2023.0 or later.
 ## Command Specification (CLI)
 The `packages repackage` command is used to repackage a package to a package with a different version.
 
-The `--package` and `--version` options are always required, and the `--qualifier` option is required for multifile packages like Debian and RubyGems.
+The `--feed`, `--package` and `--version` options are always required, and the `--qualifier` option is required for multifile packages like Debian and RubyGems.
+
+:::(info)(📄 Note: pgutil Sources)
+Source options must also be specified unless you have the "Default" source configured, and that a feed may be instead specified in the source. See [Working with Sources](/docs/proget/api/pgutil#sources) to learn more.
+:::
 
 **Repackaging a NuGet Package** requires the feed (e.g. `myNugetFeed`), name (e.g. `myNugetPackage`) current version (e.g. `1.0.0-rc.1`) and new version (e.g. `1.0.0`):
 

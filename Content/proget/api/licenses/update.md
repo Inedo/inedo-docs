@@ -27,6 +27,10 @@ The `licenses detection` command set is used to update a license by adding or re
 
 The `--code`, `--type`, and `--value` options are always required.
 
+:::(info)(📄 Note: pgutil Sources)
+Source options must also be specified unless you have the "Default" source configured. See [Working with Sources](/docs/proget/api/pgutil#sources) to learn more.
+:::
+
 **Adding a PUrl detection type to a license** requires the license code (e.g. `ABC-1.0`), the detection type (e.g `purl`), and the value (e.g. `pkg:nuget/myNugetPackage@1.2.3`):
 
 ```bash

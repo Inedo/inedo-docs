@@ -18,6 +18,10 @@ The `licenses info` command is used to get information on a license.
 
 The `--code` options is always required.
 
+:::(info)(📄 Note: pgutil Sources)
+Source options must also be specified unless you have the "Default" source configured. See [Working with Sources](/docs/proget/api/pgutil#sources) to learn more.
+:::
+
 **Getting a license** requires the license code (e.g. `MIT`):
 
 ```bash
