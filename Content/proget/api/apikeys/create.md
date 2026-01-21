@@ -17,7 +17,7 @@ This API requires ProGet 2024.3 or later.
 ## Command Specification (CLI)
 The `apikeys create` command set is used to create an ApiKey in a ProGet instance. 
 
-There are three commands available (`system`, `personal`, and `feed`), and each command has options that correspond to fields in the web UI, including `--description`, `--expiration`, `--logging`, `--name`, and `--key`. See [Creating API Keys in ProGet](/docs/buildmaster/reference/api/buildmaster-administration-security-api-keys) to learn more.
+There are three commands available (`system`, `personal`, and `feed`), and each command has options that correspond to fields in the web UI, including `--description`, `--expiration`, `--logging`, `--name`, and `--key`. See [API Keys & Access](/docs/proget/api/apikeys) to learn more.
 
 These commands also have optional `--source` and related authentication options (i.e. `--api-key` or `--username` / `--password`). See [Working with Sources in pgutil](/docs/proget/api/pgutil#working-with-sources) to learn more.
 
