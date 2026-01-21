@@ -18,6 +18,10 @@ The `builds promote` command is used to promote a build of a project.
 
 The `--project`, `--build`, and `--stage` options are always required.
 
+:::(info)(📄 Note: pgutil Sources)
+Source options must also be specified unless you have the "Default" source configured. See [Working with Sources](/docs/proget/api/pgutil#sources) to learn more.
+:::
+
 **Promoting a build of a project** requires the project name (e.g. `myProject`), build number (e.g. `1.2.3`), and stage to promote to (e.g. `Production`)
 
 ```bash

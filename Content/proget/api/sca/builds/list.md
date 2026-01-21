@@ -18,6 +18,10 @@ The `builds list` command is used to list all builds of a project.
 
 The `--project` option is always required.
 
+:::(info)(📄 Note: pgutil Sources)
+Source options must also be specified unless you have the "Default" source configured. See [Working with Sources](/docs/proget/api/pgutil#sources) to learn more.
+:::
+
 **Listing builds of a project** requires the project name (e.g. `myProject`)
 
 ```bash
