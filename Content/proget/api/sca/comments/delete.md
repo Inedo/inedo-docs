@@ -18,6 +18,10 @@ The `builds comments delete` command is used to delete a comment in a project's 
 
 The `--project`, `--build` and `--number` options are always required.
 
+:::(info)(📄 Note: pgutil Sources)
+Source options must also be specified unless you have the "Default" source configured. See [Working with Sources](/docs/proget/api/pgutil#sources) to learn more.
+:::
+
 **Deleting a comment** requires the project (e.g. `myProject`), the build version number (e.g. `1.2.3`), and the comment number (e.g. `2`)
 
 ```bash

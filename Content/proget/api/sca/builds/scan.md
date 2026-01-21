@@ -68,6 +68,10 @@ Microsoft.Extensions.Configuration.EnvironmentVariables 8.0.0
 
 When the build status is "Noncompliant (Unresolved)", this command will return a nonzero exit code.  If the `--noaudit` flag is passed and an error scanning or uploading to ProGet, this command will return a nonzero exit code.
 
+:::(info)(📄 Note: pgutil Sources)
+Source options must also be specified unless you have the "Default" source configured. See [Working with Sources](/docs/proget/api/pgutil#sources) to learn more.
+:::
+
 ## Example Commands
 
 #### Example: Scanning the working directory for an npm project

@@ -18,6 +18,10 @@ The `builds issues list` command is used to list all existing issues in a projec
 
 The `--project` and `--build` options are always required. 
 
+:::(info)(📄 Note: pgutil Sources)
+Source options must also be specified unless you have the "Default" source configured. See [Working with Sources](/docs/proget/api/pgutil#sources) to learn more.
+:::
+
 **Listing issues** requires the project (e.g. `myProject`) and the build version (e.g. `1.2.3`)
 
 ```bash

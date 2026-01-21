@@ -18,6 +18,10 @@ The `builds audit` command is used to analyze a build of a project.
 
 The `--project` and `--build` options are always required; `--brief` may be specified to display only the build overview information.
 
+:::(info)(📄 Note: pgutil Sources)
+Source options must also be specified unless you have the "Default" source configured. See [Working with Sources](/docs/proget/api/pgutil#sources) to learn more.
+:::
+
 **Analyzing a build** requires the project name (e.g. `myProject`) and build number (e.g. `1.2.3`). For example:
 
 ```plaintext
