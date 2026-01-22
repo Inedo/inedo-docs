@@ -77,4 +77,4 @@ GET /api/storage
 ```
 
 ## HTTP Response Specification
-A successful (`200`) response body will contain an array of `FeedStorageType` (see [FeedStorageType.cs](https://github.com/Inedo/pgutil/blob/thousand/Inedo.ProGet/FeedStorageType.cs)) objects. A `403` response indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/security#authentication).
+A successful (`200`) response body will contain an array of `FeedStorageType` (see [FeedStorageType.cs](https://github.com/Inedo/pgutil/blob/thousand/Inedo.ProGet/FeedStorageType.cs)) objects. A `500` response indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/security#authentication).

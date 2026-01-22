@@ -46,7 +46,7 @@ GET /endpoints/«AssetDirectoryName»/dir/«path-to-folder»[?recursive=«true/f
 * Omitting the `«path_to_folder»` will return items located in the root folder of the asset directory.
 
 ## HTTP Response Specification
-A JSON array of `AssetDirectoryItem` (see [AssetDirectoryItem.cs](https://github.com/Inedo/pgutil/blob/thousand/Inedo.ProGet/AssetDirectories/AssetDirectoryItem.cs)) objects will be returned on a successful `200` response. A `403` response indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/assets#authentication).
+A JSON array of `AssetDirectoryItem` (see [AssetDirectoryItem.cs](https://github.com/Inedo/pgutil/blob/thousand/Inedo.ProGet/AssetDirectories/AssetDirectoryItem.cs)) objects will be returned on a successful `200` response. A `401` response indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/assets#authentication).
 
 Note that querying a nonexistent path (i.e. a folder that does not exist) will not return a `404`, but will instead return an empty array. To check if a folder exists, you can use the [Get Metadata](/docs/proget/api/assets/metadata/get) endpoint.
 

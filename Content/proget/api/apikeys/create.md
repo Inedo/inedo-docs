@@ -25,7 +25,7 @@ These commands also have optional `--source` and related authentication options 
 | --- | --- | --- |
 | `system` | `apis` | `full-control` or a comma-separated list with a combination  `feeds`, `sca`, and  `sbom-upload`; defaults to `full-control` |
 | `feed`  | `feed`,  `group` | name of a feed or feed group in ProGet; exactly one must be specified |
-| `personal` | `user` | defaults to the user specified in the  `--username` option or source
+| `personal` | `user` | defaults to the user specified in the  `--username` option or source |
 
 The key will be written to stdout on success.
 
