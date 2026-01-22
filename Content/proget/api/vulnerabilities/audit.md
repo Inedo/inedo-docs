@@ -8,7 +8,7 @@ order: 1
 :::(Info) (🚀 Quick Example: Auditing vulnerabilities in a project with pgutil)
 This example will audit vulnerabilities in the project `myProject.csproj` located locally in `c:\projects\`:
 
-```plaintext
+```bash
 pgutil vulns audit --project=c:\projects\myProject.csproj
 ```
 :::

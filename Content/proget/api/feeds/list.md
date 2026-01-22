@@ -13,6 +13,10 @@ pgutil feeds list
 ```
 :::
 
+:::(info)(Listed Feeds)
+This endpoint will only return the feeds that the user has permission to view. If an empty list is returned, this may indicate either there are no existing feeds or that the user does not have permission to view feeds. An error is not returned if the [API Key](/docs/proget/api/feeds#authentication) is invalid.
+:::
+
 ## Command Specification (CLI)
 The `feeds list` command is used to list all existing feeds.
 
@@ -46,7 +50,7 @@ GET /api/management/feeds/list
 ```
 
 ## HTTP Response Specification
-A successful (`200`) response body will contain an array of `ProgetFeed` (see [ProGetFeed.cs](https://github.com/Inedo/pgutil/blob/thousand/Inedo.ProGet/ProGetFeed.cs)) objects. A `403` response indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/security#authentication).
+A successful (`200`) response body will contain an array of `ProgetFeed` (see [ProGetFeed.cs](https://github.com/Inedo/pgutil/blob/thousand/Inedo.ProGet/ProGetFeed.cs)) objects.
 
 ## Sample Usage Scripts
 

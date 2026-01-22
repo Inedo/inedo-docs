@@ -40,5 +40,5 @@ POST /endpoints/«AssetDirectoryName»/delete/«path»?recursive=«true/false»
 
 ## HTTP Response Specification
 
-A successful `200` response will indicate the item (file/folder) has been deleted. A `403` response indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/assets#authentication).
+A successful `200` response will indicate the item (file/folder) has been deleted. A `401` response indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/assets#authentication).
 

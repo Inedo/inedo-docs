@@ -46,4 +46,4 @@ GET /upack/myUniversalFeed/download-vpack/myGroup/myVirtualPackage?latest
 ```
 
 ## HTTP Response Specification
-The virtual package will be downloaded on a successful `200` response. A `403` response indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/universal-feed#authentication). A `404` response indicates that the specified virtual package does not exist.
+The virtual package will be downloaded on a successful `200` response. A `403` response indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/universal-feed#authentication).

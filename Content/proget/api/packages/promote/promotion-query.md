@@ -17,6 +17,8 @@ curl -X GET --header "X-ApiKey: abc12345" "http://proget.corp.local/api/promotio
 ```
 :::
 
+Note, it is not considered an error if the promoted package and it's history do not exist. 
+
 ## Authentication and API Keys { #authentication }
 
 The following is a summary of access types and their corresponding requirements for various API keys types and endpoints within this API.
@@ -60,7 +62,7 @@ GET /api/promotions/list?fromFeed=npm-development&toFeed=npm-production&group=my
 ```
 
 ## Response Specification
-A successful (`200`) response body will contain an array of PromotePackage (see [PromotedPackage](#promoted-package)) objects. A `403` response indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/security#authentication).
+A successful (`200`) response body will contain an array of PromotePackage (see [PromotedPackage](#promoted-package)) objects. A `401` response indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/security#authentication).
 
 | Response | Details |
 | --- | --- |
