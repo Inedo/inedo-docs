@@ -29,18 +29,26 @@ To replicate a feed navigate to "Feeds" and select the Replication tab.
 
 See our page on [Feed Replication](/docs/proget/replication-feed-mirroring/proget-advanced-feed-replication) to learn more.
 
-##  ProGet Feed-to-Feed Migration
-*This method requires versions of ProGet earlier than 2025.14 and works with all feed types except Bower.*
+## ProGet Feed-to-Feed Migration
+*This method requires ProGet 2025.0+ and works with all feed types except Bower. Docker feed-to-feed migration requires ProGet 2025.13+*
 
 The built-in Feed-to-Feed is the preferred method for migration and involves using ProGet's step-by-step instructions to migrate all packages from an existing feed to a newly created one.
 
 It is easy to configure and involves creating a new feed in an instance that migrates across all packages from a feed in another instance.
 
-When creating a new feed, you will be given the option to import packages from an existing feed on another ProGet server.
+After creating a new feed, you will have the option to import packages from an existing feed on another ProGet server. Select "Import Packages" from the dropdown menu.
 
-![Import](/resources/docs/proget-feed-import-windows.png){height="" width="50%"}
+![Import](/resources/docs/proget-import-packages-select.png){height="" width="50%"}
 
-During this set up you will need the **ProGet server URL** of your previous instance, as well as an **API Key**, so make sure you have these on hand when setting up your new feed.
+From here select "Download Package from Another Service" and then "ProGet".
+
+![Import](/resources/docs/proget-import-packages-select-proget.png){height="" width="50%"}
+
+From here you will need to enter your **ProGet server URL** of your previous instance, as well as an **API Key**, so make sure you have these on hand when setting up your new feed. You'll then be asked to select which feed from your previous instance you want to import packages from. 
+
+:::(warn)(⚠ Docker Image Importing)
+When importing Docker images from from another ProGet instance < 2025.13, you must remove all connectors from your Docker feed prior to importing.
+:::
 
 ## Migrating Using a Bulk Upload
 *This method requires ProGet 2023.22+ and works with all feed types except Docker and Bower. For Maven feeds, this method requires ProGet 2023.22+.*
