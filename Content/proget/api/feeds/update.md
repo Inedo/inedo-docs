@@ -190,7 +190,7 @@ POST /api/management/feeds/update/«feed-name»
 ```
 
 ## HTTP Response Specification
-A successful (`200`) response body will contain an updated `ProGetFeed` object. A `403` response indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/security#authentication).
+A successful (`200`) response body will contain an updated `ProGetFeed` object. A `500` response indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/security#authentication).
 
 ## Sample Usage Scripts
 

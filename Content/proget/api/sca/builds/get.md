@@ -18,6 +18,10 @@ The `builds info` command is used to get information on a build of a project.
 
 The `--project` and `--build` options are always required.
 
+:::(info)(📄 Note: pgutil Sources)
+Source options must also be specified unless you have the "Default" source configured. See [Working with Sources](/docs/proget/api/pgutil#sources) to learn more.
+:::
+
 **Getting information on a build** requires the project name (e.g. `myProject`) and the build number (e.g `1.2.3`)
 ```bash
 pgutil builds info --build=1.2.3 --project=myProject 
@@ -41,7 +45,7 @@ Comments:
 To return a specified build, simply `GET` to the URL with the `project name`, `build version`, and an [appropriate API Key](/docs/proget/api/sca#authentication).
 
 ```plaintext
-GET /api/sca/releases?name=«projectName»&version=«versionNumber»
+GET /api/sca/releases?project=«projectName»&version=«versionNumber»
 ```
 
 ## HTTP Response Specification

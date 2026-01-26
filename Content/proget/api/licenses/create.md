@@ -40,4 +40,4 @@ POST/PUT /api/licenses/add
 ```
 
 ## HTTP Response Specification
-A `LicenseInfo` object will be returned on a successful `200` response. A '403' response indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/licenses#authentication).
+A `LicenseInfo` object will be returned on a successful `200` response. A `403` response indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/licenses#authentication).

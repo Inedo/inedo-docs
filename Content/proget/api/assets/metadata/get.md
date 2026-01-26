@@ -57,4 +57,4 @@ GET /endpoints/«AssetDirectoryName»/metadata/«path»
 ```
 
 ## HTTP Response Specification
-An `AssetDirectoryItem` (see [AssetDirectoryItem.cs](https://github.com/Inedo/pgutil/blob/thousand/Inedo.ProGet/AssetDirectories/AssetDirectoryItem.cs)) object will be returned on a successful `200` response. A `403` response indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/assets#authentication).
+An `AssetDirectoryItem` (see [AssetDirectoryItem.cs](https://github.com/Inedo/pgutil/blob/thousand/Inedo.ProGet/AssetDirectories/AssetDirectoryItem.cs)) object will be returned on a successful `200` response. A `401` response indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/assets#authentication).

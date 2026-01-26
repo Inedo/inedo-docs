@@ -20,6 +20,10 @@ The `builds create` command is used to create a new build.
 
 The `--project` and `--build` options are always required.
 
+:::(info)(📄 Note: pgutil Sources)
+Source options must also be specified unless you have the "Default" source configured. See [Working with Sources](/docs/proget/api/pgutil#sources) to learn more.
+:::
+
 **Creating a build** requires the project name (e.g. `myProject`) and the build number to be created (e.g `1.2.3`)
 ```bash
 pgutil builds create --build=1.2.3 --project=myProject 

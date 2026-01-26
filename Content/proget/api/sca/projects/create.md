@@ -18,6 +18,10 @@ The `builds projects create` command is used to create a new project or update a
 
 The `--project` option is always required. The  `--type` and `--url` options are optional. They can be included in the initial creation of a project, or to update an existing project
 
+:::(info)(📄 Note: pgutil Sources)
+Source options must also be specified unless you have the "Default" source configured. See [Working with Sources](/docs/proget/api/pgutil#sources) to learn more.
+:::
+
 **Creating a project** requires the project name (e.g. `myProject`)
 ```bash
 pgutil builds projects create --project=myProject

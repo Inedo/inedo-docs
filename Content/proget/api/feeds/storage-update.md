@@ -60,4 +60,4 @@ POST /api/storage?feed=«feed-name»
 ```
 
 ## HTTP Response Specification
-A [FeedStorageConfiguration](/docs/proget/api/feeds#storage-object) object (see [FeedStorageConfiguration.cs](https://github.com/Inedo/pgutil/blob/thousand/Inedo.ProGet/FeedStorageConfiguration.cs)) will be returned on a successful `200` response. A `403` response indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/security#authentication).
+A [FeedStorageConfiguration](/docs/proget/api/feeds#storage-object) object (see [FeedStorageConfiguration.cs](https://github.com/Inedo/pgutil/blob/thousand/Inedo.ProGet/FeedStorageConfiguration.cs)) will be returned on a successful `200` response. A `500` response indicates a [missing, unknown, or unauthorized API Key](/docs/proget/api/security#authentication).

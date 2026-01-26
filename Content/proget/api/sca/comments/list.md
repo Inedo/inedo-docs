@@ -20,6 +20,10 @@ The `builds comments list` command is used to list comments in a project's build
 
 The `--project` and `--build` options are always required.
 
+:::(info)(📄 Note: pgutil Sources)
+Source options must also be specified unless you have the "Default" source configured. See [Working with Sources](/docs/proget/api/pgutil#sources) to learn more.
+:::
+
 **Listing comments** requires the project (e.g. `myProject`) and the build version number (e.g. `1.2.3`):
 
 ```bash

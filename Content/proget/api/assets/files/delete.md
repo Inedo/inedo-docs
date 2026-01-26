@@ -9,7 +9,7 @@ order: 3
 This example will delete a file `old-file.txt` located in the folder `test-files` of the asset directory `myAssetDirectory`:
 
 ```bash
-pgutil assets rm --feed=myAssetDirectory --path=test-files/old-file.txt
+pgutil assets delete --feed=myAssetDirectory --path=test-files/old-file.txt
 ```
 :::
 
