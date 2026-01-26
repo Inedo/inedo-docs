@@ -4,7 +4,7 @@ order: 5
 max-header-level: 3
 ---
 
-Migrating a repository to ProGet can be done in a matter of minutes using ProGet’s Feed Importer feature. This feature allows packages from a remote feed to be downloaded to a local feed. 
+Migrating a repository to ProGet can be done in a matter of minutes using [ProGet’s Feed Importer feature](/docs/proget/feeds/feed-overview/proget-feed-importing). This feature allows packages from a remote feed to be downloaded to a local feed. 
 
 :::(Info) (Using JFrog Artifactory, Azure DevOps Artifacts, or MyGet?)
 ProGet has some extra features to help migrate from these services. See
