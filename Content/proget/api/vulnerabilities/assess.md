@@ -45,9 +45,7 @@ To assess a vulnerability, simply `POST` to the URL with a `vulnerability id`, `
 | Access Type | Requirements |
 | --- | --- |
 | System API Keys | `Manage SCA (Projects & Builds)` is required |
-| Feed API Keys | *not usable* |
 | Personal API Key* | `Projects_Manage` is required | 
-| No API Key | anonymous or authenticated user must have at least one of the above permissions |
 
 *\* Personal API keys are scoped to users and inherit the [Tasks and attributes](/docs/proget/administration-security#tasks) assigned to those users.*
 
