@@ -6,10 +6,11 @@ max-header-level: 3
 
 Migrating a repository to ProGet can be done in a matter of minutes. By downloading your packages from other repositories you can then import them into your ProGet feeds.
 
-:::(Info) (Using JFrog Artifactory, Azure DevOps Artifacts, or MyGet?)
+:::(Info) (Using JFrog Artifactory, Azure DevOps Artifacts, Sonatype Nexus, or MyGet?)
 ProGet has some extra features to help migrate from these services. See
 * [Azure DevOps Artifacts Migration Guide](/docs/proget/installation/migrating-to-proget/proget-azure-devops-feed-migration)
 * [Jfrog Artifactory Migration Guide](/docs/proget/installation/migrating-to-proget/proget-jfrog-artifactory-feed-migration)
+* [Sonatype Nexus Migration Guide](/docs/proget/installation/migrating-to-proget/proget-sonatype-nexus-feed-migration)
 * [MyGet Migration Guide](/docs/proget/installation/migrating-to-proget/proget-myget-feed-migration)
 :::
 
