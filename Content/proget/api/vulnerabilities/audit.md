@@ -55,7 +55,14 @@ curl -X POST -H "X-ApiKey: abc12345" https://proget.corp.local/api/sca/audit-pac
 ```
 :::
 
-To audit packages, simply `POST` to the URL with an appropriate API Key with `Manage SCA (Projects & Builds)` or `Manage Projects` permissions, and an array of `PackageVersionIdentifier` (see [PackageVersionIdentifier.cs](https://github.com/Inedo/pgutil/blob/thousand/Inedo.ProGet/PackageVersionIdentifier.cs)) objects as the request body.
+To audit packages, simply `POST` to the URL with an appropriate API Key and an array of `PackageVersionIdentifier` (see [PackageVersionIdentifier.cs](https://github.com/Inedo/pgutil/blob/thousand/Inedo.ProGet/PackageVersionIdentifier.cs)) objects as the request body.
+
+| Access Type | Requirements |
+| --- | --- |
+| System API Keys | `Manage SCA (Projects & Builds)` is required |
+| Personal API Key* | `Projects_Manage` is required | 
+
+*\* Personal API keys are scoped to users and inherit the [Tasks and attributes](/docs/proget/administration-security#tasks) assigned to those users.*
 
 ```bash
 POST /api/sca/audit-package-vulns

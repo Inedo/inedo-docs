@@ -40,7 +40,14 @@ curl -X POST -H "X-ApiKey: abc12345" https://proget.corp.local/api/sca/assess
 ```
 :::
 
-To assess a vulnerability, simply `POST` to the URL with a `vulnerability id`, `assessment type`, `comment` and `policy` parameters, and an appropriate API Key with `Manage SCA (Projects & Builds)` or `Manage Projects` permissions. 
+To assess a vulnerability, simply `POST` to the URL with a `vulnerability id`, `assessment type`, `comment` and `policy` parameters, and an appropriate API Key.
+
+| Access Type | Requirements |
+| --- | --- |
+| System API Keys | `Manage SCA (Projects & Builds)` is required |
+| Personal API Key* | `Projects_Manage` is required | 
+
+*\* Personal API keys are scoped to users and inherit the [Tasks and attributes](/docs/proget/administration-security#tasks) assigned to those users.*
 
 ```
 POST api/sca/assess[?id=«vulnerability-id»][&type=«assessment-type»][&comment=«comment»][&policy=«policy-name»]
