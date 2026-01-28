@@ -3,7 +3,7 @@ title: "HOWTO: Migrate from MyGet to ProGet"
 order: 1
 ---
 
-Migrating your existing MyGet feeds to ProGet is a straightforward process. By bulk downloading your packages from your feeds via MyGet you can then import them into your ProGet feeds. This article will walk through how to use the Bulk Package Import feature to migrate a MyGet feed to ProGet.
+Migrating your existing MyGet feeds to ProGet is a straightforward process. By bulk downloading your packages from your feeds via MyGet you can then [import them into your ProGet feeds](/docs/proget/feeds/feed-overview/proget-feed-importing). This article will walk through how to use the Bulk Package Import feature to migrate a MyGet feed to ProGet.
 
 ## Step 1: Download Your MyGet Packages
 

@@ -4,7 +4,7 @@ order: 3
 max-header-level: 3
 ---
 
-Migrating a JFrog Artifactory repository to ProGet can be done in a few simple steps with ProGet’s Feed Importer feature. This feature allows packages from a remote feed to be downloaded to a local feed.
+Migrating a JFrog Artifactory repository to ProGet can be done in a few simple steps with [ProGet’s Feed Importer feature](/docs/proget/feeds/feed-overview/proget-feed-importing). This feature allows packages from a remote feed to be downloaded to a local feed.
 
 This article will guide you through how to use the Feed Importer feature to migrate your packages from your Jfrog Artifactory repositories to ProGet.
 

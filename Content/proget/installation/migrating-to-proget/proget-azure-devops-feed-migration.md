@@ -4,7 +4,7 @@ order: 2
 max-header-level: 3
 ---
 
-Migrating an Azure DevOps repository to ProGet can be done in a matter of minutes using ProGet’s Feed Importer feature. This feature allows packages from a remote feed to be downloaded to a local feed. 
+Migrating an Azure DevOps repository to ProGet can be done in a matter of minutes using [ProGet’s Feed Importer feature](/docs/proget/feeds/feed-overview/proget-feed-importing). This feature allows packages from a remote feed to be downloaded to a local feed. 
 
 This article will guide you through how to use the Feed Importer feature to migrate packages from your Azure DevOps repositories to ProGet. 
 
