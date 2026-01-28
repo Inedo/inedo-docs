@@ -4,19 +4,18 @@ nav-title: "Virtual Packages"
 order: 3
 ---
 
-A Virtual Package is a special type of Universal Package that contains no content (i.e. application files, components, metadata files, etc.). It's simply a package manifest file (i.e. `upack.json`) with instructions on where to download the content.
+A Virtual Package is a special type of Universal Package that contains no content (i.e. application files, components, metadata files, etc.). It's simply a package manifest file (i.e. `upack.json`) with instructions on where to download the content, contained in a ZIP archive with the `.vpack` extension.
 
 When you upload a Virtual Package to a feed, it will appear and function as an ordinary universal package in most cases. When a user or client downloads the package from the feed, ProGet will transparently assemble the package file.
 
 ## Creating Virtual Packages
 
-A Virtual Package is JSON-based Universal Package Manifest file with an additional `content` property that describes the package's content (i.e. what files will be placed in the `packages/` folder in the package file). 
+A Virtual Package is JSON-based Universal Package Manifest file with an additional `content` property that describes the package's content (i.e. what files will be placed in the `packages/` folder in the package file). This file, named `upack.json` must then be placed within a ZIP archive with the `.vpack` extension. 
 
 For example, the following Virtual Package simply combines two other universal packages into one:
 
-
 ```
-# HDARS.Combined-1.3.9.vpack
+# upack.json
 {
  "name": "HDARS.Combined",
  "version": "1.3.9",
@@ -24,8 +23,9 @@ For example, the following Virtual Package simply combines two other universal p
 }
 ```
 
-ProGet will assemble the `HDARS.Combined` package file by taking the contents from the referenced packages (i.e. files under `package/` in the package file) and adding them to the `packages/` folder in the new package file. 
+This should be placed in a ZIP archive renamed to `.vpack` (e.g.`HDARS.Combined-1.3.9.vpack`).
 
+ProGet will assemble the `HDARS.Combined` package file by taking the contents from the referenced packages (i.e. files under `package/` in the package file) and adding them to the `packages/` folder in the new package file. 
 
 <style>
 .vpackcompare td, .vpackcompare th  { border: solid 1px #ccc; }
