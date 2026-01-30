@@ -34,7 +34,7 @@ Also, the remote feeds while show in a drop down. These feeds will only include 
 
 ![](/resources/docs/proget-importing-proget-feedselect.png){height="" width="50%"}
 
-All Feed Types can be imported from other ProGet servers. ProGet uses Packages API for package importing. This allows the other servers to be ProGet 2023+.
+All Feed Types can be imported from other ProGet servers. ProGet uses the Packages API to import packages from other ProGet instances. Because of this, the source server must be running ProGet 2023 or later.
 
 :::(info)(Importing Docker Images)
 Docker images can be imported as of ProGet 2025.13. For servers below 2025.13, you will need to remove any Docker connectors prior to importing. Imports are blocked if connectors are detected.
@@ -94,9 +94,9 @@ The following feed types can be imported from Sonatype Nexus servers:
 **\* as of ProGet 2025.13*
 
 :::(info)(Importing Docker Images from Sonatype Nexus)
-When importing Docker images from Sonatype Nexus, by default, ProGet builds the Docker API URL based on the registry settings reported by Nexus. This override is primarily used when a reverse proxy is configured in front of the Nexus server and the reported URL is not directly accessible. By setting this value, ProGet will use the specified Docker API endpoint instead of the one taken from the Nexus configuration.
+By default, ProGet builds the Docker API URL using the registry settings reported by Nexus. You can override this on the Advanced tab to specify a custom Docker API endpoint. This is most commonly needed when a reverse proxy sits in front of the Nexus server and the reported URL isn’t directly accessible.
 
-You can configure settings on the advanced tab to specify a custom Docker API URL (for example, https://nexus.kramerica.com/v2/my-registry). 
+For example, you might specify a URL such as: `https://nexus.kramerica.com/v2/my-registry`.
 :::
 
 You can read more about importing from Sonatype Nexus in our [HOWTO: Migrate from Sonatype Nexus to ProGet](/docs/proget/installation/migrating-to-proget/proget-sonatype-nexus-feed-migration) guide. 
