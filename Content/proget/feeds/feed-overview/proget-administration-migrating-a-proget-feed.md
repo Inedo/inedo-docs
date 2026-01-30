@@ -30,9 +30,9 @@ To replicate a feed navigate to "Feeds" and select the Replication tab.
 See our page on [Feed Replication](/docs/proget/replication-feed-mirroring/proget-advanced-feed-replication) to learn more.
 
 ## ProGet Feed-to-Feed Migration
-*This method requires ProGet 2025.0+ and works with all feed types except Bower. Docker feed-to-feed migration requires ProGet 2025.13+*
+*This method requires ProGet 2025.0+ and works with all feed types. Docker feed-to-feed migration requires ProGet 2025.13+*
 
-The built-in Feed-to-Feed is the preferred method for migration and involves using ProGet's step-by-step instructions to migrate all packages from an existing feed to a newly created one.
+The built-in Feed-to-Feed is the preferred method for migration and involves using [ProGet's step-by-step instructions](/docs/proget/feeds/feed-overview/proget-feed-importing) to migrate all packages from an existing feed to a newly created one.
 
 It is easy to configure and involves creating a new feed in an instance that migrates across all packages from a feed in another instance.
 
