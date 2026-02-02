@@ -25,7 +25,7 @@ You will then see several options. These relate to ProGet's SCA features, useful
 
 There are no special requirements for creating Helm Charts in ProGet, but you will need to follow [image naming conventions in your Values file](/docs/proget/feeds/helm#values-yaml) if you'd like ProGet to detect the container images that your chart references.
 
-In general, we recommend creating simple charts from scratch instead of trying to modify or use a third-party chart you might find on [Artifact Hub](/docs/proget/feeds/helm#artifacthub). 
+In general, we recommend creating simple charts from scratch instead of trying to modify or use a third-party chart you might find on [Artifact Hub](/docs/proget/feeds/helm#artifacthub).
 
 This involves using the [helm create](https://helm.sh/docs/helm/helm_create/) command. In the case of creating a chart `my-chart`, you would enter:
 
@@ -62,13 +62,13 @@ $ pgutil sources add --name=Default --url=https://proget.corp.local/ --api-key=a
 Now upload your charts by using the [`pgutil packages upload`](/docs/proget/api/packages/upload) command:
 
 ```bash
-$ pgutil packages upload --feed=internal-helm --input-file=./projects/helm-charts/mychart
+$ pgutil packages upload --feed=internal-helm --input-file=./my-chart-1.15.3.tgz
 ```
 
 If you're using ProGet 2023 or earlier, you can instead issue a `PUT` request with the package file as the content to the endpoint URL. For example:
 
 ```bash
-curl https://proget.corp.local//helm/internal-helm --user api:abc12345 --upload-file ./projects/helm-charts/mychart
+curl https://proget.corp.local//helm/internal-helm --user api:abc12345 --upload-file ./my-chart-1.15.3.tgz
 ```
 
 This method also works in ProGet 2024 and later, should you prefer to use that. Note that neither the `helm push` nor the  `helm-push` are compatible with ProGet feeds.
@@ -76,7 +76,7 @@ This method also works in ProGet 2024 and later, should you prefer to use that. 
 ## Step 5: Adding the Helm Feed as a Repository
 
 To install chart from your `internal-helm` feed, it needs to be registered as a repository. You can use the [`helm repo add`](https://helm.sh/docs/helm/helm_repo_add/) command to do this. We recommend using `proget` as the repository name or, if you have multiple Helm feeds configured, you should use `proget-«feed-name»` instead. For example, if adding your `internal helm` feed on the ProGet server `proget.corp.local`, you would enter:
- 
+
 ```bash
 $ helm repo add proget http://proget.corp.local/helm/internal-helm
 ```
