@@ -7,7 +7,7 @@ The Inedo Agent can be installed to Windows servers using an `installer exe` fil
 
 There are no minimum server requirements, and all modern Windows versions (7+/2008+) are supported. We recommend using the latest version of the installer, which you can download here:
 
-<a href="http://cdn.inedo.com/downloads/inedo-agent/InedoAgentSetup.exe" style=" background:#025291;color:#ffffff;padding: 6px 20px;  border-radius: 3px;font-size: 14pt;text-decoration:none">Download Inedo Agent Installer (latest)</a>
+<a href="https://cdn.inedo.com/downloads/inedo-agent/InedoAgentSetup.exe" style=" background:#025291;color:#ffffff;padding: 6px 20px;  border-radius: 3px;font-size: 14pt;text-decoration:none">Download Inedo Agent Installer (latest)</a>
 
 You can also download older versions if needed.
 
@@ -16,10 +16,10 @@ The following versions of the Inedo Agent are supported; you should install the 
 
 | Version           | Downloads          | Notes
 | ----------------- | ------------------ |------
-| 51 (Aug 4, 2023) | [installer exe](http://cdn.inedo.com/downloads/inedo-agent/InedoAgentSetup.51.exe) &#124; [manual zip](http://cdn.inedo.com/downloads/inedo-agent/InedoAgent.51.zip) | <ul><li>reliability of Agent updates</li></ul>
-| 46 (Dec 20, 2019) | [installer exe](http://cdn.inedo.com/downloads/inedo-agent/InedoAgentSetup.46.exe) &#124; [manual zip](http://cdn.inedo.com/downloads/inedo-agent/InedoAgent.46.zip) | <ul><li>[IAGT-23](https://issues.inedo.com/youtrack/issue/IAGT-23) - FIX: Agent impersonation may fail when impersonating a non-administrator account</li></ul>
-| 45 (Dec 4,  2019) | [installer exe](http://cdn.inedo.com/downloads/inedo-agent/InedoAgentSetup.45.exe) &#124; [manual zip](http://cdn.inedo.com/downloads/inedo-agent/InedoAgent.45.zip) | <ul><li>[IAGT-21](https://issues.inedo.com/youtrack/issue/IAGT-21) - FIX: Starting a process with different credentials may fail when Agent service is running as Local System</li><li>[IAGT-22](https://issues.inedo.com/youtrack/issue/IAGT-22) - FIX: Impersonation fails when specifying a domain account in domain\user format</li></ul>
-| 44 (Aug 7,  2019) | [installer exe](http://cdn.inedo.com/downloads/inedo-agent/InedoAgentSetup.44.exe) &#124; [manual zip](http://cdn.inedo.com/downloads/inedo-agent/InedoAgent.44.zip) | <ul><li>[IAGT-10](https://issues.inedo.com/youtrack/issue/IAGT-18) - FIX: Instance ID is not always respected in Agent commands</li></ul>
+| 51 (Aug 4, 2023) | [installer exe](https://cdn.inedo.com/downloads/inedo-agent/InedoAgentSetup.51.exe) &#124; [manual zip](https://cdn.inedo.com/downloads/inedo-agent/InedoAgent.51.zip) | <ul><li>reliability of Agent updates</li></ul>
+| 46 (Dec 20, 2019) | [installer exe](https://cdn.inedo.com/downloads/inedo-agent/InedoAgentSetup.46.exe) &#124; [manual zip](https://cdn.inedo.com/downloads/inedo-agent/InedoAgent.46.zip) | <ul><li>[IAGT-23](https://issues.inedo.com/youtrack/issue/IAGT-23) - FIX: Agent impersonation may fail when impersonating a non-administrator account</li></ul>
+| 45 (Dec 4,  2019) | [installer exe](https://cdn.inedo.com/downloads/inedo-agent/InedoAgentSetup.45.exe) &#124; [manual zip](https://cdn.inedo.com/downloads/inedo-agent/InedoAgent.45.zip) | <ul><li>[IAGT-21](https://issues.inedo.com/youtrack/issue/IAGT-21) - FIX: Starting a process with different credentials may fail when Agent service is running as Local System</li><li>[IAGT-22](https://issues.inedo.com/youtrack/issue/IAGT-22) - FIX: Impersonation fails when specifying a domain account in domain\user format</li></ul>
+| 44 (Aug 7,  2019) | [installer exe](https://cdn.inedo.com/downloads/inedo-agent/InedoAgentSetup.44.exe) &#124; [manual zip](https://cdn.inedo.com/downloads/inedo-agent/InedoAgent.44.zip) | <ul><li>[IAGT-10](https://issues.inedo.com/youtrack/issue/IAGT-18) - FIX: Instance ID is not always respected in Agent commands</li></ul>
 
 ## Unsupported & Discontinued Versions
 We do not recommend using an unsupported version and advise upgrading when possible.
