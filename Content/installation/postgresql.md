@@ -75,6 +75,7 @@ The following versions of the InedoDB are available:
 
 | Version | Released | Downloads | Notes
 | -- | -- | --
+| 17.7.0 | Feb 24, 2026 | [installer exe](https://cdn.inedo.com/downloads/inedodb/InedoDBInstaller17.7.0.exe) | Fix Windows install issues
 | 17.6.0 | Aug 22, 2025 | [installer exe](https://cdn.inedo.com/downloads/inedodb/InedoDBInstaller17.6.0.exe) | Initial Release
 
 For new installations, you should use the latest version unless you plan to restore a database backup. In that case, use the same major version of InedoDB that was used to create that backup.
@@ -102,13 +103,13 @@ docker run --name inedodb \
   -d proget.inedo.com/productimages/inedo/inedodb:17.6
 ```
 
-Once you have an instance running, you'll need to initialize a product database using the `docker exec inedodb inedodb create «product-name»` command.
+Once you have an instance running, you'll need to initialize a product database using the `docker exec inedodb inedodb create --name=«product-name»` command.
 
 ### Example: ProGet InedoDB Database
 To initialize a database for ProGet on the InedoDB instance running in the `inedodb` container:
 
 ```bash
-docker exec inedodb inedodb create proget
+docker exec inedodb inedodb create --name=proget
 ```
 
 ### Installation on Windows
