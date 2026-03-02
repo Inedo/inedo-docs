@@ -3,7 +3,7 @@ title: "HOWTO: Proxy OSS Conda Packages from Public Repositories"
 order: 1
 ---
 
-With ProGet teams can proxy packages from public repositories such as [Anaconda Packages](https://repo.anaconda.com/) or [Conda Forge](https://conda.anaconda.org/conda-forge) and consume them in their projects as they would if they were pulling from the OSS package repository directly. 
+With ProGet teams can proxy packages from public repositories such as [Anaconda Packages](https://repo.anaconda.com/) or [Conda Forge](https://conda.anaconda.org/conda-forge/) and consume them in their projects as they would if they were pulling from the OSS package repository directly. 
 
 The advantages of using ProGet for this are:
 * ProGet will cache packages allowing teams to access them even when the Anaconda Packages repository is down.
@@ -35,11 +35,11 @@ ProGet will then redirect us to our `public-conda` feed, now populated with pack
 
 ### Step 2: (Optional) Changing your Connector to Conda-Forge
 
-By default ProGet creates a connector to [Anaconda Packages](https://repo.anaconda.com/) when creating a new Conda feed. If you need to proxy Conda packages from [Conda Forge](https://conda.anaconda.org/conda-forge) instead, navigate to "Feeds" > "Connectors" and select the `repo.anaconda.com` connector.
+By default ProGet creates a connector to [Anaconda Packages](https://repo.anaconda.com/) when creating a new Conda feed. If you need to proxy Conda packages from [Conda Forge](https://conda.anaconda.org/conda-forge/) instead, navigate to "Feeds" > "Connectors" and select the `repo.anaconda.com` connector.
 
 ![](/resources/docs/proget-connectors-conda.png){height="" width="50%"}
 
-Then select "edit" under "Basic Properties". Replace the URL in the "Connector URL" field with `https://conda.anaconda.org/conda-forge`. We also recommend changing the name to something appropriate such as `conda.anaconda.org/conda-forge`. Then select "Save".
+Then select "edit" under "Basic Properties". Replace the URL in the "Connector URL" field with `https://conda.anaconda.org/conda-forge/`. We also recommend changing the name to something appropriate such as `conda-forge`. Then select "Save".
 
 ![](/resources/docs/proget-connectors-conda-edit.png){height="" width="50%"}
 
