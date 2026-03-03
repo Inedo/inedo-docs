@@ -175,8 +175,8 @@ The `query` operation is typically only used for troubleshooting or support purp
 
     ```sql
     SELECT "Feed_Id","Feed_Name", "Feed_Description", "Active_Indicator", "FeedType_Name"
-    FROM Feeds
-    ORDER BY Name;
+    FROM "Feeds"
+    ORDER BY "Feed_Name";
     ```
 2. Run the following command from a command prompt in the ProGet program directory:
 
@@ -195,8 +195,8 @@ The `query` operation is typically only used for troubleshooting or support purp
 
     ```sql
     SELECT "Feed_Id","Feed_Name", "Feed_Description", "Active_Indicator", "FeedType_Name"
-    FROM Feeds
-    ORDER BY Name;
+    FROM "Feeds"
+    ORDER BY "Feed_Name";
     ```
 3. Run the following command from a command prompt in the ProGet program directory:
 
