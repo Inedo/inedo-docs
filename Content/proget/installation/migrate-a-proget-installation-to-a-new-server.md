@@ -1,32 +1,132 @@
 ---
-title: "Migrate an Existing ProGet Installation to a New Server"
+title: "Migrate an Existing ProGet 2025+ Installation to a New Server"
 order: 7
 ---
 
-Most cases, it is best to [migrate each feed](/docs/proget/feeds/feed-overview/proget-administration-migrating-a-proget-feed) separately.  But there are times when a full server migration is needed.  A common case for this is to test an upgrade by creating a ProGet test environment.  In this case, a server move is more applicable.  This will also require a ProGet trial key or ProGet Free key to use in the non-production environment.
+When migrating your ProGet instance to a new Windows or Linux server, [feed replication](/docs/proget/feeds/feed-overview/proget-administration-migrating-a-proget-feed) is best for most cases, offering a fresh start, and being accessible through the ProGet UI. But there are times when a full server migration is needed, such as testing a version upgrade within a ProGet test environment.
 
-When migrating a full ProGet installation, you should migrate to the same version first, then upgrade it _after_ you move your installation.  Although you can upgrade during the migration, it can make this process much more complicated.  Here are the instructions for migrating to the same version of ProGet.
+When migrating a full ProGet installation with a PostgreSQL database, you should migrate to the same version first, then upgrade after you move your installation. Here are the instructions for migrating to the same version of ProGet.
 
-## How to Migrate ProGet to a New Server
+:::(Info)
+This article is for migrating ProGet 2025+ using a PostgreSQL database. [See here for migrating older versions of ProGet.](/docs/proget/installation/migrate-a-proget-installation-to-a-new-server)
+:::
 
-1. You will first need to back up a few things from your original server (see the [Backing up & Restoring documentation](/docs/installation/backing-up-restoring) for more information):
-    1. Back up your database (you should do this even if you are not moving your SQL server).
-    2. Back up your encryption key.
-        - Your encryption key is stored in your [shared config](/docs/installation/configuration-files). This is typically stored at `%PROGRAMDATA%\Inedo\SharedConfig\ProGet.config`.
-        - If you are not using a shared config file, you will need to get the encryption key from your `Web_appSettings.config` and the `App_appSettings.config` files found in your ProGet installation folder which should be installed to `C:\Program Files\ProGet` or `C:\ProGet`.
-        - If you are not using the shared config on the old server, the new server will install using the shared config. You can copy your encryption key into the shared config on the new server.
-        - Your database connection string is also stored in these files if you need to find it.
-    3. Back up your package files.
-        - You can find these by looking in the _Advanced Settings_ for the key `Storage.PackagesRootPath`.
-    4. If you want your exact extensions and versions, then also back up your extensions directory.
-        - You can find this in the _Advanced Settings_ and looking for the key `Extensions.ExtensionsPath`.
-2. [Install ProGet](https://inedo.com/proget/download) on the new server. We recommend installing the same version as the one installed on your old server.
-3. If you are changing to a new database server, restore the database to your new database server.
-    - If your database name or SQL server name is different from what you installed with on the new server, you will need to update your connection string to point to that database in the  [shared config](/docs/installation/configuration-files).
-    - You may need to re-add the user to the database that your website and service use to access the database.
-4. Copy your packages to the new server. You should copy these to the exact same directory path that the old server used.
-    - If your new server has a different path in `Storage.PackagesRootPath`, then update `Storage.PackagesRootPath` to point to the restored directory path.
-    - If this is different than the directory that ProGet was installed with, you will need to make sure that the user used by your web application and service has create/read/write/delete/modify access to that folder.
-5. If you backed up your extensions, copy them to the folder set in `Extensions.ExtensionsPath` from _Advanced Settings_.
-6. On the new server, update the EncryptionKey in your [shared config](/docs/installation/configuration-files) to the old value you backed up in step 1.
-7. Restart your application pool in IIS and restart your ProGet service(s).
+## Migrating From Windows to Windows
+
+You will need to [back up a few things](/docs/installation/backing-up-restoring) from your original server, including your [Database](/docs/installation/postgresql#inedodb-commands), which will be downloaded as an `.ahbak` file, [Configuration File](/docs/installation/backing-up-restoring#installation-configuration-file-backup), and [Package Files](/docs/installation/backing-up-restoring#package-files-backup). You can use the built-in backup job (Admin > Database Overview) or the [PostgreSQL Database Backup and Restore command](/docs/installation/postgresql#backup) to do this.
+
+![ProGet Database](/resources/docs/installation-migration-databasebackup.png){height="" width="50%"}
+
+Install ProGet on the new server, using the same version as the one installed on your current server. Once installed, it's possible to restore your database backup using the following command:
+
+```bash
+proget database restore --file=C:\Backups\ProGetBackup.ahbak
+```
+
+If you have InedoDB installed, the following restore command can be used:
+
+```bash
+inedodb restore proget --infile=C:\Backups\ProGetBackup.ahbak
+```
+
+Your connection string will be read to connect to the PostgreSQL database of your new server.
+
+Once restored, migrate your package files located in the `%ProgramData%\ProGet` directory to your new server. The file paths for your ProGet instance can be found in Admin > Advanced Settings.
+
+Alternatively, an `.ahdbexp` file can be exported via the ProGet UI (Admin > Database Overview), then imported via the same menu in your new ProGet instance.
+
+![ProGet Database](/resources/docs/installation-migration-databaseexport.png){height="" width="50%"}
+
+::: (WARNING) (Note)
+The `.ahdbexp` file is intended for [migration between same ProGet versions only](/docs/installation/postgresql#database-import-export) and should not be relied upon for routine database backups.
+:::
+
+## Migrating From Windows to Linux
+
+[Backup the essential things](/docs/installation/backing-up-restoring) from your original server, including your [Database](/docs/installation/backing-up-restoring#database-backup), [Configuration File](/docs/installation/backing-up-restoring#installation-configuration-file-backup), and Package Files. You can use the built-in backup job (Admin > Databse Overview) or the [PostgreSQL Database Backup and Restore command](/docs/installation/postgresql#backup) to do this.
+
+Install ProGet on your Linux server. ProGet 2025+ can be installed on Linux using the [official Docker image](/docs/installation/linux/docker-guide), creating three directories (proget-packages, proget-database, proget-backups), for the [specified volumes](/docs/installation/linux/docker-guide#embedded-database-volumes-proget-2025-only). You can check your instance is running with the follwing command:
+
+```bash
+$ docker ps
+```
+
+Or
+
+```bash
+$ docker logs proget
+```
+
+Send your database backup file to your Linux server via SCP:
+
+```bash
+scp C:\User\Downloads\ProGetBackup.ahbak<server-name>@<server_address>:/tmp/
+```
+
+Move your .ahbak file into the backups path of your Linux based ProGet instance:
+
+```bash
+$ docker cp /tmp/ProGetBackup.ahbak proget:/var/proget/backups
+```
+
+A successful file move can be verified by running the following:
+
+```bash
+$ Proget ls -lh /var/proget/backups
+```
+
+Your database can be manually restored from your database backup file:
+
+```bash
+$ docker exec -it proget \
+/usr/local/proget/service/proget database restore \
+--file=/var/proget/backups/ProGetBackup.ahbak
+```
+
+With your database migrated, you can begin migrating your package files to your Linux server. Your ProGet instance file paths, located at Admin > Advanced Settings will need to be changed from Windows paths to the following:
+
+
+
+| Default Windows Paths | Updated Linux Paths |
+| --- | --- |
+| `Extensions.BuiltInExtensionsPath` | `/usr/local/proget/extensions` 
+| `Extensions.ExtensionsPath` | `/var/proget/extensions`
+| `Service.DatabaseBackupDirectory` | `/var/proget/backups `
+| `Storage.ApkPackagesLibrary` | `/var/proget/packages/.apk`
+| `Storage.AssetLibrary` | `/var/proget/packages/.assets`
+| `Storage.CargoPackagesLibrary` | `/var/proget/packages/.cargo`
+| `Storage.ComposerPackagesLibrary` | `/var/proget/packages/.composer`
+| `Storage.ConanPackagesLibrary` | `/var/proget/packages/.conan`
+| `Storage.CranPackagesLibrary` | `/var/proget/packages/.cran`
+| `Storage.DebianPackagesLibrary` | `/var/proget/packages/.debian`
+| `Storage.DockerPackagesLibrary` | `/var/proget/packages/.docker/common`
+| `Storage.DockerRepositoryLibrary` | `/var/proget/packages/.docker`
+| `Storage.HelmPackagesLibrary` | `/var/proget/packages/.helm`
+| `Storage.LocalStoragePath` | `/usr/share/ProGet/LocalStorage`
+| `Storage.MavenArtifactLibrary` | `/var/proget/packages/.maven2`
+| `Storage.NpmPackagesLibrary` | `/var/proget/packages/.npm`
+| `Storage.NuGetPackagesLibrary` | `/var/proget/packages/.nugetv2`
+| `Storage.PackagesRootPath` | `/var/proget/packages`
+| `Storage.ProGetPackagesLibrary` | `/var/proget/packages/.proget`
+| `Storage.PubPackagesLibrary` | `/var/proget/packages/.pub`
+| `Storage.PypiPackagesLibrary` | `/var/proget/packages/.pypi`
+| `Storage.RpmPackagesLibrary` | `/var/proget/packages/.rpm`
+| `Storage.RubyGemsLibrary` | `/var/proget/packages/.rubygems`
+| `Storage.TerraformPackagesLibrary` | `/var/proget/packages/.terraform`
+| `Storage.VsixLibrary` | `/var/proget/packages/.vsix`
+
+::: (WARNING) (Note)
+These file paths are visible on a fresh install of ProGet on Lnux, but will be overwritten when restoring your migrated database, necessitating their replacement.
+:::
+
+Once your file paths are changed, select Save Changes.
+
+Running the following command, you can monitor the storage of your package directories to confirm your packages have successfully been migrated:
+
+```bash
+$ du -sh /var/proget/packages/<package-type>
+```
+
+:::(Info)
+Recommended: After updating your file paths re-index your ProGEt feeds (Feeds > Manage Feed > Storage & Retention > re-index) to ensure feed stability.
+:::
