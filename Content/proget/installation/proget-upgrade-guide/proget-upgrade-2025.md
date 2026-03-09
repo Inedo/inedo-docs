@@ -1,11 +1,16 @@
 ﻿---
 title: "Upgrading to ProGet 2025"
-order: 0
+order: 1
 url-slug: "proget-upgrade-2025"
 ---
 
 ProGet 2025 is a major update, and this article provides information about what will change, the impact to your instance, and how to mitigate risk during upgrade.
 
+:::(Error) (ProGet 2025 Upgrade Not Recommended)
+If you're currently using ProGet 5.2 ProGet 5.3, ProGet 6.0, ProGet 2022, ProGet 2023, or ProGet 2024 we do not recommend upgrading to ProGet 2025.
+
+Instead, **directly upgrade to ProGet 2026** ([see notes](/docs/proget-upgrade-2026)). This article is kept as-is to help show what changed in ProGet 2025.
+:::
 
 ## Planning for Your Upgrade
 
