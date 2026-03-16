@@ -166,9 +166,9 @@ $ToJson(%(
   "feed": "internal-utils"
 }
 </pre></td></tr></table>
-    
+ 
 ### Default Webhook Content: Noncompliant Package Detected { #default-webhook-noncompliant-package }
-    
+ 
 <table><tr><th>OtterScript</th><th>Example Output</th></tr>
 <tr><td><pre>
 $ToJson(%(

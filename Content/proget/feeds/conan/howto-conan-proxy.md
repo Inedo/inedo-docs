@@ -15,15 +15,15 @@ First, you will need to create a Conan feed that will proxy Conan packages from 
 
 ![Create New Feed](/resources/docs/proget-feeds-conanselect.png){height="" width="50%"}
 
-Now select "Connect to conan.io" which will allow us to proxy packages from Conan Center.
+Now select "Free/Open Source Conan Packages" which will allow us to proxy packages from Conan Center.
 
 ![Configure Connector](/resources/docs/proget-conan-createconnector.png){height="" width="50%"}
 
-Then select "No, Create One Feed", as we will be creating a single feed to proxy Conan packages. From here, name the feed (in this example, we've called it `public-conan`). Then click "Create Feed".
+From here, name the feed (in this example, we've called it `public-conan`). Then click "Create Feed".
 
 ![Name Feed](/resources/docs/proget-conan-namepublic.png){height="" width="50%"}
 
-You'll then be given options to configure ProGet's [Vulnerability Scanning and Blocking](/docs/proget/sca/vulnerabilities) and [Licensing Detection and Blocking](/docs/proget/sca/licenses) features, letting you assess vulnerabilities and create policies for licenses. Select "Set Feed Features", which will create the feed, and redirect you to the newly created `public-conan` feed.
+You'll then be taken to you to the newly created `public-conan` feed.
 
 ![Public Conan Feed](/resources/docs/proget-conan-emptypublic.png){height="" width="50%"}
 

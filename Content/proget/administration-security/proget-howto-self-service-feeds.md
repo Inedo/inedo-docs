@@ -81,7 +81,7 @@ Please read the “Troubleshooting Permissions” section of our granular ProGet
 ### How to Check a User’s Permissions
 Users may contact an administrator and ask why they cannot perform a particular function in ProGet. Users may encounter errors that occur because they do not have permission, so they must contact an administrator to continue.
 
-![ProGet displaying an unexpected error saying the user does not have access.](/resources/docs/selfservicefeedgroups-unexpectederror-notauthorized.png){height="" width="50%"}
+![ProGet displaying an unexpected error saying the user does not have access.](/resources/docs/selfservicefeedgroups-unexpectederror-notauthorized.png)
 
 In these cases, an administrator can check what permissions or restrictions a user has via the settings page.
 

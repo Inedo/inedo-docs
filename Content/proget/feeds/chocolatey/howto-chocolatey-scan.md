@@ -77,9 +77,11 @@ You will need to create a Chocolatey feed in ProGet if you do not already have o
 
 ![Chocolatey Feed](/resources/docs/proget-chocolatey-newfeed.png){height="" width="50%"}
 
-Now that your feed is created it will need to be connected to Chocolatey.org. Click on "Connect to Chocolately.org".
+Now select "Free/Open Source Chocolatey Packages". 
 
 ![Create Connector](/resources/docs/proget-chocolatey-createconnector.png){height="" width="50%"}
+
+You'll then be asked to name your Chocolatey feed. After you've done this, select "Create Feed". You'll then be taken to your newly created Chocolatey feed. 
 
 ## Step 2: Connect Chocolatey Feed to Otter
 
