@@ -21,7 +21,7 @@ In your ProGet instance, select "Feeds" and "Create New Feed", and select "NuGet
 
 ![Create Feed](/resources/docs/proget-feeds-nugetselect.png){height="" width="50%"}
 
-Then select "Connect to NuGet.org" which will allow us to proxy and cache packages from NuGet.org.
+Then select "Free/Open Source NuGet (.NET) Packages" which will allow us to proxy and cache packages from NuGet.org.
 
 ![Choose Connector](/resources/docs/proget-nuget-connecttoorg.png){height="" width="50%"}
 

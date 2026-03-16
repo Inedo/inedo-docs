@@ -13,7 +13,7 @@ First, we will create a Conda feed to host your Conda packages. Start by selecti
 
 ![Select Conda](/resources/docs/proget-conda-newfeed.png){height="" width="50%"}
 
-Now select "No Connectors (Private packages only)" as we will be creating a private feed.
+Now select "Private/Internal Conda Packages" as we will be creating a private feed.
 
 ![No Connector](/resources/docs/proget-conda-newfeed-noconnector.png){height="" width="50%"}
 
@@ -21,7 +21,7 @@ From here, we name our feed. For this example, we will call it `internal-conda`,
 
 ![Name Feed](/resources/docs/proget-conda-newfeed-internal.png){height="" width="50%"}
 
-We are then presented with several options. These relate to ProGet's [Vulnerability Scanning and Blocking](/docs/proget/sca/vulnerabilities) features, however they are only for users looking to use third party packages. Leave these boxes unchecked, and select "Set Feed Features". You will then be redirected to your new `internal-conda` feed, currently empty.
+You will then be redirected to your new `internal-conda` feed, currently empty.
 
 ![Feed](/resources/docs/proget-conda-internal-emptyfeed.png){height="" width="50%"}
 

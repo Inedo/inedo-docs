@@ -13,7 +13,7 @@ We'll begin by creating a CRAN feed to host your R packages. Navigate to "Feeds"
 
 ![](/resources/docs/proget-cran-newfeed.png){height="" width="50%"}
 
-Now select "No Connectors (Private packages only)" as this feed will be intended as a private repository.
+Now select "Private/Internal Cran Packages" as this feed will be intended as a private repository.
 
 ![](/resources/docs/proget-cran-noconnector.png){height="" width="50%"}
 
@@ -21,7 +21,7 @@ From here, we name our feed. For this example, we will call it `internal-cran`, 
 
 ![](/resources/docs/proget-cran-internalfeed.png){height="" width="50%"}
 
-You'll then see several options related to ProGet's [Vulnerability Scanning and Blocking](/docs/proget/sca/vulnerabilities) features. These are only for users looking to use third-party OSS packages. Leave these boxes unchecked, and select "Set Feed Features". You will then be directed to the new `internal-cran` feed, currently empty.
+You will then be directed to the new `internal-cran` feed, currently empty.
 
 ![](/resources/docs/proget-cran-feed-empty.png){height="" width="50%"}
 
