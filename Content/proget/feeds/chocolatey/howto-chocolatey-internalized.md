@@ -5,14 +5,14 @@ order: 2
 
 ProGet can be configured as a private Chocolatey repository used to host internalized packages exclusively. 
 
+:::(Info) (📺 Quick Start Video: Setting Up a Private Chocolatey Repository for Internalized Packages in ProGet)
+*[This video](https://www.youtube.com/watch?v=EdX1CAskm8k) will guide you through how to set up a feed in ProGet  to act as a private Chocolatey repository for your internalized packages.*
+:::
+
 For more information on how it works, along with an explanation, see [Chocolatey Privatization and Internalization](https://blog.inedo.com/chocolatey/internalization). However, in this article, we will explain how to set up a feed in ProGet to act as a private Chocolatey repository to host internalized packages.
 
 :::(info) (Note: Internalized Packages vs Privatized Packages)
 This guide explains how to internalize Chocolatey packages, where all resources are hosted internally. This is different from privatizing packages, where packages hosted on a private feed still rely on external resources. Privatizing alone is not recommended, as it doesn’t fully control the installer files, which may become unavailable or insecure.
-:::
-
-:::(Info) (📺 3-minute Video:  Setting Up a Private Chocolatey Repository for Internalized Packages in ProGet)
-<iframe width="600" height="337" src="https://www.youtube.com/embed/EdX1CAskm8k?si=jAGl6082719aNaaY" frameborder="0" allowfullscreen="true"></iframe>
 :::
 
 ## Step 1: Internalizing Your Packages { #internalize-packages }

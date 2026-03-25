@@ -10,9 +10,14 @@ One of the easiest ways to try [ProGet](https://inedo.com/proget){target="_blank
 
 Please note that this method is only recommended for evaluation purposes, as using Lightsail can cause additional costs for your business. Please refer to the [AWS billing FAQ](https://aws.amazon.com/ec2/faqs/){target="_blank"} for the exact costs of using the service.
 
-See how quick and easy it is to install ProGet in this 3-minute video:
 
-![Video](https://www.youtube.com/watch?v=Ftqt9XJhgv8){height="480" width="640"}
+
+:::(Info) (📺 Video: Installing ProGet on AWS Lightsail)
+*See how quick and easy it is to install ProGet on AWS Lightsail [in this 3-minute video](https://www.youtube.com/watch?v=Ftqt9XJhgv8)*
+
+*This tutorial will teach you how to set up an AWS Lightsail instance with ProGet automatically installed via a PowerShell script.*
+:::
+
 
 ## **Setting Up Windows Server and SQL Server 2019 Express Using Lightsail**
 

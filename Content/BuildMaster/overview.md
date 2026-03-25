@@ -30,22 +30,24 @@ Perhaps talk and link about these features?
 :::
 
 ## How to Get Started with BuildMaster?
-BuildMaster is self-managed, which means you have the option to run BuildMaster on-premises or in your private/public cloud. Both Windows and Linux are supported. Check out the [BuildMaster Installation Guide](/docs/buildmaster/installation-maintenance/buildmaster-installation-guide) to learn how to get BuildMaster up and running in just a few minutes.
 
-:::(Info) (👨‍🏫 Quick Start: ASP.NET MVC Application)
-For a demonstration of creating an application in BuildMaster, read our guide on [building and deploying an ASP.NET MVC Application (CI/CD)](/docs/buildmaster/modeling-your-applications/buildmaster-applications-concepts/buildmaster-howto-build-and-deploy-an-aspnet-mvc-application). 
-
-![buildmaster-oobe-first-app](/resources/docs/buildmaster-oobe-first-app.png){height="" width=""}
-
-[This guide](/docs/buildmaster/modeling-your-applications/buildmaster-applications-concepts/buildmaster-howto-build-and-deploy-an-aspnet-mvc-application) will show you how BuildMaster guides you through configuring an application.
-
-📺 A 3-minute Video:  Getting Started with BuildMaster
-<iframe width="600" height="337" src="https://www.youtube.com/embed/Byi7gnOn6Hc?si=1EXwRRGjhsvvt-9T" frameborder="0" allowfullscreen="true"></iframe>
+:::(Info) (📺 A Quick Start Video: Getting Started with BuildMaster)
+*In [this video](https://www.youtube.com/watch?v=Byi7gnOn6Hc), you’ll learn how to create an ASP.NET CI/CD application and deploy it using BuildMaster’s CI/CD pipeline.*
 :::
+
+BuildMaster is self-managed, which means you have the option to run BuildMaster on-premises or in your private/public cloud. Both Windows and Linux are supported. Check out the [BuildMaster Installation Guide](/docs/buildmaster/installation-maintenance/buildmaster-installation-guide) to learn how to get BuildMaster up and running in just a few minutes.
 
 BuildMaster also includes a number of sample applications that can help you learn how to configure different technologies or use advanced CI/CD techniques.
 
 ![buildmaster-oobe-sample-apps](/resources/docs/buildmaster-oobe-sample-apps.png){height="" width="50%"}
+
+:::(Info) (👨‍🏫 Quick Start: ASP.NET MVC Application)
+For a demonstration of creating an application in BuildMaster, read our guide on [building and deploying an ASP.NET MVC Application (CI/CD)](/docs/buildmaster/modeling-your-applications/buildmaster-applications-concepts/buildmaster-howto-build-and-deploy-an-aspnet-mvc-application). 
+
+![buildmaster-oobe-first-app](/resources/docs/buildmaster-oobe-first-app.png){height="" width="50%"}
+
+[This guide](/docs/buildmaster/modeling-your-applications/buildmaster-applications-concepts/buildmaster-howto-build-and-deploy-an-aspnet-mvc-application) will show you how BuildMaster guides you through configuring an application.
+:::
 
 ## Agents & Servers in BuildMaster
 
