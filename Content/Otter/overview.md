@@ -10,9 +10,10 @@ Otter continuously monitors your servers for configuration changes, and reports 
 You can manage everything from Otter's web-based dashboard, and selectively share your servers' configuration, state, and change history with other teams, without giving them control, or even requiring them to learn OtterScript.
 
 ## Here is a Short Guide to Get You Started Quick:
-In this tutorial, you will learn how to define reusable sets of configuration called "roles", and assign those roles to servers to scale your infrastructure.
 
-![Getting Started with Otter](https://youtu.be/TTt83n4l5us){height="480" width="640"}
+:::(Info) (📺 A Quick Start Video: Getting Started with Otter)
+*[In this tutorial](https://www.youtube.com/watch?v=Ftqt9XJhgv8), you will learn how to define reusable sets of configuration called "roles", and assign those roles to servers to scale your infrastructure.*
+:::
 
 *View the full step-by-step tutorial [here](https://inedo.com/otter/getting-started){target="_blank"}.*
 
