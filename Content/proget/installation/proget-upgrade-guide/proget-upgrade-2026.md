@@ -58,13 +58,47 @@ We recommend upgrade to latest ProGet 5.2, then latest ProGet 2026. See: [5.3 no
 
 ### Feature Overhaul: Vulnerabilities Management
 
-* Impacted Feed Packages & Builds to Vulnerability Details ([PG-3184](https://issues.inedo.com/issue/PG-3184))
+There are substantial changes to the way vulnerabilities are managed in ProGet 2026, both in the UI and the backend. It's basically a feature rewrite.
+
+However, at a high-level, the functionality remains the same:
+* ProGet identifies vulnerabilities in packages
+* ProGet automatically assesses the severity of those vulnerabilities based on user-definable severity rules
+* Users can override ("manually assess") or comment on individual vulnerabilities
+* Packages become "Noncompliant" based the assessment
+* Noncompliant packages can be blocked from being used
+
+The key differences are:
+* The "vulnerability database" is now stored as a read-only file on disk instead within the ProGet database
+* The 5-category Package Vulnerability Remediation Scale (PVRS) is displayed instead of the 100-point CVS Score
+* Users can customize the Risk Profile used to calculate the PVRS category
+* Assessment language has been updated to reflect the appropriate response (i.e. "Monitor, Remediate, Contain") instead of mostly severity (i.e. "Ignore, Critical, Block")
+
+From a workflow perspective, the biggest changes are:
+* Vulnerability "severity" will be much more balanced with PVRS and reflect the actual exploit risk instead of "theoretical damage from a sophisticated attacker under ideal conditions"
+* "Assessment" is automatic by default, which aligns to most users' expectations
+* Unless a user overrode the assessment, ProGet will automatically reassess when the vulnerability facts changed or you change relevant configuration (assessment rules or  risk profile).
+* "Unassessed" vulnerability should no longer be part of a workflow
+
+#### Assessment/Comments Not Migrated... Yet
+From a data perspective, the existing assessments, assessment types, comments, and policy assessment rules were *not* migrated. This was because nearly all of the assessments and comments we've seen in the field were related to problems that the new assessment system is designed to automatically addressed.
+
+However, the data remains in the database, stored in dormant/unused tables. Should you wish to migrate or export this data, just let us know. We can build a migration tool, script, etc. From what we saw, the data simply didn't seem worth migrating.
 
 :::(Info)
-Talk about the minor risk here
+As a new feature, the biggest risk is that Vulnerability Management won't behave as you expect, either due to a bug or behavioral change. However, this should not impact core product functionality.
+
+You can mitigate this risk by testing on a new instance, familiarizing yourself with the changes, and letting us know if there are concerns or issues.
 :::
 
+### Updated Feature: SCA & Projects
 
+### Removed Feature: Package & Container Scanners
+
+The Package & Container Scanners feature was introduced in early versions of ProGet with limited documentation and no clear use case. As such, it hadn't gotten much usage and was effectively disabled since ProGet 2022.
+
+The code has been finally removed. However, should you be interested in reviving this feature, please [join the discussion on the forums](https://forums.inedo.com/topic/5706) and let us know.
+
+See the archived [container scanner documentation (github.com)](https://github.com/Inedo/inedo-docs/blob/f8d48bc98f0112c653819f565e5bab2a7a20c01d/Content/proget/docker/container-scanners.md) and [package scanner documentation (github.com)](https://github.com/Inedo/inedo-docs/blob/f8d48bc98f0112c653819f565e5bab2a7a20c01d/Content/proget/packages/package-scanners.md) to learn more. 
 
 
 ## Other Improvements & Notable Changes
@@ -77,6 +111,9 @@ The `/health` endpoint now provides a simple, plain text error message to allow 
 * **Platform Upgrade (.NET8 to .NET10)**
 * **Maven Version Parsing & Endpoint Fixes**; very minor, but added support for parsing 4-segment versions (for vulnerability identification) and artifact versions that don't start with a number
 * **"Notifications" Feature**; added via [PG-3233](https://issues.inedo.com/issue/PG-3233) as a preview feature, provides in-application notifications instead of relying on email
+* **Concurrent Request Limit**; now defaults to 100
+* **Removed Various Advanced Settings**; several settings (e.g. `ExecutionDispatcherThrottle`) should never be changed and have been removed from Advanced Configuration
+* **Connector-installed Packages use Repository's Publish Date**; introduced as the `UseConnectorPublishDate` advanced setting in ProGet 2025, cached and pulled connector packages will now use the publish date specified in the upstream repository as opposed to the date the package was added to package
 
 * Package Age Compliance Rule ([PG-3162](https://issues.inedo.com/issue/PG-3162))
 

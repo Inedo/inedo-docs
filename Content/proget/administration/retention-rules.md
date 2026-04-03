@@ -38,7 +38,6 @@ A feed can have multiple rules applied, in this case rules are run in the order 
 | Delete unused versions | All images except those that have been downloaded in the last N days and with less than Y downloads will be deleted |
 | Delete/keep by repository name | Images with the specified names will either be deleted or not deleted; this field supports [wildcards](#wildcards) |
 | Delete/keep by image tag | Images with the specified tags will either be deleted or not deleted; this field supports [wildcards](#wildcards) |
-| Delete when all package usage removed | Images are removed when the [container has not been used](/docs/proget/docker/container-scanners) for N days |
 
 *Untagged and tagged images cannot be deleted by the same retention rule.*
 
