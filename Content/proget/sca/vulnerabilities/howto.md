@@ -96,13 +96,13 @@ Now the compliance rules have been configured, any packages that are assessed to
 
 ## Step 7: (Optional) Add Custom Assessment Types
 
-We recommend using auto assessment in combination with a [package approval workflow](https://blog.inedo.com/nuget/package-approval-workflow).
+You can customize assessment types in ProGet to better reflect how your organization evaluates and responds to vulnerabilities. This is especially useful when default assessments don’t align with your workflows, risk tolerance, or the way your teams manage and prioritize remediation.
 
-You can edit or create your own assessment type and set up auto-assessment by navigating to "Administration Overview" > "Vulnerability Assessment Types" under "Global Components".
+To edit or create your own assessment types, navigate to "Administration Overview" > "Vulnerabilities & Assessment Types" under "Global Components".
 
 ![Assessment Settings](/resources/docs/proget-vulnerabilities-assessmentsettings.png){height="" width="50%"}
 
-From here you can create an assessment type by clicking "Create Custom Assessment Type". By default, the assessment types of Caution, Blocked, and Ignore will be presented and automated.
+From here you can create an assessment type by clicking "Create Custom Assessment Type". By default, the assessment types of "Monitor", "Remediate", and "Contain" will be presented and automated.
 
 ![Assessment Types](/resources/docs/proget-vulnerabilities-manageassessment.png){height="" width="50%"}
 
@@ -111,10 +111,6 @@ Auto assessment can be customized to your preferences. However, if you’re unsu
 ![Custom Type](/resources/docs/proget-vulnerabilities-customassessment.png){height="" width="50%"}
 
 Once you have entered the details of your Assessment Type, click "Save".
-
-:::(info) (📄 Expiration (days))
-Note that expiration days will set the expiry date on "auto-assess" only.
-:::
 
 ## Step 8: (Optional) Scan Container Vulnerabilities
 To scan containers for vulnerabilities, ProGet [extracts and inspects the files within each container image layer](/docs/proget/docker/private-registries) and looks for vulnerable packages that are installed. The "Packages" and "Vulnerabilities" tab of a container image will show these:
