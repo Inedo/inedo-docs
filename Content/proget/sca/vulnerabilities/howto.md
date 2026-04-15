@@ -42,7 +42,7 @@ From here, select the "Vulnerabilities" tab to view all identified vulnerabiliti
 
 ## Step 3: Scan your Build 
 
-You can scan your Build using pgutil and the builds scan command. This will analyze the packages used in the build for any vulnerabilities.  
+You can scan your Build using [pgutil](/docs/proget/api/pgutil) and the [`pgutil builds scan`](/docs/proget/api/sca/builds/scan) command. This will analyze the packages used in the build for any vulnerabilities.  
 
 ![](resources/docs/proget-builds-scan.png){height="" width="50%"}
 
@@ -52,25 +52,27 @@ Here we can see the a number of vulnerabilities have appeared in the scan, resul
 
 ## Step 4: (Optional) Run an audit 
 
-You can also run pgutil builds audit right before deploying to production to identify any vulnerabilities that may have surfaced since you originally ran pgutil builds scan. 
+You can also run [`pgutil builds audit`](/docs/proget/api/sca/builds/analyze) right before deploying to production to identify any vulnerabilities that may have surfaced since you originally ran `pgutil builds scan`. 
 
-<screenshot of pgutil builds audit on the build> 
+![](resources/docs/proget-builds-scan-noncompliant.png){height="" width="50%"}
 
-## Step 5: (Optional) Block the Package 
+## Step 5: (Optional) Block Noncompliant Packages 
 
-To prevent vulnerable packages from entering your development and being used in production to begin with, you can block these from being downloaded.  
+To prevent vulnerable packages from entering your development and being used in production to begin with, you can block noncompliant packages from being downloaded at the feed level.  
 
-Navigate to the vulnerable package and select “Set Package Status” from the menu on the right. 
+Navigate to the feed and select "Policies and Blocking".
 
-<image demonstrating above> 
+![](resources/docs/proget-feed-policies-select.png){height="" width="50%"}
 
-From here select “Always block downloads” and select “Set Status” 
+From here scroll to the bottom and select "Change Blocking Settings".
 
-<image demonstrating above> 
+![](resources/docs/proget-policies-blocking.png){height="" width="50%"}
 
-This will prevent the package from being downloaded. 
+Then from "Feed Setting" select "Block noncompliant packagess" and select "Save". 
 
-<image demonstrating above> 
+![](resources/docs/proget-feed-block.png){height="" width="50%"}
+
+This will prevent noncompliant packages from being downloaded. 
 
 ## Step 6: (Optional) Edit Package Policy Rules
 
