@@ -44,11 +44,8 @@ The `Java::Maven` operation is essentially a wrapper for the `mvn` command-line 
 ### Sample Build Script
 The following sample script will get the latest source code from Git, run Maven, then capture the build output (jar file) as a BuildMaster artifact:
 ```
-Git::Get-Source
-(
-    RepositoryUrl: https://github.com/Inedo/ProfitCalcJava.git,
-    Branch: master
-);
+Git::Checkout-Code;
+
 Java::Maven
 (
     GoalsAndPhases: "clean package",

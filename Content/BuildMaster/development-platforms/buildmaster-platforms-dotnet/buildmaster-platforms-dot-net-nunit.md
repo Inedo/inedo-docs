@@ -17,11 +17,7 @@ The NUnit Runner in BuildMaster essentially runs the `nunit-console.exe` command
 An example build plan that gets source and runs tests is as follows:
 
 ```
-GitHub::Get-Source
-(
-    Organization: Inedo,
-    Repository: ProfitCalc
-);
+Git::Checkout-Code;
 
 NuGet::Restore-Packages();
 

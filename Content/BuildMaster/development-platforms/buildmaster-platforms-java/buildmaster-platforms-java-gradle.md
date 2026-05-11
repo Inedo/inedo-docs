@@ -114,11 +114,7 @@ Exec "gradle build"
 An example plan that gets the latest source code from Git and captures a Gradle artifact as a BuildMaster artifact:
 
 ```
-Git::Get-Source
-(
-    RepositoryUrl: https://github.com/Inedo/ProfitCalcJava.git,
-    Branch: master
-);
+Git::Checkout-Code;
 
 Exec "gradle build"
 

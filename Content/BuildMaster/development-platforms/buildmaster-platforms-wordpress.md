@@ -52,11 +52,8 @@ The first step is to put your WordPress theme or plugin code into source control
 To begin a custom WordPress build in BuildMaster, create a GitHub project secure resource. After creating a GitHub project [secure resource](/docs/buildmaster/configuring-for-your-team/buildmaster-administration-resource-credentials), you can get the source code as follows:
 
 ```
-GitHub::Get-Source
-(
-    From: InedoWordPressTheme,
-    CommitHash => $CommitId,
-);
+Git::Checkout-Code;
+
 Set-BuildVariable CommitId
 (  
     Value: $CommitId  

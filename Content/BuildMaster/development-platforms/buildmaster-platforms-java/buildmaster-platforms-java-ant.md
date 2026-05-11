@@ -129,11 +129,7 @@ Exec "ant -buidfile ProfitCalcJava.build -Dversion:$ReleaseNumber.$BuildNumber d
 
 - Example plan that gets the latest source code from Git and captures a Maven artifact as a BuildMaster artifact:
 ```
-Git::Get-Source
-(
-    RepositoryUrl: https://github.com/Inedo/ProfitCalcJava.git,
-    Branch: master
-);
+Git::Checkout-Code;
 
 Java::Build-AntProject
 {
