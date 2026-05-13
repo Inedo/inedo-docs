@@ -13,7 +13,7 @@ To host your Universal Package, you will need to create a Universal Feed. Naviga
 
 ![](/resources/docs/proget-upack-createfeed.png){height="" width="50%"}
 
-From here, select "No Connectors", and then name your feed. In this guide, we will name our feed `internal-universal`.
+From here, name your feed. In this guide, we will name our feed `internal-universal`.
 
 ![](/resources/docs/proget-upack-createfeed-internal.png){height="" width="50%"}
 

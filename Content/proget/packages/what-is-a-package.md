@@ -15,11 +15,9 @@ The manifest file included in the package contains the package name and version.
 - [Blocked](/docs/proget/sca/licenses) from ever entering ProGet (and your environments)
 - [Inspected](/docs/proget/sca/vulnerabilities) for vulnerabilities using quality controls that you define
 
-
 :::(Info)
 Packages help you distribute your applications and components uniformly. They have become a unifying concept across DevOps toolchains because packages are built once and deployed consistently across environments. This way, you can be sure that what is deployed to production is *exactly* what has been tested.
 :::
-
 
 Because ProGet is a **self-managed** package repository, every package you store in ProGet remains as private to your organization as you want it to be. And unlike simple solutions like nuget.server, ProGet can support many hundreds of packages in a single instance, even in the free-forever version. These packages can be cached copies of third-party open source packages or proprietary packages created by your team, and everything in between.
 
@@ -29,7 +27,7 @@ With ProGet, you get much more than just a place to store packages:
 - [Retention](/docs/proget/administration/retention-rules)
 - [Connectors](/docs/proget/feeds/connector-overview)
 - [Policies and Compliance Rules](/docs/proget/sca/policies)
-- [Vulnerability Scanning](/docs/proget/sca/vulnerabilities)
+- [Vulnerability Scanning and Assessment](/docs/proget/sca/vulnerabilities)
 - [License Detection](/docs/proget/sca/licenses)
 - [Cloud Storage](/docs/proget/cloud-storage)
 - And much more

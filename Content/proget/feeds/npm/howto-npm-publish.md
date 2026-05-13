@@ -19,11 +19,11 @@ First, we will create a feed to host your npm packages. Start by selecting "Feed
 
 ![](/resources/docs/proget-npm-createfeed.png){height="" width="50%"}
 
-Then select "No Connectors (Private packages only)" as we will be creating a private feed. From here, we will give our feed a name. For this article, we will call it `internal-npm`, and then click "Create Feed".
+Then select "Private/Internal npm Packages" as we will be creating a private feed. From here, we will give our feed a name. For this article, we will call it `internal-npm`, and then click "Create Feed".
 
 ![](/resources/docs/proget-npm-internal-name.png){height="" width="50%"}
 
-We are then presented with several options. These relate to ProGet's [Vulnerability Scanning and Blocking](/docs/proget/sca/vulnerabilities) features, however they are only for users looking to use third party packages. Leave these boxes unchecked, and select [Set Feed Features]. You will then be redirected to your new `internal-npm` feed, currently empty.
+You will then be redirected to your new `internal-npm` feed, currently empty.
 
 ![](/resources/docs/proget-npm-internal-empty.png){height="" width="50%"}
 

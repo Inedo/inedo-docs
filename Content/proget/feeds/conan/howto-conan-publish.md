@@ -13,11 +13,11 @@ First, we will create a feed to host your Conan packages. In ProGet, select "Fee
 
 ![Create New Feed](/resources/docs/proget-feeds-conanselect.png){height="" width="50%"}
 
-Then select "No Connectors (private recipes only)" as we will be creating a private feed. Now name your feed. For this example we will call it `internal-conan`.
+Then select "Private/Internal Conan Packages" as we will be creating a private feed. Now name your feed. For this example we will call it `internal-conan`.
 
 ![Name Feed](/resources/docs/proget-conan-nameinternal.png){height="" width="50%"}
 
-You will then see options that relate to ProGet's [Vulnerability Scanning and Blocking](/docs/proget/sca/vulnerabilities) features, however as they are only for users looking to use third party packages, leave these boxes unchecked and select [Set Feed Features]. You will then be redirected to the newly created, empty `internal-conan` feed.
+You will then be redirected to the newly created, empty `internal-conan` feed.
 
 ![Private Conan Feed](/resources/docs/proget-conan-emptyinternal.png){height="" width="50%"}
 

@@ -15,11 +15,11 @@ Start by creating a Chocolatey feed to host your internal packages. Navigate to 
 
 ![](/resources/docs/proget-chocolatey-newfeed.png){height="" width="50%"}
 
-Now select "No Connectors (private packages only)" as this feed will be intended to host private packages. From here, name the feed. For this example, we will call it `internal-chocolatey`, and then click "Create Feed".
+Now select "Private/Internal Packages" as this feed will be intended to host private packages. From here, name the feed. For this example, we will call it `internal-chocolatey`, and then click "Create Feed".
 
 ![](/resources/docs/proget-chocolatey-newfeed-internal.png){height="" width="50%"}
 
-You'll then see several options related to ProGet's [Vulnerability Scanning and Blocking](/docs/proget/sca/vulnerabilities) features. These are only for users looking to use third-party packages. Leave these boxes unchecked, and select "Set Feed Features". You will then be directed to the new `internal-chocolatey` feed, currently empty.
+You will then be directed to the new `internal-chocolatey` feed, currently empty.
 
 ![](/resources/docs/proget-chocolatey-internal-empty.png){height="" width="50%"}
 

@@ -13,7 +13,7 @@ Start by creating a RubyGems feed to host your RubyGems. Navigate to "Feeds" and
 
 ![Create RubyGems Feed](/resources/docs/proget-feeds-rubygemsselect.png){height="" width="50%"}
 
-Now select "No Connectors (Private packages only)" as this feed will be intended as a private repository.
+Now select "Private/Internal RubyGems" as this feed will be intended as a private repository.
 
 ![No Connectors](/resources/docs/proget-ruby-noconnector.png){height="" width="50%"}
 
@@ -21,7 +21,7 @@ From here, we name our feed. For this example, we will call it `internal-gems`, 
 
 ![Name Feed](/resources/docs/proget-ruby-nameinternalfeed.png){height="" width="50%"}
 
-You'll then see several options related to ProGet's [Vulnerability Scanning and Blocking](/docs/proget/sca/vulnerabilities) features. These are only for users looking to use open source gems like those hosted on [RubyGems.org](https://rubygems.org). Leave these boxes unchecked, and select "Set Feed Features". You will then be directed to the new `internal-gems` feed, currently empty.
+You will then be taken to the new `internal-gems` feed, currently empty.
 
 ![Empty Feed](/resources/docs/proget-ruby-emptyfeed.png){height="" width="50%"}
 
