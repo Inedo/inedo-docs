@@ -10,7 +10,7 @@ This is done with [Semantic Versioning](https://semver.org/){target="_blank"}'s 
 
 This article will walk you through a [common scenario of repackaging an in-house NuGet package](https://blog.inedo.com/nuget/how-to-use-cicd-pipelines-for-packages). Although much of this process should be automated with a CI/CD tool like [BuildMaster](https://inedo.com/buildmaster/features), we'll demonstrate the concepts manually.
 
-## Step 1: Create a -ci Package
+## Step 1: Create a `-ci` Package
 
 A "-ci package" is created through continuous integration, and is the first stage of a package. You can create any package you like but for the purposes of this example, we'll create a NuGet package manually using the [NuGet package explorer (NPE)](https://github.com/NuGetPackageExplorer/NuGetPackageExplorer){target="_blank"}.
 
@@ -39,9 +39,9 @@ To upload your package, navigate to your feed and click "Add a Package". A popup
 ![Upload TkyConvert](/resources/docs/proget-packages-tkyconvert-upload.png){height="" width="50%"}
  
 ## Step 3: Test and Verify Your `-ci` Package
-Now that we’ve uploaded our -ci package, [it needs to go through testing](https://blog.inedo.com/nuget/package-approval-workflow). Testing will vary from team to team. In general, however, this round of testing will focus solely on the package in question and ensure that the package meets specifications.
+Now that we’ve uploaded our `-ci` package, [it needs to go through testing](https://blog.inedo.com/nuget/package-approval-workflow). Testing will vary from team to team. In general, however, this round of testing will focus solely on the package in question and ensure that the package meets specifications.
 
- :::(Info) (Note: Why -ci and -rc?)
+ :::(Info) (Note: Why `-ci` and `-rc`?)
 -ci and -rc the prerelease tags we generally recommend, but you're free to use any naming convention that works for you. By simply adding a `-` to your version number, [Semantic Version](https://semver.org/){target="_blank"} will treat that package as a pre-release. While naming convention can be whatever you’d like, we suggest your pipeline follows alphabetical sorting eg: Alpha > Beta > QA > Technical Preview
 
 ProGet and most other systems sort alphabetically in ascending order, and teams usually want the newest package at the top.
@@ -49,7 +49,7 @@ ProGet and most other systems sort alphabetically in ascending order, and teams 
 
 After your tests are complete and your package is ready for the next environment, you can repackage it.
 
-## Step 4: Repackage to an -rc Package
+## Step 4: Repackage to an `-rc` Package
 
 Now that we have verified our -ci package, we can repackage it into a release candidate (-rc). This step is often automated as part of the CI/CD pipeline, but for this example we will do it manually.
 
@@ -66,7 +66,7 @@ In the popup, we can select our target feed. While it’s possible to repackage 
 ![Pre-Release to Release Candidate](/resources/docs/proget-packages-tkyconvert-releasecandidate.png){height="" width="50%"}
 
 
-## Step 5: Test and Verify -rc
+## Step 5: Test and Verify `-rc`
 An -rc (or release candidate) package is the last stage before a package reaches production. Here, packages are tested much more thoroughly. These tests will also vary from team to team.
 
 :::(Info) 
@@ -95,7 +95,7 @@ ProGet Annual and Enterprise users are able to see a package history that outlin
 
 To view this history, navigate to the "History" tab on the package:
 
-![TkyConvert Repackaging History](/resources/docs/proget-packages-tkyconvert-history.png){height="" width="50%"}g
+![TkyConvert Repackaging History](/resources/docs/proget-packages-tkyconvert-history.png){height="" width="50%"}
 
 :::(Warning)
 Free users can only see the action performed and the date, NOT the user and the place to/from which the package was promoted to/from.
