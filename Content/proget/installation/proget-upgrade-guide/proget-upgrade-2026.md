@@ -26,17 +26,17 @@ If you're currently using ProGet 5.2, ProGet 5.3, ProGet 6.0, ProGet 2022, ProGe
 Windows IIS support ended in ProGet 2025, and if you are still using IIS you'll need to migrate before upgrading. See [Configuration Change: IIS Hosting on Windows](#configuration-change-iis-hosting-on-windows).
 :::
 
-:::(Warn) (Required Data Migration & Disabled Retention Rules for ProGet 2022 & Earlier)
-After upgrading, ProGet will automatically initiate a data migration; see [New Package Indexing System in ProGet 2023](/docs/proget-upgrade-2025#new-package-indexing-system-in-proget-2023) to learn about this process. 
-
-The migration should be relatively quick and require no user intervention. After migration is complete, you will need to re-enable retention rules on your feeds. 
-:::
-
 Please read the upgrade notes from each version to learn what changed and how to mitigate risks. To summarize:
     
 In [ProGet 2025](/docs/proget-upgrade-2025), PostgreSQL support was added and IIS support was removed.
 
 In [ProGet 2024](/docs/proget-upgrade-2024), many of the changes were in ProGet's SCA features like Vulnerability Scanning, License Detection, Assessments, SBOMS, and Projects/Builds. Webhooks & Notifiers were also redesigned.
+
+
+#### Upgrading from ProGet 2022 or Earlier
+:::(Error)
+After upgrading from ProGet 2022 or earlier, ProGet will automatically initiate a data migration; see [New Package Indexing System in ProGet 2023](/docs/proget-upgrade-2025#new-package-indexing-system-in-proget-2023) to learn about this process.
+:::
 
 In [ProGet 2023](/docs/proget-upgrade-2023), in addition to the new packaging indexing system, there were several changes surrounding vulnerability scanning. One breaking change was that Docker images will no longer have the `library/` namespace automatically appended on push.
 
@@ -46,8 +46,7 @@ In [ProGet 6.0](/docs/proget-6-0-upgrade-notes), due API Keys changes, some user
 
 In [ProGet 5.3](/docs/proget-5-3-upgrade-notes), legacy NuGet ("quirks") feeds were removed. You will need to migrate all of these feeds before upgrading.
 
-
-### Upgrading from ProGet 5.1 or Earlier
+#### Upgrading from ProGet 5.1 or Earlier
 :::(Error)
 If you're upgrading from ProGet 5.1 or earlier, you should upgrade to ProGet 5.2 first. Upgrading directly is not recommended.
 :::
@@ -69,7 +68,7 @@ However, at a high-level, the functionality remains the same:
 
 The key differences are:
 * The "vulnerability database" is now stored as a read-only file on disk instead within the ProGet database
-* The 5-category Package Vulnerability Remediation Scale (PVRS) is displayed instead of the 100-point CVS Score
+* The [5-category Package Vulnerability Remediation Scale (PVRS)](https://guides.inedo.com/vulnerability-management/categories/) is displayed instead of the 100-point CVS Score
 * Users can customize the Risk Profile used to calculate the PVRS category
 * Assessment language has been updated to reflect the appropriate response (i.e. "Monitor, Remediate, Contain") instead of mostly severity (i.e. "Ignore, Critical, Block")
 
@@ -90,7 +89,12 @@ As a new feature, the biggest risk is that Vulnerability Management won't behave
 You can mitigate this risk by testing on a new instance, familiarizing yourself with the changes, and letting us know if there are concerns or issues.
 :::
 
-### Updated Feature: SCA & Projects
+### Updated Feature: SCA Projects Groupings
+
+*Feed Groups* are now called *Feed & Project Groups*. A group created on this page will be used used to visually group related items in UI as well as define permissions that are shared across all feeds in the group.
+
+This allows projects to be split into groups so that different teams can use them without interfering with eachother.
+
 
 ### Removed Feature: Package & Container Scanners
 
@@ -114,8 +118,6 @@ The `/health` endpoint now provides a simple, plain text error message to allow 
 * **Concurrent Request Limit**; now defaults to 100
 * **Removed Various Advanced Settings**; several settings (e.g. `ExecutionDispatcherThrottle`) should never be changed and have been removed from Advanced Configuration
 * **Connector-installed Packages use Repository's Publish Date**; introduced as the `UseConnectorPublishDate` advanced setting in ProGet 2025, cached and pulled connector packages will now use the publish date specified in the upstream repository as opposed to the date the package was added to package
-
-* Package Age Compliance Rule ([PG-3162](https://issues.inedo.com/issue/PG-3162))
 
 ## Upgrade Process
 You should generally perform the upgrade using the same method you used to install.
