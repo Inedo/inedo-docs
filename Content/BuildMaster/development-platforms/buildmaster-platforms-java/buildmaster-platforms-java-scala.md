@@ -27,11 +27,7 @@ The automated process is the same as the manual process above, except that comma
 
 Example OtterScript plan:
 ```
-Git::Get-Source
-(
-    RepositoryUrl: https://github.com/Inedo/ProfitCalcScala.git,
-    Branch: master
-);
+Git::Checkout-Code;
 
 Exec
 (
