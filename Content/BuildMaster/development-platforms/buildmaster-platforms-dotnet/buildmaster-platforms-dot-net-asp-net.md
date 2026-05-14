@@ -39,7 +39,7 @@ BuildMaster includes a number of script templates that offer a simple, no-code s
 ### Using OtterScript Directly
 
 #### Compiling a ASP.NET Application
-To build an ASP.NET application, the first step is to acquire the source code from your SCM of choice, e.g. using `Git::Get-Source`. Once the source code is obtained, simply run the `MSBuild::Build-Project` or the `DotNet::Publish` operation.
+To build an ASP.NET application, the first step is to acquire the source code from your SCM of choice, e.g. using `Git::Checkout-Code`. Once the source code is obtained, simply run the `MSBuild::Build-Project` or the `DotNet::Publish` operation.
 
 #### Using dotnet publish for .NET 5+
 :::(Info) (👉 Build Server Configuration May Be Required)
@@ -49,11 +49,7 @@ For .NET 5+, the dotnet cli is included in [.NET SDK](https://dotnet.microsoft.c
 A rough example plan of this would be:
 
 ```
-Git::Get-Source
-(
-    RepositoryUrl: https://github.com/Inedo/ProfitCalc.git,
-    Branch: master
-);
+Git::Checkout-Code;
 
 DotNet::Publish ProfitCalc.Web\ProfitCalc.Web.csproj
 (
@@ -81,11 +77,7 @@ MSBuild doesn't require Visual Studio to be installed, but you will need to inst
 A rough example plan of this would be:
 
 ```
-Git::Get-Source
-(
-    RepositoryUrl: https://github.com/Inedo/ProfitCalc.git,
-    Branch: master
-);
+Git::Checkout-Code;
 
 MSBuild::Build-Project ProfitCalc.Web\ProfitCalc.Web.csproj
 (

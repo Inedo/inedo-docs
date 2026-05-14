@@ -43,3 +43,29 @@ To add a new *OpenLDAP/Generic LDAP* user directory, navigate to Administration 
 ## Multiple Domains
 To connect to two or more domains, you will need to add multiple user directories.  To add a new user directory, navigate to Adminstration > Manage Security and click the "add new directory / domain" link to the right of User Directories / Domains.  Then click "Other Types", and Select "OpenLDAP/Generic LDAP"
 
+## Microsoft Active Directory Support
+There are times when your Microsoft Active Directory configuration requires more customization than our [Active Directory V5](/docs/installation/security-ldap-active-directory/various-activedirectory-v5-advanced) user directory can handle.  In these cases, the *OpenLDAP/Generic LDAP* user directory can be configured to work with Microsoft Active Directory.  Start with the following values when configuring this user directory to work with Active Directory and then customize from there.
+
+### General
+- **Name**: A simple name to identify the user directory in the UI
+- **Domain**: The domain suffix to use for LDAP queries (ex: `kramerica.local`).
+- **LDAP Connection**: The connection protocol to connect to the LDAP server with.
+- **Bind DN**: The *distinguished name* for the LDAP user to use when connecting to your LDAP server.  (ex: `CN=ProGetAdmin,CN=Users,DC=kramerica,DC=local`)
+    - This can typically found by using the Attribute Editor Advanced Feature in Active Directory Users and Computers.
+- **Password**: The password to use when connecting to your LDAP server.
+
+### LDAP User Filters
+- **User Search Base**: *Leave blank to use the root of the user directory*
+- **Users**: `(&(objectClass=user)(sAMAccountName=%s))`
+- **List User's Groups**: `(&(objectCategory=group)(member:1.2.840.113556.1.4.1941:=%s))`
+
+### LDAP Group Filters
+- **Group Search Base**: *Leave blank to use the root of the user directory*
+- **Groups**: `(&(objectClass=group)(name=%s))`
+- **List Group's Members**: `(&(objectCategory=user)(memberOf:1.2.840.113556.1.4.1941:=%s))`
+
+### LDAP Object
+- **User name Property Value**: `sAMAccountName`
+- **Display Name Value**: `displayName`
+- **Email Property Value**:  `mail`
+- **Group Name Property Value**: `name`

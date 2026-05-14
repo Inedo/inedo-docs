@@ -44,7 +44,7 @@ At a high level, your OtterScript should follows the general pattern:
  - Compile project with MSBuild or dotnet publish
  - Capture artifact for deployment
 
-Getting the code from source control is often as simple as using `Git::Get-Source`; see our [Git & Source Control](/docs/buildmaster/builds-continuous-integration/buildmaster-git-source-control) documentation to learn more.
+Getting the code from source control is often as simple as using `Git::Checkout-Code`; see our [Git & Source Control](/docs/buildmaster/builds-continuous-integration/buildmaster-git-source-control) documentation to learn more.
 
 To build a .NET console application, the first step is to acquire the source code from your SCM of choice, . Once the source code is obtained, simply run the `MSBuild::Build-Project` or the `DotNet::Publish` operation.
 

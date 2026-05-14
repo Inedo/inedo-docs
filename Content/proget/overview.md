@@ -5,8 +5,8 @@ order: 1
 
 ProGet is a Self-hosted, Cross-Platform Package & Container Repository that keeps all your packages and Docker containers in one place, allowing you to scan for vulnerabilities and control who can access different feeds. 
 
-:::(Info) (📺 3-minute Video:  Getting Started with ProGet)
-<iframe width="600" height="337" src="https://www.youtube.com/embed/IQ_GzpgLhlY" frameborder="0" allowfullscreen="true"></iframe>
+:::(Info) (📺 3-minute Video: Getting Started with ProGet)
+[This video](https://www.youtube.com/watch?v=IQ_GzpgLhlY) provides an introduction to ProGet by setting up your first NuGet Feed, and setting Visual Studio to use ProGet as a package source manager.
 :::
 
 ProGet supports just about all of the third-party package types you'll need (e.g. NuGet, npm, PowerShell, and Chocolatey) and comes in a powerful free version that you can upgrade when ready.

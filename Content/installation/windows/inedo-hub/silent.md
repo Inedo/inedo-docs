@@ -50,13 +50,6 @@ Once the uninstallation is finished, you will get a confirmation message.
 
 It's possible to customize your Inedo product installation during the install stage by adding additional arguments to the command line when setting up. 
 
-### Example: Specifying a License Key
-For example, the following command will install ProGet with an existing license key so that you don't have to manually enter it later.
-
-```
-hub.exe install ProGet --ConnectionString="Data Source=localhost; Integrated Security=True;" LicenseKey=«your-license-key»
-```
-
 ### Example: Installing to a Specific Version
 By default, the Silent Install method will always download and install the newest version of the specified Inedo product. If you need to install a specific version, you can add the desired version number to the install string. 
 
@@ -65,10 +58,6 @@ For example, to install ProGet 5.2.3 using the upgrade process:
 ```
 hub.exe install ProGet:5.2.3 --IsUpgrade=true
 ```
-
-### Using Other Installation Arguments
-
-Other common customization options include the ability to use IIS (`--UseIIS`), and specifying a custom path for Inedo extensions (`--ExtensionsPath=«custom-extensions-path»`)
 
 A full list of features that can be customized during a silent instalation is available on our [Inedo Hub CLI guide](/docs/installation/windows/inedo-hub/cli-reference).
 

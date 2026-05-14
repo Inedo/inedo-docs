@@ -45,11 +45,7 @@ A rough example plan of this would be:
 
 
 ```
-Git::Get-Source
-(
-    RepositoryUrl: https://github.com/Inedo/ProfitCalc.git,
-    Branch: master
-);
+Git::Checkout-Code;
 
 DotNet::Build ProfitCalc.NetCore\ProfitCalc.NetCore.csproj
 (

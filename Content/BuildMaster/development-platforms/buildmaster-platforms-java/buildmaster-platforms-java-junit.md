@@ -24,11 +24,7 @@ To enable integration with JUnit:
 An example of a build plan that retrieves the source code, compiles the source code with Maven, and runs JUnit tests is:
 
 ```
-GitHub::Get-Source
-(
-    Organization: Inedo,
-    Repository: ProfitCalcJava
-);
+Git::Checkout-Code;
 
 Java::Execute-Maven
 (

@@ -8,8 +8,8 @@ Migrating a JFrog Artifactory repository to ProGet can be done in a few simple s
 
 This article will guide you through how to use the Feed Importer feature to migrate your packages from your Jfrog Artifactory repositories to ProGet.
 
-:::(Info) (📺 2-minute Video:  Migrating from JFrog Artifactory to ProGet)
-<iframe width="600" height="337" src="https://www.youtube.com/embed/77O4zv6T6nU?si=5iQx_A9Rx41teKwI" frameborder="0" allowfullscreen="true"></iframe>
+:::(Info) (📺 Video: Migrating from JFrog Artifactory to ProGet)
+*[This video](https://www.youtube.com/watch?v=77O4zv6T6nU) will guide you through how to use the Feed Importer to migrate your packages from your Jfrog Artifactory repositories to ProGet.*
 :::
 
 ## Generating your Personal Access Token

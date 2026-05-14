@@ -10,9 +10,9 @@ One of the easiest ways to try [Otter](https://inedo.com/otter){target="_blank"}
 
 Please note that this method is only recommended for evaluation purposes, as using Lightsail can cause additional costs for your business. Please refer to the [AWS billing FAQ](https://aws.amazon.com/ec2/faqs/){target="_blank"} for the exact costs of using the service.
 
-See how quick and easy it is to install Otter in this 3-minute video. The video is about installing ProGet but it works the same way.
-
-![Video](https://www.youtube.com/watch?v=Ftqt9XJhgv8){height="480" width="640"}
+:::(Info) (📺 A Quick Start Video: Installing Otter on AWS Lightsail)
+*See how quick and easy it is to install Otter in [this 3-minute video](https://www.youtube.com/watch?v=Ftqt9XJhgv8). The video is about installing ProGet but it works the same way.*
+:::
 
 ## **Setting Up Windows Server and SQL Server 2019 Express Using Lightsail**
 

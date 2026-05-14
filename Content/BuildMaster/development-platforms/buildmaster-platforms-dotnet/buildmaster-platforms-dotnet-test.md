@@ -60,12 +60,8 @@ This operation depends on a configuration variable (`$NUnitConsolePath`), which 
 An example build plan that gets source and runs tests is as follows:
 
 ```(OtterScript)
-GitHub::Get-Source
-(
-    Organization: Inedo,
-    Repository: ProfitCalc
-);
- 
+Git::Checkout-Code;
+
 NuGet::Restore-Packages();
 
 DotNet::Build ProfitCalc.sln
