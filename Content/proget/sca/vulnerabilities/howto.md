@@ -7,70 +7,74 @@ Configuring ProGet to automatically scan third-party open-source packages and co
 
 This guide will explain how to scan and assess vulnerabilities, and how you can configure blocking rules and assessments when a package is found to be vulnerable.
 
-
-## Step 1: Enable Vulnerabilities Feed Feature
+## Step 1: Enable Vulnerabilities Feed Feature 
 
 :::(info) (📄 Note)
-This step is enabled by default. Unless this feature is disabled on your instance, you can skip to step 2.
+This step is enabled by default. Unless this feature is disabled on your instance, you can skip to step 2. 
 :::
 
-To configure vulnerability blocking on a feed, first navigate to the feed and click the "Feed Properties" tab.
+To configure vulnerability blocking on a feed, first navigate to the feed and click the "Feed Properties" tab. 
 
-![Manage Feed](/resources/docs/proget-feeds-managefeed.png){height="" width="50%"}
+![](resources/docs/proget-feeds-managefeed.png){height="" width="50%"}
 
-Then click "change" in the Feed Features section under "Other Settings".
+Then click "change" in the Feed Features section under "Other Settings". 
 
-![Feed Features](/resources/docs/proget-feeds-managefeed-changefeatures.png){height="" width="50%"}
+![](resources/docs/proget-feeds-managefeed-changefeatures.png){height="" width="50%"}
 
-Enable "Display vulnerability information and enforce vulnerability compliance rules" and click "Save".
+Enable "Display vulnerability information and enforce vulnerability compliance rules" and click "Save". 
 
-![Configure Features](/resources/docs/proget-feeds-managefeed-configurefeatures.png){height="" width="50%"}
+![](resources/docs/proget-feeds-managefeed-configurefeatures.png){height="" width="50%"}
 
-:::(warning) (⚠ Container Feeds)
-For container feeds such as Docker, you also need to make sure "Layer Scanning" is enabled. This is found under the container settings (e.g. "Docker Settings) when navigating to "Manage Feed" following the instructions above. As with the other settings in this step, this is enabled by default.
+
+:::(Warning) (⚠ Container Feeds)
+For container feeds such as Docker, you also need to make sure "Layer Scanning" is enabled. This is found under the container settings (e.g. "Docker Settings) when navigating to "Manage Feed" following the instructions above. As with the other settings in this step, this is enabled by default. 
 :::
 
-## Step 2: Find Vulnerable Package
+## Step 2: Use Vulnerable Package 
 
-Now, you can navigate to your package of interest and click on the "Vulnerabilities" tab.
+When packages are used in your Projects and Builds in ProGet, they will be auto assessed. You can view any identified vulnerabilities by navigating to "Reporting & SCA" and then selecting the Build. 
 
-![Vulnerabilities](/resources/docs/proget-vulnerabilities-newtonsoft.png){height="" width="50%"}
+![](resources/docs/proget-builds-overview.png){height="" width="50%"}
 
-From here you can click on the vulnerabilities found in your package to get more details and a description of the vulnerability, as well as a link to it's page on [Inedo Security Labs](https://security.inedo.com).
+From here, select the "Vulnerabilities" tab to view all identified vulnerabilities in the Build.  
 
-![Vulnerability Details](/resources/docs/proget-vulnerabilities-details.png){height="" width="50%"}
+![](resources/docs/proget-builds-vulnerabilities.png){height="" width="50%"}
 
-When a package, such as [Newtonsoft.Json 12.0.3](https://www.nuget.org/packages/newtonsoft.json/12.0.3), has a vulnerability, you’ll see this message on the overview page:
+## Step 3: Scan your Build 
 
-![Vulnerability Detected](/resources/docs/proget-vulnerabilities-detected.png){height="" width="50%"}
+You can scan your Build using [pgutil](/docs/proget/api/pgutil) and the [`pgutil builds scan`](/docs/proget/api/sca/builds/scan) command. This will analyze the packages used in the build for any vulnerabilities.  
 
-## Step 3: Assess Vulnerability
+![](resources/docs/proget-builds-scan.png){height="" width="50%"}
 
-Vulnerabilities can be viewed by navigating to a package in your feed and selecting "Vulnerabilities", such as this vulnerability on the [Newtonsoft.Json 12.0.3](https://www.nuget.org/packages/newtonsoft.json/12.0.3) package: *Improper Handling of Exceptional Conditions in Newtonsoft.Json*.
+Here we can see the a number of vulnerabilities have appeared in the scan, resulting in the affected package being assessed as Noncompliant. This will prevent the build from being deployed to the next stage. 
 
-![Assessment Button](/resources/docs/proget-vulnerabilities-assessbutton.png){height="" width="50%"}
+![](resources/docs/proget-builds-scan-noncompliant.png){height="" width="50%"}
 
-To assess a vulnerability, either navigate to the package's vulnerability tab or to "Reporting & SCA" > "Vulnerabilities", find the vulnerability you would like to assess, and click the assessment.
+## Step 4: (Optional) Run an audit 
 
-ProGet comes with three built-in assessment types:
+You can also run [`pgutil builds audit`](/docs/proget/api/sca/builds/analyze) right before deploying to production to identify any vulnerabilities that may have surfaced since you originally ran `pgutil builds scan`. 
 
-* **Ignore** indicates that the vulnerability report is not applicable or irrelevant and therefore allows packages to be downloaded
-* **Caution** tells developers to be careful to avoid the vulnerability; packages can be downloaded, but a warning is issued on the web UI
-* **Blocked** means that a vulnerability is too severe to allow use and packages cannot be downloaded
+![](resources/docs/proget-builds-scan-noncompliant.png){height="" width="50%"}
 
-![Assess Vulnerability](/resources/docs/proget-vulnerabilities-configureassessment.png){height="" width="50%"}
+## Step 5: (Optional) Block Noncompliant Packages 
 
-Select the assessment type, enter a comment, and click the "Save" button.
+To prevent vulnerable packages from entering your development and being used in production to begin with, you can block noncompliant packages from being downloaded at the feed level.  
 
-You can also set an expiry date by navigating to the advanced tab and entering a date in the "Expires" field using the format "mm/dd/yyyy".
+Navigate to the feed and select "Policies and Blocking".
 
-![Vulnerability Advanced](/resources/docs/proget-vulnerabilities-advanced.png){height="" width="50%"}
+![](resources/docs/proget-feed-policies-select.png){height="" width="50%"}
 
-When choosing "Blocked", attempts to download the package from the API will now result in a "404" error, and a successfully blocked package will be shown on your feed "Overview" as shown below:
+From here scroll to the bottom and select "Change Blocking Settings".
 
-![Package Blocked](/resources/docs/proget-vulnerabilities-blocked.png){height="" width="50%"}
+![](resources/docs/proget-policies-blocking.png){height="" width="50%"}
 
-## Step 4: (Optional) Edit Package Policy Rules
+Then from "Feed Setting" select "Block noncompliant packagess" and select "Save". 
+
+![](resources/docs/proget-feed-block.png){height="" width="50%"}
+
+This will prevent noncompliant packages from being downloaded. 
+
+## Step 6: (Optional) Edit Package Policy Rules
 
 Package compliance policies, available with paid ProGet, is configured on a feed-by-feed basis.
 
@@ -88,17 +92,19 @@ Under the "Vulnerabilities Rules" category, select "edit". Now select the "Gener
 
 Now the compliance rules have been configured, any packages that are assessed to have unassessed vulnerabilities will be categorized as "Blocked" and will not be downloaded, with any attempt to download the package from the API resulting in a "404" error.
 
+:::(Internal) (Update Screenshot)
 ![Package Blocked](/resources/docs/proget-vulnerabilities-blocked.png){height="" width="50%"}
+:::
 
-## Step 5: (Optional) Add Custom Assessment Types
+## Step 7: (Optional) Add Custom Assessment Types
 
-We recommend using auto assessment in combination with a [package approval workflow](https://blog.inedo.com/nuget/package-approval-workflow).
+You can customize assessment types in ProGet to better reflect how your organization evaluates and responds to vulnerabilities. This is especially useful when default assessments don’t align with your workflows, risk tolerance, or the way your teams manage and prioritize remediation.
 
-You can edit or create your own assessment type and set up auto-assessment by navigating to "Administration Overview" > "Vulnerability Assessment Types" under "Global Components".
+To edit or create your own assessment types, navigate to "Administration Overview" > "Vulnerabilities & Assessment Types" under "Global Components".
 
 ![Assessment Settings](/resources/docs/proget-vulnerabilities-assessmentsettings.png){height="" width="50%"}
 
-From here you can create an assessment type by clicking "Create Custom Assessment Type". By default, the assessment types of Caution, Blocked, and Ignore will be presented and automated.
+From here you can create an assessment type by clicking "Create Custom Assessment Type". By default, the assessment types of "Monitor", "Remediate", and "Contain" will be presented and automated.
 
 ![Assessment Types](/resources/docs/proget-vulnerabilities-manageassessment.png){height="" width="50%"}
 
@@ -108,17 +114,16 @@ Auto assessment can be customized to your preferences. However, if you’re unsu
 
 Once you have entered the details of your Assessment Type, click "Save".
 
-:::(info) (📄 Expiration (days))
-Note that expiration days will set the expiry date on "auto-assess" only.
-:::
-
-## Step 6: (Optional) Scan Container Vulnerabilities
+## Step 8: (Optional) Scan Container Vulnerabilities
 To scan containers for vulnerabilities, ProGet [extracts and inspects the files within each container image layer](/docs/proget/docker/private-registries) and looks for vulnerable packages that are installed. The "Packages" and "Vulnerabilities" tab of a container image will show these:
 
 ![Container Vulnerabilities](/resources/docs/proget-vulnerabilities-container.png){width="50%"}
 
 ## ProGet 2023 and Earlier
-Vulnerabilities had an overhaul in ProGet 2024. This was available as a preview feature in ProGet 2023.29+, which could be enabled by navigating to "Reporting & SCA" > "Vulnerabilities" and selecting "Enable Vulnerabilities Feature Preview..."
 
+### ProGet 2024 & 2025
+Vulnerabilities had an overhaul in ProGet 2024. This was available as a preview feature in ProGet 2023.29+, which could be enabled by navigating to "Reporting & SCA" > "Vulnerabilities" and selecting "Enable Vulnerabilities Feature Preview...". To see how to scan and block packages in ProGet 2024 and 2025 see [HOWTO: Scan and Block Packages in ProGet 2024 & 2025 (archive.org)](https://web.archive.org/web/20251119061249/https://docs.inedo.com/docs/proget/sca/vulnerabilities).
+
+### ProGet 2023 and Earlier
 To see how to scan and block packages in earlier versions of ProGet 2023, see  [HOWTO: Scan and Block Packages in ProGet 2023 (archive.org)](https://web.archive.org/web/20231210004603/https://docs.inedo.com/docs/proget-sca-vulnerabilities-howto).
 
