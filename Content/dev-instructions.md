@@ -275,7 +275,7 @@ The config file is stored side-by-side with the nDocs local server in a file nam
     - White space should be kept to a minimum, resizing the window where needed
 - Example:
 
-![Screenshot](/resources/docs/proget-policies-sharedpolicy-blocked.png){height="" width="50%"}
+![Screenshot](/resources/docs/proget-policies-sharedpolicy.png){height="" width="50%"}
 
 - When taking screenshots of modal pop ups:
     - some may have significant whitespace by default. Resize them to reduce this where possible.

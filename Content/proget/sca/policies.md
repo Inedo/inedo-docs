@@ -4,7 +4,6 @@ order: 1
 ---
 
 :::(Internal) (Update Screenshots)
-/resources/docs/proget-policies-sharedpolicy-blocked.png
 /resources/docs/proget-accord-licence-blocked.png
 :::
 
@@ -26,7 +25,7 @@ The easiest way to view or change the Policies that apply to a feed is by naviga
 
 
 
-![](/resources/docs/proget-policies-sharedpolicy-blocked.png){height="" width="50%"}
+![](/resources/docs/proget-policies-sharedpolicy.png){height="" width="50%"}
 
 This page combines the feed's Policies into a single view, so you can easily see which rules will apply to packages in the feed. You can also see and edit an individual policy under Admin > Policies.
 
