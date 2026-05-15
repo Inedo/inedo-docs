@@ -112,8 +112,8 @@ See the archived [container scanner documentation (github.com)](https://github.c
 The `/health` endpoint now provides a simple, plain text error message to allow monitoring systems to convey the system error without parsing JSON. The old health handler is still accessible under `/health/json`.
 
 ### Various Changes & Improvements
+* **Docker Feed UI Tweaks**; improved support for displaying manifest lists (i.e. fat manifests) and attestations
 * **Platform Upgrade (.NET8 to .NET10)**
-* **Maven Version Parsing & Endpoint Fixes**; very minor, but added support for parsing 4-segment versions (for vulnerability identification) and artifact versions that don't start with a number
 * **"Notifications" Feature**; added via [PG-3233](https://issues.inedo.com/issue/PG-3233) as a preview feature, provides in-application notifications instead of relying on email
 * **Concurrent Request Limit**; now defaults to 100
 * **Removed Various Advanced Settings**; several settings (e.g. `ExecutionDispatcherThrottle`) should never be changed and have been removed from Advanced Configuration
