@@ -25,7 +25,7 @@ Source options must also be specified unless you have the "Default" source confi
 **Assessing a vulnerability** requires the vulnerability id (e.g. `PGV-1234567`) and assessment type (e.g. `blocked`):
 
 ```bash
-pgutil vulns assess --id=PGV-1234567 --type=blocked --comment="Package non-compliant" --policy=myPolicy
+pgutil vulns assess --id=PGV-1234567 --type=blocked --comment="Package Noncompliant" --policy=myPolicy
 ```
 
 ## HTTP Request Specification

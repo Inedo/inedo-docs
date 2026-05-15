@@ -57,7 +57,7 @@ By default your `public-npm` feed does not require authentication and can be vie
 
 If you enabled "Scan for Security Vulnerabilities" when you [created a feed](#create-feed) you can use npm-audit to scan for vulnerabilities in packages by simply running either `npm audit` or `yarn audit`.
 
-Using `npm audit` with [Vulnerability Scanning and Blocking](/docs/proget/sca/vulnerabilities), lets you assess vulnerabilities in packages, and how they impact your organization.
+Using `npm audit` with [Vulnerability Scanning and Assessment](/docs/proget/sca/vulnerabilities), lets you assess vulnerabilities in packages, and how they impact your organization.
 
 You can also set up [Policies & Compliance Rules](/docs/proget/sca/policies) to create rules for vulnerabilities, licenses, deprecated packages, etc. Setting these up lets you block any packages that are considered "noncompliant".
 

@@ -3,6 +3,10 @@ title: "Policies & Compliance Rules"
 order: 1
 ---
 
+:::(Internal) (Update Screenshots)
+/resources/docs/proget-accord-licence-blocked.png
+:::
+
 Policies & Compliance Rules make it easy to clearly define what "compliant" means for open-source packages in different contexts. You can easily define rules about licensing, vulnerability, deprecation, etc. to block download/usage of noncompliant packages, while also having flexibility to create exceptions for known packages and "warn" for packages that are in-between.  
 
 :::(Info) (🔒 ProGet Enterprise Feature)
@@ -19,7 +23,9 @@ A set of rules is called a Policy, and you create additional Policies and use th
 
 The easiest way to view or change the Policies that apply to a feed is by navigating to Feeds > Manage Feeds > Policies and Blocking.
 
-![](/resources/docs/proget-policies-sharedpolicy-blocked.png){height="" width="50%"}
+
+
+![](/resources/docs/proget-policies-sharedpolicy.png){height="" width="50%"}
 
 This page combines the feed's Policies into a single view, so you can easily see which rules will apply to packages in the feed. You can also see and edit an individual policy under Admin > Policies.
 
@@ -41,6 +47,14 @@ You can also manually perform a package analysis by navigating to a package and 
 
 A re-analysis will provide a detailed log that can help troubleshoot rules across multiple policies.
 
+## Risk Profiles
+
+ProGet uses the Package Vulnerability Rating Scale (PVRS), which utilizes a *risk profile* to determine how to categorize vulnerabilities on a scale of Category 1 (*No special action required because exploitation not practically possible*) to Category 5 (*Address ASAP because risk is immediate and unacceptable*).
+
+![Risk Profile](/resources/docs/proget-policies-riskprofile.png){height="" width="75%"}
+
+Paid users can edit this *risk profile*, and ProGet Enterprise users can define different risk profiles on different policies. See [What is PVRS & PVRS Categories?](https://guides.inedo.com/vulnerability-management/categories/) to learn more..
+
 ## Compliance Rules
 
 A policy contains a number of rules that are used to analyze whether packages are compliant, noncompliant, or neither (i.e. "warn"). 
@@ -54,29 +68,29 @@ The analysis logic gets a little more complicated with [rule exemptions](#rule-e
 
 ### Vulnerability Rules
 
-Vulnerability rules determine compliance based on the vulnerabilities that were detected in a package, and more specifically, how you assessed those vulnerabilities.
+Vulnerability rules determine compliance based on the vulnerabilities that were detected in a package, and more specifically, how those vulnerabilities were assessed.
 
 ::: (Info) (👨‍🏫 Refresher on Vulnerability Assessments)
-When ProGet first detects a vulnerability in a package, the vulnerability will be considered "Unassessed", and you can select "Severe", "Warn", "Ignore", or a custom assessment type you've added to ProGet.  ProGet can automatically assess newly-detected vulnerabilities for you based Inedo Security Lab's severity score.
-
-Note that assessments can also expire, which means a vulnerability you originally assessed as "Ignore" could be considered "Unassessed" later.
+ProGet automatically assesses vulnerabilities as "Monitor", "Remediate", "Contain", or a custom assessment type you've added to ProGet. These can be configured to expire, which means that a vulnerability you originally assessed as "Monitor" may be considered "Unassessed" later.
 :::
 
 There are two types of vulnerability rules you can configure:
- * **Unassessed Vulnerability Rule** is evaluated when the package has a vulnerability you haven't assessed, or with an expired assessment; this defaults to *Warn*
- * **Assessed Vulnerability Rules** are evaluated based on how the package's vulnerabilities have been assessed:
-   * **Severe** assessment types default to *noncompliant*
-   * **Warn** assessment types default to *Warn*
-   * **Ignore** assessment types default to *Compliant*
-   * **Custom** assessment types default to *Warn*
+ * **Unassessed Vulnerability Rule** is evaluated when the assessment expires or the automatic assessment rules are misconfigured leading towards a vulnerability that can't be assessed; this defaults to *Noncompliant*
+ * **Assessed Vulnerability Rules** are evaluated based on how the package's vulnerabilities have been assessed. By default:
+   * **Monitor** assessment type is *Compliant*
+   * **Remediate** assessment type is *Warn*
+   * **Contain** assessment types is *Noncompliant*
 
-Defining vulnerability rules may be particularly useful when you use custom assessment types. For example, you may wish to have ProGet's auto-assess feature "temporarily" assess a vulnerability until you can manually review/reassess.
-
-![](/resources/docs/proget-policies-vulnerability-rules.png){height="" width="50%"}
+You can change these default or assign rules for other assessment types. When an explicit rule isn't configure, the assessment type's *emitted severity* is used for compliance:
+ * `None` and `Low` are *Compliant*
+ * `Medium` is *Warn*
+ * `High` and `Critical` are *Noncompliant*
 
 If multiple vulnerabilities were detected on a package, they will each be evaluated against the rules separately. For example, if one vulnerability was assessed as Ignore, but another is Severe, the package would still be considered noncompliant.
 
-For more context on [what package vulnerabilities are and how to handle them](https://blog.inedo.com/nuget/vulnerabilities/), see our article on the Inedo blog.
+::: (Info) (📑 Vulnerability Management Done Right with ProGet)
+We've published a free guide to help you learn how to prioritize and respond to OSS Vulnerabilities using ProGet. You can read it online or download a PDF from [Vulnerability Management Done Right with ProGet](https://guides.inedo.com/vulnerability-management/).
+:::
 
 ### License Rules
 
@@ -257,10 +271,6 @@ For packages in [active builds](/docs/proget/sca/builds), ProGet will only query
 Although metadata providers are designed to work with the official public repositories, (NuGet.org, npmjs.org, etc.), they can also be configured to connect to another repository. To create a custom metadata provider, first enable the default provider, edit it, and then click "create custom provider".
 
 We're not entirely sure what the use case would be (which is why creating them is a bit convoluted), but you may find it helpful to get deprecated, unlisted, or outdated package status from another repository.  Please [let us know](https://forums.inedo.com/) if you find this feature useful, so that we can properly document and support it, as well as add authentication and other options.
-
-:::(Info) (📺 Video: Protecting Your Software Supply Chain from Vulnerabilities)
-[In this video](https://www.youtube.com/watch?v=LOzqpLZc5Zk), you'll learn how to scan and block OSS packages using custom assessments to protect your software supply chain before risks reach production, and after they're detected in your builds and releases.
-:::
 
 ## ProGet 2023 and Earlier
 Policies & Compliance Rules are a new feature for ProGet 2024, replacing the download blocking rules for [licenses (archive.org)](https://web.archive.org/web/20231210172007/https://docs.inedo.com/docs/proget-sca-licenses) and [vulnerabilities (archive.org)](https://web.archive.org/web/20230927141932/https://docs.inedo.com/docs/proget-sca-vulnerabilities) in which you could implement similar functionality. 
