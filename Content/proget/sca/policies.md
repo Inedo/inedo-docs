@@ -3,6 +3,10 @@ title: "Policies & Compliance Rules"
 order: 1
 ---
 
+:::(Internal) (Update Screenshots)
+/resources/docs/proget-accord-licence-blocked.png
+:::
+
 Policies & Compliance Rules make it easy to clearly define what "compliant" means for open-source packages in different contexts. You can easily define rules about licensing, vulnerability, deprecation, etc. to block download/usage of noncompliant packages, while also having flexibility to create exceptions for known packages and "warn" for packages that are in-between.  
 
 :::(Info) (🔒 ProGet Enterprise Feature)

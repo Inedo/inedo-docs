@@ -87,7 +87,7 @@ This pipeline stage requirement will effectively prevent the use of open-source 
 
 To use this option, you'll first want to configure at least one of two features in ProGet: 
 * [Licensing Detection and Blocking in ProGet](/docs/proget/sca/licenses)
-* [Vulnerability Scanning and Blocking in ProGet](/docs/proget/sca/vulnerabilities)
+* [Vulnerability Scanning and Assessment in ProGet](/docs/proget/sca/vulnerabilities)
 
 After configuring these features, the packages detected by `ProGet::Scan` will then be checked against the license and vulnerability rules in ProGet. If a package isn't in compliance with those rules, a [package issue](/docs/proget/sca/builds) will be  added to the release in ProGet.
 

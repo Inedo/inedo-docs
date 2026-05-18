@@ -92,7 +92,3 @@ When customizing a package installation instruction, you can use MarkDown syntax
 | `$RegistryBaseUrl` |  Docker | proget.inedo.com/productimages/ |
 | `$Path` | Assets | my-subdirectory/myfile.txt |
 | `$Name` | Assets | my-file.txt |
-
-:::(INFO)
-Note that Assets are only supported in ProGet 2022+.
-:::

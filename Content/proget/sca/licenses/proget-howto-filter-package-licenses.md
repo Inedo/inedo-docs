@@ -41,7 +41,7 @@ In this scenario, we want to take a list of licenses and decide on licenses we w
 
 Navigate to "Reporting & SCA" > "Licenses" > and select "Manage License Types & Rules".
 
-![proget-licenses-manage.png](/resources/docs/proget-licenses-manage.png){height="" width="50%"}
+![License Rules](/resources/docs/proget-licenses-manage.png){height="" width="50%"}
 
 From here we want to locate the "GPL 3.0" license: 
 

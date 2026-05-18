@@ -39,18 +39,23 @@ Click "[DEBUG] Generate TaskRunner Docs" on Admin > Service Page in a DEBUG buil
 Task runners run well-defined background jobs, on either a periodic and/or manual basis. Many will create sub-tasks that allow you to better visualize what the service is doing. Some task runners can be manually triggered. This should only be needed in debugging purposes, as the Web Application will trigger them in response to certain actions (such as adding a connector), and they are always executed on service start.
 
 | Task Runner | Description 
-| - | - 
+ | - | - 
+| **Service Heartbeat** | Periodically pings the ProGet database to verify connectivity. Runs every 5.00 mins.
+| **Failover Detection** | When running in a High Availability configuration, detects failover conditions and ensures task runners are running on another server. Runs every 30 secs.
 | **Proxy Configuration Monitor** | Updates service proxy settings when proxy configuration is changed. Runs every 16.67 mins.
 | **Drop Path Monitor** | Scans feed drop paths for packages to import. Runs every 60 secs.
-| **Scheduled Job Dispatcher** | Creates executions for scheduled jobs based on each job's configured schedule. Runs every 16.67 mins.
-| **Execution Dispatcher** | Monitors the database for pending executions that are ready to run. Runs every 15 secs.
+| **Scheduled Job Dispatch** | Creates executions for scheduled jobs based on each job's configured schedule. Runs every 16.67 mins.
+| **Execution Dispatch** | Monitors the database for pending executions that are ready to run. Runs every 15 secs.
 | **Feed Replication** | Fetches the state of feed replication sources and determines if there have been any updates. If updates are found, a feed replication execution is started. Runs every 60 secs.
+| **System Replication** | Fetches the state for the system replication sources and determines if there have been any updates. If updates are found, a system replication execution is started. Runs every 60.00 mins.
 | **Docker Upload Cleanup** | Deletes orphaned partial uploads of Docker blobs. Runs every 16.67 mins.
-| **Connector Cache Check** | Purges old cached connector metadata after it has become stale. Runs every 5 mins.
+| **Connector Cache Check** | Purges old cached connector metadata after it has become stale. Runs every 5.00 mins.
 | **Multipart Upload Cleanup** | Terminates unfinished multipart uploads so that partial files will be deleted during feed cleanup. Runs every 16.67 mins.
-| **Package/Container Scanner** | Collects information about package/container usage from an external system. Runs every 60 mins.
-| **Edge Node Data Publisher** | Publishes package and container download information from an edge node to a hub. Runs every 60 mins.
-| **Node Message Cleanup** | When running in a High Availability configuration, purges old control messages sent between nodes. Runs every 10 mins.
+| **Publish Edge Node Data** | Publishes package and container download information from an edge node to a hub. Runs every 60.00 mins.
+| **Node Message Cleanup** | When running in a High Availability configuration, purges old control messages sent between nodes. Runs every 10.00 mins.
+| **Index File Update** | Updates index files for feeds and connectors. Runs every 5.00 mins.
+| **Local Data File Update** | Updates local per-node data caches. Runs every 1440.00 mins.
+| **Update Checker** | Periodically checks for updated versions of ProGet. Runs every 1440.00 mins.
 
 ## Scheduled Jobs 
 
@@ -63,13 +68,12 @@ Scheduled jobs are often resource-intensive jobs that are run on a user-definabl
 You cannot create scheduled jobs, but you can disable and change their schedule from the Administration > Scheduled Tasks.
 
 | Name | Scope | Description 
-| - | - | - 
+ | - | - | - 
 | **BuildMavenFeedIndex** | Feed |  Builds an index file that can be used by clients and IDEs to search the artifacts in a Maven feed. Default schedule is ` daily at 2:00 AM`
 | **FullMavenConnectorIndex** | Connector |  Downloads and indexes all metadata from a Maven repository. Default schedule is ` weekly (Sunday) at 2:00 AM`
 | **DatabaseBackup** | System |  Saves a backup of the ProGet database on a regular schedule. Default schedule is ` daily at 4:00 AM`
 | **PackageAnalyzer** | System |  Scans builds and projects for compliance against policy rules. Default schedule is ` daily at 2:00 AM`
 | **ExecutionLogRetention** | System |  Performs various system cleanup including execution logs and old log messages. Default schedule is ` daily at 1:00 AM`
-| **UpdateChecker** | System |  Checks inedo.com for updated versions of ProGet. Default schedule is ` weekly (Sunday) at 12:00 AM`
 | **VulnerabilityDownloader** | System |  Downloads new vulnerability definitions from Inedo Security Labs. Default schedule is ` daily at 1:00 AM`
 | **FeedCleanup** | Feed |  Runs retention rules configured for the feed. Default schedule is ` daily at 12:00 AM`
 | **FeedIntegrity** | Feed |  Checks health of feeds and package compliance. Default schedule is ` daily at 1:45 AM`

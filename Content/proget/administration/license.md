@@ -41,8 +41,9 @@ ProGet Free is also limited to UI-based security configuration (i.e. the securit
 | Vulnerability Breakdown & Reporting |❌|✔|✔
 | Vulnerability Assessments |❌|☑|✔
 | Container Vulnerability Scanning  |❌|❌|✔
+| Tailored Risk Profile |❌|☑|✔
 
-ProGet Basic only supports basic vulnerability assessments (i.e. not scoped to a project or policy).
+ProGet Basic only supports basic vulnerability assessments (i.e. not scoped to a project or policy) and a global risk profile.
 
 ### SCA & Build Restrictions
  track the open source and third-party components (packages) your organization uses and apply Package Policies & Compliance Rules to identify vulnerabilities, unwanted license, etc.
