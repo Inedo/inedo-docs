@@ -3,10 +3,6 @@ title: "Policies & Compliance Rules"
 order: 1
 ---
 
-:::(Internal) (Update Screenshots)
-/resources/docs/proget-accord-licence-blocked.png
-:::
-
 Policies & Compliance Rules make it easy to clearly define what "compliant" means for open-source packages in different contexts. You can easily define rules about licensing, vulnerability, deprecation, etc. to block download/usage of noncompliant packages, while also having flexibility to create exceptions for known packages and "warn" for packages that are in-between.  
 
 :::(Info) (🔒 ProGet Enterprise Feature)
@@ -23,8 +19,6 @@ A set of rules is called a Policy, and you create additional Policies and use th
 
 The easiest way to view or change the Policies that apply to a feed is by navigating to Feeds > Manage Feeds > Policies and Blocking.
 
-
-
 ![](/resources/docs/proget-policies-sharedpolicy.png){height="" width="50%"}
 
 This page combines the feed's Policies into a single view, so you can easily see which rules will apply to packages in the feed. You can also see and edit an individual policy under Admin > Policies.
@@ -33,7 +27,7 @@ This page combines the feed's Policies into a single view, so you can easily see
 
 Based on the feed's policies, packages will display a banner that indicates compliant, noncompliant, or warn.
 
-![](/resources/docs/proget-accord-licence-blocked.png){height="" width="50%"}
+![](/resources/docs/proget-licence-blocked.png){height="" width="50%"}
 
 
 This status is the result of a *package analysis*, which occurs:
@@ -108,7 +102,6 @@ There are three types of license rules you can configure:
 Although ProGet does not include any default rules for Specified Licenses, the Global policy created on new installations of ProGet includes rules that warn about commonly unwanted licenses (GPL, etc).
 
 ![](/resources/docs/policies-default-license-rules.png){height="" width="50%"}
-
 
 #### Creating Whitelist, Greylist, and Blacklist Policies
 The *Unspecified License Rule* primarily serves to let you define a Whitelist-, Greylist-, and Blacklist-style policies. 
