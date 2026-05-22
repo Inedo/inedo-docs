@@ -13,11 +13,11 @@ First, we will create a feed to host your Helm charts. Start by selecting "Feeds
 
 ![Create Helm Feed](/resources/docs/proget-helm-newfeed.png){height="" width="50%"}
 
-Then select "No Connectors (Private charts only)" as we will be creating a private feed. From here, we will give our feed a name. In this guide, we will call it `internal-helm`, and then click "Create Feed".
+Then select "Private/Internal Helm Charts" as we will be creating a private feed. From here, we will give our feed a name. In this guide, we will call it `internal-helm`, and then click "Create Feed".
 
 ![Name Helm Feed](/resources/docs/proget-helm-nameinternalfeed.png){height="" width="50%"}
 
-You will then see several options. These relate to ProGet's SCA features, useful for third party charts. As we will be using our own internal charts, we will leave these boxes unchecked, and select "Set Feed Features". You will then be redirected to your new `internal-helm` feed, currently empty.
+You will then be redirected to your new `internal-helm` feed, currently empty.
 
 ![Internal Helm Feed](/resources/docs/proget-helm-internalfeed.png){height="" width="50%"}
 

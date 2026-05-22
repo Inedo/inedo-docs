@@ -60,6 +60,10 @@ For Windows, see see [Installation Configuration Files](/docs/installation/confi
 
 For Linux/Docker, this involves setting a `PROGET_ENCRYPTION_KEY`environment variable; see [Supported Environment Variables](/docs/installation/linux/docker-guide#supported-environment-variables).
 
+::: (Warning) (Important!)
+An encryption key needs to be set and consistent across all servers in the cluster. This encryption key is required for cross-server sessions and removes the requirement for sticky sessions in your load balancer.
+:::
+
 ### Step 3: Configure Shared Storage 
 Your Inedo product is compatible with any type of common storage that all services can access, whether software-based (e.g., SAMBA share, Windows Server Storage Spaces, etc.) or appliance-based (e.g., dedicated NAS). The only requirement is that the storage is readable and writeable by all servers.
 

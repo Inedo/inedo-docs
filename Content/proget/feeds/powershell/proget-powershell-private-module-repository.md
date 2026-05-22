@@ -15,7 +15,7 @@ Create a new feed by navigating to "Feeds" > "Create New Feed"
 
 ![Create New Feed](/resources/docs/proget-feeds-createnewfeed.png){height="" width="50%"}
 
-Choose "PowerShell Modules" from the options presented and give it a name and optional description. We’ll be using “internal-powershell”.
+Choose "PowerShell Modules" from the options presented, and then "Private/Internal PowerShell Modules". Then give it a name and optional description. We’ll be using `internal-powershell`.
 
 ![Create PowerShell Feed](/resources/docs/proget-powershell-nameinternalfeed.png){height="" width="50%"}
 

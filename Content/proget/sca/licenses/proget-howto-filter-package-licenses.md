@@ -11,8 +11,8 @@ Nearly all open-source packages that you'll find on NuGet.org, npmjs.org, etc. h
 
 In this article we will look at controlling open-source license usage in ProGet, and how you can block or allow licenses depending on your situational needs.
 
-:::(Info) (📺 4-minute Video:  Filtering Packages by License in ProGet)
-<iframe width="600" height="337" src="https://www.youtube.com/embed/BN4O8JyLDhY?si=0Q6plwenyGRV_EG8" frameborder="0" allowfullscreen="true"></iframe>
+:::(Info) (📺 Video: Filtering Packages by License in ProGet)
+*[This tutorial video](https://www.youtube.com/watch?v=BN4O8JyLDhY) will guide you through controlling open-source license usage in ProGet, and how you can block or allow licenses depending on your situational needs.*
 :::
 
 ## Controlling Open-Source Package License Use
@@ -41,7 +41,7 @@ In this scenario, we want to take a list of licenses and decide on licenses we w
 
 Navigate to "Reporting & SCA" > "Licenses" > and select "Manage License Types & Rules".
 
-![proget-licenses-manage.png](/resources/docs/proget-licenses-manage.png){height="" width="50%"}
+![License Rules](/resources/docs/proget-licenses-manage.png){height="" width="50%"}
 
 From here we want to locate the "GPL 3.0" license: 
 

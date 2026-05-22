@@ -3,7 +3,7 @@ title: "HOWTO: Scan for Installed Chocolatey Packages on a Server"
 order: 3
 ---
 
-When a critical bug or vulnerability is discovered in a package, it is important to know which servers are using the affected package. ProGet’s [Package Usage Scanning](/docs/proget/packages/package-scanners) feature provides valuable information about which packages are installed on which servers.
+When a critical bug or vulnerability is discovered in a package, it is important to know which servers are using the affected package.
 
 This guide shows you how to use Otter to scan servers for installed Chocolatey packages and integrate ProGet with Otter to see which Chocolatey packages are installed on which server.
 
@@ -77,9 +77,11 @@ You will need to create a Chocolatey feed in ProGet if you do not already have o
 
 ![Chocolatey Feed](/resources/docs/proget-chocolatey-newfeed.png){height="" width="50%"}
 
-Now that your feed is created it will need to be connected to Chocolatey.org. Click on "Connect to Chocolately.org".
+Now select "Free/Open Source Chocolatey Packages". 
 
 ![Create Connector](/resources/docs/proget-chocolatey-createconnector.png){height="" width="50%"}
+
+You'll then be asked to name your Chocolatey feed. After you've done this, select "Create Feed". You'll then be taken to your newly created Chocolatey feed. 
 
 ## Step 2: Connect Chocolatey Feed to Otter
 

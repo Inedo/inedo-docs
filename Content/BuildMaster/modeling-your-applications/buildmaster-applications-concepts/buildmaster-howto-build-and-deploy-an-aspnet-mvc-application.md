@@ -7,8 +7,8 @@ BuildMaster can [build](/docs/buildmaster/builds-continuous-integration/buildmas
 
 In this guide we will look at creating an ASP.NET CORE application called ["vatcompweb"](https://gitlab.com/inedo-samples/vatcompweb) in BuildMaster from code hosted in a GitLab repository. We will then look at how we can deploy it to IIS in Integration, Testing and Production environments in a pipeline, which determines where the build will be deployed, as well as what approvals are required before deploying to each stage.
 
-:::(Info) (📺 3-minute Video:  Getting Started with BuildMaster)
-<iframe width="600" height="337" src="https://www.youtube.com/embed/Byi7gnOn6Hc?si=1EXwRRGjhsvvt-9T" frameborder="0" allowfullscreen="true"></iframe>
+:::(Info) (📺 Quick Start Video: Getting Started with BuildMaster)
+*[In this tutorial](https://www.youtube.com/watch?v=Byi7gnOn6Hc), you’ll learn how to create an ASP.NET CI/CD application and deploy it using BuildMaster’s CI/CD pipeline.*
 :::
 
 ## Step 1: Create Application

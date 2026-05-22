@@ -13,7 +13,7 @@ Start by creating a NuGet feed to host your internal packages. Navigate to "Feed
 
 ![Create NuGet Feed](/resources/docs/proget-newfeed-nugetselect.png){height="" width="50%"}
 
-Now select "No Connectors (Private packages only)" as this feed will be intended to host private packages.
+Now select "Private/Internal NuGet (.NET) Packages" as this feed will be intended to host private packages.
 
 ![Private Packages](/resources/docs/proget-nuget-noconnectors.png){height="" width="50%"}
 
@@ -21,7 +21,7 @@ From here, we name our feed. For this example, we will call it `internal-nuget`,
 
 ![Name Feed](/resources/docs/proget-nuget-internal-name.png){height="" width="50%"}
 
-You'll then see several options related to ProGet's [Vulnerability Scanning and Blocking](/docs/proget/sca/vulnerabilities) features. These are only for users looking to use third-party OSS packages. Leave these boxes unchecked, and select "Set Feed Features". You will then be directed to the new `internal-proget` feed, currently empty.
+You will then be directed to the new `internal-proget` feed, currently empty.
 
 ![Internal NuGet Feed](/resources/docs/proget-nuget-internal-empty.png){height="" width="50%"}
 

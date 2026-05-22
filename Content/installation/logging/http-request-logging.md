@@ -17,6 +17,26 @@ To enable HTTP Request logging in Inedo products on Windows, navigate to **Admin
 
 To enable HTTP Request logging in Inedo products on Docker, you will need to add the `ENABLE_REQUEST_LOGGING` environment variable and set it to true (ex: `-e ENABLE_REQUEST_LOGGING='true'`).  Once enabled, HTTP Request logs will be saved to `/var/«inedo-product»/logs` within the container.  For these logs to persist through container restarts, you will also need to mount that volume to your host (ex: `-v ./proget-logs:/var/proget/logs`).
 
+### Enabling With Load Balancing/High Availability
+
+#### Windows
+
+To enable HTTP Request Logging in a Windows cluster, you will need to edit the [product configuration file](/docs/installation/configuration-files) directly on each node in the cluster.  You will then need to add the `EnableRequestLogging="true"` and the `RequestLoggingDirectory="C:\ProgramData\ProGet\Logs"` attributes to the `WebServer` node.
+
+Example ProGet.config file:
+```text
+<?xml version="1.0" encoding="utf-8"?>
+<InedoAppConfig>
+  <PostgresConnectionString Enabled="true">Host=127.0.0.1;Database=buildmaster;Username=proget;Password=*************</PostgresConnectionString>
+  <EncryptionKey>******************************************</EncryptionKey>
+  <WebServer Enabled="true" Urls="http://*:8624" EnableRequestLogging="true" RequestLoggingDirectory="C:\ProgramData\ProGet\Logs" />
+</InedoAppConfig>
+```
+
+#### Docker
+
+Enabling HTTP Request Logging in a Docker cluster requires you to [enable request logging](#enabling-on-docker) on each container in the cluster.
+
 ## Log File Management
 
 Log files will grow to a maximum size of 5MB and ProGet will retain up to 60 log files.  When the maximum size is reached, ProGet will create a new log file and delete the oldest log file if there are more than 60 log files.

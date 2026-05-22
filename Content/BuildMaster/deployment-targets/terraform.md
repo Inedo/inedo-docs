@@ -25,15 +25,7 @@ The first step is creating a delivery pipeline for your Terraform configurations
 After creating a GitHub Project [secure resource](/docs/buildmaster/configuring-for-your-team/buildmaster-administration-resource-credentials), you can get the source code as follows.
 
 ```
-GitHub::Get-Source
-(
-    From: InfraConfigRepo,
-    CommitHash => $CommitId,
-);
-Set-BuildVariable CommitId
-(  
-    Value: $CommitId  
-);
+Git::Checkout-Code
 ```
 
 This will also create a build-scoped variable to record the commit used.

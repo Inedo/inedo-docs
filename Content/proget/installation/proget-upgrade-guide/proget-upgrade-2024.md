@@ -1,6 +1,6 @@
 ---
 title: "Upgrading to ProGet 2024"
-order: 2
+order: 3
 url-slug: "proget-upgrade-2024"
 ---
 
@@ -9,7 +9,7 @@ ProGet 2024 is a major update, and this article provides information about what 
 :::(Error) (ProGet 2024 Upgrade Not Recommended)
 If you're currently using ProGet 5.2 ProGet 5.3, ProGet 6.0, ProGet 2022, or ProGet 2023 we do not recommend upgrading to ProGet 2024.
 
-Instead, **directly upgrade to ProGet 2025** ([see notes](/docs/proget-upgrade-2025)). This article is kept as-is to help show what changed in ProGet 2023.
+Instead, **directly upgrade to ProGet 2026** ([see notes](/docs/proget-upgrade-2026)). This article is kept as-is to help show what changed in ProGet 2024.
 :::
 
 ## Planning for Your Upgrade

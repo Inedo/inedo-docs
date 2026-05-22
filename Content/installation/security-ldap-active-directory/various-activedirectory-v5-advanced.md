@@ -49,3 +49,6 @@ Active Directory V5 is connected to a single domain.  To connect to two or more 
 In some cases your organization might need to have a second instance of ProGet running with different authentication types. For this you will need to add a second website in IIS that points to the same physical path as your original ProGet instance and adjust your authentication settings as needed.
 
 The most typical reason for implementing this would be for companies using Windows Authentication along with Forms authentication at the same time.
+
+## Advanced Configurations
+The *Active Directory V5* is built to "just work" with most Active Directory configurations.  If you find that you need a more advanced configuration (change the search base, use extra filtering, disable recursive group search, etc...), use the [OpenLdap/Generic LDAP](/docs/installation/security-ldap-active-directory/various-ldap-openldap#microsoft-active-directory-support) user directory instead.
