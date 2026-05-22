@@ -1,26 +1,32 @@
 ---
-title: "HOWTO: Set Up a Proxy Feed of the Chocolatey Community Repository"
+title: "HOWTO: Proxy Packages from the Chocolatey Community Repository in ProGet"
 order: 4
 ---
 
-The Chocolatey Community Repository (CCR) is a resource for Chocolatey packages. If organizations want to use the CCR to serve packages to their clients, they must create an internal proxy repository that acts as a go-between between the CCR and the organization's endpoints.
+With ProGet you can create "Feeds" to proxy packages from the Chocolatey Community Repository (CCR) and install them just as you would when installing them directly from Chocolatey.
 
-Using an internal proxy repository prevents the organization from breaking Chocolatey's Terms of Use, possibly leading to the revocation of their Chocolatey for Business (C4B) license and legal action. It also prevents the organization from becoming rate limited, which places a block on queries and calls to the CCR. If this occurs, an organization [must reach out to Chocolatey](https://chocolatey.org/contact/blocked-ip-address) in order to have the block lifted.
+Using ProGet as a proxy will cache packages locally, allowing teams to continue accessing packages even if the Chocolatey Community Repository is unavailable. Organizations using the CCR are also encouraged to use an internal proxy repository to help comply with Chocolatey's Terms of Use and avoid potential rate limiting issues that can restrict access the the repository. In some cases, organizations may [need to contact Chocolatey](https://chocolatey.org/contact/blocked-ip-address) directly to have access restored.
 
-## Create an Internal Proxy Repository in ProGet
+This guide will cover how to set up a feed to proxy packages from the Chocolatey Community Repository using ProGet. 
 
-In your ProGet instance, select "Feeds" and "Create New Feed", and select "Chocolatey Packages".
+## Create a Chocolatey Proxy Feed
+
+Start by selecting "Feeds" and "Create New Feed". Next, select "Chocolatey Packages", as we will creating a feed to proxy Chocolatey packages.
 
 ![Create Feed](/resources/docs/proget-chocolatey-newfeed.png){height="" width="50%"}
 
-Now select "Free/Open Source Chocolatey Packages" to create the internal proxy repository.
+Now select "Free/Open Source Chocolatey Packages", which will allow us to proxy packages from the Chocolatey Community Repository.
 
 ![Select Feed](/resources/docs/proget-chocolatey-createconnector.png){height="" width="50%"}
 
-From here, we name our feed. For this example, we will call it `public-chocolatey`, and then click "Create New Feed".
+From here, name your feed. In this example, we'll call ours `public-chocolatey`. Then select "Create New Feed".
 
 ![Name Feed](/resources/docs/proget-chocolatey-nameproxyfeed.png){height="" width="50%"}
 
+ProGet will then redirect you to the newly created `public-chocolatey` feed, which will now be populated with packages proxied from the Chocolatey Community Repository.
+
+![Proxy Feed](/resources/docs/proget-chocolatey-proxyfeed.png){height="" width="50%"}
+
 ## Additional Resources
 
-You can visit Chocolatey's Zendesk Help Center for more information on how to configure Chocolatey sources for your ProGet instance. [Click here to get started.](https://chocolatey.zendesk.com/hc/en-us/articles/43231653511187-Configuring-Chocolatey-Sources-Inedo-ProGet)
+You can visit [Chocolatey's Zendesk Help Center](https://chocolatey.zendesk.com/hc/en-us/articles/43231653511187-Configuring-Chocolatey-Sources-Inedo-ProGet) for more information on configuring Chocolatey sources for your ProGet instance.
