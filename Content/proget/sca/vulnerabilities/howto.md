@@ -15,15 +15,15 @@ This step is enabled by default. Unless this feature is disabled on your instanc
 
 To configure vulnerability blocking on a feed, first navigate to the feed and click the "Feed Properties" tab. 
 
-![](resources/docs/proget-feeds-managefeed.png){height="" width="50%"}
+![](/resources/docs/proget-feeds-managefeed.png){height="" width="50%"}
 
 Then click "change" in the Feed Features section under "Other Settings". 
 
-![](resources/docs/proget-feeds-managefeed-changefeatures.png){height="" width="50%"}
+![](/resources/docs/proget-feeds-managefeed-changefeatures.png){height="" width="50%"}
 
 Enable "Display vulnerability information and enforce vulnerability compliance rules" and click "Save". 
 
-![](resources/docs/proget-feeds-managefeed-configurefeatures.png){height="" width="50%"}
+![](/resources/docs/proget-feeds-managefeed-configurefeatures.png){height="" width="50%"}
 
 
 :::(Warning) (⚠ Container Feeds)
@@ -34,27 +34,27 @@ For container feeds such as Docker, you also need to make sure "Layer Scanning" 
 
 When packages are used in your Projects and Builds in ProGet, they will be auto assessed. You can view any identified vulnerabilities by navigating to "Reporting & SCA" and then selecting the Build. 
 
-![](resources/docs/proget-builds-overview.png){height="" width="50%"}
+![Build Overview](/resources/docs/proget-builds-overview.png){height="" width="50%"}
 
 From here, select the "Vulnerabilities" tab to view all identified vulnerabilities in the Build.  
 
-![](resources/docs/proget-builds-vulnerabilities.png){height="" width="50%"}
+![Build Vulnerabilities](/resources/docs/proget-builds-vulnerabilities.png){height="" width="50%"}
 
 ## Step 3: Scan your Build 
 
 You can scan your Build using [pgutil](/docs/proget/api/pgutil) and the [`pgutil builds scan`](/docs/proget/api/sca/builds/scan) command. This will analyze the packages used in the build for any vulnerabilities.  
 
-![](resources/docs/proget-builds-scan.png){height="" width="50%"}
+![Builds Scan](/resources/docs/proget-builds-scan.png){height="" width="50%"}
 
 Here we can see the a number of vulnerabilities have appeared in the scan, resulting in the affected package being assessed as Noncompliant. This will prevent the build from being deployed to the next stage. 
 
-![](resources/docs/proget-builds-scan-noncompliant.png){height="" width="50%"}
+![Non Compliant](/resources/docs/proget-builds-scan-noncompliant.png){height="" width="50%"}
 
 ## Step 4: (Optional) Run an audit 
 
 You can also run [`pgutil builds audit`](/docs/proget/api/sca/builds/analyze) right before deploying to production to identify any vulnerabilities that may have surfaced since you originally ran `pgutil builds scan`. 
 
-![](resources/docs/proget-builds-scan-noncompliant.png){height="" width="50%"}
+![Audit Non Compliant](/resources/docs/proget-builds-scan-noncompliant.png){height="" width="50%"}
 
 ## Step 5: (Optional) Block Noncompliant Packages 
 
@@ -62,15 +62,15 @@ To prevent vulnerable packages from entering your development and being used in 
 
 Navigate to the feed and select "Policies and Blocking".
 
-![](resources/docs/proget-feed-policies-select.png){height="" width="50%"}
+![Select Policies](/resources/docs/proget-feed-policies-select.png){height="" width="50%"}
 
 From here scroll to the bottom and select "Change Blocking Settings".
 
-![](resources/docs/proget-policies-blocking.png){height="" width="50%"}
+![Blocking Policies](/resources/docs/proget-policies-blocking.png){height="" width="50%"}
 
 Then from "Feed Setting" select "Block noncompliant packagess" and select "Save". 
 
-![](resources/docs/proget-feed-block.png){height="" width="50%"}
+![Feed Block](/resources/docs/proget-feed-block.png){height="" width="50%"}
 
 This will prevent noncompliant packages from being downloaded. 
 

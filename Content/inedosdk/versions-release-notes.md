@@ -36,6 +36,11 @@ The below table shows the *minimum* version of each Inedo Product that the Inedo
 **When implementing SDK in a product**, replace `*n/a*` with the product version number, then replace all `*n/a*` below that version as well, since it be compatible with those. For example, when BuildMaster 7.0.0 added support for SDK 1.12,  `7.0.0` replaced 5 `*n/a*` (1.11, 1.10, 1.9, 1.8).
 :::
 
+### SDK v4 (4.0)
+| SDK Version | ProGet | BuildMaster | Otter
+| --- | --- | --- | --- 
+| 4.0.\*     | 2026.0      | 2026.0  | 2026.0
+
 ### SDK v3 (3.0)
 | SDK Version | ProGet | BuildMaster | Otter
 | --- | --- | --- | --- 

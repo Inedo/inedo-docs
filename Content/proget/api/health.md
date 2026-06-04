@@ -33,16 +33,21 @@ If any of the displayed statuses are not OK, a nonzero exit code will be reporte
 
 ## HTTP Request Specification
 
-To create an API key, simply perform a `GET` request to `/health`.
+To perform a health check, simply perform a `GET` request to `/health`.
 
 ```plaintext
 GET /health
 ```
 
+For a JSON-based response, you can perform a `GET` request to either `/health/json` or `/health?format=json`.
+
 ## HTTP Response Specification
 
-A response body will contain a `ProGetHealthInfo` JSON object (see [ProGetHealthInfo.cs](https://github.com/Inedo/pgutil/blob/thousand/Inedo.ProGet/ProGetHealthInfo.cs)). A `500` response indicates a health problem (such as service not running); the body will contain a `ProGetHealthInfo` object.
+A successful response will simply be a `200` status with a `OK` body. A `500` will include the problem in plain-text format.
 
-## ProGet 2023 and Earlier
+When JSON format is specified, a response body will contain a `ProGetHealthInfo` JSON object (see [ProGetHealthInfo.cs](https://github.com/Inedo/pgutil/blob/thousand/Inedo.ProGet/ProGetHealthInfo.cs)). A `500` response indicates a health problem (such as service not running); the body will contain a `ProGetHealthInfo` object.
 
-ProGet 2023 and Earlier included a [Connector Health API (archive.org)](https://web.archive.org/web/20230521045843/https://docs.inedo.com/docs/proget-reference-api-connector-health). It did not really provide any useful or timely information, and was removed in ProGet 2024 as part of a larger connector refactoring.
+## ProGet 2025 and Earlier
+ProGet 2025 and earlier always responded with a JSON-based response.
+
+ProGet 2023 and earlier included a [Connector Health API (archive.org)](https://web.archive.org/web/20230521045843/https://docs.inedo.com/docs/proget-reference-api-connector-health). It did not really provide any useful or timely information, and was removed in ProGet 2024 as part of a larger connector refactoring.
