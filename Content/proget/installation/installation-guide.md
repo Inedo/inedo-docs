@@ -53,7 +53,7 @@ ProGet can be installed on a virtual machine or container in the cloud provider 
 
 See: [Installing ProGet on AWS Lightsail](https://inedo.com/proget/lightsail_install).
 
-### Antivirus, EDR, and Filesystem Scanning Tools
+## Antivirus, EDR, and Filesystem Scanning Tools
 
 ProGet package storage and service processes must not be actively scanned, filtered, quarantined, locked, modified, or otherwise intercepted by antivirus, EDR, DLP, file-integrity monitoring, backup, or similar filesystem-scanning tools on Windows or Linux.
 
