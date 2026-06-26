@@ -31,16 +31,6 @@ You can also perform a silent (non-interactive) installation of ProGet via Inedo
 
 See: [Silent/Automated Installation Guide](/docs/installation/windows/inedo-hub/silent)
 
-### Fully Customizable: Manual Installation
-::: (WARNING) (Note)
-We do not support manual installations, and this document is for informational and troubleshooting purposes only. If you really want to install the product without using Inedo Hub, you can follow these instructions—but your successor might have a very hard time maintaining this installation.
-:::
-
-If you prefer to install every component of ProGet yourself, that's also an option. 
-
-See: [Manual installation](/docs/installation/windows/manual-installation)
-
-
 ## Installing on Linux Servers
 
 ProGet can be run on a Linux server via Docker. We can support other installation options in the future if there is interest.
@@ -62,6 +52,14 @@ In addition to Docker Engine, you can run ProGet through [Docker Compose](/docs/
 ProGet can be installed on a virtual machine or container in the cloud provider of your choice. 
 
 See: [Installing ProGet on AWS Lightsail](https://inedo.com/proget/lightsail_install).
+
+### Antivirus, EDR, and Filesystem Scanning Tools
+
+ProGet package storage and service processes must not be actively scanned, filtered, quarantined, locked, modified, or otherwise intercepted by antivirus, EDR, DLP, file-integrity monitoring, backup, or similar filesystem-scanning tools on Windows or Linux.
+
+These tools frequently interfere with ProGet's file-heavy operations, causing severe performance degradation and intermittent errors. They may also mistake ordinary package contents, such as code libraries, scripts, executables, and `.dll` files, for suspicious files and block, quarantine, or modify them.
+
+ProGet already includes vulnerability scanning and malicious package detection. Even if harmful content is stored in ProGet, ProGet stores that content as package data and does not execute it.
 
 ## Firewall & Network Access
 On Windows, ProGet installs on port 8624 by default, and you should consider changing that after installation to the standard ports of HTTP (80) and/or HTTPS (443) after installation.
