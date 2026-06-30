@@ -47,14 +47,21 @@ pgutil packages upload --feed=internal-maven --input-file=c:\apps\my-app-1.1\my-
 To upload a package, simply `PUT` to the URL with a feed name, [package identifiers](/docs/proget/api/packages#using-multiple-parameters), an [appropriate API Key](/docs/proget/api/packages#authentication) and a package in either `ZIP`, `JAR` or `TAR` format depending on the value of the `Content-Type` header.
 
 ```plaintext
-PUT /api/packages/«feed-name»/upload?«package-identifiers»
+PUT /api/packages/«feed-name»/upload[/«package-file-name»]
 ```
 
-Unless you use a `purl`, the parameters required will vary by feedtype. 
+The `«package-file-name»` part of the URL is only required for the PyPI and RPM feed types, while Debian feeds will require a `distribution` argument and an optional `component`. See the corresponding upload package method on [ProGetClient.cs](https://github.com/Inedo/pgutil/blob/thousand/Inedo.ProGet/ProGetClient.cs) for the most accurate and up-to-date `pgutil` and HTTP endpoint argument mapping.
 
-:::(info) (📄 Note)
-The `«package-file-name»` part of the URL is only required for the PyPI and RPM feed types.
-:::
+
+  var url = $"api/packages/{Uri.EscapeDataString(feed)}/upload";
+        if (!string.IsNullOrEmpty(fileName))
+            url = $"{url}/{fileName}";
+        if (!string.IsNullOrEmpty(distribution))
+            url = $"{url}?distribution={Uri.EscapeDataString(distribution)}";
+        if (!string.IsNullOrEmpty(component))
+            url = $"{url}{(string.IsNullOrEmpty(distribution) ? '?' : '&')}component={Uri.EscapeDataString(component)}";
+			
+
 
 ## HTTP Response Specification
 
