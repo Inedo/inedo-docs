@@ -44,7 +44,7 @@ pgutil packages upload --feed=internal-maven --input-file=c:\apps\my-app-1.1\my-
 
 ## HTTP Request Specification
 
-To upload a package, simply `PUT` to the URL with a feed name, [package identifiers](/docs/proget/api/packages#using-multiple-parameters), an [appropriate API Key](/docs/proget/api/packages#authentication) and a package in either `ZIP`, `JAR` or `TAR` format depending on the value of the `Content-Type` header.
+To upload a package, simply `PUT` to the URL with a feed name, an [appropriate API Key](/docs/proget/api/packages#authentication) and a package in either `ZIP`, `JAR` or `TAR` format depending on the value of the `Content-Type` header.
 
 ```plaintext
 PUT /api/packages/«feed-name»/upload[/«package-file-name»]
