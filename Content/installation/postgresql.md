@@ -75,6 +75,7 @@ The following versions of the InedoDB are available:
 
 | Version | Released | Downloads | Notes
 | -- | -- | --
+| 17.10.2 | Jun 30, 2026 | [installer exe](https://cdn.inedo.com/downloads/inedodb/InedoDBInstaller17.10.2.exe) | Improved initial config for default connections
 | 17.10.1 | Jun 23, 2026 | [installer exe](https://cdn.inedo.com/downloads/inedodb/InedoDBInstaller17.10.1.exe) | Tweak initial config for improved performance
 | 17.10.0 | May 22, 2026 | [installer exe](https://cdn.inedo.com/downloads/inedodb/InedoDBInstaller17.10.0.exe) | PostgreSQL minor version update
 | 17.9.0 | Mar 20, 2026 | [installer exe](https://cdn.inedo.com/downloads/inedodb/InedoDBInstaller17.9.0.exe) | PostgreSQL minor version update
@@ -103,10 +104,11 @@ To start an InedoDB container, use this command:
 ```bash
 docker run --name inedodb \
   --restart=unless-stopped \
-  -d proget.inedo.com/productimages/inedo/inedodb:17.6
+  -v ./database:/var/lib/inedodb \
+  -d proget.inedo.com/productimages/inedo/inedodb:17.6  
 ```
 
-Once you have an instance running, you'll need to initialize a product database using the `docker exec inedodb inedodb create --name=«product-name»` command.
+Once you have an instance running, you'll need to initialize a product database using the `docker exec inedodb inedodb create --name=«product-name»` command.  Once you have created the database, you'll need to restart the container prior to connecting an Inedo product to it.
 
 ### Example: ProGet InedoDB Database
 To initialize a database for ProGet on the InedoDB instance running in the `inedodb` container:
