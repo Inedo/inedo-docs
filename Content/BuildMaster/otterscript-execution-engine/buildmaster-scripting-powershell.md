@@ -53,7 +53,7 @@ psexec >>
 
 BuildMaster automatically replaces [variables](/docs/buildmaster/otterscript-execution-engine/buildmaster-variables) within the script. In the example above, `$ApplicationName` would be replaced with the name of the application being built or deployed.
 
-## Using PowerShell Parameters & Inputs
+## Using PowerShell Parameters
 BuildMaster uses [Comment-based Help](https://blog.inedo.com/powershell/what-is-comment-based-help) to generate descriptions and inputs for your PowerShell scripts. This makes it easy to find and use your scripts in the OtterScript editor:
 
 ![buildmaster-scripts-osve](/resources/docs/buildmaster-scripts-osve.png){height="" width="50%"}
@@ -81,6 +81,40 @@ After selecting the statement, you'll also see the input parameters as follows:
 ![buildmaster-scripts-osve](/resources/docs/buildmaster-scripts-osve-statement.png){height="" width="50%"}
 
 BuildMaster expands upon PowerShell's `.SYNOPSIS` and `.PARAMETER` keywords with [Augmented Help](/docs/buildmaster/otterscript-execution-engine/buildmaster-scripting-augmented-help), allowing you to add more details, like default values, restricted values, etc.—all of which improve the GUI generated for the OtterScript Visual Editor.  
+
+### Using a PowerShell Output Parameter
+The easiest way to return a value from PowerShell to OtterScript is using an output parameter:
+
+```(powershell)
+<#
+.SYNOPSIS
+    Appends world.
+
+.AHPARAMETER inputvalue
+    Input string
+
+.AHPARAMETER resultingtext(output)
+    Will be set to the resulting text
+#>
+
+param ([string]$inputvalue, [ref]$resultingtext)
+
+$resultingtext = $inputvalue + " world"
+```
+
+This script can be called directly from OtterScript:
+
+```
+PSCall MyScript.ps1
+(
+    Parameters: %(inputvalue: Hello,
+        resultingtext: outputvar)
+);
+
+Log-Information MyScript returned $outputvar;
+```
+
+Note that the output parameter `resultingtext` is set to the name of the OtterScript variable to receive the value from PowerShell.
 
 ### Evaluating PowerShell Literals
 
