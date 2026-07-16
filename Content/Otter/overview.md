@@ -12,7 +12,7 @@ You can manage everything from Otter's web-based dashboard, and selectively shar
 ## Here is a Short Guide to Get You Started Quick:
 
 :::(Info) (📺 A Quick Start Video: Getting Started with Otter)
-*[In this tutorial](https://www.youtube.com/watch?v=Ftqt9XJhgv8), you will learn how to define reusable sets of configuration called "roles", and assign those roles to servers to scale your infrastructure.*
+*[In this tutorial](https://www.youtube.com/watch?v=TTt83n4l5us), you will learn how to define reusable sets of configuration called "roles", and assign those roles to servers to scale your infrastructure.*
 :::
 
 *View the full step-by-step tutorial [here](https://inedo.com/otter/getting-started){target="_blank"}.*
