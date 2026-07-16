@@ -225,6 +225,10 @@ You can export the contents of a database from the web application, whether usin
 
 The **only** use for a database exported in this manner is to be immediately imported on another server for migration purposes, or to submit to Inedo for a support ticket. The ProGet version of the importing server must match the version which exported this file exactly.
 
+## Database Maintenance & Clean-up
+
+ProGet includes information about the database, tables, and underlying data storage under Admin > Database Overview. This page will warn about misconfiguration and provide a few tools to help clean-up data and indexes. However, we generally don't recommend using these tools unless directed by an Inedo engineer or you're familiar with what they're doing.
+
 
 ## Migrating from SQL Server { #migrating-from-sqlserver }
 
