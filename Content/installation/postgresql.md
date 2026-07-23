@@ -230,11 +230,33 @@ The **only** use for a database exported in this manner is to be immediately imp
 ProGet includes information about the database, tables, and underlying data storage under Admin > Database Overview. This page will warn about misconfiguration and provide a few tools to help clean-up data and indexes. However, we generally don't recommend using these tools unless directed by an Inedo engineer or you're familiar with what they're doing.
 
 
-## Migrating from SQL Server { #migrating-from-sqlserver }
+## In-place Migration from SQL Server (ProGet only) { #migrating-from-sqlserver }
 
-To migrate from SQL Server, navigate to Administration > Database Overview and follow the prompts and guidance to have ProGet create a PostgreSQL database and then copy data from SQL Server.
+ProGet supports a direct database migration to PostgreSQL if you navigate to Administration > Database Overview and follow the prompts and guidance.
 
 ProGet's API will be disabled during the migration, which may take anywhere from a few minutes to an hour or more. If there are any issues, you can revert to SQL Server.
+
+## Export-based Migration from SQL Server (all products) { #migrating-from-sqlserver-bm }
+
+You can also migrate to PostgreSQL by exporting your SQL Server database and then importing it into a PostgreSQL database per the Database Import & Export feature described above.
+
+To switch your instance from SQL Server to the embedded PostgreSQL database, follow these steps:
+
+### Windows
+
+1. Export your database from the Administration > Database Overview page.
+2. Shut down the appropriate service (INEDOPGSVC for Proget, INEDOBMSVC for BuildMaster)
+3. Edit the [product configuration file](configuration-files) and remove or comment out the `ConnectionString` element.
+4. Start the service that was stopped in step 2.
+5. Once the web app starts up again, import your database export file from the Adminiatration > Database Overview page.
+
+### Linux/Docker
+
+1. Export your database from the Administration > Database Overview page.
+2. Stop the container
+3. Start the container, but without the connection string environment variales set
+4. Once the web app starts up again, import your database export file from the Adminiatration > Database Overview page.
+
 
 ### InedoDB / Clustered Installations
 
