@@ -37,6 +37,10 @@ In most cases, it's best to [migrate each feed](/docs/proget/feeds/feed-overview
 
 ## Migrating to Windows or Linux
 
+Coming soon...
+
+<div style="display: none;">
+
 For PostgreSQL server migrations, your database can be exported as an `.ahdbexp` file in the ProGet UI (Administration > Database Overview), or via [Commands](/docs/installation/postgresql).
 
 Simply import your `.ahdbexp` file via the ProGet UI (Admin > Database Overview) on your new server. Once you have updated your encryption key in your [shared config](/docs/installation/configuration-files) to its old value from when it was backed up, your connection string will be read to connect to the PostgreSQL database of your new server.
@@ -127,8 +131,13 @@ $ du -sh /var/proget/packages/<package-type>
 **Recommended:** After updating your file paths re-index your ProGet feeds (Feeds > Manage Feed > Storage & Retention > re-index) to ensure feed stability.
 :::
 
+</div>
+
 ### Linux to Windows Migration
 
+Coming soon...
+
+<div style="display: none;">
 When migrating a ProGet installation from Linux to Windows it again is possible to migrate your database by importing your `.ahdbexp` file via the ProGet UI (Admin > Database Overview). You will need to migrate your package files located in the `/var/proget/packages` directory to your new server (`%ProgramData%\ProGet`), along with any extensions, the default file paths being updated as follows:
 
 | Default Linux File Paths | Updated Windows File Paths |
@@ -158,3 +167,5 @@ When migrating a ProGet installation from Linux to Windows it again is possible 
 | `/var/proget/packages/.rubygems` | `Storage.RubyGemsLibrary`
 | `/var/proget/packages/.terraform` | `Storage.TerraformPackagesLibrary`
 | `/var/proget/packages/.vsix` | `Storage.VsixLibrary`
+
+</div>
