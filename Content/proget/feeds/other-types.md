@@ -21,48 +21,28 @@ Supporting a new package format means we have to learn how those packages are us
 
 Given the complexity of just understanding the basics of a third-party package format, we've found that the best way to implement new feed types is to work with our users. They're usually much more familiar with these package formats than we are, so they can tell us how to use them, point us to conventions, help us discover the internals, and finally try out a proof-of-concept. The last part (the trial and error) is really important, because we don't want to release a feed type that doesn't work... and we just don't know how to test it in real-world scenarios.
 
+By partnering with our users, we were able to add a lot of feed types:
+
+* [✔ Helm feeds](/docs/proget/feeds/helm) were added in  ProGet 5.2.
+* [✔ Conda (Anaconda) feeds](/docs/proget/feeds/conda) were added in ProGet v6.0.6
+* [✔ Alpine (APK) feeds](/docs/proget/feeds/alpine) were added in ProGet 2023.22
+* [✔ CRAN (R) feeds](/docs/proget/feeds/cran) were added in ProGet 2023.23
+* [✔ pub (Dart/Flutter) feeds](/docs/proget/feeds/pub) were added in ProGet 2024.11
+* [✔ Terraform Feeds](/docs/proget/feeds/terraform) were added in ProGet 2024.20
+* [✔ Cargo (Rust) Feeds](/docs/proget/feeds/cargo) were added in ProGet 2024.20
+* [✔ Composer (PHP) Feeds](/docs/proget/feeds/composer) were added in ProGet 2024.22
+* [✔ Conan (C++) Feeds](/docs/proget/feeds/conan) were added in ProGet 2024.22
+
 Without a user partnership, it's hard to support a new feed type. So this page will mainly serve as a place where we discuss the status of various requested third-party feed types.
 
 ## Status of new third-party feed types
 
 Feel free to submit pull requests for this page or participate in the linked Q&A discussions if you have more information.
 
-### ✔ Helm: Completed!
+### 🧑‍💻 Open VSIX Gallery: In Development
 
-[Helm feeds](/docs/proget/feeds/helm) are available as of ProGet 5.2.
+Given the growing popularity of VSCode forks like VSCodium, Cursor, etc., we will be adding a new feed type called "Open VSIX" that will allow for connectors to both Open VSIX and Microsoft's Gallery. See the [discussion on the forums](https://forums.inedo.com/topic/4054) to learn more.
 
-### ✔ Conda (Anaconda) Packages: Completed
-
- [Conda feeds](/docs/proget/feeds/conda) are available as of ProGet v6.0.6.
- 
- ### ✔ Alpine (APK) Packages: Completed
-
- [Alpine (APK) feeds](/docs/proget/feeds/alpine) are available as of ProGet 2023.22.
- 
-### ✔ CRAN (R) Packages: Completed
-
- [CRAN (R) feeds](/docs/proget/feeds/cran) are available as of ProGet 2023.23.
-
-### ✔ pub (Dart/Flutter): Completed
-
- [pub (Dart/Flutter) feeds](/docs/proget/feeds/pub) are available as of ProGet 2024.11.
-
-### ✔ Terraform: Completed
-
-[Terraform Feeds](/docs/proget/feeds/terraform) are available as of ProGet 2024.20.
-
-### ✔ Cargo (Rust): Completed
-
-[Cargo (Rust) Feeds](/docs/proget/feeds/cargo) are available as of ProGet 2024.20.
-
-
-### ✔ PHP Composer/Packagist: Completed
-
-[Composer (PHP) Feeds](/docs/proget/feeds/composer) are available as of ProGet 2024.22.
-
-### ✔ Conan (C++): Completed
-
-[Conan (C++) Feeds](/docs/proget/feeds/conan) are available as of ProGet 2024.22.
 
 ### 📉 WinGet: very limited demand
 
