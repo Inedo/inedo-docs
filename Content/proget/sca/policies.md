@@ -43,7 +43,7 @@ A re-analysis will provide a detailed log that can help troubleshoot rules acros
 
 ## Risk Profiles
 
-ProGet uses the Package Vulnerability Rating Scale (PVRS), which utilizes a *risk profile* to determine how to categorize vulnerabilities on a scale of Category 1 (*No special action required because exploitation not practically possible*) to Category 5 (*Address ASAP because risk is immediate and unacceptable*).
+ProGet uses the Package Vulnerability Remediation Scale (PVRS), which utilizes a *risk profile* to determine how to categorize vulnerabilities on a scale of Category 1 (*No special action required because exploitation not practically possible*) to Category 5 (*Address ASAP because risk is immediate and unacceptable*).
 
 ![Risk Profile](/resources/docs/proget-policies-riskprofile.png){height="" width="75%"}
 
