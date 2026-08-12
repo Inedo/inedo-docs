@@ -6,10 +6,10 @@ order: 2
 *Assess Vulnerabilities* is available as both a `pgutil` command and an HTTP Request, and will assess a vulnerability according to the specified query arguments.
 
 :::(Info) (🚀 Quick Example: Auditing vulnerabilities in a project with pgutil)
-This example will assess the vulnerability `PGV-1234567` as `blocked`:
+This example will assess the vulnerability `PGV-1234567` as `contain`:
 
 ```bash
-pgutil vulns assess --id=PGV-1234567 --type=blocked  
+pgutil vulns assess --id=PGV-1234567 --type=contain  
 ```
 :::
 
@@ -22,10 +22,10 @@ The `--id` and `--type` options are always required.
 Source options must also be specified unless you have the "Default" source configured. See [Working with Sources](/docs/proget/api/pgutil#sources) to learn more.
 :::
 
-**Assessing a vulnerability** requires the vulnerability id (e.g. `PGV-1234567`) and assessment type (e.g. `blocked`):
+**Assessing a vulnerability** requires the vulnerability id (e.g. `PGV-1234567`) and assessment type (e.g. `contain`):
 
 ```bash
-pgutil vulns assess --id=PGV-1234567 --type=blocked --comment="Package Noncompliant" --policy=myPolicy
+pgutil vulns assess --id=PGV-1234567 --type=contain --comment="reviewed as critical" --policy=myPolicy
 ```
 
 ## HTTP Request Specification

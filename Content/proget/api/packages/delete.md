@@ -86,9 +86,11 @@ foreach ($version in $allVersions)
     }
 
 Write-Host "All old versions of $packageName have been deleted, except for the latest version $($latestVersion.Version)."
-````
+```
+
 This returns:
-````powershell
+
+```powershell
 Deleted version 3.0.3-beta1
 Deleted version 2.0.2
 Deleted version 2.0.2-beta3

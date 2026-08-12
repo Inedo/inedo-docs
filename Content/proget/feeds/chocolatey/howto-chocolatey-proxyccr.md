@@ -11,11 +11,11 @@ With ProGet you can create "Feeds" to proxy packages from the Chocolatey Communi
 
 ## Step 1: Create a New Feed
 
-Start by selecting "Feeds" and "Create New Feed". Next, select "Chocolatey Packages", as we will creating a feed to proxy Chocolatey packages.
+Start by selecting "Feeds" and "Create New Feed". Next, select "Chocolatey Packages", as we will be creating a feed to proxy Chocolatey packages.
 
 ![Create Feed](/resources/docs/proget-chocolatey-newfeed.png){height="" width="50%"}
 
-Now select "Free/Open Source Chocolatey Packages", which will allow us to proxy packages from the Chocolatey Community Repository.
+Now select "Chocolatey Community Packages", which will allow us to proxy packages from the Chocolatey Community Repository.
 
 ![Select Feed](/resources/docs/proget-chocolatey-createconnector.png){height="" width="50%"}
 

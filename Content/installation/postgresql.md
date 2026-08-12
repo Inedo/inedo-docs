@@ -75,6 +75,8 @@ The following versions of the InedoDB are available:
 
 | Version | Released | Downloads | Notes
 | -- | -- | --
+| 17.10.2 | Jun 30, 2026 | [installer exe](https://cdn.inedo.com/downloads/inedodb/InedoDBInstaller17.10.2.exe) | Improved initial config for default connections
+| 17.10.1 | Jun 23, 2026 | [installer exe](https://cdn.inedo.com/downloads/inedodb/InedoDBInstaller17.10.1.exe) | Tweak initial config for improved performance
 | 17.10.0 | May 22, 2026 | [installer exe](https://cdn.inedo.com/downloads/inedodb/InedoDBInstaller17.10.0.exe) | PostgreSQL minor version update
 | 17.9.0 | Mar 20, 2026 | [installer exe](https://cdn.inedo.com/downloads/inedodb/InedoDBInstaller17.9.0.exe) | PostgreSQL minor version update
 | 17.7.0 | Feb 24, 2026 | [installer exe](https://cdn.inedo.com/downloads/inedodb/InedoDBInstaller17.7.0.exe) | Fix Windows install issues
@@ -102,10 +104,11 @@ To start an InedoDB container, use this command:
 ```bash
 docker run --name inedodb \
   --restart=unless-stopped \
-  -d proget.inedo.com/productimages/inedo/inedodb:17.6
+  -v ./database:/var/lib/inedodb \
+  -d proget.inedo.com/productimages/inedo/inedodb:17.6  
 ```
 
-Once you have an instance running, you'll need to initialize a product database using the `docker exec inedodb inedodb create --name=«product-name»` command.
+Once you have an instance running, you'll need to initialize a product database using the `docker exec inedodb inedodb create --name=«product-name»` command.  Once you have created the database, you'll need to restart the container prior to connecting an Inedo product to it.
 
 ### Example: ProGet InedoDB Database
 To initialize a database for ProGet on the InedoDB instance running in the `inedodb` container:
@@ -222,12 +225,38 @@ You can export the contents of a database from the web application, whether usin
 
 The **only** use for a database exported in this manner is to be immediately imported on another server for migration purposes, or to submit to Inedo for a support ticket. The ProGet version of the importing server must match the version which exported this file exactly.
 
+## Database Maintenance & Clean-up
 
-## Migrating from SQL Server { #migrating-from-sqlserver }
+ProGet includes information about the database, tables, and underlying data storage under Admin > Database Overview. This page will warn about misconfiguration and provide a few tools to help clean-up data and indexes. However, we generally don't recommend using these tools unless directed by an Inedo engineer or you're familiar with what they're doing.
 
-To migrate from SQL Server, navigate to Administration > Database Overview and follow the prompts and guidance to have ProGet create a PostgreSQL database and then copy data from SQL Server.
+
+## In-place Migration from SQL Server (ProGet only) { #migrating-from-sqlserver }
+
+ProGet supports a direct database migration to PostgreSQL if you navigate to Administration > Database Overview and follow the prompts and guidance.
 
 ProGet's API will be disabled during the migration, which may take anywhere from a few minutes to an hour or more. If there are any issues, you can revert to SQL Server.
+
+## Export-based Migration from SQL Server (all products) { #migrating-from-sqlserver-bm }
+
+You can also migrate to PostgreSQL by exporting your SQL Server database and then importing it into a PostgreSQL database per the Database Import & Export feature described above.
+
+To switch your instance from SQL Server to the embedded PostgreSQL database, follow these steps:
+
+### Windows
+
+1. Export your database from the Administration > Database Overview page.
+2. Shut down the appropriate service (INEDOPGSVC for Proget, INEDOBMSVC for BuildMaster)
+3. Edit the [product configuration file](configuration-files) and remove or comment out the `ConnectionString` element.
+4. Start the service that was stopped in step 2.
+5. Once the web app starts up again, import your database export file from the Adminiatration > Database Overview page.
+
+### Linux/Docker
+
+1. Export your database from the Administration > Database Overview page.
+2. Stop the container
+3. Start the container, but without the connection string environment variales set
+4. Once the web app starts up again, import your database export file from the Adminiatration > Database Overview page.
+
 
 ### InedoDB / Clustered Installations
 
