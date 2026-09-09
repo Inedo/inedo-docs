@@ -246,7 +246,7 @@ To switch your instance from SQL Server to the embedded PostgreSQL database, fol
 
 1. Export your database from the Administration > Database Overview page.
 2. Shut down the appropriate service (INEDOPGSVC for Proget, INEDOBMSVC for BuildMaster)
-3. Edit the [product configuration file](configuration-files) and remove or comment out the `ConnectionString` element.
+3. Edit the [product configuration file](/docs/installation/configuration-files) and remove or comment out the `ConnectionString` element.
 4. Start the service that was stopped in step 2.
 5. Once the web app starts up again, import your database export file from the Adminiatration > Database Overview page.
 
