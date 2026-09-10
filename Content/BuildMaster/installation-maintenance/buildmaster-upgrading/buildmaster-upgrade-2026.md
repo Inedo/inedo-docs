@@ -13,7 +13,7 @@ Many of the changes were additive features, platform updates (library upgrades, 
 
 ### Upgrading from BuildMaster 2025
 :::(Info)
-If you're upgrading from BuildMaster2025, upgrading to BuildMaster 2026 should be relatively easy.
+If you're upgrading from BuildMaster 2025, upgrading to BuildMaster 2026 should be relatively easy.
 :::
 
 If there are issues, you can rollback to BuildMaster 2025 without restoring your database.
@@ -22,7 +22,7 @@ If there are issues, you can rollback to BuildMaster 2025 without restoring your
 
 If you're currently using BuildMaster 6.2, BuildMaster 7.0, BuildMaster 2022, BuildMaster 2023, or BuildMaster 2024, we recommend directly upgrading to BuildMaster 2026. While it won't *hurt* to do incremental upgrades, there's almost never a benefit. However, if there are issues, you will need to restore your database before rolling back.
 
-:::(Info) (IIS Not Longer Supported on Windows)
+:::(Info) (IIS No Longer Supported on Windows)
 Windows IIS support ended in BuildMaster 2025, and if you're are still using IIS you'll need to migrate before upgrading. See [Configuration Change: IIS Hosting on Windows](/docs/buildmaster-upgrade-2025#configuration-change-iis-hosting-on-windows).
 :::
 
@@ -46,17 +46,15 @@ Because upgrading from BuildMaster 6.1 is more involved than previous upgrades, 
 
 ## Improvements & Features in BuildMaster 2026
 
+
 ### PostgreSQL Support Added
 
 As part of our multi-year journey of [saying goodbye to SQL Server](https://blog.inedo.com/inedo/so-long-sql-server-thanks-for-all-the-fetch/), we've now added PostgreSQL support to BuildMaster 2026. 
 
 New installations of BuildMaster 2026 will default to PostgreSQL and you can switch from SQL Server to PostgreSQL using the [Export-based Migration process](/docs/installation/postgresql#migrating-from-sqlserver-bm).
 
-### 
-
-We've rebuilt the UI for the release calendars and made it more more prominent on the navigation. 
-
 ### Changes & Improvements
+* **Docker/Compose Support**; we've expanded support to make it much easier to build/deploy container based applications
 * **Release Date Overhaul**; the "release dates" feature was overhauled to default to adding a target date and allow for other dates to be specified via the pipeline
 * **Release Calendar Overhaul**; we've rebuilt the release calendar UI and made it more prominent in the navigation
 * **Iterative Releases**; a field was added on pipelines to allow a release to automatically iterate after a fixed number of days for clearer display on calendars 
