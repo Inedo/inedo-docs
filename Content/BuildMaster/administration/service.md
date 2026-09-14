@@ -39,14 +39,16 @@ Click "[DEBUG] Generate TaskRunner Docs" on Admin > Service Page in a DEBUG buil
 Task runners run well-defined background jobs, on either a periodic and/or manual basis. Many will create sub-tasks that allow you to better visualize what the service is doing. Some task runners can be manually triggered. This should only be needed in debugging purposes, as the Web Application will trigger them in response to certain actions (such as adding a connector), and they are always executed on service start.
 
 | Task Runner | Description 
-| - | - 
+ | - | - 
+| **Service Heartbeat** | Periodically pings the BuildMaster database to verify connectivity. Runs every 5.00 mins.
+| **Failover Detection** | When running in a High Availability configuration, detects failover conditions and ensures task runners are running on another server. Runs every 30 secs.
 | **Event Listener Dispatcher** | Monitors BuildMaster events and notifies any configured event listeners when they have occurred. Runs every 60 secs.
 | **Server Checker** | Scans servers to verify agent connectivity and automatically pushes agent updates as needed. Runs every 60.00 mins.
 | **Execution Dispatcher** | Monitors the database for pending executions that are ready to run. Runs every 5 secs.
 | **Update Checker** | Checks for updated versions of BuildMaster and installed extensions. Runs every 720.00 mins.
 | **Infrastructure Sync** | Synchronizes infrastructure with another instance of BuildMaster or Otter. Runs every 60 secs.
 | **Pipeline Stage Validator** | Checks pipeline approval and requirement states. Runs every 3.00 mins.
-| **Resource Monitor** |  Monitors Git repositories, CI servers, and other resources for new activity like commits and builds, then triggers an action like creating a build or deployment. Runs every 60 secs.
+| **Resource Monitor** | Monitors Git repositories, CI servers, and other resources for new activity like commits and builds, then triggers an action like creating a build or deployment Runs every 60 secs.
 | **Scheduled Promotion Dispatcher** | Promotes builds that have been scheduled. Runs every 2.00 mins.
 | **System Execution Cleanup** | Purges old system executions (retention policy, build trigger, and general/manual) based on configured settings. Runs every 1440.00 mins.
 | **Retention Policy Dispatcher** | Runs retention policies. Runs every 10.00 mins.
