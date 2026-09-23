@@ -32,17 +32,13 @@ By partnering with our users, we were able to add a lot of feed types:
 * [✔ Cargo (Rust) Feeds](/docs/proget/feeds/cargo) were added in ProGet 2024.20
 * [✔ Composer (PHP) Feeds](/docs/proget/feeds/composer) were added in ProGet 2024.22
 * [✔ Conan (C++) Feeds](/docs/proget/feeds/conan) were added in ProGet 2024.22
+* [✔ Open VSX Extensions (vscode)](/docs/proget/feeds/openvsx) were added in ProGet 2026.12
 
 Without a user partnership, it's hard to support a new feed type. So this page will mainly serve as a place where we discuss the status of various requested third-party feed types.
 
 ## Status of new third-party feed types
 
 Feel free to submit pull requests for this page or participate in the linked Q&A discussions if you have more information.
-
-### 🧑‍💻 Open VSIX Gallery: In Development
-
-Given the growing popularity of VSCode forks like VSCodium, Cursor, etc., we will be adding a new feed type called "Open VSIX" that will allow for connectors to both Open VSIX and Microsoft's Gallery. See the [discussion on the forums](https://forums.inedo.com/topic/4054) to learn more.
-
 
 ### 📉 WinGet: very limited demand
 
