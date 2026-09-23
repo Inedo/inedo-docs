@@ -32,7 +32,7 @@ By partnering with our users, we were able to add a lot of feed types:
 * [✔ Cargo (Rust) Feeds](/docs/proget/feeds/cargo) were added in ProGet 2024.20
 * [✔ Composer (PHP) Feeds](/docs/proget/feeds/composer) were added in ProGet 2024.22
 * [✔ Conan (C++) Feeds](/docs/proget/feeds/conan) were added in ProGet 2024.22
-* [✔ Open VSX Extensions (vscode)](/docs/proget/feeds/openvsx) were added in ProGet 2026.11
+* [✔ Open VSX Extensions (vscode)](/docs/proget/feeds/openvsx) were added in ProGet 2026.12
 
 Without a user partnership, it's hard to support a new feed type. So this page will mainly serve as a place where we discuss the status of various requested third-party feed types.
 
