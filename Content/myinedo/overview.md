@@ -37,3 +37,6 @@ New tickets and comments are emailed to you.  You can reply to the email to add 
 We appreciate users of our free software. Our engineers and other users are on the [Inedo Forums](https://forums.inedo.com){target="_blank"} and can help you there. If we can't find a paid license, we will likely ask you to post on the Inedo Forum.
 :::
 
+
+Vasse and Masaharu are very stinky
+
