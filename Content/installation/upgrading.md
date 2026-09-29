@@ -46,9 +46,11 @@ In most cases, you should schedule a specific time slot away from crucial deploy
 
 Your Inedo product will notify you of new version releases, but if you're using an offline version then you will not be notified of the latest version releases. This means that bug fixes and important security patches may go unnoticed.
 
-Instead, visit your MyInedo page and select "Upgrade Guidance & Change Notes" in the [Downloads](https://my.inedo.com/downloads) tab or visit our [Public Isue Tracker](https://issues.inedo.com/dashboard?id=87c77108-8027-4453-aa65-15e83cf8782e) to view information on new releases and fixes.
+Instead, visit your MyInedo page and navigate to "Installation & Resources" in the top banner or visit our [Public Issue Tracker](https://issues.inedo.com/dashboard?id=87c77108-8027-4453-aa65-15e83cf8782e) to view information on new releases and fixes.
 
-![Upgrade_Guidance_Changle_Notes](/resources/docs/myinedo-viewingupgradeguidance-upgradeguidanceandchangenotes.png){height="" width="50%"}
+After navigating to the "Installation & Resources" tab, select "Get Upgrade Guidance".
+
+![Upgrade_Guidance_Change_Notes](/resources/docs/myinedo-viewingupgradeguidance-upgradeguidanceandchangenotes.png){height="" width="50%"}
 We recommend visiting your MyInedo page regularly and viewing change logs to check if in-software update notifications bring changes applicable to your use case, and to make sure that your software is secure and optimized.
 
 ## How to Upgrade
@@ -105,7 +107,7 @@ Words such as **fix** can help you pinpoint changes that could resolve issues yo
 Use these change notes to determine if there are any fixes, implemented features, or compatibility issues, that could result in a rollback.
 
 ## Viewing Change Logs
-When you want to view change notes in detail to identify where an issue is stemming from after an upgrade or to search for the version in which a patch or feature you were anticipating was released, you can view our detailed change logs. The easiest way to do so is by clicking "Explore Detailed Change Logs". This lets you view the history of changes across all Inedo products.
+When you want to view change notes in detail to identify where an issue is stemming from after an upgrade or to search for the version in which a patch or feature you were anticipating was released, you can view our detailed change logs. The easiest way to do so is by selecting "Explore Detailed Change Logs". This lets you view the history of changes across all Inedo products.
 
 ![Explore Detailed Change Logs](/resources/docs/myinedo-viewingupgradeguidance-exploredetailedchangelogs.png){height="" width="50%"}
 

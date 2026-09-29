@@ -10,10 +10,12 @@ We appreciate users of our free software. Our engineers and other users are on t
 
 ## Submitting a Ticket
 
-Submitting a new ticket is easily done through your MyInedo account by navigating to "Submit Ticket" on the top banner. 
+Submitting a new ticket is easily done through your MyInedo account by navigating to "Support Tickets" on the home page. This tab can also be accessed via the "My Tickets" tab in the top banner.
+
+![Submit Ticket Button](/resources/docs/myinedo-supporttickets.png){height="" width="50%"}
+Fill out the relevant fields and provide as much detail as possible.
 
 ![Submit Ticket Form](/resources/docs/myinedo-supporttickets-submit.png){height="" width="50%"}
-Fill out the relevant fields and provide as much detail as possible.
 
 Pay special attention to the **severity type**. When you submit a support ticket to us, you choose the severity. This makes sure “critical” (serious problem) and “blocker” (major malfunction) get resolved ASAP. Carefully read each severity type and choose the one most relevant to your issue:
 
@@ -40,6 +42,6 @@ Once the issue is resolved and the ticket enters a “Closed” status, an email
 ![1159 Ticket Manually Closed](/resources/docs/1159-ticket-manually-closed.png){height="" width="50%"}
 
 ## Reviewing & Managing Tickets
-Navigate to "My Tickets" to view and manage all current and closed tickets. From here you can update tickets with comments and attachments, review the status of open tickets, and review support for closed tickets. 
+Navigate to "My Tickets" on the top banner to view and manage all current and closed tickets. From here you can update tickets with comments and attachments, review the status of open tickets, and review support for closed tickets. 
 
 ![Review Tickets](/resources/docs/ReviewTickets.png){height="" width="50%"}
