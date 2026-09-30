@@ -38,6 +38,10 @@ Users and groups configured in tasks and permissions are compatible with v3, v4,
    - **Use LDAPS and bypass certificate errors**: Connects via LDAPS (LDAP over TLS/SSL) protocol but ignores any certificate warnings.  Active Directory servers typically use domain signed certificates that not all servers, like our Docker images, trust by default.  This allows you to still connect via LDAPS and ignore the certificate error.
 - **LDAP Port Override**: This overrides the port used to connect to the Active Directory server with.  By default LDAP use 389 and LDAPS uses 636.
  
+::: (INFO) (Note:)
+The **Use LDAP** setting only supports basic authentication.  To verify support in your Active Directory forest, check the `Computer Configuration\Windows Settings\Security Settings\Local Policies\Security Options\Domain controller: LDAP server signing requirements` group policy setting for your domain controllers.  If this is to `None`, your domain controller will support the **Use LDAP** option.  If this is set to `Require signing`, you must use either **Use LDAPS** or **Use LDAPS and bypass certificate errors**.
+:::
+
  ### Advanced
 - **NETBIOS name mapping**: By default, the global catalog for the domain will be queried to determine any mappings. A list of key/value pairs that map NETBIOS names to domain names may also be specified (one per line); e.g. `KRAMUS=us.kramerica.local`.  If the mapping is not found in this list, it will then query the global catalog to find the mapping
 - **Include gMSA**: When this is checked, Group Managed Service Accounts will be included in the search results by looking for both `user` objects and `msDS-GroupManagedServiceAccount` objects.

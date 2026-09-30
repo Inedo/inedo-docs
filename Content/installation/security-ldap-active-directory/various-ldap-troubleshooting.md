@@ -58,6 +58,14 @@ The *Active Directory (New)* directory only considers a user's *direct* group me
 
 You can enable recursive group search in [Active Directory / LDAP v3](/docs/installation/security-ldap-active-directory/legacyconfigurations/various-ldap-v3-advanced), but lots of recursive groups can cause performance issues and circular group dependencies will cause errors.  In v4, we have added support for a special Active Directory only query that allows these recursive groups to be queried much more efficiently. To configure this, see the [V4: Advanced Configuration](/docs/installation/security-ldap-active-directory/legacyconfigurations/various-ldap-v4-advanced) documentation.  In [V5: Advanced Configuration](/docs/installation/security-ldap-active-directory/various-activedirectory-v5-advanced), this Active Directory only recursive search is enabled by default, so you do not need to configure it.
 
+## When using Active Directory (v5), all logins are failing
+
+If all user logins are failing, first check your domain controller's event log.  If the event log shows the error "The following client performed a SASL (Negotiate/Kerberos/NTLM/Digest) LDAP bind without requesting signing (integrity verification), or performed a simple bind over a clear text (non-SSL/TLS-encrypted) LDAP connection," it indicates that your domain controllers are not set to allow LDAP connections using the Basic authentication type.  Change the **LDAP Connection** setting on the *Connection* tab to **Use LDAPS** or **Use LDAPS and bypass certificate errors**.
+
+::: (INFO) (Note:)
+The **Use LDAP** setting only supports basic authentication.  To verify support in your Active Directory forest, check the `Computer Configuration\Windows Settings\Security Settings\Local Policies\Security Options\Domain controller: LDAP server signing requirements` group policy setting for your domain controllers.  If this is to `None`, your domain controller will support the **Use LDAP** option.  If this is set to `Require signing`, you must use either **Use LDAPS** or **Use LDAPS and bypass certificate errors**.
+:::
+
 ## Integrated Authentication Not Working
 
 The underlying mechanisms for Integrated Windows Authentication are handled at the HTTP.SYS layer, which our products do not, nor cannot, access. Our code simply looks for a server variable named `LOGON_USER`, which is added by the web server (IIS or IIS components we use in the self-hosted version). When you enable Integrated Windows Authentication in our products, users will be automatically logged in if the `LOGON_USER` variable is present. 
@@ -95,5 +103,5 @@ Many clients will never support Integrated Windows Authentication, which means t
 
 You may need to configure a [Service Principal Name](https://docs.microsoft.com/en-us/windows/win32/ad/service-principal-names); Windows is supposed to do this automatically for you when you set up a DNS name, but you may need to use the [`setspn` tool](https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/cc731241(v%3Dws.11)).
 
-## Integrated Authentication Not Working
+### Additional Troubleshooting Steps
 See [Troubleshooting Integrated Authentication](/docs/installation/security-ldap-active-directory/various-ldap-integrated-authentication#troubleshooting)

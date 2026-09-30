@@ -55,17 +55,17 @@ The build logic is as follows:
 Like all [build script templates](/docs/buildmaster/builds-continuous-integration/buildmaster-build-scripts), you can convert to OtterScript and customize/adapt as needed.
 
 :::(Info) (🛠 OtterScript Notes)
-This script template uses the `Deploy-Artifact` and `Docker::Build-Image` operations.
+This script template uses the `Deploy-Artifact`, `Docker::Login`, and `Docker::Build-Image` operations.
 :::
 
 :::(Internal) (FILL IN OTTERSCRIP NOTES MORE)
 :::
 
 ### Docker Repositories and BuildMaster Builds
-When creating a new build in BuildMaster, the Docker Repository in your application will be associated with the build. The script template will default to using the values of `$DockerRepository` and `$DockerTag` when creating the image.
+When creating a new build in BuildMaster, the Docker Repository in your application will be associated with the build. The script template will default to using the values of `$DockerRepositoryResource` and `$DockerTag` when creating the image.
 
 :::(Info) (💡 Working with Multiple Docker Repositories)
-In general, we recommend having one Docker Repository per application in BuildMaster, and one image per build, but you can connect as many repositories to your application as needed, and build as many images as you'd like. However, with multiple images you won't be able to rely on values of `$DockerRepository` and `$DockerTag` in your build and deployment scripts.
+In general, we recommend having one Docker Repository per application in BuildMaster, and one image per build, but you can connect as many repositories to your application as needed, and build as many images as you'd like. However, with multiple images you won't be able to rely on values of `$DockerRepositoryResource` and `$DockerTag` in your build and deployment scripts.
 :::
 
 ## Docker::Build-Image
@@ -77,23 +77,6 @@ The following logic is used:
 2. `docker build` the Docker image 
 3. `docker push` the image to your registry
 5. `docker logout`
-
-You can set the following parameters on the operation:
-
-<table>
-    <tr><th>Category</th><th>Parameter</th><th>Notes</th></tr>
-    <tr><td rowspan="3">General</td><td>From</td><td>directory used to build your image; should contain your application files</td></tr>
-    <tr><td>Repository</td><td>name of the Docker Repository connected to the application; defaults to <code>$DockerRepository</code></td></tr>
-    <tr><td>Tag</td><td>Tag to pull from the repository, defaults to <code>$ReleaseNumber-pre.$BuildNumber</code></td></tr>
-<tr><td rowspan="2">Dockerfile (template)</td><td>Dockerfile<td>optional; the Dockerfile stored in BuildMaster to use</td></tr>
-    <tr><td>DockerfileVariables</td><td>additional variables to pass to your Dockerfile</td></tr>
-    <tr><td rowspan="6">Advanced</td><td>DockerfileName</td><td>the name of the Dockerfile sotred in your Git repository to use</td></tr>
-    <tr><td>AttachToBuild</td><td>attach the image to your build, defaults to true</td></tr>
-    <tr><td>RemoveAfterPush</td><td>removes the image from your server after it is pushed to your registry, defaults to true</td></tr>
-    <tr><td>AdditionalArguments</td><td>Additional parameters to pass to `docker run`</td></tr>
-    <tr><td>DockerExePath</td><td>Override the detected docker executable path</td></tr>
-    <tr><td>UseWsl</td><td>On Windows, force usage of "Docker on WSL"</td></tr>
-</table>
 
 ### Working with other repositories
 There are also three Connection-related parameters you can set: FullRepositoryUrl, Username, and Password. These parameters can be used to work with repositories that are not associated with your application, and require that `AttachToBuild` is set to false, and `Repository` is not set.

@@ -1,12 +1,12 @@
 ---
 title: "Upgrading to BuildMaster 2023"
 nav-title: "BuildMaster 2023"
-order: 3
+order: 4
 url-slug: "buildmaster-upgrade-2023"
 ---
 
-:::(Error) (Skip BuildMaster 2023: Upgrade Directly to BuildMaster 2025)
-If you are using BuildMaster 6.1, BuildMaster 6.2, BuildMaster 7.0, or BuildMaster 2022 we recommend directly [Upgrading to BuildMaster 2025](/docs/buildmaster-upgrade-2025). If you using an earlier version, you will first need to [Upgrade to BuildMaster 6.1](/docs/buildmaster-upgrading-to-6-1).
+:::(Error) (Skip BuildMaster 2023: Upgrade Directly to BuildMaster 2026)
+If you are using BuildMaster 6.1, BuildMaster 6.2, BuildMaster 7.0, or BuildMaster 2022 we recommend directly [Upgrading to BuildMaster 2026](/docs/buildmaster-upgrade-2026). If you using an earlier version, you will first need to [Upgrade to BuildMaster 6.1](/docs/buildmaster-upgrading-to-6-1).
 :::
 
 
@@ -117,7 +117,7 @@ Behind the scenes, the integration uses a new model as well: an "Issue Tracker P
 #### Issue Sources Are Deprecated
 BuildMaster 2022 and earlier used a different integration model: an "Issue Source" (now deprecated) pulled issues by connecting to an "Issue Tracker Service" (Secure Resource) using an "Issue Tracker Account" (Secure Credential). Issue Sources are not project-specific, and you could technically configure an Issue Source to configure to different projects using variables.
 
-Unfortunately, this model is incompatible with the previous model, and there was no easy way to migrate connections. While Issue Sources will still work in BuildMaster 2023, but they are considered a legacy feature and will be removed in BuildMaster 2025. We recommend deleting your configured issue sources, and re-adding the issue tracker connections instead.
+Unfortunately, this model is incompatible with the previous model, and there was no easy way to migrate connections. While Issue Sources will still work in BuildMaster 2023, but they are considered a legacy feature and will be removed in BuildMaster 2026. We recommend deleting your configured issue sources, and re-adding the issue tracker connections instead.
 
 :::(Warning) (Issue Tracker Changes Risk Mitigation)
 Although this feature was overhauled, this is a relavitely low-risk change. Issue tracking is not a core feature, and builds/deployments will function without it. 

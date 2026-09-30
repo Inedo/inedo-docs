@@ -24,7 +24,7 @@ A Docker Run Config file has multiple "instances" with different configurations 
 
 Each instance will show up as "tab" when you edit a Docker Run Config, and each tab will contain multiple lines that are used as [OPTIONS for Docker's "run" command](https://docs.docker.com/engine/reference/run/). These lines can be edited visually or in text mode, and are formatted identically to the command options.
 
-This approach is suitable for deploying most single-container applications. If you're deploying multi-container applications using Docker Compose, you can use `Docker::Compose` operation and a configuration file to store the YAML in a similar manner.
+This approach is suitable for deploying most single-container applications. If you're deployment requires more advanced deployment options or you are deploying multi-container applications, use [Docker Compose](/docs/buildmaster/docker/compose-file) instead.
 
 ## Creating a Docker Run Configuration
 To create a Docker Run Config, click on "Docker Run Configs" under the Docker menu of your application, and then click "Create Docker Run Config" in the upper right hand corner. If you don't see these options, you may need to enable Docker under Build/Release features in the Settings menu of your application.
@@ -56,11 +56,11 @@ Each of these will appear as a line in the file, and you can edit them in visual
 If you need additional options, they can specified using the "Additional Run Arguments" parameter on the `Docker::Run ` operation. Let us know if this is the case - we'd be happy to add support for them a  Docker Run Config. 
 
 ## Using Docker Run Config to Deploy
-The easiest way to deploy a container image is with the "Deploy Docker Image" Script Template. 
+The easiest way to deploy a container image is with the "Deploy via Docker Run" Script Template. 
 
 ![buildmaster-docker-deploy-script-template](/resources/docs/buildmaster-docker-deploy-script-template.png){height="" width="50%"}
 
-This script template uses a Docker Run Config file to deploy the Docker image associated with the current build. This association automatically happens at build time, and the script uses the values of `$DockerRepository` and `$DockerTag`. 
+This script template uses a Docker Run Config file to deploy the Docker image associated with the current build. This association automatically happens at build time, and the script uses the values of `$DockerRepositoryResource` and `$DockerTag`. 
 
 The deployment logic is as follows:
 
@@ -88,10 +88,8 @@ All of the Docker operations allow you to override the `DockerExePath` and force
 
 The following logic is used.
 
-1. `docker login` to the registry where the repository is hosted
-2. `docker pull` the target docker image 
-3. `docker run` the target image, optionally using a Docker Run Config
-5. `docker logout`
+1. `docker pull` the target docker image 
+2. `docker run` the target image, optionally using a Docker Run Config
 
 You can set the following parameters on the operation:
 
@@ -125,12 +123,10 @@ You can also use `Docker::Tag` to push an image to a new repository. This may be
 
 The following logic is used.
 
-1. `docker login` to the registry where the repository is hosted
-2. `docker pull` the target docker image 
-3. `docker tag` the image using the new tag
-4. `docker push` the image to the repository indicated by the tag
-5. `docker logout`
-6. Attach the new image/tag to the build in BuildMaster
+1. `docker pull` the target docker image 
+2. `docker tag` the image using the new tag
+3. `docker push` the image to the repository indicated by the tag
+4. Attach the new image/tag to the build in BuildMaster
 
 You can set the following parameters on the operation:
 

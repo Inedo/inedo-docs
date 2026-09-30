@@ -43,7 +43,13 @@ Beyond these default filter options, you can also configure additional retention
 -   **Days** - purge items only if they are older than N days
 -   **Size** - keep at least the last N MB artifacts/logs
 
-In addition, there is an option for the purge**Build Artifacts** type that also purge artifacts from disk that are no longer referenced in BuildMaster. This setting ignores any filters that may have been applied and always deletes all orphaned artifacts.
+:::(Warning)
+When using the "Count", note this applies across all applications, not per application. A policy configured to keep the last 3 builds could keep all 3 from one application while purging older builds from other applications.
+
+To retain a specific number of builds for each application, create a separate retention policy for each application.
+:::
+
+In addition, there is an option for the purge **Build Artifacts** type that also purge artifacts from disk that are no longer referenced in BuildMaster. This setting ignores any filters that may have been applied and always deletes all orphaned artifacts.
 
 ### Immediate Purge
 

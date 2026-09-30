@@ -1,9 +1,13 @@
 ---
 title: "Upgrading to BuildMaster 2025"
 nav-title: "BuildMaster 2025"
-order: 1
+order: 2
 url-slug: "buildmaster-upgrade-2025"
 ---
+
+:::(Error) (Skip BuildMaster 2025: Upgrade Directly to BuildMaster 2026)
+If you are using BuildMaster 6.1, BuildMaster 6.2, BuildMaster 7.0, BuildMaster 2022, BuildMaster 2023, or BuildMaster 2024 we recommend directly [Upgrading to BuildMaster 2026](/docs/buildmaster-upgrade-2026). If you using an earlier version, you will first need to [Upgrade to BuildMaster 6.1](/docs/buildmaster-upgrading-to-6-1).
+:::
 
 BuildMaster 2025 is a major update, and this article provides information about what will change, the impact to your instance, and how to mitigate risk during upgrade.
 
