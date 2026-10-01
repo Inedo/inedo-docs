@@ -5,7 +5,7 @@ hidden: true
 ---
 
 :::(Internal) (Private notes)
-rough outline
+Rough outline
  - creating a deployment tracking issue
    - create at testing stage
  - creating issues on deployment
@@ -13,7 +13,10 @@ rough outline
    - option1: try/catch
     -option2: event listener
 
+Create links
+- "add comments and notes" needs associated operation. Currently only "create issue" and "transition issue" exist for Jira. "add issue comment" only exists for Github
 :::
+
 Many teams use issue and project tracking tools like JIRA for more than just code changes.
 
 Most issue/project tracking tools available today are extremely flexible and can therefore be used to model virtually any business process, such as deployment tracking. For example, issue trackers have audit trails that do not require a high level of technical expertise to use, unlike source code work.
@@ -46,7 +49,7 @@ Set-BuildVariable DeploymentIssueId
 
 The second operation will then set `$JiraIssueId ` as a build variable, which means it will be not only visible on the build page but you can also use it in all future deployments on that build.
 
-You can then use the $JiraIssueId in later operations to automatically [change issue status](/docs/buildmaster/modeling-your-applications/buildmaster-applications-issue-tracking) or [add comments and notes](/docs/buildmaster/reference/operations/general/create-issuecomment).
+You can then use the $JiraIssueId in later operations to automatically [change issue status](/docs/buildmaster/modeling-your-applications/buildmaster-applications-issue-tracking) or add comments and notes.
 
 
 ### Tip: Use a Variable Renderer for User-friendly Display
