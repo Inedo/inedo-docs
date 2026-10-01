@@ -108,8 +108,7 @@ Set-BuildVariable GitHubIssueId
 
 The second operation will then set `$GitHubIssueId ` as a build variable, meaning it will not only be visible on the build page, but you can also use it in all future deployments on that build.
 
-You can then use `$GitHubIssueId` in later operations to automatically [change issue status](/docs/buildmaster/modeling-your-applications/buildmaster-applications-issue-tracking) or [add comments and notes](/docs/buildmaster/reference/operations/general/create-issuecomment).
-
+You can then use `$GitHubIssueId` in later operations to automatically [change issue status](/docs/buildmaster/modeling-your-applications/buildmaster-applications-issue-tracking) or [add comments and notes](/docs/buildmaster/reference/operations/github/create-issuecomment).
 
 ### Tip: Use a Variable Renderer for User-friendly Display
 
