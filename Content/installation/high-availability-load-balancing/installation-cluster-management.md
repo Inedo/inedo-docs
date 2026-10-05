@@ -78,3 +78,7 @@ In ProGet 5.3 and earlier, this will occur when the machine key is not synchroni
 #### Why am I constantly prompted to log in?
 
 Ensure your encryption key is set and consistent across all servers.  The encryption key is used to encrypt and decrypt the authentication cookie.  If the encryption key is not set, it will fall back to the machine key, which is unique to each server.  This will cause authentication cookies created on one server to be invalid on another server, resulting in repeated login prompts when requests are routed between servers.  See the [Configure the Encryption Key section in the Configuring Load Balancing & Automatic Failover guide](/docs/installation/high-availability-load-balancing/high-availability-load-balancing#step-2-configure-the-encryptionkey) for more information.
+
+#### Why am I seeing authentication failures on one node, while the same login/API key works on the other nodes?
+
+If you recently disabled Windows Integrated Authentication (WIA), verify it has been disabled in the [configuration file](/docs/installation/configuration-files) on each node.  Disabling WIA in a HA/Load Balanced environment needs to be disabled on each node in the cluster.
