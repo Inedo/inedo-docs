@@ -36,7 +36,7 @@ Before you start recording, you’ll need to configure a few simple settings lik
 
 ![VokoscreenNG Configuring](/resources/docs/create-support-video-VokoscreenNG-1.png){width=50%}
 
-To begin recording, press the start button. Once you're done, press the stop button to end the recording. You can then review the saved video by clicking the folder button, which allows you to access the designated save folder.
+To begin recording, press the start button. Once you're done, press the stop button to end the recording. You can then review the saved video by selecting the folder button, which allows you to access the designated save folder.
 
 ![VokoscreenNG Recording](/resources/docs/create-support-video-VokoscreenNG-2.png){width=50%}
 

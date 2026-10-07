@@ -7,7 +7,11 @@ This article will cover how to access your quotes & invoices through MyInedo as 
 
 ## Accessing your Quote/Invoice
 
-To access your quote or invoice through MyInedo, simply click on "My Invoices" at the top of the MyInedo webpage. You will then be shown all your existing quotes and invoices. To pay a quote and have an invoice generated click "pay now" next to the relevant quote.
+To access your quote or invoice through MyInedo, simply select "Pay an Invoice or Quote" from the MyInedo homepage. Your invoices can also be accessed via the "My Invoices" link in the top banner. 
+
+![Pay Invoice](/resources/docs/myinedo-payments-payinvoice.png){height="" width="50%"}
+
+You will then be shown all your existing quotes and invoices. To pay a quote and have an invoice generated select "Pay Now" next to the relevant quote.
 
 ![Pay Invoice](/resources/docs/myinedo-payments-accessinvoice.png){height="" width="50%"}
 After selecting your payment method and filling out the appropriate fields, an invoice will be generated.

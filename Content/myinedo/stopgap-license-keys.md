@@ -27,7 +27,12 @@ Example: If your license key normally lasts 12 months, after using your full sto
 
 A self-generated stopgap license key should be created when your organization absolutely cannot have their license keys expire and cannot wait for customer support. This process takes under 10 minutes.
 
-Go to your [MyInedo](https://my.inedo.com/){target="_blank"} portal and click on "Request Trial/Free License." There will be 2 options presented to you for every product: free and trial.
+Go to your [MyInedo](https://my.inedo.com/){target="_blank"} portal and select "Request Trial or Free License Key". 
+
+
+![Request Trial or Free License Key](/resources/docs/myinedo-licensekeysandactivation-requesttrial.png){height="" width="50%"}
+
+There will be 2 options presented to you for every product: free and trial.
 
 ![Request License](/resources/docs/myinedo-licensekeys-requestkey.png){height="" width="50%"}
 

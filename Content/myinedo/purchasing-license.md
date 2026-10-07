@@ -13,7 +13,11 @@ However if you are having any difficulties, please don't hesitate to <a href="ma
 :::
 
 ## Step 1 : Create a Quote
-From the MyInedo Home screen click on "Purchase License or Create Quote" and select the product, license term (listed under price option), and pricing option (such as how many instances you'd like, users licensed, etc.). 
+From the MyInedo Home screen, select "Purchase License or Create Quote".
+
+![Purchase License or Create Quote](/resources/docs/myinedo-purchaselicense.png){height="" width="50%"}
+
+Select the product, license term (listed under price option), and pricing option (such as how many instances you'd like, users licensed, etc.). 
 
 ![Create a Quote](/resources/docs/myinedo-purchaselicense-createquote.png){height="" width="50%"}
 
