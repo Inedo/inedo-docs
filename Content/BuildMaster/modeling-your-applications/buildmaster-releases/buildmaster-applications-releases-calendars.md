@@ -29,17 +29,17 @@ Creating a custom calendar will let you set the name, select which applications 
 
 | Option | Description |
 | --- | --- |
-| `Show Final Stage` | Preferred name of the custom calendar
-| `Show All Stages` | Select the applications to show in the custom calendar  |
-| `Do Not Show` | Hide all past deployments completely from the calendar  |
+| `Show Final Stage` | Shows only past deployments to the final release pipeline stage (e.g. `Production`)
+| `Show All Stages` | Shows all past deployments to all stages of a release pipeline |
+| `Do Not Show` | Hide all past deployments |
 
 #### Future Deployments
 
 | Option | Description |
 | --- | --- |
-| `Show All` | Show all future deployment dates |
-| `Do Not Show` | Hide all future deployment dates  |
-| `Other` | Lets you filter:<br>`Scheduled Deployments`: <br>`Generated Dates`: <br>`Target Dates`: |
+| `Show All` | Show all deployment dates set in active releases |
+| `Do Not Show` | Hide all deployment dates set in active releases  |
+| `Other` | Lets you filter the following in active releases:<br>- `Scheduled Deployments`: All release targets and any additional dates<br>- `Generated Dates`: [Automated](#automated-release-dates) release target dates <br>- `Target Dates`: |
 
 Custom calendars can be selected from the dropdown box on the Calendar page:
 
