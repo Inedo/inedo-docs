@@ -23,9 +23,10 @@ To create a custom calendar, navigate to "Administration" > "Manage Calendars" (
 
 ![](/resources/docs/buildmaster-calendar-create.png){height="" width="50%"}
 
-Creating a custom calendar will let you set the name, select which applications it will show, and also opt to hide weekends. In addition, you can also configure how past and future deployment dates are displayed:
+Creating a custom calendar will let you set the name, and select which applications it will show, and several additional options:
 
 #### Past Deployments
+Set how past deployments are shown on the calendar:
 
 | Option | Description |
 | --- | --- |
@@ -34,12 +35,16 @@ Creating a custom calendar will let you set the name, select which applications 
 | `Do Not Show` | Hide all past deployments |
 
 #### Future Deployments
+Set how future deployments are shown on the calendar:
 
 | Option | Description |
 | --- | --- |
 | `Show All` | Show all deployment dates set in active releases |
 | `Do Not Show` | Hide all deployment dates set in active releases  |
-| `Other` | Lets you filter the following in active releases:<br>- `Scheduled Deployments`: All release targets and any additional dates<br>- `Generated Dates`: [Automated](#automated-release-dates) release target dates <br>- `Target Dates`: |
+| `Other` | Lets you show/hide the following in active releases:<br>- `Scheduled Deployments`: Any deployments scheduled on a pipeline<br>- `Generated Dates`: [Automated](#automated-release-dates) release target dates <br>- `Target Dates`: : All release targets and any [Additional dates](#adding-additional-dates) |
+
+#### Hide/Show Weekends
+Set how weekends are shown on the calendar. When selected, Saturday and Sunday will be hidden on the Calendar. Any dates scheduled on a Saturday will instead be shown the previous Friday, and any dates scheduled on a Sunday will be shown on the following Monday.
 
 Custom calendars can be selected from the dropdown box on the Calendar page:
 
