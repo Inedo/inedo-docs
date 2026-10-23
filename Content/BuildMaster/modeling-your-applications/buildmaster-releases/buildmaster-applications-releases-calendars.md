@@ -41,7 +41,7 @@ Set how future deployments are shown on the calendar:
 | --- | --- |
 | `Show All` | Show all deployment dates set in active releases |
 | `Do Not Show` | Hide all deployment dates set in active releases  |
-| `Other` | Lets you show/hide the following in active releases:<br>- `Scheduled Deployments`: Any deployments scheduled on a pipeline<br>- `Generated Dates`: [Automated](#automated-release-dates) release target dates <br>- `Target Dates`: : All release targets and any [Additional dates](#adding-additional-dates) |
+| `Other` | Lets you show/hide the following in active releases:<br>- `Scheduled Deployments`: Any deployments scheduled on a pipeline<br>- `Generated Dates`: [Automated](#automated-release-dates) release target dates <br>- `Target Dates`: All release targets and any [Additional dates](#adding-additional-dates) |
 
 #### Hide/Show Weekends
 Set how weekends are shown on the calendar. When selected, Saturday and Sunday will be hidden on the Calendar. Any dates scheduled on a Saturday will instead be shown the previous Friday, and any dates scheduled on a Sunday will be shown on the following Monday.
