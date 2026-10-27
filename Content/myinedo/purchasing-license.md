@@ -12,7 +12,7 @@ The fastest way to purchase a license for your client is to [join their organiza
 However if you are having any difficulties, please don't hesitate to <a href="mailto:athiel@inedo.com?subject=Renewal for Inedo Invoice 00000-000&body=Please send a renewal quote for Customer Name">contact our licensing team</a>.
 :::
 
-## Step 1 : Create a Quote
+## Create a Quote
 From the MyInedo Home screen, select "Purchase License or Create Quote".
 
 ![Purchase License or Create Quote](/resources/docs/myinedo-purchaselicense.png){height="" width="55%"}
@@ -21,22 +21,11 @@ Select the product, license term (listed under price option), and pricing option
 
 ![Create a Quote](/resources/docs/myinedo-purchaselicense-createquote.png){height="" width="50%"}
 
-## Step 2: Purchase a License Key
-Now that a quote is created, you can conveniently save it as a PDF to send to your purchasing team or you can submit payment to receive your license key instantly.
+## Purchase a License Key
+Once a quote is created, you can conveniently save it as a PDF to send to your purchasing team or you can submit payment to receive your license key instantly.
 
 ![Quote](/resources/docs/myinedo-purchaselicense-quote.png){height="" width="50%"}
 
 To view all your quotes and invoices, simply navigate to "My Invoices" on the top banner.
 
 See [Invoices & Payments](/docs/myinedo/invoices-and-payments) for additional information on payment methods.
-
-
-
-
-
-
-
-
-
-
-
