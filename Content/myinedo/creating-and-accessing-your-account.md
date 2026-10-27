@@ -4,9 +4,11 @@ order: 2
 ---
 
 MyInedo is your self-service portal for all your Inedo products. A MyInedo account is necessary to check expiring licenses, create quotes, purchase licenses, open support tickets, etc.
+
 ## Creating a MyInedo Account
 To create a MyInedo account simply go to [my.inedo.com](https://my.inedo.com/){target="_blank"} and register an email address under "Create Account / Retrieve Password." After entering your name, company, and password you'll be brought to your MyInedo portal.
 ![Enter email under create account](/resources/docs/myinedo-myinedoaccount-createaccount.png){height="" width="80%"}
+
 ## Joining an Existing MyInedo Account
 If your organization already has an account or is using one of our products, you can automatically join that organization. In order to join an existing organization, you first have to create your own account, then select "Account Details".
 
@@ -37,6 +39,3 @@ To edit a member's role, select the pencil icon at the end of their row.
 
 * **MyInedo Account Administrator:** This account has the ability to add new members, edit existing members, assign a renewal contact, and delete current members. If no other member is assigned as a renewal contact, the Account Admin will be contacted.
 * **Contact for renewal when license/support will expire:** This account will be the point-of-contact for license/support renewal. All reminders and license keys will be sent through this contact. Resellers should be selected as the contact for renewal.
-
-
-
