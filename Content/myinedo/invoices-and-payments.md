@@ -6,43 +6,31 @@ order: 6
 
 This article will cover how to access your quotes & invoices through MyInedo as well as the payment methods accepted by Inedo.  To create a quote, see [purchasing a license](/docs/myinedo/purchasing-license) or [renewing a license](/docs/myinedo/renewing-license).
 
-
 ## Accessing your Quote/Invoice
-
 
 To access your quote or invoice through MyInedo, simply select "Pay an Invoice or Quote" from the MyInedo homepage. Your invoices can also be accessed via the "My Invoices" link in the top banner.
 
-
 ![Pay Invoice](/resources/docs/myinedo-payments-payinvoice.png){height="" width="55%"}
 
-
 You will then be shown all your existing quotes and invoices. To pay a quote and have an invoice generated select "Pay Now" next to the relevant quote.
-
 
 ![Pay Invoice](/resources/docs/myinedo-payments-accessinvoice.png){height="" width="55%"}
 After selecting your payment method and filling out the appropriate fields, an invoice will be generated.
 
-
 ## Payment Methods
 MyInedo accepts most standard payment methods including credit card, purchase order (PO), check, and bank transfer.
-
 
 ## Credit Card
 Credit card payments are processed securely through [Stripe Checkout](https://stripe.com/en-gb-jp/payments/checkout){target="_blank"}, our third-party credit-card payment service.
 
-
 ![Credit Card Popup](/resources/docs/myinedo-purchasingandrenewing-creditcard.png){height="" width="50%"}
 
-
 Customers paying via credit card will instantly receive their license key and invoice after submitting payment.
-
 
 ## Purchase Order
 To pay via purchase order, simply fill out the required fields and upload a PDF version of your purchase order.
 
-
 ![Submit Purchase Order](/resources/docs/myinedo-purchasingandrenewinglicense-purchaseorder.png){height="" width="50%"}
-
 
 After submitting a PO order, accounts receivable will verify your order and send an invoice along with all license keys to the provided email address within 2 business days. That invoice can then be paid using credit card, bank transfer, or check.
 
