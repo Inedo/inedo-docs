@@ -3,29 +3,22 @@ title: "Stopgap License Keys"
 order: 7
 ---
 
-
 We aim to provide customers with self-service options through MyInedo for situations when a license key hasn't been renewed in time. Follow the steps below to generate a (temporary) stopgap license key and ensure your software service is uninterrupted.
-
 
 ## What is a Stopgap License?
 Stopgap license keys allow your team to continue working uninterrupted without a lapse in features/services.
-
 
 A stopgap license key may be necessary if:
 - Your license is expiring before your accounts payable team is able to create a PO.
 - Your renewal contact left the company and their role wasn't updated.
 - License expiry emails went unnoticed.
 
-
 Regardless of the reason, generating/requesting a stopgap license key is straightforward and quick.
-
 
 If organizations are using enterprise functionality unavailable in the trail edition (i.e. ProGet's feed replication), or require more/servers (BuildMaster, Otter), this functionality can still be accessed with a self-generated trial stopgap license key.
 
-
 :::(Info) (License Key Expiration)
 Stopgap license keys do not extend the term of your paid license key.
-
 
 Example: If your license key normally lasts 12 months, after using your full stopgap license key for one month, your newly renewed paid license key would expire in 11 months.
 :::
