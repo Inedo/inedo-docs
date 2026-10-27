@@ -61,8 +61,3 @@ Quicktime Player is a screen recording tool available on macOS. Before you start
 From there, use the toolbar to set the recording area and configure audio settings. Click "Record" to begin, and “Stop” when finished. Review the recording, make any edits needed, and save your file.
 
 ![Quicktime Player Recording](/resources/docs/create-support-video-QuicktimePlayer-2.png){width=50%}
-
-
-
-
-
