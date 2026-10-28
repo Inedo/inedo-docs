@@ -51,13 +51,33 @@ Once set, BuildMaster automatically projects the upcoming target dates for that 
 ## Step 3: Add Additional Date Prompts (Optional)
 Beyond the release target date, you can add extra dates to a pipeline, set relative to that target. These are useful for milestones that happen on the way to a release, such as a QA start, or a code freeze.
 
-To set these up, 
+To set these up, navigate to a release pipeline, selecti "Edit Details" under "Pipeline Details", and then selecting "Manage Date Prompts".
+
+![](/resources/docs/buildmaster-calendar-manage-date-prompts.png){height="" width="50%"}
+
+Then select "Add Date Prompt". From here you will be able to name the date, how many days after the release target date it will be scheduled, (or before, by entering a negative number, e.g. `-3`) and the duration that this prompt will last.
+
+![](/resources/docs/buildmaster-calendar-add-date-prompt.png){height="" width="50%"}
+
+These will then be pre-populated when creating a new release.
+
+![](/resources/docs/buildmaster-calendar-qa.png){height="" width="50%"}
 
 ## Step 4: Configure Pipeline Deployment Rules
 Pipeline stage requirements and rules can be set in a pipeline to control how a build is deployed. They can check that a build meets certain standards before it moves on to the next stage, or ask the person deploying to make certain manual checks.
 
- 
+To configure these, navigate to either your Major or Routine release pipeline, and scroll down to a pipeline stage (e.g. Integration) to configure the stage requirements or variables and prompts. 
 
-At the integration stage, you might want to add a check for no noncompliant packages, so a build containing packages that break your compliance rules is stopped early, or a check for no unstable (prerelease) dependencies, so code that relies on packages that could change or break without warning never reaches the stages that follow. Catching either problem here is far cheaper than finding it later, and it keeps surprises out of your Routine releases.
+For example, at the integration stage, you might want to add a check for no noncompliant packages, so a build containing packages that break your compliance rules is stopped early, or a check for no unstable (prerelease) dependencies, so code that relies on packages that could change or break without warning never reaches the stages that follow. 
 
-At the testing stage, you might want to create prompts that let the tester choose whether to enable new features after deployment, so the same build can be tested with a feature off and then on without needing a separate build, or how services restart after deployment, so each test can use the behavior it needs rather than relying on one fixed setting.
+![](/resources/docs/buildmaster-calendar-qa.png){height="" width="50%"}
+
+Or at the Testing stage, you might want to create prompts that let the tester choose whether to enable new features after deployment, so the same build can be tested with a feature off and then on without needing a separate build, or how services restart after deployment.
+
+![](/resources/docs/buildmaster-calendar-qa.png){height="" width="50%"}
+
+## Step 5: View Target Release Dates on the Calendar
+
+Once you have created releases and builds in your Major and Routine release pipelines, you can view them on the Calendar by selecting "Calendar" on the header. The default calendar will display all target dates for all applications in BuildMaster:
+
+### Creating Custom Calendars (Optional)
