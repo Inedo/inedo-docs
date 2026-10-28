@@ -24,13 +24,13 @@ First [create a pipeline](/docs/buildmaster/deployment-continuous-delivery/build
 
 ![](/resources/docs/buildmaster-pipeline-create-main.png){height="" width="50%"}
 
-### Setting Release Target Dates
+#### Setting Release Target Dates
 
 When [creating a major release](/docs/buildmaster/modeling-your-applications/buildmaster-releases) in your pipeline, set the [release target date](/docs/buildmaster/modeling-your-applications/buildmaster-releases#target-dates) for the scheduled deployment: 
 
 ![](/resources/docs/buildmaster-release-create-date.png){height="" width="50%"}
 
-### Scheduling Pipeline Build Promotion
+#### Scheduling Pipeline Build Promotion
 
 To schedule the promotion of individual pipeline stages, navigate to a build in your release, and select the current stage under "Pipeline Progress".
 
@@ -46,7 +46,7 @@ Next, create a pipeline that will be used for your Routine releases. As with the
 
 Also, as with Major releases, make sure to set the release target date when creating a new routine release.
 
-### Setting Target Iteration Dates (Optional)
+#### Setting Target Iteration Dates (Optional)
 
 In BuildMaster, you can set Target Iteration Dates on a pipeline to define when its releases are meant to go out, setting a fixed cadence for your routine releases (e.g., every Friday).
 
@@ -92,7 +92,7 @@ Once you have created releases and builds in your Major and Routine release pipe
 
 ![](/resources/docs/buildmaster-default-calendar.png){height="" width="50%"}
 
-### Creating Custom Calendars (Optional)
+#### Creating Custom Calendars (Optional)
 Viewing all of your applications at once through the default calendar can be overwhelming, so Buildmaster lets you create custom Calendars to view only specified applications. 
 
 To create a custom calendar, navigate to "Administration" > "Manage Calendars" (Global Components). Then select "Create Calendar". 
