@@ -1,0 +1,63 @@
+---
+title: "HOWTO: Set Up Multiple Cadence Releases in BuildMaster"
+order: 3
+---
+
+A Lean Platforms multiple release cadence splits your releases into two parallel tracks so that routine, low-risk changes can ship on a predictable schedule, independent of larger, riskier work:
+
+* Routine track: low risk changes such as bug fixes or minor updates, released on a regular cadence.
+* Major track: high risk changes such as large features or updates, released on a more flexible schedule.
+
+Once you have adopted a multiple released cadence, delayed major releases no longer hold up the small changes stakeholders are waiting on, allowing you to ship regular updates more predictably. For a more detailed look at the concept of multi cadence releases you can read our article [Eliminate Delays and Disruptions in Software Releases](https://blog.inedo.com/lean-platforms/releases).
+
+This page will walk you through setting up a multi cadence release in BuildMaster. It will cover how to connect your toolchain, create Routine and Major pipelines, automate routine release dates and track everything through BuildMaster's calendar.
+
+## Prerequisites
+
+This guide assumes that you have already:
+* [Created your application](/docs/buildmaster/modeling-your-applications/buildmaster-applications-concepts/buildmaster-howto-build-and-deploy-an-aspnet-mvc-application) in BuildMaster and connected it to source control (e.g., GitHub), so that branches and commits are visible on each build.
+* Connected the rest of your toolchain to the application, so BuildMaster can show what’s inside each build. For example, [connecting an issue tracker](/docs/buildmaster/modeling-your-applications/buildmaster-applications-issue-tracking) (e.g., Jira) lets issues be associated with builds and releases.
+
+## Step 1: Create a Major Pipeline
+
+First [create a pipeline](/docs/buildmaster/deployment-continuous-delivery/buildmaster-pipelines#creating-pipelines) in BuildMaster that will be used for Major releases. From your application Navigate to "Settings" > "Pipelines" then select "Create Pipeline". Then select "Show all" and choose "Main/Release Branch".
+
+![](/resources/docs/buildmaster-pipeline-create-main.png){height="" width="50%"}
+
+### Setting Release Target Dates
+
+When [creating a major release](/docs/buildmaster/modeling-your-applications/buildmaster-releases) in your pipeline, set the [release target date](/docs/buildmaster/modeling-your-applications/buildmaster-releases#target-dates) for the scheduled deployment: 
+
+![](/resources/docs/buildmaster-release-create-date.png){height="" width="50%"}
+
+## Step 2: Create a Routine Pipeline
+
+Next, create a pipeline that will be used for your Routine releases. As with the Major release pipeline, select "Main/Release Branch" when creating the pipeline. 
+
+Also, as with Major releases, make sure to set the release target date when creating a new routine release.
+
+### Setting Target Iteration Dates (Optional)
+
+In BuildMaster, you can set Target Iteration Dates on a pipeline to define when its releases are meant to go out, setting a fixed cadence for your routine releases (e.g., every Friday).
+
+To set these up, navigate to your Routine pipeline and then select "edit details" under "Pipeline Details". From here set the target iteration dates (e.g., "14" would set a two week cadence for routine releases):
+
+![](/resources/docs/buildmaster-release-edit-iteration.png.png){height="" width="50%"}
+
+Once set, BuildMaster automatically projects the upcoming target dates for that pipeline and shows them on the calendar as dotted outlines.
+
+![](/resources/docs/buildmaster-calendar-auto-dates.png){height="" width="50%"}
+
+## Step 3: Add Additional Date Prompts (Optional)
+Beyond the release target date, you can add extra dates to a pipeline, set relative to that target. These are useful for milestones that happen on the way to a release, such as a QA start, or a code freeze.
+
+To set these up, 
+
+## Step 4: Configure Pipeline Deployment Rules
+Pipeline stage requirements and rules can be set in a pipeline to control how a build is deployed. They can check that a build meets certain standards before it moves on to the next stage, or ask the person deploying to make certain manual checks.
+
+ 
+
+At the integration stage, you might want to add a check for no noncompliant packages, so a build containing packages that break your compliance rules is stopped early, or a check for no unstable (prerelease) dependencies, so code that relies on packages that could change or break without warning never reaches the stages that follow. Catching either problem here is far cheaper than finding it later, and it keeps surprises out of your Routine releases.
+
+At the testing stage, you might want to create prompts that let the tester choose whether to enable new features after deployment, so the same build can be tested with a feature off and then on without needing a separate build, or how services restart after deployment, so each test can use the behavior it needs rather than relying on one fixed setting.
