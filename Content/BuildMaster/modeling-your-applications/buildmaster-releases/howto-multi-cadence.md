@@ -84,7 +84,7 @@ For example, at the "Integration" stage, you might want to add a check for no no
 
 Or at the "Testing" stage", you might want to create prompts that let the tester choose whether to enable new features after deployment, so the same build can be tested with a feature off and then on without needing a separate build, or how services restart after deployment.
 
-![](/resources/docs/buildmaster-calendar-qa.png){height="" width="50%"}
+![](/resources/docs/buildmaster-pipeline-testing-gates.png){height="" width="50%"}
 
 ## Step 5: View Target Release Dates on the Calendar
 
