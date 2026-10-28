@@ -1,16 +1,16 @@
 ---
-title: "HOWTO: Set Up Multiple Cadence Releases in BuildMaster"
+title: "HOWTO: Set Up Multi-Cadence Releases in BuildMaster"
 order: 3
 ---
 
-A Lean Platforms multiple release cadence splits your releases into two parallel tracks so that routine, low-risk changes can ship on a predictable schedule, independent of larger, riskier work:
+A Lean Platforms multi-release cadence splits your releases into two parallel tracks so that routine, low-risk changes can ship on a predictable schedule, independent of larger, riskier work:
 
 * Routine track: low risk changes such as bug fixes or minor updates, released on a regular cadence.
 * Major track: high risk changes such as large features or updates, released on a more flexible schedule.
 
-Once you have adopted a multiple released cadence, delayed major releases no longer hold up the small changes stakeholders are waiting on, allowing you to ship regular updates more predictably. For a more detailed look at the concept of multi cadence releases you can read our article [Eliminate Delays and Disruptions in Software Releases](https://blog.inedo.com/lean-platforms/releases).
+Once you have adopted a multi-released cadence, delayed major releases no longer hold up the small changes stakeholders are waiting on, allowing you to ship regular updates more predictably. For a more detailed look at the concept of multi-cadence releases you can read our article [Eliminate Delays and Disruptions in Software Releases](https://blog.inedo.com/lean-platforms/releases).
 
-This page will walk you through setting up a multi cadence release in BuildMaster. It will cover how to connect your toolchain, create Routine and Major pipelines, automate routine release dates and track everything through BuildMaster's calendar.
+This page will walk you through setting up a multi-cadence release in BuildMaster. It will cover how to connect your toolchain, create Routine and Major pipelines, automate routine release dates and track everything through BuildMaster's calendar.
 
 ## Prerequisites
 
