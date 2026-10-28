@@ -30,6 +30,16 @@ When [creating a major release](/docs/buildmaster/modeling-your-applications/bui
 
 ![](/resources/docs/buildmaster-release-create-date.png){height="" width="50%"}
 
+### Scheduling Pipeline Build Promotion
+
+To schedule the promotion of individual pipeline stages, navigate to a build in your release, and select the current stage under "Pipeline Progress".
+
+![](/resources/docs/buildmaster-pipeline-stage-select.png){height="" width="50%"}
+
+From here select "schedule" and enter the date and time to promote the build. 
+
+![](/resources/docs/buildmaster-promotion-schedule.png){height="" width="50%"}
+
 ## Step 2: Create a Routine Pipeline
 
 Next, create a pipeline that will be used for your Routine releases. As with the Major release pipeline, select "Main/Release Branch" when creating the pipeline. 
@@ -51,7 +61,7 @@ Once set, BuildMaster automatically projects the upcoming target dates for that 
 ## Step 3: Add Additional Date Prompts (Optional)
 Beyond the release target date, you can add extra dates to a pipeline, set relative to that target. These are useful for milestones that happen on the way to a release, such as a QA start, or a code freeze.
 
-To set these up, navigate to a release pipeline, selecti "Edit Details" under "Pipeline Details", and then selecting "Manage Date Prompts".
+To set these up, navigate to a release pipeline, select "Edit Details" under "Pipeline Details", and then selecting "Manage Date Prompts".
 
 ![](/resources/docs/buildmaster-calendar-manage-date-prompts.png){height="" width="50%"}
 
@@ -81,3 +91,10 @@ Or at the Testing stage, you might want to create prompts that let the tester ch
 Once you have created releases and builds in your Major and Routine release pipelines, you can view them on the Calendar by selecting "Calendar" on the header. The default calendar will display all target dates for all applications in BuildMaster:
 
 ### Creating Custom Calendars (Optional)
+Viewing all of your applications at once through the default calendar can be overwhelming, so Buildmaster lets you create custom Calendars to view only specified applications. 
+
+To create a custom calendar, navigate to "Administration" > "Manage Calendars" (Global Components). Then select "Create Calendar". 
+
+![](/resources/docs/buildmaster-calendar-create.png){height="" width="50%"}
+
+For more details on the options available when creating a customized calendar, read [Creating Custom Calendars](/docs/buildmaster/modeling-your-applications/buildmaster-releases/buildmaster-applications-releases-calendars)
