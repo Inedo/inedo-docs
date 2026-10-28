@@ -20,7 +20,7 @@ This guide assumes that you have already:
 
 ## Step 1: Create a Major Pipeline
 
-First [create a pipeline](/docs/buildmaster/deployment-continuous-delivery/buildmaster-pipelines#creating-pipelines) in BuildMaster that will be used for Major releases. From your application Navigate to "Settings" > "Pipelines" then select "Create Pipeline". Then select "Show all" and choose "Main/Release Branch".
+First [create a pipeline](/docs/buildmaster/deployment-continuous-delivery/buildmaster-pipelines#creating-pipelines) in BuildMaster that will be used for Major releases. From your application, navigate to "Settings" > "Pipelines" then select "Create Pipeline". Then select "Show all" and choose "Main/Release Branch".
 
 ![](/resources/docs/buildmaster-pipeline-create-main.png){height="" width="50%"}
 
@@ -52,7 +52,7 @@ In BuildMaster, you can set Target Iteration Dates on a pipeline to define when 
 
 To set these up, navigate to your Routine pipeline and then select "edit details" under "Pipeline Details". From here set the target iteration dates (e.g., "14" would set a two week cadence for routine releases):
 
-![](/resources/docs/buildmaster-release-edit-iteration.png.png){height="" width="50%"}
+![](/resources/docs/buildmaster-release-edit-iteration.png){height="" width="50%"}
 
 Once set, BuildMaster automatically projects the upcoming target dates for that pipeline and shows them on the calendar as dotted outlines.
 
@@ -73,22 +73,24 @@ These will then be pre-populated when creating a new release.
 
 ![](/resources/docs/buildmaster-calendar-qa.png){height="" width="50%"}
 
-## Step 4: Configure Pipeline Deployment Rules
-Pipeline stage requirements and rules can be set in a pipeline to control how a build is deployed. They can check that a build meets certain standards before it moves on to the next stage, or ask the person deploying to make certain manual checks.
+## Step 4: Configure Pipeline Requirements and Gates
+Pipeline stage requirements and gating can be set in a pipeline to control how a build is deployed. They can check that a build meets certain standards before it moves on to the next stage, or ask the person deploying to make certain manual checks.
 
 To configure these, navigate to either your Major or Routine release pipeline, and scroll down to a pipeline stage (e.g. Integration) to configure the stage requirements or variables and prompts. 
 
-For example, at the integration stage, you might want to add a check for no noncompliant packages, so a build containing packages that break your compliance rules is stopped early, or a check for no unstable (prerelease) dependencies, so code that relies on packages that could change or break without warning never reaches the stages that follow. 
+For example, at the "Integration" stage, you might want to add a check for no noncompliant packages, so a build containing packages that break compliance rules is prevented from moving forward, or a check for no unstable (prerelease) dependencies. 
 
-![](/resources/docs/buildmaster-calendar-qa.png){height="" width="50%"}
+![](/resources/docs/buildmaster-pipeline-integration-gates.png){height="" width="50%"}
 
-Or at the Testing stage, you might want to create prompts that let the tester choose whether to enable new features after deployment, so the same build can be tested with a feature off and then on without needing a separate build, or how services restart after deployment.
+Or at the "Testing" stage", you might want to create prompts that let the tester choose whether to enable new features after deployment, so the same build can be tested with a feature off and then on without needing a separate build, or how services restart after deployment.
 
 ![](/resources/docs/buildmaster-calendar-qa.png){height="" width="50%"}
 
 ## Step 5: View Target Release Dates on the Calendar
 
 Once you have created releases and builds in your Major and Routine release pipelines, you can view them on the Calendar by selecting "Calendar" on the header. The default calendar will display all target dates for all applications in BuildMaster:
+
+![](/resources/docs/buildmaster-default-calendar.png){height="" width="50%"}
 
 ### Creating Custom Calendars (Optional)
 Viewing all of your applications at once through the default calendar can be overwhelming, so Buildmaster lets you create custom Calendars to view only specified applications. 
