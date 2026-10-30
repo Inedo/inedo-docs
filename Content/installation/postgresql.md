@@ -239,7 +239,7 @@ ProGet supports a direct database migration to PostgreSQL if you navigate to Adm
 
 ProGet's API will be disabled during the migration, which may take anywhere from a few minutes to an hour or more. If there are any issues, you can revert to SQL Server.
 
-## Export-based Migration from SQL Server (all products) { #migrating-from-sqlserver-bm }
+## Export-based Migration from SQL Server (all products) { #migrating-from-sqlserver-all }
 
 You can also migrate to PostgreSQL by exporting your SQL Server database and then importing it into a PostgreSQL database per the Database Import & Export feature described above.
 
