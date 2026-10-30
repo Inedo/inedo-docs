@@ -1308,4 +1308,7 @@
   <redirect from="/docs/proget/advanced-features/proget-howto-configure-feed-for-s3" to="/docs/proget/cloud-storage/howto-configure-feed-for-s3" />
   <redirect from="/docs/proget/advanced-features/proget-howto-configure-feed-for-azure-blob" to="/docs/proget/cloud-storage/howto-configure-feed-for-azure-blob" />
   <!--End of Cloud Storage Redirects-->
+  <!--Begin of MyInedo Redirects-->
+  <redirect from="/docs/myinedo/overview" to="/docs/myinedo" />
+  <!--End of MyInedo Redirects-->
 </redirects>
