@@ -3,10 +3,9 @@ title: "What is MyInedo?"
 order: 1
 ---
 
-[MyInedo Portal Homepage](https://my.inedo.com/){target="_blank"} is a central hub that contains all your license information, quotes, invoices, support tickets, and [users associated with your user/organization](/docs/myinedo/creating-and-accessing-your-account). 
+[MyInedo Portal Homepage](https://my.inedo.com/){target="_blank"} is a central hub that contains all your license information, quotes, invoices, support tickets, and [users associated with your user/organization](/docs/myinedo/creating-and-accessing-your-account).
 
 ![Homepage](/resources/docs/myinedo-homepage.png){height="" width="50%"}
-
 
 Through MyInedo you can:
 
@@ -25,7 +24,7 @@ While we're certainly happy to help you with quotes and invoices, MyInedo was de
 
 ## Support Tickets
 
-Once you have registered your account on MyInedo, you can [create support tickets](https://my.inedo.com/tickets/new){target="_blank"}, as well as manage and reply to them. 
+Once you have registered your account on MyInedo, you can [create support tickets](https://my.inedo.com/tickets/new){target="_blank"}, as well as manage and reply to them.
 
 Navigate to the [tickets overview page](https://my.inedo.com/tickets){target="_blank"} to see a list of your present and past tickets as well as the status for any tickets in your organization.  
 
@@ -36,4 +35,3 @@ New tickets and comments are emailed to you.  You can reply to the email to add 
 :::(INFO) (Support tickets are for paid users only.)
 We appreciate users of our free software. Our engineers and other users are on the [Inedo Forums](https://forums.inedo.com){target="_blank"} and can help you there. If we can't find a paid license, we will likely ask you to post on the Inedo Forum.
 :::
-

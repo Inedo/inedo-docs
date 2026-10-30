@@ -13,7 +13,7 @@ A stopgap license key may be necessary if:
 - Your renewal contact left the company and their role wasn't updated.
 - License expiry emails went unnoticed.
 
-Regardless of the reason, generating/requesting a stopgap license key is straightforward and quick. 
+Regardless of the reason, generating/requesting a stopgap license key is straightforward and quick.
 
 If organizations are using enterprise functionality unavailable in the trail edition (i.e. ProGet's feed replication), or require more/servers (BuildMaster, Otter), this functionality can still be accessed with a self-generated trial stopgap license key.
 
@@ -27,12 +27,16 @@ Example: If your license key normally lasts 12 months, after using your full sto
 
 A self-generated stopgap license key should be created when your organization absolutely cannot have their license keys expire and cannot wait for customer support. This process takes under 10 minutes.
 
-Go to your [MyInedo](https://my.inedo.com/){target="_blank"} portal and click on "Request Trial/Free License." There will be 2 options presented to you for every product: free and trial.
+Go to your [MyInedo](https://my.inedo.com/){target="_blank"} portal and select "Request Trial or Free License Key".
 
-![Request License](/resources/docs/myinedo-licensekeys-requestkey.png){height="" width="50%"}
+![Request Trial or Free License Key](/resources/docs/myinedo-licensekeysandactivation-requesttrial.png){height="" width="60%"}
+
+There will be 2 options presented to you for every product: free and trial.
+
+![Request License](/resources/docs/myinedo-licensekeys-requestkey.png){height="" width="45%"}
 
 Select the trial edition to get a key that will last 30 days; unlike the Free Edition, a Trial Key will have the standard paid features available.
 
-![View License Key](/resources/docs/myinedo-licensekeys-viewkey.png){height="" width="50%"}
+![View License Key](/resources/docs/myinedo-licensekeys-viewkey.png){height="" width="45%"}
 
 Then, [enter and activate your license key](/docs/myinedo/activating-a-license-key) to restore functionality immediately. Note that your Inedo product will display a banner stating that it is only meant for trial purposes; this is merely a cosmetic reminder and your Inedo product will function as a normal license.
