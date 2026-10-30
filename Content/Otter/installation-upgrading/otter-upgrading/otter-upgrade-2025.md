@@ -1,8 +1,12 @@
 ---
 title: "Upgrading to Otter 2025"
-order: 1
+order: 2
 url-slug: "otter-upgrade-2025"
 ---
+
+:::(Error) (Outdated Documentation: Upgrade to Otter 2025 Not Recommended)
+We strongly recommend directly [Upgrading to Otter 2026](/docs/otter-upgrade-2026). This document is only kept around for historic purposes.
+:::
 
 Otter 2025 is a major upgrade, and this article provides information about what changed, the impact to your instance, and how to mitigate risk during upgrade.
 
