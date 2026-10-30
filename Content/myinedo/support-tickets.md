@@ -21,12 +21,12 @@ Pay special attention to the **severity type**. When you submit a support ticket
 
 * **Blocker**- Major malfunction affecting business or high number of staff
 * **Critical**- Serious degradation of application performance or functionality
-* **Major**- Application issue that moderatly impacts your business
+* **Major**- Application issue that moderately impacts your business
 * **Minor**- Minor loss of function or a problem with an easy workaround
 * **Trivial**- Cosmetic problem like misspelled words or misaligned text
 
 ## Ticket Statuses
-A ticket starts in a “Submitted” status. From there, after one of our support engineers assess it, you will receive an automatic email that looks like this:
+A ticket starts in a “Submitted” status. From there, after one of our support engineers assesses it, you will receive an automatic email that looks like this:
 
 ![Ticket Assigned](/resources/docs/1159-ticket-assigned.png){height="" width="50%"}
 
@@ -34,14 +34,14 @@ The ticket status will then be changed to one of the following:
 * **In Progress**- Some form of action is being taken, but there is no resolution yet.
 * **Awaiting Assistance**- Reserved for more complex issues that require brainstorming.
 * **Awaiting Response**- Support staff is waiting on a reply from the user.
-* **Awaiting Release**- Support still will follow up with the user after a release.
-* **Closed**- The issues have been addressed or there has been no response in 7 days.
+* **Awaiting Release**- Support will still follow up with the user after a release.
+* **Closed**- The issues have been addressed, or there has been no response in 7 days.
 
 Once the issue is resolved and the ticket enters a “Closed” status, an email will automatically be dispatched.
 
 ![1159 Ticket Manually Closed](/resources/docs/1159-ticket-manually-closed.png){height="" width="50%"}
 
 ## Reviewing & Managing Tickets
-Navigate to "My Tickets" on the top banner to view and manage all current and closed tickets. From here you can update tickets with comments and attachments, review the status of open tickets, and review support for closed tickets.
+Navigate to "My Tickets" on the top banner to view and manage all current and closed tickets. From here, you can update tickets with comments and attachments, review the status of open tickets, and review support for closed tickets.
 
 ![Review Tickets](/resources/docs/ReviewTickets.png){height="" width="60%"}

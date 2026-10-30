@@ -3,7 +3,7 @@ title: "Invoices & Payments"
 order: 6
 ---
 
-This article will cover how to access your quotes & invoices through MyInedo as well as the payment methods accepted by Inedo.  To create a quote, see [purchasing a license](/docs/myinedo/purchasing-license) or [renewing a license](/docs/myinedo/renewing-license).
+This article will cover how to access your quotes & invoices through MyInedo, as well as the payment methods accepted by Inedo.  To create a quote, see [purchasing a license](/docs/myinedo/purchasing-license) or [renewing a license](/docs/myinedo/renewing-license).
 
 ## Accessing your Quote/Invoice
 
@@ -11,13 +11,13 @@ To access your quote or invoice through MyInedo, simply select "Pay an Invoice o
 
 ![Pay Invoice](/resources/docs/myinedo-payments-payinvoice.png){height="" width="55%"}
 
-You will then be shown all your existing quotes and invoices. To pay a quote and have an invoice generated select "Pay Now" next to the relevant quote.
+You will then be shown all your existing quotes and invoices. To pay a quote and have an invoice generated, select "Pay Now" next to the relevant quote.
 
 ![Pay Invoice](/resources/docs/myinedo-payments-accessinvoice.png){height="" width="55%"}
 After selecting your payment method and filling out the appropriate fields, an invoice will be generated.
 
 ## Payment Methods
-MyInedo accepts most standard payment methods including credit card, purchase order (PO), check, and bank transfer.
+MyInedo accepts most standard payment methods, including credit card, purchase order (PO), check, and bank transfer.
 
 ## Credit Card
 Credit card payments are processed securely through [Stripe Checkout](https://stripe.com/en-gb-jp/payments/checkout){target="_blank"}, our third-party credit-card payment service.

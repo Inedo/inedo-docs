@@ -5,11 +5,11 @@ order: 4
 
 For your convenience, we offer full-service purchasing and license key creation via MyInedo. This article will serve as your guide to MyInedo and show you everything you need to know to purchase a license key for the first time.
 
-:::(Info) (Note for Software Resellers (Insight, SoftwareOne, SHI,etc.))
+:::(Info) (Note for Software Resellers (Insight, SoftwareOne, SHI, etc.))
 
-The fastest way to purchase a license for your client is to [join their organization on MyInedo account](/docs/myinedo/creating-and-accessing-your-account) and then follow the instructions in this documentation.
+The fastest way to purchase a license for your client is to [join their organization on your MyInedo account](/docs/myinedo/creating-and-accessing-your-account) and then follow the instructions in this documentation.
 
-However if you are having any difficulties, please don't hesitate to <a href="mailto:athiel@inedo.com?subject=Renewal for Inedo Invoice 00000-000&body=Please send a renewal quote for Customer Name">contact our licensing team</a>.
+However, if you are having any difficulties, please don't hesitate to <a href="mailto:athiel@inedo.com?subject=Renewal for Inedo Invoice 00000-000&body=Please send a renewal quote for Customer Name">contact our licensing team</a>.
 :::
 
 ## Create a Quote
@@ -22,7 +22,7 @@ Select the product, license term (listed under price option), and pricing option
 ![Create a Quote](/resources/docs/myinedo-purchaselicense-createquote.png){height="" width="50%"}
 
 ## Purchase a License Key
-Once a quote is created, you can conveniently save it as a PDF to send to your purchasing team or you can submit payment to receive your license key instantly.
+Once a quote is created, you can conveniently save it as a PDF to send to your purchasing team, or you can submit payment to receive your license key instantly.
 
 ![Quote](/resources/docs/myinedo-purchaselicense-quote.png){height="" width="50%"}
 
