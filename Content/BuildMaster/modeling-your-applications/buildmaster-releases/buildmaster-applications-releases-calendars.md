@@ -7,10 +7,10 @@ Expand BuildMaster's release coordination capabilities with Calendars and provid
 
 * Track target deployment dates of your releases
 * View past deployments
-* Set an automated schedule for future releases
+* Set an iterative schedule for future releases
 * Schedule additional dates for other workflow tasks
 
-Navigate to the default Calendar by selecting the "Calendars" tab in the header. This will show all scheduled release deployment dates for all applications in your instance, including past deployment dates, additional configured dates and any automated dates for future releases. 
+Navigate to the default Calendar by selecting the "Calendars" tab in the header. This will show all scheduled release deployment dates for all applications in your instance, including past deployment dates, additional configured dates and any iterative dates for future releases. 
 
 ![](/resources/docs/buildmaster-default-calendar.png){height="" width="50%"}
 
@@ -41,7 +41,7 @@ Set how future deployments are shown on the calendar:
 | --- | --- |
 | `Show All` | Show all deployment dates set in active releases |
 | `Do Not Show` | Hide all deployment dates set in active releases  |
-| `Other` | Lets you show/hide the following in active releases:<br>- `Scheduled Deployments`: Any deployments scheduled on a pipeline<br>- `Generated Dates`: [Automated](#automated-release-dates) release target dates <br>- `Target Dates`: All release targets and any [Additional dates](#adding-additional-dates) |
+| `Other` | Lets you show/hide the following in active releases:<br>- `Scheduled Deployments`: Any deployments scheduled on a pipeline<br>- `Generated Dates`: [Iterative](#iterative-release-dates) release target dates <br>- `Target Dates`: All release targets and any [Additional dates](#adding-additional-dates) |
 
 #### Hide/Show Weekends
 Set how weekends are shown on the calendar. When selected, Saturday and Sunday will be hidden on the Calendar. Any dates scheduled on a Saturday will instead be shown the previous Friday, and any dates scheduled on a Sunday will be shown on the following Monday.
@@ -59,10 +59,16 @@ Target dates can also be added or edited when editing a release:
 
 ![](/resources/docs/buildmaster-release-edit-target.png){height="" width="50%"}
 
-## Automated Release Dates
-You can configure your release calendar to add automated dates to predict your future release schedule. Once set on a pipeline, they will be calculated based on the previous release's target date.This is especially useful for routine releases that are deployed on a regular schedule. 
+## Iterative Release Dates
+When you configure iteration on a pipeline, future target dates are automatically added to your release calendar based on the previous release’s target date.
 
-To configure automated dates, navigate to the pipeline associated with your release, and select "Edit Details" under "Pipeline Details"
+![](/resources/docs/buildmaster-calendar-auto-dates.png){height="" width="50%"}
+
+Iterative Release Dates show up as dotted lines on your calendar. Click any date to create a release and its builds for that day. Iterative dates are designed for routine releases that ship on a regular schedule.
+
+![](/resources/docs/buildmaster-calendar-iterative-new-release.png){height="" width="50%"}
+
+To configure Iterative dates, navigate to the pipeline associated with your release, and select "Edit Details" under "Pipeline Details"
 
 ![](/resources/docs/buildmaster-pipeline-details-edit.png){height="" width="50%"}
 
@@ -70,9 +76,7 @@ Set the interval of days between release dates under "Target Iteration Days", an
 
 ![](/resources/docs/buildmaster-release-edit-iteration.png){height="" width="50%"}
 
-Automated release dates will be pre-populated when creating release. They will also be pre-populated when releases are automatically created (e.g. through git branch monitors or pipeline event listeners). Automated release dates will appear as dotted boxes on the Calendar. 
-
-![](/resources/docs/buildmaster-calendar-auto-dates.png){height="" width="50%"}
+Iterative release dates will now be pre-populated when creating release. They will also be pre-populated when releases are automatically created (e.g. through git branch monitors or pipeline event listeners).
 
 ## Adding Additional Dates
 You can create additional target dates beyond the default release target. In addition to deployment dates, teams may wish to track other pipeline milestones, such as build completion, QA, and production readiness.
