@@ -22,7 +22,7 @@ Next, select "Add a stage requirement" under Build Stage.
 The Stage Requirement Check window will populate. Select "Add Manual Approval".
 
 
-![Stage Requirement](/resources/docs/BuildMaster-Pipeline-StageRequirement.png){height="" width="70%"}
+![Stage Requirement](/resources/docs/BuildMaster-Pipeline-StageRequirement.png){height="" width="65%"}
 From here, you can configure your user approval.
 
 
@@ -35,7 +35,7 @@ Afterwards, a commit prompt will populate at the top of the page. Select "Commit
 After the user approval is committed, you can view it by clicking on the relevant stage in the pipeline.
 
 
-![User Approval](/resources/docs/BuildMaster-Pipeline-DeployBuild-Approval.png){height="" width="70%"}
+![User Approval](/resources/docs/BuildMaster-Pipeline-DeployBuild-Approval.png){height="" width="65%"}
 
 ## Forcing a Build Past an Approval
 
@@ -45,7 +45,7 @@ When a build requires an approval, the build pipeline will look like the image b
 
 To force a build past an approval, navigate to the Build Pipeline page and select "force" under the relevant pipeline stage.
 
-![User Approval](/resources/docs/BuildMaster-Pipeline-DeployBuild-force.png){height="" width="70%"}
+![Force Approval](/resources/docs/BuildMaster-Pipeline-DeployBuild-force.png){height="" width="70%"}
 
 You will also be able to leave a comment when forcing the build.
 
