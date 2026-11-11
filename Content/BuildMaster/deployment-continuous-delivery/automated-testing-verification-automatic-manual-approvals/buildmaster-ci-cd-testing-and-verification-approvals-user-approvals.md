@@ -12,39 +12,27 @@ There are two types of manual approvals:
 
 ## Configuring User Approvals
 
-
-You can view the User Approval function by selecting "view pipeline" on the Build Overview tab.
-
-Next, select "Add a stage requirement" under the relevant pipeline stage.
-
+You can create a User Approval by selecting "view pipeline" on the Build Overview tab, and selecting "Add a stage requirement" under a pipeline stage.
 
 ![Pipeline Stages](/resources/docs/BuildMaster-PipelineStagesv2.png){height="" width="70%"}
 
-Select "Add Manual Approval" under the Stage Requirement Check window.
-
-![Stage Requirement](/resources/docs/BuildMaster-Pipeline-StageRequirement.png){height="" width="65%"}
-
-From here, you can create your user approval.
+Then select "Add Manual Approval" under the Stage Requirement Check window to set up the user approval.
 
 ![User Approval](/resources/docs/BuildMaster-Pipeline-StageRequirement-UserApproval.png){height="" width="70%"}
 
-Afterwards, a commit prompt will appear at the top of the page. Select "Commit Changes" to create the user approval.
+Make sure to select "Commit Changes" at the top of the pipeline page to create the user approval. 
 
-After the user approval is committed, you can view it by navigating to Builds > Build Overview and selecting the relevant pipeline stage.
+When a user approval is needed at a stage of a release, you will see it under "Manual Approvals" when navigating to "Builds" > "Build Overview".
 
 ![User Approval](/resources/docs/BuildMaster-Pipeline-DeployBuild-force.png){height="" width="70%"}
 
-
 ## Forcing a Build Past an Approval
 
-A build may be forced to a stage even if it has not received the required approval. This requires a special action and a specific permission.
-
-
-When a build requires an approval, deployment will show up as blocked, with the option to force the deployment and leave a comment if needed.
-
-To force a build past an approval, navigate to the Build Pipeline page and select "force" under the relevant pipeline stage.
+A build may be forced to a stage even if it has not received the required approval. When a build requires an approval, the build will show as blocked. To force a build past an approval, navigate to the build's page, select the blocked build, and select "force".
 
 ![Force User Approval](/resources/docs/BuildMaster-Pipeline-DeployBuild-forcedeployment.png){height="" width="70%"}
+
+Note that you can leave a comment if needed when forcing the build.
 
 ## Approval Records and Revocation
 
