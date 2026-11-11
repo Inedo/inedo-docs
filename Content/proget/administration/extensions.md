@@ -49,3 +49,6 @@ Navigate to *Admin* > *Extensions* and click the *Upload Custom Extension* butto
 
 ### Pre-Release Extensions
 By default, ProGet is configured to use Inedo's Production Extension Feed, which contains only stable extension releases. If you want to use the pre-release feed instead (for example, if you are advised to try a pre-release extension to resolve an issue ), click the *Change Settings* button on the *Admin* > *Extensions* page and select *Inedo's pre-release feed* as the source for the extension.
+
+## Versions 2026.14 and Earlier
+This guide was written for ProGet 2026.15 and newer. See the [previous version of this guide (github.com)](https://github.com/Inedo/inedo-docs/blob/85b605c751806c8cc40d13657359934c40127702/Content/proget/administration/extensions.md) for steps required for earlier versions.
