@@ -5,8 +5,11 @@ order: 3
 
 A Lean Platforms multi-release cadence splits your releases into two parallel tracks so that routine, low-risk changes can ship on a predictable schedule, independent of larger, riskier work:
 
-* Routine track: low risk changes such as bug fixes or minor updates, released on a regular cadence.
-* Major track: high risk changes such as large features or updates, released on a more flexible schedule.
+### Major track
+This release track is for high risk changes such as large features or updates, released on a more flexible schedule.
+
+### Routine track
+This release track is for low risk changes such as bug fixes or minor updates, released on a regular cadence.
 
 Once you have adopted a multi-released cadence, delayed major releases no longer hold up the small changes stakeholders are waiting on, allowing you to ship regular updates more predictably. For a more detailed look at the concept of multi-cadence releases you can read our article [Eliminate Delays and Disruptions in Software Releases](https://blog.inedo.com/lean-platforms/releases).
 
@@ -19,6 +22,7 @@ This guide assumes that you have already:
 * Connected the rest of your toolchain to the application, so BuildMaster can show what’s inside each build. For example, [connecting an issue tracker](/docs/buildmaster/modeling-your-applications/buildmaster-applications-issue-tracking) (e.g., Jira) lets issues be associated with builds and releases.
 
 ## Step 1: Create a Major Pipeline
+In this first step we will create a Major Release pipeline. Major release pipelines typically include ....., which we will look at setting up in this step.
 
 First [create a pipeline](/docs/buildmaster/deployment-continuous-delivery/buildmaster-pipelines#creating-pipelines) in BuildMaster that will be used for Major releases. From your application, navigate to "Settings" > "Pipelines" then select "Create Pipeline". Then select "Show all" and choose "Main/Release Branch".
 
@@ -41,10 +45,9 @@ From here select "schedule" and enter the date and time to promote the build.
 ![](/resources/docs/buildmaster-promotion-schedule.png){height="" width="50%"}
 
 ## Step 2: Create a Routine Pipeline
+In this next step we will create a pipeline that will be used for your Routine releases. In contrast to Major release pipelines, routine releases will typically include .... which this step will cover. 
 
-Next, create a pipeline that will be used for your Routine releases. As with the Major release pipeline, select "Main/Release Branch" when creating the pipeline. 
-
-Also, as with Major releases, make sure to set the release target date when creating a new routine release.
+As with creating a Major release pipeline, start by selecting "Main/Release Branch", and make sure to set the release target date when creating a new routine release.
 
 #### Setting Target Iteration Dates (Optional)
 
