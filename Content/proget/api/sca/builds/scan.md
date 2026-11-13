@@ -32,6 +32,7 @@ If you would like to scan a specific file or folder, you can specify it using th
 | `--include-project-reference` | For NuGet, Include dependencies from referenced projects in the generated SBOM document.
 | `--include-dev-dependencies` | For NuGet, Composer, and npm, Include development dependencies for npm or composer in the generated SBOM document.
 | `--do-not-scan-node_modules` | For NuGet and npm, Do not scan the node_modules directory when scanning for package-lock.json files.
+| `--do-not-scan-npm` | For NuGet, Do not scan for npm packages when scanning for NuGet packages.
 
 
 ::: (Info) (Note:)

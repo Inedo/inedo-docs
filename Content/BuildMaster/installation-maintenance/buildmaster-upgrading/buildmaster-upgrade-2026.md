@@ -51,7 +51,7 @@ Because upgrading from BuildMaster 6.1 is more involved than previous upgrades, 
 
 As part of our multi-year journey of [saying goodbye to SQL Server](https://blog.inedo.com/inedo/so-long-sql-server-thanks-for-all-the-fetch/), we've now added PostgreSQL support to BuildMaster 2026. 
 
-New installations of BuildMaster 2026 will default to PostgreSQL and you can switch from SQL Server to PostgreSQL using the [Export-based Migration process](/docs/installation/postgresql#migrating-from-sqlserver-bm).
+New installations of BuildMaster 2026 will default to PostgreSQL and you can switch from SQL Server to PostgreSQL using the [Export-based Migration process](/docs/installation/postgresql#migrating-from-sqlserver-all).
 
 ### Changes & Improvements
 * **Docker/Compose Support**; we've expanded support to make it much easier to build/deploy container based applications

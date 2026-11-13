@@ -55,7 +55,7 @@ For installations where access to the Internet is restricted, extensions can als
 
 ### Default Extension Installation
 
-If your product installation can access the internet (specifically the https://proget.inedo.com/upack/Extensions URL), simply navigate to *Admin* > *Extensions*  to browse and install extensions.
+If your product installation can access the internet (specifically the `https://proget.inedo.com/upack/Extensions` URL), simply navigate to *Admin* > *Extensions*  to browse and install extensions.
 
 ### Previous Version Installation
 Navigate to *Admin* > *Extensions* and click the extension you would like to roll back. Click *Change Version* in the dropdown list under the *Delete Extension* button.

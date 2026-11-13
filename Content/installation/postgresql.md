@@ -135,12 +135,14 @@ In the future, we will provide an InedoDB that uses a newer major PostgreSQL ver
 ## External PostgreSQL Servers { #external-postgres }
 
 :::(Warning)
-**Experts Only.** Using an External PostgreSQL Server is for experts only.
+**You Should Not Use an External PostgreSQL Server.** There is no good reason to use an External PostgreSQL Server for our products.
 :::
 
-It's also possible to connect to an external PostgreSQL, but we don't recommend it unless you have sufficient expertise in managing PostgreSQL servers and databases.
+While it's technically possible to connect to an external PostgreSQL, we strongly advise against doing so. Not only does it require sufficient expertise in managing PostgreSQL servers and databases, but it generally has a negative impact on performance, increases the cost/complexity of your configuration, and leads to increased downtime.
 
-If you wish to use an external PostgreSQL Server, note that the only supported versions are indicated by the first digit of the [InedoDB releases numbers](#inedodb-releases) (e.g. InedoDB 17.4.0 means that PostgreSQL 17 is supported). Other versions of PostgreSQL may work, but we have not tested them, nor will we support any PostgreSQL-related issues when an insupported version is used.
+You may also receive reduced support since we will not support most PostgreSQL-related issues when you're using an external server, including unique permission configurations, database monitoring agents, transaction replication, etc.
+
+All that said, if you really wish to use an external PostgreSQL Server, please note that the only tested versions are indicated by the first digit of the [InedoDB releases numbers](#inedodb-releases) (e.g. InedoDB 17.4.0 means that PostgreSQL 17 is supported). 
 
 To use an external PostgreSQL Server, first create the a database for ProGet using the `initdb` command with the desired data directory (`-D`), desired credentials (e.g. `-U` and `--pwfile`), and the following arguments:
 ```
@@ -237,7 +239,7 @@ ProGet supports a direct database migration to PostgreSQL if you navigate to Adm
 
 ProGet's API will be disabled during the migration, which may take anywhere from a few minutes to an hour or more. If there are any issues, you can revert to SQL Server.
 
-## Export-based Migration from SQL Server (all products) { #migrating-from-sqlserver-bm }
+## Export-based Migration from SQL Server (all products) { #migrating-from-sqlserver-all }
 
 You can also migrate to PostgreSQL by exporting your SQL Server database and then importing it into a PostgreSQL database per the Database Import & Export feature described above.
 
