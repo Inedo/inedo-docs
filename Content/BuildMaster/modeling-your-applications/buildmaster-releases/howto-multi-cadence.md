@@ -20,7 +20,7 @@ This guide assumes that you have already:
 * Connected the rest of your toolchain to the application, so BuildMaster can show what’s inside each build. For example, [connecting an issue tracker](/docs/buildmaster/modeling-your-applications/buildmaster-applications-issue-tracking) (e.g., Jira) lets issues be associated with builds and releases.
 
 ## Step 1: Create a Major Release Pipeline
-In this first step we will create a **<span style="color: #FF5733;">Major Release</span> Pipeline**. As major releases carry high risk, their pipelines typically include more stages, multiple manual approvals, and several date windows that map out the run-up to release. Builds are typically promoted manually once the required sign-offs are done.
+In this first step we will create a **<span style="color: #FF5733;">Major Release</span>** Pipeline. As major releases carry high risk, their pipelines typically include more stages, multiple manual approvals, and several date windows that map out the run-up to release. Builds are typically promoted manually once the required sign-offs are done.
 
 ### Creating The Pipeline
 For our Major release pipeline we recommend including Build, Integration, Testing, Staging, and Production stages. Integration confirms the build works with everything else, Testing covers QA, and Staging mirrors production before the final deployment. 
@@ -55,6 +55,7 @@ These will then be pre-populated when creating a new release.
 ![](/resources/docs/buildmaster-calendar-qa.png){height="" width="50%"}
 
 ## Step 2: Configure the Major Release Pipeline Gating
+Gates control what must be true before a build can move to the next stage of a pipeline. Because **<span style="color: #FF5733;">Major Releases</span>** carry high risk, we recommend combining automated gates, which enforce compliance and issue-resolution rules without anyone having to remember to check, with manual gates that require manual sign-off before the riskiest steps.
 
 ### Setting Up Automated Gating
 Automated gates stop a build from moving forward until it meets certain criteria, without anyone having to remember to check. For Major releases we recommend blocking builds that contain noncompliant packages or prerelease dependencies at the build stage, and requiring that all issues in the release are resolved in your issue tracker at the Production stage.
@@ -73,15 +74,21 @@ Next, at the Production stage, we'll add a requirement that all issues must be r
 
 Finally, make sure you scroll up to the top of the pipeline page and select "Commit Changes". 
 
-### 1.3 Setting Up Manual Gating 
-Some checks need human judgment, so we also recommend manual gates for Major releases. Release manager or change approval before Production ensures someone accountable has agreed to the deployment, and prompts confirming the rollback plan and database migration review make sure the riskiest parts have been considered.
+### Setting Up Manual Gating 
+Some checks need human judgment, so we also recommend manual gates for Major releases. At the Testing stage, we recommend adding a prompt that lets testers choose whether to enable new features after deployment, so one build can be tested with a feature off and then on. At the Production stage, we recommend requiring approval from someone accountable, plus prompts confirming the rollback plan and database migration review.
 
-At the "Testing" stage", we will create prompts that let the tester choose whether to enable new features after deployment, so the same build can be tested with a feature off and then on without needing a separate build, or how services restart after deployment. Select 
+Navigate to your Major release pipeline, scroll down to Testing, and select "add stage requirement". Then select "Edit Variable Prompts" and add a prompt such as "Enable new features after deployment" (a checkbox works well). The tester can now deploy the same build with the feature off, then redeploy with it on. You can use the same approach to let testers choose how services restart after deployment. Select "Save".
 
 ![](/resources/docs/buildmaster-pipeline-testing-gates.png){height="" width="50%"}
 
+Scroll down to Production and select "add stage requirement". Select "Edit Approvals", choose the approver (e.g., your release manager or change approval board), and select "Save". Then select "add stage requirement" again, choose "Edit Variable Prompts", and add a required checkbox prompt for each item you want confirmed before deployment (e.g., "Rollback plan confirmed" and "Database migration reviewed"). Select "Save".
+
+![](/resources/docs/buildmaster-pipeline-production-gates.png){height="" width="50%"}
+
+Then, scroll to the top of the pipeline page and select "Commit Changes".
+
 ## Step 3: Create a Routine Release Pipeline
-In this next step we will create a pipeline that will be used for your <span style="color: #4CAF50;">Routine Releases</span>. As routine releases carry low risk and ship on a fixed cadence, their pipelines typically include fewer stages, automated gates such as compliance checks instead of manual approvals, and a handful of date prompts. Because the cadence is fixed, builds can also have their promotions scheduled to land on the release date. This step will cover each of these.
+In this next step we will create a pipeline that will be used for your **<span style="color: #4CAF50;">Routine Releases</span>**. As routine releases carry low risk and ship on a fixed cadence, their pipelines typically include fewer stages, automated gates such as compliance checks instead of manual approvals, and a handful of date prompts. Because the cadence is fixed, builds can also have their promotions scheduled to land on the release date. This step will cover each of these.
 
 ### Creating The Pipeline
 Routine releases carry low risk, so we recommend keeping the pipeline short: Build, Integration, Testing, and Production. Fewer stages means small changes reach users quickly without waiting at checkpoints they don't need.
@@ -103,6 +110,7 @@ Once set, BuildMaster automatically projects the upcoming target dates for that 
 Routine releases need only a light touch here. We recommend a couple of short prompts, such as a code cutoff 2 days before the target date and a short QA window 1 day before.
 
 ## Step 4: Configure the Routine Release Pipeline Gating
+Because **<span style="color: #4CAF50;">Routine Releases</span>** ship frequently and carry low risk, their gating should enforce quality without slowing anyone down. We recommend relying on automated gates rather than manual approvals, and adding variable prompts to make quick, repeatable testing easier. This step will cover both.
 
 ### Setting Up Automated Gating
 Because routine releases ship frequently, we recommend relying on automated gates rather than manual approvals. Use the same compliance and prerelease dependency checks as the Major pipeline, plus a "tests passed" requirement, so quality is enforced automatically and nobody becomes a bottleneck. Here's how to add them
