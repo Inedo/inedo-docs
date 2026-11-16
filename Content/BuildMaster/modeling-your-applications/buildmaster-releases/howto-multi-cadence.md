@@ -5,9 +5,9 @@ order: 3
 
 A Lean Platforms multi-release cadence splits your releases into two parallel tracks so that routine, low-risk changes can ship on a predictable schedule, independent of larger, riskier work:
 
-* **Major Release Track**: Major releases cover high-risk changes such as large features or significant updates, and ship on a flexible schedule driven by readiness rather than the calendar.
+* **<span style="color: #FF5733;">Major Release Track</span>**: Major releases cover high-risk changes such as large features or significant updates, and ship on a flexible schedule driven by readiness rather than the calendar.
 
-* **Routine Release Track**: Routine releases cover low-risk changes such as bug fixes and minor updates, and ship on a predictable, fixed cadence (e.g. every two weeks).
+* **<span style="color: #4CAF50;">Routine Release Track</span>**: Routine releases cover low-risk changes such as bug fixes and minor updates, and ship on a predictable, fixed cadence (e.g. every two weeks).
 
 Once you have adopted a multi-released cadence, delayed major releases no longer hold up the small changes stakeholders are waiting on, allowing you to ship regular updates more predictably. For a more detailed look at the concept of multi-cadence releases you can read our article [Eliminate Delays and Disruptions in Software Releases](https://blog.inedo.com/lean-platforms/releases).
 
@@ -19,40 +19,30 @@ This guide assumes that you have already:
 * [Created your application](/docs/buildmaster/modeling-your-applications/buildmaster-applications-concepts/buildmaster-howto-build-and-deploy-an-aspnet-mvc-application) in BuildMaster and connected it to source control (e.g., GitHub), so that branches and commits are visible on each build.
 * Connected the rest of your toolchain to the application, so BuildMaster can show what’s inside each build. For example, [connecting an issue tracker](/docs/buildmaster/modeling-your-applications/buildmaster-applications-issue-tracking) (e.g., Jira) lets issues be associated with builds and releases.
 
-## Step 1: Create a Major Pipeline
-In this first step we will create a Major Release pipeline. As major releases carry high risk, their pipelines typically include more stages, multiple manual approvals, and several date windows that map out the run-up to release. Builds are typically promoted manually once the required sign-offs are done. We will look at setting up each of these in this step.
+## Step 1: Create a Major Release Pipeline
+In this first step we will create a **<span style="color: #FF5733;">Major Release</span> Pipeline**. As major releases carry high risk, their pipelines typically include more stages, multiple manual approvals, and several date windows that map out the run-up to release. Builds are typically promoted manually once the required sign-offs are done.
 
-### 1.1 Creating The Pipeline
-Major releases are for high risk changes, so often move through more pipeline stages before reaching production. In this step we will add Integration, Testing, Staging, and Production stages. Integration confirms the build works with everything else, Testing covers QA, and Staging mirrors production before the final deployment. 
+### Creating The Pipeline
+For our Major release pipeline we recommend including Build, Integration, Testing, Staging, and Production stages. Integration confirms the build works with everything else, Testing covers QA, and Staging mirrors production before the final deployment. 
 
 To [create a pipeline](/docs/buildmaster/deployment-continuous-delivery/buildmaster-pipelines#creating-pipelines) for your major releases, navigate to "Settings" > "Pipelines" then select "Create Pipeline". Then select "Show all" and choose "Main/Release Branch".
 
 ![](/resources/docs/buildmaster-pipeline-create-main.png){height="" width="50%"}
 
-### 1.2 Setting Up Automated Gating
-Automated gates stop a build from moving forward until it meets certain standards, without anyone having to remember to check. For Major releases we recommend blocking builds that contain noncompliant packages or prerelease dependencies, and requiring that all issues in the release are resolved in your issue tracker. This keeps unfinished work and compliance risks from reaching later stages. Here's how to add these requirements to your stages.
+BuildMaster's default Main Pipeline already includes Build, Integration, Testing and Production. To add Staging, scroll down to Testing and then select "add stage".
 
-Pipeline stage requirements and gating can be set in a pipeline to control how a build is deployed. They can check that a build meets certain standards before it moves on to the next stage, or ask the person deploying to make certain manual checks.
+![](/resources/docs/buildmaster-pipelines-select-addstage.png){height="" width="50%"}
 
-To configure these, navigate to either your Major or Routine release pipeline, and scroll down to a pipeline stage (e.g. Integration) to configure the stage requirements or variables and prompts. 
+Next, name the stage "Staging", and select "3. Production" for the "Pipeline Position". Then select "Save Stage".
 
-For example, at the "Integration" stage, you might want to add a check for no noncompliant packages, so a build containing packages that break compliance rules is prevented from moving forward, or a check for no unstable (prerelease) dependencies. 
+![](/resources/docs/buildmaster-pipelines-createstage.png){height="" width="50%"}
 
-![](/resources/docs/buildmaster-pipeline-integration-gates.png){height="" width="50%"}
+Finally, select "Create Pipeline".
 
-Or at the "Testing" stage", you might want to create prompts that let the tester choose whether to enable new features after deployment, so the same build can be tested with a feature off and then on without needing a separate build, or how services restart after deployment.
+### Creating Date prompts
+Beyond the release target date, you can add extra dates to a pipeline, set relative to that target. These are useful for milestones that happen on the way to a release, such as a QA start, or a code freeze. For your Major Release pipeline, a realistic set might include a code freeze (14 days before), a regression testing window (10 days before, lasting 7 days), and a go/no-go review (2 days before). These give everyone a shared view of what happens when. 
 
-![](/resources/docs/buildmaster-pipeline-testing-gates.png){height="" width="50%"}
-
-### 1.3 Setting Up Manual Gating 
-Some checks need human judgment, so we also recommend manual gates for Major releases. Business sign-off at UAT confirms the change does what stakeholders expect, release manager or change approval before Production ensures someone accountable has agreed to the deployment, and prompts confirming the rollback plan and database migration review make sure the riskiest parts have been considered. Here's how to set these up as stage prompts.
-
-### 1.4 Creating Date prompts
-Major releases need a longer run-up, so we recommend using date prompts to map out the key milestones leading to release. A realistic set might include feature complete (21 days before the target date), code freeze (14 days before), a regression testing window (10 days before, lasting 7 days), a UAT window (5 days before, lasting 3 days), a go/no-go review (2 days before), and post-release hypercare (from the release date through 5 days after). These give everyone a shared view of what happens when. Here's how to add them.
-
-Beyond the release target date, you can add extra dates to a pipeline, set relative to that target. These are useful for milestones that happen on the way to a release, such as a QA start, or a code freeze.
-
-To set these up, navigate to a release pipeline, select "Edit Details" under "Pipeline Details", and then selecting "Manage Date Prompts".
+To set these up, navigate to your Major Release release pipeline, select "Edit Details" under "Pipeline Details", and then selecting "Manage Date Prompts".
 
 ![](/resources/docs/buildmaster-calendar-manage-date-prompts.png){height="" width="50%"}
 
@@ -64,11 +54,38 @@ These will then be pre-populated when creating a new release.
 
 ![](/resources/docs/buildmaster-calendar-qa.png){height="" width="50%"}
 
+## Step 2: Configure the Major Release Pipeline Gating
 
-### 1.5 Setting the Target Date
-Finally, set the release target date. For a Major release this date is a target rather than a promise: it should move if the release isn't ready, instead of forcing a risky deployment. Here's how to set it when creating the release.
+### Setting Up Automated Gating
+Automated gates stop a build from moving forward until it meets certain criteria, without anyone having to remember to check. For Major releases we recommend blocking builds that contain noncompliant packages or prerelease dependencies at the build stage, and requiring that all issues in the release are resolved in your issue tracker at the Production stage.
 
-## Step 2: Create a Routine Pipeline
+To configure these, navigate to your Major release pipeline, scroll down to the Build stage and select "add stage requirement". 
+
+![](/resources/docs/buildmaster-pipeline-integration-gates.png){height="" width="50%"}
+
+From here, select "Edit Packages/Dependencies", check both checkboxes and select "Save". This will prevent builds containing packages that break compliance rules or unstable (prerelease) dependencies from moving forward. 
+
+![](/resources/docs/buildmaster-pipeline-integration-gates.png){height="" width="50%"}
+
+Next, at the Production stage, we'll add a requirement that all issues must be resolved before the release can be deployed to this stage. Scroll down to Production, select "add stage requirement" and select "Edit Issues/Status Requirements". From here select "All issues must be closed to enter this stage" and select "Save". 
+
+![](/resources/docs/buildmaster-pipeline-set-issues-closed.png){height="" width="50%"}
+
+Finally, make sure you scroll up to the top of the pipeline page and select "Commit Changes". 
+
+### 1.3 Setting Up Manual Gating 
+Some checks need human judgment, so we also recommend manual gates for Major releases. Release manager or change approval before Production ensures someone accountable has agreed to the deployment, and prompts confirming the rollback plan and database migration review make sure the riskiest parts have been considered.
+
+At the "Testing" stage", we will create prompts that let the tester choose whether to enable new features after deployment, so the same build can be tested with a feature off and then on without needing a separate build, or how services restart after deployment. Select 
+
+![](/resources/docs/buildmaster-pipeline-testing-gates.png){height="" width="50%"}
+
+
+
+
+
+
+## Step 2: Create a <span style="color: #4CAF50;">Routine Release</span> Pipeline
 In this next step we will create a pipeline that will be used for your Routine releases. As routine releases carry low risk and ship on a fixed cadence, their pipelines typically include fewer stages, automated gates such as compliance checks instead of manual approvals, and a handful of date prompts. Because the cadence is fixed, builds can also have their promotions scheduled to land on the release date. This step will cover each of these.
 
 ### 2.1 Creating The Pipeline
@@ -113,6 +130,9 @@ With both pipelines in place, we will now create a release in each one to see ho
 When [creating a major release](/docs/buildmaster/modeling-your-applications/buildmaster-releases) in your pipeline, set the [release target date](/docs/buildmaster/modeling-your-applications/buildmaster-releases#target-dates) for the scheduled deployment: 
 
 ![](/resources/docs/buildmaster-release-create-date.png){height="" width="50%"}
+
+### 1.5 Setting the Target Date
+Finally, set the release target date. For a Major release this date is a target rather than a promise: it should move if the release isn't ready, instead of forcing a risky deployment. Here's how to set it when creating the release.
 
 ## Step 4: View Target Release Dates on the Calendar
 Once you have created releases and builds in your Major and Routine release pipelines, you can view them on the Calendar by selecting "Calendar" on the header. The default calendar will display all target dates for all applications in BuildMaster:
