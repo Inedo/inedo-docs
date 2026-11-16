@@ -55,10 +55,10 @@ These will then be pre-populated when creating a new release.
 ![](/resources/docs/buildmaster-calendar-qa.png){height="" width="50%"}
 
 ## Step 2: Configure the Major Release Pipeline Gating
-Gates control what must be true before a build can move to the next stage of a pipeline. Because **<span style="color: #FF5733;">Major Releases</span>** carry high risk, we recommend combining automated gates, which enforce compliance and issue-resolution rules without anyone having to remember to check, with manual gates that require manual sign-off before the riskiest steps.
+Gates control what must be true before a build can move to the next stage of a pipeline. Because **<span style="color: #FF5733;">Major Releases</span>** carry high risk, we recommend combining automated gates with gates that require manual sign-off.
 
 ### Setting Up Automated Gating
-Automated gates stop a build from moving forward until it meets certain criteria, without anyone having to remember to check. For Major releases we recommend blocking builds that contain noncompliant packages or prerelease dependencies at the build stage, and requiring that all issues in the release are resolved in your issue tracker at the Production stage.
+Automated gates stop a build from moving forward until it meets certain criteria, without anyone having to remember to check. For <span style="color: #FF5733;">Major Releases</span> we recommend blocking builds that contain noncompliant packages or prerelease dependencies at the build stage, and requiring that all issues in the release are resolved in your issue tracker at the Production stage.
 
 To configure these, navigate to your Major release pipeline, scroll down to the Build stage and select "add stage requirement". 
 
@@ -75,9 +75,9 @@ Next, at the Production stage, we'll add a requirement that all issues must be r
 Finally, make sure you scroll up to the top of the pipeline page and select "Commit Changes". 
 
 ### Setting Up Manual Gating 
-Some checks need human judgment, so we also recommend manual gates for Major releases. At the Testing stage, we recommend adding a prompt that lets testers choose whether to enable new features after deployment, so one build can be tested with a feature off and then on. At the Production stage, we recommend requiring approval from someone accountable, plus prompts confirming the rollback plan and database migration review.
+Some checks need human judgment, so we also recommend manual gates for <span style="color: #FF5733;">Major Releases</span>. At the Testing stage, we recommend adding a prompt that lets testers choose whether to enable new features after deployment, so one build can be tested with a feature off and then on. At the Production stage, we recommend requiring approval from someone accountable, plus prompts confirming the rollback plan and database migration review.
 
-Navigate to your Major release pipeline, scroll down to Testing, and select "add stage requirement". Then select "Edit Variable Prompts" and add a prompt such as "Enable new features after deployment" (a checkbox works well). The tester can now deploy the same build with the feature off, then redeploy with it on. You can use the same approach to let testers choose how services restart after deployment. Select "Save".
+Navigate to your Major release pipeline, scroll down to Testing, and select "add stage requirement". Then select "Edit Variable Prompts" and add a prompt such as "Enable new features after deployment". The tester can now deploy the same build with the feature off, then redeploy with it on. You can use the same approach to let testers choose how services restart after deployment. Select "Save".
 
 ![](/resources/docs/buildmaster-pipeline-testing-gates.png){height="" width="50%"}
 
@@ -88,10 +88,10 @@ Scroll down to Production and select "add stage requirement". Select "Edit Appro
 Then, scroll to the top of the pipeline page and select "Commit Changes".
 
 ## Step 3: Create a Routine Release Pipeline
-In this next step we will create a pipeline that will be used for your **<span style="color: #4CAF50;">Routine Releases</span>**. As routine releases carry low risk and ship on a fixed cadence, their pipelines typically include fewer stages, automated gates such as compliance checks instead of manual approvals, and a handful of date prompts. Because the cadence is fixed, builds can also have their promotions scheduled to land on the release date. This step will cover each of these.
+In this next step we will create a pipeline that will be used for your **<span style="color: #4CAF50;">Routine Releases</span>**. As routine releases carry low risk and ship on a fixed cadence, their pipelines typically include fewer stages, fewer checks, and a handful of date prompts. Because the cadence is fixed, builds can also have their promotions scheduled to land on the release date.
 
 ### Creating The Pipeline
-Routine releases carry low risk, so we recommend keeping the pipeline short: Build, Integration, Testing, and Production. Fewer stages means small changes reach users quickly without waiting at checkpoints they don't need.
+We recommend keeping <span style="color: #4CAF50;">Routine Releases</span> pipelines short: Build, Integration, Testing, and Production. Fewer stages means small changes reach production quickly without waiting on unnecessary checks.
 
 As with creating a Major release pipeline, start by selecting "Main/Release Branch". By default this will already include all stages recommended for routine releases. Select "Create Pipeline". 
 
@@ -109,6 +109,16 @@ Once set, BuildMaster automatically projects the upcoming target dates for that 
 ### Setting Date Prompts
 Routine releases need only a light touch here. We recommend a couple of short prompts, such as a code cutoff 2 days before the target date and a short QA window 1 day before.
 
+To set these up, navigate to your Routine release pipeline, select "Edit Details" under "Pipeline Details", and then select "Manage Date Prompts".
+
+![](/resources/docs/buildmaster-calendar-manage-date-prompts.png){height="" width="50%"}
+
+Then select "Add Date Prompt". Name the date (e.g., "Code Cutoff"), enter how many days before the release target date it will be scheduled as a negative number (e.g., `-2`), and set the duration. Repeat for the QA window.
+
+![](/resources/docs/buildmaster-calendar-add-date-prompt.png){height="" width="50%"}
+
+These will then be pre-populated each time you create a new Routine release.
+
 ## Step 4: Configure the Routine Release Pipeline Gating
 Because **<span style="color: #4CAF50;">Routine Releases</span>** ship frequently and carry low risk, their gating should enforce quality without slowing anyone down. We recommend relying on automated gates rather than manual approvals, and adding variable prompts to make quick, repeatable testing easier. This step will cover both.
 
@@ -122,22 +132,27 @@ Variable Prompts can make quick, repeatable testing easier. For example, a promp
 With both pipelines in place, we will now create a release in each one to see how the two tracks differ in practice. First we will create a Major release and set its target date. The date prompts you defined (such as feature complete, code freeze, and UAT) will pre-populate automatically, giving the release a long run-up with several milestones. Then we will create a Routine release, which will pre-populate with just a code cutoff and a short QA window. Putting the two side by side shows how much more planning a Major release involves compared with a Routine one. It also gives us something to look at in the next step, where we will view both tracks on the calendar.
 
 ### Creating a Major Release
-
-When [creating a major release](/docs/buildmaster/modeling-your-applications/buildmaster-releases) in your pipeline, set the [release target date](/docs/buildmaster/modeling-your-applications/buildmaster-releases#target-dates) for the scheduled deployment: 
+To create a Major release, navigate to your Major release pipeline and [create a new release](/docs/buildmaster/modeling-your-applications/buildmaster-releases). When prompted, set the [release target date](/docs/buildmaster/modeling-your-applications/buildmaster-releases#target-dates) for the scheduled deployment.
 
 ![](/resources/docs/buildmaster-release-create-date.png){height="" width="50%"}
 
-#### Setting the Target Date
-Finally, set the release target date. For a Major release this date is a target rather than a promise: it should move if the release isn't ready, instead of forcing a risky deployment. Here's how to set it when creating the release.
+Once the date is set, the date prompts you [defined in Step 1](#creating-date-prompts) are scheduled relative to it.
+
+![](/resources/docs/buildmaster-release-create-date.png){height="" width="50%"}
 
 ### Creating a Routine Release
+To create a Routine release, navigate to your Routine release pipeline and [create a new release](/docs/buildmaster/modeling-your-applications/buildmaster-releases). When prompted, set the [release target date](/docs/buildmaster/modeling-your-applications/buildmaster-releases#target-dates) to one of the upcoming dates BuildMaster projected from your Target Iteration Dates in Step 3.
 
-#### Scheduling build promotion
-Because routine releases follow a fixed cadence, you can schedule builds to be promoted automatically so they land on the release date. To schedule the promotion of individual pipeline stages, navigate to a build in your release, and select the current stage under "Pipeline Progress".
+![](/resources/docs/buildmaster-release-create-date.png){height="" width="50%"}
+
+Unlike a Major release, this date should hold: Routine releases ship on a fixed cadence, so changes that aren't ready simply move to the next one. Once the date is set, the code cutoff and QA window you defined in Step 3 will pre-populate relative to it.
+
+#### Scheduling Build Promotion
+Because Routine releases follow a fixed cadence, you can schedule builds to be promoted automatically so they land on the release date. To schedule the promotion of individual pipeline stages, navigate to a build in your release and select the current stage under "Pipeline Progress".
 
 ![](/resources/docs/buildmaster-pipeline-stage-select.png){height="" width="50%"}
 
-From here select "schedule" and enter the date and time to promote the build. 
+From here select "Schedule" and enter the date and time to promote the build.
 
 ![](/resources/docs/buildmaster-promotion-schedule.png){height="" width="50%"}
 
