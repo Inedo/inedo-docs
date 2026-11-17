@@ -26,6 +26,8 @@ When a user approval is needed at a stage of a release, you will see it under "M
 
 ![User Approval](/resources/docs/BuildMaster-Pipeline-DeployBuild-force.png){height="" width="70%"}
 
+You can see all approvals assigned to you by selecting "Approvals" under the user icon in the top right corner of BuildMaster. A notification will also appear at the top of the page of the page if you are set to approve a deploy.
+
 ## Forcing a Build Past an Approval
 
 A build may be forced to a stage even if it has not received the required approval. When a build requires an approval, the build will show as blocked. To force a build past an approval, navigate to the build's page, select the blocked build, and select "force".
