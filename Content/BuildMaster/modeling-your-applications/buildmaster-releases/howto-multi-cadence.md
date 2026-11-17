@@ -39,8 +39,10 @@ Next, name the stage "Staging", and select "3. Production" for the "Pipeline Pos
 
 Finally, select "Create Pipeline".
 
+![](){height="" width="50%"} **NEED SS
+
 ### Creating Date prompts
-Beyond the release target date, you can add extra dates to a pipeline, set relative to that target. These are useful for milestones that happen on the way to a release, such as a QA start, or a code freeze. For your Major Release pipeline, a realistic set might include a code freeze (14 days before), a regression testing window (10 days before, lasting 7 days), and a go/no-go review (2 days before). These give everyone a shared view of what happens when. 
+Beyond the release target date, you can add extra dates to a pipeline, set relative to that target. These are useful for milestones that happen on the way to a release. For your Major Release pipeline, a realistic set might include a code freeze (14 days before), a regression testing window (10 days before, lasting 7 days), and a go/no-go review (2 days before). These give everyone a shared view of what happens when. 
 
 To set these up, navigate to your Major Release release pipeline, select "Edit Details" under "Pipeline Details", and then selecting "Manage Date Prompts".
 
@@ -48,17 +50,17 @@ To set these up, navigate to your Major Release release pipeline, select "Edit D
 
 Then select "Add Date Prompt". From here you will be able to name the date, how many days after the release target date it will be scheduled, (or before, by entering a negative number, e.g. `-3`) and the duration that this prompt will last.
 
-![](/resources/docs/buildmaster-calendar-add-date-prompt.png){height="" width="50%"}
+![](){height="" width="50%"}  **NEED SS
 
 These will then be pre-populated when creating a new release.
 
-![](/resources/docs/buildmaster-calendar-qa.png){height="" width="50%"}
+![](){height="" width="50%"} **NEED SS
 
-## Step 2: Configure the Major Release Pipeline Gating
-Gates control what must be true before a build can move to the next stage of a pipeline. Because **<span style="color: #FF5733;">Major Releases</span>** carry high risk, we recommend combining automated gates with gates that require manual sign-off.
+## Step 2: Configure the Major Release Pipeline Stage Requirements
+Pipeline stage requirements are gates that control what must be true before a build can move to the next stage of a pipeline. Because **<span style="color: #FF5733;">Major Releases</span>** carry high risk, we recommend combining automated requirements with those that require manual sign-off.
 
-### Setting Up Automated Gating
-Automated gates stop a build from moving forward until it meets certain criteria, without anyone having to remember to check. For <span style="color: #FF5733;">Major Releases</span> we recommend blocking builds that contain noncompliant packages or prerelease dependencies at the build stage, and requiring that all issues in the release are resolved in your issue tracker at the Production stage.
+### Setting Up Automated Stage Requirements
+Automated requirements stop a build from moving forward until it meets certain criteria, without anyone having to remember to check. For <span style="color: #FF5733;">Major Releases</span> we recommend blocking builds that contain noncompliant packages or prerelease dependencies at the build stage, and requiring that all issues in the release are resolved in your issue tracker at the Production stage.
 
 To configure these, navigate to your Major release pipeline, scroll down to the Build stage and select "add stage requirement". 
 
@@ -75,15 +77,15 @@ Next, at the Production stage, we'll add a requirement that all issues must be r
 Finally, make sure you scroll up to the top of the pipeline page and select "Commit Changes". 
 
 ### Setting Up Manual Gating 
-Some checks need human judgment, so we also recommend manual gates for <span style="color: #FF5733;">Major Releases</span>. At the Testing stage, we recommend adding a prompt that lets testers choose whether to enable new features after deployment, so one build can be tested with a feature off and then on. At the Production stage, we recommend requiring approval from someone accountable, plus prompts confirming the rollback plan and database migration review.
+Some checks need human judgment, so we also recommend manual requirements for <span style="color: #FF5733;">Major Releases</span>. At the Testing stage, we recommend adding a prompt that lets testers choose whether to enable new features after deployment, so one build can be tested with a feature off and then on. At the Production stage, we recommend requiring approval from someone accountable, plus prompts confirming the rollback plan and database migration review.
 
 Navigate to your Major release pipeline, scroll down to Testing, and select "add stage requirement". Then select "Edit Variable Prompts" and add a prompt such as "Enable new features after deployment". The tester can now deploy the same build with the feature off, then redeploy with it on. You can use the same approach to let testers choose how services restart after deployment. Select "Save".
 
-![](/resources/docs/buildmaster-pipeline-testing-gates.png){height="" width="50%"}
+![](){height="" width="50%"} **NEED SS
 
-Scroll down to Production and select "add stage requirement". Select "Edit Approvals", choose the approver (e.g., your release manager or change approval board), and select "Save". Then select "add stage requirement" again, choose "Edit Variable Prompts", and add a required checkbox prompt for each item you want confirmed before deployment (e.g., "Rollback plan confirmed" and "Database migration reviewed"). Select "Save".
+Next, Scroll down to Production and select "add stage requirement". Select "Edit Approvals", choose the approver (e.g., your release manager or change approval board), and select "Save". Then select "add stage requirement" again, choose "Edit Variable Prompts", and add a required checkbox prompt for each item you want confirmed before deployment (e.g., "Rollback plan confirmed" and "Database migration reviewed"). Select "Save".
 
-![](/resources/docs/buildmaster-pipeline-production-gates.png){height="" width="50%"}
+![](){height="" width="50%"} **NEED SS
 
 Then, scroll to the top of the pipeline page and select "Commit Changes".
 
@@ -93,7 +95,9 @@ In this next step we will create a pipeline that will be used for your **<span s
 ### Creating The Pipeline
 We recommend keeping <span style="color: #4CAF50;">Routine Releases</span> pipelines short: Build, Integration, Testing, and Production. Fewer stages means small changes reach production quickly without waiting on unnecessary checks.
 
-As with creating a Major release pipeline, start by selecting "Main/Release Branch". By default this will already include all stages recommended for routine releases. Select "Create Pipeline". 
+As with creating a Major release pipeline, start by navigating to "Settings" > "Pipelines" then select "Create Pipeline". Then select "Show all" and choose "Main/Release Branch". By default this will already include all stages recommended for routine releases. Select "Create Pipeline".
+
+![](){height="" width="50%"} **NEED SS 
 
 ### Setting Target iteration Dates
 To keep routine releases predictable, you can set Target Iteration Dates on a pipeline to define when its releases are meant to go out, setting a fixed cadence for your routine releases (e.g., every two weeks on a Friday). BuildMaster then projects upcoming release dates for you.
