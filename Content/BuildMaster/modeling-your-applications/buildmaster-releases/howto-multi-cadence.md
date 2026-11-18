@@ -71,7 +71,7 @@ Pipeline stage requirements are gates that control what must be true before a bu
 ### Setting Up Automated Stage Requirements
 Automated requirements stop a build from moving forward until it meets certain criteria, without anyone having to remember to check. For **<span style="color: #FF5733;">Major Releases</span>** we recommend blocking builds that contain noncompliant packages or prerelease dependencies at the build stage, and requiring that all issues in the release are resolved in your issue tracker at the Production stage.
 
-To configure these, navigate to your Major release pipeline, scroll down to the Build stage and select "add stage requirement". 
+To configure these, navigate to your **<span style="color: #FF5733;">Major Release</span>** pipeline, scroll down to the Build stage and select "add stage requirement". 
 
 ![](/resources/docs/buildmaster-pipelines-build-req-add.png){height="" width="50%"}
 
@@ -79,19 +79,36 @@ From here, select "Edit Packages/Dependencies", check both checkboxes and select
 
 ![](/resources/docs/buildmaster-pipelines-build-req-added.png){height="" width="50%"}
 
-Next, at the Production stage, we'll add a requirement that all issues must be resolved before the release can be deployed to this stage. Scroll down to Production, select "add stage requirement" and select "Edit Issues/Status Requirements". From here select "All issues must be closed to enter this stage" and select "Save". 
+Next, at the Production stage, we'll add a requirement that all issues must be resolved before the release can be deployed to this stage, and another to ensure that the build deployed to this stage was built from the master branch. 
+
+Scroll down to Production, select "add stage requirement" and select "Edit Issues/Status Requirements". From here select "All issues must be closed to enter this stage" and select "Save".
 
 ![](/resources/docs/buildmaster-pipeline-set-issues-closed.png){height="" width="50%"}
 
+Now select add, select "Add "Git Branch" requirement, enter "master" and select "Save". 
+
+![](/resources/docs/buildmaster-pipeline-set-master-branch.png){height="" width="50%"}
+
 Finally, make sure you scroll up to the top of the pipeline page and select "Commit Changes". 
 
-### Setting Up Manual Gating 
-Some checks need human judgment, so we also recommend manual requirements for **<span style="color: #FF5733;">Major Releases</span>**. 
+### Setting Up Manual Gating
+Some checks need human judgment, so we also recommend manual requirements for **<span style="color: #FF5733;">Major Releases</span>**. We recommend adding two manual approvals at the Testing stage and one at the Production stage.
 
-At the Testing stage, we recommend adding a prompt that defines whether to enable new features after deployment, so one build can be tested with a feature off and then on. In addition we'll add a prompt to define whether or not to restart services after deployment.
+The two Testing stage approvals confirm that the release notes and test coverage are ready and that the testing environment is correctly configured, so testers don't spend a cycle on a build that isn't ready to be tested. The Production stage approval makes sure a release manager, or another accountable person, has signed off on the deployment before it reaches Production.
 
-Navigate to your **<span style="color: #FF5733;">Major Release</span>** pipeline, scroll down to Testing, and select "Add an input prompt or constant" under "Variables & Prompts". 
+To configure these, navigate to your **<span style="color: #FF5733;">Major Release</span>** pipeline, scroll down to the Testing stage and select "add stage requirement". Then select "Add Manual Approval". From here select the user or group responsible for signing off on the approval, and add the description "Release notes accurate and build has test coverage prepared". Then select "Save".
 
+![](/resources/docs/buildmaster-pipeline-testing-manual-approval-add.png){height="" width="50%"}
+
+Repeat these steps to add the second approval, with the description "Testing environment configuration and dependencies are ready for build".
+
+![](/resources/docs/buildmaster-pipeline-testing-manual-requirements-added.png){height="" width="50%"}
+
+Next, scroll down and repeat this at Production stage, selecting the user responsible for signing off on the deployment, and add a short description. Then select "Save".
+
+![](/resources/docs/buildmaster-pipeline-manual-approval.png){height="" width="50%"}
+
+Finally, make sure you scroll up to the top of the pipeline page and select "Commit Changes".
 
 ## Step 3: Create a Routine Release Pipeline
 In this next step we will create a pipeline that will be used for your **<span style="color: #4CAF50;">Routine Releases</span>**. As routine releases carry low risk and ship on a fixed cadence, their pipelines typically include fewer stages, fewer checks, and a handful of date prompts. Because the cadence is fixed, builds can also have their promotions scheduled to land on the release date.
@@ -141,14 +158,24 @@ From here, select "Edit Packages/Dependencies", check both checkboxes and select
 
 ![](/resources/docs/buildmaster-pipelines-build-req-added.png){height="" width="50%"}
 
+As with the Major Release pipeline, we'll add a requirements at the Production stage that all issues must be resolved before the release can be deployed to this stage, and another to ensure that the build deployed to this stage was built from the master branch. 
+
+Scroll down to Production, select "add stage requirement" and select "Edit Issues/Status Requirements". From here select "All issues must be closed to enter this stage" and select "Save".
+
+![](/resources/docs/buildmaster-pipeline-set-issues-closed.png){height="" width="50%"}
+
+Now select add, select "Add "Git Branch" requirement, enter "master" and select "Save". 
+
+![](/resources/docs/buildmaster-pipeline-set-master-branch.png){height="" width="50%"}
+
 Finally, make sure you scroll up to the top of the pipeline page and select "Commit Changes".
 
 Unlike the Major pipeline, we haven't added any manual approvals here. Builds that meet these requirements are free to move forward, which keeps your fixed-cadence releases on schedule.
 
 ### Creating Variable Prompts
-Variable Prompts can make quick, repeatable testing easier. For example, a prompt at the Testing stage can let the tester choose whether to enable new features after deployment, so the same build can be checked with a feature off and then on without needing a separate build. 
+[Variables](/docs/buildmaster/otterscript-execution-engine/buildmaster-variables) let you write a single deployment script that works across multiple environments, and have BuildMaster ask users for parameter values before a build is created or deployed using Variable Prompts. For example, a prompt at the Testing stage can let the tester choose whether to enable new features after deployment, so the same build can be checked with a feature off and then on without needing a separate build. In addition we'll add a prompt to define whether or not to restart services after deployment.
 
-At the Testing stage, we recommend adding a prompt that defines whether to enable new features after deployment, so one build can be tested with a feature off and then on. In addition we'll add a prompt to define whether or not to restart services after deployment.
+Navigate to your **<span style="color: #4CAF50;">Routine Release</span>** pipeline, scroll down to the Testing stage and select "Add an input prompt or constant".
 
 ![](/resources/docs/buildmaster-pipelines-prompt-add.png){height="" width="50%"}
 
@@ -160,30 +187,32 @@ We also recommend adding a short description by selecting the "Display Options" 
 
 ![](/resources/docs/buildmaster-pipeline-prompt-edit-display.png){height="" width="50%"}
 
-The tester can now deploy the same build with the feature off, then redeploy with it on.
-
 Repeat this to create a prompt to define whether or not to restart services after deployment. 
 
 ![](/resources/docs/buildmaster-pipeline-prompts-added.png){height="" width="50%"}
 
 Then, scroll to the top of the pipeline page and select "Commit Changes".
 
+Now testers can deploy the same build with new features switched off and then on, and choose whether services restart after deployment, all without needing a separate build or a change to the deployment script.
+
 ## Step 5: Create a release in each pipeline
-With both pipelines in place, we will now create a release in each one to see how the two tracks differ in practice. First we will create a Major release and set its target date. The date prompts you defined (such as feature complete, code freeze, and UAT) will pre-populate automatically, giving the release a long run-up with several milestones. Then we will create a Routine release, which will pre-populate with just a code cutoff and a short QA window. Putting the two side by side shows how much more planning a Major release involves compared with a Routine one. It also gives us something to look at in the next step, where we will view both tracks on the calendar.
+With both pipelines in place, we will now create a release in each one to see how the two tracks differ in practice. First we will create a Major release and set its target date. The date prompts you defined will pre-populate automatically, giving the release a long run-up with several milestones.
+
+Then we will create a Routine release, which will pre-populate with just a code cutoff and a short QA window. Putting the two side by side shows how much more planning a Major release involves compared with a Routine one. It also gives us something to look at in the next step, where we will view both tracks on the calendar.
 
 ### Creating a Major Release
 To create a Major release, navigate to your Major release pipeline and [create a new release](/docs/buildmaster/modeling-your-applications/buildmaster-releases). When prompted, set the [release target date](/docs/buildmaster/modeling-your-applications/buildmaster-releases#target-dates) for the scheduled deployment.
 
-![](/resources/docs/buildmaster-release-create-date.png){height="" width="50%"}
+![](/resources/docs/buildmaster-release-major-create.png){height="" width="50%"}
 
 Once the date is set, the date prompts you [defined in Step 1](#creating-date-prompts) are scheduled relative to it.
 
-![](/resources/docs/buildmaster-release-create-date.png){height="" width="50%"}
+![](/resources/docs/buildmaster-calendar-dateprompts-populated.png){height="" width="50%"}
 
 ### Creating a Routine Release
-To create a Routine release, navigate to your Routine release pipeline and [create a new release](/docs/buildmaster/modeling-your-applications/buildmaster-releases). When prompted, set the [release target date](/docs/buildmaster/modeling-your-applications/buildmaster-releases#target-dates) to one of the upcoming dates BuildMaster projected from your Target Iteration Dates in Step 3.
+To create a Routine release, navigate to your Routine release pipeline and create a new release. 
 
-![](/resources/docs/buildmaster-release-create-date.png){height="" width="50%"}
+![](/resources/docs/buildmaster-release-routine-create.png){height="" width="50%"}
 
 Unlike a Major release, this date should hold: Routine releases ship on a fixed cadence, so changes that aren't ready simply move to the next one. Once the date is set, the code cutoff and QA window you defined in Step 3 will pre-populate relative to it.
 
