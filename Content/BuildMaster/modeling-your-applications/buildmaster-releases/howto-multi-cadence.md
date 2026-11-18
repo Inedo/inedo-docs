@@ -92,6 +92,64 @@ At the Testing stage, we recommend adding a prompt that defines whether to enabl
 
 Navigate to your **<span style="color: #FF5733;">Major Release</span>** pipeline, scroll down to Testing, and select "Add an input prompt or constant" under "Variables & Prompts". 
 
+
+## Step 3: Create a Routine Release Pipeline
+In this next step we will create a pipeline that will be used for your **<span style="color: #4CAF50;">Routine Releases</span>**. As routine releases carry low risk and ship on a fixed cadence, their pipelines typically include fewer stages, fewer checks, and a handful of date prompts. Because the cadence is fixed, builds can also have their promotions scheduled to land on the release date.
+
+### Creating The Pipeline
+We recommend keeping **<span style="color: #4CAF50;">Routine Releases</span>** pipelines short: Build, Integration, Testing, and Production. Fewer stages means small changes reach production quickly without waiting on unnecessary checks.
+
+As with creating a Major release pipeline, start by navigating to "Settings" > "Pipelines" then select "Create Pipeline". Then select "Show all" and choose "Main/Release Branch". By default this will already include all stages recommended for routine releases. Select "Create Pipeline".
+
+![](/resources/docs/buildmaster-pipeline-fourstages.png){height="" width="50%"}
+
+### Setting Target Iteration Dates
+To keep routine releases predictable, you can set Target Iteration Dates on a pipeline to define when its releases are meant to go out, setting a fixed cadence for your routine releases (e.g., every two weeks on a Friday). BuildMaster then projects upcoming release dates for you.
+
+To set these up, navigate to your Routine pipeline and then select "edit details" under "Pipeline Details". From here set the target iteration dates (e.g., "7" would set a one week cadence for routine releases):
+
+![](/resources/docs/buildmaster-release-edit-iteration.png){height="" width="50%"}
+
+Once set, BuildMaster automatically projects the upcoming target dates for that pipeline and shows them on the calendar as dotted outlines.
+
+![](/resources/docs/buildmaster-calendar-auto-dates.png){height="" width="50%"}
+
+### Setting Date Prompts
+Routine releases need only a light touch here. We recommend a couple of short prompts, such as a code cutoff 4 days before the target date and a short QA window 3 days before.
+
+To set these up, navigate to your Routine release pipeline, select "Edit Details" under "Pipeline Details", and then select "Manage Date Prompts".
+
+![](/resources/docs/buildmaster-pipeline-manageprompts-2.png){height="" width="50%"}
+
+Then select "Add Date Prompt". Name the date (e.g., "Code Cutoff"), enter how many days before the release target date it will be scheduled as a negative number (e.g., `-3`), and select "Save". Repeat for the QA window, setting it 3 days before with a duration of 2 days.
+
+![](/resources/docs/buildmaster-pipeline-routine-prompts.png){height="" width="50%"}
+
+These will then be pre-populated each time you create a new Routine release.
+
+## Step 4: Configure the Routine Release Pipeline Gating
+Because **<span style="color: #4CAF50;">Routine Releases</span>** ship frequently and carry low risk, their gating should enforce quality without slowing anyone down. We recommend relying on automated gates rather than manual approvals, and adding variable prompts to make quick, repeatable testing easier. This step will cover both.
+
+### Setting Up Automated Gating
+Because routine releases ship frequently, we recommend relying on automated gates rather than manual approvals. Use the same compliance and prerelease dependency checks as the Major pipeline.
+
+To configure these, navigate to your **<span style="color: #4CAF50;">Routine Release</span>** pipeline, scroll down to the Build stage and select "add stage requirement".
+
+![](/resources/docs/buildmaster-pipelines-build-req-add.png){height="" width="50%"}
+
+From here, select "Edit Packages/Dependencies", check both checkboxes and select "Save". This will prevent builds containing packages that break compliance rules or unstable (prerelease) dependencies from moving forward.
+
+![](/resources/docs/buildmaster-pipelines-build-req-added.png){height="" width="50%"}
+
+Finally, make sure you scroll up to the top of the pipeline page and select "Commit Changes".
+
+Unlike the Major pipeline, we haven't added any manual approvals here. Builds that meet these requirements are free to move forward, which keeps your fixed-cadence releases on schedule.
+
+### Creating Variable Prompts
+Variable Prompts can make quick, repeatable testing easier. For example, a prompt at the Testing stage can let the tester choose whether to enable new features after deployment, so the same build can be checked with a feature off and then on without needing a separate build. 
+
+At the Testing stage, we recommend adding a prompt that defines whether to enable new features after deployment, so one build can be tested with a feature off and then on. In addition we'll add a prompt to define whether or not to restart services after deployment.
+
 ![](/resources/docs/buildmaster-pipelines-prompt-add.png){height="" width="50%"}
 
 Then select "Prompt for Input" and name it "Enable New Features After Deployment". This prompt will be set up as a list to create "true" or "false" choices, so select the "Input Options" tab, select the "List" option, as well as selecting "Value is Required" and "Restrict value to items in list". Then enter "true" and "false" as list options.
@@ -109,49 +167,6 @@ Repeat this to create a prompt to define whether or not to restart services afte
 ![](/resources/docs/buildmaster-pipeline-prompts-added.png){height="" width="50%"}
 
 Then, scroll to the top of the pipeline page and select "Commit Changes".
-
-## Step 3: Create a Routine Release Pipeline
-In this next step we will create a pipeline that will be used for your **<span style="color: #4CAF50;">Routine Releases</span>**. As routine releases carry low risk and ship on a fixed cadence, their pipelines typically include fewer stages, fewer checks, and a handful of date prompts. Because the cadence is fixed, builds can also have their promotions scheduled to land on the release date.
-
-### Creating The Pipeline
-We recommend keeping <span style="color: #4CAF50;">Routine Releases</span> pipelines short: Build, Integration, Testing, and Production. Fewer stages means small changes reach production quickly without waiting on unnecessary checks.
-
-As with creating a Major release pipeline, start by navigating to "Settings" > "Pipelines" then select "Create Pipeline". Then select "Show all" and choose "Main/Release Branch". By default this will already include all stages recommended for routine releases. Select "Create Pipeline".
-
-![](){height="" width="50%"} **NEED SS 
-
-### Setting Target iteration Dates
-To keep routine releases predictable, you can set Target Iteration Dates on a pipeline to define when its releases are meant to go out, setting a fixed cadence for your routine releases (e.g., every two weeks on a Friday). BuildMaster then projects upcoming release dates for you.
-
-To set these up, navigate to your Routine pipeline and then select "edit details" under "Pipeline Details". From here set the target iteration dates (e.g., "14" would set a two week cadence for routine releases):
-
-![](/resources/docs/buildmaster-release-edit-iteration.png){height="" width="50%"}
-
-Once set, BuildMaster automatically projects the upcoming target dates for that pipeline and shows them on the calendar as dotted outlines.
-
-![](/resources/docs/buildmaster-calendar-auto-dates.png){height="" width="50%"}
-
-### Setting Date Prompts
-Routine releases need only a light touch here. We recommend a couple of short prompts, such as a code cutoff 2 days before the target date and a short QA window 1 day before.
-
-To set these up, navigate to your Routine release pipeline, select "Edit Details" under "Pipeline Details", and then select "Manage Date Prompts".
-
-![](/resources/docs/buildmaster-calendar-manage-date-prompts.png){height="" width="50%"}
-
-Then select "Add Date Prompt". Name the date (e.g., "Code Cutoff"), enter how many days before the release target date it will be scheduled as a negative number (e.g., `-2`), and set the duration. Repeat for the QA window.
-
-![](/resources/docs/buildmaster-calendar-add-date-prompt.png){height="" width="50%"}
-
-These will then be pre-populated each time you create a new Routine release.
-
-## Step 4: Configure the Routine Release Pipeline Gating
-Because **<span style="color: #4CAF50;">Routine Releases</span>** ship frequently and carry low risk, their gating should enforce quality without slowing anyone down. We recommend relying on automated gates rather than manual approvals, and adding variable prompts to make quick, repeatable testing easier. This step will cover both.
-
-### Setting Up Automated Gating
-Because routine releases ship frequently, we recommend relying on automated gates rather than manual approvals. Use the same compliance and prerelease dependency checks as the Major pipeline, plus a "tests passed" requirement, so quality is enforced automatically and nobody becomes a bottleneck. Here's how to add them
-
-### Creating Variable Prompts
-Variable Prompts can make quick, repeatable testing easier. For example, a prompt at the Testing stage can let the tester choose whether to enable new features after deployment, so the same build can be checked with a feature off and then on without needing a separate build. Here's how to add one.
 
 ## Step 5: Create a release in each pipeline
 With both pipelines in place, we will now create a release in each one to see how the two tracks differ in practice. First we will create a Major release and set its target date. The date prompts you defined (such as feature complete, code freeze, and UAT) will pre-populate automatically, giving the release a long run-up with several milestones. Then we will create a Routine release, which will pre-populate with just a code cutoff and a short QA window. Putting the two side by side shows how much more planning a Major release involves compared with a Routine one. It also gives us something to look at in the next step, where we will view both tracks on the calendar.
