@@ -39,36 +39,45 @@ Next, name the stage "Staging", and select "3. Production" for the "Pipeline Pos
 
 Finally, select "Create Pipeline".
 
-![](){height="" width="50%"} **NEED SS
+![](/resources/docs/buildmaster-pipeline-fivestages.png){height="" width="50%"}
 
 ### Creating Date prompts
-Beyond the release target date, you can add extra dates to a pipeline, set relative to that target. These are useful for milestones that happen on the way to a release. For your Major Release pipeline, a realistic set might include a code freeze (14 days before), a regression testing window (10 days before, lasting 7 days), and a go/no-go review (2 days before). These give everyone a shared view of what happens when. 
+Beyond the release target date, you can add extra dates to a pipeline, set relative to that target. These are useful for milestones that happen on the way to a release. For your **<span style="color: #FF5733;">Major Release</span>** pipeline, a realistic set might include a code freeze (14 days before), a regression testing window (10 days before, lasting 7 days), and a go/no-go review (2 days before). These give everyone a shared view of what happens when. 
 
-To set these up, navigate to your Major Release release pipeline, select "Edit Details" under "Pipeline Details", and then selecting "Manage Date Prompts".
+To set these up, navigate to your **<span style="color: #FF5733;">Major Release</span>** pipeline, select "Edit Details" under "Pipeline Details", and then selecting "Manage Date Prompts".
 
-![](/resources/docs/buildmaster-calendar-manage-date-prompts.png){height="" width="50%"}
+![](/resources/docs/buildmaster-calendar-manage-date-prompts-major.png){height="" width="50%"}
 
-Then select "Add Date Prompt". From here you will be able to name the date, how many days after the release target date it will be scheduled, (or before, by entering a negative number, e.g. `-3`) and the duration that this prompt will last.
+Then select "Add Date Prompt". 
 
-![](){height="" width="50%"}  **NEED SS
+![](/resources/docs/buildmaster-pipeline-dateprompt-add.png){height="" width="50%"}
+
+From here you will be able to name the date, how many days after the release target date it will be scheduled, (or before, by entering a negative number, e.g. `-3`) and the duration that this prompt will last.
+
+![](/resources/docs/buildmaster-pipeline-dateprompt-create.png){height="" width="50%"}
+
+Repeat these steps to create:
+* Code Freeze (-14 days)
+* Regression Testing (-10 days, 7 day duration)
+* Go/No-go Review (-2 days)
 
 These will then be pre-populated when creating a new release.
 
-![](){height="" width="50%"} **NEED SS
+![](/resources/docs/buildmaster-calendar-dateprompts-populated.png){height="" width="50%"}
 
 ## Step 2: Configure the Major Release Pipeline Stage Requirements
 Pipeline stage requirements are gates that control what must be true before a build can move to the next stage of a pipeline. Because **<span style="color: #FF5733;">Major Releases</span>** carry high risk, we recommend combining automated requirements with those that require manual sign-off.
 
 ### Setting Up Automated Stage Requirements
-Automated requirements stop a build from moving forward until it meets certain criteria, without anyone having to remember to check. For <span style="color: #FF5733;">Major Releases</span> we recommend blocking builds that contain noncompliant packages or prerelease dependencies at the build stage, and requiring that all issues in the release are resolved in your issue tracker at the Production stage.
+Automated requirements stop a build from moving forward until it meets certain criteria, without anyone having to remember to check. For **<span style="color: #FF5733;">Major Releases</span>** we recommend blocking builds that contain noncompliant packages or prerelease dependencies at the build stage, and requiring that all issues in the release are resolved in your issue tracker at the Production stage.
 
 To configure these, navigate to your Major release pipeline, scroll down to the Build stage and select "add stage requirement". 
 
-![](/resources/docs/buildmaster-pipeline-integration-gates.png){height="" width="50%"}
+![](/resources/docs/buildmaster-pipelines-build-req-add.png){height="" width="50%"}
 
 From here, select "Edit Packages/Dependencies", check both checkboxes and select "Save". This will prevent builds containing packages that break compliance rules or unstable (prerelease) dependencies from moving forward. 
 
-![](/resources/docs/buildmaster-pipeline-integration-gates.png){height="" width="50%"}
+![](/resources/docs/buildmaster-pipelines-build-req-added.png){height="" width="50%"}
 
 Next, at the Production stage, we'll add a requirement that all issues must be resolved before the release can be deployed to this stage. Scroll down to Production, select "add stage requirement" and select "Edit Issues/Status Requirements". From here select "All issues must be closed to enter this stage" and select "Save". 
 
@@ -77,15 +86,27 @@ Next, at the Production stage, we'll add a requirement that all issues must be r
 Finally, make sure you scroll up to the top of the pipeline page and select "Commit Changes". 
 
 ### Setting Up Manual Gating 
-Some checks need human judgment, so we also recommend manual requirements for <span style="color: #FF5733;">Major Releases</span>. At the Testing stage, we recommend adding a prompt that lets testers choose whether to enable new features after deployment, so one build can be tested with a feature off and then on. At the Production stage, we recommend requiring approval from someone accountable, plus prompts confirming the rollback plan and database migration review.
+Some checks need human judgment, so we also recommend manual requirements for **<span style="color: #FF5733;">Major Releases</span>**. 
 
-Navigate to your Major release pipeline, scroll down to Testing, and select "add stage requirement". Then select "Edit Variable Prompts" and add a prompt such as "Enable new features after deployment". The tester can now deploy the same build with the feature off, then redeploy with it on. You can use the same approach to let testers choose how services restart after deployment. Select "Save".
+At the Testing stage, we recommend adding a prompt that defines whether to enable new features after deployment, so one build can be tested with a feature off and then on. In addition we'll add a prompt to define whether or not to restart services after deployment.
 
-![](){height="" width="50%"} **NEED SS
+Navigate to your **<span style="color: #FF5733;">Major Release</span>** pipeline, scroll down to Testing, and select "Add an input prompt or constant" under "Variables & Prompts". 
 
-Next, Scroll down to Production and select "add stage requirement". Select "Edit Approvals", choose the approver (e.g., your release manager or change approval board), and select "Save". Then select "add stage requirement" again, choose "Edit Variable Prompts", and add a required checkbox prompt for each item you want confirmed before deployment (e.g., "Rollback plan confirmed" and "Database migration reviewed"). Select "Save".
+![](/resources/docs/buildmaster-pipelines-prompt-add.png){height="" width="50%"}
 
-![](){height="" width="50%"} **NEED SS
+Then select "Prompt for Input" and name it "Enable New Features After Deployment". This prompt will be set up as a list to create "true" or "false" choices, so select the "Input Options" tab, select the "List" option, as well as selecting "Value is Required" and "Restrict value to items in list". Then enter "true" and "false" as list options.
+
+![](/resources/docs/buildmaster-pipeline-prompt-edit-input.png){height="" width="50%"}
+
+We also recommend adding a short description by selecting the "Display Options" tab and typing a short description in the "Help text" field. Then select "Save Variable".
+
+![](/resources/docs/buildmaster-pipeline-prompt-edit-display.png){height="" width="50%"}
+
+The tester can now deploy the same build with the feature off, then redeploy with it on.
+
+Repeat this to create a prompt to define whether or not to restart services after deployment. 
+
+![](/resources/docs/buildmaster-pipeline-prompts-added.png){height="" width="50%"}
 
 Then, scroll to the top of the pipeline page and select "Commit Changes".
 
