@@ -280,8 +280,8 @@ If there are issues using InedoDB, you can simply change the cluster to point to
 
 If a product is unable to connect to the datbase when running with the embedded database in a container, ensure that the data directory within the container is owned by the `postgres` user. For example, on ProGet:
 
-    ```bash
-    docker exec «NAME_OF_PROGET_CONTAINER» chown -R postgres /var/proget/database 
-    ```
+```bash
+docker exec «NAME_OF_PROGET_CONTAINER» chown -R postgres /var/proget/database 
+```
 
 Then restart the container. 
