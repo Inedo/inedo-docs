@@ -75,6 +75,7 @@ The following versions of the InedoDB are available:
 
 | Version | Released | Downloads | Notes
 | -- | -- | --
+| 17.12.0 | Nov 12, 2026 | [installer exe](https://cdn.inedo.com/downloads/inedodb/InedoDBInstaller17.12.0.exe) | PostgreSQL minor version update 
 | 17.11.0 | Sep 9, 2026 | [installer exe](https://cdn.inedo.com/downloads/inedodb/InedoDBInstaller17.11.0.exe) | PostgreSQL minor version update
 | 17.10.2 | Jun 30, 2026 | [installer exe](https://cdn.inedo.com/downloads/inedodb/InedoDBInstaller17.10.2.exe) | Improved initial config for default connections
 | 17.10.1 | Jun 23, 2026 | [installer exe](https://cdn.inedo.com/downloads/inedodb/InedoDBInstaller17.10.1.exe) | Tweak initial config for improved performance
