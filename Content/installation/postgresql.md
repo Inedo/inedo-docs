@@ -172,16 +172,16 @@ If you wish to gain a better understanding of the structure or seek other suppor
 
 ### Querying The Database Using the CLI
 
-You can query the PostgreSQL database using the `query` operation in the product's main executable (e.g. `proget` or `proget.exe`) in the program directory.  The `query` operation takes a `--file` argument that points to a `.sql` file containing the SQL query and will print the results in CSV format to the standard output.  It uses the product's configured PostgreSQL connection string to execute  queries against the PostgreSQL database.  Example: `proget query --file=myquery.sql`
+You can query the PostgreSQL database using the `database query` operation in the product's main executable (e.g. `proget` or `proget.exe`) in the program directory.  The `database query` operation takes a `--file` argument that points to a `.sql` file containing the SQL query and will print the results in CSV format to the standard output.  It uses the product's configured PostgreSQL connection string to execute  queries against the PostgreSQL database.  Example: `proget database query --file=myquery.sql`
 
-You can also use `stdin` as the source of the query instead of file by specifying `-` as the file name. Example: `proget query --file=-`
+You can also use `stdin` as the source of the query instead of file by specifying `-` as the file name. Example: `proget database query --file=-`
 
 Note that queries must be supplied either as a file or via `stdin`. You cannot specify a query via direct command line argument because:
  - Our PostgreSQL schema follows the naming conventions of our original SQL Server database schema, so most database object names require being enclosed in `"` characters. These characters usually require escaping when used in command line arguments, which is error prone and can cause data integrity issues
- - Many terminal sessions are logged, and we don't want to risk accedentally exposing confidential data if used in an input query
+ - Many terminal sessions are logged, and we don't want to risk accidentally exposing confidential data if used in an input query
 
 :::(Info)(Note:)
-The `query` operation is only intended for troubleshooting or support purposes. It is not a general-purpose SQL query tool.
+The `database query` operation is only intended for troubleshooting or support purposes. It is not a general-purpose SQL query tool.
 :::
 
 #### Example: Query for a list of feeds to a file on Windows
@@ -196,7 +196,7 @@ The `query` operation is only intended for troubleshooting or support purposes. 
 2. Run the following command from a command prompt in the ProGet program directory:
 
     ```bash
-    proget query --file=list-feeds.sql > list-feeds.csv
+    proget database query --file=list-feeds.sql > list-feeds.csv
     ```
 
 #### Example: Query for a list of feeds to a file on Docker
@@ -216,7 +216,7 @@ The `query` operation is only intended for troubleshooting or support purposes. 
 3. Run the following command from a command prompt in the ProGet program directory:
 
     ```bash
-    ./usr/local/proget/service/proget query --file="/home/list-feeds.sql" > "/home/list-feeds.csv"
+    ./usr/local/proget/service/proget database query --file="/home/list-feeds.sql" > "/home/list-feeds.csv"
     ```
 
 ## Database Import & Export
